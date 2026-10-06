@@ -1,0 +1,203 @@
+{
+  "track": "network",
+  "unit": "u03-ip-routing-nat",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "network-routing-basics-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "routing-basics",
+        "table-entry"
+      ],
+      "content": {
+        "prompt": "라우팅 테이블의 한 항목을 구성하는 요소로 가장 알맞은 것은?",
+        "options": [
+          "목적지 MAC 주소, 출발지 MAC 주소, VLAN 번호",
+          "출발지 포트, 목적지 포트, TCP 시퀀스 번호",
+          "도메인 이름, DNS 서버 주소, 레코드 TTL",
+          "목적지 네트워크(프리픽스), 다음 홉, 송출 인터페이스, 메트릭"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "라우팅 테이블 항목은 목적지 프리픽스, 다음 홉(게이트웨이), 내보낼 인터페이스, 경로 비용인 메트릭으로 이루어집니다. MAC 주소는 다음 홉에 대해 ARP로 알아내는 값이며 테이블에 들어가지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Routing_table"
+      ]
+    },
+    {
+      "id": "network-routing-basics-002",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "routing-basics",
+        "default-route"
+      ],
+      "content": {
+        "prompt": "라우팅 테이블에서 어떤 항목과도 일치하지 않는 목적지로 갈 때 사용하는 0.0.0.0/0 경로를 ___ 경로라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "기본",
+          "default",
+          "디폴트",
+          "기본 경로",
+          "default route",
+          "디폴트 경로"
+        ]
+      },
+      "explanation": "0.0.0.0/0은 프리픽스 길이가 0이라 모든 주소와 일치하며 다른 항목이 없을 때 쓰이는 기본(default) 경로입니다. 호스트의 기본 게이트웨이 설정이 바로 이 경로를 만듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Default_route"
+      ]
+    },
+    {
+      "id": "network-routing-basics-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "routing-basics",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "IPv4 헤더의 TTL은 이름(Time To Live)과 달리 실제로는 통과할 수 있는 홉 수의 상한처럼 동작하며, 라우터를 지날 때마다 1씩 감소한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "RFC 791은 TTL을 초 단위로 정의했지만 실제 라우터는 포워딩할 때마다 1씩 줄이므로 사실상 홉 수로 동작합니다. 실제 경과 시간을 재서 줄인다고 보는 것은 이름에서 비롯된 오해입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc791",
+        "https://en.wikipedia.org/wiki/Time_to_live"
+      ]
+    },
+    {
+      "id": "network-routing-basics-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "routing-basics",
+        "longest-prefix"
+      ],
+      "content": {
+        "prompt": "라우팅 테이블에 10.0.0.0/8과 10.1.0.0/16 항목이 모두 있다. 목적지 10.1.2.3의 패킷은 어느 항목을 따르는가?",
+        "options": [
+          "10.0.0.0/8: 먼저 등록된 항목이 우선이기 때문이다",
+          "10.0.0.0/8: 더 넓은 범위를 포괄하기 때문이다",
+          "10.1.0.0/16: 일치하는 항목 중 프리픽스가 가장 긴 것을 고르기 때문이다",
+          "두 항목을 번갈아 사용한다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "라우터는 일치하는 항목 중 프리픽스가 가장 긴 것을 선택하는 최장 프리픽스 매칭을 하므로 /16이 /8보다 우선합니다. 등록 순서나 범위의 넓이는 기준이 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Longest_prefix_match",
+        "https://www.rfc-editor.org/rfc/rfc4632"
+      ]
+    },
+    {
+      "id": "network-routing-basics-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "routing-basics",
+        "ttl-expired"
+      ],
+      "content": {
+        "prompt": "라우터가 포워딩하려고 패킷의 TTL을 1 줄였더니 0이 되었다. 라우터의 동작과 이를 이용하는 도구를 바르게 짝지은 것은?",
+        "options": [
+          "패킷을 목적지로 계속 전달하며, ping이 이를 이용한다",
+          "패킷을 조용히 버리며 아무 메시지도 보내지 않는다",
+          "패킷을 버리고 출발지에 ICMP Time Exceeded를 보내며, traceroute가 TTL을 1, 2, 3으로 늘려 이를 이용한다",
+          "패킷의 TTL을 255로 되돌려 다시 전달한다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "TTL이 0이 되면 라우터는 패킷을 버리고 출발지로 ICMP Time Exceeded를 돌려줍니다. traceroute는 TTL을 1부터 늘려 보내며 각 홉이 보낸 이 메시지로 경로를 알아냅니다. 조용히 버려지지 않습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc792",
+        "https://en.wikipedia.org/wiki/Traceroute"
+      ]
+    },
+    {
+      "id": "network-routing-basics-006",
+      "type": "multi",
+      "difficulty": 2,
+      "tags": [
+        "routing-basics",
+        "host-table"
+      ],
+      "content": {
+        "prompt": "일반적인 호스트(PC)의 라우팅 테이블에 보통 들어 있는 항목을 모두 고르시오.",
+        "options": [
+          "인터넷의 모든 네트워크에 대한 개별 경로",
+          "자신이 속한 서브넷(직접 연결) 경로",
+          "목적지 MAC 주소별로 나가는 포트를 적은 항목",
+          "기본 게이트웨이를 가리키는 기본 경로"
+        ]
+      },
+      "answer_key": {
+        "indices": [
+          1,
+          3
+        ]
+      },
+      "explanation": "호스트는 직접 연결된 서브넷 경로와 기본 게이트웨이로 향하는 기본 경로 정도만 갖고 나머지는 모두 기본 경로로 보냅니다. 인터넷 전체 경로는 백본 라우터의 영역이고, MAC별 포트 항목은 L2 스위치의 MAC 테이블입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Routing_table"
+      ]
+    },
+    {
+      "id": "network-routing-basics-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "routing-basics",
+        "gateway-subnet"
+      ],
+      "content": {
+        "prompt": "호스트의 기본 게이트웨이 주소가 반드시 호스트와 같은 서브넷에 있어야 하는 이유는?",
+        "options": [
+          "게이트웨이의 MAC을 ARP로 알아내 프레임을 직접 전달해야 하는데 ARP는 같은 링크 안에서만 동작하기 때문이다",
+          "서브넷이 다르면 게이트웨이의 IP 주소가 중복되기 때문이다",
+          "게이트웨이는 DNS 서버와 같은 서브넷에 있어야 하기 때문이다",
+          "호스트 마스크가 게이트웨이 마스크와 일치해야 하기 때문이다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "호스트는 다음 홉인 게이트웨이의 MAC을 ARP로 얻어 같은 링크에서 프레임을 직접 전달해야 하므로 게이트웨이는 같은 서브넷에 있어야 합니다. 다른 서브넷이면 ARP로 닿을 수 없어 전달이 불가능합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Default_gateway"
+      ]
+    },
+    {
+      "id": "network-routing-basics-008",
+      "type": "ox",
+      "difficulty": 3,
+      "tags": [
+        "routing-basics",
+        "ipv6-checksum"
+      ],
+      "content": {
+        "prompt": "IPv4는 TTL 감소로 헤더가 바뀔 때마다 헤더 체크섬을 다시 계산해야 하지만, IPv6 기본 헤더에는 체크섬 필드가 없고 Hop Limit만 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "IPv4 라우터는 TTL을 줄일 때마다 헤더 체크섬을 재계산하지만 IPv6는 기본 헤더의 체크섬을 없애 처리 부담을 줄였습니다(오류 검출은 링크·상위 계층 체크섬에 맡김). IPv6에도 헤더 체크섬이 있다는 설명은 틀립니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8200",
+        "https://en.wikipedia.org/wiki/IPv6_packet"
+      ]
+    }
+  ]
+}

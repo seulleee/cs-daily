@@ -1,0 +1,235 @@
+{
+  "track": "dsa",
+  "unit": "u01-complexity",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "dsa-code-complexity-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "code-complexity",
+        "loop"
+      ],
+      "content": {
+        "prompt": "다음 코드의 시간 복잡도는? (work()는 O(1))",
+        "code": {
+          "language": "python",
+          "source": "for i in range(n):\n    work()\nfor j in range(n):\n    work()"
+        },
+        "options": [
+          "O(n²)",
+          "O(n)",
+          "O(log n)",
+          "O(n log n)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "두 루프가 중첩되지 않고 차례로 실행되므로 n + n = 2n번이며 상수를 버리면 O(n)입니다. 덧셈 구조는 둘 중 큰 쪽을 따르고, 곱셈(중첩)일 때만 O(n²)이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-code-complexity-002",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "code-complexity",
+        "nested-loop"
+      ],
+      "content": {
+        "prompt": "다음 이중 루프의 work() 호출 횟수는 n(n−1)/2이다. 시간 복잡도는 O(___)이다. (n을 사용한 식으로)",
+        "code": {
+          "language": "python",
+          "source": "for i in range(n):\n    for j in range(i):\n        work()"
+        },
+        "hint": "n에 대한 다항식"
+      },
+      "answer_key": {
+        "accepted": [
+          "n^2",
+          "n²",
+          "n**2",
+          "n 제곱",
+          "n제곱",
+          "n ^ 2",
+          "n*n",
+          "n2"
+        ]
+      },
+      "explanation": "안쪽 루프가 0, 1, ..., n−1번 돌아 총 n(n−1)/2번이며, 최고차항 n²/2에서 상수 1/2을 버리면 O(n²)입니다. 절반이라도 증가율은 그대로 n²이고, n log n은 이 구조에서 나오지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-code-complexity-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "code-complexity",
+        "logarithm"
+      ],
+      "content": {
+        "prompt": "다음 루프의 반복 횟수와 시간 복잡도는?",
+        "code": {
+          "language": "python",
+          "source": "i = 1\nwhile i < n:\n    i *= 2"
+        },
+        "options": [
+          "n회 반복하므로 O(n)",
+          "n/2회 반복하므로 O(n/2)",
+          "약 √n회 반복하므로 O(√n)",
+          "약 log₂n회 반복하므로 O(log n)"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "i가 1, 2, 4, 8, ...로 두 배씩 늘어 n에 도달하는 데 log₂n번이면 충분하므로 O(log n)입니다. i += 2처럼 상수만큼 늘면 n/2번이라 O(n)입니다. 또한 n/2 같은 계수는 표기에서 버립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-code-complexity-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "code-complexity",
+        "nested-loop"
+      ],
+      "content": {
+        "prompt": "다음 코드의 시간 복잡도는?",
+        "code": {
+          "language": "python",
+          "source": "for i in range(n):\n    j = 1\n    while j < n:\n        j *= 2"
+        },
+        "options": [
+          "O(n²)",
+          "O(n)",
+          "O(n log n)",
+          "O(log n)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "바깥 루프가 n번이고 안쪽 while은 j가 두 배씩 늘어 log₂n번만 돌므로 곱하면 O(n log n)입니다. 안쪽을 n으로 세면 O(n²)이 되는 흔한 오답이 나옵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-code-complexity-005",
+      "type": "multi",
+      "difficulty": 2,
+      "tags": [
+        "code-complexity",
+        "recursion"
+      ],
+      "content": {
+        "prompt": "재귀식과 시간 복잡도의 짝으로 옳은 것을 모두 고르시오. (비재귀 작업은 O(1))",
+        "options": [
+          "f(n) = f(n−1) + f(n−2)는 O(n)이다",
+          "f(n) = f(n/2) + O(1)은 O(log n)이다",
+          "f(n) = 2f(n−1) + O(1)은 O(n²)이다",
+          "f(n) = f(n−1) + O(1)은 O(n)이다"
+        ]
+      },
+      "answer_key": {
+        "indices": [
+          1,
+          3
+        ]
+      },
+      "explanation": "f(n−1)+O(1)은 깊이 n의 호출 사슬이라 O(n), f(n/2)+O(1)은 이진 탐색처럼 log n번이라 O(log n)입니다. 호출이 둘로 갈라지는 피보나치형과 2f(n−1)형은 지수 시간이므로 O(n), O(n²)가 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-code-complexity-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "code-complexity",
+        "recurrence",
+        "master-theorem"
+      ],
+      "content": {
+        "prompt": "병합 정렬형 점화식 T(n) = 2T(n/2) + O(n)의 시간 복잡도는?",
+        "options": [
+          "Θ(n log n): 재귀 깊이가 log n이고 각 깊이의 합이 O(n)",
+          "Θ(n²): 호출이 두 갈래이므로 제곱이 된다",
+          "Θ(n): 문제 크기가 절반씩 줄어든다",
+          "Θ(log n): 문제 크기가 절반씩 줄어든다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "재귀 트리의 깊이는 log₂n이고 각 깊이에서 분할·병합 작업의 합이 n이므로 총 n log n입니다(마스터 정리의 균형 경우). 두 갈래로 나뉘어도 각 부분 문제 크기가 절반이라 O(n²)가 되지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Master_theorem_(analysis_of_algorithms)",
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-code-complexity-007",
+      "type": "ox",
+      "difficulty": 3,
+      "tags": [
+        "code-complexity",
+        "hidden-cost"
+      ],
+      "content": {
+        "prompt": "다음 코드는 최악의 경우 O(n²)이다. (파이썬 리스트의 `in` 연산은 선형 탐색이다)",
+        "code": {
+          "language": "python",
+          "source": "seen = []\nfor x in data:      # len(data) == n\n    if x not in seen:\n        seen.append(x)"
+        }
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "x not in seen은 길이가 늘어나는 리스트를 처음부터 훑으므로 O(n)이고, 이것을 n번 반복해 최악 O(n²)입니다. append가 O(1)이라고 해서 내장 연산을 모두 O(1)로 가정하면 이런 숨은 비용을 놓칩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity",
+        "https://docs.python.org/3/tutorial/datastructures.html"
+      ]
+    },
+    {
+      "id": "dsa-code-complexity-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "code-complexity",
+        "multiple-inputs"
+      ],
+      "content": {
+        "prompt": "길이가 서로 다른 두 리스트 A(길이 n), B(길이 m)에 대한 다음 코드의 시간 복잡도는?",
+        "code": {
+          "language": "python",
+          "source": "count = 0\nfor a in A:        # len(A) == n\n    for b in B:    # len(B) == m\n        if a == b:\n            count += 1"
+        },
+        "options": [
+          "O(n²)",
+          "O(n + m)",
+          "O(max(n, m))",
+          "O(n·m)"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "바깥 루프가 n번, 안쪽 루프가 m번이므로 O(n·m)입니다. n과 m이 독립적인 입력 크기이므로 하나의 문자로 뭉뚱그려 O(n²)로 쓰면 안 되며, n = m이라는 조건이 주어질 때만 O(n²)로 줄여 쓸 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    }
+  ]
+}

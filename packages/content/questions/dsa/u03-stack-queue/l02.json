@@ -1,0 +1,203 @@
+{
+  "track": "dsa",
+  "unit": "u03-stack-queue",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "dsa-circular-queue-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "circular-queue",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "빈 큐에 1, 2, 3을 차례로 enqueue한 뒤 dequeue를 3번 하면 꺼내지는 순서는?",
+        "options": [
+          "3, 2, 1",
+          "1, 2, 3",
+          "2, 1, 3",
+          "1, 3, 2"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "큐는 먼저 들어온 것이 먼저 나가는 FIFO라 1, 2, 3 순서로 나옵니다. 3, 2, 1 순서는 가장 나중에 들어온 것이 먼저 나가는 스택(LIFO)의 동작입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)"
+      ]
+    },
+    {
+      "id": "dsa-circular-queue-002",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "circular-queue",
+        "array-queue"
+      ],
+      "content": {
+        "prompt": "일반 배열(파이썬 list)로 큐를 만들어 앞 원소를 pop(0)으로 제거하면 뒤의 원소를 모두 한 칸씩 당겨야 하므로 O(n)이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "리스트의 맨 앞 원소를 지우면 나머지 n−1개 원소가 앞으로 이동하므로 O(n)입니다. 이 비용을 피하려고 head 인덱스만 옮기는 원형 큐나 collections.deque를 씁니다. pop()은 끝에서 지우는 것이라 O(1)입니다.",
+      "refs": [
+        "https://docs.python.org/3/library/collections.html#collections.deque",
+        "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)"
+      ]
+    },
+    {
+      "id": "dsa-circular-queue-003",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "circular-queue",
+        "modulo"
+      ],
+      "content": {
+        "prompt": "원형 큐에서 tail 다음 인덱스는 (tail + 1) % ___ 로 구한다. (빈칸은 배열의 전체 칸 수)",
+        "hint": "배열 전체 칸 수"
+      },
+      "answer_key": {
+        "accepted": [
+          "capacity",
+          "용량",
+          "cap",
+          "배열 크기",
+          "배열의 크기",
+          "칸 수",
+          "배열 길이",
+          "length"
+        ]
+      },
+      "explanation": "정답은 배열의 칸 수인 capacity입니다. 마지막 칸 다음에 0번 칸으로 되돌아가려면 칸 수로 나눈 나머지를 써야 합니다. 현재 원소 수나 tail로 나누면 인덱스가 배열 범위를 벗어나거나 엉뚱한 위치로 갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Circular_buffer"
+      ]
+    },
+    {
+      "id": "dsa-circular-queue-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "circular-queue",
+        "index-calculation"
+      ],
+      "content": {
+        "prompt": "용량 5인 원형 큐에서 head = 3, tail = 1(다음 삽입 위치)이고 가득 차지 않았다. 원소 수는?",
+        "options": [
+          "3",
+          "2",
+          "−2",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "원소는 인덱스 3, 4, 0에 있어 3개이며, 식으로는 (tail − head + capacity) % capacity = (1 − 3 + 5) % 5 = 3입니다. % 없이 tail − head만 계산하면 −2가 나와 틀리고, 용량을 더하는 보정이 필요합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Circular_buffer"
+      ]
+    },
+    {
+      "id": "dsa-circular-queue-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "circular-queue",
+        "empty-full"
+      ],
+      "content": {
+        "prompt": "원형 큐를 head, tail 두 인덱스만으로 구현할 때 head == tail 하나로 빈 상태와 가득 찬 상태를 구분할 수 없는 이유는?",
+        "options": [
+          "tail은 항상 head보다 커야 하므로 둘이 같아질 수 없기 때문이다",
+          "원형 큐는 가득 차면 자동으로 용량이 늘어나기 때문이다",
+          "비어 있을 때도 가득 찼을 때도 두 인덱스가 같은 값이 되기 때문이다",
+          "head가 tail을 앞질러 인덱스가 음수가 되기 때문이다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "비어 있으면 head == tail이고, 가득 차서 tail이 한 바퀴 돌아 head에 도달해도 head == tail입니다. 인덱스 두 개만으로는 두 상태가 같아 보이므로 count 변수, 한 칸 비우기, full 플래그 같은 별도 정보가 필요합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Circular_buffer"
+      ]
+    },
+    {
+      "id": "dsa-circular-queue-006",
+      "type": "multi",
+      "difficulty": 2,
+      "tags": [
+        "circular-queue",
+        "empty-full"
+      ],
+      "content": {
+        "prompt": "원형 큐에서 빈 상태와 가득 찬 상태를 구분하는 방법으로 옳은 것을 모두 고르시오.",
+        "options": [
+          "head == tail 비교를 head >= tail로 바꾼다",
+          "원소 개수를 세는 count 변수를 별도로 둔다",
+          "배열 한 칸을 항상 비워 두어 head == tail을 빈 상태 전용으로 쓴다",
+          "dequeue할 때마다 head를 0으로 되돌린다"
+        ]
+      },
+      "answer_key": {
+        "indices": [
+          1,
+          2
+        ]
+      },
+      "explanation": "count 변수를 두거나 한 칸을 비워 두면 두 상태가 구분됩니다(한 칸 비우기는 버그가 아니라 정당한 설계입니다). 비교 연산자를 바꾸거나 head를 0으로 되돌리는 것은 같은 인덱스 모호성을 해결하지 못하며 원형의 의미도 깨집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Circular_buffer"
+      ]
+    },
+    {
+      "id": "dsa-circular-queue-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "circular-queue",
+        "one-slot-empty"
+      ],
+      "content": {
+        "prompt": "한 칸을 비워 두는 방식의 용량 8 원형 큐에서 \"가득 참\" 조건과 최대 저장 원소 수는?",
+        "options": [
+          "tail == head, 최대 8개",
+          "(tail + 1) % 8 == head, 최대 8개",
+          "tail == 7, 최대 7개",
+          "(tail + 1) % 8 == head, 최대 7개"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "한 칸을 비우면 빈 상태는 head == tail, 가득 참은 (tail + 1) % capacity == head로 구분되며 최대 capacity − 1 = 7개를 담습니다. 8개를 담으려면 count 변수가 필요합니다. tail == head는 이 방식에서 빈 상태입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Circular_buffer"
+      ]
+    },
+    {
+      "id": "dsa-circular-queue-008",
+      "type": "ox",
+      "difficulty": 3,
+      "tags": [
+        "circular-queue",
+        "python-deque"
+      ],
+      "content": {
+        "prompt": "파이썬 collections.deque는 양쪽 끝의 append와 pop이 O(1)이지만, 중간 인덱스 접근은 O(n)이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "공식 문서는 deque의 양 끝 인덱스 접근은 O(1)이고 가운데로 갈수록 O(n)으로 느려진다고 설명합니다. 연결된 블록 구조라서이며, 배열처럼 임의 접근이 O(1)이라고 생각하면 틀립니다. 큐로 쓸 때는 popleft가 O(1)이라 list.pop(0)보다 낫습니다.",
+      "refs": [
+        "https://docs.python.org/3/library/collections.html#collections.deque"
+      ]
+    }
+  ]
+}

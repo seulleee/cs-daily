@@ -1,0 +1,134 @@
+{
+  "track": "os",
+  "unit": "u03-synchronization",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "os-mutex-semaphore-condvar-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": ["mutex-semaphore-condvar", "ownership"],
+      "content": {
+        "prompt": "POSIX 기본 뮤텍스의 소유권에 대한 설명으로 옳은 것은?",
+        "options": [
+          "어떤 스레드든 뮤텍스를 unlock해도 정상 동작이 보장된다",
+          "lock을 호출한 스레드가 unlock해야 하며, 다른 스레드의 unlock은 미정의 동작이다",
+          "뮤텍스는 소유자가 없고 카운터 값만 가진다",
+          "unlock은 반드시 프로세스의 메인 스레드만 호출해야 한다"
+        ]
+      },
+      "answer_key": { "index": 1 },
+      "explanation": "뮤텍스는 소유권이 있어 lock한 스레드가 unlock해야 하고, POSIX 기본 타입에서 다른 스레드가 unlock하면 미정의 동작입니다. 소유자 없이 카운터만 갖고 아무나 올릴 수 있는 쪽은 뮤텍스가 아니라 세마포어입니다.",
+      "refs": ["https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html", "https://en.wikipedia.org/wiki/Mutual_exclusion"]
+    },
+    {
+      "id": "os-mutex-semaphore-condvar-002",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": ["mutex-semaphore-condvar", "semaphore"],
+      "content": {
+        "prompt": "정수 카운터를 가지며 wait(P, down)로 감소시키고 signal(V, up)로 증가시키는 동기화 객체를 ___ 라고 한다.",
+        "hint": "Dijkstra가 제안, 철도 신호기에서 따온 이름"
+      },
+      "answer_key": { "accepted": ["세마포어", "세마포", "semaphore", "카운팅 세마포어", "counting semaphore"] },
+      "explanation": "정답은 세마포어입니다. wait는 값이 0이면 대기하고 아니면 감소시키며, signal은 값을 올리고 대기자를 깨웁니다. 뮤텍스는 소유권이 있는 잠금이고, 모니터는 상호 배제와 조건 변수를 묶은 언어 수준 구조라 다릅니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Semaphore_(programming)", "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"]
+    },
+    {
+      "id": "os-mutex-semaphore-condvar-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": ["mutex-semaphore-condvar", "counting-semaphore"],
+      "content": {
+        "prompt": "카운팅 세마포어를 초기값 N으로 만들면 동시에 최대 N개의 스레드가 자원을 사용하도록 제한할 수 있다."
+      },
+      "answer_key": { "value": true },
+      "explanation": "초기값 N인 세마포어는 wait를 N번까지 통과시키고 N+1번째부터 대기시키므로 동시 사용자 수를 N으로 제한합니다. 세마포어가 항상 0 또는 1 값만 갖는다는 것은 이진 세마포어에만 해당하는 오답입니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Semaphore_(programming)"]
+    },
+    {
+      "id": "os-mutex-semaphore-condvar-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": ["mutex-semaphore-condvar", "binary-semaphore"],
+      "content": {
+        "prompt": "이진 세마포어와 뮤텍스의 차이에 대한 설명으로 옳은 것은?",
+        "options": [
+          "둘은 완전히 같은 객체이며 이름만 다르다",
+          "뮤텍스는 값이 여러 개이고 이진 세마포어는 값이 0과 1뿐이라는 점만 다르다",
+          "이진 세마포어는 소유권이 없어 다른 스레드가 signal할 수 있으므로, 스레드 간 완료 알림 같은 신호 전달에 쓸 수 있다",
+          "이진 세마포어는 한 스레드가 wait와 signal을 모두 호출해야만 동작한다"
+        ]
+      },
+      "answer_key": { "index": 2 },
+      "explanation": "세마포어는 소유권 개념이 없어 한 스레드가 wait로 기다리고 다른 스레드가 signal로 깨우는 신호 전달에 쓸 수 있습니다. 뮤텍스는 lock한 스레드만 unlock해야 하므로 두 객체는 같지 않고 용도도 다릅니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Semaphore_(programming)", "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"]
+    },
+    {
+      "id": "os-mutex-semaphore-condvar-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": ["mutex-semaphore-condvar", "condition-variable"],
+      "content": {
+        "prompt": "pthread_cond_wait(&cv, &mu)를 호출했을 때의 동작으로 옳은 것은?",
+        "options": [
+          "뮤텍스를 쥔 채로 잠들고, 깨어난 뒤에는 뮤텍스를 다시 잠글 필요가 없다",
+          "뮤텍스를 푸는 것과 잠드는 것을 원자적으로 수행하고, 깨어나 반환할 때는 뮤텍스를 다시 잠근 상태가 된다",
+          "뮤텍스를 푼 뒤 잠들지만 두 동작 사이에 시그널이 오면 놓칠 수 있다",
+          "뮤텍스와 무관하게 대기하며 mu는 사용되지 않는다"
+        ]
+      },
+      "answer_key": { "index": 1 },
+      "explanation": "wait는 뮤텍스 해제와 잠들기를 원자적으로 처리해 그 사이에 오는 signal을 놓치는 잃어버린 wakeup을 막고, 반환 때는 뮤텍스를 다시 잠가 줍니다. 뮤텍스를 쥔 채 잠들면 다른 스레드가 조건을 바꿀 수 없어 영원히 대기합니다.",
+      "refs": ["https://man7.org/linux/man-pages/man3/pthread_cond_wait.3p.html", "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"]
+    },
+    {
+      "id": "os-mutex-semaphore-condvar-006",
+      "type": "multi",
+      "difficulty": 2,
+      "tags": ["mutex-semaphore-condvar", "tool-selection"],
+      "content": {
+        "prompt": "상황에 맞는 동기화 도구를 짝지은 것 중 올바른 것을 모두 고르시오.",
+        "options": [
+          "공유 변수를 한 번에 한 스레드만 수정하게 보호 → 뮤텍스",
+          "동시 접속 커넥션을 N개로 제한 → 초기값 N의 카운팅 세마포어",
+          "큐가 비어 있지 않을 때까지 대기 → 조건 변수(뮤텍스와 함께)",
+          "큐 대기 조건 변수를 뮤텍스 없이 단독으로 사용"
+        ]
+      },
+      "answer_key": { "indices": [0, 1, 2] },
+      "explanation": "공유 변수 보호는 뮤텍스, 동시 N개 제한은 카운팅 세마포어, 조건이 참이 되길 기다리는 일은 조건 변수가 맞습니다. 조건 변수는 조건을 검사하는 공유 상태를 보호할 뮤텍스와 반드시 함께 써야 하므로 단독 사용은 틀립니다.",
+      "refs": ["https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf", "https://man7.org/linux/man-pages/man3/pthread_cond_wait.3p.html"]
+    },
+    {
+      "id": "os-mutex-semaphore-condvar-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": ["mutex-semaphore-condvar", "spurious-wakeup"],
+      "content": {
+        "prompt": "조건 변수 대기는 if가 아니라 while 루프로 감싸 조건을 다시 검사해야 한다. 그 이유로 가장 적절한 것은?",
+        "options": [
+          "wait가 반환될 때 뮤텍스가 잠겨 있지 않아서 조건을 다시 잠가야 하기 때문이다",
+          "가짜 깨어남(spurious wakeup)이 있고, 깨어난 시점에 다른 스레드가 이미 조건을 바꿨을 수 있기 때문이다",
+          "while이 if보다 항상 CPU를 덜 사용하기 때문이다",
+          "signal이 호출되면 조건이 반드시 참이 됨을 보장하기 때문이다"
+        ]
+      },
+      "answer_key": { "index": 1 },
+      "explanation": "wait가 반환돼도 조건이 참이라는 보장은 없습니다. 가짜 깨어남이 있고 signal과 실행 사이에 다른 스레드가 조건을 바꿀 수 있어서 while로 재검사해야 합니다. if로 충분하다고 보는 것은 이를 무시한 오답입니다.",
+      "refs": ["https://man7.org/linux/man-pages/man3/pthread_cond_wait.3p.html", "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"]
+    },
+    {
+      "id": "os-mutex-semaphore-condvar-008",
+      "type": "ox",
+      "difficulty": 3,
+      "tags": ["mutex-semaphore-condvar", "spinlock"],
+      "content": {
+        "prompt": "스핀락은 임계 구역이 매우 짧고 멀티코어일 때 유리하지만, 단일 코어에서 선점 없이 스핀하면 락 보유자가 실행될 수 없어 CPU 시간만 낭비한다."
+      },
+      "answer_key": { "value": true },
+      "explanation": "멀티코어에서는 보유자가 다른 코어에서 곧 락을 풀기 때문에 짧게 스핀하는 쪽이 잠들고 깨는 비용보다 쌉니다. 단일 코어에서는 스핀하는 동안 보유자가 CPU를 못 받아 낭비입니다. 스핀락이 항상 뮤텍스보다 빠르다는 말은 틀립니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Spinlock", "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf"]
+    }
+  ]
+}
