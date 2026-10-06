@@ -1,0 +1,134 @@
+{
+  "track": "os",
+  "unit": "u02-cpu-scheduling",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "os-fcfs-sjf-rr-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": ["fcfs-sjf-rr", "convoy-effect"],
+      "content": {
+        "prompt": "FCFS에서 CPU를 오래 쓰는 프로세스 뒤에 짧은 프로세스들이 줄줄이 기다리게 되는 현상의 이름은?",
+        "options": [
+          "기아(starvation)",
+          "호위 효과(convoy effect)",
+          "스래싱(thrashing)",
+          "우선순위 역전(priority inversion)"
+        ]
+      },
+      "answer_key": { "index": 1 },
+      "explanation": "긴 작업이 CPU를 잡으면 뒤의 짧은 작업들이 모두 기다리는 현상을 호위 효과라 합니다. FCFS는 도착 순서대로 반드시 실행되므로 기아가 없고, 기아는 우선순위나 SJF에서 낮은 순위 작업이 밀릴 때 생깁니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Convoy_effect"]
+    },
+    {
+      "id": "os-fcfs-sjf-rr-002",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": ["fcfs-sjf-rr", "srtf"],
+      "content": {
+        "prompt": "비선점 SJF를 선점형으로 바꾼 알고리즘으로, 새 프로세스가 도착할 때마다 남은 시간이 가장 짧은 프로세스를 고르는 방식을 ___ 라고 한다.",
+        "hint": "영문 약어 네 글자, S로 시작"
+      },
+      "answer_key": { "accepted": ["SRTF", "SRTN", "SRT", "최단 잔여 시간 우선", "최단 잔여시간 우선", "최단 잔여 시간 우선 스케줄링", "shortest remaining time first", "shortest remaining time next", "최소 잔여 시간 우선"] },
+      "explanation": "정답은 SRTF(최단 잔여 시간 우선)입니다. 비선점 SJF는 실행을 시작하면 끝까지 가지만 SRTF는 더 짧은 작업이 도착하면 선점하므로 둘은 같지 않으며, 도착 시각이 다르면 결과가 달라집니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Shortest_remaining_time", "https://en.wikipedia.org/wiki/Shortest_job_next"]
+    },
+    {
+      "id": "os-fcfs-sjf-rr-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": ["fcfs-sjf-rr", "quantum"],
+      "content": {
+        "prompt": "RR 스케줄링에서 타임 퀀텀을 모든 버스트보다 훨씬 크게 잡으면 FCFS와 같은 동작이 된다."
+      },
+      "answer_key": { "value": true },
+      "explanation": "퀀텀이 어떤 버스트보다도 크면 각 프로세스가 선점되기 전에 끝나므로 도착 순서대로 한 번씩 실행되는 FCFS와 같아집니다. 반대로 퀀텀이 매우 작으면 스위치 오버헤드가 지배하며, SJF와 같아지지는 않습니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Round-robin_scheduling"]
+    },
+    {
+      "id": "os-fcfs-sjf-rr-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": ["fcfs-sjf-rr", "calculation", "waiting-time"],
+      "content": {
+        "prompt": "P1(버스트 24), P2(3), P3(3)이 모두 시각 0에 도착한다. FCFS(P1, P2, P3 순)와 비선점 SJF의 평균 대기 시간을 각각 구하면?",
+        "options": [
+          "FCFS 27, SJF 13",
+          "FCFS 3, SJF 17",
+          "FCFS 17, SJF 3",
+          "FCFS 17, SJF 13"
+        ]
+      },
+      "answer_key": { "index": 2 },
+      "explanation": "FCFS는 P1 0, P2 24, P3 27이라 평균 17이고, SJF는 P2, P3, P1 순이라 대기가 0, 3, 6이 되어 평균 3입니다. 27과 13은 대기가 아니라 평균 반환 시간이어서 오답입니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Shortest_job_next", "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"]
+    },
+    {
+      "id": "os-fcfs-sjf-rr-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": ["fcfs-sjf-rr", "calculation", "round-robin"],
+      "content": {
+        "prompt": "P1(버스트 24), P2(3), P3(3)이 모두 시각 0에 도착하고 RR 퀀텀이 4일 때(P1, P2, P3 순), 평균 대기 시간은? (스위치 시간은 무시)",
+        "options": [
+          "17",
+          "3.67",
+          "10.00",
+          "5.67"
+        ]
+      },
+      "answer_key": { "index": 3 },
+      "explanation": "실행 순서는 P1(0-4), P2(4-7), P3(7-10), 이후 P1이 10-30을 이어 실행합니다. 대기는 P1이 30−24=6, P2가 4, P3가 7이라 평균 17/3 ≈ 5.67입니다. P1의 대기를 0으로 두면 3.67이 되는 오답입니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Round-robin_scheduling", "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"]
+    },
+    {
+      "id": "os-fcfs-sjf-rr-006",
+      "type": "multi",
+      "difficulty": 2,
+      "tags": ["fcfs-sjf-rr", "sjf-optimality"],
+      "content": {
+        "prompt": "SJF가 평균 대기 시간을 최소화한다는 증명이 성립하기 위한 조건을 모두 고르시오.",
+        "options": [
+          "모든 프로세스가 같은 시각(동시에) 도착한다",
+          "각 프로세스의 CPU 버스트 길이를 정확히 알고 있다",
+          "프로세스 수가 2개 이하여야 한다",
+          "도착 시각이 서로 달라도 비선점 SJF는 항상 최적이다"
+        ]
+      },
+      "answer_key": { "indices": [0, 1] },
+      "explanation": "SJF의 최적성은 모든 작업이 동시에 도착하고 버스트를 정확히 알 때 증명됩니다. 프로세스 수 제한은 필요 없고, 도착 시각이 다르면 비선점 SJF는 최적이 아니라 선점형인 SRTF가 최적입니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Shortest_job_next"]
+    },
+    {
+      "id": "os-fcfs-sjf-rr-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": ["fcfs-sjf-rr", "srtf", "calculation"],
+      "content": {
+        "prompt": "(도착, 버스트): P1(0, 8), P2(1, 4), P3(2, 9), P4(3, 5). SRTF로 스케줄할 때 평균 대기 시간은? (참고: 비선점 SJF는 7.75, FCFS는 8.75)",
+        "options": [
+          "7.75",
+          "6.0",
+          "8.75",
+          "6.5"
+        ]
+      },
+      "answer_key": { "index": 3 },
+      "explanation": "SRTF는 P1(0-1), P2(1-5), P4(5-10), P1(10-17), P3(17-26) 순으로 실행됩니다. 대기는 P1 9, P2 0, P3 15, P4 2라 합이 26이고 평균은 6.5입니다. 7.75는 비선점 SJF의 값이라 오답입니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Shortest_remaining_time"]
+    },
+    {
+      "id": "os-fcfs-sjf-rr-008",
+      "type": "ox",
+      "difficulty": 3,
+      "tags": ["fcfs-sjf-rr", "exponential-averaging"],
+      "content": {
+        "prompt": "실제 OS는 다음 CPU 버스트 길이를 미리 알 수 없으므로, SJF 계열을 쓰려면 과거 버스트들의 지수 평균(exponential averaging) 등으로 길이를 예측해 근사한다."
+      },
+      "answer_key": { "value": true },
+      "explanation": "커널은 프로그램의 다음 버스트를 정확히 알 수 없어 과거 버스트에 가중치를 둔 지수 평균으로 예측합니다. 커널이 코드를 분석해 정확한 길이를 안다고 보는 것은 오답이며, 그래서 순수한 SJF의 최적성은 현실에서 보장되지 않습니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Shortest_job_next"]
+    }
+  ]
+}

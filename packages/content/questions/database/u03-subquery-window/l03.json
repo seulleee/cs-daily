@@ -1,0 +1,226 @@
+{
+  "track": "database",
+  "unit": "u03-subquery-window",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "database-window-functions-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "window-functions",
+        "window-function",
+        "group-by"
+      ],
+      "content": {
+        "prompt": "윈도우 함수가 GROUP BY 집계와 다른 점은?",
+        "options": [
+          "윈도우 함수는 집계 함수를 쓸 수 없다",
+          "윈도우 함수는 반드시 행 수를 그룹 수로 줄인다",
+          "행을 합치지 않고 각 행에 계산 결과를 붙여 행 수가 유지된다",
+          "PARTITION BY는 파티션별로 행을 하나로 합친다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "윈도우 함수는 각 행을 유지한 채 관련 행 집합에 대한 계산 값을 붙입니다. 행을 하나로 합치는 것은 GROUP BY이며, PARTITION BY는 계산 범위만 나누고 행을 합치지 않습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html",
+        "https://www.postgresql.org/docs/current/functions-window.html"
+      ]
+    },
+    {
+      "id": "database-window-functions-002",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "window-functions",
+        "window-function",
+        "over"
+      ],
+      "content": {
+        "prompt": "윈도우 함수는 반드시 ___ (...) 절과 함께 쓴다.",
+        "hint": "괄호 안에 PARTITION BY, ORDER BY를 쓴다"
+      },
+      "answer_key": {
+        "accepted": [
+          "OVER",
+          "over",
+          "오버"
+        ]
+      },
+      "explanation": "윈도우 함수는 OVER 절로 윈도우를 정의합니다. PARTITION과 ORDER BY는 OVER 괄호 안에 들어가는 구성 요소이고, WITHIN은 다른 구문에 쓰입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html",
+        "https://www.postgresql.org/docs/current/functions-window.html"
+      ]
+    },
+    {
+      "id": "database-window-functions-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "window-functions",
+        "partition-by"
+      ],
+      "content": {
+        "prompt": "윈도우 함수에서 PARTITION BY를 생략하면 결과 전체가 하나의 파티션으로 취급된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "PARTITION BY가 없으면 모든 행이 하나의 파티션이고, 오류가 나지 않습니다. 예를 들어 COUNT(*) OVER ()는 전체 행 수를 모든 행에 붙여 줍니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html",
+        "https://www.postgresql.org/docs/current/functions-window.html"
+      ]
+    },
+    {
+      "id": "database-window-functions-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "window-functions",
+        "rank",
+        "dense-rank",
+        "row-number"
+      ],
+      "content": {
+        "prompt": "score가 90, 85, 85, 70인 행들을 score DESC로 정렬할 때 RANK()가 부여하는 순위는?",
+        "code": {
+          "language": "sql",
+          "source": "SELECT score,\n  RANK() OVER (ORDER BY score DESC) AS r\nFROM exam;"
+        },
+        "options": [
+          "1, 2, 3, 4",
+          "1, 2, 2, 3",
+          "1, 2, 2, 4",
+          "1, 1, 2, 3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "RANK는 동률에 같은 순위를 주고 다음 순위를 건너뛰어 1, 2, 2, 4입니다. 1, 2, 2, 3은 건너뛰지 않는 DENSE_RANK, 1, 2, 3, 4는 ROW_NUMBER의 결과입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html",
+        "https://www.postgresql.org/docs/current/functions-window.html"
+      ]
+    },
+    {
+      "id": "database-window-functions-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "window-functions",
+        "lag",
+        "null"
+      ],
+      "content": {
+        "prompt": "LAG(amount, 1) OVER (PARTITION BY user_id ORDER BY created_at) 는 각 사용자의 첫 번째 행에서 어떤 값을 반환하는가?",
+        "options": [
+          "0",
+          "오류가 발생한다",
+          "amount의 현재 행 값",
+          "NULL"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "이전 행이 없으면 기본값 NULL이 반환됩니다. 0이나 오류가 아니며, 세 번째 인자로 LAG(amount, 1, 0)처럼 기본값을 지정하면 NULL 대신 그 값이 나옵니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html",
+        "https://www.postgresql.org/docs/current/functions-window.html"
+      ]
+    },
+    {
+      "id": "database-window-functions-006",
+      "type": "multi",
+      "difficulty": 2,
+      "tags": [
+        "window-functions",
+        "window-function",
+        "top-n",
+        "where"
+      ],
+      "content": {
+        "prompt": "부서별 급여 1위 직원을 뽑는 쿼리에 대한 참인 진술을 모두 고르시오.",
+        "code": {
+          "language": "sql",
+          "source": "SELECT * FROM (\n  SELECT e.*, ROW_NUMBER() OVER (\n    PARTITION BY dept ORDER BY salary DESC) AS rn\n  FROM emp e\n) t WHERE rn = 1;"
+        },
+        "options": [
+          "WHERE 절에서 ROW_NUMBER() OVER (...) = 1을 직접 쓸 수 있다",
+          "ROW_NUMBER()를 서브쿼리나 CTE로 감싼 뒤 바깥에서 = 1로 필터한다",
+          "동률 1위를 모두 포함하려면 ROW_NUMBER 대신 RANK를 쓴다",
+          "HAVING 절에서 윈도우 함수를 직접 쓸 수 있다"
+        ]
+      },
+      "answer_key": {
+        "indices": [
+          1,
+          2
+        ]
+      },
+      "explanation": "윈도우 함수는 WHERE와 HAVING 이후에 평가되어 그 절에서 쓸 수 없으므로 한 번 감싼 뒤 필터합니다. ROW_NUMBER는 동률에도 서로 다른 번호를 주지만 RANK는 1위를 모두 1로 매깁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html",
+        "https://www.postgresql.org/docs/current/functions-window.html"
+      ]
+    },
+    {
+      "id": "database-window-functions-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "window-functions",
+        "window-frame",
+        "running-total"
+      ],
+      "content": {
+        "prompt": "(d, x)가 (1,10), (2,20), (2,30), (3,40)일 때, SUM(x) OVER (ORDER BY d)가 d=2인 두 행에 주는 값은?",
+        "code": {
+          "language": "sql",
+          "source": "SELECT d, x,\n  SUM(x) OVER (ORDER BY d) AS running\nFROM t;"
+        },
+        "options": [
+          "둘 다 60",
+          "30과 60",
+          "20과 50",
+          "둘 다 30"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ORDER BY가 있을 때 기본 프레임은 RANGE ... CURRENT ROW라 d가 같은 peer 행이 모두 포함되어 둘 다 10+20+30 = 60입니다. 행 단위 누적합(30, 60)을 원하면 ROWS BETWEEN을 명시해야 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS",
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    },
+    {
+      "id": "database-window-functions-008",
+      "type": "ox",
+      "difficulty": 3,
+      "tags": [
+        "window-functions",
+        "window-frame",
+        "over"
+      ],
+      "content": {
+        "prompt": "SUM(x) OVER ()처럼 ORDER BY가 없는 윈도우는 기본 프레임이 파티션 전체이므로, 모든 행에 같은 합계가 붙는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "ORDER BY가 없으면 프레임이 파티션 전체라 모든 행에 동일한 합계가 붙습니다. ORDER BY가 있을 때만 기본 프레임이 시작부터 현재 행(peer 포함)까지로 바뀝니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS",
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    }
+  ]
+}

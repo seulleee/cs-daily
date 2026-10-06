@@ -1,0 +1,134 @@
+{
+  "track": "os",
+  "unit": "u03-synchronization",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "os-race-condition-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": ["race-condition", "definition"],
+      "content": {
+        "prompt": "경쟁 조건(race condition)의 정의로 가장 적절한 것은?",
+        "options": [
+          "여러 스레드가 동시에 실행되어 프로그램이 느려지는 현상",
+          "공유 자원을 쓰는 스레드들의 실행 순서(타이밍)에 따라 결과가 달라지는 상황",
+          "두 스레드가 서로의 락을 기다리며 아무도 진행하지 못하는 상황",
+          "스레드가 CPU를 오랫동안 할당받지 못하는 상황"
+        ]
+      },
+      "answer_key": { "index": 1 },
+      "explanation": "경쟁 조건은 공유 데이터에 대한 접근 순서에 따라 결과가 달라지는 정확성 문제입니다. 단순히 느려지는 것은 성능 문제이고, 서로의 락을 기다리는 것은 데드락, CPU를 못 받는 것은 기아입니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Race_condition", "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"]
+    },
+    {
+      "id": "os-race-condition-002",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": ["race-condition", "critical-section"],
+      "content": {
+        "prompt": "공유 자원에 접근하는 코드 구간으로, 한 번에 한 스레드만 들어가 실행해야 하는 영역을 ___ 구역이라고 한다.",
+        "hint": "물리의 '___점'에도 쓰이는 두 글자 한자어"
+      },
+      "answer_key": { "accepted": ["임계", "임계 구역", "임계구역", "임계영역", "임계 영역", "critical", "critical section"] },
+      "explanation": "정답은 임계 구역(critical section)입니다. 이 구간에 상호 배제를 적용해야 경쟁 조건을 막을 수 있습니다. 원자 구역이나 동기 구역은 표준 용어가 아니어서 정답으로 쓰지 않습니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Critical_section"]
+    },
+    {
+      "id": "os-race-condition-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": ["race-condition", "atomicity"],
+      "content": {
+        "prompt": "C 소스에서 counter++는 한 줄이지만 기계어로는 load, add, store 같은 여러 명령으로 번역되므로 실행 중간에 다른 스레드가 끼어들 수 있다."
+      },
+      "answer_key": { "value": true },
+      "explanation": "counter++는 값을 읽고(load) 더하고(add) 다시 쓰는(store) 세 단계라 명령 사이에서 다른 스레드가 끼어들 수 있습니다. 소스가 한 줄이면 원자적이라는 믿음은 틀리며, 원자성은 별도의 원자 명령이나 락으로 보장해야 합니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Race_condition", "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"]
+    },
+    {
+      "id": "os-race-condition-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": ["race-condition", "interleaving"],
+      "content": {
+        "prompt": "전역 변수 counter가 0일 때 두 스레드가 각각 counter++를 정확히 한 번씩 실행한다(동기화 없음). 가능한 최종값은?",
+        "options": [
+          "항상 2",
+          "1 또는 2",
+          "0, 1, 2 모두 가능",
+          "항상 1"
+        ]
+      },
+      "answer_key": { "index": 1 },
+      "explanation": "정상 순서면 2지만, 두 스레드가 모두 0을 읽은 뒤 각자 1을 쓰면 갱신 하나가 사라져 1이 됩니다. 각 스레드가 최소 한 번은 값을 쓰므로 0은 나올 수 없고, 항상 2라고 보는 것은 경쟁 조건을 무시한 오답입니다.",
+      "refs": ["https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"]
+    },
+    {
+      "id": "os-race-condition-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": ["race-condition", "check-then-act"],
+      "content": {
+        "prompt": "다음 중 여러 스레드가 동시에 실행하면 경쟁 조건이 생길 수 있는 코드는?",
+        "options": [
+          "읽기만 하는 코드: int x = shared_const;  (shared_const는 변경되지 않는 공유 상수)",
+          "각 스레드가 자기 지역 배열 local[]에만 값을 쓰는 코드",
+          "if (map.get(k) == null) map.put(k, v);  (map은 락 없이 공유하는 일반 HashMap)",
+          "int sum = 0; for (i = 0; i < n; i++) sum += a[i];  (sum, i는 지역 변수)"
+        ]
+      },
+      "answer_key": { "index": 2 },
+      "explanation": "공유 맵에서 확인(get) 후 갱신(put)을 따로 하는 check-then-act는 두 스레드가 모두 null을 보고 같은 키를 쓸 수 있어 위험합니다. 읽기 전용 공유와 지역 변수만 쓰는 코드는 변경되는 공유 상태가 없어 경쟁이 없습니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Race_condition"]
+    },
+    {
+      "id": "os-race-condition-006",
+      "type": "multi",
+      "difficulty": 2,
+      "tags": ["critical-section", "requirements"],
+      "content": {
+        "prompt": "임계 구역 문제의 해법이 만족해야 하는 요건을 모두 고르시오.",
+        "options": [
+          "상호 배제(mutual exclusion)",
+          "진행(progress)",
+          "한정 대기(bounded waiting)",
+          "대기 순서를 선입선출(FIFO)로 보장"
+        ]
+      },
+      "answer_key": { "indices": [0, 1, 2] },
+      "explanation": "해법은 상호 배제, 진행(들어갈 스레드의 결정이 무한히 미뤄지지 않음), 한정 대기(대기가 무한정 길어지지 않음)를 만족해야 합니다. 선입선출은 요건이 아니며 한정 대기만 보장하면 순서는 자유입니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Critical_section", "https://en.wikipedia.org/wiki/Mutual_exclusion"]
+    },
+    {
+      "id": "os-race-condition-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": ["race-condition", "single-core", "preemption"],
+      "content": {
+        "prompt": "CPU 코어가 하나뿐인 시스템에서 두 스레드가 락 없이 같은 전역 변수를 갱신할 때에 대한 설명으로 옳은 것은?",
+        "options": [
+          "코어가 하나라 동시에 실행되는 일이 없으므로 경쟁 조건이 생기지 않는다",
+          "경쟁 조건은 멀티코어에서만 생기며 단일 코어에서는 컴파일러가 막아 준다",
+          "타이머 인터럽트로 명령 사이에서 선점될 수 있어 단일 코어에서도 경쟁 조건이 생긴다",
+          "단일 코어에서는 모든 갱신이 하드웨어에서 자동으로 원자적이다"
+        ]
+      },
+      "answer_key": { "index": 2 },
+      "explanation": "단일 코어여도 스케줄러가 load와 store 사이에서 스레드를 선점해 다른 스레드를 실행할 수 있어 같은 문제가 생깁니다. 코어가 하나면 안전하다는 생각은 틀리며, 컴파일러가 이를 막아 주지도 않습니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Race_condition", "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"]
+    },
+    {
+      "id": "os-race-condition-008",
+      "type": "ox",
+      "difficulty": 3,
+      "tags": ["critical-section", "peterson", "memory-barrier"],
+      "content": {
+        "prompt": "Peterson 알고리즘은 순차 일관성(sequential consistency)을 가정하면 올바르지만, 명령어를 재정렬하는 현대 CPU와 컴파일러에서는 메모리 배리어 없이 그대로 쓰면 올바름이 보장되지 않는다."
+      },
+      "answer_key": { "value": true },
+      "explanation": "알고리즘의 증명은 메모리 접근이 프로그램 순서대로 보인다는 가정에 기댑니다. 현대 하드웨어는 store와 load의 순서를 바꿀 수 있어 배리어나 원자 연산이 필요합니다. 교과서 알고리즘이라 그대로 동작한다는 믿음은 오답입니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Peterson%27s_algorithm"]
+    }
+  ]
+}
