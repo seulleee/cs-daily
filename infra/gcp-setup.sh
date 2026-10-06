@@ -69,11 +69,17 @@ for s in DATABASE_URL DIRECT_URL JWT_ACCESS_SECRET JWT_REFRESH_SECRET GITHUB_CLI
   exists gcloud secrets describe "$s" || gcloud secrets create "$s" --replication-policy=user-managed --locations="$REGION" >/dev/null
   # 사람이 정할 필요 없는 랜덤 키는 여기서 생성 (값은 화면에 출력하지 않음)
   case "$s" in JWT_ACCESS_SECRET|JWT_REFRESH_SECRET|JOBS_SECRET)
-    [ -n "$(gcloud secrets versions list "$s" --filter='state=ENABLED' --format='value(name)')" ] ||
+    [ -n "$(gcloud secrets versions list "$s" --format='value(name)')" ] ||
       openssl rand -base64 48 | tr -d '\n' | gcloud secrets versions add "$s" --data-file=- >/dev/null ;;
   esac
-  printf '  %-22s versions=%s\n' "$s" "$(gcloud secrets versions list "$s" --filter='state=ENABLED' --format='value(name)' | wc -l)"
+  printf '  %-22s versions=%s\n' "$s" "$(gcloud secrets versions list "$s" --format='value(name)' | wc -l)"
 done
+
+# 배포 SA는 마이그레이션용 DB 접속 주소 2개만 읽을 수 있다 (다른 시크릿은 런타임 SA만)
+for s in DATABASE_URL DIRECT_URL; do
+  gcloud secrets add-iam-policy-binding "$s" --member "serviceAccount:$DEPLOY_SA" --role roles/secretmanager.secretAccessor --quiet >/dev/null
+done
+echo "  secretAccessor(DATABASE_URL, DIRECT_URL) → cs-daily-deploy"
 
 cat <<EOF
 
