@@ -1,0 +1,369 @@
+{
+  "tracks": [
+    {
+      "slug": "dsa",
+      "name": "자료구조·알고리즘",
+      "description": "복잡도부터 DP·그리디까지, 코딩 테스트와 설계 판단의 기초",
+      "phase": "mvp",
+      "units": [
+        {
+          "slug": "u01-complexity",
+          "name": "복잡도 분석(Big-O)",
+          "lessons": [
+            { "slug": "l01", "name": "Big-O 표기 읽기", "objective": "O, Ω, Θ의 뜻과 상수·저차항을 무시하는 이유를 설명한다" },
+            { "slug": "l02", "name": "코드에서 복잡도 구하기", "objective": "중첩 루프·재귀 코드의 시간 복잡도를 직접 계산한다" },
+            { "slug": "l03", "name": "공간 복잡도와 상각 분석", "objective": "보조 공간과 상각(amortized) 비용의 차이를 설명한다" }
+          ]
+        },
+        {
+          "slug": "u02-array-linked-list",
+          "name": "배열·연결 리스트",
+          "lessons": [
+            { "slug": "l01", "name": "배열의 메모리 구조", "objective": "연속 메모리와 캐시 지역성이 접근 속도에 미치는 영향을 설명한다" },
+            { "slug": "l02", "name": "연결 리스트 연산", "objective": "삽입·삭제·탐색 비용을 배열과 비교한다" },
+            { "slug": "l03", "name": "동적 배열의 확장", "objective": "용량 2배 확장의 상각 O(1) 삽입을 설명한다" }
+          ]
+        },
+        {
+          "slug": "u03-stack-queue",
+          "name": "스택·큐·덱",
+          "lessons": [
+            { "slug": "l01", "name": "스택과 LIFO", "objective": "괄호 검사·함수 호출 스택 같은 스택 활용을 설명한다" },
+            { "slug": "l02", "name": "큐와 원형 큐", "objective": "배열 기반 원형 큐의 head/tail 처리를 설명한다" },
+            { "slug": "l03", "name": "덱과 모노토닉 큐", "objective": "슬라이딩 윈도우 최댓값 문제에 덱을 적용한다" }
+          ]
+        },
+        {
+          "slug": "u04-hash-table",
+          "name": "해시 테이블",
+          "lessons": [
+            { "slug": "l01", "name": "해시 함수와 버킷", "objective": "좋은 해시 함수의 조건과 로드 팩터를 설명한다" },
+            { "slug": "l02", "name": "충돌 해결", "objective": "체이닝과 오픈 어드레싱의 장단점을 비교한다" },
+            { "slug": "l03", "name": "해시 테이블의 실제", "objective": "리해싱 비용과 최악 O(n)이 발생하는 조건을 설명한다" }
+          ]
+        },
+        {
+          "slug": "u05-tree-bst",
+          "name": "트리·이진 탐색 트리",
+          "lessons": [
+            { "slug": "l01", "name": "트리 용어와 순회", "objective": "전위·중위·후위·레벨 순회 결과를 구한다" },
+            { "slug": "l02", "name": "BST 연산", "objective": "삽입·삭제·탐색의 평균과 최악 복잡도를 설명한다" },
+            { "slug": "l03", "name": "균형 트리", "objective": "AVL·레드블랙 트리가 균형을 유지하는 원리를 설명한다" }
+          ]
+        },
+        {
+          "slug": "u06-heap",
+          "name": "힙·우선순위 큐",
+          "lessons": [
+            { "slug": "l01", "name": "힙 속성과 배열 표현", "objective": "부모·자식 인덱스 관계와 heapify를 설명한다" },
+            { "slug": "l02", "name": "삽입·삭제와 복잡도", "objective": "sift-up/sift-down 비용 O(log n)을 설명한다" },
+            { "slug": "l03", "name": "힙 활용", "objective": "Top-K·중앙값 유지·힙 정렬에 힙을 적용한다" }
+          ]
+        },
+        {
+          "slug": "u07-graph-traversal",
+          "name": "그래프 탐색(BFS/DFS)",
+          "lessons": [
+            { "slug": "l01", "name": "그래프 표현", "objective": "인접 행렬과 인접 리스트의 공간·시간 트레이드오프를 설명한다" },
+            { "slug": "l02", "name": "BFS와 최단 거리", "objective": "가중치 없는 그래프에서 BFS가 최단 경로를 찾는 이유를 설명한다" },
+            { "slug": "l03", "name": "DFS와 사이클·위상 정렬", "objective": "DFS로 사이클 탐지와 위상 정렬을 수행한다" }
+          ]
+        },
+        {
+          "slug": "u08-shortest-path",
+          "name": "최단 경로",
+          "lessons": [
+            { "slug": "l01", "name": "다익스트라", "objective": "우선순위 큐 기반 다익스트라의 동작과 음수 가중치 제약을 설명한다" },
+            { "slug": "l02", "name": "벨만-포드·플로이드-워셜", "objective": "음수 사이클 탐지와 모든 쌍 최단 경로 선택 기준을 설명한다" },
+            { "slug": "l03", "name": "최소 신장 트리", "objective": "크루스칼·프림과 유니온-파인드의 역할을 설명한다" }
+          ]
+        },
+        {
+          "slug": "u09-sorting",
+          "name": "정렬",
+          "lessons": [
+            { "slug": "l01", "name": "O(n²) 정렬과 안정성", "objective": "버블·삽입·선택 정렬과 안정 정렬의 의미를 설명한다" },
+            { "slug": "l02", "name": "병합·퀵 정렬", "objective": "분할 정복 정렬의 복잡도와 퀵 정렬 최악 케이스를 설명한다" },
+            { "slug": "l03", "name": "비교 기반 하한과 선형 정렬", "objective": "Ω(n log n) 하한과 계수·기수 정렬의 조건을 설명한다" }
+          ]
+        },
+        {
+          "slug": "u10-binary-search",
+          "name": "이진 탐색",
+          "lessons": [
+            { "slug": "l01", "name": "이진 탐색 기본", "objective": "정렬 배열에서 lo/hi 불변식을 지키며 탐색한다" },
+            { "slug": "l02", "name": "경계 찾기(lower/upper bound)", "objective": "첫 번째·마지막 위치를 찾는 변형을 구현한다" },
+            { "slug": "l03", "name": "매개변수 탐색", "objective": "답의 범위를 이진 탐색하는 패턴을 적용한다" }
+          ]
+        },
+        {
+          "slug": "u11-dp",
+          "name": "동적 계획법",
+          "lessons": [
+            { "slug": "l01", "name": "메모이제이션과 테이블", "objective": "중복 부분 문제·최적 부분 구조를 식별한다" },
+            { "slug": "l02", "name": "대표 DP 문제", "objective": "배낭·LIS·편집 거리의 점화식을 세운다" },
+            { "slug": "l03", "name": "공간 최적화", "objective": "2차원 DP를 1차원으로 줄이는 조건을 설명한다" }
+          ]
+        },
+        {
+          "slug": "u12-greedy",
+          "name": "그리디",
+          "lessons": [
+            { "slug": "l01", "name": "그리디 선택 속성", "objective": "그리디가 최적해를 보장하는 조건을 설명한다" },
+            { "slug": "l02", "name": "대표 그리디 문제", "objective": "활동 선택·허프만 코딩·동전 문제의 그리디 가능 여부를 판단한다" },
+            { "slug": "l03", "name": "그리디 vs DP", "objective": "같은 문제에서 그리디가 실패하고 DP가 필요한 경우를 구분한다" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "database",
+      "name": "데이터베이스",
+      "description": "관계형 모델부터 인덱스·트랜잭션·분산·NoSQL까지, 실무 쿼리와 설계의 근거",
+      "phase": "mvp",
+      "units": [
+        {
+          "slug": "u01-relational-model",
+          "name": "관계형 모델·정규화",
+          "lessons": [
+            { "slug": "l01", "name": "관계형 모델의 기본", "objective": "릴레이션·튜플·키(기본키·후보키·외래키)의 뜻과 무결성 제약을 설명한다" },
+            { "slug": "l02", "name": "함수 종속과 이상 현상", "objective": "함수 종속을 읽고 삽입·갱신·삭제 이상이 생기는 이유를 설명한다" },
+            { "slug": "l03", "name": "정규형(1NF~BCNF)", "objective": "테이블이 어느 정규형을 만족하는지 판정하고 분해한다" }
+          ]
+        },
+        {
+          "slug": "u02-sql-basics",
+          "name": "SQL 기초",
+          "lessons": [
+            { "slug": "l01", "name": "SELECT·WHERE·ORDER BY", "objective": "필터·정렬·NULL 비교의 함정을 설명한다" },
+            { "slug": "l02", "name": "JOIN의 종류", "objective": "INNER·LEFT·FULL·CROSS JOIN 결과 행 수를 예측한다" },
+            { "slug": "l03", "name": "GROUP BY·HAVING", "objective": "집계 함수와 WHERE/HAVING 평가 순서를 설명한다" }
+          ]
+        },
+        {
+          "slug": "u03-subquery-window",
+          "name": "서브쿼리·윈도우 함수",
+          "lessons": [
+            { "slug": "l01", "name": "서브쿼리와 상관 서브쿼리", "objective": "IN·EXISTS·스칼라 서브쿼리의 차이를 설명한다" },
+            { "slug": "l02", "name": "CTE와 재귀 쿼리", "objective": "WITH 절로 계층 데이터를 조회한다" },
+            { "slug": "l03", "name": "윈도우 함수", "objective": "ROW_NUMBER·RANK·LAG와 PARTITION BY를 적용한다" }
+          ]
+        },
+        {
+          "slug": "u04-index-btree",
+          "name": "인덱스와 B+Tree",
+          "lessons": [
+            { "slug": "l01", "name": "B+Tree 구조", "objective": "리프 연결과 범위 탐색이 빠른 이유를 설명한다" },
+            { "slug": "l02", "name": "인덱스가 타는 조건", "objective": "복합 인덱스 선두 컬럼·함수 적용·와일드카드의 영향을 판단한다" },
+            { "slug": "l03", "name": "커버링·클러스터드 인덱스", "objective": "인덱스 선택이 쓰기 비용과 저장 공간에 미치는 영향을 설명한다" }
+          ]
+        },
+        {
+          "slug": "u05-query-tuning",
+          "name": "실행 계획·쿼리 튜닝",
+          "lessons": [
+            { "slug": "l01", "name": "EXPLAIN 읽기", "objective": "Seq Scan·Index Scan·Nested Loop·Hash Join을 구분한다" },
+            { "slug": "l02", "name": "통계와 카디널리티", "objective": "옵티마이저가 계획을 고르는 근거를 설명한다" },
+            { "slug": "l03", "name": "흔한 안티패턴", "objective": "N+1·SELECT *·OFFSET 페이징의 문제와 대안을 제시한다" }
+          ]
+        },
+        {
+          "slug": "u06-transaction-acid",
+          "name": "트랜잭션·ACID",
+          "lessons": [
+            { "slug": "l01", "name": "ACID 네 가지", "objective": "원자성·일관성·고립성·지속성을 사례로 설명한다" },
+            { "slug": "l02", "name": "WAL과 복구", "objective": "로그 선행 기록이 장애 복구를 보장하는 원리를 설명한다" },
+            { "slug": "l03", "name": "트랜잭션 경계 설계", "objective": "긴 트랜잭션과 외부 호출이 섞일 때의 위험을 설명한다" }
+          ]
+        },
+        {
+          "slug": "u07-isolation-lock-mvcc",
+          "name": "격리 수준·락·MVCC",
+          "lessons": [
+            { "slug": "l01", "name": "격리 수준과 이상 현상", "objective": "Dirty·Non-repeatable·Phantom Read가 어떤 수준에서 막히는지 설명한다" },
+            { "slug": "l02", "name": "락의 종류", "objective": "공유·배타·갭 락과 데드락 발생 조건을 설명한다" },
+            { "slug": "l03", "name": "MVCC", "objective": "스냅샷으로 읽기와 쓰기가 서로 막지 않는 원리를 설명한다" }
+          ]
+        },
+        {
+          "slug": "u08-replication-sharding",
+          "name": "복제·샤딩·파티셔닝",
+          "lessons": [
+            { "slug": "l01", "name": "복제와 읽기 분산", "objective": "동기·비동기 복제와 복제 지연의 영향을 설명한다" },
+            { "slug": "l02", "name": "파티셔닝", "objective": "RANGE·LIST·HASH 파티션의 선택 기준을 설명한다" },
+            { "slug": "l03", "name": "샤딩", "objective": "샤드 키 선택과 리샤딩·크로스 샤드 조인 문제를 설명한다" }
+          ]
+        },
+        {
+          "slug": "u09-nosql",
+          "name": "NoSQL",
+          "lessons": [
+            { "slug": "l01", "name": "문서·키값·컬럼·그래프", "objective": "데이터 모델별 적합한 워크로드를 구분한다" },
+            { "slug": "l02", "name": "CAP과 일관성", "objective": "네트워크 분할 시 가용성과 일관성의 선택을 설명한다" },
+            { "slug": "l03", "name": "스키마 설계 차이", "objective": "비정규화·임베딩이 유리한 경우를 판단한다" }
+          ]
+        },
+        {
+          "slug": "u10-caching",
+          "name": "캐시 전략",
+          "lessons": [
+            { "slug": "l01", "name": "캐시 읽기·쓰기 패턴", "objective": "Cache-Aside·Write-Through·Write-Back을 비교한다" },
+            { "slug": "l02", "name": "만료와 무효화", "objective": "TTL·이벤트 기반 무효화·캐시 스탬피드 대응을 설명한다" },
+            { "slug": "l03", "name": "캐시와 정합성", "objective": "DB와 캐시가 어긋나는 시나리오와 대응을 설명한다" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "os",
+      "name": "운영체제",
+      "description": "프로세스·스케줄링·동기화·메모리·파일·I/O, 서버가 실제로 하는 일",
+      "phase": "mvp",
+      "units": [
+        {
+          "slug": "u01-process-thread",
+          "name": "프로세스·스레드",
+          "lessons": [
+            { "slug": "l01", "name": "프로세스 구조", "objective": "코드·데이터·힙·스택 영역과 PCB의 역할을 설명한다" },
+            { "slug": "l02", "name": "스레드와 공유", "objective": "스레드가 공유하는 것과 공유하지 않는 것을 구분한다" },
+            { "slug": "l03", "name": "컨텍스트 스위칭", "objective": "스위칭 비용과 프로세스·스레드 간 차이를 설명한다" }
+          ]
+        },
+        {
+          "slug": "u02-cpu-scheduling",
+          "name": "CPU 스케줄링",
+          "lessons": [
+            { "slug": "l01", "name": "스케줄링 기준", "objective": "처리량·대기 시간·응답 시간의 트레이드오프를 설명한다" },
+            { "slug": "l02", "name": "FCFS·SJF·RR", "objective": "각 알고리즘의 평균 대기 시간을 계산한다" },
+            { "slug": "l03", "name": "우선순위와 다단계 큐", "objective": "기아와 에이징, MLFQ의 동작을 설명한다" }
+          ]
+        },
+        {
+          "slug": "u03-synchronization",
+          "name": "동기화",
+          "lessons": [
+            { "slug": "l01", "name": "경쟁 조건과 임계 구역", "objective": "경쟁 조건이 생기는 코드를 찾아낸다" },
+            { "slug": "l02", "name": "뮤텍스·세마포어·조건 변수", "objective": "각 동기화 도구의 용도를 구분한다" },
+            { "slug": "l03", "name": "데드락", "objective": "데드락 4조건과 예방·회피·탐지 전략을 설명한다" }
+          ]
+        },
+        {
+          "slug": "u04-memory",
+          "name": "메모리 관리",
+          "lessons": [
+            { "slug": "l01", "name": "가상 메모리와 페이징", "objective": "페이지 테이블·TLB로 주소 변환이 이뤄지는 과정을 설명한다" },
+            { "slug": "l02", "name": "페이지 교체", "objective": "FIFO·LRU·Clock의 페이지 폴트 수를 계산한다" },
+            { "slug": "l03", "name": "단편화와 할당", "objective": "내부·외부 단편화와 버디 시스템을 설명한다" }
+          ]
+        },
+        {
+          "slug": "u05-file-system",
+          "name": "파일 시스템",
+          "lessons": [
+            { "slug": "l01", "name": "inode와 디렉터리", "objective": "파일 메타데이터와 하드·심볼릭 링크의 차이를 설명한다" },
+            { "slug": "l02", "name": "블록 할당과 저널링", "objective": "연속·연결·인덱스 할당과 저널링의 목적을 설명한다" },
+            { "slug": "l03", "name": "페이지 캐시와 fsync", "objective": "쓰기 버퍼링과 내구성 보장 호출의 관계를 설명한다" }
+          ]
+        },
+        {
+          "slug": "u06-io-interrupt",
+          "name": "I/O·인터럽트",
+          "lessons": [
+            { "slug": "l01", "name": "인터럽트와 시스템 콜", "objective": "사용자 모드·커널 모드 전환이 일어나는 시점을 설명한다" },
+            { "slug": "l02", "name": "동기·비동기·논블로킹 I/O", "objective": "블로킹·논블로킹·비동기의 차이를 구분한다" },
+            { "slug": "l03", "name": "I/O 멀티플렉싱", "objective": "select·poll·epoll의 차이와 이벤트 루프를 설명한다" }
+          ]
+        },
+        {
+          "slug": "u07-linux-syscall",
+          "name": "리눅스 시스템 콜",
+          "lessons": [
+            { "slug": "l01", "name": "fork·exec·wait", "objective": "프로세스 생성 호출 조합의 동작을 설명한다" },
+            { "slug": "l02", "name": "파일 디스크립터와 파이프", "objective": "fd 테이블·dup2·파이프로 셸 리다이렉션을 설명한다" },
+            { "slug": "l03", "name": "시그널", "objective": "SIGTERM·SIGKILL·SIGCHLD 처리와 graceful shutdown을 설명한다" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "network",
+      "name": "네트워크",
+      "description": "계층 모델부터 TCP·DNS·HTTP·TLS·로드밸런싱까지, 요청이 지나가는 길",
+      "phase": "mvp",
+      "units": [
+        {
+          "slug": "u01-layers",
+          "name": "OSI·TCP/IP 계층",
+          "lessons": [
+            { "slug": "l01", "name": "계층 모델의 역할", "objective": "각 계층이 책임지는 기능과 캡슐화를 설명한다" },
+            { "slug": "l02", "name": "주소와 식별자", "objective": "MAC·IP·포트가 어느 계층에서 쓰이는지 구분한다" },
+            { "slug": "l03", "name": "패킷의 여정", "objective": "브라우저 요청이 서버에 도달하는 과정을 계층별로 설명한다" }
+          ]
+        },
+        {
+          "slug": "u02-tcp-udp",
+          "name": "TCP vs UDP·핸드셰이크·혼잡 제어",
+          "lessons": [
+            { "slug": "l01", "name": "TCP와 UDP의 차이", "objective": "신뢰성·순서·흐름 제어 여부와 적합한 용도를 구분한다" },
+            { "slug": "l02", "name": "3-way·4-way 핸드셰이크", "objective": "연결 수립·종료 순서와 TIME_WAIT의 이유를 설명한다" },
+            { "slug": "l03", "name": "흐름 제어와 혼잡 제어", "objective": "윈도우·슬로 스타트·혼잡 회피의 동작을 설명한다" }
+          ]
+        },
+        {
+          "slug": "u03-ip-routing-nat",
+          "name": "IP·라우팅·NAT",
+          "lessons": [
+            { "slug": "l01", "name": "IP 주소와 서브넷", "objective": "CIDR 표기로 네트워크·호스트 범위를 계산한다" },
+            { "slug": "l02", "name": "라우팅", "objective": "라우팅 테이블·기본 게이트웨이·TTL의 역할을 설명한다" },
+            { "slug": "l03", "name": "NAT와 사설망", "objective": "NAT 변환 과정과 포트 포워딩이 필요한 이유를 설명한다" }
+          ]
+        },
+        {
+          "slug": "u04-dns",
+          "name": "DNS",
+          "lessons": [
+            { "slug": "l01", "name": "DNS 조회 과정", "objective": "재귀·반복 질의와 루트·TLD·권한 서버의 역할을 설명한다" },
+            { "slug": "l02", "name": "레코드 종류", "objective": "A·AAAA·CNAME·MX·TXT 레코드의 용도를 구분한다" },
+            { "slug": "l03", "name": "캐시와 TTL", "objective": "TTL이 전파 지연과 장애 전환에 미치는 영향을 설명한다" }
+          ]
+        },
+        {
+          "slug": "u05-http",
+          "name": "HTTP/1.1·2·3",
+          "lessons": [
+            { "slug": "l01", "name": "HTTP 메시지와 메서드", "objective": "멱등성·안전성 기준으로 메서드를 분류한다" },
+            { "slug": "l02", "name": "상태 코드와 캐시 헤더", "objective": "주요 상태 코드와 Cache-Control·ETag 동작을 설명한다" },
+            { "slug": "l03", "name": "HTTP/2·3의 개선", "objective": "멀티플렉싱·HOL 블로킹·QUIC의 차이를 설명한다" }
+          ]
+        },
+        {
+          "slug": "u06-tls",
+          "name": "TLS·HTTPS",
+          "lessons": [
+            { "slug": "l01", "name": "대칭·비대칭 암호와 해시", "objective": "각 암호 기법이 TLS에서 맡는 역할을 설명한다" },
+            { "slug": "l02", "name": "TLS 핸드셰이크", "objective": "인증서 검증과 세션 키 합의 과정을 설명한다" },
+            { "slug": "l03", "name": "인증서와 신뢰 체인", "objective": "CA·중간 인증서·만료가 연결에 미치는 영향을 설명한다" }
+          ]
+        },
+        {
+          "slug": "u07-rest-grpc-websocket",
+          "name": "REST·gRPC·WebSocket",
+          "lessons": [
+            { "slug": "l01", "name": "REST 설계 원칙", "objective": "리소스·표현·무상태 원칙과 흔한 위반을 구분한다" },
+            { "slug": "l02", "name": "gRPC와 Protobuf", "objective": "스트리밍·스키마 진화·브라우저 제약을 설명한다" },
+            { "slug": "l03", "name": "WebSocket·SSE·롱 폴링", "objective": "실시간 통신 방식의 선택 기준을 설명한다" }
+          ]
+        },
+        {
+          "slug": "u08-load-balancing-cdn",
+          "name": "로드밸런싱·CDN",
+          "lessons": [
+            { "slug": "l01", "name": "L4 vs L7 로드밸런서", "objective": "분산 기준과 헬스체크·세션 고정의 영향을 설명한다" },
+            { "slug": "l02", "name": "CDN 동작", "objective": "엣지 캐시·오리진·캐시 키가 응답 속도에 미치는 영향을 설명한다" },
+            { "slug": "l03", "name": "리버스 프록시와 게이트웨이", "objective": "TLS 종료·압축·레이트 리밋을 어디서 처리할지 판단한다" }
+          ]
+        }
+      ]
+    }
+  ]
+}

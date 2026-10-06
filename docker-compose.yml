@@ -1,0 +1,20 @@
+# 로컬 개발용 Postgres. Redis는 MVP에 없음.
+#   docker compose up -d
+#   pnpm db:migrate:dev && pnpm db:seed
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports: ["5432:5432"]
+    environment:
+      POSTGRES_USER: csdaily
+      POSTGRES_PASSWORD: csdaily
+      POSTGRES_DB: csdaily
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U csdaily"]
+      interval: 5s
+      retries: 10
+
+volumes:
+  pgdata:

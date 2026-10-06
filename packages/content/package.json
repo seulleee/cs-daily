@@ -1,0 +1,22 @@
+{
+  "name": "@cs-daily/content",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "tsx scripts/validate.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build": "echo \"(content) nothing to build\"",
+    "lint": "echo \"(content) no lint\"",
+    "test": "tsx scripts/validate.ts"
+  },
+  "dependencies": {
+    "@cs-daily/contracts": "workspace:*",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "@types/node": "^22.9.0"
+  }
+}

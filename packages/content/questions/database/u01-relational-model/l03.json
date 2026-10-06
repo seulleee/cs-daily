@@ -1,0 +1,142 @@
+{
+  "track": "database",
+  "unit": "u01-relational-model",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "database-normal-forms-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": ["1nf"],
+      "content": {
+        "prompt": "다음 중 제1정규형(1NF)을 위반하는 설계는?",
+        "options": [
+          "phone 컬럼에 '010-1111, 010-2222'처럼 번호 여러 개를 쉼표로 저장",
+          "주문 테이블에 user_id 외래키를 둠",
+          "가격 컬럼을 NUMERIC(10,2)로 선언",
+          "created_at 컬럼에 기본값 now()를 둠"
+        ]
+      },
+      "answer_key": { "index": 0 },
+      "explanation": "1NF는 모든 속성 값이 더 나눌 수 없는 원자값이어야 한다는 조건입니다. 한 칸에 번호 여러 개를 넣으면 검색·갱신이 어려워지므로 별도 phones 테이블로 분리합니다.",
+      "refs": ["https://en.wikipedia.org/wiki/First_normal_form"]
+    },
+    {
+      "id": "database-normal-forms-002",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": ["2nf"],
+      "content": {
+        "prompt": "제2정규형은 1NF를 만족하면서, 기본키의 일부에만 종속하는 ___ 종속이 없어야 한다.",
+        "hint": "복합키의 일부에 종속하는 것"
+      },
+      "answer_key": { "accepted": ["부분", "부분함수", "부분 함수", "partial"] },
+      "explanation": "복합 기본키 (A, B)에서 B만으로 결정되는 속성이 있으면 부분 함수 종속입니다. 2NF는 이를 제거하므로 단일 컬럼 기본키 테이블은 1NF이면 자동으로 2NF입니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Second_normal_form"]
+    },
+    {
+      "id": "database-normal-forms-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": ["2nf", "trap"],
+      "content": {
+        "prompt": "기본키가 단일 컬럼인 테이블은 1NF를 만족하면 항상 2NF도 만족한다."
+      },
+      "answer_key": { "value": true },
+      "explanation": "부분 함수 종속은 복합키의 일부에 종속할 때만 생깁니다. 키가 컬럼 하나면 '일부'가 존재하지 않으므로 2NF 위반이 일어날 수 없습니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Second_normal_form"]
+    },
+    {
+      "id": "database-normal-forms-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": ["2nf", "apply"],
+      "content": {
+        "prompt": "기본키가 (student_id, course_id)인 다음 테이블이 위반하는 정규형과 그 이유는?",
+        "code": {
+          "language": "text",
+          "source": "enrollment(student_id, course_id, grade, course_name)"
+        },
+        "options": [
+          "2NF — course_name이 키의 일부인 course_id에만 종속한다",
+          "1NF — grade가 원자값이 아니다",
+          "3NF — grade가 course_name에 종속한다",
+          "위반 없음 — 모든 속성이 기본키에 종속한다"
+        ]
+      },
+      "answer_key": { "index": 0 },
+      "explanation": "course_name은 course_id만으로 결정되므로 복합키 전체가 아닌 일부에 종속합니다. 이것이 부분 함수 종속이고 2NF 위반입니다. course(course_id, course_name)으로 분리하면 해결됩니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Second_normal_form"]
+    },
+    {
+      "id": "database-normal-forms-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": ["3nf", "apply"],
+      "content": {
+        "prompt": "기본키가 emp_id인 다음 테이블이 위반하는 정규형은?",
+        "code": {
+          "language": "text",
+          "source": "employee(emp_id, name, dept_id, dept_name)\n-- emp_id → dept_id, dept_id → dept_name"
+        },
+        "options": [
+          "3NF — dept_name이 키가 아닌 dept_id를 거쳐 이행적으로 종속한다",
+          "2NF — dept_name이 키의 일부에 종속한다",
+          "1NF — dept_name이 반복 그룹이다",
+          "BCNF만 위반하고 3NF는 만족한다"
+        ]
+      },
+      "answer_key": { "index": 0 },
+      "explanation": "emp_id → dept_id → dept_name 경로로 dept_name이 키에 이행적으로 종속합니다. 3NF는 키가 아닌 속성이 다른 키 아닌 속성에 종속하는 것을 금지합니다. 단일 키라 2NF 위반은 아닙니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Third_normal_form"]
+    },
+    {
+      "id": "database-normal-forms-006",
+      "type": "multi",
+      "difficulty": 2,
+      "tags": ["normalization", "tradeoff"],
+      "content": {
+        "prompt": "정규화를 높일수록 일반적으로 얻는 효과를 모두 고르시오.",
+        "options": [
+          "중복 데이터가 줄어 갱신 이상이 사라진다",
+          "조회 시 JOIN 횟수가 늘어난다",
+          "모든 쿼리가 항상 빨라진다",
+          "한 사실이 한 곳에만 저장되어 일관성 유지가 쉽다"
+        ]
+      },
+      "answer_key": { "indices": [0, 1, 3] },
+      "explanation": "정규화는 중복과 이상을 없애는 대신 테이블이 늘어 JOIN이 많아집니다. 읽기 성능이 항상 좋아지는 것은 아니므로, 읽기 중심 화면은 의도적으로 비정규화하거나 캐시를 두기도 합니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Database_normalization"]
+    },
+    {
+      "id": "database-normal-forms-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": ["bcnf"],
+      "content": {
+        "prompt": "BCNF가 3NF보다 엄격한 지점은?",
+        "options": [
+          "모든 함수 종속 X → Y에서 X가 슈퍼키여야 한다 (3NF가 허용하는 '키 속성에 대한 종속' 예외를 없앰)",
+          "다치 종속(multivalued dependency)까지 제거한다",
+          "복합 기본키를 아예 허용하지 않는다",
+          "외래키를 반드시 인덱싱해야 한다"
+        ]
+      },
+      "answer_key": { "index": 0 },
+      "explanation": "3NF는 종속의 우변이 키의 일부(prime attribute)이면 좌변이 키가 아니어도 허용합니다. BCNF는 이 예외를 없애 모든 결정자가 슈퍼키여야 합니다. 다치 종속은 4NF의 영역입니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Boyce%E2%80%93Codd_normal_form"]
+    },
+    {
+      "id": "database-normal-forms-008",
+      "type": "ox",
+      "difficulty": 3,
+      "tags": ["bcnf", "trap"],
+      "content": {
+        "prompt": "모든 릴레이션은 함수 종속을 잃지 않으면서(종속 보존) 항상 BCNF로 분해할 수 있다."
+      },
+      "answer_key": { "value": false },
+      "explanation": "BCNF 분해는 무손실 조인은 보장하지만 종속 보존은 보장하지 못합니다. 특정 종속을 지키려면 3NF에서 멈추는 선택이 실무적으로 합리적일 수 있습니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Boyce%E2%80%93Codd_normal_form#Achievability_of_BCNF"]
+    }
+  ]
+}

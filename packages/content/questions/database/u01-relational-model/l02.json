@@ -1,0 +1,128 @@
+{
+  "track": "database",
+  "unit": "u01-relational-model",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "database-functional-dependency-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": ["functional-dependency"],
+      "content": {
+        "prompt": "함수 종속 X → Y의 뜻으로 옳은 것은?",
+        "options": [
+          "X 값이 같은 튜플들은 Y 값도 항상 같다",
+          "Y 값이 같으면 X 값도 같다",
+          "X와 Y는 서로 다른 테이블에 있어야 한다",
+          "X는 반드시 기본키여야 한다"
+        ]
+      },
+      "answer_key": { "index": 0 },
+      "explanation": "X → Y는 X가 Y를 결정한다는 뜻입니다. 같은 X를 가진 두 튜플이 다른 Y를 가지면 종속이 깨집니다. 방향이 있으므로 Y → X가 자동으로 성립하지는 않습니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Functional_dependency"]
+    },
+    {
+      "id": "database-functional-dependency-002",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": ["functional-dependency", "keys"],
+      "content": {
+        "prompt": "릴레이션의 모든 속성은 후보키에 함수 종속한다."
+      },
+      "answer_key": { "value": true },
+      "explanation": "후보키는 튜플을 유일하게 식별하므로 키 값이 같으면 같은 튜플이고, 따라서 모든 속성 값이 같습니다. 이것이 키의 정의와 함수 종속의 연결 고리입니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Functional_dependency"]
+    },
+    {
+      "id": "database-functional-dependency-003",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": ["anomaly"],
+      "content": {
+        "prompt": "한 테이블에 학생과 지도교수 정보가 함께 있어서, 아직 학생이 없는 새 교수를 등록할 수 없는 문제를 ___ 이상(anomaly)이라고 한다.",
+        "hint": "INSERT가 안 되는 상황"
+      },
+      "answer_key": { "accepted": ["삽입", "삽입이상", "insertion", "insert"] },
+      "explanation": "삽입 이상은 어떤 사실을 저장하려면 무관한 다른 사실(여기서는 학생)이 반드시 있어야 하는 문제입니다. 갱신 이상·삭제 이상과 함께 정규화의 동기가 됩니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Database_normalization"]
+    },
+    {
+      "id": "database-functional-dependency-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": ["anomaly", "update"],
+      "content": {
+        "prompt": "다음 테이블에서 '김교수'의 연구실 번호가 바뀌면 생길 수 있는 문제는?",
+        "code": {
+          "language": "text",
+          "source": "student(student_id, name, advisor, advisor_office)\n1, 민수, 김교수, 301\n2, 지영, 김교수, 301\n3, 현우, 이교수, 205"
+        },
+        "options": [
+          "일부 행만 갱신되면 같은 교수의 연구실이 두 값으로 나뉜다 (갱신 이상)",
+          "학생을 지우면 교수가 함께 사라진다 (삭제 이상)",
+          "기본키가 없어져 조회가 불가능해진다",
+          "외래키 제약 때문에 갱신 자체가 거부된다"
+        ]
+      },
+      "answer_key": { "index": 0 },
+      "explanation": "advisor → advisor_office 종속이 학생 테이블에 섞여 있어 같은 사실이 여러 행에 중복됩니다. 중복된 사실을 모두 고치지 못하면 불일치가 생기는데, 이것이 갱신 이상입니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Database_normalization"]
+    },
+    {
+      "id": "database-functional-dependency-005",
+      "type": "multi",
+      "difficulty": 2,
+      "tags": ["functional-dependency", "inference"],
+      "content": {
+        "prompt": "R(A, B, C, D)에서 A → B, B → C가 성립한다. 암스트롱 공리로 유도되는 종속을 모두 고르시오.",
+        "options": ["A → C", "A → BC", "C → A", "AD → BD"]
+      },
+      "answer_key": { "indices": [0, 1, 3] },
+      "explanation": "이행 규칙으로 A → C, 합집합 규칙으로 A → BC, 증가 규칙으로 AD → BD가 나옵니다. C → A는 주어진 종속으로 유도할 수 없습니다. 함수 종속은 역방향이 자동으로 성립하지 않습니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Armstrong%27s_axioms"]
+    },
+    {
+      "id": "database-functional-dependency-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": ["anomaly", "delete"],
+      "content": {
+        "prompt": "enrollment(student_id, course_id, course_name, instructor) 테이블에서 어떤 강의의 유일한 수강생이 수강을 취소하면 생기는 문제는?",
+        "options": [
+          "강의명과 담당 교수 정보까지 함께 사라진다 (삭제 이상)",
+          "같은 강의가 두 번 저장된다 (삽입 이상)",
+          "student_id가 NULL이 된다",
+          "아무 문제도 없다"
+        ]
+      },
+      "answer_key": { "index": 0 },
+      "explanation": "강의 정보(course_id → course_name, instructor)가 수강 사실에 묶여 있어서, 수강 행을 지우면 강의 자체의 정보도 잃습니다. 강의를 별도 테이블로 분리하면 해결됩니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Database_normalization"]
+    },
+    {
+      "id": "database-functional-dependency-007",
+      "type": "ox",
+      "difficulty": 3,
+      "tags": ["functional-dependency", "trap"],
+      "content": {
+        "prompt": "현재 저장된 데이터에서 우연히 X 값이 같은 튜플들의 Y 값이 모두 같다면, X → Y 함수 종속이 성립한다고 선언해도 된다."
+      },
+      "answer_key": { "value": false },
+      "explanation": "함수 종속은 현재 데이터가 아니라 도메인의 의미(비즈니스 규칙)에서 나옵니다. 지금 데이터가 우연히 맞아도 규칙이 아니라면 나중에 위반 데이터가 들어와 설계가 깨집니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Functional_dependency"]
+    },
+    {
+      "id": "database-functional-dependency-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": ["functional-dependency", "closure"],
+      "content": {
+        "prompt": "R(A, B, C, D, E)에 A → B, B → C, CD → E가 있다. 속성 집합 {A, D}의 폐포(closure)는?",
+        "options": ["{A, B, C, D, E}", "{A, B, C, D}", "{A, B, D}", "{A, D, E}"]
+      },
+      "answer_key": { "index": 0 },
+      "explanation": "A → B로 B, B → C로 C를 얻고, C와 D가 모두 있으므로 CD → E로 E까지 얻습니다. 폐포가 모든 속성을 포함하므로 {A, D}는 이 릴레이션의 슈퍼키입니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Functional_dependency#Closure"]
+    }
+  ]
+}

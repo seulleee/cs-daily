@@ -1,0 +1,92 @@
+# CI (기획서 11절): lint(boundaries) → typecheck → 도메인 단위 테스트 → 콘텐츠 검증 → 마이그레이션+통합 테스트 → main이면 배포
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  PNPM_VERSION: 10.28.0
+  NODE_VERSION: 22
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env: { POSTGRES_USER: csdaily, POSTGRES_PASSWORD: csdaily, POSTGRES_DB: csdaily }
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U csdaily" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://csdaily:csdaily@localhost:5432/csdaily?schema=public
+      DIRECT_URL: postgresql://csdaily:csdaily@localhost:5432/csdaily?schema=public
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: "${{ env.PNPM_VERSION }}" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "${{ env.NODE_VERSION }}", cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @cs-daily/contracts build
+      - name: Content validation
+        run: pnpm content:validate
+      - name: Prisma generate
+        run: pnpm --filter @cs-daily/api prisma:generate
+      - name: Lint (DDD boundaries)
+        run: pnpm lint
+      - run: pnpm typecheck
+      - name: Domain unit tests
+        run: pnpm --filter @cs-daily/api test
+      - name: Migrate + seed against CI Postgres
+        run: |
+          pnpm --filter @cs-daily/api exec prisma migrate deploy
+          pnpm --filter @cs-daily/api prisma:seed
+      - name: Build
+        run: pnpm build
+
+  deploy-api:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # Workload Identity Federation — GCP 키 파일 없이 인증
+    env:
+      GCP_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
+      REGION: asia-northeast3
+      SERVICE: cs-daily-api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
+          service_account: ${{ secrets.GCP_DEPLOY_SA }}
+      - uses: google-github-actions/setup-gcloud@v2
+      - name: Build & push image (Artifact Registry)
+        run: |
+          IMAGE="$REGION-docker.pkg.dev/$GCP_PROJECT/cs-daily/api:${GITHUB_SHA::7}"
+          gcloud auth configure-docker $REGION-docker.pkg.dev --quiet
+          docker build -f apps/api/Dockerfile -t "$IMAGE" .
+          docker push "$IMAGE"
+          echo "IMAGE=$IMAGE" >> "$GITHUB_ENV"
+      - name: Migrate production DB
+        env:
+          DATABASE_URL: ${{ secrets.PROD_DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.PROD_DIRECT_URL }}
+        run: |
+          corepack enable && corepack prepare pnpm@10.28.0 --activate
+          pnpm install --frozen-lockfile --filter @cs-daily/api
+          pnpm --filter @cs-daily/api exec prisma migrate deploy
+      - name: Deploy to Cloud Run (무료 구간: 최소 인스턴스 0, 요청 기반 과금)
+        run: |
+          gcloud run deploy $SERVICE \
+            --image "$IMAGE" --region $REGION --platform managed \
+            --min-instances 0 --max-instances 2 --cpu 1 --memory 512Mi --concurrency 80 \
+            --no-cpu-throttling=false \
+            --allow-unauthenticated \
+            --set-env-vars NODE_ENV=production,API_BASE_URL=${{ secrets.API_BASE_URL }},WEB_BASE_URL=${{ secrets.WEB_BASE_URL }},MAIL_FROM="${{ secrets.MAIL_FROM }}" \
+            --set-secrets DATABASE_URL=DATABASE_URL:latest,DIRECT_URL=DIRECT_URL:latest,JWT_ACCESS_SECRET=JWT_ACCESS_SECRET:latest,JWT_REFRESH_SECRET=JWT_REFRESH_SECRET:latest,GITHUB_CLIENT_ID=GITHUB_CLIENT_ID:latest,GITHUB_CLIENT_SECRET=GITHUB_CLIENT_SECRET:latest,GOOGLE_CLIENT_ID=GOOGLE_CLIENT_ID:latest,GOOGLE_CLIENT_SECRET=GOOGLE_CLIENT_SECRET:latest,JOBS_SECRET=JOBS_SECRET:latest,RESEND_API_KEY=RESEND_API_KEY:latest
+  # 웹(Next.js)은 Vercel GitHub 연동이 main 푸시마다 자동 배포하므로 여기서 다루지 않는다.

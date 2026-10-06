@@ -1,0 +1,30 @@
+# Supabase Free에는 자동 백업이 없다 → 매일 pg_dump를 GitHub Actions artifact(90일 보관)로 남긴다.
+# 2단계: Cloudflare R2(10GB 무료)로 업로드해 보관 기간을 늘린다.
+name: db-backup
+
+on:
+  schedule:
+    - cron: "17 18 * * *" # 매일 03:17 KST (18:17 UTC). 정각을 피해 지연을 줄인다
+  workflow_dispatch:
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install postgresql-client 16
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y postgresql-client
+      - name: pg_dump
+        env:
+          DIRECT_URL: ${{ secrets.PROD_DIRECT_URL }}
+        run: |
+          mkdir -p backups
+          pg_dump "$DIRECT_URL" --no-owner --no-privileges --format=custom --file "backups/csdaily-$(date -u +%Y%m%d).dump"
+          ls -la backups
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csdaily-db-${{ github.run_id }}
+          path: backups/*.dump
+          retention-days: 90
+          compression-level: 0

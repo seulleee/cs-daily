@@ -1,0 +1,123 @@
+{
+  "track": "database",
+  "unit": "u01-relational-model",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "database-relational-model-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": ["relational-model", "terminology"],
+      "content": {
+        "prompt": "관계형 모델에서 테이블의 한 행(row)을 가리키는 용어는?",
+        "options": ["튜플(tuple)", "속성(attribute)", "도메인(domain)", "릴레이션(relation)"]
+      },
+      "answer_key": { "index": 0 },
+      "explanation": "릴레이션은 테이블 전체, 튜플은 한 행, 속성은 한 열, 도메인은 속성이 가질 수 있는 값의 집합입니다. 네 용어를 짝지어 기억하면 이후 정규화 설명을 읽기 쉽습니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Relational_model"]
+    },
+    {
+      "id": "database-relational-model-002",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": ["relational-model", "set-semantics"],
+      "content": {
+        "prompt": "관계형 모델의 릴레이션은 수학적으로 튜플의 집합이므로, 이론상 같은 튜플이 두 번 들어갈 수 없다."
+      },
+      "answer_key": { "value": true },
+      "explanation": "릴레이션은 집합이라 중복 튜플이 없고 순서도 없습니다. 실제 SQL 테이블은 기본키가 없으면 중복 행을 허용하는데, 이것이 이론과 구현의 대표적 차이입니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Relational_model"]
+    },
+    {
+      "id": "database-relational-model-003",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": ["keys"],
+      "content": {
+        "prompt": "튜플을 유일하게 식별할 수 있는 최소 속성 집합을 ___ 키라고 하며, 그중 하나를 골라 기본키로 삼는다.",
+        "hint": "영어로는 candidate key"
+      },
+      "answer_key": { "accepted": ["후보", "후보키", "candidate", "candidate key"] },
+      "explanation": "후보키는 유일성과 최소성을 모두 만족하는 속성 집합입니다. 유일성만 만족하고 최소성이 없으면 슈퍼키이고, 후보키 중 설계자가 선택한 것이 기본키입니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Candidate_key"]
+    },
+    {
+      "id": "database-relational-model-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": ["keys", "superkey"],
+      "content": {
+        "prompt": "users(id, email, nickname) 테이블에서 id와 email이 각각 유일하다. 다음 중 슈퍼키이지만 후보키가 아닌 것은?",
+        "options": ["{id}", "{email}", "{id, nickname}", "{nickname}"]
+      },
+      "answer_key": { "index": 2 },
+      "explanation": "{id, nickname}은 유일하지만 nickname을 빼도 유일하므로 최소성이 없는 슈퍼키입니다. {id}와 {email}은 후보키이고, {nickname}은 유일하지 않아 키가 아닙니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Superkey"]
+    },
+    {
+      "id": "database-relational-model-005",
+      "type": "multi",
+      "difficulty": 2,
+      "tags": ["integrity", "constraints"],
+      "content": {
+        "prompt": "개체 무결성(entity integrity) 규칙이 기본키에 요구하는 조건을 모두 고르시오.",
+        "options": ["NULL을 가질 수 없다", "값이 유일해야 한다", "반드시 숫자형이어야 한다", "외래키로 참조되어야 한다"]
+      },
+      "answer_key": { "indices": [0, 1] },
+      "explanation": "개체 무결성은 기본키가 NULL이 아니고 유일할 것을 요구합니다. 자료형 제한이나 참조 여부는 무관하며, 참조 관련 규칙은 참조 무결성이 따로 다룹니다.",
+      "refs": ["https://www.postgresql.org/docs/current/ddl-constraints.html"]
+    },
+    {
+      "id": "database-relational-model-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": ["integrity", "foreign-key"],
+      "content": {
+        "prompt": "orders.user_id가 users.id를 참조하는 외래키일 때, 참조 무결성을 위반하는 연산은?",
+        "code": {
+          "language": "sql",
+          "source": "-- users: id=1, id=2 존재\n-- orders: user_id=1인 주문 3건 존재"
+        },
+        "options": [
+          "INSERT INTO orders(user_id) VALUES (2)",
+          "DELETE FROM users WHERE id = 1  (ON DELETE 옵션 없음)",
+          "UPDATE orders SET user_id = 2 WHERE user_id = 1",
+          "INSERT INTO users(id) VALUES (3)"
+        ]
+      },
+      "answer_key": { "index": 1 },
+      "explanation": "주문이 참조하는 사용자 1을 지우면 고아 행이 생기므로 기본 동작(NO ACTION/RESTRICT)에서는 거부됩니다. 나머지는 모두 존재하는 사용자를 가리키거나 참조와 무관한 삽입입니다.",
+      "refs": ["https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-FK"]
+    },
+    {
+      "id": "database-relational-model-007",
+      "type": "ox",
+      "difficulty": 3,
+      "tags": ["keys", "null"],
+      "content": {
+        "prompt": "PostgreSQL의 UNIQUE 제약은 기본적으로 NULL 값을 서로 다른 값으로 취급하므로, UNIQUE 컬럼에 NULL이 여러 행 들어갈 수 있다."
+      },
+      "answer_key": { "value": true },
+      "explanation": "SQL 표준에서 NULL은 어떤 값과도 같지 않으므로 UNIQUE는 NULL 중복을 막지 않습니다. PostgreSQL 15부터는 UNIQUE NULLS NOT DISTINCT로 이 동작을 바꿀 수 있습니다.",
+      "refs": ["https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-UNIQUE-CONSTRAINTS"]
+    },
+    {
+      "id": "database-relational-model-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": ["keys", "surrogate-key", "design"],
+      "content": {
+        "prompt": "이메일을 자연키 대신 대리키(surrogate key, 예: UUID나 SERIAL)를 기본키로 쓰는 가장 설득력 있는 이유는?",
+        "options": [
+          "대리키는 인덱스가 필요 없다",
+          "자연키는 값이 바뀔 수 있어 외래키 전파와 갱신 비용이 커진다",
+          "대리키를 쓰면 정규화를 하지 않아도 된다",
+          "자연키는 UNIQUE 제약을 걸 수 없다"
+        ]
+      },
+      "answer_key": { "index": 1 },
+      "explanation": "이메일처럼 바뀔 수 있는 값을 기본키로 두면 참조하는 모든 테이블을 함께 갱신해야 합니다. 대리키는 불변이라 이 문제를 피하며, 자연키에는 별도 UNIQUE 제약을 두어 중복을 막습니다.",
+      "refs": ["https://en.wikipedia.org/wiki/Surrogate_key"]
+    }
+  ]
+}

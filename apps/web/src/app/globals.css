@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* 디자인 토큰: 듀오링고의 "굵은 테두리 + 아래 그림자" 버튼 느낌을 가져오되 색은 자체 팔레트 */
+@theme {
+  --color-brand: #2563eb;          /* 주 액션 */
+  --color-brand-dark: #1d4ed8;     /* 버튼 하단 그림자 */
+  --color-correct: #16a34a;
+  --color-correct-bg: #dcfce7;
+  --color-wrong: #dc2626;
+  --color-wrong-bg: #fee2e2;
+  --color-streak: #f97316;
+  --color-surface: #ffffff;
+  --color-surface-2: #f8fafc;
+  --color-ink: #0f172a;
+  --color-ink-2: #475569;
+  --color-line: #e2e8f0;
+  --radius-card: 16px;
+  --font-sans: "Pretendard Variable", Pretendard, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-surface: #0b1220;
+    --color-surface-2: #111a2b;
+    --color-ink: #e2e8f0;
+    --color-ink-2: #94a3b8;
+    --color-line: #1f2a3d;
+    --color-correct-bg: #0f2e1a;
+    --color-wrong-bg: #3a1313;
+  }
+}
+
+html, body { background: var(--color-surface-2); color: var(--color-ink); }
+
+/* 듀오링고식 3D 버튼 */
+.btn-3d {
+  @apply inline-flex items-center justify-center rounded-2xl px-5 py-3 font-bold text-white select-none transition-transform;
+  background: var(--color-brand);
+  box-shadow: 0 4px 0 var(--color-brand-dark);
+}
+.btn-3d:active { transform: translateY(4px); box-shadow: 0 0 0 var(--color-brand-dark); }
+.btn-3d:disabled { opacity: .5; box-shadow: none; transform: none; }
+.btn-3d.correct { background: var(--color-correct); box-shadow: 0 4px 0 #15803d; }
+.btn-3d.wrong { background: var(--color-wrong); box-shadow: 0 4px 0 #b91c1c; }
+
+.option {
+  @apply w-full text-left rounded-2xl border-2 px-4 py-3 transition-colors;
+  border-color: var(--color-line);
+  background: var(--color-surface);
+  box-shadow: 0 2px 0 var(--color-line);
+}
+.option[data-selected="true"] { border-color: var(--color-brand); background: color-mix(in oklab, var(--color-brand) 10%, var(--color-surface)); }
+.option[data-state="correct"] { border-color: var(--color-correct); background: var(--color-correct-bg); }
+.option[data-state="wrong"] { border-color: var(--color-wrong); background: var(--color-wrong-bg); }
+
+.card { background: var(--color-surface); border: 1px solid var(--color-line); border-radius: var(--radius-card); }
+
+.input { width: 100%; border: 2px solid var(--color-line); border-radius: 12px; padding: 10px 12px; background: var(--color-surface); color: var(--color-ink); }
+.input:focus { outline: none; border-color: var(--color-brand); }
