@@ -48,7 +48,8 @@ jobs:
         run: pnpm build
 
   deploy-api:
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    # GCP 설정 전까지는 건너뜀: Settings → Variables에 DEPLOY_ENABLED=true 를 추가하면 배포가 켜진다
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' && vars.DEPLOY_ENABLED == 'true'
     needs: check
     runs-on: ubuntu-latest
     permissions:
