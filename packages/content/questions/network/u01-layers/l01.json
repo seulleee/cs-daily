@@ -9,21 +9,21 @@
       "difficulty": 1,
       "tags": [
         "layer-roles",
-        "osi"
+        "why-layers"
       ],
       "content": {
-        "prompt": "OSI 7계층을 아래(1계층)부터 세었을 때 4계층에 해당하는 계층은?",
+        "prompt": "인터넷 통신 규칙을 여러 '계층(층)'으로 나눠 두는 가장 큰 이유는?",
         "options": [
-          "네트워크 계층",
-          "세션 계층",
-          "전송 계층",
-          "데이터링크 계층"
+          "계층마다 속도를 더해 데이터가 더 빨리 가게 하려고",
+          "계층이 많을수록 해킹이 자동으로 막혀서",
+          "컴퓨터마다 서로 다른 규칙을 쓰게 하려고",
+          "각 계층이 자기 일만 맡아서, 한 부분을 바꾸거나 고치기 쉬워서"
         ]
       },
       "answer_key": {
-        "index": 2
+        "index": 3
       },
-      "explanation": "OSI 순서는 물리-데이터링크-네트워크-전송-세션-표현-응용이라 4계층은 전송 계층입니다. 네트워크 계층은 3계층, 세션 계층은 5계층이므로 번호를 하나씩 세어 확인해야 합니다.",
+      "explanation": "회사에서 부서별로 일을 나누듯, 계층마다 맡은 일이 정해져 있어 한 계층을 바꿔도 나머지는 그대로 쓸 수 있어요. 계층을 나눈다고 속도가 더해지거나 보안이 저절로 생기지는 않습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/OSI_model"
       ]
@@ -37,17 +37,18 @@
         "encapsulation"
       ],
       "content": {
-        "prompt": "상위 계층에서 내려온 데이터에 자기 계층의 헤더를 덧붙여 아래 계층으로 넘기는 과정을 ___ 라고 한다.",
+        "prompt": "택배를 보낼 때 물건을 작은 상자에 넣고 그 상자를 다시 큰 상자에 넣듯, 데이터에 계층마다 필요한 정보(헤더)를 덧붙여 감싸는 과정을 ___ 라고 한다.",
         "hint": "캡슐에 담듯 감싼다는 뜻"
       },
       "answer_key": {
         "accepted": [
           "캡슐화",
           "encapsulation",
-          "캡슐화(encapsulation)"
+          "캡슐레이션",
+          "인캡슐레이션"
         ]
       },
-      "explanation": "송신 측은 각 계층을 지날 때마다 헤더를 덧붙이는 캡슐화를 수행합니다. 단편화(fragmentation)는 큰 패킷을 여러 조각으로 나누는 별개의 동작이며, 헤더를 덧붙이는 과정과는 다릅니다.",
+      "explanation": "보내는 쪽은 계층을 하나 내려갈 때마다 그 계층의 정보(헤더)를 겉에 붙여 감쌉니다. 이것이 캡슐화예요. 상자 안에 상자가 들어 있는 택배를 떠올리면 쉽습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Encapsulation_(networking)"
       ]
@@ -58,41 +59,40 @@
       "difficulty": 1,
       "tags": [
         "layer-roles",
-        "tcp-ip-model"
+        "decapsulation"
       ],
       "content": {
-        "prompt": "TCP/IP 모델(RFC 1122)은 링크·인터넷·전송·응용의 4계층이며, OSI의 세션·표현·응용 계층 기능은 TCP/IP의 응용 계층 하나에 해당한다."
+        "prompt": "데이터를 받는 컴퓨터는 가장 안쪽에 있는 포장(헤더)부터 먼저 벗겨 낸다."
       },
       "answer_key": {
-        "value": true
+        "value": false
       },
-      "explanation": "RFC 1122는 링크, 인터넷, 전송, 응용의 4계층으로 구성되고 OSI 상위 3계층의 역할을 응용 계층이 함께 맡습니다. TCP/IP도 7계층이라는 설명은 OSI와 혼동한 것입니다.",
+      "explanation": "택배를 받으면 가장 바깥 상자부터 뜯듯, 받는 쪽도 가장 바깥 헤더부터 차례로 벗겨 냅니다(역캡슐화). 바깥 상자를 열지 않고 안쪽 상자부터 열 수는 없어요.",
       "refs": [
-        "https://www.rfc-editor.org/rfc/rfc1122",
-        "https://en.wikipedia.org/wiki/Internet_protocol_suite"
+        "https://en.wikipedia.org/wiki/Encapsulation_(networking)"
       ]
     },
     {
       "id": "network-layer-roles-004",
       "type": "single",
-      "difficulty": 2,
+      "difficulty": 1,
       "tags": [
         "layer-roles",
-        "pdu"
+        "osi"
       ],
       "content": {
-        "prompt": "OSI 모델 기준으로 계층과 PDU(프로토콜 데이터 단위) 이름이 올바르게 짝지어진 것은?",
+        "prompt": "OSI 7계층 모델에서 맨 위(7계층), 즉 사용자가 쓰는 프로그램과 가장 가까운 계층은?",
         "options": [
-          "네트워크 계층은 패킷, 데이터링크 계층은 프레임",
-          "네트워크 계층은 프레임, 데이터링크 계층은 패킷",
-          "전송 계층은 프레임, 물리 계층은 세그먼트",
-          "전송 계층은 비트, 물리 계층은 데이터그램"
+          "전송 계층",
+          "물리 계층",
+          "응용 계층",
+          "네트워크 계층"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 2
       },
-      "explanation": "네트워크 계층의 PDU는 패킷, 데이터링크 계층은 프레임이고 전송 계층은 세그먼트(TCP) 또는 데이터그램(UDP), 물리 계층은 비트입니다. 프레임과 패킷을 서로 바꿔 외우기 쉬우니 주의해야 합니다.",
+      "explanation": "7계층은 웹 브라우저·메신저 같은 프로그램이 직접 쓰는 응용 계층이에요. 맨 아래 1계층은 전선·전파로 신호를 보내는 물리 계층이라 정반대 위치입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Protocol_data_unit"
       ]
@@ -103,94 +103,93 @@
       "difficulty": 2,
       "tags": [
         "layer-roles",
-        "decapsulation"
+        "network-layer"
       ],
       "content": {
-        "prompt": "서버가 수신한 이더넷 프레임에서 HTTP 데이터를 꺼낼 때 헤더를 벗기는 올바른 순서는?",
+        "prompt": "주소를 보고 보내는 컴퓨터에서 받는 컴퓨터까지 '길을 찾아' 데이터를 전달하는 계층은?",
         "options": [
-          "TCP 헤더 → IP 헤더 → 이더넷 헤더 순서",
-          "이더넷 헤더 → IP 헤더 → TCP 헤더 순서",
-          "IP 헤더 → 이더넷 헤더 → TCP 헤더 순서",
-          "모든 헤더를 한꺼번에 동시에 제거"
+          "물리 계층",
+          "응용 계층",
+          "네트워크 계층",
+          "표현 계층"
         ]
       },
       "answer_key": {
-        "index": 1
+        "index": 2
       },
-      "explanation": "수신 측은 송신 때 덧붙인 순서의 역순으로 벗깁니다. 가장 바깥의 이더넷 헤더가 먼저, 그다음 IP, TCP 순이며 마지막에 응용 데이터가 남습니다. 송신 순서와 같다고 보면 오답입니다.",
+      "explanation": "네트워크 계층은 IP 주소(집 주소)를 보고 목적지까지 가는 길을 정해 데이터를 넘깁니다. 물리 계층은 신호를 실어 나를 뿐 길을 고르지 않아요.",
       "refs": [
         "https://en.wikipedia.org/wiki/Encapsulation_(networking)"
       ]
     },
     {
       "id": "network-layer-roles-006",
-      "type": "multi",
+      "type": "single",
       "difficulty": 2,
       "tags": [
         "layer-roles",
-        "responsibility"
+        "physical-layer"
       ],
       "content": {
-        "prompt": "각 계층의 책임을 바르게 설명한 것을 모두 고르시오.",
+        "prompt": "물리 계층(1계층)이 하는 일로 알맞은 것은?",
         "options": [
-          "물리 계층: 손상된 데이터의 재전송을 요구한다",
-          "전송 계층: 포트 번호로 호스트 안의 프로세스에게 데이터를 전달한다",
-          "네트워크 계층: 호스트 간 경로를 선택해 패킷을 전달한다",
-          "데이터링크 계층: 직접 연결된 인접 노드 사이에서 프레임을 전달한다"
+          "목적지까지 가는 가장 좋은 길을 고른다",
+          "웹 페이지 화면을 예쁘게 그려 준다",
+          "0과 1로 된 데이터를 전기 신호·빛·전파로 바꿔 실제로 보낸다",
+          "어떤 프로그램에 데이터를 줄지 포트 번호로 정한다"
         ]
       },
       "answer_key": {
-        "indices": [
-          1,
-          2,
-          3
-        ]
+        "index": 2
       },
-      "explanation": "전송 계층은 포트로 프로세스를, 네트워크 계층은 호스트 간 경로를, 데이터링크 계층은 인접 노드 간 프레임을 담당합니다. 물리 계층은 비트를 신호로 보낼 뿐 재전송은 하지 않으며, 재전송은 TCP 같은 상위 계층(또는 Wi-Fi 같은 일부 링크 계층)이 맡습니다.",
+      "explanation": "물리 계층은 택배로 치면 트럭과 도로 같은 존재로, 0과 1을 신호로 바꿔 실제로 옮깁니다. 포트로 프로그램을 고르는 건 전송 계층, 길을 고르는 건 네트워크 계층의 일이에요.",
       "refs": [
         "https://en.wikipedia.org/wiki/OSI_model"
       ]
     },
     {
       "id": "network-layer-roles-007",
-      "type": "single",
-      "difficulty": 3,
+      "type": "ox",
+      "difficulty": 2,
       "tags": [
         "layer-roles",
-        "router-switch"
+        "tcp-ip-model"
       ],
       "content": {
-        "prompt": "일반적인 라우터가 패킷을 전달할 때 TCP 포트 번호를 보지 않고도 동작하는 이유로 옳은 것은?",
-        "options": [
-          "라우터는 전송 계층 헤더를 읽도록 설계되어 있어 항상 포트로 경로를 정한다",
-          "라우터는 이더넷 헤더만 보고 포워딩하며 IP 헤더는 읽지 않는다",
-          "TCP 포트는 암호화되어 있어 라우터가 읽을 수 없다",
-          "라우터는 네트워크 계층까지만 처리해 IP 주소로 포워딩하며 포트는 전달만 한다(NAT·방화벽은 예외)"
-        ]
+        "prompt": "실제 인터넷에서 주로 쓰는 TCP/IP 모델은 OSI 7계층보다 단순한 4계층(링크·인터넷·전송·응용) 모델이다."
       },
       "answer_key": {
-        "index": 3
+        "value": true
       },
-      "explanation": "일반 라우터는 IP 헤더의 목적지 주소로 다음 홉을 정하므로 전송 계층 헤더를 해석할 필요가 없습니다. 이더넷 헤더만 보는 장비는 L2 스위치이며, NAT나 방화벽은 포트까지 보는 예외입니다.",
+      "explanation": "TCP/IP 모델은 링크·인터넷·전송·응용의 4계층으로 정리돼 있어요. OSI의 위쪽 세 계층(세션·표현·응용)이 맡던 일은 TCP/IP에서는 응용 계층이 함께 맡습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Router_(computing)"
       ]
     },
     {
       "id": "network-layer-roles-008",
-      "type": "ox",
-      "difficulty": 3,
+      "type": "multi",
+      "difficulty": 2,
       "tags": [
         "layer-roles",
-        "layering-cost"
+        "layering-benefit"
       ],
       "content": {
-        "prompt": "계층화 덕분에 응용 프로그램은 아래 링크가 Wi-Fi든 이더넷이든 같은 소켓 API로 동작하지만, 계층마다 헤더가 붙기 때문에 오버헤드라는 대가가 따른다."
+        "prompt": "계층을 나눠서 얻는 장점으로 알맞은 것을 모두 고르시오.",
+        "options": [
+          "집 인터넷을 Wi-Fi에서 유선 랜으로 바꿔도 웹 브라우저는 그대로 쓸 수 있다",
+          "계층마다 헤더가 붙지 않아 데이터 크기가 줄어든다",
+          "각 계층을 따로 만들고 고칠 수 있다",
+          "한 계층이 고장 나면 다른 계층이 그 일을 대신 해 준다"
+        ]
       },
       "answer_key": {
-        "value": true
+        "indices": [
+          0,
+          2
+        ]
       },
-      "explanation": "계층화는 아래 계층의 구현을 추상화해 응용을 독립시키지만, 계층마다 헤더가 추가되어 전송 효율이 조금 떨어집니다. 계층화에 비용이 전혀 없다는 설명은 틀립니다.",
+      "explanation": "아래 계층이 바뀌어도 위 계층은 그대로 쓸 수 있고, 계층별로 따로 개발할 수 있는 것이 계층화의 장점이에요. 오히려 계층마다 헤더(포장)가 붙어 데이터는 조금 커지고, 다른 계층이 일을 대신해 주지도 않습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Internet_protocol_suite"
       ]

@@ -5,11 +5,13 @@ import { UnitOfWork } from '../../../../shared/infrastructure/unit-of-work';
 import { Answer } from '../../domain/answer.entity';
 import { LessonSession } from '../../domain/lesson-session.aggregate';
 import type { LessonSessionRepository } from '../../domain/ports';
+import type { SessionKind } from '../../domain/services/session-kind';
 
 type Row = Prisma.LessonSessionGetPayload<{ include: { answers: true } }>;
 
 /**
  * Prisma 모델(영속 스키마) ↔ LessonSession(도메인 모델) 매핑.
+ * 건너뛰기(placement) 세션은 유닛의 마지막 레슨 id를 lesson_id로 저장한다.
  * 복습 꼬리 문제는 별도 컬럼 없이 "review 세션이거나, lesson 세션에서 question_count를 넘는 뒤쪽 문제"로 복원한다.
  */
 @Injectable()
@@ -25,9 +27,9 @@ export class PrismaLessonSessionRepository implements LessonSessionRepository {
     return row ? this.toDomain(row, row.lesson?.questionCount ?? row.questionIds.length) : null;
   }
 
-  async findOpen(userId: UserId, lessonId?: LessonId): Promise<LessonSession | null> {
+  async findOpen(userId: UserId, lessonId?: LessonId, kind?: SessionKind): Promise<LessonSession | null> {
     const row = await this.db.lessonSession.findFirst({
-      where: { userId: userId.value, finishedAt: null, ...(lessonId ? { lessonId: lessonId.value } : {}) },
+      where: { userId: userId.value, finishedAt: null, ...(lessonId ? { lessonId: lessonId.value } : {}), ...(kind ? { kind } : {}) },
       orderBy: { startedAt: 'desc' },
       include: { answers: true, lesson: { select: { questionCount: true } } },
     });
@@ -78,17 +80,17 @@ export class PrismaLessonSessionRepository implements LessonSessionRepository {
     const start = zonedMidnightToUtc(localDate, timeZone);
     const end = new Date(start.getTime() + 86_400_000);
     return this.db.lessonSession.count({
-      where: { userId: userId.value, lessonId: lessonId.value, finishedAt: { gte: start, lt: end } },
+      where: { userId: userId.value, lessonId: lessonId.value, kind: 'lesson', finishedAt: { gte: start, lt: end } },
     });
   }
 
   private toDomain(row: Row, questionCount: number): LessonSession {
     const ids = row.questionIds;
-    const reviewIds = row.kind === 'review' ? ids : ids.slice(questionCount);
+    const reviewIds = row.kind === 'review' ? ids : row.kind === 'placement' ? [] : ids.slice(questionCount);
     return LessonSession.rehydrate({
       id: SessionId.of(row.id),
       userId: UserId.of(row.userId),
-      kind: row.kind === 'review' ? 'review' : 'lesson',
+      kind: row.kind,
       lessonId: row.lessonId ? LessonId.of(row.lessonId) : null,
       questionIds: ids.map(QuestionId.of),
       reviewQuestionIds: reviewIds,

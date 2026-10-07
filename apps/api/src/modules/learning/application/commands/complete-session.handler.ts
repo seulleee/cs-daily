@@ -5,7 +5,8 @@ import { SessionId, UserId } from '../../../../shared/domain/ids';
 import { localDateOf } from '../../../../shared/domain/local-date';
 import { UnitOfWork } from '../../../../shared/infrastructure/unit-of-work';
 import { SessionNotFound } from '../../domain/errors';
-import { LESSON_SESSION_REPO, USER_PREFS_PORT, type LessonSessionRepository, type UserPrefsPort } from '../../domain/ports';
+import { CURRICULUM_QUERY_PORT, LESSON_SESSION_REPO, USER_PREFS_PORT, type CurriculumQueryPort, type LessonSessionRepository, type UserPrefsPort } from '../../domain/ports';
+import { UnitSkipTest } from '../../domain/services/unit-skip-test';
 import { RecordSessionCompletionCommand, type SessionCompletionResult } from '../../../progression/application/commands/commands';
 import { CountDueReviewsQuery } from '../../../review/application/queries/queries';
 import { CompleteSessionCommand } from './commands';
@@ -21,6 +22,7 @@ export class CompleteSessionHandler implements ICommandHandler<CompleteSessionCo
   constructor(
     @Inject(LESSON_SESSION_REPO) private readonly sessions: LessonSessionRepository,
     @Inject(USER_PREFS_PORT) private readonly prefs: UserPrefsPort,
+    @Inject(CURRICULUM_QUERY_PORT) private readonly curriculum: CurriculumQueryPort,
     private readonly uow: UnitOfWork,
     private readonly publisher: EventPublisher,
     private readonly commandBus: CommandBus,
@@ -44,12 +46,17 @@ export class CompleteSessionHandler implements ICommandHandler<CompleteSessionCo
     });
     this.publisher.mergeObjectContext(session).commit();
 
+    // 건너뛰기 테스트: 통과하면 트랙 처음부터 이 유닛까지 완료 처리
+    const unit = session.kind === 'placement' && session.lessonId ? await this.curriculum.unitOfLesson(session.lessonId) : null;
+    const passed = unit ? UnitSkipTest.passed(summary.correct, summary.total) : false;
+
     const progression = await this.commandBus.execute<RecordSessionCompletionCommand, SessionCompletionResult>(
       new RecordSessionCompletionCommand({
         userId: cmd.userId,
         sessionId: cmd.sessionId,
         kind: session.kind,
         lessonId: session.lessonId?.value ?? null,
+        skipLessonIds: passed && unit ? unit.lessonIdsThroughUnit : [],
         correct: summary.correct,
         total: summary.total,
         xpEarned: summary.xpEarned,
@@ -66,6 +73,7 @@ export class CompleteSessionHandler implements ICommandHandler<CompleteSessionCo
       streak: progression.streak,
       dailyGoal: progression.dailyGoal,
       newReviewCount,
+      placement: unit ? { passed, passPercent: UnitSkipTest.PASS_PERCENT, unitName: unit.name, skippedLessons: progression.skippedLessons } : null,
     };
   }
 }

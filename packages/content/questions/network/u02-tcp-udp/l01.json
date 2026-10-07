@@ -12,18 +12,18 @@
         "basics"
       ],
       "content": {
-        "prompt": "TCP와 UDP의 기본 특성을 올바르게 비교한 것은?",
+        "prompt": "등기우편처럼 '받았는지' 확인하고, 빠진 것은 다시 보내 주는 전송 방식은?",
         "options": [
-          "TCP는 비연결형이고 UDP는 연결 지향이다",
-          "TCP와 UDP 모두 순서를 보장하지만 UDP만 재전송한다",
-          "UDP는 순서를 보장하고 TCP는 보장하지 않는다",
-          "TCP는 연결 지향·신뢰성·순서 보장, UDP는 비연결·비신뢰·순서 미보장이다"
+          "TCP",
+          "HTTP",
+          "UDP",
+          "DNS"
         ]
       },
       "answer_key": {
-        "index": 3
+        "index": 0
       },
-      "explanation": "TCP는 연결 설정, ACK와 재전송, 순서 보장을 제공하고 UDP는 이를 제공하지 않는 단순한 데이터그램 서비스입니다. 연결 지향과 순서 보장은 TCP 쪽 특성이라 UDP가 순서를 보장한다는 설명은 틀립니다.",
+      "explanation": "TCP는 받는 쪽이 '잘 받았어요(ACK)'라고 답하게 하고, 답이 없으면 다시 보내요. UDP는 확인 없이 보내기만 하는 전단지에 가깝습니다.",
       "refs": [
         "https://www.rfc-editor.org/rfc/rfc9293",
         "https://www.rfc-editor.org/rfc/rfc768"
@@ -38,19 +38,18 @@
         "udp-header"
       ],
       "content": {
-        "prompt": "UDP 헤더의 크기는 고정 ___ 바이트이다. (숫자만 입력)"
+        "prompt": "전단지를 뿌리듯 받았는지 확인하지 않고 빠르게 보내기만 하는 전송 방식은 ___ 이다.",
+        "hint": "영어 대문자 세 글자, TCP의 짝꿍"
       },
       "answer_key": {
         "accepted": [
-          "8",
-          "8바이트",
-          "8 byte",
-          "8bytes",
-          "8 bytes",
-          "팔"
+          "UDP",
+          "udp",
+          "유디피",
+          "user datagram protocol"
         ]
       },
-      "explanation": "UDP 헤더는 출발지 포트, 목적지 포트, 길이, 체크섬이 각각 2바이트씩이라 모두 8바이트입니다. 20바이트는 옵션이 없는 TCP 헤더의 최소 크기이므로 혼동하기 쉽습니다.",
+      "explanation": "UDP는 연결 준비나 수신 확인 없이 바로 보내기 때문에 가볍고 빨라요. 대신 중간에 빠져도 다시 보내 주지 않습니다.",
       "refs": [
         "https://www.rfc-editor.org/rfc/rfc768",
         "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
@@ -62,41 +61,40 @@
       "difficulty": 1,
       "tags": [
         "tcp-vs-udp",
-        "udp-checksum"
+        "ordering"
       ],
       "content": {
-        "prompt": "UDP 헤더에도 체크섬 필드가 있어 손상된 데이터그램을 검출할 수 있다. (IPv4에서는 선택 사항, IPv6에서는 필수이다.)"
+        "prompt": "UDP는 데이터가 뒤섞여 도착해도 보낸 순서대로 다시 맞춰서 받는 프로그램에 넘겨준다."
       },
       "answer_key": {
-        "value": true
+        "value": false
       },
-      "explanation": "UDP는 신뢰성은 제공하지 않지만 체크섬으로 손상 검출은 할 수 있습니다. IPv4에서는 0으로 두고 생략할 수 있으나 IPv6에서는 필수입니다. 오류 검출이 전혀 없다는 설명은 틀립니다.",
+      "explanation": "순서를 맞춰 주는 건 TCP예요. TCP는 데이터마다 번호를 붙여 받는 쪽에서 순서대로 정리하지만, 전단지 같은 UDP는 도착한 대로 넘길 뿐 순서를 맞춰 주지 않습니다.",
       "refs": [
-        "https://www.rfc-editor.org/rfc/rfc768",
-        "https://www.rfc-editor.org/rfc/rfc8200"
+        "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
       ]
     },
     {
       "id": "network-tcp-vs-udp-004",
       "type": "single",
-      "difficulty": 2,
+      "difficulty": 1,
       "tags": [
         "tcp-vs-udp",
-        "message-boundary"
+        "use-case"
       ],
       "content": {
-        "prompt": "송신자가 100바이트씩 send()를 두 번 호출했다. 수신 측에서 길이 프리픽스 같은 메시지 구분 규칙을 애플리케이션이 직접 정해야 하는 쪽은?",
+        "prompt": "파일 다운로드·웹 페이지·이메일처럼 한 글자라도 빠지면 안 되는 데이터를 보낼 때 더 알맞은 방식은?",
         "options": [
-          "UDP: 데이터그램마다 경계가 유지되므로 구분 규칙이 반드시 필요하다",
-          "TCP: 바이트 스트림이라 두 번의 send가 한 번의 recv로 합쳐질 수 있기 때문이다",
-          "둘 다 필요 없다: 전송 계층이 항상 메시지를 구분해 준다",
-          "둘 다 필요하다: 모든 전송 프로토콜은 경계를 유지하지 않는다"
+          "둘 다 쓰면 안 된다",
+          "UDP",
+          "TCP",
+          "둘 중 아무거나 같다"
         ]
       },
       "answer_key": {
-        "index": 1
+        "index": 2
       },
-      "explanation": "TCP는 경계 없는 바이트 스트림이어서 두 번 보낸 데이터가 한 번에 읽히거나 쪼개져 읽힐 수 있어 길이 프리픽스 등이 필요합니다. UDP는 send 한 번이 데이터그램 하나로 유지되어 경계가 보존됩니다.",
+      "explanation": "내용이 하나라도 빠지면 파일이 깨지므로, 빠진 것을 다시 보내 주는 TCP가 알맞아요. UDP는 빠져도 다시 보내지 않아 이런 용도에는 맞지 않습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
       ]
@@ -110,94 +108,94 @@
         "realtime"
       ],
       "content": {
-        "prompt": "실시간 음성 통화나 온라인 게임의 상태 전송에 UDP가 자주 선호되는 이유로 가장 적절한 것은?",
+        "prompt": "영상 통화나 온라인 게임에서 UDP를 자주 쓰는 이유로 알맞은 것은?",
         "options": [
-          "UDP는 전용 회선을 사용해 물리적으로 더 빠르게 전송하기 때문이다",
-          "UDP는 항상 패킷 손실이 없는 신뢰성 있는 전송을 보장하기 때문이다",
-          "오래된 데이터의 재전송을 기다리느라 최신 데이터가 지연되는 것보다 일부 손실을 감수하는 편이 낫기 때문이다",
-          "UDP만 포트 번호를 사용할 수 있기 때문이다"
+          "UDP는 데이터 순서를 반드시 지켜 줘서",
+          "UDP만 영상 데이터를 보낼 수 있어서",
+          "UDP는 빠진 데이터를 TCP보다 더 잘 다시 보내 줘서",
+          "조금 빠지더라도 기다리지 않고 최신 데이터를 빨리 보내는 게 더 중요해서"
         ]
       },
       "answer_key": {
-        "index": 2
+        "index": 3
       },
-      "explanation": "실시간 응용은 늦게 도착한 데이터가 쓸모없으므로 TCP의 재전송과 순서 대기로 인한 지연이 오히려 해롭습니다. UDP가 물리적으로 더 빠른 것은 아니며 신뢰성도 보장하지 않습니다. 포트는 TCP도 사용합니다.",
+      "explanation": "영상 통화는 1초 전 화면을 다시 받느라 멈추는 것보다 지금 화면을 빨리 보는 게 중요해요. 그래서 재전송을 기다리지 않는 UDP가 잘 맞습니다. UDP는 재전송이나 순서 보장을 해 주지 않아요.",
       "refs": [
         "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
       ]
     },
     {
       "id": "network-tcp-vs-udp-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tcp-vs-udp",
+        "flow-control"
+      ],
+      "content": {
+        "prompt": "받는 쪽이 '천천히 보내 주세요, 아직 다 못 읽었어요'라고 하면 보내는 속도를 맞춰 주는 기능(흐름 제어)이 있는 것은?",
+        "options": [
+          "UDP만 있다",
+          "TCP와 UDP 둘 다 있다",
+          "TCP만 있다",
+          "둘 다 없다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "TCP는 받는 쪽이 감당할 수 있는 양을 알려 주면 그만큼만 보내는 흐름 제어를 해요. UDP는 상대 상황과 상관없이 보내기만 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293",
+        "https://www.rfc-editor.org/rfc/rfc768"
+      ]
+    },
+    {
+      "id": "network-tcp-vs-udp-007",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "tcp-vs-udp",
+        "connectionless"
+      ],
+      "content": {
+        "prompt": "UDP는 보내기 전에 연결을 맺는 인사(핸드셰이크) 과정이 없어서, TCP보다 데이터를 더 빨리 보내기 시작할 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "TCP는 먼저 '여보세요/네 들려요/좋아요' 같은 인사를 주고받아야 하지만, UDP는 그런 준비 없이 바로 보냅니다. 그래서 시작이 빠르고 간단해요.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc768"
+      ]
+    },
+    {
+      "id": "network-tcp-vs-udp-008",
       "type": "multi",
       "difficulty": 2,
       "tags": [
         "tcp-vs-udp",
-        "app-protocols"
+        "udp-traits"
       ],
       "content": {
-        "prompt": "일반적으로 전송 계층에서 UDP를 기본으로 사용하는 프로토콜을 모두 고르시오.",
+        "prompt": "UDP의 특징으로 알맞은 것을 모두 고르시오.",
         "options": [
-          "DHCP",
-          "SMTP",
-          "NTP",
-          "DNS(일반적인 질의)"
+          "데이터가 빠지거나 순서가 바뀌어도 UDP가 알아서 고쳐 주지 않는다",
+          "데이터가 빠지면 자동으로 다시 보낸다",
+          "보내기 전에 반드시 연결을 맺어야 한다",
+          "받았는지 확인(ACK)을 주고받지 않는다"
         ]
       },
       "answer_key": {
         "indices": [
           0,
-          2,
           3
         ]
       },
-      "explanation": "DHCP, NTP, DNS의 일반 질의는 기본적으로 UDP를 씁니다(DNS는 큰 응답이나 존 전송 때 TCP 53도 사용). SMTP는 신뢰성이 필요한 메일 전송이라 TCP를 사용합니다.",
+      "explanation": "UDP는 전단지처럼 보내기만 해서 수신 확인도, 재전송도, 순서 맞추기도 하지 않아요. 재전송과 연결 맺기는 TCP의 특징입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers"
-      ]
-    },
-    {
-      "id": "network-tcp-vs-udp-007",
-      "type": "single",
-      "difficulty": 3,
-      "tags": [
-        "tcp-vs-udp",
-        "multicast"
-      ],
-      "content": {
-        "prompt": "TCP가 브로드캐스트나 멀티캐스트 전송에 쓰일 수 없는 이유로 옳은 것은?",
-        "options": [
-          "TCP는 1:1 연결 상태를 유지하고 상대의 ACK로 신뢰성을 보장하는 구조라 다수 수신자에게 쓸 수 없기 때문이다",
-          "TCP는 헤더에 주소 필드가 없어 목적지를 지정할 수 없기 때문이다",
-          "TCP는 UDP보다 항상 느려서 다수 수신자에 맞지 않기 때문이다",
-          "멀티캐스트 주소는 TCP 포트 범위와 충돌하기 때문이다"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "TCP는 두 끝점 사이의 연결 상태와 ACK에 기반하므로 1:1 통신만 가능합니다. 브로드캐스트·멀티캐스트에는 비연결형인 UDP를 씁니다. 주소는 IP 헤더가 담당해서 TCP 헤더에 없는 것은 이유가 아닙니다.",
-      "refs": [
-        "https://www.rfc-editor.org/rfc/rfc9293"
-      ]
-    },
-    {
-      "id": "network-tcp-vs-udp-008",
-      "type": "ox",
-      "difficulty": 3,
-      "tags": [
-        "tcp-vs-udp",
-        "quic"
-      ],
-      "content": {
-        "prompt": "UDP 자체에는 혼잡 제어가 없으므로, UDP 위에서 신뢰성과 혼잡 제어를 얻으려면 QUIC처럼 애플리케이션(또는 라이브러리) 계층에서 직접 구현해야 한다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "UDP는 재전송과 혼잡 제어를 제공하지 않으며 QUIC은 UDP 위에서 이를 사용자 공간에서 직접 구현합니다. 커널이 UDP에 혼잡 제어를 자동으로 적용해 준다는 설명은 틀립니다.",
-      "refs": [
-        "https://www.rfc-editor.org/rfc/rfc9000",
-        "https://en.wikipedia.org/wiki/QUIC"
+        "https://www.rfc-editor.org/rfc/rfc768",
+        "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
       ]
     }
   ]

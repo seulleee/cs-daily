@@ -1,7 +1,8 @@
 import { z } from 'zod';
 import { PublicQuestion, UserAnswer } from './questions.js';
 
-export const SessionKind = z.enum(['lesson', 'review']);
+/** placement = 유닛 건너뛰기 테스트 */
+export const SessionKind = z.enum(['lesson', 'review', 'placement']);
 export type SessionKind = z.infer<typeof SessionKind>;
 
 /** POST /sessions/{id}/answers */
@@ -55,5 +56,15 @@ export const CompleteSessionResponse = z.object({
   }),
   dailyGoal: z.object({ target: z.number().int(), done: z.number().int(), achieved: z.boolean() }),
   newReviewCount: z.number().int(),
+  /** 건너뛰기 테스트 결과 (kind=placement일 때만) */
+  placement: z
+    .object({
+      passed: z.boolean(),
+      passPercent: z.number().int(),
+      unitName: z.string(),
+      /** 통과로 새로 완료 처리된 레슨 수 */
+      skippedLessons: z.number().int(),
+    })
+    .nullable(),
 });
 export type CompleteSessionResponse = z.infer<typeof CompleteSessionResponse>;

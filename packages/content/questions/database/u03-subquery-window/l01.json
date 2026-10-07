@@ -8,54 +8,52 @@
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "subquery",
-        "scalar-subquery"
+        "subquery"
       ],
       "content": {
-        "prompt": "스칼라 서브쿼리가 만족해야 하는 조건은?",
+        "prompt": "서브쿼리(subquery)란 무엇일까?",
         "options": [
-          "결과가 여러 행이어도 되지만 컬럼은 하나여야 한다",
-          "정확히 1행 1열을 반환해야 한다",
-          "바깥 쿼리의 컬럼을 반드시 참조해야 한다",
-          "반드시 집계 함수를 포함해야 한다"
+          "쿼리 안에 괄호로 넣은 또 다른 쿼리",
+          "테이블을 백업해 둔 사본",
+          "결과를 정렬하는 옵션",
+          "두 테이블을 합친 결과"
         ]
       },
       "answer_key": {
-        "index": 1
+        "index": 0
       },
-      "explanation": "스칼라 서브쿼리는 값 하나를 대신하므로 1행 1열이어야 합니다. 여러 행을 반환하면 PostgreSQL은 오류를 내며, 바깥 컬럼 참조나 집계 함수는 필수 조건이 아닙니다.",
+      "explanation": "서브쿼리는 '쿼리 속 쿼리'입니다. 괄호 안의 쿼리 결과를 바깥 쿼리가 조건이나 값으로 가져다 써요. 두 표를 합치는 건 JOIN입니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-SCALAR-SUBQUERIES",
-        "https://en.wikipedia.org/wiki/Correlated_subquery"
+        "https://www.postgresql.org/docs/current/functions-subquery.html"
       ]
     },
     {
       "id": "database-subquery-002",
-      "type": "fill",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "subquery",
-        "correlated-subquery"
+        "in"
       ],
       "content": {
-        "prompt": "바깥 쿼리의 컬럼을 참조하여 바깥 행마다 다시 평가되는 서브쿼리를 ___ 서브쿼리라고 한다.",
-        "hint": "영어로 correlated"
-      },
-      "answer_key": {
-        "accepted": [
-          "상관",
-          "상관 서브쿼리",
-          "상관서브쿼리",
-          "correlated",
-          "correlated subquery",
-          "연관",
-          "연관 서브쿼리"
+        "prompt": "아래 쿼리의 결과는?",
+        "code": {
+          "language": "sql",
+          "source": "-- members(id, name): (1, 민지), (2, 준호), (3, 서연)\n-- orders(member_id): 1, 1, 2\nSELECT name FROM members\nWHERE id IN (SELECT member_id FROM orders);"
+        },
+        "options": [
+          "민지, 준호",
+          "민지, 민지, 준호",
+          "서연",
+          "민지, 준호, 서연"
         ]
       },
-      "explanation": "상관 서브쿼리는 바깥 행의 값을 참조하므로 논리적으로 행마다 평가됩니다. 단순히 서브쿼리 안에 서브쿼리를 넣는 구조인 중첩(nested)과는 다른 개념입니다.",
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "괄호 안 결과는 1, 1, 2이고, 회원 id가 이 목록에 있는지 확인합니다. 민지(1)와 준호(2)가 한 번씩 나와요. IN은 '목록에 있나?'만 보므로 주문이 2건이어도 민지는 한 번만 나옵니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/functions-subquery.html",
-        "https://en.wikipedia.org/wiki/Correlated_subquery"
+        "https://www.postgresql.org/docs/current/functions-subquery.html"
       ]
     },
     {
@@ -64,45 +62,40 @@
       "difficulty": 1,
       "tags": [
         "subquery",
-        "exists"
+        "in"
       ],
       "content": {
-        "prompt": "EXISTS (SELECT 1 FROM ...)에서 SELECT 목록에 무엇을 쓰는지는 EXISTS의 결과에 영향을 주지 않는다."
+        "prompt": "IN (...)은 '괄호 안 목록에 들어 있으면 참'이라는 뜻이다. 예를 들어 WHERE id IN (1, 2)는 id가 1 또는 2인 행을 고른다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "EXISTS는 서브쿼리가 행을 반환하는지만 검사하므로 SELECT 목록은 평가 결과와 무관합니다. SELECT 1이 필수도 아니고 SELECT *가 더 느린 것도 아닙니다.",
+      "explanation": "IN은 'id = 1 OR id = 2'를 짧게 쓴 것과 같습니다. 괄호 안에 값을 직접 적어도 되고, 서브쿼리 결과를 넣어도 돼요.",
       "refs": [
-        "https://www.postgresql.org/docs/current/functions-subquery.html#FUNCTIONS-SUBQUERY-EXISTS"
+        "https://www.postgresql.org/docs/current/functions-subquery.html"
       ]
     },
     {
       "id": "database-subquery-004",
       "type": "single",
-      "difficulty": 2,
+      "difficulty": 1,
       "tags": [
         "subquery",
-        "scalar-subquery",
-        "error"
+        "scalar-subquery"
       ],
       "content": {
-        "prompt": "스칼라 서브쿼리로 쓰인 SELECT가 2행 이상을 반환하면 PostgreSQL은 어떻게 동작하는가?",
-        "code": {
-          "language": "sql",
-          "source": "SELECT name,\n  (SELECT o.id FROM orders o WHERE o.user_id = u.id) AS order_id\nFROM users u;\n-- 한 사용자가 주문 2건 이상을 가진 경우"
-        },
+        "prompt": "SELECT 목록 등에 넣어 '값 하나'처럼 쓰는 서브쿼리를 스칼라 서브쿼리라고 한다. 이 서브쿼리의 결과는 어떤 모양이어야 할까?",
         "options": [
-          "첫 번째 행의 값을 자동으로 사용한다",
-          "마지막 행의 값을 자동으로 사용한다",
-          "행 중 가장 작은 값을 사용한다",
-          "\"more than one row returned by a subquery\" 오류가 발생한다"
+          "최대 한 행, 한 열(값 하나)",
+          "여러 행이어도 상관없다",
+          "여러 열이어도 상관없다",
+          "반드시 0행이어야 한다"
         ]
       },
       "answer_key": {
-        "index": 3
+        "index": 0
       },
-      "explanation": "PostgreSQL은 스칼라 서브쿼리가 2행 이상이면 오류를 내며 임의로 행을 고르지 않습니다. 첫 행이 자동 선택된다는 것은 일부 다른 시스템과 혼동한 오답입니다.",
+      "explanation": "값 하나 자리에 들어가므로 결과도 한 칸이어야 합니다. 여러 행이 나오면 어느 값을 써야 할지 몰라 오류가 나요. 결과가 0행이면 NULL(빈 값)로 취급합니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-SCALAR-SUBQUERIES"
       ]
@@ -113,108 +106,108 @@
       "difficulty": 2,
       "tags": [
         "subquery",
-        "in",
-        "exists"
+        "exists",
+        "correlated-subquery"
       ],
       "content": {
-        "prompt": "orders.user_id에 NULL이 없을 때, 아래 두 쿼리의 결과는?",
+        "prompt": "아래 쿼리의 WHERE 조건은 어떤 뜻일까?",
         "code": {
           "language": "sql",
-          "source": "SELECT * FROM users u\nWHERE u.id IN (SELECT user_id FROM orders);\n\nSELECT * FROM users u\nWHERE EXISTS (SELECT 1 FROM orders o WHERE o.user_id = u.id);"
+          "source": "SELECT name FROM members m\nWHERE EXISTS (\n  SELECT 1 FROM orders o WHERE o.member_id = m.id);"
         },
         "options": [
-          "IN 쿼리만 NULL 행을 반환한다",
-          "두 쿼리의 결과가 서로 다르다",
-          "같은 사용자 집합이 반환된다",
-          "EXISTS 쿼리만 중복 행을 반환한다"
+          "그 회원의 주문이 하나라도 있으면 참",
+          "그 회원의 주문 개수를 돌려준다",
+          "주문이 정확히 1건일 때만 참",
+          "주문이 없는 회원일 때 참"
         ]
       },
       "answer_key": {
-        "index": 2
+        "index": 0
       },
-      "explanation": "서브쿼리 결과에 NULL이 없으면 둘 다 주문이 있는 사용자를 고르므로 결과가 같습니다. 서브쿼리 결과에 NULL이 섞이는 NOT IN과 NOT EXISTS 사이에서만 의미가 갈립니다.",
+      "explanation": "EXISTS는 '결과가 하나라도 있나?'를 묻습니다. 괄호 안에서 바깥 회원의 id(m.id)를 쓰기 때문에, 회원 한 명씩 '이 사람 주문 있어?'를 확인한다고 이해하면 돼요(상관 서브쿼리).",
       "refs": [
-        "https://www.postgresql.org/docs/current/functions-subquery.html",
+        "https://www.postgresql.org/docs/current/functions-subquery.html#FUNCTIONS-SUBQUERY-EXISTS",
         "https://en.wikipedia.org/wiki/Correlated_subquery"
       ]
     },
     {
       "id": "database-subquery-006",
-      "type": "multi",
+      "type": "ox",
       "difficulty": 2,
       "tags": [
         "subquery",
-        "not-in",
-        "null",
-        "not-exists"
+        "exists"
       ],
       "content": {
-        "prompt": "orders.user_id에 NULL이 하나라도 있을 때 NOT IN (SELECT user_id FROM orders) 가 빈 결과를 내는 이유에 대한 참인 진술을 모두 고르시오.",
-        "options": [
-          "서브쿼리 결과의 NULL은 NOT IN 비교에서 자동으로 무시된다",
-          "x <> NULL이 UNKNOWN이라 NOT IN 조건이 어떤 행에서도 TRUE가 되지 못한다",
-          "NOT IN에 NULL이 포함되면 PostgreSQL이 문법 오류를 낸다",
-          "같은 목적에 NOT EXISTS를 쓰면 이 문제가 생기지 않는다"
-        ]
+        "prompt": "EXISTS는 서브쿼리가 돌려준 값을 하나하나 비교하므로, 괄호 안에 SELECT 1을 쓰느냐 SELECT *를 쓰느냐에 따라 결과가 달라진다."
       },
       "answer_key": {
-        "indices": [
-          1,
-          3
-        ]
+        "value": false
       },
-      "explanation": "NOT IN은 모든 값에 대해 <>가 참이어야 하는데 NULL과의 비교는 UNKNOWN이라 결과가 빕니다. NULL은 무시되지 않고 오류도 나지 않습니다. NOT EXISTS는 NULL 비교에 걸리지 않아 안전합니다.",
+      "explanation": "EXISTS는 서브쿼리 결과에 행이 '하나라도 있는지'만 확인하고 값은 보지 않습니다. 그래서 SELECT 1이든 SELECT *든 결과는 같아요. 값을 비교하는 건 IN 쪽입니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/functions-subquery.html#FUNCTIONS-SUBQUERY-NOTIN",
-        "https://en.wikipedia.org/wiki/Null_(SQL)"
+        "https://www.postgresql.org/docs/current/functions-subquery.html#FUNCTIONS-SUBQUERY-EXISTS"
       ]
     },
     {
       "id": "database-subquery-007",
-      "type": "single",
-      "difficulty": 3,
+      "type": "multi",
+      "difficulty": 2,
       "tags": [
         "subquery",
-        "scalar-subquery",
-        "null"
+        "in",
+        "exists",
+        "scalar-subquery"
       ],
       "content": {
-        "prompt": "empty 테이블이 비어 있을 때 SELECT (SELECT max(x) FROM empty) 와 SELECT (SELECT x FROM empty) 의 결과는?",
+        "prompt": "서브쿼리에 대한 설명으로 옳은 것을 모두 고르시오.",
         "options": [
-          "첫 번째만 NULL이고 두 번째는 오류가 난다",
-          "둘 다 오류가 난다",
-          "둘 다 NULL이 반환된다",
-          "첫 번째는 0이고 두 번째는 NULL이다"
+          "IN 서브쿼리는 값이 결과 목록에 들어 있는지 확인한다",
+          "EXISTS는 서브쿼리 결과 행이 하나라도 있으면 참이다",
+          "스칼라 서브쿼리는 여러 행을 돌려줘도 된다",
+          "서브쿼리는 WHERE 절에만 쓸 수 있다"
         ]
       },
       "answer_key": {
-        "index": 2
+        "indices": [
+          0,
+          1
+        ]
       },
-      "explanation": "집계 max는 빈 입력에서 NULL 1행을 만들고, 스칼라 서브쿼리가 0행이면 값이 NULL이 되므로 둘 다 NULL입니다. 0행은 오류가 아니며, 오류는 2행 이상일 때만 나고 0을 돌려주지도 않습니다.",
+      "explanation": "IN은 '목록에 있나', EXISTS는 '하나라도 있나'를 확인합니다. 스칼라 서브쿼리는 값 하나만 돌려줘야 하고, 서브쿼리는 WHERE뿐 아니라 SELECT 목록이나 FROM 절에도 쓸 수 있어요.",
       "refs": [
-        "https://www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-SCALAR-SUBQUERIES",
-        "https://www.postgresql.org/docs/current/functions-aggregate.html"
+        "https://www.postgresql.org/docs/current/functions-subquery.html",
+        "https://www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-SCALAR-SUBQUERIES"
       ]
     },
     {
       "id": "database-subquery-008",
-      "type": "ox",
-      "difficulty": 3,
+      "type": "single",
+      "difficulty": 2,
       "tags": [
         "subquery",
-        "in",
-        "null"
+        "not-exists"
       ],
       "content": {
-        "prompt": "IN (서브쿼리)의 결과에 NULL이 포함되어 있어도, 바깥 값이 목록의 비-NULL 값 중 하나와 일치하면 그 행은 TRUE로 포함된다."
+        "prompt": "아래 쿼리의 결과는?",
+        "code": {
+          "language": "sql",
+          "source": "-- members(id, name): (1, 민지), (2, 준호), (3, 서연)\n-- orders(member_id): 1, 1, 2\nSELECT name FROM members m\nWHERE NOT EXISTS (\n  SELECT 1 FROM orders o WHERE o.member_id = m.id);"
+        },
+        "options": [
+          "서연",
+          "민지, 준호",
+          "아무도 없다",
+          "민지, 준호, 서연"
+        ]
       },
       "answer_key": {
-        "value": true
+        "index": 0
       },
-      "explanation": "IN은 하나라도 일치하면 TRUE이므로 목록의 NULL이 있어도 일치하는 값이 있으면 포함됩니다. NULL이 결과를 망치는 것은 모든 값과의 불일치를 요구하는 NOT IN입니다.",
+      "explanation": "NOT EXISTS는 '결과가 하나도 없으면 참'입니다. 주문 목록(1, 1, 2)에 없는 회원은 서연(3)뿐이라 서연만 나와요.",
       "refs": [
-        "https://www.postgresql.org/docs/current/functions-subquery.html#FUNCTIONS-SUBQUERY-IN",
-        "https://www.postgresql.org/docs/current/functions-comparison.html"
+        "https://www.postgresql.org/docs/current/functions-subquery.html#FUNCTIONS-SUBQUERY-EXISTS"
       ]
     }
   ]

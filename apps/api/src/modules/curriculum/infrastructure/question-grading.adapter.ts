@@ -3,7 +3,7 @@ import { ErrorCode, type QuestionType } from '@cs-daily/contracts';
 import { NotFoundError } from '../../../shared/domain/domain-error';
 import { LessonId, QuestionId, UserId } from '../../../shared/domain/ids';
 import { UnitOfWork } from '../../../shared/infrastructure/unit-of-work';
-import type { CurriculumQueryPort, LessonOutline, QuestionForGrading, QuestionGradingPort, QuestionPublic } from '../../learning/domain/ports';
+import type { CurriculumQueryPort, LessonOutline, QuestionForGrading, QuestionGradingPort, QuestionPublic, UnitOutline } from '../../learning/domain/ports';
 
 const MVP_TYPES: ReadonlySet<string> = new Set(['single', 'multi', 'ox', 'fill']);
 
@@ -34,6 +34,25 @@ export class CurriculumAdapter implements QuestionGradingPort, CurriculumQueryPo
     });
     if (!l) return null;
     return { id: l.id, name: l.name, trackId: l.unit.trackId, unitSortOrder: l.unit.sortOrder, lessonSortOrder: l.sortOrder, questionCount: l.questionCount };
+  }
+
+  async unitOutline(unitId: number): Promise<UnitOutline | null> {
+    const u = await this.db.unit.findUnique({
+      where: { id: unitId },
+      select: { id: true, name: true, trackId: true, sortOrder: true, lessons: { orderBy: { sortOrder: 'asc' }, select: { id: true } } },
+    });
+    if (!u) return null;
+    const through = await this.db.lesson.findMany({
+      where: { unit: { trackId: u.trackId, sortOrder: { lte: u.sortOrder } } },
+      orderBy: [{ unit: { sortOrder: 'asc' } }, { sortOrder: 'asc' }],
+      select: { id: true },
+    });
+    return { id: u.id, name: u.name, trackId: u.trackId, sortOrder: u.sortOrder, lessonIds: u.lessons.map((l) => l.id), lessonIdsThroughUnit: through.map((l) => l.id) };
+  }
+
+  async unitOfLesson(lessonId: LessonId): Promise<UnitOutline | null> {
+    const l = await this.db.lesson.findUnique({ where: { id: lessonId.value }, select: { unitId: true } });
+    return l ? this.unitOutline(l.unitId) : null;
   }
 
   async publishedQuestionIds(lessonId: LessonId): Promise<string[]> {

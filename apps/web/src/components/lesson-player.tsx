@@ -101,6 +101,11 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
 
       <section className="flex-1 px-4 pb-40 md:mx-auto md:w-full md:max-w-[720px]">
         {session.data.kind === 'review' && <p className="mb-2 text-xs font-bold text-(--color-streak)">복습 세션 · XP ×1.5</p>}
+        {session.data.kind === 'placement' && (
+          <p className="mb-2 text-xs font-bold text-(--color-brand)">
+            ⏭ 건너뛰기 테스트{session.data.lessonName ? ` · ${session.data.lessonName}` : ''} — 80% 이상 맞히면 이 유닛까지 완료돼요
+          </p>
+        )}
         <QuestionRenderer question={q} value={draft} onChange={setDraft} revealed={result ? { correctAnswer: result.correctAnswer, isCorrect: result.isCorrect } : null} />
         {submit.isError && <p className="mt-3 text-sm text-(--color-wrong)">{(submit.error as ApiError).message}</p>}
       </section>
@@ -118,7 +123,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
             <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
               <div className="flex-1">
                 <div className={`text-lg font-black ${result.isCorrect ? 'text-(--color-correct)' : 'text-(--color-wrong)'}`}>
-                  {result.isCorrect ? `정답! +${result.xpDelta} XP` : '아쉬워요'}
+                  {result.isCorrect ? (result.xpDelta > 0 ? `정답! +${result.xpDelta} XP` : '정답!') : '아쉬워요'}
                   {!result.isCorrect && <span className="ml-2 rounded-full bg-(--color-surface) px-2 py-0.5 text-xs font-bold text-(--color-ink-2)">복습에 추가됨</span>}
                 </div>
                 <p className="mt-1 text-sm leading-relaxed">{result.explanation}</p>

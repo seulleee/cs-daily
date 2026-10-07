@@ -41,3 +41,9 @@ export class NoReviewDue extends NotFoundError {
     super(ErrorCode.NO_REVIEW_DUE, '지금 복습할 문제가 없습니다');
   }
 }
+
+export class UnitNotFound extends NotFoundError {
+  constructor(unitId: number) {
+    super(ErrorCode.LESSON_NOT_FOUND, `유닛이 없습니다: ${unitId}`);
+  }
+}

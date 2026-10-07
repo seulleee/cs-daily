@@ -7,128 +7,195 @@
       "id": "os-scheduling-criteria-001",
       "type": "single",
       "difficulty": 1,
-      "tags": ["scheduling-criteria", "turnaround"],
+      "tags": [
+        "scheduling-criteria",
+        "waiting-time"
+      ],
       "content": {
-        "prompt": "프로세스의 반환 시간(turnaround time)의 정의로 옳은 것은?",
+        "prompt": "마트 계산대에 비유하면, 손님(작업)이 '줄 서서 기다린 시간'에 해당하는 스케줄링 기준은?",
         "options": [
-          "CPU 버스트 시간의 총합",
-          "완료 시각에서 도착 시각을 뺀 값",
-          "도착 후 처음 CPU를 받을 때까지 걸린 시간",
-          "ready 큐에서 기다린 시간의 총합"
+          "처리량",
+          "대기 시간",
+          "CPU 사용률",
+          "실행 시간"
         ]
       },
-      "answer_key": { "index": 1 },
-      "explanation": "반환 시간은 프로세스가 도착해서 완료될 때까지 걸린 전체 시간(완료 − 도착)입니다. 버스트 시간은 CPU를 실제로 쓴 시간, 처음 CPU를 받을 때까지는 응답 시간, ready 큐 대기 합은 대기 시간입니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Scheduling_(computing)", "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"]
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "작업이 CPU를 기다리며 줄(준비 큐)에 서 있던 시간의 합이 대기 시간입니다. 처리량은 한 사람의 기다림이 아니라 정해진 시간에 몇 명을 계산했는지를 뜻합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
     },
     {
       "id": "os-scheduling-criteria-002",
-      "type": "fill",
+      "type": "single",
       "difficulty": 1,
-      "tags": ["scheduling-criteria", "waiting-time"],
+      "tags": [
+        "scheduling-criteria",
+        "throughput"
+      ],
       "content": {
-        "prompt": "대기 시간 = 반환 시간 − ___ 시간. 빈칸에는 프로세스가 CPU를 실제로 사용한 총 시간을 가리키는 말이 들어간다.",
-        "hint": "CPU를 연속으로 사용하는 구간을 부르는 용어"
+        "prompt": "스케줄링 기준 중 처리량(throughput)의 뜻으로 옳은 것은?",
+        "options": [
+          "작업 하나가 줄에서 기다린 시간",
+          "작업이 도착해서 처음 응답을 받기까지 걸린 시간",
+          "정해진 시간 동안 끝낸 작업의 수",
+          "CPU 하나의 속도(클럭)"
+        ]
       },
-      "answer_key": { "accepted": ["CPU 버스트", "버스트", "실행", "CPU 실행", "burst", "cpu burst", "버스트 시간", "실행 시간", "CPU 사용"] },
-      "explanation": "대기 시간은 반환 시간에서 CPU 버스트(실제 실행) 시간을 뺀 값으로, 완료까지 걸린 시간 중 ready 큐에서 기다린 부분입니다. 도착 시간을 빼면 이미 반환 시간 계산에서 쓴 값을 중복해 빼는 셈이라 틀립니다.",
-      "refs": ["https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"]
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "처리량은 '1분에 손님 몇 명을 계산했나'처럼 단위 시간당 끝낸 작업 수입니다. 첫 응답까지 걸린 시간은 응답 시간이라는 다른 기준입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
     },
     {
       "id": "os-scheduling-criteria-003",
       "type": "ox",
       "difficulty": 1,
-      "tags": ["scheduling-criteria", "response-time"],
+      "tags": [
+        "scheduling-criteria",
+        "response-time"
+      ],
       "content": {
-        "prompt": "응답 시간(response time)은 프로세스가 도착한 시점부터 처음으로 CPU를 할당받는 시점까지의 시간이며, 완료될 때까지의 시간이 아니다."
+        "prompt": "응답 시간(response time)은 작업이 도착한 뒤 완전히 끝날 때까지 걸린 전체 시간을 말한다."
       },
-      "answer_key": { "value": true },
-      "explanation": "교과서(Silberschatz·OSTEP) 정의에서 응답 시간은 도착부터 첫 CPU 할당까지입니다. 완료까지의 시간은 반환 시간이므로 둘을 같다고 보면 틀리며, RR 같은 시분할 방식에서 두 값의 차이가 크게 벌어집니다.",
-      "refs": ["https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"]
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "그건 반환 시간(turnaround time)의 뜻입니다. 응답 시간은 작업이 도착한 뒤 처음으로 CPU를 받기(첫 반응)까지 걸린 시간이에요. 버튼을 눌렀을 때 '반응이 오기까지'를 떠올리면 됩니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
     },
     {
       "id": "os-scheduling-criteria-004",
-      "type": "single",
-      "difficulty": 2,
-      "tags": ["scheduling-criteria", "preemption", "calculation"],
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "scheduling-criteria",
+        "throughput",
+        "calculation"
+      ],
       "content": {
-        "prompt": "P1은 시각 0에 도착했고 CPU 버스트가 5다. 0~2에 실행된 뒤 선점되어 기다리다가 다시 CPU를 받아 총 5만큼 실행하고 시각 7에 완료됐다. P1의 반환/대기/응답 시간은?",
-        "options": [
-          "반환 7, 대기 2, 응답 0",
-          "반환 7, 대기 0, 응답 2",
-          "반환 5, 대기 2, 응답 0",
-          "반환 7, 대기 7, 응답 2"
+        "prompt": "어떤 시스템이 2분 동안 작업 60개를 끝냈다. 이 시스템의 처리량은 1분당 ___ 개다.",
+        "hint": "끝낸 작업 수를 걸린 시간(분)으로 나누기"
+      },
+      "answer_key": {
+        "accepted": [
+          "30",
+          "30개",
+          "서른",
+          "삼십"
         ]
       },
-      "answer_key": { "index": 0 },
-      "explanation": "반환 = 7 − 0 = 7, 대기 = 반환 − 버스트 = 7 − 5 = 2(선점되어 기다린 구간), 응답 = 첫 CPU 할당(0) − 도착(0) = 0입니다. 선점 구간을 대기에서 빼먹으면 대기를 0으로 잘못 계산하게 됩니다.",
-      "refs": ["https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"]
+      "explanation": "처리량은 끝낸 작업 수를 시간으로 나눈 값이라 60개 ÷ 2분 = 1분당 30개입니다. 60개를 그대로 쓰면 2분 동안의 총량이라 1분당 값이 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
     },
     {
       "id": "os-scheduling-criteria-005",
       "type": "single",
       "difficulty": 2,
-      "tags": ["scheduling-criteria", "throughput"],
+      "tags": [
+        "scheduling-criteria",
+        "calculation",
+        "turnaround"
+      ],
       "content": {
-        "prompt": "10초 동안 5개의 프로세스가 완료되었다면 이 시스템의 처리량(throughput)은?",
+        "prompt": "작업 A가 시각 0에 도착해 4초 동안 줄에서 기다린 뒤 실행을 시작했고, 중간에 멈추지 않고 시각 10에 끝났다. A의 대기 시간과 반환 시간(도착부터 끝날 때까지)은?",
         "options": [
-          "2개/초",
-          "5개/초",
-          "0.2개/초",
-          "0.5개/초"
+          "대기 10초, 반환 4초",
+          "대기 4초, 반환 10초",
+          "대기 4초, 반환 6초",
+          "대기 6초, 반환 10초"
         ]
       },
-      "answer_key": { "index": 3 },
-      "explanation": "처리량은 단위 시간당 완료한 프로세스 수라 5 ÷ 10 = 0.5개/초입니다. 2개/초는 시간을 개수로 나눈 값(역수)이라 틀리며, 이는 프로세스 하나를 끝내는 데 걸린 평균 시간에 가까운 값입니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Scheduling_(computing)"]
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "줄에서 기다린 시간이 4초이니 대기 시간은 4초, 도착(0)부터 완료(10)까지이니 반환 시간은 10초입니다. 6초는 실제로 실행한 시간이라 대기 시간이나 반환 시간과는 다릅니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
     },
     {
       "id": "os-scheduling-criteria-006",
-      "type": "multi",
+      "type": "single",
       "difficulty": 2,
-      "tags": ["scheduling-criteria", "interactive"],
+      "tags": [
+        "scheduling-criteria",
+        "interactive"
+      ],
       "content": {
-        "prompt": "대화형(interactive) 시스템의 스케줄러가 특히 중시하는 기준을 모두 고르시오.",
+        "prompt": "웹 브라우저나 메신저처럼 사람이 직접 눌러 쓰는 프로그램에서 스케줄러가 가장 중요하게 여기는 기준은?",
         "options": [
-          "응답 시간을 짧게 유지하는 것",
-          "응답 시간의 편차를 줄여 예측 가능하게 만드는 것",
-          "단위 시간당 완료 작업 수(처리량)의 극대화",
-          "전체 작업의 평균 반환 시간 최소화"
+          "밤새 몇 개의 작업을 끝냈는지(처리량)",
+          "CPU가 쉬지 않고 돌았는지(CPU 사용률)",
+          "버튼을 누르면 얼마나 빨리 반응하는지(응답 시간)",
+          "작업 파일의 크기"
         ]
       },
-      "answer_key": { "indices": [0, 1] },
-      "explanation": "사용자가 직접 입력하는 시스템은 반응이 빠르고 일정해야 하므로 응답 시간과 그 분산이 핵심입니다. 처리량과 평균 반환 시간은 대량 작업을 돌리는 배치 시스템이 주로 중시하는 기준입니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Scheduling_(computing)"]
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "사람은 클릭했을 때 바로 반응하길 기대하므로 대화형 프로그램은 응답 시간이 가장 중요합니다. 처리량은 밤새 도는 일괄 작업(예: 정산 배치)에서 더 중요하게 보는 기준입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
     },
     {
       "id": "os-scheduling-criteria-007",
       "type": "single",
-      "difficulty": 3,
-      "tags": ["scheduling-criteria", "time-slice", "trade-off"],
+      "difficulty": 2,
+      "tags": [
+        "scheduling-criteria",
+        "time-slice",
+        "trade-off"
+      ],
       "content": {
-        "prompt": "RR 스케줄러에서 타임 슬라이스를 크게 줄이면 일반적으로 나타나는 현상은?",
+        "prompt": "계산대 직원이 손님마다 물건을 딱 1개씩만 찍고 바로 다음 손님으로 넘어가는 식으로, 작업을 아주 짧게 쪼개 번갈아 실행하면 어떻게 될까?",
         "options": [
-          "응답 시간은 좋아지지만 스위치 오버헤드가 늘어 처리량과 반환 시간이 나빠질 수 있다",
-          "응답 시간과 처리량과 반환 시간이 모두 함께 좋아진다",
-          "스위치 횟수가 줄어 처리량이 높아지지만 응답 시간은 나빠진다",
-          "아무 지표도 변하지 않는다"
+          "응답 시간과 처리량이 모두 좋아진다",
+          "응답 시간과 처리량이 모두 나빠진다",
+          "아무 변화가 없다",
+          "모두 빨리 첫 응대를 받아 응답 시간은 좋아지지만, 교대 비용이 늘어 처리량은 떨어질 수 있다"
         ]
       },
-      "answer_key": { "index": 0 },
-      "explanation": "슬라이스가 짧으면 각 프로세스가 CPU를 더 빨리 받아 응답 시간은 좋아지지만 스위치가 잦아져 오버헤드가 늘고 처리량과 반환 시간이 나빠집니다. 한 지표를 최적화하면 모두 좋아진다는 것은 트레이드오프를 무시한 오답입니다.",
-      "refs": ["https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf", "https://en.wikipedia.org/wiki/Round-robin_scheduling"]
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "자주 번갈아 주면 누구나 금방 첫 응대를 받지만, 손님을 바꿀 때마다 드는 시간(컨텍스트 스위칭)이 쌓여 전체적으로 끝내는 양은 줄어듭니다. 이처럼 기준끼리 서로 부딪히는 것을 트레이드오프라고 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf",
+        "https://en.wikipedia.org/wiki/Round-robin_scheduling"
+      ]
     },
     {
       "id": "os-scheduling-criteria-008",
       "type": "ox",
-      "difficulty": 3,
-      "tags": ["scheduling-criteria", "preemptive"],
+      "difficulty": 2,
+      "tags": [
+        "scheduling-criteria",
+        "trade-off"
+      ],
       "content": {
-        "prompt": "선점형 스케줄링은 비선점형 스케줄링보다 항상 평균 반환 시간이 더 짧다."
+        "prompt": "스케줄링 기준들은 서로 부딪힐 때가 많아서, 한 기준을 좋게 하면 다른 기준이 나빠지는 트레이드오프가 생기곤 한다."
       },
-      "answer_key": { "value": false },
-      "explanation": "선점은 응답성을 높이지만 스위치 비용이 들고 워크로드에 따라 평균 반환 시간이 오히려 길어질 수 있습니다. 예를 들어 길이가 같은 작업들을 RR로 돌리면 FCFS보다 반환 시간이 길어집니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Scheduling_(computing)", "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"]
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "예를 들어 자주 번갈아 실행하면 응답 시간은 좋아지지만 전환 비용 때문에 처리량이 줄 수 있습니다. 그래서 스케줄러는 시스템의 목적(대화형인지, 일괄 처리인지)에 맞춰 기준을 고릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
     }
   ]
 }

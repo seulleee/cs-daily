@@ -7,136 +7,201 @@
       "id": "database-normal-forms-001",
       "type": "single",
       "difficulty": 1,
-      "tags": ["1nf"],
+      "tags": [
+        "normalization"
+      ],
       "content": {
-        "prompt": "다음 중 제1정규형(1NF)을 위반하는 설계는?",
+        "prompt": "정규화(normalization)의 핵심 아이디어로 가장 알맞은 것은?",
         "options": [
-          "phone 컬럼에 '010-1111, 010-2222'처럼 번호 여러 개를 쉼표로 저장",
-          "주문 테이블에 user_id 외래키를 둠",
-          "가격 컬럼을 NUMERIC(10,2)로 선언",
-          "created_at 컬럼에 기본값 now()를 둠"
+          "같은 정보를 여러 번 적지 않도록 표를 알맞게 나눈다",
+          "모든 정보를 하나의 큰 표에 모은다",
+          "데이터를 암호화해 숨긴다",
+          "행을 가나다순으로 정렬해 둔다"
         ]
       },
-      "answer_key": { "index": 0 },
-      "explanation": "1NF는 모든 속성 값이 더 나눌 수 없는 원자값이어야 한다는 조건입니다. 한 칸에 번호 여러 개를 넣으면 검색·갱신이 어려워지므로 별도 phones 테이블로 분리합니다.",
-      "refs": ["https://en.wikipedia.org/wiki/First_normal_form"]
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "정규화는 한마디로 '같은 정보를 여러 번 적지 않기'입니다. 주제별로 표를 나누면 정보가 한 곳에만 있어서 고치기도 쉽고 어긋날 일도 줄어요. 큰 표 하나로 모으는 건 그 반대 방향입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
     },
     {
       "id": "database-normal-forms-002",
-      "type": "fill",
+      "type": "single",
       "difficulty": 1,
-      "tags": ["2nf"],
+      "tags": [
+        "1nf"
+      ],
       "content": {
-        "prompt": "제2정규형은 1NF를 만족하면서, 기본키의 일부에만 종속하는 ___ 종속이 없어야 한다.",
-        "hint": "복합키의 일부에 종속하는 것"
+        "prompt": "제1정규형(1NF)은 '한 칸에는 값을 하나만 넣는다'는 규칙이다. 이 규칙을 어긴 것은?",
+        "options": [
+          "전화번호 칸에 '010-1111, 010-2222'처럼 두 번호를 함께 적음",
+          "이름 칸에 '민지'라고 적음",
+          "나이 칸에 25라고 적음",
+          "이메일 칸에 주소 하나를 적음"
+        ]
       },
-      "answer_key": { "accepted": ["부분", "부분함수", "부분 함수", "partial"] },
-      "explanation": "복합 기본키 (A, B)에서 B만으로 결정되는 속성이 있으면 부분 함수 종속입니다. 2NF는 이를 제거하므로 단일 컬럼 기본키 테이블은 1NF이면 자동으로 2NF입니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Second_normal_form"]
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "한 칸에 값을 여러 개 넣으면 '두 번째 번호만 찾기' 같은 작업이 어려워집니다. 그래서 1NF는 한 칸에 하나의 값만 두도록 해요. 나머지 보기는 모두 칸마다 값이 하나입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
     },
     {
       "id": "database-normal-forms-003",
       "type": "ox",
       "difficulty": 1,
-      "tags": ["2nf", "trap"],
+      "tags": [
+        "1nf"
+      ],
       "content": {
-        "prompt": "기본키가 단일 컬럼인 테이블은 1NF를 만족하면 항상 2NF도 만족한다."
+        "prompt": "1NF(제1정규형)를 지키려면 한 칸에 '사과, 배'처럼 여러 값을 쉼표로 묶어 넣는 것이 좋다."
       },
-      "answer_key": { "value": true },
-      "explanation": "부분 함수 종속은 복합키의 일부에 종속할 때만 생깁니다. 키가 컬럼 하나면 '일부'가 존재하지 않으므로 2NF 위반이 일어날 수 없습니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Second_normal_form"]
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "1NF는 '한 칸에는 값 하나만'이 규칙입니다. '사과, 배'처럼 묶어 넣으면 '배를 산 사람'을 찾거나 고치기 어려워요. 값을 한 줄에 하나씩 나누거나 별도의 표로 빼야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
     },
     {
       "id": "database-normal-forms-004",
       "type": "single",
-      "difficulty": 2,
-      "tags": ["2nf", "apply"],
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "decomposition"
+      ],
       "content": {
-        "prompt": "기본키가 (student_id, course_id)인 다음 테이블이 위반하는 정규형과 그 이유는?",
+        "prompt": "아래 주문 시트에는 민지의 전화번호가 두 번 적혀 있다. 같은 정보를 여러 번 적지 않도록 고치는 가장 알맞은 방법은?",
         "code": {
-          "language": "text",
-          "source": "enrollment(student_id, course_id, grade, course_name)"
+          "language": "sql",
+          "source": "-- 주문 시트 (주문번호, 고객이름, 고객전화)\n-- (1, 민지, 010-1111)\n-- (2, 민지, 010-1111)\n-- (3, 준호, 010-2222)"
         },
         "options": [
-          "2NF — course_name이 키의 일부인 course_id에만 종속한다",
-          "1NF — grade가 원자값이 아니다",
-          "3NF — grade가 course_name에 종속한다",
-          "위반 없음 — 모든 속성이 기본키에 종속한다"
+          "고객 표(고객번호, 이름, 전화)와 주문 표(주문번호, 고객번호)로 나눈다",
+          "주문번호 열을 지운다",
+          "민지의 주문 한 줄을 지운다",
+          "전화번호 열을 두 칸으로 나눈다"
         ]
       },
-      "answer_key": { "index": 0 },
-      "explanation": "course_name은 course_id만으로 결정되므로 복합키 전체가 아닌 일부에 종속합니다. 이것이 부분 함수 종속이고 2NF 위반입니다. course(course_id, course_name)으로 분리하면 해결됩니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Second_normal_form"]
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "고객 정보는 고객 표에 한 번만 적고, 주문 표에는 고객번호만 남기면 전화번호가 바뀌어도 한 곳만 고치면 됩니다. 주문 줄을 지우면 실제 주문 기록이 사라지니 해결책이 아니에요.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
     },
     {
       "id": "database-normal-forms-005",
       "type": "single",
       "difficulty": 2,
-      "tags": ["3nf", "apply"],
+      "tags": [
+        "2nf",
+        "apply"
+      ],
       "content": {
-        "prompt": "기본키가 emp_id인 다음 테이블이 위반하는 정규형은?",
+        "prompt": "아래 수강 시트의 기본키는 (학번 + 과목코드) 두 칸을 합친 것이다. 그런데 과목명은 과목코드만 알면 정해진다. 이 시트가 어긴 정규형과 해결책은?",
         "code": {
-          "language": "text",
-          "source": "employee(emp_id, name, dept_id, dept_name)\n-- emp_id → dept_id, dept_id → dept_name"
+          "language": "sql",
+          "source": "-- 수강 시트 (학번, 과목코드, 과목명, 성적)\n-- (1, C1, DB, A)\n-- (2, C1, DB, B)"
         },
         "options": [
-          "3NF — dept_name이 키가 아닌 dept_id를 거쳐 이행적으로 종속한다",
-          "2NF — dept_name이 키의 일부에 종속한다",
-          "1NF — dept_name이 반복 그룹이다",
-          "BCNF만 위반하고 3NF는 만족한다"
+          "2NF 위반 — 과목(과목코드, 과목명) 표를 따로 만든다",
+          "1NF 위반 — 성적 칸을 둘로 나눈다",
+          "어긴 정규형이 없다",
+          "2NF 위반 — 성적 열을 지운다"
         ]
       },
-      "answer_key": { "index": 0 },
-      "explanation": "emp_id → dept_id → dept_name 경로로 dept_name이 키에 이행적으로 종속합니다. 3NF는 키가 아닌 속성이 다른 키 아닌 속성에 종속하는 것을 금지합니다. 단일 키라 2NF 위반은 아닙니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Third_normal_form"]
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "과목명이 기본키 전체가 아니라 '일부(과목코드)'에만 기대고 있어서, 같은 과목명이 학생 수만큼 반복됩니다. 이것이 2NF 위반이에요. 과목 표를 따로 빼면 과목명은 한 번만 적힙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Second_normal_form"
+      ]
     },
     {
       "id": "database-normal-forms-006",
-      "type": "multi",
+      "type": "ox",
       "difficulty": 2,
-      "tags": ["normalization", "tradeoff"],
+      "tags": [
+        "normalization",
+        "join"
+      ],
       "content": {
-        "prompt": "정규화를 높일수록 일반적으로 얻는 효과를 모두 고르시오.",
-        "options": [
-          "중복 데이터가 줄어 갱신 이상이 사라진다",
-          "조회 시 JOIN 횟수가 늘어난다",
-          "모든 쿼리가 항상 빨라진다",
-          "한 사실이 한 곳에만 저장되어 일관성 유지가 쉽다"
-        ]
+        "prompt": "정규화로 표를 나누면, 나눈 정보를 다시 한 화면에 모아 볼 때 JOIN(두 표를 공통 열로 이어 붙이기)이 필요할 수 있다."
       },
-      "answer_key": { "indices": [0, 1, 3] },
-      "explanation": "정규화는 중복과 이상을 없애는 대신 테이블이 늘어 JOIN이 많아집니다. 읽기 성능이 항상 좋아지는 것은 아니므로, 읽기 중심 화면은 의도적으로 비정규화하거나 캐시를 두기도 합니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Database_normalization"]
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "고객 표와 주문 표로 나누면 '주문과 고객 전화번호를 함께 보기'를 하려면 고객번호로 두 표를 이어 붙여야 합니다. 정보 중복이 줄어드는 대신 조회할 때 표를 합치는 수고가 생겨요.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
     },
     {
       "id": "database-normal-forms-007",
       "type": "single",
-      "difficulty": 3,
-      "tags": ["bcnf"],
+      "difficulty": 2,
+      "tags": [
+        "3nf",
+        "apply"
+      ],
       "content": {
-        "prompt": "BCNF가 3NF보다 엄격한 지점은?",
+        "prompt": "아래 직원 시트의 기본키는 사번이다. 부서이름은 사번이 아니라 부서코드를 거쳐 정해진다(사번 → 부서코드 → 부서이름). 이 시트가 어긴 정규형은?",
+        "code": {
+          "language": "sql",
+          "source": "-- 직원 시트 (사번, 이름, 부서코드, 부서이름)\n-- (1, 민지, D1, 개발팀)\n-- (2, 준호, D1, 개발팀)"
+        },
         "options": [
-          "모든 함수 종속 X → Y에서 X가 슈퍼키여야 한다 (3NF가 허용하는 '키 속성에 대한 종속' 예외를 없앰)",
-          "다치 종속(multivalued dependency)까지 제거한다",
-          "복합 기본키를 아예 허용하지 않는다",
-          "외래키를 반드시 인덱싱해야 한다"
+          "1NF",
+          "2NF",
+          "3NF",
+          "어긴 정규형이 없다"
         ]
       },
-      "answer_key": { "index": 0 },
-      "explanation": "3NF는 종속의 우변이 키의 일부(prime attribute)이면 좌변이 키가 아니어도 허용합니다. BCNF는 이 예외를 없애 모든 결정자가 슈퍼키여야 합니다. 다치 종속은 4NF의 영역입니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Boyce%E2%80%93Codd_normal_form"]
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "부서이름이 기본키가 아닌 부서코드에 기대고 있어 '개발팀'이 직원 수만큼 반복됩니다. 이렇게 한 다리 건너 정해지는 종속을 없애는 것이 3NF예요. 기본키가 한 칸이라 2NF는 이미 만족합니다(더 엄격한 BCNF도 같은 생각을 이어 갑니다).",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Third_normal_form"
+      ]
     },
     {
       "id": "database-normal-forms-008",
-      "type": "ox",
-      "difficulty": 3,
-      "tags": ["bcnf", "trap"],
+      "type": "multi",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "tradeoff"
+      ],
       "content": {
-        "prompt": "모든 릴레이션은 함수 종속을 잃지 않으면서(종속 보존) 항상 BCNF로 분해할 수 있다."
+        "prompt": "정규화를 하면 일반적으로 얻는 효과를 모두 고르시오.",
+        "options": [
+          "같은 정보가 반복해서 저장되는 일이 줄어든다",
+          "정보를 한 곳만 고치면 되어 갱신 이상이 줄어든다",
+          "조회할 때 JOIN이 필요 없어진다",
+          "표의 개수가 하나로 줄어든다"
+        ]
       },
-      "answer_key": { "value": false },
-      "explanation": "BCNF 분해는 무손실 조인은 보장하지만 종속 보존은 보장하지 못합니다. 특정 종속을 지키려면 3NF에서 멈추는 선택이 실무적으로 합리적일 수 있습니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Boyce%E2%80%93Codd_normal_form#Achievability_of_BCNF"]
+      "answer_key": {
+        "indices": [
+          0,
+          1
+        ]
+      },
+      "explanation": "정규화는 중복을 줄여 고치기·넣기·지우기 문제를 막아 줍니다. 대신 표가 여러 개로 나뉘므로 조회할 때 JOIN이 오히려 늘 수 있어요. 표 개수는 보통 늘어납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
     }
   ]
 }

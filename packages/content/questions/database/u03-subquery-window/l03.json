@@ -9,22 +9,21 @@
       "difficulty": 1,
       "tags": [
         "window-functions",
-        "window-function",
         "group-by"
       ],
       "content": {
-        "prompt": "윈도우 함수가 GROUP BY 집계와 다른 점은?",
+        "prompt": "윈도우 함수가 GROUP BY와 다른 점은?",
         "options": [
-          "윈도우 함수는 집계 함수를 쓸 수 없다",
-          "윈도우 함수는 반드시 행 수를 그룹 수로 줄인다",
-          "행을 합치지 않고 각 행에 계산 결과를 붙여 행 수가 유지된다",
-          "PARTITION BY는 파티션별로 행을 하나로 합친다"
+          "행을 한 줄로 합치지 않고, 각 행 옆에 순위·합계 같은 계산 결과를 붙인다",
+          "같은 값끼리 행을 합쳐 그룹당 한 줄만 남긴다",
+          "테이블에서 행을 삭제한다",
+          "결과를 정렬만 한다"
         ]
       },
       "answer_key": {
-        "index": 2
+        "index": 0
       },
-      "explanation": "윈도우 함수는 각 행을 유지한 채 관련 행 집합에 대한 계산 값을 붙입니다. 행을 하나로 합치는 것은 GROUP BY이며, PARTITION BY는 계산 범위만 나누고 행을 합치지 않습니다.",
+      "explanation": "엑셀에서 원래 행은 그대로 두고 옆에 '순위' 열을 추가하는 것과 같습니다. GROUP BY는 그룹마다 한 줄로 합쳐 버리지만, 윈도우 함수는 행 수가 그대로예요.",
       "refs": [
         "https://www.postgresql.org/docs/current/tutorial-window.html",
         "https://www.postgresql.org/docs/current/functions-window.html"
@@ -36,12 +35,11 @@
       "difficulty": 1,
       "tags": [
         "window-functions",
-        "window-function",
         "over"
       ],
       "content": {
-        "prompt": "윈도우 함수는 반드시 ___ (...) 절과 함께 쓴다.",
-        "hint": "괄호 안에 PARTITION BY, ORDER BY를 쓴다"
+        "prompt": "윈도우 함수는 뒤에 괄호 절을 붙여 어떤 순서·범위로 계산할지 알려 준다. 예: RANK() ___ (ORDER BY score DESC)",
+        "hint": "'~위에, ~에 걸쳐'라는 뜻의 영어 단어"
       },
       "answer_key": {
         "accepted": [
@@ -50,7 +48,7 @@
           "오버"
         ]
       },
-      "explanation": "윈도우 함수는 OVER 절로 윈도우를 정의합니다. PARTITION과 ORDER BY는 OVER 괄호 안에 들어가는 구성 요소이고, WITHIN은 다른 구문에 쓰입니다.",
+      "explanation": "OVER 절이 붙어야 윈도우 함수로 동작합니다. 괄호 안에 ORDER BY(순서)와 PARTITION BY(나눌 기준)를 적어요.",
       "refs": [
         "https://www.postgresql.org/docs/current/tutorial-window.html",
         "https://www.postgresql.org/docs/current/functions-window.html"
@@ -65,12 +63,12 @@
         "partition-by"
       ],
       "content": {
-        "prompt": "윈도우 함수에서 PARTITION BY를 생략하면 결과 전체가 하나의 파티션으로 취급된다."
+        "prompt": "PARTITION BY dept로 순위를 매기면, 부서가 바뀌어도 순위가 1부터 다시 시작하지 않고 전체에서 이어서 매겨진다."
       },
       "answer_key": {
-        "value": true
+        "value": false
       },
-      "explanation": "PARTITION BY가 없으면 모든 행이 하나의 파티션이고, 오류가 나지 않습니다. 예를 들어 COUNT(*) OVER ()는 전체 행 수를 모든 행에 붙여 줍니다.",
+      "explanation": "PARTITION BY는 부서별로 시트를 나눠 따로 계산하는 것과 같습니다. 그래서 부서마다 순위가 1부터 다시 시작해요. 전체에서 이어서 매기려면 PARTITION BY를 빼면 됩니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/tutorial-window.html",
         "https://www.postgresql.org/docs/current/functions-window.html"
@@ -79,30 +77,24 @@
     {
       "id": "database-window-functions-004",
       "type": "single",
-      "difficulty": 2,
+      "difficulty": 1,
       "tags": [
         "window-functions",
-        "rank",
-        "dense-rank",
         "row-number"
       ],
       "content": {
-        "prompt": "score가 90, 85, 85, 70인 행들을 score DESC로 정렬할 때 RANK()가 부여하는 순위는?",
-        "code": {
-          "language": "sql",
-          "source": "SELECT score,\n  RANK() OVER (ORDER BY score DESC) AS r\nFROM exam;"
-        },
+        "prompt": "점수가 90, 80, 70인 세 행에 ROW_NUMBER() OVER (ORDER BY score DESC)를 적용하면 각 행에 붙는 번호는?",
         "options": [
-          "1, 2, 3, 4",
-          "1, 2, 2, 3",
-          "1, 2, 2, 4",
-          "1, 1, 2, 3"
+          "90→1, 80→2, 70→3",
+          "90→3, 80→2, 70→1",
+          "모두 1",
+          "90→1, 80→1, 70→2"
         ]
       },
       "answer_key": {
-        "index": 2
+        "index": 0
       },
-      "explanation": "RANK는 동률에 같은 순위를 주고 다음 순위를 건너뛰어 1, 2, 2, 4입니다. 1, 2, 2, 3은 건너뛰지 않는 DENSE_RANK, 1, 2, 3, 4는 ROW_NUMBER의 결과입니다.",
+      "explanation": "DESC라서 높은 점수부터 1, 2, 3 번호를 붙입니다. ROW_NUMBER는 줄 서기 번호표처럼 겹치지 않게 차례대로 번호를 매겨요.",
       "refs": [
         "https://www.postgresql.org/docs/current/tutorial-window.html",
         "https://www.postgresql.org/docs/current/functions-window.html"
@@ -114,22 +106,23 @@
       "difficulty": 2,
       "tags": [
         "window-functions",
-        "lag",
-        "null"
+        "rank",
+        "dense-rank",
+        "row-number"
       ],
       "content": {
-        "prompt": "LAG(amount, 1) OVER (PARTITION BY user_id ORDER BY created_at) 는 각 사용자의 첫 번째 행에서 어떤 값을 반환하는가?",
+        "prompt": "점수가 90, 85, 85, 70일 때, 높은 점수부터 RANK()로 매긴 순위는?",
         "options": [
-          "0",
-          "오류가 발생한다",
-          "amount의 현재 행 값",
-          "NULL"
+          "1, 2, 2, 4",
+          "1, 2, 2, 3",
+          "1, 2, 3, 4",
+          "1, 1, 2, 3"
         ]
       },
       "answer_key": {
-        "index": 3
+        "index": 0
       },
-      "explanation": "이전 행이 없으면 기본값 NULL이 반환됩니다. 0이나 오류가 아니며, 세 번째 인자로 LAG(amount, 1, 0)처럼 기본값을 지정하면 NULL 대신 그 값이 나옵니다.",
+      "explanation": "RANK는 공동 2등이 두 명이면 다음 순위를 3이 아닌 4로 건너뜁니다(운동 경기 순위처럼). 건너뛰지 않으면 DENSE_RANK(1, 2, 2, 3), 무조건 차례대로면 ROW_NUMBER(1, 2, 3, 4)예요.",
       "refs": [
         "https://www.postgresql.org/docs/current/tutorial-window.html",
         "https://www.postgresql.org/docs/current/functions-window.html"
@@ -137,34 +130,29 @@
     },
     {
       "id": "database-window-functions-006",
-      "type": "multi",
+      "type": "single",
       "difficulty": 2,
       "tags": [
         "window-functions",
-        "window-function",
-        "top-n",
-        "where"
+        "lag"
       ],
       "content": {
-        "prompt": "부서별 급여 1위 직원을 뽑는 쿼리에 대한 참인 진술을 모두 고르시오.",
+        "prompt": "아래 쿼리에서 day 2 행의 prev 값은?",
         "code": {
           "language": "sql",
-          "source": "SELECT * FROM (\n  SELECT e.*, ROW_NUMBER() OVER (\n    PARTITION BY dept ORDER BY salary DESC) AS rn\n  FROM emp e\n) t WHERE rn = 1;"
+          "source": "-- walks(day, steps): (1, 3000), (2, 5000), (3, 4000)\nSELECT day, steps,\n  LAG(steps) OVER (ORDER BY day) AS prev\nFROM walks;"
         },
         "options": [
-          "WHERE 절에서 ROW_NUMBER() OVER (...) = 1을 직접 쓸 수 있다",
-          "ROW_NUMBER()를 서브쿼리나 CTE로 감싼 뒤 바깥에서 = 1로 필터한다",
-          "동률 1위를 모두 포함하려면 ROW_NUMBER 대신 RANK를 쓴다",
-          "HAVING 절에서 윈도우 함수를 직접 쓸 수 있다"
+          "3000",
+          "4000",
+          "5000",
+          "NULL(빈 값)"
         ]
       },
       "answer_key": {
-        "indices": [
-          1,
-          2
-        ]
+        "index": 0
       },
-      "explanation": "윈도우 함수는 WHERE와 HAVING 이후에 평가되어 그 절에서 쓸 수 없으므로 한 번 감싼 뒤 필터합니다. ROW_NUMBER는 동률에도 서로 다른 번호를 주지만 RANK는 1위를 모두 1로 매깁니다.",
+      "explanation": "LAG는 '바로 앞 행의 값'을 가져옵니다. day 순서로 day 2의 앞 행은 day 1이므로 3000이에요. 전날 대비 증감을 구할 때 자주 씁니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/tutorial-window.html",
         "https://www.postgresql.org/docs/current/functions-window.html"
@@ -172,54 +160,58 @@
     },
     {
       "id": "database-window-functions-007",
-      "type": "single",
-      "difficulty": 3,
+      "type": "ox",
+      "difficulty": 2,
       "tags": [
         "window-functions",
-        "window-frame",
-        "running-total"
+        "lag",
+        "null"
       ],
       "content": {
-        "prompt": "(d, x)가 (1,10), (2,20), (2,30), (3,40)일 때, SUM(x) OVER (ORDER BY d)가 d=2인 두 행에 주는 값은?",
+        "prompt": "아래 쿼리에서 day 1 행의 prev는 앞 행이 없으므로 NULL(빈 값)이다.",
         "code": {
           "language": "sql",
-          "source": "SELECT d, x,\n  SUM(x) OVER (ORDER BY d) AS running\nFROM t;"
+          "source": "-- walks(day, steps): (1, 3000), (2, 5000), (3, 4000)\nSELECT day, steps,\n  LAG(steps) OVER (ORDER BY day) AS prev\nFROM walks;"
+        }
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "첫 행은 '바로 앞 행'이 없으니 가져올 값이 없어 NULL이 됩니다. 원하면 LAG(steps, 1, 0)처럼 기본값을 지정할 수도 있어요.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html",
+        "https://www.postgresql.org/docs/current/functions-window.html"
+      ]
+    },
+    {
+      "id": "database-window-functions-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "window-functions",
+        "partition-by",
+        "top-n"
+      ],
+      "content": {
+        "prompt": "아래 쿼리에서 rn이 1인 직원은 누구일까?",
+        "code": {
+          "language": "sql",
+          "source": "-- emp(dept, name, salary): (개발, 민지, 500), (개발, 준호, 400), (영업, 서연, 450)\nSELECT dept, name, ROW_NUMBER() OVER\n  (PARTITION BY dept ORDER BY salary DESC) AS rn\nFROM emp;"
         },
         "options": [
-          "둘 다 60",
-          "30과 60",
-          "20과 50",
-          "둘 다 30"
+          "민지, 서연",
+          "민지",
+          "민지, 준호",
+          "서연"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "ORDER BY가 있을 때 기본 프레임은 RANGE ... CURRENT ROW라 d가 같은 peer 행이 모두 포함되어 둘 다 10+20+30 = 60입니다. 행 단위 누적합(30, 60)을 원하면 ROWS BETWEEN을 명시해야 합니다.",
+      "explanation": "부서별로 나눠(PARTITION BY dept) 급여 높은 순으로 번호를 매깁니다. 개발팀 1번은 민지(500), 영업팀 1번은 서연(450)이에요. 부서마다 번호가 1부터 다시 시작합니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS",
-        "https://www.postgresql.org/docs/current/tutorial-window.html"
-      ]
-    },
-    {
-      "id": "database-window-functions-008",
-      "type": "ox",
-      "difficulty": 3,
-      "tags": [
-        "window-functions",
-        "window-frame",
-        "over"
-      ],
-      "content": {
-        "prompt": "SUM(x) OVER ()처럼 ORDER BY가 없는 윈도우는 기본 프레임이 파티션 전체이므로, 모든 행에 같은 합계가 붙는다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "ORDER BY가 없으면 프레임이 파티션 전체라 모든 행에 동일한 합계가 붙습니다. ORDER BY가 있을 때만 기본 프레임이 시작부터 현재 행(peer 포함)까지로 바뀝니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS",
-        "https://www.postgresql.org/docs/current/tutorial-window.html"
+        "https://www.postgresql.org/docs/current/tutorial-window.html",
+        "https://www.postgresql.org/docs/current/functions-window.html"
       ]
     }
   ]

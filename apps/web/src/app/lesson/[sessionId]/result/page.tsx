@@ -21,6 +21,30 @@ export default function ResultPage({ params }: { params: Promise<{ sessionId: st
   }
 
   const pct = Math.round((r.correct / r.total) * 100);
+
+  if (r.placement) {
+    const p = r.placement;
+    return (
+      <div className="flex min-h-dvh flex-col items-center justify-center p-6">
+        <div className="w-full max-w-md space-y-6 text-center">
+          <div className="text-6xl" aria-hidden>{p.passed ? '⏭️' : '📚'}</div>
+          <h1 className="text-2xl font-black">{p.passed ? `${p.unitName} 건너뛰기 성공!` : '조금만 더 배워 봐요'}</h1>
+          <p className="text-(--color-ink-2)">
+            {r.total}문제 중 {r.correct}개 정답 ({pct}%) · 통과 기준 {p.passPercent}%
+          </p>
+          <p className="card p-4 text-sm">
+            {p.passed
+              ? p.skippedLessons > 0
+                ? `레슨 ${p.skippedLessons}개를 완료로 처리했어요. 다음 유닛부터 이어서 풀 수 있어요.`
+                : '이미 모두 완료한 레슨이라 바뀐 것은 없어요.'
+              : '틀린 문제는 복습 목록에 추가했어요. 레슨부터 차근차근 풀거나 나중에 다시 도전해 보세요.'}
+          </p>
+          <Link href="/learn" className="btn-3d w-full">{p.passed ? '다음 유닛으로' : '학습으로 돌아가기'}</Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex min-h-dvh flex-col items-center justify-center p-6">
       <div className="w-full max-w-md space-y-6 text-center">

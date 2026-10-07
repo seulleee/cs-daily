@@ -12,18 +12,18 @@
         "inner-join"
       ],
       "content": {
-        "prompt": "INNER JOIN의 결과에 대한 설명으로 옳은 것은?",
+        "prompt": "회원 명단과 주문 명단을 합친다고 생각해 보자. INNER JOIN은 어떻게 합칠까?",
         "options": [
-          "왼쪽 테이블의 모든 행이 매칭 여부와 관계없이 결과에 포함된다",
-          "양쪽 테이블의 모든 행이 NULL로 채워져 결과에 포함된다",
-          "두 테이블 행 수의 곱만큼 항상 결과 행이 만들어진다",
-          "ON 조건이 참인, 양쪽에서 매칭된 행 조합만 결과에 포함된다"
+          "양쪽 명단 모두에 짝이 있는 행만 남긴다",
+          "왼쪽 명단은 짝이 없어도 모두 남긴다",
+          "가능한 모든 조합을 만든다",
+          "오른쪽 명단만 그대로 보여 준다"
         ]
       },
       "answer_key": {
-        "index": 3
+        "index": 0
       },
-      "explanation": "INNER JOIN은 조인 조건을 만족하는 행 조합만 돌려줍니다. 왼쪽 행이 모두 남는 것은 LEFT JOIN, 모든 조합이 나오는 것은 CROSS JOIN의 동작입니다.",
+      "explanation": "INNER JOIN은 '양쪽에 다 있는 것만' 남기는 합치기입니다. 주문이 없는 회원이나 주인을 못 찾은 주문은 빠져요. 왼쪽을 모두 남기는 건 LEFT JOIN입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
@@ -31,32 +31,19 @@
     },
     {
       "id": "database-join-types-002",
-      "type": "fill",
+      "type": "ox",
       "difficulty": 1,
       "tags": [
         "join-types",
-        "left-join",
-        "outer-join"
+        "left-join"
       ],
       "content": {
-        "prompt": "왼쪽 테이블의 모든 행을 유지하고, 오른쪽에 매칭이 없으면 오른쪽 컬럼을 NULL로 채우는 조인은 ___ JOIN이다.",
-        "hint": "OUTER는 생략 가능"
+        "prompt": "LEFT JOIN은 양쪽 표에 모두 짝이 있는 행만 남기고, 짝이 없는 왼쪽 표의 행은 버린다."
       },
       "answer_key": {
-        "accepted": [
-          "LEFT",
-          "left",
-          "LEFT OUTER",
-          "left outer",
-          "LEFT JOIN",
-          "left join",
-          "LEFT OUTER JOIN",
-          "left outer join",
-          "레프트",
-          "레프트 조인"
-        ]
+        "value": false
       },
-      "explanation": "LEFT (OUTER) JOIN은 왼쪽 행을 모두 보존합니다. RIGHT는 오른쪽을 보존하고 FULL은 양쪽을 모두 보존하므로, 왼쪽만 유지한다는 조건에는 LEFT만 해당합니다.",
+      "explanation": "그건 INNER JOIN의 동작입니다. LEFT JOIN은 왼쪽 표의 행을 짝이 없어도 모두 남기고, 짝이 없는 오른쪽 칸은 NULL(빈 값)로 채워요.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
@@ -64,20 +51,26 @@
     },
     {
       "id": "database-join-types-003",
-      "type": "ox",
+      "type": "fill",
       "difficulty": 1,
       "tags": [
         "join-types",
-        "cross-join",
-        "cartesian-product"
+        "cross-join"
       ],
       "content": {
-        "prompt": "3행짜리 테이블과 4행짜리 테이블을 CROSS JOIN하면 결과는 12행이다."
+        "prompt": "두 표의 행끼리 가능한 모든 조합을 만드는 조인(예: 3행 × 2행 = 6행)을 ___ JOIN이라고 한다.",
+        "hint": "'교차하다'라는 뜻의 영어 단어"
       },
       "answer_key": {
-        "value": true
+        "accepted": [
+          "CROSS",
+          "cross",
+          "크로스",
+          "CROSS JOIN",
+          "cross join"
+        ]
       },
-      "explanation": "CROSS JOIN은 카테시안 곱이라 3 × 4 = 12행이 됩니다. 행 수의 합인 7행이라고 보는 것은 UNION ALL과 혼동한 오답입니다.",
+      "explanation": "CROSS JOIN은 짝을 따지지 않고 모든 조합을 만듭니다. 티셔츠 3종과 색상 2개로 만들 수 있는 모든 상품 조합(6개)을 떠올리면 쉬워요.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
@@ -86,30 +79,29 @@
     {
       "id": "database-join-types-004",
       "type": "single",
-      "difficulty": 2,
+      "difficulty": 1,
       "tags": [
         "join-types",
         "inner-join",
-        "left-join",
         "row-count"
       ],
       "content": {
-        "prompt": "아래 데이터에서 INNER JOIN과 LEFT JOIN(users 기준)의 결과 행 수는?",
+        "prompt": "아래 데이터에서 회원과 주문을 INNER JOIN하면 결과는 몇 행일까?",
         "code": {
           "language": "sql",
-          "source": "-- users: id 1, 2, 3, 4 (4행)\n-- orders: user_id 1, 1, 2, 2, 9 (5행)\nSELECT * FROM users u JOIN orders o ON o.user_id = u.id;\nSELECT * FROM users u LEFT JOIN orders o ON o.user_id = u.id;"
+          "source": "-- members(id, name): (1, 민지), (2, 준호), (3, 서연)\n-- orders(id, member_id): (101, 1), (102, 1), (103, 2)\nSELECT m.name, o.id FROM members m\nJOIN orders o ON o.member_id = m.id;"
         },
         "options": [
-          "INNER 4행, LEFT 4행",
-          "INNER 4행, LEFT 6행",
-          "INNER 5행, LEFT 6행",
-          "INNER 2행, LEFT 4행"
+          "2행",
+          "3행",
+          "4행",
+          "6행"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "user 1과 2가 각각 주문 2건에 매칭되어 INNER는 4행입니다. LEFT는 여기에 매칭 없는 user 3, 4가 더해져 6행이며, 매칭이 여러 개면 행이 늘어나므로 LEFT가 users 행 수 4와 같다는 생각은 틀립니다.",
+      "explanation": "주문 3건이 모두 회원과 짝을 이루므로 3행입니다. 민지는 주문이 2건이라 두 줄에 나오고, 주문이 없는 서연은 빠져요.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
@@ -121,26 +113,26 @@
       "difficulty": 2,
       "tags": [
         "join-types",
-        "full-outer-join",
+        "left-join",
         "row-count"
       ],
       "content": {
-        "prompt": "같은 데이터에서 users FULL OUTER JOIN orders ON o.user_id = u.id 의 결과는 몇 행인가?",
+        "prompt": "같은 데이터에서 members LEFT JOIN orders 를 하면 결과는 몇 행일까?",
         "code": {
           "language": "sql",
-          "source": "-- users: id 1, 2, 3, 4 (4행)\n-- orders: user_id 1, 1, 2, 2, 9 (5행)\nSELECT * FROM users u FULL OUTER JOIN orders o ON o.user_id = u.id;"
+          "source": "-- members(id, name): (1, 민지), (2, 준호), (3, 서연)\n-- orders(id, member_id): (101, 1), (102, 1), (103, 2)\nSELECT m.name, o.id FROM members m\nLEFT JOIN orders o ON o.member_id = m.id;"
         },
         "options": [
-          "7행",
-          "10행",
-          "6행",
-          "5행"
+          "3행",
+          "4행",
+          "5행",
+          "6행"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 1
       },
-      "explanation": "매칭 4행에 users만 있는 2행(3, 4), orders만 있는 1행(user_id 9)을 더해 7행입니다. LEFT 6행과 RIGHT 5행을 단순히 더한 10행은 매칭 행 4개를 두 번 센 것입니다.",
+      "explanation": "짝이 있는 3행(민지 2, 준호 1)에 주문이 없는 서연이 주문 칸 NULL로 한 줄 더해져 4행입니다. LEFT JOIN은 왼쪽(회원)을 한 명도 빼지 않아요.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
@@ -148,34 +140,24 @@
     },
     {
       "id": "database-join-types-006",
-      "type": "multi",
+      "type": "ox",
       "difficulty": 2,
       "tags": [
         "join-types",
-        "anti-join",
         "left-join",
-        "where"
+        "anti-join"
       ],
       "content": {
-        "prompt": "orders.id가 기본키일 때 LEFT JOIN과 WHERE에 대한 참인 진술을 모두 고르시오.",
+        "prompt": "아래 쿼리처럼 LEFT JOIN 뒤에 WHERE o.id IS NULL을 붙이면 '주문이 하나도 없는 회원'(서연)만 남는다.",
         "code": {
           "language": "sql",
-          "source": "SELECT u.id FROM users u\nLEFT JOIN orders o ON o.user_id = u.id\nWHERE o.id IS NULL;"
-        },
-        "options": [
-          "LEFT JOIN 후 WHERE o.id IS NULL은 주문이 없는 사용자를 찾는 안티 조인 패턴이다",
-          "LEFT JOIN 뒤에 WHERE o.status = 'paid'를 붙여도 주문 없는 사용자는 결과에 남는다",
-          "LEFT JOIN 뒤에 WHERE o.status = 'paid'를 붙이면 사실상 INNER JOIN처럼 동작한다",
-          "LEFT JOIN의 결과 행 수는 항상 왼쪽 테이블 행 수와 같다"
-        ]
+          "source": "-- members(id, name): (1, 민지), (2, 준호), (3, 서연)\n-- orders(id, member_id): (101, 1), (102, 1), (103, 2)\nSELECT m.name FROM members m\nLEFT JOIN orders o ON o.member_id = m.id\nWHERE o.id IS NULL;"
+        }
       },
       "answer_key": {
-        "indices": [
-          0,
-          2
-        ]
+        "value": true
       },
-      "explanation": "o.id IS NULL은 매칭이 없는 왼쪽 행만 남기는 안티 조인입니다. 오른쪽 컬럼에 일반 비교 조건을 걸면 NULL 행이 UNKNOWN으로 탈락해 INNER JOIN이 되므로 둘째 보기는 거짓이고, 매칭이 여러 개면 행이 늘어 넷째도 거짓입니다.",
+      "explanation": "LEFT JOIN에서 짝이 없는 회원은 주문 칸이 NULL로 채워집니다. 그 행만 고르면 주문이 없는 회원만 남아요. 민지와 준호는 주문 id가 있어 걸러집니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
@@ -184,29 +166,29 @@
     {
       "id": "database-join-types-007",
       "type": "single",
-      "difficulty": 3,
+      "difficulty": 2,
       "tags": [
         "join-types",
-        "left-join",
-        "on-vs-where"
+        "full-outer-join",
+        "row-count"
       ],
       "content": {
-        "prompt": "users 4행(id 1~4), orders 5행(user_id 1, 1, 2, 2, 9; status는 user 1의 첫 주문만 'refunded', 나머지 'paid')이다. 쿼리 A와 B의 결과 행 수는?",
+        "prompt": "주문 104는 명단에 없는 회원 9번의 주문이다. members FULL OUTER JOIN orders 의 결과는 몇 행일까?",
         "code": {
           "language": "sql",
-          "source": "-- A\nSELECT * FROM users u LEFT JOIN orders o\n  ON o.user_id = u.id AND o.status = 'paid';\n-- B\nSELECT * FROM users u LEFT JOIN orders o\n  ON o.user_id = u.id\nWHERE o.status = 'paid';"
+          "source": "-- members(id, name): (1, 민지), (2, 준호), (3, 서연)\n-- orders(id, member_id): (101, 1), (102, 1), (103, 2), (104, 9)"
         },
         "options": [
-          "A 6행, B 6행",
-          "A 3행, B 5행",
-          "A 5행, B 3행",
-          "A 4행, B 4행"
+          "3행",
+          "4행",
+          "5행",
+          "6행"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "A는 ON에서 paid만 매칭해 user 1(1) + user 2(2) + 매칭 없는 user 3, 4(2) = 5행입니다. B는 먼저 6행으로 조인한 뒤 WHERE가 paid가 아닌 행과 NULL 행을 모두 걸러 3행이 되므로, LEFT JOIN에서 ON과 WHERE는 동치가 아닙니다.",
+      "explanation": "FULL OUTER JOIN은 양쪽 모두 빠짐없이 남깁니다. 짝이 있는 3행 + 주문 없는 서연 1행 + 주인 없는 주문 104 1행 = 5행이에요. INNER라면 3행, LEFT라면 4행입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
@@ -214,23 +196,29 @@
     },
     {
       "id": "database-join-types-008",
-      "type": "ox",
-      "difficulty": 3,
+      "type": "single",
+      "difficulty": 2,
       "tags": [
         "join-types",
-        "full-outer-join",
-        "mysql"
+        "left-join",
+        "choose"
       ],
       "content": {
-        "prompt": "MySQL은 FULL OUTER JOIN 구문을 지원하지 않아서, LEFT JOIN과 RIGHT JOIN 결과를 UNION으로 합쳐 비슷한 결과를 만든다. (PostgreSQL은 지원한다.)"
+        "prompt": "주문이 없는 회원까지 포함해 '회원별 주문 목록'을 보고 싶다. 알맞은 조인은?",
+        "options": [
+          "members LEFT JOIN orders",
+          "members INNER JOIN orders",
+          "members CROSS JOIN orders",
+          "조인 없이 members만 조회"
+        ]
       },
       "answer_key": {
-        "value": true
+        "index": 0
       },
-      "explanation": "MySQL은 FULL OUTER JOIN 키워드를 제공하지 않아 LEFT JOIN UNION RIGHT JOIN으로 대체합니다. 표준 SQL에 있는 구문이라도 모든 DBMS가 구현하지는 않으며, PostgreSQL·SQL Server·Oracle은 지원합니다.",
+      "explanation": "회원을 한 명도 빼지 않으려면 회원을 왼쪽에 두고 LEFT JOIN을 씁니다. INNER JOIN은 주문 없는 회원을 빼고, CROSS JOIN은 상관없는 회원·주문까지 모두 짝지어 버려요.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
-        "https://www.postgresql.org/docs/current/sql-select.html"
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
       ]
     }
   ]
