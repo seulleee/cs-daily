@@ -57,7 +57,6 @@ jobs:
           WEB_BASE_URL: http://localhost:3000
           E2E_API_URL: http://localhost:4000
         run: |
-          echo "::warning title=dist::ls=$(ls apps/api/dist 2>&1 | tr '\n' ' ') main=$(find apps/api/dist -name main.js 2>&1 | head -5 | tr '\n' ' ')"
           (cd apps/api && node dist/main.js > /tmp/api.log 2>&1 &)
           for i in $(seq 1 30); do curl -fsS localhost:4000/health >/dev/null && break; sleep 1; done
           # 실패 시 원인을 주석(annotation)으로도 남긴다 — 로그를 못 여는 환경에서도 API로 확인 가능

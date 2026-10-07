@@ -5,7 +5,7 @@
   "engines": { "node": ">=22" },
   "scripts": {
     "dev": "pnpm -r --parallel --filter ./apps/* dev",
-    "build": "pnpm -r --filter ./packages/* --filter ./apps/* build",
+    "build": "pnpm -r --filter './packages/*' --filter './apps/*' build",
     "typecheck": "pnpm -r typecheck",
     "lint": "pnpm -r lint",
     "test": "pnpm -r test",
