@@ -12,18 +12,17 @@
         "mutex"
       ],
       "content": {
-        "prompt": "lock을 획득한 스레드 하나만 임계 구역에 진입할 수 있고, 그 스레드가 unlock해야 다른 스레드가 진입할 수 있는 동기화 도구는?",
+        "prompt": "한 번에 한 스레드만 임계 구역에 들이는 잠금 도구는?",
         "options": [
-          "조건 변수",
-          "뮤텍스(mutex)",
-          "스케줄러",
-          "캐시"
+          "세마포어",
+          "뮤텍스",
+          "조건 변수"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "뮤텍스는 상호 배제를 보장하는 lock으로, 획득한 스레드 하나만 임계 구역에 들어가고 해제된 뒤에야 대기 중인 다른 스레드가 획득할 수 있습니다. 조건 변수는 특정 조건이 만족될 때까지 스레드를 대기시키고 깨우는 도구입니다.",
+      "explanation": "뮤텍스(mutex)는 lock을 획득한 스레드 하나만 임계 구역에 들어가게 하는 잠금 도구입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Mutual_exclusion",
         "https://en.wikipedia.org/wiki/Lock_(computer_science)"
@@ -31,21 +30,27 @@
     },
     {
       "id": "os-mutex-semaphore-condvar-002",
-      "type": "ox",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "mutex-semaphore-condvar",
-        "mutex"
+        "semaphore"
       ],
       "content": {
-        "prompt": "뮤텍스는 여러 스레드가 동시에 임계 구역에 진입하도록 허용하는 도구이다."
+        "prompt": "정수 값으로 동시 접근 스레드 수를 제한하는 도구는?",
+        "options": [
+          "조건 변수",
+          "뮤텍스",
+          "세마포어"
+        ]
       },
       "answer_key": {
-        "value": false
+        "index": 2
       },
-      "explanation": "뮤텍스(mutual exclusion)는 한 번에 하나의 스레드만 임계 구역에 진입하도록 보장합니다. 최대 N개 스레드의 동시 진입을 허용하려면 카운팅 세마포어를 사용합니다.",
+      "explanation": "세마포어는 정수 값을 wait로 줄이고 signal로 늘려, 자원을 동시에 쓰는 스레드 수를 그 값만큼으로 제한합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Mutual_exclusion"
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
       ]
     },
     {
@@ -54,55 +59,146 @@
       "difficulty": 1,
       "tags": [
         "mutex-semaphore-condvar",
-        "counting-semaphore"
+        "condition-variable"
       ],
       "content": {
-        "prompt": "초기값이 2인 카운팅 세마포어에 스레드 3개가 동시에 wait(P) 연산을 수행한다. 결과는?",
+        "prompt": "조건이 참이 될 때까지 스레드를 대기시키는 도구는?",
         "options": [
-          "3개 모두 진입한다",
-          "1개만 진입하고 2개는 대기한다",
-          "2개는 진입하고, 1개는 다른 스레드가 signal(V)을 호출할 때까지 대기한다",
-          "3개 모두 오류로 종료된다"
+          "조건 변수",
+          "뮤텍스"
         ]
       },
       "answer_key": {
-        "index": 2
+        "index": 0
       },
-      "explanation": "wait 연산은 세마포어 값을 1 감소시키고, 사용 가능한 값이 없으면 호출한 스레드를 블록합니다. 따라서 2개는 진입하고 세 번째 스레드는 다른 스레드가 signal로 값을 증가시킬 때까지 대기합니다.",
+      "explanation": "조건 변수는 원하는 조건이 될 때까지 스레드를 wait로 대기시키고, 다른 스레드가 signal로 깨웁니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf",
+        "https://en.wikipedia.org/wiki/Monitor_(synchronization)"
       ]
     },
     {
       "id": "os-mutex-semaphore-condvar-004",
-      "type": "fill",
+      "type": "ox",
       "difficulty": 1,
       "tags": [
         "mutex-semaphore-condvar",
-        "semaphore"
+        "mutex"
       ],
       "content": {
-        "prompt": "정수 값을 가지며 wait 연산으로 1 감소, signal 연산으로 1 증가시켜 자원에 동시 접근하는 스레드 수를 제한하는 동기화 도구를 ___ 라고 한다.",
-        "hint": "영어로 semaphore, 다익스트라가 제안"
+        "prompt": "뮤텍스는 여러 스레드가 동시에 임계 구역에 들어가게 한다."
       },
       "answer_key": {
-        "accepted": [
-          "세마포어",
-          "semaphore",
-          "세마포",
-          "카운팅 세마포어",
-          "counting semaphore"
-        ]
+        "value": false
       },
-      "explanation": "정답은 세마포어(semaphore)입니다. 값이 0이면 사용 가능한 자원이 없다는 뜻이므로, wait를 호출한 스레드는 다른 스레드가 signal로 값을 증가시킬 때까지 블록됩니다.",
+      "explanation": "뮤텍스는 한 번에 한 스레드만 임계 구역에 들어가게 합니다. 동시 접근 수를 여러 개로 제한하는 것은 세마포어입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Mutual_exclusion"
+      ]
+    },
+    {
+      "id": "os-mutex-semaphore-condvar-005",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "mutex-semaphore-condvar",
+        "semaphore",
+        "mutex"
+      ],
+      "content": {
+        "prompt": "초기값이 1인 세마포어는 뮤텍스처럼 쓸 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "값이 1이면 한 스레드가 wait로 0을 만든 뒤 나머지는 대기하므로, 한 번에 한 스레드만 들어가는 상호 배제가 됩니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Semaphore_(programming)",
         "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
       ]
     },
     {
-      "id": "os-mutex-semaphore-condvar-005",
+      "id": "os-mutex-semaphore-condvar-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "mutex-semaphore-condvar",
+        "mutex"
+      ],
+      "content": {
+        "prompt": "Mutual Exclusion에서 이름을 딴 잠금 도구는 ___ 이다.",
+        "hint": "lock과 unlock으로 사용한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "뮤텍스",
+          "mutex",
+          "뮤텍스 락",
+          "뮤텍스락",
+          "mutex lock"
+        ]
+      },
+      "explanation": "뮤텍스(mutex)는 Mutual Exclusion(상호 배제)의 줄임말로, 한 번에 한 스레드만 임계 구역에 들이는 잠금 도구입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Mutual_exclusion",
+        "https://en.wikipedia.org/wiki/Lock_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-mutex-semaphore-condvar-007",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "mutex-semaphore-condvar",
+        "condition-variable"
+      ],
+      "content": {
+        "prompt": "조건 변수에서 대기 중인 스레드를 깨우는 연산은 ___ 이다.",
+        "hint": "wait와 짝을 이루는 연산"
+      },
+      "answer_key": {
+        "accepted": [
+          "signal",
+          "시그널",
+          "notify",
+          "노티파이",
+          "broadcast",
+          "브로드캐스트"
+        ]
+      },
+      "explanation": "조건 변수에서 wait로 대기한 스레드는 다른 스레드가 signal을 보내면 깨어납니다. 모두 깨울 때는 broadcast를 씁니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"
+      ]
+    },
+    {
+      "id": "os-mutex-semaphore-condvar-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "mutex-semaphore-condvar",
+        "semaphore",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "초기값 2인 세마포어에 스레드 3개가 wait를 하면 대기하는 수는?",
+        "options": [
+          "0개",
+          "1개",
+          "2개"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "두 스레드가 통과하며 값이 0이 되고, 세 번째 스레드는 signal이 올 때까지 대기합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+      ]
+    },
+    {
+      "id": "os-mutex-semaphore-condvar-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -110,93 +206,40 @@
         "condition-variable"
       ],
       "content": {
-        "prompt": "조건 변수(condition variable)의 용도로 옳은 것은?",
+        "prompt": "큐에 데이터가 생길 때까지 소비자 스레드를 기다리게 하려면?",
         "options": [
-          "동시에 진입할 수 있는 스레드 수를 센다",
-          "변수 값을 디스크에 영구 저장한다",
-          "CPU 실행 순서를 정하는 스케줄러 역할을 한다",
-          "특정 조건이 참이 될 때까지 스레드를 대기(wait)시키고, 다른 스레드가 조건을 바꾼 뒤 signal로 깨운다"
+          "뮤텍스",
+          "조건 변수"
         ]
       },
       "answer_key": {
-        "index": 3
+        "index": 1
       },
-      "explanation": "조건 변수는 뮤텍스와 함께 사용되며, 조건이 만족되지 않으면 wait로 블록되고 다른 스레드가 상태를 바꾼 뒤 signal을 보내면 깨어납니다(예: 버퍼가 빌 때까지 대기). 동시 접근 수를 세는 것은 세마포어의 역할입니다.",
+      "explanation": "조건 변수의 wait로 대기하다가 생산자가 signal을 보내면 깨어납니다. 뮤텍스는 상호 배제만 제공하고 조건을 기다리는 기능은 없습니다.",
       "refs": [
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf",
-        "https://en.wikipedia.org/wiki/Monitor_(synchronization)"
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"
       ]
     },
     {
-      "id": "os-mutex-semaphore-condvar-006",
+      "id": "os-mutex-semaphore-condvar-010",
       "type": "single",
       "difficulty": 2,
       "tags": [
         "mutex-semaphore-condvar",
-        "tool-selection"
+        "mutex",
+        "ownership"
       ],
       "content": {
-        "prompt": "DB 연결을 동시에 최대 5개까지만 사용하도록 제한하려 한다. 가장 알맞은 도구는?",
+        "prompt": "뮤텍스를 unlock할 수 있는 스레드는?",
         "options": [
-          "초기값이 5인 카운팅 세마포어",
-          "뮤텍스 하나",
-          "조건 변수 하나만 단독으로",
-          "동기화 도구가 필요 없다"
+          "lock한 스레드",
+          "아무 스레드나"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "'최대 N개까지 동시 접근'은 사용 가능한 자원 수를 세는 카운팅 세마포어로 구현합니다. 뮤텍스 하나는 한 번에 1개 스레드만 허용하므로 연결 5개를 동시에 사용할 수 없습니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
-      ]
-    },
-    {
-      "id": "os-mutex-semaphore-condvar-007",
-      "type": "multi",
-      "difficulty": 2,
-      "tags": [
-        "mutex-semaphore-condvar",
-        "tool-selection"
-      ],
-      "content": {
-        "prompt": "상황과 동기화 도구의 짝이 알맞은 것을 모두 고르시오.",
-        "options": [
-          "공유 변수 balance는 한 번에 한 스레드만 수정해야 한다 → 뮤텍스",
-          "프린터 3대를 최대 3개 스레드가 동시에 사용한다 → 뮤텍스 하나",
-          "프린터 3대를 최대 3개 스레드가 동시에 사용한다 → 초기값 3인 카운팅 세마포어",
-          "사용 가능한 자원의 개수를 센다 → 조건 변수"
-        ]
-      },
-      "answer_key": {
-        "indices": [
-          0,
-          2
-        ]
-      },
-      "explanation": "한 스레드만 진입해야 하면 뮤텍스, 최대 N개까지면 카운팅 세마포어가 맞습니다. 뮤텍스 하나는 1개 스레드만 허용하고, 자원 개수를 세는 것은 조건 변수가 아니라 세마포어의 역할입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
-        "https://en.wikipedia.org/wiki/Mutual_exclusion"
-      ]
-    },
-    {
-      "id": "os-mutex-semaphore-condvar-008",
-      "type": "ox",
-      "difficulty": 2,
-      "tags": [
-        "mutex-semaphore-condvar",
-        "ownership"
-      ],
-      "content": {
-        "prompt": "뮤텍스는 lock을 획득한 스레드가 직접 unlock해야 하는 소유권 개념이 있지만, 세마포어는 다른 스레드가 signal을 호출해 값을 증가시킬 수 있다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "뮤텍스는 획득한 스레드만 해제할 수 있는 소유권(ownership)이 있습니다. 반면 세마포어는 소유권이 없어 wait를 호출하지 않은 스레드도 signal을 호출할 수 있으므로, 스레드 간 실행 순서를 맞추는 신호 용도로도 쓰입니다.",
+      "explanation": "뮤텍스는 소유권이 있어 lock을 획득한 스레드만 unlock합니다. 다른 스레드가 signal할 수 있는 것은 세마포어입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Semaphore_(programming)",
         "https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html"

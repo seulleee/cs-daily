@@ -9,23 +9,22 @@
       "difficulty": 1,
       "tags": [
         "priority-mlfq",
-        "priority"
+        "starvation"
       ],
       "content": {
-        "prompt": "프로세스마다 우선순위를 부여하고, 우선순위가 가장 높은 프로세스에 CPU를 먼저 할당하는 스케줄링은?",
+        "prompt": "낮은 우선순위 프로세스가 CPU를 계속 받지 못하는 현상은?",
         "options": [
-          "선착순(FCFS) 스케줄링",
-          "우선순위 스케줄링",
-          "라운드 로빈 스케줄링",
-          "무작위 스케줄링"
+          "교착 상태",
+          "경쟁 조건",
+          "기아"
         ]
       },
       "answer_key": {
-        "index": 1
+        "index": 2
       },
-      "explanation": "프로세스마다 우선순위를 정해 가장 높은 것부터 CPU를 할당하는 방식이 우선순위 스케줄링입니다. FCFS는 우선순위와 무관하게 도착 순서만 고려합니다.",
+      "explanation": "기아(starvation)는 우선순위가 낮은 프로세스가 무기한 CPU를 할당받지 못하는 현상입니다. 교착 상태는 서로의 자원을 기다리며 멈춘 상태입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
       ]
     },
     {
@@ -34,49 +33,46 @@
       "difficulty": 1,
       "tags": [
         "priority-mlfq",
-        "starvation"
+        "aging"
       ],
       "content": {
-        "prompt": "우선순위 스케줄링에서 높은 우선순위 프로세스가 계속 도착해, 낮은 우선순위 프로세스가 무기한 CPU를 할당받지 못하는 현상은?",
+        "prompt": "오래 기다린 프로세스의 우선순위를 점점 높이는 기법은?",
         "options": [
-          "기아(starvation)",
-          "호위 효과",
-          "오버플로",
-          "컴파일 오류"
+          "에이징",
+          "선점",
+          "스와핑"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "낮은 우선순위 프로세스가 높은 우선순위 프로세스에 계속 밀려 CPU를 무기한 할당받지 못하는 현상을 기아라고 합니다. 호위 효과는 버스트가 긴 프로세스 뒤에서 짧은 프로세스들이 오래 대기하는 FCFS의 문제입니다.",
+      "explanation": "에이징(aging)은 대기 시간이 길어질수록 우선순위를 높여 결국 CPU를 받게 하는 기법으로, 기아를 막습니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+        "https://en.wikipedia.org/wiki/Aging_(scheduling)"
       ]
     },
     {
       "id": "os-priority-mlfq-003",
-      "type": "fill",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "priority-mlfq",
-        "aging"
+        "mlfq"
       ],
       "content": {
-        "prompt": "대기 시간이 길어질수록 프로세스의 우선순위를 점진적으로 높여 기아를 방지하는 기법을 ___ 이라고 한다.",
-        "hint": "영어로 aging"
-      },
-      "answer_key": {
-        "accepted": [
-          "에이징",
-          "aging",
-          "ageing",
-          "에이징 기법",
-          "노화"
+        "prompt": "우선순위별 큐를 여러 개 두고 프로세스를 큐 사이로 옮기는 방식은?",
+        "options": [
+          "FCFS",
+          "MLFQ"
         ]
       },
-      "explanation": "정답은 에이징(aging)입니다. 대기 시간에 비례해 우선순위를 높이면 낮은 우선순위 프로세스도 결국 높은 우선순위에 도달해 CPU를 할당받게 됩니다.",
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "MLFQ(다단계 피드백 큐)는 여러 우선순위 큐를 두고 CPU 사용 행동에 따라 프로세스를 옮깁니다. FCFS는 큐 하나에서 도착 순으로 처리합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Aging_(scheduling)"
+        "https://en.wikipedia.org/wiki/Multilevel_feedback_queue",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
       ]
     },
     {
@@ -85,113 +81,163 @@
       "difficulty": 1,
       "tags": [
         "priority-mlfq",
-        "starvation"
+        "mlfq",
+        "time-quantum"
       ],
       "content": {
-        "prompt": "우선순위 스케줄링에서는 낮은 우선순위 프로세스도 도착 순서대로 CPU를 할당받으므로 기아가 발생하지 않는다."
+        "prompt": "MLFQ에서 타임 퀀텀을 다 쓴 프로세스는 아래 큐로 내려간다."
       },
       "answer_key": {
-        "value": false
+        "value": true
       },
-      "explanation": "우선순위 스케줄링은 도착 순서가 아니라 우선순위로 다음 프로세스를 선택하므로, 높은 우선순위 프로세스가 계속 도착하면 낮은 우선순위 프로세스는 무기한 밀릴 수 있습니다. 그래서 에이징 같은 보완 기법이 필요합니다.",
+      "explanation": "MLFQ는 할당량을 다 쓴 프로세스를 CPU를 오래 쓰는 작업으로 보고 우선순위를 한 단계 낮춰 아래 큐로 옮깁니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Starvation_(computer_science)",
-        "https://en.wikipedia.org/wiki/Aging_(scheduling)"
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
       ]
     },
     {
       "id": "os-priority-mlfq-005",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "priority-mlfq",
+        "aging"
+      ],
+      "content": {
+        "prompt": "에이징은 오래 기다린 프로세스의 우선순위를 낮춘다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "에이징은 오래 기다린 프로세스의 우선순위를 높입니다. 우선순위가 올라가야 결국 CPU를 받아 기아를 피할 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Aging_(scheduling)",
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-priority-mlfq-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "priority-mlfq",
+        "aging"
+      ],
+      "content": {
+        "prompt": "오래 기다릴수록 우선순위를 높여 기아를 막는 기법은 ___ 이다.",
+        "hint": "대기 시간에 따라 우선순위를 조정한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "에이징",
+          "aging",
+          "에이징 기법",
+          "노화"
+        ]
+      },
+      "explanation": "대기 시간이 길수록 우선순위를 높이는 기법을 에이징이라 하며, 낮은 우선순위 프로세스의 기아를 막습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Aging_(scheduling)"
+      ]
+    },
+    {
+      "id": "os-priority-mlfq-007",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "priority-mlfq",
+        "starvation"
+      ],
+      "content": {
+        "prompt": "낮은 우선순위 때문에 CPU를 무기한 받지 못하는 현상은 ___ 이다.",
+        "hint": "에이징으로 막는 현상"
+      },
+      "answer_key": {
+        "accepted": [
+          "기아",
+          "starvation",
+          "기아 상태",
+          "기아상태",
+          "스타베이션",
+          "무한 대기"
+        ]
+      },
+      "explanation": "우선순위가 낮아 CPU 할당을 무기한 받지 못하는 현상을 기아라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-priority-mlfq-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
         "priority-mlfq",
-        "mlfq"
+        "mlfq",
+        "io-bound"
       ],
       "content": {
-        "prompt": "MLFQ(다단계 피드백 큐) 스케줄링의 특징으로 옳은 것은?",
+        "prompt": "MLFQ에서 CPU를 짧게 쓰고 자주 입출력하는 프로세스는?",
         "options": [
-          "큐가 하나뿐이고 도착 순서대로만 처리한다",
-          "프로세스는 처음 배정된 큐에 끝까지 고정된다",
-          "우선순위가 다른 여러 큐를 두고, 프로세스의 CPU 사용 패턴에 따라 큐 사이를 이동시킨다",
-          "가장 늦게 도착한 프로세스를 항상 최상위 큐에 둔다"
+          "상위 큐에 머문다",
+          "하위 큐로 내려간다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "타임 퀀텀을 다 쓰기 전에 입출력으로 CPU를 내놓으므로 우선순위가 유지되어 상위 큐에 머뭅니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
+      ]
+    },
+    {
+      "id": "os-priority-mlfq-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "priority-mlfq",
+        "aging",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "에이징으로 우선순위 값이 10초마다 1 오른다. 3이던 P의 20초 뒤 값은?",
+        "options": [
+          "3",
+          "4",
+          "5"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "MLFQ는 우선순위별로 여러 큐를 두고, 프로세스의 실행 이력(피드백)에 따라 상위·하위 큐로 이동시킵니다. 처음 배정된 큐에 고정되는 방식은 피드백이 없는 다단계 큐(MLQ)입니다.",
+      "explanation": "20초 동안 두 번 올라 3 + 2 = 5가 됩니다. 이렇게 대기 시간에 따라 우선순위를 높이는 것이 에이징입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Multilevel_feedback_queue",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
+        "https://en.wikipedia.org/wiki/Aging_(scheduling)"
       ]
     },
     {
-      "id": "os-priority-mlfq-006",
+      "id": "os-priority-mlfq-010",
       "type": "single",
       "difficulty": 2,
       "tags": [
         "priority-mlfq",
-        "mlfq-rules"
+        "starvation"
       ],
       "content": {
-        "prompt": "MLFQ에서 한 프로세스가 현재 큐에서 받은 CPU 할당량(타임 퀀텀)을 모두 소진하면 어떻게 되는가?",
+        "prompt": "기아가 생길 수 있는 스케줄링은?",
         "options": [
-          "더 높은 우선순위 큐로 올라간다",
-          "한 단계 낮은 우선순위 큐로 내려간다",
-          "즉시 강제 종료된다",
-          "변화 없이 같은 큐에 머문다"
+          "FCFS",
+          "우선순위 스케줄링"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "MLFQ는 할당량을 모두 소진한 프로세스를 CPU 중심(CPU-bound) 프로세스로 보고 한 단계 낮은 우선순위 큐로 강등합니다. 이렇게 하면 짧은 작업과 대화형 프로세스가 상위 큐에서 먼저 실행됩니다.",
+      "explanation": "우선순위 스케줄링은 높은 우선순위 프로세스가 계속 오면 낮은 프로세스가 밀려 기아가 생깁니다. FCFS는 도착 순으로 결국 실행됩니다.",
       "refs": [
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
-      ]
-    },
-    {
-      "id": "os-priority-mlfq-007",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "priority-mlfq",
-        "interactive"
-      ],
-      "content": {
-        "prompt": "입출력을 기다리며 CPU를 짧게만 사용하는 I/O 중심(I/O-bound) 프로세스가 MLFQ에서 높은 우선순위 큐에 머무는 이유는?",
-        "options": [
-          "I/O 중심 프로세스는 항상 최상위 큐에 고정되기 때문에",
-          "할당량을 소진하기 전에 CPU를 반납하므로 강등되지 않기 때문에",
-          "I/O 중심 프로세스는 스케줄러를 거치지 않고 실행되기 때문에",
-          "입출력을 기다리는 동안에도 CPU를 계속 점유하기 때문에"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "MLFQ는 할당량을 소진한 프로세스만 강등하므로, 할당량을 다 쓰기 전에 I/O를 요청해 CPU를 반납하는 프로세스는 높은 큐에 남아 빠르게 응답합니다. 입출력 대기 중에는 CPU를 점유하지 않으므로 마지막 보기는 틀립니다.",
-      "refs": [
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
-      ]
-    },
-    {
-      "id": "os-priority-mlfq-008",
-      "type": "ox",
-      "difficulty": 2,
-      "tags": [
-        "priority-mlfq",
-        "priority-boost"
-      ],
-      "content": {
-        "prompt": "MLFQ가 일정 주기마다 모든 프로세스를 최상위 큐로 올리는 우선순위 부스트(priority boost)는 하위 큐 프로세스의 기아를 방지한다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "주기적인 우선순위 부스트로 하위 큐의 프로세스도 최상위 큐로 올라가 CPU를 할당받을 기회를 얻으므로 기아가 방지됩니다. 오래 대기한 프로세스의 우선순위를 높이는 에이징과 같은 목적의 기법입니다.",
-      "refs": [
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)",
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
       ]
     }
   ]

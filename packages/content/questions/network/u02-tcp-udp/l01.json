@@ -9,37 +9,125 @@
       "difficulty": 1,
       "tags": [
         "tcp-vs-udp",
-        "basics"
+        "tcp"
       ],
       "content": {
-        "prompt": "수신 확인(ACK)과 재전송으로 신뢰성 있는 전송을 보장하는 연결 지향 프로토콜은?",
+        "prompt": "연결을 맺고 신뢰성 있게 데이터를 전송하는 프로토콜은?",
+        "options": [
+          "UDP",
+          "TCP",
+          "IP"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "TCP는 연결을 수립한 뒤 ACK와 재전송으로 데이터가 빠짐없이 도착하게 합니다. UDP는 연결 없이 보냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293",
+        "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
+      ]
+    },
+    {
+      "id": "network-tcp-vs-udp-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tcp-vs-udp",
+        "udp"
+      ],
+      "content": {
+        "prompt": "연결 수립 없이 데이터를 보내는 전송 계층 프로토콜은?",
         "options": [
           "TCP",
           "HTTP",
-          "UDP",
-          "DNS"
+          "UDP"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "UDP는 연결 수립 없이 데이터그램을 바로 보내는 비연결형 전송 계층 프로토콜입니다. HTTP는 응용 계층 프로토콜입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc768",
+        "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
+      ]
+    },
+    {
+      "id": "network-tcp-vs-udp-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tcp-vs-udp",
+        "tcp",
+        "ordering"
+      ],
+      "content": {
+        "prompt": "데이터가 보낸 순서대로 전달되도록 보장하는 프로토콜은?",
+        "options": [
+          "TCP",
+          "UDP"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "TCP는 연결을 수립한 뒤 수신 측의 ACK로 전달을 확인하고, ACK가 오지 않으면 세그먼트를 재전송합니다. UDP는 연결 수립·ACK·재전송이 없는 비연결형 프로토콜입니다.",
+      "explanation": "TCP는 시퀀스 번호로 순서를 맞춰 애플리케이션에 전달합니다. UDP는 순서를 보장하지 않습니다.",
       "refs": [
         "https://www.rfc-editor.org/rfc/rfc9293",
-        "https://www.rfc-editor.org/rfc/rfc768"
+        "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
       ]
     },
     {
-      "id": "network-tcp-vs-udp-002",
-      "type": "fill",
+      "id": "network-tcp-vs-udp-004",
+      "type": "ox",
       "difficulty": 1,
       "tags": [
         "tcp-vs-udp",
-        "udp-header"
+        "udp"
       ],
       "content": {
-        "prompt": "연결 수립과 수신 확인 없이 데이터그램을 전송하는 비연결형 전송 계층 프로토콜은 ___ 이다.",
-        "hint": "User Datagram Protocol의 약자"
+        "prompt": "UDP는 손실된 데이터를 자동으로 재전송한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "UDP에는 ACK와 재전송 기능이 없습니다. 손실된 데이터를 재전송하는 것은 TCP입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc768",
+        "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
+      ]
+    },
+    {
+      "id": "network-tcp-vs-udp-005",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "tcp-vs-udp",
+        "use-case"
+      ],
+      "content": {
+        "prompt": "실시간 영상 통화는 지연을 줄이려고 UDP를 주로 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "실시간 통화는 늦게 도착한 데이터가 쓸모없으므로, 재전송 지연이 없는 UDP를 주로 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
+      ]
+    },
+    {
+      "id": "network-tcp-vs-udp-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "tcp-vs-udp",
+        "udp"
+      ],
+      "content": {
+        "prompt": "ACK와 재전송이 없는 비연결형 전송 계층 프로토콜은 ___ 이다.",
+        "hint": "헤더 크기가 8바이트인 프로토콜입니다."
       },
       "answer_key": {
         "accepted": [
@@ -49,153 +137,110 @@
           "user datagram protocol"
         ]
       },
-      "explanation": "UDP는 8바이트의 단순한 헤더만 붙여 데이터그램을 바로 전송합니다. 오버헤드가 작아 빠르지만, 손실된 데이터를 재전송하지 않습니다.",
+      "explanation": "UDP는 연결 수립·ACK·재전송이 없어 헤더가 작고 전송을 빨리 시작할 수 있습니다.",
       "refs": [
         "https://www.rfc-editor.org/rfc/rfc768",
         "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
       ]
     },
     {
-      "id": "network-tcp-vs-udp-003",
-      "type": "ox",
-      "difficulty": 1,
+      "id": "network-tcp-vs-udp-007",
+      "type": "fill",
+      "difficulty": 2,
       "tags": [
         "tcp-vs-udp",
-        "ordering"
+        "tcp"
       ],
       "content": {
-        "prompt": "UDP는 순서가 뒤바뀌어 도착한 데이터그램을 송신 순서대로 재정렬해 애플리케이션에 전달한다."
+        "prompt": "TCP는 ACK가 오지 않은 데이터를 ___ 해서 손실을 복구한다.",
+        "hint": "같은 데이터를 한 번 더 보내는 동작입니다."
       },
       "answer_key": {
-        "value": false
+        "accepted": [
+          "재전송",
+          "retransmission",
+          "retransmit",
+          "재송신",
+          "다시 전송"
+        ]
       },
-      "explanation": "순서 보장은 TCP의 기능입니다. TCP는 시퀀스 번호로 세그먼트를 재정렬하지만, UDP는 도착한 순서대로 전달할 뿐 재정렬하지 않습니다.",
+      "explanation": "TCP는 정해진 시간 안에 ACK가 오지 않으면 그 데이터를 재전송해 신뢰성을 보장합니다.",
       "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293",
         "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
       ]
     },
     {
-      "id": "network-tcp-vs-udp-004",
+      "id": "network-tcp-vs-udp-008",
       "type": "single",
-      "difficulty": 1,
+      "difficulty": 2,
       "tags": [
         "tcp-vs-udp",
         "use-case"
       ],
       "content": {
-        "prompt": "파일 다운로드, 웹 페이지, 이메일과 같이 데이터 손실이 허용되지 않는 전송에 적합한 프로토콜은?",
+        "prompt": "파일 다운로드처럼 손실이 없어야 하는 전송에 맞는 것은?",
         "options": [
-          "둘 다 적합하지 않다",
           "UDP",
-          "TCP",
-          "둘 중 아무거나 같다"
+          "TCP"
         ]
       },
       "answer_key": {
-        "index": 2
+        "index": 1
       },
-      "explanation": "TCP는 재전송과 순서 보장으로 데이터를 손실 없이 전달하므로 무결성이 중요한 전송에 적합합니다. UDP는 손실을 복구하지 않아 이런 용도에 맞지 않습니다.",
+      "explanation": "파일은 한 바이트만 빠져도 손상되므로, 재전송과 순서 보장을 하는 TCP가 알맞습니다.",
       "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293",
         "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
       ]
     },
     {
-      "id": "network-tcp-vs-udp-005",
+      "id": "network-tcp-vs-udp-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
         "tcp-vs-udp",
-        "realtime"
+        "use-case"
       ],
       "content": {
-        "prompt": "영상 통화나 온라인 게임에서 UDP를 자주 사용하는 이유로 알맞은 것은?",
+        "prompt": "약간의 손실보다 지연이 더 문제인 온라인 게임에 맞는 것은?",
         "options": [
-          "UDP가 데이터 순서를 보장해서",
-          "UDP만 영상 데이터를 전송할 수 있어서",
-          "UDP가 TCP보다 손실된 데이터를 더 잘 재전송해서",
-          "일부 손실을 감수하더라도 재전송 지연 없이 최신 데이터를 보내는 것이 중요해서"
+          "UDP",
+          "TCP"
         ]
       },
       "answer_key": {
-        "index": 3
+        "index": 0
       },
-      "explanation": "실시간 통신에서는 손실된 과거 데이터를 재전송받느라 지연되는 것보다 최신 데이터를 빨리 받는 것이 중요합니다. UDP는 재전송·순서 보장을 하지 않아 지연이 적습니다.",
+      "explanation": "게임은 최신 상태가 빨리 도착하는 것이 중요하므로, 재전송 지연이 없는 UDP를 주로 씁니다.",
       "refs": [
+        "https://www.rfc-editor.org/rfc/rfc768",
         "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
       ]
     },
     {
-      "id": "network-tcp-vs-udp-006",
+      "id": "network-tcp-vs-udp-010",
       "type": "single",
       "difficulty": 2,
       "tags": [
         "tcp-vs-udp",
-        "flow-control"
+        "tcp"
       ],
       "content": {
-        "prompt": "수신 측의 처리 능력에 맞춰 송신 속도를 조절하는 흐름 제어 기능을 제공하는 프로토콜은?",
+        "prompt": "TCP의 특징으로 알맞은 것은?",
         "options": [
-          "UDP만 제공한다",
-          "TCP와 UDP 모두 제공한다",
-          "TCP만 제공한다",
-          "둘 다 제공하지 않는다"
+          "비연결형",
+          "재전송 없음",
+          "순서 보장"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "TCP는 수신 측이 헤더의 윈도우 필드로 수신 가능한 양을 알리면 그 범위 안에서만 전송합니다. UDP에는 흐름 제어가 없습니다.",
+      "explanation": "TCP는 연결 지향형이며 재전송과 순서 보장을 제공합니다. 비연결형·재전송 없음은 UDP의 특징입니다.",
       "refs": [
         "https://www.rfc-editor.org/rfc/rfc9293",
-        "https://www.rfc-editor.org/rfc/rfc768"
-      ]
-    },
-    {
-      "id": "network-tcp-vs-udp-007",
-      "type": "ox",
-      "difficulty": 2,
-      "tags": [
-        "tcp-vs-udp",
-        "connectionless"
-      ],
-      "content": {
-        "prompt": "UDP는 연결 수립 과정(handshake)이 없어서 TCP보다 데이터 전송을 더 빨리 시작할 수 있다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "TCP는 데이터 전송 전에 3-way handshake로 연결을 수립해야 하지만, UDP는 연결 수립 없이 바로 데이터그램을 보냅니다. 그래서 초기 지연이 적습니다.",
-      "refs": [
-        "https://www.rfc-editor.org/rfc/rfc768"
-      ]
-    },
-    {
-      "id": "network-tcp-vs-udp-008",
-      "type": "multi",
-      "difficulty": 2,
-      "tags": [
-        "tcp-vs-udp",
-        "udp-traits"
-      ],
-      "content": {
-        "prompt": "UDP의 특징으로 알맞은 것을 모두 고르시오.",
-        "options": [
-          "손실이나 순서 변경이 발생해도 UDP 자체가 복구하지 않는다",
-          "손실된 데이터를 자동으로 재전송한다",
-          "전송 전에 반드시 연결을 수립해야 한다",
-          "수신 확인(ACK)을 주고받지 않는다"
-        ]
-      },
-      "answer_key": {
-        "indices": [
-          0,
-          3
-        ]
-      },
-      "explanation": "UDP는 비연결형 프로토콜로 ACK·재전송·순서 보장을 제공하지 않습니다. 연결 수립과 재전송은 TCP의 특징입니다.",
-      "refs": [
-        "https://www.rfc-editor.org/rfc/rfc768",
-        "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
+        "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
       ]
     }
   ]

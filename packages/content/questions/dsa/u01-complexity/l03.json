@@ -9,192 +9,239 @@
       "difficulty": 1,
       "tags": [
         "space-amortized",
-        "auxiliary-space"
+        "space-complexity"
       ],
       "content": {
-        "prompt": "공간 복잡도에서 보조 공간(auxiliary space)의 정의는?",
+        "prompt": "입력 크기에 따라 메모리 사용량이 늘어나는 정도를 나타내는 것은?",
         "options": [
-          "입력 데이터가 차지하는 메모리",
-          "입력을 제외하고 알고리즘이 실행 중 추가로 사용하는 메모리",
-          "프로그램 실행 파일의 크기",
-          "디스크의 남은 용량"
+          "시간 복잡도",
+          "공간 복잡도",
+          "상각 비용"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "보조 공간은 입력이 차지하는 공간을 제외하고 알고리즘이 실행 중 추가로 할당하는 메모리입니다. 입력 공간까지 포함한 전체 사용량은 총 공간 복잡도라고 구분합니다.",
+      "explanation": "공간 복잡도는 입력 크기 n에 따른 메모리 사용량의 증가율입니다. 시간 복잡도는 실행 시간의 증가율입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Analysis_of_algorithms"
+        "https://en.wikipedia.org/wiki/Space_complexity",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
       ]
     },
     {
       "id": "dsa-space-amortized-002",
-      "type": "ox",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "space-amortized",
-        "recursion-stack"
+        "auxiliary-space"
       ],
       "content": {
-        "prompt": "재귀 깊이가 n인 함수는 별도의 자료구조를 할당하지 않아도 호출 스택에 스택 프레임이 n개 쌓여 O(n) 공간을 사용한다."
+        "prompt": "입력을 제외하고 알고리즘이 추가로 쓰는 메모리는?",
+        "options": [
+          "입력 공간",
+          "캐시 메모리",
+          "보조 공간"
+        ]
       },
       "answer_key": {
-        "value": true
+        "index": 2
       },
-      "explanation": "함수가 호출될 때마다 지역 변수와 복귀 주소를 담은 스택 프레임이 호출 스택에 push되고, 반환될 때 pop됩니다. 재귀 깊이가 n이면 프레임 n개가 동시에 존재하므로 O(n) 공간입니다.",
+      "explanation": "입력 외에 알고리즘이 추가로 사용하는 메모리를 보조 공간(auxiliary space)이라고 합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Call_stack"
+        "https://en.wikipedia.org/wiki/Space_complexity",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
       ]
     },
     {
       "id": "dsa-space-amortized-003",
-      "type": "fill",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "space-amortized",
         "amortized"
       ],
       "content": {
-        "prompt": "연산 시퀀스 전체의 총비용을 연산 횟수로 나누어 연산 1회당 비용을 구하는 분석 기법을 ___ 분석이라고 한다.",
-        "hint": "고비용 연산의 비용을 여러 연산에 나누어 분산한다는 뜻의 용어"
+        "prompt": "총비용을 연산 횟수로 나눈 연산 1회당 비용은?",
+        "options": [
+          "최악 비용",
+          "상각 비용"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "상각 비용은 연산 전체의 총비용을 연산 횟수로 나눈 1회당 비용입니다. 최악 비용은 가장 비싼 연산 한 번의 비용입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-space-amortized-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "space-amortized",
+        "space-complexity"
+      ],
+      "content": {
+        "prompt": "공간 복잡도는 실행 시간의 증가율을 나타낸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "공간 복잡도는 메모리 사용량의 증가율입니다. 실행 시간의 증가율은 시간 복잡도입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-space-amortized-005",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "space-amortized",
+        "auxiliary-space"
+      ],
+      "content": {
+        "prompt": "원소 n개짜리 새 배열을 만들면 보조 공간은 O(n)이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "입력과 별도로 원소 n개를 담는 배열을 만들면 추가 메모리가 n에 비례하므로 보조 공간은 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-space-amortized-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "space-amortized",
+        "auxiliary-space"
+      ],
+      "content": {
+        "prompt": "입력 외에 추가로 쓰는 메모리를 ___ 공간이라고 한다.",
+        "hint": "입력 공간과 구분되는 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "보조",
+          "보조 공간",
+          "auxiliary",
+          "auxiliary space"
+        ]
+      },
+      "explanation": "입력이 차지하는 메모리를 빼고 알고리즘이 추가로 쓰는 메모리를 보조 공간이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-space-amortized-007",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "space-amortized",
+        "amortized"
+      ],
+      "content": {
+        "prompt": "총비용을 연산 횟수로 나눠 1회당 비용을 보는 분석은 ___ 분석이다.",
+        "hint": "가끔 비싼 연산의 비용을 여러 번에 나눠 보는 분석"
       },
       "answer_key": {
         "accepted": [
           "상각",
           "amortized",
           "상각 분석",
-          "분할 상환",
+          "amortized analysis",
           "분할상환",
-          "amortized analysis"
+          "분할 상환"
         ]
       },
-      "explanation": "상각(amortized) 분석은 가끔 발생하는 고비용 연산의 비용을 연산 시퀀스 전체에 분산해 1회당 비용을 구합니다. 최악의 단일 연산 비용만 보는 최악 분석과 구분됩니다.",
+      "explanation": "상각 분석은 연산 전체의 총비용을 횟수로 나눠 1회당 비용을 구합니다. 가끔 비싼 연산이 있어도 1회당 비용은 작을 수 있습니다.",
       "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity",
         "https://en.wikipedia.org/wiki/Amortized_analysis"
       ]
     },
     {
-      "id": "dsa-space-amortized-004",
+      "id": "dsa-space-amortized-008",
       "type": "single",
-      "difficulty": 1,
+      "difficulty": 2,
       "tags": [
         "space-amortized",
-        "auxiliary-space"
+        "amortized"
       ],
       "content": {
-        "prompt": "길이 n인 배열을 뒤집는 두 방법이 있다. (가) 새 배열을 할당해 원소를 역순으로 복사, (나) 양 끝 원소를 swap하며 중앙으로 이동(in-place). 각각의 보조 공간은?",
+        "prompt": "연산 5회의 총비용이 10이다. 1회당 상각 비용은?",
         "options": [
-          "(가) O(n), (나) O(1)",
-          "(가) O(1), (나) O(n)",
-          "둘 다 O(n)",
-          "둘 다 O(1)"
+          "2",
+          "5",
+          "10"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "(가)는 길이 n인 새 배열을 할당하므로 보조 공간이 O(n)입니다. (나)는 swap용 임시 변수 하나만 쓰는 in-place 알고리즘이라 O(1)입니다.",
+      "explanation": "상각 비용은 총비용 ÷ 연산 횟수이므로 10 ÷ 5 = 2입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Analysis_of_algorithms"
-      ]
-    },
-    {
-      "id": "dsa-space-amortized-005",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "space-amortized",
-        "amortized"
-      ],
-      "content": {
-        "prompt": "어떤 연산 10회 중 9회는 비용이 1이고 1회는 비용이 10이다. 연산 1회당 상각 비용은?",
-        "options": [
-          "1",
-          "10",
-          "1.9",
-          "19"
-        ]
-      },
-      "answer_key": {
-        "index": 2
-      },
-      "explanation": "총비용은 9 × 1 + 1 × 10 = 19이고, 이를 연산 횟수 10으로 나누면 상각 비용은 1.9입니다. 10은 최악의 단일 연산 비용이고, 19는 나누기 전 총비용입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Merge_sort",
-        "https://en.wikipedia.org/wiki/Quicksort"
-      ]
-    },
-    {
-      "id": "dsa-space-amortized-006",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "space-amortized",
-        "amortized"
-      ],
-      "content": {
-        "prompt": "'이 연산의 상각 시간 복잡도는 O(1)이다'의 의미로 옳은 것은?",
-        "options": [
-          "모든 개별 연산이 최악의 경우에도 O(1)이다",
-          "입력이 무작위일 때 기대 시간이 O(1)이다",
-          "일부 연산은 비쌀 수 있지만, 연산 m회의 총비용이 O(m)이다",
-          "보조 공간이 O(1)이다"
-        ]
-      },
-      "answer_key": {
-        "index": 2
-      },
-      "explanation": "상각 O(1)은 연산 m회의 총비용이 O(m)이라는 뜻으로, 개별 연산 중 일부는 O(n)일 수 있습니다. 개별 연산의 최악 O(1)은 더 강한 조건이고, 무작위 입력에 대한 기대 시간은 확률적 분석으로 상각 분석과 다릅니다.",
-      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity",
         "https://en.wikipedia.org/wiki/Amortized_analysis"
       ]
     },
     {
-      "id": "dsa-space-amortized-007",
-      "type": "ox",
-      "difficulty": 2,
-      "tags": [
-        "space-amortized",
-        "amortized-vs-average"
-      ],
-      "content": {
-        "prompt": "상각 분석은 확률 가정 없이 임의의 연산 시퀀스에 대해 총비용의 상한을 보장한다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "상각 분석은 최악의 연산 순서에서도 성립하는 총비용 상한을 제공하며 확률 가정을 쓰지 않습니다. 입력 분포를 가정해 기댓값을 구하는 평균 사례(average-case) 분석과는 다른 개념입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Amortized_analysis",
-        "https://en.wikipedia.org/wiki/Dynamic_array"
-      ]
-    },
-    {
-      "id": "dsa-space-amortized-008",
-      "type": "multi",
+      "id": "dsa-space-amortized-009",
+      "type": "single",
       "difficulty": 2,
       "tags": [
         "space-amortized",
         "auxiliary-space"
       ],
       "content": {
-        "prompt": "보조 공간이 O(n)인 경우를 모두 고르세요. (n은 입력 원소 수)",
+        "prompt": "n과 상관없이 변수 2개만 추가로 쓰면 보조 공간은?",
         "options": [
-          "입력 배열 전체를 복사한 새 배열을 할당한다",
-          "합계·카운터 등 상수 개의 변수만 사용한다",
-          "재귀 깊이가 n인 재귀 호출을 수행한다",
-          "두 원소를 임시 변수 하나로 swap한다"
+          "O(n)",
+          "O(1)",
+          "O(n²)"
         ]
       },
       "answer_key": {
-        "indices": [
-          0,
-          2
+        "index": 1
+      },
+      "explanation": "추가 메모리가 입력 크기와 관계없이 일정하므로 보조 공간은 O(1)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-space-amortized-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "space-amortized",
+        "space-complexity"
+      ],
+      "content": {
+        "prompt": "공간 복잡도가 나타내는 것은?",
+        "options": [
+          "메모리 사용량 증가율",
+          "실행 시간 증가율"
         ]
       },
-      "explanation": "배열 복사는 n개 원소 공간을, 깊이 n의 재귀는 스택 프레임 n개를 사용하므로 둘 다 O(n)입니다. 상수 개의 변수나 swap은 입력 크기와 무관하게 O(1) 공간입니다.",
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "공간 복잡도는 입력 크기에 따른 메모리 사용량의 증가율이고, 실행 시간의 증가율은 시간 복잡도입니다.",
       "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity",
         "https://en.wikipedia.org/wiki/Amortized_analysis"
       ]
     }

@@ -9,51 +9,73 @@
       "difficulty": 1,
       "tags": [
         "mac-ip-port",
-        "ip-address"
-      ],
-      "content": {
-        "prompt": "네트워크 계층에서 인터넷상의 호스트를 식별하고 라우팅에 사용하는 논리 주소는?",
-        "options": [
-          "포트 번호",
-          "MAC 주소",
-          "URL",
-          "IP 주소"
-        ]
-      },
-      "answer_key": {
-        "index": 3
-      },
-      "explanation": "IP 주소는 네트워크 계층의 논리 주소로, 네트워크 부분과 호스트 부분으로 구성되어 라우팅에 사용됩니다. MAC 주소는 데이터링크 계층의 물리 주소, 포트 번호는 전송 계층에서 프로세스를 구분하는 번호입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/IP_address"
-      ]
-    },
-    {
-      "id": "network-mac-ip-port-002",
-      "type": "fill",
-      "difficulty": 1,
-      "tags": [
-        "mac-ip-port",
         "port"
       ],
       "content": {
-        "prompt": "전송 계층에서 한 호스트 안의 여러 프로세스(애플리케이션)를 구분하는 16비트 번호를 ___ 번호라고 한다.",
-        "hint": "예: HTTP는 80번, HTTPS는 443번"
-      },
-      "answer_key": {
-        "accepted": [
-          "포트",
-          "port",
-          "포트번호"
+        "prompt": "한 호스트 안에서 통신하는 프로세스를 구분하는 번호는?",
+        "options": [
+          "IP 주소",
+          "MAC 주소",
+          "포트 번호"
         ]
       },
-      "explanation": "포트 번호는 TCP·UDP 헤더에 들어가는 16비트 값으로, 같은 IP 주소를 가진 호스트 안에서 데이터를 받을 프로세스를 지정합니다. 예를 들어 HTTP는 80번, HTTPS는 443번을 기본으로 사용합니다.",
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "포트 번호는 같은 호스트의 여러 프로세스를 구분하는 전송 계층의 16비트 번호입니다. IP 주소는 호스트를 식별합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Port_(computer_networking)"
       ]
     },
     {
+      "id": "network-mac-ip-port-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mac-ip-port",
+        "mac"
+      ],
+      "content": {
+        "prompt": "네트워크 인터페이스에 부여된 48비트 물리 주소는?",
+        "options": [
+          "MAC 주소",
+          "포트 번호",
+          "IP 주소"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "MAC 주소는 네트워크 인터페이스마다 부여된 48비트 주소로, 같은 네트워크 안에서 프레임을 전달할 때 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/MAC_address"
+      ]
+    },
+    {
       "id": "network-mac-ip-port-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mac-ip-port",
+        "ip-address"
+      ],
+      "content": {
+        "prompt": "다른 네트워크에 있는 목적지 호스트를 식별하는 주소는?",
+        "options": [
+          "IP 주소",
+          "MAC 주소"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "IP 주소는 네트워크 계층의 논리 주소로, 라우터가 이를 보고 다른 네트워크까지 패킷을 전달합니다. MAC 주소는 같은 네트워크 안에서만 쓰입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/IP_address"
+      ]
+    },
+    {
+      "id": "network-mac-ip-port-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
@@ -61,43 +83,96 @@
         "mac"
       ],
       "content": {
-        "prompt": "MAC 주소는 출발지에서 다른 네트워크에 있는 목적지까지의 경로를 결정할 때 사용된다."
+        "prompt": "MAC 주소는 네트워크 계층에서 쓰이는 주소이다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "MAC 주소는 데이터링크 계층 주소로, 같은 링크(로컬 네트워크) 안에서 다음 장치로 프레임을 전달할 때 사용됩니다. 다른 네트워크까지의 경로 결정은 네트워크 계층에서 IP 주소로 이루어집니다.",
+      "explanation": "MAC 주소는 데이터링크 계층의 주소입니다. 네트워크 계층에서 쓰는 주소는 IP 주소입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/MAC_address"
+        "https://en.wikipedia.org/wiki/MAC_address",
+        "https://en.wikipedia.org/wiki/Data_link_layer"
       ]
     },
     {
-      "id": "network-mac-ip-port-004",
-      "type": "single",
+      "id": "network-mac-ip-port-005",
+      "type": "ox",
       "difficulty": 1,
       "tags": [
         "mac-ip-port",
-        "ip-layer"
+        "port"
       ],
       "content": {
-        "prompt": "IP 주소가 출발지·목적지 주소로 기록되는 헤더는 어느 계층의 헤더일까?",
-        "options": [
-          "물리 계층",
-          "네트워크 계층",
-          "표현 계층",
-          "응용 계층"
-        ]
+        "prompt": "포트 번호는 전송 계층에서 프로세스를 구분하는 데 쓰인다."
       },
       "answer_key": {
-        "index": 1
+        "value": true
       },
-      "explanation": "IP 주소는 3계층인 네트워크 계층의 IP 헤더에 기록되고, 라우터는 이 값으로 경로를 정합니다. 응용 계층은 애플리케이션 프로토콜, 물리 계층은 신호 전송을 담당합니다.",
+      "explanation": "전송 계층은 TCP·UDP 헤더에 담긴 포트 번호를 보고 데이터를 받을 프로세스를 구분합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Port_(computer_networking)"
+      ]
+    },
+    {
+      "id": "network-mac-ip-port-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "mac-ip-port",
+        "ip-address"
+      ],
+      "content": {
+        "prompt": "IP 주소를 사용하는 계층은 ___ 계층이다.",
+        "hint": "라우터가 패킷의 경로를 결정하는 계층입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "네트워크",
+          "network",
+          "네트웍",
+          "인터넷",
+          "internet",
+          "3"
+        ]
+      },
+      "explanation": "IP 주소는 네트워크 계층(TCP/IP 모델의 인터넷 계층)의 주소이며, 라우터는 이 주소를 보고 경로를 정합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/IP_address"
       ]
     },
     {
-      "id": "network-mac-ip-port-005",
+      "id": "network-mac-ip-port-007",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "mac-ip-port",
+        "mac"
+      ],
+      "content": {
+        "prompt": "같은 LAN 안에서 프레임을 전달할 때 쓰는 주소는 ___ 주소이다.",
+        "hint": "48비트이며 보통 16진수 6묶음으로 표기합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "MAC",
+          "mac",
+          "맥",
+          "물리",
+          "하드웨어",
+          "이더넷",
+          "ethernet",
+          "hardware",
+          "physical"
+        ]
+      },
+      "explanation": "같은 LAN 안에서는 데이터링크 계층이 MAC 주소로 프레임의 출발지와 목적지를 지정합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/MAC_address",
+        "https://en.wikipedia.org/wiki/Data_link_layer"
+      ]
+    },
+    {
+      "id": "network-mac-ip-port-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -105,93 +180,68 @@
         "port"
       ],
       "content": {
-        "prompt": "TCP·UDP 헤더의 포트 번호를 보고 데이터를 해당 프로세스에 전달하는 계층은?",
+        "prompt": "같은 PC의 브라우저와 메신저로 가는 데이터를 구분하는 값은?",
         "options": [
-          "데이터링크 계층",
-          "네트워크 계층",
-          "물리 계층",
-          "전송 계층"
+          "IP 주소",
+          "포트 번호",
+          "MAC 주소"
         ]
       },
       "answer_key": {
-        "index": 3
+        "index": 1
       },
-      "explanation": "포트 번호는 4계층인 전송 계층의 TCP·UDP 헤더에 들어 있습니다. 네트워크 계층은 IP 주소로 목적지 호스트까지만 전달하고, 호스트 안의 프로세스를 구분하는 것은 전송 계층입니다.",
+      "explanation": "두 프로그램은 같은 PC에 있어 IP 주소와 MAC 주소가 같으므로, 포트 번호로 구분됩니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Port_(computer_networking)"
       ]
     },
     {
-      "id": "network-mac-ip-port-006",
+      "id": "network-mac-ip-port-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
         "mac-ip-port",
-        "mac-layer"
+        "ip-address",
+        "mac"
       ],
       "content": {
-        "prompt": "같은 로컬 네트워크(LAN)에서 프레임을 전달할 때 사용하는 48비트 MAC 주소는 어느 계층의 주소일까?",
+        "prompt": "패킷이 라우터를 지날 때 바뀌지 않는 목적지 주소는?",
         "options": [
-          "세션 계층",
-          "전송 계층",
-          "응용 계층",
-          "데이터링크 계층"
+          "목적지 MAC 주소",
+          "목적지 IP 주소"
         ]
       },
       "answer_key": {
-        "index": 3
+        "index": 1
       },
-      "explanation": "MAC 주소는 2계층인 데이터링크 계층의 주소로, 이더넷 프레임 헤더에 출발지·목적지 MAC 주소가 기록됩니다. 포트 번호를 쓰는 전송 계층이나 응용 계층과는 다른 계층입니다.",
+      "explanation": "라우터는 홉마다 프레임을 새로 만들어 MAC 주소를 바꾸지만, 목적지 IP 주소는 그대로 유지합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/MAC_address",
-        "https://en.wikipedia.org/wiki/Data_link_layer"
+        "https://en.wikipedia.org/wiki/IP_address",
+        "https://en.wikipedia.org/wiki/MAC_address"
       ]
     },
     {
-      "id": "network-mac-ip-port-007",
-      "type": "ox",
+      "id": "network-mac-ip-port-010",
+      "type": "single",
       "difficulty": 2,
       "tags": [
         "mac-ip-port",
-        "port-multiplexing"
+        "port"
       ],
       "content": {
-        "prompt": "한 호스트에서 웹 브라우저와 메신저가 동시에 통신할 수 있는 것은, IP 주소가 같아도 포트 번호로 프로세스를 구분하기 때문이다."
+        "prompt": "포트 번호를 사용하는 계층은?",
+        "options": [
+          "네트워크 계층",
+          "데이터링크 계층",
+          "전송 계층"
+        ]
       },
       "answer_key": {
-        "value": true
+        "index": 2
       },
-      "explanation": "전송 계층은 포트 번호를 기준으로 수신 데이터를 각 프로세스에 분배합니다(역다중화). 그래서 애플리케이션마다 별도의 IP 주소가 필요하지 않습니다.",
+      "explanation": "포트 번호는 TCP·UDP 헤더에 담기는 전송 계층의 식별자입니다. 네트워크 계층은 IP 주소를 씁니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Port_(computer_networking)"
-      ]
-    },
-    {
-      "id": "network-mac-ip-port-008",
-      "type": "multi",
-      "difficulty": 2,
-      "tags": [
-        "mac-ip-port",
-        "address-layer"
-      ],
-      "content": {
-        "prompt": "주소와 그 주소를 사용하는 계층을 바르게 짝지은 것을 모두 고르시오.",
-        "options": [
-          "MAC 주소 – 응용 계층",
-          "IP 주소 – 네트워크 계층",
-          "포트 번호 – 전송 계층",
-          "포트 번호 – 네트워크 계층"
-        ]
-      },
-      "answer_key": {
-        "indices": [
-          1,
-          2
-        ]
-      },
-      "explanation": "IP 주소는 네트워크 계층(3계층), 포트 번호는 전송 계층(4계층), MAC 주소는 데이터링크 계층(2계층)에서 사용됩니다. MAC 주소를 응용 계층, 포트 번호를 네트워크 계층과 짝지은 것은 틀렸습니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/IP_address"
       ]
     }
   ]

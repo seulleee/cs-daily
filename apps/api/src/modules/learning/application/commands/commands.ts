@@ -34,3 +34,13 @@ export class StartUnitSkipTestCommand {
     readonly unitId: number,
   ) {}
 }
+
+/** 틀린 문제 다시 풀기 — 채점만, 기록 없음 */
+export class RetryAnswerCommand {
+  constructor(
+    readonly userId: string,
+    readonly sessionId: string,
+    readonly questionId: string,
+    readonly answer: unknown,
+  ) {}
+}

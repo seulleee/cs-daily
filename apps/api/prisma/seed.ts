@@ -49,6 +49,8 @@ async function main() {
     const lf = LessonFile.parse(JSON.parse(readFileSync(file, 'utf8')));
     const lessonId = lessonIdByKey.get(`${lf.track}/${lf.unit}/${lf.lesson}`);
     if (!lessonId) throw new Error(`${file}: 커리큘럼에 없는 레슨`);
+    // 레슨당 출제 수는 콘텐츠 파일의 문제 수를 따른다 (드릴 구조: 10문제)
+    await prisma.lesson.update({ where: { id: lessonId }, data: { questionCount: lf.questions.length } });
     for (const [i, q] of lf.questions.entries()) {
       seen.push(q.id);
       const data = {

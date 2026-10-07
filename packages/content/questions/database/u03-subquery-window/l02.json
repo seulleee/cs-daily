@@ -12,18 +12,17 @@
         "cte"
       ],
       "content": {
-        "prompt": "WITH 절로 정의하는 CTE(Common Table Expression)의 정의로 옳은 것은?",
+        "prompt": "WITH 절로 이름을 붙인 임시 결과 집합은?",
         "options": [
-          "해당 쿼리 실행 동안에만 존재하는, 이름을 붙인 임시 결과 집합",
-          "데이터베이스에 영구 저장되는 테이블",
-          "검색 속도를 높이는 인덱스",
-          "테이블 백업 파일"
+          "CTE",
+          "인덱스",
+          "트리거"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "CTE는 WITH 절에서 이름을 붙여 정의한 임시 결과 집합으로, 해당 쿼리 안에서만 테이블과 같이 참조할 수 있습니다. 쿼리 실행이 끝나면 사라지며 스키마에 저장되지 않습니다.",
+      "explanation": "CTE(Common Table Expression)는 WITH 절로 이름을 붙인 임시 결과 집합으로, 해당 쿼리 안에서만 씁니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-with.html"
       ]
@@ -34,60 +33,123 @@
       "difficulty": 1,
       "tags": [
         "cte-recursive",
-        "cte"
+        "recursive-cte"
       ],
       "content": {
-        "prompt": "members가 (민지, 25), (준호, 31), (서연, 19)일 때 아래 쿼리의 결과는?",
-        "code": {
-          "language": "sql",
-          "source": "WITH adults AS (\n  SELECT name FROM members WHERE age >= 20\n)\nSELECT name FROM adults;"
-        },
+        "prompt": "자기 자신을 참조하는 CTE를 부르는 말은?",
         "options": [
-          "민지, 준호",
-          "서연",
-          "민지, 준호, 서연",
-          "결과 없음"
+          "서브쿼리",
+          "재귀 CTE",
+          "윈도우 함수"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 1
       },
-      "explanation": "CTE adults는 age >= 20인 행의 name으로 정의되고, 메인 쿼리는 adults를 조회합니다. 따라서 민지와 준호가 반환됩니다.",
+      "explanation": "재귀 CTE는 정의 안에서 자기 자신을 참조해, 새 행이 나오지 않을 때까지 반복 실행됩니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-with.html"
       ]
     },
     {
       "id": "database-cte-recursive-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cte-recursive",
+        "recursive-cte",
+        "hierarchy"
+      ],
+      "content": {
+        "prompt": "상사-부하 계층을 깊이와 관계없이 끝까지 조회할 때 쓰는 것은?",
+        "options": [
+          "재귀 CTE",
+          "일반 CTE"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "재귀 CTE는 이전 단계의 결과로 다음 단계를 반복 조회하므로, 깊이가 정해지지 않은 계층을 끝까지 따라갑니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-with.html",
+        "https://en.wikipedia.org/wiki/Hierarchical_and_recursive_queries_in_SQL"
+      ]
+    },
+    {
+      "id": "database-cte-recursive-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
         "cte-recursive",
-        "cte",
-        "multiple"
+        "cte"
       ],
       "content": {
-        "prompt": "하나의 WITH 절에는 CTE를 하나만 정의할 수 있다."
+        "prompt": "CTE는 데이터베이스에 영구 저장되는 테이블이다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "WITH a AS (...), b AS (SELECT ... FROM a) 형태로 하나의 WITH 절에 CTE를 쉼표로 구분해 여러 개 정의할 수 있습니다. 뒤에 정의한 CTE는 앞에서 정의한 CTE를 참조할 수 있습니다.",
+      "explanation": "CTE는 해당 쿼리가 실행되는 동안에만 존재하는 임시 결과 집합입니다. 쿼리가 끝나면 사라집니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-with.html"
       ]
     },
     {
-      "id": "database-cte-recursive-004",
-      "type": "fill",
+      "id": "database-cte-recursive-005",
+      "type": "ox",
       "difficulty": 1,
+      "tags": [
+        "cte-recursive",
+        "recursive-cte",
+        "termination"
+      ],
+      "content": {
+        "prompt": "재귀 CTE에 종료 조건이 없으면 끝없이 반복될 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "재귀 CTE는 재귀 항이 새 행을 만들지 않을 때 멈춥니다. WHERE n < 3 같은 종료 조건이 없으면 계속 반복될 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-with.html"
+      ]
+    },
+    {
+      "id": "database-cte-recursive-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cte-recursive",
+        "cte"
+      ],
+      "content": {
+        "prompt": "CTE는 ___ 절로 정의한다.",
+        "hint": "SELECT보다 앞에 쓰는 키워드"
+      },
+      "answer_key": {
+        "accepted": [
+          "WITH",
+          "with",
+          "위드"
+        ]
+      },
+      "explanation": "WITH 이름 AS (SELECT ...) 형태로 CTE를 정의하고, 뒤의 SELECT에서 그 이름을 테이블처럼 씁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-with.html"
+      ]
+    },
+    {
+      "id": "database-cte-recursive-007",
+      "type": "fill",
+      "difficulty": 2,
       "tags": [
         "cte-recursive",
         "recursive-cte"
       ],
       "content": {
-        "prompt": "자기 자신을 참조하는 재귀 CTE를 정의할 때, 표준 SQL(PostgreSQL 등)에서는 WITH 뒤에 ___ 키워드를 붙인다.",
-        "hint": "'재귀적인'을 뜻하는 영문 키워드"
+        "prompt": "재귀 CTE를 정의할 때는 WITH ___ 로 시작한다.",
+        "hint": "재귀를 뜻하는 영어 키워드"
       },
       "answer_key": {
         "accepted": [
@@ -96,13 +158,13 @@
           "리커시브"
         ]
       },
-      "explanation": "WITH RECURSIVE로 선언해야 CTE가 정의 안에서 자기 이름을 참조할 수 있습니다. 자기 참조 관계로 표현된 계층 데이터를 조회할 때 사용합니다.",
+      "explanation": "PostgreSQL 등 표준 SQL을 따르는 DB에서는 WITH RECURSIVE로 재귀 CTE를 정의합니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-with.html"
       ]
     },
     {
-      "id": "database-cte-recursive-005",
+      "id": "database-cte-recursive-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -111,82 +173,25 @@
         "hierarchy"
       ],
       "content": {
-        "prompt": "employees(id, manager_id) 테이블에서 manager_id는 같은 테이블의 id를 참조한다. 특정 직원의 모든 하위 직원을 깊이에 관계없이 조회하는 데 알맞은 기능은?",
+        "prompt": "A 밑에 B, B 밑에 C가 있다. 재귀 CTE로 구한 A의 모든 하위 직원은?",
         "options": [
-          "재귀 CTE(WITH RECURSIVE)",
-          "ORDER BY",
-          "LIMIT",
-          "CROSS JOIN"
+          "B",
+          "C",
+          "B와 C"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 2
       },
-      "explanation": "재귀 CTE는 직전 단계에서 찾은 행을 기준으로 다음 단계의 행을 반복 조회하므로, 깊이를 모르는 계층 구조를 끝까지 탐색할 수 있습니다. ORDER BY와 LIMIT은 정렬과 행 수 제한 기능입니다.",
+      "explanation": "재귀 CTE는 A의 직속 B를 찾은 뒤, 다시 B의 하위 C를 찾습니다. 따라서 결과는 B와 C입니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-with.html",
         "https://en.wikipedia.org/wiki/Hierarchical_and_recursive_queries_in_SQL"
       ]
     },
     {
-      "id": "database-cte-recursive-006",
+      "id": "database-cte-recursive-009",
       "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "cte-recursive",
-        "recursive-cte",
-        "anchor"
-      ],
-      "content": {
-        "prompt": "재귀 CTE는 비재귀 항(앵커)과 재귀 항을 UNION ALL로 연결한다. 비재귀 항의 역할은?",
-        "options": [
-          "한 번만 실행되어 재귀의 시작 행을 생성한다",
-          "반복 횟수를 지정한다",
-          "재귀를 종료시킨다",
-          "결과를 정렬한다"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "비재귀 항(앵커)이 시작 행을 생성하면, 재귀 항은 직전 단계의 결과를 입력으로 새 행을 생성하는 과정을 반복합니다. 재귀는 재귀 항이 더 이상 새 행을 생성하지 않을 때 종료됩니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/queries-with.html"
-      ]
-    },
-    {
-      "id": "database-cte-recursive-007",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "cte-recursive",
-        "recursive-cte",
-        "apply"
-      ],
-      "content": {
-        "prompt": "아래 재귀 CTE의 결과는?",
-        "code": {
-          "language": "sql",
-          "source": "WITH RECURSIVE nums(n) AS (\n  SELECT 1 UNION ALL\n  SELECT n + 1 FROM nums WHERE n < 3\n)\nSELECT n FROM nums;"
-        },
-        "options": [
-          "1, 2, 3",
-          "1, 2",
-          "1, 2, 3, 4",
-          "1"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "비재귀 항이 1을 생성하고, 재귀 항이 n < 3인 동안 n + 1을 생성해 2, 3이 추가됩니다. n = 3에서는 조건이 거짓이라 새 행이 없으므로 재귀가 종료되고 4는 생성되지 않습니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/queries-with.html"
-      ]
-    },
-    {
-      "id": "database-cte-recursive-008",
-      "type": "ox",
       "difficulty": 2,
       "tags": [
         "cte-recursive",
@@ -194,12 +199,40 @@
         "termination"
       ],
       "content": {
-        "prompt": "재귀 CTE는 재귀 항이 새 행을 생성하지 않으면 종료되므로, 종료 조건(예: WHERE n < 3)이 없으면 무한히 반복될 수 있다."
+        "prompt": "재귀 CTE가 n = 1에서 시작해 n < 3인 동안 n + 1을 만든다. 마지막 n은?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ]
       },
       "answer_key": {
-        "value": true
+        "index": 1
       },
-      "explanation": "재귀 항이 매 단계 새 행을 생성하면 반복이 계속됩니다. 위 예에서 WHERE n < 3을 제거하면 종료되지 않습니다. 따라서 재귀 CTE에는 종료 조건이 반드시 필요합니다.",
+      "explanation": "1에서 2, 2에서 3이 만들어지고, n = 3은 n < 3을 만족하지 않아 멈춥니다. 마지막 값은 3입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-with.html"
+      ]
+    },
+    {
+      "id": "database-cte-recursive-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cte-recursive",
+        "cte"
+      ],
+      "content": {
+        "prompt": "WITH 절로 만든 CTE를 쓸 수 있는 범위는?",
+        "options": [
+          "해당 쿼리 안에서만",
+          "DB 전체에서 영구히"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "CTE는 그것을 정의한 쿼리 안에서만 존재하는 임시 결과 집합입니다. 영구 저장되는 것은 테이블입니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-with.html"
       ]

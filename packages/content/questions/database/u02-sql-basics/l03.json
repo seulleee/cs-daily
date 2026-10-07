@@ -12,21 +12,19 @@
         "group-by"
       ],
       "content": {
-        "prompt": "GROUP BY 절의 동작으로 옳은 것은?",
+        "prompt": "같은 값을 가진 행끼리 하나의 그룹으로 묶는 절은?",
         "options": [
-          "지정한 열의 값이 같은 행들을 하나의 그룹으로 묶어 그룹마다 한 행을 반환한다",
-          "결과 행을 정렬한다",
-          "테이블에서 열을 삭제한다",
-          "두 테이블을 결합한다"
+          "ORDER BY",
+          "GROUP BY",
+          "HAVING"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 1
       },
-      "explanation": "GROUP BY는 지정한 열의 값이 같은 행을 그룹으로 묶고, SUM·COUNT 같은 집계 함수를 그룹 단위로 계산해 그룹마다 한 행을 반환합니다. 정렬은 ORDER BY, 결합은 JOIN의 역할입니다.",
+      "explanation": "GROUP BY 절은 지정한 열 값이 같은 행들을 하나의 그룹으로 묶어 그룹마다 한 행을 만듭니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/sql-select.html",
-        "https://www.postgresql.org/docs/current/functions-aggregate.html"
+        "https://www.postgresql.org/docs/current/sql-select.html"
       ]
     },
     {
@@ -35,74 +33,64 @@
       "difficulty": 1,
       "tags": [
         "group-by-having",
-        "sum"
+        "having"
       ],
       "content": {
-        "prompt": "아래 쿼리의 결과는?",
-        "code": {
-          "language": "sql",
-          "source": "-- sales(team, amount): (A, 100), (A, 200), (B, 300)\nSELECT team, SUM(amount)\nFROM sales GROUP BY team;"
-        },
+        "prompt": "GROUP BY로 만든 그룹에 조건을 거는 절은?",
         "options": [
-          "A 300, B 300",
-          "A 100, A 200, B 300",
-          "600 한 행",
-          "A 200, B 300"
+          "WHERE",
+          "ORDER BY",
+          "HAVING"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 2
       },
-      "explanation": "team 값이 같은 행을 그룹으로 묶고 집계 함수 SUM으로 amount를 합산합니다. A는 100 + 200 = 300, B는 300이며, 그룹마다 한 행이 반환됩니다.",
+      "explanation": "HAVING 절은 그룹화가 끝난 뒤 그룹 단위로 조건을 적용합니다. 예: HAVING SUM(amount) >= 300",
       "refs": [
-        "https://www.postgresql.org/docs/current/sql-select.html",
-        "https://www.postgresql.org/docs/current/functions-aggregate.html"
+        "https://www.postgresql.org/docs/current/sql-select.html"
       ]
     },
     {
       "id": "database-group-by-having-003",
-      "type": "ox",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "group-by-having",
-        "count"
+        "where",
+        "having"
       ],
       "content": {
-        "prompt": "아래 쿼리에서 team A의 COUNT(*) 값은 2이다.",
-        "code": {
-          "language": "sql",
-          "source": "-- sales(team, amount): (A, 100), (A, 200), (B, 300)\nSELECT team, COUNT(*)\nFROM sales GROUP BY team;"
-        }
+        "prompt": "그룹으로 묶기 전에 행을 거르는 절은?",
+        "options": [
+          "HAVING",
+          "WHERE"
+        ]
       },
       "answer_key": {
-        "value": true
+        "index": 1
       },
-      "explanation": "COUNT(*)는 그룹에 속한 행 수를 반환하는 집계 함수입니다. team A 그룹에는 100, 200 두 행이 있으므로 2이고, B는 1입니다.",
+      "explanation": "WHERE는 그룹화 전에 행을 거르고, HAVING은 그룹화 후에 그룹을 거릅니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/sql-select.html",
-        "https://www.postgresql.org/docs/current/functions-aggregate.html"
+        "https://www.postgresql.org/docs/current/sql-select.html"
       ]
     },
     {
       "id": "database-group-by-having-004",
-      "type": "fill",
+      "type": "ox",
       "difficulty": 1,
       "tags": [
         "group-by-having",
-        "having"
+        "having",
+        "where"
       ],
       "content": {
-        "prompt": "GROUP BY로 만든 그룹에 집계 결과 조건(예: SUM(amount) >= 250)을 적용하는 절은 ___ 이다.",
-        "hint": "GROUP BY 뒤에 오는 그룹 필터 절"
+        "prompt": "SUM(amount) > 100 같은 집계 조건은 WHERE 절에 쓴다."
       },
       "answer_key": {
-        "accepted": [
-          "HAVING",
-          "having",
-          "해빙"
-        ]
+        "value": false
       },
-      "explanation": "HAVING 절은 그룹화 이후 집계 결과에 조건을 적용해 그룹을 필터링합니다. 그룹화 이전에 개별 행을 필터링하는 것은 WHERE 절입니다.",
+      "explanation": "WHERE는 그룹화 전에 평가되어 집계 결과를 쓸 수 없습니다. 집계 조건은 HAVING 절에 씁니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/sql-select.html",
         "https://www.postgresql.org/docs/current/functions-aggregate.html"
@@ -110,73 +98,70 @@
     },
     {
       "id": "database-group-by-having-005",
-      "type": "single",
-      "difficulty": 2,
+      "type": "ox",
+      "difficulty": 1,
       "tags": [
         "group-by-having",
-        "where",
-        "having"
+        "group-by"
       ],
       "content": {
-        "prompt": "WHERE와 HAVING의 차이로 옳은 것은?",
-        "options": [
-          "WHERE는 그룹화 전에 행을, HAVING은 그룹화 후에 그룹을 필터링한다",
-          "WHERE는 그룹화 후에 그룹을, HAVING은 그룹화 전에 행을 필터링한다",
-          "두 절은 동작이 완전히 같다",
-          "HAVING은 결과를 정렬하는 절이다"
-        ]
+        "prompt": "GROUP BY team 의 결과는 team 값마다 한 행이다."
       },
       "answer_key": {
-        "index": 0
+        "value": true
       },
-      "explanation": "WHERE는 GROUP BY 이전에 개별 행에 조건을 적용하고, HAVING은 GROUP BY 이후 그룹의 집계 결과에 조건을 적용합니다. 따라서 집계 함수 조건은 HAVING에 작성합니다.",
+      "explanation": "GROUP BY는 같은 값의 행을 한 그룹으로 묶으므로, 결과는 서로 다른 team 값마다 한 행씩 나옵니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/sql-select.html",
-        "https://www.postgresql.org/docs/current/functions-aggregate.html"
+        "https://www.postgresql.org/docs/current/sql-select.html"
       ]
     },
     {
       "id": "database-group-by-having-006",
-      "type": "single",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
         "group-by-having",
-        "evaluation-order"
+        "group-by"
       ],
       "content": {
-        "prompt": "SELECT 문의 논리적 처리 순서로 옳은 것은?",
-        "options": [
-          "FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY",
-          "SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY",
-          "FROM → GROUP BY → WHERE → HAVING → SELECT → ORDER BY",
-          "FROM → WHERE → HAVING → GROUP BY → SELECT → ORDER BY"
-        ]
+        "prompt": "team별로 행을 묶으려면 ___ BY team 이라고 쓴다.",
+        "hint": "같은 값의 행을 하나로 묶는 절"
       },
       "answer_key": {
-        "index": 0
+        "accepted": [
+          "GROUP",
+          "group",
+          "그룹",
+          "GROUP BY",
+          "group by"
+        ]
       },
-      "explanation": "FROM으로 대상 테이블을 정하고, WHERE로 행을 필터링하고, GROUP BY로 그룹화한 뒤 HAVING으로 그룹을 필터링합니다. 이후 SELECT로 열을 계산하고 ORDER BY로 정렬합니다. 작성 순서와 처리 순서는 다릅니다.",
+      "explanation": "GROUP BY team은 team 값이 같은 행을 하나의 그룹으로 묶습니다. 집계 함수는 그룹마다 계산됩니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/sql-select.html",
-        "https://www.postgresql.org/docs/current/functions-aggregate.html"
+        "https://www.postgresql.org/docs/current/sql-select.html"
       ]
     },
     {
       "id": "database-group-by-having-007",
-      "type": "ox",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
         "group-by-having",
-        "where",
-        "aggregate"
+        "having"
       ],
       "content": {
-        "prompt": "SUM(amount) > 250 같은 집계 조건은 WHERE 절에 작성하면 되므로, HAVING 절은 필요하지 않다."
+        "prompt": "그룹에 SUM(amount) >= 300 같은 조건을 거는 절은 ___ 이다.",
+        "hint": "WHERE와 달리 그룹화 뒤에 평가된다"
       },
       "answer_key": {
-        "value": false
+        "accepted": [
+          "HAVING",
+          "having",
+          "해빙",
+          "해이빙"
+        ]
       },
-      "explanation": "WHERE 절은 그룹화 이전에 평가되므로 집계 함수를 사용할 수 없고, 사용하면 오류가 발생합니다. 집계 결과에 대한 조건은 그룹화 이후에 평가되는 HAVING 절에 작성해야 합니다.",
+      "explanation": "HAVING은 그룹화 이후에 평가되므로 SUM, COUNT 같은 집계 결과로 조건을 걸 수 있습니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/sql-select.html",
         "https://www.postgresql.org/docs/current/functions-aggregate.html"
@@ -188,29 +173,71 @@
       "difficulty": 2,
       "tags": [
         "group-by-having",
-        "having",
-        "apply"
+        "group-by"
       ],
       "content": {
-        "prompt": "아래 쿼리가 반환하는 team은?",
-        "code": {
-          "language": "sql",
-          "source": "-- sales(team, amount): (A, 100), (A, 200), (B, 300), (C, 50)\nSELECT team FROM sales\nGROUP BY team\nHAVING SUM(amount) >= 300;"
-        },
+        "prompt": "team 값이 A, A, B인 3행을 GROUP BY team 하면 결과 행 수는?",
         "options": [
-          "A, B",
+          "1행",
+          "2행",
+          "3행"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "서로 다른 team 값은 A와 B 두 개이므로 그룹도 2개, 결과도 2행입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/sql-select.html"
+      ]
+    },
+    {
+      "id": "database-group-by-having-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "group-by-having",
+        "having"
+      ],
+      "content": {
+        "prompt": "팀별 합계가 A 300, B 100이면 HAVING SUM(x) >= 200 인 팀은?",
+        "options": [
+          "A",
           "B",
-          "A, B, C",
-          "A"
+          "A와 B"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "그룹별 SUM(amount)는 A 300, B 300, C 50입니다. HAVING SUM(amount) >= 300 조건을 만족하는 그룹은 A와 B이며, C는 필터링됩니다.",
+      "explanation": "HAVING은 그룹별 집계 결과로 그룹을 거릅니다. 합계가 200 이상인 그룹은 A(300)뿐입니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/sql-select.html",
         "https://www.postgresql.org/docs/current/functions-aggregate.html"
+      ]
+    },
+    {
+      "id": "database-group-by-having-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "group-by-having",
+        "group-by"
+      ],
+      "content": {
+        "prompt": "GROUP BY 절의 역할은?",
+        "options": [
+          "같은 값끼리 묶기",
+          "행 정렬",
+          "그룹 필터링"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "GROUP BY는 같은 값을 가진 행끼리 묶습니다. 정렬은 ORDER BY, 그룹 필터링은 HAVING이 맡습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/sql-select.html"
       ]
     }
   ]

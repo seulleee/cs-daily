@@ -12,18 +12,17 @@
         "waiting-time"
       ],
       "content": {
-        "prompt": "프로세스가 준비 큐(ready queue)에서 CPU 할당을 기다린 시간의 합을 뜻하는 스케줄링 기준은?",
+        "prompt": "준비 큐에서 CPU를 기다린 시간의 합은?",
         "options": [
           "처리량",
           "대기 시간",
-          "CPU 사용률",
-          "실행 시간"
+          "응답 시간"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "프로세스가 준비 큐에서 CPU를 기다린 시간의 합이 대기 시간(waiting time)입니다. 처리량은 개별 프로세스의 대기가 아니라 단위 시간당 완료한 프로세스 수를 뜻합니다.",
+      "explanation": "대기 시간은 프로세스가 준비 큐에서 CPU 할당을 기다린 시간의 합입니다. 처리량은 단위 시간당 완료한 프로세스 수입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Scheduling_(computing)",
         "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
@@ -38,24 +37,67 @@
         "throughput"
       ],
       "content": {
-        "prompt": "스케줄링 기준 중 처리량(throughput)의 정의로 옳은 것은?",
+        "prompt": "단위 시간당 완료한 프로세스 수를 뜻하는 기준은?",
         "options": [
-          "프로세스 하나가 준비 큐에서 기다린 시간",
-          "프로세스가 도착한 뒤 처음 CPU를 할당받기까지 걸린 시간",
-          "단위 시간 동안 완료한 프로세스의 수",
-          "CPU의 클럭 속도"
+          "처리량",
+          "대기 시간",
+          "응답 시간"
         ]
       },
       "answer_key": {
-        "index": 2
+        "index": 0
       },
-      "explanation": "처리량은 단위 시간당 완료한 프로세스의 수입니다. 도착 후 처음 CPU를 할당받기까지의 시간은 응답 시간이라는 별도의 기준입니다.",
+      "explanation": "처리량(throughput)은 단위 시간 동안 완료한 프로세스 수로, 클수록 같은 시간에 더 많은 일을 끝낸 것입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Scheduling_(computing)"
       ]
     },
     {
       "id": "os-scheduling-criteria-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scheduling-criteria",
+        "response-time"
+      ],
+      "content": {
+        "prompt": "도착 후 처음 CPU를 받기까지 걸린 시간은?",
+        "options": [
+          "대기 시간",
+          "처리량",
+          "응답 시간"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "응답 시간은 도착 시각부터 처음 실행되는 시각까지입니다. 대기 시간은 준비 큐에서 기다린 시간을 모두 더한 값입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-scheduling-criteria-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "scheduling-criteria",
+        "throughput"
+      ],
+      "content": {
+        "prompt": "처리량은 프로세스 하나가 끝날 때까지 걸린 시간이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "처리량은 단위 시간당 완료한 프로세스 수입니다. 프로세스 하나가 도착부터 완료까지 걸린 시간은 반환 시간입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-scheduling-criteria-005",
       "type": "ox",
       "difficulty": 1,
       "tags": [
@@ -63,137 +105,138 @@
         "response-time"
       ],
       "content": {
-        "prompt": "응답 시간(response time)은 프로세스가 도착한 뒤 처음으로 CPU를 할당받기까지 걸린 시간을 말한다."
+        "prompt": "대화형 시스템에서는 응답 시간을 짧게 하는 것이 중요하다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "응답 시간은 프로세스가 준비 큐에 도착한 시점부터 처음 CPU를 할당받는 시점까지의 시간입니다. 도착부터 완료까지의 시간은 반환 시간(turnaround time)입니다.",
+      "explanation": "사용자 입력에 바로 반응해야 하는 대화형 시스템에서는 처음 실행까지 걸리는 응답 시간이 핵심 기준입니다.",
       "refs": [
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
-      ]
-    },
-    {
-      "id": "os-scheduling-criteria-004",
-      "type": "fill",
-      "difficulty": 1,
-      "tags": [
-        "scheduling-criteria",
-        "throughput",
-        "calculation"
-      ],
-      "content": {
-        "prompt": "어떤 시스템이 2분 동안 프로세스 60개를 완료했다. 이 시스템의 처리량은 1분당 ___ 개다.",
-        "hint": "완료한 프로세스 수를 걸린 시간(분)으로 나누기"
-      },
-      "answer_key": {
-        "accepted": [
-          "30",
-          "30개",
-          "서른",
-          "삼십"
-        ]
-      },
-      "explanation": "처리량은 완료한 프로세스 수를 시간으로 나눈 값이므로 60개 ÷ 2분 = 1분당 30개입니다. 60은 2분 동안의 총 완료 수라 1분당 값이 아닙니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
-      ]
-    },
-    {
-      "id": "os-scheduling-criteria-005",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "scheduling-criteria",
-        "calculation",
-        "turnaround"
-      ],
-      "content": {
-        "prompt": "프로세스 A가 시각 0에 도착해 준비 큐에서 4초 대기한 뒤 실행을 시작했고, 선점 없이 시각 10에 완료되었다. A의 대기 시간과 반환 시간은?",
-        "options": [
-          "대기 10초, 반환 4초",
-          "대기 4초, 반환 10초",
-          "대기 4초, 반환 6초",
-          "대기 6초, 반환 10초"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "준비 큐에서 대기한 시간이 4초이므로 대기 시간은 4초, 도착(0)부터 완료(10)까지이므로 반환 시간은 10초입니다. 6초는 CPU 버스트(실행) 시간으로 대기 시간이나 반환 시간과 다릅니다.",
-      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
         "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
       ]
     },
     {
       "id": "os-scheduling-criteria-006",
-      "type": "single",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
         "scheduling-criteria",
-        "interactive"
+        "throughput"
       ],
       "content": {
-        "prompt": "사용자 입력에 즉시 반응해야 하는 대화형(interactive) 시스템에서 가장 중요하게 고려하는 스케줄링 기준은?",
-        "options": [
-          "처리량",
-          "CPU 사용률",
-          "응답 시간",
-          "프로세스의 코드 크기"
-        ]
+        "prompt": "1초에 완료한 프로세스 수처럼 재는 기준을 ___ 이라 한다.",
+        "hint": "단위 시간당 완료 개수"
       },
       "answer_key": {
-        "index": 2
+        "accepted": [
+          "처리량",
+          "throughput",
+          "스루풋",
+          "쓰루풋"
+        ]
       },
-      "explanation": "대화형 시스템은 사용자 입력에 빠르게 반응해야 하므로 응답 시간을 가장 중시합니다. 처리량은 일괄 처리(batch) 시스템에서 더 중요하게 보는 기준입니다.",
+      "explanation": "단위 시간당 완료한 프로세스 수를 처리량이라 합니다. 처리량이 클수록 같은 시간에 더 많은 일을 끝낸 것입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Scheduling_(computing)"
       ]
     },
     {
       "id": "os-scheduling-criteria-007",
-      "type": "single",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
         "scheduling-criteria",
-        "time-slice",
-        "trade-off"
+        "waiting-time"
       ],
       "content": {
-        "prompt": "CPU를 매우 짧은 시간 단위로 나누어 여러 프로세스에 번갈아 할당하면 어떤 결과가 나타나는가?",
+        "prompt": "준비 큐에서 기다린 시간을 모두 더한 값을 ___ 시간이라 한다.",
+        "hint": "CPU 할당을 기다린 시간"
+      },
+      "answer_key": {
+        "accepted": [
+          "대기",
+          "waiting",
+          "대기 시간",
+          "대기시간",
+          "waiting time"
+        ]
+      },
+      "explanation": "준비 큐에서 기다린 시간의 합을 대기 시간이라 하며, 스케줄링 알고리즘을 비교하는 대표 기준입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-scheduling-criteria-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "throughput",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "10초 동안 프로세스 5개를 완료했다. 초당 처리량은?",
         "options": [
-          "응답 시간과 처리량이 모두 개선된다",
-          "응답 시간과 처리량이 모두 나빠진다",
-          "아무 변화가 없다",
-          "응답 시간은 짧아지지만, 컨텍스트 스위칭 오버헤드가 늘어 처리량은 떨어질 수 있다"
+          "2개",
+          "0.5개",
+          "5개"
         ]
       },
       "answer_key": {
-        "index": 3
+        "index": 1
       },
-      "explanation": "프로세스가 자주 교대되므로 처음 CPU를 받기까지의 응답 시간은 줄지만, 전환마다 컨텍스트 스위칭 오버헤드가 누적되어 처리량은 감소할 수 있습니다. 한 기준을 개선하면 다른 기준이 나빠지는 이런 관계를 트레이드오프라고 합니다.",
+      "explanation": "처리량은 완료 수를 시간으로 나눈 값이므로 5 ÷ 10 = 초당 0.5개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
+    },
+    {
+      "id": "os-scheduling-criteria-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "response-time",
+        "trade-off"
+      ],
+      "content": {
+        "prompt": "CPU를 짧은 시간씩 번갈아 할당하면 좋아지는 기준은?",
+        "options": [
+          "처리량",
+          "응답 시간"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "짧게 번갈아 할당하면 모든 프로세스가 빨리 첫 실행을 받아 응답 시간이 짧아집니다. 대신 스위칭이 늘어 처리량은 줄 수 있습니다.",
       "refs": [
         "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf",
         "https://en.wikipedia.org/wiki/Round-robin_scheduling"
       ]
     },
     {
-      "id": "os-scheduling-criteria-008",
-      "type": "ox",
+      "id": "os-scheduling-criteria-010",
+      "type": "single",
       "difficulty": 2,
       "tags": [
-        "scheduling-criteria",
-        "trade-off"
+        "waiting-time",
+        "calculation"
       ],
       "content": {
-        "prompt": "스케줄링 기준들은 서로 상충하는 경우가 많아, 한 기준을 개선하면 다른 기준이 나빠지는 트레이드오프가 생긴다."
+        "prompt": "P가 준비 큐에서 2초, 나중에 다시 3초 기다렸다. P의 대기 시간은?",
+        "options": [
+          "2초",
+          "3초",
+          "5초"
+        ]
       },
       "answer_key": {
-        "value": true
+        "index": 2
       },
-      "explanation": "예를 들어 프로세스를 자주 교대하면 응답 시간은 개선되지만 컨텍스트 스위칭 오버헤드로 처리량이 줄 수 있습니다. 따라서 스케줄러는 시스템의 목적(대화형 또는 일괄 처리)에 맞는 기준을 우선합니다.",
+      "explanation": "대기 시간은 준비 큐에서 기다린 시간을 모두 더한 값이므로 2 + 3 = 5초입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
         "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
       ]
     }

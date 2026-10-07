@@ -12,22 +12,17 @@
         "where"
       ],
       "content": {
-        "prompt": "아래 쿼리의 결과로 반환되는 name은?",
-        "code": {
-          "language": "sql",
-          "source": "-- members(name, age): (민지, 25), (준호, 31), (서연, 19)\nSELECT name FROM members\nWHERE age >= 20;"
-        },
+        "prompt": "조건에 맞는 행만 남기는 절은?",
         "options": [
-          "민지, 준호",
-          "서연",
-          "민지, 준호, 서연",
-          "준호"
+          "SELECT",
+          "WHERE",
+          "ORDER BY"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 1
       },
-      "explanation": "WHERE 절은 조건식이 참인 행만 결과에 포함합니다. age >= 20을 만족하는 행은 민지(25)와 준호(31)이며, 서연(19)은 조건이 거짓이므로 제외됩니다.",
+      "explanation": "WHERE 절은 조건이 참인 행만 결과에 남깁니다. SELECT는 열을 고르고, ORDER BY는 행을 정렬합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Select_(SQL)"
       ]
@@ -38,49 +33,45 @@
       "difficulty": 1,
       "tags": [
         "select-where-order",
-        "order-by",
-        "default"
+        "order-by"
       ],
       "content": {
-        "prompt": "SELECT name FROM members ORDER BY age; 의 정렬 방식은?",
+        "prompt": "결과 행을 정렬하는 절은?",
         "options": [
-          "age 오름차순(ASC)",
-          "age 내림차순(DESC)",
-          "name 오름차순",
-          "정렬하지 않음"
+          "WHERE",
+          "SELECT",
+          "ORDER BY"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 2
       },
-      "explanation": "ORDER BY에 정렬 방향을 지정하지 않으면 기본값인 오름차순(ASC)으로 정렬합니다. 내림차순이 필요하면 DESC를 명시해야 합니다.",
+      "explanation": "ORDER BY 절은 지정한 열의 값을 기준으로 결과 행의 순서를 정합니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-order.html"
       ]
     },
     {
       "id": "database-select-where-order-003",
-      "type": "fill",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "select-where-order",
-        "order-by",
-        "desc"
+        "select"
       ],
       "content": {
-        "prompt": "age 값이 큰 행부터 정렬(내림차순)하려면 ORDER BY age ___ 라고 쓴다.",
-        "hint": "descending의 약어, 네 글자"
-      },
-      "answer_key": {
-        "accepted": [
-          "DESC",
-          "desc",
-          "descending"
+        "prompt": "SELECT name FROM t WHERE age > 20 에서 열을 고르는 절은?",
+        "options": [
+          "SELECT",
+          "WHERE"
         ]
       },
-      "explanation": "DESC(descending)는 내림차순 정렬을 지정하는 키워드입니다. 오름차순인 ASC는 기본값이므로 보통 생략합니다.",
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SELECT 절은 결과에 나올 열(name)을 정합니다. WHERE 절은 age > 20인 행만 남깁니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/queries-order.html"
+        "https://en.wikipedia.org/wiki/Select_(SQL)"
       ]
     },
     {
@@ -89,92 +80,89 @@
       "difficulty": 1,
       "tags": [
         "select-where-order",
-        "order-by",
-        "result-order"
+        "null"
       ],
       "content": {
-        "prompt": "ORDER BY를 쓰지 않아도 결과는 데이터를 삽입한 순서대로 반환되도록 보장된다."
+        "prompt": "WHERE age = NULL 로 age가 NULL인 행을 찾을 수 있다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "SQL 표준에서 ORDER BY가 없는 쿼리의 결과 순서는 정의되지 않습니다. 저장 구조나 실행 계획에 따라 순서가 달라질 수 있으므로, 특정 순서가 필요하면 ORDER BY로 지정해야 합니다.",
+      "explanation": "NULL과의 = 비교는 참이 되지 않아 아무 행도 반환하지 않습니다. NULL인 행은 WHERE age IS NULL로 찾습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Null_(SQL)",
+        "https://www.postgresql.org/docs/current/functions-comparison.html"
+      ]
+    },
+    {
+      "id": "database-select-where-order-005",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "select-where-order",
+        "order-by",
+        "asc"
+      ],
+      "content": {
+        "prompt": "ORDER BY age 는 age 오름차순으로 정렬한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "ORDER BY의 기본 정렬 방향은 오름차순(ASC)입니다. 내림차순으로 정렬하려면 DESC를 붙입니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-order.html"
       ]
     },
     {
-      "id": "database-select-where-order-005",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "select-where-order",
-        "null",
-        "where"
-      ],
-      "content": {
-        "prompt": "age 값이 NULL인 행을 조회하는 올바른 조건은?",
-        "options": [
-          "WHERE age IS NULL",
-          "WHERE age = NULL",
-          "WHERE age = 0",
-          "WHERE age = ''"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "NULL과의 = 비교 결과는 UNKNOWN이므로 어떤 행도 선택되지 않습니다. NULL 여부는 IS NULL 연산자로 검사합니다. 0과 빈 문자열('')은 NULL이 아닌 실제 값입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Null_(SQL)",
-        "https://www.postgresql.org/docs/current/functions-comparison.html"
-      ]
-    },
-    {
       "id": "database-select-where-order-006",
-      "type": "single",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
         "select-where-order",
-        "null",
-        "three-valued-logic"
+        "order-by",
+        "desc"
       ],
       "content": {
-        "prompt": "price가 50, 100, NULL인 3개 행이 있다. WHERE price <> 100 의 결과 행 수는?",
-        "options": [
-          "1행",
-          "2행",
-          "3행",
-          "0행"
-        ]
+        "prompt": "age가 큰 행부터 정렬하려면 ORDER BY age ___ 라고 쓴다.",
+        "hint": "내림차순을 뜻하는 키워드"
       },
       "answer_key": {
-        "index": 0
+        "accepted": [
+          "DESC",
+          "desc",
+          "descending",
+          "DESCENDING"
+        ]
       },
-      "explanation": "SQL은 3값 논리(TRUE, FALSE, UNKNOWN)를 사용합니다. NULL <> 100은 UNKNOWN이므로 WHERE 조건을 통과하지 못하고, 50인 행만 반환됩니다. NULL 행도 포함하려면 OR price IS NULL을 추가합니다.",
+      "explanation": "DESC는 내림차순(큰 값부터)을 뜻합니다. 생략하면 오름차순(ASC)으로 정렬됩니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Null_(SQL)",
-        "https://www.postgresql.org/docs/current/functions-comparison.html"
+        "https://www.postgresql.org/docs/current/queries-order.html"
       ]
     },
     {
       "id": "database-select-where-order-007",
-      "type": "ox",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
         "select-where-order",
-        "where",
-        "and"
+        "null"
       ],
       "content": {
-        "prompt": "WHERE age >= 20 AND city = '서울' 은 두 조건이 모두 참인 행만 반환한다."
+        "prompt": "age가 NULL인 행을 찾으려면 WHERE age ___ NULL 이라고 쓴다.",
+        "hint": "= 대신 쓰는 키워드"
       },
       "answer_key": {
-        "value": true
+        "accepted": [
+          "IS",
+          "is",
+          "이즈"
+        ]
       },
-      "explanation": "AND는 두 조건식이 모두 TRUE일 때만 TRUE가 되는 논리 연산자입니다. 둘 중 하나만 참이어도 되는 경우에는 OR를 사용합니다.",
+      "explanation": "NULL은 = 로 비교할 수 없어 IS NULL을 씁니다. 반대 조건은 IS NOT NULL입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Select_(SQL)"
+        "https://en.wikipedia.org/wiki/Null_(SQL)",
+        "https://www.postgresql.org/docs/current/functions-comparison.html"
       ]
     },
     {
@@ -183,24 +171,73 @@
       "difficulty": 2,
       "tags": [
         "select-where-order",
-        "order-by",
-        "multi-column"
+        "where",
+        "null"
       ],
       "content": {
-        "prompt": "ORDER BY age DESC, name 의 정렬 방식은?",
+        "prompt": "age가 25, NULL, 19일 때 WHERE age > 20 의 결과 행 수는?",
         "options": [
-          "age 내림차순, age가 같으면 name 오름차순",
-          "name 오름차순, name이 같으면 age 내림차순",
-          "age와 name 모두 내림차순",
-          "age만 정렬하고 name은 무시"
+          "1행",
+          "2행",
+          "3행"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "ORDER BY는 첫 번째 정렬 키(age DESC)로 정렬한 뒤, 값이 같은 행끼리 다음 키(name)로 정렬합니다. DESC는 바로 앞의 age에만 적용되므로 name은 기본값인 오름차순입니다.",
+      "explanation": "25만 조건을 만족합니다. NULL과의 비교는 참이 아니므로 NULL인 행도 제외되어 1행입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Null_(SQL)",
+        "https://www.postgresql.org/docs/current/functions-comparison.html"
+      ]
+    },
+    {
+      "id": "database-select-where-order-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "select-where-order",
+        "order-by",
+        "desc"
+      ],
+      "content": {
+        "prompt": "age가 25, 31, 19일 때 ORDER BY age DESC 의 첫 값은?",
+        "options": [
+          "19",
+          "25",
+          "31"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DESC는 큰 값부터 정렬하므로 31, 25, 19 순서가 되고 첫 값은 31입니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-order.html"
+      ]
+    },
+    {
+      "id": "database-select-where-order-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "select-where-order",
+        "where"
+      ],
+      "content": {
+        "prompt": "WHERE 절의 역할은?",
+        "options": [
+          "열 선택",
+          "행 필터링",
+          "행 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "WHERE 절은 조건이 참인 행만 남기는 필터 역할을 합니다. 열 선택은 SELECT, 정렬은 ORDER BY가 맡습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Select_(SQL)"
       ]
     }
   ]

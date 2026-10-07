@@ -90,6 +90,21 @@ async function main() {
     assert.equal(lesson.kind, 'lesson');
     assert.notEqual(lesson.id, s3.id);
 
+    // 2-1. 틀린 문제 다시 풀기: 첫 답이 오답인 문제만 허용, 점수에는 영향 없음
+    const lq = lesson.questions[0]!;
+    await call('POST', `/sessions/${lesson.id}/answers`, { questionId: lq.id, answer: await answerFor(lq.id, false), timeMs: 1000 });
+    const retryOk = await call<{ isCorrect: boolean }>('POST', `/sessions/${lesson.id}/retry`, { questionId: lq.id, answer: await answerFor(lq.id, true) });
+    assert.equal(retryOk.isCorrect, true, '재도전 채점');
+    const retryOnCorrect = await fetch(`${API}/sessions/${lesson.id}/retry`, {
+      method: 'POST',
+      headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
+      body: JSON.stringify({ questionId: lesson.questions[1]!.id, answer: await answerFor(lesson.questions[1]!.id, true) }),
+    });
+    assert.equal(retryOnCorrect.status, 403, '아직 답하지 않은 문제는 재도전 불가');
+    const answers = await prisma.answer.count({ where: { sessionId: lesson.id } });
+    assert.equal(answers, 1, '재도전은 답안을 남기지 않는다');
+    assert.ok((lesson as unknown as { lessonObjective: string | null }).lessonObjective, '레슨 세션에는 학습 목표가 실린다');
+
     // 3. 유닛 3 전부 오답 → 불합격
     const r3 = await solve(s3, s3.questions.length);
     assert.equal(r3.placement?.passed, false);

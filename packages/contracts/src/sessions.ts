@@ -24,6 +24,20 @@ export const SubmitAnswerResponse = z.object({
 });
 export type SubmitAnswerResponse = z.infer<typeof SubmitAnswerResponse>;
 
+/** POST /sessions/{id}/retry — 틀린 문제 다시 풀기. 채점만 하고 기록·XP·복습엔 영향 없음 */
+export const RetryAnswerRequest = z.object({
+  questionId: z.string().uuid(),
+  answer: UserAnswer,
+});
+export type RetryAnswerRequest = z.infer<typeof RetryAnswerRequest>;
+
+export const RetryAnswerResponse = z.object({
+  isCorrect: z.boolean(),
+  correctAnswer: z.unknown(),
+  explanation: z.string(),
+});
+export type RetryAnswerResponse = z.infer<typeof RetryAnswerResponse>;
+
 export const AnsweredQuestion = z.object({
   questionId: z.string().uuid(),
   isCorrect: z.boolean(),
@@ -37,6 +51,8 @@ export const SessionResponse = z.object({
   kind: SessionKind,
   lessonId: z.number().int().nullable(),
   lessonName: z.string().nullable(),
+  /** 레슨 시작 카드에 보여 줄 학습 목표 (lesson 종류일 때만) */
+  lessonObjective: z.string().nullable(),
   questions: z.array(PublicQuestion),
   /** 이어 풀기용: 이미 답한 문제 */
   answered: z.array(AnsweredQuestion),

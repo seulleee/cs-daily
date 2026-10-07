@@ -12,18 +12,17 @@
         "fcfs"
       ],
       "content": {
-        "prompt": "FCFS(First-Come, First-Served) 스케줄링의 동작으로 옳은 것은?",
+        "prompt": "도착한 순서대로 CPU를 할당하는 스케줄링은?",
         "options": [
-          "준비 큐에 먼저 도착한 프로세스부터 순서대로 실행한다",
-          "CPU 버스트 시간이 가장 짧은 프로세스부터 실행한다",
-          "모든 프로세스에 같은 타임 퀀텀씩 번갈아 CPU를 할당한다",
-          "우선순위가 가장 높은 프로세스부터 실행한다"
+          "SJF",
+          "FCFS",
+          "RR"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 1
       },
-      "explanation": "FCFS는 도착 순서대로 CPU를 할당하는 비선점 스케줄링입니다. 버스트 시간이 짧은 순서로 실행하는 것은 SJF, 타임 퀀텀 단위로 번갈아 할당하는 것은 RR입니다.",
+      "explanation": "FCFS(First-Come, First-Served)는 도착한 순서대로 CPU를 할당합니다. SJF는 실행 시간, RR은 타임 퀀텀을 기준으로 합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Scheduling_(computing)"
       ]
@@ -37,167 +36,211 @@
         "sjf"
       ],
       "content": {
-        "prompt": "SJF(Shortest Job First) 스케줄링에 대한 설명으로 옳은 것은?",
+        "prompt": "실행 시간이 가장 짧은 프로세스부터 실행하는 방식은?",
         "options": [
-          "도착한 순서대로 실행한다",
-          "모든 프로세스에 같은 타임 퀀텀씩 번갈아 CPU를 할당한다",
-          "CPU 버스트 시간이 가장 짧은 프로세스부터 실행한다",
-          "가장 늦게 도착한 프로세스부터 실행한다"
+          "RR",
+          "FCFS",
+          "SJF"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "SJF는 CPU 버스트 시간이 가장 짧은 프로세스를 먼저 실행하며, 모든 프로세스가 동시에 도착한 경우 평균 대기 시간을 최소로 만듭니다. 도착 순서대로 실행하는 것은 FCFS입니다.",
+      "explanation": "SJF(Shortest Job First)는 CPU 버스트가 가장 짧은 프로세스를 먼저 실행해 평균 대기 시간을 줄입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Shortest_job_next"
       ]
     },
     {
       "id": "os-fcfs-sjf-rr-003",
-      "type": "ox",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "fcfs-sjf-rr",
-        "round-robin"
+        "round-robin",
+        "preemption"
       ],
       "content": {
-        "prompt": "RR(라운드 로빈)은 모든 프로세스에 정해진 타임 퀀텀씩 번갈아 CPU를 할당하는 방식이다."
+        "prompt": "타임 퀀텀이 끝나면 CPU를 빼앗아 다음 프로세스에 주는 방식은?",
+        "options": [
+          "RR",
+          "FCFS"
+        ]
       },
       "answer_key": {
-        "value": true
+        "index": 0
       },
-      "explanation": "RR은 프로세스에 타임 퀀텀만큼 CPU를 할당하고, 그 안에 끝나지 않으면 선점하여 준비 큐의 맨 뒤로 보냅니다. 따라서 실행 시간이 긴 프로세스가 있어도 다른 프로세스가 일정 시간 안에 CPU를 할당받습니다.",
+      "explanation": "RR(Round Robin)은 타임 퀀텀이 끝나면 실행 중인 프로세스를 선점해 큐 뒤로 보냅니다. FCFS는 끝날 때까지 CPU를 빼앗지 않습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Round-robin_scheduling"
       ]
     },
     {
       "id": "os-fcfs-sjf-rr-004",
-      "type": "fill",
+      "type": "ox",
       "difficulty": 1,
       "tags": [
         "fcfs-sjf-rr",
-        "convoy-effect"
+        "fcfs",
+        "preemption"
       ],
       "content": {
-        "prompt": "FCFS에서 CPU 버스트가 긴 프로세스 하나 때문에 뒤의 짧은 프로세스들이 오래 대기하는 현상을 ___ 효과라고 한다.",
-        "hint": "영어로 convoy effect, 우리말로 두 글자"
+        "prompt": "FCFS는 실행 중인 프로세스의 CPU를 빼앗는 선점 방식이다."
       },
       "answer_key": {
-        "accepted": [
-          "호위",
-          "convoy",
-          "콘보이",
-          "호송",
-          "호위 효과",
-          "convoy effect"
-        ]
+        "value": false
       },
-      "explanation": "정답은 호위 효과(convoy effect)입니다. FCFS는 비선점 방식이라 버스트가 긴 프로세스가 먼저 CPU를 차지하면, 뒤에 도착한 짧은 프로세스들의 대기 시간이 크게 늘어납니다.",
+      "explanation": "FCFS는 비선점 방식이라 실행 중인 프로세스가 끝나거나 스스로 CPU를 내놓을 때까지 빼앗지 않습니다. 선점 방식은 RR입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Convoy_effect"
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
       ]
     },
     {
       "id": "os-fcfs-sjf-rr-005",
-      "type": "single",
-      "difficulty": 2,
+      "type": "ox",
+      "difficulty": 1,
       "tags": [
         "fcfs-sjf-rr",
-        "calculation",
-        "fcfs"
+        "sjf",
+        "waiting-time"
       ],
       "content": {
-        "prompt": "프로세스 P1(버스트 6), P2(3), P3(3)이 모두 시각 0에 도착했다. FCFS로 P1 → P2 → P3 순서로 실행하면 평균 대기 시간은?",
-        "options": [
-          "3",
-          "4",
-          "5",
-          "6"
-        ]
+        "prompt": "SJF는 평균 대기 시간을 줄이는 데 유리하다."
       },
       "answer_key": {
-        "index": 2
+        "value": true
       },
-      "explanation": "P1은 바로 시작해 대기 0, P2는 P1이 끝나는 6까지, P3는 P2가 끝나는 9까지 대기합니다. (0 + 6 + 9) ÷ 3 = 5입니다. 3은 짧은 프로세스부터 실행한 SJF의 결과입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
-      ]
-    },
-    {
-      "id": "os-fcfs-sjf-rr-006",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "fcfs-sjf-rr",
-        "calculation",
-        "sjf"
-      ],
-      "content": {
-        "prompt": "프로세스 P1(버스트 6), P2(3), P3(3)이 모두 시각 0에 도착했다. SJF로 P2 → P3 → P1 순서로 실행하면 평균 대기 시간은?",
-        "options": [
-          "2",
-          "3",
-          "4",
-          "5"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "P2는 대기 0, P3는 P2가 끝나는 3까지, P1은 6까지 대기합니다. (0 + 3 + 6) ÷ 3 = 3입니다. 같은 프로세스를 FCFS(P1 먼저)로 실행하면 5이므로, 짧은 프로세스를 먼저 실행하면 평균 대기 시간이 줄어듭니다.",
+      "explanation": "짧은 작업을 먼저 끝내면 뒤에서 기다리는 프로세스 수가 빨리 줄어 평균 대기 시간이 짧아집니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Shortest_job_next",
         "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
       ]
     },
     {
+      "id": "os-fcfs-sjf-rr-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "fcfs-sjf-rr",
+        "round-robin",
+        "time-quantum"
+      ],
+      "content": {
+        "prompt": "RR에서 한 번에 CPU를 쓸 수 있는 최대 시간을 타임 ___ 이라 한다.",
+        "hint": "'양자'를 뜻하는 영어 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "퀀텀",
+          "quantum",
+          "퀀텀 시간",
+          "슬라이스",
+          "slice"
+        ]
+      },
+      "explanation": "RR에서 프로세스가 한 번에 쓸 수 있는 CPU 시간을 타임 퀀텀(타임 슬라이스)이라 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Round-robin_scheduling"
+      ]
+    },
+    {
       "id": "os-fcfs-sjf-rr-007",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "fcfs-sjf-rr",
+        "fcfs"
+      ],
+      "content": {
+        "prompt": "First-Come, First-Served의 약자는 ___ 이다.",
+        "hint": "알파벳 네 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "FCFS",
+          "fcfs"
+        ]
+      },
+      "explanation": "First-Come, First-Served의 약자는 FCFS로, 먼저 도착한 프로세스부터 CPU를 할당한다는 뜻입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
+    },
+    {
+      "id": "os-fcfs-sjf-rr-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
         "fcfs-sjf-rr",
-        "calculation",
-        "round-robin"
+        "round-robin",
+        "calculation"
       ],
       "content": {
-        "prompt": "프로세스 P1(버스트 4), P2(2)가 모두 시각 0에 도착했고, RR의 타임 퀀텀은 2이며 P1부터 시작한다. 실행 순서는 P1(0~2) → P2(2~?) → P1이다. P2가 완료되는 시각은?",
+        "prompt": "RR(퀀텀 2), 큐에 P1(실행 4)→P2(실행 2). 시각 2에 실행되는 것은?",
         "options": [
-          "2",
-          "3",
-          "4",
-          "6"
+          "P1",
+          "P2"
         ]
       },
       "answer_key": {
-        "index": 2
+        "index": 1
       },
-      "explanation": "P2는 시각 2에 시작해 버스트 2만큼 실행하고 시각 4에 완료됩니다. 그다음 P1이 남은 2를 4~6에 실행합니다. 6은 P2가 아니라 P1의 완료 시각입니다.",
+      "explanation": "P1이 퀀텀 2를 다 쓰면 선점되어 큐 뒤로 가므로, 시각 2에는 P2가 실행됩니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Round-robin_scheduling",
         "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
       ]
     },
     {
-      "id": "os-fcfs-sjf-rr-008",
-      "type": "ox",
+      "id": "os-fcfs-sjf-rr-009",
+      "type": "single",
       "difficulty": 2,
       "tags": [
         "fcfs-sjf-rr",
-        "calculation",
-        "order"
+        "sjf",
+        "calculation"
       ],
       "content": {
-        "prompt": "프로세스 P1(버스트 10)과 P2(버스트 1)가 동시에 도착했을 때, P1 → P2 순서보다 P2 → P1 순서로 실행하면 평균 대기 시간이 줄어든다."
+        "prompt": "SJF, P1(실행 6)·P2(실행 2) 동시 도착. P1의 대기 시간은?",
+        "options": [
+          "6",
+          "2",
+          "0"
+        ]
       },
       "answer_key": {
-        "value": true
+        "index": 1
       },
-      "explanation": "P1 먼저면 평균 대기 시간이 (0 + 10) ÷ 2 = 5, P2 먼저면 (0 + 1) ÷ 2 = 0.5입니다. 버스트가 짧은 프로세스를 먼저 실행하면 평균 대기 시간이 줄어드는데, 이것이 SJF의 원리입니다.",
+      "explanation": "SJF는 짧은 P2를 먼저 실행하므로 P1은 P2가 끝나는 시각 2까지 기다려 대기 시간이 2입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Shortest_job_next"
+        "https://en.wikipedia.org/wiki/Shortest_job_next",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-fcfs-sjf-rr-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "fcfs-sjf-rr",
+        "fcfs",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "FCFS, P1(실행 5)→P2(실행 3) 순 도착. P2의 대기 시간은?",
+        "options": [
+          "5",
+          "8",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "FCFS는 먼저 도착한 P1을 끝까지 실행하므로 P2는 P1의 실행 시간 5만큼 기다립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
       ]
     }
   ]
