@@ -44,11 +44,13 @@ async function main() {
 
   let created = 0;
   let updated = 0;
+  const seen: string[] = [];
   for (const file of walk(join(contentRoot, 'questions'))) {
     const lf = LessonFile.parse(JSON.parse(readFileSync(file, 'utf8')));
     const lessonId = lessonIdByKey.get(`${lf.track}/${lf.unit}/${lf.lesson}`);
     if (!lessonId) throw new Error(`${file}: 커리큘럼에 없는 레슨`);
     for (const [i, q] of lf.questions.entries()) {
+      seen.push(q.id);
       const data = {
         lessonId,
         type: q.type,
@@ -71,7 +73,12 @@ async function main() {
       }
     }
   }
-  console.log(`questions: created=${created} updated=${updated} (status=${status})`);
+  // 콘텐츠 파일에서 빠진 문제는 지우지 않고 retired로 내린다 (기존 답안·복습 기록의 FK 보존, 출제·복습에서는 제외됨)
+  const retired = await prisma.question.updateMany({
+    where: { contentId: { notIn: seen }, status: { not: 'retired' } },
+    data: { status: 'retired' },
+  });
+  console.log(`questions: created=${created} updated=${updated} retired=${retired.count} (status=${status})`);
 }
 
 function walk(dir: string): string[] {
