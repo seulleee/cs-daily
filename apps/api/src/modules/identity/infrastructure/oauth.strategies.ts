@@ -9,13 +9,22 @@ import type { OAuthProfile } from '../domain/oauth-profile';
 import { ACCESS_COOKIE } from '../../../shared/presentation/auth-cookies';
 import type { AuthUser } from '../../../shared/presentation/current-user.decorator';
 
+/**
+ * OAuth 콜백은 웹 오리진(Vercel)으로 받아야 한다. 웹이 /auth/*를 API로 리라이트하므로,
+ * 콜백 응답의 Set-Cookie가 웹 도메인에 붙어 이후 /api/* 요청에 같은 오리진 쿠키로 실린다.
+ * (API 도메인으로 콜백을 받으면 쿠키가 run.app에만 저장되어 웹에서는 로그인되지 않는다)
+ */
+function callbackBase(config: ConfigService): string {
+  return config.get<string>('OAUTH_CALLBACK_BASE_URL') || config.getOrThrow<string>('API_BASE_URL');
+}
+
 @Injectable()
 export class GithubOAuthStrategy extends PassportStrategy(GithubStrategy, 'github') {
   constructor(config: ConfigService) {
     super({
       clientID: config.get('GITHUB_CLIENT_ID', 'unset'),
       clientSecret: config.get('GITHUB_CLIENT_SECRET', 'unset'),
-      callbackURL: `${config.getOrThrow('API_BASE_URL')}/auth/github/callback`,
+      callbackURL: `${callbackBase(config)}/auth/github/callback`,
       scope: ['user:email'],
     });
   }
@@ -32,7 +41,7 @@ export class GoogleOAuthStrategy extends PassportStrategy(GoogleStrategy, 'googl
     super({
       clientID: config.get('GOOGLE_CLIENT_ID', 'unset'),
       clientSecret: config.get('GOOGLE_CLIENT_SECRET', 'unset'),
-      callbackURL: `${config.getOrThrow('API_BASE_URL')}/auth/google/callback`,
+      callbackURL: `${callbackBase(config)}/auth/google/callback`,
       scope: ['email', 'profile'],
     });
   }
