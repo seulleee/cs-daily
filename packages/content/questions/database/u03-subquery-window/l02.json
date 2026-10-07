@@ -12,18 +12,18 @@
         "cte"
       ],
       "content": {
-        "prompt": "WITH 절로 만드는 CTE는 무엇에 가장 가까울까?",
+        "prompt": "WITH 절로 정의하는 CTE(Common Table Expression)의 정의로 옳은 것은?",
         "options": [
-          "쿼리 안에서 잠깐 쓰는, 이름 붙인 임시 결과표",
-          "데이터베이스에 영구히 저장되는 새 테이블",
-          "검색을 빠르게 해 주는 인덱스",
+          "해당 쿼리 실행 동안에만 존재하는, 이름을 붙인 임시 결과 집합",
+          "데이터베이스에 영구 저장되는 테이블",
+          "검색 속도를 높이는 인덱스",
           "테이블 백업 파일"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "CTE는 '이 결과를 adults라고 부르자'처럼 중간 결과에 이름을 붙여 두고, 그 쿼리 안에서만 쓰는 임시 표입니다. 쿼리가 끝나면 사라져요.",
+      "explanation": "CTE는 WITH 절에서 이름을 붙여 정의한 임시 결과 집합으로, 해당 쿼리 안에서만 테이블과 같이 참조할 수 있습니다. 쿼리 실행이 끝나면 사라지며 스키마에 저장되지 않습니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-with.html"
       ]
@@ -46,13 +46,13 @@
           "민지, 준호",
           "서연",
           "민지, 준호, 서연",
-          "아무것도 나오지 않는다"
+          "결과 없음"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "WITH 절에서 20세 이상만 골라 adults라는 이름을 붙였고, 아래에서 그 결과를 그대로 꺼냅니다. 그래서 민지와 준호가 나와요.",
+      "explanation": "CTE adults는 age >= 20인 행의 name으로 정의되고, 메인 쿼리는 adults를 조회합니다. 따라서 민지와 준호가 반환됩니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-with.html"
       ]
@@ -67,12 +67,12 @@
         "multiple"
       ],
       "content": {
-        "prompt": "하나의 WITH 절에는 CTE(이름 붙인 임시 결과)를 딱 하나만 만들 수 있다."
+        "prompt": "하나의 WITH 절에는 CTE를 하나만 정의할 수 있다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "WITH 절 안에서 CTE를 쉼표로 이어 여러 개 만들 수 있습니다. 게다가 뒤에 만든 CTE가 앞에서 만든 CTE를 가져다 쓸 수도 있어요. 복잡한 쿼리를 단계별로 나눠 쓸 때 유용합니다.",
+      "explanation": "WITH a AS (...), b AS (SELECT ... FROM a) 형태로 하나의 WITH 절에 CTE를 쉼표로 구분해 여러 개 정의할 수 있습니다. 뒤에 정의한 CTE는 앞에서 정의한 CTE를 참조할 수 있습니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-with.html"
       ]
@@ -86,8 +86,8 @@
         "recursive-cte"
       ],
       "content": {
-        "prompt": "자기 자신을 다시 불러 쓰는 재귀 CTE를 만들 때, 표준 SQL(PostgreSQL 등)에서는 WITH 뒤에 ___ 를 붙인다.",
-        "hint": "'재귀적인'이라는 뜻의 영어 단어"
+        "prompt": "자기 자신을 참조하는 재귀 CTE를 정의할 때, 표준 SQL(PostgreSQL 등)에서는 WITH 뒤에 ___ 키워드를 붙인다.",
+        "hint": "'재귀적인'을 뜻하는 영문 키워드"
       },
       "answer_key": {
         "accepted": [
@@ -96,7 +96,7 @@
           "리커시브"
         ]
       },
-      "explanation": "WITH RECURSIVE라고 써야 CTE가 자기 이름을 안에서 다시 부를 수 있습니다. 조직도나 댓글의 답글처럼 단계가 이어지는 데이터를 따라갈 때 써요.",
+      "explanation": "WITH RECURSIVE로 선언해야 CTE가 정의 안에서 자기 이름을 참조할 수 있습니다. 자기 참조 관계로 표현된 계층 데이터를 조회할 때 사용합니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-with.html"
       ]
@@ -111,7 +111,7 @@
         "hierarchy"
       ],
       "content": {
-        "prompt": "조직도처럼 '팀장 → 팀원 → 그 팀원의 팀원'으로 몇 단계인지 모르게 이어지는 데이터를 끝까지 따라가 조회하고 싶다. 알맞은 도구는?",
+        "prompt": "employees(id, manager_id) 테이블에서 manager_id는 같은 테이블의 id를 참조한다. 특정 직원의 모든 하위 직원을 깊이에 관계없이 조회하는 데 알맞은 기능은?",
         "options": [
           "재귀 CTE(WITH RECURSIVE)",
           "ORDER BY",
@@ -122,7 +122,7 @@
       "answer_key": {
         "index": 0
       },
-      "explanation": "재귀 CTE는 '찾은 사람의 부하 직원을 또 찾기'를 더 찾을 사람이 없을 때까지 반복합니다. 단계 수를 몰라도 끝까지 따라갈 수 있어요. ORDER BY나 LIMIT은 정렬·개수 제한일 뿐입니다.",
+      "explanation": "재귀 CTE는 직전 단계에서 찾은 행을 기준으로 다음 단계의 행을 반복 조회하므로, 깊이를 모르는 계층 구조를 끝까지 탐색할 수 있습니다. ORDER BY와 LIMIT은 정렬과 행 수 제한 기능입니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-with.html",
         "https://en.wikipedia.org/wiki/Hierarchical_and_recursive_queries_in_SQL"
@@ -138,18 +138,18 @@
         "anchor"
       ],
       "content": {
-        "prompt": "재귀 CTE는 '시작 부분'과 '다음 단계 부분'을 UNION ALL로 잇는다. 시작 부분의 역할은?",
+        "prompt": "재귀 CTE는 비재귀 항(앵커)과 재귀 항을 UNION ALL로 연결한다. 비재귀 항의 역할은?",
         "options": [
-          "처음 한 번 실행되어 출발점이 되는 행(예: 사장)을 만든다",
-          "반복할 횟수를 정한다",
-          "반복을 멈추게 한다",
+          "한 번만 실행되어 재귀의 시작 행을 생성한다",
+          "반복 횟수를 지정한다",
+          "재귀를 종료시킨다",
           "결과를 정렬한다"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "시작 부분이 출발점을 만들면, 다음 단계 부분이 직전에 찾은 행을 바탕으로 새 행을 찾기를 반복합니다. 멈추는 건 다음 단계가 더 이상 새 행을 못 찾을 때예요.",
+      "explanation": "비재귀 항(앵커)이 시작 행을 생성하면, 재귀 항은 직전 단계의 결과를 입력으로 새 행을 생성하는 과정을 반복합니다. 재귀는 재귀 항이 더 이상 새 행을 생성하지 않을 때 종료됩니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-with.html"
       ]
@@ -179,7 +179,7 @@
       "answer_key": {
         "index": 0
       },
-      "explanation": "1에서 시작해 n < 3인 동안 1씩 더합니다. 1 → 2 → 3이 만들어지고, n이 3이면 조건이 거짓이라 새 행이 없어 멈춰요. 그래서 4는 나오지 않습니다.",
+      "explanation": "비재귀 항이 1을 생성하고, 재귀 항이 n < 3인 동안 n + 1을 생성해 2, 3이 추가됩니다. n = 3에서는 조건이 거짓이라 새 행이 없으므로 재귀가 종료되고 4는 생성되지 않습니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-with.html"
       ]
@@ -194,12 +194,12 @@
         "termination"
       ],
       "content": {
-        "prompt": "재귀 CTE는 '다음 단계'가 더 이상 새 행을 만들지 않으면 멈춘다. 그래서 멈출 조건(예: WHERE n < 3)이 없으면 끝없이 반복될 수 있다."
+        "prompt": "재귀 CTE는 재귀 항이 새 행을 생성하지 않으면 종료되므로, 종료 조건(예: WHERE n < 3)이 없으면 무한히 반복될 수 있다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "새 행이 계속 생기면 반복도 계속됩니다. 숫자를 늘리는 예에서 WHERE n < 3을 빼면 끝나지 않아요. 그래서 재귀 CTE를 쓸 때는 멈출 조건을 꼭 확인해야 합니다.",
+      "explanation": "재귀 항이 매 단계 새 행을 생성하면 반복이 계속됩니다. 위 예에서 WHERE n < 3을 제거하면 종료되지 않습니다. 따라서 재귀 CTE에는 종료 조건이 반드시 필요합니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-with.html"
       ]

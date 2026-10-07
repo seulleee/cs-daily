@@ -12,18 +12,18 @@
         "group-by"
       ],
       "content": {
-        "prompt": "GROUP BY를 엑셀 기능에 비유하면 가장 가까운 것은?",
+        "prompt": "GROUP BY 절의 동작으로 옳은 것은?",
         "options": [
-          "같은 값끼리 묶어 소계를 내는 피벗 테이블",
-          "행을 정렬하는 정렬 버튼",
-          "열을 지우는 삭제 기능",
-          "두 시트를 붙이는 복사·붙여넣기"
+          "지정한 열의 값이 같은 행들을 하나의 그룹으로 묶어 그룹마다 한 행을 반환한다",
+          "결과 행을 정렬한다",
+          "테이블에서 열을 삭제한다",
+          "두 테이블을 결합한다"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "GROUP BY는 '팀별', '월별'처럼 같은 값끼리 묶어 합계·개수 등을 구합니다. 피벗 테이블로 팀별 합계를 내는 것과 같아요. 정렬은 ORDER BY가 합니다.",
+      "explanation": "GROUP BY는 지정한 열의 값이 같은 행을 그룹으로 묶고, SUM·COUNT 같은 집계 함수를 그룹 단위로 계산해 그룹마다 한 행을 반환합니다. 정렬은 ORDER BY, 결합은 JOIN의 역할입니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/sql-select.html",
         "https://www.postgresql.org/docs/current/functions-aggregate.html"
@@ -46,14 +46,14 @@
         "options": [
           "A 300, B 300",
           "A 100, A 200, B 300",
-          "600 한 줄",
+          "600 한 행",
           "A 200, B 300"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "team이 같은 행끼리 묶어 금액을 더합니다. A는 100+200=300, B는 300이에요. GROUP BY를 쓰면 묶음(팀)마다 한 줄씩 나옵니다.",
+      "explanation": "team 값이 같은 행을 그룹으로 묶고 집계 함수 SUM으로 amount를 합산합니다. A는 100 + 200 = 300, B는 300이며, 그룹마다 한 행이 반환됩니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/sql-select.html",
         "https://www.postgresql.org/docs/current/functions-aggregate.html"
@@ -77,7 +77,7 @@
       "answer_key": {
         "value": true
       },
-      "explanation": "COUNT(*)는 묶음 안에 몇 줄이 있는지 셉니다. team A는 100과 200 두 줄이라 2, B는 1이에요.",
+      "explanation": "COUNT(*)는 그룹에 속한 행 수를 반환하는 집계 함수입니다. team A 그룹에는 100, 200 두 행이 있으므로 2이고, B는 1입니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/sql-select.html",
         "https://www.postgresql.org/docs/current/functions-aggregate.html"
@@ -92,8 +92,8 @@
         "having"
       ],
       "content": {
-        "prompt": "팀별로 묶은 뒤 '합계가 250 이상인 팀만'처럼 묶음(그룹)에 조건을 거는 절은 ___ 이다.",
-        "hint": "'가지고 있는'이라는 뜻의 영어 단어"
+        "prompt": "GROUP BY로 만든 그룹에 집계 결과 조건(예: SUM(amount) >= 250)을 적용하는 절은 ___ 이다.",
+        "hint": "GROUP BY 뒤에 오는 그룹 필터 절"
       },
       "answer_key": {
         "accepted": [
@@ -102,7 +102,7 @@
           "해빙"
         ]
       },
-      "explanation": "HAVING은 GROUP BY로 묶고 합계를 낸 다음, 그 결과에 조건을 거는 필터입니다. 묶기 전의 개별 행을 거르는 건 WHERE예요.",
+      "explanation": "HAVING 절은 그룹화 이후 집계 결과에 조건을 적용해 그룹을 필터링합니다. 그룹화 이전에 개별 행을 필터링하는 것은 WHERE 절입니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/sql-select.html",
         "https://www.postgresql.org/docs/current/functions-aggregate.html"
@@ -118,18 +118,18 @@
         "having"
       ],
       "content": {
-        "prompt": "WHERE와 HAVING의 차이를 바르게 설명한 것은?",
+        "prompt": "WHERE와 HAVING의 차이로 옳은 것은?",
         "options": [
-          "WHERE는 묶기 전에 행을 거르고, HAVING은 묶은 뒤 그룹을 거른다",
-          "WHERE는 묶은 뒤 그룹을 거르고, HAVING은 묶기 전에 행을 거른다",
-          "둘은 이름만 다르고 완전히 같다",
-          "HAVING은 결과를 정렬하는 기능이다"
+          "WHERE는 그룹화 전에 행을, HAVING은 그룹화 후에 그룹을 필터링한다",
+          "WHERE는 그룹화 후에 그룹을, HAVING은 그룹화 전에 행을 필터링한다",
+          "두 절은 동작이 완전히 같다",
+          "HAVING은 결과를 정렬하는 절이다"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "WHERE는 낱개 행을 먼저 걸러 내고, GROUP BY로 묶은 다음 HAVING이 그룹(합계·개수 등)을 거릅니다. 그래서 합계 조건은 HAVING에 써요.",
+      "explanation": "WHERE는 GROUP BY 이전에 개별 행에 조건을 적용하고, HAVING은 GROUP BY 이후 그룹의 집계 결과에 조건을 적용합니다. 따라서 집계 함수 조건은 HAVING에 작성합니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/sql-select.html",
         "https://www.postgresql.org/docs/current/functions-aggregate.html"
@@ -144,7 +144,7 @@
         "evaluation-order"
       ],
       "content": {
-        "prompt": "SQL이 쿼리를 처리하는 논리적 순서로 맞는 것은?",
+        "prompt": "SELECT 문의 논리적 처리 순서로 옳은 것은?",
         "options": [
           "FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY",
           "SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY",
@@ -155,7 +155,7 @@
       "answer_key": {
         "index": 0
       },
-      "explanation": "표를 가져오고(FROM), 행을 거르고(WHERE), 묶고(GROUP BY), 그룹을 거르고(HAVING), 보여 줄 열을 고른 뒤(SELECT) 정렬(ORDER BY)합니다. 적는 순서와 처리 순서가 다르다는 점이 핵심이에요.",
+      "explanation": "FROM으로 대상 테이블을 정하고, WHERE로 행을 필터링하고, GROUP BY로 그룹화한 뒤 HAVING으로 그룹을 필터링합니다. 이후 SELECT로 열을 계산하고 ORDER BY로 정렬합니다. 작성 순서와 처리 순서는 다릅니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/sql-select.html",
         "https://www.postgresql.org/docs/current/functions-aggregate.html"
@@ -171,12 +171,12 @@
         "aggregate"
       ],
       "content": {
-        "prompt": "SUM(amount) > 250 같은 합계 조건은 WHERE 절에 쓰면 되므로, HAVING은 따로 필요 없다."
+        "prompt": "SUM(amount) > 250 같은 집계 조건은 WHERE 절에 작성하면 되므로, HAVING 절은 필요하지 않다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "WHERE는 묶기(GROUP BY) 전에 한 줄씩 거르는 단계라 아직 합계가 없습니다. 그래서 WHERE에 SUM 같은 집계 함수를 쓰면 오류가 나요. 묶은 뒤의 합계로 거를 때는 HAVING을 씁니다.",
+      "explanation": "WHERE 절은 그룹화 이전에 평가되므로 집계 함수를 사용할 수 없고, 사용하면 오류가 발생합니다. 집계 결과에 대한 조건은 그룹화 이후에 평가되는 HAVING 절에 작성해야 합니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/sql-select.html",
         "https://www.postgresql.org/docs/current/functions-aggregate.html"
@@ -192,7 +192,7 @@
         "apply"
       ],
       "content": {
-        "prompt": "아래 쿼리의 결과로 나오는 팀은?",
+        "prompt": "아래 쿼리가 반환하는 team은?",
         "code": {
           "language": "sql",
           "source": "-- sales(team, amount): (A, 100), (A, 200), (B, 300), (C, 50)\nSELECT team FROM sales\nGROUP BY team\nHAVING SUM(amount) >= 300;"
@@ -207,7 +207,7 @@
       "answer_key": {
         "index": 0
       },
-      "explanation": "팀별 합계는 A 300, B 300, C 50입니다. HAVING SUM(amount) >= 300 조건에 맞는 팀은 A와 B예요. C는 합계가 50이라 빠집니다.",
+      "explanation": "그룹별 SUM(amount)는 A 300, B 300, C 50입니다. HAVING SUM(amount) >= 300 조건을 만족하는 그룹은 A와 B이며, C는 필터링됩니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/sql-select.html",
         "https://www.postgresql.org/docs/current/functions-aggregate.html"

@@ -12,18 +12,18 @@
         "dns-first"
       ],
       "content": {
-        "prompt": "브라우저 주소창에 www.example.com 을 입력했을 때, 가장 먼저 필요한 일은?",
+        "prompt": "브라우저에 www.example.com 을 입력했을 때, 서버에 접속하기 전에 가장 먼저 필요한 과정은?",
         "options": [
-          "공유기의 전원을 다시 켜기",
-          "서버에 웹 페이지 내용을 바로 요청하기",
-          "서버와 연결을 끊는 신호 보내기",
-          "DNS(인터넷 전화번호부)에 물어 사이트 이름을 IP 주소로 바꾸기"
+          "라우터의 라우팅 테이블을 초기화한다",
+          "서버에 HTTP 요청을 바로 보낸다",
+          "FIN을 보내 연결을 종료한다",
+          "DNS 질의로 도메인 이름을 IP 주소로 변환한다"
         ]
       },
       "answer_key": {
         "index": 3
       },
-      "explanation": "컴퓨터는 이름이 아니라 IP 주소(집 주소)로 찾아가므로, 먼저 DNS라는 전화번호부에서 주소를 알아내야 해요. 주소를 모르면 페이지를 요청할 곳도 알 수 없습니다.",
+      "explanation": "패킷은 도메인 이름이 아니라 IP 주소로 전달되므로, 먼저 DNS로 도메인 이름에 해당하는 IP 주소를 얻어야 합니다. 목적지 IP 주소를 모르면 TCP 연결도 HTTP 요청도 시작할 수 없습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Domain_Name_System"
       ]
@@ -37,12 +37,12 @@
         "default-gateway"
       ],
       "content": {
-        "prompt": "내 컴퓨터가 인터넷의 다른 네트워크에 있는 서버로 데이터를 보낼 때는, 먼저 집 공유기 같은 '기본 게이트웨이(우리 동네 밖으로 나가는 출구)'에 건넨다."
+        "prompt": "목적지가 다른 네트워크에 있으면, 호스트는 패킷을 먼저 기본 게이트웨이(로컬 네트워크의 라우터)로 전송한다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "목적지가 우리 네트워크 밖에 있으면 내 컴퓨터는 일단 기본 게이트웨이(보통 공유기)에 넘기고, 그다음 길은 라우터들이 이어서 찾아요. 내 컴퓨터가 서버까지 직접 선을 연결하는 게 아닙니다.",
+      "explanation": "호스트는 서브넷 마스크로 목적지가 같은 네트워크인지 판단하고, 다른 네트워크이면 기본 게이트웨이로 패킷을 보냅니다. 이후 경로는 라우터들이 라우팅 테이블에 따라 결정합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Default_gateway"
       ]
@@ -56,8 +56,8 @@
         "arp"
       ],
       "content": {
-        "prompt": "같은 네트워크 안에서 'IP 주소가 192.168.0.1인 분, 이름표(MAC 주소)가 뭐예요?' 하고 모두에게 물어보는 프로토콜을 ___ 라고 한다.",
-        "hint": "영어 대문자 세 글자, Address Resolution Protocol"
+        "prompt": "같은 네트워크에서 IP 주소에 대응하는 MAC 주소를 알아내기 위해 브로드캐스트로 질의하는 프로토콜을 ___ 라고 한다.",
+        "hint": "Address Resolution Protocol의 약자"
       },
       "answer_key": {
         "accepted": [
@@ -68,7 +68,7 @@
           "address resolution protocol"
         ]
       },
-      "explanation": "ARP는 IP 주소를 알 때 그 장치의 MAC 주소(이름표)를 알아내는 방법이에요. 바로 옆 장치에 실제로 건네려면 이름표가 필요하기 때문입니다.",
+      "explanation": "ARP는 대상 IP 주소를 브로드캐스트로 질의하고, 그 IP를 가진 장치가 자신의 MAC 주소로 응답하게 합니다. 프레임을 전송하려면 목적지 MAC 주소가 필요하기 때문입니다.",
       "refs": [
         "https://www.rfc-editor.org/rfc/rfc826",
         "https://en.wikipedia.org/wiki/Address_Resolution_Protocol"
@@ -83,18 +83,18 @@
         "encapsulation-order"
       ],
       "content": {
-        "prompt": "데이터가 내 컴퓨터를 떠날 때, 가장 바깥에 씌워지는 포장(헤더)은?",
+        "prompt": "송신 호스트에서 전송 직전의 프레임에서 가장 바깥쪽에 위치하는 헤더는?",
         "options": [
           "TCP 헤더",
-          "HTTP 같은 응용 계층의 헤더",
-          "포장 없이 데이터만 나간다",
-          "이더넷·Wi-Fi 같은 데이터링크 계층의 헤더"
+          "HTTP 같은 응용 계층 헤더",
+          "헤더 없이 데이터만 전송된다",
+          "이더넷·Wi-Fi 같은 데이터링크 계층 헤더"
         ]
       },
       "answer_key": {
         "index": 3
       },
-      "explanation": "보낼 때는 위 계층부터 차례로 감싸므로 HTTP → TCP → IP → 이더넷(또는 Wi-Fi) 순으로 포장돼요. 그래서 마지막에 붙는 이더넷·Wi-Fi 헤더가 가장 바깥 상자가 됩니다.",
+      "explanation": "캡슐화는 상위 계층부터 진행되므로 HTTP → TCP → IP → 이더넷 순으로 헤더가 붙습니다. 마지막에 붙는 데이터링크 계층 헤더가 프레임의 가장 바깥쪽에 위치합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Encapsulation_(networking)"
       ]
@@ -108,18 +108,18 @@
         "request-order"
       ],
       "content": {
-        "prompt": "웹 페이지를 열 때 일어나는 일의 순서로 알맞은 것은?",
+        "prompt": "웹 페이지를 요청할 때 일어나는 과정의 순서로 알맞은 것은?",
         "options": [
-          "DNS로 IP 주소 찾기 → TCP 연결 맺기(인사) → HTTP로 페이지 요청",
-          "HTTP로 페이지 요청 → TCP 연결 맺기 → DNS로 IP 주소 찾기",
-          "TCP 연결 맺기 → HTTP로 페이지 요청 → DNS로 IP 주소 찾기",
-          "HTTP로 페이지 요청 → DNS로 IP 주소 찾기 → TCP 연결 맺기"
+          "DNS 조회 → TCP 3-way handshake → HTTP 요청",
+          "HTTP 요청 → TCP 3-way handshake → DNS 조회",
+          "TCP 3-way handshake → HTTP 요청 → DNS 조회",
+          "HTTP 요청 → DNS 조회 → TCP 3-way handshake"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "주소를 알아야(DNS) 찾아가서 인사하고(TCP 연결), 인사가 끝나야 '이 페이지 주세요'(HTTP 요청)를 할 수 있어요. 주소도 모르고 요청부터 할 수는 없습니다.",
+      "explanation": "먼저 DNS로 목적지 IP 주소를 얻고, TCP 3-way handshake로 연결을 수립한 뒤, 그 연결 위에서 HTTP 요청을 보냅니다. IP 주소와 TCP 연결 없이는 HTTP 요청을 보낼 수 없습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Domain_Name_System"
       ]
@@ -133,18 +133,18 @@
         "router-hop"
       ],
       "content": {
-        "prompt": "데이터가 서버로 가는 도중 여러 라우터(택배 허브)를 지난다. 라우터는 주로 무엇을 보고 다음에 보낼 곳을 정할까?",
+        "prompt": "패킷이 서버로 가는 동안 여러 라우터를 거친다. 라우터는 주로 무엇을 기준으로 다음 홉을 결정할까?",
         "options": [
-          "웹 페이지의 내용",
+          "HTTP 메시지 본문",
           "목적지 IP 주소",
-          "보낸 프로그램의 포트 번호",
-          "보낸 사람의 이름표(MAC 주소)"
+          "출발지 포트 번호",
+          "출발지 MAC 주소"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "택배 허브가 도착지 주소를 보고 다음 허브로 보내듯, 라우터는 목적지 IP 주소를 보고 다음 경로를 정합니다. 페이지 내용이나 포트 번호까지 보며 길을 고르지는 않아요.",
+      "explanation": "라우터는 3계층 장비로, 패킷의 목적지 IP 주소를 라우팅 테이블과 비교해 다음 홉을 결정합니다. 애플리케이션 데이터나 포트 번호는 일반적인 라우팅 결정에 사용되지 않습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Router_(computing)"
       ]
@@ -158,12 +158,12 @@
         "frame-addresses"
       ],
       "content": {
-        "prompt": "공유기의 주소 변환이 없는 일반적인 경우, 데이터가 라우터를 지나도 목적지 IP 주소(집 주소)는 그대로이지만 바깥 포장의 MAC 주소(이름표)는 구간마다 다음 장치 것으로 바뀐다."
+        "prompt": "NAT가 없는 일반적인 경우, 패킷이 라우터를 거쳐도 목적지 IP 주소는 유지되지만 프레임의 출발지·목적지 MAC 주소는 홉마다 바뀐다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "IP 주소는 최종 목적지라서 끝까지 같고, MAC 주소는 '이번 구간에 건네받을 이웃'을 가리켜서 허브를 지날 때마다 새로 붙어요. 택배 송장의 주소는 그대로, 구간별 담당 기사 이름만 바뀌는 셈입니다.",
+      "explanation": "IP 주소는 종단 간(end-to-end) 주소라 경로 전체에서 유지됩니다. MAC 주소는 링크 단위 주소이므로, 라우터가 프레임을 새로 만들 때마다 다음 홉에 맞는 MAC 주소로 교체됩니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/MAC_address"
       ]
@@ -177,12 +177,12 @@
         "server-side"
       ],
       "content": {
-        "prompt": "데이터가 서버에 도착한 뒤 일어나는 일로 알맞은 것을 모두 고르시오.",
+        "prompt": "서버가 프레임을 수신한 뒤 일어나는 일로 알맞은 것을 모두 고르시오.",
         "options": [
-          "서버는 DNS에 다시 물어봐야 데이터를 열 수 있다",
-          "서버는 가장 바깥 포장(이더넷 헤더)부터 차례로 벗긴다",
-          "서버는 포트 번호를 보고 웹 서버 프로그램에 데이터를 넘긴다",
-          "서버는 받은 데이터를 라우터로 되돌려 보내 검사를 받는다"
+          "데이터를 해석하려면 DNS 질의를 다시 수행해야 한다",
+          "데이터링크 계층 헤더부터 차례로 제거한다(역캡슐화)",
+          "TCP 헤더의 목적지 포트 번호를 보고 웹 서버 프로세스에 데이터를 전달한다",
+          "수신한 패킷을 라우터로 되돌려 검증받는다"
         ]
       },
       "answer_key": {
@@ -191,7 +191,7 @@
           2
         ]
       },
-      "explanation": "서버는 바깥 포장부터 벗겨 가며(이더넷 → IP → TCP), 마지막에 포트 번호(호수)를 보고 웹 서버 프로그램에 전해 줘요. 도착한 데이터를 열려고 DNS를 다시 찾거나 라우터에 되돌려 보내지는 않습니다.",
+      "explanation": "서버는 이더넷 → IP → TCP 순으로 헤더를 제거하고, 마지막에 목적지 포트 번호로 해당 프로세스(예: 80번 웹 서버)에 데이터를 넘깁니다. 수신 처리에 DNS 질의나 라우터 검증은 필요하지 않습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Encapsulation_(networking)"
       ]
