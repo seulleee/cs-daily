@@ -12,7 +12,8 @@ export class ResendMailer implements Mailer {
 
   constructor(config: ConfigService) {
     const key = config.get<string>('RESEND_API_KEY');
-    this.client = key ? new Resend(key) : null;
+    // 키가 아직 없으면 Secret Manager에는 'unset' 자리 값이 들어 있다 → dry-run
+    this.client = key && key !== 'unset' ? new Resend(key) : null;
     this.from = config.get('MAIL_FROM', 'CS Daily <onboarding@resend.dev>');
   }
 
