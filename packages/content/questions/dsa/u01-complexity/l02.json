@@ -34,31 +34,27 @@
     },
     {
       "id": "dsa-code-complexity-002",
-      "type": "fill",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "code-complexity",
         "nested-loop"
       ],
       "content": {
-        "prompt": "다음 이중 루프의 work() 호출 횟수는 n(n−1)/2이다. 시간 복잡도는 O(___)이다. (n을 사용한 식으로)",
+        "prompt": "다음 이중 루프의 work() 호출 횟수는 n(n−1)/2이다. 시간 복잡도로 알맞은 것은?",
         "code": {
           "language": "python",
           "source": "for i in range(n):\n    for j in range(i):\n        work()"
         },
-        "hint": "n에 대한 다항식"
+        "options": [
+          "O(n)",
+          "O(n log n)",
+          "O(n²)",
+          "O(2ⁿ)"
+        ]
       },
       "answer_key": {
-        "accepted": [
-          "n^2",
-          "n²",
-          "n**2",
-          "n 제곱",
-          "n제곱",
-          "n ^ 2",
-          "n*n",
-          "n2"
-        ]
+        "index": 2
       },
       "explanation": "안쪽 루프가 0, 1, ..., n−1번 돌아 총 n(n−1)/2번이며, 최고차항 n²/2에서 상수 1/2을 버리면 O(n²)입니다. 절반이라도 증가율은 그대로 n²이고, n log n은 이 구조에서 나오지 않습니다.",
       "refs": [

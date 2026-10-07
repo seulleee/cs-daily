@@ -48,35 +48,6 @@
       ]
     },
     {
-      "id": "dsa-big-o-003",
-      "type": "fill",
-      "difficulty": 1,
-      "tags": [
-        "big-o",
-        "theta"
-      ],
-      "content": {
-        "prompt": "O가 상한, Ω가 하한일 때, 상한과 하한을 동시에 만족하는 \"꽉 찬\" 점근 표기는 ___ 표기다.",
-        "hint": "그리스 문자, 영어로 theta"
-      },
-      "answer_key": {
-        "accepted": [
-          "Θ",
-          "θ",
-          "세타",
-          "빅세타",
-          "빅 세타",
-          "theta",
-          "big theta",
-          "big-theta"
-        ]
-      },
-      "explanation": "정답은 Θ(세타)입니다. f = Θ(g)는 f = O(g)이면서 f = Ω(g)라는 뜻입니다. O는 상한만, Ω는 하한만 나타내므로 두 경계가 일치하는 꽉 찬 경계를 말할 때는 Θ를 씁니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Big_O_notation"
-      ]
-    },
-    {
       "id": "dsa-big-o-004",
       "type": "single",
       "difficulty": 2,

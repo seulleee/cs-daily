@@ -52,6 +52,9 @@ export const MultiAnswerKey = z.object({
   partial: z.boolean().optional(),
 });
 export const OxAnswerKey = z.object({ value: z.boolean() });
+/** 주관식 대표 정답에 허용되는 문자: 한글·영문·숫자·공백 */
+export const FILL_PLAIN_ANSWER = /^[가-힣A-Za-z0-9 ]+$/;
+
 export const FillAnswerKey = z.object({
   /** 허용 답안 목록. 비교 전 trim/lowercase/공백 정규화 */
   accepted: z.array(z.string().min(1).max(100)).min(1),
@@ -102,6 +105,18 @@ export const QuestionFile = z
     if (!key.success) {
       ctx.addIssue({ code: 'custom', path: ['answer_key'], message: key.error.issues.map((i) => i.message).join('; ') });
       return;
+    }
+    // 주관식은 대표 정답(accepted[0])이 한글·영문·숫자·공백만으로 입력 가능해야 한다.
+    // Θ, ², ^ 같은 기호가 필요한 답은 모바일 키보드로 입력하기 어려우므로 객관식으로 낸다.
+    if (q.type === 'fill') {
+      const primary = (key.data as z.infer<typeof FillAnswerKey>).accepted[0]!;
+      if (!FILL_PLAIN_ANSWER.test(primary)) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['answer_key', 'accepted', 0],
+          message: `주관식 대표 정답 "${primary}"에 한글·영문·숫자 외 문자가 있습니다 — 객관식으로 바꾸세요`,
+        });
+      }
     }
     // 보기 인덱스 범위 검증
     if (q.type === 'single' || q.type === 'multi') {
