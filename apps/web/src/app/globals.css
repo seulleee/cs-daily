@@ -32,28 +32,34 @@
 
 html, body { background: var(--color-surface-2); color: var(--color-ink); }
 
-/* 듀오링고식 3D 버튼 */
-.btn-3d {
-  @apply inline-flex items-center justify-center rounded-2xl px-5 py-3 font-bold text-white select-none transition-transform;
-  background: var(--color-brand);
-  box-shadow: 0 4px 0 var(--color-brand-dark);
+/*
+ * 컴포넌트 클래스는 components 레이어에 둔다. 레이어 밖에 두면 Tailwind 유틸리티(utilities 레이어)보다
+ * 우선순위가 높아져 `card bg-…` 같은 조합에서 유틸리티가 무시된다 (유닛 헤더가 흰 배경+흰 글씨로 보이지 않던 버그).
+ */
+@layer components {
+  /* 듀오링고식 3D 버튼 */
+  .btn-3d {
+    @apply inline-flex items-center justify-center rounded-2xl px-5 py-3 font-bold text-white select-none transition-transform;
+    background: var(--color-brand);
+    box-shadow: 0 4px 0 var(--color-brand-dark);
+  }
+  .btn-3d:active { transform: translateY(4px); box-shadow: 0 0 0 var(--color-brand-dark); }
+  .btn-3d:disabled { opacity: .5; box-shadow: none; transform: none; }
+  .btn-3d.correct { background: var(--color-correct); box-shadow: 0 4px 0 #15803d; }
+  .btn-3d.wrong { background: var(--color-wrong); box-shadow: 0 4px 0 #b91c1c; }
+
+  .option {
+    @apply w-full text-left rounded-2xl border-2 px-4 py-3 transition-colors;
+    border-color: var(--color-line);
+    background: var(--color-surface);
+    box-shadow: 0 2px 0 var(--color-line);
+  }
+  .option[data-selected="true"] { border-color: var(--color-brand); background: color-mix(in oklab, var(--color-brand) 10%, var(--color-surface)); }
+  .option[data-state="correct"] { border-color: var(--color-correct); background: var(--color-correct-bg); }
+  .option[data-state="wrong"] { border-color: var(--color-wrong); background: var(--color-wrong-bg); }
+
+  .card { background: var(--color-surface); border: 1px solid var(--color-line); border-radius: var(--radius-card); }
+
+  .input { width: 100%; border: 2px solid var(--color-line); border-radius: 12px; padding: 10px 12px; background: var(--color-surface); color: var(--color-ink); }
+  .input:focus { outline: none; border-color: var(--color-brand); }
 }
-.btn-3d:active { transform: translateY(4px); box-shadow: 0 0 0 var(--color-brand-dark); }
-.btn-3d:disabled { opacity: .5; box-shadow: none; transform: none; }
-.btn-3d.correct { background: var(--color-correct); box-shadow: 0 4px 0 #15803d; }
-.btn-3d.wrong { background: var(--color-wrong); box-shadow: 0 4px 0 #b91c1c; }
-
-.option {
-  @apply w-full text-left rounded-2xl border-2 px-4 py-3 transition-colors;
-  border-color: var(--color-line);
-  background: var(--color-surface);
-  box-shadow: 0 2px 0 var(--color-line);
-}
-.option[data-selected="true"] { border-color: var(--color-brand); background: color-mix(in oklab, var(--color-brand) 10%, var(--color-surface)); }
-.option[data-state="correct"] { border-color: var(--color-correct); background: var(--color-correct-bg); }
-.option[data-state="wrong"] { border-color: var(--color-wrong); background: var(--color-wrong-bg); }
-
-.card { background: var(--color-surface); border: 1px solid var(--color-line); border-radius: var(--radius-card); }
-
-.input { width: 100%; border: 2px solid var(--color-line); border-radius: 12px; padding: 10px 12px; background: var(--color-surface); color: var(--color-ink); }
-.input:focus { outline: none; border-color: var(--color-brand); }
