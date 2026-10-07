@@ -30,8 +30,8 @@ export function QuestionRenderer(props: RendererProps) {
 
 function Prompt({ prompt, code }: { prompt: string; code?: { language: string; source: string } | null }) {
   return (
-    <div className="mb-5">
-      <h2 className="text-lg font-bold leading-snug md:text-xl">{prompt}</h2>
+    <div className="mb-6">
+      <h2 className="text-xl font-bold leading-snug md:text-2xl">{prompt}</h2>
       {code && (
         <pre className="mt-3 overflow-x-auto rounded-xl bg-(--color-ink) p-3 text-sm text-(--color-surface)">
           <code>{code.source}</code>

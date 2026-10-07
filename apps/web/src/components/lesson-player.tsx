@@ -99,7 +99,9 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
         <span className="text-sm font-bold text-(--color-ink-2)">{answered}/{total}</span>
       </header>
 
-      <section className="flex-1 px-4 pb-40 md:mx-auto md:w-full md:max-w-[720px]">
+      {/* 문제 영역은 헤더와 하단 버튼 사이에서 세로 가운데 정렬 (콘텐츠가 길면 위에서부터 스크롤) */}
+      <section className="flex flex-1 flex-col justify-center px-4 pt-4 pb-40 md:pb-44">
+        <div className="mx-auto w-full max-w-[600px]">
         {session.data.kind === 'review' && <p className="mb-2 text-xs font-bold text-(--color-streak)">복습 세션 · XP ×1.5</p>}
         {session.data.kind === 'placement' && (
           <p className="mb-2 text-xs font-bold text-(--color-brand)">
@@ -108,6 +110,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
         )}
         <QuestionRenderer question={q} value={draft} onChange={setDraft} revealed={result ? { correctAnswer: result.correctAnswer, isCorrect: result.isCorrect } : null} />
         {submit.isError && <p className="mt-3 text-sm text-(--color-wrong)">{(submit.error as ApiError).message}</p>}
+        </div>
       </section>
 
       {/* 하단 고정: 확인 또는 정오답 시트 */}
