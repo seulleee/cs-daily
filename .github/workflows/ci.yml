@@ -47,7 +47,10 @@ jobs:
       - name: Build
         run: pnpm build
       - name: Docker image builds (API)
-        run: docker build -f apps/api/Dockerfile -t cs-daily-api:ci .
+        run: |
+          docker build -f apps/api/Dockerfile -t cs-daily-api:ci .
+          # 빌드 산출물의 모듈 그래프가 전부 해석되는지 (배포 후 MODULE_NOT_FOUND 방지)
+          docker run --rm -e API_BASE_URL=x -e JWT_ACCESS_SECRET=x cs-daily-api:ci node -e "require('./dist/app.module.js'); console.log('module graph OK')"
 
   deploy-api:
     # 배포를 잠시 멈추려면 레포 Variables에 DEPLOY_DISABLED=true
