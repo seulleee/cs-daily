@@ -12,18 +12,17 @@
         "inner-join"
       ],
       "content": {
-        "prompt": "INNER JOIN의 결과에 포함되는 행은?",
+        "prompt": "조인 조건이 맞는 행 쌍만 반환하는 조인은?",
         "options": [
-          "조인 조건을 만족하는 행의 쌍만",
-          "왼쪽 테이블의 모든 행",
-          "두 테이블 행의 모든 조합",
-          "오른쪽 테이블의 모든 행"
+          "LEFT JOIN",
+          "INNER JOIN",
+          "CROSS JOIN"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 1
       },
-      "explanation": "INNER JOIN은 ON 절의 조인 조건을 만족하는 행 쌍만 반환합니다. 대응하는 행이 없는 행은 양쪽 모두에서 제외됩니다. 왼쪽 테이블의 행을 모두 보존하는 것은 LEFT JOIN입니다.",
+      "explanation": "INNER JOIN은 조인 조건을 만족하는 행 쌍만 결과에 남깁니다. 짝이 없는 행은 제외됩니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
@@ -31,19 +30,24 @@
     },
     {
       "id": "database-join-types-002",
-      "type": "ox",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "join-types",
         "left-join"
       ],
       "content": {
-        "prompt": "LEFT JOIN은 조인 조건을 만족하는 행 쌍만 반환하고, 대응하는 행이 없는 왼쪽 테이블의 행은 제외한다."
+        "prompt": "왼쪽 테이블의 모든 행을 결과에 남기는 조인은?",
+        "options": [
+          "INNER JOIN",
+          "CROSS JOIN",
+          "LEFT JOIN"
+        ]
       },
       "answer_key": {
-        "value": false
+        "index": 2
       },
-      "explanation": "설명은 INNER JOIN의 동작입니다. LEFT (OUTER) JOIN은 왼쪽 테이블의 모든 행을 보존하며, 대응하는 행이 없으면 오른쪽 테이블의 열을 NULL로 채웁니다.",
+      "explanation": "LEFT JOIN은 왼쪽 테이블의 모든 행을 남기고, 짝이 없는 행의 오른쪽 열은 NULL로 채웁니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
@@ -51,26 +55,25 @@
     },
     {
       "id": "database-join-types-003",
-      "type": "fill",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "join-types",
-        "cross-join"
+        "left-join",
+        "null"
       ],
       "content": {
-        "prompt": "두 테이블의 카티션 곱(모든 행 조합)을 반환하는 조인을 ___ JOIN이라고 한다. (예: 3행 × 2행 = 6행)",
-        "hint": "카티션 곱을 만드는 조인 키워드"
-      },
-      "answer_key": {
-        "accepted": [
-          "CROSS",
-          "cross",
-          "크로스",
-          "CROSS JOIN",
-          "cross join"
+        "prompt": "LEFT JOIN에서 짝이 없는 왼쪽 행의 오른쪽 열 값은?",
+        "options": [
+          "NULL",
+          "0",
+          "빈 문자열"
         ]
       },
-      "explanation": "CROSS JOIN은 조인 조건 없이 두 테이블의 카티션 곱을 반환합니다. 결과 행 수는 두 테이블 행 수의 곱(3 × 2 = 6)입니다.",
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "LEFT JOIN은 짝이 없는 왼쪽 행도 남기되, 오른쪽 테이블의 열은 NULL로 채웁니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
@@ -78,30 +81,20 @@
     },
     {
       "id": "database-join-types-004",
-      "type": "single",
+      "type": "ox",
       "difficulty": 1,
       "tags": [
         "join-types",
         "inner-join",
-        "row-count"
+        "left-join"
       ],
       "content": {
-        "prompt": "아래 데이터에서 members와 orders를 INNER JOIN한 결과의 행 수는?",
-        "code": {
-          "language": "sql",
-          "source": "-- members(id, name): (1, 민지), (2, 준호), (3, 서연)\n-- orders(id, member_id): (101, 1), (102, 1), (103, 2)\nSELECT m.name, o.id FROM members m\nJOIN orders o ON o.member_id = m.id;"
-        },
-        "options": [
-          "2행",
-          "3행",
-          "4행",
-          "6행"
-        ]
+        "prompt": "INNER JOIN은 짝이 없는 왼쪽 행도 결과에 포함한다."
       },
       "answer_key": {
-        "index": 1
+        "value": false
       },
-      "explanation": "orders의 3개 행이 모두 members의 행과 조인 조건을 만족하므로 3행입니다. 민지(id 1)는 주문 2건과 각각 매칭되어 2행으로 나오고, 대응하는 주문이 없는 서연은 제외됩니다.",
+      "explanation": "짝이 없는 왼쪽 행까지 남기는 것은 LEFT JOIN입니다. INNER JOIN은 조건이 맞는 행 쌍만 반환합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
@@ -109,30 +102,19 @@
     },
     {
       "id": "database-join-types-005",
-      "type": "single",
-      "difficulty": 2,
+      "type": "ox",
+      "difficulty": 1,
       "tags": [
         "join-types",
-        "left-join",
-        "row-count"
+        "left-join"
       ],
       "content": {
-        "prompt": "같은 데이터에서 members LEFT JOIN orders 결과의 행 수는?",
-        "code": {
-          "language": "sql",
-          "source": "-- members(id, name): (1, 민지), (2, 준호), (3, 서연)\n-- orders(id, member_id): (101, 1), (102, 1), (103, 2)\nSELECT m.name, o.id FROM members m\nLEFT JOIN orders o ON o.member_id = m.id;"
-        },
-        "options": [
-          "3행",
-          "4행",
-          "5행",
-          "6행"
-        ]
+        "prompt": "LEFT JOIN 결과에는 왼쪽 테이블의 모든 행이 나온다."
       },
       "answer_key": {
-        "index": 1
+        "value": true
       },
-      "explanation": "조인 조건을 만족하는 3행에, 대응하는 주문이 없는 서연이 o.id = NULL인 1행으로 추가되어 4행입니다. LEFT JOIN은 왼쪽 테이블(members)의 모든 행을 보존합니다.",
+      "explanation": "LEFT JOIN은 왼쪽 테이블의 행을 짝이 있든 없든 모두 결과에 남깁니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
@@ -140,24 +122,26 @@
     },
     {
       "id": "database-join-types-006",
-      "type": "ox",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
         "join-types",
-        "left-join",
-        "anti-join"
+        "inner-join"
       ],
       "content": {
-        "prompt": "아래 쿼리는 주문이 하나도 없는 회원(서연)만 반환한다.",
-        "code": {
-          "language": "sql",
-          "source": "-- members(id, name): (1, 민지), (2, 준호), (3, 서연)\n-- orders(id, member_id): (101, 1), (102, 1), (103, 2)\nSELECT m.name FROM members m\nLEFT JOIN orders o ON o.member_id = m.id\nWHERE o.id IS NULL;"
-        }
+        "prompt": "조인 조건이 맞는 행 쌍만 반환하는 조인은 ___ JOIN이다.",
+        "hint": "LEFT와 달리 짝이 없는 행을 버린다"
       },
       "answer_key": {
-        "value": true
+        "accepted": [
+          "INNER",
+          "inner",
+          "이너",
+          "INNER JOIN",
+          "inner join"
+        ]
       },
-      "explanation": "LEFT JOIN에서 대응하는 행이 없는 왼쪽 행은 오른쪽 열이 NULL입니다. WHERE o.id IS NULL로 그 행만 선택하면 주문이 없는 회원만 남습니다. 이 패턴을 안티 조인이라고 합니다.",
+      "explanation": "INNER JOIN은 양쪽에 짝이 있는 행만 반환합니다. SQL에서 JOIN만 쓰면 INNER JOIN으로 처리됩니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
@@ -165,30 +149,28 @@
     },
     {
       "id": "database-join-types-007",
-      "type": "single",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
         "join-types",
-        "full-outer-join",
-        "row-count"
+        "left-join"
       ],
       "content": {
-        "prompt": "아래 데이터에서 members FULL OUTER JOIN orders (조건 o.member_id = m.id) 결과의 행 수는?",
-        "code": {
-          "language": "sql",
-          "source": "-- members(id, name): (1, 민지), (2, 준호), (3, 서연)\n-- orders(id, member_id): (101, 1), (102, 1), (103, 2), (104, 9)"
-        },
-        "options": [
-          "3행",
-          "4행",
-          "5행",
-          "6행"
-        ]
+        "prompt": "왼쪽 테이블의 모든 행을 남기는 조인은 ___ JOIN이다.",
+        "hint": "짝이 없으면 오른쪽 열을 NULL로 채운다"
       },
       "answer_key": {
-        "index": 2
+        "accepted": [
+          "LEFT",
+          "left",
+          "레프트",
+          "LEFT OUTER",
+          "left outer",
+          "LEFT JOIN",
+          "left join"
+        ]
       },
-      "explanation": "FULL OUTER JOIN은 양쪽 테이블의 모든 행을 보존합니다. 매칭된 3행, 주문이 없는 서연 1행, 대응하는 회원이 없는 주문 104의 1행을 합쳐 5행입니다. INNER JOIN이면 3행, LEFT JOIN이면 4행입니다.",
+      "explanation": "LEFT JOIN(LEFT OUTER JOIN)은 왼쪽 테이블의 모든 행을 유지하고, 짝이 없으면 오른쪽 열을 NULL로 채웁니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
@@ -200,22 +182,71 @@
       "difficulty": 2,
       "tags": [
         "join-types",
-        "left-join",
-        "choose"
+        "inner-join",
+        "row-count"
       ],
       "content": {
-        "prompt": "주문이 없는 회원도 포함해 회원별 주문 목록을 조회하려 한다. 알맞은 조인은?",
+        "prompt": "회원 3명 중 2명만 주문이 1건씩 있다. 회원 INNER JOIN 주문 행 수는?",
         "options": [
-          "members LEFT JOIN orders",
-          "members INNER JOIN orders",
-          "members CROSS JOIN orders",
-          "조인 없이 members만 조회"
+          "2행",
+          "3행",
+          "5행"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "members를 왼쪽에 두고 LEFT JOIN하면 주문이 없는 회원도 결과에 보존됩니다. INNER JOIN은 주문이 없는 회원을 제외하고, CROSS JOIN은 조인 조건 없이 모든 조합을 반환합니다.",
+      "explanation": "INNER JOIN은 짝이 있는 회원 2명의 행 쌍만 남기므로 2행입니다. 주문이 없는 회원은 제외됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Join_(SQL)",
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    },
+    {
+      "id": "database-join-types-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "join-types",
+        "left-join",
+        "row-count"
+      ],
+      "content": {
+        "prompt": "회원 3명 중 2명만 주문이 1건씩 있다. 회원 LEFT JOIN 주문 행 수는?",
+        "options": [
+          "2행",
+          "3행",
+          "5행"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "짝이 있는 2행에 주문이 없는 회원 1명의 행(주문 열은 NULL)이 더해져 3행입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Join_(SQL)",
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    },
+    {
+      "id": "database-join-types-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "join-types",
+        "inner-join"
+      ],
+      "content": {
+        "prompt": "INNER JOIN 결과에 포함되는 행은?",
+        "options": [
+          "왼쪽 테이블 모든 행",
+          "조건이 맞는 행 쌍"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "INNER JOIN은 조인 조건을 만족하는 행 쌍만 반환합니다. 왼쪽 테이블의 모든 행을 남기는 것은 LEFT JOIN입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Join_(SQL)",
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"

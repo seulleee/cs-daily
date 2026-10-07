@@ -12,22 +12,17 @@
         "loop"
       ],
       "content": {
-        "prompt": "다음 코드의 시간 복잡도는? (data의 원소 수는 n)",
-        "code": {
-          "language": "python",
-          "source": "for x in data:   # data의 원소 수는 n\n    print(x)     # 상수 시간 연산"
-        },
+        "prompt": "n번 도는 반복문 하나의 시간 복잡도는?",
         "options": [
           "O(1)",
           "O(n)",
-          "O(n²)",
-          "O(log n)"
+          "O(n²)"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "반복문이 원소 수 n만큼 실행되고 본문은 상수 시간 연산이므로 전체는 O(n), 즉 선형 시간입니다. O(n²)은 n번 반복문이 중첩된 경우입니다.",
+      "explanation": "반복문이 n번 돌면 실행 횟수가 n에 비례하므로 O(n)입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Time_complexity"
       ]
@@ -41,28 +36,46 @@
         "nested-loop"
       ],
       "content": {
-        "prompt": "다음 중첩 반복문에서 data의 원소 수가 n일 때 print가 실행되는 횟수는?",
-        "code": {
-          "language": "python",
-          "source": "for a in data:        # 외부 반복: n회\n    for b in data:    # 내부 반복: 매회 n회\n        print(a, b)"
-        },
+        "prompt": "n번 반복 안에 n번 반복이 들어 있는 코드의 시간 복잡도는?",
         "options": [
-          "n번",
-          "2n번",
-          "n + 1번",
-          "n × n번"
+          "O(n²)",
+          "O(n)",
+          "O(log n)"
         ]
       },
       "answer_key": {
-        "index": 3
+        "index": 0
       },
-      "explanation": "외부 반복문 1회마다 내부 반복문이 n회 실행되므로 총 n × n = n²회이고, 시간 복잡도는 O(n²)입니다. 2n번은 두 반복문이 중첩되지 않고 순차적으로 배치된 경우입니다.",
+      "explanation": "바깥 반복 1번마다 안쪽이 n번 돌아 총 n × n = n²번 실행되므로 O(n²)입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Time_complexity"
       ]
     },
     {
       "id": "dsa-code-complexity-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "code-complexity",
+        "logarithm"
+      ],
+      "content": {
+        "prompt": "n을 매번 절반으로 줄이며 도는 반복문의 시간 복잡도는?",
+        "options": [
+          "O(n)",
+          "O(log n)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "n을 절반씩 줄이면 약 log₂ n번 만에 1이 되므로 O(log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-code-complexity-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
@@ -70,47 +83,114 @@
         "sequential-loop"
       ],
       "content": {
-        "prompt": "n회 반복문 두 개가 중첩되지 않고 순차적으로 배치되면 총 실행 횟수는 2n이므로 시간 복잡도는 O(n)이다."
+        "prompt": "n번 도는 반복문 두 개를 차례로 실행하면 O(n²)이다."
       },
       "answer_key": {
-        "value": true
+        "value": false
       },
-      "explanation": "순차 배치된 반복문의 실행 횟수는 더하고, 상수 계수 2를 제거하면 O(n)입니다. 실행 횟수를 곱해 O(n²)이 되는 것은 반복문이 중첩된 경우입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Time_complexity"
-      ]
-    },
-    {
-      "id": "dsa-code-complexity-004",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "code-complexity",
-        "constant"
-      ],
-      "content": {
-        "prompt": "다음 코드는 입력 크기와 무관하게 고정된 횟수만 반복한다. 시간 복잡도는?",
-        "code": {
-          "language": "python",
-          "source": "for i in range(10):   # 입력 크기와 무관하게 10회\n    print(i)"
-        },
-        "options": [
-          "O(n)",
-          "O(1)",
-          "O(n²)",
-          "O(log n)"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "반복 횟수가 입력 크기 n이 아닌 상수 10으로 고정되어 있으므로 상수 시간 O(1)입니다. 반복문이 있다고 해서 항상 O(n)인 것은 아닙니다.",
+      "explanation": "차례로 실행하면 n + n = 2n번이라 O(n)입니다. O(n²)은 반복문이 중첩될 때입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Time_complexity"
       ]
     },
     {
       "id": "dsa-code-complexity-005",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "code-complexity",
+        "nested-loop"
+      ],
+      "content": {
+        "prompt": "n번 반복 안에 n번 반복이 중첩되면 총 n²번 실행된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "바깥 반복 1번마다 안쪽 반복이 n번 돌므로 총 n × n = n²번 실행됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-code-complexity-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "code-complexity",
+        "nested-loop"
+      ],
+      "content": {
+        "prompt": "반복문 안에 반복문이 들어 있는 구조를 ___ 반복문이라고 한다.",
+        "hint": "반복문이 여러 겹이라는 뜻의 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "중첩",
+          "nested",
+          "이중",
+          "중첩된",
+          "중첩 반복문",
+          "이중 반복문"
+        ]
+      },
+      "explanation": "반복문 안에 반복문이 있는 구조를 중첩 반복문이라 하며, 각각 n번 돌면 O(n²)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-code-complexity-007",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "code-complexity",
+        "logarithm"
+      ],
+      "content": {
+        "prompt": "n을 매번 절반으로 줄이는 반복은 ___ 시간이 걸린다.",
+        "hint": "상수·선형·이차가 아닌 복잡도 이름"
+      },
+      "answer_key": {
+        "accepted": [
+          "로그",
+          "log",
+          "로그 시간",
+          "logarithmic",
+          "logarithmic time"
+        ]
+      },
+      "explanation": "n을 절반씩 줄이면 반복 횟수가 log n에 비례하므로 O(log n), 즉 로그 시간입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-code-complexity-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "code-complexity",
+        "nested-loop"
+      ],
+      "content": {
+        "prompt": "10번 반복 안에 10번 반복이 있으면 안쪽 코드의 총 실행 횟수는?",
+        "options": [
+          "20",
+          "100",
+          "10"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "바깥 10번마다 안쪽이 10번 실행되므로 10 × 10 = 100번입니다. 20번은 두 반복문을 차례로 실행할 때입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-code-complexity-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -118,104 +198,41 @@
         "logarithm"
       ],
       "content": {
-        "prompt": "다음 코드에서 n = 16일 때 while 반복문의 실행 횟수는?",
-        "code": {
-          "language": "python",
-          "source": "n = 16\nwhile n > 1:\n    n = n // 2   # 매 반복마다 n을 절반으로"
-        },
+        "prompt": "8을 1이 될 때까지 2로 나누면 나누는 횟수는?",
         "options": [
-          "2번",
-          "4번",
-          "8번",
-          "16번"
+          "3",
+          "4",
+          "8"
         ]
       },
       "answer_key": {
-        "index": 1
+        "index": 0
       },
-      "explanation": "n이 16 → 8 → 4 → 2 → 1로 매회 절반이 되므로 4회 실행되며, 이는 log₂16 = 4입니다. 매 반복마다 문제 크기가 절반으로 줄어드는 반복문의 시간 복잡도는 O(log n)입니다.",
+      "explanation": "8 → 4 → 2 → 1로 3번 나눕니다. log₂ 8 = 3이며, 이렇게 절반씩 줄이는 반복이 O(log n)입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Time_complexity"
       ]
     },
     {
-      "id": "dsa-code-complexity-006",
+      "id": "dsa-code-complexity-010",
       "type": "single",
       "difficulty": 2,
       "tags": [
         "code-complexity",
-        "recursion"
+        "loop"
       ],
       "content": {
-        "prompt": "다음 재귀 함수 countdown(n)의 시간 복잡도는?",
-        "code": {
-          "language": "python",
-          "source": "def countdown(n):\n    if n == 0:          # 기저 사례(base case)\n        return\n    countdown(n - 1)    # 재귀 호출 1회"
-        },
+        "prompt": "다음 중 시간 복잡도가 O(n)인 것은?",
         "options": [
-          "O(1)",
-          "O(n)",
-          "O(n²)",
-          "O(2ⁿ)"
+          "n×n 중첩 반복문",
+          "절반씩 줄이는 반복",
+          "n번 도는 반복문"
         ]
       },
       "answer_key": {
-        "index": 1
+        "index": 2
       },
-      "explanation": "countdown은 n, n−1, …, 0에 대해 한 번씩, 총 n+1회 호출되고 각 호출은 상수 시간이므로 O(n)입니다. 한 호출에서 재귀 호출을 두 번 이상 하는 경우에야 O(2ⁿ)과 같이 호출 수가 지수적으로 증가할 수 있습니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Master_theorem_(analysis_of_algorithms)",
-        "https://en.wikipedia.org/wiki/Time_complexity"
-      ]
-    },
-    {
-      "id": "dsa-code-complexity-007",
-      "type": "ox",
-      "difficulty": 2,
-      "tags": [
-        "code-complexity",
-        "hidden-cost"
-      ],
-      "content": {
-        "prompt": "a와 b가 각각 원소 n개인 파이썬 list일 때, 다음 코드의 최악 시간 복잡도는 O(n²)이다.",
-        "code": {
-          "language": "python",
-          "source": "for x in a:        # n회 반복\n    if x in b:     # list의 in: 선형 탐색 O(n)\n        print(x)"
-        }
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "list에 대한 in 연산은 선형 탐색이므로 최악 O(n)입니다. 이를 n회 반복하므로 전체 최악 시간 복잡도는 O(n²)입니다. b를 set으로 바꾸면 in 연산이 평균 O(1)이 되어 전체가 평균 O(n)이 됩니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Time_complexity",
-        "https://docs.python.org/3/tutorial/datastructures.html"
-      ]
-    },
-    {
-      "id": "dsa-code-complexity-008",
-      "type": "multi",
-      "difficulty": 2,
-      "tags": [
-        "code-complexity",
-        "nested-loop"
-      ],
-      "content": {
-        "prompt": "입력 크기가 n일 때 시간 복잡도가 O(n²)인 코드를 모두 고르세요.",
-        "options": [
-          "n회 반복문 안에 n회 반복문이 중첩되어 있다",
-          "n회 반복문 두 개가 순차적으로 배치되어 있다",
-          "n회 반복문 안에서 매번 원소 n개인 list를 선형 탐색한다",
-          "매 반복마다 남은 문제 크기를 절반으로 줄인다"
-        ]
-      },
-      "answer_key": {
-        "indices": [
-          0,
-          2
-        ]
-      },
-      "explanation": "중첩 반복과 반복문 내부의 선형 탐색은 모두 n × n = n²회 연산이 되어 O(n²)입니다. 순차 배치된 두 반복문은 2n으로 O(n), 매번 절반으로 줄이는 반복은 O(log n)입니다.",
+      "explanation": "n번 도는 반복문 하나는 O(n)입니다. n×n 중첩 반복문은 O(n²), 절반씩 줄이는 반복은 O(log n)입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Time_complexity"
       ]

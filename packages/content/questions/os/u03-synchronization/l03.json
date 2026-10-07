@@ -9,21 +9,20 @@
       "difficulty": 1,
       "tags": [
         "deadlock",
-        "resource-wait"
+        "definition"
       ],
       "content": {
-        "prompt": "프로세스 P1은 프린터를 점유한 채 스캐너를 기다리고, P2는 스캐너를 점유한 채 프린터를 기다려 둘 다 진행하지 못한다. 이 상태는?",
+        "prompt": "서로 상대가 가진 자원을 기다리며 모두 멈춘 상태는?",
         "options": [
-          "경쟁 조건",
           "기아",
-          "교착 상태(데드락)",
-          "컨텍스트 스위칭"
+          "교착 상태",
+          "경쟁 조건"
         ]
       },
       "answer_key": {
-        "index": 2
+        "index": 1
       },
-      "explanation": "서로 상대가 점유한 자원을 기다리며 관련 프로세스가 모두 영원히 진행하지 못하는 상태가 교착 상태입니다. 기아는 특정 프로세스만 계속 밀릴 뿐 다른 프로세스는 진행되는 상황이라 다릅니다.",
+      "explanation": "교착 상태(deadlock)는 프로세스들이 서로가 점유한 자원을 기다리며 아무도 진행하지 못하는 상태입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Deadlock"
       ]
@@ -34,48 +33,43 @@
       "difficulty": 1,
       "tags": [
         "deadlock",
-        "definition"
+        "hold-and-wait"
       ],
       "content": {
-        "prompt": "교착 상태(데드락)에 대한 설명으로 옳은 것은?",
+        "prompt": "자원을 가진 채 다른 자원을 기다리는 조건은?",
         "options": [
-          "둘 이상의 프로세스가 서로 상대가 점유한 자원을 기다리며 아무도 진행하지 못하는 상태",
-          "우선순위가 낮은 프로세스 하나가 계속 CPU를 할당받지 못하는 상태",
-          "프로세스가 많아 시스템이 조금 느려진 상태",
-          "같은 공유 변수를 동시에 수정해 값이 어긋난 상태"
+          "비선점",
+          "순환 대기",
+          "점유 대기"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 2
       },
-      "explanation": "교착 상태는 프로세스들이 서로를 기다리는 순환 관계 때문에 모두 블록된 상태입니다. 공유 변수 값이 어긋나는 것은 경쟁 조건, 한 프로세스만 계속 밀리는 것은 기아입니다.",
+      "explanation": "점유 대기(hold and wait)는 자원을 점유한 채 다른 자원을 기다리는 조건으로, 교착 상태의 4가지 필요조건 중 하나입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Deadlock"
       ]
     },
     {
       "id": "os-deadlock-003",
-      "type": "fill",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "deadlock",
         "circular-wait"
       ],
       "content": {
-        "prompt": "교착 상태의 4가지 필요조건 중, P1은 P2의 자원을, P2는 P1의 자원을 기다려 대기 관계가 사이클을 이루는 조건을 ___ 대기라고 한다.",
-        "hint": "영어로 circular wait"
-      },
-      "answer_key": {
-        "accepted": [
-          "순환",
+        "prompt": "대기 관계가 사이클을 이루는 조건은?",
+        "options": [
           "순환 대기",
-          "환형",
-          "원형",
-          "circular",
-          "circular wait"
+          "점유 대기"
         ]
       },
-      "explanation": "정답은 순환 대기(circular wait)입니다. 각 프로세스가 다음 프로세스가 점유한 자원을 기다리는 사이클이 형성되면, 어느 프로세스도 자원을 먼저 해제하지 않아 교착 상태가 됩니다.",
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "순환 대기(circular wait)는 P1은 P2를, P2는 P1을 기다리듯 대기 관계가 사이클을 이루는 조건입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Deadlock"
       ]
@@ -86,118 +80,166 @@
       "difficulty": 1,
       "tags": [
         "deadlock",
-        "interleaving"
-      ],
-      "content": {
-        "prompt": "스레드 A가 락 L1을 획득한 채 L2를 기다리고, 스레드 B가 L2를 획득한 채 L1을 기다리면 교착 상태가 될 수 있다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "A는 B가 가진 L2를, B는 A가 가진 L1을 기다리므로 점유와 대기, 순환 대기가 성립합니다. 어느 쪽도 락을 해제하지 않으면 두 스레드는 영원히 블록됩니다.",
-      "refs": [
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
-      ]
-    },
-    {
-      "id": "os-deadlock-005",
-      "type": "multi",
-      "difficulty": 2,
-      "tags": [
-        "deadlock",
         "coffman-conditions"
       ],
       "content": {
-        "prompt": "교착 상태가 발생하려면 4가지 필요조건이 모두 성립해야 한다. 그 조건에 해당하는 것을 모두 고르시오.",
-        "options": [
-          "상호 배제: 자원을 한 번에 한 프로세스만 사용할 수 있다",
-          "점유와 대기: 자원을 점유한 채로 다른 자원을 기다린다",
-          "선점 가능: 다른 프로세스가 점유한 자원을 언제든 빼앗을 수 있다",
-          "우선순위가 가장 높은 프로세스만 실행된다"
-        ]
+        "prompt": "교착 상태 4조건 중 하나만 성립해도 교착 상태가 생긴다."
       },
       "answer_key": {
-        "indices": [
-          0,
-          1
-        ]
+        "value": false
       },
-      "explanation": "4가지 필요조건은 상호 배제, 점유와 대기, 비선점, 순환 대기입니다. 자원을 선점할 수 있으면 교착 상태를 풀 수 있으므로 '선점 가능'은 비선점의 반대이고, 우선순위는 4조건과 관계가 없습니다.",
+      "explanation": "교착 상태는 상호 배제, 점유 대기, 비선점, 순환 대기 4조건이 모두 성립해야 생깁니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Deadlock",
         "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
       ]
     },
     {
+      "id": "os-deadlock-005",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "deadlock",
+        "prevention"
+      ],
+      "content": {
+        "prompt": "4조건 중 하나를 깨뜨리면 교착 상태를 예방할 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "4조건이 모두 성립해야 교착 상태가 생기므로, 그중 하나가 성립하지 않게 만들면 교착 상태를 예방할 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms",
+        "https://en.wikipedia.org/wiki/Deadlock"
+      ]
+    },
+    {
       "id": "os-deadlock-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "deadlock",
+        "prevention"
+      ],
+      "content": {
+        "prompt": "4조건 중 하나를 깨뜨려 교착 상태를 막는 전략은 교착 상태 ___ 이다.",
+        "hint": "발생 전에 조건 자체를 없앤다"
+      },
+      "answer_key": {
+        "accepted": [
+          "예방",
+          "prevention",
+          "방지",
+          "예방 전략"
+        ]
+      },
+      "explanation": "4조건 중 하나가 성립하지 않도록 시스템을 설계하는 전략을 교착 상태 예방이라 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms"
+      ]
+    },
+    {
+      "id": "os-deadlock-007",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "deadlock",
+        "circular-wait"
+      ],
+      "content": {
+        "prompt": "P1→P2→P1처럼 대기 관계가 사이클을 이루는 조건은 ___ 대기이다.",
+        "hint": "교착 상태 4조건 중 하나"
+      },
+      "answer_key": {
+        "accepted": [
+          "순환",
+          "circular",
+          "순환 대기",
+          "순환대기",
+          "circular wait",
+          "환형"
+        ]
+      },
+      "explanation": "대기 관계가 사이클을 이루는 조건은 순환 대기입니다. 락 획득 순서를 고정하면 이 조건을 깨뜨릴 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock"
+      ]
+    },
+    {
+      "id": "os-deadlock-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
         "deadlock",
-        "lock-ordering",
-        "prevention"
+        "hold-and-wait"
       ],
       "content": {
-        "prompt": "'모든 스레드는 반드시 락 L1 → L2 순서로만 획득한다'는 규칙을 정하면 교착 상태가 예방된다. 그 이유는?",
+        "prompt": "A가 락 L1을 획득한 채 L2를 기다린다. 해당하는 조건은?",
         "options": [
-          "락을 획득하는 속도가 빨라져서",
-          "상호 배제 조건이 사라져서",
-          "획득 순서가 하나로 정해져 대기 관계가 사이클(순환 대기)을 이룰 수 없어서",
-          "운영체제가 교착 상태를 자동으로 해제해서"
+          "순환 대기",
+          "점유 대기",
+          "비선점"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "L1을 점유한 채 다른 자원 L2를 기다리므로 점유 대기입니다. 순환 대기는 대기 관계가 사이클을 이뤄야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "deadlock",
+        "prevention",
+        "lock-ordering"
+      ],
+      "content": {
+        "prompt": "모든 스레드가 L1 → L2 순서로만 락을 획득하면 깨지는 조건은?",
+        "options": [
+          "상호 배제",
+          "점유 대기",
+          "순환 대기"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "모든 스레드가 같은 순서로 락을 획득하면 'L2를 가진 채 L1을 기다리는' 스레드가 생기지 않아 순환 대기 조건이 깨집니다. 락은 여전히 한 번에 하나의 스레드만 가지므로 상호 배제는 그대로입니다.",
+      "explanation": "모두 같은 순서로 락을 획득하면 L2를 가진 채 L1을 기다리는 스레드가 없어 대기 사이클이 생기지 않습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms",
         "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
       ]
     },
     {
-      "id": "os-deadlock-007",
+      "id": "os-deadlock-010",
       "type": "single",
       "difficulty": 2,
       "tags": [
         "deadlock",
-        "avoidance",
-        "bankers-algorithm"
+        "definition"
       ],
       "content": {
-        "prompt": "자원을 할당하기 전에 할당 후에도 안전 상태(safe state)가 유지되는지 검사하고, 불안전하면 할당을 미루는 전략은?",
+        "prompt": "A는 L1을 가진 채 L2를, B는 L2를 가진 채 L1을 기다린다. 이 상태는?",
         "options": [
-          "교착 상태 탐지와 복구",
-          "교착 상태 회피(예: 은행원 알고리즘)",
-          "교착 상태 무시",
-          "경쟁 조건"
+          "교착 상태",
+          "기아",
+          "정상 진행"
         ]
       },
       "answer_key": {
-        "index": 1
+        "index": 0
       },
-      "explanation": "회피(avoidance)는 할당 후에도 모든 프로세스가 완료될 수 있는 순서가 존재하는지(안전 상태) 검사한 뒤 자원을 할당하며, 은행원 알고리즘이 대표적입니다. 탐지와 복구는 교착 상태가 발생한 뒤 찾아내 해결하는 방식입니다.",
+      "explanation": "A와 B가 서로 상대가 가진 락을 기다리며 둘 다 진행하지 못하므로 교착 상태입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Banker%27s_algorithm"
-      ]
-    },
-    {
-      "id": "os-deadlock-008",
-      "type": "ox",
-      "difficulty": 2,
-      "tags": [
-        "deadlock",
-        "detection"
-      ],
-      "content": {
-        "prompt": "교착 상태 탐지 전략은 교착 상태의 발생을 허용하고, 주기적으로 검사해 발견하면 프로세스를 종료하거나 자원을 선점해 회복하는 방식이다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "탐지 전략은 자원 할당 그래프나 대기 그래프에서 사이클을 주기적으로 검사하고, 교착 상태를 발견하면 프로세스를 종료하거나 자원을 선점해 회복합니다. 사전에 막는 예방·회피와는 접근이 반대입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Deadlock"
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
       ]
     }
   ]

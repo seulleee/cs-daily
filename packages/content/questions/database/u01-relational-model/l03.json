@@ -8,23 +8,23 @@
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "normalization"
+        "normalization",
+        "1nf"
       ],
       "content": {
-        "prompt": "정규화(normalization)의 목적으로 가장 알맞은 것은?",
+        "prompt": "모든 속성 값이 원자값이어야 하는 정규형은?",
         "options": [
-          "함수 종속을 기준으로 릴레이션을 분해해 데이터 중복과 이상 현상을 줄인다",
-          "모든 데이터를 하나의 릴레이션으로 통합한다",
-          "데이터를 암호화한다",
-          "튜플을 정렬된 순서로 저장한다"
+          "1NF",
+          "2NF",
+          "3NF"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "정규화는 함수 종속을 분석해 릴레이션을 분해함으로써 중복을 제거하고 삽입·갱신·삭제 이상을 방지하는 과정입니다. 하나의 릴레이션으로 통합하는 것은 반대 방향인 반정규화에 가깝습니다.",
+      "explanation": "제1정규형(1NF)은 모든 속성 값이 더 나눌 수 없는 원자값이어야 한다는 조건입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Database_normalization"
+        "https://en.wikipedia.org/wiki/First_normal_form"
       ]
     },
     {
@@ -32,175 +32,206 @@
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "1nf"
-      ],
-      "content": {
-        "prompt": "제1정규형(1NF)은 모든 속성 값이 원자값(더 이상 나눌 수 없는 단일 값)이어야 한다는 조건이다. 1NF를 위반한 것은?",
-        "options": [
-          "전화번호 속성에 '010-1111, 010-2222' 두 값을 저장",
-          "이름 속성에 '민지'를 저장",
-          "나이 속성에 25를 저장",
-          "이메일 속성에 주소 하나를 저장"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "하나의 속성에 두 개의 전화번호를 저장하면 원자값 조건을 위반하므로 1NF가 아닙니다. 나머지 보기는 모두 속성마다 단일 값을 저장합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/First_normal_form"
-      ]
-    },
-    {
-      "id": "database-normal-forms-003",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "1nf"
-      ],
-      "content": {
-        "prompt": "1NF를 만족시키려면 다중 값을 쉼표로 구분해 하나의 속성에 저장하면 된다."
-      },
-      "answer_key": {
-        "value": false
-      },
-      "explanation": "쉼표로 구분한 다중 값은 원자값이 아니므로 1NF를 위반합니다. 값마다 별도의 튜플로 분리하거나, 다중 값 속성을 별도 릴레이션으로 분해해야 1NF를 만족합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/First_normal_form"
-      ]
-    },
-    {
-      "id": "database-normal-forms-004",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
         "normalization",
-        "decomposition"
+        "2nf"
       ],
       "content": {
-        "prompt": "아래 주문 릴레이션에서 고객 정보가 중복 저장된다. 중복을 제거하는 분해로 가장 알맞은 것은?",
-        "code": {
-          "language": "sql",
-          "source": "-- 주문(주문번호, 고객이름, 고객전화)\n-- (1, 민지, 010-1111)\n-- (2, 민지, 010-1111)\n-- (3, 준호, 010-2222)"
-        },
+        "prompt": "기본키 일부에만 종속된 속성이 없어야 하는 정규형은?",
         "options": [
-          "고객(고객번호, 이름, 전화)과 주문(주문번호, 고객번호)으로 분해한다",
-          "주문번호 속성을 제거한다",
-          "민지의 주문 튜플 하나를 삭제한다",
-          "고객전화 속성을 두 개로 나눈다"
+          "1NF",
+          "2NF",
+          "3NF"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 1
       },
-      "explanation": "고객 정보를 고객 릴레이션에 한 번만 저장하고 주문에는 외래키인 고객번호만 두면, 전화번호 변경 시 튜플 하나만 수정하면 됩니다. 주문 튜플 삭제는 실제 데이터를 손실시키므로 해결책이 아닙니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Database_normalization"
-      ]
-    },
-    {
-      "id": "database-normal-forms-005",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "2nf",
-        "apply"
-      ],
-      "content": {
-        "prompt": "아래 수강 릴레이션의 기본키는 (학번, 과목코드)이고, 과목코드 → 과목명이 성립한다. 위반한 정규형과 해결책은?",
-        "code": {
-          "language": "sql",
-          "source": "-- 수강(학번, 과목코드, 과목명, 성적)\n-- (1, C1, DB, A)\n-- (2, C1, DB, B)"
-        },
-        "options": [
-          "2NF 위반: 과목(과목코드, 과목명)으로 분해한다",
-          "1NF 위반: 성적 속성을 둘로 나눈다",
-          "위반한 정규형이 없다",
-          "2NF 위반: 성적 속성을 제거한다"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "과목명이 기본키 전체가 아닌 일부(과목코드)에 종속되는 부분 함수 종속이 있으므로 2NF를 위반합니다. 과목(과목코드, 과목명) 릴레이션으로 분해하면 부분 함수 종속이 제거됩니다.",
+      "explanation": "2NF는 1NF를 만족하면서 기본키의 일부에만 종속되는 속성(부분 함수 종속)이 없는 상태입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Second_normal_form"
       ]
     },
     {
-      "id": "database-normal-forms-006",
-      "type": "ox",
-      "difficulty": 2,
+      "id": "database-normal-forms-003",
+      "type": "single",
+      "difficulty": 1,
       "tags": [
         "normalization",
-        "join"
+        "3nf"
       ],
       "content": {
-        "prompt": "정규화로 분해한 릴레이션들의 정보를 함께 조회하려면 공통 속성(외래키)을 기준으로 JOIN해야 한다."
+        "prompt": "키가 아닌 속성을 거쳐 종속되는 속성이 없어야 하는 정규형은?",
+        "options": [
+          "3NF",
+          "2NF"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "3NF는 2NF를 만족하면서 키가 아닌 속성을 거쳐 기본키에 종속되는 이행 함수 종속이 없는 상태입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Third_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "1nf"
+      ],
+      "content": {
+        "prompt": "전화번호 속성에 번호 두 개를 쉼표로 함께 넣어도 1NF다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "쉼표로 묶은 여러 값은 원자값이 아니므로 1NF를 위반합니다. 값마다 튜플을 나누거나 별도 릴레이션으로 분리해야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-005",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "3nf",
+        "2nf"
+      ],
+      "content": {
+        "prompt": "3NF를 만족하는 릴레이션은 2NF도 만족한다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "분해된 릴레이션은 외래키로 연결되므로, 주문과 고객 전화번호를 함께 조회하려면 고객번호로 JOIN합니다. 정규화는 중복을 줄이는 대신 조회 시 JOIN 연산을 늘릴 수 있습니다.",
+      "explanation": "정규형은 단계적이어서 3NF는 2NF를, 2NF는 1NF를 만족한다는 조건을 포함합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Database_normalization"
       ]
     },
     {
-      "id": "database-normal-forms-007",
-      "type": "single",
+      "id": "database-normal-forms-006",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
-        "3nf",
-        "apply"
+        "normalization",
+        "2nf",
+        "partial-dependency"
       ],
       "content": {
-        "prompt": "아래 직원 릴레이션의 기본키는 사번이고, 사번 → 부서코드 → 부서이름이 성립한다. 위반한 정규형은?",
-        "code": {
-          "language": "sql",
-          "source": "-- 직원(사번, 이름, 부서코드, 부서이름)\n-- (1, 민지, D1, 개발팀)\n-- (2, 준호, D1, 개발팀)"
-        },
-        "options": [
-          "1NF",
-          "2NF",
-          "3NF",
-          "위반한 정규형이 없다"
-        ]
+        "prompt": "기본키의 일부에만 종속되는 관계를 ___ 함수 종속이라 한다.",
+        "hint": "2NF가 제거하는 종속"
       },
       "answer_key": {
-        "index": 2
+        "accepted": [
+          "부분",
+          "부분적",
+          "partial"
+        ]
       },
-      "explanation": "부서이름이 기본키가 아닌 부서코드를 거쳐 기본키에 종속되는 이행적 함수 종속이 있으므로 3NF를 위반합니다. 기본키가 단일 속성이라 부분 함수 종속이 없으므로 2NF는 만족합니다.",
+      "explanation": "기본키 전체가 아닌 일부에 종속되는 것을 부분 함수 종속이라 하며, 이를 제거하면 2NF가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Second_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-007",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "3nf",
+        "transitive-dependency"
+      ],
+      "content": {
+        "prompt": "A → B, B → C로 A → C가 되는 종속을 ___ 함수 종속이라 한다.",
+        "hint": "3NF가 제거하는 종속"
+      },
+      "answer_key": {
+        "accepted": [
+          "이행",
+          "이행적",
+          "transitive"
+        ]
+      },
+      "explanation": "다른 속성을 거쳐 성립하는 A → C를 이행 함수 종속이라 하며, 이를 제거하면 3NF가 됩니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Third_normal_form"
       ]
     },
     {
       "id": "database-normal-forms-008",
-      "type": "multi",
+      "type": "single",
       "difficulty": 2,
       "tags": [
         "normalization",
-        "tradeoff"
+        "2nf"
       ],
       "content": {
-        "prompt": "정규화의 일반적인 효과로 옳은 것을 모두 고르시오.",
+        "prompt": "기본키 (학번, 과목코드)에서 과목코드 → 과목명일 때 위반한 정규형은?",
         "options": [
-          "데이터 중복 저장이 줄어든다",
-          "갱신 이상이 줄어든다",
-          "조회 시 JOIN이 필요 없어진다",
-          "릴레이션의 개수가 하나로 줄어든다"
+          "1NF",
+          "2NF",
+          "3NF"
         ]
       },
       "answer_key": {
-        "indices": [
-          0,
-          1
+        "index": 1
+      },
+      "explanation": "과목명이 기본키의 일부인 과목코드에만 종속되는 부분 함수 종속이므로 2NF를 위반합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Second_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "3nf"
+      ],
+      "content": {
+        "prompt": "기본키 사번에서 사번 → 부서코드 → 부서명일 때 위반한 정규형은?",
+        "options": [
+          "1NF",
+          "2NF",
+          "3NF"
         ]
       },
-      "explanation": "정규화는 중복을 제거해 삽입·갱신·삭제 이상을 줄입니다. 반면 릴레이션이 여러 개로 분해되므로 릴레이션 수는 늘고, 조회 시 JOIN이 더 필요해질 수 있습니다.",
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "부서명이 키가 아닌 부서코드를 거쳐 사번에 종속되는 이행 함수 종속이므로 3NF를 위반합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Database_normalization"
+        "https://en.wikipedia.org/wiki/Third_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "1nf"
+      ],
+      "content": {
+        "prompt": "1NF가 요구하는 원자값의 뜻은?",
+        "options": [
+          "더 나눌 수 없는 단일 값",
+          "여러 값의 목록"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "원자값은 더 나눌 수 없는 단일 값입니다. 쉼표로 묶은 목록처럼 여러 값을 담으면 1NF를 위반합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
       ]
     }
   ]

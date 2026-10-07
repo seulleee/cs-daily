@@ -9,72 +9,51 @@
       "difficulty": 1,
       "tags": [
         "routing-basics",
-        "router-role"
-      ],
-      "content": {
-        "prompt": "라우터의 주된 역할로 알맞은 것은?",
-        "options": [
-          "웹 페이지를 렌더링한다",
-          "연결된 호스트에 전원을 공급한다",
-          "패킷의 애플리케이션 데이터를 수정한다",
-          "패킷의 목적지 IP 주소를 보고 다음 홉으로 전달(포워딩)한다"
-        ]
-      },
-      "answer_key": {
-        "index": 3
-      },
-      "explanation": "라우터는 3계층 장비로, 목적지 IP 주소를 라우팅 테이블과 비교해 패킷을 다음 홉으로 포워딩합니다. 애플리케이션 데이터를 수정하는 것은 라우터의 역할이 아닙니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Router_(computing)"
-      ]
-    },
-    {
-      "id": "network-routing-basics-002",
-      "type": "fill",
-      "difficulty": 1,
-      "tags": [
-        "routing-basics",
         "routing-table"
       ],
       "content": {
-        "prompt": "라우터가 목적지 네트워크별로 다음 홉과 출력 인터페이스를 기록해 둔 표를 ___ 테이블이라고 한다.",
-        "hint": "영어로 routing table"
-      },
-      "answer_key": {
-        "accepted": [
-          "라우팅",
-          "routing",
-          "라우팅테이블",
-          "경로"
+        "prompt": "라우터가 목적지 네트워크별 다음 홉을 기록한 표는?",
+        "options": [
+          "라우팅 테이블",
+          "ARP 테이블",
+          "NAT 테이블"
         ]
       },
-      "explanation": "라우팅 테이블은 목적지 네트워크(프리픽스), 다음 홉, 출력 인터페이스 등을 담고 있습니다. 라우터는 패킷마다 이 표를 조회해 전달 방향을 결정합니다.",
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "라우팅 테이블에는 목적지 네트워크마다 다음 홉과 출력 인터페이스가 적혀 있습니다. ARP 테이블은 IP와 MAC의 대응표입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Routing_table"
       ]
     },
     {
-      "id": "network-routing-basics-003",
-      "type": "ox",
+      "id": "network-routing-basics-002",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "routing-basics",
         "ttl"
       ],
       "content": {
-        "prompt": "IP 패킷의 TTL 값은 라우터를 하나 지날 때마다 1씩 증가한다."
+        "prompt": "라우터를 하나 지날 때마다 1씩 줄어드는 IP 헤더 값은?",
+        "options": [
+          "포트 번호",
+          "출발지 IP",
+          "TTL"
+        ]
       },
       "answer_key": {
-        "value": false
+        "index": 2
       },
-      "explanation": "TTL은 라우터를 지날 때마다 1씩 감소하고, 0이 되면 패킷이 폐기됩니다. 라우팅 루프에서 패킷이 무한히 순환하는 것을 막기 위한 필드입니다.",
+      "explanation": "TTL은 라우터를 지날 때마다 1씩 줄고 0이 되면 패킷이 폐기됩니다. 그래서 경로가 순환해도 패킷이 계속 돌지 않습니다.",
       "refs": [
         "https://www.rfc-editor.org/rfc/rfc791",
         "https://en.wikipedia.org/wiki/Time_to_live"
       ]
     },
     {
-      "id": "network-routing-basics-004",
+      "id": "network-routing-basics-003",
       "type": "single",
       "difficulty": 1,
       "tags": [
@@ -82,89 +61,112 @@
         "default-route"
       ],
       "content": {
-        "prompt": "라우팅 테이블에서 일치하는 목적지 항목이 없을 때 사용하는 항목(0.0.0.0/0)은?",
+        "prompt": "라우팅 테이블에 맞는 항목이 없을 때 쓰는 경로는?",
         "options": [
-          "기본 경로(디폴트 라우트)",
-          "브로드캐스트 주소",
-          "포트 번호",
-          "MAC 주소"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "기본 경로(0.0.0.0/0)는 다른 어떤 항목과도 일치하지 않는 패킷을 보낼 다음 홉을 지정합니다. 덕분에 모든 목적지 네트워크를 테이블에 등록하지 않아도 됩니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Default_route"
-      ]
-    },
-    {
-      "id": "network-routing-basics-005",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "routing-basics",
-        "default-gateway"
-      ],
-      "content": {
-        "prompt": "호스트가 다른 네트워크에 있는 서버로 패킷을 보낼 때, 패킷을 먼저 전달하는 대상은?",
-        "options": [
-          "같은 LAN의 다른 호스트",
-          "DNS 서버",
-          "기본 게이트웨이(로컬 네트워크의 라우터)",
-          "서버에 직접 전달한다"
-        ]
-      },
-      "answer_key": {
-        "index": 2
-      },
-      "explanation": "목적지가 다른 네트워크이면 호스트는 기본 게이트웨이로 프레임을 보내고, 이후 라우터들이 경로를 이어 갑니다. DNS 서버는 도메인 이름을 IP 주소로 변환할 뿐 패킷을 중계하지 않습니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Default_gateway"
-      ]
-    },
-    {
-      "id": "network-routing-basics-006",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "routing-basics",
-        "ttl-calc"
-      ],
-      "content": {
-        "prompt": "TTL이 64인 패킷이 라우터 3개를 지났다. 현재 TTL은?",
-        "options": [
-          "0",
-          "61",
-          "64",
-          "67"
+          "직접 연결 경로",
+          "기본 경로"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "TTL은 라우터를 지날 때마다 1씩 감소하므로 64 − 3 = 61입니다. TTL은 증가하지 않으며, 64 그대로라면 라우터를 거치지 않은 것입니다.",
+      "explanation": "일치하는 항목이 없으면 0.0.0.0/0으로 적힌 기본 경로를 따릅니다. 호스트에서는 기본 게이트웨이로 향하는 경로입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Default_route",
+        "https://en.wikipedia.org/wiki/Default_gateway"
+      ]
+    },
+    {
+      "id": "network-routing-basics-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "routing-basics",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "TTL은 라우터를 지날 때마다 1씩 증가한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "TTL은 라우터를 지날 때마다 1씩 감소합니다. 0이 되면 라우터가 패킷을 폐기합니다.",
       "refs": [
         "https://www.rfc-editor.org/rfc/rfc791",
         "https://en.wikipedia.org/wiki/Time_to_live"
       ]
     },
     {
-      "id": "network-routing-basics-007",
+      "id": "network-routing-basics-005",
       "type": "ox",
-      "difficulty": 2,
+      "difficulty": 1,
       "tags": [
         "routing-basics",
-        "next-hop"
+        "routing-table"
       ],
       "content": {
-        "prompt": "IP 라우팅에서 각 라우터는 전체 경로를 알 필요 없이, 목적지에 대한 다음 홉만 결정하면 된다."
+        "prompt": "라우터는 목적지 IP 주소로 라우팅 테이블을 조회한다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "IP 라우팅은 hop-by-hop 방식으로, 각 라우터가 자신의 라우팅 테이블에 따라 다음 홉만 결정합니다. 이 결정이 연속되어 패킷이 목적지에 도달합니다.",
+      "explanation": "라우터는 패킷의 목적지 IP 주소와 가장 잘 맞는 라우팅 테이블 항목을 찾아 다음 홉을 정합니다.",
       "refs": [
+        "https://en.wikipedia.org/wiki/Routing_table"
+      ]
+    },
+    {
+      "id": "network-routing-basics-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "routing-basics",
+        "routing-table"
+      ],
+      "content": {
+        "prompt": "라우터가 다음 홉을 찾을 때 조회하는 표는 ___ 테이블이다.",
+        "hint": "영어 route에서 나온 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "라우팅",
+          "routing",
+          "경로",
+          "라우팅테이블",
+          "라우팅 테이블",
+          "routing table"
+        ]
+      },
+      "explanation": "라우터는 라우팅 테이블에서 목적지 네트워크에 맞는 항목을 찾아 다음 홉으로 전달합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Routing_table"
+      ]
+    },
+    {
+      "id": "network-routing-basics-007",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "routing-basics",
+        "default-route"
+      ],
+      "content": {
+        "prompt": "0.0.0.0/0처럼 일치 항목이 없을 때 쓰는 경로는 ___ 경로이다.",
+        "hint": "프리픽스 길이가 0이라 모든 목적지와 일치합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "기본",
+          "default",
+          "디폴트",
+          "기본 경로",
+          "디폴트 경로",
+          "default route"
+        ]
+      },
+      "explanation": "0.0.0.0/0은 모든 주소와 일치하는 기본 경로로, 더 구체적인 항목이 없을 때 사용됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Default_route",
         "https://en.wikipedia.org/wiki/Default_gateway"
       ]
     },
@@ -174,21 +176,71 @@
       "difficulty": 2,
       "tags": [
         "routing-basics",
-        "table-lookup"
+        "ttl"
       ],
       "content": {
-        "prompt": "라우팅 테이블이 '10.0.0.0/8 → 인터페이스 A, 기본 경로(0.0.0.0/0) → 인터페이스 B'일 때, 목적지가 10.1.2.3 인 패킷은 어디로 전달될까?",
+        "prompt": "TTL이 64인 패킷이 라우터 3개를 지나면 TTL은?",
         "options": [
-          "인터페이스 A",
-          "인터페이스 B",
-          "A와 B 모두",
-          "폐기된다"
+          "67",
+          "61",
+          "64"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "라우터를 지날 때마다 TTL이 1씩 줄므로 64 - 3 = 61입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc791",
+        "https://en.wikipedia.org/wiki/Time_to_live"
+      ]
+    },
+    {
+      "id": "network-routing-basics-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "routing-basics",
+        "default-route",
+        "routing-table"
+      ],
+      "content": {
+        "prompt": "라우팅 테이블이 10.0.0.0/8→A, 0.0.0.0/0→B일 때 8.8.8.8은?",
+        "options": [
+          "B로 전달",
+          "A로 전달",
+          "폐기"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "10.0.0.0/8은 첫 옥텟이 10인 모든 주소를 포함하므로 10.1.2.3과 일치합니다. 일치하는 구체적인 항목이 있으면 기본 경로보다 우선하므로 A로 전달됩니다.",
+      "explanation": "8.8.8.8은 10.0.0.0/8에 속하지 않으므로 기본 경로 0.0.0.0/0을 따라 B로 전달됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Routing_table",
+        "https://en.wikipedia.org/wiki/Default_route"
+      ]
+    },
+    {
+      "id": "network-routing-basics-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "routing-basics",
+        "routing-table"
+      ],
+      "content": {
+        "prompt": "라우팅 테이블에 기록되는 내용은?",
+        "options": [
+          "IP별 MAC 주소",
+          "도메인별 IP",
+          "목적지별 다음 홉"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "라우팅 테이블은 목적지 네트워크별 다음 홉을 담습니다. IP별 MAC 주소는 ARP 테이블, 도메인별 IP는 DNS가 다룹니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Routing_table"
       ]

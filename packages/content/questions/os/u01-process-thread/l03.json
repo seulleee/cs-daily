@@ -12,18 +12,17 @@
         "definition"
       ],
       "content": {
-        "prompt": "CPU를 다른 프로세스에 넘길 때, 현재 프로세스의 상태를 PCB에 저장하고 다음 프로세스의 상태를 PCB에서 복원하는 과정은?",
+        "prompt": "CPU를 다른 프로세스에 넘기며 상태를 저장·복원하는 과정은?",
         "options": [
-          "컴파일",
-          "컨텍스트 스위칭(문맥 교환)",
-          "캐싱",
-          "디버깅"
+          "스케줄링",
+          "컨텍스트 스위칭",
+          "인터럽트"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "실행 중인 프로세스의 문맥(context)을 저장하고 다음 프로세스의 문맥을 복원하는 과정이 컨텍스트 스위칭입니다. 컴파일은 소스 코드를 기계어로 번역하는 과정으로 실행 전환과 무관합니다.",
+      "explanation": "컨텍스트 스위칭은 현재 프로세스의 상태를 PCB에 저장하고 다음 프로세스의 상태를 복원하는 과정입니다. 스케줄링은 다음 프로세스를 고르는 일입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Context_switch",
         "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
@@ -31,25 +30,75 @@
     },
     {
       "id": "os-context-switch-002",
-      "type": "ox",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "context-switch",
-        "save-restore"
+        "overhead"
       ],
       "content": {
-        "prompt": "컨텍스트 스위칭 시 운영체제는 실행 중이던 프로세스의 프로그램 카운터와 레지스터 값을 PCB에 저장하므로, 그 프로세스는 나중에 중단된 지점부터 실행을 재개할 수 있다."
+        "prompt": "실제 작업 외에 스위칭 등으로 추가로 드는 비용은?",
+        "options": [
+          "오버헤드",
+          "처리량",
+          "응답 시간"
+        ]
       },
       "answer_key": {
-        "value": true
+        "index": 0
       },
-      "explanation": "프로그램 카운터는 다음에 실행할 명령어의 주소를, 레지스터는 연산 중이던 값을 담고 있습니다. 다시 CPU를 할당받으면 PCB에서 이 값들을 복원해 중단된 명령어부터 이어서 실행합니다.",
+      "explanation": "오버헤드는 실제 작업 외에 추가로 드는 시간과 자원입니다. 컨텍스트 스위칭 중에는 사용자 작업이 진행되지 않으므로 오버헤드입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Context_switch"
       ]
     },
     {
       "id": "os-context-switch-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "context-switch",
+        "thread",
+        "address-space"
+      ],
+      "content": {
+        "prompt": "주소 공간을 교체하지 않아도 되는 전환은?",
+        "options": [
+          "프로세스 간 전환",
+          "같은 프로세스의 스레드 간"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "같은 프로세스의 스레드들은 주소 공간을 공유하므로 레지스터 등만 바꾸면 됩니다. 프로세스 간 전환은 주소 공간까지 교체합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Context_switch",
+        "https://en.wikipedia.org/wiki/Thread_(computing)"
+      ]
+    },
+    {
+      "id": "os-context-switch-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "context-switch",
+        "thread"
+      ],
+      "content": {
+        "prompt": "스레드 간 전환은 프로세스 간 전환보다 비용이 크다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "스레드 간 전환은 주소 공간을 교체하지 않으므로 일반적으로 프로세스 간 전환보다 비용이 작습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Context_switch",
+        "https://en.wikipedia.org/wiki/Thread_(computing)"
+      ]
+    },
+    {
+      "id": "os-context-switch-005",
       "type": "ox",
       "difficulty": 1,
       "tags": [
@@ -57,140 +106,140 @@
         "overhead"
       ],
       "content": {
-        "prompt": "컨텍스트 스위칭을 하는 동안에도 CPU는 사용자 프로세스의 명령어를 계속 실행하므로 비용이 전혀 들지 않는다."
+        "prompt": "컨텍스트 스위칭 중에는 CPU가 사용자 프로세스의 명령어를 실행하지 않는다."
       },
       "answer_key": {
-        "value": false
+        "value": true
       },
-      "explanation": "문맥을 저장·복원하는 동안 CPU는 사용자 프로세스의 명령어를 실행하지 못합니다. 따라서 컨텍스트 스위칭에 드는 시간은 유용한 작업을 하지 않는 오버헤드입니다.",
+      "explanation": "스위칭 동안 CPU는 운영체제 코드로 상태를 저장·복원할 뿐 사용자 작업을 진행하지 않으므로, 이 시간이 오버헤드가 됩니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Context_switch"
       ]
     },
     {
-      "id": "os-context-switch-004",
-      "type": "single",
-      "difficulty": 1,
+      "id": "os-context-switch-006",
+      "type": "fill",
+      "difficulty": 2,
       "tags": [
         "context-switch",
-        "pcb"
+        "definition"
       ],
       "content": {
-        "prompt": "컨텍스트 스위칭 때 저장하는 정보로 가장 알맞은 것은?",
+        "prompt": "상태를 저장·복원하며 CPU를 다른 프로세스에 넘기는 것을 컨텍스트 ___ 이라 한다.",
+        "hint": "실행 대상을 바꾸는 일을 뜻하는 외래어"
+      },
+      "answer_key": {
+        "accepted": [
+          "스위칭",
+          "switching",
+          "스위치",
+          "switch",
+          "전환",
+          "교환"
+        ]
+      },
+      "explanation": "이 과정을 컨텍스트 스위칭(context switching)이라 하며, 저장한 상태는 각 프로세스의 PCB에 보관됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Context_switch",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-context-switch-007",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "context-switch",
+        "overhead"
+      ],
+      "content": {
+        "prompt": "컨텍스트 스위칭이 잦을수록 커지는 추가 비용을 ___ 라고 한다.",
+        "hint": "실제 작업에 쓰이지 않는 시간과 자원"
+      },
+      "answer_key": {
+        "accepted": [
+          "오버헤드",
+          "overhead",
+          "오버 헤드"
+        ]
+      },
+      "explanation": "컨텍스트 스위칭에 드는 시간은 사용자 작업을 하지 못하는 추가 비용, 즉 오버헤드입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Context_switch"
+      ]
+    },
+    {
+      "id": "os-context-switch-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "context-switch",
+        "overhead"
+      ],
+      "content": {
+        "prompt": "초당 스위칭이 100번에서 1000번으로 늘면 오버헤드는?",
         "options": [
-          "하드디스크에 있는 모든 파일",
-          "프로그램 설치 파일",
-          "프로그램 카운터와 CPU 레지스터 값",
-          "화면 밝기 같은 기기 설정"
+          "줄어든다",
+          "그대로다",
+          "늘어난다"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "실행을 재개하려면 다음에 실행할 명령어 주소(프로그램 카운터)와 연산 중이던 레지스터 값이 필요하므로 이를 PCB에 저장합니다. 디스크의 파일은 전환과 무관하게 그대로 유지되므로 저장 대상이 아닙니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Context_switch",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
-      ]
-    },
-    {
-      "id": "os-context-switch-005",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "context-switch",
-        "address-space"
-      ],
-      "content": {
-        "prompt": "프로세스 간 컨텍스트 스위칭이 같은 프로세스 내 스레드 간 스위칭보다 일반적으로 비용이 큰 이유는?",
-        "options": [
-          "프로세스가 바뀌면 주소 공간이 바뀌어, 페이지 테이블 등 메모리 매핑 정보를 교체하고 TLB·캐시가 다시 채워져야 해서",
-          "스레드는 레지스터를 사용하지 않아서",
-          "프로세스 스위칭은 매번 디스크에 메모리 내용을 기록해야 해서",
-          "스레드는 저장할 정보가 전혀 없어서"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "프로세스 전환 시에는 주소 공간이 바뀌므로 메모리 매핑 정보를 교체해야 하고, TLB 항목이 무효화되거나 캐시 적중률이 떨어질 수 있습니다. 스레드 전환도 레지스터와 프로그램 카운터는 저장해야 하므로 '저장할 정보가 없다'는 틀린 설명입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Context_switch",
-        "https://en.wikipedia.org/wiki/Translation_lookaside_buffer"
-      ]
-    },
-    {
-      "id": "os-context-switch-006",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "context-switch",
-        "frequency"
-      ],
-      "content": {
-        "prompt": "컨텍스트 스위칭이 지나치게 자주 일어나면 어떤 결과가 나타나는가?",
-        "options": [
-          "프로그램 실행이 더 빨라진다",
-          "사용 가능한 메모리가 늘어난다",
-          "아무 영향이 없다",
-          "저장·복원 오버헤드가 늘어 실제 작업에 쓰이는 CPU 시간이 줄고, 처리량이 떨어질 수 있다"
-        ]
-      },
-      "answer_key": {
-        "index": 3
-      },
-      "explanation": "컨텍스트 스위칭은 매번 오버헤드를 발생시키므로 빈도가 지나치게 높으면 CPU 시간 중 사용자 작업에 쓰이는 비율이 줄어듭니다. 스위칭 자체는 작업을 진행시키지 않으므로 '더 빨라진다'는 틀립니다.",
+      "explanation": "스위칭 한 번마다 상태 저장·복원 비용이 들므로 횟수가 늘면 전체 오버헤드도 늘어납니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Context_switch"
       ]
     },
     {
-      "id": "os-context-switch-007",
-      "type": "multi",
+      "id": "os-context-switch-009",
+      "type": "single",
       "difficulty": 2,
       "tags": [
         "context-switch",
-        "trigger"
+        "thread",
+        "address-space"
       ],
       "content": {
-        "prompt": "컨텍스트 스위칭이 일어나는 대표적인 상황을 모두 고르시오.",
+        "prompt": "프로세스 P1의 스레드에서 P2의 스레드로 전환하면 주소 공간 교체는?",
         "options": [
-          "실행 중인 프로세스가 할당된 타임 퀀텀을 모두 사용했을 때",
-          "변수에 1을 더하는 연산을 수행할 때",
-          "실행 중인 프로세스가 입출력(I/O) 완료를 기다리는 대기 상태로 전환될 때",
-          "소스 코드에 주석을 한 줄 추가할 때"
+          "필요하다",
+          "필요 없다"
         ]
       },
       "answer_key": {
-        "indices": [
-          0,
-          2
-        ]
+        "index": 0
       },
-      "explanation": "타임 퀀텀이 만료되어 타이머 인터럽트가 발생하거나, 프로세스가 I/O를 요청해 대기 상태가 되면 운영체제가 다른 프로세스로 전환합니다. 덧셈 연산은 CPU가 현재 프로세스에서 그대로 실행하는 명령어이므로 전환이 필요 없습니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Context_switch",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
-      ]
-    },
-    {
-      "id": "os-context-switch-008",
-      "type": "ox",
-      "difficulty": 2,
-      "tags": [
-        "context-switch",
-        "thread"
-      ],
-      "content": {
-        "prompt": "같은 프로세스 안의 스레드끼리 전환할 때는 주소 공간을 공유하므로, 주소 공간 자체를 교체하는 작업은 필요 없다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "같은 프로세스의 스레드들은 주소 공간을 공유하므로, 스레드 전환 시에는 프로그램 카운터·레지스터·스택 포인터만 교체하면 됩니다. 그래서 스레드 전환은 주소 공간까지 바꾸는 프로세스 전환보다 대체로 가볍습니다.",
+      "explanation": "두 스레드가 서로 다른 프로세스에 속해 주소 공간이 다르므로, 프로세스 간 전환처럼 주소 공간을 교체해야 합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Context_switch",
         "https://en.wikipedia.org/wiki/Thread_(computing)"
+      ]
+    },
+    {
+      "id": "os-context-switch-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "context-switch",
+        "pcb"
+      ],
+      "content": {
+        "prompt": "컨텍스트 스위칭 때 PCB에 저장하는 것은?",
+        "options": [
+          "소스 코드",
+          "디스크 파일",
+          "레지스터 값"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "다시 실행할 때 필요한 프로그램 카운터와 레지스터 값을 PCB에 저장합니다. 소스 코드나 디스크 파일은 저장 대상이 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Context_switch",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
       ]
     }
   ]

@@ -9,186 +9,235 @@
       "difficulty": 1,
       "tags": [
         "cidr-subnet",
-        "prefix-length"
+        "subnet-mask"
       ],
       "content": {
-        "prompt": "IP 주소는 네트워크 부분과 호스트 부분으로 나뉜다. CIDR 표기 192.168.1.0/24 에서 /24 가 뜻하는 것은?",
+        "prompt": "IP 주소에서 네트워크 부분을 표시하는 32비트 값은?",
         "options": [
-          "주소의 유효 기간이 24시간이다",
-          "상위 24비트(192.168.1)가 네트워크 부분이다",
-          "마지막 옥텟은 24까지만 사용할 수 있다",
-          "이 네트워크에 호스트가 24대 있다"
+          "포트 번호",
+          "서브넷 마스크",
+          "TTL"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "CIDR의 / 뒤 숫자는 프리픽스 길이, 즉 네트워크 부분의 비트 수입니다. 옥텟 하나가 8비트이므로 /24는 앞 세 옥텟이 네트워크 부분, 마지막 옥텟이 호스트 부분입니다.",
+      "explanation": "서브넷 마스크는 네트워크 부분 비트를 1, 호스트 부분 비트를 0으로 표시합니다. 255.255.255.0은 앞 24비트가 네트워크 부분입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Subnetwork"
+      ]
+    },
+    {
+      "id": "network-cidr-subnet-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cidr-subnet",
+        "cidr"
+      ],
+      "content": {
+        "prompt": "주소 뒤에 /24처럼 네트워크 비트 수를 붙이는 표기는?",
+        "options": [
+          "NAT",
+          "DNS",
+          "CIDR"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "CIDR 표기는 주소 뒤의 /숫자로 네트워크 부분의 비트 수(프리픽스 길이)를 나타냅니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing",
         "https://www.rfc-editor.org/rfc/rfc4632"
       ]
     },
     {
-      "id": "network-cidr-subnet-002",
-      "type": "fill",
+      "id": "network-cidr-subnet-003",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "cidr-subnet",
-        "mask"
+        "network-host"
       ],
       "content": {
-        "prompt": "/24 를 서브넷 마스크로 표기하면 255.255.255.___ 이다. (숫자만)",
-        "hint": "호스트 부분의 비트는 0으로 표시한다"
-      },
-      "answer_key": {
-        "accepted": [
-          "0"
+        "prompt": "같은 서브넷의 호스트들이 똑같이 갖는 IP 주소 부분은?",
+        "options": [
+          "네트워크 부분",
+          "호스트 부분"
         ]
       },
-      "explanation": "서브넷 마스크는 네트워크 부분 비트를 1, 호스트 부분 비트를 0으로 표시합니다. /24는 상위 24비트가 1이므로 255.255.255.0입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Subnetwork"
-      ]
-    },
-    {
-      "id": "network-cidr-subnet-003",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "cidr-subnet",
-        "same-subnet"
-      ],
-      "content": {
-        "prompt": "/24 기준으로 192.168.1.10 과 192.168.2.10 은 같은 서브넷이다."
-      },
       "answer_key": {
-        "value": false
+        "index": 0
       },
-      "explanation": "/24에서는 상위 24비트, 즉 앞 세 옥텟이 같아야 같은 서브넷입니다. 세 번째 옥텟이 1과 2로 다르므로 서로 다른 서브넷입니다.",
+      "explanation": "같은 서브넷의 호스트는 네트워크 부분이 같고, 호스트 부분으로 서로 구분됩니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Subnetwork"
       ]
     },
     {
       "id": "network-cidr-subnet-004",
-      "type": "single",
+      "type": "ox",
       "difficulty": 1,
       "tags": [
         "cidr-subnet",
-        "membership"
+        "cidr",
+        "network-host"
       ],
       "content": {
-        "prompt": "다음 중 192.168.1.0/24 네트워크에 속하지 않는 주소는?",
-        "options": [
-          "192.168.1.200",
-          "192.168.2.5",
-          "192.168.1.99",
-          "192.168.1.1"
-        ]
+        "prompt": "192.168.1.0/24에서 /24는 호스트 부분이 24비트라는 뜻이다."
       },
       "answer_key": {
-        "index": 1
+        "value": false
       },
-      "explanation": "192.168.1.0/24에 속하려면 네트워크 부분(앞 세 옥텟)이 192.168.1이어야 합니다. 192.168.2.5는 세 번째 옥텟이 2이므로 다른 네트워크입니다.",
+      "explanation": "/24는 앞 24비트가 네트워크 부분이라는 뜻입니다. 호스트 부분은 나머지 8비트입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Subnetwork"
+        "https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing",
+        "https://www.rfc-editor.org/rfc/rfc4632"
       ]
     },
     {
       "id": "network-cidr-subnet-005",
-      "type": "single",
-      "difficulty": 2,
+      "type": "ox",
+      "difficulty": 1,
       "tags": [
         "cidr-subnet",
-        "address-count"
+        "subnet-mask"
       ],
       "content": {
-        "prompt": "192.168.1.0/24 의 호스트 부분은 8비트(마지막 옥텟 0~255)이다. 이 네트워크의 전체 주소 수는?",
-        "options": [
-          "24개",
-          "255개",
-          "256개",
-          "100개"
-        ]
+        "prompt": "/24를 서브넷 마스크로 쓰면 255.255.255.0이다."
       },
       "answer_key": {
-        "index": 2
+        "value": true
       },
-      "explanation": "호스트 부분이 8비트이므로 주소 수는 2의 8제곱인 256개입니다. 255개는 0을 빠뜨린 값이고, 24는 프리픽스 길이일 뿐 주소 수가 아닙니다.",
+      "explanation": "앞 24비트가 1이면 255.255.255.0이 됩니다. 255는 8비트가 모두 1인 옥텟입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Subnetwork"
       ]
     },
     {
       "id": "network-cidr-subnet-006",
-      "type": "ox",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
         "cidr-subnet",
-        "reserved-addresses"
+        "cidr"
       ],
       "content": {
-        "prompt": "192.168.1.0/24 에서 네트워크 주소(192.168.1.0)와 브로드캐스트 주소(192.168.1.255)는 일반적으로 호스트에 할당하지 않는다."
+        "prompt": "IP 주소 뒤에 /24처럼 쓰는 표기법을 ___ 표기라고 한다.",
+        "hint": "영문 약자 4글자입니다."
       },
       "answer_key": {
-        "value": true
+        "accepted": [
+          "CIDR",
+          "cidr",
+          "사이더",
+          "싸이더",
+          "classless inter domain routing"
+        ]
       },
-      "explanation": "호스트 비트가 모두 0인 주소는 네트워크 자체를, 모두 1인 주소는 서브넷 전체로 보내는 브로드캐스트 주소를 나타냅니다. 그래서 두 주소는 호스트에 할당하지 않습니다.",
+      "explanation": "CIDR(Classless Inter-Domain Routing) 표기는 /숫자로 네트워크 부분의 길이를 나타냅니다.",
       "refs": [
-        "https://www.rfc-editor.org/rfc/rfc1918"
+        "https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing",
+        "https://www.rfc-editor.org/rfc/rfc4632"
       ]
     },
     {
       "id": "network-cidr-subnet-007",
-      "type": "single",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
         "cidr-subnet",
-        "host-count"
+        "network-host"
       ],
       "content": {
-        "prompt": "192.168.1.0/24 에서 네트워크 주소와 브로드캐스트 주소를 제외하면, 호스트에 할당 가능한 주소는 몇 개일까?",
-        "options": [
-          "254개",
-          "253개",
-          "256개",
-          "255개"
-        ]
+        "prompt": "IPv4 주소가 /24일 때 호스트 부분은 ___ 비트이다.",
+        "hint": "IPv4 주소 전체는 32비트입니다."
       },
       "answer_key": {
-        "index": 0
+        "accepted": [
+          "8",
+          "여덟",
+          "팔",
+          "8비트"
+        ]
       },
-      "explanation": "전체 256개에서 네트워크 주소와 브로드캐스트 주소 2개를 빼면 256 − 2 = 254개입니다. 256개는 예약 주소를 빼지 않은 값입니다.",
+      "explanation": "IPv4 주소는 32비트이므로 네트워크 부분 24비트를 빼면 호스트 부분은 8비트입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Subnetwork"
       ]
     },
     {
       "id": "network-cidr-subnet-008",
-      "type": "multi",
+      "type": "single",
       "difficulty": 2,
       "tags": [
         "cidr-subnet",
-        "prefix-size"
+        "network-host"
       ],
       "content": {
-        "prompt": "CIDR 표기(주소 뒤의 /숫자)에 대한 설명으로 알맞은 것을 모두 고르시오.",
+        "prompt": "다음 중 192.168.1.0/24에 속하는 주소는?",
         "options": [
-          "/ 뒤 숫자는 연결된 호스트 수이다",
-          "/ 뒤 숫자는 네트워크 부분의 비트 수(프리픽스 길이)이다",
-          "/32 는 가장 많은 주소를 포함한다",
-          "/16 은 /24 보다 더 많은 주소를 포함한다"
+          "192.168.2.1",
+          "10.0.1.5",
+          "192.168.1.77"
         ]
       },
       "answer_key": {
-        "indices": [
-          1,
-          3
+        "index": 2
+      },
+      "explanation": "/24에서는 앞 세 옥텟 192.168.1이 같아야 같은 네트워크입니다. 192.168.2.1은 세 번째 옥텟이 다릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Subnetwork"
+      ]
+    },
+    {
+      "id": "network-cidr-subnet-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cidr-subnet",
+        "network-host"
+      ],
+      "content": {
+        "prompt": "/24에서 호스트 부분 8비트로 만들 수 있는 주소 수는?",
+        "options": [
+          "8개",
+          "256개",
+          "24개"
         ]
       },
-      "explanation": "프리픽스 길이가 짧을수록 호스트 비트가 많아져 더 많은 주소를 포함합니다. 따라서 /16(65,536개)이 /24(256개)보다 크고, /32는 주소 1개만 나타냅니다. 호스트 수를 뜻하지도 않습니다.",
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "8비트로 만들 수 있는 값은 2의 8제곱인 256개입니다. 이 중 네트워크·브로드캐스트 주소 2개는 호스트에 주지 않습니다.",
       "refs": [
+        "https://en.wikipedia.org/wiki/Subnetwork"
+      ]
+    },
+    {
+      "id": "network-cidr-subnet-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cidr-subnet",
+        "subnet-mask",
+        "cidr"
+      ],
+      "content": {
+        "prompt": "서브넷 마스크 255.255.255.0을 CIDR로 쓰면?",
+        "options": [
+          "/24",
+          "/16",
+          "/8"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "255는 8비트가 모두 1이므로, 255가 세 번이면 24비트, 즉 /24입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Subnetwork",
         "https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing"
       ]
     }
