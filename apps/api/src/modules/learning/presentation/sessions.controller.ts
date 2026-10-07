@@ -6,7 +6,7 @@ import { SubmitAnswerRequest, type CompleteSessionResponse, type SessionResponse
 import { JwtAuthGuard } from '../../identity/presentation/jwt-auth.guard';
 import { CurrentUser, type AuthUser } from '../../../shared/presentation/current-user.decorator';
 import { ZodBody } from '../../../shared/presentation/zod-body.pipe';
-import { CompleteSessionCommand, StartLessonSessionCommand, StartReviewSessionCommand, SubmitAnswerCommand } from '../application/commands/commands';
+import { CompleteSessionCommand, StartLessonSessionCommand, StartReviewSessionCommand, StartUnitSkipTestCommand, SubmitAnswerCommand } from '../application/commands/commands';
 import { GetSessionQuery } from '../application/queries/get-session.handler';
 
 /** 컨트롤러는 DTO → 커맨드/쿼리 변환만 한다. 로직 없음 */
@@ -31,6 +31,13 @@ export class SessionsController {
   @Post('review/sessions')
   async startReview(@CurrentUser() user: AuthUser): Promise<SessionResponse> {
     const { sessionId } = await this.commandBus.execute<StartReviewSessionCommand, { sessionId: string }>(new StartReviewSessionCommand(user.id));
+    return this.queryBus.execute(new GetSessionQuery(user.id, sessionId));
+  }
+
+  /** 유닛 건너뛰기 테스트 시작 (미완료 테스트가 있으면 그것을 반환). 80% 이상 맞히면 이 유닛까지 완료 처리 */
+  @Post('units/:unitId/skip-test')
+  async startUnitSkipTest(@CurrentUser() user: AuthUser, @Param('unitId', ParseIntPipe) unitId: number): Promise<SessionResponse> {
+    const { sessionId } = await this.commandBus.execute<StartUnitSkipTestCommand, { sessionId: string }>(new StartUnitSkipTestCommand(user.id, unitId));
     return this.queryBus.execute(new GetSessionQuery(user.id, sessionId));
   }
 

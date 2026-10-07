@@ -38,7 +38,7 @@ export class StartLessonSessionHandler implements ICommandHandler<StartLessonSes
     const lessonId = LessonId.of(cmd.lessonId);
 
     const result = await this.uow.run(async () => {
-      const open = await this.sessions.findOpen(userId, lessonId);
+      const open = await this.sessions.findOpen(userId, lessonId, 'lesson');
       if (open) return { session: open, resumed: true };
 
       const outline = await this.curriculum.lessonOutline(lessonId);

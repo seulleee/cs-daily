@@ -5,6 +5,7 @@ import { ReviewModule } from '../review/review.module';
 import { CompleteSessionHandler } from './application/commands/complete-session.handler';
 import { StartLessonSessionHandler } from './application/commands/start-lesson-session.handler';
 import { StartReviewSessionHandler } from './application/commands/start-review-session.handler';
+import { StartUnitSkipTestHandler } from './application/commands/start-unit-skip-test.handler';
 import { SubmitAnswerHandler } from './application/commands/submit-answer.handler';
 import { GetSessionHandler } from './application/queries/get-session.handler';
 import { LESSON_SESSION_REPO } from './domain/ports';
@@ -24,6 +25,7 @@ import { SessionsController } from './presentation/sessions.controller';
     { provide: LESSON_SESSION_REPO, useClass: PrismaLessonSessionRepository },
     StartLessonSessionHandler,
     StartReviewSessionHandler,
+    StartUnitSkipTestHandler,
     SubmitAnswerHandler,
     CompleteSessionHandler,
     GetSessionHandler,

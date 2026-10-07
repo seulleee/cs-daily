@@ -4,7 +4,9 @@ export class RecordSessionCompletionCommand {
     readonly payload: {
       userId: string;
       sessionId: string;
-      kind: 'lesson' | 'review';
+      kind: 'lesson' | 'review' | 'placement';
+      /** 건너뛰기 통과 시 완료 처리할 레슨 (이미 완료된 것은 그대로) */
+      skipLessonIds?: number[];
       lessonId: number | null;
       correct: number;
       total: number;
@@ -17,6 +19,8 @@ export class RecordSessionCompletionCommand {
 }
 
 export interface SessionCompletionResult {
+  /** 이번에 건너뛰기로 새로 완료 처리된 레슨 수 */
+  skippedLessons: number;
   streak: { current: number; extended: boolean };
   dailyGoal: { target: number; done: number; achieved: boolean };
 }

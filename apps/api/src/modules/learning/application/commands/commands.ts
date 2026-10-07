@@ -26,3 +26,11 @@ export class CompleteSessionCommand {
     readonly sessionId: string,
   ) {}
 }
+
+/** 유닛 건너뛰기 테스트 시작 */
+export class StartUnitSkipTestCommand {
+  constructor(
+    readonly userId: string,
+    readonly unitId: number,
+  ) {}
+}

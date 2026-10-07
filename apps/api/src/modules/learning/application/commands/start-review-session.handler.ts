@@ -22,8 +22,8 @@ export class StartReviewSessionHandler implements ICommandHandler<StartReviewSes
   async execute(cmd: StartReviewSessionCommand) {
     const userId = UserId.of(cmd.userId);
     const result = await this.uow.run(async () => {
-      const open = await this.sessions.findOpen(userId);
-      if (open && open.kind === 'review') return { session: open, resumed: true };
+      const open = await this.sessions.findOpen(userId, undefined, 'review');
+      if (open) return { session: open, resumed: true };
 
       const due = await this.reviews.dueQuestionIds(userId, REVIEW_SESSION_SIZE, new Date());
       if (due.length === 0) throw new NoReviewDue();

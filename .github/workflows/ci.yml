@@ -46,6 +46,20 @@ jobs:
           pnpm --filter @cs-daily/api prisma:seed
       - name: Build
         run: pnpm build
+      - name: API E2E (built server + CI Postgres)
+        env:
+          PORT: 4000
+          NODE_ENV: test
+          JWT_ACCESS_SECRET: ci-access-secret
+          JWT_REFRESH_SECRET: ci-refresh-secret
+          JOBS_SECRET: ci-jobs
+          API_BASE_URL: http://localhost:4000
+          WEB_BASE_URL: http://localhost:3000
+          E2E_API_URL: http://localhost:4000
+        run: |
+          (cd apps/api && node dist/main.js > /tmp/api.log 2>&1 &)
+          for i in $(seq 1 30); do curl -fsS localhost:4000/health >/dev/null && break; sleep 1; done
+          pnpm --filter @cs-daily/api test:e2e || { cat /tmp/api.log; exit 1; }
       - name: Docker image builds (API)
         run: |
           docker build -f apps/api/Dockerfile -t cs-daily-api:ci .

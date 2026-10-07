@@ -14,6 +14,10 @@ export function LearningPath({ path }: { path: PathResponse }) {
     mutationFn: (lessonId: number) => api<SessionResponse>(`/lessons/${lessonId}/sessions`, { method: 'POST' }),
     onSuccess: (s) => router.push(`/lesson/${s.id}`),
   });
+  const skip = useMutation({
+    mutationFn: (unitId: number) => api<SessionResponse>(`/units/${unitId}/skip-test`, { method: 'POST' }),
+    onSuccess: (s) => router.push(`/lesson/${s.id}`),
+  });
 
   return (
     <div className="space-y-10">
@@ -26,7 +30,20 @@ export function LearningPath({ path }: { path: PathResponse }) {
                 {unit.name}
               </h2>
             </div>
-            <div className="text-sm opacity-80">{unit.lessons.filter((l) => l.status === 'completed').length}/{unit.lessons.length}</div>
+            <div className="flex items-center gap-3">
+              <div className="text-sm opacity-80">{unit.lessons.filter((l) => l.status === 'completed').length}/{unit.lessons.length}</div>
+              {unit.lessons.some((l) => l.status !== 'completed') && (
+                <button
+                  type="button"
+                  disabled={skip.isPending}
+                  onClick={() => skip.mutate(unit.id)}
+                  title="유닛 문제 몇 개를 풀어 80% 이상 맞히면 이 유닛까지 완료로 처리됩니다"
+                  className="rounded-xl border-2 border-white/60 px-3 py-1.5 text-xs font-bold text-white transition-colors hover:bg-white/15 disabled:opacity-50"
+                >
+                  ⏭ 건너뛰기
+                </button>
+              )}
+            </div>
           </div>
 
           <ol className="flex flex-col items-center gap-5">
@@ -64,6 +81,7 @@ export function LearningPath({ path }: { path: PathResponse }) {
         </section>
       ))}
       {start.isError && <p className="text-center text-sm text-(--color-wrong)">{(start.error as Error).message}</p>}
+      {skip.isError && <p className="text-center text-sm text-(--color-wrong)">{(skip.error as Error).message}</p>}
     </div>
   );
 }

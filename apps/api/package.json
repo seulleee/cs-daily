@@ -10,6 +10,7 @@
     "lint": "eslint \"src/**/*.ts\"",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e": "tsx test-e2e/unit-skip-test.e2e.ts",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate deploy",
     "prisma:migrate:dev": "prisma migrate dev",

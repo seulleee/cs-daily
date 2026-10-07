@@ -30,8 +30,8 @@ export class RecordSessionCompletionHandler implements ICommandHandler<RecordSes
         update: { xp: { increment: p.xpEarned }, lessonsCompleted: { increment: lessonsInc } },
       });
 
-      // 3. 레슨 진행도 (best score, 완료 시각)
-      if (p.lessonId) {
+      // 3. 레슨 진행도 (best score, 완료 시각) — 건너뛰기 테스트는 점수를 남기지 않는다
+      if (p.lessonId && p.kind === 'lesson') {
         const score = p.total > 0 ? Math.round((p.correct / p.total) * 100) : 0;
         const prev = await db.userLessonProgress.findUnique({ where: { userId_lessonId: { userId: p.userId, lessonId: p.lessonId } } });
         await db.userLessonProgress.upsert({
@@ -39,6 +39,19 @@ export class RecordSessionCompletionHandler implements ICommandHandler<RecordSes
           create: { userId: p.userId, lessonId: p.lessonId, bestScore: score, completedCount: 1, completedAt: p.occurredAt },
           update: { bestScore: Math.max(prev?.bestScore ?? 0, score), completedCount: { increment: 1 }, completedAt: prev?.completedAt ?? p.occurredAt },
         });
+      }
+
+      // 3-1. 건너뛰기 통과: 아직 완료되지 않은 레슨만 완료 처리 (점수 0, 완료 횟수 0 — "건너뜀"으로 구분 가능)
+      let skippedLessons = 0;
+      for (const lessonId of p.skipLessonIds ?? []) {
+        const prev = await db.userLessonProgress.findUnique({ where: { userId_lessonId: { userId: p.userId, lessonId } }, select: { completedAt: true } });
+        if (prev?.completedAt) continue;
+        await db.userLessonProgress.upsert({
+          where: { userId_lessonId: { userId: p.userId, lessonId } },
+          create: { userId: p.userId, lessonId, completedAt: p.occurredAt },
+          update: { completedAt: p.occurredAt },
+        });
+        skippedLessons += 1;
       }
 
       // 4. 스트릭: 데일리 목표를 "오늘 처음" 채운 순간에만 연장
@@ -67,6 +80,7 @@ export class RecordSessionCompletionHandler implements ICommandHandler<RecordSes
       }
 
       return {
+        skippedLessons,
         streak: { current, extended },
         dailyGoal: { target: user.dailyGoal, done: activity.lessonsCompleted, achieved },
       };
