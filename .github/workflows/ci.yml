@@ -59,7 +59,14 @@ jobs:
         run: |
           (cd apps/api && node dist/main.js > /tmp/api.log 2>&1 &)
           for i in $(seq 1 30); do curl -fsS localhost:4000/health >/dev/null && break; sleep 1; done
-          pnpm --filter @cs-daily/api test:e2e || { cat /tmp/api.log; exit 1; }
+          # 실패 시 원인을 주석(annotation)으로도 남긴다 — 로그를 못 여는 환경에서도 API로 확인 가능
+          if ! pnpm --filter @cs-daily/api test:e2e > /tmp/e2e.log 2>&1; then
+            cat /tmp/e2e.log; cat /tmp/api.log
+            echo "::error title=e2e::$(tail -c 1500 /tmp/e2e.log | tr '\n' ' ')"
+            echo "::error title=api-log::$(tail -c 1500 /tmp/api.log | tr '\n' ' ')"
+            exit 1
+          fi
+          cat /tmp/e2e.log
       - name: Docker image builds (API)
         run: |
           docker build -f apps/api/Dockerfile -t cs-daily-api:ci .
