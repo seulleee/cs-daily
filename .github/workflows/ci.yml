@@ -46,10 +46,12 @@ jobs:
           pnpm --filter @cs-daily/api prisma:seed
       - name: Build
         run: pnpm build
+      - name: Docker image builds (API)
+        run: docker build -f apps/api/Dockerfile -t cs-daily-api:ci .
 
   deploy-api:
-    # GCP 설정 전까지는 건너뜀: Settings → Variables에 DEPLOY_ENABLED=true 를 추가하면 배포가 켜진다
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push' && vars.DEPLOY_ENABLED == 'true'
+    # 배포를 잠시 멈추려면 레포 Variables에 DEPLOY_DISABLED=true
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' && vars.DEPLOY_DISABLED != 'true'
     needs: check
     runs-on: ubuntu-latest
     permissions:
@@ -62,6 +64,10 @@ jobs:
       SERVICE: cs-daily-api
       WIF_PROVIDER: projects/541298537642/locations/global/workloadIdentityPools/github/providers/cs-daily-repo
       DEPLOY_SA: cs-daily-deploy@cs-daily-510823.iam.gserviceaccount.com
+      # Cloud Run 주소는 서비스명+프로젝트 번호로 결정적이다. 커스텀 도메인을 쓰면 레포 Variables로 덮어쓴다
+      API_BASE_URL: ${{ vars.API_BASE_URL || 'https://cs-daily-api-541298537642.asia-northeast3.run.app' }}
+      WEB_BASE_URL: ${{ vars.WEB_BASE_URL || 'https://cs-daily-seulleee.vercel.app' }}
+      MAIL_FROM: ${{ vars.MAIL_FROM || 'CS Daily <onboarding@resend.dev>' }}
     steps:
       - uses: actions/checkout@v4
       - uses: google-github-actions/auth@v2
@@ -69,6 +75,10 @@ jobs:
           workload_identity_provider: ${{ env.WIF_PROVIDER }}
           service_account: ${{ env.DEPLOY_SA }}
       - uses: google-github-actions/setup-gcloud@v2
+      - uses: pnpm/action-setup@v4
+        with: { version: 10.28.0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: pnpm }
       - id: db
         uses: google-github-actions/get-secretmanager-secrets@v2
         with:
@@ -87,9 +97,16 @@ jobs:
           DATABASE_URL: ${{ steps.db.outputs.DATABASE_URL }}
           DIRECT_URL: ${{ steps.db.outputs.DIRECT_URL }}
         run: |
-          corepack enable && corepack prepare pnpm@10.28.0 --activate
           pnpm install --frozen-lockfile --filter @cs-daily/api
           pnpm --filter @cs-daily/api exec prisma migrate deploy
+      - name: Seed curriculum & questions (idempotent upsert)
+        env:
+          DATABASE_URL: ${{ steps.db.outputs.DIRECT_URL }}
+          DIRECT_URL: ${{ steps.db.outputs.DIRECT_URL }}
+        run: |
+          pnpm install --frozen-lockfile --filter @cs-daily/api... --filter @cs-daily/content
+          pnpm --filter @cs-daily/contracts build
+          pnpm --filter @cs-daily/api prisma:seed
       - name: "Deploy to Cloud Run (무료 구간 — 최소 인스턴스 0, 요청 기반 과금)"
         run: |
           gcloud run deploy $SERVICE \
@@ -97,6 +114,9 @@ jobs:
             --min-instances 0 --max-instances 2 --cpu 1 --memory 512Mi --concurrency 80 \
             --allow-unauthenticated \
             --service-account "cs-daily-run@$GCP_PROJECT.iam.gserviceaccount.com" \
-            --set-env-vars NODE_ENV=production,API_BASE_URL=${{ vars.API_BASE_URL }},WEB_BASE_URL=${{ vars.WEB_BASE_URL }},MAIL_FROM="${{ vars.MAIL_FROM }}" \
+            --set-env-vars NODE_ENV=production,API_BASE_URL=$API_BASE_URL,WEB_BASE_URL=$WEB_BASE_URL,MAIL_FROM="$MAIL_FROM" \
             --set-secrets DATABASE_URL=DATABASE_URL:latest,DIRECT_URL=DIRECT_URL:latest,JWT_ACCESS_SECRET=JWT_ACCESS_SECRET:latest,JWT_REFRESH_SECRET=JWT_REFRESH_SECRET:latest,GITHUB_CLIENT_ID=GITHUB_CLIENT_ID:latest,GITHUB_CLIENT_SECRET=GITHUB_CLIENT_SECRET:latest,GOOGLE_CLIENT_ID=GOOGLE_CLIENT_ID:latest,GOOGLE_CLIENT_SECRET=GOOGLE_CLIENT_SECRET:latest,JOBS_SECRET=JOBS_SECRET:latest,RESEND_API_KEY=RESEND_API_KEY:latest
+      - name: Smoke test
+        run: |
+          for i in 1 2 3 4 5; do curl -fsS "$API_BASE_URL/health" && exit 0; sleep 5; done; exit 1
   # 웹(Next.js)은 Vercel GitHub 연동이 main 푸시마다 자동 배포하므로 여기서 다루지 않는다.
