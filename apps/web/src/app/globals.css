@@ -18,8 +18,33 @@
   --font-sans: "Pretendard Variable", Pretendard, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
 }
 
+/*
+ * 다크 테마. 설정 > 테마에서 고른 값이 <html data-theme>로 들어온다 (lib/theme.ts).
+ * - data-theme="dark": 강제 다크
+ * - data-theme 없음(시스템): OS가 다크면 다크
+ * - data-theme="light": OS가 다크여도 라이트
+ */
+:root { color-scheme: light; }
+:root[data-theme="dark"] {
+  --color-brand: #3b82f6;
+  --color-brand-dark: #1e40af;
+  --color-correct: #22c55e;
+  --color-wrong: #ef4444;
+  --color-surface: #0b1220;
+  --color-surface-2: #111a2b;
+  --color-ink: #e2e8f0;
+  --color-ink-2: #94a3b8;
+  --color-line: #1f2a3d;
+  --color-correct-bg: #0f2e1a;
+  --color-wrong-bg: #3a1313;
+  color-scheme: dark;
+}
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
+    --color-brand: #3b82f6;
+    --color-brand-dark: #1e40af;
+    --color-correct: #22c55e;
+    --color-wrong: #ef4444;
     --color-surface: #0b1220;
     --color-surface-2: #111a2b;
     --color-ink: #e2e8f0;
@@ -27,6 +52,7 @@
     --color-line: #1f2a3d;
     --color-correct-bg: #0f2e1a;
     --color-wrong-bg: #3a1313;
+    color-scheme: dark;
   }
 }
 
