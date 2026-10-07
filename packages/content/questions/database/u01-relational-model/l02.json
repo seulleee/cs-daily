@@ -7,122 +7,198 @@
       "id": "database-functional-dependency-001",
       "type": "single",
       "difficulty": 1,
-      "tags": ["functional-dependency"],
+      "tags": [
+        "functional-dependency"
+      ],
       "content": {
-        "prompt": "함수 종속 X → Y의 뜻으로 옳은 것은?",
+        "prompt": "함수 종속 'A → B'는 무슨 뜻일까? (예: 학번 → 이름)",
         "options": [
-          "X 값이 같은 튜플들은 Y 값도 항상 같다",
-          "Y 값이 같으면 X 값도 같다",
-          "X와 Y는 서로 다른 테이블에 있어야 한다",
-          "X는 반드시 기본키여야 한다"
+          "A 값을 알면 B 값이 하나로 정해진다",
+          "B 값을 알면 A 값이 하나로 정해진다",
+          "A와 B에는 항상 같은 값이 들어간다",
+          "A가 B보다 먼저 저장된다"
         ]
       },
-      "answer_key": { "index": 0 },
-      "explanation": "X → Y는 X가 Y를 결정한다는 뜻입니다. 같은 X를 가진 두 튜플이 다른 Y를 가지면 종속이 깨집니다. 방향이 있으므로 Y → X가 자동으로 성립하지는 않습니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Functional_dependency"]
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "학번을 알면 그 학생의 이름이 딱 하나로 정해지죠. 이것이 '학번 → 이름'입니다. 화살표 방향이 중요해서, 이름만 알아서는 학번이 정해지지 않을 수 있어요(동명이인).",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Functional_dependency"
+      ]
     },
     {
       "id": "database-functional-dependency-002",
       "type": "ox",
       "difficulty": 1,
-      "tags": ["functional-dependency", "keys"],
+      "tags": [
+        "functional-dependency"
+      ],
       "content": {
-        "prompt": "릴레이션의 모든 속성은 후보키에 함수 종속한다."
+        "prompt": "동명이인이 있는 학교에서는 '이름 → 학번'(이름만 알면 학번이 하나로 정해짐)이 성립하지 않는다."
       },
-      "answer_key": { "value": true },
-      "explanation": "후보키는 튜플을 유일하게 식별하므로 키 값이 같으면 같은 튜플이고, 따라서 모든 속성 값이 같습니다. 이것이 키의 정의와 함수 종속의 연결 고리입니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Functional_dependency"]
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "'민지'가 두 명이면 이름만으로는 어느 학번인지 정할 수 없습니다. 그래서 이름 → 학번은 성립하지 않고, 반대로 학번 → 이름은 성립해요.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Functional_dependency"
+      ]
     },
     {
       "id": "database-functional-dependency-003",
-      "type": "fill",
+      "type": "single",
       "difficulty": 1,
-      "tags": ["anomaly"],
+      "tags": [
+        "anomaly",
+        "redundancy"
+      ],
       "content": {
-        "prompt": "한 테이블에 학생과 지도교수 정보가 함께 있어서, 아직 학생이 없는 새 교수를 등록할 수 없는 문제를 ___ 이상(anomaly)이라고 한다.",
-        "hint": "INSERT가 안 되는 상황"
+        "prompt": "아래 수강 시트에서 같은 정보가 여러 번 적혀 있는 것은?",
+        "code": {
+          "language": "sql",
+          "source": "-- 수강 시트 (학번, 이름, 과목)\n-- (1, 민지, DB)\n-- (1, 민지, OS)\n-- (2, 준호, DB)"
+        },
+        "options": [
+          "학번 1 학생의 이름 '민지'",
+          "학번 2 학생의 이름 '준호'",
+          "과목 'OS'",
+          "반복되는 정보는 없다"
+        ]
       },
-      "answer_key": { "accepted": ["삽입", "삽입이상", "insertion", "insert"] },
-      "explanation": "삽입 이상은 어떤 사실을 저장하려면 무관한 다른 사실(여기서는 학생)이 반드시 있어야 하는 문제입니다. 갱신 이상·삭제 이상과 함께 정규화의 동기가 됩니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Database_normalization"]
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "민지가 과목을 두 개 들어서 '1, 민지'가 두 줄에 적혔습니다. 이렇게 같은 정보를 여러 번 적으면, 나중에 한 곳만 고치는 실수가 생기기 쉬워요.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
     },
     {
       "id": "database-functional-dependency-004",
-      "type": "single",
-      "difficulty": 2,
-      "tags": ["anomaly", "update"],
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "anomaly",
+        "update"
+      ],
       "content": {
-        "prompt": "다음 테이블에서 '김교수'의 연구실 번호가 바뀌면 생길 수 있는 문제는?",
-        "code": {
-          "language": "text",
-          "source": "student(student_id, name, advisor, advisor_office)\n1, 민수, 김교수, 301\n2, 지영, 김교수, 301\n3, 현우, 이교수, 205"
-        },
-        "options": [
-          "일부 행만 갱신되면 같은 교수의 연구실이 두 값으로 나뉜다 (갱신 이상)",
-          "학생을 지우면 교수가 함께 사라진다 (삭제 이상)",
-          "기본키가 없어져 조회가 불가능해진다",
-          "외래키 제약 때문에 갱신 자체가 거부된다"
+        "prompt": "민지가 개명해서 이름을 고치는데, 이름이 적힌 두 줄 중 한 줄만 고쳐 기록이 서로 달라졌다. 이런 문제를 ___ 이상이라고 한다.",
+        "hint": "'고친다(update)'는 뜻의 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "갱신",
+          "갱신 이상",
+          "수정",
+          "수정 이상",
+          "업데이트",
+          "update",
+          "update anomaly"
         ]
       },
-      "answer_key": { "index": 0 },
-      "explanation": "advisor → advisor_office 종속이 학생 테이블에 섞여 있어 같은 사실이 여러 행에 중복됩니다. 중복된 사실을 모두 고치지 못하면 불일치가 생기는데, 이것이 갱신 이상입니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Database_normalization"]
+      "explanation": "같은 정보가 여러 곳에 있으면 고칠 때 전부 고쳐야 하고, 하나라도 빠뜨리면 데이터가 서로 어긋납니다. 이것이 갱신 이상이에요. 정보를 한 곳에만 적으면 이 문제가 사라집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
     },
     {
       "id": "database-functional-dependency-005",
-      "type": "multi",
+      "type": "single",
       "difficulty": 2,
-      "tags": ["functional-dependency", "inference"],
+      "tags": [
+        "anomaly",
+        "insert"
+      ],
       "content": {
-        "prompt": "R(A, B, C, D)에서 A → B, B → C가 성립한다. 암스트롱 공리로 유도되는 종속을 모두 고르시오.",
-        "options": ["A → C", "A → BC", "C → A", "AD → BD"]
+        "prompt": "학생과 지도교수 정보를 한 시트에 적는다(한 줄 = 학생 한 명 + 그 학생의 교수, 기본키는 학번). 아직 맡은 학생이 없는 새 교수를 등록하려 할 때 생기는 문제는?",
+        "options": [
+          "학번 칸을 비울 수 없어서 교수만 따로 한 줄로 넣기 어렵다",
+          "교수 정보가 자동으로 두 번 저장된다",
+          "기존 학생들이 자동으로 삭제된다",
+          "아무 문제도 생기지 않는다"
+        ]
       },
-      "answer_key": { "indices": [0, 1, 3] },
-      "explanation": "이행 규칙으로 A → C, 합집합 규칙으로 A → BC, 증가 규칙으로 AD → BD가 나옵니다. C → A는 주어진 종속으로 유도할 수 없습니다. 함수 종속은 역방향이 자동으로 성립하지 않습니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Armstrong%27s_axioms"]
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "한 줄이 '학생'을 기준으로 만들어져 있어서, 학생 없이 교수만 넣을 자리가 없습니다. 이를 삽입 이상이라고 해요. 교수 시트를 따로 만들면 해결됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
     },
     {
       "id": "database-functional-dependency-006",
       "type": "single",
       "difficulty": 2,
-      "tags": ["anomaly", "delete"],
+      "tags": [
+        "anomaly",
+        "delete"
+      ],
       "content": {
-        "prompt": "enrollment(student_id, course_id, course_name, instructor) 테이블에서 어떤 강의의 유일한 수강생이 수강을 취소하면 생기는 문제는?",
+        "prompt": "학생 2가 OS 수강을 취소해서 아래 시트에서 그 줄을 지웠다. 그 바람에 함께 사라지는 정보는?",
+        "code": {
+          "language": "sql",
+          "source": "-- 수강 시트 (학번, 과목, 담당교수)\n-- (1, DB, 김교수)\n-- (2, OS, 이교수)"
+        },
         "options": [
-          "강의명과 담당 교수 정보까지 함께 사라진다 (삭제 이상)",
-          "같은 강의가 두 번 저장된다 (삽입 이상)",
-          "student_id가 NULL이 된다",
-          "아무 문제도 없다"
+          "OS 과목을 이교수가 가르친다는 정보",
+          "학생 1의 수강 기록",
+          "DB 과목의 담당교수 정보",
+          "아무것도 사라지지 않는다"
         ]
       },
-      "answer_key": { "index": 0 },
-      "explanation": "강의 정보(course_id → course_name, instructor)가 수강 사실에 묶여 있어서, 수강 행을 지우면 강의 자체의 정보도 잃습니다. 강의를 별도 테이블로 분리하면 해결됩니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Database_normalization"]
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "'OS는 이교수 담당'이라는 사실이 그 한 줄에만 적혀 있었기 때문에, 줄을 지우면 이 정보도 같이 사라집니다. 이를 삭제 이상이라고 해요. 학생 1의 줄은 그대로 남습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
     },
     {
       "id": "database-functional-dependency-007",
       "type": "ox",
-      "difficulty": 3,
-      "tags": ["functional-dependency", "trap"],
+      "difficulty": 2,
+      "tags": [
+        "anomaly",
+        "redundancy"
+      ],
       "content": {
-        "prompt": "현재 저장된 데이터에서 우연히 X 값이 같은 튜플들의 Y 값이 모두 같다면, X → Y 함수 종속이 성립한다고 선언해도 된다."
+        "prompt": "삽입·갱신·삭제 이상은 주로 표를 주제별로 잘게 나눠서 같은 내용을 한 번씩만 적을 때 생긴다."
       },
-      "answer_key": { "value": false },
-      "explanation": "함수 종속은 현재 데이터가 아니라 도메인의 의미(비즈니스 규칙)에서 나옵니다. 지금 데이터가 우연히 맞아도 규칙이 아니라면 나중에 위반 데이터가 들어와 설계가 깨집니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Functional_dependency"]
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "반대입니다. 이상 현상은 학생과 교수처럼 서로 다른 주제를 한 표에 섞어 같은 내용을 여러 번 적을 때 생겨요. 주제별로 표를 나눠 한 번만 적는 것(정규화)이 오히려 해결책입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
     },
     {
       "id": "database-functional-dependency-008",
       "type": "single",
-      "difficulty": 3,
-      "tags": ["functional-dependency", "closure"],
+      "difficulty": 2,
+      "tags": [
+        "functional-dependency",
+        "apply"
+      ],
       "content": {
-        "prompt": "R(A, B, C, D, E)에 A → B, B → C, CD → E가 있다. 속성 집합 {A, D}의 폐포(closure)는?",
-        "options": ["{A, B, C, D, E}", "{A, B, C, D}", "{A, B, D}", "{A, D, E}"]
+        "prompt": "상품 시트에서 상품코드는 상품마다 다르고, 가격이 같은 상품은 여러 개 있을 수 있다. 항상 성립하는 함수 종속은?",
+        "options": [
+          "상품코드 → 가격",
+          "가격 → 상품코드",
+          "가격 → 상품명",
+          "성립하는 것이 없다"
+        ]
       },
-      "answer_key": { "index": 0 },
-      "explanation": "A → B로 B, B → C로 C를 얻고, C와 D가 모두 있으므로 CD → E로 E까지 얻습니다. 폐포가 모든 속성을 포함하므로 {A, D}는 이 릴레이션의 슈퍼키입니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Functional_dependency#Closure"]
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "상품코드를 알면 그 상품의 가격이 하나로 정해지므로 상품코드 → 가격이 성립합니다. 반대로 500원짜리 상품이 여러 개일 수 있으니, 가격만으로는 상품코드나 상품명이 정해지지 않아요.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Functional_dependency"
+      ]
     }
   ]
 }

@@ -7,128 +7,200 @@
       "id": "os-mutex-semaphore-condvar-001",
       "type": "single",
       "difficulty": 1,
-      "tags": ["mutex-semaphore-condvar", "ownership"],
+      "tags": [
+        "mutex-semaphore-condvar",
+        "mutex"
+      ],
       "content": {
-        "prompt": "POSIX 기본 뮤텍스의 소유권에 대한 설명으로 옳은 것은?",
+        "prompt": "화장실 열쇠가 하나뿐인 카페에서는 열쇠를 가진 사람만 들어갈 수 있고, 나와서 열쇠를 돌려줘야 다음 사람이 쓸 수 있다. 이와 가장 비슷한 동기화 도구는?",
         "options": [
-          "어떤 스레드든 뮤텍스를 unlock해도 정상 동작이 보장된다",
-          "lock을 호출한 스레드가 unlock해야 하며, 다른 스레드의 unlock은 미정의 동작이다",
-          "뮤텍스는 소유자가 없고 카운터 값만 가진다",
-          "unlock은 반드시 프로세스의 메인 스레드만 호출해야 한다"
+          "조건 변수",
+          "뮤텍스(mutex)",
+          "스케줄러",
+          "캐시"
         ]
       },
-      "answer_key": { "index": 1 },
-      "explanation": "뮤텍스는 소유권이 있어 lock한 스레드가 unlock해야 하고, POSIX 기본 타입에서 다른 스레드가 unlock하면 미정의 동작입니다. 소유자 없이 카운터만 갖고 아무나 올릴 수 있는 쪽은 뮤텍스가 아니라 세마포어입니다.",
-      "refs": ["https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html", "https://en.wikipedia.org/wiki/Mutual_exclusion"]
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "뮤텍스는 열쇠 하나짜리 자물쇠처럼, 잠근 스레드 하나만 임계 구역에 들어가고 풀어야 다음 스레드가 들어갑니다. 조건 변수는 '어떤 일이 생길 때까지 기다렸다 깨우는' 용도라 다릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Mutual_exclusion",
+        "https://en.wikipedia.org/wiki/Lock_(computer_science)"
+      ]
     },
     {
       "id": "os-mutex-semaphore-condvar-002",
-      "type": "fill",
+      "type": "ox",
       "difficulty": 1,
-      "tags": ["mutex-semaphore-condvar", "semaphore"],
+      "tags": [
+        "mutex-semaphore-condvar",
+        "mutex"
+      ],
       "content": {
-        "prompt": "정수 카운터를 가지며 wait(P, down)로 감소시키고 signal(V, up)로 증가시키는 동기화 객체를 ___ 라고 한다.",
-        "hint": "Dijkstra가 제안, 철도 신호기에서 따온 이름"
+        "prompt": "뮤텍스는 여러 스레드가 동시에 임계 구역에 들어가도록 허용하는 도구이다."
       },
-      "answer_key": { "accepted": ["세마포어", "세마포", "semaphore", "카운팅 세마포어", "counting semaphore"] },
-      "explanation": "정답은 세마포어입니다. wait는 값이 0이면 대기하고 아니면 감소시키며, signal은 값을 올리고 대기자를 깨웁니다. 뮤텍스는 소유권이 있는 잠금이고, 모니터는 상호 배제와 조건 변수를 묶은 언어 수준 구조라 다릅니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Semaphore_(programming)", "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"]
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "뮤텍스(mutual exclusion, 상호 배제)는 이름처럼 한 번에 한 스레드만 들어가게 막는 도구입니다. 여러 개를 동시에 허용하고 싶을 때는 카운팅 세마포어를 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Mutual_exclusion"
+      ]
     },
     {
       "id": "os-mutex-semaphore-condvar-003",
-      "type": "ox",
+      "type": "single",
       "difficulty": 1,
-      "tags": ["mutex-semaphore-condvar", "counting-semaphore"],
+      "tags": [
+        "mutex-semaphore-condvar",
+        "counting-semaphore"
+      ],
       "content": {
-        "prompt": "카운팅 세마포어를 초기값 N으로 만들면 동시에 최대 N개의 스레드가 자원을 사용하도록 제한할 수 있다."
+        "prompt": "'남은 자리 2'로 시작한 카운팅 세마포어에 스레드 3개가 동시에 들어가려고 한다. 어떻게 될까?",
+        "options": [
+          "3개 모두 들어간다",
+          "1개만 들어가고 2개는 기다린다",
+          "2개는 들어가고, 1개는 누군가 나와서 자리가 날 때까지 기다린다",
+          "3개 모두 오류로 종료된다"
+        ]
       },
-      "answer_key": { "value": true },
-      "explanation": "초기값 N인 세마포어는 wait를 N번까지 통과시키고 N+1번째부터 대기시키므로 동시 사용자 수를 N으로 제한합니다. 세마포어가 항상 0 또는 1 값만 갖는다는 것은 이진 세마포어에만 해당하는 오답입니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Semaphore_(programming)"]
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "세마포어는 주차장 '남은 자리' 전광판처럼 들어갈 때마다 1씩 줄이고, 0이 되면 다음 스레드를 기다리게 합니다. 그래서 2개가 들어가고 세 번째는 한 자리가 비면 들어갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+      ]
     },
     {
       "id": "os-mutex-semaphore-condvar-004",
-      "type": "single",
-      "difficulty": 2,
-      "tags": ["mutex-semaphore-condvar", "binary-semaphore"],
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "mutex-semaphore-condvar",
+        "semaphore"
+      ],
       "content": {
-        "prompt": "이진 세마포어와 뮤텍스의 차이에 대한 설명으로 옳은 것은?",
-        "options": [
-          "둘은 완전히 같은 객체이며 이름만 다르다",
-          "뮤텍스는 값이 여러 개이고 이진 세마포어는 값이 0과 1뿐이라는 점만 다르다",
-          "이진 세마포어는 소유권이 없어 다른 스레드가 signal할 수 있으므로, 스레드 간 완료 알림 같은 신호 전달에 쓸 수 있다",
-          "이진 세마포어는 한 스레드가 wait와 signal을 모두 호출해야만 동작한다"
+        "prompt": "정수 카운터로 '남은 자리 수'를 세면서, 들어갈 때 1 줄이고 나올 때 1 늘려 동시 사용 수를 제한하는 동기화 도구를 ___ 라고 한다.",
+        "hint": "영어로 semaphore, 철도 신호기에서 온 이름"
+      },
+      "answer_key": {
+        "accepted": [
+          "세마포어",
+          "semaphore",
+          "세마포",
+          "카운팅 세마포어",
+          "counting semaphore"
         ]
       },
-      "answer_key": { "index": 2 },
-      "explanation": "세마포어는 소유권 개념이 없어 한 스레드가 wait로 기다리고 다른 스레드가 signal로 깨우는 신호 전달에 쓸 수 있습니다. 뮤텍스는 lock한 스레드만 unlock해야 하므로 두 객체는 같지 않고 용도도 다릅니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Semaphore_(programming)", "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"]
+      "explanation": "정답은 세마포어(semaphore)입니다. 카운터가 0이면 자리가 없다는 뜻이라 새로 들어오려는 스레드는 누군가 나와서 카운터를 늘려 줄 때까지 기다립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+      ]
     },
     {
       "id": "os-mutex-semaphore-condvar-005",
       "type": "single",
       "difficulty": 2,
-      "tags": ["mutex-semaphore-condvar", "condition-variable"],
+      "tags": [
+        "mutex-semaphore-condvar",
+        "condition-variable"
+      ],
       "content": {
-        "prompt": "pthread_cond_wait(&cv, &mu)를 호출했을 때의 동작으로 옳은 것은?",
+        "prompt": "조건 변수(condition variable)의 용도로 옳은 것은?",
         "options": [
-          "뮤텍스를 쥔 채로 잠들고, 깨어난 뒤에는 뮤텍스를 다시 잠글 필요가 없다",
-          "뮤텍스를 푸는 것과 잠드는 것을 원자적으로 수행하고, 깨어나 반환할 때는 뮤텍스를 다시 잠근 상태가 된다",
-          "뮤텍스를 푼 뒤 잠들지만 두 동작 사이에 시그널이 오면 놓칠 수 있다",
-          "뮤텍스와 무관하게 대기하며 mu는 사용되지 않는다"
+          "동시에 들어갈 수 있는 스레드 수를 센다",
+          "변수 값을 디스크에 영구 저장한다",
+          "CPU 실행 순서를 정하는 스케줄러 역할을 한다",
+          "어떤 조건(예: 새 주문이 들어옴)이 될 때까지 스레드를 잠재웠다가, 조건이 바뀌면 깨운다"
         ]
       },
-      "answer_key": { "index": 1 },
-      "explanation": "wait는 뮤텍스 해제와 잠들기를 원자적으로 처리해 그 사이에 오는 signal을 놓치는 잃어버린 wakeup을 막고, 반환 때는 뮤텍스를 다시 잠가 줍니다. 뮤텍스를 쥔 채 잠들면 다른 스레드가 조건을 바꿀 수 없어 영원히 대기합니다.",
-      "refs": ["https://man7.org/linux/man-pages/man3/pthread_cond_wait.3p.html", "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"]
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "요리사 스레드가 '주문이 들어올 때까지' 잠들어 있다가, 주문 담당 스레드가 주문을 넣고 신호를 보내면 깨어나는 식으로 씁니다. 동시 사용 수를 세는 것은 세마포어의 역할입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf",
+        "https://en.wikipedia.org/wiki/Monitor_(synchronization)"
+      ]
     },
     {
       "id": "os-mutex-semaphore-condvar-006",
-      "type": "multi",
+      "type": "single",
       "difficulty": 2,
-      "tags": ["mutex-semaphore-condvar", "tool-selection"],
+      "tags": [
+        "mutex-semaphore-condvar",
+        "tool-selection"
+      ],
       "content": {
-        "prompt": "상황에 맞는 동기화 도구를 짝지은 것 중 올바른 것을 모두 고르시오.",
+        "prompt": "DB 연결을 동시에 최대 5개까지만 쓰도록 제한하고 싶다. 가장 알맞은 도구는?",
         "options": [
-          "공유 변수를 한 번에 한 스레드만 수정하게 보호 → 뮤텍스",
-          "동시 접속 커넥션을 N개로 제한 → 초기값 N의 카운팅 세마포어",
-          "큐가 비어 있지 않을 때까지 대기 → 조건 변수(뮤텍스와 함께)",
-          "큐 대기 조건 변수를 뮤텍스 없이 단독으로 사용"
+          "초기값이 5인 카운팅 세마포어",
+          "뮤텍스 하나",
+          "조건 변수 하나만 단독으로",
+          "아무 도구도 필요 없다"
         ]
       },
-      "answer_key": { "indices": [0, 1, 2] },
-      "explanation": "공유 변수 보호는 뮤텍스, 동시 N개 제한은 카운팅 세마포어, 조건이 참이 되길 기다리는 일은 조건 변수가 맞습니다. 조건 변수는 조건을 검사하는 공유 상태를 보호할 뮤텍스와 반드시 함께 써야 하므로 단독 사용은 틀립니다.",
-      "refs": ["https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf", "https://man7.org/linux/man-pages/man3/pthread_cond_wait.3p.html"]
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "'최대 N개까지 동시에'는 남은 자리를 세는 카운팅 세마포어가 딱 맞습니다. 뮤텍스 하나로는 한 번에 1개만 허용되어 연결 5개를 함께 쓸 수 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+      ]
     },
     {
       "id": "os-mutex-semaphore-condvar-007",
-      "type": "single",
-      "difficulty": 3,
-      "tags": ["mutex-semaphore-condvar", "spurious-wakeup"],
+      "type": "multi",
+      "difficulty": 2,
+      "tags": [
+        "mutex-semaphore-condvar",
+        "tool-selection"
+      ],
       "content": {
-        "prompt": "조건 변수 대기는 if가 아니라 while 루프로 감싸 조건을 다시 검사해야 한다. 그 이유로 가장 적절한 것은?",
+        "prompt": "상황과 동기화 도구의 짝이 알맞은 것을 모두 고르시오.",
         "options": [
-          "wait가 반환될 때 뮤텍스가 잠겨 있지 않아서 조건을 다시 잠가야 하기 때문이다",
-          "가짜 깨어남(spurious wakeup)이 있고, 깨어난 시점에 다른 스레드가 이미 조건을 바꿨을 수 있기 때문이다",
-          "while이 if보다 항상 CPU를 덜 사용하기 때문이다",
-          "signal이 호출되면 조건이 반드시 참이 됨을 보장하기 때문이다"
+          "공유 통장 잔액은 한 번에 한 명만 고쳐야 한다 → 뮤텍스",
+          "프린터 3대를 최대 3명까지 동시에 쓰게 한다 → 뮤텍스 하나",
+          "프린터 3대를 최대 3명까지 동시에 쓰게 한다 → 초기값 3인 카운팅 세마포어",
+          "남은 자리 수를 센다 → 조건 변수"
         ]
       },
-      "answer_key": { "index": 1 },
-      "explanation": "wait가 반환돼도 조건이 참이라는 보장은 없습니다. 가짜 깨어남이 있고 signal과 실행 사이에 다른 스레드가 조건을 바꿀 수 있어서 while로 재검사해야 합니다. if로 충분하다고 보는 것은 이를 무시한 오답입니다.",
-      "refs": ["https://man7.org/linux/man-pages/man3/pthread_cond_wait.3p.html", "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"]
+      "answer_key": {
+        "indices": [
+          0,
+          2
+        ]
+      },
+      "explanation": "한 명만 들어가야 하면 뮤텍스, 최대 N명까지면 카운팅 세마포어가 맞습니다. 뮤텍스 하나로는 1명만 허용되고, 자리 수를 세는 것은 조건 변수가 아니라 세마포어의 일입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://en.wikipedia.org/wiki/Mutual_exclusion"
+      ]
     },
     {
       "id": "os-mutex-semaphore-condvar-008",
       "type": "ox",
-      "difficulty": 3,
-      "tags": ["mutex-semaphore-condvar", "spinlock"],
+      "difficulty": 2,
+      "tags": [
+        "mutex-semaphore-condvar",
+        "ownership"
+      ],
       "content": {
-        "prompt": "스핀락은 임계 구역이 매우 짧고 멀티코어일 때 유리하지만, 단일 코어에서 선점 없이 스핀하면 락 보유자가 실행될 수 없어 CPU 시간만 낭비한다."
+        "prompt": "뮤텍스는 잠근 스레드가 직접 풀어야 하는 '주인' 개념이 있지만, 세마포어는 다른 스레드가 카운터를 늘려(signal) 줄 수도 있다."
       },
-      "answer_key": { "value": true },
-      "explanation": "멀티코어에서는 보유자가 다른 코어에서 곧 락을 풀기 때문에 짧게 스핀하는 쪽이 잠들고 깨는 비용보다 쌉니다. 단일 코어에서는 스핀하는 동안 보유자가 CPU를 못 받아 낭비입니다. 스핀락이 항상 뮤텍스보다 빠르다는 말은 틀립니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Spinlock", "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf"]
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "뮤텍스는 열쇠를 가져간 사람이 직접 돌려주는 구조이고, 세마포어는 주차장 전광판처럼 누구든 '한 자리 비었음'을 알릴 수 있습니다. 그래서 세마포어는 한 스레드가 다른 스레드에게 신호를 보내는 데도 쓰입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html"
+      ]
     }
   ]
 }

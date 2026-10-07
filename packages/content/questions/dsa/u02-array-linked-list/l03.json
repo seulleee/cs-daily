@@ -12,60 +12,62 @@
         "size-capacity"
       ],
       "content": {
-        "prompt": "동적 배열의 size와 capacity에 대한 설명으로 옳은 것은?",
+        "prompt": "동적 배열(꽉 차면 스스로 커지는 배열)에는 '크기(size)'와 '용량(capacity)'이 있습니다. 버스로 비유하면 알맞은 것은?",
         "options": [
-          "size와 capacity는 항상 같은 값이다",
-          "size는 저장된 원소 수, capacity는 재할당 없이 담을 수 있는 칸 수이며 항상 size ≤ capacity이다",
-          "capacity는 저장된 원소 수, size는 할당된 칸 수이다",
-          "size가 capacity보다 클 수 있어 그때 재할당이 일어난다"
+          "크기 = 좌석 수, 용량 = 지금 탄 승객 수",
+          "크기 = 지금 탄 승객 수, 용량 = 좌석 수",
+          "크기와 용량은 항상 같다",
+          "크기는 항상 용량보다 크다"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "size는 현재 원소 수이고 capacity는 이미 할당된 칸 수입니다. 둘이 같아져 꽉 찼을 때 다음 삽입에서 더 큰 배열로 재할당합니다. size가 capacity를 넘는 일은 없고, 두 값이 항상 같으면 확장 정책 자체가 필요 없습니다.",
+      "explanation": "크기는 실제로 들어 있는 원소 수, 용량은 지금 확보해 둔 자리 수입니다. 승객이 좌석보다 많을 수 없듯 크기는 용량을 넘지 않고, 꽉 차면 더 큰 버스로 갈아탑니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Dynamic_array"
       ]
     },
     {
       "id": "dsa-dynamic-array-002",
-      "type": "fill",
+      "type": "ox",
       "difficulty": 1,
       "tags": [
         "dynamic-array",
         "reallocation"
       ],
       "content": {
-        "prompt": "용량이 가득 찬 동적 배열(원소 n개)에 push할 때, 새 배열 할당과 원소 복사를 하는 그 1회의 비용은 O(___)이다. (n에 대한 식)",
-        "hint": "원소 수"
+        "prompt": "자리가 꽉 찬 동적 배열에 원소를 하나 더 넣으면, 더 큰 새 공간을 마련한 뒤 기존 원소를 모두 옮겨 담는다."
       },
       "answer_key": {
-        "accepted": [
-          "n",
-          "O(n)"
-        ]
+        "value": true
       },
-      "explanation": "정답은 n입니다. 기존 원소 n개를 새 배열로 모두 복사해야 하므로 선형 시간입니다. 평소 push가 O(1)인 것은 이런 재할당이 드물기 때문이고, 재할당이 일어나는 그 한 번의 push는 O(1)이 아닙니다.",
+      "explanation": "배열은 붙어 있어야 해서 그 자리에서 늘릴 수 없는 경우가 많으므로, 더 큰 공간을 새로 잡고 전부 옮깁니다. 이사 갈 때 짐을 모두 옮기는 것과 같아요.",
       "refs": [
         "https://en.wikipedia.org/wiki/Dynamic_array"
       ]
     },
     {
       "id": "dsa-dynamic-array-003",
-      "type": "ox",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "dynamic-array",
-        "doubling"
+        "reallocation"
       ],
       "content": {
-        "prompt": "초기 용량 1에서 시작해 용량을 2배씩 늘리는 동적 배열에 n번 push할 때(n은 2의 거듭제곱), 확장 시 복사한 원소의 총합은 n보다 작다."
+        "prompt": "원소 100개로 꽉 찬 동적 배열에 하나를 더 넣습니다. 이 한 번의 추가에서 새 공간으로 옮겨야 하는 기존 원소는 몇 개일까요?",
+        "options": [
+          "0개",
+          "1개",
+          "100개",
+          "200개"
+        ]
       },
       "answer_key": {
-        "value": true
+        "index": 2
       },
-      "explanation": "복사 횟수는 1 + 2 + 4 + ... + n/2 = n − 1이라 n보다 작습니다. 확장 때마다 모든 원소를 복사하지만 확장 간격이 두 배씩 벌어지므로 총합이 n²이 아니라 O(n)이고, 이것이 상각 O(1)의 근거입니다.",
+      "explanation": "새 공간으로 이사하려면 기존 원소 100개를 전부 옮겨야 합니다. 그래서 확장이 일어나는 그 한 번은 원소 수만큼 오래 걸려요. 다만 이런 일은 가끔만 일어납니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Dynamic_array",
         "https://en.wikipedia.org/wiki/Amortized_analysis"
@@ -73,25 +75,19 @@
     },
     {
       "id": "dsa-dynamic-array-004",
-      "type": "single",
-      "difficulty": 2,
+      "type": "ox",
+      "difficulty": 1,
       "tags": [
         "dynamic-array",
-        "reallocation-count"
+        "push"
       ],
       "content": {
-        "prompt": "용량 1에서 시작해 가득 차면 2배로 늘리는 동적 배열에 8개를 push할 때 재할당은 몇 번 일어나는가?",
-        "options": [
-          "8번",
-          "7번",
-          "3번",
-          "4번"
-        ]
+        "prompt": "동적 배열에 원소를 추가할 때는 빈자리가 있어도 매번 전체 원소를 새 공간으로 옮긴다."
       },
       "answer_key": {
-        "index": 2
+        "value": false
       },
-      "explanation": "2번째 push에서 1→2, 3번째에서 2→4, 5번째에서 4→8로 총 3번 재할당합니다. 8번째 push는 용량 8 안에 들어가 재할당이 없습니다. 매 push마다 재할당한다고 세면 8번이라는 오답이 나옵니다.",
+      "explanation": "빈자리가 있으면 그냥 다음 칸에 넣기만 하면 되어 매우 빠릅니다. 전체를 옮기는 건 자리가 꽉 찼을 때만이에요.",
       "refs": [
         "https://en.wikipedia.org/wiki/Dynamic_array"
       ]
@@ -102,49 +98,46 @@
       "difficulty": 2,
       "tags": [
         "dynamic-array",
-        "constant-increment"
+        "reallocation-count"
       ],
       "content": {
-        "prompt": "가득 찰 때마다 용량을 +10칸씩만 늘리는 동적 배열에 n번 push하면 총 복사 비용은?",
+        "prompt": "용량 1에서 시작해 꽉 차면 용량을 2배로 늘리는 동적 배열에 원소 8개를 넣습니다. 확장(이사)은 몇 번 일어날까요?",
         "options": [
-          "Θ(n²): 재할당이 약 n/10번이고 복사량이 10, 20, 30, ...으로 늘어 합이 n²에 비례한다",
-          "Θ(n): 재할당 한 번의 비용이 상수라서 총합도 선형이다",
-          "Θ(n log n): 복사량이 로그로 늘어난다",
-          "Θ(1): 상각하면 재할당 비용이 사라진다"
+          "1번",
+          "3번",
+          "7번",
+          "8번"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 1
       },
-      "explanation": "상수 증분은 재할당 횟수가 n/10으로 n에 비례하고, k번째 재할당이 약 10k개를 복사하므로 합이 n²/20 정도입니다. 상수 증분(+k)은 총 O(n²)이어서 push당 상각 O(n)이며, 기하급수적 확장만 상각 O(1)을 줍니다.",
+      "explanation": "용량이 1 → 2 → 4 → 8로 커지므로 확장은 3번입니다. 2배씩 늘리면 확장 횟수가 아주 천천히 늘어나요. 7은 확장 때 옮긴 원소 수의 합(1+2+4)입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Dynamic_array"
       ]
     },
     {
       "id": "dsa-dynamic-array-006",
-      "type": "multi",
+      "type": "single",
       "difficulty": 2,
       "tags": [
         "dynamic-array",
-        "growth-policy"
+        "amortized"
       ],
       "content": {
-        "prompt": "push의 상각 시간이 O(1)로 유지되는 성장 정책을 모두 고르시오. (초기 용량은 작은 상수, n은 충분히 큼)",
+        "prompt": "앞 문제처럼 8개를 넣는 동안 확장 때 옮긴 원소는 1 + 2 + 4 = 7개입니다. 원소 하나를 넣을 때 평균적으로 옮긴 개수는?",
         "options": [
-          "가득 찰 때마다 용량 +1000",
-          "가득 찰 때마다 용량 ×1.5",
-          "가득 찰 때마다 용량 +1",
-          "가득 찰 때마다 용량 ×3"
+          "약 4개",
+          "약 8개",
+          "1개 미만(약 0.9개)",
+          "약 64개"
         ]
       },
       "answer_key": {
-        "indices": [
-          1,
-          3
-        ]
+        "index": 2
       },
-      "explanation": "성장 계수가 1보다 큰 상수이면 복사량이 등비수열이라 합이 O(n)이어서 상각 O(1)입니다. 2배가 필수는 아닙니다. +1이나 +1000처럼 상수만큼 늘리면 총 복사가 n²에 비례해 상각 O(1)이 깨집니다.",
+      "explanation": "7개를 8번에 나누면 약 0.9개로, 한 번당 1개도 안 됩니다. 데이터가 커져도 이 평균은 일정하게 작아서 '추가는 상각 O(1)'이라고 해요. 가끔 큰 이사가 있어도 나눠 보면 싸다는 뜻입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Dynamic_array"
       ]
@@ -152,24 +145,24 @@
     {
       "id": "dsa-dynamic-array-007",
       "type": "single",
-      "difficulty": 3,
+      "difficulty": 2,
       "tags": [
         "dynamic-array",
-        "growth-factor"
+        "constant-increment"
       ],
       "content": {
-        "prompt": "실제 구현의 성장 계수에 대한 설명으로 옳은 것은?",
+        "prompt": "꽉 찰 때마다 2배가 아니라 매번 10칸씩만 늘리는 동적 배열이 있습니다. 데이터가 아주 많아질수록 원소 하나를 넣는 평균 비용은?",
         "options": [
-          "모든 언어의 동적 배열은 정확히 2배로만 늘린다",
-          "Java ArrayList는 약 1.5배, libstdc++의 std::vector는 2배로 늘리며, 계수가 작을수록 낭비 메모리는 줄고 재할당은 늘어난다",
-          "성장 계수가 클수록 재할당 횟수와 낭비 메모리가 모두 줄어든다",
-          "Java ArrayList는 +1씩 늘리므로 push가 상각 O(1)이 아니다"
+          "2배 확장처럼 일정하게 작다",
+          "점점 0에 가까워진다",
+          "확장이 일어나지 않아 비용이 없다",
+          "데이터가 많을수록 점점 커진다"
         ]
       },
       "answer_key": {
-        "index": 1
+        "index": 3
       },
-      "explanation": "ArrayList는 oldCapacity + (oldCapacity >> 1)로 약 1.5배, libstdc++ vector는 2배입니다. 계수가 크면 재할당은 줄지만 쓰지 않는 용량이 늘고, 작으면 반대입니다. 구현마다 계수가 다르며 둘 다 1보다 큰 상수라 상각 O(1)입니다.",
+      "explanation": "10칸씩만 늘리면 10번마다 전체를 옮겨야 해서, 데이터가 많을수록 이사가 잦고 매번 옮길 양도 큽니다. 그래서 평균 비용이 데이터 양에 비례해 커져요. 2배씩 늘려야 평균이 일정하게 유지됩니다.",
       "refs": [
         "https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html",
         "https://en.wikipedia.org/wiki/Dynamic_array"
@@ -178,18 +171,18 @@
     {
       "id": "dsa-dynamic-array-008",
       "type": "ox",
-      "difficulty": 3,
+      "difficulty": 2,
       "tags": [
         "dynamic-array",
-        "shrinking"
+        "memory-tradeoff"
       ],
       "content": {
-        "prompt": "동적 배열은 pop으로 size가 capacity의 1/2이 되는 순간 즉시 배열을 절반으로 줄여야 상각 O(1)이 유지된다."
+        "prompt": "용량을 2배씩 늘리는 방식은 확장 직후 빈자리가 많아, 메모리를 어느 정도 남겨 두는(낭비하는) 대가가 있다."
       },
       "answer_key": {
-        "value": false
+        "value": true
       },
-      "explanation": "1/2 경계에서 줄이면 방금 확장했다가 pop하고 다시 push하는 패턴에서 매번 재할당이 일어나 연산당 O(n)이 됩니다. 표준 해법은 size가 capacity의 1/4로 떨어졌을 때 절반으로 줄여 확장·축소 임계 사이에 여유를 두는 것입니다.",
+      "explanation": "확장 직후에는 용량의 절반 가까이가 비어 있을 수 있습니다. 대신 이사를 드물게 해서 추가가 평균적으로 빨라지니, 메모리를 조금 써서 속도를 얻는 셈이에요.",
       "refs": [
         "https://en.wikipedia.org/wiki/Dynamic_array"
       ]

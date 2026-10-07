@@ -7,128 +7,192 @@
       "id": "os-priority-mlfq-001",
       "type": "single",
       "difficulty": 1,
-      "tags": ["priority-mlfq", "starvation"],
+      "tags": [
+        "priority-mlfq",
+        "priority"
+      ],
       "content": {
-        "prompt": "우선순위 스케줄링에서 높은 우선순위 프로세스가 계속 들어와 낮은 우선순위 프로세스가 오랫동안 CPU를 받지 못하는 문제는?",
+        "prompt": "응급실에서 위급한 환자부터 진료하듯, 작업마다 중요도를 매겨 높은 작업부터 CPU를 주는 스케줄링은?",
         "options": [
-          "데드락(deadlock)",
-          "경쟁 조건(race condition)",
-          "기아(starvation)",
-          "스래싱(thrashing)"
+          "선착순(FCFS) 스케줄링",
+          "우선순위 스케줄링",
+          "라운드 로빈 스케줄링",
+          "무작위 스케줄링"
         ]
       },
-      "answer_key": { "index": 2 },
-      "explanation": "낮은 우선순위 프로세스가 무한정 실행되지 못하는 상태가 기아입니다. 데드락은 서로가 가진 자원을 기다리며 아무도 진행하지 못하는 상태라 다르며, 기아에서는 시스템 전체가 멈추지 않고 일부 프로세스만 밀립니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Starvation_(computer_science)", "https://en.wikipedia.org/wiki/Aging_(scheduling)"]
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "작업마다 우선순위를 정해 높은 것부터 실행하는 방식이 우선순위 스케줄링입니다. 선착순은 중요도와 상관없이 도착 순서만 봅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
     },
     {
       "id": "os-priority-mlfq-002",
-      "type": "fill",
+      "type": "single",
       "difficulty": 1,
-      "tags": ["priority-mlfq", "aging"],
+      "tags": [
+        "priority-mlfq",
+        "starvation"
+      ],
       "content": {
-        "prompt": "오래 기다린 프로세스의 우선순위를 시간이 지남에 따라 점차 올려 기아를 막는 기법을 ___ 이라고 한다.",
-        "hint": "'나이를 먹는다'는 뜻에서 온 이름"
+        "prompt": "계산대에 VIP 손님이 끊임없이 새로 와서, 일반 손님이 아무리 기다려도 계산을 받지 못하고 있다. 스케줄링에서 이런 문제를 무엇이라 할까?",
+        "options": [
+          "기아(starvation)",
+          "호위 효과",
+          "오버플로",
+          "컴파일 오류"
+        ]
       },
-      "answer_key": { "accepted": ["에이징", "aging", "노화", "에이징 기법"] },
-      "explanation": "에이징은 대기 시간에 비례해 우선순위를 올려 결국 실행 기회를 주는 기법입니다. 선점은 실행 중인 프로세스를 빼앗는 방식이고, MLFQ의 부스트는 모든 작업을 한꺼번에 최상위로 올리는 비슷한 목적의 별개 규칙입니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Aging_(scheduling)"]
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "우선순위가 낮은 작업이 높은 작업에 계속 밀려 CPU를 오랫동안 받지 못하는 것을 기아라고 합니다. 호위 효과는 긴 작업 하나 뒤에 짧은 작업들이 줄줄이 기다리는 FCFS의 문제입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
     },
     {
       "id": "os-priority-mlfq-003",
-      "type": "ox",
+      "type": "fill",
       "difficulty": 1,
-      "tags": ["priority-mlfq", "mlq"],
+      "tags": [
+        "priority-mlfq",
+        "aging"
+      ],
       "content": {
-        "prompt": "MLFQ(다단계 피드백 큐)는 큐가 여러 개이고 프로세스가 큐 사이를 이동할 수 있다는 점에서, 프로세스가 한 큐에 고정되는 다단계 큐(MLQ)와 다르다."
+        "prompt": "오래 기다린 작업의 우선순위를 시간이 지날수록 조금씩 올려 기아를 막는 기법을 ___ 이라고 한다.",
+        "hint": "'나이를 먹는다'는 뜻의 영어 단어를 한글로"
       },
-      "answer_key": { "value": true },
-      "explanation": "MLQ는 프로세스를 성격에 따라 특정 큐에 고정해 배정하지만, MLFQ는 실행 행동(할당량 소진 여부 등)에 따라 큐를 오르내립니다. 둘을 같은 것으로 보면 피드백, 즉 이동이라는 핵심 차이를 놓치게 됩니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Multilevel_feedback_queue", "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"]
+      "answer_key": {
+        "accepted": [
+          "에이징",
+          "aging",
+          "ageing",
+          "에이징 기법",
+          "노화"
+        ]
+      },
+      "explanation": "정답은 에이징(aging)입니다. 오래 기다린 일반 손님에게 점점 VIP 대우를 해 주는 것과 같아서, 결국 언젠가는 차례가 돌아오게 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Aging_(scheduling)"
+      ]
     },
     {
       "id": "os-priority-mlfq-004",
-      "type": "single",
-      "difficulty": 2,
-      "tags": ["priority-mlfq", "mlfq-rules"],
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "priority-mlfq",
+        "starvation"
+      ],
       "content": {
-        "prompt": "OSTEP의 MLFQ 기본 규칙에서 CPU만 오래 쓰는 작업이 시간이 지나며 거치는 과정으로 옳은 것은?",
-        "options": [
-          "최하위 큐에서 시작해 실행할수록 한 단계씩 위 큐로 올라간다",
-          "최상위 큐에서 시작해 각 단계의 할당량을 다 쓸 때마다 한 단계씩 아래 큐로 내려간다",
-          "처음부터 실행 시간을 예측해 알맞은 큐에 배정되고 그 뒤로 이동하지 않는다",
-          "최상위 큐에서 시작하며 할당량을 다 써도 계속 같은 큐에 머문다"
-        ]
+        "prompt": "우선순위 스케줄링에서는 낮은 우선순위 작업도 도착 순서대로 차례가 오므로 기아가 생기지 않는다."
       },
-      "answer_key": { "index": 1 },
-      "explanation": "새 작업은 최상위 큐에 들어가고 그 단계의 할당량을 소진하면 강등되므로, 긴 CPU 작업은 점차 아래 큐로 내려갑니다. 새 작업을 최하위에 넣거나 고정 배정하는 것은 MLFQ 규칙이 아닙니다.",
-      "refs": ["https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"]
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "우선순위 스케줄링은 도착 순서가 아니라 우선순위로 고르기 때문에, 높은 작업이 계속 들어오면 낮은 작업은 계속 밀릴 수 있습니다. 그래서 에이징 같은 보완책이 필요합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)",
+        "https://en.wikipedia.org/wiki/Aging_(scheduling)"
+      ]
     },
     {
       "id": "os-priority-mlfq-005",
       "type": "single",
       "difficulty": 2,
-      "tags": ["priority-mlfq", "interactive"],
+      "tags": [
+        "priority-mlfq",
+        "mlfq"
+      ],
       "content": {
-        "prompt": "짧은 CPU 버스트 뒤 곧바로 I/O를 기다리는 대화형 작업이 MLFQ에서 상위 큐에 머무는 이유로 옳은 것은?",
+        "prompt": "MLFQ(다단계 피드백 큐) 스케줄링의 특징으로 옳은 것은?",
         "options": [
-          "I/O를 하는 작업은 커널이 항상 최상위 큐에 고정하기 때문이다",
-          "대화형 작업은 타이머 인터럽트의 영향을 받지 않기 때문이다",
-          "모든 작업은 결국 최하위 큐로 내려가는데 대화형 작업만 시간이 오래 걸리기 때문이다",
-          "할당량을 다 쓰기 전에 CPU를 놓아 강등 조건에 걸리지 않기 때문이다"
+          "줄(큐)이 하나뿐이고 도착 순서대로만 처리한다",
+          "작업은 처음 배정된 줄에 끝까지 고정된다",
+          "우선순위가 다른 여러 줄을 두고, 작업이 CPU를 쓰는 모습에 따라 줄 사이를 오르내리게 한다",
+          "가장 늦게 온 작업을 항상 맨 위 줄에 둔다"
         ]
       },
-      "answer_key": { "index": 3 },
-      "explanation": "대화형 작업은 할당량을 소진하기 전에 I/O로 CPU를 양보하므로 강등되지 않고 상위 큐에서 빠르게 응답합니다. 모든 작업이 결국 최하위로 간다는 설명은 틀리며, 커널이 I/O 작업을 고정 배정하는 규칙도 없습니다.",
-      "refs": ["https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"]
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "MLFQ는 우선순위별로 여러 줄을 두고, 작업의 행동을 지켜보며(피드백) 위아래 줄로 옮깁니다. 처음 줄에 고정되는 방식은 '피드백'이 없는 다단계 큐(MLQ)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Multilevel_feedback_queue",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
+      ]
     },
     {
       "id": "os-priority-mlfq-006",
-      "type": "multi",
+      "type": "single",
       "difficulty": 2,
-      "tags": ["priority-mlfq", "priority-boost"],
+      "tags": [
+        "priority-mlfq",
+        "mlfq-rules"
+      ],
       "content": {
-        "prompt": "MLFQ에서 주기적으로 모든 작업을 최상위 큐로 올리는 우선순위 부스트(priority boost) 규칙이 해결하는 문제를 모두 고르시오.",
+        "prompt": "MLFQ에서 한 작업이 자기 줄에서 받은 사용 시간(할당량)을 다 쓸 만큼 CPU를 오래 붙잡으면 어떻게 될까?",
         "options": [
-          "하위 큐 작업의 기아",
-          "CPU 집약적이던 작업이 대화형으로 바뀐 경우의 반영",
-          "프로세스 사이의 데드락 해소",
-          "메모리 부족으로 인한 페이지 폴트 감소"
+          "더 높은 우선순위 줄로 올라간다",
+          "한 단계 낮은 우선순위 줄로 내려간다",
+          "즉시 강제로 종료된다",
+          "아무 변화 없이 같은 줄에 머문다"
         ]
       },
-      "answer_key": { "indices": [0, 1] },
-      "explanation": "부스트는 하위 큐에 갇힌 작업이 다시 실행될 기회를 주어 기아를 막고, 성격이 바뀐 작업이 상위 큐에서 다시 평가받게 합니다. 데드락은 자원 대기 문제이고 페이지 폴트는 메모리 문제라 스케줄링 규칙과 무관합니다.",
-      "refs": ["https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"]
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "MLFQ는 CPU를 오래 쓰는 작업을 '급하지 않은 긴 작업'으로 보고 낮은 줄로 내립니다. 그래야 짧고 급한 작업들이 위쪽 줄에서 빨리 처리됩니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
+      ]
     },
     {
       "id": "os-priority-mlfq-007",
       "type": "single",
-      "difficulty": 3,
-      "tags": ["priority-mlfq", "gaming"],
+      "difficulty": 2,
+      "tags": [
+        "priority-mlfq",
+        "interactive"
+      ],
       "content": {
-        "prompt": "할당량의 99%를 쓰고 I/O를 살짝 호출해 상위 큐에 머무는 '게이밍'을 막기 위해 OSTEP이 개정한 MLFQ 강등 규칙은?",
+        "prompt": "키보드 입력을 기다리며 CPU를 아주 잠깐씩만 쓰는 대화형 작업이 MLFQ에서 높은 줄에 머무는 이유는?",
         "options": [
-          "I/O를 호출한 작업은 무조건 최상위 큐에 고정한다",
-          "해당 단계에서 CPU를 놓은 횟수를 세어 많이 놓으면 강등한다",
-          "CPU를 놓은 횟수와 상관없이 그 단계에서의 누적 CPU 사용 시간이 할당량을 넘으면 강등한다",
-          "I/O를 호출한 작업은 곧바로 최하위 큐로 내린다"
+          "대화형 작업은 처음부터 끝까지 최상위 줄에 고정되기 때문에",
+          "CPU를 조금씩만 써서 줄마다 정해진 할당량을 다 쓰지 않으므로 아래로 내려가지 않기 때문에",
+          "대화형 작업은 스케줄러를 거치지 않고 실행되기 때문에",
+          "입력을 기다리는 동안 CPU를 계속 차지하고 있기 때문에"
         ]
       },
-      "answer_key": { "index": 2 },
-      "explanation": "개정 규칙은 CPU를 몇 번 놓았는지와 무관하게 한 단계에서 누적으로 할당량을 다 쓰면 강등하는 것입니다. I/O 호출만으로 우선순위를 유지해 주면 게이밍이 가능하고, I/O 호출 시 최하위로 내리는 것은 대화형 작업을 벌주는 반대 방향입니다.",
-      "refs": ["https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"]
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "MLFQ는 할당량을 다 쓴 작업만 내려보내므로, 잠깐 쓰고 곧 입력을 기다리는 작업은 높은 줄에 남아 빠르게 반응할 수 있습니다. 입력을 기다리는 동안에는 CPU를 내려놓으므로 마지막 보기는 틀립니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
+      ]
     },
     {
       "id": "os-priority-mlfq-008",
       "type": "ox",
-      "difficulty": 3,
-      "tags": ["priority-mlfq", "nice"],
+      "difficulty": 2,
+      "tags": [
+        "priority-mlfq",
+        "priority-boost"
+      ],
       "content": {
-        "prompt": "우선순위 숫자의 크고 작음이 높은 우선순위를 뜻하는 방향은 시스템마다 다르다. 예를 들어 Linux의 nice 값은 −20이 가장 높은 우선순위이고, 교과서 예제는 대개 작은 수를 높은 우선순위로 쓴다."
+        "prompt": "MLFQ가 일정 시간마다 모든 작업을 맨 위 줄로 올려 주는 것(우선순위 부스트)은 아래 줄에 있는 작업의 기아를 막는 데 도움이 된다."
       },
-      "answer_key": { "value": true },
-      "explanation": "숫자 방향은 관례일 뿐이어서 시스템마다 다릅니다. Linux nice는 −20이 가장 높고 19가 가장 낮지만, 어떤 시스템은 큰 수가 높습니다. 한 관례를 보편 규칙으로 아는 것은 오답이므로 문제에서는 관례를 명시해야 합니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Nice_(Unix)"]
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "아래 줄 작업도 주기적으로 맨 위로 올라가 CPU를 받을 기회가 생기므로 끝없이 밀리지 않습니다. 오래 기다린 작업을 올려 주는 에이징과 비슷한 생각입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
+      ]
     }
   ]
 }

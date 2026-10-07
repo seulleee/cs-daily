@@ -7,128 +7,195 @@
       "id": "os-thread-sharing-001",
       "type": "single",
       "difficulty": 1,
-      "tags": ["thread-sharing", "address-space"],
+      "tags": [
+        "thread",
+        "process"
+      ],
       "content": {
-        "prompt": "같은 프로세스에 속한 스레드들이 서로 공유하는 것만 모아 놓은 보기는?",
+        "prompt": "프로세스를 '주방 하나', 스레드를 '그 주방에서 일하는 요리사'에 비유할 때 옳은 설명은?",
         "options": [
-          "코드, 전역 변수, 스택, 레지스터",
-          "코드, 전역 변수, 힙, 열린 파일 디스크립터",
-          "힙, 스택, 프로그램 카운터, 열린 파일 디스크립터",
-          "코드, 힙, 스레드 ID, 프로그램 카운터"
+          "요리사마다 주방이 하나씩 따로 있어야 한다",
+          "요리사는 주방 밖에서만 일할 수 있다",
+          "한 주방에 요리사가 여러 명 있을 수 있고, 같은 재료와 도구를 함께 쓴다",
+          "한 주방에는 요리사가 반드시 한 명뿐이다"
         ]
       },
-      "answer_key": { "index": 1 },
-      "explanation": "스레드는 주소 공간(코드·데이터·힙)과 열린 파일 디스크립터를 공유합니다. 스택, 레지스터와 PC, 스레드 ID는 스레드마다 따로 가지므로 이를 공유 목록에 넣은 나머지 보기는 모두 틀립니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Thread_(computing)", "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"]
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "한 프로세스(주방) 안에서 여러 스레드(요리사)가 동시에 일할 수 있고, 주방의 재료와 도구(메모리, 열린 파일)를 함께 씁니다. 요리사마다 주방이 따로 있는 것은 스레드가 아니라 프로세스를 여러 개 띄운 경우입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Thread_(computing)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"
+      ]
     },
     {
       "id": "os-thread-sharing-002",
       "type": "ox",
       "difficulty": 1,
-      "tags": ["thread-sharing", "stack"],
+      "tags": [
+        "thread-sharing",
+        "heap"
+      ],
       "content": {
-        "prompt": "한 프로세스 안의 각 스레드는 자신만의 스택과 레지스터(프로그램 카운터 포함)를 가진다."
+        "prompt": "같은 프로세스 안의 스레드들은 전역 변수와 힙 메모리를 함께 쓴다(공유한다)."
       },
-      "answer_key": { "value": true },
-      "explanation": "스레드마다 독립된 실행 흐름이 필요하므로 호출 프레임을 쌓는 스택과 PC를 포함한 레지스터 상태를 따로 가집니다. 스택이 프로세스당 하나뿐이라면 두 스레드의 함수 호출이 서로 뒤섞여 각자 독립적으로 실행될 수 없습니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Thread_(computing)"]
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "같은 주방의 요리사들이 냉장고와 조리대를 함께 쓰듯, 스레드들은 전역 변수와 힙을 공유합니다. 그래서 한 스레드가 고친 값을 다른 스레드도 볼 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Thread_(computing)"
+      ]
     },
     {
       "id": "os-thread-sharing-003",
-      "type": "fill",
+      "type": "ox",
       "difficulty": 1,
-      "tags": ["thread-sharing", "tls"],
+      "tags": [
+        "thread-sharing",
+        "stack"
+      ],
       "content": {
-        "prompt": "전역 변수처럼 선언하지만 실행 흐름마다 별도의 사본을 갖는 변수를 두는 공간을 ___ 지역 저장소라고 한다.",
-        "hint": "약어로 TLS라고 부른다"
+        "prompt": "같은 프로세스 안의 스레드들은 스택도 하나를 함께 쓴다."
       },
-      "answer_key": { "accepted": ["스레드", "thread", "스레드 지역", "thread-local", "thread local", "Thread"] },
-      "explanation": "TLS는 Thread-Local Storage의 약자이며 같은 이름의 변수라도 스레드마다 값이 따로 존재합니다. 일반 정적(static) 변수는 모든 스레드가 하나의 사본을 공유하므로 TLS와 다릅니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Thread-local_storage"]
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "스택은 스레드마다 따로 있습니다. 요리사마다 자기 메모 수첩이 있듯, 각 스레드는 자기 함수 호출 기록과 지역 변수를 자기 스택에 둡니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Thread_(computing)",
+        "https://en.wikipedia.org/wiki/Call_stack"
+      ]
     },
     {
       "id": "os-thread-sharing-004",
-      "type": "single",
-      "difficulty": 2,
-      "tags": ["thread-sharing", "stack", "dangling"],
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "thread",
+        "definition"
+      ],
       "content": {
-        "prompt": "스레드 A가 자기 함수의 지역 변수 x의 주소를 스레드 B에 넘겼다. 이에 대한 설명으로 옳은 것은?",
-        "options": [
-          "스택은 스레드마다 분리되어 있으므로 B는 x에 절대 접근할 수 없다",
-          "B가 접근하면 커널이 즉시 프로세스를 종료시킨다",
-          "같은 주소 공간이라 B가 접근할 수 있지만, A의 함수가 반환된 뒤에는 댕글링 포인터가 된다",
-          "A가 넘긴 주소는 힙으로 자동 복사되어 반환 후에도 안전하게 유지된다"
+        "prompt": "한 프로세스 안에서 실제로 일을 처리하는 실행 흐름 단위(주방의 요리사)를 ___ 라고 한다.",
+        "hint": "영어로 thread, 실 한 가닥이라는 뜻"
+      },
+      "answer_key": {
+        "accepted": [
+          "스레드",
+          "thread",
+          "쓰레드",
+          "Thread"
         ]
       },
-      "answer_key": { "index": 2 },
-      "explanation": "스택이 스레드별이어도 주소 공간은 하나라 다른 스레드의 스택 변수를 포인터로 읽을 수 있습니다. 다만 A의 함수가 반환되면 그 프레임이 사라져 포인터가 댕글링이 되고, 자동으로 힙에 복사되는 일은 없습니다.",
-      "refs": ["https://en.wikipedia.org/wiki/Thread_(computing)", "https://en.wikipedia.org/wiki/Call_stack"]
+      "explanation": "정답은 스레드입니다. 프로세스가 주방이라면 스레드는 그 안에서 손을 움직여 요리하는 요리사이고, 한 주방에 요리사가 여럿일 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Thread_(computing)"
+      ]
     },
     {
       "id": "os-thread-sharing-005",
       "type": "single",
       "difficulty": 2,
-      "tags": ["thread-sharing", "shared-variable"],
+      "tags": [
+        "thread-sharing",
+        "local-variable"
+      ],
       "content": {
-        "prompt": "두 스레드가 같은 전역 카운터를 각각 증가시키면 결과가 깨질 수 있지만, 각자 자기 지역 변수 카운터만 증가시키면 안전하다. 그 이유로 옳은 것은?",
+        "prompt": "두 요리사가 공용 주문판(전역 변수)의 숫자를 동시에 고치면 숫자가 꼬일 수 있다. 반면 각자 자기 수첩(지역 변수)에만 적으면 꼬이지 않는다. 그 이유는?",
         "options": [
-          "지역 변수는 레지스터에만 저장되어 메모리를 쓰지 않기 때문이다",
-          "전역 변수는 스레드 사이에서 공유되고, 지역 변수는 각 스레드의 스택에 따로 있기 때문이다",
-          "지역 변수는 커널이 자동으로 락을 걸어 주기 때문이다",
-          "전역 변수만 CPU 캐시에 올라가 값이 어긋나기 때문이다"
+          "지역 변수는 읽기만 할 수 있어서",
+          "지역 변수는 각 스레드의 스택에 따로 있어 다른 스레드가 건드리지 않아서",
+          "지역 변수는 디스크에 저장되어서",
+          "운영체제가 지역 변수만 자동으로 잠가 주어서"
         ]
       },
-      "answer_key": { "index": 1 },
-      "explanation": "전역 변수는 모든 스레드가 같은 메모리를 보지만, 지역 변수는 스레드별 스택에 독립 사본이 생겨 서로 간섭하지 않습니다. 지역 변수가 레지스터에만 있다거나 커널이 락을 걸어 준다는 설명은 사실이 아닙니다.",
-      "refs": ["https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"]
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "지역 변수는 스레드마다 따로 가진 스택에 있으므로 다른 스레드와 겹치지 않습니다. 지역 변수도 얼마든지 고칠 수 있으니 '읽기만 가능해서'는 이유가 아닙니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"
+      ]
     },
     {
       "id": "os-thread-sharing-006",
-      "type": "multi",
+      "type": "single",
       "difficulty": 2,
-      "tags": ["thread-sharing", "errno", "signal"],
+      "tags": [
+        "thread",
+        "benefit"
+      ],
       "content": {
-        "prompt": "POSIX 스레드 환경에서 스레드마다 따로 가지는 것을 모두 고르시오.",
+        "prompt": "프로세스를 여러 개 띄우는 대신 한 프로세스 안에 스레드를 여러 개 쓰는 장점으로 옳은 것은?",
         "options": [
-          "스택",
-          "errno",
-          "시그널 핸들러 설정",
-          "스레드 ID"
+          "한 스레드에 오류가 나도 다른 스레드는 전혀 영향을 받지 않는다",
+          "스레드마다 메모리를 통째로 복사하므로 서로 간섭하지 않는다",
+          "스레드는 CPU 없이도 실행된다",
+          "메모리를 공유하므로 만들기 가볍고 데이터를 주고받기 쉽다"
         ]
       },
-      "answer_key": { "indices": [0, 1, 3] },
-      "explanation": "스택, errno, 스레드 ID는 스레드별입니다. 시그널 핸들러 설정은 프로세스 전체가 공유하며 스레드별로 다른 것은 시그널 마스크입니다. errno가 공유라면 한 스레드의 시스템 콜 오류가 다른 스레드의 값을 덮어쓰게 됩니다.",
-      "refs": ["https://man7.org/linux/man-pages/man3/errno.3.html", "https://man7.org/linux/man-pages/man7/pthreads.7.html"]
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "스레드는 같은 주방의 재료와 도구를 함께 쓰므로 새로 만들기 가볍고 데이터를 주고받기도 쉽습니다. 대신 공유하는 만큼 한 스레드의 큰 오류가 프로세스 전체를 멈추게 할 수 있어 첫 번째 보기는 틀립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Thread_(computing)"
+      ]
     },
     {
       "id": "os-thread-sharing-007",
-      "type": "single",
-      "difficulty": 3,
-      "tags": ["thread-sharing", "exit", "pthread-exit"],
+      "type": "multi",
+      "difficulty": 2,
+      "tags": [
+        "thread-sharing",
+        "address-space"
+      ],
       "content": {
-        "prompt": "멀티스레드 프로세스에서 한 스레드가 exit()를 호출하면 어떻게 되는가? (pthread_exit와 비교)",
+        "prompt": "같은 프로세스의 스레드들이 함께 쓰는(공유하는) 것을 모두 고르시오.",
         "options": [
-          "그 스레드만 종료되고 나머지 스레드는 계속 실행된다",
-          "프로세스 전체가 종료되며, 해당 스레드만 끝내려면 pthread_exit를 써야 한다",
-          "마지막으로 생성된 스레드부터 차례로 종료된다",
-          "exit()는 메인 스레드에서만 호출할 수 있어 오류가 반환된다"
+          "전역 변수",
+          "각 스레드의 지역 변수",
+          "힙에 만든 데이터",
+          "각 스레드가 지금 실행 중인 위치(프로그램 카운터)"
         ]
       },
-      "answer_key": { "index": 1 },
-      "explanation": "exit()는 프로세스 종료 호출이라 모든 스레드가 함께 끝납니다. 호출한 스레드만 끝내는 것은 pthread_exit이며, 스레드가 독립적이라 하나가 exit해도 나머지는 무관하다는 생각은 틀립니다.",
-      "refs": ["https://man7.org/linux/man-pages/man3/pthread_exit.3.html", "https://man7.org/linux/man-pages/man3/exit.3.html"]
+      "answer_key": {
+        "indices": [
+          0,
+          2
+        ]
+      },
+      "explanation": "전역 변수와 힙은 프로세스의 메모리라서 모든 스레드가 함께 씁니다. 지역 변수(스택)와 지금 실행 중인 위치(프로그램 카운터)는 스레드마다 따로 가집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Thread_(computing)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"
+      ]
     },
     {
       "id": "os-thread-sharing-008",
-      "type": "ox",
-      "difficulty": 3,
-      "tags": ["thread-sharing", "linux", "nptl"],
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "thread-sharing",
+        "shared-data"
+      ],
       "content": {
-        "prompt": "Linux에서 같은 프로세스의 모든 스레드는 getpid()로 같은 값을 받지만, 커널 내부에서는 각 스레드가 별도의 task(고유 TID)로 스케줄된다."
+        "prompt": "스레드 A가 힙에 있는 공용 주문 목록에 '김치찌개'를 추가했다. 같은 프로세스의 스레드 B에 대한 설명으로 옳은 것은?",
+        "options": [
+          "B는 자기만의 복사본을 갖고 있어 추가된 항목을 볼 수 없다",
+          "B는 같은 메모리를 공유하므로 같은 목록에 접근해 그 항목을 볼 수 있다",
+          "B가 다시 시작되어야만 추가된 항목이 보인다",
+          "운영체제가 막아서 A는 목록에 항목을 추가할 수 없다"
+        ]
       },
-      "answer_key": { "value": true },
-      "explanation": "Linux(NPTL)의 스레드는 clone()으로 주소 공간을 공유하며 만든 커널 task이고 gettid()는 서로 다르지만 getpid()는 같은 값입니다. 커널이 스레드를 모른다는 말은 사용자 수준(M:1) 스레드에만 해당합니다.",
-      "refs": ["https://man7.org/linux/man-pages/man7/nptl.7.html", "https://man7.org/linux/man-pages/man2/clone.2.html"]
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "힙은 스레드들이 공유하는 메모리라서 A가 추가한 항목을 B도 같은 목록에서 볼 수 있습니다. 스레드마다 복사본을 갖는 것은 프로세스를 따로 띄웠을 때의 모습입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Thread_(computing)"
+      ]
     }
   ]
 }
