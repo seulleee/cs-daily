@@ -27,6 +27,9 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
     }
   }, [session.data, answeredIds, index]);
 
+  // 세션 응답(answered)은 처음 한 번만 받아오므로, 이번 화면에서 제출한 문제는 로컬로 누적한다.
+  // (이게 없으면 '계속'을 누를 때마다 result가 초기화되어 진행 바가 0으로 돌아갔다)
+  const [submittedIds, setSubmittedIds] = useState<ReadonlySet<string>>(() => new Set());
   const [draft, setDraft] = useState<UserAnswer | null>(null);
   const [result, setResult] = useState<SubmitAnswerResponse | null>(null);
   const startedAt = useRef<number>(Date.now());
@@ -34,7 +37,10 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
   const submit = useMutation({
     mutationFn: (p: { questionId: string; answer: UserAnswer }) =>
       api<SubmitAnswerResponse>(`/sessions/${sessionId}/answers`, { json: { ...p, timeMs: Math.min(600_000, Date.now() - startedAt.current) } }),
-    onSuccess: (r) => setResult(r),
+    onSuccess: (r, p) => {
+      setResult(r);
+      setSubmittedIds((prev) => new Set(prev).add(p.questionId));
+    },
   });
   const complete = useMutation({
     mutationFn: () => api<CompleteSessionResponse>(`/sessions/${sessionId}/complete`, { method: 'POST' }),
@@ -80,7 +86,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
   if (session.data.finished || index >= total) return <div className="p-8 text-center text-(--color-ink-2)">결과를 계산하는 중…</div>;
   if (!q) return null;
 
-  const answered = session.data.answered.length + (result ? 1 : 0);
+  const answered = session.data.questions.filter((x) => answeredIds.has(x.id) || submittedIds.has(x.id)).length;
   const progress = Math.round((answered / total) * 100);
 
   return (
