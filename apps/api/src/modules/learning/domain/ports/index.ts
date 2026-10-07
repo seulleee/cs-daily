@@ -31,6 +31,7 @@ export interface QuestionPublic {
 export interface LessonOutline {
   id: number;
   name: string;
+  objective: string | null;
   trackId: number;
   unitSortOrder: number;
   lessonSortOrder: number;

@@ -47,3 +47,9 @@ export class UnitNotFound extends NotFoundError {
     super(ErrorCode.LESSON_NOT_FOUND, `유닛이 없습니다: ${unitId}`);
   }
 }
+
+export class RetryNotAllowed extends ForbiddenError {
+  constructor(questionId: string) {
+    super(ErrorCode.QUESTION_NOT_IN_SESSION, `다시 풀 수 없는 문제입니다 (첫 답이 오답인 문제만 가능): ${questionId}`);
+  }
+}

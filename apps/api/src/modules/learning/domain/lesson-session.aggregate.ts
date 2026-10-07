@@ -1,7 +1,7 @@
 import { AggregateRoot } from '../../../shared/domain/aggregate-root';
 import { LessonId, QuestionId, SessionId, UserId } from '../../../shared/domain/ids';
 import { Answer } from './answer.entity';
-import { AnswerAlreadySubmitted, QuestionNotInSession, SessionAlreadyFinished, SessionIncomplete } from './errors';
+import { AnswerAlreadySubmitted, QuestionNotInSession, RetryNotAllowed, SessionAlreadyFinished, SessionIncomplete } from './errors';
 import { AnswerGraded, SessionCompleted, SessionStarted } from './events';
 import type { Grader } from './services/grader';
 import type { QuestionForGrading } from './ports';
@@ -114,6 +114,22 @@ export class LessonSession extends AggregateRoot {
       ),
     );
     return answer;
+  }
+
+  /** 틀린 문제 다시 풀기 대상인가: 이 세션에서 첫 답이 오답이었던 문제 */
+  canRetry(questionId: QuestionId): boolean {
+    const a = this.answers.get(questionId.value);
+    return !!a && !a.isCorrect;
+  }
+
+  /**
+   * 틀린 문제 다시 풀기 (듀오링고식 반복). 채점만 하고 답안·이벤트는 남기지 않는다 —
+   * 점수·XP·SM-2는 첫 답 기준이고, 재도전은 순수 학습용이다.
+   */
+  retry(q: QuestionForGrading, raw: unknown, grader: Grader): boolean {
+    if (this.finishedAt) throw new SessionAlreadyFinished(this.id.value);
+    if (!this.canRetry(q.id)) throw new RetryNotAllowed(q.id.value);
+    return grader.grade(q.type, q.answerKey, raw);
   }
 
   /** @param repeatsToday 오늘 같은 레슨을 이미 완료한 횟수 (XP 파밍 방지 정책 입력) */

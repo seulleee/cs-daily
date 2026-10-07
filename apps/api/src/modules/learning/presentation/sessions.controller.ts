@@ -2,11 +2,11 @@ import { Body, Controller, Get, Param, ParseIntPipe, ParseUUIDPipe, Post, UseGua
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Throttle } from '@nestjs/throttler';
-import { SubmitAnswerRequest, type CompleteSessionResponse, type SessionResponse, type SubmitAnswerResponse } from '@cs-daily/contracts';
+import { RetryAnswerRequest, SubmitAnswerRequest, type CompleteSessionResponse, type RetryAnswerResponse, type SessionResponse, type SubmitAnswerResponse } from '@cs-daily/contracts';
 import { JwtAuthGuard } from '../../identity/presentation/jwt-auth.guard';
 import { CurrentUser, type AuthUser } from '../../../shared/presentation/current-user.decorator';
 import { ZodBody } from '../../../shared/presentation/zod-body.pipe';
-import { CompleteSessionCommand, StartLessonSessionCommand, StartReviewSessionCommand, StartUnitSkipTestCommand, SubmitAnswerCommand } from '../application/commands/commands';
+import { CompleteSessionCommand, RetryAnswerCommand, StartLessonSessionCommand, StartReviewSessionCommand, StartUnitSkipTestCommand, SubmitAnswerCommand } from '../application/commands/commands';
 import { GetSessionQuery } from '../application/queries/get-session.handler';
 
 /** 컨트롤러는 DTO → 커맨드/쿼리 변환만 한다. 로직 없음 */
@@ -55,6 +55,17 @@ export class SessionsController {
     @Body(new ZodBody(SubmitAnswerRequest)) body: SubmitAnswerRequest,
   ): Promise<SubmitAnswerResponse> {
     return this.commandBus.execute(new SubmitAnswerCommand(user.id, id, body.questionId, body.answer, body.timeMs));
+  }
+
+  /** 틀린 문제 다시 풀기 — 채점만 하고 기록·XP·복습엔 영향 없음. 첫 답이 오답인 문제만 허용 */
+  @Throttle({ default: { limit: 60, ttl: 60_000 } })
+  @Post('sessions/:id/retry')
+  retry(
+    @CurrentUser() user: AuthUser,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body(new ZodBody(RetryAnswerRequest)) body: RetryAnswerRequest,
+  ): Promise<RetryAnswerResponse> {
+    return this.commandBus.execute(new RetryAnswerCommand(user.id, id, body.questionId, body.answer));
   }
 
   @Post('sessions/:id/complete')
