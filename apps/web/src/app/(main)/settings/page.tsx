@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import type { MeResponse, TrackSummary, UpdateMeRequest } from '@cs-daily/contracts';
 import { api, ApiError } from '@/lib/api';
 import { AppShell } from '@/components/app-shell';
+import { ThemePicker } from '@/components/theme-picker';
 
 export default function SettingsPage() {
   const qc = useQueryClient();
@@ -92,6 +93,12 @@ export default function SettingsPage() {
         {save.isSuccess && <p className="text-sm text-(--color-correct)">저장했습니다.</p>}
         <button type="submit" disabled={save.isPending || selected.length === 0} className="btn-3d w-full">저장</button>
       </form>
+
+      <section className="mt-10">
+        <h2 className="mb-2 text-sm font-bold">테마</h2>
+        <ThemePicker />
+        <p className="mt-2 text-xs text-(--color-ink-2)">고르는 즉시 적용되며 이 기기에 저장됩니다.</p>
+      </section>
 
       <button type="button" onClick={() => logout.mutate()} className="mt-10 w-full text-sm text-(--color-ink-2) underline">로그아웃</button>
     </AppShell>
