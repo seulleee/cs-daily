@@ -11,18 +11,18 @@
         "subquery"
       ],
       "content": {
-        "prompt": "서브쿼리(subquery)란 무엇일까?",
+        "prompt": "서브쿼리(subquery)의 정의로 옳은 것은?",
         "options": [
-          "쿼리 안에 괄호로 넣은 또 다른 쿼리",
-          "테이블을 백업해 둔 사본",
+          "다른 SQL 문 안에 괄호로 중첩된 SELECT 문",
+          "테이블의 백업 사본",
           "결과를 정렬하는 옵션",
-          "두 테이블을 합친 결과"
+          "두 테이블을 JOIN한 결과"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "서브쿼리는 '쿼리 속 쿼리'입니다. 괄호 안의 쿼리 결과를 바깥 쿼리가 조건이나 값으로 가져다 써요. 두 표를 합치는 건 JOIN입니다.",
+      "explanation": "서브쿼리는 다른 SQL 문 내부에 괄호로 중첩된 SELECT 문입니다. 바깥 쿼리는 서브쿼리의 결과를 조건식의 값이나 테이블로 사용합니다. 테이블 결합은 JOIN의 역할입니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/functions-subquery.html"
       ]
@@ -51,7 +51,7 @@
       "answer_key": {
         "index": 0
       },
-      "explanation": "괄호 안 결과는 1, 1, 2이고, 회원 id가 이 목록에 있는지 확인합니다. 민지(1)와 준호(2)가 한 번씩 나와요. IN은 '목록에 있나?'만 보므로 주문이 2건이어도 민지는 한 번만 나옵니다.",
+      "explanation": "서브쿼리 결과는 (1, 1, 2)이고, IN은 id가 이 결과 집합에 포함되는지 검사합니다. members의 각 행은 한 번만 평가되므로 민지(1)와 준호(2)가 한 번씩 반환됩니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/functions-subquery.html"
       ]
@@ -65,12 +65,12 @@
         "in"
       ],
       "content": {
-        "prompt": "IN (...)은 '괄호 안 목록에 들어 있으면 참'이라는 뜻이다. 예를 들어 WHERE id IN (1, 2)는 id가 1 또는 2인 행을 고른다."
+        "prompt": "WHERE id IN (1, 2)는 WHERE id = 1 OR id = 2와 같은 행을 반환한다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "IN은 'id = 1 OR id = 2'를 짧게 쓴 것과 같습니다. 괄호 안에 값을 직접 적어도 되고, 서브쿼리 결과를 넣어도 돼요.",
+      "explanation": "IN 연산자는 값이 괄호 안 목록에 포함되면 참입니다. 따라서 id = 1 OR id = 2와 동일합니다. 괄호 안에는 값 목록 대신 서브쿼리를 사용할 수도 있습니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/functions-subquery.html"
       ]
@@ -84,18 +84,18 @@
         "scalar-subquery"
       ],
       "content": {
-        "prompt": "SELECT 목록 등에 넣어 '값 하나'처럼 쓰는 서브쿼리를 스칼라 서브쿼리라고 한다. 이 서브쿼리의 결과는 어떤 모양이어야 할까?",
+        "prompt": "스칼라 서브쿼리(단일 값이 필요한 위치에 쓰는 서브쿼리)가 반환해야 하는 결과의 형태는?",
         "options": [
-          "최대 한 행, 한 열(값 하나)",
-          "여러 행이어도 상관없다",
-          "여러 열이어도 상관없다",
-          "반드시 0행이어야 한다"
+          "최대 1행 1열",
+          "여러 행 1열",
+          "1행 여러 열",
+          "반드시 0행"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "값 하나 자리에 들어가므로 결과도 한 칸이어야 합니다. 여러 행이 나오면 어느 값을 써야 할지 몰라 오류가 나요. 결과가 0행이면 NULL(빈 값)로 취급합니다.",
+      "explanation": "스칼라 서브쿼리는 단일 값으로 사용되므로 최대 1행 1열을 반환해야 합니다. 2행 이상을 반환하면 오류가 발생하고, 0행을 반환하면 NULL로 처리됩니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-SCALAR-SUBQUERIES"
       ]
@@ -110,22 +110,22 @@
         "correlated-subquery"
       ],
       "content": {
-        "prompt": "아래 쿼리의 WHERE 조건은 어떤 뜻일까?",
+        "prompt": "아래 쿼리의 WHERE 조건의 의미는?",
         "code": {
           "language": "sql",
           "source": "SELECT name FROM members m\nWHERE EXISTS (\n  SELECT 1 FROM orders o WHERE o.member_id = m.id);"
         },
         "options": [
-          "그 회원의 주문이 하나라도 있으면 참",
-          "그 회원의 주문 개수를 돌려준다",
-          "주문이 정확히 1건일 때만 참",
-          "주문이 없는 회원일 때 참"
+          "해당 회원의 주문이 1건 이상 존재하면 참",
+          "해당 회원의 주문 건수를 반환",
+          "해당 회원의 주문이 정확히 1건일 때만 참",
+          "해당 회원의 주문이 없을 때 참"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "EXISTS는 '결과가 하나라도 있나?'를 묻습니다. 괄호 안에서 바깥 회원의 id(m.id)를 쓰기 때문에, 회원 한 명씩 '이 사람 주문 있어?'를 확인한다고 이해하면 돼요(상관 서브쿼리).",
+      "explanation": "EXISTS는 서브쿼리가 1행 이상을 반환하면 참입니다. 서브쿼리가 바깥 쿼리의 열(m.id)을 참조하므로 상관 서브쿼리이며, members의 각 행마다 평가됩니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/functions-subquery.html#FUNCTIONS-SUBQUERY-EXISTS",
         "https://en.wikipedia.org/wiki/Correlated_subquery"
@@ -140,12 +140,12 @@
         "exists"
       ],
       "content": {
-        "prompt": "EXISTS는 서브쿼리가 돌려준 값을 하나하나 비교하므로, 괄호 안에 SELECT 1을 쓰느냐 SELECT *를 쓰느냐에 따라 결과가 달라진다."
+        "prompt": "EXISTS는 서브쿼리가 반환한 값을 비교하므로, 괄호 안에 SELECT 1을 쓰는지 SELECT *를 쓰는지에 따라 결과가 달라진다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "EXISTS는 서브쿼리 결과에 행이 '하나라도 있는지'만 확인하고 값은 보지 않습니다. 그래서 SELECT 1이든 SELECT *든 결과는 같아요. 값을 비교하는 건 IN 쪽입니다.",
+      "explanation": "EXISTS는 서브쿼리 결과 행의 존재 여부만 검사하고 열 값은 평가하지 않습니다. 따라서 SELECT 1과 SELECT *의 결과는 같습니다. 값을 비교하는 것은 IN 연산자입니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/functions-subquery.html#FUNCTIONS-SUBQUERY-EXISTS"
       ]
@@ -163,10 +163,10 @@
       "content": {
         "prompt": "서브쿼리에 대한 설명으로 옳은 것을 모두 고르시오.",
         "options": [
-          "IN 서브쿼리는 값이 결과 목록에 들어 있는지 확인한다",
-          "EXISTS는 서브쿼리 결과 행이 하나라도 있으면 참이다",
-          "스칼라 서브쿼리는 여러 행을 돌려줘도 된다",
-          "서브쿼리는 WHERE 절에만 쓸 수 있다"
+          "IN 서브쿼리는 값이 서브쿼리 결과 집합에 포함되는지 검사한다",
+          "EXISTS는 서브쿼리 결과 행이 1개 이상이면 참이다",
+          "스칼라 서브쿼리는 여러 행을 반환해도 된다",
+          "서브쿼리는 WHERE 절에만 사용할 수 있다"
         ]
       },
       "answer_key": {
@@ -175,7 +175,7 @@
           1
         ]
       },
-      "explanation": "IN은 '목록에 있나', EXISTS는 '하나라도 있나'를 확인합니다. 스칼라 서브쿼리는 값 하나만 돌려줘야 하고, 서브쿼리는 WHERE뿐 아니라 SELECT 목록이나 FROM 절에도 쓸 수 있어요.",
+      "explanation": "IN은 결과 집합 포함 여부, EXISTS는 결과 행 존재 여부를 검사합니다. 스칼라 서브쿼리는 최대 1행 1열만 반환해야 하며, 서브쿼리는 WHERE 외에 SELECT 목록과 FROM 절에도 사용할 수 있습니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/functions-subquery.html",
         "https://www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-SCALAR-SUBQUERIES"
@@ -198,14 +198,14 @@
         "options": [
           "서연",
           "민지, 준호",
-          "아무도 없다",
+          "결과 없음",
           "민지, 준호, 서연"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "NOT EXISTS는 '결과가 하나도 없으면 참'입니다. 주문 목록(1, 1, 2)에 없는 회원은 서연(3)뿐이라 서연만 나와요.",
+      "explanation": "NOT EXISTS는 서브쿼리가 0행을 반환할 때 참입니다. orders에 member_id = 3인 행이 없으므로 서연만 반환됩니다. 이 패턴은 대응하는 행이 없는 데이터를 찾는 안티 조인에 사용됩니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/functions-subquery.html#FUNCTIONS-SUBQUERY-EXISTS"
       ]

@@ -12,7 +12,7 @@
         "where"
       ],
       "content": {
-        "prompt": "아래 쿼리를 실행하면 어떤 이름이 나올까?",
+        "prompt": "아래 쿼리의 결과로 반환되는 name은?",
         "code": {
           "language": "sql",
           "source": "-- members(name, age): (민지, 25), (준호, 31), (서연, 19)\nSELECT name FROM members\nWHERE age >= 20;"
@@ -27,7 +27,7 @@
       "answer_key": {
         "index": 0
       },
-      "explanation": "WHERE는 엑셀의 '필터'처럼 조건에 맞는 행만 남깁니다. 나이가 20 이상인 사람은 민지(25)와 준호(31)예요. 서연(19)은 조건에 맞지 않아 빠집니다.",
+      "explanation": "WHERE 절은 조건식이 참인 행만 결과에 포함합니다. age >= 20을 만족하는 행은 민지(25)와 준호(31)이며, 서연(19)은 조건이 거짓이므로 제외됩니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Select_(SQL)"
       ]
@@ -42,18 +42,18 @@
         "default"
       ],
       "content": {
-        "prompt": "SELECT name FROM members ORDER BY age; 는 결과를 어떤 순서로 보여 줄까?",
+        "prompt": "SELECT name FROM members ORDER BY age; 의 정렬 방식은?",
         "options": [
-          "나이가 적은 사람부터(오름차순)",
-          "나이가 많은 사람부터(내림차순)",
-          "이름 가나다순",
-          "정렬하지 않는다"
+          "age 오름차순(ASC)",
+          "age 내림차순(DESC)",
+          "name 오름차순",
+          "정렬하지 않음"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "ORDER BY에 방향을 적지 않으면 기본값인 오름차순(ASC, 작은 값부터)으로 정렬합니다. 큰 값부터 보고 싶으면 DESC를 붙여야 해요.",
+      "explanation": "ORDER BY에 정렬 방향을 지정하지 않으면 기본값인 오름차순(ASC)으로 정렬합니다. 내림차순이 필요하면 DESC를 명시해야 합니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-order.html"
       ]
@@ -68,8 +68,8 @@
         "desc"
       ],
       "content": {
-        "prompt": "나이가 많은 사람부터(내림차순) 보려면 ORDER BY age ___ 라고 쓴다.",
-        "hint": "'내려가는'이라는 뜻의 영어 단어 줄임말, 네 글자"
+        "prompt": "age 값이 큰 행부터 정렬(내림차순)하려면 ORDER BY age ___ 라고 쓴다.",
+        "hint": "descending의 약어, 네 글자"
       },
       "answer_key": {
         "accepted": [
@@ -78,7 +78,7 @@
           "descending"
         ]
       },
-      "explanation": "DESC는 descending(내려가는)의 줄임말로 큰 값부터 정렬합니다. 반대인 ASC(오름차순)는 기본값이라 보통 생략해요.",
+      "explanation": "DESC(descending)는 내림차순 정렬을 지정하는 키워드입니다. 오름차순인 ASC는 기본값이므로 보통 생략합니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-order.html"
       ]
@@ -93,12 +93,12 @@
         "result-order"
       ],
       "content": {
-        "prompt": "ORDER BY를 쓰지 않아도 결과는 데이터를 넣은 순서대로 나오도록 보장된다."
+        "prompt": "ORDER BY를 쓰지 않아도 결과는 데이터를 삽입한 순서대로 반환되도록 보장된다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "ORDER BY가 없으면 데이터베이스는 순서를 약속하지 않습니다. 저장 상태나 처리 방식에 따라 순서가 바뀔 수 있어요. 특정 순서가 필요하면 반드시 ORDER BY로 정해야 합니다.",
+      "explanation": "SQL 표준에서 ORDER BY가 없는 쿼리의 결과 순서는 정의되지 않습니다. 저장 구조나 실행 계획에 따라 순서가 달라질 수 있으므로, 특정 순서가 필요하면 ORDER BY로 지정해야 합니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-order.html"
       ]
@@ -113,7 +113,7 @@
         "where"
       ],
       "content": {
-        "prompt": "NULL은 '값이 비어 있음(모름)'을 뜻한다. 나이 칸이 비어 있는 회원을 찾는 올바른 조건은?",
+        "prompt": "age 값이 NULL인 행을 조회하는 올바른 조건은?",
         "options": [
           "WHERE age IS NULL",
           "WHERE age = NULL",
@@ -124,7 +124,7 @@
       "answer_key": {
         "index": 0
       },
-      "explanation": "NULL은 '모르는 값'이라 = 로 비교하면 결과도 '모름'이 되어 어떤 행도 고르지 않습니다. 그래서 비어 있는지 확인할 때는 IS NULL을 써요. 0이나 빈 글자('')는 NULL과 다른 실제 값입니다.",
+      "explanation": "NULL과의 = 비교 결과는 UNKNOWN이므로 어떤 행도 선택되지 않습니다. NULL 여부는 IS NULL 연산자로 검사합니다. 0과 빈 문자열('')은 NULL이 아닌 실제 값입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Null_(SQL)",
         "https://www.postgresql.org/docs/current/functions-comparison.html"
@@ -140,7 +140,7 @@
         "three-valued-logic"
       ],
       "content": {
-        "prompt": "price가 50, 100, NULL인 3개 행이 있다. WHERE price <> 100 (100이 아닌 것)의 결과는 몇 행일까?",
+        "prompt": "price가 50, 100, NULL인 3개 행이 있다. WHERE price <> 100 의 결과 행 수는?",
         "options": [
           "1행",
           "2행",
@@ -151,7 +151,7 @@
       "answer_key": {
         "index": 0
       },
-      "explanation": "50만 남아 1행입니다. NULL은 '모르는 값'이라 100이 아닌지도 알 수 없어서 조건이 참이 되지 않아요. NULL 행까지 원하면 OR price IS NULL을 함께 써야 합니다.",
+      "explanation": "SQL은 3값 논리(TRUE, FALSE, UNKNOWN)를 사용합니다. NULL <> 100은 UNKNOWN이므로 WHERE 조건을 통과하지 못하고, 50인 행만 반환됩니다. NULL 행도 포함하려면 OR price IS NULL을 추가합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Null_(SQL)",
         "https://www.postgresql.org/docs/current/functions-comparison.html"
@@ -167,12 +167,12 @@
         "and"
       ],
       "content": {
-        "prompt": "WHERE age >= 20 AND city = '서울' 은 두 조건을 모두 만족하는 행만 고른다."
+        "prompt": "WHERE age >= 20 AND city = '서울' 은 두 조건이 모두 참인 행만 반환한다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "AND는 '그리고'라서 두 조건이 모두 참인 행만 남깁니다. 둘 중 하나만 맞아도 되게 하려면 OR(또는)를 써요.",
+      "explanation": "AND는 두 조건식이 모두 TRUE일 때만 TRUE가 되는 논리 연산자입니다. 둘 중 하나만 참이어도 되는 경우에는 OR를 사용합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Select_(SQL)"
       ]
@@ -187,18 +187,18 @@
         "multi-column"
       ],
       "content": {
-        "prompt": "ORDER BY age DESC, name 은 결과를 어떻게 정렬할까?",
+        "prompt": "ORDER BY age DESC, name 의 정렬 방식은?",
         "options": [
-          "나이 많은 순으로, 나이가 같으면 이름 오름차순",
-          "이름 순으로, 이름이 같으면 나이 많은 순",
-          "나이와 이름 모두 내림차순",
-          "나이만 정렬하고 이름은 무시"
+          "age 내림차순, age가 같으면 name 오름차순",
+          "name 오름차순, name이 같으면 age 내림차순",
+          "age와 name 모두 내림차순",
+          "age만 정렬하고 name은 무시"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "앞에 적은 열(age DESC)로 먼저 정렬하고, 그 값이 같은 행끼리만 다음 열(name)로 정렬합니다. DESC는 바로 앞의 age에만 붙으므로 name은 기본값인 오름차순이에요.",
+      "explanation": "ORDER BY는 첫 번째 정렬 키(age DESC)로 정렬한 뒤, 값이 같은 행끼리 다음 키(name)로 정렬합니다. DESC는 바로 앞의 age에만 적용되므로 name은 기본값인 오름차순입니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-order.html"
       ]

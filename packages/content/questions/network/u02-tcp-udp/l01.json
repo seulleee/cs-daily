@@ -12,7 +12,7 @@
         "basics"
       ],
       "content": {
-        "prompt": "등기우편처럼 '받았는지' 확인하고, 빠진 것은 다시 보내 주는 전송 방식은?",
+        "prompt": "수신 확인(ACK)과 재전송으로 신뢰성 있는 전송을 보장하는 연결 지향 프로토콜은?",
         "options": [
           "TCP",
           "HTTP",
@@ -23,7 +23,7 @@
       "answer_key": {
         "index": 0
       },
-      "explanation": "TCP는 받는 쪽이 '잘 받았어요(ACK)'라고 답하게 하고, 답이 없으면 다시 보내요. UDP는 확인 없이 보내기만 하는 전단지에 가깝습니다.",
+      "explanation": "TCP는 연결을 수립한 뒤 수신 측의 ACK로 전달을 확인하고, ACK가 오지 않으면 세그먼트를 재전송합니다. UDP는 연결 수립·ACK·재전송이 없는 비연결형 프로토콜입니다.",
       "refs": [
         "https://www.rfc-editor.org/rfc/rfc9293",
         "https://www.rfc-editor.org/rfc/rfc768"
@@ -38,8 +38,8 @@
         "udp-header"
       ],
       "content": {
-        "prompt": "전단지를 뿌리듯 받았는지 확인하지 않고 빠르게 보내기만 하는 전송 방식은 ___ 이다.",
-        "hint": "영어 대문자 세 글자, TCP의 짝꿍"
+        "prompt": "연결 수립과 수신 확인 없이 데이터그램을 전송하는 비연결형 전송 계층 프로토콜은 ___ 이다.",
+        "hint": "User Datagram Protocol의 약자"
       },
       "answer_key": {
         "accepted": [
@@ -49,7 +49,7 @@
           "user datagram protocol"
         ]
       },
-      "explanation": "UDP는 연결 준비나 수신 확인 없이 바로 보내기 때문에 가볍고 빨라요. 대신 중간에 빠져도 다시 보내 주지 않습니다.",
+      "explanation": "UDP는 8바이트의 단순한 헤더만 붙여 데이터그램을 바로 전송합니다. 오버헤드가 작아 빠르지만, 손실된 데이터를 재전송하지 않습니다.",
       "refs": [
         "https://www.rfc-editor.org/rfc/rfc768",
         "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
@@ -64,12 +64,12 @@
         "ordering"
       ],
       "content": {
-        "prompt": "UDP는 데이터가 뒤섞여 도착해도 보낸 순서대로 다시 맞춰서 받는 프로그램에 넘겨준다."
+        "prompt": "UDP는 순서가 뒤바뀌어 도착한 데이터그램을 송신 순서대로 재정렬해 애플리케이션에 전달한다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "순서를 맞춰 주는 건 TCP예요. TCP는 데이터마다 번호를 붙여 받는 쪽에서 순서대로 정리하지만, 전단지 같은 UDP는 도착한 대로 넘길 뿐 순서를 맞춰 주지 않습니다.",
+      "explanation": "순서 보장은 TCP의 기능입니다. TCP는 시퀀스 번호로 세그먼트를 재정렬하지만, UDP는 도착한 순서대로 전달할 뿐 재정렬하지 않습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
       ]
@@ -83,9 +83,9 @@
         "use-case"
       ],
       "content": {
-        "prompt": "파일 다운로드·웹 페이지·이메일처럼 한 글자라도 빠지면 안 되는 데이터를 보낼 때 더 알맞은 방식은?",
+        "prompt": "파일 다운로드, 웹 페이지, 이메일과 같이 데이터 손실이 허용되지 않는 전송에 적합한 프로토콜은?",
         "options": [
-          "둘 다 쓰면 안 된다",
+          "둘 다 적합하지 않다",
           "UDP",
           "TCP",
           "둘 중 아무거나 같다"
@@ -94,7 +94,7 @@
       "answer_key": {
         "index": 2
       },
-      "explanation": "내용이 하나라도 빠지면 파일이 깨지므로, 빠진 것을 다시 보내 주는 TCP가 알맞아요. UDP는 빠져도 다시 보내지 않아 이런 용도에는 맞지 않습니다.",
+      "explanation": "TCP는 재전송과 순서 보장으로 데이터를 손실 없이 전달하므로 무결성이 중요한 전송에 적합합니다. UDP는 손실을 복구하지 않아 이런 용도에 맞지 않습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
       ]
@@ -108,18 +108,18 @@
         "realtime"
       ],
       "content": {
-        "prompt": "영상 통화나 온라인 게임에서 UDP를 자주 쓰는 이유로 알맞은 것은?",
+        "prompt": "영상 통화나 온라인 게임에서 UDP를 자주 사용하는 이유로 알맞은 것은?",
         "options": [
-          "UDP는 데이터 순서를 반드시 지켜 줘서",
-          "UDP만 영상 데이터를 보낼 수 있어서",
-          "UDP는 빠진 데이터를 TCP보다 더 잘 다시 보내 줘서",
-          "조금 빠지더라도 기다리지 않고 최신 데이터를 빨리 보내는 게 더 중요해서"
+          "UDP가 데이터 순서를 보장해서",
+          "UDP만 영상 데이터를 전송할 수 있어서",
+          "UDP가 TCP보다 손실된 데이터를 더 잘 재전송해서",
+          "일부 손실을 감수하더라도 재전송 지연 없이 최신 데이터를 보내는 것이 중요해서"
         ]
       },
       "answer_key": {
         "index": 3
       },
-      "explanation": "영상 통화는 1초 전 화면을 다시 받느라 멈추는 것보다 지금 화면을 빨리 보는 게 중요해요. 그래서 재전송을 기다리지 않는 UDP가 잘 맞습니다. UDP는 재전송이나 순서 보장을 해 주지 않아요.",
+      "explanation": "실시간 통신에서는 손실된 과거 데이터를 재전송받느라 지연되는 것보다 최신 데이터를 빨리 받는 것이 중요합니다. UDP는 재전송·순서 보장을 하지 않아 지연이 적습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
       ]
@@ -133,18 +133,18 @@
         "flow-control"
       ],
       "content": {
-        "prompt": "받는 쪽이 '천천히 보내 주세요, 아직 다 못 읽었어요'라고 하면 보내는 속도를 맞춰 주는 기능(흐름 제어)이 있는 것은?",
+        "prompt": "수신 측의 처리 능력에 맞춰 송신 속도를 조절하는 흐름 제어 기능을 제공하는 프로토콜은?",
         "options": [
-          "UDP만 있다",
-          "TCP와 UDP 둘 다 있다",
-          "TCP만 있다",
-          "둘 다 없다"
+          "UDP만 제공한다",
+          "TCP와 UDP 모두 제공한다",
+          "TCP만 제공한다",
+          "둘 다 제공하지 않는다"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "TCP는 받는 쪽이 감당할 수 있는 양을 알려 주면 그만큼만 보내는 흐름 제어를 해요. UDP는 상대 상황과 상관없이 보내기만 합니다.",
+      "explanation": "TCP는 수신 측이 헤더의 윈도우 필드로 수신 가능한 양을 알리면 그 범위 안에서만 전송합니다. UDP에는 흐름 제어가 없습니다.",
       "refs": [
         "https://www.rfc-editor.org/rfc/rfc9293",
         "https://www.rfc-editor.org/rfc/rfc768"
@@ -159,12 +159,12 @@
         "connectionless"
       ],
       "content": {
-        "prompt": "UDP는 보내기 전에 연결을 맺는 인사(핸드셰이크) 과정이 없어서, TCP보다 데이터를 더 빨리 보내기 시작할 수 있다."
+        "prompt": "UDP는 연결 수립 과정(handshake)이 없어서 TCP보다 데이터 전송을 더 빨리 시작할 수 있다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "TCP는 먼저 '여보세요/네 들려요/좋아요' 같은 인사를 주고받아야 하지만, UDP는 그런 준비 없이 바로 보냅니다. 그래서 시작이 빠르고 간단해요.",
+      "explanation": "TCP는 데이터 전송 전에 3-way handshake로 연결을 수립해야 하지만, UDP는 연결 수립 없이 바로 데이터그램을 보냅니다. 그래서 초기 지연이 적습니다.",
       "refs": [
         "https://www.rfc-editor.org/rfc/rfc768"
       ]
@@ -180,10 +180,10 @@
       "content": {
         "prompt": "UDP의 특징으로 알맞은 것을 모두 고르시오.",
         "options": [
-          "데이터가 빠지거나 순서가 바뀌어도 UDP가 알아서 고쳐 주지 않는다",
-          "데이터가 빠지면 자동으로 다시 보낸다",
-          "보내기 전에 반드시 연결을 맺어야 한다",
-          "받았는지 확인(ACK)을 주고받지 않는다"
+          "손실이나 순서 변경이 발생해도 UDP 자체가 복구하지 않는다",
+          "손실된 데이터를 자동으로 재전송한다",
+          "전송 전에 반드시 연결을 수립해야 한다",
+          "수신 확인(ACK)을 주고받지 않는다"
         ]
       },
       "answer_key": {
@@ -192,7 +192,7 @@
           3
         ]
       },
-      "explanation": "UDP는 전단지처럼 보내기만 해서 수신 확인도, 재전송도, 순서 맞추기도 하지 않아요. 재전송과 연결 맺기는 TCP의 특징입니다.",
+      "explanation": "UDP는 비연결형 프로토콜로 ACK·재전송·순서 보장을 제공하지 않습니다. 연결 수립과 재전송은 TCP의 특징입니다.",
       "refs": [
         "https://www.rfc-editor.org/rfc/rfc768",
         "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
