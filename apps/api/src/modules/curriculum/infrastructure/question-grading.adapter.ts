@@ -30,10 +30,10 @@ export class CurriculumAdapter implements QuestionGradingPort, CurriculumQueryPo
   async lessonOutline(lessonId: LessonId): Promise<LessonOutline | null> {
     const l = await this.db.lesson.findUnique({
       where: { id: lessonId.value },
-      select: { id: true, name: true, objective: true, sortOrder: true, questionCount: true, unit: { select: { trackId: true, sortOrder: true } } },
+      select: { id: true, name: true, objective: true, keyPoints: true, sortOrder: true, questionCount: true, unit: { select: { trackId: true, sortOrder: true } } },
     });
     if (!l) return null;
-    return { id: l.id, name: l.name, objective: l.objective, trackId: l.unit.trackId, unitSortOrder: l.unit.sortOrder, lessonSortOrder: l.sortOrder, questionCount: l.questionCount };
+    return { id: l.id, name: l.name, objective: l.objective, keyPoints: l.keyPoints, trackId: l.unit.trackId, unitSortOrder: l.unit.sortOrder, lessonSortOrder: l.sortOrder, questionCount: l.questionCount };
   }
 
   async unitOutline(unitId: number): Promise<UnitOutline | null> {

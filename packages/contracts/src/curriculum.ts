@@ -61,6 +61,8 @@ export const CurriculumFile = z.object({
               name: z.string(),
               /** 학습 목표 1줄 */
               objective: z.string(),
+              /** 핵심 정리 2~4줄 — "용어 — 한 줄 정의". 선택 필드(없으면 시작 카드에 목표만 표시) */
+              keyPoints: z.array(z.string().min(1).max(80)).max(4).default([]),
             }),
           ).min(1),
         }),

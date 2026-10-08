@@ -32,6 +32,7 @@ export interface LessonOutline {
   id: number;
   name: string;
   objective: string | null;
+  keyPoints: string[];
   trackId: number;
   unitSortOrder: number;
   lessonSortOrder: number;

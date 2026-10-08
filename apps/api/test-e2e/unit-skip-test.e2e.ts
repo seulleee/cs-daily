@@ -104,6 +104,7 @@ async function main() {
     const answers = await prisma.answer.count({ where: { sessionId: lesson.id } });
     assert.equal(answers, 1, '재도전은 답안을 남기지 않는다');
     assert.ok((lesson as unknown as { lessonObjective: string | null }).lessonObjective, '레슨 세션에는 학습 목표가 실린다');
+    assert.ok(Array.isArray((lesson as unknown as { lessonKeyPoints: string[] }).lessonKeyPoints), '레슨 세션에는 핵심 정리 배열이 실린다(비어 있어도 됨)');
 
     // 3. 유닛 3 전부 오답 → 불합격
     const r3 = await solve(s3, s3.questions.length);

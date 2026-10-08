@@ -53,6 +53,8 @@ export const SessionResponse = z.object({
   lessonName: z.string().nullable(),
   /** 레슨 시작 카드에 보여 줄 학습 목표 (lesson 종류일 때만) */
   lessonObjective: z.string().nullable(),
+  /** 레슨 시작 카드의 핵심 정리 ("용어 — 정의"). lesson 종류가 아니면 빈 배열 */
+  lessonKeyPoints: z.array(z.string()),
   questions: z.array(PublicQuestion),
   /** 이어 풀기용: 이미 답한 문제 */
   answered: z.array(AnsweredQuestion),

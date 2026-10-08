@@ -50,12 +50,14 @@ export class GetSessionHandler implements IQueryHandler<GetSessionQuery, Session
     // 건너뛰기 테스트는 레슨 대신 유닛 이름을 보여준다. 학습 목표(시작 카드)는 lesson 종류에만
     let title: string | null = null;
     let objective: string | null = null;
+    let keyPoints: string[] = [];
     if (session.kind === 'placement' && session.lessonId) {
       title = (await this.curriculum.unitOfLesson(session.lessonId))?.name ?? null;
     } else if (session.lessonId) {
       const outline = await this.curriculum.lessonOutline(session.lessonId);
       title = outline?.name ?? null;
       objective = outline?.objective ?? null;
+      keyPoints = outline?.keyPoints ?? [];
     }
     return {
       id: session.id.value,
@@ -63,6 +65,7 @@ export class GetSessionHandler implements IQueryHandler<GetSessionQuery, Session
       lessonId: session.lessonId?.value ?? null,
       lessonName: title,
       lessonObjective: objective,
+      lessonKeyPoints: keyPoints,
       questions,
       answered,
       finished: session.isFinished,
