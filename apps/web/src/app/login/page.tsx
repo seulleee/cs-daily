@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export const metadata = { title: '로그인' };
 
 /** OAuth 시작 링크. /auth/*는 next.config 리라이트로 NestJS에 전달된다 */
@@ -12,6 +14,11 @@ export default function LoginPage() {
         <a href="/auth/google" className="btn-3d w-full">Google로 계속하기</a>
       </div>
       <p className="mt-8 text-xs text-(--color-ink-2)">로그인하면 이메일과 닉네임만 저장됩니다. 언제든 설정에서 탈퇴할 수 있어요.</p>
+      <p className="mt-2 text-xs text-(--color-ink-2)">
+        <Link href="/privacy" className="underline underline-offset-2">개인정보처리방침</Link>
+        {' · '}
+        <Link href="/terms" className="underline underline-offset-2">서비스 약관</Link>
+      </p>
     </div>
   );
 }
