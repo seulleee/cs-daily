@@ -38,6 +38,7 @@
 - 세션 종류 `kind`: `lesson`(레슨) · `review`(복습, XP ×1.5) · `placement`(유닛 건너뛰기 테스트, XP 0). `findOpen`은 kind를 구분해서 서로 이어지지 않게 한다.
 - 레슨 흐름: 시작 카드 → 본 문제 → **틀린 문제 다시 풀기**(`POST /sessions/:id/retry`, 채점만 하고 답안·XP·SM-2에 영향 없음, 최대 2회) → 완료. 재도전 허용 여부는 애그리거트 `canRetry/retry`가 판단한다.
 - 유닛 건너뛰기: `POST /units/:unitId/skip-test` → 8문제, 80% 이상이면 트랙 처음부터 그 유닛까지 완료 처리(`UserLessonProgress.completedAt`만 찍고 점수 0). 정책은 `learning/domain/services/unit-skip-test.ts`.
+- 결과 화면 `newReviewCount`("내일 복습 예정")는 사용자 로컬 **내일의 마지막 순간**까지 due인 수다(`learning/domain/services/review-preview.ts`). SM-2가 방금 푼 문제를 답한 시각+24시간으로 예약하므로 "내일 00:00"까지로 끊으면 0이 된다. 복습 예약은 `AnswerGraded` 비동기 처리라 완료 시점에 저장 전일 수 있어, 이번 세션 오답 수를 하한으로 둔다.
 - 콘텐츠에서 빠진 문제는 시드가 삭제하지 않고 `status=retired`로 내린다(답안·복습 기록 FK 보존). `lesson.questionCount`는 콘텐츠 파일의 문제 수를 따른다.
 - 도메인 규칙은 단위 테스트가 있어야 한다(`apps/api/test/*.spec.ts`, vitest). HTTP 흐름은 `apps/api/test-e2e/`가 CI에서 빌드된 서버 + CI Postgres로 돈다.
 
@@ -71,7 +72,6 @@
 
 - [ ] Cloud Scheduler: 매시 `POST {API}/internal/jobs/tick`, `Authorization: Bearer {JOBS_SECRET}` (서비스 계정 `cs-daily-scheduler`) — 스트릭 프리즈·리마인더 배치가 아직 안 돈다
 - [ ] `backup.yml`이 아직 `secrets.PROD_DIRECT_URL`을 참조한다 → WIF + Secret Manager로 전환
-- [ ] 레슨 결과 화면의 "내일 복습 예정 N문제"가 지금 당장 due인 것만 세어 0으로 나온다
 - [ ] Google OAuth 앱 게시(테스트 사용자 외 로그인 허용), Resend API 키 등록(이메일 리마인더)
 - [ ] 나머지 75레슨 문제 작성 (docs/content-guide.md 기준)
 - [ ] 핵심 개념 2~3개로 줄이며 뺀 커리큘럼 목표(교착 상태 회피·탐지, 우선순위 부스트, 코드·데이터 영역 등)를 뒤 유닛으로 재배치

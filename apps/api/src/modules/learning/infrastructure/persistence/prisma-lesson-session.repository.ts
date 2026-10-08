@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import type { Prisma } from '@prisma/client';
 import { LessonId, QuestionId, SessionId, UserId } from '../../../../shared/domain/ids';
+import { zonedMidnightToUtc } from '../../../../shared/domain/local-date';
 import { UnitOfWork } from '../../../../shared/infrastructure/unit-of-work';
 import { Answer } from '../../domain/answer.entity';
 import { LessonSession } from '../../domain/lesson-session.aggregate';
@@ -109,23 +110,4 @@ export class PrismaLessonSessionRepository implements LessonSessionRepository {
       startedAt: row.startedAt,
     });
   }
-}
-
-/** "YYYY-MM-DD" 로컬 자정을 해당 타임존 기준 UTC Date로 */
-export function zonedMidnightToUtc(localDate: string, timeZone: string): Date {
-  const guess = new Date(`${localDate}T00:00:00Z`);
-  const parts = new Intl.DateTimeFormat('en-US', {
-    timeZone,
-    hour12: false,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-  }).formatToParts(guess);
-  const g = (t: string) => Number(parts.find((p) => p.type === t)?.value ?? '0');
-  const asIfUtc = Date.UTC(g('year'), g('month') - 1, g('day'), g('hour') % 24, g('minute'), g('second'));
-  const offsetMs = asIfUtc - guess.getTime();
-  return new Date(guess.getTime() - offsetMs);
 }
