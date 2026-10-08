@@ -104,13 +104,15 @@ model Unit {
 }
 
 model Lesson {
-  id            Int    @id @default(autoincrement())
-  unitId        Int    @map("unit_id")
+  id            Int      @id @default(autoincrement())
+  unitId        Int      @map("unit_id")
   slug          String
   name          String
   objective     String?
-  sortOrder     Int    @map("sort_order")
-  questionCount Int    @default(8) @map("question_count") @db.SmallInt
+  /// 핵심 정리 2~4줄 ("용어 — 한 줄 정의"), 레슨 시작 카드에 표시
+  keyPoints     String[] @default([]) @map("key_points")
+  sortOrder     Int      @map("sort_order")
+  questionCount Int      @default(8) @map("question_count") @db.SmallInt
 
   unit      Unit                 @relation(fields: [unitId], references: [id])
   questions Question[]

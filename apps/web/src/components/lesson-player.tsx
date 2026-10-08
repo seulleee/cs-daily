@@ -18,6 +18,13 @@ type Graded = { isCorrect: boolean; correctAnswer?: unknown; explanation: string
 
 const MAX_RETRY = 2;
 
+/** "용어 — 정의" 형태의 핵심 정리를 첫 " — " 기준으로 나눈다. 구분자가 없으면 통째로 정의로 본다 */
+function splitKeyPoint(kp: string): { term: string | null; definition: string } {
+  const i = kp.indexOf(' — ');
+  if (i <= 0) return { term: null, definition: kp };
+  return { term: kp.slice(0, i), definition: kp.slice(i + 3) };
+}
+
 export function LessonPlayer({ sessionId }: { sessionId: string }) {
   const router = useRouter();
   const qc = useQueryClient();
@@ -147,6 +154,8 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
   if (session.isError || !session.data) return <div className="p-8 text-center">세션을 찾을 수 없습니다. <Link href="/learn" className="underline">홈으로</Link></div>;
 
   if (phase === 'intro') {
+    // 배포 순서상 API가 아직 옛 버전이면 필드가 없을 수 있다
+    const keyPoints = session.data.lessonKeyPoints ?? [];
     return (
       <div className="flex min-h-dvh flex-col">
         <header className="flex items-center gap-3 px-4 pt-[max(env(safe-area-inset-top),12px)] pb-3">
@@ -157,6 +166,23 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
             <p className="text-xs font-bold tracking-wide text-(--color-brand)">이번 레슨</p>
             <h1 className="mt-2 text-2xl font-black md:text-3xl">{session.data.lessonName ?? '레슨'}</h1>
             {session.data.lessonObjective && <p className="mt-4 text-base leading-relaxed text-(--color-ink-2)">{session.data.lessonObjective}</p>}
+            {keyPoints.length > 0 && (
+              <div className="card mt-6 p-4 text-left">
+                <h2 className="text-sm font-bold">핵심 정리</h2>
+                <ul className="mt-2 list-disc space-y-1.5 break-keep pl-5 text-base leading-relaxed text-(--color-ink-2)">
+                  {keyPoints.map((kp) => {
+                    const { term, definition } = splitKeyPoint(kp);
+                    return (
+                      <li key={kp}>
+                        {term && <strong className="font-bold text-(--color-ink)">{term}</strong>}
+                        {term && ' — '}
+                        {definition}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
             <p className="mt-6 text-sm text-(--color-ink-2)">
               {total}문제 · 틀린 문제는 끝에서 다시 풀어요
             </p>
