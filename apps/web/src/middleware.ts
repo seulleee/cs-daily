@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 
-const PUBLIC = ['/login', '/auth', '/api', '/manifest.webmanifest', '/icons', '/_next', '/favicon.ico'];
+const PUBLIC = ['/login', '/privacy', '/terms', '/auth', '/api','/manifest.webmanifest', '/icons', '/_next', '/favicon.ico'];
 
 /**
  * 쿠키 존재만 확인해 리다이렉트한다 (기획서 6.1 "Next.js 쪽 구조").
