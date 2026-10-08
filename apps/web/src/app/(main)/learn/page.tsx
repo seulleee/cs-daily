@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -9,6 +9,7 @@ import { api } from '@/lib/api';
 import { AppShell } from '@/components/app-shell';
 import { StatsPanel } from '@/components/stats-panel';
 import { LearningPath } from '@/components/learning-path';
+import { readLastTrack, writeLastTrack } from '@/lib/last-track';
 
 export default function LearnPage() {
   return (
@@ -21,7 +22,18 @@ export default function LearnPage() {
 function LearnInner() {
   const params = useSearchParams();
   const me = useQuery({ queryKey: ['me'], queryFn: () => api<MeResponse>('/me') });
-  const trackSlug = params.get('track') ?? me.data?.tracks[0]?.slug;
+
+  // 트랙 선택 우선순위: URL ?track= → 마지막으로 보던 트랙(기기 저장) → 첫 트랙.
+  // 저장값은 클라이언트에서만 읽을 수 있으므로 읽기 전(undefined)에는 경로를 요청하지 않는다 (잘못된 트랙이 먼저 깜빡이는 것 방지)
+  const [lastTrack, setLastTrack] = useState<string | null | undefined>(undefined);
+  useEffect(() => setLastTrack(readLastTrack()), []);
+  const tracks = me.data?.tracks ?? [];
+  const has = (slug: string | null | undefined) => !!slug && tracks.some((t) => t.slug === slug);
+  const fromUrl = params.get('track');
+  const trackSlug = has(fromUrl) ? fromUrl! : lastTrack === undefined ? undefined : has(lastTrack) ? lastTrack! : tracks[0]?.slug;
+  useEffect(() => {
+    if (trackSlug) writeLastTrack(trackSlug);
+  }, [trackSlug]);
   const path = useQuery({
     queryKey: ['path', trackSlug],
     queryFn: () => api<PathResponse>(`/me/path?track=${trackSlug}`),
