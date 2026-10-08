@@ -1,6 +1,7 @@
 # Supabase Free에는 자동 백업이 없다 → 매일 pg_dump를 GitHub Actions artifact(90일 보관)로 남긴다.
 # 인증은 ci.yml의 deploy-api와 같다: Workload Identity Federation으로 GCP에 로그인하고 DIRECT_URL을 Secret Manager에서 읽는다(GitHub Secrets 미사용).
 # Supabase는 PG 17 — 클라이언트 메이저 버전을 서버와 맞춰야 한다 (pg_dump는 서버보다 낮은 버전이면 중단한다).
+# 러너의 /usr/bin/pg_dump는 pg_wrapper라 기존 16 클러스터를 고른다 → 17 바이너리 디렉터리를 PATH 앞에 넣는다.
 # 2단계: Cloudflare R2(10GB 무료)로 업로드해 보관 기간을 늘린다.
 name: db-backup
 
@@ -40,12 +41,15 @@ jobs:
             | sudo tee /etc/apt/sources.list.d/pgdg.list
           sudo apt-get update -y
           sudo apt-get install -y postgresql-client-17
-          pg_dump --version
+          # pg_wrapper(/usr/bin/pg_dump)는 러너에 이미 있는 16 클러스터를 고르므로 17 바이너리 경로를 PATH 앞에 둔다
+          echo "/usr/lib/postgresql/17/bin" >> "$GITHUB_PATH"
+          /usr/lib/postgresql/17/bin/pg_dump --version
       - name: pg_dump
         env:
           DIRECT_URL: ${{ steps.db.outputs.DIRECT_URL }}
         run: |
           mkdir -p backups
+          pg_dump --version
           # 실패 시 원인을 주석(annotation)으로도 남긴다 — 로그를 못 여는 환경에서도 API로 확인 가능
           # 접속 문자열(비밀번호 포함)은 주석에 새지 않도록 postgres:// 주소를 가린다
           if ! pg_dump "$DIRECT_URL" --no-owner --no-privileges --format=custom --file "backups/csdaily-$(date -u +%Y%m%d).dump" 2> /tmp/pg_dump.log; then
