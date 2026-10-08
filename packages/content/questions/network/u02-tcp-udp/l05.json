@@ -1,0 +1,244 @@
+{
+  "track": "network",
+  "unit": "u02-tcp-udp",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "network-three-way-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "handshake",
+        "syn"
+      ],
+      "content": {
+        "prompt": "3-way handshake에서 클라이언트가 처음 보내는 연결 요청은?",
+        "options": [
+          "ACK",
+          "SYN",
+          "FIN"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "클라이언트는 SYN으로 연결을 요청하며 handshake를 시작합니다. FIN은 연결 종료 요청입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-three-way-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "handshake",
+        "syn-ack"
+      ],
+      "content": {
+        "prompt": "서버가 요청을 받고 자기도 연결을 요청하는 세그먼트는?",
+        "options": [
+          "SYN",
+          "FIN",
+          "SYN+ACK"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "서버는 SYN+ACK로 클라이언트의 SYN을 확인(ACK)하면서 자신의 연결 요청(SYN)도 함께 보냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-three-way-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "handshake",
+        "syn-ack"
+      ],
+      "content": {
+        "prompt": "3-way handshake의 올바른 순서는?",
+        "options": [
+          "SYN→SYN+ACK→ACK",
+          "SYN→ACK→SYN+ACK",
+          "ACK→SYN→SYN+ACK"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "클라이언트 SYN, 서버 SYN+ACK, 클라이언트 ACK 순서로 세 번 주고받아 연결을 맺습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-three-way-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "handshake",
+        "syn"
+      ],
+      "content": {
+        "prompt": "3-way handshake는 FIN 세그먼트로 시작한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "3-way handshake는 SYN으로 시작합니다. FIN은 연결을 끊을 때 쓰는 종료 요청입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-three-way-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "handshake",
+        "syn"
+      ],
+      "content": {
+        "prompt": "TCP 연결을 요청할 때 클라이언트가 보내는 것은 ___ 이다.",
+        "hint": "3-way handshake의 첫 번째 세그먼트입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "SYN",
+          "syn",
+          "신",
+          "씬",
+          "에스와이엔",
+          "synchronize"
+        ]
+      },
+      "explanation": "SYN은 연결 요청이자 클라이언트의 시작 시퀀스 번호를 알리는 세그먼트입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-three-way-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "handshake",
+        "sequence-number"
+      ],
+      "content": {
+        "prompt": "handshake 동안 양쪽은 서로의 시작 ___ 번호를 교환한다.",
+        "hint": "SYN 세그먼트에 실려 상대에게 전달되는 번호입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "시퀀스",
+          "sequence",
+          "시퀀스 번호",
+          "순서",
+          "순서 번호",
+          "sequence number",
+          "seq"
+        ]
+      },
+      "explanation": "SYN과 SYN+ACK에 각자의 시작 시퀀스 번호를 실어 교환하고, 이후 데이터는 이 번호부터 셉니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-three-way-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "handshake",
+        "ack"
+      ],
+      "content": {
+        "prompt": "클라이언트가 SYN+ACK를 받았다. 다음에 보내는 것은?",
+        "options": [
+          "SYN",
+          "FIN",
+          "ACK"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "SYN+ACK를 받은 클라이언트는 ACK로 서버의 요청을 확인해 handshake를 끝냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-three-way-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "handshake",
+        "syn-ack"
+      ],
+      "content": {
+        "prompt": "서버가 클라이언트의 SYN을 받았다. 바로 보내는 응답은?",
+        "options": [
+          "SYN+ACK",
+          "ACK만",
+          "FIN"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "서버는 SYN을 받으면 확인(ACK)과 자기 연결 요청(SYN)을 합친 SYN+ACK를 보냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-three-way-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "handshake",
+        "ack"
+      ],
+      "content": {
+        "prompt": "클라이언트의 마지막 ACK가 서버에 도착했다. 일어나는 일은?",
+        "options": [
+          "연결 종료",
+          "연결 성립",
+          "SYN 재전송"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "마지막 ACK가 도착하면 3-way handshake가 끝나 연결이 성립하고 데이터를 주고받을 수 있습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-three-way-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "handshake",
+        "syn"
+      ],
+      "content": {
+        "prompt": "3-way handshake는 클라이언트의 SYN으로 시작한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "클라이언트가 SYN으로 연결을 요청하면 서버가 SYN+ACK, 클라이언트가 ACK로 응답해 연결이 맺어집니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    }
+  ]
+}

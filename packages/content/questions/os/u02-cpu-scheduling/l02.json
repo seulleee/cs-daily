@@ -4,242 +4,238 @@
   "lesson": "l02",
   "questions": [
     {
-      "id": "os-fcfs-sjf-rr-001",
+      "id": "os-criteria-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "fcfs-sjf-rr",
-        "fcfs"
+        "turnaround-time",
+        "scheduling-criteria"
       ],
       "content": {
-        "prompt": "도착한 순서대로 CPU를 할당하는 스케줄링은?",
+        "prompt": "도착부터 종료까지 걸린 시간은?",
         "options": [
-          "SJF",
-          "FCFS",
-          "RR"
+          "대기 시간",
+          "반환 시간",
+          "응답 시간"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "FCFS(First-Come, First-Served)는 도착한 순서대로 CPU를 할당합니다. SJF는 실행 시간, RR은 타임 퀀텀을 기준으로 합니다.",
+      "explanation": "반환 시간은 프로세스가 도착한 시각부터 종료된 시각까지 걸린 시간입니다. 대기 시간은 그중 준비 큐에서 기다린 시간입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf",
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
+    },
+    {
+      "id": "os-criteria-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "throughput",
+        "scheduling-criteria"
+      ],
+      "content": {
+        "prompt": "단위 시간당 끝낸 작업 수는?",
+        "options": [
+          "처리량",
+          "응답 시간",
+          "대기 시간"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "처리량은 단위 시간당 끝낸 작업 수로, 클수록 같은 시간에 더 많은 작업을 끝낸 것입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Scheduling_(computing)"
       ]
     },
     {
-      "id": "os-fcfs-sjf-rr-002",
+      "id": "os-criteria-003",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "fcfs-sjf-rr",
-        "sjf"
+        "response-time",
+        "turnaround-time"
       ],
       "content": {
-        "prompt": "실행 시간이 가장 짧은 프로세스부터 실행하는 방식은?",
+        "prompt": "대화형 프로그램에서 첫 반응이 빠른지 보는 기준은?",
         "options": [
-          "RR",
-          "FCFS",
-          "SJF"
+          "반환 시간",
+          "응답 시간",
+          "처리량"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "응답 시간은 요청 후 첫 반응까지 걸린 시간이라 대화형 프로그램에서 중요합니다. 반환 시간은 종료까지 걸린 전체 시간입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-criteria-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "turnaround-time",
+        "response-time"
+      ],
+      "content": {
+        "prompt": "반환 시간은 요청 후 첫 반응까지 걸린 시간이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "요청 후 첫 반응까지 걸린 시간은 응답 시간입니다. 반환 시간은 도착부터 종료까지 걸린 시간입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-criteria-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "waiting-time",
+        "scheduling-criteria"
+      ],
+      "content": {
+        "prompt": "준비 큐에서 기다린 총 시간은 ___ 이다.",
+        "hint": "CPU를 받지 못하고 보낸 시간의 합"
+      },
+      "answer_key": {
+        "accepted": [
+          "대기 시간",
+          "대기시간",
+          "waiting time",
+          "waitingtime",
+          "웨이팅 타임"
+        ]
+      },
+      "explanation": "대기 시간은 준비 큐에서 CPU를 기다린 시간을 모두 더한 값입니다. 실행하거나 I/O를 하는 시간은 넣지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-criteria-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "throughput",
+        "scheduling-criteria"
+      ],
+      "content": {
+        "prompt": "단위 시간당 끝낸 작업 수는 ___ 이다.",
+        "hint": "클수록 같은 시간에 더 많은 작업을 끝낸다"
+      },
+      "answer_key": {
+        "accepted": [
+          "처리량",
+          "throughput",
+          "스루풋",
+          "쓰루풋",
+          "처리율"
+        ]
+      },
+      "explanation": "처리량(throughput)은 단위 시간당 끝낸 작업 수입니다. 1초에 작업 10개를 끝내면 처리량은 초당 10개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
+    },
+    {
+      "id": "os-criteria-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "turnaround-time",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "P1이 2초에 도착해 9초에 종료됐다. 반환 시간은?",
+        "options": [
+          "9초",
+          "11초",
+          "7초"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "SJF(Shortest Job First)는 CPU 버스트가 가장 짧은 프로세스를 먼저 실행해 평균 대기 시간을 줄입니다.",
+      "explanation": "반환 시간은 종료 시각에서 도착 시각을 뺀 값이므로 9 - 2 = 7초입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Shortest_job_next"
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
       ]
     },
     {
-      "id": "os-fcfs-sjf-rr-003",
+      "id": "os-criteria-008",
       "type": "single",
-      "difficulty": 1,
+      "difficulty": 2,
       "tags": [
-        "fcfs-sjf-rr",
-        "round-robin",
-        "preemption"
+        "response-time",
+        "calculation"
       ],
       "content": {
-        "prompt": "타임 퀀텀이 끝나면 CPU를 빼앗아 다음 프로세스에 주는 방식은?",
+        "prompt": "P1이 1초에 도착해 4초에 처음 실행됐다. 응답 시간은?",
         "options": [
-          "RR",
-          "FCFS"
+          "3초",
+          "4초",
+          "5초"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "RR(Round Robin)은 타임 퀀텀이 끝나면 실행 중인 프로세스를 선점해 큐 뒤로 보냅니다. FCFS는 끝날 때까지 CPU를 빼앗지 않습니다.",
+      "explanation": "응답 시간은 처음 실행된 시각에서 도착 시각을 뺀 값이므로 4 - 1 = 3초입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Round-robin_scheduling"
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
       ]
     },
     {
-      "id": "os-fcfs-sjf-rr-004",
-      "type": "ox",
-      "difficulty": 1,
+      "id": "os-criteria-009",
+      "type": "single",
+      "difficulty": 2,
       "tags": [
-        "fcfs-sjf-rr",
-        "fcfs",
-        "preemption"
+        "waiting-time",
+        "calculation"
       ],
       "content": {
-        "prompt": "FCFS는 실행 중인 프로세스의 CPU를 빼앗는 선점 방식이다."
+        "prompt": "P1이 준비 큐에서 4초 기다린 뒤 3초 실행되고 끝났다. 대기 시간은?",
+        "options": [
+          "3초",
+          "4초",
+          "7초"
+        ]
       },
       "answer_key": {
-        "value": false
+        "index": 1
       },
-      "explanation": "FCFS는 비선점 방식이라 실행 중인 프로세스가 끝나거나 스스로 CPU를 내놓을 때까지 빼앗지 않습니다. 선점 방식은 RR입니다.",
+      "explanation": "대기 시간은 준비 큐에서 기다린 시간이라 4초입니다. 실행한 3초까지 더한 7초는 반환 시간입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
       ]
     },
     {
-      "id": "os-fcfs-sjf-rr-005",
+      "id": "os-criteria-010",
       "type": "ox",
-      "difficulty": 1,
+      "difficulty": 2,
       "tags": [
-        "fcfs-sjf-rr",
-        "sjf",
+        "turnaround-time",
         "waiting-time"
       ],
       "content": {
-        "prompt": "SJF는 평균 대기 시간을 줄이는 데 유리하다."
+        "prompt": "반환 시간에는 준비 큐에서 기다린 시간도 포함된다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "짧은 작업을 먼저 끝내면 뒤에서 기다리는 프로세스 수가 빨리 줄어 평균 대기 시간이 짧아집니다.",
+      "explanation": "반환 시간은 도착부터 종료까지의 전체 시간이라 준비 큐에서 기다린 대기 시간과 실행 시간이 모두 들어갑니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Shortest_job_next",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
-      ]
-    },
-    {
-      "id": "os-fcfs-sjf-rr-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "fcfs-sjf-rr",
-        "round-robin",
-        "time-quantum"
-      ],
-      "content": {
-        "prompt": "RR에서 한 번에 CPU를 쓸 수 있는 최대 시간을 타임 ___ 이라 한다.",
-        "hint": "'양자'를 뜻하는 영어 단어"
-      },
-      "answer_key": {
-        "accepted": [
-          "퀀텀",
-          "quantum",
-          "퀀텀 시간",
-          "슬라이스",
-          "slice"
-        ]
-      },
-      "explanation": "RR에서 프로세스가 한 번에 쓸 수 있는 CPU 시간을 타임 퀀텀(타임 슬라이스)이라 합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Round-robin_scheduling"
-      ]
-    },
-    {
-      "id": "os-fcfs-sjf-rr-007",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "fcfs-sjf-rr",
-        "fcfs"
-      ],
-      "content": {
-        "prompt": "First-Come, First-Served의 약자는 ___ 이다.",
-        "hint": "알파벳 네 글자"
-      },
-      "answer_key": {
-        "accepted": [
-          "FCFS",
-          "fcfs"
-        ]
-      },
-      "explanation": "First-Come, First-Served의 약자는 FCFS로, 먼저 도착한 프로세스부터 CPU를 할당한다는 뜻입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
-      ]
-    },
-    {
-      "id": "os-fcfs-sjf-rr-008",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "fcfs-sjf-rr",
-        "round-robin",
-        "calculation"
-      ],
-      "content": {
-        "prompt": "RR(퀀텀 2), 큐에 P1(실행 4)→P2(실행 2). 시각 2에 실행되는 것은?",
-        "options": [
-          "P1",
-          "P2"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "P1이 퀀텀 2를 다 쓰면 선점되어 큐 뒤로 가므로, 시각 2에는 P2가 실행됩니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Round-robin_scheduling",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
-      ]
-    },
-    {
-      "id": "os-fcfs-sjf-rr-009",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "fcfs-sjf-rr",
-        "sjf",
-        "calculation"
-      ],
-      "content": {
-        "prompt": "SJF, P1(실행 6)·P2(실행 2) 동시 도착. P1의 대기 시간은?",
-        "options": [
-          "6",
-          "2",
-          "0"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "SJF는 짧은 P2를 먼저 실행하므로 P1은 P2가 끝나는 시각 2까지 기다려 대기 시간이 2입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Shortest_job_next",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
-      ]
-    },
-    {
-      "id": "os-fcfs-sjf-rr-010",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "fcfs-sjf-rr",
-        "fcfs",
-        "calculation"
-      ],
-      "content": {
-        "prompt": "FCFS, P1(실행 5)→P2(실행 3) 순 도착. P2의 대기 시간은?",
-        "options": [
-          "5",
-          "8",
-          "3"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "FCFS는 먼저 도착한 P1을 끝까지 실행하므로 P2는 P1의 실행 시간 5만큼 기다립니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
         "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
       ]
     }

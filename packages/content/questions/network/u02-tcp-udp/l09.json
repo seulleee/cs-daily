@@ -1,0 +1,241 @@
+{
+  "track": "network",
+  "unit": "u02-tcp-udp",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "network-congestion-control-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "congestion-control",
+        "tcp"
+      ],
+      "content": {
+        "prompt": "네트워크 전체가 막히지 않게 송신량을 조절하는 기능은?",
+        "options": [
+          "흐름 제어",
+          "혼잡 제어",
+          "순서 보장"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "혼잡 제어는 네트워크가 막히지 않도록 송신자가 보내는 양을 조절하는 기능입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5681"
+      ]
+    },
+    {
+      "id": "network-congestion-control-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "congestion-control",
+        "cwnd"
+      ],
+      "content": {
+        "prompt": "송신자가 스스로 정한, 한 번에 보낼 양은?",
+        "options": [
+          "수신 윈도우",
+          "시퀀스 번호",
+          "혼잡 윈도우"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "혼잡 윈도우(cwnd)는 송신자가 네트워크 상황을 보고 스스로 정한 송신량입니다. 수신 윈도우는 수신자가 알려 줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5681"
+      ]
+    },
+    {
+      "id": "network-congestion-control-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "congestion-control",
+        "flow-control"
+      ],
+      "content": {
+        "prompt": "혼잡 제어가 보호하려는 대상은?",
+        "options": [
+          "네트워크",
+          "수신자 버퍼"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "혼잡 제어는 네트워크를, 흐름 제어는 수신자 버퍼를 보호합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5681"
+      ]
+    },
+    {
+      "id": "network-congestion-control-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "slow-start",
+        "cwnd"
+      ],
+      "content": {
+        "prompt": "슬로 스타트는 cwnd를 절반씩 줄여 나가는 단계다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "슬로 스타트는 cwnd를 1, 2, 4, 8로 두 배씩 늘려 가는 단계입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5681"
+      ]
+    },
+    {
+      "id": "network-congestion-control-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "slow-start",
+        "cwnd"
+      ],
+      "content": {
+        "prompt": "cwnd를 두 배씩 늘려 가는 단계는 ___ 스타트다.",
+        "hint": "연결 직후 cwnd를 작게 시작하는 단계입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "슬로",
+          "slow",
+          "슬로우",
+          "슬로 스타트",
+          "슬로우 스타트",
+          "slow start"
+        ]
+      },
+      "explanation": "슬로 스타트는 cwnd를 작게 시작해 두 배씩 늘리며 네트워크가 감당할 양을 찾아갑니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5681"
+      ]
+    },
+    {
+      "id": "network-congestion-control-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cwnd",
+        "congestion-control"
+      ],
+      "content": {
+        "prompt": "송신자가 스스로 정한 한 번에 보낼 양은 혼잡 ___ 이다.",
+        "hint": "수신자가 알려 주는 rwnd와 짝을 이루는 값입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "윈도우",
+          "window",
+          "윈도",
+          "윈도우 크기",
+          "cwnd",
+          "congestion window"
+        ]
+      },
+      "explanation": "혼잡 윈도우(cwnd)는 송신자가 네트워크 상황에 맞춰 스스로 정하는 송신량입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5681"
+      ]
+    },
+    {
+      "id": "network-congestion-control-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "slow-start",
+        "cwnd"
+      ],
+      "content": {
+        "prompt": "슬로 스타트에서 cwnd가 1, 2, 4로 늘었다. 다음 값은?",
+        "options": [
+          "5",
+          "6",
+          "8"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "슬로 스타트는 cwnd를 두 배씩 늘리므로 4 다음은 8입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5681"
+      ]
+    },
+    {
+      "id": "network-congestion-control-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "congestion-control",
+        "cwnd"
+      ],
+      "content": {
+        "prompt": "네트워크 혼잡으로 패킷 유실이 생겼다. 송신자의 cwnd는?",
+        "options": [
+          "줄인다",
+          "두 배로 늘린다",
+          "그대로 둔다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "유실은 네트워크 혼잡 신호이므로 송신자는 cwnd를 줄여 보내는 양을 낮춥니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5681"
+      ]
+    },
+    {
+      "id": "network-congestion-control-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "congestion-control",
+        "flow-control"
+      ],
+      "content": {
+        "prompt": "rwnd는 넉넉한데 중간 라우터가 붐빈다. 필요한 제어는?",
+        "options": [
+          "흐름 제어",
+          "혼잡 제어"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "수신자는 여유가 있고 네트워크가 막힌 상황이므로, 네트워크를 보호하는 혼잡 제어가 필요합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5681"
+      ]
+    },
+    {
+      "id": "network-congestion-control-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "congestion-control",
+        "cwnd"
+      ],
+      "content": {
+        "prompt": "혼잡 제어는 송신자가 네트워크 상태를 보고 송신량을 조절하는 기능이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "혼잡 제어는 cwnd로 송신량을 조절해 네트워크 전체가 막히는 것을 막습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5681"
+      ]
+    }
+  ]
+}

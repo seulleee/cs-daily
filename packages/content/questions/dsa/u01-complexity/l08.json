@@ -1,0 +1,237 @@
+{
+  "track": "dsa",
+  "unit": "u01-complexity",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "dsa-amortized-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "amortized-analysis",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "연산 여러 번의 총비용을 연산 횟수로 나눈 값은?",
+        "options": [
+          "최악 비용",
+          "상각 비용",
+          "보조 공간"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "상각 비용은 연산 여러 번의 총비용을 연산 횟수로 나눈 평균 비용입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-amortized-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "amortized-analysis",
+        "dynamic-array"
+      ],
+      "content": {
+        "prompt": "동적 배열 append의 상각 복잡도는?",
+        "options": [
+          "O(1)",
+          "O(n)",
+          "O(n²)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가끔 O(n) 복사가 일어나도 전체를 평균하면 append 한 번은 상각 O(1)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Amortized_analysis",
+        "https://en.wikipedia.org/wiki/Dynamic_array"
+      ]
+    },
+    {
+      "id": "dsa-amortized-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "amortized-analysis",
+        "worst-case"
+      ],
+      "content": {
+        "prompt": "상각 분석이 보는 비용은?",
+        "options": [
+          "한 번의 최대 비용",
+          "전체 평균 비용"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "상각 분석은 연산 한 번이 아니라 여러 번의 전체 평균을 봅니다. 한 번의 최대는 최악 비용입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-amortized-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "amortized-analysis",
+        "dynamic-array"
+      ],
+      "content": {
+        "prompt": "동적 배열 append는 가끔 O(n)이므로 상각 비용도 O(n)이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "O(n) 복사는 가끔만 일어나므로 전체를 평균하면 append는 상각 O(1)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Amortized_analysis",
+        "https://en.wikipedia.org/wiki/Dynamic_array"
+      ]
+    },
+    {
+      "id": "dsa-amortized-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "amortized-analysis",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "총비용을 연산 횟수로 나눈 비용을 ___ 비용이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "상각",
+          "amortized",
+          "분할 상환"
+        ]
+      },
+      "explanation": "연산 여러 번의 총비용을 연산 횟수로 나눈 값을 상각 비용이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-amortized-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dynamic-array",
+        "amortized-analysis"
+      ],
+      "content": {
+        "prompt": "가득 찬 동적 배열에 append하면 원소 ___ 가 일어난다."
+      },
+      "answer_key": {
+        "accepted": [
+          "복사",
+          "copy",
+          "카피"
+        ]
+      },
+      "explanation": "공간이 가득 차면 더 큰 새 배열을 만들고 기존 원소를 모두 복사하므로 그 순간은 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_array"
+      ]
+    },
+    {
+      "id": "dsa-amortized-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "amortized-analysis",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "연산 4번의 총비용이 8이면 상각 비용은?",
+        "options": [
+          "2",
+          "4",
+          "8"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "상각 비용은 총비용 ÷ 연산 횟수이므로 8 ÷ 4 = 2입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-amortized-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dynamic-array",
+        "worst-case"
+      ],
+      "content": {
+        "prompt": "가득 찬 동적 배열에 append 한 번의 비용은?",
+        "options": [
+          "O(1)",
+          "O(n)",
+          "O(log n)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "가득 찬 순간에는 원소 n개를 복사하므로 그 한 번은 O(n)입니다. 전체 평균은 상각 O(1)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_array"
+      ]
+    },
+    {
+      "id": "dsa-amortized-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "amortized-analysis",
+        "dynamic-array"
+      ],
+      "content": {
+        "prompt": "동적 배열에 append를 n번 하면 총비용은?",
+        "options": [
+          "O(n²)",
+          "O(1)",
+          "O(n)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "append 한 번이 상각 O(1)이므로 n번의 총비용은 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Amortized_analysis",
+        "https://en.wikipedia.org/wiki/Dynamic_array"
+      ]
+    },
+    {
+      "id": "dsa-amortized-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "amortized-analysis",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "상각 비용은 연산 여러 번의 평균 비용이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "상각 비용은 여러 번의 총비용을 연산 횟수로 나눈 값으로, 한 번이 아닌 전체 평균을 봅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    }
+  ]
+}

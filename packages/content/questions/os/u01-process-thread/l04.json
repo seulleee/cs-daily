@@ -1,0 +1,237 @@
+{
+  "track": "os",
+  "unit": "u01-process-thread",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "os-thread-basics-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "thread-basics",
+        "thread"
+      ],
+      "content": {
+        "prompt": "프로세스 안에서 실행되는 흐름 단위는?",
+        "options": [
+          "스레드",
+          "프로그램",
+          "PCB"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스레드는 프로세스 안에서 실행되는 흐름 단위입니다. 프로그램은 디스크의 실행 파일, PCB는 프로세스 관리 블록입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Thread_(computing)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"
+      ]
+    },
+    {
+      "id": "os-thread-basics-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "thread-basics",
+        "multithread"
+      ],
+      "content": {
+        "prompt": "한 프로세스에 스레드가 여러 개인 구조는?",
+        "options": [
+          "단일 스레드",
+          "멀티스레드",
+          "멀티프로세스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "멀티스레드는 한 프로세스 안에 스레드가 여러 개 있는 구조입니다. 멀티프로세스는 프로세스가 여러 개인 구조입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Thread_(computing)"
+      ]
+    },
+    {
+      "id": "os-thread-basics-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "thread-basics",
+        "shared-resource"
+      ],
+      "content": {
+        "prompt": "같은 프로세스의 스레드는 힙을 공유한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "같은 프로세스의 스레드는 코드·데이터·힙·열린 파일을 함께 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Thread_(computing)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"
+      ]
+    },
+    {
+      "id": "os-thread-basics-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "thread-basics",
+        "thread-stack"
+      ],
+      "content": {
+        "prompt": "같은 프로세스의 스레드는 스택을 공유한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "스택은 스레드마다 따로 가집니다. 스레드끼리 공유하는 것은 코드·데이터·힙·열린 파일입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"
+      ]
+    },
+    {
+      "id": "os-thread-basics-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "thread-basics",
+        "thread"
+      ],
+      "content": {
+        "prompt": "프로세스 안에서 실행되는 흐름 단위는 ___ 이다.",
+        "hint": "한글 3글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "스레드",
+          "thread",
+          "쓰레드"
+        ]
+      },
+      "explanation": "스레드는 프로세스 안에서 실행되는 흐름 단위로, 한 프로세스에 여러 개 있을 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Thread_(computing)"
+      ]
+    },
+    {
+      "id": "os-thread-basics-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "thread-basics",
+        "thread-stack"
+      ],
+      "content": {
+        "prompt": "스레드마다 따로 갖는 메모리 영역은 ___ 이다.",
+        "hint": "지역 변수가 저장되는 영역"
+      },
+      "answer_key": {
+        "accepted": [
+          "스택",
+          "stack"
+        ]
+      },
+      "explanation": "스택은 스레드마다 따로 있어 각 스레드의 지역 변수와 함수 호출 정보가 섞이지 않습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"
+      ]
+    },
+    {
+      "id": "os-thread-basics-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "thread-basics",
+        "shared-resource"
+      ],
+      "content": {
+        "prompt": "스레드 A가 힙에 쓴 값을 같은 프로세스의 B가 읽을 수 있나?",
+        "options": [
+          "읽을 수 없음",
+          "읽을 수 있음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "같은 프로세스의 스레드는 힙을 공유하므로 B도 A가 힙에 쓴 값을 읽을 수 있습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"
+      ]
+    },
+    {
+      "id": "os-thread-basics-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "thread-basics",
+        "thread-stack"
+      ],
+      "content": {
+        "prompt": "스레드가 3개인 프로세스에 스택은 몇 개?",
+        "options": [
+          "3개",
+          "1개"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스택은 스레드마다 따로 가지므로 스레드가 3개이면 스택도 3개입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"
+      ]
+    },
+    {
+      "id": "os-thread-basics-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "thread-basics",
+        "shared-resource"
+      ],
+      "content": {
+        "prompt": "다음 중 스레드마다 따로 갖는 것은?",
+        "options": [
+          "힙",
+          "열린 파일",
+          "프로그램 카운터"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "프로그램 카운터는 각 스레드가 어디까지 실행했는지 가리키므로 스레드마다 따로 있습니다. 힙과 열린 파일은 공유합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Program_counter",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"
+      ]
+    },
+    {
+      "id": "os-thread-basics-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "thread-basics",
+        "thread"
+      ],
+      "content": {
+        "prompt": "스레드를 바르게 설명한 것은?",
+        "options": [
+          "실행 중인 프로그램",
+          "프로세스 안의 실행 흐름",
+          "디스크의 실행 파일"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스레드는 프로세스 안에서 실행되는 흐름 단위입니다. 실행 중인 프로그램은 프로세스, 디스크의 실행 파일은 프로그램입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Thread_(computing)"
+      ]
+    }
+  ]
+}

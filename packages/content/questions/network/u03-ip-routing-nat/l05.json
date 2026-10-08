@@ -1,0 +1,236 @@
+{
+  "track": "network",
+  "unit": "u03-ip-routing-nat",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "network-routing-table-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "routing-table",
+        "next-hop"
+      ],
+      "content": {
+        "prompt": "목적지 네트워크별로 다음 홉을 적어 둔 라우터의 표는?",
+        "options": [
+          "ARP 테이블",
+          "라우팅 테이블",
+          "변환 테이블"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "라우팅 테이블은 목적지 네트워크마다 패킷을 넘길 다음 홉을 기록하며, 라우터는 이를 보고 전달 방향을 정합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Routing_table"
+      ]
+    },
+    {
+      "id": "network-routing-table-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "routing-table",
+        "default-route"
+      ],
+      "content": {
+        "prompt": "라우팅 테이블에 맞는 항목이 없을 때 쓰는 경로는?",
+        "options": [
+          "최단 경로",
+          "루프백 경로",
+          "기본 경로"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "기본 경로(0.0.0.0/0)는 다른 어떤 항목과도 일치하지 않는 목적지의 패킷을 보낼 곳을 정합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Default_route"
+      ]
+    },
+    {
+      "id": "network-routing-table-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "routing-table",
+        "longest-prefix-match"
+      ],
+      "content": {
+        "prompt": "여러 항목이 맞을 때 가장 구체적인 항목을 고르는 규칙은?",
+        "options": [
+          "최장 접두사 일치",
+          "기본 경로"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "최장 접두사 일치는 여러 항목이 맞을 때 /비트가 가장 큰 항목을 고르는 규칙입니다. 기본 경로는 맞는 항목이 없을 때 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Longest_prefix_match"
+      ]
+    },
+    {
+      "id": "network-routing-table-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "routing-table",
+        "longest-prefix-match"
+      ],
+      "content": {
+        "prompt": "여러 항목이 맞으면 /비트가 가장 작은 항목을 고른다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "최장 접두사 일치에 따라 /비트가 가장 큰, 즉 가장 구체적인 항목을 고릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Longest_prefix_match"
+      ]
+    },
+    {
+      "id": "network-routing-table-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "routing-table",
+        "longest-prefix-match"
+      ],
+      "content": {
+        "prompt": "여러 항목이 맞으면 /비트가 큰 것을 고르는 규칙은 최장 ___ 일치다.",
+        "hint": "CIDR에서 /n으로 표시하는 앞쪽 네트워크 비트를 가리키는 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "접두사",
+          "prefix",
+          "프리픽스"
+        ]
+      },
+      "explanation": "최장 접두사 일치는 목적지와 맞는 네트워크 비트가 가장 긴 항목을 고르는 규칙입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Longest_prefix_match"
+      ]
+    },
+    {
+      "id": "network-routing-table-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "routing-table",
+        "default-route"
+      ],
+      "content": {
+        "prompt": "맞는 항목이 없을 때 쓰는 0.0.0.0/0 경로를 ___ 경로라고 한다.",
+        "hint": "다른 항목이 모두 맞지 않을 때 마지막으로 쓰이는 경로입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "기본",
+          "default",
+          "디폴트"
+        ]
+      },
+      "explanation": "0.0.0.0/0은 모든 주소와 일치하는 기본 경로로, 더 구체적인 항목이 없을 때만 쓰입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Default_route"
+      ]
+    },
+    {
+      "id": "network-routing-table-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "routing-table",
+        "longest-prefix-match"
+      ],
+      "content": {
+        "prompt": "10.1.0.0/16과 10.1.2.0/24가 있을 때 10.1.2.5가 따르는 항목은?",
+        "options": [
+          "0.0.0.0/0",
+          "10.1.0.0/16",
+          "10.1.2.0/24"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "두 항목 모두 일치하지만 최장 접두사 일치에 따라 더 구체적인 /24 항목을 따릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Longest_prefix_match"
+      ]
+    },
+    {
+      "id": "network-routing-table-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "routing-table",
+        "default-route"
+      ],
+      "content": {
+        "prompt": "테이블에 192.168.1.0/24와 0.0.0.0/0만 있을 때 8.8.8.8은?",
+        "options": [
+          "192.168.1.0/24",
+          "0.0.0.0/0",
+          "폐기된다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "8.8.8.8은 192.168.1.0/24에 속하지 않으므로 모든 주소와 일치하는 기본 경로 0.0.0.0/0을 따릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Default_route"
+      ]
+    },
+    {
+      "id": "network-routing-table-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "routing-table",
+        "next-hop"
+      ],
+      "content": {
+        "prompt": "10.2.0.0/16의 다음 홉이 R2일 때 10.2.7.1로 가는 패킷은?",
+        "options": [
+          "R2로 보낸다",
+          "기본 경로로 간다",
+          "폐기된다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "10.2.7.1은 10.2.0.0/16에 속하므로 그 항목의 다음 홉인 R2로 전달됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Routing_table"
+      ]
+    },
+    {
+      "id": "network-routing-table-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "routing-table",
+        "next-hop"
+      ],
+      "content": {
+        "prompt": "라우팅 테이블은 목적지 네트워크마다 다음 홉을 기록한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "라우터는 라우팅 테이블에서 목적지 네트워크를 찾아 그 항목의 다음 홉으로 패킷을 넘깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Routing_table"
+      ]
+    }
+  ]
+}

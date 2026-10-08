@@ -1,0 +1,239 @@
+{
+  "track": "database",
+  "unit": "u03-subquery-window",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "database-window-basics-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "window-function",
+        "over"
+      ],
+      "content": {
+        "prompt": "OVER를 붙여 행을 줄이지 않고 계산하는 함수는?",
+        "options": [
+          "집계 함수",
+          "윈도우 함수",
+          "문자열 함수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "윈도우 함수는 OVER 절과 함께 써서 각 행을 그대로 둔 채 계산 결과를 붙입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    },
+    {
+      "id": "database-window-basics-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "window-function",
+        "over"
+      ],
+      "content": {
+        "prompt": "함수를 윈도우 함수로 만드는 절은?",
+        "options": [
+          "GROUP BY",
+          "HAVING",
+          "OVER"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "함수 뒤에 OVER 절을 붙이면 윈도우 함수가 됩니다. GROUP BY와 달리 행을 묶어 줄이지 않습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS"
+      ]
+    },
+    {
+      "id": "database-window-basics-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "window-function",
+        "group-by"
+      ],
+      "content": {
+        "prompt": "그룹당 한 행만 남기는 것은?",
+        "options": [
+          "GROUP BY",
+          "윈도우 함수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "GROUP BY는 그룹마다 한 행으로 줄입니다. 윈도우 함수는 모든 행을 남긴 채 계산합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    },
+    {
+      "id": "database-window-basics-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "window-function",
+        "group-by"
+      ],
+      "content": {
+        "prompt": "윈도우 함수도 GROUP BY와 같이 결과 행 수를 줄인다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "행 수를 줄이는 것은 GROUP BY입니다. 윈도우 함수는 입력 행을 모두 남기고 각 행에 값을 붙입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    },
+    {
+      "id": "database-window-basics-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "window-function",
+        "over"
+      ],
+      "content": {
+        "prompt": "함수 뒤에 ___ 절을 붙이면 윈도우 함수가 된다.",
+        "hint": "'~에 걸쳐'라는 뜻의 영어 SQL 키워드입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "OVER",
+          "오버"
+        ]
+      },
+      "explanation": "OVER 절이 붙은 함수는 윈도우 함수로 동작해 행을 줄이지 않습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS"
+      ]
+    },
+    {
+      "id": "database-window-basics-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "window-function",
+        "definition"
+      ],
+      "content": {
+        "prompt": "OVER를 붙여 행을 줄이지 않고 계산하는 함수는 ___ 함수다.",
+        "hint": "GROUP BY와 달리 모든 행을 남기는 함수입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "윈도우",
+          "윈도",
+          "window",
+          "윈도우 함수",
+          "window function",
+          "분석",
+          "analytic"
+        ]
+      },
+      "explanation": "OVER로 행을 유지한 채 계산하는 함수를 윈도우 함수라고 합니다. 분석 함수라고도 부릅니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    },
+    {
+      "id": "database-window-basics-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "window-function",
+        "sum-over"
+      ],
+      "content": {
+        "prompt": "주문 5행에 SUM(금액) OVER ()를 쓰면 결과 행 수는?",
+        "options": [
+          "1행",
+          "5행",
+          "0행"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "윈도우 함수는 행을 줄이지 않으므로 5행이 그대로 남습니다. 각 행에 총합이 붙습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    },
+    {
+      "id": "database-window-basics-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "window-function",
+        "sum-over"
+      ],
+      "content": {
+        "prompt": "금액이 10, 20, 30일 때 SUM(금액) OVER ()가 각 행에 붙이는 값은?",
+        "options": [
+          "60",
+          "각자 금액",
+          "10, 30, 60"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "OVER ()는 전체 행을 하나의 윈도우로 보므로 모든 행에 총합 60이 붙습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    },
+    {
+      "id": "database-window-basics-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "window-function",
+        "group-by"
+      ],
+      "content": {
+        "prompt": "직원 6명이 2개 부서에 있다. GROUP BY 부서의 결과 행 수는?",
+        "options": [
+          "1행",
+          "6행",
+          "2행"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "GROUP BY는 그룹마다 한 행으로 줄여 2행이 됩니다. 윈도우 함수였다면 6행이 모두 남습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    },
+    {
+      "id": "database-window-basics-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "window-function",
+        "sum-over"
+      ],
+      "content": {
+        "prompt": "SUM(금액) OVER ()는 모든 행에 총합을 붙인다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "OVER ()는 전체 행을 하나의 윈도우로 봅니다. 그래서 행은 그대로 남고 각 행에 총합이 붙습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    }
+  ]
+}

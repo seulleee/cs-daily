@@ -4,240 +4,232 @@
   "lesson": "l03",
   "questions": [
     {
-      "id": "database-group-by-having-001",
+      "id": "database-null-handling-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "group-by-having",
-        "group-by"
+        "null-handling",
+        "is-null"
       ],
       "content": {
-        "prompt": "같은 값을 가진 행끼리 하나의 그룹으로 묶는 절은?",
+        "prompt": "NULL 여부를 올바르게 검사하는 연산자는?",
         "options": [
-          "ORDER BY",
-          "GROUP BY",
-          "HAVING"
+          "= NULL",
+          "IS NULL",
+          "LIKE"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "GROUP BY 절은 지정한 열 값이 같은 행들을 하나의 그룹으로 묶어 그룹마다 한 행을 만듭니다.",
+      "explanation": "NULL 검사는 IS NULL로 합니다. = NULL은 결과가 항상 UNKNOWN이라 행이 나오지 않습니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/sql-select.html"
+        "https://www.postgresql.org/docs/current/functions-comparison.html"
       ]
     },
     {
-      "id": "database-group-by-having-002",
+      "id": "database-null-handling-002",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "group-by-having",
-        "having"
+        "null-handling",
+        "coalesce"
       ],
       "content": {
-        "prompt": "GROUP BY로 만든 그룹에 조건을 거는 절은?",
+        "prompt": "첫 인자가 NULL이면 둘째 인자를 돌려주는 함수는?",
         "options": [
-          "WHERE",
-          "ORDER BY",
-          "HAVING"
+          "COALESCE",
+          "IS NULL",
+          "BETWEEN"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "COALESCE(a, b)는 a가 NULL이 아니면 a를, NULL이면 b를 돌려줍니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/functions-conditional.html"
+      ]
+    },
+    {
+      "id": "database-null-handling-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "null-handling",
+        "is-null"
+      ],
+      "content": {
+        "prompt": "col = NULL 조건은 col이 NULL인 행을 찾아 준다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "NULL과의 = 비교는 항상 UNKNOWN이라 어떤 행도 나오지 않습니다. NULL 검사는 IS NULL로 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/functions-comparison.html"
+      ]
+    },
+    {
+      "id": "database-null-handling-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "null-handling",
+        "three-valued-logic"
+      ],
+      "content": {
+        "prompt": "SQL 조건식의 결과는 TRUE, FALSE, UNKNOWN 중 하나다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "SQL은 3값 논리를 씁니다. NULL이 끼면 조건 결과가 UNKNOWN이 될 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/functions-logical.html"
+      ]
+    },
+    {
+      "id": "database-null-handling-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "null-handling",
+        "three-valued-logic"
+      ],
+      "content": {
+        "prompt": "3값 논리에서 TRUE, FALSE가 아닌 값은 ___ 이다.",
+        "hint": "NULL과 비교했을 때 나오는 결과입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "UNKNOWN",
+          "언노운",
+          "알 수 없음",
+          "알수없음"
+        ]
+      },
+      "explanation": "SQL의 3값 논리는 TRUE, FALSE, UNKNOWN입니다. WHERE는 TRUE인 행만 남깁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/functions-logical.html"
+      ]
+    },
+    {
+      "id": "database-null-handling-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "null-handling",
+        "is-null"
+      ],
+      "content": {
+        "prompt": "NULL이 아닌 행을 찾는 조건은 col IS ___ NULL 이다.",
+        "hint": "부정을 뜻하는 논리 연산자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "NOT",
+          "낫"
+        ]
+      },
+      "explanation": "IS NOT NULL은 값이 NULL이 아닌 행에서 참이 됩니다. IS NULL의 반대입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/functions-comparison.html"
+      ]
+    },
+    {
+      "id": "database-null-handling-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "null-handling",
+        "coalesce"
+      ],
+      "content": {
+        "prompt": "COALESCE(NULL, 0)의 결과는?",
+        "options": [
+          "NULL",
+          "UNKNOWN",
+          "0"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "HAVING 절은 그룹화가 끝난 뒤 그룹 단위로 조건을 적용합니다. 예: HAVING SUM(amount) >= 300",
+      "explanation": "첫 인자가 NULL이므로 COALESCE는 둘째 인자 0을 돌려줍니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/sql-select.html"
+        "https://www.postgresql.org/docs/current/functions-conditional.html"
       ]
     },
     {
-      "id": "database-group-by-having-003",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "group-by-having",
-        "where",
-        "having"
-      ],
-      "content": {
-        "prompt": "그룹으로 묶기 전에 행을 거르는 절은?",
-        "options": [
-          "HAVING",
-          "WHERE"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "WHERE는 그룹화 전에 행을 거르고, HAVING은 그룹화 후에 그룹을 거릅니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/sql-select.html"
-      ]
-    },
-    {
-      "id": "database-group-by-having-004",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "group-by-having",
-        "having",
-        "where"
-      ],
-      "content": {
-        "prompt": "SUM(amount) > 100 같은 집계 조건은 WHERE 절에 쓴다."
-      },
-      "answer_key": {
-        "value": false
-      },
-      "explanation": "WHERE는 그룹화 전에 평가되어 집계 결과를 쓸 수 없습니다. 집계 조건은 HAVING 절에 씁니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/sql-select.html",
-        "https://www.postgresql.org/docs/current/functions-aggregate.html"
-      ]
-    },
-    {
-      "id": "database-group-by-having-005",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "group-by-having",
-        "group-by"
-      ],
-      "content": {
-        "prompt": "GROUP BY team 의 결과는 team 값마다 한 행이다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "GROUP BY는 같은 값의 행을 한 그룹으로 묶으므로, 결과는 서로 다른 team 값마다 한 행씩 나옵니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/sql-select.html"
-      ]
-    },
-    {
-      "id": "database-group-by-having-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "group-by-having",
-        "group-by"
-      ],
-      "content": {
-        "prompt": "team별로 행을 묶으려면 ___ BY team 이라고 쓴다.",
-        "hint": "같은 값의 행을 하나로 묶는 절"
-      },
-      "answer_key": {
-        "accepted": [
-          "GROUP",
-          "group",
-          "그룹",
-          "GROUP BY",
-          "group by"
-        ]
-      },
-      "explanation": "GROUP BY team은 team 값이 같은 행을 하나의 그룹으로 묶습니다. 집계 함수는 그룹마다 계산됩니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/sql-select.html"
-      ]
-    },
-    {
-      "id": "database-group-by-having-007",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "group-by-having",
-        "having"
-      ],
-      "content": {
-        "prompt": "그룹에 SUM(amount) >= 300 같은 조건을 거는 절은 ___ 이다.",
-        "hint": "WHERE와 달리 그룹화 뒤에 평가된다"
-      },
-      "answer_key": {
-        "accepted": [
-          "HAVING",
-          "having",
-          "해빙",
-          "해이빙"
-        ]
-      },
-      "explanation": "HAVING은 그룹화 이후에 평가되므로 SUM, COUNT 같은 집계 결과로 조건을 걸 수 있습니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/sql-select.html",
-        "https://www.postgresql.org/docs/current/functions-aggregate.html"
-      ]
-    },
-    {
-      "id": "database-group-by-having-008",
+      "id": "database-null-handling-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "group-by-having",
-        "group-by"
+        "null-handling",
+        "three-valued-logic"
       ],
       "content": {
-        "prompt": "team 값이 A, A, B인 3행을 GROUP BY team 하면 결과 행 수는?",
+        "prompt": "WHERE phone = NULL 을 실행하면 어떻게 되나?",
         "options": [
-          "1행",
-          "2행",
-          "3행"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "서로 다른 team 값은 A와 B 두 개이므로 그룹도 2개, 결과도 2행입니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/sql-select.html"
-      ]
-    },
-    {
-      "id": "database-group-by-having-009",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "group-by-having",
-        "having"
-      ],
-      "content": {
-        "prompt": "팀별 합계가 A 300, B 100이면 HAVING SUM(x) >= 200 인 팀은?",
-        "options": [
-          "A",
-          "B",
-          "A와 B"
+          "행이 안 나옴",
+          "NULL 행만 나옴",
+          "오류 발생"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "HAVING은 그룹별 집계 결과로 그룹을 거릅니다. 합계가 200 이상인 그룹은 A(300)뿐입니다.",
+      "explanation": "= NULL 비교는 모든 행에서 UNKNOWN이고, WHERE는 TRUE인 행만 남기므로 결과가 비어 있습니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/sql-select.html",
-        "https://www.postgresql.org/docs/current/functions-aggregate.html"
+        "https://www.postgresql.org/docs/current/functions-comparison.html"
       ]
     },
     {
-      "id": "database-group-by-having-010",
+      "id": "database-null-handling-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "group-by-having",
-        "group-by"
+        "null-handling",
+        "coalesce"
       ],
       "content": {
-        "prompt": "GROUP BY 절의 역할은?",
+        "prompt": "nick이 'sl', name이 'slee'면 COALESCE(nick, name)은?",
         "options": [
-          "같은 값끼리 묶기",
-          "행 정렬",
-          "그룹 필터링"
+          "slee",
+          "sl",
+          "NULL"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "첫 인자 nick이 NULL이 아니므로 COALESCE는 nick 값 'sl'을 그대로 돌려줍니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/functions-conditional.html"
+      ]
+    },
+    {
+      "id": "database-null-handling-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "null-handling",
+        "is-null"
+      ],
+      "content": {
+        "prompt": "email이 NULL인 행을 찾는 올바른 조건은?",
+        "options": [
+          "email IS NULL",
+          "email = NULL"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "GROUP BY는 같은 값을 가진 행끼리 묶습니다. 정렬은 ORDER BY, 그룹 필터링은 HAVING이 맡습니다.",
+      "explanation": "NULL 여부는 IS NULL로 검사합니다. email = NULL은 UNKNOWN이 되어 어떤 행도 찾지 못합니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/sql-select.html"
+        "https://www.postgresql.org/docs/current/functions-comparison.html"
       ]
     }
   ]

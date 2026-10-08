@@ -1,0 +1,235 @@
+{
+  "track": "database",
+  "unit": "u02-sql-basics",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "database-group-by-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "group-by",
+        "grouping"
+      ],
+      "content": {
+        "prompt": "같은 값을 가진 행을 한 그룹으로 묶는 절은?",
+        "options": [
+          "GROUP BY",
+          "ORDER BY",
+          "WHERE"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "GROUP BY는 지정한 열의 값이 같은 행을 한 그룹으로 묶습니다. ORDER BY는 정렬만 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    },
+    {
+      "id": "database-group-by-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "group-by",
+        "grouping"
+      ],
+      "content": {
+        "prompt": "GROUP BY 결과의 행 수는?",
+        "options": [
+          "원래 행 수",
+          "그룹 수",
+          "항상 1행"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "GROUP BY는 그룹마다 한 행을 만들므로 결과 행 수는 그룹 수와 같습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-agg.html"
+      ]
+    },
+    {
+      "id": "database-group-by-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "group-by",
+        "select-list"
+      ],
+      "content": {
+        "prompt": "GROUP BY dept 쿼리의 SELECT에 그대로 쓸 수 있는 열은?",
+        "options": [
+          "dept",
+          "name"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SELECT에는 GROUP BY 열과 집계 함수만 쓸 수 있습니다. name은 한 그룹 안에 값이 여러 개일 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    },
+    {
+      "id": "database-group-by-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "group-by",
+        "grouping"
+      ],
+      "content": {
+        "prompt": "GROUP BY는 행을 묶지 않고 정렬만 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "GROUP BY는 같은 값의 행을 묶어 그룹당 한 행을 만듭니다. 정렬은 ORDER BY가 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    },
+    {
+      "id": "database-group-by-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "group-by",
+        "grouping"
+      ],
+      "content": {
+        "prompt": "같은 값의 행을 한 그룹으로 묶는 절은 ___ BY 이다.",
+        "hint": "'묶음'을 뜻하는 영어 단어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "GROUP",
+          "그룹"
+        ]
+      },
+      "explanation": "GROUP BY 뒤에 적은 열의 값이 같은 행들이 한 그룹이 됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    },
+    {
+      "id": "database-group-by-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "group-by",
+        "select-list"
+      ],
+      "content": {
+        "prompt": "GROUP BY 쿼리의 SELECT에는 묶은 열과 ___ 함수만 쓸 수 있다.",
+        "hint": "COUNT, SUM 등 여러 행을 한 값으로 줄이는 함수의 종류입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "집계",
+          "aggregate",
+          "애그리게이트"
+        ]
+      },
+      "explanation": "그룹당 한 행만 나오므로 SELECT에는 GROUP BY 열과 COUNT·SUM 등 집계 함수만 올 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-agg.html"
+      ]
+    },
+    {
+      "id": "database-group-by-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "group-by",
+        "grouping"
+      ],
+      "content": {
+        "prompt": "dept가 A, A, B, C, C인 5행. GROUP BY dept 결과 행 수는?",
+        "options": [
+          "2",
+          "3",
+          "5"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "dept 값이 A, B, C 세 종류라 그룹이 3개이고, 그룹당 한 행이므로 결과는 3행입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-agg.html"
+      ]
+    },
+    {
+      "id": "database-group-by-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "group-by",
+        "count"
+      ],
+      "content": {
+        "prompt": "dept A 2행, B 3행. GROUP BY dept 후 B의 COUNT(*)는?",
+        "options": [
+          "5",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "COUNT(*)는 그룹마다 따로 계산됩니다. B 그룹에는 3행이 있으므로 3입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-agg.html"
+      ]
+    },
+    {
+      "id": "database-group-by-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "group-by",
+        "select-list"
+      ],
+      "content": {
+        "prompt": "SELECT dept, ? FROM emp GROUP BY dept. ?에 올 것은?",
+        "options": [
+          "name",
+          "COUNT(*)",
+          "salary"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "GROUP BY 열이 아닌 name, salary는 그대로 쓸 수 없고, 집계 함수 COUNT(*)는 쓸 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    },
+    {
+      "id": "database-group-by-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "group-by",
+        "grouping"
+      ],
+      "content": {
+        "prompt": "GROUP BY는 지정한 열의 값이 같은 행을 한 그룹으로 묶는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "GROUP BY 뒤의 열 값이 같은 행들이 한 그룹이 되고, 결과에는 그룹마다 한 행이 나옵니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    }
+  ]
+}

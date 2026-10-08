@@ -1,0 +1,248 @@
+{
+  "track": "os",
+  "unit": "u02-cpu-scheduling",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "os-sjf-srtf-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sjf",
+        "scheduling"
+      ],
+      "content": {
+        "prompt": "실행 시간이 가장 짧은 작업을 먼저 실행하는 비선점 방식은?",
+        "options": [
+          "SJF",
+          "SRTF",
+          "FCFS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SJF(Shortest Job First)는 실행 시간이 가장 짧은 작업부터 실행하는 비선점 방식입니다. SRTF는 SJF의 선점형입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_job_next",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-sjf-srtf-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "srtf",
+        "preemptive"
+      ],
+      "content": {
+        "prompt": "남은 시간이 가장 짧은 작업을 먼저 실행하는 선점 방식은?",
+        "options": [
+          "SJF",
+          "FCFS",
+          "SRTF"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "SRTF(Shortest Remaining Time First)는 남은 실행 시간이 가장 짧은 작업을 먼저 실행하는 선점형 SJF입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_remaining_time",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-sjf-srtf-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sjf",
+        "srtf"
+      ],
+      "content": {
+        "prompt": "SJF는 더 짧은 작업이 도착하면 실행 중인 작업을 선점한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "SJF는 비선점이라 실행 중인 작업을 끝까지 실행합니다. 더 짧은 작업이 오면 선점하는 것은 SRTF입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_job_next",
+        "https://en.wikipedia.org/wiki/Shortest_remaining_time"
+      ]
+    },
+    {
+      "id": "os-sjf-srtf-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sjf",
+        "waiting-time"
+      ],
+      "content": {
+        "prompt": "SJF는 이론상 평균 대기 시간을 최소로 만든다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "짧은 작업을 먼저 실행하면 뒤 작업들이 기다리는 시간이 줄어, SJF는 이론상 평균 대기 시간이 가장 짧습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_job_next",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-sjf-srtf-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "starvation",
+        "sjf"
+      ],
+      "content": {
+        "prompt": "긴 작업이 짧은 작업에 계속 밀려 실행되지 못하는 현상은 ___ 이다.",
+        "hint": "SJF와 SRTF의 공통 단점"
+      },
+      "answer_key": {
+        "accepted": [
+          "기아",
+          "기아 상태",
+          "기아상태",
+          "기아 현상",
+          "기아현상",
+          "starvation",
+          "스타베이션"
+        ]
+      },
+      "explanation": "SJF와 SRTF는 짧은 작업이 계속 도착하면 긴 작업을 계속 미뤄 기아가 생길 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)",
+        "https://en.wikipedia.org/wiki/Shortest_job_next"
+      ]
+    },
+    {
+      "id": "os-sjf-srtf-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "srtf",
+        "preemptive"
+      ],
+      "content": {
+        "prompt": "선점형 SJF를 ___ 라고 한다.",
+        "hint": "남은 시간 기준으로 고르는 방식의 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "SRTF",
+          "SRT",
+          "STCF",
+          "Shortest Remaining Time First",
+          "최소 잔여 시간 우선"
+        ]
+      },
+      "explanation": "SRTF는 새 작업이 도착할 때마다 남은 시간을 비교해, 더 짧은 작업이 있으면 선점하는 SJF의 선점형입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_remaining_time",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-sjf-srtf-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sjf",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "SJF, 0초에 P1(6초), P2(2초), P3(4초) 도착. 먼저 실행되는 것은?",
+        "options": [
+          "P1",
+          "P2",
+          "P3"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SJF는 실행 시간이 가장 짧은 작업부터 고르므로 2초인 P2가 먼저 실행됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_job_next"
+      ]
+    },
+    {
+      "id": "os-sjf-srtf-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sjf",
+        "waiting-time"
+      ],
+      "content": {
+        "prompt": "0초에 P1(5초), P2(2초) 순 도착. 평균 대기 시간이 짧은 쪽은?",
+        "options": [
+          "SJF",
+          "FCFS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "FCFS는 P1부터 실행해 평균 대기 (0+5)/2 = 2.5초, SJF는 P2부터 실행해 (0+2)/2 = 1초입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_job_next",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-sjf-srtf-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "srtf",
+        "preemptive"
+      ],
+      "content": {
+        "prompt": "SRTF에서 P1(남은 5초) 실행 중 P2(2초)가 도착했다. 다음 일은?",
+        "options": [
+          "P1이 계속 실행",
+          "P2가 P1을 선점"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SRTF는 남은 시간이 가장 짧은 작업을 실행합니다. P2의 2초가 P1의 남은 5초보다 짧아 P2가 선점합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_remaining_time"
+      ]
+    },
+    {
+      "id": "os-sjf-srtf-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sjf",
+        "starvation"
+      ],
+      "content": {
+        "prompt": "SJF에서 짧은 작업이 계속 도착하면 긴 작업은?",
+        "options": [
+          "계속 밀릴 수 있음",
+          "가장 먼저 실행됨"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SJF는 매번 가장 짧은 작업을 고르므로, 짧은 작업이 계속 오면 긴 작업은 계속 밀려 기아에 빠질 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_job_next",
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "track": "database",
+  "unit": "u01-relational-model",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "database-normal-forms-3-bcnf-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "transitive-dependency"
+      ],
+      "content": {
+        "prompt": "A → B, B → C일 때 A → C가 되는 종속은?",
+        "options": [
+          "부분 함수 종속",
+          "완전 함수 종속",
+          "이행 함수 종속"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "A가 B를 거쳐 C를 결정하는 A → C를 이행 함수 종속이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Transitive_dependency"
+      ]
+    },
+    {
+      "id": "database-normal-forms-3-bcnf-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "bcnf"
+      ],
+      "content": {
+        "prompt": "모든 결정자가 후보키인 정규형은?",
+        "options": [
+          "2NF",
+          "3NF",
+          "BCNF"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "BCNF(보이스-코드 정규형)는 모든 결정자가 후보키여야 하는 정규형입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Boyce%E2%80%93Codd_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-3-bcnf-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "3nf"
+      ],
+      "content": {
+        "prompt": "2NF이면서 이행 함수 종속이 없는 정규형은?",
+        "options": [
+          "BCNF",
+          "3NF"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "3NF는 2NF이면서 이행 함수 종속이 없어야 합니다. BCNF는 모든 결정자가 후보키라는 조건입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Third_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-3-bcnf-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "3nf",
+        "bcnf"
+      ],
+      "content": {
+        "prompt": "3NF의 조건은 모든 결정자가 후보키인 것이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "모든 결정자가 후보키여야 하는 것은 BCNF입니다. 3NF는 2NF이면서 이행 함수 종속이 없는 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Third_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-3-bcnf-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "transitive-dependency"
+      ],
+      "content": {
+        "prompt": "A → B, B → C에서 생기는 A → C를 ___ 함수 종속이라고 한다.",
+        "hint": "B를 거쳐 전달되는 종속"
+      },
+      "answer_key": {
+        "accepted": [
+          "이행",
+          "transitive",
+          "이행적",
+          "이행 함수 종속"
+        ]
+      },
+      "explanation": "A가 B를 거쳐 C를 결정하므로 A → C를 이행 함수 종속이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Transitive_dependency"
+      ]
+    },
+    {
+      "id": "database-normal-forms-3-bcnf-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "bcnf"
+      ],
+      "content": {
+        "prompt": "모든 결정자가 후보키인 정규형은 ___ 이다.",
+        "hint": "3NF보다 엄격한 정규형, 영문 약자로 답한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "BCNF",
+          "보이스 코드 정규형",
+          "보이스코드 정규형",
+          "보이스코드정규형",
+          "보이스-코드 정규형",
+          "boyce codd normal form",
+          "boyce-codd normal form"
+        ]
+      },
+      "explanation": "BCNF는 모든 결정자가 후보키여야 하는 정규형으로, 3NF보다 엄격합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Boyce%E2%80%93Codd_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-3-bcnf-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "transitive-dependency"
+      ],
+      "content": {
+        "prompt": "학번 → 학과, 학과 → 학과장이 있다. 학번 → 학과장은?",
+        "options": [
+          "이행 함수 종속",
+          "부분 함수 종속"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "학번이 학과를 거쳐 학과장을 결정하므로 이행 함수 종속입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Transitive_dependency"
+      ]
+    },
+    {
+      "id": "database-normal-forms-3-bcnf-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "3nf",
+        "transitive-dependency"
+      ],
+      "content": {
+        "prompt": "기본키 학번, 학번 → 학과, 학과 → 학과장인 2NF 테이블은 3NF인가?",
+        "options": [
+          "3NF이다",
+          "3NF가 아니다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "학번 → 학과 → 학과장의 이행 함수 종속이 있으므로 3NF가 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Third_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-3-bcnf-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "bcnf"
+      ],
+      "content": {
+        "prompt": "교수 → 과목이 있는데 교수가 후보키가 아니다. 이 테이블은?",
+        "options": [
+          "BCNF 위반",
+          "BCNF 만족"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "결정자인 교수가 후보키가 아니므로 모든 결정자가 후보키라는 BCNF 조건을 어깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Boyce%E2%80%93Codd_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-3-bcnf-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "transitive-dependency"
+      ],
+      "content": {
+        "prompt": "주문번호 → 회원번호, 회원번호 → 등급이면 주문번호 → 등급이 성립한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "A → B, B → C이면 A → C가 성립하며, 이를 이행 함수 종속이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Transitive_dependency"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "track": "dsa",
+  "unit": "u02-array-linked-list",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "dsa-dynamic-array-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dynamic-array",
+        "size"
+      ],
+      "content": {
+        "prompt": "동적 배열에 실제 저장된 원소 수는?",
+        "options": [
+          "용량(capacity)",
+          "크기(size)",
+          "인덱스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "크기(size)는 실제로 저장된 원소 수입니다. 용량(capacity)은 할당된 전체 칸 수입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_array",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-dynamic-array-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dynamic-array",
+        "capacity"
+      ],
+      "content": {
+        "prompt": "동적 배열에 할당된 전체 칸 수는?",
+        "options": [
+          "크기(size)",
+          "인덱스",
+          "용량(capacity)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "용량(capacity)은 할당된 칸 수로, 원소가 없는 빈 칸까지 포함합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_array",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-dynamic-array-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dynamic-array",
+        "capacity"
+      ],
+      "content": {
+        "prompt": "동적 배열의 용량은 저장된 원소 수를 뜻한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "저장된 원소 수는 크기(size)입니다. 용량(capacity)은 할당된 칸 수로, 크기보다 크거나 같습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_array",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-dynamic-array-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dynamic-array",
+        "resizing"
+      ],
+      "content": {
+        "prompt": "가득 찬 동적 배열을 확장할 때 보통 새 용량은?",
+        "options": [
+          "1칸 추가",
+          "2배"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "동적 배열은 가득 차면 보통 2배 크기의 배열을 새로 만들어 원소를 복사합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_array",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-dynamic-array-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dynamic-array",
+        "size"
+      ],
+      "content": {
+        "prompt": "동적 배열에 실제 저장된 원소 수를 ___ 라 한다.",
+        "hint": "할당된 칸 수인 용량과 구분되는 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "크기",
+          "size",
+          "사이즈"
+        ]
+      },
+      "explanation": "실제 저장된 원소 수는 크기(size)입니다. 할당된 칸 수인 용량(capacity)과 다릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_array",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-dynamic-array-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dynamic-array",
+        "amortized-analysis"
+      ],
+      "content": {
+        "prompt": "append는 복사가 가끔 있어도 ___ O(1)이다.",
+        "hint": "여러 번 연산의 평균 비용으로 따진다"
+      },
+      "answer_key": {
+        "accepted": [
+          "상각",
+          "amortized",
+          "amortised",
+          "분할 상환",
+          "분할상환"
+        ]
+      },
+      "explanation": "확장 때의 복사 비용을 여러 append에 나눠 보면 한 번당 평균 O(1)이며, 이를 상각 O(1)이라 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_array",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-dynamic-array-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dynamic-array",
+        "capacity"
+      ],
+      "content": {
+        "prompt": "size 3, capacity 8인 동적 배열의 빈 칸 수는?",
+        "options": [
+          "5",
+          "3",
+          "8"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "용량 8칸 중 3칸에 원소가 있으므로 빈 칸은 8 − 3 = 5칸입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_array",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-dynamic-array-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dynamic-array",
+        "resizing"
+      ],
+      "content": {
+        "prompt": "2배 확장 동적 배열이 용량 4로 가득 찼다. append 후 용량은?",
+        "options": [
+          "5",
+          "6",
+          "8"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "가득 차면 2배 크기로 새로 만들므로 용량은 4 × 2 = 8이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_array",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-dynamic-array-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dynamic-array",
+        "resizing"
+      ],
+      "content": {
+        "prompt": "가득 찬 동적 배열에 append할 때 일어나는 일은?",
+        "options": [
+          "원소 하나 삭제",
+          "새 배열로 복사",
+          "append 실패"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "더 큰 배열을 새로 할당하고 기존 원소를 모두 복사한 뒤 새 원소를 넣습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_array",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    },
+    {
+      "id": "dsa-dynamic-array-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dynamic-array",
+        "size"
+      ],
+      "content": {
+        "prompt": "동적 배열의 크기(size)는 실제 저장된 원소 수이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "크기(size)는 실제 저장된 원소 수이고, 용량(capacity)은 할당된 칸 수입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_array",
+        "https://en.wikipedia.org/wiki/Amortized_analysis"
+      ]
+    }
+  ]
+}

@@ -4,235 +4,233 @@
   "lesson": "l02",
   "questions": [
     {
-      "id": "dsa-code-complexity-001",
+      "id": "dsa-common-orders-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "code-complexity",
-        "loop"
+        "constant-time",
+        "big-o"
       ],
       "content": {
-        "prompt": "n번 도는 반복문 하나의 시간 복잡도는?",
+        "prompt": "입력이 커져도 연산 횟수가 같은 복잡도는?",
         "options": [
+          "O(n)",
           "O(1)",
-          "O(n)",
-          "O(n²)"
+          "O(log n)"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "반복문이 n번 돌면 실행 횟수가 n에 비례하므로 O(n)입니다.",
+      "explanation": "O(1) 상수 시간은 입력 크기와 관계없이 연산 횟수가 같습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Time_complexity"
       ]
     },
     {
-      "id": "dsa-code-complexity-002",
+      "id": "dsa-common-orders-002",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "code-complexity",
-        "nested-loop"
+        "logarithmic-time",
+        "big-o"
       ],
       "content": {
-        "prompt": "n번 반복 안에 n번 반복이 들어 있는 코드의 시간 복잡도는?",
+        "prompt": "입력을 절반씩 줄이며 처리하는 복잡도는?",
         "options": [
+          "O(log n)",
           "O(n²)",
-          "O(n)",
-          "O(log n)"
+          "O(1)"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "바깥 반복 1번마다 안쪽이 n번 돌아 총 n × n = n²번 실행되므로 O(n²)입니다.",
+      "explanation": "O(log n) 로그 시간은 매 단계 입력을 절반씩 줄이며 처리합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Time_complexity"
       ]
     },
     {
-      "id": "dsa-code-complexity-003",
+      "id": "dsa-common-orders-003",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "code-complexity",
-        "logarithm"
+        "quadratic-time",
+        "big-o"
       ],
       "content": {
-        "prompt": "n을 매번 절반으로 줄이며 도는 반복문의 시간 복잡도는?",
+        "prompt": "O(n²)을 부르는 이름은?",
         "options": [
-          "O(n)",
-          "O(log n)"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "n을 절반씩 줄이면 약 log₂ n번 만에 1이 되므로 O(log n)입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Time_complexity"
-      ]
-    },
-    {
-      "id": "dsa-code-complexity-004",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "code-complexity",
-        "sequential-loop"
-      ],
-      "content": {
-        "prompt": "n번 도는 반복문 두 개를 차례로 실행하면 O(n²)이다."
-      },
-      "answer_key": {
-        "value": false
-      },
-      "explanation": "차례로 실행하면 n + n = 2n번이라 O(n)입니다. O(n²)은 반복문이 중첩될 때입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Time_complexity"
-      ]
-    },
-    {
-      "id": "dsa-code-complexity-005",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "code-complexity",
-        "nested-loop"
-      ],
-      "content": {
-        "prompt": "n번 반복 안에 n번 반복이 중첩되면 총 n²번 실행된다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "바깥 반복 1번마다 안쪽 반복이 n번 돌므로 총 n × n = n²번 실행됩니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Time_complexity"
-      ]
-    },
-    {
-      "id": "dsa-code-complexity-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "code-complexity",
-        "nested-loop"
-      ],
-      "content": {
-        "prompt": "반복문 안에 반복문이 들어 있는 구조를 ___ 반복문이라고 한다.",
-        "hint": "반복문이 여러 겹이라는 뜻의 두 글자"
-      },
-      "answer_key": {
-        "accepted": [
-          "중첩",
-          "nested",
-          "이중",
-          "중첩된",
-          "중첩 반복문",
-          "이중 반복문"
-        ]
-      },
-      "explanation": "반복문 안에 반복문이 있는 구조를 중첩 반복문이라 하며, 각각 n번 돌면 O(n²)입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Time_complexity"
-      ]
-    },
-    {
-      "id": "dsa-code-complexity-007",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "code-complexity",
-        "logarithm"
-      ],
-      "content": {
-        "prompt": "n을 매번 절반으로 줄이는 반복은 ___ 시간이 걸린다.",
-        "hint": "상수·선형·이차가 아닌 복잡도 이름"
-      },
-      "answer_key": {
-        "accepted": [
-          "로그",
-          "log",
+          "선형 시간",
           "로그 시간",
-          "logarithmic",
-          "logarithmic time"
-        ]
-      },
-      "explanation": "n을 절반씩 줄이면 반복 횟수가 log n에 비례하므로 O(log n), 즉 로그 시간입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Time_complexity"
-      ]
-    },
-    {
-      "id": "dsa-code-complexity-008",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "code-complexity",
-        "nested-loop"
-      ],
-      "content": {
-        "prompt": "10번 반복 안에 10번 반복이 있으면 안쪽 코드의 총 실행 횟수는?",
-        "options": [
-          "20",
-          "100",
-          "10"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "바깥 10번마다 안쪽이 10번 실행되므로 10 × 10 = 100번입니다. 20번은 두 반복문을 차례로 실행할 때입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Time_complexity"
-      ]
-    },
-    {
-      "id": "dsa-code-complexity-009",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "code-complexity",
-        "logarithm"
-      ],
-      "content": {
-        "prompt": "8을 1이 될 때까지 2로 나누면 나누는 횟수는?",
-        "options": [
-          "3",
-          "4",
-          "8"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "8 → 4 → 2 → 1로 3번 나눕니다. log₂ 8 = 3이며, 이렇게 절반씩 줄이는 반복이 O(log n)입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Time_complexity"
-      ]
-    },
-    {
-      "id": "dsa-code-complexity-010",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "code-complexity",
-        "loop"
-      ],
-      "content": {
-        "prompt": "다음 중 시간 복잡도가 O(n)인 것은?",
-        "options": [
-          "n×n 중첩 반복문",
-          "절반씩 줄이는 반복",
-          "n번 도는 반복문"
+          "이차 시간"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "n번 도는 반복문 하나는 O(n)입니다. n×n 중첩 반복문은 O(n²), 절반씩 줄이는 반복은 O(log n)입니다.",
+      "explanation": "O(n²)은 입력의 제곱에 비례하는 이차 시간입니다. 선형 시간은 O(n), 로그 시간은 O(log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-common-orders-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "logarithmic-time",
+        "quadratic-time"
+      ],
+      "content": {
+        "prompt": "O(log n)은 입력의 제곱에 비례하는 복잡도이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "입력의 제곱에 비례하는 것은 O(n²)입니다. O(log n)은 입력을 절반씩 줄이며 처리합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-common-orders-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "constant-time",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "입력과 관계없이 연산 횟수가 같은 O(1)은 ___ 시간이다.",
+        "hint": "값이 변하지 않는 수를 가리키는 수학 용어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "상수",
+          "constant",
+          "상수 시간",
+          "상수시간"
+        ]
+      },
+      "explanation": "O(1)은 입력 크기가 커져도 연산 횟수가 변하지 않는 상수 시간입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-common-orders-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "linear-time",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "입력 개수에 비례하는 O(n)은 ___ 시간이다.",
+        "hint": "n과 연산 횟수의 관계를 그래프로 그리면 직선이 됩니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "선형",
+          "linear",
+          "선형 시간",
+          "선형시간"
+        ]
+      },
+      "explanation": "O(n)은 연산 횟수가 입력 개수에 비례하는 선형 시간입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-common-orders-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linear-time",
+        "growth-rate"
+      ],
+      "content": {
+        "prompt": "n이 2배가 되면 O(n) 알고리즘의 연산 횟수는?",
+        "options": [
+          "그대로",
+          "2배",
+          "4배"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "O(n)은 입력 개수에 비례하므로 n이 2배면 연산 횟수도 약 2배가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-common-orders-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "quadratic-time",
+        "growth-rate"
+      ],
+      "content": {
+        "prompt": "n이 2배가 되면 O(n²) 알고리즘의 연산 횟수는?",
+        "options": [
+          "8배",
+          "2배",
+          "4배"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "O(n²)은 입력의 제곱에 비례하므로 2배의 제곱인 약 4배가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-common-orders-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "logarithmic-time",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "n=16을 1이 될 때까지 절반씩 줄이면 몇 단계인가?",
+        "options": [
+          "4",
+          "8",
+          "16"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "16→8→4→2→1로 4단계이고 log₂16 = 4입니다. 입력을 절반씩 줄이면 O(log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-common-orders-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "constant-time",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "O(1) 알고리즘은 n이 커져도 연산 횟수가 같다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "O(1) 상수 시간은 입력 크기가 커져도 연산 횟수가 변하지 않습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Time_complexity"
       ]

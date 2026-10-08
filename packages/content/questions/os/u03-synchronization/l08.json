@@ -1,0 +1,258 @@
+{
+  "track": "os",
+  "unit": "u03-synchronization",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "os-deadlock-handling-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "deadlock-prevention",
+        "definition"
+      ],
+      "content": {
+        "prompt": "교착 상태의 네 조건 중 하나를 아예 못 생기게 하는 방법은?",
+        "options": [
+          "회피",
+          "예방",
+          "탐지"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "교착 상태 예방(prevention)은 네 조건 중 하나가 아예 성립하지 못하게 막는 방법입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms",
+        "https://en.wikipedia.org/wiki/Banker%27s_algorithm",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-handling-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "deadlock-avoidance",
+        "bankers-algorithm"
+      ],
+      "content": {
+        "prompt": "요청마다 안전한지 검사하는 회피의 대표 알고리즘은?",
+        "options": [
+          "라운드 로빈",
+          "SJF",
+          "은행원 알고리즘"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "은행원 알고리즘(banker's algorithm)은 요청을 들어줘도 안전한지 검사한 뒤 할당하는 회피 기법입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms",
+        "https://en.wikipedia.org/wiki/Banker%27s_algorithm",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-handling-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "deadlock-detection",
+        "deadlock-avoidance"
+      ],
+      "content": {
+        "prompt": "교착 상태 발생을 허용하고 나중에 찾아 처리하는 방법은?",
+        "options": [
+          "회피",
+          "탐지와 회복"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "탐지와 회복은 교착 상태가 생기도록 두고, 찾아낸 뒤 프로세스를 중단해 풀어냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms",
+        "https://en.wikipedia.org/wiki/Banker%27s_algorithm",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-handling-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "bankers-algorithm",
+        "deadlock-avoidance"
+      ],
+      "content": {
+        "prompt": "은행원 알고리즘은 교착 상태 탐지 기법이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "은행원 알고리즘은 요청마다 안전한지 검사하는 회피 기법입니다. 탐지는 발생을 허용한 뒤 찾아냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms",
+        "https://en.wikipedia.org/wiki/Banker%27s_algorithm",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-handling-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "deadlock-avoidance",
+        "term"
+      ],
+      "content": {
+        "prompt": "요청마다 안전한지 검사해 교착 상태를 피하는 방법은 ___ 이다.",
+        "hint": "비켜 간다는 뜻의 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "회피",
+          "avoidance",
+          "교착 상태 회피",
+          "deadlock avoidance"
+        ]
+      },
+      "explanation": "자원 요청마다 안전한 상태가 유지되는지 검사해 교착 상태를 피하는 방법을 회피(avoidance)라 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms",
+        "https://en.wikipedia.org/wiki/Banker%27s_algorithm",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-handling-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "deadlock-prevention",
+        "term"
+      ],
+      "content": {
+        "prompt": "락 획득 순서를 고정하는 것은 교착 상태 ___ 의 예다.",
+        "hint": "미리 막는다는 뜻의 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "예방",
+          "prevention",
+          "교착 상태 예방",
+          "deadlock prevention"
+        ]
+      },
+      "explanation": "락 획득 순서를 고정하면 순환 대기가 생기지 않으므로 교착 상태 예방(prevention)의 예입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms",
+        "https://en.wikipedia.org/wiki/Banker%27s_algorithm",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-handling-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "deadlock-prevention",
+        "apply"
+      ],
+      "content": {
+        "prompt": "모든 스레드가 락 A를 잡은 뒤에만 B를 잡게 했다. 깨지는 조건은?",
+        "options": [
+          "상호 배제",
+          "순환 대기",
+          "비선점"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "획득 순서가 A→B로 고정되면 기다림이 원을 이룰 수 없어 순환 대기 조건이 깨집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms",
+        "https://en.wikipedia.org/wiki/Banker%27s_algorithm",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-handling-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bankers-algorithm",
+        "apply"
+      ],
+      "content": {
+        "prompt": "할당하면 안전하지 않은 상태가 되는 요청이다. 은행원 알고리즘은?",
+        "options": [
+          "할당을 미룬다",
+          "바로 할당한다",
+          "프로세스 중단"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "회피는 안전한 상태가 유지될 때만 할당하므로, 안전하지 않게 만드는 요청은 들어주지 않고 기다리게 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms",
+        "https://en.wikipedia.org/wiki/Banker%27s_algorithm",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-handling-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "deadlock-detection",
+        "apply"
+      ],
+      "content": {
+        "prompt": "교착 상태를 찾아낸 뒤 프로세스 하나를 강제 종료했다. 이 방식은?",
+        "options": [
+          "예방",
+          "회피",
+          "탐지와 회복"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "이미 발생한 교착 상태를 찾아 프로세스를 중단해 푸는 것은 탐지와 회복입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms",
+        "https://en.wikipedia.org/wiki/Banker%27s_algorithm",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-handling-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "deadlock-prevention",
+        "definition"
+      ],
+      "content": {
+        "prompt": "교착 상태 예방은 네 조건 중 하나가 성립하지 못하게 하는 방법이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 예방은 상호 배제·점유 대기·비선점·순환 대기 중 하나를 아예 못 생기게 막습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms",
+        "https://en.wikipedia.org/wiki/Banker%27s_algorithm",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    }
+  ]
+}

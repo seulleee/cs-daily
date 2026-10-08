@@ -4,242 +4,256 @@
   "lesson": "l03",
   "questions": [
     {
-      "id": "os-deadlock-001",
+      "id": "os-atomic-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "deadlock",
+        "atomic-operation",
         "definition"
       ],
       "content": {
-        "prompt": "서로 상대가 가진 자원을 기다리며 모두 멈춘 상태는?",
+        "prompt": "중간에 끼어들 수 없는 한 덩어리 연산은?",
         "options": [
-          "기아",
-          "교착 상태",
-          "경쟁 조건"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "교착 상태(deadlock)는 프로세스들이 서로가 점유한 자원을 기다리며 아무도 진행하지 못하는 상태입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Deadlock"
-      ]
-    },
-    {
-      "id": "os-deadlock-002",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "deadlock",
-        "hold-and-wait"
-      ],
-      "content": {
-        "prompt": "자원을 가진 채 다른 자원을 기다리는 조건은?",
-        "options": [
-          "비선점",
-          "순환 대기",
-          "점유 대기"
-        ]
-      },
-      "answer_key": {
-        "index": 2
-      },
-      "explanation": "점유 대기(hold and wait)는 자원을 점유한 채 다른 자원을 기다리는 조건으로, 교착 상태의 4가지 필요조건 중 하나입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Deadlock"
-      ]
-    },
-    {
-      "id": "os-deadlock-003",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "deadlock",
-        "circular-wait"
-      ],
-      "content": {
-        "prompt": "대기 관계가 사이클을 이루는 조건은?",
-        "options": [
-          "순환 대기",
-          "점유 대기"
+          "원자적 연산",
+          "시스템 호출",
+          "컨텍스트 스위칭"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "순환 대기(circular wait)는 P1은 P2를, P2는 P1을 기다리듯 대기 관계가 사이클을 이루는 조건입니다.",
+      "explanation": "원자적 연산(atomic operation)은 실행 중간에 다른 스레드가 끼어들 수 없는 한 덩어리 연산입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Deadlock"
+        "https://en.wikipedia.org/wiki/Linearizability",
+        "https://en.wikipedia.org/wiki/Compare-and-swap",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf"
       ]
     },
     {
-      "id": "os-deadlock-004",
+      "id": "os-atomic-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cas",
+        "definition"
+      ],
+      "content": {
+        "prompt": "값이 예상과 같을 때만 바꾸는 원자적 명령은?",
+        "options": [
+          "IPC",
+          "PCB",
+          "CAS"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "CAS(Compare-And-Swap)는 메모리 값이 예상값과 같을 때만 새 값으로 바꾸는 원자적 명령입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linearizability",
+        "https://en.wikipedia.org/wiki/Compare-and-swap",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf"
+      ]
+    },
+    {
+      "id": "os-atomic-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "count-increment",
+        "atomic-operation"
+      ],
+      "content": {
+        "prompt": "count++를 이루는 단계가 아닌 것은?",
+        "options": [
+          "비교",
+          "읽기",
+          "쓰기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "count++는 읽기·더하기·쓰기 3단계로 실행됩니다. 비교는 CAS가 하는 일입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linearizability",
+        "https://en.wikipedia.org/wiki/Compare-and-swap",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf"
+      ]
+    },
+    {
+      "id": "os-atomic-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
-        "deadlock",
-        "coffman-conditions"
+        "count-increment",
+        "atomic-operation"
       ],
       "content": {
-        "prompt": "교착 상태 4조건 중 하나만 성립해도 교착 상태가 생긴다."
+        "prompt": "count++는 한 번에 실행되는 원자적 연산이다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "교착 상태는 상호 배제, 점유 대기, 비선점, 순환 대기 4조건이 모두 성립해야 생깁니다.",
+      "explanation": "count++는 읽기·더하기·쓰기 3단계라 그 사이에 다른 스레드가 끼어들 수 있어 원자적이지 않습니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Deadlock",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+        "https://en.wikipedia.org/wiki/Linearizability",
+        "https://en.wikipedia.org/wiki/Compare-and-swap",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf"
       ]
     },
     {
-      "id": "os-deadlock-005",
-      "type": "ox",
+      "id": "os-atomic-005",
+      "type": "fill",
       "difficulty": 1,
       "tags": [
-        "deadlock",
-        "prevention"
+        "atomic-operation",
+        "term"
       ],
       "content": {
-        "prompt": "4조건 중 하나를 깨뜨리면 교착 상태를 예방할 수 있다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "4조건이 모두 성립해야 교착 상태가 생기므로, 그중 하나가 성립하지 않게 만들면 교착 상태를 예방할 수 있습니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms",
-        "https://en.wikipedia.org/wiki/Deadlock"
-      ]
-    },
-    {
-      "id": "os-deadlock-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "deadlock",
-        "prevention"
-      ],
-      "content": {
-        "prompt": "4조건 중 하나를 깨뜨려 교착 상태를 막는 전략은 교착 상태 ___ 이다.",
-        "hint": "발생 전에 조건 자체를 없앤다"
+        "prompt": "중간에 끼어들 수 없는 한 덩어리 연산을 ___ 연산이라 한다.",
+        "hint": "더 쪼갤 수 없는 입자에서 온 이름"
       },
       "answer_key": {
         "accepted": [
-          "예방",
-          "prevention",
-          "방지",
-          "예방 전략"
+          "원자적",
+          "원자",
+          "atomic",
+          "원자적 연산",
+          "atomic operation"
         ]
       },
-      "explanation": "4조건 중 하나가 성립하지 않도록 시스템을 설계하는 전략을 교착 상태 예방이라 합니다.",
+      "explanation": "중간에 다른 스레드가 끼어들 수 없는 한 덩어리 연산을 원자적 연산(atomic operation)이라 합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms"
+        "https://en.wikipedia.org/wiki/Linearizability",
+        "https://en.wikipedia.org/wiki/Compare-and-swap",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf"
       ]
     },
     {
-      "id": "os-deadlock-007",
+      "id": "os-atomic-006",
       "type": "fill",
       "difficulty": 2,
       "tags": [
-        "deadlock",
-        "circular-wait"
+        "count-increment",
+        "term"
       ],
       "content": {
-        "prompt": "P1→P2→P1처럼 대기 관계가 사이클을 이루는 조건은 ___ 대기이다.",
-        "hint": "교착 상태 4조건 중 하나"
+        "prompt": "count++는 읽기·더하기·___ 3단계로 실행된다.",
+        "hint": "계산한 값을 메모리에 다시 넣는 단계"
       },
       "answer_key": {
         "accepted": [
-          "순환",
-          "circular",
-          "순환 대기",
-          "순환대기",
-          "circular wait",
-          "환형"
+          "쓰기",
+          "저장",
+          "write",
+          "store"
         ]
       },
-      "explanation": "대기 관계가 사이클을 이루는 조건은 순환 대기입니다. 락 획득 순서를 고정하면 이 조건을 깨뜨릴 수 있습니다.",
+      "explanation": "count++는 값을 읽고, 1을 더하고, 결과를 메모리에 쓰는 3단계로 실행됩니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Deadlock"
+        "https://en.wikipedia.org/wiki/Linearizability",
+        "https://en.wikipedia.org/wiki/Compare-and-swap",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf"
       ]
     },
     {
-      "id": "os-deadlock-008",
+      "id": "os-atomic-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "deadlock",
-        "hold-and-wait"
+        "count-increment",
+        "apply"
       ],
       "content": {
-        "prompt": "A가 락 L1을 획득한 채 L2를 기다린다. 해당하는 조건은?",
+        "prompt": "count=3. T1이 읽은 직후 T2가 count++를 끝냈다. T1이 쓰는 값은?",
         "options": [
-          "순환 대기",
-          "점유 대기",
-          "비선점"
+          "3",
+          "4",
+          "5"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "L1을 점유한 채 다른 자원 L2를 기다리므로 점유 대기입니다. 순환 대기는 대기 관계가 사이클을 이뤄야 합니다.",
+      "explanation": "T1은 이미 3을 읽었으므로 4를 씁니다. count++가 원자적이지 않아 T2의 증가가 덮어써집니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Deadlock",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+        "https://en.wikipedia.org/wiki/Linearizability",
+        "https://en.wikipedia.org/wiki/Compare-and-swap",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf"
       ]
     },
     {
-      "id": "os-deadlock-009",
+      "id": "os-atomic-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "deadlock",
-        "prevention",
-        "lock-ordering"
+        "cas",
+        "apply"
       ],
       "content": {
-        "prompt": "모든 스레드가 L1 → L2 순서로만 락을 획득하면 깨지는 조건은?",
+        "prompt": "값이 5일 때 CAS(예상 5, 새 값 9)를 하면?",
         "options": [
-          "상호 배제",
-          "점유 대기",
-          "순환 대기"
+          "5 그대로",
+          "9로 바뀜",
+          "14로 바뀜"
         ]
       },
       "answer_key": {
-        "index": 2
+        "index": 1
       },
-      "explanation": "모두 같은 순서로 락을 획득하면 L2를 가진 채 L1을 기다리는 스레드가 없어 대기 사이클이 생기지 않습니다.",
+      "explanation": "현재 값 5가 예상값 5와 같으므로 CAS는 값을 9로 바꿉니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Deadlock_prevention_algorithms",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+        "https://en.wikipedia.org/wiki/Linearizability",
+        "https://en.wikipedia.org/wiki/Compare-and-swap",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf"
       ]
     },
     {
-      "id": "os-deadlock-010",
+      "id": "os-atomic-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "deadlock",
-        "definition"
+        "cas",
+        "apply"
       ],
       "content": {
-        "prompt": "A는 L1을 가진 채 L2를, B는 L2를 가진 채 L1을 기다린다. 이 상태는?",
+        "prompt": "값이 6일 때 CAS(예상 5, 새 값 9)를 하면?",
         "options": [
-          "교착 상태",
-          "기아",
-          "정상 진행"
+          "6 그대로",
+          "9로 바뀜",
+          "5로 바뀜"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "A와 B가 서로 상대가 가진 락을 기다리며 둘 다 진행하지 못하므로 교착 상태입니다.",
+      "explanation": "현재 값 6이 예상값 5와 다르므로 CAS는 값을 바꾸지 않고 6이 그대로 남습니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Deadlock",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+        "https://en.wikipedia.org/wiki/Linearizability",
+        "https://en.wikipedia.org/wiki/Compare-and-swap",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf"
+      ]
+    },
+    {
+      "id": "os-atomic-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "atomic-operation",
+        "definition"
+      ],
+      "content": {
+        "prompt": "원자적 연산은 실행 도중 다른 스레드가 끼어들 수 없다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 원자적 연산은 한 덩어리로 실행되어 중간 상태를 다른 스레드가 볼 수 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linearizability",
+        "https://en.wikipedia.org/wiki/Compare-and-swap",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf"
       ]
     }
   ]

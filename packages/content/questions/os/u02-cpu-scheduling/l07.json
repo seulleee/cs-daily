@@ -1,0 +1,244 @@
+{
+  "track": "os",
+  "unit": "u02-cpu-scheduling",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "os-priority-aging-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "priority-scheduling",
+        "scheduling"
+      ],
+      "content": {
+        "prompt": "우선순위가 높은 프로세스를 먼저 실행하는 방식은?",
+        "options": [
+          "FCFS",
+          "라운드 로빈",
+          "우선순위 스케줄링"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "우선순위 스케줄링은 준비 큐에서 우선순위가 가장 높은 프로세스에 먼저 CPU를 줍니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
+    },
+    {
+      "id": "os-priority-aging-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aging",
+        "starvation"
+      ],
+      "content": {
+        "prompt": "기다린 시간만큼 우선순위를 올려 기아를 막는 기법은?",
+        "options": [
+          "선점",
+          "에이징",
+          "호위 효과"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "에이징(aging)은 오래 기다린 프로세스의 우선순위를 점점 올려 결국 실행되게 해서 기아를 막습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Aging_(scheduling)"
+      ]
+    },
+    {
+      "id": "os-priority-aging-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "aging",
+        "priority-scheduling"
+      ],
+      "content": {
+        "prompt": "에이징은 오래 기다린 프로세스의 우선순위를 낮춘다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "에이징은 기다린 시간만큼 우선순위를 올립니다. 낮추면 오래 기다린 프로세스가 더 밀려 기아가 심해집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Aging_(scheduling)"
+      ]
+    },
+    {
+      "id": "os-priority-aging-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "starvation",
+        "priority-scheduling"
+      ],
+      "content": {
+        "prompt": "우선순위가 낮은 프로세스는 기아에 빠질 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "우선순위가 높은 프로세스가 계속 도착하면 낮은 프로세스는 계속 실행되지 못하는 기아에 빠질 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-priority-aging-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "starvation",
+        "priority-scheduling"
+      ],
+      "content": {
+        "prompt": "우선순위가 낮아 계속 실행되지 못하는 현상은 ___ 이다.",
+        "hint": "에이징으로 막는 문제"
+      },
+      "answer_key": {
+        "accepted": [
+          "기아",
+          "기아 상태",
+          "기아상태",
+          "기아 현상",
+          "기아현상",
+          "starvation",
+          "스타베이션",
+          "무한 대기",
+          "무한대기"
+        ]
+      },
+      "explanation": "기아(starvation)는 우선순위가 낮은 프로세스가 높은 프로세스에 계속 밀려 실행되지 못하는 현상입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-priority-aging-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aging",
+        "starvation"
+      ],
+      "content": {
+        "prompt": "기다린 시간만큼 우선순위를 올리는 기법은 ___ 이다.",
+        "hint": "기아를 막는 대표적인 해결책"
+      },
+      "answer_key": {
+        "accepted": [
+          "에이징",
+          "aging",
+          "ageing",
+          "에이징 기법",
+          "에이징기법"
+        ]
+      },
+      "explanation": "에이징은 대기 시간이 길수록 우선순위를 올려, 우선순위가 낮은 프로세스도 결국 실행되게 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Aging_(scheduling)"
+      ]
+    },
+    {
+      "id": "os-priority-aging-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "priority-scheduling",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "숫자가 클수록 우선순위가 높다. P1(5), P2(2), P3(3) 중 먼저 실행은?",
+        "options": [
+          "P1",
+          "P2",
+          "P3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "우선순위 스케줄링은 우선순위가 가장 높은 프로세스를 먼저 실행하므로 숫자가 가장 큰 P1이 먼저입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
+    },
+    {
+      "id": "os-priority-aging-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "starvation",
+        "priority-scheduling"
+      ],
+      "content": {
+        "prompt": "높은 우선순위 작업이 계속 도착하면 낮은 우선순위 P3는?",
+        "options": [
+          "기아에 빠질 수 있음",
+          "곧바로 실행됨"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "높은 우선순위 작업이 계속 먼저 실행되므로 P3는 계속 밀려 기아에 빠질 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-priority-aging-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aging",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "에이징으로 대기 10초마다 우선순위가 1 오른다. 30초 기다리면?",
+        "options": [
+          "1 오름",
+          "3 오름",
+          "30 오름"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "대기 10초마다 1씩 오르므로 30초 기다리면 우선순위가 3 오릅니다. 이렇게 오래 기다린 프로세스도 결국 실행됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Aging_(scheduling)"
+      ]
+    },
+    {
+      "id": "os-priority-aging-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "priority-scheduling",
+        "scheduling"
+      ],
+      "content": {
+        "prompt": "우선순위 스케줄링이 다음 프로세스를 고르는 기준은?",
+        "options": [
+          "도착 순서",
+          "남은 실행 시간",
+          "우선순위"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "우선순위 스케줄링은 도착 순서나 실행 시간이 아니라 우선순위가 가장 높은 프로세스를 먼저 고릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
+    }
+  ]
+}

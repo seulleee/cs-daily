@@ -1,0 +1,251 @@
+{
+  "track": "dsa",
+  "unit": "u03-stack-queue",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "dsa-monotonic-queue-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sliding-window",
+        "monotonic-queue"
+      ],
+      "content": {
+        "prompt": "고정 크기 구간을 한 칸씩 옮기며 보는 방식은?",
+        "options": [
+          "이진 탐색",
+          "슬라이딩 윈도우",
+          "분할 정복"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "슬라이딩 윈도우는 크기가 고정된 구간을 한 칸씩 옮기며 그 구간의 값을 봅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Double-ended_queue",
+        "https://docs.python.org/3/library/collections.html#collections.deque"
+      ]
+    },
+    {
+      "id": "dsa-monotonic-queue-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "monotonic-queue",
+        "deque"
+      ],
+      "content": {
+        "prompt": "원소를 내림차순으로 유지하는 덱은?",
+        "options": [
+          "원형 큐",
+          "우선순위 큐",
+          "모노토닉 큐"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "모노토닉 큐는 원소를 내림차순(또는 오름차순)으로 유지하는 덱입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Double-ended_queue",
+        "https://docs.python.org/3/library/collections.html#collections.deque"
+      ]
+    },
+    {
+      "id": "dsa-monotonic-queue-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "monotonic-queue",
+        "sliding-window"
+      ],
+      "content": {
+        "prompt": "최댓값용 모노토닉 큐의 front는 윈도우 최솟값이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "원소를 내림차순으로 유지하므로 front에는 현재 윈도우의 최댓값이 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Double-ended_queue",
+        "https://docs.python.org/3/library/collections.html#collections.deque"
+      ]
+    },
+    {
+      "id": "dsa-monotonic-queue-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "monotonic-queue",
+        "time-complexity"
+      ],
+      "content": {
+        "prompt": "크기 k 윈도우 최댓값을 모노토닉 큐로 모두 구하면?",
+        "options": [
+          "O(n)",
+          "O(nk)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "원소마다 덱에 한 번 넣고 한 번 빼므로 전체 O(n)입니다. 윈도우마다 k개를 다시 훑으면 O(nk)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Double-ended_queue",
+        "https://docs.python.org/3/library/collections.html#collections.deque"
+      ]
+    },
+    {
+      "id": "dsa-monotonic-queue-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sliding-window",
+        "monotonic-queue"
+      ],
+      "content": {
+        "prompt": "고정 크기 구간을 한 칸씩 옮기는 방식은 슬라이딩 ___ 이다.",
+        "hint": "고정 크기의 구간을 부르는 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "윈도우",
+          "window",
+          "윈도",
+          "슬라이딩 윈도우",
+          "sliding window"
+        ]
+      },
+      "explanation": "슬라이딩 윈도우는 고정 크기 구간을 한 칸씩 옮기며 구간마다 최댓값 같은 값을 구합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Double-ended_queue",
+        "https://docs.python.org/3/library/collections.html#collections.deque"
+      ]
+    },
+    {
+      "id": "dsa-monotonic-queue-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "monotonic-queue",
+        "deque"
+      ],
+      "content": {
+        "prompt": "원소를 내림차순으로 유지하는 덱은 ___ 큐이다.",
+        "hint": "front에 현재 윈도우의 최댓값이 오도록 유지합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "모노토닉",
+          "monotonic",
+          "모노토닉 큐",
+          "monotonic queue",
+          "단조",
+          "단조 큐"
+        ]
+      },
+      "explanation": "모노토닉 큐는 원소를 내림차순(또는 오름차순)으로 유지하는 덱이라 front가 최댓값(또는 최솟값)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Double-ended_queue",
+        "https://docs.python.org/3/library/collections.html#collections.deque"
+      ]
+    },
+    {
+      "id": "dsa-monotonic-queue-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sliding-window",
+        "monotonic-queue"
+      ],
+      "content": {
+        "prompt": "길이 5 배열에서 크기 3 윈도우는 몇 개인가?",
+        "options": [
+          "2",
+          "3",
+          "5"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "윈도우를 한 칸씩 옮기면 시작 위치가 3곳이므로 5 - 3 + 1 = 3개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Double-ended_queue",
+        "https://docs.python.org/3/library/collections.html#collections.deque"
+      ]
+    },
+    {
+      "id": "dsa-monotonic-queue-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "monotonic-queue",
+        "deque"
+      ],
+      "content": {
+        "prompt": "내림차순 덱 [5, 3]에 4를 넣으면? (왼쪽이 front)",
+        "options": [
+          "[5, 3, 4]",
+          "[5, 4]",
+          "[4]"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "4보다 작은 3을 뒤에서 빼고 4를 넣어 [5, 4]로 내림차순을 유지합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Double-ended_queue",
+        "https://docs.python.org/3/library/collections.html#collections.deque"
+      ]
+    },
+    {
+      "id": "dsa-monotonic-queue-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "monotonic-queue",
+        "sliding-window"
+      ],
+      "content": {
+        "prompt": "덱의 front 원소가 윈도우 밖으로 나가면?",
+        "options": [
+          "뒤에서 뺀다",
+          "그대로 둔다",
+          "front에서 뺀다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "윈도우를 벗어난 원소는 최댓값 후보가 아니므로 front에서 꺼내 버립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Double-ended_queue",
+        "https://docs.python.org/3/library/collections.html#collections.deque"
+      ]
+    },
+    {
+      "id": "dsa-monotonic-queue-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sliding-window",
+        "monotonic-queue"
+      ],
+      "content": {
+        "prompt": "슬라이딩 윈도우는 고정 크기 구간을 한 칸씩 옮긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "슬라이딩 윈도우는 크기를 유지한 채 구간을 한 칸씩 옮기며, 들어온 원소와 나간 원소만 처리합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Double-ended_queue",
+        "https://docs.python.org/3/library/collections.html#collections.deque"
+      ]
+    }
+  ]
+}

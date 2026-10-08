@@ -1,0 +1,240 @@
+{
+  "track": "dsa",
+  "unit": "u02-array-linked-list",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "dsa-linked-list-basics-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "linked-list",
+        "node"
+      ],
+      "content": {
+        "prompt": "값과 다음 노드 주소(next)를 담는 연결 리스트의 단위는?",
+        "options": [
+          "인덱스",
+          "노드",
+          "배열"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "노드는 값과 다음 노드의 주소(next)를 함께 담는 연결 리스트의 기본 단위입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-basics-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "linked-list",
+        "head"
+      ],
+      "content": {
+        "prompt": "연결 리스트의 첫 노드를 가리키는 포인터는?",
+        "options": [
+          "tail",
+          "next",
+          "head"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "head는 첫 노드를 가리키는 포인터입니다. next는 각 노드가 다음 노드를 가리키는 포인터입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-basics-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "linked-list",
+        "memory-layout"
+      ],
+      "content": {
+        "prompt": "연결 리스트의 노드는 메모리에 연속해서 저장된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "연결 리스트의 노드는 메모리 여기저기 흩어져 있고 next로 이어집니다. 연속 저장은 배열의 특징입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-basics-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "linked-list",
+        "null"
+      ],
+      "content": {
+        "prompt": "연결 리스트의 마지막 노드는 next가 null이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "마지막 노드 뒤에는 노드가 없으므로 next가 null입니다. 이것으로 리스트의 끝을 알 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-basics-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "linked-list",
+        "node"
+      ],
+      "content": {
+        "prompt": "노드에서 다음 노드의 주소를 담는 부분은 ___ 이다.",
+        "hint": "영문 소문자 네 글자 포인터 이름"
+      },
+      "answer_key": {
+        "accepted": [
+          "next",
+          "넥스트",
+          "next 포인터",
+          "다음 포인터"
+        ]
+      },
+      "explanation": "노드는 값과 함께 다음 노드의 주소인 next를 담아 다음 노드와 이어집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-basics-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "linked-list",
+        "null"
+      ],
+      "content": {
+        "prompt": "연결 리스트의 마지막 노드의 next 값은 ___ 이다.",
+        "hint": "가리키는 노드가 없음을 뜻하는 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "null",
+          "널",
+          "None",
+          "nil",
+          "nullptr"
+        ]
+      },
+      "explanation": "마지막 노드는 가리킬 다음 노드가 없어 next가 null입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-basics-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linked-list",
+        "head"
+      ],
+      "content": {
+        "prompt": "head가 null인 연결 리스트의 노드 수는?",
+        "options": [
+          "1개",
+          "0개",
+          "알 수 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "head가 null이면 가리키는 첫 노드가 없으므로 빈 리스트, 즉 노드 0개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-basics-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linked-list",
+        "null"
+      ],
+      "content": {
+        "prompt": "head → A → B → C 에서 C의 next 값은?",
+        "options": [
+          "null",
+          "A",
+          "head"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "C는 마지막 노드라 다음 노드가 없으므로 next가 null입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-basics-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linked-list",
+        "memory-layout"
+      ],
+      "content": {
+        "prompt": "노드 A가 주소 100에 있다. A 다음 노드의 주소는?",
+        "options": [
+          "104",
+          "101",
+          "A의 next 값"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "노드는 메모리에 흩어져 있어 주소를 계산할 수 없습니다. A의 next에 저장된 주소를 읽어야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-basics-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linked-list",
+        "node"
+      ],
+      "content": {
+        "prompt": "연결 리스트의 노드가 담는 두 가지는?",
+        "options": [
+          "값과 next",
+          "값과 인덱스",
+          "head와 tail"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "노드는 값과 다음 노드 주소(next)를 담습니다. 인덱스로 위치를 찾는 것은 배열입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "track": "network",
+  "unit": "u03-ip-routing-nat",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "network-dhcp-arp-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dhcp",
+        "ip-assignment"
+      ],
+      "content": {
+        "prompt": "접속한 장치에 IP·마스크·게이트웨이를 자동으로 주는 프로토콜은?",
+        "options": [
+          "DHCP",
+          "ARP",
+          "NAT"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DHCP 서버는 네트워크에 접속한 장치에 IP 주소, 서브넷 마스크, 기본 게이트웨이, DNS 서버를 자동으로 할당합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc2131",
+        "https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol"
+      ]
+    },
+    {
+      "id": "network-dhcp-arp-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "arp",
+        "mac-address"
+      ],
+      "content": {
+        "prompt": "IP 주소로 같은 네트워크 안 장치의 MAC 주소를 찾는 프로토콜은?",
+        "options": [
+          "DHCP",
+          "DNS",
+          "ARP"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "ARP는 IP 주소를 알 때 같은 네트워크 안에서 그 장치의 MAC 주소를 알아내는 프로토콜입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc826",
+        "https://en.wikipedia.org/wiki/Address_Resolution_Protocol"
+      ]
+    },
+    {
+      "id": "network-dhcp-arp-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "arp",
+        "mac-address"
+      ],
+      "content": {
+        "prompt": "ARP가 IP 주소를 보고 알아내는 주소는?",
+        "options": [
+          "MAC 주소",
+          "공인 IP 주소",
+          "포트 번호"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ARP는 이미 아는 IP 주소에 대응하는 MAC 주소를 찾습니다. 같은 네트워크 안에서 프레임을 보내려면 MAC 주소가 필요합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc826",
+        "https://en.wikipedia.org/wiki/Address_Resolution_Protocol"
+      ]
+    },
+    {
+      "id": "network-dhcp-arp-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "arp",
+        "broadcast"
+      ],
+      "content": {
+        "prompt": "ARP 요청은 대상 장치 한 곳에만 보낸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "보내는 쪽은 아직 대상의 MAC 주소를 모르므로 ARP 요청을 브로드캐스트로 보내고, 해당 IP의 장치만 응답합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc826",
+        "https://en.wikipedia.org/wiki/Address_Resolution_Protocol"
+      ]
+    },
+    {
+      "id": "network-dhcp-arp-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dhcp",
+        "ip-assignment"
+      ],
+      "content": {
+        "prompt": "IP·마스크·게이트웨이·DNS를 자동으로 할당하는 프로토콜은 ___ 이다.",
+        "hint": "네 글자 영문 약자이며, 서버가 주소를 일정 기간 임대해 줍니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "DHCP",
+          "dhcp",
+          "디에이치씨피"
+        ]
+      },
+      "explanation": "DHCP는 장치가 네트워크에 접속할 때 IP·마스크·게이트웨이·DNS 정보를 자동으로 할당합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc2131",
+        "https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol"
+      ]
+    },
+    {
+      "id": "network-dhcp-arp-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "arp",
+        "broadcast"
+      ],
+      "content": {
+        "prompt": "ARP 요청은 같은 네트워크 전체에 ___ 로 보낸다.",
+        "hint": "호스트 부분이 모두 1인 주소로 보내는 방식입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "브로드캐스트",
+          "broadcast",
+          "브로드 캐스트",
+          "브로드캐스팅"
+        ]
+      },
+      "explanation": "ARP 요청은 브로드캐스트로 같은 네트워크의 모든 장치에 전달되고, 해당 IP를 가진 장치만 응답합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc826",
+        "https://en.wikipedia.org/wiki/Address_Resolution_Protocol"
+      ]
+    },
+    {
+      "id": "network-dhcp-arp-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dhcp",
+        "ip-assignment"
+      ],
+      "content": {
+        "prompt": "노트북이 새 네트워크에 접속해 IP를 자동으로 받을 때 쓰는 것은?",
+        "options": [
+          "ARP",
+          "traceroute",
+          "DHCP"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "새 네트워크에 접속하면 DHCP로 IP·마스크·게이트웨이·DNS 정보를 자동으로 받습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc2131",
+        "https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol"
+      ]
+    },
+    {
+      "id": "network-dhcp-arp-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "arp",
+        "broadcast"
+      ],
+      "content": {
+        "prompt": "192.168.0.7의 MAC을 묻는 ARP 요청에 응답하는 장치는?",
+        "options": [
+          "192.168.0.7 장치",
+          "네트워크의 모든 장치",
+          "DHCP 서버"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ARP 요청은 브로드캐스트라 모두가 받지만, 그 IP를 가진 192.168.0.7 장치만 자신의 MAC 주소로 응답합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc826",
+        "https://en.wikipedia.org/wiki/Address_Resolution_Protocol"
+      ]
+    },
+    {
+      "id": "network-dhcp-arp-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "arp",
+        "mac-address"
+      ],
+      "content": {
+        "prompt": "같은 네트워크의 192.168.0.20에 처음 보낼 때 먼저 하는 일은?",
+        "options": [
+          "DHCP로 IP 요청",
+          "ARP로 MAC 확인",
+          "NAT로 주소 변환"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "같은 네트워크 안에서는 MAC 주소로 프레임을 보내므로, 먼저 ARP로 192.168.0.20의 MAC 주소를 알아냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc826",
+        "https://en.wikipedia.org/wiki/Address_Resolution_Protocol"
+      ]
+    },
+    {
+      "id": "network-dhcp-arp-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dhcp",
+        "ip-assignment"
+      ],
+      "content": {
+        "prompt": "DHCP는 IP와 함께 기본 게이트웨이·DNS 주소도 알려 준다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "DHCP는 IP 주소뿐 아니라 서브넷 마스크, 기본 게이트웨이, DNS 서버 주소를 함께 할당합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc2131",
+        "https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "track": "database",
+  "unit": "u02-sql-basics",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "database-order-limit-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "order-limit",
+        "order-by"
+      ],
+      "content": {
+        "prompt": "결과 행을 정렬하는 절은?",
+        "options": [
+          "WHERE",
+          "ORDER BY",
+          "LIMIT"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ORDER BY 절은 지정한 열의 값을 기준으로 결과 행의 순서를 정합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-order.html"
+      ]
+    },
+    {
+      "id": "database-order-limit-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "order-limit",
+        "limit"
+      ],
+      "content": {
+        "prompt": "결과를 앞에서 n행만 남기는 절은?",
+        "options": [
+          "DESC",
+          "ORDER BY",
+          "LIMIT"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "LIMIT n은 결과의 앞에서 n행만 돌려줍니다. ORDER BY와 함께 쓰면 상위 n행을 얻습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-limit.html"
+      ]
+    },
+    {
+      "id": "database-order-limit-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "order-limit",
+        "order-by",
+        "multi-column-sort"
+      ],
+      "content": {
+        "prompt": "ORDER BY dept, name 에서 먼저 정렬 기준이 되는 열은?",
+        "options": [
+          "name",
+          "dept"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다중 정렬은 앞에 적은 열부터 정렬합니다. dept로 먼저 정렬하고, dept가 같으면 name으로 정렬합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-order.html"
+      ]
+    },
+    {
+      "id": "database-order-limit-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "order-limit",
+        "desc"
+      ],
+      "content": {
+        "prompt": "DESC는 오름차순 정렬을 뜻한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "DESC는 내림차순(큰 값부터)입니다. 오름차순은 ASC이며 ORDER BY의 기본값입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-order.html"
+      ]
+    },
+    {
+      "id": "database-order-limit-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "order-limit",
+        "desc"
+      ],
+      "content": {
+        "prompt": "내림차순 정렬을 지정하는 키워드는 ___ 이다.",
+        "hint": "큰 값부터 작은 값 순서로 정렬할 때 열 이름 뒤에 붙입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "DESC",
+          "디에스씨"
+        ]
+      },
+      "explanation": "ORDER BY 열 DESC는 값이 큰 행부터 정렬합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-order.html"
+      ]
+    },
+    {
+      "id": "database-order-limit-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "order-limit",
+        "limit"
+      ],
+      "content": {
+        "prompt": "앞에서 3행만 가져오려면 쿼리 끝에 ___ 3 을 붙인다.",
+        "hint": "결과 행 개수를 제한하는 절입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "LIMIT",
+          "리밋"
+        ]
+      },
+      "explanation": "LIMIT 3은 결과의 앞에서 3행만 돌려줍니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-limit.html"
+      ]
+    },
+    {
+      "id": "database-order-limit-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "order-limit",
+        "desc"
+      ],
+      "content": {
+        "prompt": "score 70, 90, 80을 ORDER BY score DESC 하면 첫 값은?",
+        "options": [
+          "70",
+          "80",
+          "90"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DESC는 큰 값부터 정렬하므로 90, 80, 70 순서가 되어 첫 값은 90입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-order.html"
+      ]
+    },
+    {
+      "id": "database-order-limit-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "order-limit",
+        "order-by",
+        "multi-column-sort"
+      ],
+      "content": {
+        "prompt": "ORDER BY age, name 에서 age가 같은 행의 순서는?",
+        "options": [
+          "name 오름차순",
+          "name 내림차순",
+          "정렬하지 않음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "다중 정렬은 앞 열이 같을 때 다음 열로 정렬합니다. name에 방향이 없으므로 오름차순입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-order.html"
+      ]
+    },
+    {
+      "id": "database-order-limit-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "order-limit",
+        "limit",
+        "order-by"
+      ],
+      "content": {
+        "prompt": "ORDER BY price LIMIT 1 의 결과는?",
+        "options": [
+          "가장 비싼 행",
+          "가장 싼 행",
+          "임의의 행"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "방향을 생략하면 오름차순이라 가장 싼 행이 맨 앞에 오고, LIMIT 1이 그 한 행만 남깁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-order.html",
+        "https://www.postgresql.org/docs/current/queries-limit.html"
+      ]
+    },
+    {
+      "id": "database-order-limit-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "order-limit",
+        "order-by",
+        "asc"
+      ],
+      "content": {
+        "prompt": "ORDER BY는 방향을 생략하면 ASC로 정렬한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "ORDER BY의 기본 정렬 방향은 ASC(오름차순)입니다. 내림차순은 DESC를 적어야 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-order.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "track": "database",
+  "unit": "u03-subquery-window",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "database-partition-order-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "window-function",
+        "partition-by"
+      ],
+      "content": {
+        "prompt": "윈도우를 그룹별로 나누는 절은?",
+        "options": [
+          "PARTITION BY",
+          "GROUP BY",
+          "ORDER BY"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "PARTITION BY는 OVER 안에서 윈도우를 그룹별로 나눕니다. 계산은 각 그룹 안에서 따로 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html",
+        "https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS"
+      ]
+    },
+    {
+      "id": "database-partition-order-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "window-function",
+        "running-total"
+      ],
+      "content": {
+        "prompt": "OVER (ORDER BY ...)로 정렬 순서대로 더해 가는 합은?",
+        "options": [
+          "전체 총합",
+          "평균",
+          "누적 합"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "OVER (ORDER BY ...)는 정렬 순서대로 첫 행부터 현재 행까지 더해 누적 합을 만듭니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    },
+    {
+      "id": "database-partition-order-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "window-function",
+        "partition-by"
+      ],
+      "content": {
+        "prompt": "부서별로 따로 순위를 매기려면 OVER 안에 쓸 것은?",
+        "options": [
+          "ORDER BY 부서",
+          "PARTITION BY 부서"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "PARTITION BY 부서는 부서마다 윈도우를 나눠 순위를 따로 매깁니다. ORDER BY는 정렬 순서만 정합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    },
+    {
+      "id": "database-partition-order-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "window-function",
+        "partition-by",
+        "group-by"
+      ],
+      "content": {
+        "prompt": "PARTITION BY는 GROUP BY와 같이 그룹당 한 행만 남긴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "PARTITION BY는 윈도우만 나누고 행은 모두 남깁니다. 그룹당 한 행으로 줄이는 것은 GROUP BY입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    },
+    {
+      "id": "database-partition-order-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "window-function",
+        "partition-by"
+      ],
+      "content": {
+        "prompt": "윈도우를 그룹별로 나누는 절은 ___ BY 이다.",
+        "hint": "'분할'이라는 뜻의 영어 단어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "PARTITION",
+          "파티션"
+        ]
+      },
+      "explanation": "PARTITION BY로 윈도우를 그룹별로 나누면 순위나 합계를 그룹 안에서 따로 계산합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS"
+      ]
+    },
+    {
+      "id": "database-partition-order-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "window-function",
+        "running-total"
+      ],
+      "content": {
+        "prompt": "SUM(금액) OVER (ORDER BY 날짜)는 날짜순 ___ 합을 구한다.",
+        "hint": "첫 행부터 현재 행까지 더해 가는 합입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "누적",
+          "누계",
+          "running",
+          "cumulative"
+        ]
+      },
+      "explanation": "OVER에 ORDER BY를 넣으면 첫 행부터 현재 행까지 더한 누적 합이 됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    },
+    {
+      "id": "database-partition-order-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "window-function",
+        "running-total"
+      ],
+      "content": {
+        "prompt": "날짜가 다른 금액 10, 20, 30에 SUM(금액) OVER (ORDER BY 날짜)는?",
+        "options": [
+          "60, 60, 60",
+          "10, 30, 60",
+          "10, 20, 30"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "누적 합은 첫 행부터 현재 행까지 더한 값이라 10, 30, 60입니다. 60, 60, 60은 OVER ()의 총합입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    },
+    {
+      "id": "database-partition-order-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "window-function",
+        "partition-by"
+      ],
+      "content": {
+        "prompt": "A부서 10·20, B부서 5. PARTITION BY 부서 합계의 B 행 값은?",
+        "options": [
+          "35",
+          "30",
+          "5"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "PARTITION BY 부서로 B부서만 따로 합하므로 5입니다. A부서 두 행에는 30이 붙습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    },
+    {
+      "id": "database-partition-order-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "window-function",
+        "partition-by"
+      ],
+      "content": {
+        "prompt": "부서별 순위 쿼리의 OVER에서 PARTITION BY를 빼면?",
+        "options": [
+          "전체 기준 순위",
+          "오류 발생",
+          "부서별 순위 유지"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "PARTITION BY가 없으면 모든 행이 하나의 윈도우라 전체를 기준으로 순위가 매겨집니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    },
+    {
+      "id": "database-partition-order-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "window-function",
+        "partition-by"
+      ],
+      "content": {
+        "prompt": "PARTITION BY는 윈도우를 그룹별로 나눈다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "PARTITION BY는 같은 값을 가진 행끼리 윈도우를 나눕니다. 함수는 각 윈도우 안에서 따로 계산됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-window.html"
+      ]
+    }
+  ]
+}

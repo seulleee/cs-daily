@@ -1,0 +1,261 @@
+{
+  "track": "dsa",
+  "unit": "u02-array-linked-list",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "dsa-array-vs-list-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "array",
+        "linked-list",
+        "access"
+      ],
+      "content": {
+        "prompt": "인덱스로 원소에 O(1) 접근할 수 있는 구조는?",
+        "options": [
+          "연결 리스트",
+          "배열",
+          "이중 연결 리스트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "배열은 주소 계산으로 O(1)에 접근합니다. 연결 리스트는 head부터 따라가야 해서 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list",
+        "https://en.wikipedia.org/wiki/Array_(data_structure)",
+        "https://en.wikipedia.org/wiki/Locality_of_reference"
+      ]
+    },
+    {
+      "id": "dsa-array-vs-list-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "array",
+        "cache-locality"
+      ],
+      "content": {
+        "prompt": "연속 메모리를 차례로 읽을 때 캐시 효율이 높은 성질은?",
+        "options": [
+          "임의 접근",
+          "동적 할당",
+          "캐시 지역성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "캐시 지역성은 가까운 메모리를 연달아 읽을 때 캐시 효율이 높아지는 성질로, 연속 메모리인 배열이 유리합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list",
+        "https://en.wikipedia.org/wiki/Array_(data_structure)",
+        "https://en.wikipedia.org/wiki/Locality_of_reference"
+      ]
+    },
+    {
+      "id": "dsa-array-vs-list-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "linked-list",
+        "memory-overhead"
+      ],
+      "content": {
+        "prompt": "노드마다 포인터 공간이 추가로 드는 구조는?",
+        "options": [
+          "연결 리스트",
+          "배열"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "연결 리스트는 노드마다 next 같은 포인터를 저장하므로 그만큼 추가 공간이 듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list",
+        "https://en.wikipedia.org/wiki/Array_(data_structure)",
+        "https://en.wikipedia.org/wiki/Locality_of_reference"
+      ]
+    },
+    {
+      "id": "dsa-array-vs-list-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "array",
+        "linked-list",
+        "insertion"
+      ],
+      "content": {
+        "prompt": "위치를 알 때 중간 삽입은 배열이 더 빠르다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "배열은 뒤 원소를 밀어야 해서 O(n)이고, 연결 리스트는 포인터만 바꿔 O(1)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list",
+        "https://en.wikipedia.org/wiki/Array_(data_structure)",
+        "https://en.wikipedia.org/wiki/Locality_of_reference"
+      ]
+    },
+    {
+      "id": "dsa-array-vs-list-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "array",
+        "cache-locality"
+      ],
+      "content": {
+        "prompt": "연속 메모리인 배열은 캐시 ___ 측면에서 유리하다.",
+        "hint": "가까운 주소를 연달아 쓰는 성질"
+      },
+      "answer_key": {
+        "accepted": [
+          "지역성",
+          "locality",
+          "로컬리티",
+          "국부성"
+        ]
+      },
+      "explanation": "배열은 원소가 연속 메모리에 있어 캐시 지역성이 좋고, 차례로 읽을 때 캐시 효율이 높습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list",
+        "https://en.wikipedia.org/wiki/Array_(data_structure)",
+        "https://en.wikipedia.org/wiki/Locality_of_reference"
+      ]
+    },
+    {
+      "id": "dsa-array-vs-list-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "linked-list",
+        "memory-overhead"
+      ],
+      "content": {
+        "prompt": "연결 리스트는 노드마다 ___ 만큼 추가 공간이 든다.",
+        "hint": "노드와 노드를 잇는 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "포인터",
+          "pointer",
+          "next",
+          "next 포인터",
+          "주소"
+        ]
+      },
+      "explanation": "연결 리스트의 노드는 값 외에 포인터를 저장하므로 배열보다 메모리를 더 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list",
+        "https://en.wikipedia.org/wiki/Array_(data_structure)",
+        "https://en.wikipedia.org/wiki/Locality_of_reference"
+      ]
+    },
+    {
+      "id": "dsa-array-vs-list-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "array",
+        "linked-list",
+        "access"
+      ],
+      "content": {
+        "prompt": "인덱스로 원소를 자주 조회할 때 알맞은 구조는?",
+        "options": [
+          "배열",
+          "연결 리스트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "배열은 인덱스 접근이 O(1)이고 연결 리스트는 O(n)이므로 배열이 알맞습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list",
+        "https://en.wikipedia.org/wiki/Array_(data_structure)",
+        "https://en.wikipedia.org/wiki/Locality_of_reference"
+      ]
+    },
+    {
+      "id": "dsa-array-vs-list-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "array",
+        "linked-list",
+        "insertion"
+      ],
+      "content": {
+        "prompt": "위치를 아는 곳에 삽입·삭제가 잦을 때 알맞은 구조는?",
+        "options": [
+          "배열",
+          "연결 리스트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "연결 리스트는 위치를 알면 포인터만 바꿔 O(1)에 삽입·삭제합니다. 배열은 원소 이동으로 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list",
+        "https://en.wikipedia.org/wiki/Array_(data_structure)",
+        "https://en.wikipedia.org/wiki/Locality_of_reference"
+      ]
+    },
+    {
+      "id": "dsa-array-vs-list-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "array",
+        "cache-locality"
+      ],
+      "content": {
+        "prompt": "원소를 처음부터 끝까지 차례로 읽을 때 캐시에 유리한 구조는?",
+        "options": [
+          "연결 리스트",
+          "배열"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "배열은 원소가 연속 메모리에 있어 캐시 지역성이 좋습니다. 연결 리스트는 노드가 흩어져 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list",
+        "https://en.wikipedia.org/wiki/Array_(data_structure)",
+        "https://en.wikipedia.org/wiki/Locality_of_reference"
+      ]
+    },
+    {
+      "id": "dsa-array-vs-list-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "array",
+        "linked-list",
+        "access"
+      ],
+      "content": {
+        "prompt": "인덱스 접근은 배열이 O(1), 연결 리스트가 O(n)이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "배열은 주소 계산으로 바로 접근하고, 연결 리스트는 head부터 next를 따라가야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list",
+        "https://en.wikipedia.org/wiki/Array_(data_structure)",
+        "https://en.wikipedia.org/wiki/Locality_of_reference"
+      ]
+    }
+  ]
+}

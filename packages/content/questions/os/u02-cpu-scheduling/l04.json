@@ -1,0 +1,242 @@
+{
+  "track": "os",
+  "unit": "u02-cpu-scheduling",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "os-fcfs-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "fcfs",
+        "scheduling"
+      ],
+      "content": {
+        "prompt": "먼저 도착한 순서대로 실행하는 스케줄링은?",
+        "options": [
+          "SJF",
+          "FCFS",
+          "라운드 로빈"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "FCFS(First Come, First Served)는 준비 큐에 먼저 도착한 프로세스부터 차례로 실행합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-fcfs-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "convoy-effect",
+        "fcfs"
+      ],
+      "content": {
+        "prompt": "긴 작업 뒤에 짧은 작업들이 줄줄이 기다리는 현상은?",
+        "options": [
+          "호위 효과",
+          "기아",
+          "교착 상태"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "호위 효과(convoy effect)는 앞의 긴 작업 때문에 뒤의 짧은 작업들이 오래 기다리는 현상으로, FCFS의 대표적인 단점입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-fcfs-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "fcfs",
+        "non-preemptive"
+      ],
+      "content": {
+        "prompt": "FCFS는 선점과 비선점 중 어느 방식인가?",
+        "options": [
+          "선점",
+          "비선점"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "FCFS는 비선점 방식이라, 실행 중인 프로세스가 끝나거나 스스로 양보할 때까지 CPU를 뺏지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
+    },
+    {
+      "id": "os-fcfs-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "fcfs",
+        "sjf"
+      ],
+      "content": {
+        "prompt": "FCFS는 실행 시간이 짧은 작업을 먼저 실행한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "FCFS는 실행 시간과 상관없이 도착 순서대로 실행합니다. 짧은 작업을 먼저 실행하는 것은 SJF입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-fcfs-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "fcfs",
+        "scheduling"
+      ],
+      "content": {
+        "prompt": "First Come, First Served의 약자는 ___ 이다.",
+        "hint": "영문 대문자 네 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "FCFS",
+          "선입선처리",
+          "선착순 처리"
+        ]
+      },
+      "explanation": "First Come, First Served의 약자는 FCFS로, 먼저 도착한 프로세스부터 실행하는 비선점 스케줄링입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
+    },
+    {
+      "id": "os-fcfs-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "convoy-effect",
+        "fcfs"
+      ],
+      "content": {
+        "prompt": "긴 작업 때문에 뒤의 짧은 작업들이 오래 기다리는 현상은 ___ 이다.",
+        "hint": "FCFS의 대표적인 단점"
+      },
+      "answer_key": {
+        "accepted": [
+          "호위 효과",
+          "호위효과",
+          "convoy effect",
+          "convoyeffect",
+          "콘보이 효과",
+          "콘보이효과",
+          "컨보이 효과",
+          "컨보이효과"
+        ]
+      },
+      "explanation": "호위 효과는 긴 작업이 CPU를 오래 잡고 있는 동안 짧은 작업들이 뒤에서 기다려 평균 대기 시간이 늘어나는 현상입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-fcfs-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "fcfs",
+        "waiting-time"
+      ],
+      "content": {
+        "prompt": "FCFS, 0초에 P1(5초), P2(3초) 순으로 도착. P2의 대기 시간은?",
+        "options": [
+          "3초",
+          "8초",
+          "5초"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "FCFS에서는 P1이 먼저 5초 실행되므로 P2는 P1의 실행 시간만큼 5초를 기다립니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-fcfs-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "fcfs",
+        "waiting-time"
+      ],
+      "content": {
+        "prompt": "FCFS, 0초에 P1(4초), P2(2초), P3(1초) 순 도착. P3의 대기 시간은?",
+        "options": [
+          "6초",
+          "2초",
+          "7초"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "P3의 대기 시간은 앞 작업 P1과 P2의 실행 시간 합이므로 4 + 2 = 6초입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-fcfs-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "convoy-effect",
+        "fcfs"
+      ],
+      "content": {
+        "prompt": "FCFS에서 호위 효과가 생기는 도착 순서는?",
+        "options": [
+          "1초 작업 → 10초 작업",
+          "10초 작업 → 1초 작업"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "10초 작업이 앞에 있으면 1초 작업이 10초를 기다립니다. 긴 작업 뒤에 짧은 작업이 밀리는 이 현상이 호위 효과입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-fcfs-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "fcfs",
+        "non-preemptive"
+      ],
+      "content": {
+        "prompt": "FCFS는 도착 순서대로 실행하며 실행 중에 CPU를 뺏지 않는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "FCFS는 먼저 도착한 순서대로 실행하는 비선점 방식이라, 실행 중인 프로세스의 CPU를 뺏지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
+    }
+  ]
+}

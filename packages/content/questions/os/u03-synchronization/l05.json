@@ -1,0 +1,248 @@
+{
+  "track": "os",
+  "unit": "u03-synchronization",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "os-semaphore-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "semaphore",
+        "definition"
+      ],
+      "content": {
+        "prompt": "정수 카운터로 자원 수를 관리하는 동기화 도구는?",
+        "options": [
+          "세마포어",
+          "뮤텍스",
+          "CAS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "세마포어(semaphore)는 정수 카운터로 남은 자원 수를 관리하는 동기화 도구입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+      ]
+    },
+    {
+      "id": "os-semaphore-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "semaphore",
+        "wait"
+      ],
+      "content": {
+        "prompt": "세마포어 카운터를 1 줄이고, 0이면 기다리는 연산은?",
+        "options": [
+          "signal",
+          "unlock",
+          "wait"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "wait(P)는 카운터를 1 줄이며, 카운터가 0이면 자원이 생길 때까지 기다립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+      ]
+    },
+    {
+      "id": "os-semaphore-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "wait",
+        "signal"
+      ],
+      "content": {
+        "prompt": "세마포어에서 V라고도 부르는 연산은?",
+        "options": [
+          "wait",
+          "signal"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "signal은 V, wait는 P라고도 부릅니다. signal은 카운터를 1 늘려 대기 중인 스레드를 깨웁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+      ]
+    },
+    {
+      "id": "os-semaphore-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "signal",
+        "wait"
+      ],
+      "content": {
+        "prompt": "signal(V)은 세마포어 카운터를 1 줄인다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "카운터를 1 줄이는 것은 wait(P)입니다. signal(V)은 카운터를 1 늘리고 기다리는 스레드를 깨웁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+      ]
+    },
+    {
+      "id": "os-semaphore-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "semaphore",
+        "term"
+      ],
+      "content": {
+        "prompt": "정수 카운터로 자원 수를 관리하는 도구는 ___ 이다.",
+        "hint": "데이크스트라(Dijkstra)가 제안한 동기화 도구"
+      },
+      "answer_key": {
+        "accepted": [
+          "세마포어",
+          "semaphore",
+          "세마포"
+        ]
+      },
+      "explanation": "정수 카운터로 남은 자원 수를 관리하는 동기화 도구를 세마포어(semaphore)라 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+      ]
+    },
+    {
+      "id": "os-semaphore-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "binary-semaphore",
+        "term"
+      ],
+      "content": {
+        "prompt": "0과 1만 쓰는 세마포어를 ___ 세마포어라 한다.",
+        "hint": "두 가지 값만 가진다는 뜻"
+      },
+      "answer_key": {
+        "accepted": [
+          "이진",
+          "binary",
+          "바이너리",
+          "이진 세마포어",
+          "binary semaphore"
+        ]
+      },
+      "explanation": "카운터로 0과 1만 쓰는 세마포어를 이진 세마포어(binary semaphore)라 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+      ]
+    },
+    {
+      "id": "os-semaphore-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "wait",
+        "apply"
+      ],
+      "content": {
+        "prompt": "카운터가 3인 세마포어에 wait를 한 번 하면 카운터는?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "wait(P)는 카운터를 1 줄이므로 3에서 2가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+      ]
+    },
+    {
+      "id": "os-semaphore-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "wait",
+        "apply"
+      ],
+      "content": {
+        "prompt": "카운터가 0일 때 스레드가 wait를 호출하면?",
+        "options": [
+          "바로 통과한다",
+          "기다린다",
+          "카운터가 1 증가"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "카운터 0은 남은 자원이 없다는 뜻이라 wait를 호출한 스레드는 signal이 올 때까지 기다립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+      ]
+    },
+    {
+      "id": "os-semaphore-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "semaphore",
+        "apply"
+      ],
+      "content": {
+        "prompt": "초기값 2인 세마포어에 세 스레드가 wait를 호출했다. 대기하는 수는?",
+        "options": [
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "자원이 2개라 두 스레드는 카운터를 2→1→0으로 줄이며 통과하고, 세 번째는 0이라 기다립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+      ]
+    },
+    {
+      "id": "os-semaphore-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "semaphore",
+        "definition"
+      ],
+      "content": {
+        "prompt": "세마포어는 정수 카운터로 자원 수를 관리한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 세마포어의 카운터는 남은 자원 수를 뜻하며, wait와 signal로 줄이고 늘립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+      ]
+    }
+  ]
+}

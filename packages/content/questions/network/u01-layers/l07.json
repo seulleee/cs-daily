@@ -1,0 +1,239 @@
+{
+  "track": "network",
+  "unit": "u01-layers",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "network-devices-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "switch",
+        "mac-address"
+      ],
+      "content": {
+        "prompt": "MAC 주소를 보고 해당 포트로만 전달하는 장비는?",
+        "options": [
+          "허브",
+          "스위치",
+          "라우터"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스위치는 데이터링크 계층 장비로, 목적지 MAC 주소가 연결된 포트로만 프레임을 보냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Network_switch"
+      ]
+    },
+    {
+      "id": "network-devices-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "router",
+        "ip-address"
+      ],
+      "content": {
+        "prompt": "IP 주소를 보고 네트워크 사이 경로를 고르는 장비는?",
+        "options": [
+          "라우터",
+          "허브",
+          "스위치"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "라우터는 네트워크 계층 장비로, IP 주소를 보고 네트워크 사이의 경로를 선택합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Router_(computing)"
+      ]
+    },
+    {
+      "id": "network-devices-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "hub",
+        "switch"
+      ],
+      "content": {
+        "prompt": "받은 신호를 모든 포트로 복제하는 장비는?",
+        "options": [
+          "허브",
+          "스위치"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "허브는 물리 계층 장비로 주소를 보지 않고 신호를 모든 포트로 복제합니다. 스위치는 MAC 주소를 봅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Ethernet_hub"
+      ]
+    },
+    {
+      "id": "network-devices-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "switch",
+        "router"
+      ],
+      "content": {
+        "prompt": "스위치는 IP 주소를 보고 네트워크 사이 경로를 고른다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "IP 주소로 네트워크 사이 경로를 고르는 것은 라우터입니다. 스위치는 MAC 주소를 보고 포트를 정합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Network_switch",
+        "https://en.wikipedia.org/wiki/Router_(computing)"
+      ]
+    },
+    {
+      "id": "network-devices-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "hub",
+        "physical-layer"
+      ],
+      "content": {
+        "prompt": "허브는 OSI ___ 계층에서 동작한다.",
+        "hint": "주소를 보지 않고 신호만 다루는 가장 아래 계층입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "물리",
+          "physical",
+          "1",
+          "피지컬"
+        ]
+      },
+      "explanation": "허브는 물리 계층(1층) 장비라서 주소를 해석하지 않고 신호를 그대로 복제합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Ethernet_hub"
+      ]
+    },
+    {
+      "id": "network-devices-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "switch",
+        "mac-address"
+      ],
+      "content": {
+        "prompt": "스위치가 보낼 포트를 정할 때 보는 주소는 ___ 주소다.",
+        "hint": "데이터링크 계층의 주소입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "MAC",
+          "맥",
+          "하드웨어",
+          "물리"
+        ]
+      },
+      "explanation": "스위치는 프레임의 목적지 MAC 주소를 보고 그 장치가 연결된 포트로만 전달합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Network_switch"
+      ]
+    },
+    {
+      "id": "network-devices-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "hub",
+        "physical-layer"
+      ],
+      "content": {
+        "prompt": "허브의 1번 포트로 신호가 들어오면 어디로 나가나?",
+        "options": [
+          "목적지 포트만",
+          "라우터로만",
+          "나머지 모든 포트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "허브는 주소를 보지 않으므로 받은 신호를 복제해 나머지 모든 포트로 내보냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Ethernet_hub"
+      ]
+    },
+    {
+      "id": "network-devices-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "switch",
+        "mac-address"
+      ],
+      "content": {
+        "prompt": "목적지 MAC의 포트를 아는 스위치는 프레임을 어디로 보내나?",
+        "options": [
+          "모든 포트",
+          "그 포트로만",
+          "라우터로만"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스위치는 목적지 MAC 주소가 연결된 포트를 알면 그 포트로만 프레임을 전달합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Network_switch"
+      ]
+    },
+    {
+      "id": "network-devices-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "router",
+        "network-layer"
+      ],
+      "content": {
+        "prompt": "다른 네트워크의 서버로 패킷을 보낼 때 꼭 거치는 장비는?",
+        "options": [
+          "허브",
+          "스위치",
+          "라우터"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "네트워크 사이 경로 선택은 라우터의 일입니다. 허브와 스위치는 같은 네트워크 안에서만 전달합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Router_(computing)"
+      ]
+    },
+    {
+      "id": "network-devices-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "switch",
+        "data-link-layer"
+      ],
+      "content": {
+        "prompt": "스위치는 MAC 주소를 보고 전달하는 데이터링크 계층 장비다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "스위치는 데이터링크 계층(2층)에서 MAC 주소를 보고 해당 포트로만 프레임을 전달합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Network_switch"
+      ]
+    }
+  ]
+}

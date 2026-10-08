@@ -1,0 +1,239 @@
+{
+  "track": "database",
+  "unit": "u01-relational-model",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "database-integrity-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "integrity",
+        "entity-integrity"
+      ],
+      "content": {
+        "prompt": "기본키가 NULL이거나 중복될 수 없다는 규칙은?",
+        "options": [
+          "참조 무결성",
+          "개체 무결성",
+          "도메인 무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "개체 무결성은 기본키가 NULL이거나 중복되지 않아야 한다는 규칙입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Entity_integrity"
+      ]
+    },
+    {
+      "id": "database-integrity-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "integrity",
+        "referential-integrity"
+      ],
+      "content": {
+        "prompt": "외래키 값은 참조 대상에 존재해야 한다는 규칙은?",
+        "options": [
+          "참조 무결성",
+          "도메인 무결성",
+          "개체 무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "참조 무결성은 외래키 값이 가리키는 테이블에 실제로 있어야 한다는 규칙입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Referential_integrity"
+      ]
+    },
+    {
+      "id": "database-integrity-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "integrity",
+        "entity-integrity"
+      ],
+      "content": {
+        "prompt": "기본키 값의 중복을 막는 규칙은?",
+        "options": [
+          "참조 무결성",
+          "개체 무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "기본키의 NULL과 중복을 막는 것은 개체 무결성입니다. 참조 무결성은 외래키 값에 대한 규칙입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Entity_integrity"
+      ]
+    },
+    {
+      "id": "database-integrity-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "integrity",
+        "domain-integrity",
+        "referential-integrity"
+      ],
+      "content": {
+        "prompt": "도메인 무결성은 외래키 값이 참조 대상에 있어야 한다는 규칙이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "그 규칙은 참조 무결성입니다. 도메인 무결성은 속성 값이 정해진 도메인 안에 있어야 한다는 규칙입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-constraints.html"
+      ]
+    },
+    {
+      "id": "database-integrity-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "integrity",
+        "domain-integrity"
+      ],
+      "content": {
+        "prompt": "속성 값이 허용된 값의 집합 안에 있어야 한다는 규칙은 ___ 무결성이다.",
+        "hint": "정수, 날짜 같은 값의 범위를 부르는 용어"
+      },
+      "answer_key": {
+        "accepted": [
+          "도메인",
+          "domain",
+          "도메인 무결성",
+          "domain integrity"
+        ]
+      },
+      "explanation": "속성 값이 그 속성의 도메인 안에 있어야 한다는 규칙을 도메인 무결성이라고 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-constraints.html"
+      ]
+    },
+    {
+      "id": "database-integrity-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "integrity",
+        "referential-integrity"
+      ],
+      "content": {
+        "prompt": "외래키 값이 가리키는 테이블에 실제로 있어야 한다는 규칙은 ___ 무결성이다.",
+        "hint": "외래키가 다른 테이블의 기본키를 가리키는 것을 부르는 말"
+      },
+      "answer_key": {
+        "accepted": [
+          "참조",
+          "referential",
+          "참조 무결성",
+          "referential integrity"
+        ]
+      },
+      "explanation": "외래키 값이 가리키는 대상이 실제로 존재해야 한다는 규칙을 참조 무결성이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Referential_integrity"
+      ]
+    },
+    {
+      "id": "database-integrity-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "integrity",
+        "domain-integrity"
+      ],
+      "content": {
+        "prompt": "도메인이 정수인 나이 속성에 '스무살'을 넣으면 어긋나는 규칙은?",
+        "options": [
+          "개체 무결성",
+          "참조 무결성",
+          "도메인 무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "'스무살'은 정수 도메인 밖의 값이므로 도메인 무결성에 어긋납니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-constraints.html"
+      ]
+    },
+    {
+      "id": "database-integrity-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "integrity",
+        "referential-integrity"
+      ],
+      "content": {
+        "prompt": "회원 테이블에 없는 회원번호로 주문을 넣으면 어긋나는 규칙은?",
+        "options": [
+          "참조 무결성",
+          "개체 무결성",
+          "도메인 무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "주문의 외래키 회원번호가 회원 테이블에 없는 값을 가리키므로 참조 무결성에 어긋납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Referential_integrity"
+      ]
+    },
+    {
+      "id": "database-integrity-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "integrity",
+        "entity-integrity"
+      ],
+      "content": {
+        "prompt": "기본키 학번이 1인 행이 있는데 학번 1인 행을 또 넣으면?",
+        "options": [
+          "정상 저장",
+          "참조 무결성 위반",
+          "개체 무결성 위반"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "기본키 값이 중복되므로 개체 무결성 위반으로 거부됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Entity_integrity"
+      ]
+    },
+    {
+      "id": "database-integrity-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "integrity",
+        "entity-integrity"
+      ],
+      "content": {
+        "prompt": "기본키가 NULL인 행은 개체 무결성을 어긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "개체 무결성은 기본키가 NULL이거나 중복될 수 없다는 규칙이므로 기본키가 NULL이면 어긋납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Entity_integrity"
+      ]
+    }
+  ]
+}

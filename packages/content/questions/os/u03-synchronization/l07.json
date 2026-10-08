@@ -1,0 +1,249 @@
+{
+  "track": "os",
+  "unit": "u03-synchronization",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "os-deadlock-conditions-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "deadlock",
+        "definition"
+      ],
+      "content": {
+        "prompt": "서로 상대의 자원을 기다리며 아무도 진행 못 하는 상태는?",
+        "options": [
+          "교착 상태",
+          "경쟁 조건",
+          "기아"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "교착 상태(deadlock)는 스레드들이 서로 상대가 가진 자원을 기다리며 아무도 진행하지 못하는 상태입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-conditions-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "deadlock",
+        "hold-and-wait"
+      ],
+      "content": {
+        "prompt": "자원을 가진 채로 다른 자원을 더 기다리는 조건은?",
+        "options": [
+          "비선점",
+          "점유 대기",
+          "순환 대기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "점유 대기(hold and wait)는 이미 자원을 가진 채로 다른 자원을 더 기다리는 조건입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-conditions-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "no-preemption",
+        "circular-wait"
+      ],
+      "content": {
+        "prompt": "다른 스레드가 가진 자원을 뺏을 수 없다는 조건은?",
+        "options": [
+          "순환 대기",
+          "비선점"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "비선점(no preemption)은 자원을 가진 쪽이 놓기 전에는 뺏을 수 없다는 조건입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-conditions-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "deadlock",
+        "conditions"
+      ],
+      "content": {
+        "prompt": "교착 상태는 네 조건 중 하나만 성립해도 발생한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "교착 상태는 상호 배제·점유 대기·비선점·순환 대기가 모두 성립해야 발생할 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-conditions-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "deadlock",
+        "term"
+      ],
+      "content": {
+        "prompt": "서로 상대의 자원을 기다리며 멈춘 상태를 ___ 상태라 한다.",
+        "hint": "서로 얽혀 꼼짝 못 한다는 뜻의 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "교착",
+          "deadlock",
+          "데드락",
+          "교착 상태"
+        ]
+      },
+      "explanation": "서로 상대가 가진 자원을 기다리며 아무도 진행하지 못하는 상태를 교착 상태(deadlock)라 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-conditions-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "circular-wait",
+        "term"
+      ],
+      "content": {
+        "prompt": "기다림이 원을 이루는 조건을 ___ 대기라 한다.",
+        "hint": "고리를 이루며 돈다는 뜻의 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "순환",
+          "circular",
+          "환형",
+          "순환 대기",
+          "circular wait"
+        ]
+      },
+      "explanation": "스레드들의 기다림이 원을 이루는 조건을 순환 대기(circular wait)라 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-conditions-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "deadlock",
+        "apply"
+      ],
+      "content": {
+        "prompt": "T1은 A를 쥐고 B를, T2는 B를 쥐고 A를 기다린다. 이 상태는?",
+        "options": [
+          "기아",
+          "경쟁 조건",
+          "교착 상태"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "두 스레드가 서로 상대가 쥔 자원을 기다리며 둘 다 진행하지 못하므로 교착 상태입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-conditions-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "circular-wait",
+        "apply"
+      ],
+      "content": {
+        "prompt": "T1→T2→T3→T1 순으로 서로의 자원을 기다린다. 해당 조건은?",
+        "options": [
+          "순환 대기",
+          "비선점",
+          "상호 배제"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "기다림이 T1에서 시작해 다시 T1으로 돌아오는 원을 이루므로 순환 대기입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-conditions-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "mutual-exclusion",
+        "apply"
+      ],
+      "content": {
+        "prompt": "프린터를 한 번에 한 스레드만 쓸 수 있다. 해당 조건은?",
+        "options": [
+          "점유 대기",
+          "상호 배제",
+          "순환 대기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "자원을 한 번에 하나만 쓸 수 있다는 조건은 상호 배제(mutual exclusion)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    },
+    {
+      "id": "os-deadlock-conditions-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "deadlock",
+        "definition"
+      ],
+      "content": {
+        "prompt": "교착 상태는 서로 상대의 자원을 기다리며 아무도 진행 못 하는 상태이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 교착 상태에 빠진 스레드들은 서로가 가진 자원을 기다리느라 모두 멈춥니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    }
+  ]
+}

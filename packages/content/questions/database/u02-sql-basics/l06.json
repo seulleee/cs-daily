@@ -1,0 +1,236 @@
+{
+  "track": "database",
+  "unit": "u02-sql-basics",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "database-outer-join-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "outer-join",
+        "left-join"
+      ],
+      "content": {
+        "prompt": "왼쪽 테이블의 행을 모두 남기는 JOIN은?",
+        "options": [
+          "INNER JOIN",
+          "LEFT JOIN",
+          "RIGHT JOIN"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "LEFT JOIN은 왼쪽 테이블 행을 모두 남기고, 짝이 없으면 오른쪽 열을 NULL로 채웁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-join.html"
+      ]
+    },
+    {
+      "id": "database-outer-join-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "outer-join",
+        "full-outer-join"
+      ],
+      "content": {
+        "prompt": "양쪽 테이블의 행을 모두 남기는 JOIN은?",
+        "options": [
+          "FULL OUTER JOIN",
+          "LEFT JOIN",
+          "INNER JOIN"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "FULL OUTER JOIN은 짝이 없는 행까지 양쪽 모두 남기고, 빈 쪽 열은 NULL로 채웁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    },
+    {
+      "id": "database-outer-join-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "outer-join",
+        "left-join"
+      ],
+      "content": {
+        "prompt": "LEFT JOIN은 짝이 없는 왼쪽 행을 결과에서 뺀다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "LEFT JOIN은 짝이 없는 왼쪽 행도 남기고 오른쪽 열을 NULL로 채웁니다. 행을 빼는 것은 INNER JOIN입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-join.html"
+      ]
+    },
+    {
+      "id": "database-outer-join-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "outer-join",
+        "right-join"
+      ],
+      "content": {
+        "prompt": "RIGHT JOIN은 오른쪽 테이블의 행을 모두 남긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "RIGHT JOIN은 LEFT JOIN과 기준만 반대여서 오른쪽 테이블의 행을 모두 남깁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    },
+    {
+      "id": "database-outer-join-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "outer-join",
+        "left-join"
+      ],
+      "content": {
+        "prompt": "왼쪽 테이블 행을 모두 남기는 조인은 ___ JOIN 이다.",
+        "hint": "FROM 절에 먼저 적은 테이블을 기준으로 합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "LEFT",
+          "레프트"
+        ]
+      },
+      "explanation": "LEFT JOIN은 왼쪽(먼저 적은) 테이블의 행을 모두 결과에 남깁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-join.html"
+      ]
+    },
+    {
+      "id": "database-outer-join-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "outer-join",
+        "full-outer-join"
+      ],
+      "content": {
+        "prompt": "양쪽 행을 모두 남기는 조인은 ___ OUTER JOIN 이다.",
+        "hint": "'전부'를 뜻하는 영어 단어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "FULL",
+          "풀"
+        ]
+      },
+      "explanation": "FULL OUTER JOIN은 왼쪽과 오른쪽 테이블의 행을 모두 결과에 남깁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    },
+    {
+      "id": "database-outer-join-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "outer-join",
+        "left-join",
+        "null"
+      ],
+      "content": {
+        "prompt": "users LEFT JOIN orders. 주문 없는 사용자의 orders 열은?",
+        "options": [
+          "행이 빠짐",
+          "0",
+          "NULL"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "LEFT JOIN은 짝이 없는 왼쪽 행도 남기고, 오른쪽 orders의 열은 NULL로 채웁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-join.html"
+      ]
+    },
+    {
+      "id": "database-outer-join-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "outer-join",
+        "left-join"
+      ],
+      "content": {
+        "prompt": "users 5명 중 3명만 주문. users LEFT JOIN orders의 사용자 수는?",
+        "options": [
+          "3명",
+          "5명",
+          "8명"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "LEFT JOIN은 왼쪽 users 행을 모두 남기므로 주문이 없는 2명까지 5명이 모두 나옵니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-join.html"
+      ]
+    },
+    {
+      "id": "database-outer-join-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "outer-join",
+        "right-join"
+      ],
+      "content": {
+        "prompt": "orders RIGHT JOIN users 에서 행이 모두 남는 테이블은?",
+        "options": [
+          "users",
+          "orders",
+          "둘 다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "RIGHT JOIN은 오른쪽 테이블이 기준이므로 오른쪽에 적은 users의 행이 모두 남습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    },
+    {
+      "id": "database-outer-join-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "outer-join",
+        "left-join"
+      ],
+      "content": {
+        "prompt": "왼쪽 테이블이 4행이다. LEFT JOIN 결과는 최소 몇 행?",
+        "options": [
+          "2행",
+          "4행",
+          "8행"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "LEFT JOIN은 왼쪽 행을 하나도 빼지 않으므로 결과는 왼쪽 행 수인 4행 이상입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-join.html"
+      ]
+    }
+  ]
+}

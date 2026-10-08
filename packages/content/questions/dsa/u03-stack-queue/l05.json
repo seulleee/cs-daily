@@ -1,0 +1,243 @@
+{
+  "track": "dsa",
+  "unit": "u03-stack-queue",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "dsa-queue-fifo-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "queue",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "rear로 넣고 front에서 빼는 자료구조는?",
+        "options": [
+          "스택",
+          "큐",
+          "트리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "큐는 뒤(rear)로 넣고 앞(front)에서 뺍니다. 스택은 한쪽 끝에서만 넣고 뺍니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)"
+      ]
+    },
+    {
+      "id": "dsa-queue-fifo-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "fifo",
+        "queue"
+      ],
+      "content": {
+        "prompt": "먼저 넣은 것이 먼저 나오는 방식은?",
+        "options": [
+          "LRU",
+          "LIFO",
+          "FIFO"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "FIFO는 First In, First Out으로 먼저 넣은 것이 먼저 나옵니다. LIFO는 스택의 방식입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)"
+      ]
+    },
+    {
+      "id": "dsa-queue-fifo-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "enqueue",
+        "dequeue"
+      ],
+      "content": {
+        "prompt": "큐의 rear에 원소를 넣는 연산은?",
+        "options": [
+          "enqueue",
+          "dequeue"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "enqueue는 rear에 원소를 넣고, dequeue는 front에서 원소를 뺍니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)"
+      ]
+    },
+    {
+      "id": "dsa-queue-fifo-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dequeue",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "큐의 dequeue는 가장 나중에 넣은 원소를 꺼낸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "dequeue는 front에서 빼므로 가장 먼저 넣은 원소가 나옵니다. 나중 것이 먼저 나오는 구조는 스택입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)"
+      ]
+    },
+    {
+      "id": "dsa-queue-fifo-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "fifo",
+        "queue"
+      ],
+      "content": {
+        "prompt": "First In, First Out의 약자는 ___ 이다.",
+        "hint": "큐의 동작 방식을 나타내는 영문 약자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "FIFO",
+          "피포"
+        ]
+      },
+      "explanation": "First In, First Out의 앞 글자를 따서 FIFO라고 하며 큐의 동작 방식입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)"
+      ]
+    },
+    {
+      "id": "dsa-queue-fifo-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dequeue",
+        "queue"
+      ],
+      "content": {
+        "prompt": "큐의 front에서 원소를 빼는 연산은 ___ 이다.",
+        "hint": "enqueue와 짝을 이루는 연산입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "dequeue",
+          "디큐"
+        ]
+      },
+      "explanation": "dequeue는 front의 원소를 꺼내 반환합니다. rear에 넣는 연산은 enqueue입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)"
+      ]
+    },
+    {
+      "id": "dsa-queue-fifo-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "enqueue",
+        "dequeue"
+      ],
+      "content": {
+        "prompt": "enqueue(1) → enqueue(2) → dequeue(). 꺼내지는 값은?",
+        "options": [
+          "1",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "dequeue는 front에서 빼므로 먼저 넣은 1이 나옵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)"
+      ]
+    },
+    {
+      "id": "dsa-queue-fifo-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dequeue",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "큐에 A, B, C를 넣고 dequeue를 두 번 했다. front는?",
+        "options": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "먼저 넣은 A와 B가 차례로 빠지므로 남은 C가 front입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)"
+      ]
+    },
+    {
+      "id": "dsa-queue-fifo-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "fifo",
+        "queue"
+      ],
+      "content": {
+        "prompt": "큐에 1, 2, 3 순서로 넣고 모두 뺐다. 나온 순서는?",
+        "options": [
+          "3, 2, 1",
+          "1, 2, 3",
+          "2, 3, 1"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "FIFO이므로 넣은 순서 그대로 1, 2, 3이 나옵니다. 3, 2, 1은 스택에서 나오는 순서입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)"
+      ]
+    },
+    {
+      "id": "dsa-queue-fifo-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "queue",
+        "enqueue"
+      ],
+      "content": {
+        "prompt": "큐는 rear로 넣고 front에서 뺀다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "큐는 rear로 enqueue하고 front에서 dequeue하므로 먼저 넣은 원소가 먼저 나옵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)"
+      ]
+    }
+  ]
+}

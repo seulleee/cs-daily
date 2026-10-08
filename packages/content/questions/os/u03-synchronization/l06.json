@@ -1,0 +1,256 @@
+{
+  "track": "os",
+  "unit": "u03-synchronization",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "os-condvar-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "condition-variable",
+        "definition"
+      ],
+      "content": {
+        "prompt": "조건이 참이 될 때까지 스레드를 기다리게 하는 도구는?",
+        "options": [
+          "PCB",
+          "원자적 연산",
+          "조건 변수"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "조건 변수(condition variable)는 어떤 조건이 참이 될 때까지 스레드를 잠들게 했다가 깨우는 도구입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Monitor_(synchronization)",
+        "https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"
+      ]
+    },
+    {
+      "id": "os-condvar-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "condition-variable",
+        "signal"
+      ],
+      "content": {
+        "prompt": "조건 변수에서 기다리는 스레드 하나를 깨우는 연산은?",
+        "options": [
+          "wait",
+          "signal",
+          "lock"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "signal은 조건 변수에서 기다리는 스레드 하나를 깨웁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Monitor_(synchronization)",
+        "https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"
+      ]
+    },
+    {
+      "id": "os-condvar-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "condition-variable",
+        "wait"
+      ],
+      "content": {
+        "prompt": "조건 변수의 wait가 잠들기 전에 하는 일은?",
+        "options": [
+          "뮤텍스를 푼다",
+          "뮤텍스를 잠근다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "wait는 뮤텍스를 풀고 잠들어 다른 스레드가 조건을 바꿀 수 있게 합니다. 깨어나면 다시 잠급니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Monitor_(synchronization)",
+        "https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"
+      ]
+    },
+    {
+      "id": "os-condvar-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "producer-consumer",
+        "buffer"
+      ],
+      "content": {
+        "prompt": "생산자·소비자 문제에서 버퍼가 비면 생산자가 기다린다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "버퍼가 비면 꺼낼 것이 없는 소비자가 기다립니다. 버퍼가 가득 차면 생산자가 기다립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Monitor_(synchronization)",
+        "https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"
+      ]
+    },
+    {
+      "id": "os-condvar-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "condition-variable",
+        "term"
+      ],
+      "content": {
+        "prompt": "조건이 참이 될 때까지 기다리게 하는 도구는 조건 ___ 이다.",
+        "hint": "영어 이름은 condition ___"
+      },
+      "answer_key": {
+        "accepted": [
+          "변수",
+          "variable",
+          "조건 변수",
+          "condition variable"
+        ]
+      },
+      "explanation": "조건이 참이 될 때까지 스레드를 기다리게 하는 도구를 조건 변수(condition variable)라 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Monitor_(synchronization)",
+        "https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"
+      ]
+    },
+    {
+      "id": "os-condvar-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "producer-consumer",
+        "term"
+      ],
+      "content": {
+        "prompt": "생산자·소비자 문제에서 버퍼가 가득 차면 ___ 가 기다린다.",
+        "hint": "버퍼에 데이터를 넣는 쪽"
+      },
+      "answer_key": {
+        "accepted": [
+          "생산자",
+          "producer"
+        ]
+      },
+      "explanation": "버퍼가 가득 차면 더 넣을 자리가 없으므로 생산자가 기다립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Monitor_(synchronization)",
+        "https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"
+      ]
+    },
+    {
+      "id": "os-condvar-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "producer-consumer",
+        "apply"
+      ],
+      "content": {
+        "prompt": "버퍼가 비어 있을 때 소비자가 꺼내려 하면?",
+        "options": [
+          "조건 변수에서 대기",
+          "바로 꺼낸다",
+          "생산자가 대기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "꺼낼 데이터가 없으므로 소비자는 버퍼에 데이터가 생길 때까지 조건 변수에서 기다립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Monitor_(synchronization)",
+        "https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"
+      ]
+    },
+    {
+      "id": "os-condvar-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "signal",
+        "apply"
+      ],
+      "content": {
+        "prompt": "생산자가 데이터를 넣고 signal을 보내면 일어나는 일은?",
+        "options": [
+          "버퍼가 비워진다",
+          "생산자가 잠든다",
+          "기다리던 소비자 깸"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "signal은 조건 변수에서 기다리던 스레드 하나, 여기서는 소비자를 깨웁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Monitor_(synchronization)",
+        "https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"
+      ]
+    },
+    {
+      "id": "os-condvar-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "producer-consumer",
+        "apply"
+      ],
+      "content": {
+        "prompt": "크기 3 버퍼가 가득 찼다. 생산자가 넣으려 하면?",
+        "options": [
+          "바로 넣는다",
+          "빈자리 생길 때까지 대기",
+          "하나를 버린다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "버퍼가 가득 차면 생산자는 소비자가 꺼내 빈자리가 생길 때까지 기다립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Monitor_(synchronization)",
+        "https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"
+      ]
+    },
+    {
+      "id": "os-condvar-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "condition-variable",
+        "definition"
+      ],
+      "content": {
+        "prompt": "조건 변수는 조건이 참이 될 때까지 스레드를 기다리게 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 조건 변수는 조건이 참이 될 때까지 스레드를 재우고, signal로 깨워 다시 진행하게 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Monitor_(synchronization)",
+        "https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"
+      ]
+    }
+  ]
+}

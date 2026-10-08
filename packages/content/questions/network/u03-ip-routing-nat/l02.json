@@ -4,245 +4,237 @@
   "lesson": "l02",
   "questions": [
     {
-      "id": "network-routing-basics-001",
+      "id": "network-subnet-mask-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "routing-basics",
-        "routing-table"
+        "subnet-mask",
+        "ipv4"
       ],
       "content": {
-        "prompt": "라우터가 목적지 네트워크별 다음 홉을 기록한 표는?",
+        "prompt": "네트워크 부분을 1, 호스트 부분을 0으로 표시한 32비트 값은?",
         "options": [
-          "라우팅 테이블",
-          "ARP 테이블",
-          "NAT 테이블"
+          "서브넷 마스크",
+          "MAC 주소",
+          "포트 번호"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "라우팅 테이블에는 목적지 네트워크마다 다음 홉과 출력 인터페이스가 적혀 있습니다. ARP 테이블은 IP와 MAC의 대응표입니다.",
+      "explanation": "서브넷 마스크는 IP 주소와 같은 32비트로, 네트워크 부분 비트는 1, 호스트 부분 비트는 0입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Routing_table"
+        "https://www.rfc-editor.org/rfc/rfc950",
+        "https://en.wikipedia.org/wiki/Subnetwork"
       ]
     },
     {
-      "id": "network-routing-basics-002",
+      "id": "network-subnet-mask-002",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "routing-basics",
-        "ttl"
+        "subnet-mask",
+        "bitwise-and"
       ],
       "content": {
-        "prompt": "라우터를 하나 지날 때마다 1씩 줄어드는 IP 헤더 값은?",
+        "prompt": "IP 주소와 마스크로 같은 네트워크인지 가릴 때 쓰는 비트 연산은?",
         "options": [
-          "포트 번호",
-          "출발지 IP",
-          "TTL"
+          "OR",
+          "XOR",
+          "AND"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "TTL은 라우터를 지날 때마다 1씩 줄고 0이 되면 패킷이 폐기됩니다. 그래서 경로가 순환해도 패킷이 계속 돌지 않습니다.",
+      "explanation": "IP 주소와 서브넷 마스크를 AND하면 호스트 비트가 모두 0이 되어 네트워크 부분만 남습니다.",
       "refs": [
-        "https://www.rfc-editor.org/rfc/rfc791",
-        "https://en.wikipedia.org/wiki/Time_to_live"
+        "https://www.rfc-editor.org/rfc/rfc950",
+        "https://en.wikipedia.org/wiki/Subnetwork"
       ]
     },
     {
-      "id": "network-routing-basics-003",
+      "id": "network-subnet-mask-003",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "routing-basics",
-        "default-route"
+        "subnet-mask",
+        "ipv4"
       ],
       "content": {
-        "prompt": "라우팅 테이블에 맞는 항목이 없을 때 쓰는 경로는?",
+        "prompt": "서브넷 마스크에서 호스트 부분의 비트 값은?",
         "options": [
-          "직접 연결 경로",
-          "기본 경로"
+          "0",
+          "1"
         ]
       },
       "answer_key": {
-        "index": 1
+        "index": 0
       },
-      "explanation": "일치하는 항목이 없으면 0.0.0.0/0으로 적힌 기본 경로를 따릅니다. 호스트에서는 기본 게이트웨이로 향하는 경로입니다.",
+      "explanation": "서브넷 마스크는 네트워크 부분을 1, 호스트 부분을 0으로 채웁니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Default_route",
-        "https://en.wikipedia.org/wiki/Default_gateway"
+        "https://en.wikipedia.org/wiki/Subnetwork"
       ]
     },
     {
-      "id": "network-routing-basics-004",
+      "id": "network-subnet-mask-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
-        "routing-basics",
-        "ttl"
+        "subnet-mask",
+        "ipv4"
       ],
       "content": {
-        "prompt": "TTL은 라우터를 지날 때마다 1씩 증가한다."
+        "prompt": "255.255.255.0 마스크는 앞 16비트가 네트워크 부분이다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "TTL은 라우터를 지날 때마다 1씩 감소합니다. 0이 되면 라우터가 패킷을 폐기합니다.",
+      "explanation": "255는 8비트가 모두 1인 값이므로, 255가 세 개인 255.255.255.0은 앞 24비트가 네트워크 부분입니다.",
       "refs": [
-        "https://www.rfc-editor.org/rfc/rfc791",
-        "https://en.wikipedia.org/wiki/Time_to_live"
+        "https://en.wikipedia.org/wiki/Subnetwork"
       ]
     },
     {
-      "id": "network-routing-basics-005",
-      "type": "ox",
+      "id": "network-subnet-mask-005",
+      "type": "fill",
       "difficulty": 1,
       "tags": [
-        "routing-basics",
-        "routing-table"
+        "subnet-mask",
+        "ipv4"
       ],
       "content": {
-        "prompt": "라우터는 목적지 IP 주소로 라우팅 테이블을 조회한다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "라우터는 패킷의 목적지 IP 주소와 가장 잘 맞는 라우팅 테이블 항목을 찾아 다음 홉을 정합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Routing_table"
-      ]
-    },
-    {
-      "id": "network-routing-basics-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "routing-basics",
-        "routing-table"
-      ],
-      "content": {
-        "prompt": "라우터가 다음 홉을 찾을 때 조회하는 표는 ___ 테이블이다.",
-        "hint": "영어 route에서 나온 말입니다."
+        "prompt": "255.255.255.0 마스크는 앞 ___ 비트가 네트워크 부분이다.",
+        "hint": "255 하나는 1이 8개인 8비트 값입니다."
       },
       "answer_key": {
         "accepted": [
-          "라우팅",
-          "routing",
-          "경로",
-          "라우팅테이블",
-          "라우팅 테이블",
-          "routing table"
+          "24",
+          "24비트",
+          "24 비트",
+          "이십사"
         ]
       },
-      "explanation": "라우터는 라우팅 테이블에서 목적지 네트워크에 맞는 항목을 찾아 다음 홉으로 전달합니다.",
+      "explanation": "255.255.255.0은 1이 24개, 0이 8개인 마스크라 앞 24비트가 네트워크 부분입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Routing_table"
+        "https://en.wikipedia.org/wiki/Subnetwork"
       ]
     },
     {
-      "id": "network-routing-basics-007",
+      "id": "network-subnet-mask-006",
       "type": "fill",
       "difficulty": 2,
       "tags": [
-        "routing-basics",
-        "default-route"
+        "subnet-mask",
+        "bitwise-and"
       ],
       "content": {
-        "prompt": "0.0.0.0/0처럼 일치 항목이 없을 때 쓰는 경로는 ___ 경로이다.",
-        "hint": "프리픽스 길이가 0이라 모든 목적지와 일치합니다."
+        "prompt": "IP와 마스크를 ___ 연산한 결과가 같으면 같은 네트워크다.",
+        "hint": "두 비트가 모두 1일 때만 1이 되는 연산입니다."
       },
       "answer_key": {
         "accepted": [
-          "기본",
-          "default",
-          "디폴트",
-          "기본 경로",
-          "디폴트 경로",
-          "default route"
+          "AND",
+          "and",
+          "앤드",
+          "논리곱"
         ]
       },
-      "explanation": "0.0.0.0/0은 모든 주소와 일치하는 기본 경로로, 더 구체적인 항목이 없을 때 사용됩니다.",
+      "explanation": "IP와 마스크를 AND하면 네트워크 부분만 남으므로, 그 결과가 같으면 같은 네트워크입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Default_route",
-        "https://en.wikipedia.org/wiki/Default_gateway"
+        "https://www.rfc-editor.org/rfc/rfc950",
+        "https://en.wikipedia.org/wiki/Subnetwork"
       ]
     },
     {
-      "id": "network-routing-basics-008",
+      "id": "network-subnet-mask-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "routing-basics",
-        "ttl"
+        "subnet-mask",
+        "bitwise-and"
       ],
       "content": {
-        "prompt": "TTL이 64인 패킷이 라우터 3개를 지나면 TTL은?",
+        "prompt": "192.168.10.77에 마스크 255.255.255.0을 AND하면?",
         "options": [
-          "67",
-          "61",
-          "64"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "라우터를 지날 때마다 TTL이 1씩 줄므로 64 - 3 = 61입니다.",
-      "refs": [
-        "https://www.rfc-editor.org/rfc/rfc791",
-        "https://en.wikipedia.org/wiki/Time_to_live"
-      ]
-    },
-    {
-      "id": "network-routing-basics-009",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "routing-basics",
-        "default-route",
-        "routing-table"
-      ],
-      "content": {
-        "prompt": "라우팅 테이블이 10.0.0.0/8→A, 0.0.0.0/0→B일 때 8.8.8.8은?",
-        "options": [
-          "B로 전달",
-          "A로 전달",
-          "폐기"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "8.8.8.8은 10.0.0.0/8에 속하지 않으므로 기본 경로 0.0.0.0/0을 따라 B로 전달됩니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Routing_table",
-        "https://en.wikipedia.org/wiki/Default_route"
-      ]
-    },
-    {
-      "id": "network-routing-basics-010",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "routing-basics",
-        "routing-table"
-      ],
-      "content": {
-        "prompt": "라우팅 테이블에 기록되는 내용은?",
-        "options": [
-          "IP별 MAC 주소",
-          "도메인별 IP",
-          "목적지별 다음 홉"
+          "0.0.0.77",
+          "192.168.0.0",
+          "192.168.10.0"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "라우팅 테이블은 목적지 네트워크별 다음 홉을 담습니다. IP별 MAC 주소는 ARP 테이블, 도메인별 IP는 DNS가 다룹니다.",
+      "explanation": "마스크가 255인 자리는 그대로 남고 0인 자리는 0이 되므로 결과는 192.168.10.0입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Routing_table"
+        "https://en.wikipedia.org/wiki/Subnetwork"
+      ]
+    },
+    {
+      "id": "network-subnet-mask-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "subnet-mask",
+        "bitwise-and"
+      ],
+      "content": {
+        "prompt": "마스크가 255.255.255.0일 때 10.1.2.3과 10.1.3.3은?",
+        "options": [
+          "같은 네트워크",
+          "다른 네트워크"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "AND 결과가 10.1.2.0과 10.1.3.0으로 다르므로 서로 다른 네트워크입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Subnetwork"
+      ]
+    },
+    {
+      "id": "network-subnet-mask-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "subnet-mask",
+        "bitwise-and"
+      ],
+      "content": {
+        "prompt": "마스크 255.255.255.0에서 172.16.5.10과 같은 네트워크인 주소는?",
+        "options": [
+          "172.16.5.200",
+          "172.16.6.10",
+          "172.17.5.10"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "AND하면 172.16.5.10과 172.16.5.200은 둘 다 172.16.5.0이 됩니다. 나머지는 앞 세 숫자가 다릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Subnetwork"
+      ]
+    },
+    {
+      "id": "network-subnet-mask-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "subnet-mask",
+        "ipv4"
+      ],
+      "content": {
+        "prompt": "서브넷 마스크에서 1인 비트는 네트워크 부분을 뜻한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "서브넷 마스크는 네트워크 부분 비트를 1, 호스트 부분 비트를 0으로 표시합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc950",
+        "https://en.wikipedia.org/wiki/Subnetwork"
       ]
     }
   ]

@@ -4,239 +4,241 @@
   "lesson": "l01",
   "questions": [
     {
-      "id": "os-scheduling-criteria-001",
+      "id": "os-scheduler-role-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "scheduling-criteria",
-        "waiting-time"
+        "cpu-scheduling",
+        "scheduler"
       ],
       "content": {
-        "prompt": "준비 큐에서 CPU를 기다린 시간의 합은?",
+        "prompt": "준비 상태 프로세스 중 다음 실행 대상을 고르는 일은?",
         "options": [
-          "처리량",
-          "대기 시간",
-          "응답 시간"
+          "디스패처",
+          "CPU 스케줄링",
+          "준비 큐"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "대기 시간은 프로세스가 준비 큐에서 CPU 할당을 기다린 시간의 합입니다. 처리량은 단위 시간당 완료한 프로세스 수입니다.",
+      "explanation": "CPU 스케줄링은 준비 상태 프로세스 중 다음에 실행할 것을 고르는 일입니다. 디스패처는 고른 프로세스에 CPU를 넘기는 부분입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
       ]
     },
     {
-      "id": "os-scheduling-criteria-002",
+      "id": "os-scheduler-role-002",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "scheduling-criteria",
-        "throughput"
+        "ready-queue",
+        "cpu-scheduling"
       ],
       "content": {
-        "prompt": "단위 시간당 완료한 프로세스 수를 뜻하는 기준은?",
+        "prompt": "CPU를 기다리는 프로세스들의 목록은?",
         "options": [
-          "처리량",
-          "대기 시간",
-          "응답 시간"
+          "디스패처",
+          "PCB",
+          "준비 큐"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "준비 큐는 CPU를 기다리는 준비 상태 프로세스들의 목록입니다. 스케줄러는 이 목록에서 다음 실행 대상을 고릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
+        "https://en.wikipedia.org/wiki/Process_state"
+      ]
+    },
+    {
+      "id": "os-scheduler-role-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dispatcher",
+        "scheduler"
+      ],
+      "content": {
+        "prompt": "디스패처는 다음에 실행할 프로세스를 고르는 일을 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "다음 실행 대상을 고르는 것은 스케줄러입니다. 디스패처는 이미 고른 프로세스에 실제로 CPU를 넘기는 부분입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
+    },
+    {
+      "id": "os-scheduler-role-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ready-queue",
+        "process-state"
+      ],
+      "content": {
+        "prompt": "준비 큐에는 CPU 할당을 기다리는 프로세스가 들어 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "준비 큐에는 실행 준비가 끝나 CPU 할당만 기다리는 프로세스들이 들어 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
+        "https://en.wikipedia.org/wiki/Process_state"
+      ]
+    },
+    {
+      "id": "os-scheduler-role-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dispatcher",
+        "context-switch"
+      ],
+      "content": {
+        "prompt": "고른 프로세스에 실제로 CPU를 넘기는 부분은 ___ 이다.",
+        "hint": "스케줄러가 내린 결정을 실행에 옮기는 모듈"
+      },
+      "answer_key": {
+        "accepted": [
+          "디스패처",
+          "dispatcher",
+          "디스패쳐",
+          "dispatcher module"
+        ]
+      },
+      "explanation": "디스패처는 스케줄러가 고른 프로세스에 실제로 CPU를 넘깁니다. 이때 컨텍스트 스위칭이 함께 일어납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+      ]
+    },
+    {
+      "id": "os-scheduler-role-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ready-queue",
+        "process-state"
+      ],
+      "content": {
+        "prompt": "실행 준비가 끝난 프로세스는 CPU를 받을 때까지 ___ 에서 기다린다.",
+        "hint": "스케줄러가 다음 실행 대상을 고르는 목록"
+      },
+      "answer_key": {
+        "accepted": [
+          "준비 큐",
+          "준비큐",
+          "ready queue",
+          "readyqueue",
+          "레디 큐",
+          "레디큐",
+          "준비 대기열",
+          "준비대기열"
+        ]
+      },
+      "explanation": "준비 상태 프로세스들은 준비 큐에서 CPU를 기다립니다. 스케줄러는 준비 큐에서 다음 실행 대상을 고릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
+        "https://en.wikipedia.org/wiki/Process_state"
+      ]
+    },
+    {
+      "id": "os-scheduler-role-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cpu-scheduling",
+        "ready-queue"
+      ],
+      "content": {
+        "prompt": "P1이 종료됐고 준비 큐에 P2, P3가 있다. 다음에 일어나는 일은?",
+        "options": [
+          "스케줄러가 P2나 P3 선택",
+          "P1이 다시 실행됨"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "처리량(throughput)은 단위 시간 동안 완료한 프로세스 수로, 클수록 같은 시간에 더 많은 일을 끝낸 것입니다.",
+      "explanation": "P1이 종료되면 CPU가 비므로 스케줄러가 준비 큐의 P2, P3 중 다음 실행 대상을 고릅니다. 종료된 P1은 다시 실행되지 않습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Scheduling_(computing)"
       ]
     },
     {
-      "id": "os-scheduling-criteria-003",
+      "id": "os-scheduler-role-008",
       "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "scheduling-criteria",
-        "response-time"
-      ],
-      "content": {
-        "prompt": "도착 후 처음 CPU를 받기까지 걸린 시간은?",
-        "options": [
-          "대기 시간",
-          "처리량",
-          "응답 시간"
-        ]
-      },
-      "answer_key": {
-        "index": 2
-      },
-      "explanation": "응답 시간은 도착 시각부터 처음 실행되는 시각까지입니다. 대기 시간은 준비 큐에서 기다린 시간을 모두 더한 값입니다.",
-      "refs": [
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
-      ]
-    },
-    {
-      "id": "os-scheduling-criteria-004",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "scheduling-criteria",
-        "throughput"
-      ],
-      "content": {
-        "prompt": "처리량은 프로세스 하나가 끝날 때까지 걸린 시간이다."
-      },
-      "answer_key": {
-        "value": false
-      },
-      "explanation": "처리량은 단위 시간당 완료한 프로세스 수입니다. 프로세스 하나가 도착부터 완료까지 걸린 시간은 반환 시간입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
-      ]
-    },
-    {
-      "id": "os-scheduling-criteria-005",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "scheduling-criteria",
-        "response-time"
-      ],
-      "content": {
-        "prompt": "대화형 시스템에서는 응답 시간을 짧게 하는 것이 중요하다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "사용자 입력에 바로 반응해야 하는 대화형 시스템에서는 처음 실행까지 걸리는 응답 시간이 핵심 기준입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
-      ]
-    },
-    {
-      "id": "os-scheduling-criteria-006",
-      "type": "fill",
       "difficulty": 2,
       "tags": [
-        "scheduling-criteria",
-        "throughput"
+        "dispatcher",
+        "scheduler"
       ],
       "content": {
-        "prompt": "1초에 완료한 프로세스 수처럼 재는 기준을 ___ 이라 한다.",
-        "hint": "단위 시간당 완료 개수"
-      },
-      "answer_key": {
-        "accepted": [
-          "처리량",
-          "throughput",
-          "스루풋",
-          "쓰루풋"
+        "prompt": "스케줄러가 P3를 골랐다. P3에 CPU를 넘기는 것은?",
+        "options": [
+          "디스패처",
+          "준비 큐",
+          "PCB"
         ]
       },
-      "explanation": "단위 시간당 완료한 프로세스 수를 처리량이라 합니다. 처리량이 클수록 같은 시간에 더 많은 일을 끝낸 것입니다.",
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스케줄러가 고른 프로세스에 실제로 CPU를 넘기는 것은 디스패처입니다. 준비 큐는 기다리는 프로세스의 목록일 뿐입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Scheduling_(computing)"
       ]
     },
     {
-      "id": "os-scheduling-criteria-007",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "scheduling-criteria",
-        "waiting-time"
-      ],
-      "content": {
-        "prompt": "준비 큐에서 기다린 시간을 모두 더한 값을 ___ 시간이라 한다.",
-        "hint": "CPU 할당을 기다린 시간"
-      },
-      "answer_key": {
-        "accepted": [
-          "대기",
-          "waiting",
-          "대기 시간",
-          "대기시간",
-          "waiting time"
-        ]
-      },
-      "explanation": "준비 큐에서 기다린 시간의 합을 대기 시간이라 하며, 스케줄링 알고리즘을 비교하는 대표 기준입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
-      ]
-    },
-    {
-      "id": "os-scheduling-criteria-008",
+      "id": "os-scheduler-role-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "throughput",
-        "calculation"
+        "cpu-scheduling",
+        "process-state"
       ],
       "content": {
-        "prompt": "10초 동안 프로세스 5개를 완료했다. 초당 처리량은?",
+        "prompt": "I/O를 기다리는 P4를 스케줄러가 지금 고를 수 있나?",
         "options": [
-          "2개",
-          "0.5개",
-          "5개"
+          "고를 수 있다",
+          "고를 수 없다"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "처리량은 완료 수를 시간으로 나눈 값이므로 5 ÷ 10 = 초당 0.5개입니다.",
+      "explanation": "CPU 스케줄링은 준비 상태 프로세스 중에서만 고릅니다. I/O를 기다리는 P4는 I/O가 끝나 준비 큐에 들어와야 후보가 됩니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Scheduling_(computing)"
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
+        "https://en.wikipedia.org/wiki/Process_state"
       ]
     },
     {
-      "id": "os-scheduling-criteria-009",
+      "id": "os-scheduler-role-010",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "response-time",
-        "trade-off"
+        "cpu-scheduling",
+        "scheduler"
       ],
       "content": {
-        "prompt": "CPU를 짧은 시간씩 번갈아 할당하면 좋아지는 기준은?",
+        "prompt": "CPU 스케줄링이 결정하는 것은?",
         "options": [
-          "처리량",
-          "응답 시간"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "짧게 번갈아 할당하면 모든 프로세스가 빨리 첫 실행을 받아 응답 시간이 짧아집니다. 대신 스위칭이 늘어 처리량은 줄 수 있습니다.",
-      "refs": [
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf",
-        "https://en.wikipedia.org/wiki/Round-robin_scheduling"
-      ]
-    },
-    {
-      "id": "os-scheduling-criteria-010",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "waiting-time",
-        "calculation"
-      ],
-      "content": {
-        "prompt": "P가 준비 큐에서 2초, 나중에 다시 3초 기다렸다. P의 대기 시간은?",
-        "options": [
-          "2초",
-          "3초",
-          "5초"
+          "파일 저장 위치",
+          "프로세스 메모리 크기",
+          "다음에 실행할 프로세스"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "대기 시간은 준비 큐에서 기다린 시간을 모두 더한 값이므로 2 + 3 = 5초입니다.",
+      "explanation": "CPU 스케줄링은 준비 큐에 있는 프로세스 중 다음에 CPU를 받을 프로세스를 결정하는 일입니다.",
       "refs": [
+        "https://en.wikipedia.org/wiki/Scheduling_(computing)",
         "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
       ]
     }

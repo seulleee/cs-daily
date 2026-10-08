@@ -1,0 +1,236 @@
+{
+  "track": "network",
+  "unit": "u01-layers",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "network-addresses-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "port",
+        "transport-layer"
+      ],
+      "content": {
+        "prompt": "호스트 안에서 프로세스를 식별하는 번호는?",
+        "options": [
+          "포트 번호",
+          "MAC 주소",
+          "IP 주소"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "포트 번호는 전송 계층에서 한 호스트 안의 프로세스를 식별합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Port_(computer_networking)"
+      ]
+    },
+    {
+      "id": "network-addresses-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mac-address",
+        "data-link-layer"
+      ],
+      "content": {
+        "prompt": "네트워크 장치의 하드웨어를 식별하는 주소는?",
+        "options": [
+          "IP 주소",
+          "포트 번호",
+          "MAC 주소"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "MAC 주소는 데이터링크 계층에서 네트워크 장치의 하드웨어를 식별합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/MAC_address"
+      ]
+    },
+    {
+      "id": "network-addresses-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ip-address",
+        "network-layer"
+      ],
+      "content": {
+        "prompt": "네트워크 계층에서 호스트를 식별하는 주소는?",
+        "options": [
+          "MAC 주소",
+          "IP 주소"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "IP 주소는 네트워크 계층에서 네트워크 상의 호스트를 식별합니다. MAC 주소는 데이터링크 계층의 주소입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/IP_address"
+      ]
+    },
+    {
+      "id": "network-addresses-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "port",
+        "ip-address"
+      ],
+      "content": {
+        "prompt": "포트 번호는 네트워크 계층에서 쓰는 주소다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "포트 번호는 전송 계층에서 프로세스를 식별합니다. 네트워크 계층의 주소는 IP 주소입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Port_(computer_networking)"
+      ]
+    },
+    {
+      "id": "network-addresses-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "mac-address",
+        "data-link-layer"
+      ],
+      "content": {
+        "prompt": "데이터링크 계층에서 장치 하드웨어를 식별하는 것은 ___ 주소다.",
+        "hint": "보통 16진수 12자리로 적습니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "MAC",
+          "맥",
+          "하드웨어",
+          "물리"
+        ]
+      },
+      "explanation": "MAC 주소는 데이터링크 계층의 주소로, 네트워크 장치의 하드웨어를 식별합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/MAC_address"
+      ]
+    },
+    {
+      "id": "network-addresses-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "port",
+        "transport-layer"
+      ],
+      "content": {
+        "prompt": "전송 계층에서 프로세스를 식별하는 것은 ___ 번호다.",
+        "hint": "웹 서버는 보통 80이나 443을 씁니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "포트",
+          "port"
+        ]
+      },
+      "explanation": "포트 번호는 전송 계층에서 한 호스트 안의 프로세스를 구분합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Port_(computer_networking)"
+      ]
+    },
+    {
+      "id": "network-addresses-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "port",
+        "ip-address"
+      ],
+      "content": {
+        "prompt": "한 PC가 브라우저와 메신저 데이터를 나눠 받는 기준은?",
+        "options": [
+          "IP 주소",
+          "MAC 주소",
+          "포트 번호"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "두 프로그램은 같은 PC의 같은 IP 주소를 쓰므로, 프로세스를 가리키는 포트 번호로 구분합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Port_(computer_networking)"
+      ]
+    },
+    {
+      "id": "network-addresses-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ip-address",
+        "port"
+      ],
+      "content": {
+        "prompt": "192.168.0.10:443에서 192.168.0.10이 식별하는 것은?",
+        "options": [
+          "프로세스",
+          "호스트",
+          "장치 하드웨어"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "192.168.0.10은 IP 주소로 호스트를 식별합니다. 뒤의 443은 프로세스를 가리키는 포트 번호입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/IP_address",
+        "https://en.wikipedia.org/wiki/Port_(computer_networking)"
+      ]
+    },
+    {
+      "id": "network-addresses-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "mac-address",
+        "port"
+      ],
+      "content": {
+        "prompt": "PC의 네트워크 카드(NIC)를 교체하면 바뀌는 주소는?",
+        "options": [
+          "포트 번호",
+          "MAC 주소"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "MAC 주소는 장치 하드웨어(NIC)를 식별하므로 카드를 바꾸면 함께 바뀝니다. 포트 번호는 프로세스를 가리킵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/MAC_address"
+      ]
+    },
+    {
+      "id": "network-addresses-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "port",
+        "transport-layer"
+      ],
+      "content": {
+        "prompt": "포트 번호는 호스트 안의 프로세스를 식별한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "포트 번호는 전송 계층의 식별자로, 한 호스트 안에서 어느 프로세스에 데이터를 줄지 정합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Port_(computer_networking)"
+      ]
+    }
+  ]
+}

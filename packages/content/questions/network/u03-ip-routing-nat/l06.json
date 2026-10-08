@@ -1,0 +1,241 @@
+{
+  "track": "network",
+  "unit": "u03-ip-routing-nat",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "network-ttl-hops-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ttl",
+        "ip-header"
+      ],
+      "content": {
+        "prompt": "라우터를 지날 때마다 1씩 줄어드는 IP 패킷의 수명 값은?",
+        "options": [
+          "MTU",
+          "ACK",
+          "TTL"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "TTL(Time To Live)은 IP 헤더의 값으로, 라우터를 하나 지날 때마다 1씩 줄어듭니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc791",
+        "https://en.wikipedia.org/wiki/Time_to_live"
+      ]
+    },
+    {
+      "id": "network-ttl-hops-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "hop",
+        "routing"
+      ],
+      "content": {
+        "prompt": "패킷이 라우터를 한 번 거치는 것을 부르는 말은?",
+        "options": [
+          "세그먼트",
+          "포트",
+          "홉"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "패킷이 라우터 하나를 거쳐 다음 구간으로 넘어가는 것을 홉이라 하며, 경로 길이를 홉 수로 셉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hop_(networking)"
+      ]
+    },
+    {
+      "id": "network-ttl-hops-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "traceroute",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "TTL을 1부터 늘려 보내 경로의 라우터를 알아내는 도구는?",
+        "options": [
+          "ping",
+          "traceroute"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "traceroute는 TTL을 1, 2, 3으로 늘려 보내며 각 라우터의 시간 초과 응답으로 경로를 알아냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Traceroute"
+      ]
+    },
+    {
+      "id": "network-ttl-hops-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ttl",
+        "packet-drop"
+      ],
+      "content": {
+        "prompt": "TTL이 0이 된 패킷도 목적지까지 전달된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "TTL이 0이 되면 라우터가 그 패킷을 폐기합니다. 패킷의 무한 순환을 막기 위한 규칙입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc791",
+        "https://en.wikipedia.org/wiki/Time_to_live"
+      ]
+    },
+    {
+      "id": "network-ttl-hops-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "hop",
+        "routing"
+      ],
+      "content": {
+        "prompt": "경로 길이는 패킷이 거친 라우터 수인 ___ 수로 센다.",
+        "hint": "라우터 하나를 지나는 단위를 가리키는 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "홉",
+          "hop",
+          "hops"
+        ]
+      },
+      "explanation": "패킷이 라우터를 한 번 거치는 것이 1홉이므로, 경로 길이는 홉 수로 나타냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hop_(networking)"
+      ]
+    },
+    {
+      "id": "network-ttl-hops-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ttl",
+        "packet-drop"
+      ],
+      "content": {
+        "prompt": "TTL이 0이 되면 패킷을 버리는 이유는 무한 ___ 을 막기 위해서다.",
+        "hint": "라우팅 오류로 패킷이 같은 라우터들 사이를 끝없이 도는 상황입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "순환",
+          "루프",
+          "loop",
+          "반복"
+        ]
+      },
+      "explanation": "경로가 잘못돼 패킷이 라우터 사이를 계속 돌더라도 TTL이 0이 되면 폐기되어 무한 순환이 끝납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_to_live"
+      ]
+    },
+    {
+      "id": "network-ttl-hops-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ttl",
+        "hop"
+      ],
+      "content": {
+        "prompt": "TTL 64로 출발한 패킷이 라우터 3개를 지나면 TTL은?",
+        "options": [
+          "67",
+          "64",
+          "61"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "라우터를 지날 때마다 TTL이 1씩 줄므로 64 − 3 = 61입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_to_live"
+      ]
+    },
+    {
+      "id": "network-ttl-hops-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ttl",
+        "packet-drop"
+      ],
+      "content": {
+        "prompt": "TTL이 1인 패킷을 받은 라우터가 TTL을 줄이면 어떻게 되나?",
+        "options": [
+          "패킷을 폐기한다",
+          "다음 홉으로 보낸다",
+          "TTL을 64로 되돌린다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "TTL이 0이 되므로 라우터는 패킷을 폐기합니다. 덕분에 경로가 잘못돼도 패킷이 무한히 돌지 않습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc791",
+        "https://en.wikipedia.org/wiki/Time_to_live"
+      ]
+    },
+    {
+      "id": "network-ttl-hops-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "traceroute",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "traceroute가 TTL 1로 보낸 패킷은 어디서 폐기되나?",
+        "options": [
+          "목적지 호스트",
+          "첫 번째 라우터",
+          "마지막 라우터"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "TTL 1은 첫 라우터에서 0이 되어 폐기되고, 그 라우터가 시간 초과 메시지를 보내 자신의 주소를 드러냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Traceroute"
+      ]
+    },
+    {
+      "id": "network-ttl-hops-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ttl",
+        "ip-header"
+      ],
+      "content": {
+        "prompt": "TTL은 라우터를 지날 때마다 1씩 줄어드는 값이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "TTL은 패킷의 수명으로, 라우터를 하나 지날 때마다 1씩 줄고 0이 되면 폐기됩니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc791",
+        "https://en.wikipedia.org/wiki/Time_to_live"
+      ]
+    }
+  ]
+}

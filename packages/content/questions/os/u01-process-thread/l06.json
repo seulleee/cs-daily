@@ -1,0 +1,246 @@
+{
+  "track": "os",
+  "unit": "u01-process-thread",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "os-context-switch-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "context-switch",
+        "pcb"
+      ],
+      "content": {
+        "prompt": "실행 상태를 PCB에 저장하고 다른 것을 복원하는 일은?",
+        "options": [
+          "프로세스 생성",
+          "컨텍스트 스위칭",
+          "메모리 할당"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "컨텍스트 스위칭은 실행 중인 프로세스의 상태를 PCB에 저장하고 다음에 실행할 것의 상태를 복원하는 일입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Context_switch",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-context-switch-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "context-switch",
+        "overhead"
+      ],
+      "content": {
+        "prompt": "전환 자체는 유용한 일을 하지 않는 비용은?",
+        "options": [
+          "오버헤드",
+          "처리량",
+          "응답성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "오버헤드는 전환 같은 부가 작업에 드는 비용으로, 그동안 CPU는 프로그램의 유용한 일을 하지 못합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Overhead_(computing)",
+        "https://en.wikipedia.org/wiki/Context_switch"
+      ]
+    },
+    {
+      "id": "os-context-switch-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "context-switch",
+        "pcb"
+      ],
+      "content": {
+        "prompt": "컨텍스트 스위칭 때 실행 상태를 저장하는 곳은?",
+        "options": [
+          "힙",
+          "코드 영역",
+          "PCB"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "컨텍스트 스위칭 때 레지스터 값 등 실행 상태는 PCB에 저장되고, 다시 실행할 때 PCB에서 복원됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Context_switch",
+        "https://en.wikipedia.org/wiki/Process_control_block"
+      ]
+    },
+    {
+      "id": "os-context-switch-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "context-switch",
+        "thread-switch"
+      ],
+      "content": {
+        "prompt": "스레드 간 전환은 프로세스 간 전환보다 무겁다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "같은 프로세스의 스레드 간 전환은 주소 공간을 바꾸지 않아 프로세스 간 전환보다 가볍습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Context_switch"
+      ]
+    },
+    {
+      "id": "os-context-switch-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "context-switch",
+        "pcb"
+      ],
+      "content": {
+        "prompt": "실행 대상을 바꾸며 상태를 저장·복원하는 일은 ___ 이다.",
+        "hint": "두 단어, 7글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "컨텍스트 스위칭",
+          "컨텍스트스위칭",
+          "context switching",
+          "context switch",
+          "컨텍스트 스위치",
+          "문맥 교환",
+          "문맥 전환"
+        ]
+      },
+      "explanation": "컨텍스트 스위칭은 실행 중인 것의 상태를 PCB에 저장하고 다른 것의 상태를 복원해 CPU의 실행 대상을 바꾸는 일입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Context_switch",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-context-switch-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "context-switch",
+        "overhead"
+      ],
+      "content": {
+        "prompt": "유용한 일 없이 전환 자체에 드는 비용을 ___ 라고 한다.",
+        "hint": "한글 4글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "오버헤드",
+          "overhead"
+        ]
+      },
+      "explanation": "오버헤드는 전환 자체에 쓰이는 비용으로, 이 시간 동안 프로그램의 유용한 일은 진행되지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Overhead_(computing)"
+      ]
+    },
+    {
+      "id": "os-context-switch-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "context-switch",
+        "thread-switch"
+      ],
+      "content": {
+        "prompt": "같은 프로세스의 스레드끼리 전환할 때 바뀌지 않는 것은?",
+        "options": [
+          "프로그램 카운터",
+          "주소 공간",
+          "레지스터 값"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "같은 프로세스의 스레드는 주소 공간을 공유하므로 전환 때 주소 공간은 그대로이고 레지스터 값과 프로그램 카운터가 바뀝니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Context_switch",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"
+      ]
+    },
+    {
+      "id": "os-context-switch-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "context-switch",
+        "thread-switch"
+      ],
+      "content": {
+        "prompt": "같은 프로세스의 스레드 간 전환과 프로세스 간 전환 중 가벼운 것은?",
+        "options": [
+          "스레드 간 전환",
+          "프로세스 간 전환"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "같은 프로세스의 스레드 간 전환은 주소 공간을 바꾸지 않아 프로세스 간 전환보다 오버헤드가 작습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Context_switch",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"
+      ]
+    },
+    {
+      "id": "os-context-switch-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "context-switch",
+        "overhead"
+      ],
+      "content": {
+        "prompt": "컨텍스트 스위칭이 너무 잦아지면 일어나는 일은?",
+        "options": [
+          "오버헤드 감소",
+          "오버헤드 증가"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "전환할 때마다 저장·복원 비용이 들므로 전환이 잦을수록 CPU 시간 중 오버헤드가 차지하는 몫이 커집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Context_switch",
+        "https://en.wikipedia.org/wiki/Overhead_(computing)"
+      ]
+    },
+    {
+      "id": "os-context-switch-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "context-switch",
+        "pcb"
+      ],
+      "content": {
+        "prompt": "컨텍스트 스위칭은 현재 상태를 PCB에 저장하고 다른 것을 복원한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "컨텍스트 스위칭 때 운영체제는 실행 중인 것의 상태를 PCB에 저장하고, 다음에 실행할 것의 상태를 복원합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Context_switch",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    }
+  ]
+}

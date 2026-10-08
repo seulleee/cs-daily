@@ -4,238 +4,238 @@
   "lesson": "l03",
   "questions": [
     {
-      "id": "database-window-functions-001",
+      "id": "database-correlated-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "window-functions",
-        "over"
+        "subquery",
+        "correlated-subquery"
       ],
       "content": {
-        "prompt": "행을 합치지 않고 각 행마다 계산 결과를 붙이는 함수는?",
+        "prompt": "바깥 쿼리의 열을 참조하는 서브쿼리는?",
         "options": [
-          "윈도우 함수",
-          "GROUP BY 집계",
-          "문자열 함수"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "윈도우 함수는 행을 합치지 않고 각 행에 순위 같은 계산 결과를 붙입니다. GROUP BY 집계는 그룹마다 한 행으로 합칩니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/tutorial-window.html"
-      ]
-    },
-    {
-      "id": "database-window-functions-002",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "window-functions",
-        "partition-by"
-      ],
-      "content": {
-        "prompt": "OVER 안에서 행을 그룹으로 나눠 따로 계산하게 하는 절은?",
-        "options": [
-          "PARTITION BY",
-          "GROUP BY",
-          "ORDER BY"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "PARTITION BY는 OVER 안에서 행을 그룹으로 나눠 윈도우 함수를 그룹마다 따로 계산합니다. 행 수는 줄지 않습니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/tutorial-window.html"
-      ]
-    },
-    {
-      "id": "database-window-functions-003",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "window-functions",
-        "rank",
-        "row-number"
-      ],
-      "content": {
-        "prompt": "동점인 행에 같은 순위를 주는 함수는?",
-        "options": [
-          "ROW_NUMBER",
-          "RANK"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "RANK는 동점에 같은 순위를 주고 다음 순위를 건너뜁니다. ROW_NUMBER는 동점이어도 서로 다른 번호를 줍니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/functions-window.html"
-      ]
-    },
-    {
-      "id": "database-window-functions-004",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "window-functions",
-        "row-number",
-        "rank"
-      ],
-      "content": {
-        "prompt": "ROW_NUMBER는 동점인 행에 같은 번호를 준다."
-      },
-      "answer_key": {
-        "value": false
-      },
-      "explanation": "ROW_NUMBER는 동점이어도 행마다 서로 다른 연속 번호를 붙입니다. 동점에 같은 순위를 주는 것은 RANK입니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/functions-window.html"
-      ]
-    },
-    {
-      "id": "database-window-functions-005",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "window-functions",
-        "partition-by"
-      ],
-      "content": {
-        "prompt": "PARTITION BY dept 로 RANK를 구하면 부서마다 순위가 1부터 시작한다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "PARTITION BY는 부서별로 행을 나눠 따로 계산하므로, 각 부서 안에서 순위가 1부터 다시 매겨집니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/tutorial-window.html"
-      ]
-    },
-    {
-      "id": "database-window-functions-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "window-functions",
-        "over"
-      ],
-      "content": {
-        "prompt": "윈도우 함수는 RANK() ___ (ORDER BY score) 처럼 쓴다.",
-        "hint": "함수 뒤에 붙여 계산 범위를 지정하는 키워드"
-      },
-      "answer_key": {
-        "accepted": [
-          "OVER",
-          "over",
-          "오버"
-        ]
-      },
-      "explanation": "윈도우 함수 뒤의 OVER 절이 정렬(ORDER BY)과 파티션(PARTITION BY) 같은 계산 범위를 지정합니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/tutorial-window.html",
-        "https://www.postgresql.org/docs/current/functions-window.html"
-      ]
-    },
-    {
-      "id": "database-window-functions-007",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "window-functions",
-        "partition-by"
-      ],
-      "content": {
-        "prompt": "부서별로 순위를 따로 매기려면 OVER 안에 ___ BY dept 를 쓴다.",
-        "hint": "GROUP BY와 달리 행을 합치지 않는다"
-      },
-      "answer_key": {
-        "accepted": [
-          "PARTITION",
-          "partition",
-          "파티션",
-          "PARTITION BY",
-          "partition by"
-        ]
-      },
-      "explanation": "PARTITION BY dept는 부서마다 행을 나눠 윈도우 함수를 따로 계산하게 합니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/tutorial-window.html"
-      ]
-    },
-    {
-      "id": "database-window-functions-008",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "window-functions",
-        "rank"
-      ],
-      "content": {
-        "prompt": "점수 90, 80, 80에 높은 순으로 RANK()를 매긴 결과는?",
-        "options": [
-          "1, 1, 2",
-          "1, 2, 3",
-          "1, 2, 2"
+          "스칼라 서브쿼리",
+          "비상관 서브쿼리",
+          "상관 서브쿼리"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "RANK는 동점인 두 80에 같은 순위 2를 줍니다. 따라서 결과는 1, 2, 2입니다.",
+      "explanation": "상관 서브쿼리는 안에서 바깥 쿼리의 열을 참조합니다. 그래서 바깥 행에 따라 결과가 달라집니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/functions-window.html"
+        "https://en.wikipedia.org/wiki/Correlated_subquery"
       ]
     },
     {
-      "id": "database-window-functions-009",
+      "id": "database-correlated-002",
       "type": "single",
-      "difficulty": 2,
+      "difficulty": 1,
       "tags": [
-        "window-functions",
-        "partition-by",
-        "row-number"
+        "subquery",
+        "uncorrelated-subquery"
       ],
       "content": {
-        "prompt": "개발팀 2명, 영업팀 1명을 PARTITION BY 팀으로 번호 매기면 1번은 몇 명?",
+        "prompt": "바깥 쿼리와 무관해 한 번만 실행되는 서브쿼리는?",
         "options": [
-          "1명",
-          "2명",
-          "3명"
+          "비상관 서브쿼리",
+          "상관 서브쿼리",
+          "테이블 서브쿼리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "비상관 서브쿼리는 바깥 열을 참조하지 않아 결과가 하나로 정해집니다. 그래서 한 번만 계산하면 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Correlated_subquery"
+      ]
+    },
+    {
+      "id": "database-correlated-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "subquery",
+        "correlated-subquery"
+      ],
+      "content": {
+        "prompt": "바깥 행이 바뀔 때마다 다시 계산되는 쪽은?",
+        "options": [
+          "비상관 서브쿼리",
+          "상관 서브쿼리"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "PARTITION BY 팀이면 팀마다 번호가 1부터 다시 시작합니다. 팀이 2개이므로 1번은 2명입니다.",
+      "explanation": "상관 서브쿼리는 바깥 행의 값을 쓰므로 행마다 다시 계산합니다. 비상관 서브쿼리는 한 번만 실행됩니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/tutorial-window.html",
-        "https://www.postgresql.org/docs/current/functions-window.html"
+        "https://en.wikipedia.org/wiki/Correlated_subquery"
       ]
     },
     {
-      "id": "database-window-functions-010",
+      "id": "database-correlated-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "subquery",
+        "uncorrelated-subquery",
+        "correlated-subquery"
+      ],
+      "content": {
+        "prompt": "비상관 서브쿼리는 바깥 행마다 다시 실행된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "행마다 다시 계산되는 것은 상관 서브쿼리입니다. 비상관 서브쿼리는 바깥과 무관해 한 번만 실행됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Correlated_subquery"
+      ]
+    },
+    {
+      "id": "database-correlated-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "subquery",
+        "correlated-subquery"
+      ],
+      "content": {
+        "prompt": "바깥 쿼리의 열을 참조하는 서브쿼리는 ___ 서브쿼리다.",
+        "hint": "바깥 행이 바뀔 때마다 다시 계산되는 서브쿼리입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "상관",
+          "상관 서브쿼리",
+          "correlated",
+          "correlated subquery",
+          "연관",
+          "연관 서브쿼리"
+        ]
+      },
+      "explanation": "바깥 쿼리의 열을 참조하는 서브쿼리를 상관 서브쿼리라고 합니다. 바깥 행마다 결과가 달라질 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Correlated_subquery"
+      ]
+    },
+    {
+      "id": "database-correlated-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "subquery",
+        "uncorrelated-subquery"
+      ],
+      "content": {
+        "prompt": "바깥과 무관해 한 번만 실행되는 서브쿼리는 ___ 서브쿼리다.",
+        "hint": "바깥 쿼리의 열을 참조하지 않는 서브쿼리입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "비상관",
+          "비상관 서브쿼리",
+          "uncorrelated",
+          "non correlated",
+          "noncorrelated",
+          "non-correlated",
+          "비연관"
+        ]
+      },
+      "explanation": "바깥 열을 참조하지 않는 서브쿼리는 비상관 서브쿼리입니다. 결과가 바깥 행과 무관해 한 번만 계산합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Correlated_subquery"
+      ]
+    },
+    {
+      "id": "database-correlated-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "window-functions",
-        "over"
+        "subquery",
+        "uncorrelated-subquery"
       ],
       "content": {
-        "prompt": "5행 테이블에 윈도우 함수를 적용해 조회하면 결과 행 수는?",
+        "prompt": "WHERE 급여 > (SELECT AVG(급여) FROM 직원)의 서브쿼리는?",
         "options": [
-          "1행",
-          "5행"
+          "상관 서브쿼리",
+          "비상관 서브쿼리"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "윈도우 함수는 행을 합치지 않으므로 결과도 원래 행 수인 5행입니다. 행이 줄어드는 것은 GROUP BY 집계입니다.",
+      "explanation": "서브쿼리가 바깥 열을 참조하지 않아 전체 평균을 한 번만 계산합니다. 그래서 비상관 서브쿼리입니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/tutorial-window.html"
+        "https://en.wikipedia.org/wiki/Correlated_subquery"
+      ]
+    },
+    {
+      "id": "database-correlated-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "subquery",
+        "correlated-subquery"
+      ],
+      "content": {
+        "prompt": "서브쿼리가 바깥 테이블 별칭 e의 e.부서를 쓴다. 이 서브쿼리는?",
+        "options": [
+          "상관 서브쿼리",
+          "비상관 서브쿼리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "바깥 쿼리의 열 e.부서를 참조하므로 상관 서브쿼리입니다. 바깥 행의 부서가 바뀌면 결과도 바뀝니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Correlated_subquery"
+      ]
+    },
+    {
+      "id": "database-correlated-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "subquery",
+        "correlated-subquery"
+      ],
+      "content": {
+        "prompt": "바깥이 100행일 때 상관 서브쿼리의 개념상 실행 횟수는?",
+        "options": [
+          "1번",
+          "100번",
+          "101번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "상관 서브쿼리는 바깥 행마다 다시 계산되므로 개념상 100번 실행됩니다. 비상관이라면 1번이면 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Correlated_subquery"
+      ]
+    },
+    {
+      "id": "database-correlated-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "subquery",
+        "correlated-subquery"
+      ],
+      "content": {
+        "prompt": "상관 서브쿼리는 바깥 쿼리의 열을 참조한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "상관 서브쿼리는 바깥 쿼리의 열 값을 안에서 씁니다. 그래서 바깥 행마다 결과가 달라질 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Correlated_subquery"
       ]
     }
   ]

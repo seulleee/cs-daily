@@ -1,0 +1,247 @@
+{
+  "track": "database",
+  "unit": "u01-relational-model",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "database-anomalies-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "anomaly"
+      ],
+      "content": {
+        "prompt": "중복 저장 때문에 생기는 문제를 부르는 용어는?",
+        "options": [
+          "함수 종속",
+          "이상 현상",
+          "무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "같은 정보를 여러 곳에 중복 저장하면 삽입·갱신·삭제 때 문제가 생기는데, 이를 이상 현상이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
+    },
+    {
+      "id": "database-anomalies-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "anomaly",
+        "update-anomaly"
+      ],
+      "content": {
+        "prompt": "중복된 값 중 일부만 바뀌어 불일치가 생기는 것은?",
+        "options": [
+          "삽입 이상",
+          "삭제 이상",
+          "갱신 이상"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "중복 저장된 값 중 일부만 고쳐져 값이 서로 달라지는 것이 갱신 이상입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
+    },
+    {
+      "id": "database-anomalies-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "anomaly",
+        "deletion-anomaly"
+      ],
+      "content": {
+        "prompt": "행을 지우면 다른 정보까지 사라지는 것은?",
+        "options": [
+          "갱신 이상",
+          "삭제 이상"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "행 하나를 지웠는데 함께 저장된 다른 정보까지 없어지는 것이 삭제 이상입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
+    },
+    {
+      "id": "database-anomalies-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "anomaly",
+        "insertion-anomaly"
+      ],
+      "content": {
+        "prompt": "삽입 이상은 행을 지울 때 다른 정보가 사라지는 문제이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "그것은 삭제 이상입니다. 삽입 이상은 불필요한 값 없이는 행을 넣을 수 없는 문제입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
+    },
+    {
+      "id": "database-anomalies-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "anomaly",
+        "insertion-anomaly"
+      ],
+      "content": {
+        "prompt": "불필요한 값 없이는 행을 넣을 수 없는 문제는 ___ 이상이다.",
+        "hint": "행을 추가하는 연산과 관련된 이상"
+      },
+      "answer_key": {
+        "accepted": [
+          "삽입",
+          "insertion",
+          "insert",
+          "삽입 이상",
+          "삽입이상"
+        ]
+      },
+      "explanation": "행을 넣으려면 관계없는 값까지 있어야 하는 문제를 삽입 이상이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
+    },
+    {
+      "id": "database-anomalies-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "anomaly"
+      ],
+      "content": {
+        "prompt": "삽입, 갱신, 삭제 때 중복 저장 때문에 생기는 문제를 ___ (이)라고 한다.",
+        "hint": "삽입·갱신·삭제 때 생기는 문제를 통틀어 부르는 용어"
+      },
+      "answer_key": {
+        "accepted": [
+          "이상 현상",
+          "이상현상",
+          "anomaly",
+          "anomalies",
+          "이상"
+        ]
+      },
+      "explanation": "중복 저장 때문에 삽입·갱신·삭제 시 생기는 문제를 통틀어 이상 현상이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
+    },
+    {
+      "id": "database-anomalies-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "anomaly",
+        "update-anomaly"
+      ],
+      "content": {
+        "prompt": "같은 강의의 교수명이 여러 행에 있는데 한 행만 고쳤다. 생기는 이상은?",
+        "options": [
+          "갱신 이상",
+          "삽입 이상",
+          "삭제 이상"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "중복된 교수명 중 한 행만 바뀌어 같은 강의의 교수명이 서로 달라지므로 갱신 이상입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
+    },
+    {
+      "id": "database-anomalies-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "anomaly",
+        "deletion-anomaly"
+      ],
+      "content": {
+        "prompt": "강의 정보가 수강 행에만 있다. 마지막 수강 행을 지우면 생기는 이상은?",
+        "options": [
+          "삭제 이상",
+          "삽입 이상",
+          "갱신 이상"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "수강 행을 지우면서 그 강의 정보까지 함께 사라지므로 삭제 이상입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
+    },
+    {
+      "id": "database-anomalies-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "anomaly",
+        "insertion-anomaly"
+      ],
+      "content": {
+        "prompt": "수강 테이블에 수강생 없는 새 강의를 학번 없이 넣을 수 없다. 이 이상은?",
+        "options": [
+          "갱신 이상",
+          "삭제 이상",
+          "삽입 이상"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "강의 정보를 넣으려면 관계없는 학번 값이 필요하므로 삽입 이상입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
+    },
+    {
+      "id": "database-anomalies-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "anomaly"
+      ],
+      "content": {
+        "prompt": "이상 현상은 같은 정보를 여러 곳에 중복 저장해서 생긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "삽입·갱신·삭제 이상은 모두 같은 정보를 중복 저장한 구조 때문에 생깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_normalization"
+      ]
+    }
+  ]
+}

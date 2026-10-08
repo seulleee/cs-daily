@@ -4,239 +4,232 @@
   "lesson": "l01",
   "questions": [
     {
-      "id": "os-process-layout-001",
+      "id": "os-program-process-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "process",
+        "program-process",
         "program"
       ],
       "content": {
-        "prompt": "실행 중인 프로그램을 뜻하는 운영체제 용어는?",
+        "prompt": "디스크에 저장된 실행 파일을 뜻하는 용어는?",
         "options": [
-          "스레드",
-          "컴파일러",
+          "프로세스",
+          "프로그램",
+          "스레드"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "프로그램은 디스크에 저장된 정적인 실행 파일입니다. 이것이 메모리에 올라가 실행되면 프로세스가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Computer_program",
+        "https://en.wikipedia.org/wiki/Process_(computing)"
+      ]
+    },
+    {
+      "id": "os-program-process-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "program-process",
+        "process"
+      ],
+      "content": {
+        "prompt": "메모리에 올라가 실행 중인 프로그램을 뜻하는 용어는?",
+        "options": [
+          "실행 파일",
+          "소스 코드",
           "프로세스"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "프로세스는 메모리에 올라와 실행 중인 프로그램입니다. 스레드는 프로세스 안의 실행 흐름이고, 컴파일러는 소스 코드를 번역하는 프로그램입니다.",
+      "explanation": "프로세스는 메모리에 올라가 실행 중인 동적인 프로그램입니다. 실행 파일은 디스크에 있는 정적인 프로그램입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Process_(computing)",
         "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf"
       ]
     },
     {
-      "id": "os-process-layout-002",
+      "id": "os-program-process-003",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "pcb",
+        "program-process",
         "process"
       ],
       "content": {
-        "prompt": "운영체제가 프로세스마다 상태 정보를 저장하는 자료구조는?",
+        "prompt": "프로그램과 프로세스 중 동적인 것은?",
         "options": [
-          "PCB",
-          "힙",
-          "스택"
+          "프로세스",
+          "프로그램"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "PCB(Process Control Block)에는 PID, 프로세스 상태, 프로그램 카운터, 레지스터 값 등이 저장됩니다. 힙과 스택은 메모리 영역입니다.",
+      "explanation": "프로세스는 실행되면서 상태가 계속 바뀌는 동적인 개체입니다. 프로그램은 디스크에 저장된 정적인 파일입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Process_control_block"
+        "https://en.wikipedia.org/wiki/Process_(computing)"
       ]
     },
     {
-      "id": "os-process-layout-003",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "heap",
-        "address-space"
-      ],
-      "content": {
-        "prompt": "실행 중에 동적으로 할당받는 메모리가 놓이는 영역은?",
-        "options": [
-          "스택",
-          "힙",
-          "코드"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "동적 할당 메모리는 힙에 놓이며 직접 해제하거나 가비지 컬렉터가 회수할 때까지 남습니다. 스택은 함수 호출 단위로 자동 할당·해제됩니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Memory_management"
-      ]
-    },
-    {
-      "id": "os-process-layout-004",
+      "id": "os-program-process-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
-        "stack",
-        "heap"
+        "program-process",
+        "program"
       ],
       "content": {
-        "prompt": "함수의 지역 변수는 힙 영역에 저장된다."
+        "prompt": "디스크에 저장된 실행 파일을 프로세스라고 한다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "지역 변수는 함수 호출 때 만들어지는 스택 프레임, 즉 스택 영역에 저장됩니다. 힙은 실행 중 동적으로 할당하는 메모리 영역입니다.",
+      "explanation": "디스크에 저장된 실행 파일은 프로그램입니다. 프로세스는 그 프로그램이 메모리에 올라가 실행 중인 상태입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Call_stack"
+        "https://en.wikipedia.org/wiki/Computer_program",
+        "https://en.wikipedia.org/wiki/Process_(computing)"
       ]
     },
     {
-      "id": "os-process-layout-005",
-      "type": "ox",
+      "id": "os-program-process-005",
+      "type": "fill",
       "difficulty": 1,
       "tags": [
-        "pcb",
-        "program-counter"
-      ],
-      "content": {
-        "prompt": "PCB에는 프로세스의 프로그램 카운터 값이 저장된다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "PCB에는 다음에 실행할 명령어 주소인 프로그램 카운터가 저장되어, 중단된 프로세스를 그 지점부터 다시 실행할 수 있습니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Process_control_block"
-      ]
-    },
-    {
-      "id": "os-process-layout-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "stack",
-        "local-variable"
-      ],
-      "content": {
-        "prompt": "함수가 반환되면 자동 해제되는 지역 변수는 ___ 영역에 저장된다.",
-        "hint": "함수를 호출할 때마다 프레임이 쌓이는 영역"
-      },
-      "answer_key": {
-        "accepted": [
-          "스택",
-          "stack",
-          "스택 영역",
-          "스택영역",
-          "콜 스택",
-          "콜스택",
-          "call stack"
-        ]
-      },
-      "explanation": "지역 변수는 스택 영역의 스택 프레임에 저장되고, 함수가 반환되면 프레임과 함께 해제됩니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Call_stack"
-      ]
-    },
-    {
-      "id": "os-process-layout-007",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "pcb",
-        "process"
-      ],
-      "content": {
-        "prompt": "Process Control Block의 약어는 ___ 이다.",
-        "hint": "영문 대문자 세 글자"
-      },
-      "answer_key": {
-        "accepted": [
-          "PCB",
-          "pcb",
-          "프로세스 제어 블록",
-          "프로세스제어블록",
-          "process control block"
-        ]
-      },
-      "explanation": "Process Control Block의 약어는 PCB입니다. 운영체제는 프로세스마다 PCB를 하나씩 두어 실행 상태를 관리합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Process_control_block"
-      ]
-    },
-    {
-      "id": "os-process-layout-008",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "stack",
-        "heap"
-      ],
-      "content": {
-        "prompt": "함수 f가 반환될 때 자동으로 해제되는 것은?",
-        "options": [
-          "f가 동적 할당한 메모리",
-          "f의 지역 변수"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "지역 변수는 스택에 있어 함수가 반환되면 자동 해제됩니다. 힙에 동적 할당한 메모리는 직접 해제하기 전까지 남습니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Call_stack",
-        "https://en.wikipedia.org/wiki/Memory_management"
-      ]
-    },
-    {
-      "id": "os-process-layout-009",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "process",
+        "program-process",
         "program"
       ],
       "content": {
-        "prompt": "같은 프로그램을 두 번 실행하면 프로세스는 몇 개 생기나?",
-        "options": [
-          "1개",
-          "2개"
-        ]
+        "prompt": "디스크에 저장된 정적인 실행 파일은 ___ 이다.",
+        "hint": "한글 4글자, 실행되기 전의 모습"
       },
       "answer_key": {
-        "index": 1
+        "accepted": [
+          "프로그램",
+          "program"
+        ]
       },
-      "explanation": "실행할 때마다 별도의 주소 공간과 PCB를 가진 프로세스가 하나씩 생성되므로 2개입니다.",
+      "explanation": "프로그램은 디스크에 저장된 정적인 실행 파일입니다. 실행되어 메모리에 올라가면 프로세스가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Computer_program"
+      ]
+    },
+    {
+      "id": "os-program-process-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "program-process",
+        "process"
+      ],
+      "content": {
+        "prompt": "메모리에 올라가 실행 중인 동적인 프로그램은 ___ 이다.",
+        "hint": "한글 4글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "프로세스",
+          "process"
+        ]
+      },
+      "explanation": "프로세스는 메모리에 올라가 실행 중인 프로그램으로, 실행하면서 상태가 계속 바뀌는 동적인 개체입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Process_(computing)",
         "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf"
       ]
     },
     {
-      "id": "os-process-layout-010",
+      "id": "os-program-process-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "process",
+        "program-process",
+        "process"
+      ],
+      "content": {
+        "prompt": "같은 프로그램을 3번 실행하면 프로세스는 몇 개?",
+        "options": [
+          "1개",
+          "2개",
+          "3개"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "같은 프로그램이라도 실행할 때마다 프로세스가 하나씩 생기므로 3번 실행하면 프로세스는 3개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Process_(computing)"
+      ]
+    },
+    {
+      "id": "os-program-process-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "program-process",
         "program"
       ],
       "content": {
-        "prompt": "프로세스에 해당하는 것은?",
+        "prompt": "한 실행 파일로 프로세스 2개가 실행 중이다. 디스크의 프로그램은?",
         "options": [
-          "실행 중인 프로그램",
-          "디스크의 실행 파일",
-          "소스 코드 파일"
+          "2개",
+          "1개"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "프로세스는 2개지만 둘 다 디스크에 있는 같은 실행 파일 1개에서 만들어졌습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Process_(computing)"
+      ]
+    },
+    {
+      "id": "os-program-process-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "program-process",
+        "process"
+      ],
+      "content": {
+        "prompt": "프로세스 하나를 종료하면 디스크의 프로그램 파일은?",
+        "options": [
+          "그대로 남음",
+          "함께 삭제됨"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "프로세스는 메모리에 올라와 실행 중인 프로그램입니다. 디스크의 실행 파일은 아직 실행되지 않은 프로그램일 뿐입니다.",
+      "explanation": "프로세스가 종료되면 메모리에서 사라질 뿐, 디스크에 저장된 정적인 프로그램 파일은 그대로 남습니다.",
       "refs": [
+        "https://en.wikipedia.org/wiki/Process_(computing)"
+      ]
+    },
+    {
+      "id": "os-program-process-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "program-process",
+        "program"
+      ],
+      "content": {
+        "prompt": "프로그램은 디스크에 저장된 정적인 실행 파일이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "프로그램은 디스크에 저장된 정적인 실행 파일이고, 실행되어 메모리에 올라가면 동적인 프로세스가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Computer_program",
         "https://en.wikipedia.org/wiki/Process_(computing)"
       ]
     }

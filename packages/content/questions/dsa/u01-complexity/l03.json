@@ -4,245 +4,232 @@
   "lesson": "l03",
   "questions": [
     {
-      "id": "dsa-space-amortized-001",
+      "id": "dsa-growth-compare-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "space-amortized",
-        "space-complexity"
+        "growth-rate",
+        "big-o"
       ],
       "content": {
-        "prompt": "입력 크기에 따라 메모리 사용량이 늘어나는 정도를 나타내는 것은?",
+        "prompt": "O(1) < ? < O(n) 에 들어갈 복잡도는?",
         "options": [
-          "시간 복잡도",
-          "공간 복잡도",
-          "상각 비용"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "공간 복잡도는 입력 크기 n에 따른 메모리 사용량의 증가율입니다. 시간 복잡도는 실행 시간의 증가율입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Space_complexity",
-        "https://en.wikipedia.org/wiki/Amortized_analysis"
-      ]
-    },
-    {
-      "id": "dsa-space-amortized-002",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "space-amortized",
-        "auxiliary-space"
-      ],
-      "content": {
-        "prompt": "입력을 제외하고 알고리즘이 추가로 쓰는 메모리는?",
-        "options": [
-          "입력 공간",
-          "캐시 메모리",
-          "보조 공간"
-        ]
-      },
-      "answer_key": {
-        "index": 2
-      },
-      "explanation": "입력 외에 알고리즘이 추가로 사용하는 메모리를 보조 공간(auxiliary space)이라고 합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Space_complexity",
-        "https://en.wikipedia.org/wiki/Amortized_analysis"
-      ]
-    },
-    {
-      "id": "dsa-space-amortized-003",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "space-amortized",
-        "amortized"
-      ],
-      "content": {
-        "prompt": "총비용을 연산 횟수로 나눈 연산 1회당 비용은?",
-        "options": [
-          "최악 비용",
-          "상각 비용"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "상각 비용은 연산 전체의 총비용을 연산 횟수로 나눈 1회당 비용입니다. 최악 비용은 가장 비싼 연산 한 번의 비용입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Space_complexity",
-        "https://en.wikipedia.org/wiki/Amortized_analysis"
-      ]
-    },
-    {
-      "id": "dsa-space-amortized-004",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "space-amortized",
-        "space-complexity"
-      ],
-      "content": {
-        "prompt": "공간 복잡도는 실행 시간의 증가율을 나타낸다."
-      },
-      "answer_key": {
-        "value": false
-      },
-      "explanation": "공간 복잡도는 메모리 사용량의 증가율입니다. 실행 시간의 증가율은 시간 복잡도입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Space_complexity",
-        "https://en.wikipedia.org/wiki/Amortized_analysis"
-      ]
-    },
-    {
-      "id": "dsa-space-amortized-005",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "space-amortized",
-        "auxiliary-space"
-      ],
-      "content": {
-        "prompt": "원소 n개짜리 새 배열을 만들면 보조 공간은 O(n)이다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "입력과 별도로 원소 n개를 담는 배열을 만들면 추가 메모리가 n에 비례하므로 보조 공간은 O(n)입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Space_complexity",
-        "https://en.wikipedia.org/wiki/Amortized_analysis"
-      ]
-    },
-    {
-      "id": "dsa-space-amortized-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "space-amortized",
-        "auxiliary-space"
-      ],
-      "content": {
-        "prompt": "입력 외에 추가로 쓰는 메모리를 ___ 공간이라고 한다.",
-        "hint": "입력 공간과 구분되는 두 글자"
-      },
-      "answer_key": {
-        "accepted": [
-          "보조",
-          "보조 공간",
-          "auxiliary",
-          "auxiliary space"
-        ]
-      },
-      "explanation": "입력이 차지하는 메모리를 빼고 알고리즘이 추가로 쓰는 메모리를 보조 공간이라고 합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Space_complexity",
-        "https://en.wikipedia.org/wiki/Amortized_analysis"
-      ]
-    },
-    {
-      "id": "dsa-space-amortized-007",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "space-amortized",
-        "amortized"
-      ],
-      "content": {
-        "prompt": "총비용을 연산 횟수로 나눠 1회당 비용을 보는 분석은 ___ 분석이다.",
-        "hint": "가끔 비싼 연산의 비용을 여러 번에 나눠 보는 분석"
-      },
-      "answer_key": {
-        "accepted": [
-          "상각",
-          "amortized",
-          "상각 분석",
-          "amortized analysis",
-          "분할상환",
-          "분할 상환"
-        ]
-      },
-      "explanation": "상각 분석은 연산 전체의 총비용을 횟수로 나눠 1회당 비용을 구합니다. 가끔 비싼 연산이 있어도 1회당 비용은 작을 수 있습니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Space_complexity",
-        "https://en.wikipedia.org/wiki/Amortized_analysis"
-      ]
-    },
-    {
-      "id": "dsa-space-amortized-008",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "space-amortized",
-        "amortized"
-      ],
-      "content": {
-        "prompt": "연산 5회의 총비용이 10이다. 1회당 상각 비용은?",
-        "options": [
-          "2",
-          "5",
-          "10"
+          "O(log n)",
+          "O(n²)",
+          "O(2ⁿ)"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "상각 비용은 총비용 ÷ 연산 횟수이므로 10 ÷ 5 = 2입니다.",
+      "explanation": "증가 순서는 O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2ⁿ)입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Space_complexity",
-        "https://en.wikipedia.org/wiki/Amortized_analysis"
+        "https://en.wikipedia.org/wiki/Big_O_notation",
+        "https://en.wikipedia.org/wiki/Time_complexity"
       ]
     },
     {
-      "id": "dsa-space-amortized-009",
+      "id": "dsa-growth-compare-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "n-log-n",
+        "sorting"
+      ],
+      "content": {
+        "prompt": "효율적인 정렬 알고리즘의 대표 복잡도는?",
+        "options": [
+          "O(2ⁿ)",
+          "O(n log n)",
+          "O(1)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "효율적인 정렬 알고리즘의 복잡도는 O(n log n)입니다. O(n²)보다 느리게 증가합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Sorting_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-growth-compare-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "growth-rate",
+        "n-log-n"
+      ],
+      "content": {
+        "prompt": "n이 클 때 더 빠르게 증가하는 것은?",
+        "options": [
+          "O(n²)",
+          "O(n log n)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "증가 순서가 O(n log n) < O(n²)이므로 O(n²)이 더 빠르게 증가합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Big_O_notation",
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-growth-compare-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "growth-rate",
+        "n-log-n"
+      ],
+      "content": {
+        "prompt": "O(n log n)은 O(n)보다 느리게 증가한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "n이 커지면 log n이 1보다 커지므로 n log n이 n보다 빠르게 증가합니다. 순서는 O(n) < O(n log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-growth-compare-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "n-log-n",
+        "sorting"
+      ],
+      "content": {
+        "prompt": "효율적인 정렬 알고리즘의 복잡도는 O(n ___ n)이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "log",
+          "로그"
+        ]
+      },
+      "explanation": "병합 정렬 등 효율적인 비교 정렬 알고리즘의 복잡도는 O(n log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Sorting_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-growth-compare-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "growth-rate",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "n이 커질수록 ___가 높은 복잡도가 훨씬 느려진다.",
+        "hint": "n²에서는 2, n³에서는 3에 해당하는 값입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "차수",
+          "degree",
+          "order"
+        ]
+      },
+      "explanation": "n², n³과 같이 차수가 높을수록 n이 커질 때 연산 횟수가 훨씬 빠르게 늘어나 느려집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Big_O_notation"
+      ]
+    },
+    {
+      "id": "dsa-growth-compare-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "space-amortized",
-        "auxiliary-space"
+        "growth-rate",
+        "big-o"
       ],
       "content": {
-        "prompt": "n과 상관없이 변수 2개만 추가로 쓰면 보조 공간은?",
+        "prompt": "n=1000일 때 연산 횟수가 가장 많은 것은?",
         "options": [
-          "O(n)",
-          "O(1)",
+          "O(n log n)",
+          "O(2ⁿ)",
           "O(n²)"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "추가 메모리가 입력 크기와 관계없이 일정하므로 보조 공간은 O(1)입니다.",
+      "explanation": "증가 순서에서 O(2ⁿ)이 가장 뒤에 있으므로 n이 크면 연산 횟수가 가장 많습니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Space_complexity",
-        "https://en.wikipedia.org/wiki/Amortized_analysis"
+        "https://en.wikipedia.org/wiki/Time_complexity"
       ]
     },
     {
-      "id": "dsa-space-amortized-010",
+      "id": "dsa-growth-compare-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "space-amortized",
-        "space-complexity"
+        "n-log-n",
+        "sorting"
       ],
       "content": {
-        "prompt": "공간 복잡도가 나타내는 것은?",
+        "prompt": "O(n²) 정렬을 O(n log n) 정렬로 바꾸면 큰 n에서는?",
         "options": [
-          "메모리 사용량 증가율",
-          "실행 시간 증가율"
+          "더 느려짐",
+          "더 빨라짐",
+          "차이 없음"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 1
       },
-      "explanation": "공간 복잡도는 입력 크기에 따른 메모리 사용량의 증가율이고, 실행 시간의 증가율은 시간 복잡도입니다.",
+      "explanation": "O(n log n)은 O(n²)보다 느리게 증가하므로 n이 클수록 훨씬 빨라집니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Space_complexity",
-        "https://en.wikipedia.org/wiki/Amortized_analysis"
+        "https://en.wikipedia.org/wiki/Sorting_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-growth-compare-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "n-log-n",
+        "growth-rate"
+      ],
+      "content": {
+        "prompt": "n=8, 밑이 2일 때 n log n의 값은?",
+        "options": [
+          "64",
+          "11",
+          "24"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "log₂8 = 3이므로 n log n = 8 × 3 = 24입니다. n² = 64보다 작습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-growth-compare-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "growth-rate",
+        "logarithmic-time"
+      ],
+      "content": {
+        "prompt": "O(log n)은 O(n)보다 느리게 증가한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "증가 순서가 O(1) < O(log n) < O(n)이므로 O(log n)이 더 느리게 증가합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
       ]
     }
   ]

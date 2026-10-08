@@ -4,234 +4,236 @@
   "lesson": "l03",
   "questions": [
     {
-      "id": "database-normal-forms-001",
+      "id": "database-keys-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "normalization",
-        "1nf"
+        "keys",
+        "candidate-key"
       ],
       "content": {
-        "prompt": "모든 속성 값이 원자값이어야 하는 정규형은?",
+        "prompt": "행을 유일하게 식별하는 최소 속성 집합은?",
         "options": [
-          "1NF",
-          "2NF",
-          "3NF"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "제1정규형(1NF)은 모든 속성 값이 더 나눌 수 없는 원자값이어야 한다는 조건입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/First_normal_form"
-      ]
-    },
-    {
-      "id": "database-normal-forms-002",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "normalization",
-        "2nf"
-      ],
-      "content": {
-        "prompt": "기본키 일부에만 종속된 속성이 없어야 하는 정규형은?",
-        "options": [
-          "1NF",
-          "2NF",
-          "3NF"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "2NF는 1NF를 만족하면서 기본키의 일부에만 종속되는 속성(부분 함수 종속)이 없는 상태입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Second_normal_form"
-      ]
-    },
-    {
-      "id": "database-normal-forms-003",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "normalization",
-        "3nf"
-      ],
-      "content": {
-        "prompt": "키가 아닌 속성을 거쳐 종속되는 속성이 없어야 하는 정규형은?",
-        "options": [
-          "3NF",
-          "2NF"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "3NF는 2NF를 만족하면서 키가 아닌 속성을 거쳐 기본키에 종속되는 이행 함수 종속이 없는 상태입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Third_normal_form"
-      ]
-    },
-    {
-      "id": "database-normal-forms-004",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "normalization",
-        "1nf"
-      ],
-      "content": {
-        "prompt": "전화번호 속성에 번호 두 개를 쉼표로 함께 넣어도 1NF다."
-      },
-      "answer_key": {
-        "value": false
-      },
-      "explanation": "쉼표로 묶은 여러 값은 원자값이 아니므로 1NF를 위반합니다. 값마다 튜플을 나누거나 별도 릴레이션으로 분리해야 합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/First_normal_form"
-      ]
-    },
-    {
-      "id": "database-normal-forms-005",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "normalization",
-        "3nf",
-        "2nf"
-      ],
-      "content": {
-        "prompt": "3NF를 만족하는 릴레이션은 2NF도 만족한다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "정규형은 단계적이어서 3NF는 2NF를, 2NF는 1NF를 만족한다는 조건을 포함합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Database_normalization"
-      ]
-    },
-    {
-      "id": "database-normal-forms-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "normalization",
-        "2nf",
-        "partial-dependency"
-      ],
-      "content": {
-        "prompt": "기본키의 일부에만 종속되는 관계를 ___ 함수 종속이라 한다.",
-        "hint": "2NF가 제거하는 종속"
-      },
-      "answer_key": {
-        "accepted": [
-          "부분",
-          "부분적",
-          "partial"
-        ]
-      },
-      "explanation": "기본키 전체가 아닌 일부에 종속되는 것을 부분 함수 종속이라 하며, 이를 제거하면 2NF가 됩니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Second_normal_form"
-      ]
-    },
-    {
-      "id": "database-normal-forms-007",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "normalization",
-        "3nf",
-        "transitive-dependency"
-      ],
-      "content": {
-        "prompt": "A → B, B → C로 A → C가 되는 종속을 ___ 함수 종속이라 한다.",
-        "hint": "3NF가 제거하는 종속"
-      },
-      "answer_key": {
-        "accepted": [
-          "이행",
-          "이행적",
-          "transitive"
-        ]
-      },
-      "explanation": "다른 속성을 거쳐 성립하는 A → C를 이행 함수 종속이라 하며, 이를 제거하면 3NF가 됩니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Third_normal_form"
-      ]
-    },
-    {
-      "id": "database-normal-forms-008",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "normalization",
-        "2nf"
-      ],
-      "content": {
-        "prompt": "기본키 (학번, 과목코드)에서 과목코드 → 과목명일 때 위반한 정규형은?",
-        "options": [
-          "1NF",
-          "2NF",
-          "3NF"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "과목명이 기본키의 일부인 과목코드에만 종속되는 부분 함수 종속이므로 2NF를 위반합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Second_normal_form"
-      ]
-    },
-    {
-      "id": "database-normal-forms-009",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "normalization",
-        "3nf"
-      ],
-      "content": {
-        "prompt": "기본키 사번에서 사번 → 부서코드 → 부서명일 때 위반한 정규형은?",
-        "options": [
-          "1NF",
-          "2NF",
-          "3NF"
+          "슈퍼키",
+          "대체키",
+          "후보키"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "부서명이 키가 아닌 부서코드를 거쳐 사번에 종속되는 이행 함수 종속이므로 3NF를 위반합니다.",
+      "explanation": "후보키는 행을 유일하게 식별하면서 더 줄일 수 없는 최소 속성 집합입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Third_normal_form"
+        "https://en.wikipedia.org/wiki/Candidate_key"
       ]
     },
     {
-      "id": "database-normal-forms-010",
+      "id": "database-keys-002",
       "type": "single",
-      "difficulty": 2,
+      "difficulty": 1,
       "tags": [
-        "normalization",
-        "1nf"
+        "keys",
+        "primary-key"
       ],
       "content": {
-        "prompt": "1NF가 요구하는 원자값의 뜻은?",
+        "prompt": "후보키 중 대표로 고른 하나는?",
         "options": [
-          "더 나눌 수 없는 단일 값",
-          "여러 값의 목록"
+          "기본키",
+          "대체키",
+          "슈퍼키"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "원자값은 더 나눌 수 없는 단일 값입니다. 쉼표로 묶은 목록처럼 여러 값을 담으면 1NF를 위반합니다.",
+      "explanation": "후보키 가운데 대표로 고른 하나가 기본키입니다. 나머지 후보키는 대체키가 됩니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/First_normal_form"
+        "https://en.wikipedia.org/wiki/Primary_key"
+      ]
+    },
+    {
+      "id": "database-keys-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "keys",
+        "alternate-key"
+      ],
+      "content": {
+        "prompt": "기본키로 뽑히지 않은 후보키는?",
+        "options": [
+          "슈퍼키",
+          "대체키"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "기본키로 고르지 않은 나머지 후보키를 대체키라고 합니다. 슈퍼키는 최소가 아닐 수도 있는 식별 집합입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Candidate_key"
+      ]
+    },
+    {
+      "id": "database-keys-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "keys",
+        "primary-key"
+      ],
+      "content": {
+        "prompt": "기본키 속성에는 NULL을 넣을 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "기본키는 행을 식별하는 대표 키라서 NULL을 넣을 수 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Primary_key"
+      ]
+    },
+    {
+      "id": "database-keys-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "keys",
+        "superkey"
+      ],
+      "content": {
+        "prompt": "유일하게 식별하지만 최소가 아닐 수도 있는 속성 집합은 ___ 이다.",
+        "hint": "후보키에 속성을 더 붙여도 여전히 이 키에 속한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "슈퍼키",
+          "superkey",
+          "super key",
+          "수퍼키",
+          "슈퍼 키"
+        ]
+      },
+      "explanation": "슈퍼키는 행을 유일하게 식별하지만 불필요한 속성이 섞여 최소가 아닐 수도 있는 집합입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Superkey"
+      ]
+    },
+    {
+      "id": "database-keys-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "keys",
+        "primary-key"
+      ],
+      "content": {
+        "prompt": "후보키 중 대표로 고른 하나를 ___ (이)라고 한다.",
+        "hint": "NULL을 가질 수 없는 대표 키"
+      },
+      "answer_key": {
+        "accepted": [
+          "기본키",
+          "primary key",
+          "PK",
+          "기본 키",
+          "주키"
+        ]
+      },
+      "explanation": "여러 후보키 중 대표로 정한 하나가 기본키이며, 기본키는 NULL일 수 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Primary_key"
+      ]
+    },
+    {
+      "id": "database-keys-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "keys",
+        "alternate-key"
+      ],
+      "content": {
+        "prompt": "후보키 학번, 주민번호 중 학번이 기본키면 주민번호는?",
+        "options": [
+          "기본키",
+          "외래키",
+          "대체키"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "기본키로 뽑히지 않은 후보키는 대체키입니다. 주민번호도 행을 유일하게 식별하는 후보키였습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Candidate_key"
+      ]
+    },
+    {
+      "id": "database-keys-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "keys",
+        "superkey",
+        "candidate-key"
+      ],
+      "content": {
+        "prompt": "학번이 후보키일 때 {학번, 이름}은 무엇인가?",
+        "options": [
+          "슈퍼키",
+          "후보키"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "{학번, 이름}도 행을 유일하게 식별하지만 이름 없이도 식별되므로 최소가 아닙니다. 그래서 슈퍼키입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Superkey"
+      ]
+    },
+    {
+      "id": "database-keys-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "keys",
+        "candidate-key"
+      ],
+      "content": {
+        "prompt": "동명이인이 있을 수 있는 '이름'은 후보키가 될 수 있나?",
+        "options": [
+          "가능",
+          "불가능"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "후보키는 행을 유일하게 식별해야 합니다. 이름은 중복될 수 있으므로 후보키가 될 수 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Candidate_key"
+      ]
+    },
+    {
+      "id": "database-keys-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "keys",
+        "candidate-key",
+        "primary-key"
+      ],
+      "content": {
+        "prompt": "후보키가 여러 개면 그중 하나를 기본키로 고른다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "후보키 중 대표로 고른 하나가 기본키이고, 나머지 후보키는 대체키가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Candidate_key"
       ]
     }
   ]

@@ -4,7 +4,31 @@
   "lesson": "l01",
   "questions": [
     {
-      "id": "database-relational-model-001",
+      "id": "database-relation-tuple-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "relational-model",
+        "relation"
+      ],
+      "content": {
+        "prompt": "관계형 모델에서 테이블을 부르는 용어는?",
+        "options": [
+          "튜플",
+          "속성",
+          "릴레이션"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "관계형 모델에서 테이블은 릴레이션이라고 부릅니다. 튜플은 행, 속성은 열입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Relational_model"
+      ]
+    },
+    {
+      "id": "database-relation-tuple-002",
       "type": "single",
       "difficulty": 1,
       "tags": [
@@ -12,119 +36,74 @@
         "tuple"
       ],
       "content": {
-        "prompt": "릴레이션에서 행 하나를 가리키는 용어는?",
+        "prompt": "릴레이션에서 행 하나를 부르는 용어는?",
         "options": [
+          "스키마",
           "속성",
-          "튜플",
-          "도메인"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "릴레이션의 행 하나를 튜플이라고 합니다. 열 하나는 속성이라고 부릅니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Relational_model"
-      ]
-    },
-    {
-      "id": "database-relational-model-002",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "relational-model",
-        "primary-key"
-      ],
-      "content": {
-        "prompt": "릴레이션에서 각 튜플을 유일하게 식별하는 키는?",
-        "options": [
-          "외래키",
-          "도메인",
-          "기본키"
+          "튜플"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "기본키는 각 튜플을 유일하게 식별하는 키입니다. 외래키는 다른 릴레이션의 기본키를 참조하는 키입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Primary_key"
-      ]
-    },
-    {
-      "id": "database-relational-model-003",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "relational-model",
-        "foreign-key"
-      ],
-      "content": {
-        "prompt": "다른 릴레이션의 기본키를 참조하는 속성은?",
-        "options": [
-          "기본키",
-          "외래키"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "외래키는 다른 릴레이션의 기본키 값을 참조해 두 릴레이션을 연결합니다. 기본키는 자기 릴레이션의 튜플을 식별합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Foreign_key"
-      ]
-    },
-    {
-      "id": "database-relational-model-004",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "relational-model",
-        "tuple",
-        "attribute"
-      ],
-      "content": {
-        "prompt": "릴레이션에서 열 하나를 튜플이라고 한다."
-      },
-      "answer_key": {
-        "value": false
-      },
-      "explanation": "열 하나는 속성(attribute)이라고 합니다. 튜플은 행 하나를 가리킵니다.",
+      "explanation": "행 하나는 튜플이며 한 개체의 값 모음입니다. 열 하나는 속성이라고 부릅니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Relational_model"
       ]
     },
     {
-      "id": "database-relational-model-005",
-      "type": "ox",
+      "id": "database-relation-tuple-003",
+      "type": "single",
       "difficulty": 1,
-      "tags": [
-        "relational-model",
-        "primary-key"
-      ],
-      "content": {
-        "prompt": "기본키 값은 모든 튜플에서 서로 달라야 한다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "기본키는 튜플을 유일하게 식별해야 하므로 값이 중복될 수 없습니다. NULL도 허용하지 않습니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Primary_key",
-        "https://www.postgresql.org/docs/current/ddl-constraints.html"
-      ]
-    },
-    {
-      "id": "database-relational-model-006",
-      "type": "fill",
-      "difficulty": 2,
       "tags": [
         "relational-model",
         "attribute"
       ],
       "content": {
-        "prompt": "관계형 모델에서 릴레이션의 열 하나를 ___ 이라고 한다.",
-        "hint": "튜플이 행 하나라면, 이것은 열 하나를 가리킨다"
+        "prompt": "학생 릴레이션의 '이름' 열은 속성인가, 튜플인가?",
+        "options": [
+          "속성",
+          "튜플"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "열 하나는 속성입니다. 튜플은 학생 한 명의 값 모음인 행 하나입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Relational_model"
+      ]
+    },
+    {
+      "id": "database-relation-tuple-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "relational-model",
+        "tuple"
+      ],
+      "content": {
+        "prompt": "튜플은 한 개체의 값을 모은 행 하나이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "튜플은 릴레이션의 행 하나이며, 한 개체(예: 학생 한 명)의 속성 값을 모은 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Relational_model"
+      ]
+    },
+    {
+      "id": "database-relation-tuple-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "relational-model",
+        "attribute"
+      ],
+      "content": {
+        "prompt": "릴레이션에서 열 하나를 부르는 용어는 ___ 이다.",
+        "hint": "행 하나는 튜플이다. 그렇다면 열 하나는?"
       },
       "answer_key": {
         "accepted": [
@@ -134,90 +113,39 @@
           "어트리뷰트"
         ]
       },
-      "explanation": "릴레이션의 열 하나를 속성(attribute)이라고 합니다. 회원 릴레이션의 이름, 나이가 속성의 예입니다.",
+      "explanation": "릴레이션의 열 하나를 속성(attribute)이라고 합니다. 행 하나는 튜플입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Relational_model"
       ]
     },
     {
-      "id": "database-relational-model-007",
+      "id": "database-relation-tuple-006",
       "type": "fill",
       "difficulty": 2,
       "tags": [
         "relational-model",
-        "foreign-key"
+        "schema"
       ],
       "content": {
-        "prompt": "다른 릴레이션의 기본키를 참조하는 키를 ___ 라고 한다.",
-        "hint": "예: 주문.회원번호가 회원.회원번호를 가리킨다"
+        "prompt": "릴레이션의 이름과 속성 구조를 ___ (이)라고 한다.",
+        "hint": "실제 값이 아니라 릴레이션의 구조를 가리키는 용어"
       },
       "answer_key": {
         "accepted": [
-          "외래키",
-          "외래 키",
-          "foreign key",
-          "foreignkey",
-          "FK",
-          "외부키",
-          "외부 키"
+          "스키마",
+          "schema",
+          "릴레이션 스키마",
+          "relation schema",
+          "relational schema"
         ]
       },
-      "explanation": "외래키(foreign key)는 다른 릴레이션의 기본키 값을 참조하는 속성입니다. 이를 통해 두 릴레이션의 튜플이 연결됩니다.",
+      "explanation": "스키마는 릴레이션의 이름과 어떤 속성으로 이루어지는지를 정한 구조입니다. 실제 값인 튜플과 구분됩니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Foreign_key"
+        "https://en.wikipedia.org/wiki/Database_schema"
       ]
     },
     {
-      "id": "database-relational-model-008",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "relational-model",
-        "primary-key"
-      ],
-      "content": {
-        "prompt": "회원(회원번호, 이름, 도시)에서 기본키로 알맞은 속성은?",
-        "options": [
-          "회원번호",
-          "이름",
-          "도시"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "회원번호는 회원마다 다르게 부여되어 튜플을 유일하게 식별합니다. 이름과 도시는 여러 회원이 같은 값을 가질 수 있습니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Primary_key"
-      ]
-    },
-    {
-      "id": "database-relational-model-009",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "relational-model",
-        "foreign-key"
-      ],
-      "content": {
-        "prompt": "회원 id가 1, 2뿐일 때 외래키 주문.회원id에 넣을 수 없는 값은?",
-        "options": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      "answer_key": {
-        "index": 2
-      },
-      "explanation": "외래키 값은 참조하는 릴레이션의 기본키 값 중 하나여야 합니다. 회원 id에 3이 없으므로 3은 넣을 수 없습니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Foreign_key",
-        "https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-FK"
-      ]
-    },
-    {
-      "id": "database-relational-model-010",
+      "id": "database-relation-tuple-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -225,16 +153,84 @@
         "tuple"
       ],
       "content": {
-        "prompt": "관계형 모델에서 튜플이 가리키는 것은?",
+        "prompt": "행 5개, 열 3개인 릴레이션의 튜플 수는?",
         "options": [
-          "열 하나",
-          "행 하나"
+          "3",
+          "5",
+          "15"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "튜플은 릴레이션의 행 하나로, 한 개체의 속성 값 모음입니다. 열 하나는 속성입니다.",
+      "explanation": "튜플은 행 하나이므로 행이 5개면 튜플도 5개입니다. 열 3개는 속성 수입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Relational_model"
+      ]
+    },
+    {
+      "id": "database-relation-tuple-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "relational-model",
+        "tuple"
+      ],
+      "content": {
+        "prompt": "학생 릴레이션에 학생 1명을 추가하면 늘어나는 것은?",
+        "options": [
+          "튜플",
+          "속성",
+          "스키마"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "학생 1명은 행 하나, 즉 튜플 하나로 저장됩니다. 속성과 스키마는 그대로입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Relational_model"
+      ]
+    },
+    {
+      "id": "database-relation-tuple-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "relational-model",
+        "schema",
+        "attribute"
+      ],
+      "content": {
+        "prompt": "학생 릴레이션에 '전화번호' 열을 추가하면 바뀌는 것은?",
+        "options": [
+          "스키마",
+          "튜플 수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "열을 추가하면 속성 구조가 바뀌므로 스키마가 바뀝니다. 튜플 수는 행을 넣거나 지울 때 바뀝니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Database_schema"
+      ]
+    },
+    {
+      "id": "database-relation-tuple-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "relational-model",
+        "relation"
+      ],
+      "content": {
+        "prompt": "릴레이션은 두 테이블 사이의 연결을 뜻한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "관계형 모델에서 릴레이션은 테이블 자체를 뜻합니다. 테이블 사이의 연결은 외래키로 만드는 관계입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Relational_model"
       ]
