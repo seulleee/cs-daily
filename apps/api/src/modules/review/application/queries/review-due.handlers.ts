@@ -6,7 +6,7 @@ import { CountDueReviewsQuery, GetReviewDueQuery } from './queries';
 export class CountDueReviewsHandler implements IQueryHandler<CountDueReviewsQuery, number> {
   constructor(private readonly uow: UnitOfWork) {}
   execute(q: CountDueReviewsQuery): Promise<number> {
-    return this.uow.client.reviewItem.count({ where: { userId: q.userId, dueAt: { lte: q.now } } });
+    return this.uow.client.reviewItem.count({ where: { userId: q.userId, dueAt: { lte: q.until } } });
   }
 }
 

@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { applyMissedDay, extendStreak } from '../src/modules/progression/domain/streak';
-import { addDaysToLocalDate, daysBetween, localDateOf, localTimeOf } from '../src/shared/domain/local-date';
-import { zonedMidnightToUtc } from '../src/modules/learning/infrastructure/persistence/prisma-lesson-session.repository';
+import { addDaysToLocalDate, daysBetween, localDateOf, localTimeOf, zonedMidnightToUtc } from '../src/shared/domain/local-date';
 
 describe('extendStreak', () => {
   it('첫 달성: 1, 연속: +1, 같은 날 재달성: 변화 없음', () => {

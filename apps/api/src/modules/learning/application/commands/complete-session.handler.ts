@@ -6,6 +6,7 @@ import { localDateOf } from '../../../../shared/domain/local-date';
 import { UnitOfWork } from '../../../../shared/infrastructure/unit-of-work';
 import { SessionNotFound } from '../../domain/errors';
 import { CURRICULUM_QUERY_PORT, LESSON_SESSION_REPO, USER_PREFS_PORT, type CurriculumQueryPort, type LessonSessionRepository, type UserPrefsPort } from '../../domain/ports';
+import { ReviewPreview } from '../../domain/services/review-preview';
 import { UnitSkipTest } from '../../domain/services/unit-skip-test';
 import { RecordSessionCompletionCommand, type SessionCompletionResult } from '../../../progression/application/commands/commands';
 import { CountDueReviewsQuery } from '../../../review/application/queries/queries';
@@ -64,7 +65,11 @@ export class CompleteSessionHandler implements ICommandHandler<CompleteSessionCo
         occurredAt: now,
       }),
     );
-    const newReviewCount = await this.queryBus.execute<CountDueReviewsQuery, number>(new CountDueReviewsQuery(cmd.userId, now));
+    // 결과 화면의 "내일 복습 예정": 사용자 로컬 내일 끝까지 due인 수. 복습 예약(AnswerGraded)은 비동기라 이번 세션 오답 수를 하한으로 둔다.
+    const dueByTomorrow = await this.queryBus.execute<CountDueReviewsQuery, number>(
+      new CountDueReviewsQuery(cmd.userId, ReviewPreview.cutoff(localDate, prefs.timeZone)),
+    );
+    const newReviewCount = ReviewPreview.count(dueByTomorrow, summary.total - summary.correct);
 
     return {
       correct: summary.correct,

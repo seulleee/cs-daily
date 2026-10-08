@@ -29,3 +29,22 @@ export function addDaysToLocalDate(date: string, days: number): string {
 export function daysBetween(a: string, b: string): number {
   return Math.round((Date.parse(`${b}T00:00:00Z`) - Date.parse(`${a}T00:00:00Z`)) / 86_400_000);
 }
+
+/** "YYYY-MM-DD" 로컬 자정을 해당 타임존 기준 UTC Date로 */
+export function zonedMidnightToUtc(localDate: string, timeZone: string): Date {
+  const guess = new Date(`${localDate}T00:00:00Z`);
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    hour12: false,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  }).formatToParts(guess);
+  const g = (t: string) => Number(parts.find((p) => p.type === t)?.value ?? '0');
+  const asIfUtc = Date.UTC(g('year'), g('month') - 1, g('day'), g('hour') % 24, g('minute'), g('second'));
+  const offsetMs = asIfUtc - guess.getTime();
+  return new Date(guess.getTime() - offsetMs);
+}
