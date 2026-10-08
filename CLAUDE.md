@@ -11,7 +11,9 @@
 | API | https://cs-daily-api-541298537642.asia-northeast3.run.app (Cloud Run, 프로젝트 `cs-daily-510823`, 최소 인스턴스 0) |
 | DB | Supabase Free 서울 (`gcaeltkvfvalzmrljoqw`), 운영 스키마는 `apps/api/prisma/migrations` 그대로 |
 | 비밀값 | 전부 GCP Secret Manager. GitHub Secrets는 쓰지 않는다 (`infra/gcp-setup.sh` 참고) |
-| 로그인 | GitHub·Google OAuth. Google 앱은 **테스트 중** 상태라 등록된 테스트 사용자만 로그인 가능 |
+| 로그인 | GitHub·Google OAuth. Google 앱은 **프로덕션 게시됨**(2026-10-08, 비민감 범위라 인증 심사 불필요). 브랜딩에 홈·`/privacy`·`/terms` 링크 등록 |
+| 배치 | Cloud Scheduler `cs-daily-tick`: 매시 07분(Asia/Seoul) `POST /internal/jobs/tick` → 스트릭 프리즈·리마인더 |
+| 백업 | `backup.yml` 매일 03:17 KST pg_dump(PG17 클라이언트) → Actions artifact 90일 보관. 2026-10-08 수동 실행 성공(약 0.5MB) |
 | 예산 | GCP 월 ₩10,000 알림, 무료 체험 2027-01-05 종료 |
 | 콘텐츠 | 4트랙 37유닛 **348레슨**(유닛당 7~10) 중 **앞 3유닛×4트랙 = 12유닛 101레슨 1,010문제** 작성됨. 레슨당 10문제, 레슨마다 핵심 정리(keyPoints) 2~4줄 |
 
@@ -71,10 +73,10 @@
 
 ## 남은 일
 
-- [ ] Cloud Scheduler: 매시 `POST {API}/internal/jobs/tick`, `Authorization: Bearer {JOBS_SECRET}` (서비스 계정 `cs-daily-scheduler`) — 스트릭 프리즈·리마인더 배치가 아직 안 돈다
-- [ ] `backup.yml`이 아직 `secrets.PROD_DIRECT_URL`을 참조한다 → WIF + Secret Manager로 전환
-- [ ] Google OAuth 앱 게시(테스트 사용자 외 로그인 허용), Resend API 키 등록(이메일 리마인더)
+- [ ] 디자인 개편("Deep Focus": 스픽의 차분한 다크 네이비 + 듀오링고의 경로·3D 버튼). 시안은 Claude 디자인 캔버스 "CS 데일리 디자인 시안"(8장), 토큰·구성 스펙은 세션 스크래치 `design-spec.md`. 사용자 톤 결정 후 Sonnet 서브에이전트가 구현
+- [ ] 계정 탈퇴: 로그인 화면이 "설정에서 탈퇴"라고 안내하지만 삭제 기능·API가 없다 → `DELETE /me` + 설정 화면 버튼 추가, 또는 안내 문구 수정
+- [ ] Resend API 키 등록(이메일 리마인더)
 - [ ] 나머지 25유닛 247레슨 문제 작성 (curriculum.json의 keyPoints + docs/content-guide.md v4 기준, 유닛 단위로 서브에이전트 병렬)
-- [ ] 백업 워크플로 첫 수동 실행 결과 확인 (Actions → db-backup)
+- [ ] README의 운영·배포 절은 오래됐다(GitHub Secrets 기준) → CLAUDE.md 운영 현황과 맞추기
 - [ ] 머지된 원격 브랜치 정리(이 환경에서 삭제 불가 — 레포 설정 "Automatically delete head branches" 권장)
 - [ ] 무료 체험 종료(2027-01-05) 전 결제 계정 전환 알림
