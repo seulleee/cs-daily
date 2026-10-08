@@ -1,4 +1,5 @@
 # Supabase Free에는 자동 백업이 없다 → 매일 pg_dump를 GitHub Actions artifact(90일 보관)로 남긴다.
+# 인증은 ci.yml의 deploy-api와 같다: Workload Identity Federation으로 GCP에 로그인하고 DIRECT_URL을 Secret Manager에서 읽는다(GitHub Secrets 미사용).
 # 2단계: Cloudflare R2(10GB 무료)로 업로드해 보관 기간을 늘린다.
 name: db-backup
 
@@ -10,17 +11,41 @@ on:
 jobs:
   dump:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # Workload Identity Federation — GCP 키 파일 없이 인증
+    # 식별자는 비밀이 아니므로 직접 기재. 비밀 값은 GCP Secret Manager에서만 읽는다
+    env:
+      GCP_PROJECT: cs-daily-510823
+      WIF_PROVIDER: projects/541298537642/locations/global/workloadIdentityPools/github/providers/cs-daily-repo
+      DEPLOY_SA: cs-daily-deploy@cs-daily-510823.iam.gserviceaccount.com
     steps:
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ env.WIF_PROVIDER }}
+          service_account: ${{ env.DEPLOY_SA }}
+      - id: db
+        uses: google-github-actions/get-secretmanager-secrets@v2
+        with:
+          secrets: |-
+            DIRECT_URL:${{ env.GCP_PROJECT }}/DIRECT_URL
       - name: Install postgresql-client 16
         run: |
           sudo apt-get update -y
           sudo apt-get install -y postgresql-client
       - name: pg_dump
         env:
-          DIRECT_URL: ${{ secrets.PROD_DIRECT_URL }}
+          DIRECT_URL: ${{ steps.db.outputs.DIRECT_URL }}
         run: |
           mkdir -p backups
-          pg_dump "$DIRECT_URL" --no-owner --no-privileges --format=custom --file "backups/csdaily-$(date -u +%Y%m%d).dump"
+          # 실패 시 원인을 주석(annotation)으로도 남긴다 — 로그를 못 여는 환경에서도 API로 확인 가능
+          # 접속 문자열(비밀번호 포함)은 주석에 새지 않도록 postgres:// 주소를 가린다
+          if ! pg_dump "$DIRECT_URL" --no-owner --no-privileges --format=custom --file "backups/csdaily-$(date -u +%Y%m%d).dump" 2> /tmp/pg_dump.log; then
+            sed -E 's#postgres(ql)?://[^[:space:]]+#postgresql://***#g' /tmp/pg_dump.log
+            echo "::error title=backup::pg_dump 실패 — $(tail -c 1500 /tmp/pg_dump.log | sed -E 's#postgres(ql)?://[^[:space:]]+#postgresql://***#g' | tr '\n' ' ')"
+            exit 1
+          fi
+          cat /tmp/pg_dump.log
           ls -la backups
       - uses: actions/upload-artifact@v4
         with:
