@@ -1,0 +1,243 @@
+{
+  "track": "network",
+  "unit": "u03-ip-routing-nat",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "network-special-addresses-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "special-address",
+        "loopback"
+      ],
+      "content": {
+        "prompt": "자기 자신을 가리키는 주소 127.0.0.1을 부르는 이름은?",
+        "options": [
+          "루프백",
+          "브로드캐스트",
+          "게이트웨이"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "127.0.0.1은 루프백 주소로, 이 주소로 보낸 패킷은 밖으로 나가지 않고 자기 자신에게 돌아옵니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc6890",
+        "https://en.wikipedia.org/wiki/Localhost"
+      ]
+    },
+    {
+      "id": "network-special-addresses-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "special-address",
+        "broadcast"
+      ],
+      "content": {
+        "prompt": "호스트 부분이 모두 1이며 네트워크의 모든 장치에게 보내는 주소는?",
+        "options": [
+          "네트워크 주소",
+          "루프백 주소",
+          "브로드캐스트 주소"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "브로드캐스트 주소는 호스트 부분 비트가 모두 1이며, 이 주소로 보내면 같은 네트워크의 모든 장치가 받습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Broadcast_address"
+      ]
+    },
+    {
+      "id": "network-special-addresses-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "special-address",
+        "network-address"
+      ],
+      "content": {
+        "prompt": "호스트 부분이 모두 0인 주소는?",
+        "options": [
+          "네트워크 주소",
+          "브로드캐스트 주소"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "호스트 부분이 모두 0이면 네트워크 자체를 가리키는 네트워크 주소이고, 모두 1이면 브로드캐스트 주소입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Subnetwork"
+      ]
+    },
+    {
+      "id": "network-special-addresses-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "special-address",
+        "private-ip"
+      ],
+      "content": {
+        "prompt": "192.168.0.10은 인터넷에서 직접 쓸 수 있는 주소이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "192.168.x.x는 사설 IP 대역이라 인터넷에서 직접 쓸 수 없고, 내부 네트워크 안에서만 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1918",
+        "https://en.wikipedia.org/wiki/Private_network"
+      ]
+    },
+    {
+      "id": "network-special-addresses-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "special-address",
+        "network-address"
+      ],
+      "content": {
+        "prompt": "호스트 부분이 모두 0인 주소를 ___ 주소라고 한다.",
+        "hint": "특정 장치가 아니라 망 전체를 대표하는 주소입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "네트워크",
+          "network",
+          "네트웍"
+        ]
+      },
+      "explanation": "호스트 부분이 모두 0인 주소는 장치가 아니라 네트워크 자체를 가리키는 네트워크 주소입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Subnetwork"
+      ]
+    },
+    {
+      "id": "network-special-addresses-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "special-address",
+        "private-ip"
+      ],
+      "content": {
+        "prompt": "10.x, 172.16~31.x, 192.168.x 대역의 주소를 ___ IP라고 한다.",
+        "hint": "인터넷에서 직접 쓰지 못하고 내부 네트워크에서만 쓰는 주소입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "사설",
+          "private",
+          "프라이빗",
+          "비공인"
+        ]
+      },
+      "explanation": "RFC 1918이 정한 10.x, 172.16~31.x, 192.168.x 대역은 사설 IP로, 인터넷에서 직접 쓸 수 없습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1918",
+        "https://en.wikipedia.org/wiki/Private_network"
+      ]
+    },
+    {
+      "id": "network-special-addresses-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "special-address",
+        "network-address"
+      ],
+      "content": {
+        "prompt": "192.168.1.77/24가 속한 네트워크의 네트워크 주소는?",
+        "options": [
+          "192.168.0.0",
+          "192.168.1.0",
+          "192.168.1.255"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "/24는 마지막 8비트가 호스트 부분이고, 이를 모두 0으로 채우면 네트워크 주소 192.168.1.0이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Subnetwork"
+      ]
+    },
+    {
+      "id": "network-special-addresses-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "special-address",
+        "private-ip"
+      ],
+      "content": {
+        "prompt": "다음 중 사설 IP 주소는?",
+        "options": [
+          "8.8.8.8",
+          "172.32.0.1",
+          "172.16.3.4"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "172.16~172.31 대역은 사설 IP입니다. 172.32.0.1은 이 범위를 벗어나고 8.8.8.8은 공인 주소입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1918",
+        "https://en.wikipedia.org/wiki/Private_network"
+      ]
+    },
+    {
+      "id": "network-special-addresses-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "special-address",
+        "broadcast"
+      ],
+      "content": {
+        "prompt": "192.168.1.0/24에서 장치에 줄 수 있는 주소는?",
+        "options": [
+          "192.168.1.0",
+          "192.168.1.100",
+          "192.168.1.255"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "192.168.1.0은 네트워크 주소, 192.168.1.255는 브로드캐스트 주소라서 장치에 줄 수 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Broadcast_address",
+        "https://en.wikipedia.org/wiki/Subnetwork"
+      ]
+    },
+    {
+      "id": "network-special-addresses-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "special-address",
+        "loopback"
+      ],
+      "content": {
+        "prompt": "127.0.0.1로 보낸 패킷은 자기 자신에게 돌아온다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "127.0.0.1은 루프백 주소라 패킷이 네트워크로 나가지 않고 자기 자신에게 전달됩니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc6890",
+        "https://en.wikipedia.org/wiki/Localhost"
+      ]
+    }
+  ]
+}

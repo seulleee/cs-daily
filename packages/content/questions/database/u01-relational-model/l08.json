@@ -1,0 +1,239 @@
+{
+  "track": "database",
+  "unit": "u01-relational-model",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "database-normal-forms-1-2-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "1nf"
+      ],
+      "content": {
+        "prompt": "모든 속성 값이 원자값이어야 하는 정규형은?",
+        "options": [
+          "2NF",
+          "1NF",
+          "3NF"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "1NF(제1정규형)는 모든 속성 값이 더 나눌 수 없는 원자값이어야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-1-2-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "partial-dependency"
+      ],
+      "content": {
+        "prompt": "복합키의 일부에만 종속되는 것은?",
+        "options": [
+          "완전 함수 종속",
+          "이행 함수 종속",
+          "부분 함수 종속"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "속성이 복합키 전체가 아니라 일부에만 종속되는 것을 부분 함수 종속이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Second_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-1-2-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "2nf"
+      ],
+      "content": {
+        "prompt": "1NF와 2NF 중 부분 함수 종속까지 없어야 하는 것은?",
+        "options": [
+          "2NF",
+          "1NF"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "2NF는 1NF이면서 부분 함수 종속이 없어야 합니다. 1NF는 원자값 조건만 봅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Second_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-1-2-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "1nf",
+        "2nf"
+      ],
+      "content": {
+        "prompt": "1NF의 조건은 부분 함수 종속이 없는 것이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "1NF의 조건은 모든 속성 값이 원자값인 것입니다. 부분 함수 종속이 없어야 하는 것은 2NF입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-1-2-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "1nf"
+      ],
+      "content": {
+        "prompt": "더 나눌 수 없는 하나의 값을 ___ (이)라고 한다.",
+        "hint": "1NF의 조건에 나오는 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "원자값",
+          "atomic value",
+          "원자 값",
+          "atomic",
+          "원자적 값"
+        ]
+      },
+      "explanation": "더 나눌 수 없는 값을 원자값이라고 하며, 1NF는 모든 속성 값이 원자값이어야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-1-2-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "partial-dependency"
+      ],
+      "content": {
+        "prompt": "복합키의 일부에만 종속되는 것을 ___ 함수 종속이라고 한다.",
+        "hint": "2NF가 되려면 없애야 하는 종속"
+      },
+      "answer_key": {
+        "accepted": [
+          "부분",
+          "partial",
+          "부분적",
+          "부분 함수 종속"
+        ]
+      },
+      "explanation": "복합키 전체가 아니라 일부에만 종속되는 것을 부분 함수 종속이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Second_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-1-2-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "1nf"
+      ],
+      "content": {
+        "prompt": "전화번호 속성 값 하나에 번호가 두 개 들어 있다. 어긴 정규형은?",
+        "options": [
+          "1NF",
+          "2NF"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "번호 두 개는 더 나눌 수 있는 값이라 원자값이 아니므로 1NF를 어깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-1-2-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "2nf",
+        "partial-dependency"
+      ],
+      "content": {
+        "prompt": "기본키 (학번, 강의번호)에서 이름이 학번만으로 정해진다. 2NF인가?",
+        "options": [
+          "2NF 만족",
+          "2NF 위반"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이름이 복합키의 일부인 학번에만 종속되는 부분 함수 종속이 있으므로 2NF가 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Second_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-1-2-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "2nf",
+        "partial-dependency"
+      ],
+      "content": {
+        "prompt": "후보키가 학번 하나뿐인 1NF 테이블은 2NF인가?",
+        "options": [
+          "2NF가 아니다",
+          "2NF이다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "부분 함수 종속은 복합키의 일부에 종속되는 것이라 단일 속성 키에서는 생기지 않습니다. 그래서 2NF입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Second_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-1-2-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "1nf"
+      ],
+      "content": {
+        "prompt": "모든 속성 값이 원자값이면 1NF를 만족한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "1NF는 모든 속성 값이 더 나눌 수 없는 원자값이어야 한다는 정규형입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    }
+  ]
+}

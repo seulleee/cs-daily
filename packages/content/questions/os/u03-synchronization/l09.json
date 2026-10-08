@@ -1,0 +1,246 @@
+{
+  "track": "os",
+  "unit": "u03-synchronization",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "os-livelock-starvation-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "livelock",
+        "definition"
+      ],
+      "content": {
+        "prompt": "상태는 계속 바뀌지만 진행이 없는 상태는?",
+        "options": [
+          "라이브락",
+          "교착 상태",
+          "경쟁 조건"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "라이브락(livelock)은 스레드들이 계속 상태를 바꾸며 움직이지만 작업은 진행되지 않는 상태입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-livelock-starvation-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "starvation",
+        "definition"
+      ],
+      "content": {
+        "prompt": "자원을 계속 얻지 못해 한 스레드만 진행 못 하는 상태는?",
+        "options": [
+          "라이브락",
+          "교착 상태",
+          "기아"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "기아(starvation)는 특정 스레드가 자원을 계속 얻지 못해 진행하지 못하는 상태입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-livelock-starvation-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "deadlock",
+        "livelock"
+      ],
+      "content": {
+        "prompt": "모든 스레드가 멈춰 서로를 기다리는 상태는?",
+        "options": [
+          "교착 상태",
+          "라이브락"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "교착 상태는 모두 멈춰 기다리고, 라이브락은 바쁘게 움직이지만 제자리입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-livelock-starvation-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "livelock",
+        "deadlock"
+      ],
+      "content": {
+        "prompt": "라이브락에서는 스레드들이 멈춘 채 기다리기만 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "멈춘 채 기다리는 것은 교착 상태입니다. 라이브락의 스레드는 계속 상태를 바꾸며 움직입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-livelock-starvation-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "livelock",
+        "term"
+      ],
+      "content": {
+        "prompt": "상태는 바뀌지만 진행이 없는 상태를 ___ 이라 한다.",
+        "hint": "교착 상태(deadlock)와 짝을 이루는 영어 이름"
+      },
+      "answer_key": {
+        "accepted": [
+          "라이브락",
+          "livelock",
+          "라이브 락",
+          "live lock"
+        ]
+      },
+      "explanation": "상태는 계속 바뀌지만 진행이 없는 상태를 라이브락(livelock)이라 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-livelock-starvation-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "starvation",
+        "term"
+      ],
+      "content": {
+        "prompt": "자원을 계속 얻지 못해 진행하지 못하는 상태를 ___ 라 한다.",
+        "hint": "우선순위 스케줄링에서 에이징으로 막는 문제"
+      },
+      "answer_key": {
+        "accepted": [
+          "기아",
+          "starvation",
+          "기아 상태"
+        ]
+      },
+      "explanation": "특정 스레드가 자원을 계속 얻지 못해 진행하지 못하는 상태를 기아(starvation)라 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-livelock-starvation-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "livelock",
+        "apply"
+      ],
+      "content": {
+        "prompt": "두 스레드가 서로 양보하며 락을 놓고 잡기를 끝없이 반복한다. 이 상태는?",
+        "options": [
+          "교착 상태",
+          "기아",
+          "라이브락"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "계속 락을 놓고 잡으며 움직이지만 아무도 임계 구역에 들어가지 못하므로 라이브락입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-livelock-starvation-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "starvation",
+        "apply"
+      ],
+      "content": {
+        "prompt": "낮은 우선순위 스레드가 계속 밀려 실행되지 못한다. 이 상태는?",
+        "options": [
+          "라이브락",
+          "기아",
+          "교착 상태"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다른 스레드는 진행하는데 이 스레드만 CPU를 계속 얻지 못하므로 기아입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-livelock-starvation-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "starvation",
+        "deadlock"
+      ],
+      "content": {
+        "prompt": "기아 상태인 스레드가 있을 때 다른 스레드들은?",
+        "options": [
+          "모두 멈춘다",
+          "진행할 수 있다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "기아는 특정 스레드만 자원을 못 얻는 상태라 다른 스레드는 진행합니다. 모두 멈추는 것은 교착 상태입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-livelock-starvation-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "livelock",
+        "definition"
+      ],
+      "content": {
+        "prompt": "라이브락은 바쁘게 움직이지만 진행이 없는 상태이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 라이브락의 스레드는 계속 상태를 바꾸지만 제자리이고, 교착 상태는 모두 멈춰 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Deadlock",
+        "https://en.wikipedia.org/wiki/Starvation_(computer_science)"
+      ]
+    }
+  ]
+}

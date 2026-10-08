@@ -1,0 +1,249 @@
+{
+  "track": "dsa",
+  "unit": "u02-array-linked-list",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "dsa-doubly-circular-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "doubly-linked-list",
+        "linked-list"
+      ],
+      "content": {
+        "prompt": "노드가 prev와 next를 모두 가지는 리스트는?",
+        "options": [
+          "단일 연결 리스트",
+          "이중 연결 리스트",
+          "원형 연결 리스트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이중 연결 리스트의 노드는 앞 노드를 가리키는 prev와 다음 노드를 가리키는 next를 모두 가집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Doubly_linked_list",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-doubly-circular-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "circular-linked-list",
+        "linked-list"
+      ],
+      "content": {
+        "prompt": "마지막 노드의 next가 head를 가리키는 리스트는?",
+        "options": [
+          "이중 연결 리스트",
+          "배열",
+          "원형 연결 리스트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "원형 연결 리스트는 마지막 노드의 next가 head를 가리켜 끝과 처음이 이어집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Doubly_linked_list",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-doubly-circular-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "doubly-linked-list",
+        "traversal"
+      ],
+      "content": {
+        "prompt": "뒤에서 앞으로도 이동할 수 있는 리스트는?",
+        "options": [
+          "이중 연결 리스트",
+          "단일 연결 리스트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "이중 연결 리스트는 prev가 있어 뒤에서 앞으로도 이동하는 양방향 순회가 됩니다. 단일 연결 리스트는 next만 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Doubly_linked_list",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-doubly-circular-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "circular-linked-list",
+        "linked-list"
+      ],
+      "content": {
+        "prompt": "원형 연결 리스트의 마지막 노드는 next가 null이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "원형 연결 리스트는 마지막 노드의 next가 head를 가리킵니다. next가 null인 것은 일반 연결 리스트입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Doubly_linked_list",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-doubly-circular-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "doubly-linked-list",
+        "linked-list"
+      ],
+      "content": {
+        "prompt": "이중 연결 리스트의 노드는 next와 ___ 를 가진다.",
+        "hint": "앞 노드의 주소를 담는 포인터"
+      },
+      "answer_key": {
+        "accepted": [
+          "prev",
+          "previous",
+          "프리브",
+          "이전",
+          "prev 포인터",
+          "이전 포인터"
+        ]
+      },
+      "explanation": "이중 연결 리스트의 노드는 다음 노드를 가리키는 next와 앞 노드를 가리키는 prev를 가집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Doubly_linked_list",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-doubly-circular-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "doubly-linked-list",
+        "traversal"
+      ],
+      "content": {
+        "prompt": "앞뒤 양쪽으로 이동하며 노드를 방문하는 것을 ___ 순회라 한다.",
+        "hint": "한쪽 방향만이 아니라는 뜻"
+      },
+      "answer_key": {
+        "accepted": [
+          "양방향",
+          "bidirectional",
+          "쌍방향"
+        ]
+      },
+      "explanation": "prev와 next를 모두 따라갈 수 있어 앞뒤로 이동하는 양방향 순회가 가능합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Doubly_linked_list",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-doubly-circular-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "doubly-linked-list",
+        "traversal"
+      ],
+      "content": {
+        "prompt": "이중 연결 리스트 A ↔ B ↔ C 에서 B의 prev는?",
+        "options": [
+          "A",
+          "C",
+          "null"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "prev는 앞 노드를 가리키므로 B의 prev는 A입니다. B의 next가 C입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Doubly_linked_list",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-doubly-circular-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "circular-linked-list",
+        "linked-list"
+      ],
+      "content": {
+        "prompt": "원형 연결 리스트 head → A → B → C 에서 C의 next는?",
+        "options": [
+          "null",
+          "B",
+          "A"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "원형 연결 리스트는 마지막 노드 C의 next가 head가 가리키는 첫 노드 A를 가리킵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Doubly_linked_list",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-doubly-circular-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "circular-linked-list",
+        "traversal"
+      ],
+      "content": {
+        "prompt": "원형 리스트 A → B → C 에서 C부터 next를 2번 따라가면?",
+        "options": [
+          "A",
+          "B",
+          "null"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "C의 next는 첫 노드 A이고, A의 next는 B입니다. 원형이라 끝에서 처음으로 돌아갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Doubly_linked_list",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-doubly-circular-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "doubly-linked-list",
+        "traversal"
+      ],
+      "content": {
+        "prompt": "이중 연결 리스트에서는 prev를 따라 앞 노드로 갈 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "이중 연결 리스트의 노드는 prev와 next를 모두 가지므로 prev를 따라 앞 노드로 이동할 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Doubly_linked_list",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    }
+  ]
+}

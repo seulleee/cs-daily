@@ -1,0 +1,236 @@
+{
+  "track": "dsa",
+  "unit": "u01-complexity",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "dsa-nested-loop-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nested-loop",
+        "quadratic-time"
+      ],
+      "content": {
+        "prompt": "n번 반복문 안에 n번 반복문이 있으면 복잡도는?",
+        "options": [
+          "O(n)",
+          "O(n²)",
+          "O(log n)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "중첩 반복문은 횟수를 곱하므로 n × n = n²번, O(n²)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-nested-loop-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sequential-loop",
+        "linear-time"
+      ],
+      "content": {
+        "prompt": "n번 반복문 두 개를 나란히 두면 복잡도는?",
+        "options": [
+          "O(n)",
+          "O(n²)",
+          "O(n³)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "나란한 반복문은 횟수를 더하므로 n + n = 2n이고, 상수를 버리면 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-nested-loop-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nested-loop",
+        "sequential-loop"
+      ],
+      "content": {
+        "prompt": "중첩 반복문의 총 반복 횟수를 구하는 방법은?",
+        "options": [
+          "더한다",
+          "곱한다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "중첩 반복문은 안쪽 횟수 × 바깥쪽 횟수입니다. 횟수를 더하는 것은 나란한 반복문입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-nested-loop-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sequential-loop",
+        "nested-loop"
+      ],
+      "content": {
+        "prompt": "n번 반복문 두 개가 나란히 있으면 O(n²)이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "나란한 반복문은 횟수를 더해 2n이므로 O(n)입니다. O(n²)은 중첩된 경우입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-nested-loop-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "nested-loop",
+        "quadratic-time"
+      ],
+      "content": {
+        "prompt": "중첩 반복문의 총 횟수는 안쪽과 바깥쪽 횟수의 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "곱",
+          "곱셈",
+          "곱하기",
+          "product"
+        ]
+      },
+      "explanation": "중첩 반복문의 총 횟수는 안쪽 횟수와 바깥쪽 횟수를 곱한 값입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-nested-loop-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "triple-loop",
+        "cubic-time"
+      ],
+      "content": {
+        "prompt": "반복문이 세 겹 중첩된 ___ 반복문은 O(n³)이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "삼중",
+          "3중",
+          "triple",
+          "삼중 중첩"
+        ]
+      },
+      "explanation": "각 n번 도는 삼중 반복문은 n × n × n = n³번 돌므로 O(n³)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-nested-loop-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nested-loop",
+        "linear-time"
+      ],
+      "content": {
+        "prompt": "바깥 n번, 안쪽 10번인 중첩 반복문의 복잡도는?",
+        "options": [
+          "O(n²)",
+          "O(n)",
+          "O(1)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "n × 10 = 10n번이고 상수 10을 버리면 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-nested-loop-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "triple-loop",
+        "cubic-time"
+      ],
+      "content": {
+        "prompt": "n=10일 때 각 n번인 삼중 반복문의 실행 횟수는?",
+        "options": [
+          "30",
+          "100",
+          "1000"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "삼중 반복문은 n × n × n이므로 10 × 10 × 10 = 1000번입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-nested-loop-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nested-loop",
+        "sequential-loop"
+      ],
+      "content": {
+        "prompt": "n×n 중첩 반복문 뒤에 n번 반복문이 이어지면 복잡도는?",
+        "options": [
+          "O(n²)",
+          "O(n)",
+          "O(n³)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "나란한 부분은 더해 n² + n번이고, 저차항 n을 버리면 O(n²)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-nested-loop-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "nested-loop",
+        "quadratic-time"
+      ],
+      "content": {
+        "prompt": "바깥 n번, 안쪽 n번인 중첩 반복문은 O(n²)이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "안쪽 × 바깥쪽 횟수가 n × n = n²이므로 O(n²)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    }
+  ]
+}

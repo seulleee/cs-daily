@@ -1,0 +1,241 @@
+{
+  "track": "os",
+  "unit": "u01-process-thread",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "os-ipc-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ipc",
+        "process"
+      ],
+      "content": {
+        "prompt": "주소 공간이 다른 프로세스끼리 데이터를 주고받는 방법은?",
+        "options": [
+          "PCB",
+          "IPC",
+          "컨텍스트 스위칭"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "IPC(프로세스 간 통신)는 주소 공간이 분리된 프로세스끼리 데이터를 주고받는 방법입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Inter-process_communication"
+      ]
+    },
+    {
+      "id": "os-ipc-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ipc",
+        "pipe"
+      ],
+      "content": {
+        "prompt": "한 방향 바이트 흐름으로 데이터를 보내는 IPC는?",
+        "options": [
+          "공유 메모리",
+          "메시지 큐",
+          "파이프"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "파이프는 한쪽 끝에 쓴 바이트를 다른 끝에서 읽는 한 방향 바이트 흐름입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/pipe.7.html",
+        "https://en.wikipedia.org/wiki/Inter-process_communication"
+      ]
+    },
+    {
+      "id": "os-ipc-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ipc",
+        "message-queue"
+      ],
+      "content": {
+        "prompt": "데이터를 메시지 단위로 주고받는 IPC는?",
+        "options": [
+          "메시지 큐",
+          "파이프"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "메시지 큐는 데이터를 메시지 단위로 주고받습니다. 파이프는 메시지 경계가 없는 바이트 흐름입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/mq_overview.7.html",
+        "https://en.wikipedia.org/wiki/Inter-process_communication"
+      ]
+    },
+    {
+      "id": "os-ipc-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ipc",
+        "shared-memory"
+      ],
+      "content": {
+        "prompt": "공유 메모리는 동기화 없이도 안전하게 쓸 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "공유 메모리는 여러 프로세스가 같은 영역을 함께 쓰므로 동시에 고치지 않도록 동기화가 필요합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/shm_overview.7.html",
+        "https://en.wikipedia.org/wiki/Inter-process_communication"
+      ]
+    },
+    {
+      "id": "os-ipc-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ipc",
+        "shared-memory"
+      ],
+      "content": {
+        "prompt": "두 프로세스가 같은 메모리 영역을 함께 쓰는 IPC는 ___ 이다.",
+        "hint": "한글 두 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "공유 메모리",
+          "공유메모리",
+          "shared memory"
+        ]
+      },
+      "explanation": "공유 메모리는 여러 프로세스가 같은 메모리 영역을 함께 쓰는 IPC로, 빠르지만 동기화가 필요합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/shm_overview.7.html",
+        "https://en.wikipedia.org/wiki/Inter-process_communication"
+      ]
+    },
+    {
+      "id": "os-ipc-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ipc",
+        "process"
+      ],
+      "content": {
+        "prompt": "프로세스 간 통신의 영문 약자는 ___ 이다.",
+        "hint": "영문 대문자 3글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "IPC",
+          "Inter Process Communication",
+          "Inter-Process Communication",
+          "InterProcess Communication"
+        ]
+      },
+      "explanation": "IPC는 Inter-Process Communication의 약자로, 주소 공간이 다른 프로세스끼리 데이터를 주고받는 방법입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Inter-process_communication"
+      ]
+    },
+    {
+      "id": "os-ipc-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ipc",
+        "shared-memory"
+      ],
+      "content": {
+        "prompt": "큰 데이터를 가장 빠르게 주고받아야 할 때 알맞은 IPC는?",
+        "options": [
+          "파이프",
+          "메시지 큐",
+          "공유 메모리"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "공유 메모리는 같은 메모리 영역을 직접 읽고 써서 커널을 거치는 복사가 없어 빠릅니다. 대신 동기화가 필요합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/shm_overview.7.html",
+        "https://en.wikipedia.org/wiki/Inter-process_communication"
+      ]
+    },
+    {
+      "id": "os-ipc-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ipc",
+        "pipe"
+      ],
+      "content": {
+        "prompt": "파이프 하나로 A→B 전송 중이다. B→A로도 보내려면?",
+        "options": [
+          "파이프 하나 더",
+          "같은 파이프 사용"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "파이프는 한 방향 바이트 흐름이므로 반대 방향으로 보내려면 파이프가 하나 더 필요합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/pipe.7.html"
+      ]
+    },
+    {
+      "id": "os-ipc-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ipc",
+        "message-queue"
+      ],
+      "content": {
+        "prompt": "보낸 메시지를 경계 그대로 하나씩 받아야 할 때 알맞은 것은?",
+        "options": [
+          "파이프",
+          "메시지 큐"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "메시지 큐는 메시지 단위로 주고받아 보낸 단위 그대로 하나씩 받을 수 있습니다. 파이프는 경계 없는 바이트 흐름입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/mq_overview.7.html",
+        "https://man7.org/linux/man-pages/man7/pipe.7.html"
+      ]
+    },
+    {
+      "id": "os-ipc-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ipc",
+        "process"
+      ],
+      "content": {
+        "prompt": "IPC는 주소 공간이 다른 프로세스끼리 데이터를 주고받는 방법이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "프로세스는 주소 공간이 분리되어 서로의 메모리를 직접 볼 수 없으므로 IPC로 데이터를 주고받습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Inter-process_communication"
+      ]
+    }
+  ]
+}

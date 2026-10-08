@@ -1,0 +1,247 @@
+{
+  "track": "os",
+  "unit": "u02-cpu-scheduling",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "os-round-robin-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "round-robin",
+        "scheduling"
+      ],
+      "content": {
+        "prompt": "타임 퀀텀만큼 실행하고 준비 큐 뒤로 보내는 스케줄링은?",
+        "options": [
+          "FCFS",
+          "SJF",
+          "라운드 로빈"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "라운드 로빈은 각 프로세스를 타임 퀀텀만큼 실행한 뒤 준비 큐 맨 뒤로 보내는 선점 방식입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Round-robin_scheduling",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-round-robin-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "time-quantum",
+        "round-robin"
+      ],
+      "content": {
+        "prompt": "프로세스가 한 번에 쓸 수 있는 CPU 시간 조각은?",
+        "options": [
+          "타임 퀀텀",
+          "처리량",
+          "응답 시간"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "타임 퀀텀은 라운드 로빈에서 프로세스가 한 번에 쓸 수 있는 CPU 시간 조각입니다. 다 쓰면 다음 프로세스로 넘어갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Round-robin_scheduling"
+      ]
+    },
+    {
+      "id": "os-round-robin-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "round-robin",
+        "preemptive"
+      ],
+      "content": {
+        "prompt": "라운드 로빈은 선점과 비선점 중 어느 방식인가?",
+        "options": [
+          "선점",
+          "비선점"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "라운드 로빈은 퀀텀이 끝나면 타이머 인터럽트로 CPU를 뺏어 다음 프로세스에 주는 선점 방식입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Round-robin_scheduling",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-round-robin-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "time-quantum",
+        "fcfs"
+      ],
+      "content": {
+        "prompt": "타임 퀀텀을 아주 크게 하면 라운드 로빈은 SJF에 가까워진다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "퀀텀이 아주 크면 각 프로세스가 퀀텀 안에 끝나 도착 순서대로 실행되므로 FCFS에 가까워집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Round-robin_scheduling",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-round-robin-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "time-quantum",
+        "round-robin"
+      ],
+      "content": {
+        "prompt": "라운드 로빈에서 한 번에 쓸 수 있는 CPU 시간 조각은 ___ 이다.",
+        "hint": "이 값이 크면 FCFS에 가까워진다"
+      },
+      "answer_key": {
+        "accepted": [
+          "타임 퀀텀",
+          "타임퀀텀",
+          "time quantum",
+          "timequantum",
+          "퀀텀",
+          "quantum",
+          "타임 슬라이스",
+          "타임슬라이스",
+          "time slice",
+          "timeslice"
+        ]
+      },
+      "explanation": "타임 퀀텀(타임 슬라이스)은 프로세스가 한 번에 쓸 수 있는 CPU 시간 조각으로, 다 쓰면 준비 큐 뒤로 갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Round-robin_scheduling"
+      ]
+    },
+    {
+      "id": "os-round-robin-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "time-quantum",
+        "fcfs"
+      ],
+      "content": {
+        "prompt": "타임 퀀텀이 너무 크면 라운드 로빈은 ___ 에 가까워진다.",
+        "hint": "도착 순서대로 실행하는 방식의 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "FCFS",
+          "선입선처리"
+        ]
+      },
+      "explanation": "퀀텀이 모든 작업의 실행 시간보다 크면 퀀텀 안에 다 끝나 도착 순서대로 실행되므로 FCFS와 같아집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Round-robin_scheduling",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-round-robin-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "round-robin",
+        "time-quantum"
+      ],
+      "content": {
+        "prompt": "퀀텀 2초, 준비 큐에 P2가 있다. P1(5초)이 2초 실행되면?",
+        "options": [
+          "P1이 준비 큐 뒤로",
+          "P1이 계속 실행"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "P1은 퀀텀 2초를 다 써서 CPU를 뺏기고 준비 큐 뒤로 갑니다. 그다음 P2가 실행됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Round-robin_scheduling"
+      ]
+    },
+    {
+      "id": "os-round-robin-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "round-robin",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "퀀텀 2초, 0초에 P1(3초)·P2(2초) 순 도착. P2 첫 실행 시각은?",
+        "options": [
+          "0초",
+          "2초",
+          "3초"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "P1이 0~2초 동안 퀀텀을 다 쓰고 준비 큐 뒤로 가므로 P2는 2초에 처음 실행됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Round-robin_scheduling",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-round-robin-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "time-quantum",
+        "context-switch"
+      ],
+      "content": {
+        "prompt": "타임 퀀텀을 아주 작게 하면 늘어나는 것은?",
+        "options": [
+          "응답 시간",
+          "처리량",
+          "전환 비용"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "퀀텀이 작으면 응답은 빨라지지만 컨텍스트 스위칭이 잦아져 전환 비용이 늘어납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Round-robin_scheduling",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf"
+      ]
+    },
+    {
+      "id": "os-round-robin-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "round-robin",
+        "ready-queue"
+      ],
+      "content": {
+        "prompt": "라운드 로빈은 퀀텀을 다 쓴 프로세스를 준비 큐 뒤로 보낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "라운드 로빈은 퀀텀을 다 쓰고도 끝나지 않은 프로세스를 준비 큐 맨 뒤로 보내 차례를 돌립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Round-robin_scheduling"
+      ]
+    }
+  ]
+}

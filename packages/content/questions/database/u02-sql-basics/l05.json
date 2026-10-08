@@ -1,0 +1,237 @@
+{
+  "track": "database",
+  "unit": "u02-sql-basics",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "database-inner-join-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "inner-join",
+        "join"
+      ],
+      "content": {
+        "prompt": "두 테이블의 행을 조건으로 짝지어 합치는 연산은?",
+        "options": [
+          "WHERE",
+          "JOIN",
+          "LIMIT"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "JOIN은 두 테이블의 행을 ON 조건에 맞게 짝지어 한 행으로 합칩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-join.html"
+      ]
+    },
+    {
+      "id": "database-inner-join-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "inner-join",
+        "on"
+      ],
+      "content": {
+        "prompt": "JOIN에서 짝짓는 조건을 적는 키워드는?",
+        "options": [
+          "ON",
+          "AS",
+          "FROM"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ON 뒤에 두 테이블의 행을 짝지을 조건을 적습니다. 보통 외래키 = 기본키 형태입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    },
+    {
+      "id": "database-inner-join-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "inner-join",
+        "join"
+      ],
+      "content": {
+        "prompt": "INNER JOIN은 짝이 없는 행도 결과에 남긴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "INNER JOIN은 양쪽에 짝이 있는 행만 결과에 남깁니다. 짝이 없는 행은 결과에서 빠집니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-join.html"
+      ]
+    },
+    {
+      "id": "database-inner-join-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "inner-join",
+        "on",
+        "foreign-key"
+      ],
+      "content": {
+        "prompt": "ON 조건은 보통 외래키 = 기본키 형태로 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "한 테이블의 외래키와 그것이 참조하는 테이블의 기본키가 같은 행끼리 짝짓는 것이 일반적입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-join.html"
+      ]
+    },
+    {
+      "id": "database-inner-join-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "inner-join",
+        "on"
+      ],
+      "content": {
+        "prompt": "JOIN에서 짝짓는 조건 앞에 쓰는 키워드는 ___ 이다.",
+        "hint": "조인할 테이블 이름 바로 뒤에 옵니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "ON",
+          "온"
+        ]
+      },
+      "explanation": "JOIN 테이블 ON 조건 형태로 쓰며, ON 뒤에 짝짓는 조건을 적습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    },
+    {
+      "id": "database-inner-join-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "inner-join",
+        "join"
+      ],
+      "content": {
+        "prompt": "양쪽에 짝이 있는 행만 남기는 조인은 ___ JOIN 이다.",
+        "hint": "'내부'를 뜻하는 영어 단어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "INNER",
+          "이너"
+        ]
+      },
+      "explanation": "INNER JOIN은 ON 조건을 만족하는 짝이 양쪽에 모두 있는 행만 결과에 남깁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-join.html"
+      ]
+    },
+    {
+      "id": "database-inner-join-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "inner-join",
+        "on",
+        "foreign-key"
+      ],
+      "content": {
+        "prompt": "ON orders.user_id = users.id 에서 user_id는 보통?",
+        "options": [
+          "외래키",
+          "기본키",
+          "별칭"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "orders.user_id는 users.id를 참조하는 외래키이고, users.id는 users의 기본키입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-join.html"
+      ]
+    },
+    {
+      "id": "database-inner-join-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "inner-join",
+        "join"
+      ],
+      "content": {
+        "prompt": "users 3명 중 2명만 주문했다. orders와 INNER JOIN 후 사용자 수는?",
+        "options": [
+          "3명",
+          "1명",
+          "2명"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "INNER JOIN은 짝이 있는 행만 남기므로 주문이 있는 사용자 2명만 결과에 나옵니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-join.html"
+      ]
+    },
+    {
+      "id": "database-inner-join-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "inner-join",
+        "join"
+      ],
+      "content": {
+        "prompt": "짝이 되는 사용자가 없는 주문 행은 INNER JOIN 결과에서?",
+        "options": [
+          "NULL과 함께 남음",
+          "결과에서 빠짐",
+          "오류 발생"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "INNER JOIN은 양쪽에 짝이 있어야 결과에 남습니다. 짝이 없는 주문 행은 결과에서 빠집니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-join.html"
+      ]
+    },
+    {
+      "id": "database-inner-join-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "inner-join",
+        "join"
+      ],
+      "content": {
+        "prompt": "JOIN이 하는 일은?",
+        "options": [
+          "행 정렬",
+          "행 개수 제한",
+          "두 테이블 행 짝짓기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "JOIN은 두 테이블의 행을 조건으로 짝지어 합칩니다. 정렬은 ORDER BY, 개수 제한은 LIMIT입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-join.html"
+      ]
+    }
+  ]
+}

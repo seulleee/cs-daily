@@ -1,0 +1,232 @@
+{
+  "track": "database",
+  "unit": "u01-relational-model",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "database-functional-dependency-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "functional-dependency"
+      ],
+      "content": {
+        "prompt": "A 값이 정해지면 B 값이 하나로 정해지는 관계는?",
+        "options": [
+          "참조",
+          "함수 종속",
+          "도메인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "A 값이 정해질 때 B 값이 하나로 정해지면 함수 종속이라 하고 A → B로 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Functional_dependency"
+      ]
+    },
+    {
+      "id": "database-functional-dependency-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "functional-dependency",
+        "determinant"
+      ],
+      "content": {
+        "prompt": "함수 종속 A → B에서 A를 부르는 용어는?",
+        "options": [
+          "종속자",
+          "후보키",
+          "결정자"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "화살표 왼쪽 A는 값을 정하는 쪽이라 결정자, 오른쪽 B는 종속자라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Functional_dependency"
+      ]
+    },
+    {
+      "id": "database-functional-dependency-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "functional-dependency",
+        "dependent"
+      ],
+      "content": {
+        "prompt": "학번 → 이름에서 이름은 종속자인가, 결정자인가?",
+        "options": [
+          "종속자",
+          "결정자"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "화살표 오른쪽에 있는 이름은 학번에 따라 정해지므로 종속자입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Functional_dependency"
+      ]
+    },
+    {
+      "id": "database-functional-dependency-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "functional-dependency",
+        "determinant"
+      ],
+      "content": {
+        "prompt": "학번 → 이름에서 학번은 결정자이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "화살표 왼쪽에 있는 학번이 이름 값을 정하므로 결정자입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Functional_dependency"
+      ]
+    },
+    {
+      "id": "database-functional-dependency-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "functional-dependency",
+        "dependent"
+      ],
+      "content": {
+        "prompt": "함수 종속 A → B에서 B를 ___ (이)라고 한다.",
+        "hint": "A 값에 따라 값이 정해지는 쪽"
+      },
+      "answer_key": {
+        "accepted": [
+          "종속자",
+          "dependent",
+          "종속 속성"
+        ]
+      },
+      "explanation": "화살표 오른쪽 B는 A에 의해 값이 정해지므로 종속자입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Functional_dependency"
+      ]
+    },
+    {
+      "id": "database-functional-dependency-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "functional-dependency",
+        "determinant"
+      ],
+      "content": {
+        "prompt": "함수 종속에서 화살표 왼쪽 속성을 ___ (이)라고 한다.",
+        "hint": "다른 속성의 값을 하나로 정하는 쪽"
+      },
+      "answer_key": {
+        "accepted": [
+          "결정자",
+          "determinant"
+        ]
+      },
+      "explanation": "화살표 왼쪽 속성은 오른쪽 속성의 값을 정하므로 결정자라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Functional_dependency"
+      ]
+    },
+    {
+      "id": "database-functional-dependency-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "functional-dependency",
+        "normalization"
+      ],
+      "content": {
+        "prompt": "학번 → 이름일 때 학번이 같은 두 행의 이름은?",
+        "options": [
+          "같다",
+          "다를 수 있다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "학번 값 하나에 이름이 하나로 정해지므로 학번이 같으면 이름도 같습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Functional_dependency"
+      ]
+    },
+    {
+      "id": "database-functional-dependency-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "functional-dependency",
+        "normalization"
+      ],
+      "content": {
+        "prompt": "학번 1인 두 행의 이름이 김민수, 이민수다. 학번 → 이름은?",
+        "options": [
+          "성립",
+          "성립 안 함"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "같은 학번에 이름이 두 개라 이름이 하나로 정해지지 않으므로 학번 → 이름은 성립하지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Functional_dependency"
+      ]
+    },
+    {
+      "id": "database-functional-dependency-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "functional-dependency",
+        "determinant"
+      ],
+      "content": {
+        "prompt": "학번은 다르고 이름이 같은 학생이 둘 있다. 성립할 수 없는 것은?",
+        "options": [
+          "이름 → 학번",
+          "학번 → 이름"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "같은 이름에 학번이 둘이므로 이름으로 학번이 하나로 정해지지 않습니다. 따라서 이름 → 학번은 성립하지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Functional_dependency"
+      ]
+    },
+    {
+      "id": "database-functional-dependency-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "functional-dependency",
+        "normalization"
+      ],
+      "content": {
+        "prompt": "학번 → 이름이면 이름 → 학번도 성립한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "함수 종속에는 방향이 있습니다. 동명이인이 있으면 이름으로 학번이 하나로 정해지지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Functional_dependency"
+      ]
+    }
+  ]
+}

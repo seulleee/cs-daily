@@ -4,243 +4,235 @@
   "lesson": "l01",
   "questions": [
     {
-      "id": "network-tcp-vs-udp-001",
+      "id": "network-transport-role-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "tcp-vs-udp",
-        "tcp"
+        "transport-layer",
+        "process"
       ],
       "content": {
-        "prompt": "연결을 맺고 신뢰성 있게 데이터를 전송하는 프로토콜은?",
+        "prompt": "프로세스 사이의 데이터 전달을 맡는 계층은?",
         "options": [
-          "UDP",
-          "TCP",
-          "IP"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "TCP는 연결을 수립한 뒤 ACK와 재전송으로 데이터가 빠짐없이 도착하게 합니다. UDP는 연결 없이 보냅니다.",
-      "refs": [
-        "https://www.rfc-editor.org/rfc/rfc9293",
-        "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
-      ]
-    },
-    {
-      "id": "network-tcp-vs-udp-002",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "tcp-vs-udp",
-        "udp"
-      ],
-      "content": {
-        "prompt": "연결 수립 없이 데이터를 보내는 전송 계층 프로토콜은?",
-        "options": [
-          "TCP",
-          "HTTP",
-          "UDP"
-        ]
-      },
-      "answer_key": {
-        "index": 2
-      },
-      "explanation": "UDP는 연결 수립 없이 데이터그램을 바로 보내는 비연결형 전송 계층 프로토콜입니다. HTTP는 응용 계층 프로토콜입니다.",
-      "refs": [
-        "https://www.rfc-editor.org/rfc/rfc768",
-        "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
-      ]
-    },
-    {
-      "id": "network-tcp-vs-udp-003",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "tcp-vs-udp",
-        "tcp",
-        "ordering"
-      ],
-      "content": {
-        "prompt": "데이터가 보낸 순서대로 전달되도록 보장하는 프로토콜은?",
-        "options": [
-          "TCP",
-          "UDP"
+          "전송 계층",
+          "네트워크 계층",
+          "응용 계층"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "TCP는 시퀀스 번호로 순서를 맞춰 애플리케이션에 전달합니다. UDP는 순서를 보장하지 않습니다.",
+      "explanation": "전송 계층은 호스트 안의 프로세스(응용)끼리 데이터를 주고받게 합니다. 네트워크 계층은 호스트 사이 전달을 맡습니다.",
       "refs": [
-        "https://www.rfc-editor.org/rfc/rfc9293",
-        "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
+        "https://www.rfc-editor.org/rfc/rfc1122"
       ]
     },
     {
-      "id": "network-tcp-vs-udp-004",
+      "id": "network-transport-role-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "port",
+        "transport-layer"
+      ],
+      "content": {
+        "prompt": "한 호스트 안에서 어느 프로그램인지 구분하는 번호는?",
+        "options": [
+          "IP 주소",
+          "MAC 주소",
+          "포트 번호"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "포트 번호는 한 호스트에서 데이터를 받을 프로그램을 가리킵니다. IP 주소는 호스트 자체를 구분합니다.",
+      "refs": [
+        "https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml"
+      ]
+    },
+    {
+      "id": "network-transport-role-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "port",
+        "ip-address"
+      ],
+      "content": {
+        "prompt": "포트 번호가 구분하는 대상은?",
+        "options": [
+          "호스트",
+          "프로그램",
+          "네트워크"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "포트 번호는 같은 호스트 안의 여러 프로그램을 구분합니다. 호스트를 구분하는 것은 IP 주소입니다.",
+      "refs": [
+        "https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml"
+      ]
+    },
+    {
+      "id": "network-transport-role-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
-        "tcp-vs-udp",
-        "udp"
+        "well-known-port",
+        "https"
       ],
       "content": {
-        "prompt": "UDP는 손실된 데이터를 자동으로 재전송한다."
+        "prompt": "HTTPS의 잘 알려진 포트 번호는 80번이다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "UDP에는 ACK와 재전송 기능이 없습니다. 손실된 데이터를 재전송하는 것은 TCP입니다.",
+      "explanation": "HTTPS는 443번을 씁니다. 80번은 HTTP의 잘 알려진 포트입니다.",
       "refs": [
-        "https://www.rfc-editor.org/rfc/rfc768",
-        "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
+        "https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml"
       ]
     },
     {
-      "id": "network-tcp-vs-udp-005",
-      "type": "ox",
+      "id": "network-transport-role-005",
+      "type": "fill",
       "difficulty": 1,
       "tags": [
-        "tcp-vs-udp",
-        "use-case"
+        "transport-layer",
+        "process"
       ],
       "content": {
-        "prompt": "실시간 영상 통화는 지연을 줄이려고 UDP를 주로 쓴다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "실시간 통화는 늦게 도착한 데이터가 쓸모없으므로, 재전송 지연이 없는 UDP를 주로 씁니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
-      ]
-    },
-    {
-      "id": "network-tcp-vs-udp-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "tcp-vs-udp",
-        "udp"
-      ],
-      "content": {
-        "prompt": "ACK와 재전송이 없는 비연결형 전송 계층 프로토콜은 ___ 이다.",
-        "hint": "헤더 크기가 8바이트인 프로토콜입니다."
+        "prompt": "프로세스 사이의 데이터 전달은 ___ 계층이 맡는다.",
+        "hint": "네트워크 계층 바로 위에 있는 계층입니다."
       },
       "answer_key": {
         "accepted": [
-          "UDP",
-          "udp",
-          "유디피",
-          "user datagram protocol"
+          "전송",
+          "transport",
+          "전송 계층",
+          "전송계층",
+          "트랜스포트",
+          "transport layer"
         ]
       },
-      "explanation": "UDP는 연결 수립·ACK·재전송이 없어 헤더가 작고 전송을 빨리 시작할 수 있습니다.",
+      "explanation": "전송 계층은 네트워크 계층이 호스트까지 가져온 데이터를 알맞은 프로세스에 넘깁니다.",
       "refs": [
-        "https://www.rfc-editor.org/rfc/rfc768",
-        "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
+        "https://www.rfc-editor.org/rfc/rfc1122"
       ]
     },
     {
-      "id": "network-tcp-vs-udp-007",
+      "id": "network-transport-role-006",
       "type": "fill",
       "difficulty": 2,
       "tags": [
-        "tcp-vs-udp",
-        "tcp"
+        "well-known-port",
+        "dns"
       ],
       "content": {
-        "prompt": "TCP는 ACK가 오지 않은 데이터를 ___ 해서 손실을 복구한다.",
-        "hint": "같은 데이터를 한 번 더 보내는 동작입니다."
+        "prompt": "DNS의 잘 알려진 포트 번호는 ___ 번이다.",
+        "hint": "HTTP 80, HTTPS 443과 함께 외우는 두 자리 번호입니다."
       },
       "answer_key": {
         "accepted": [
-          "재전송",
-          "retransmission",
-          "retransmit",
-          "재송신",
-          "다시 전송"
+          "53",
+          "오십삼"
         ]
       },
-      "explanation": "TCP는 정해진 시간 안에 ACK가 오지 않으면 그 데이터를 재전송해 신뢰성을 보장합니다.",
+      "explanation": "DNS는 53번 포트를 씁니다. HTTP는 80번, HTTPS는 443번입니다.",
       "refs": [
-        "https://www.rfc-editor.org/rfc/rfc9293",
-        "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
+        "https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml"
       ]
     },
     {
-      "id": "network-tcp-vs-udp-008",
+      "id": "network-transport-role-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "tcp-vs-udp",
-        "use-case"
+        "well-known-port",
+        "https"
       ],
       "content": {
-        "prompt": "파일 다운로드처럼 손실이 없어야 하는 전송에 맞는 것은?",
+        "prompt": "https:// 주소로 접속할 때 기본 목적지 포트는?",
         "options": [
-          "UDP",
-          "TCP"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "파일은 한 바이트만 빠져도 손상되므로, 재전송과 순서 보장을 하는 TCP가 알맞습니다.",
-      "refs": [
-        "https://www.rfc-editor.org/rfc/rfc9293",
-        "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
-      ]
-    },
-    {
-      "id": "network-tcp-vs-udp-009",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "tcp-vs-udp",
-        "use-case"
-      ],
-      "content": {
-        "prompt": "약간의 손실보다 지연이 더 문제인 온라인 게임에 맞는 것은?",
-        "options": [
-          "UDP",
-          "TCP"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "게임은 최신 상태가 빨리 도착하는 것이 중요하므로, 재전송 지연이 없는 UDP를 주로 씁니다.",
-      "refs": [
-        "https://www.rfc-editor.org/rfc/rfc768",
-        "https://en.wikipedia.org/wiki/User_Datagram_Protocol"
-      ]
-    },
-    {
-      "id": "network-tcp-vs-udp-010",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "tcp-vs-udp",
-        "tcp"
-      ],
-      "content": {
-        "prompt": "TCP의 특징으로 알맞은 것은?",
-        "options": [
-          "비연결형",
-          "재전송 없음",
-          "순서 보장"
+          "53",
+          "80",
+          "443"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "TCP는 연결 지향형이며 재전송과 순서 보장을 제공합니다. 비연결형·재전송 없음은 UDP의 특징입니다.",
+      "explanation": "https 주소는 포트를 적지 않으면 HTTPS의 잘 알려진 포트인 443번으로 접속합니다.",
       "refs": [
-        "https://www.rfc-editor.org/rfc/rfc9293",
-        "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
+        "https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml"
+      ]
+    },
+    {
+      "id": "network-transport-role-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "port",
+        "process"
+      ],
+      "content": {
+        "prompt": "웹 서버와 DNS 서버가 한 호스트에 있다. 데이터를 나누는 기준은?",
+        "options": [
+          "포트 번호",
+          "IP 주소",
+          "MAC 주소"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "두 서버는 IP 주소가 같으므로, 목적지 포트 번호(80, 53 등)로 받을 프로그램을 구분합니다.",
+      "refs": [
+        "https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml"
+      ]
+    },
+    {
+      "id": "network-transport-role-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "well-known-port",
+        "dns"
+      ],
+      "content": {
+        "prompt": "목적지 포트가 53인 데이터가 도착했다. 받는 프로그램은?",
+        "options": [
+          "HTTP 서버",
+          "DNS 서버",
+          "HTTPS 서버"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "53번은 DNS의 잘 알려진 포트이므로 DNS 서버 프로세스가 받습니다. HTTP는 80, HTTPS는 443입니다.",
+      "refs": [
+        "https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml"
+      ]
+    },
+    {
+      "id": "network-transport-role-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "transport-layer",
+        "process"
+      ],
+      "content": {
+        "prompt": "전송 계층은 호스트 안의 프로세스까지 데이터를 전달한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "전송 계층은 포트 번호로 프로세스를 찾아 데이터를 넘깁니다. 호스트까지는 네트워크 계층이 전달합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1122"
       ]
     }
   ]

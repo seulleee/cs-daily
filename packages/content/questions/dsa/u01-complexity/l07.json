@@ -1,0 +1,238 @@
+{
+  "track": "dsa",
+  "unit": "u01-complexity",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "dsa-space-complexity-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "space-complexity",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "입력 외에 추가로 쓰는 메모리의 증가율은?",
+        "options": [
+          "시간 복잡도",
+          "공간 복잡도",
+          "상각 비용"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "공간 복잡도는 입력 외에 알고리즘이 추가로 쓰는 메모리가 n에 따라 늘어나는 비율입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity"
+      ]
+    },
+    {
+      "id": "dsa-space-complexity-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "auxiliary-space",
+        "space-complexity"
+      ],
+      "content": {
+        "prompt": "입력을 제외한 추가 메모리를 부르는 말은?",
+        "options": [
+          "보조 공간",
+          "입력 크기",
+          "최고차항"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "보조 공간은 입력 데이터를 제외하고 알고리즘이 추가로 쓰는 메모리입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity"
+      ]
+    },
+    {
+      "id": "dsa-space-complexity-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "space-complexity",
+        "constant-space"
+      ],
+      "content": {
+        "prompt": "변수 몇 개만 쓰는 알고리즘의 공간 복잡도는?",
+        "options": [
+          "O(n)",
+          "O(1)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "변수 몇 개는 n과 관계없이 일정하므로 O(1) 공간입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity"
+      ]
+    },
+    {
+      "id": "dsa-space-complexity-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "space-complexity",
+        "time-complexity"
+      ],
+      "content": {
+        "prompt": "공간 복잡도는 연산 횟수의 증가율을 나타낸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "연산 횟수의 증가율은 시간 복잡도입니다. 공간 복잡도는 추가 메모리의 증가율입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity",
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-space-complexity-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "auxiliary-space",
+        "space-complexity"
+      ],
+      "content": {
+        "prompt": "입력을 제외한 추가 메모리를 ___ 공간이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "보조",
+          "auxiliary",
+          "보조 공간",
+          "보조공간"
+        ]
+      },
+      "explanation": "입력 데이터를 제외하고 알고리즘이 추가로 쓰는 메모리를 보조 공간이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity"
+      ]
+    },
+    {
+      "id": "dsa-space-complexity-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "space-complexity",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "추가 메모리의 증가율을 나타내는 것은 ___ 복잡도다.",
+        "hint": "연산 횟수를 다루는 시간 복잡도와 짝을 이루는 개념입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "공간",
+          "space",
+          "공간 복잡도",
+          "공간복잡도"
+        ]
+      },
+      "explanation": "공간 복잡도는 입력 외에 추가로 쓰는 메모리가 늘어나는 비율을 나타냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity"
+      ]
+    },
+    {
+      "id": "dsa-space-complexity-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "space-complexity",
+        "linear-space"
+      ],
+      "content": {
+        "prompt": "길이 n 배열을 복사해 새 배열을 만들면 공간 복잡도는?",
+        "options": [
+          "O(1)",
+          "O(log n)",
+          "O(n)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "입력 크기만큼 새 배열을 만들므로 추가 메모리가 n에 비례해 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity"
+      ]
+    },
+    {
+      "id": "dsa-space-complexity-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "space-complexity",
+        "constant-space"
+      ],
+      "content": {
+        "prompt": "배열 원소의 합을 변수 하나에 누적하면 공간 복잡도는?",
+        "options": [
+          "O(1)",
+          "O(n)",
+          "O(n²)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "n과 관계없이 합계 변수 하나만 추가로 쓰므로 O(1) 공간입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity"
+      ]
+    },
+    {
+      "id": "dsa-space-complexity-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "space-complexity",
+        "linear-space"
+      ],
+      "content": {
+        "prompt": "n이 2배가 되면 O(n) 공간 알고리즘의 추가 메모리는?",
+        "options": [
+          "그대로",
+          "2배",
+          "4배"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "O(n) 공간은 추가 메모리가 n에 비례하므로 n이 2배면 약 2배가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity"
+      ]
+    },
+    {
+      "id": "dsa-space-complexity-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "space-complexity",
+        "auxiliary-space"
+      ],
+      "content": {
+        "prompt": "공간 복잡도는 입력 외 추가 메모리의 증가율이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "공간 복잡도는 입력을 제외하고 추가로 쓰는 메모리가 늘어나는 비율을 나타냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Space_complexity"
+      ]
+    }
+  ]
+}

@@ -4,239 +4,236 @@
   "lesson": "l01",
   "questions": [
     {
-      "id": "network-layer-roles-001",
+      "id": "network-why-layers-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "layer-roles",
-        "encapsulation"
+        "layering",
+        "network-model"
       ],
       "content": {
-        "prompt": "송신 측이 데이터에 계층마다 헤더를 붙이는 과정은?",
+        "prompt": "통신 과정을 역할별 층으로 나눈 것은?",
         "options": [
-          "캡슐화",
-          "역캡슐화",
-          "라우팅"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "송신 측은 상위 계층에서 하위 계층으로 내려가며 헤더를 붙이는데, 이를 캡슐화라고 합니다. 역캡슐화는 수신 측이 헤더를 떼는 과정입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Encapsulation_(networking)"
-      ]
-    },
-    {
-      "id": "network-layer-roles-002",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "layer-roles",
-        "pdu"
-      ],
-      "content": {
-        "prompt": "네트워크 계층에서 IP 헤더가 붙은 데이터 단위는?",
-        "options": [
-          "프레임",
-          "패킷",
-          "세그먼트"
+          "독립성",
+          "계층화",
+          "역할 분리"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "네트워크 계층의 PDU(데이터 단위)는 패킷입니다. 세그먼트는 전송 계층, 프레임은 데이터링크 계층의 단위입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Protocol_data_unit"
-      ]
-    },
-    {
-      "id": "network-layer-roles-003",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "layer-roles",
-        "protocol-layer"
-      ],
-      "content": {
-        "prompt": "HTTP가 동작하는 계층은?",
-        "options": [
-          "전송 계층",
-          "네트워크 계층",
-          "응용 계층"
-        ]
-      },
-      "answer_key": {
-        "index": 2
-      },
-      "explanation": "HTTP는 브라우저와 웹 서버가 주고받는 메시지 형식을 정하는 응용 계층 프로토콜입니다. 전송 계층에는 TCP·UDP가 있습니다.",
+      "explanation": "통신 과정을 역할별 층으로 나눈 것을 계층화라고 합니다. OSI 7계층과 TCP/IP 4계층이 대표적인 계층 모델입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/OSI_model",
         "https://en.wikipedia.org/wiki/Internet_protocol_suite"
       ]
     },
     {
-      "id": "network-layer-roles-004",
-      "type": "ox",
+      "id": "network-why-layers-002",
+      "type": "single",
       "difficulty": 1,
       "tags": [
-        "layer-roles",
-        "pdu"
+        "layering",
+        "independence"
       ],
       "content": {
-        "prompt": "전송 계층의 데이터 단위(PDU)는 프레임이다."
-      },
-      "answer_key": {
-        "value": false
-      },
-      "explanation": "전송 계층의 PDU는 TCP 헤더가 붙은 세그먼트입니다. 프레임은 데이터링크 계층의 PDU입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Protocol_data_unit"
-      ]
-    },
-    {
-      "id": "network-layer-roles-005",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "layer-roles",
-        "protocol-layer"
-      ],
-      "content": {
-        "prompt": "IP는 네트워크 계층에서 동작하는 프로토콜이다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "IP는 목적지 IP 주소를 기준으로 패킷을 전달하는 네트워크 계층 프로토콜입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Internet_protocol_suite"
-      ]
-    },
-    {
-      "id": "network-layer-roles-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "layer-roles",
-        "encapsulation"
-      ],
-      "content": {
-        "prompt": "상위 계층 데이터에 헤더를 덧붙이는 과정을 ___ 라고 한다.",
-        "hint": "수신 측에서 일어나는 반대 과정 앞에는 \"역\"이 붙습니다."
-      },
-      "answer_key": {
-        "accepted": [
-          "캡슐화",
-          "encapsulation",
-          "인캡슐레이션",
-          "캡슐레이션"
-        ]
-      },
-      "explanation": "송신 측은 계층을 내려가며 각 계층의 헤더를 덧붙이고, 이 과정을 캡슐화라고 합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Encapsulation_(networking)"
-      ]
-    },
-    {
-      "id": "network-layer-roles-007",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "layer-roles",
-        "pdu"
-      ],
-      "content": {
-        "prompt": "데이터링크 계층의 데이터 단위(PDU)는 ___ 이다.",
-        "hint": "이더넷 헤더와 트레일러가 붙은 단위입니다."
-      },
-      "answer_key": {
-        "accepted": [
-          "프레임",
-          "frame",
-          "프래임"
-        ]
-      },
-      "explanation": "데이터링크 계층은 패킷에 헤더와 트레일러를 붙여 프레임을 만듭니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Protocol_data_unit"
-      ]
-    },
-    {
-      "id": "network-layer-roles-008",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "layer-roles",
-        "protocol-layer",
-        "encapsulation"
-      ],
-      "content": {
-        "prompt": "HTTP → TCP → IP 순으로 헤더가 붙었다면 다음 헤더의 계층은?",
+        "prompt": "한 층을 바꿔도 다른 층은 그대로인 성질은?",
         "options": [
-          "응용 계층",
-          "데이터링크 계층",
-          "전송 계층"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "IP 헤더(네트워크 계층) 다음에는 바로 아래인 데이터링크 계층의 헤더가 붙습니다. 캡슐화는 위 계층에서 아래 계층으로 진행됩니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Encapsulation_(networking)",
-        "https://en.wikipedia.org/wiki/OSI_model"
-      ]
-    },
-    {
-      "id": "network-layer-roles-009",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "layer-roles",
-        "pdu",
-        "encapsulation"
-      ],
-      "content": {
-        "prompt": "패킷에 데이터링크 계층 헤더를 붙이면 무엇이 되나?",
-        "options": [
-          "세그먼트",
-          "메시지",
-          "프레임"
+          "역할 분리",
+          "계층화",
+          "독립성"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "패킷에 데이터링크 계층 헤더가 붙으면 프레임이 됩니다. 세그먼트는 패킷보다 한 계층 위의 단위입니다.",
+      "explanation": "한 층을 바꿔도 다른 층이 영향을 받지 않는 성질을 독립성이라고 합니다. 계층화로 얻는 대표적인 장점입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Protocol_data_unit",
-        "https://en.wikipedia.org/wiki/Encapsulation_(networking)"
+        "https://en.wikipedia.org/wiki/OSI_model"
       ]
     },
     {
-      "id": "network-layer-roles-010",
+      "id": "network-why-layers-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "layering",
+        "separation-of-concerns"
+      ],
+      "content": {
+        "prompt": "계층 모델에서 각 층은 아래층의 서비스를 이용한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "역할 분리에 따라 각 층은 자기 일만 하고, 나머지는 바로 아래층이 제공하는 서비스를 이용합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/OSI_model"
+      ]
+    },
+    {
+      "id": "network-why-layers-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "layering",
+        "independence"
+      ],
+      "content": {
+        "prompt": "계층 모델에서는 한 층을 바꾸면 모든 층을 고쳐야 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "계층 모델은 독립성이 있어 한 층을 바꿔도 다른 층은 그대로입니다. 층 사이의 약속만 지키면 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/OSI_model"
+      ]
+    },
+    {
+      "id": "network-why-layers-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "layering",
+        "network-model"
+      ],
+      "content": {
+        "prompt": "통신 과정을 역할별 층으로 나눈 것을 ___라고 한다.",
+        "hint": "'층으로 나눈다'는 뜻의 세 글자 한자어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "계층화",
+          "레이어링",
+          "layering",
+          "계층 구조"
+        ]
+      },
+      "explanation": "통신 과정을 역할별 층으로 나누는 것을 계층화라고 합니다. 각 층은 맡은 역할만 처리합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/OSI_model"
+      ]
+    },
+    {
+      "id": "network-why-layers-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "layering",
+        "independence"
+      ],
+      "content": {
+        "prompt": "한 층을 바꿔도 다른 층이 그대로인 성질을 ___이라 한다.",
+        "hint": "다른 층에 영향을 주지 않는다는 뜻의 세 글자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "독립성",
+          "독립",
+          "independence"
+        ]
+      },
+      "explanation": "층끼리 서로 기대지 않아 한 층만 바꿀 수 있는 성질을 독립성이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/OSI_model"
+      ]
+    },
+    {
+      "id": "network-why-layers-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "layer-roles",
-        "encapsulation"
+        "independence",
+        "layering"
       ],
       "content": {
-        "prompt": "캡슐화의 뜻으로 알맞은 것은?",
+        "prompt": "Wi-Fi를 유선 이더넷으로 바꾸면 웹 브라우저는?",
         "options": [
-          "헤더 제거",
-          "헤더 추가",
-          "주소 변환"
+          "다시 설치",
+          "그대로 동작",
+          "코드 수정 필요"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "캡슐화는 데이터에 계층별 헤더를 추가하는 과정입니다. 헤더를 제거하는 것은 수신 측의 역캡슐화입니다.",
+      "explanation": "독립성 덕분에 아래층의 전송 방식을 바꿔도 위층의 웹 브라우저는 그대로 동작합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Encapsulation_(networking)"
+        "https://en.wikipedia.org/wiki/OSI_model",
+        "https://en.wikipedia.org/wiki/Internet_protocol_suite"
+      ]
+    },
+    {
+      "id": "network-why-layers-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "separation-of-concerns",
+        "layering"
+      ],
+      "content": {
+        "prompt": "HTTP가 데이터 전달을 아래층 TCP에 맡기는 원칙은?",
+        "options": [
+          "독립성",
+          "역할 분리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "각 층은 자기 일만 하고 나머지는 아래층 서비스를 쓰는 것이 역할 분리입니다. HTTP는 전달을 TCP에 맡깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/OSI_model",
+        "https://en.wikipedia.org/wiki/Internet_protocol_suite"
+      ]
+    },
+    {
+      "id": "network-why-layers-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "independence",
+        "layering"
+      ],
+      "content": {
+        "prompt": "4개 층 모델에서 맨 아래층만 교체하면 고칠 층은 몇 개?",
+        "options": [
+          "1개",
+          "2개",
+          "4개"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "독립성 덕분에 교체한 맨 아래층 1개만 고치면 됩니다. 위의 3개 층은 그대로입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/OSI_model"
+      ]
+    },
+    {
+      "id": "network-why-layers-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "layering",
+        "network-model"
+      ],
+      "content": {
+        "prompt": "다음 중 계층화의 뜻은?",
+        "options": [
+          "헤더를 붙임",
+          "경로를 고름",
+          "역할별로 층을 나눔"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "계층화는 통신 과정을 역할별 층으로 나누는 것입니다. 헤더 붙이기는 캡슐화, 경로 고르기는 라우팅입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/OSI_model"
       ]
     }
   ]

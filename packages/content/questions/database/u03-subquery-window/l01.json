@@ -4,7 +4,7 @@
   "lesson": "l01",
   "questions": [
     {
-      "id": "database-subquery-001",
+      "id": "database-subquery-basics-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
@@ -12,118 +12,98 @@
         "definition"
       ],
       "content": {
-        "prompt": "다른 SQL 문 안에 괄호로 넣은 SELECT 문은?",
+        "prompt": "다른 쿼리 안에 괄호로 들어간 SELECT는?",
         "options": [
-          "서브쿼리",
           "조인",
-          "인덱스"
+          "서브쿼리",
+          "뷰"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 1
       },
-      "explanation": "서브쿼리는 다른 SQL 문 안에 괄호로 중첩된 SELECT 문입니다. 바깥 쿼리는 그 결과를 이용합니다.",
+      "explanation": "서브쿼리는 다른 쿼리 안에 괄호로 넣은 SELECT입니다. 바깥 쿼리는 그 결과를 값이나 테이블로 씁니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/functions-subquery.html"
       ]
     },
     {
-      "id": "database-subquery-002",
+      "id": "database-subquery-basics-002",
       "type": "single",
       "difficulty": 1,
       "tags": [
         "subquery",
-        "exists"
+        "scalar-subquery"
       ],
       "content": {
-        "prompt": "서브쿼리 결과 행이 하나라도 있으면 참이 되는 연산자는?",
+        "prompt": "값 하나를 돌려주는 서브쿼리는?",
         "options": [
-          "IN",
-          "LIKE",
-          "EXISTS"
+          "테이블 서브쿼리",
+          "집계 함수",
+          "스칼라 서브쿼리"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "EXISTS는 서브쿼리가 1행 이상을 반환하면 참, 0행이면 거짓입니다. 반환된 값 자체는 보지 않습니다.",
+      "explanation": "스칼라 서브쿼리는 1행 1열, 즉 값 하나를 돌려줍니다. 그래서 값이 들어갈 자리에 바로 쓸 수 있습니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/functions-subquery.html#FUNCTIONS-SUBQUERY-EXISTS"
+        "https://www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-SCALAR-SUBQUERIES"
       ]
     },
     {
-      "id": "database-subquery-003",
+      "id": "database-subquery-basics-003",
       "type": "single",
       "difficulty": 1,
       "tags": [
         "subquery",
-        "in"
+        "table-subquery"
       ],
       "content": {
-        "prompt": "값이 서브쿼리 결과 목록에 들어 있는지 검사하는 연산자는?",
+        "prompt": "FROM 절에서 테이블 자리에 쓰는 서브쿼리는?",
         "options": [
-          "IN",
-          "EXISTS"
+          "테이블 서브쿼리",
+          "스칼라 서브쿼리"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "IN은 왼쪽 값이 서브쿼리 결과 목록에 포함되면 참입니다. EXISTS는 결과 행이 있는지만 봅니다.",
+      "explanation": "FROM 절의 서브쿼리는 결과 집합을 테이블로 쓰므로 테이블 서브쿼리입니다. 스칼라 서브쿼리는 값 하나만 돌려줍니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/functions-subquery.html"
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
       ]
     },
     {
-      "id": "database-subquery-004",
+      "id": "database-subquery-basics-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
         "subquery",
-        "exists",
-        "in"
+        "scalar-subquery"
       ],
       "content": {
-        "prompt": "EXISTS는 서브쿼리 결과의 값을 바깥 값과 비교한다."
+        "prompt": "스칼라 서브쿼리는 여러 행을 돌려줄 수 있다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "값을 비교하는 것은 IN입니다. EXISTS는 서브쿼리 결과에 행이 하나라도 있는지만 검사합니다.",
+      "explanation": "스칼라 서브쿼리는 값 하나만 돌려줘야 합니다. 2행 이상이 나오면 오류가 납니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/functions-subquery.html#FUNCTIONS-SUBQUERY-EXISTS"
+        "https://www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-SCALAR-SUBQUERIES"
       ]
     },
     {
-      "id": "database-subquery-005",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "subquery",
-        "in"
-      ],
-      "content": {
-        "prompt": "WHERE id IN (1, 2) 는 id가 1 또는 2인 행을 반환한다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "IN은 값이 괄호 안 목록 중 하나와 같으면 참입니다. id = 1 OR id = 2와 같은 결과입니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/functions-subquery.html"
-      ]
-    },
-    {
-      "id": "database-subquery-006",
+      "id": "database-subquery-basics-005",
       "type": "fill",
-      "difficulty": 2,
+      "difficulty": 1,
       "tags": [
         "subquery",
         "definition"
       ],
       "content": {
-        "prompt": "SQL 문 안에 중첩된 SELECT 문을 ___ 라고 한다.",
-        "hint": "괄호로 감싸 WHERE 절 등에 넣는다"
+        "prompt": "다른 쿼리 안에 괄호로 들어간 SELECT를 ___ 라고 한다.",
+        "hint": "바깥 쿼리 안에 중첩된 쿼리를 부르는 이름입니다."
       },
       "answer_key": {
         "accepted": [
@@ -133,105 +113,126 @@
           "sub query",
           "하위 쿼리",
           "하위쿼리",
-          "부질의"
+          "부속 질의",
+          "부속질의"
         ]
       },
-      "explanation": "서브쿼리(subquery)는 괄호 안에 중첩된 SELECT 문으로, WHERE·FROM·SELECT 절 등에 쓸 수 있습니다.",
+      "explanation": "괄호 안에 들어간 SELECT를 서브쿼리라고 합니다. 바깥 쿼리는 서브쿼리 결과를 이용합니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/functions-subquery.html"
       ]
     },
     {
-      "id": "database-subquery-007",
+      "id": "database-subquery-basics-006",
       "type": "fill",
       "difficulty": 2,
       "tags": [
         "subquery",
-        "exists"
+        "scalar-subquery"
       ],
       "content": {
-        "prompt": "서브쿼리 결과 행이 있는지만 검사하는 연산자는 ___ 이다.",
-        "hint": "NOT을 붙이면 결과 행이 없을 때 참이 된다"
+        "prompt": "값 하나를 돌려주는 서브쿼리는 ___ 서브쿼리다.",
+        "hint": "1행 1열의 단일 값을 가리키는 용어입니다."
       },
       "answer_key": {
         "accepted": [
-          "EXISTS",
-          "exists",
-          "EXIST",
-          "exist"
+          "스칼라",
+          "scalar",
+          "스칼라 서브쿼리",
+          "scalar subquery"
         ]
       },
-      "explanation": "EXISTS는 서브쿼리가 1행 이상이면 참입니다. 그래서 괄호 안에 SELECT 1을 써도 결과가 같습니다.",
+      "explanation": "값 하나(1행 1열)를 돌려주는 서브쿼리를 스칼라 서브쿼리라고 합니다. 비교식이나 SELECT 목록에 씁니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/functions-subquery.html#FUNCTIONS-SUBQUERY-EXISTS"
+        "https://www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-SCALAR-SUBQUERIES"
       ]
     },
     {
-      "id": "database-subquery-008",
+      "id": "database-subquery-basics-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
         "subquery",
-        "in"
+        "scalar-subquery"
       ],
       "content": {
-        "prompt": "서브쿼리 결과가 2, 3일 때 id 1, 2, 3 중 id IN (서브쿼리) 인 행 수는?",
+        "prompt": "WHERE 가격 > (SELECT AVG(가격) FROM 상품)의 서브쿼리 종류는?",
         "options": [
-          "1행",
-          "2행",
-          "3행"
+          "스칼라 서브쿼리",
+          "테이블 서브쿼리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "AVG는 값 하나를 돌려주므로 스칼라 서브쿼리입니다. 각 행의 가격을 그 평균값과 비교합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-SCALAR-SUBQUERIES"
+      ]
+    },
+    {
+      "id": "database-subquery-basics-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "subquery",
+        "table-subquery"
+      ],
+      "content": {
+        "prompt": "SELECT * FROM (SELECT ...) AS t 에서 괄호 부분은?",
+        "options": [
+          "집계 함수",
+          "스칼라 서브쿼리",
+          "테이블 서브쿼리"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "FROM 절에 들어간 서브쿼리는 결과를 테이블 t로 씁니다. 바깥 쿼리는 t의 열을 조회합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    },
+    {
+      "id": "database-subquery-basics-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "subquery",
+        "scalar-subquery"
+      ],
+      "content": {
+        "prompt": "값 하나가 필요한 자리의 서브쿼리가 3행을 돌려주면?",
+        "options": [
+          "첫 행만 쓴다",
+          "오류가 난다",
+          "3행 모두 쓴다"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "IN은 값이 서브쿼리 결과 목록에 있으면 참입니다. 2와 3만 목록에 있으므로 2행입니다.",
+      "explanation": "스칼라 서브쿼리는 값 하나여야 하므로 2행 이상이면 오류가 납니다. 0행이면 NULL로 처리됩니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/functions-subquery.html"
+        "https://www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-SCALAR-SUBQUERIES"
       ]
     },
     {
-      "id": "database-subquery-009",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "subquery",
-        "exists"
-      ],
-      "content": {
-        "prompt": "서브쿼리 결과가 0행이면 EXISTS (서브쿼리) 의 값은?",
-        "options": [
-          "참",
-          "거짓"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "EXISTS는 결과 행이 1개 이상일 때만 참입니다. 0행이면 거짓이므로 해당 행은 걸러집니다.",
-      "refs": [
-        "https://www.postgresql.org/docs/current/functions-subquery.html#FUNCTIONS-SUBQUERY-EXISTS"
-      ]
-    },
-    {
-      "id": "database-subquery-010",
-      "type": "single",
+      "id": "database-subquery-basics-010",
+      "type": "ox",
       "difficulty": 2,
       "tags": [
         "subquery",
         "definition"
       ],
       "content": {
-        "prompt": "서브쿼리의 뜻은?",
-        "options": [
-          "다른 쿼리 안의 SELECT",
-          "두 테이블의 결합"
-        ]
+        "prompt": "서브쿼리는 다른 쿼리 안에 괄호로 넣은 SELECT이다."
       },
       "answer_key": {
-        "index": 0
+        "value": true
       },
-      "explanation": "서브쿼리는 다른 SQL 문 안에 괄호로 넣은 SELECT 문입니다. 두 테이블을 결합하는 것은 JOIN입니다.",
+      "explanation": "서브쿼리는 괄호로 감싸 다른 쿼리 안에 넣은 SELECT입니다. 결과는 값이나 테이블로 쓰입니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/functions-subquery.html"
       ]

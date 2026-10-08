@@ -1,0 +1,238 @@
+{
+  "track": "dsa",
+  "unit": "u02-array-linked-list",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "dsa-linked-list-ops-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "linked-list",
+        "search"
+      ],
+      "content": {
+        "prompt": "head부터 next를 따라가며 값을 찾는 연산은?",
+        "options": [
+          "삽입",
+          "탐색",
+          "삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "탐색은 head부터 next를 따라 노드를 하나씩 확인하므로 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-ops-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "linked-list",
+        "deletion"
+      ],
+      "content": {
+        "prompt": "앞 노드의 next가 다음 노드를 건너뛰게 바꾸는 연산은?",
+        "options": [
+          "탐색",
+          "삽입",
+          "삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "삭제는 앞 노드의 next가 지울 노드를 건너뛰고 그다음 노드를 가리키게 바꾸는 연산입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-ops-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "linked-list",
+        "insertion"
+      ],
+      "content": {
+        "prompt": "위치를 알면 연결 리스트 삽입은 O(1)이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "삽입할 위치를 알면 포인터 두 개만 바꾸면 되므로 O(1)입니다. 다른 노드를 옮길 필요가 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-ops-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "linked-list",
+        "search"
+      ],
+      "content": {
+        "prompt": "연결 리스트도 k번째 노드에 O(1)로 접근한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "head부터 next를 k번 따라가야 하므로 O(k)입니다. O(1) 접근은 주소 계산이 되는 배열의 특징입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-ops-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "linked-list",
+        "search"
+      ],
+      "content": {
+        "prompt": "연결 리스트 탐색은 ___ 부터 next를 따라간다.",
+        "hint": "첫 노드를 가리키는 포인터"
+      },
+      "answer_key": {
+        "accepted": [
+          "head",
+          "헤드"
+        ]
+      },
+      "explanation": "탐색은 첫 노드를 가리키는 head에서 시작해 next를 따라 차례로 진행합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-ops-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "linked-list",
+        "insertion"
+      ],
+      "content": {
+        "prompt": "위치를 알 때 삽입은 ___ 두 개만 바꾸면 되어 O(1)이다.",
+        "hint": "다른 노드의 주소를 담는 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "포인터",
+          "pointer",
+          "next",
+          "링크",
+          "link"
+        ]
+      },
+      "explanation": "새 노드의 next와 앞 노드의 next, 포인터 두 개만 바꾸면 삽입이 끝납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-ops-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linked-list",
+        "deletion"
+      ],
+      "content": {
+        "prompt": "A → B → C 에서 A의 next를 C로 바꾸면 일어나는 일은?",
+        "options": [
+          "B가 삭제됨",
+          "C가 삭제됨",
+          "A가 삭제됨"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "A의 next가 B를 건너뛰고 C를 가리키므로 B가 리스트에서 빠집니다. 이것이 연결 리스트의 삭제입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-ops-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linked-list",
+        "search"
+      ],
+      "content": {
+        "prompt": "head → 5 → 8 → 3 에서 값 3을 찾을 때 확인하는 노드 수는?",
+        "options": [
+          "1개",
+          "2개",
+          "3개"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "탐색은 head부터 next를 따라 5, 8, 3 순서로 확인하므로 노드 3개를 봅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-ops-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linked-list",
+        "insertion"
+      ],
+      "content": {
+        "prompt": "A → C 사이에 새 노드 B를 넣을 때 바꾸는 포인터는?",
+        "options": [
+          "C의 next만",
+          "A와 B의 next",
+          "head만"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "B의 next를 C로, A의 next를 B로 바꾸면 됩니다. 포인터 두 개만 바꾸므로 O(1)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-linked-list-ops-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linked-list",
+        "search"
+      ],
+      "content": {
+        "prompt": "연결 리스트 탐색이 O(n)인 이유는?",
+        "options": [
+          "head부터 따라가서",
+          "주소를 계산해서",
+          "노드가 연속이라서"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "주소 계산이 안 되어 head부터 next를 하나씩 따라가야 하므로 노드 수에 비례하는 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    }
+  ]
+}

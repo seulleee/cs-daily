@@ -1,0 +1,242 @@
+{
+  "track": "os",
+  "unit": "u02-cpu-scheduling",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "os-mlfq-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "multilevel-queue",
+        "mlfq"
+      ],
+      "content": {
+        "prompt": "우선순위가 다른 큐 여러 개를 두는 구조는?",
+        "options": [
+          "FCFS",
+          "다단계 큐",
+          "라운드 로빈"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다단계 큐는 우선순위가 다른 준비 큐를 여러 개 두고, 위 큐의 프로세스를 먼저 실행하는 구조입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf",
+        "https://en.wikipedia.org/wiki/Multilevel_feedback_queue"
+      ]
+    },
+    {
+      "id": "os-mlfq-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "priority-boost",
+        "mlfq"
+      ],
+      "content": {
+        "prompt": "주기적으로 모든 작업을 맨 위 큐로 올리는 것은?",
+        "options": [
+          "부스트",
+          "강등",
+          "선점"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "부스트는 일정 주기마다 모든 작업을 맨 위 큐로 올려, 아래 큐의 작업이 기아에 빠지지 않게 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
+      ]
+    },
+    {
+      "id": "os-mlfq-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "feedback",
+        "mlfq"
+      ],
+      "content": {
+        "prompt": "다단계 피드백 큐에서 CPU를 오래 쓴 작업은 어디로 가나?",
+        "options": [
+          "위 큐",
+          "아래 큐"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다단계 피드백 큐는 CPU를 오래 쓴 작업을 아래 큐로 강등합니다. 이렇게 사용량에 따라 큐를 옮기는 것이 피드백입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf",
+        "https://en.wikipedia.org/wiki/Multilevel_feedback_queue"
+      ]
+    },
+    {
+      "id": "os-mlfq-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "interactive-job",
+        "mlfq"
+      ],
+      "content": {
+        "prompt": "다단계 피드백 큐에서 짧은 대화형 작업은 아래 큐로 내려간다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "짧은 대화형 작업은 CPU를 조금만 쓰고 양보해 위 큐에 머뭅니다. 그래서 응답이 빠릅니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
+      ]
+    },
+    {
+      "id": "os-mlfq-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "feedback",
+        "mlfq"
+      ],
+      "content": {
+        "prompt": "다단계 피드백 큐에서 CPU를 오래 쓴 작업은 아래 큐로 ___ 된다.",
+        "hint": "우선순위가 한 단계 낮아진다"
+      },
+      "answer_key": {
+        "accepted": [
+          "강등",
+          "demote",
+          "demoted",
+          "demotion"
+        ]
+      },
+      "explanation": "다단계 피드백 큐는 CPU를 오래 쓴 작업을 아래 큐로 강등해, CPU를 짧게 쓰는 작업이 위 큐에서 먼저 실행되게 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
+      ]
+    },
+    {
+      "id": "os-mlfq-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "priority-boost",
+        "starvation"
+      ],
+      "content": {
+        "prompt": "기아를 막으려 모든 작업을 주기적으로 맨 위 큐로 올리는 것은 ___ 이다.",
+        "hint": "다단계 피드백 큐의 기아 방지 규칙"
+      },
+      "answer_key": {
+        "accepted": [
+          "부스트",
+          "boost",
+          "우선순위 부스트",
+          "우선순위부스트",
+          "priority boost",
+          "부스팅",
+          "boosting"
+        ]
+      },
+      "explanation": "부스트(priority boost)는 주기적으로 모든 작업을 맨 위 큐로 올려, 아래 큐에 오래 머문 작업도 실행되게 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
+      ]
+    },
+    {
+      "id": "os-mlfq-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "feedback",
+        "mlfq"
+      ],
+      "content": {
+        "prompt": "위 큐에서 할당된 CPU 시간을 다 쓴 작업에 일어나는 일은?",
+        "options": [
+          "아래 큐로 강등",
+          "위 큐에 머무름"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "다단계 피드백 큐는 주어진 CPU 시간을 다 쓴 작업을 CPU를 오래 쓰는 작업으로 보고 아래 큐로 강등합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
+      ]
+    },
+    {
+      "id": "os-mlfq-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "interactive-job",
+        "mlfq"
+      ],
+      "content": {
+        "prompt": "키 입력마다 CPU를 잠깐씩만 쓰는 작업은 주로 어느 큐에 있나?",
+        "options": [
+          "아래 큐",
+          "위 큐"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "CPU를 짧게 쓰고 양보하는 대화형 작업은 강등되지 않고 위 큐에 머물러 응답이 빠릅니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
+      ]
+    },
+    {
+      "id": "os-mlfq-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "priority-boost",
+        "starvation"
+      ],
+      "content": {
+        "prompt": "부스트가 없으면 아래 큐의 긴 작업에 생길 수 있는 일은?",
+        "options": [
+          "기아",
+          "강등",
+          "응답 시간 단축"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "위 큐에 대화형 작업이 계속 있으면 아래 큐의 긴 작업은 CPU를 받지 못해 기아에 빠집니다. 부스트가 이를 막습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf"
+      ]
+    },
+    {
+      "id": "os-mlfq-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "multilevel-queue",
+        "mlfq"
+      ],
+      "content": {
+        "prompt": "다단계 피드백 큐는 우선순위가 서로 다른 큐 여러 개를 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "다단계 피드백 큐는 우선순위가 다른 큐를 여러 개 두고, 작업의 CPU 사용량에 따라 큐 사이를 옮깁니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf",
+        "https://en.wikipedia.org/wiki/Multilevel_feedback_queue"
+      ]
+    }
+  ]
+}

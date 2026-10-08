@@ -1,0 +1,240 @@
+{
+  "track": "network",
+  "unit": "u02-tcp-udp",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "network-tcp-vs-udp-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tcp-vs-udp",
+        "tcp"
+      ],
+      "content": {
+        "prompt": "정확성이 중요한 이메일 전송에 맞는 프로토콜은?",
+        "options": [
+          "UDP",
+          "IP",
+          "TCP"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "이메일은 내용이 빠지면 안 되므로 재전송과 순서 보장을 하는 TCP를 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-tcp-vs-udp-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tcp-vs-udp",
+        "header"
+      ],
+      "content": {
+        "prompt": "헤더 크기가 8바이트인 전송 계층 프로토콜은?",
+        "options": [
+          "TCP",
+          "UDP",
+          "IP"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "UDP 헤더는 8바이트로 작습니다. TCP 헤더는 20바이트 이상입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc768"
+      ]
+    },
+    {
+      "id": "network-tcp-vs-udp-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tcp-vs-udp",
+        "udp"
+      ],
+      "content": {
+        "prompt": "실시간 영상 통화에 주로 쓰는 프로토콜은?",
+        "options": [
+          "UDP",
+          "TCP"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "영상 통화는 늦게 도착한 데이터가 쓸모없어, 재전송 지연이 없는 UDP를 주로 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc768"
+      ]
+    },
+    {
+      "id": "network-tcp-vs-udp-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "tcp-vs-udp",
+        "header"
+      ],
+      "content": {
+        "prompt": "TCP 헤더는 UDP 헤더보다 작다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "TCP 헤더는 20바이트 이상, UDP 헤더는 8바이트라 TCP 쪽이 더 큽니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293",
+        "https://www.rfc-editor.org/rfc/rfc768"
+      ]
+    },
+    {
+      "id": "network-tcp-vs-udp-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "udp",
+        "header"
+      ],
+      "content": {
+        "prompt": "UDP 헤더의 크기는 ___ 바이트다.",
+        "hint": "TCP 헤더 최소 크기 20바이트보다 작습니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "8",
+          "팔",
+          "여덟"
+        ]
+      },
+      "explanation": "UDP 헤더는 8바이트로 고정돼 있어 20바이트 이상인 TCP 헤더보다 가볍습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc768"
+      ]
+    },
+    {
+      "id": "network-tcp-vs-udp-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "tcp-vs-udp",
+        "udp"
+      ],
+      "content": {
+        "prompt": "속도가 중요한 온라인 게임에 주로 쓰는 프로토콜은 ___ 이다.",
+        "hint": "헤더가 8바이트인 프로토콜입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "UDP",
+          "udp",
+          "유디피",
+          "user datagram protocol"
+        ]
+      },
+      "explanation": "게임은 최신 상태가 빨리 도착하는 것이 중요해 재전송 지연이 없는 UDP를 주로 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc768"
+      ]
+    },
+    {
+      "id": "network-tcp-vs-udp-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tcp-vs-udp",
+        "tcp"
+      ],
+      "content": {
+        "prompt": "큰 파일을 손상 없이 내려받아야 한다. 고를 프로토콜은?",
+        "options": [
+          "UDP",
+          "TCP"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "파일은 한 바이트만 빠져도 손상되므로 재전송과 순서 보장을 하는 TCP가 맞습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-tcp-vs-udp-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tcp-vs-udp",
+        "header"
+      ],
+      "content": {
+        "prompt": "TCP 헤더 최소 크기는 UDP 헤더의 몇 배인가?",
+        "options": [
+          "2배",
+          "4배",
+          "2.5배"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "TCP 헤더 최소 20바이트를 UDP 헤더 8바이트로 나누면 2.5배입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293",
+        "https://www.rfc-editor.org/rfc/rfc768"
+      ]
+    },
+    {
+      "id": "network-tcp-vs-udp-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tcp-vs-udp",
+        "udp",
+        "use-case"
+      ],
+      "content": {
+        "prompt": "UDP를 고르는 것이 맞는 상황은?",
+        "options": [
+          "실시간 게임",
+          "이메일 발송",
+          "파일 업로드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "실시간 게임은 속도가 중요해 UDP가 맞습니다. 이메일과 파일 업로드는 정확성이 중요해 TCP를 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc768"
+      ]
+    },
+    {
+      "id": "network-tcp-vs-udp-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "tcp-vs-udp",
+        "use-case"
+      ],
+      "content": {
+        "prompt": "정확성이 중요하면 TCP를, 속도가 중요하면 UDP를 고른다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "파일 전송·웹·이메일은 정확성이 중요해 TCP를, 영상 통화·게임은 속도가 중요해 UDP를 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293",
+        "https://www.rfc-editor.org/rfc/rfc768"
+      ]
+    }
+  ]
+}

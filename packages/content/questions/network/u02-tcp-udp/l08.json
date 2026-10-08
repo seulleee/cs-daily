@@ -1,0 +1,241 @@
+{
+  "track": "network",
+  "unit": "u02-tcp-udp",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "network-flow-control-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "flow-control",
+        "tcp"
+      ],
+      "content": {
+        "prompt": "수신자가 처리할 수 있는 속도에 맞춰 보내는 기능은?",
+        "options": [
+          "혼잡 제어",
+          "흐름 제어",
+          "순서 보장"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "흐름 제어는 송신자가 수신자의 처리 속도를 넘지 않게 보내는 양을 맞추는 기능입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-flow-control-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "flow-control",
+        "rwnd"
+      ],
+      "content": {
+        "prompt": "수신자가 더 받을 수 있는 양을 알려 주는 값은?",
+        "options": [
+          "시퀀스 번호",
+          "혼잡 윈도우",
+          "수신 윈도우"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "수신 윈도우(rwnd)는 수신자가 더 받을 수 있는 양입니다. 혼잡 윈도우는 송신자가 스스로 정하는 값입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-flow-control-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "flow-control",
+        "buffer"
+      ],
+      "content": {
+        "prompt": "흐름 제어가 보호하려는 대상은?",
+        "options": [
+          "수신자 버퍼",
+          "네트워크 전체"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "흐름 제어의 목적은 수신자 버퍼 넘침 방지입니다. 네트워크 전체를 보호하는 것은 혼잡 제어입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-flow-control-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "flow-control",
+        "congestion-control"
+      ],
+      "content": {
+        "prompt": "흐름 제어는 네트워크 전체의 혼잡을 막는 기능이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "흐름 제어는 수신자를 보호합니다. 네트워크 혼잡을 막는 것은 혼잡 제어입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293",
+        "https://www.rfc-editor.org/rfc/rfc5681"
+      ]
+    },
+    {
+      "id": "network-flow-control-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "flow-control",
+        "rwnd"
+      ],
+      "content": {
+        "prompt": "수신자가 더 받을 수 있는 양을 알리는 값은 수신 ___ 이다.",
+        "hint": "TCP 헤더에 담겨 송신자에게 전달됩니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "윈도우",
+          "window",
+          "윈도",
+          "윈도우 크기",
+          "rwnd",
+          "receive window"
+        ]
+      },
+      "explanation": "수신 윈도우(rwnd)는 수신자가 버퍼의 남은 공간을 송신자에게 알리는 값입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-flow-control-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "flow-control",
+        "buffer"
+      ],
+      "content": {
+        "prompt": "흐름 제어의 목적은 수신자 ___ 넘침 방지다.",
+        "hint": "받은 데이터를 응용이 읽기 전까지 담아 두는 메모리입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "버퍼",
+          "buffer",
+          "수신 버퍼",
+          "receive buffer"
+        ]
+      },
+      "explanation": "수신자가 처리하는 속도보다 빨리 보내면 버퍼가 넘쳐 데이터가 버려지므로 흐름 제어로 막습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-flow-control-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rwnd",
+        "flow-control"
+      ],
+      "content": {
+        "prompt": "rwnd가 4000바이트다. 흐름 제어상 ACK 없이 보낼 최대량은?",
+        "options": [
+          "2000바이트",
+          "4000바이트",
+          "8000바이트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "송신자는 ACK를 기다리지 않고 수신 윈도우만큼, 즉 4000바이트까지 보낼 수 있습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-flow-control-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rwnd",
+        "flow-control"
+      ],
+      "content": {
+        "prompt": "수신자가 rwnd를 0으로 알렸다. 송신자는?",
+        "options": [
+          "전송 속도 2배",
+          "연결 종료",
+          "전송 일시 중지"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "rwnd가 0이면 수신자 버퍼에 여유가 없다는 뜻이므로, 송신자는 rwnd가 다시 커질 때까지 전송을 멈춥니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-flow-control-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rwnd",
+        "buffer"
+      ],
+      "content": {
+        "prompt": "수신 버퍼가 거의 찼다. 수신자가 알리는 rwnd는?",
+        "options": [
+          "작아진다",
+          "커진다",
+          "변함없다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "rwnd는 버퍼의 남은 공간이므로 버퍼가 찰수록 작아지고, 송신자는 그만큼 덜 보냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-flow-control-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "flow-control",
+        "rwnd"
+      ],
+      "content": {
+        "prompt": "흐름 제어는 수신자의 처리 속도에 맞춰 송신량을 조절한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "흐름 제어는 rwnd를 보고 수신자가 감당할 만큼만 보내 수신자 버퍼 넘침을 막습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    }
+  ]
+}

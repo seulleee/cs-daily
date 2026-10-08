@@ -1,0 +1,241 @@
+{
+  "track": "network",
+  "unit": "u01-layers",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "network-pdu-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "pdu",
+        "segment"
+      ],
+      "content": {
+        "prompt": "전송 계층(TCP)의 데이터 단위는?",
+        "options": [
+          "패킷",
+          "세그먼트",
+          "프레임"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "전송 계층에서 TCP 헤더가 붙은 데이터 단위를 세그먼트라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Protocol_data_unit"
+      ]
+    },
+    {
+      "id": "network-pdu-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "pdu",
+        "frame"
+      ],
+      "content": {
+        "prompt": "데이터링크 계층의 데이터 단위는?",
+        "options": [
+          "프레임",
+          "비트",
+          "패킷"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "데이터링크 계층의 단위는 프레임입니다. 패킷에 이더넷 헤더 등이 붙어 프레임이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Protocol_data_unit"
+      ]
+    },
+    {
+      "id": "network-pdu-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "pdu",
+        "packet"
+      ],
+      "content": {
+        "prompt": "IP 헤더가 붙은 네트워크 계층의 단위는?",
+        "options": [
+          "프레임",
+          "패킷"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "네트워크 계층(IP)의 단위는 패킷입니다. 프레임은 그 아래 데이터링크 계층의 단위입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Protocol_data_unit"
+      ]
+    },
+    {
+      "id": "network-pdu-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "pdu",
+        "frame",
+        "packet"
+      ],
+      "content": {
+        "prompt": "프레임은 네트워크 계층의 데이터 단위다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "프레임은 데이터링크 계층의 단위입니다. 네트워크 계층의 단위는 패킷입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Protocol_data_unit"
+      ]
+    },
+    {
+      "id": "network-pdu-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "pdu",
+        "bit"
+      ],
+      "content": {
+        "prompt": "물리 계층에서 다루는 데이터 단위는 ___이다.",
+        "hint": "0 또는 1 하나를 나타내는 단위입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "비트",
+          "bit",
+          "bits",
+          "비트열"
+        ]
+      },
+      "explanation": "물리 계층은 데이터를 0과 1의 비트로 보고 전기·광 신호로 바꿔 전송합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Protocol_data_unit"
+      ]
+    },
+    {
+      "id": "network-pdu-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "pdu",
+        "segment"
+      ],
+      "content": {
+        "prompt": "TCP 헤더가 붙은 전송 계층의 단위는 ___이다.",
+        "hint": "'조각'을 뜻하는 영어 단어에서 왔습니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "세그먼트",
+          "segment",
+          "세그멘트"
+        ]
+      },
+      "explanation": "전송 계층에서 TCP 헤더가 붙은 데이터 단위를 세그먼트라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Protocol_data_unit"
+      ]
+    },
+    {
+      "id": "network-pdu-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pdu",
+        "frame",
+        "encapsulation"
+      ],
+      "content": {
+        "prompt": "패킷에 이더넷 헤더를 붙이면 무엇이 되나?",
+        "options": [
+          "세그먼트",
+          "비트",
+          "프레임"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "패킷이 데이터링크 계층으로 내려가 이더넷 헤더가 붙으면 프레임이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Protocol_data_unit"
+      ]
+    },
+    {
+      "id": "network-pdu-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pdu",
+        "packet",
+        "decapsulation"
+      ],
+      "content": {
+        "prompt": "프레임에서 이더넷 헤더를 떼면 남는 단위는?",
+        "options": [
+          "패킷",
+          "세그먼트",
+          "비트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "역캡슐화로 데이터링크 계층의 헤더를 떼면 네트워크 계층의 단위인 패킷이 남습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Protocol_data_unit"
+      ]
+    },
+    {
+      "id": "network-pdu-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pdu",
+        "packet",
+        "encapsulation"
+      ],
+      "content": {
+        "prompt": "세그먼트에 IP 헤더를 붙이면 무엇이 되나?",
+        "options": [
+          "프레임",
+          "패킷",
+          "비트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "세그먼트가 네트워크 계층으로 내려가 IP 헤더가 붙으면 패킷이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Protocol_data_unit"
+      ]
+    },
+    {
+      "id": "network-pdu-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "pdu",
+        "segment"
+      ],
+      "content": {
+        "prompt": "세그먼트는 전송 계층의 데이터 단위다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "세그먼트는 전송 계층(TCP)의 단위입니다. 아래로 내려가며 패킷, 프레임, 비트가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Protocol_data_unit"
+      ]
+    }
+  ]
+}

@@ -4,242 +4,239 @@
   "lesson": "l03",
   "questions": [
     {
-      "id": "os-context-switch-001",
+      "id": "os-pcb-state-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "context-switch",
-        "definition"
+        "pcb-state",
+        "pcb"
       ],
       "content": {
-        "prompt": "CPU를 다른 프로세스에 넘기며 상태를 저장·복원하는 과정은?",
+        "prompt": "프로세스 ID·상태·레지스터 값을 담는 관리 블록은?",
         "options": [
-          "스케줄링",
-          "컨텍스트 스위칭",
-          "인터럽트"
+          "스택",
+          "PCB",
+          "힙"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "컨텍스트 스위칭은 현재 프로세스의 상태를 PCB에 저장하고 다음 프로세스의 상태를 복원하는 과정입니다. 스케줄링은 다음 프로세스를 고르는 일입니다.",
+      "explanation": "PCB(Process Control Block)는 운영체제가 프로세스마다 ID, 상태, 레지스터 값 등을 담아 두는 관리 블록입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Context_switch",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+        "https://en.wikipedia.org/wiki/Process_control_block"
       ]
     },
     {
-      "id": "os-context-switch-002",
+      "id": "os-pcb-state-002",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "context-switch",
-        "overhead"
+        "pcb-state",
+        "ready"
       ],
       "content": {
-        "prompt": "실제 작업 외에 스위칭 등으로 추가로 드는 비용은?",
+        "prompt": "CPU를 기다리는 프로세스의 상태는?",
         "options": [
-          "오버헤드",
-          "처리량",
-          "응답 시간"
+          "실행",
+          "대기",
+          "준비"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "준비(ready) 상태는 실행할 준비가 끝나고 CPU 할당만 기다리는 상태입니다. 대기는 I/O 같은 이벤트를 기다립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Process_state",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf"
+      ]
+    },
+    {
+      "id": "os-pcb-state-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "pcb-state",
+        "waiting"
+      ],
+      "content": {
+        "prompt": "I/O 완료를 기다리는 프로세스의 상태는?",
+        "options": [
+          "대기",
+          "준비"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "오버헤드는 실제 작업 외에 추가로 드는 시간과 자원입니다. 컨텍스트 스위칭 중에는 사용자 작업이 진행되지 않으므로 오버헤드입니다.",
+      "explanation": "I/O 같은 이벤트를 기다리는 상태는 대기(waiting)입니다. 준비는 CPU 할당만 기다리는 상태입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Context_switch"
+        "https://en.wikipedia.org/wiki/Process_state",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf"
       ]
     },
     {
-      "id": "os-context-switch-003",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "context-switch",
-        "thread",
-        "address-space"
-      ],
-      "content": {
-        "prompt": "주소 공간을 교체하지 않아도 되는 전환은?",
-        "options": [
-          "프로세스 간 전환",
-          "같은 프로세스의 스레드 간"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "같은 프로세스의 스레드들은 주소 공간을 공유하므로 레지스터 등만 바꾸면 됩니다. 프로세스 간 전환은 주소 공간까지 교체합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Context_switch",
-        "https://en.wikipedia.org/wiki/Thread_(computing)"
-      ]
-    },
-    {
-      "id": "os-context-switch-004",
+      "id": "os-pcb-state-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
-        "context-switch",
-        "thread"
+        "pcb-state",
+        "waiting",
+        "ready"
       ],
       "content": {
-        "prompt": "스레드 간 전환은 프로세스 간 전환보다 비용이 크다."
+        "prompt": "대기 상태는 CPU 할당을 기다리는 상태이다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "스레드 간 전환은 주소 공간을 교체하지 않으므로 일반적으로 프로세스 간 전환보다 비용이 작습니다.",
+      "explanation": "CPU 할당을 기다리는 것은 준비 상태입니다. 대기 상태는 I/O 같은 이벤트가 끝나기를 기다립니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Context_switch",
-        "https://en.wikipedia.org/wiki/Thread_(computing)"
+        "https://en.wikipedia.org/wiki/Process_state"
       ]
     },
     {
-      "id": "os-context-switch-005",
-      "type": "ox",
+      "id": "os-pcb-state-005",
+      "type": "fill",
       "difficulty": 1,
       "tags": [
-        "context-switch",
-        "overhead"
+        "pcb-state",
+        "pcb"
       ],
       "content": {
-        "prompt": "컨텍스트 스위칭 중에는 CPU가 사용자 프로세스의 명령어를 실행하지 않는다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "스위칭 동안 CPU는 운영체제 코드로 상태를 저장·복원할 뿐 사용자 작업을 진행하지 않으므로, 이 시간이 오버헤드가 됩니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Context_switch"
-      ]
-    },
-    {
-      "id": "os-context-switch-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "context-switch",
-        "definition"
-      ],
-      "content": {
-        "prompt": "상태를 저장·복원하며 CPU를 다른 프로세스에 넘기는 것을 컨텍스트 ___ 이라 한다.",
-        "hint": "실행 대상을 바꾸는 일을 뜻하는 외래어"
+        "prompt": "운영체제가 프로세스마다 두는 관리 블록은 ___ 이다.",
+        "hint": "영문 대문자 3글자"
       },
       "answer_key": {
         "accepted": [
-          "스위칭",
-          "switching",
-          "스위치",
-          "switch",
-          "전환",
-          "교환"
+          "PCB",
+          "Process Control Block",
+          "프로세스 제어 블록",
+          "프로세스 제어블록"
         ]
       },
-      "explanation": "이 과정을 컨텍스트 스위칭(context switching)이라 하며, 저장한 상태는 각 프로세스의 PCB에 보관됩니다.",
+      "explanation": "PCB는 프로세스 ID, 상태, 레지스터 값 등을 담는 운영체제의 관리 블록입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Context_switch",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+        "https://en.wikipedia.org/wiki/Process_control_block"
       ]
     },
     {
-      "id": "os-context-switch-007",
+      "id": "os-pcb-state-006",
       "type": "fill",
       "difficulty": 2,
       "tags": [
-        "context-switch",
-        "overhead"
+        "pcb-state",
+        "running"
       ],
       "content": {
-        "prompt": "컨텍스트 스위칭이 잦을수록 커지는 추가 비용을 ___ 라고 한다.",
-        "hint": "실제 작업에 쓰이지 않는 시간과 자원"
+        "prompt": "CPU를 할당받아 쓰고 있는 프로세스는 ___ 상태이다.",
+        "hint": "한글 2글자"
       },
       "answer_key": {
         "accepted": [
-          "오버헤드",
-          "overhead",
-          "오버 헤드"
+          "실행",
+          "running",
+          "실행 중",
+          "실행중",
+          "러닝"
         ]
       },
-      "explanation": "컨텍스트 스위칭에 드는 시간은 사용자 작업을 하지 못하는 추가 비용, 즉 오버헤드입니다.",
+      "explanation": "실행(running) 상태는 프로세스가 CPU를 할당받아 명령어를 실행하는 상태입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Context_switch"
+        "https://en.wikipedia.org/wiki/Process_state",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf"
       ]
     },
     {
-      "id": "os-context-switch-008",
+      "id": "os-pcb-state-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "context-switch",
-        "overhead"
+        "pcb-state",
+        "waiting"
       ],
       "content": {
-        "prompt": "초당 스위칭이 100번에서 1000번으로 늘면 오버헤드는?",
+        "prompt": "실행 중인 프로세스가 디스크 읽기를 요청하면?",
         "options": [
-          "줄어든다",
-          "그대로다",
-          "늘어난다"
+          "준비 상태가 됨",
+          "대기 상태가 됨"
         ]
       },
       "answer_key": {
-        "index": 2
+        "index": 1
       },
-      "explanation": "스위칭 한 번마다 상태 저장·복원 비용이 들므로 횟수가 늘면 전체 오버헤드도 늘어납니다.",
+      "explanation": "디스크 읽기는 I/O이므로 프로세스는 완료를 기다리는 대기 상태가 되고, CPU는 다른 프로세스에 넘어갑니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Context_switch"
+        "https://en.wikipedia.org/wiki/Process_state",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf"
       ]
     },
     {
-      "id": "os-context-switch-009",
+      "id": "os-pcb-state-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "context-switch",
-        "thread",
-        "address-space"
+        "pcb-state",
+        "ready"
       ],
       "content": {
-        "prompt": "프로세스 P1의 스레드에서 P2의 스레드로 전환하면 주소 공간 교체는?",
+        "prompt": "대기 중인 프로세스의 I/O가 끝나면 가는 상태는?",
         "options": [
-          "필요하다",
-          "필요 없다"
+          "준비",
+          "실행"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "두 스레드가 서로 다른 프로세스에 속해 주소 공간이 다르므로, 프로세스 간 전환처럼 주소 공간을 교체해야 합니다.",
+      "explanation": "I/O가 끝나면 프로세스는 바로 실행되지 않고 준비 상태로 가서 CPU 할당을 기다립니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Context_switch",
-        "https://en.wikipedia.org/wiki/Thread_(computing)"
+        "https://en.wikipedia.org/wiki/Process_state",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf"
       ]
     },
     {
-      "id": "os-context-switch-010",
+      "id": "os-pcb-state-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "context-switch",
-        "pcb"
+        "pcb-state",
+        "running"
       ],
       "content": {
-        "prompt": "컨텍스트 스위칭 때 PCB에 저장하는 것은?",
+        "prompt": "준비 상태의 프로세스가 CPU를 할당받으면?",
         "options": [
-          "소스 코드",
-          "디스크 파일",
-          "레지스터 값"
+          "대기 상태가 됨",
+          "준비 상태 유지",
+          "실행 상태가 됨"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "다시 실행할 때 필요한 프로그램 카운터와 레지스터 값을 PCB에 저장합니다. 소스 코드나 디스크 파일은 저장 대상이 아닙니다.",
+      "explanation": "준비 상태의 프로세스가 CPU를 할당받으면 실행 상태가 되어 명령어를 실행합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Context_switch",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+        "https://en.wikipedia.org/wiki/Process_state"
+      ]
+    },
+    {
+      "id": "os-pcb-state-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "pcb-state",
+        "pcb"
+      ],
+      "content": {
+        "prompt": "PCB에는 프로세스의 레지스터 값이 저장된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "PCB에는 프로세스 ID, 상태와 함께 레지스터 값이 저장되어 나중에 실행을 이어 갈 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Process_control_block"
       ]
     }
   ]

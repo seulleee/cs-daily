@@ -1,0 +1,237 @@
+{
+  "track": "dsa",
+  "unit": "u01-complexity",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "dsa-best-avg-worst-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "worst-case",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "가장 오래 걸리는 입력에 대한 경우는?",
+        "options": [
+          "최선의 경우",
+          "평균의 경우",
+          "최악의 경우"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "최악의 경우는 가장 오래 걸리는 입력이며, Big-O 분석의 기본 기준입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Best,_worst_and_average_case"
+      ]
+    },
+    {
+      "id": "dsa-best-avg-worst-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "best-case",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "가장 빨리 끝나는 입력에 대한 경우는?",
+        "options": [
+          "최선의 경우",
+          "최악의 경우",
+          "평균의 경우"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "최선의 경우는 알고리즘이 가장 빨리 끝나는 입력에 대한 경우입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Best,_worst_and_average_case"
+      ]
+    },
+    {
+      "id": "dsa-best-avg-worst-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "average-case",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "모든 입력에 대한 기댓값으로 본 경우는?",
+        "options": [
+          "최선의 경우",
+          "평균의 경우"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "평균의 경우는 가능한 모든 입력에 대한 실행 시간의 기댓값입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Best,_worst_and_average_case"
+      ]
+    },
+    {
+      "id": "dsa-best-avg-worst-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "worst-case",
+        "linear-search"
+      ],
+      "content": {
+        "prompt": "선형 탐색의 최악의 경우는 O(1)이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "선형 탐색의 최악은 끝까지 비교하는 O(n)입니다. O(1)은 최선의 경우입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Best,_worst_and_average_case",
+        "https://en.wikipedia.org/wiki/Linear_search"
+      ]
+    },
+    {
+      "id": "dsa-best-avg-worst-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "best-case",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "가장 빨리 끝나는 입력을 ___의 경우라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "최선",
+          "best",
+          "베스트"
+        ]
+      },
+      "explanation": "가장 빨리 끝나는 입력에 대한 경우를 최선의 경우라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Best,_worst_and_average_case"
+      ]
+    },
+    {
+      "id": "dsa-best-avg-worst-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "average-case",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "모든 입력에 대한 기댓값을 보는 것은 ___의 경우다."
+      },
+      "answer_key": {
+        "accepted": [
+          "평균",
+          "average",
+          "에버리지"
+        ]
+      },
+      "explanation": "평균의 경우는 가능한 모든 입력에 대한 실행 시간의 기댓값을 봅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Best,_worst_and_average_case"
+      ]
+    },
+    {
+      "id": "dsa-best-avg-worst-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "best-case",
+        "linear-search"
+      ],
+      "content": {
+        "prompt": "선형 탐색에서 찾는 값이 첫 원소면 비교 횟수는?",
+        "options": [
+          "n번",
+          "1번",
+          "n/2번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "첫 원소에서 바로 찾으므로 1번이며, 이것이 최선의 경우 O(1)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linear_search"
+      ]
+    },
+    {
+      "id": "dsa-best-avg-worst-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "worst-case",
+        "linear-search"
+      ],
+      "content": {
+        "prompt": "선형 탐색에서 찾는 값이 배열에 없으면 비교 횟수는?",
+        "options": [
+          "1번",
+          "n/2번",
+          "n번"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "모든 원소를 끝까지 비교해야 하므로 n번이며, 이것이 최악의 경우 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linear_search"
+      ]
+    },
+    {
+      "id": "dsa-best-avg-worst-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linear-search",
+        "worst-case"
+      ],
+      "content": {
+        "prompt": "선형 탐색의 (최선, 최악) 복잡도는?",
+        "options": [
+          "O(1), O(n)",
+          "O(n), O(1)",
+          "O(n), O(n²)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "첫 원소에서 찾으면 최선 O(1), 끝까지 비교하면 최악 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Linear_search",
+        "https://en.wikipedia.org/wiki/Best,_worst_and_average_case"
+      ]
+    },
+    {
+      "id": "dsa-best-avg-worst-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "worst-case",
+        "big-o"
+      ],
+      "content": {
+        "prompt": "Big-O는 보통 최악의 경우를 기준으로 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "Big-O는 가장 오래 걸리는 입력인 최악의 경우를 기준으로 하는 것이 기본입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Best,_worst_and_average_case",
+        "https://en.wikipedia.org/wiki/Big_O_notation"
+      ]
+    }
+  ]
+}

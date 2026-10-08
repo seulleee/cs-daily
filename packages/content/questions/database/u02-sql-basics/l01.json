@@ -4,240 +4,230 @@
   "lesson": "l01",
   "questions": [
     {
-      "id": "database-select-where-order-001",
+      "id": "database-select-from-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "select-where-order",
-        "where"
+        "select-from",
+        "select"
       ],
       "content": {
-        "prompt": "조건에 맞는 행만 남기는 절은?",
+        "prompt": "결과로 가져올 열을 고르는 절은?",
         "options": [
+          "FROM",
           "SELECT",
-          "WHERE",
-          "ORDER BY"
+          "AS"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "WHERE 절은 조건이 참인 행만 결과에 남깁니다. SELECT는 열을 고르고, ORDER BY는 행을 정렬합니다.",
+      "explanation": "SELECT 절에 결과로 가져올 열을 적습니다. FROM은 테이블을, AS는 별칭을 지정합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Select_(SQL)"
+        "https://www.postgresql.org/docs/current/queries-select-lists.html"
       ]
     },
     {
-      "id": "database-select-where-order-002",
+      "id": "database-select-from-002",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "select-where-order",
-        "order-by"
+        "select-from",
+        "from"
       ],
       "content": {
-        "prompt": "결과 행을 정렬하는 절은?",
+        "prompt": "데이터를 가져올 테이블을 지정하는 절은?",
         "options": [
-          "WHERE",
+          "AS",
           "SELECT",
-          "ORDER BY"
+          "FROM"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "ORDER BY 절은 지정한 열의 값을 기준으로 결과 행의 순서를 정합니다.",
+      "explanation": "FROM 절에 데이터를 읽어 올 테이블 이름을 적습니다. SELECT는 그 테이블에서 가져올 열을 고릅니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/queries-order.html"
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
       ]
     },
     {
-      "id": "database-select-where-order-003",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "select-where-order",
-        "select"
-      ],
-      "content": {
-        "prompt": "SELECT name FROM t WHERE age > 20 에서 열을 고르는 절은?",
-        "options": [
-          "SELECT",
-          "WHERE"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "SELECT 절은 결과에 나올 열(name)을 정합니다. WHERE 절은 age > 20인 행만 남깁니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Select_(SQL)"
-      ]
-    },
-    {
-      "id": "database-select-where-order-004",
+      "id": "database-select-from-003",
       "type": "ox",
       "difficulty": 1,
       "tags": [
-        "select-where-order",
-        "null"
+        "select-from",
+        "select",
+        "from"
       ],
       "content": {
-        "prompt": "WHERE age = NULL 로 age가 NULL인 행을 찾을 수 있다."
+        "prompt": "SELECT 절은 데이터를 가져올 테이블을 지정한다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "NULL과의 = 비교는 참이 되지 않아 아무 행도 반환하지 않습니다. NULL인 행은 WHERE age IS NULL로 찾습니다.",
+      "explanation": "테이블은 FROM 절에서 지정합니다. SELECT 절은 결과로 가져올 열을 고릅니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Null_(SQL)",
-        "https://www.postgresql.org/docs/current/functions-comparison.html"
+        "https://www.postgresql.org/docs/current/sql-select.html"
       ]
     },
     {
-      "id": "database-select-where-order-005",
+      "id": "database-select-from-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
-        "select-where-order",
-        "order-by",
-        "asc"
+        "select-from",
+        "asterisk"
       ],
       "content": {
-        "prompt": "ORDER BY age 는 age 오름차순으로 정렬한다."
+        "prompt": "SELECT * 는 테이블의 모든 열을 가져온다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "ORDER BY의 기본 정렬 방향은 오름차순(ASC)입니다. 내림차순으로 정렬하려면 DESC를 붙입니다.",
+      "explanation": "SELECT 목록의 *는 테이블의 모든 열을 뜻합니다. 열 이름을 하나씩 적지 않아도 됩니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/queries-order.html"
+        "https://www.postgresql.org/docs/current/queries-select-lists.html"
       ]
     },
     {
-      "id": "database-select-where-order-006",
+      "id": "database-select-from-005",
       "type": "fill",
-      "difficulty": 2,
+      "difficulty": 1,
       "tags": [
-        "select-where-order",
-        "order-by",
-        "desc"
+        "select-from",
+        "alias"
       ],
       "content": {
-        "prompt": "age가 큰 행부터 정렬하려면 ORDER BY age ___ 라고 쓴다.",
-        "hint": "내림차순을 뜻하는 키워드"
+        "prompt": "열이나 테이블에 별칭을 붙이는 키워드는 ___ 이다.",
+        "hint": "두 글자 영문 키워드입니다."
       },
       "answer_key": {
         "accepted": [
-          "DESC",
-          "desc",
-          "descending",
-          "DESCENDING"
+          "AS"
         ]
       },
-      "explanation": "DESC는 내림차순(큰 값부터)을 뜻합니다. 생략하면 오름차순(ASC)으로 정렬됩니다.",
+      "explanation": "AS 뒤에 적은 이름이 열이나 테이블의 별칭이 됩니다. 예를 들어 price AS cost로 씁니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/queries-order.html"
+        "https://www.postgresql.org/docs/current/queries-select-lists.html"
       ]
     },
     {
-      "id": "database-select-where-order-007",
+      "id": "database-select-from-006",
       "type": "fill",
       "difficulty": 2,
       "tags": [
-        "select-where-order",
-        "null"
+        "select-from",
+        "from"
       ],
       "content": {
-        "prompt": "age가 NULL인 행을 찾으려면 WHERE age ___ NULL 이라고 쓴다.",
-        "hint": "= 대신 쓰는 키워드"
+        "prompt": "SELECT name ___ users 의 빈칸에 들어갈 키워드는?",
+        "hint": "읽어 올 테이블 이름 앞에 오는 키워드입니다."
       },
       "answer_key": {
         "accepted": [
-          "IS",
-          "is",
-          "이즈"
+          "FROM",
+          "프롬"
         ]
       },
-      "explanation": "NULL은 = 로 비교할 수 없어 IS NULL을 씁니다. 반대 조건은 IS NOT NULL입니다.",
+      "explanation": "FROM 뒤에 테이블 이름을 적어 users 테이블에서 name 열을 가져옵니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Null_(SQL)",
-        "https://www.postgresql.org/docs/current/functions-comparison.html"
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
       ]
     },
     {
-      "id": "database-select-where-order-008",
+      "id": "database-select-from-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "select-where-order",
-        "where",
-        "null"
+        "select-from",
+        "select"
       ],
       "content": {
-        "prompt": "age가 25, NULL, 19일 때 WHERE age > 20 의 결과 행 수는?",
+        "prompt": "SELECT name, age FROM users 의 결과 열 개수는?",
         "options": [
-          "1행",
-          "2행",
-          "3행"
+          "2개",
+          "1개",
+          "3개"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "25만 조건을 만족합니다. NULL과의 비교는 참이 아니므로 NULL인 행도 제외되어 1행입니다.",
+      "explanation": "SELECT 절에 name과 age 두 열을 적었으므로 결과는 2개 열입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Null_(SQL)",
-        "https://www.postgresql.org/docs/current/functions-comparison.html"
+        "https://www.postgresql.org/docs/current/queries-select-lists.html"
       ]
     },
     {
-      "id": "database-select-where-order-009",
+      "id": "database-select-from-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "select-where-order",
-        "order-by",
-        "desc"
+        "select-from",
+        "alias"
       ],
       "content": {
-        "prompt": "age가 25, 31, 19일 때 ORDER BY age DESC 의 첫 값은?",
+        "prompt": "SELECT price AS cost FROM item 의 결과 열 이름은?",
         "options": [
-          "19",
-          "25",
-          "31"
+          "item",
+          "price",
+          "cost"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "DESC는 큰 값부터 정렬하므로 31, 25, 19 순서가 되고 첫 값은 31입니다.",
+      "explanation": "AS 뒤의 이름이 결과 열의 별칭이 됩니다. 원래 열 이름 price 대신 cost로 표시됩니다.",
       "refs": [
-        "https://www.postgresql.org/docs/current/queries-order.html"
+        "https://www.postgresql.org/docs/current/queries-select-lists.html"
       ]
     },
     {
-      "id": "database-select-where-order-010",
+      "id": "database-select-from-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "select-where-order",
-        "where"
+        "select-from",
+        "asterisk"
       ],
       "content": {
-        "prompt": "WHERE 절의 역할은?",
+        "prompt": "열이 3개인 users에 SELECT * 를 하면 결과 열 수는?",
         "options": [
-          "열 선택",
-          "행 필터링",
-          "행 정렬"
+          "행 수만큼",
+          "1개",
+          "3개"
         ]
       },
       "answer_key": {
-        "index": 1
+        "index": 2
       },
-      "explanation": "WHERE 절은 조건이 참인 행만 남기는 필터 역할을 합니다. 열 선택은 SELECT, 정렬은 ORDER BY가 맡습니다.",
+      "explanation": "*는 모든 열을 뜻하므로 users의 열 3개가 모두 결과에 나옵니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Select_(SQL)"
+        "https://www.postgresql.org/docs/current/queries-select-lists.html"
+      ]
+    },
+    {
+      "id": "database-select-from-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "select-from",
+        "select"
+      ],
+      "content": {
+        "prompt": "SELECT id FROM orders 에서 가져올 열을 정한 부분은?",
+        "options": [
+          "SELECT id",
+          "FROM orders"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SELECT id가 결과로 가져올 열(id)을 정합니다. FROM orders는 읽어 올 테이블을 정합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/sql-select.html"
       ]
     }
   ]

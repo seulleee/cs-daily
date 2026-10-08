@@ -4,237 +4,243 @@
   "lesson": "l03",
   "questions": [
     {
-      "id": "dsa-deque-monotonic-001",
+      "id": "dsa-stack-uses-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "deque-monotonic",
-        "deque"
+        "bracket-matching",
+        "stack"
       ],
       "content": {
-        "prompt": "양쪽 끝에서 삽입과 삭제가 모두 가능한 자료구조는?",
+        "prompt": "여는 괄호는 push, 닫는 괄호는 pop해 짝을 맞추는 일은?",
         "options": [
-          "스택",
-          "큐",
-          "덱"
+          "정렬",
+          "괄호 검사",
+          "이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "괄호 검사는 여는 괄호를 push하고 닫는 괄호에서 pop해 짝이 맞는지 확인합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Stack_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Undo"
+      ]
+    },
+    {
+      "id": "dsa-stack-uses-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "undo",
+        "stack"
+      ],
+      "content": {
+        "prompt": "가장 최근 작업부터 취소하는 기능은?",
+        "options": [
+          "저장",
+          "검색",
+          "되돌리기(undo)"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "덱(deque)은 front와 rear 양쪽 끝에서 삽입과 삭제를 모두 할 수 있습니다. 스택은 top 한쪽에서만 합니다.",
+      "explanation": "되돌리기(undo)는 작업 기록을 스택에 쌓고 가장 최근 작업부터 pop해 취소합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Double-ended_queue"
+        "https://en.wikipedia.org/wiki/Stack_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Undo"
       ]
     },
     {
-      "id": "dsa-deque-monotonic-002",
+      "id": "dsa-stack-uses-003",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "deque-monotonic",
-        "sliding-window"
+        "undo",
+        "back-navigation"
       ],
       "content": {
-        "prompt": "고정 길이 구간을 한 원소씩 옮기며 처리하는 기법은?",
+        "prompt": "되돌리기와 뒤로 가기에 공통으로 쓰는 자료구조는?",
         "options": [
-          "슬라이딩 윈도우",
-          "이진 탐색",
-          "정렬"
+          "스택",
+          "큐"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "슬라이딩 윈도우는 길이가 고정된 연속 구간을 한 원소씩 옮기며 처리하는 기법입니다.",
+      "explanation": "둘 다 가장 최근 것부터 처리하는 LIFO라 스택을 씁니다. 큐는 먼저 넣은 것이 먼저 나옵니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Double-ended_queue"
+        "https://en.wikipedia.org/wiki/Stack_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Undo"
       ]
     },
     {
-      "id": "dsa-deque-monotonic-003",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "deque-monotonic",
-        "monotonic-queue"
-      ],
-      "content": {
-        "prompt": "윈도우 최댓값이 front에 오도록 관리하는 큐는?",
-        "options": [
-          "원형 큐",
-          "모노토닉 큐"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "모노토닉 큐는 덱 안의 값을 내림차순으로 유지해 front에 최댓값이 오게 합니다. 원형 큐는 인덱스를 순환시키는 큐입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Double-ended_queue"
-      ]
-    },
-    {
-      "id": "dsa-deque-monotonic-004",
+      "id": "dsa-stack-uses-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
-        "deque-monotonic",
-        "deque"
+        "back-navigation",
+        "lifo"
       ],
       "content": {
-        "prompt": "덱은 한쪽 끝에서만 삽입과 삭제를 할 수 있다."
+        "prompt": "뒤로 가기는 가장 먼저 방문한 페이지로 돌아간다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "덱은 양쪽 끝 모두에서 삽입과 삭제를 할 수 있습니다. 한쪽 끝에서만 삽입·삭제하는 것은 스택입니다.",
+      "explanation": "뒤로 가기는 방문 기록 스택에서 pop해 가장 최근에 방문한 페이지부터 돌아갑니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Double-ended_queue"
+        "https://en.wikipedia.org/wiki/Stack_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Undo"
       ]
     },
     {
-      "id": "dsa-deque-monotonic-005",
-      "type": "ox",
+      "id": "dsa-stack-uses-005",
+      "type": "fill",
       "difficulty": 1,
       "tags": [
-        "deque-monotonic",
-        "sliding-window"
+        "bracket-matching",
+        "push"
       ],
       "content": {
-        "prompt": "크기 3인 슬라이딩 윈도우에는 연속한 원소 3개가 들어 있다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "크기 k인 슬라이딩 윈도우는 배열에서 연속한 원소 k개로 이루어진 구간입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Double-ended_queue"
-      ]
-    },
-    {
-      "id": "dsa-deque-monotonic-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "deque-monotonic",
-        "deque"
-      ],
-      "content": {
-        "prompt": "양쪽 끝에서 삽입·삭제할 수 있는 자료구조는 ___ 이다.",
-        "hint": "스택과 큐의 동작을 모두 할 수 있는 자료구조"
+        "prompt": "괄호 검사에서 여는 괄호를 만나면 스택에 ___ 한다.",
+        "hint": "스택에 원소를 넣는 연산입니다."
       },
       "answer_key": {
         "accepted": [
-          "덱",
-          "deque",
-          "데크",
-          "double ended queue",
-          "양방향 큐"
+          "push",
+          "푸시",
+          "푸쉬"
         ]
       },
-      "explanation": "덱(deque, double-ended queue)은 front와 rear 양쪽에서 삽입·삭제가 가능한 자료구조입니다.",
+      "explanation": "여는 괄호는 push해 두었다가 닫는 괄호를 만나면 pop해 짝을 확인합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Double-ended_queue"
+        "https://en.wikipedia.org/wiki/Stack_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Undo"
       ]
     },
     {
-      "id": "dsa-deque-monotonic-007",
+      "id": "dsa-stack-uses-006",
       "type": "fill",
       "difficulty": 2,
       "tags": [
-        "deque-monotonic",
-        "monotonic-queue"
+        "undo",
+        "stack"
       ],
       "content": {
-        "prompt": "front부터 값이 내림차순이 되게 유지하는 덱을 ___ 큐라고 한다.",
-        "hint": "네 글자 외래어"
+        "prompt": "가장 최근 작업부터 취소하는 기능은 ___ 이다.",
+        "hint": "작업 기록 스택의 top부터 꺼내 동작합니다."
       },
       "answer_key": {
         "accepted": [
-          "모노토닉",
-          "monotonic",
-          "단조",
-          "모노토닉 큐",
-          "monotonic queue",
-          "단조 큐"
+          "되돌리기",
+          "undo",
+          "실행 취소",
+          "실행취소",
+          "언두"
         ]
       },
-      "explanation": "덱 안의 값을 front부터 내림차순으로 유지하는 큐를 모노토닉 큐라고 하며, front가 곧 최댓값입니다.",
+      "explanation": "되돌리기(undo)는 작업 기록 스택의 top부터 꺼내므로 가장 최근 작업이 먼저 취소됩니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Double-ended_queue"
+        "https://en.wikipedia.org/wiki/Stack_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Undo"
       ]
     },
     {
-      "id": "dsa-deque-monotonic-008",
+      "id": "dsa-stack-uses-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "deque-monotonic",
-        "sliding-window"
+        "bracket-matching",
+        "pop"
       ],
       "content": {
-        "prompt": "[1, 3, 2]에서 크기 2 윈도우의 최댓값을 차례로 쓰면?",
+        "prompt": "괄호 검사로 '(()'를 다 읽었다. 스택에 남은 것은?",
         "options": [
-          "1, 3",
-          "3, 3",
-          "3, 2"
+          "없음",
+          "'(' 1개",
+          "'(' 2개"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "윈도우는 [1, 3]과 [3, 2]이고 각 윈도우의 최댓값은 3, 3입니다.",
+      "explanation": "여는 괄호 2개를 push하고 닫는 괄호에서 1번 pop하므로 '(' 1개가 남아 짝이 맞지 않습니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Double-ended_queue"
+        "https://en.wikipedia.org/wiki/Stack_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Undo"
       ]
     },
     {
-      "id": "dsa-deque-monotonic-009",
+      "id": "dsa-stack-uses-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "deque-monotonic",
-        "monotonic-queue"
+        "bracket-matching",
+        "pop"
       ],
       "content": {
-        "prompt": "내림차순 모노토닉 큐 [5, 3]에 4를 넣으면 결과는?",
+        "prompt": "괄호 검사 중 ')'를 읽었는데 스택이 비어 있으면?",
         "options": [
-          "5, 3, 4",
-          "5, 4",
-          "4"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "내림차순을 지키려고 rear에서 4보다 작은 3을 빼고 4를 넣어 [5, 4]가 됩니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Double-ended_queue"
-      ]
-    },
-    {
-      "id": "dsa-deque-monotonic-010",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "deque-monotonic",
-        "deque"
-      ],
-      "content": {
-        "prompt": "덱에서 삽입·삭제가 가능한 위치는?",
-        "options": [
-          "양쪽 끝 모두",
-          "front만",
-          "rear만"
+          "짝이 안 맞음",
+          "짝이 맞음"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "덱은 front와 rear 양쪽 끝 모두에서 삽입과 삭제를 할 수 있습니다.",
+      "explanation": "pop할 여는 괄호가 없으므로 이 닫는 괄호는 짝이 없고 괄호열이 올바르지 않습니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Double-ended_queue"
+        "https://en.wikipedia.org/wiki/Stack_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Undo"
+      ]
+    },
+    {
+      "id": "dsa-stack-uses-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "undo",
+        "lifo"
+      ],
+      "content": {
+        "prompt": "X, Y, Z를 차례로 입력 후 undo를 두 번 했다. 남는 것은?",
+        "options": [
+          "Z",
+          "X",
+          "X와 Y"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "undo는 가장 최근 작업부터 취소하므로 Z, Y 입력이 차례로 취소되고 X만 남습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Stack_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Undo"
+      ]
+    },
+    {
+      "id": "dsa-stack-uses-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "bracket-matching",
+        "pop"
+      ],
+      "content": {
+        "prompt": "괄호 검사는 닫는 괄호를 만나면 스택에서 pop한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "닫는 괄호를 만나면 pop해 꺼낸 여는 괄호와 짝이 맞는지 확인합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Stack_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Undo"
       ]
     }
   ]

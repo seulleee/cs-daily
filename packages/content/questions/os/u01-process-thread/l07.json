@@ -1,0 +1,243 @@
+{
+  "track": "os",
+  "unit": "u01-process-thread",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "os-multithreading-tradeoff-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "multithreading",
+        "parallelism"
+      ],
+      "content": {
+        "prompt": "코어가 여러 개일 때 스레드가 동시에 실행되는 것은?",
+        "options": [
+          "응답성",
+          "병렬성",
+          "동기화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "병렬성은 코어가 여러 개일 때 여러 스레드가 실제로 동시에 실행되는 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Parallel_computing",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"
+      ]
+    },
+    {
+      "id": "os-multithreading-tradeoff-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "multithreading",
+        "drawback"
+      ],
+      "content": {
+        "prompt": "멀티스레딩의 단점에 해당하는 것은?",
+        "options": [
+          "응답성 향상",
+          "자원 공유",
+          "디버깅 어려움"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "스레드 실행 순서가 매번 달라질 수 있어 멀티스레드 프로그램은 디버깅이 어렵습니다. 응답성과 자원 공유는 장점입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Thread_(computing)"
+      ]
+    },
+    {
+      "id": "os-multithreading-tradeoff-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "multithreading",
+        "benefit"
+      ],
+      "content": {
+        "prompt": "멀티스레딩의 장점에 해당하는 것은?",
+        "options": [
+          "자원 공유",
+          "동기화 문제",
+          "디버깅 어려움"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스레드는 같은 프로세스의 메모리와 자원을 공유해 효율적입니다. 동기화 문제와 디버깅 어려움은 단점입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Thread_(computing)"
+      ]
+    },
+    {
+      "id": "os-multithreading-tradeoff-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "multithreading",
+        "parallelism"
+      ],
+      "content": {
+        "prompt": "코어가 1개여도 여러 스레드가 병렬로 동시에 실행된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "코어가 1개면 한 순간에 한 스레드만 실행되고 스레드들은 번갈아 실행됩니다. 병렬 실행에는 코어가 여러 개 필요합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Parallel_computing",
+        "https://en.wikipedia.org/wiki/Thread_(computing)"
+      ]
+    },
+    {
+      "id": "os-multithreading-tradeoff-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "multithreading",
+        "parallelism"
+      ],
+      "content": {
+        "prompt": "여러 코어에서 스레드가 동시에 실행되는 성질은 ___ 이다.",
+        "hint": "한글 3글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "병렬성",
+          "parallelism",
+          "병렬 처리",
+          "병렬처리",
+          "병렬"
+        ]
+      },
+      "explanation": "병렬성은 코어가 여러 개일 때 여러 스레드를 실제로 동시에 실행하는 성질입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Parallel_computing"
+      ]
+    },
+    {
+      "id": "os-multithreading-tradeoff-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "multithreading",
+        "synchronization"
+      ],
+      "content": {
+        "prompt": "여러 스레드가 공유 데이터를 고칠 때 필요한 것은 ___ 이다.",
+        "hint": "한글 3글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "동기화",
+          "synchronization",
+          "sync",
+          "싱크"
+        ]
+      },
+      "explanation": "스레드들은 데이터를 공유하므로 동시에 고칠 때 접근을 조율하는 동기화가 필요합니다. 이것이 멀티스레딩의 비용입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Synchronization_(computer_science)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"
+      ]
+    },
+    {
+      "id": "os-multithreading-tradeoff-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "multithreading",
+        "benefit"
+      ],
+      "content": {
+        "prompt": "긴 계산을 별도 스레드에 맡기면 좋아지는 것은?",
+        "options": [
+          "메모리 격리",
+          "응답성",
+          "디버깅 용이성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "긴 계산을 다른 스레드가 맡는 동안 기존 스레드가 사용자 입력을 계속 처리하므로 응답성이 좋아집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Thread_(computing)"
+      ]
+    },
+    {
+      "id": "os-multithreading-tradeoff-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "multithreading",
+        "parallelism"
+      ],
+      "content": {
+        "prompt": "코어 4개에서 스레드 4개를 실행하면?",
+        "options": [
+          "동시에 실행 가능",
+          "하나씩 번갈아 실행"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "코어가 4개면 스레드 4개를 각 코어에서 동시에 실행할 수 있습니다. 이것이 멀티스레딩의 병렬 처리 이점입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Parallel_computing"
+      ]
+    },
+    {
+      "id": "os-multithreading-tradeoff-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "multithreading",
+        "synchronization"
+      ],
+      "content": {
+        "prompt": "두 스레드가 같은 변수를 동기화 없이 동시에 고치면?",
+        "options": [
+          "항상 정확함",
+          "결과가 틀어질 수 있음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "공유 데이터를 동기화 없이 동시에 고치면 한쪽의 갱신이 사라지는 등 결과가 틀어질 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Synchronization_(computer_science)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf"
+      ]
+    },
+    {
+      "id": "os-multithreading-tradeoff-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "multithreading",
+        "parallelism"
+      ],
+      "content": {
+        "prompt": "멀티스레딩은 코어가 여러 개일 때 병렬 처리를 할 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "코어가 여러 개면 스레드들을 서로 다른 코어에서 동시에 실행할 수 있어 병렬 처리가 가능합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Parallel_computing",
+        "https://en.wikipedia.org/wiki/Thread_(computing)"
+      ]
+    }
+  ]
+}

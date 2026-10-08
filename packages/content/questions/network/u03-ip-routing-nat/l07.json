@@ -1,0 +1,245 @@
+{
+  "track": "network",
+  "unit": "u03-ip-routing-nat",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "network-nat-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nat",
+        "private-ip"
+      ],
+      "content": {
+        "prompt": "나가는 패킷의 사설 출발지 IP를 공인 IP로 바꾸는 기술은?",
+        "options": [
+          "DHCP",
+          "NAT",
+          "ARP"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "NAT는 내부망 경계 장비에서 사설 출발지 IP를 공인 IP로 바꿔 내부 장치가 인터넷과 통신하게 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc3022",
+        "https://en.wikipedia.org/wiki/Network_address_translation"
+      ]
+    },
+    {
+      "id": "network-nat-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nat",
+        "pat"
+      ],
+      "content": {
+        "prompt": "포트 번호로 안쪽 장치를 구분해 공인 IP 하나를 공유하는 방식은?",
+        "options": [
+          "DNS",
+          "TTL",
+          "PAT"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "PAT는 IP와 함께 포트 번호도 바꿔 기록하므로 여러 내부 장치가 공인 IP 하나를 함께 쓸 수 있습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc3022",
+        "https://en.wikipedia.org/wiki/Network_address_translation"
+      ]
+    },
+    {
+      "id": "network-nat-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nat",
+        "private-ip"
+      ],
+      "content": {
+        "prompt": "NAT가 나가는 패킷에서 공인 IP로 바꾸는 주소는?",
+        "options": [
+          "목적지 IP",
+          "출발지 IP"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "나가는 패킷은 출발지 IP가 사설 주소이므로 NAT가 이를 공인 IP로 바꿉니다. 목적지 IP는 그대로입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc3022",
+        "https://en.wikipedia.org/wiki/Network_address_translation"
+      ]
+    },
+    {
+      "id": "network-nat-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "nat",
+        "pat"
+      ],
+      "content": {
+        "prompt": "PAT에서는 내부 장치마다 공인 IP가 하나씩 필요하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "PAT는 포트 번호로 내부 장치를 구분하므로 여러 장치가 공인 IP 하나를 함께 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc3022",
+        "https://en.wikipedia.org/wiki/Network_address_translation"
+      ]
+    },
+    {
+      "id": "network-nat-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "nat",
+        "translation-table"
+      ],
+      "content": {
+        "prompt": "응답을 원래 장치로 돌려보내려고 NAT가 남기는 기록은 변환 ___ 이다.",
+        "hint": "사설 주소·포트와 공인 주소·포트의 대응을 항목별로 적어 둡니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "테이블",
+          "table",
+          "표"
+        ]
+      },
+      "explanation": "NAT는 변환 테이블에 사설·공인 주소와 포트의 대응을 기록해 두고, 응답이 오면 이를 보고 원래 장치로 보냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc3022",
+        "https://en.wikipedia.org/wiki/Network_address_translation"
+      ]
+    },
+    {
+      "id": "network-nat-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "nat",
+        "pat"
+      ],
+      "content": {
+        "prompt": "PAT는 IP와 함께 ___ 번호를 바꿔 안쪽 장치를 구분한다.",
+        "hint": "전송 계층에서 프로세스를 구분하는 16비트 번호입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "포트",
+          "port"
+        ]
+      },
+      "explanation": "PAT는 출발지 포트 번호를 장치마다 다르게 바꿔 공인 IP 하나로 여러 장치를 구분합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc3022",
+        "https://en.wikipedia.org/wiki/Network_address_translation"
+      ]
+    },
+    {
+      "id": "network-nat-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nat",
+        "private-ip"
+      ],
+      "content": {
+        "prompt": "192.168.0.5가 보낸 패킷이 NAT를 지나면 출발지 IP는?",
+        "options": [
+          "NAT 장비 공인 IP",
+          "192.168.0.5 그대로",
+          "목적지 IP"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "NAT는 사설 출발지 IP 192.168.0.5를 NAT 장비의 공인 IP로 바꿔 인터넷으로 내보냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc3022",
+        "https://en.wikipedia.org/wiki/Network_address_translation"
+      ]
+    },
+    {
+      "id": "network-nat-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nat",
+        "pat"
+      ],
+      "content": {
+        "prompt": "PAT로 두 장치가 공인 IP 하나를 쓸 때 서로 다르게 배정되는 값은?",
+        "options": [
+          "공인 IP",
+          "MAC 주소",
+          "변환된 포트 번호"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "PAT는 장치마다 다른 포트 번호를 배정해, 공인 IP가 같아도 변환 테이블에서 두 장치를 구분합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc3022",
+        "https://en.wikipedia.org/wiki/Network_address_translation"
+      ]
+    },
+    {
+      "id": "network-nat-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nat",
+        "translation-table"
+      ],
+      "content": {
+        "prompt": "공인 IP의 포트 40001로 응답이 오면 NAT가 찾아보는 것은?",
+        "options": [
+          "변환 테이블",
+          "라우팅 테이블",
+          "기본 경로"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "NAT는 변환 테이블에서 포트 40001에 대응하는 사설 IP·포트를 찾아 응답을 원래 장치로 돌려보냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc3022",
+        "https://en.wikipedia.org/wiki/Network_address_translation"
+      ]
+    },
+    {
+      "id": "network-nat-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "nat",
+        "private-ip"
+      ],
+      "content": {
+        "prompt": "NAT는 사설 IP를 공인 IP로 바꿔 내부 장치가 인터넷을 쓰게 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "사설 IP는 인터넷에서 직접 쓸 수 없으므로, NAT가 나가는 패킷의 출발지를 공인 IP로 바꿔 줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc3022",
+        "https://en.wikipedia.org/wiki/Network_address_translation"
+      ]
+    }
+  ]
+}

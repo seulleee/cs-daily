@@ -4,245 +4,254 @@
   "lesson": "l02",
   "questions": [
     {
-      "id": "os-mutex-semaphore-condvar-001",
+      "id": "os-critical-section-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "mutex-semaphore-condvar",
-        "mutex"
+        "critical-section",
+        "definition"
       ],
       "content": {
-        "prompt": "한 번에 한 스레드만 임계 구역에 들이는 잠금 도구는?",
+        "prompt": "공유 데이터를 다루는 코드 구간은?",
         "options": [
-          "세마포어",
-          "뮤텍스",
-          "조건 변수"
+          "준비 큐",
+          "임계 구역",
+          "힙 영역"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "뮤텍스(mutex)는 lock을 획득한 스레드 하나만 임계 구역에 들어가게 하는 잠금 도구입니다.",
+      "explanation": "임계 구역(critical section)은 공유 데이터를 읽고 쓰는 코드 구간입니다.",
       "refs": [
+        "https://en.wikipedia.org/wiki/Critical_section",
         "https://en.wikipedia.org/wiki/Mutual_exclusion",
-        "https://en.wikipedia.org/wiki/Lock_(computer_science)"
+        "https://en.wikipedia.org/wiki/Peterson%27s_algorithm"
       ]
     },
     {
-      "id": "os-mutex-semaphore-condvar-002",
+      "id": "os-critical-section-002",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "mutex-semaphore-condvar",
-        "semaphore"
+        "mutual-exclusion",
+        "definition"
       ],
       "content": {
-        "prompt": "정수 값으로 동시 접근 스레드 수를 제한하는 도구는?",
+        "prompt": "임계 구역에 한 번에 하나만 들어가게 하는 조건은?",
         "options": [
-          "조건 변수",
-          "뮤텍스",
-          "세마포어"
+          "한정 대기",
+          "진행",
+          "상호 배제"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "세마포어는 정수 값을 wait로 줄이고 signal로 늘려, 자원을 동시에 쓰는 스레드 수를 그 값만큼으로 제한합니다.",
+      "explanation": "상호 배제(mutual exclusion)는 한 스레드가 임계 구역에 있으면 다른 스레드는 들어갈 수 없게 하는 조건입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+        "https://en.wikipedia.org/wiki/Critical_section",
+        "https://en.wikipedia.org/wiki/Mutual_exclusion",
+        "https://en.wikipedia.org/wiki/Peterson%27s_algorithm"
       ]
     },
     {
-      "id": "os-mutex-semaphore-condvar-003",
+      "id": "os-critical-section-003",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "mutex-semaphore-condvar",
-        "condition-variable"
+        "progress",
+        "bounded-waiting"
       ],
       "content": {
-        "prompt": "조건이 참이 될 때까지 스레드를 대기시키는 도구는?",
+        "prompt": "임계 구역이 비면 들어가려는 쪽이 들어갈 수 있어야 한다. 이 조건은?",
         "options": [
-          "조건 변수",
-          "뮤텍스"
+          "진행",
+          "한정 대기"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "조건 변수는 원하는 조건이 될 때까지 스레드를 wait로 대기시키고, 다른 스레드가 signal로 깨웁니다.",
+      "explanation": "진행(progress)은 임계 구역에 아무도 없을 때 들어가려는 스레드가 들어갈 수 있어야 한다는 조건입니다.",
       "refs": [
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf",
-        "https://en.wikipedia.org/wiki/Monitor_(synchronization)"
+        "https://en.wikipedia.org/wiki/Critical_section",
+        "https://en.wikipedia.org/wiki/Mutual_exclusion",
+        "https://en.wikipedia.org/wiki/Peterson%27s_algorithm"
       ]
     },
     {
-      "id": "os-mutex-semaphore-condvar-004",
+      "id": "os-critical-section-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
-        "mutex-semaphore-condvar",
-        "mutex"
+        "bounded-waiting",
+        "mutual-exclusion"
       ],
       "content": {
-        "prompt": "뮤텍스는 여러 스레드가 동시에 임계 구역에 들어가게 한다."
+        "prompt": "한정 대기는 임계 구역에 하나만 들어가게 하는 조건이다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "뮤텍스는 한 번에 한 스레드만 임계 구역에 들어가게 합니다. 동시 접근 수를 여러 개로 제한하는 것은 세마포어입니다.",
+      "explanation": "임계 구역에 하나만 들어가게 하는 조건은 상호 배제입니다. 한정 대기는 무한정 기다리지 않게 하는 조건입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Mutual_exclusion"
+        "https://en.wikipedia.org/wiki/Critical_section",
+        "https://en.wikipedia.org/wiki/Mutual_exclusion",
+        "https://en.wikipedia.org/wiki/Peterson%27s_algorithm"
       ]
     },
     {
-      "id": "os-mutex-semaphore-condvar-005",
-      "type": "ox",
+      "id": "os-critical-section-005",
+      "type": "fill",
       "difficulty": 1,
       "tags": [
-        "mutex-semaphore-condvar",
-        "semaphore",
-        "mutex"
+        "critical-section",
+        "term"
       ],
       "content": {
-        "prompt": "초기값이 1인 세마포어는 뮤텍스처럼 쓸 수 있다."
-      },
-      "answer_key": {
-        "value": true
-      },
-      "explanation": "값이 1이면 한 스레드가 wait로 0을 만든 뒤 나머지는 대기하므로, 한 번에 한 스레드만 들어가는 상호 배제가 됩니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
-      ]
-    },
-    {
-      "id": "os-mutex-semaphore-condvar-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "mutex-semaphore-condvar",
-        "mutex"
-      ],
-      "content": {
-        "prompt": "Mutual Exclusion에서 이름을 딴 잠금 도구는 ___ 이다.",
-        "hint": "lock과 unlock으로 사용한다"
+        "prompt": "공유 데이터를 다루는 코드 구간을 ___ 구역이라 한다.",
+        "hint": "경계·한계를 뜻하는 두 글자 한자어"
       },
       "answer_key": {
         "accepted": [
-          "뮤텍스",
-          "mutex",
-          "뮤텍스 락",
-          "뮤텍스락",
-          "mutex lock"
+          "임계",
+          "critical",
+          "임계 구역",
+          "critical section"
         ]
       },
-      "explanation": "뮤텍스(mutex)는 Mutual Exclusion(상호 배제)의 줄임말로, 한 번에 한 스레드만 임계 구역에 들이는 잠금 도구입니다.",
+      "explanation": "공유 데이터를 다루는 코드 구간을 임계 구역(critical section)이라 합니다.",
       "refs": [
+        "https://en.wikipedia.org/wiki/Critical_section",
         "https://en.wikipedia.org/wiki/Mutual_exclusion",
-        "https://en.wikipedia.org/wiki/Lock_(computer_science)"
+        "https://en.wikipedia.org/wiki/Peterson%27s_algorithm"
       ]
     },
     {
-      "id": "os-mutex-semaphore-condvar-007",
+      "id": "os-critical-section-006",
       "type": "fill",
       "difficulty": 2,
       "tags": [
-        "mutex-semaphore-condvar",
-        "condition-variable"
+        "mutual-exclusion",
+        "term"
       ],
       "content": {
-        "prompt": "조건 변수에서 대기 중인 스레드를 깨우는 연산은 ___ 이다.",
-        "hint": "wait와 짝을 이루는 연산"
+        "prompt": "임계 구역에 한 번에 하나만 들어가는 것을 상호 ___ 라 한다.",
+        "hint": "밀어내어 제외한다는 뜻의 두 글자"
       },
       "answer_key": {
         "accepted": [
-          "signal",
-          "시그널",
-          "notify",
-          "노티파이",
-          "broadcast",
-          "브로드캐스트"
+          "배제",
+          "exclusion",
+          "상호 배제",
+          "mutual exclusion"
         ]
       },
-      "explanation": "조건 변수에서 wait로 대기한 스레드는 다른 스레드가 signal을 보내면 깨어납니다. 모두 깨울 때는 broadcast를 씁니다.",
+      "explanation": "임계 구역에 한 번에 하나만 들어가게 하는 것을 상호 배제(mutual exclusion)라 합니다.",
       "refs": [
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"
+        "https://en.wikipedia.org/wiki/Critical_section",
+        "https://en.wikipedia.org/wiki/Mutual_exclusion",
+        "https://en.wikipedia.org/wiki/Peterson%27s_algorithm"
       ]
     },
     {
-      "id": "os-mutex-semaphore-condvar-008",
+      "id": "os-critical-section-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "mutex-semaphore-condvar",
-        "semaphore",
-        "calculation"
+        "mutual-exclusion",
+        "apply"
       ],
       "content": {
-        "prompt": "초기값 2인 세마포어에 스레드 3개가 wait를 하면 대기하는 수는?",
+        "prompt": "T1이 임계 구역 안에 있을 때 T2가 들어가려 하면?",
         "options": [
-          "0개",
-          "1개",
-          "2개"
+          "바로 들어간다",
+          "T1을 내보낸다",
+          "T1이 나올 때까지 대기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "상호 배제 때문에 T2는 T1이 임계 구역을 나올 때까지 기다립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Critical_section",
+        "https://en.wikipedia.org/wiki/Mutual_exclusion",
+        "https://en.wikipedia.org/wiki/Peterson%27s_algorithm"
+      ]
+    },
+    {
+      "id": "os-critical-section-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "progress",
+        "apply"
+      ],
+      "content": {
+        "prompt": "임계 구역이 비었는데 아무도 못 들어간다. 어긴 조건은?",
+        "options": [
+          "상호 배제",
+          "진행",
+          "한정 대기"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "두 스레드가 통과하며 값이 0이 되고, 세 번째 스레드는 signal이 올 때까지 대기합니다.",
+      "explanation": "아무도 없을 때 들어가려는 쪽이 들어갈 수 있어야 한다는 진행 조건을 어긴 것입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf"
+        "https://en.wikipedia.org/wiki/Critical_section",
+        "https://en.wikipedia.org/wiki/Mutual_exclusion",
+        "https://en.wikipedia.org/wiki/Peterson%27s_algorithm"
       ]
     },
     {
-      "id": "os-mutex-semaphore-condvar-009",
+      "id": "os-critical-section-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "mutex-semaphore-condvar",
-        "condition-variable"
+        "bounded-waiting",
+        "apply"
       ],
       "content": {
-        "prompt": "큐에 데이터가 생길 때까지 소비자 스레드를 기다리게 하려면?",
+        "prompt": "T2만 계속 순서를 뺏겨 영영 못 들어간다. 어긴 조건은?",
         "options": [
-          "뮤텍스",
-          "조건 변수"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "조건 변수의 wait로 대기하다가 생산자가 signal을 보내면 깨어납니다. 뮤텍스는 상호 배제만 제공하고 조건을 기다리는 기능은 없습니다.",
-      "refs": [
-        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf"
-      ]
-    },
-    {
-      "id": "os-mutex-semaphore-condvar-010",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "mutex-semaphore-condvar",
-        "mutex",
-        "ownership"
-      ],
-      "content": {
-        "prompt": "뮤텍스를 unlock할 수 있는 스레드는?",
-        "options": [
-          "lock한 스레드",
-          "아무 스레드나"
+          "한정 대기",
+          "상호 배제",
+          "진행"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "뮤텍스는 소유권이 있어 lock을 획득한 스레드만 unlock합니다. 다른 스레드가 signal할 수 있는 것은 세마포어입니다.",
+      "explanation": "한정 대기(bounded waiting)는 들어가려는 스레드가 무한정 기다리지 않아야 한다는 조건입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Semaphore_(programming)",
-        "https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html"
+        "https://en.wikipedia.org/wiki/Critical_section",
+        "https://en.wikipedia.org/wiki/Mutual_exclusion",
+        "https://en.wikipedia.org/wiki/Peterson%27s_algorithm"
+      ]
+    },
+    {
+      "id": "os-critical-section-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "critical-section",
+        "definition"
+      ],
+      "content": {
+        "prompt": "임계 구역은 공유 데이터를 다루는 코드 구간이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 공유 데이터를 읽고 쓰는 코드 구간이 임계 구역이며, 한 번에 하나만 들어가야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Critical_section",
+        "https://en.wikipedia.org/wiki/Mutual_exclusion",
+        "https://en.wikipedia.org/wiki/Peterson%27s_algorithm"
       ]
     }
   ]

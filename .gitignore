@@ -11,3 +11,4 @@ coverage/
 apps/api/prisma/generated/
 backups/
 *.tsbuildinfo
+.claude/worktrees/

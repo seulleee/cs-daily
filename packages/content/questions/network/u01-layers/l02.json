@@ -4,244 +4,237 @@
   "lesson": "l02",
   "questions": [
     {
-      "id": "network-mac-ip-port-001",
+      "id": "network-osi-7-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "mac-ip-port",
-        "port"
+        "osi-model",
+        "network-layer"
       ],
       "content": {
-        "prompt": "한 호스트 안에서 통신하는 프로세스를 구분하는 번호는?",
+        "prompt": "네트워크 사이 경로 선택을 맡는 OSI 계층은?",
         "options": [
-          "IP 주소",
-          "MAC 주소",
-          "포트 번호"
+          "전송 계층",
+          "데이터링크 계층",
+          "네트워크 계층"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "포트 번호는 같은 호스트의 여러 프로세스를 구분하는 전송 계층의 16비트 번호입니다. IP 주소는 호스트를 식별합니다.",
+      "explanation": "네트워크 계층(3층)은 IP 주소를 바탕으로 네트워크 사이의 경로를 선택합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Port_(computer_networking)"
+        "https://en.wikipedia.org/wiki/OSI_model"
       ]
     },
     {
-      "id": "network-mac-ip-port-002",
+      "id": "network-osi-7-002",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "mac-ip-port",
-        "mac"
+        "osi-model",
+        "transport-layer"
       ],
       "content": {
-        "prompt": "네트워크 인터페이스에 부여된 48비트 물리 주소는?",
+        "prompt": "프로세스 간 전달과 신뢰성을 맡는 OSI 계층은?",
         "options": [
-          "MAC 주소",
-          "포트 번호",
-          "IP 주소"
+          "전송 계층",
+          "세션 계층",
+          "물리 계층"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "MAC 주소는 네트워크 인터페이스마다 부여된 48비트 주소로, 같은 네트워크 안에서 프레임을 전달할 때 씁니다.",
+      "explanation": "전송 계층(4층)은 TCP·UDP로 프로세스 사이에 데이터를 전달하고, TCP는 신뢰성도 보장합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/MAC_address"
+        "https://en.wikipedia.org/wiki/OSI_model"
       ]
     },
     {
-      "id": "network-mac-ip-port-003",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "mac-ip-port",
-        "ip-address"
-      ],
-      "content": {
-        "prompt": "다른 네트워크에 있는 목적지 호스트를 식별하는 주소는?",
-        "options": [
-          "IP 주소",
-          "MAC 주소"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "IP 주소는 네트워크 계층의 논리 주소로, 라우터가 이를 보고 다른 네트워크까지 패킷을 전달합니다. MAC 주소는 같은 네트워크 안에서만 쓰입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/IP_address"
-      ]
-    },
-    {
-      "id": "network-mac-ip-port-004",
+      "id": "network-osi-7-003",
       "type": "ox",
       "difficulty": 1,
       "tags": [
-        "mac-ip-port",
-        "mac"
+        "osi-model",
+        "data-link-layer"
       ],
       "content": {
-        "prompt": "MAC 주소는 네트워크 계층에서 쓰이는 주소이다."
-      },
-      "answer_key": {
-        "value": false
-      },
-      "explanation": "MAC 주소는 데이터링크 계층의 주소입니다. 네트워크 계층에서 쓰는 주소는 IP 주소입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/MAC_address",
-        "https://en.wikipedia.org/wiki/Data_link_layer"
-      ]
-    },
-    {
-      "id": "network-mac-ip-port-005",
-      "type": "ox",
-      "difficulty": 1,
-      "tags": [
-        "mac-ip-port",
-        "port"
-      ],
-      "content": {
-        "prompt": "포트 번호는 전송 계층에서 프로세스를 구분하는 데 쓰인다."
+        "prompt": "같은 네트워크 안에서 MAC 주소로 전달하는 것은 데이터링크 계층이다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "전송 계층은 TCP·UDP 헤더에 담긴 포트 번호를 보고 데이터를 받을 프로세스를 구분합니다.",
+      "explanation": "데이터링크 계층(2층)은 MAC 주소로 같은 네트워크 안의 장치에 데이터를 전달합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Port_(computer_networking)"
-      ]
-    },
-    {
-      "id": "network-mac-ip-port-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "mac-ip-port",
-        "ip-address"
-      ],
-      "content": {
-        "prompt": "IP 주소를 사용하는 계층은 ___ 계층이다.",
-        "hint": "라우터가 패킷의 경로를 결정하는 계층입니다."
-      },
-      "answer_key": {
-        "accepted": [
-          "네트워크",
-          "network",
-          "네트웍",
-          "인터넷",
-          "internet",
-          "3"
-        ]
-      },
-      "explanation": "IP 주소는 네트워크 계층(TCP/IP 모델의 인터넷 계층)의 주소이며, 라우터는 이 주소를 보고 경로를 정합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/IP_address"
-      ]
-    },
-    {
-      "id": "network-mac-ip-port-007",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "mac-ip-port",
-        "mac"
-      ],
-      "content": {
-        "prompt": "같은 LAN 안에서 프레임을 전달할 때 쓰는 주소는 ___ 주소이다.",
-        "hint": "48비트이며 보통 16진수 6묶음으로 표기합니다."
-      },
-      "answer_key": {
-        "accepted": [
-          "MAC",
-          "mac",
-          "맥",
-          "물리",
-          "하드웨어",
-          "이더넷",
-          "ethernet",
-          "hardware",
-          "physical"
-        ]
-      },
-      "explanation": "같은 LAN 안에서는 데이터링크 계층이 MAC 주소로 프레임의 출발지와 목적지를 지정합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/MAC_address",
+        "https://en.wikipedia.org/wiki/OSI_model",
         "https://en.wikipedia.org/wiki/Data_link_layer"
       ]
     },
     {
-      "id": "network-mac-ip-port-008",
+      "id": "network-osi-7-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "osi-model",
+        "network-layer"
+      ],
+      "content": {
+        "prompt": "IP는 OSI 전송 계층의 프로토콜이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "IP는 네트워크 계층(3층) 프로토콜입니다. 전송 계층(4층)의 대표 프로토콜은 TCP와 UDP입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/OSI_model"
+      ]
+    },
+    {
+      "id": "network-osi-7-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "osi-model",
+        "physical-layer"
+      ],
+      "content": {
+        "prompt": "OSI에서 비트 전송을 맡는 가장 아래 계층은 ___ 계층이다.",
+        "hint": "전기·광 신호를 다루는 1층입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "물리",
+          "physical",
+          "피지컬",
+          "물리적"
+        ]
+      },
+      "explanation": "물리 계층(1층)은 0과 1의 비트를 전기·광 신호로 바꿔 전송합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/OSI_model"
+      ]
+    },
+    {
+      "id": "network-osi-7-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "osi-model",
+        "application-layer"
+      ],
+      "content": {
+        "prompt": "HTTP가 속한 OSI 최상위 계층은 ___ 계층이다.",
+        "hint": "사용자에게 서비스를 제공하는 7층입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "응용",
+          "application",
+          "애플리케이션",
+          "어플리케이션",
+          "응용 프로그램"
+        ]
+      },
+      "explanation": "응용 계층(7층)은 HTTP 같은 사용자 서비스를 제공하는 최상위 계층입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/OSI_model"
+      ]
+    },
+    {
+      "id": "network-osi-7-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "mac-ip-port",
-        "port"
+        "osi-model",
+        "network-layer"
       ],
       "content": {
-        "prompt": "같은 PC의 브라우저와 메신저로 가는 데이터를 구분하는 값은?",
+        "prompt": "라우터가 IP 주소로 경로를 고르는 일은 OSI 몇 층인가?",
         "options": [
-          "IP 주소",
-          "포트 번호",
-          "MAC 주소"
+          "2층",
+          "3층",
+          "4층"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "두 프로그램은 같은 PC에 있어 IP 주소와 MAC 주소가 같으므로, 포트 번호로 구분됩니다.",
+      "explanation": "경로 선택은 네트워크 계층의 일이고, 네트워크 계층은 아래에서 세 번째인 3층입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Port_(computer_networking)"
+        "https://en.wikipedia.org/wiki/OSI_model"
       ]
     },
     {
-      "id": "network-mac-ip-port-009",
+      "id": "network-osi-7-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "mac-ip-port",
-        "ip-address",
-        "mac"
+        "osi-model",
+        "transport-layer"
       ],
       "content": {
-        "prompt": "패킷이 라우터를 지날 때 바뀌지 않는 목적지 주소는?",
+        "prompt": "TCP가 잃은 데이터를 다시 보내 신뢰성을 챙기는 계층은?",
         "options": [
-          "목적지 MAC 주소",
-          "목적지 IP 주소"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "라우터는 홉마다 프레임을 새로 만들어 MAC 주소를 바꾸지만, 목적지 IP 주소는 그대로 유지합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/IP_address",
-        "https://en.wikipedia.org/wiki/MAC_address"
-      ]
-    },
-    {
-      "id": "network-mac-ip-port-010",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "mac-ip-port",
-        "port"
-      ],
-      "content": {
-        "prompt": "포트 번호를 사용하는 계층은?",
-        "options": [
+          "전송 계층",
           "네트워크 계층",
-          "데이터링크 계층",
-          "전송 계층"
+          "표현 계층"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "프로세스 간 전달과 신뢰성은 전송 계층의 역할입니다. TCP는 재전송으로 신뢰성을 보장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/OSI_model"
+      ]
+    },
+    {
+      "id": "network-osi-7-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "osi-model",
+        "presentation-layer"
+      ],
+      "content": {
+        "prompt": "보내기 전 데이터를 압축·암호화하는 형식 변환 계층은?",
+        "options": [
+          "세션 계층",
+          "응용 계층",
+          "표현 계층"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "포트 번호는 TCP·UDP 헤더에 담기는 전송 계층의 식별자입니다. 네트워크 계층은 IP 주소를 씁니다.",
+      "explanation": "표현 계층(6층)은 인코딩·압축·암호화 같은 데이터 형식 변환을 맡습니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Port_(computer_networking)"
+        "https://en.wikipedia.org/wiki/OSI_model"
+      ]
+    },
+    {
+      "id": "network-osi-7-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "osi-model",
+        "network-layer"
+      ],
+      "content": {
+        "prompt": "물리 → 데이터링크 → ? → 전송. ?에 들어갈 계층은?",
+        "options": [
+          "세션",
+          "네트워크",
+          "표현"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "OSI는 아래부터 물리·데이터링크·네트워크·전송·세션·표현·응용 순입니다. 3층은 네트워크 계층입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/OSI_model"
       ]
     }
   ]

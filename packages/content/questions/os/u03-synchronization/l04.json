@@ -1,0 +1,257 @@
+{
+  "track": "os",
+  "unit": "u03-synchronization",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "os-mutex-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mutex",
+        "definition"
+      ],
+      "content": {
+        "prompt": "잠금 하나로 임계 구역을 보호하는 도구는?",
+        "options": [
+          "PCB",
+          "뮤텍스",
+          "준비 큐"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "뮤텍스(mutex)는 잠금 하나로 임계 구역에 한 스레드만 들어가게 보호하는 도구입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Lock_(computer_science)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf",
+        "https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html"
+      ]
+    },
+    {
+      "id": "os-mutex-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mutex",
+        "lock"
+      ],
+      "content": {
+        "prompt": "뮤텍스를 잠그는 연산은?",
+        "options": [
+          "unlock",
+          "signal",
+          "lock"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "lock은 뮤텍스를 잠그는 연산이며, 이미 잠겨 있으면 풀릴 때까지 기다립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Lock_(computer_science)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf",
+        "https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html"
+      ]
+    },
+    {
+      "id": "os-mutex-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lock",
+        "unlock"
+      ],
+      "content": {
+        "prompt": "임계 구역을 나올 때 호출하는 연산은?",
+        "options": [
+          "unlock",
+          "lock"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "임계 구역에 들어갈 때 lock, 나올 때 unlock을 호출해 다른 스레드가 들어갈 수 있게 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Lock_(computer_science)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf",
+        "https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html"
+      ]
+    },
+    {
+      "id": "os-mutex-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "mutex",
+        "ownership"
+      ],
+      "content": {
+        "prompt": "뮤텍스는 잠그지 않은 스레드도 풀 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "뮤텍스에는 소유권이 있어 lock을 건 스레드만 unlock할 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Lock_(computer_science)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf",
+        "https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html"
+      ]
+    },
+    {
+      "id": "os-mutex-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "mutex",
+        "term"
+      ],
+      "content": {
+        "prompt": "잠금 하나로 임계 구역을 보호하는 도구는 ___ 이다.",
+        "hint": "mutual exclusion을 줄인 말"
+      },
+      "answer_key": {
+        "accepted": [
+          "뮤텍스",
+          "mutex",
+          "뮤텍스 락",
+          "mutex lock"
+        ]
+      },
+      "explanation": "잠금(lock) 하나로 임계 구역을 보호하는 도구를 뮤텍스(mutex)라 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Lock_(computer_science)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf",
+        "https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html"
+      ]
+    },
+    {
+      "id": "os-mutex-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ownership",
+        "term"
+      ],
+      "content": {
+        "prompt": "lock을 건 스레드만 unlock할 수 있는 성질을 ___ 이라 한다.",
+        "hint": "누가 이 잠금을 가졌는지 따지는 성질"
+      },
+      "answer_key": {
+        "accepted": [
+          "소유권",
+          "ownership",
+          "소유"
+        ]
+      },
+      "explanation": "뮤텍스는 잠근 스레드만 풀 수 있는데, 이 성질을 소유권(ownership)이라 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Lock_(computer_science)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf",
+        "https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html"
+      ]
+    },
+    {
+      "id": "os-mutex-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lock",
+        "apply"
+      ],
+      "content": {
+        "prompt": "T1이 뮤텍스를 잠근 상태에서 T2가 lock을 호출하면?",
+        "options": [
+          "바로 들어간다",
+          "풀릴 때까지 대기",
+          "오류로 종료"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이미 잠겨 있으므로 T2는 T1이 unlock할 때까지 기다립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Lock_(computer_science)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf",
+        "https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html"
+      ]
+    },
+    {
+      "id": "os-mutex-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ownership",
+        "apply"
+      ],
+      "content": {
+        "prompt": "T1이 lock 후 unlock을 빼먹었다. T2가 lock하면?",
+        "options": [
+          "바로 들어간다",
+          "대신 풀고 들어감",
+          "계속 기다린다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "뮤텍스가 풀리지 않으므로 T2는 계속 기다립니다. 소유권 때문에 T2가 대신 풀 수도 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Lock_(computer_science)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf",
+        "https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html"
+      ]
+    },
+    {
+      "id": "os-mutex-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "mutex",
+        "apply"
+      ],
+      "content": {
+        "prompt": "세 스레드가 같은 뮤텍스에 lock을 부른다. 동시에 들어가는 수는?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "뮤텍스는 잠금 하나라 한 번에 한 스레드만 들어가고, 나머지 둘은 기다립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Lock_(computer_science)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf",
+        "https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html"
+      ]
+    },
+    {
+      "id": "os-mutex-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "mutex",
+        "definition"
+      ],
+      "content": {
+        "prompt": "뮤텍스는 lock과 unlock으로 임계 구역을 보호한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 들어갈 때 lock으로 잠그고 나올 때 unlock으로 풀어 한 번에 한 스레드만 임계 구역에 있게 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Lock_(computer_science)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf",
+        "https://man7.org/linux/man-pages/man3/pthread_mutex_lock.3p.html"
+      ]
+    }
+  ]
+}

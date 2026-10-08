@@ -1,0 +1,242 @@
+{
+  "track": "network",
+  "unit": "u02-tcp-udp",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "network-four-way-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "four-way-handshake",
+        "fin"
+      ],
+      "content": {
+        "prompt": "더 보낼 데이터가 없다는 TCP 종료 요청은?",
+        "options": [
+          "SYN",
+          "FIN",
+          "ACK"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "FIN은 더 보낼 데이터가 없다는 종료 요청입니다. SYN은 연결 요청, ACK는 확인 응답입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-four-way-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "four-way-handshake",
+        "time-wait"
+      ],
+      "content": {
+        "prompt": "마지막 ACK 유실에 대비해 잠시 기다리는 상태는?",
+        "options": [
+          "LISTEN",
+          "SYN_SENT",
+          "TIME_WAIT"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "마지막 ACK를 보낸 쪽은 TIME_WAIT 상태로 잠시 기다리며 상대의 FIN 재전송에 대비합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-four-way-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "four-way-handshake",
+        "fin"
+      ],
+      "content": {
+        "prompt": "4-way handshake에서 FIN을 보내는 쪽은?",
+        "options": [
+          "양쪽 모두",
+          "클라이언트만",
+          "서버만"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "TCP 연결은 양방향이라 양쪽이 각자 FIN을 보내고 ACK를 받아야 연결이 완전히 끊깁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-four-way-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "four-way-handshake",
+        "fin"
+      ],
+      "content": {
+        "prompt": "4-way handshake에서는 한쪽만 FIN을 보낸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "양쪽이 각각 FIN을 보내고 ACK를 받으므로 FIN 2개, ACK 2개의 4단계가 됩니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-four-way-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "four-way-handshake",
+        "fin"
+      ],
+      "content": {
+        "prompt": "더 보낼 데이터가 없을 때 보내는 종료 요청은 ___ 이다.",
+        "hint": "연결 요청 SYN과 짝을 이루는 종료용 플래그입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "FIN",
+          "fin",
+          "핀",
+          "에프아이엔",
+          "finish"
+        ]
+      },
+      "explanation": "FIN을 보낸 쪽은 더 보낼 데이터가 없다는 뜻이며, 상대는 ACK로 이를 확인합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-four-way-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "time-wait",
+        "ack"
+      ],
+      "content": {
+        "prompt": "TIME_WAIT은 마지막 ___ 의 유실에 대비해 기다리는 상태다.",
+        "hint": "4-way handshake의 네 번째 세그먼트입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "ACK",
+          "ack",
+          "애크",
+          "확인 응답",
+          "acknowledgment",
+          "acknowledgement"
+        ]
+      },
+      "explanation": "마지막 ACK가 유실되면 상대가 FIN을 다시 보내므로, 그때 ACK를 다시 보내려고 TIME_WAIT으로 기다립니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-four-way-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "four-way-handshake",
+        "ack"
+      ],
+      "content": {
+        "prompt": "클라이언트가 FIN을 보냈다. 서버가 먼저 돌려주는 것은?",
+        "options": [
+          "SYN",
+          "SYN+ACK",
+          "ACK"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "서버는 먼저 ACK로 FIN을 확인하고, 자기 데이터를 다 보낸 뒤 자신의 FIN을 보냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-four-way-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "four-way-handshake",
+        "ack"
+      ],
+      "content": {
+        "prompt": "4-way handshake에서 FIN 2개 외에 오가는 ACK는 몇 개인가?",
+        "options": [
+          "2개",
+          "1개",
+          "3개"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "양쪽이 각자 받은 FIN에 ACK를 하나씩 보내므로 ACK는 2개, 합쳐서 4단계입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-four-way-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "time-wait",
+        "fin"
+      ],
+      "content": {
+        "prompt": "TIME_WAIT 중 상대의 FIN이 다시 도착했다. 하는 일은?",
+        "options": [
+          "무시한다",
+          "ACK 다시 전송",
+          "SYN 전송"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "FIN이 다시 온 것은 마지막 ACK가 유실됐다는 뜻이므로, TIME_WAIT 상태의 쪽이 ACK를 다시 보냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    },
+    {
+      "id": "network-four-way-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "four-way-handshake",
+        "fin"
+      ],
+      "content": {
+        "prompt": "FIN을 보낸 쪽은 더 보낼 데이터가 없다는 뜻이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "FIN은 내 쪽 송신이 끝났다는 종료 요청입니다. 양쪽이 FIN을 주고받아야 연결이 완전히 닫힙니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9293"
+      ]
+    }
+  ]
+}

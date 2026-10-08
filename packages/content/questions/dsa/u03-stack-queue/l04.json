@@ -1,0 +1,250 @@
+{
+  "track": "dsa",
+  "unit": "u03-stack-queue",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "dsa-call-stack-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "call-stack",
+        "stack-frame"
+      ],
+      "content": {
+        "prompt": "함수 호출 정보를 쌓아 두는 스택은?",
+        "options": [
+          "호출 스택",
+          "큐",
+          "해시 테이블"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "호출 스택은 함수가 호출될 때마다 호출 정보를 쌓고 반환하면 꺼내는 스택입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Call_stack",
+        "https://en.wikipedia.org/wiki/Stack_overflow"
+      ]
+    },
+    {
+      "id": "dsa-call-stack-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "stack-frame",
+        "call-stack"
+      ],
+      "content": {
+        "prompt": "한 번의 호출에 대한 지역 변수·반환 주소 묶음은?",
+        "options": [
+          "스택 프레임",
+          "포인터",
+          "노드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스택 프레임은 호출 한 번의 지역 변수와 반환 주소를 담고 호출 스택에 쌓입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Call_stack",
+        "https://en.wikipedia.org/wiki/Stack_overflow"
+      ]
+    },
+    {
+      "id": "dsa-call-stack-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "call-stack",
+        "function-return"
+      ],
+      "content": {
+        "prompt": "함수가 반환되면 호출 스택에 프레임이 push된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "반환하면 그 함수의 프레임을 pop하고 호출한 곳으로 돌아갑니다. push는 함수를 호출할 때 일어납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Call_stack",
+        "https://en.wikipedia.org/wiki/Stack_overflow"
+      ]
+    },
+    {
+      "id": "dsa-call-stack-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "stack-overflow",
+        "recursion"
+      ],
+      "content": {
+        "prompt": "기저 사례 없는 재귀가 일으키는 오류는?",
+        "options": [
+          "스택 언더플로",
+          "스택 오버플로"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "기저 사례가 없으면 재귀가 끝나지 않아 프레임이 한도를 넘는 스택 오버플로가 납니다. 언더플로는 빈 스택 pop 오류입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Call_stack",
+        "https://en.wikipedia.org/wiki/Stack_overflow"
+      ]
+    },
+    {
+      "id": "dsa-call-stack-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "stack-frame",
+        "call-stack"
+      ],
+      "content": {
+        "prompt": "호출 한 번의 지역 변수·반환 주소를 담는 것은 스택 ___ 이다.",
+        "hint": "호출 스택에 쌓이는 단위입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "프레임",
+          "frame",
+          "스택 프레임",
+          "stack frame"
+        ]
+      },
+      "explanation": "스택 프레임은 호출 한 번에 하나씩 만들어져 호출 스택에 쌓이고, 반환하면 pop됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Call_stack",
+        "https://en.wikipedia.org/wiki/Stack_overflow"
+      ]
+    },
+    {
+      "id": "dsa-call-stack-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "stack-overflow",
+        "recursion"
+      ],
+      "content": {
+        "prompt": "기저 사례 없는 재귀로 프레임이 한도를 넘는 오류는 스택 ___ 이다.",
+        "hint": "프레임이 계속 쌓여 공간이 넘칠 때 발생합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "오버플로",
+          "오버플로우",
+          "overflow",
+          "스택 오버플로",
+          "스택 오버플로우",
+          "stack overflow"
+        ]
+      },
+      "explanation": "재귀가 멈추지 않으면 프레임이 계속 쌓여 호출 스택 한도를 넘고 스택 오버플로가 납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Call_stack",
+        "https://en.wikipedia.org/wiki/Stack_overflow"
+      ]
+    },
+    {
+      "id": "dsa-call-stack-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "call-stack",
+        "stack-frame"
+      ],
+      "content": {
+        "prompt": "main이 f를, f가 g를 호출했다. 호출 스택의 top은?",
+        "options": [
+          "main",
+          "f",
+          "g"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "가장 나중에 호출된 g의 프레임이 호출 스택의 top에 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Call_stack",
+        "https://en.wikipedia.org/wiki/Stack_overflow"
+      ]
+    },
+    {
+      "id": "dsa-call-stack-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "function-return",
+        "call-stack"
+      ],
+      "content": {
+        "prompt": "main → f → g 호출 중 g가 반환되면 돌아가는 곳은?",
+        "options": [
+          "main",
+          "f",
+          "프로그램 종료"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "g의 프레임을 pop하면 g를 호출한 f의 프레임이 top이 되어 f로 돌아갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Call_stack",
+        "https://en.wikipedia.org/wiki/Stack_overflow"
+      ]
+    },
+    {
+      "id": "dsa-call-stack-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "stack-frame",
+        "recursion"
+      ],
+      "content": {
+        "prompt": "f(3) → f(2) → f(1) 재귀 호출 중이다. f의 프레임 수는?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "재귀도 호출마다 프레임이 하나씩 쌓이므로 f(3), f(2), f(1)의 프레임 3개가 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Call_stack",
+        "https://en.wikipedia.org/wiki/Stack_overflow"
+      ]
+    },
+    {
+      "id": "dsa-call-stack-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "call-stack",
+        "stack-frame"
+      ],
+      "content": {
+        "prompt": "호출 스택은 함수를 호출할 때마다 프레임을 쌓는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "함수를 호출할 때마다 스택 프레임이 호출 스택에 push되고, 반환하면 pop됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Call_stack",
+        "https://en.wikipedia.org/wiki/Stack_overflow"
+      ]
+    }
+  ]
+}

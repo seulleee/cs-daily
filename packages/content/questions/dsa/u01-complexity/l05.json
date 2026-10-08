@@ -1,0 +1,235 @@
+{
+  "track": "dsa",
+  "unit": "u01-complexity",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "dsa-single-loop-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "loop",
+        "linear-time"
+      ],
+      "content": {
+        "prompt": "i를 1부터 n까지 1씩 늘리는 반복문의 복잡도는?",
+        "options": [
+          "O(1)",
+          "O(log n)",
+          "O(n)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "n번 도는 반복문이므로 반복 횟수 n에 비례해 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-single-loop-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "loop",
+        "logarithmic-time"
+      ],
+      "content": {
+        "prompt": "i를 매번 절반으로 줄이는 반복문의 복잡도는?",
+        "options": [
+          "O(log n)",
+          "O(n)",
+          "O(n²)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "절반씩 줄이면 약 log n번 만에 1이 되므로 O(log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-single-loop-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "loop",
+        "time-complexity"
+      ],
+      "content": {
+        "prompt": "단일 반복문의 복잡도는 반복 횟수로 결정된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "반복문 안의 연산이 상수 개라면 복잡도는 반복문이 도는 횟수로 정해집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-single-loop-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "loop",
+        "logarithmic-time"
+      ],
+      "content": {
+        "prompt": "i를 매번 절반으로 줄이는 반복문은 O(n)이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "절반씩 줄이면 약 log n번만 돌므로 O(log n)입니다. O(n)은 n번 도는 반복문입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-single-loop-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "loop",
+        "time-complexity"
+      ],
+      "content": {
+        "prompt": "반복문 한 개의 복잡도는 반복문이 도는 ___ 로 결정된다."
+      },
+      "answer_key": {
+        "accepted": [
+          "횟수",
+          "반복 횟수",
+          "반복횟수",
+          "count"
+        ]
+      },
+      "explanation": "단일 반복문의 복잡도는 반복문이 몇 번 도는지, 즉 반복 횟수로 결정됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-single-loop-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "loop",
+        "logarithmic-time"
+      ],
+      "content": {
+        "prompt": "i를 매번 절반으로 줄이는 반복문은 O(___ n)이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "log",
+          "로그"
+        ]
+      },
+      "explanation": "n을 절반씩 줄여 1이 되기까지 약 log₂n번 돌므로 O(log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-single-loop-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "loop",
+        "linear-time"
+      ],
+      "content": {
+        "prompt": "i를 0부터 n까지 2씩 늘리는 반복문의 복잡도는?",
+        "options": [
+          "O(n)",
+          "O(log n)",
+          "O(n²)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "약 n/2번 돌고 상수 1/2은 무시하므로 O(n)입니다. 절반씩 줄이는 반복문과는 다릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-single-loop-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "loop",
+        "logarithmic-time"
+      ],
+      "content": {
+        "prompt": "n=32를 1이 될 때까지 절반으로 나누는 횟수는?",
+        "options": [
+          "16",
+          "5",
+          "32"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "32→16→8→4→2→1로 5번이며 log₂32 = 5입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-single-loop-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "loop",
+        "linear-time"
+      ],
+      "content": {
+        "prompt": "n번 도는 반복문 안의 연산을 3개로 늘리면 복잡도는?",
+        "options": [
+          "O(n³)",
+          "O(n)",
+          "O(n²)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "반복 횟수는 여전히 n번이고 3n에서 상수를 버리므로 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    },
+    {
+      "id": "dsa-single-loop-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "loop",
+        "linear-time"
+      ],
+      "content": {
+        "prompt": "다음 중 O(n)인 반복문은?",
+        "options": [
+          "절반씩 감소",
+          "n번 반복",
+          "10번 반복"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "n번 반복은 O(n)입니다. 절반씩 감소는 O(log n), 고정 10번 반복은 O(1)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Time_complexity"
+      ]
+    }
+  ]
+}
