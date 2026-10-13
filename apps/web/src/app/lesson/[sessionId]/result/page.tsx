@@ -90,9 +90,11 @@ function PlacementResult({ sessionId, r, placement: p, pct }: { sessionId: strin
           {score}
           <p className="card p-4 text-sm">
             {!p.passed
-              ? `${p.unitName}부터 차근차근 배워요.`
+              ? chain.mode === 'pick'
+                ? '트랙 처음부터 차근차근 시작해요.'
+                : `${p.unitName}부터 차근차근 배워요.`
               : step.kind === 'next'
-                ? `${p.unitName}을(를) 건너뛰었어요. 다음 유닛도 테스트해 볼까요? (${step.index + 1}/${chain.units.length})`
+                ? `${p.unitName} 테스트를 통과했어요. 다음 유닛도 볼까요? (${step.index + 1}/${chain.units.length})`
                 : `${p.unitName}까지 건너뛰었어요. 다음 유닛부터 시작해요.`}
           </p>
           {nextTest.isError && <p className="text-sm text-(--color-wrong)">{(nextTest.error as ApiError).message}</p>}

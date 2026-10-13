@@ -5,6 +5,11 @@
  * sessionId는 지금 진행 중인(혹은 방금 끝난) 테스트 세션이다. 결과 화면은 자기 세션과 같을 때만 체인으로 취급한다.
  */
 export type PlacementChain = {
+  /**
+   * chain = "조금 알아요"(앞 유닛부터 연달아 테스트), pick = "잘 알아요"(고른 유닛 하나만 테스트).
+   * pick은 실패해도 아무것도 완료 처리되지 않아 트랙 처음부터 시작하므로 결과 문구가 다르다
+   */
+  mode: 'chain' | 'pick';
   /** 트랙 slug — 끝나면 /learn?track= 으로 돌아간다 */
   track: string;
   /** 테스트할 유닛 순서 */
@@ -20,6 +25,7 @@ function isPlacementChain(v: unknown): v is PlacementChain {
   if (typeof v !== 'object' || v === null) return false;
   const c = v as Partial<PlacementChain>;
   return (
+    (c.mode === 'chain' || c.mode === 'pick') &&
     typeof c.track === 'string' &&
     typeof c.sessionId === 'string' &&
     Array.isArray(c.units) &&

@@ -21,11 +21,11 @@ const LEVELS: readonly (readonly [Level, string, string])[] = [
 ];
 
 /** 첫 유닛 건너뛰기 테스트 세션을 만들고, 이어 풀 유닛 체인을 저장한다. 레슨 플레이어로 갈 세션 id를 돌려준다 */
-async function startPlacement(track: string, units: { id: number; name: string }[]) {
+async function startPlacement(mode: 'chain' | 'pick', track: string, units: { id: number; name: string }[]) {
   const first = units[0];
   if (!first) throw new Error('테스트할 유닛이 없어요');
   const session = await api<SessionResponse>(`/units/${first.id}/skip-test`, { method: 'POST' });
-  writePlacementChain({ track, units, index: 0, sessionId: session.id });
+  writePlacementChain({ mode, track, units, index: 0, sessionId: session.id });
   return session.id;
 }
 
@@ -56,7 +56,7 @@ export default function OnboardingPage() {
       if (path.units.length === 0) return { to: '/learn' };
       if (level === 'expert') return { units: path.units };
       const units = path.units.slice(0, MAX_CHAIN_UNITS).map((u) => ({ id: u.id, name: u.name }));
-      return { to: `/lesson/${await startPlacement(firstTrack.slug, units)}` };
+      return { to: `/lesson/${await startPlacement('chain', firstTrack.slug, units)}` };
     },
     onSuccess: (r) => {
       qc.invalidateQueries({ queryKey: ['me'] });
@@ -66,7 +66,7 @@ export default function OnboardingPage() {
   });
 
   const startPicked = useMutation({
-    mutationFn: (v: { track: string; unit: { id: number; name: string } }) => startPlacement(v.track, [v.unit]),
+    mutationFn: (v: { track: string; unit: { id: number; name: string } }) => startPlacement('pick', v.track, [v.unit]),
     onSuccess: (sessionId) => router.replace(`/lesson/${sessionId}`),
   });
 
@@ -140,8 +140,8 @@ export default function OnboardingPage() {
 
       {step === 3 && pickUnits && (
         <>
-          <h1 className="text-2xl font-black">어느 유닛부터 시작할까요?</h1>
-          <p className="mt-1 text-(--color-ink-2)">고른 유닛의 테스트를 통과하면 그 유닛까지 건너뛰어요.</p>
+          <h1 className="text-2xl font-black">어디까지 알고 있나요?</h1>
+          <p className="mt-1 text-(--color-ink-2)">아는 범위의 마지막 유닛을 고르세요. 테스트를 통과하면 그 유닛까지 건너뛰어요.</p>
           <div className="mt-6 space-y-3">
             {pickUnits.map((u) => (
               <button key={u.id} type="button" data-selected={pickedId === u.id} onClick={() => setPickedId(u.id)} className="option">
