@@ -1,0 +1,237 @@
+{
+  "track": "database",
+  "unit": "u11-normalization",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "database-denormalization-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "조회 성능을 위해 의도적으로 중복을 허용하는 것은?",
+        "options": [
+          "정규화",
+          "반정규화",
+          "이상 현상"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "반정규화는 조회를 빠르게 하려고 중복을 일부러 허용하는 설계입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization"
+      ]
+    },
+    {
+      "id": "database-denormalization-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "denormalization",
+        "anomaly"
+      ],
+      "content": {
+        "prompt": "반정규화의 대가로 다시 생길 수 있는 위험은?",
+        "options": [
+          "조인 증가",
+          "조회 속도 저하",
+          "이상 현상"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "중복이 생기므로 갱신할 곳이 늘고 삽입·갱신·삭제 이상 현상 위험이 돌아옵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization"
+      ]
+    },
+    {
+      "id": "database-denormalization-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "중복을 없애 이상 현상을 줄이는 것은 어느 쪽인가?",
+        "options": [
+          "정규화",
+          "반정규화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "정규화는 중복을 없애 이상 현상을 줄입니다. 반정규화는 반대로 중복을 일부러 허용합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization"
+      ]
+    },
+    {
+      "id": "database-denormalization-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "denormalization",
+        "update"
+      ],
+      "content": {
+        "prompt": "반정규화를 하면 갱신할 때 고칠 곳이 줄어든다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "반정규화는 같은 값을 여러 곳에 두므로 갱신할 때 고칠 곳이 오히려 늘어납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization"
+      ]
+    },
+    {
+      "id": "database-denormalization-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "조회 성능을 위해 의도적으로 중복을 허용하는 것을 ___ (이)라고 한다.",
+        "hint": "정규화의 반대 방향"
+      },
+      "answer_key": {
+        "accepted": [
+          "반정규화",
+          "반 정규화",
+          "역정규화",
+          "비정규화",
+          "denormalization"
+        ]
+      },
+      "explanation": "조회 성능을 얻으려고 중복을 일부러 허용하는 것을 반정규화라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization"
+      ]
+    },
+    {
+      "id": "database-denormalization-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "denormalization",
+        "design"
+      ],
+      "content": {
+        "prompt": "설계 원칙은 먼저 ___ 하고, 측정한 뒤에 반정규화하는 것이다.",
+        "hint": "중복을 없애는 작업"
+      },
+      "answer_key": {
+        "accepted": [
+          "정규화",
+          "normalization",
+          "normalize"
+        ]
+      },
+      "explanation": "먼저 정규화로 중복을 없애고, 성능을 측정해 필요한 곳만 반정규화합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization"
+      ]
+    },
+    {
+      "id": "database-denormalization-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "denormalization",
+        "design"
+      ],
+      "content": {
+        "prompt": "읽기가 압도적으로 많고 조인 비용이 크다. 검토할 설계는?",
+        "options": [
+          "반정규화",
+          "테이블 추가 분리",
+          "외래키 삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "읽기가 압도적으로 많고 조인 비용이 클 때가 반정규화를 검토하는 기준입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization"
+      ]
+    },
+    {
+      "id": "database-denormalization-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "denormalization",
+        "update"
+      ],
+      "content": {
+        "prompt": "주문 테이블에 회원 이름을 복사해 두었다. 회원이 이름을 바꾸면?",
+        "options": [
+          "한 곳만 고침",
+          "두 곳을 고침"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "회원 이름이 회원과 주문 두 곳에 있으므로 둘 다 고쳐야 합니다. 하나만 고치면 갱신 이상이 생깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization"
+      ]
+    },
+    {
+      "id": "database-denormalization-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "denormalization",
+        "design"
+      ],
+      "content": {
+        "prompt": "성능 측정 없이 설계 초기부터 반정규화했다. 원칙에 맞나?",
+        "options": [
+          "맞다",
+          "맞지 않다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "원칙은 먼저 정규화하고 성능을 측정한 뒤 필요한 곳만 반정규화하는 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization"
+      ]
+    },
+    {
+      "id": "database-denormalization-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "반정규화는 조회 성능을 위해 중복을 일부러 허용하는 것이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "반정규화는 조회 성능을 얻으려고 의도적으로 중복을 허용하는 설계입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization"
+      ]
+    }
+  ]
+}

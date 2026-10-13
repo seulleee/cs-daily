@@ -4,236 +4,235 @@
   "lesson": "l09",
   "questions": [
     {
-      "id": "database-normal-forms-3-bcnf-001",
+      "id": "database-erd-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "normalization",
-        "transitive-dependency"
+        "erd",
+        "entity"
       ],
       "content": {
-        "prompt": "A → B, B → C일 때 A → C가 되는 종속은?",
+        "prompt": "ERD에서 테이블로 표현되는 대상은?",
         "options": [
-          "부분 함수 종속",
-          "완전 함수 종속",
-          "이행 함수 종속"
+          "엔터티",
+          "관계선",
+          "까마귀 발"
         ]
       },
       "answer_key": {
-        "index": 2
+        "index": 0
       },
-      "explanation": "A가 B를 거쳐 C를 결정하는 A → C를 이행 함수 종속이라고 합니다.",
+      "explanation": "ERD에서 엔터티는 데이터를 저장할 대상이며 데이터베이스에서 테이블로 만들어집니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Transitive_dependency"
+        "https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model"
       ]
     },
     {
-      "id": "database-normal-forms-3-bcnf-002",
+      "id": "database-erd-002",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "normalization",
-        "bcnf"
+        "erd",
+        "crows-foot"
       ],
       "content": {
-        "prompt": "모든 결정자가 후보키인 정규형은?",
+        "prompt": "관계선 끝에서 N쪽을 나타내는 세 갈래 표기는?",
         "options": [
-          "2NF",
-          "3NF",
-          "BCNF"
-        ]
-      },
-      "answer_key": {
-        "index": 2
-      },
-      "explanation": "BCNF(보이스-코드 정규형)는 모든 결정자가 후보키여야 하는 정규형입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Boyce%E2%80%93Codd_normal_form"
-      ]
-    },
-    {
-      "id": "database-normal-forms-3-bcnf-003",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "normalization",
-        "3nf"
-      ],
-      "content": {
-        "prompt": "2NF이면서 이행 함수 종속이 없는 정규형은?",
-        "options": [
-          "BCNF",
-          "3NF"
+          "화살표",
+          "까마귀 발",
+          "점선"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "3NF는 2NF이면서 이행 함수 종속이 없어야 합니다. BCNF는 모든 결정자가 후보키라는 조건입니다.",
+      "explanation": "관계선 끝이 세 갈래로 갈라진 까마귀 발 표기는 그쪽이 N쪽, 즉 여러 행임을 뜻합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Third_normal_form"
+        "https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model"
       ]
     },
     {
-      "id": "database-normal-forms-3-bcnf-004",
+      "id": "database-erd-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "erd",
+        "identifying-relationship"
+      ],
+      "content": {
+        "prompt": "외래키가 자기 테이블 기본키의 일부이기도 한 관계는?",
+        "options": [
+          "식별 관계",
+          "비식별 관계"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "외래키가 그 테이블 기본키의 일부로 쓰이면 식별 관계입니다. 외래키가 일반 열이면 비식별 관계입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model"
+      ]
+    },
+    {
+      "id": "database-erd-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
-        "normalization",
-        "3nf",
-        "bcnf"
+        "erd",
+        "crows-foot"
       ],
       "content": {
-        "prompt": "3NF의 조건은 모든 결정자가 후보키인 것이다."
+        "prompt": "관계선에서 까마귀 발이 붙은 쪽은 1쪽이다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "모든 결정자가 후보키여야 하는 것은 BCNF입니다. 3NF는 2NF이면서 이행 함수 종속이 없는 것입니다.",
+      "explanation": "까마귀 발은 N쪽 표기입니다. 까마귀 발이 붙은 쪽 테이블이 여러 행을 가집니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Third_normal_form"
+        "https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model"
       ]
     },
     {
-      "id": "database-normal-forms-3-bcnf-005",
+      "id": "database-erd-005",
       "type": "fill",
       "difficulty": 1,
       "tags": [
-        "normalization",
-        "transitive-dependency"
+        "erd",
+        "entity"
       ],
       "content": {
-        "prompt": "A → B, B → C에서 생기는 A → C를 ___ 함수 종속이라고 한다.",
-        "hint": "B를 거쳐 전달되는 종속"
+        "prompt": "ERD에서 테이블로 표현되는 대상을 ___ (이)라고 한다.",
+        "hint": "ERD의 E가 가리키는 말"
       },
       "answer_key": {
         "accepted": [
-          "이행",
-          "transitive",
-          "이행적",
-          "이행 함수 종속"
+          "엔터티",
+          "엔티티",
+          "entity",
+          "개체",
+          "엔터티 타입"
         ]
       },
-      "explanation": "A가 B를 거쳐 C를 결정하므로 A → C를 이행 함수 종속이라고 합니다.",
+      "explanation": "ERD(개체-관계 다이어그램)의 E는 엔터티로, 데이터베이스에서 테이블로 만들어지는 대상입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Transitive_dependency"
+        "https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model"
       ]
     },
     {
-      "id": "database-normal-forms-3-bcnf-006",
+      "id": "database-erd-006",
       "type": "fill",
       "difficulty": 2,
       "tags": [
-        "normalization",
-        "bcnf"
+        "erd",
+        "identifying-relationship"
       ],
       "content": {
-        "prompt": "모든 결정자가 후보키인 정규형은 ___ 이다.",
-        "hint": "3NF보다 엄격한 정규형, 영문 약자로 답한다"
+        "prompt": "외래키가 자기 기본키의 일부이기도 한 관계는 ___ 관계이다.",
+        "hint": "외래키가 행을 구별하는 데에도 쓰인다"
       },
       "answer_key": {
         "accepted": [
-          "BCNF",
-          "보이스 코드 정규형",
-          "보이스코드 정규형",
-          "보이스코드정규형",
-          "보이스-코드 정규형",
-          "boyce codd normal form",
-          "boyce-codd normal form"
+          "식별",
+          "식별 관계",
+          "식별관계",
+          "identifying"
         ]
       },
-      "explanation": "BCNF는 모든 결정자가 후보키여야 하는 정규형으로, 3NF보다 엄격합니다.",
+      "explanation": "외래키가 기본키의 일부로 행을 식별하는 데 쓰이므로 식별 관계라고 부릅니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Boyce%E2%80%93Codd_normal_form"
+        "https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model"
       ]
     },
     {
-      "id": "database-normal-forms-3-bcnf-007",
+      "id": "database-erd-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "normalization",
-        "transitive-dependency"
+        "erd",
+        "crows-foot",
+        "relationship"
       ],
       "content": {
-        "prompt": "학번 → 학과, 학과 → 학과장이 있다. 학번 → 학과장은?",
+        "prompt": "관계선의 주문 쪽 끝에만 까마귀 발이 있다. 회원 대 주문은?",
         "options": [
-          "이행 함수 종속",
-          "부분 함수 종속"
+          "1:1",
+          "N:M",
+          "1:N"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "까마귀 발은 N쪽 표기이므로 주문이 N쪽입니다. 회원 1명에 주문 여러 건인 1:N 관계입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model"
+      ]
+    },
+    {
+      "id": "database-erd-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "erd",
+        "relationship-line"
+      ],
+      "content": {
+        "prompt": "ERD에서 두 엔터티 사이에 관계선이 있다. 뜻하는 것은?",
+        "options": [
+          "외래키로 연결됨",
+          "열 이름이 같음",
+          "행 수가 같음"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "학번이 학과를 거쳐 학과장을 결정하므로 이행 함수 종속입니다.",
+      "explanation": "관계선은 두 테이블이 외래키로 이어져 있음을 나타냅니다. 열 이름이나 행 수와는 관계없습니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Transitive_dependency"
+        "https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model"
       ]
     },
     {
-      "id": "database-normal-forms-3-bcnf-008",
+      "id": "database-erd-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "normalization",
-        "3nf",
-        "transitive-dependency"
+        "erd",
+        "identifying-relationship"
       ],
       "content": {
-        "prompt": "기본키 학번, 학번 → 학과, 학과 → 학과장인 2NF 테이블은 3NF인가?",
+        "prompt": "수강의 기본키 (학번, 강의번호)에 외래키 학번이 들어 있다. 관계는?",
         "options": [
-          "3NF이다",
-          "3NF가 아니다"
+          "비식별 관계",
+          "식별 관계"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "학번 → 학과 → 학과장의 이행 함수 종속이 있으므로 3NF가 아닙니다.",
+      "explanation": "외래키 학번이 수강 기본키의 일부로 쓰이므로 식별 관계입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Third_normal_form"
+        "https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model"
       ]
     },
     {
-      "id": "database-normal-forms-3-bcnf-009",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "normalization",
-        "bcnf"
-      ],
-      "content": {
-        "prompt": "교수 → 과목이 있는데 교수가 후보키가 아니다. 이 테이블은?",
-        "options": [
-          "BCNF 위반",
-          "BCNF 만족"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "결정자인 교수가 후보키가 아니므로 모든 결정자가 후보키라는 BCNF 조건을 어깁니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Boyce%E2%80%93Codd_normal_form"
-      ]
-    },
-    {
-      "id": "database-normal-forms-3-bcnf-010",
+      "id": "database-erd-010",
       "type": "ox",
       "difficulty": 2,
       "tags": [
-        "normalization",
-        "transitive-dependency"
+        "erd",
+        "entity"
       ],
       "content": {
-        "prompt": "주문번호 → 회원번호, 회원번호 → 등급이면 주문번호 → 등급이 성립한다."
+        "prompt": "ERD의 엔터티는 데이터베이스에서 테이블로 만들어진다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "A → B, B → C이면 A → C가 성립하며, 이를 이행 함수 종속이라고 합니다.",
+      "explanation": "엔터티는 ERD에서 데이터를 저장할 대상으로, 실제 데이터베이스에서는 테이블이 됩니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Transitive_dependency"
+        "https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model"
       ]
     }
   ]
