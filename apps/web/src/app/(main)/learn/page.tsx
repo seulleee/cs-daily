@@ -10,7 +10,7 @@ import { AppShell } from '@/components/app-shell';
 import { StatsPanel } from '@/components/stats-panel';
 import { LearningPath } from '@/components/learning-path';
 import { NextLessonCard } from '@/components/next-lesson-card';
-import { StreakWindow } from '@/components/streak-week';
+import { StreakBar } from '@/components/streak-week';
 import { readLastTrack, writeLastTrack } from '@/lib/last-track';
 
 export default function LearnPage() {
@@ -59,8 +59,8 @@ function LearnInner() {
   return (
     <AppShell aside={<StatsPanel me={me.data} />}>
       <header className="space-y-4">
-        {/* 연속 학습 창 (PC에서는 우측 보조 패널의 스트릭 카드가 같은 정보를 보여 준다) */}
-        <StreakWindow me={me.data} className="lg:hidden" />
+        {/* 연속 학습 상태 바 한 줄 (PC에서는 우측 보조 패널의 스트릭 카드가 같은 정보를 보여 준다) */}
+        <StreakBar me={me.data} className="lg:hidden" />
 
         {path.data ? <NextLessonCard path={path.data} me={me.data} /> : <HeroSkeleton />}
 
