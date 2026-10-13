@@ -79,19 +79,19 @@
       "difficulty": 1,
       "tags": [
         "monotonic-queue",
-        "time-complexity"
+        "deque"
       ],
       "content": {
-        "prompt": "크기 k 윈도우 최댓값을 모노토닉 큐로 모두 구하면?",
+        "prompt": "모노토닉 큐에서 원소 하나를 넣고 빼는 횟수는?",
         "options": [
-          "O(n)",
-          "O(nk)"
+          "한 번씩만",
+          "윈도우마다 한 번"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "원소마다 덱에 한 번 넣고 한 번 빼므로 전체 O(n)입니다. 윈도우마다 k개를 다시 훑으면 O(nk)입니다.",
+      "explanation": "원소마다 덱에 한 번 들어가고 많아야 한 번 나옵니다. 윈도우마다 구간 전체를 다시 훑는 방식보다 일이 훨씬 적습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Double-ended_queue",
         "https://docs.python.org/3/library/collections.html#collections.deque"

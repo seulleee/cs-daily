@@ -128,22 +128,21 @@
       "difficulty": 2,
       "tags": [
         "dynamic-array",
-        "amortized-analysis"
+        "resizing"
       ],
       "content": {
-        "prompt": "append는 복사가 가끔 있어도 ___ O(1)이다.",
-        "hint": "여러 번 연산의 평균 비용으로 따진다"
+        "prompt": "append 때 원소 ___ 는 배열이 가득 찼을 때만 일어난다.",
+        "hint": "새 배열로 원소를 옮기는 작업"
       },
       "answer_key": {
         "accepted": [
-          "상각",
-          "amortized",
-          "amortised",
-          "분할 상환",
-          "분할상환"
+          "복사",
+          "copy",
+          "카피",
+          "복사 작업"
         ]
       },
-      "explanation": "확장 때의 복사 비용을 여러 append에 나눠 보면 한 번당 평균 O(1)이며, 이를 상각 O(1)이라 합니다.",
+      "explanation": "복사는 용량이 가득 찼을 때만 일어나고 나머지 append는 빈 칸에 바로 넣으므로 평균적으로는 빠릅니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Dynamic_array",
         "https://en.wikipedia.org/wiki/Amortized_analysis"
