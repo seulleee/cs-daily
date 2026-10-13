@@ -29,11 +29,17 @@ export class MeController {
   async me(@CurrentUser() auth: AuthUser): Promise<MeResponse> {
     const db = this.uow.client;
     const now = new Date();
+    // sortOrder 음수 = 콘텐츠에서 빠진 퇴역 행(seed.ts 참고) — 트랙별 유닛·레슨 수에서 제외한다
     const user = await db.user.findUniqueOrThrow({
       where: { id: auth.id },
       include: {
         stats: true,
-        userTracks: { include: { track: { include: { units: { select: { _count: { select: { lessons: true } } } } } } }, orderBy: { track: { sortOrder: 'asc' } } },
+        userTracks: {
+          include: {
+            track: { include: { units: { where: { sortOrder: { gt: 0 } }, select: { _count: { select: { lessons: { where: { sortOrder: { gt: 0 } } } } } } } } },
+          },
+          orderBy: { track: { sortOrder: 'asc' } },
+        },
       },
     });
     const today = localDateOf(now, user.timezone);

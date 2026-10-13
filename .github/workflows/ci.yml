@@ -44,17 +44,34 @@ jobs:
         run: |
           pnpm --filter @cs-daily/api exec prisma migrate deploy
           pnpm --filter @cs-daily/api prisma:seed
-      - name: Seed again with units reordered (unique sort_order smoke)
+      - name: Seed again with units reordered and a lesson removed (unique sort_order + retired rows smoke)
         run: |
+          # 첫 트랙 첫 유닛을 맨 뒤로 옮기고 그 유닛의 마지막 레슨을 콘텐츠에서 뺀 입력을 만든다
           node apps/api/test-e2e/rotate-units.mjs packages/content /tmp/content-rotated
           if ! SEED_CONTENT_ROOT=/tmp/content-rotated pnpm --filter @cs-daily/api prisma:seed > /tmp/seed-rot.log 2>&1; then
             cat /tmp/seed-rot.log
             echo "::error title=seed-reorder::유닛 순서를 바꾼 재시드 실패 — $(tail -c 1200 /tmp/seed-rot.log | tr '\n' ' ')"
             exit 1
           fi
-          tail -n 3 /tmp/seed-rot.log
-          # 원래 순서로 되돌려 e2e가 실제 콘텐츠 순서로 돌게 한다
-          pnpm --filter @cs-daily/api prisma:seed
+          tail -n 4 /tmp/seed-rot.log
+          # 빠진 레슨은 문제가 있어 지워지지 않고 퇴역(sort_order 음수)으로 남아야 하고, 문제 없는 퇴역 행은 없어야 한다
+          if ! node apps/api/test-e2e/assert-retired.mjs > /tmp/assert-retired.log 2>&1; then
+            cat /tmp/assert-retired.log
+            exit 1
+          fi
+          cat /tmp/assert-retired.log
+          # 원래 순서·레슨으로 되돌려 e2e가 실제 콘텐츠로 돌게 한다 (뺐던 레슨이 양수 순서로 복귀)
+          if ! pnpm --filter @cs-daily/api prisma:seed > /tmp/seed-restore.log 2>&1; then
+            cat /tmp/seed-restore.log
+            echo "::error title=seed-restore::원래 콘텐츠로 되돌린 재시드 실패 — $(tail -c 1200 /tmp/seed-restore.log | tr '\n' ' ')"
+            exit 1
+          fi
+          tail -n 4 /tmp/seed-restore.log
+          if ! node apps/api/test-e2e/assert-retired.mjs restored > /tmp/assert-restored.log 2>&1; then
+            cat /tmp/assert-restored.log
+            exit 1
+          fi
+          cat /tmp/assert-restored.log
       - name: Build
         run: pnpm build
       - name: API E2E (built server + CI Postgres)
