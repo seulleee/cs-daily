@@ -3,7 +3,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { use, useState } from 'react';
+import { use, useState, type CSSProperties } from 'react';
 import type { CompleteSessionResponse, SessionResponse } from '@cs-daily/contracts';
 import { api, ApiError } from '@/lib/api';
 import { clearPlacementChain, nextPlacementStep, readPlacementChain, writePlacementChain } from '@/lib/placement-chain';
@@ -71,14 +71,19 @@ export default function ResultPage({ params }: { params: Promise<{ sessionId: st
   );
 }
 
-/** 정답률 링: 160px 원(1px ink 테두리) 안쪽에 136px 원(surface, 1px ink 테두리)을 얹어 링을 만든다. 채움은 ink, 남은 부분은 ground */
+/**
+ * 정답률 링: 160px 원(1px ink 테두리) 안쪽에 136px 원(surface, 1px ink 테두리)을 얹어 링을 만든다. 채움은 ink, 남은 부분은 ground.
+ * 채움 각도는 CSS 변수 --p(@property로 등록한 숫자)이고, 마운트 때 0에서 pct까지 600ms 동안 10칸으로 차오른다. 이 화면의 유일한 진입 모션.
+ * @property를 지원하지 않는 브라우저(CSS.registerProperty가 없음)에서는 클래스를 붙이지 않아 최종 값이 바로 보인다.
+ */
 function ScoreRing({ pct }: { pct: number }) {
+  const animate = typeof CSS !== 'undefined' && 'registerProperty' in CSS;
   return (
     <div
       role="img"
       aria-label={`정답률 ${pct}%`}
-      className="mx-auto flex h-40 w-40 items-center justify-center rounded-full border border-ink"
-      style={{ background: `conic-gradient(var(--color-ink) ${pct}%, var(--color-surface-2) 0)` }}
+      className={`score-ring mx-auto flex h-40 w-40 items-center justify-center rounded-full border border-ink${animate ? ' score-ring-anim' : ''}`}
+      style={{ '--p': pct } as CSSProperties}
     >
       <div className="flex h-[136px] w-[136px] flex-col items-center justify-center rounded-full border border-ink bg-surface">
         <span className="bit-3">{pct}%</span>

@@ -50,7 +50,8 @@ export function AppShell({ children, aside }: { children: ReactNode; aside?: Rea
                   className={clsx(
                     // 선택 탭 = 아이콘+라벨 반전 상자(반경 6). 라벨은 비트맵 16px, 줄 높이 16
                     'bit flex h-full min-h-11 flex-col items-center justify-center gap-0.5 rounded-md leading-4! md:h-auto md:flex-row md:justify-center md:gap-3 md:px-3 md:py-2.5 lg:justify-start',
-                    active ? 'bg-brand-fill text-on-brand' : 'text-ink-2',
+                    // 누르는 동안은 반대로 뒤집힌다(즉시, 손을 떼면 즉시 복귀). 선택 전환에도 전환 효과 없이 바로 바뀐다
+                    active ? 'bg-brand-fill text-on-brand active:bg-surface active:text-ink' : 'text-ink-2 active:bg-brand-fill active:text-on-brand',
                   )}
                 >
                   <span className="relative">

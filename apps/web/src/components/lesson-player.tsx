@@ -201,7 +201,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
         </section>
         <footer className="fixed inset-x-0 bottom-0 border-t border-ink bg-surface pb-[max(env(safe-area-inset-bottom),16px)] pt-4">
           <div className="mx-auto max-w-[720px] px-4">
-            <button type="button" onClick={() => setPhase('main')} className="btn-3d w-full" autoFocus>시작</button>
+            <button key="start" type="button" onClick={() => setPhase('main')} className="btn-3d w-full" autoFocus>시작</button>
           </div>
         </footer>
       </div>
@@ -250,8 +250,12 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
       {/* 하단 고정: 확인 또는 정오답 시트(창 크롬, 제목 "결과") */}
       {result ? (
         <div role="status" className="fixed inset-x-0 bottom-0 px-4 pb-[max(env(safe-area-inset-bottom),16px)]">
-          <div className="sheet-up mx-auto max-w-[720px]">
-            <Window title="결과" bodyStyle={result.isCorrect ? undefined : WRONG_BODY}>
+          {/* 열릴 때 줌 사각형 세 개(60ms 간격)가 지나간 뒤 창이 나타난다. 닫을 때는 효과 없이 즉시 (globals.css .zoom-rect) */}
+          <div className="relative mx-auto max-w-[720px]">
+            <div aria-hidden className="zoom-rect zoom-rect-1" />
+            <div aria-hidden className="zoom-rect zoom-rect-2" />
+            <div aria-hidden className="zoom-rect zoom-rect-3" />
+            <Window title="결과" className="sheet-win" bodyStyle={result.isCorrect ? undefined : WRONG_BODY}>
               <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
@@ -276,7 +280,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
                   )}
                   <p className="mt-2 text-body">{result.explanation}</p>
                 </div>
-                <button type="button" onClick={next} className="btn-3d w-full md:w-40" autoFocus>
+                <button key="next" type="button" onClick={next} className="btn-3d w-full md:w-40" autoFocus>
                   계속
                 </button>
               </div>
@@ -286,7 +290,8 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
       ) : (
         <footer className="fixed inset-x-0 bottom-0 border-t border-ink bg-surface pb-[max(env(safe-area-inset-bottom),16px)] pt-4">
           <div className="mx-auto max-w-[720px] px-4">
-            <button type="button" disabled={!canSubmit || pending} onClick={check} className="btn-3d w-full">
+            {/* key: 시작 → 확인처럼 같은 자리의 버튼 DOM이 재사용되면 앞 버튼의 클릭 깜빡임(lib/use-flash.ts)이 비활성 버튼 위에서 이어지므로 버튼마다 분리한다 */}
+            <button key="check" type="button" disabled={!canSubmit || pending} onClick={check} className="btn-3d w-full">
               {pending ? '채점 중…' : '확인'}
             </button>
           </div>

@@ -5,13 +5,17 @@ import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import { api } from '@/lib/api';
+import { afterFlash } from '@/lib/use-flash';
 import { CheckIcon, LockIcon, PlayIcon, StarIcon } from './icons';
 
-/** 레슨 세션 시작 → 레슨 플레이어로 이동. 학습 경로와 "다음 레슨" 카드가 함께 쓴다 */
+/** 레슨 세션 시작 → 레슨 플레이어로 이동. 학습 경로와 "다음 레슨" 카드가 함께 쓴다. 응답이 아무리 빨라도 클릭 깜빡임(150ms)이 끝난 뒤에 넘어간다 */
 export function useStartLesson() {
   const router = useRouter();
   return useMutation({
-    mutationFn: (lessonId: number) => api<SessionResponse>(`/lessons/${lessonId}/sessions`, { method: 'POST' }),
+    mutationFn: async (lessonId: number) => {
+      const [session] = await Promise.all([api<SessionResponse>(`/lessons/${lessonId}/sessions`, { method: 'POST' }), afterFlash()]);
+      return session;
+    },
     onSuccess: (s) => router.push(`/lesson/${s.id}`),
   });
 }
@@ -125,7 +129,7 @@ export function LearningPath({ path }: { path: PathResponse }) {
                     disabled={skip.isPending}
                     onClick={() => skip.mutate(unit.id)}
                     title="유닛 문제 몇 개를 풀어 80% 이상 맞히면 이 유닛까지 완료로 처리됩니다"
-                    className="bit min-h-11 px-1 text-brand underline underline-offset-4 disabled:opacity-50"
+                    className="bit min-h-11 px-1 text-brand underline underline-offset-4 enabled:active:bg-brand-fill enabled:active:text-on-brand disabled:opacity-50"
                   >
                     건너뛰기
                   </button>
