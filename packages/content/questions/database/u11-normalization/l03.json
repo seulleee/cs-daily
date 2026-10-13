@@ -1,0 +1,241 @@
+{
+  "track": "database",
+  "unit": "u11-normalization",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "database-normal-forms-1-2-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "1nf"
+      ],
+      "content": {
+        "prompt": "모든 속성 값이 원자값이어야 하는 정규형은?",
+        "options": [
+          "2NF",
+          "1NF",
+          "3NF"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "1NF(제1정규형)는 모든 속성 값이 더 나눌 수 없는 원자값이어야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    },
+    {
+      "id": "database-first-nf-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "atomic-value"
+      ],
+      "content": {
+        "prompt": "더 나눌 수 없는 하나의 값을 부르는 용어는?",
+        "options": [
+          "기본값",
+          "NULL",
+          "원자값"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "더 나눌 수 없는 하나의 값을 원자값이라고 하며, 1NF는 모든 속성 값이 원자값이어야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    },
+    {
+      "id": "database-first-nf-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "1nf",
+        "atomic-value"
+      ],
+      "content": {
+        "prompt": "취미 값이 '독서, 등산'인 행이 있다. 이 값은 원자값인가?",
+        "options": [
+          "원자값이다",
+          "원자값이 아니다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "'독서, 등산'은 두 값으로 나눌 수 있으므로 원자값이 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    },
+    {
+      "id": "database-first-nf-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "1nf"
+      ],
+      "content": {
+        "prompt": "속성 값 하나에 값을 여러 개 넣어도 1NF를 만족한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "1NF는 모든 속성 값이 원자값이어야 합니다. 값 여러 개가 든 속성은 1NF 위반입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-1-2-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "1nf"
+      ],
+      "content": {
+        "prompt": "더 나눌 수 없는 하나의 값을 ___ (이)라고 한다.",
+        "hint": "1NF의 조건에 나오는 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "원자값",
+          "atomic value",
+          "원자 값",
+          "atomic",
+          "원자적 값"
+        ]
+      },
+      "explanation": "더 나눌 수 없는 값을 원자값이라고 하며, 1NF는 모든 속성 값이 원자값이어야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    },
+    {
+      "id": "database-first-nf-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "1nf"
+      ],
+      "content": {
+        "prompt": "모든 속성 값이 원자값인 정규형은 ___ 이다.",
+        "hint": "숫자와 NF를 붙인 약자로 답한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "1NF",
+          "제1정규형",
+          "제1 정규형",
+          "1정규형",
+          "1 NF",
+          "first normal form"
+        ]
+      },
+      "explanation": "1NF(제1정규형)는 모든 속성 값이 더 나눌 수 없는 원자값이어야 하는 정규형입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-1-2-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "1nf"
+      ],
+      "content": {
+        "prompt": "전화번호 속성 값 하나에 번호가 두 개 들어 있다. 어긴 정규형은?",
+        "options": [
+          "1NF",
+          "2NF"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "번호 두 개는 더 나눌 수 있는 값이라 원자값이 아니므로 1NF를 어깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    },
+    {
+      "id": "database-first-nf-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "1nf"
+      ],
+      "content": {
+        "prompt": "전화번호 값에 번호가 2개씩 있다. 1NF로 고치는 방법은?",
+        "options": [
+          "번호마다 행 분리",
+          "열 이름 변경",
+          "NULL로 비우기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "값 여러 개를 번호마다 행으로 나누거나 별도 테이블로 분리하면 모든 값이 원자값이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    },
+    {
+      "id": "database-first-nf-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "1nf"
+      ],
+      "content": {
+        "prompt": "주문 1건의 상품 값이 '펜, 공책, 자'다. 1NF로 나누면 몇 행?",
+        "options": [
+          "1행",
+          "2행",
+          "3행"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "상품 값 세 개를 하나씩 행으로 나누면 3행이 되고, 각 상품 값이 원자값이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-1-2-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "1nf"
+      ],
+      "content": {
+        "prompt": "모든 속성 값이 원자값이면 1NF를 만족한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "1NF는 모든 속성 값이 더 나눌 수 없는 원자값이어야 한다는 정규형입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/First_normal_form"
+      ]
+    }
+  ]
+}

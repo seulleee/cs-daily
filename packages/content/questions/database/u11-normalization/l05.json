@@ -1,0 +1,242 @@
+{
+  "track": "database",
+  "unit": "u11-normalization",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "database-normal-forms-3-bcnf-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "transitive-dependency"
+      ],
+      "content": {
+        "prompt": "A → B, B → C일 때 A → C가 되는 종속은?",
+        "options": [
+          "부분 함수 종속",
+          "완전 함수 종속",
+          "이행 함수 종속"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "A가 B를 거쳐 C를 결정하는 A → C를 이행 함수 종속이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Transitive_dependency"
+      ]
+    },
+    {
+      "id": "database-third-nf-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "3nf"
+      ],
+      "content": {
+        "prompt": "이행 함수 종속까지 없애야 만족하는 정규형은?",
+        "options": [
+          "3NF",
+          "2NF",
+          "1NF"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "3NF는 2NF이면서 이행 함수 종속이 없어야 합니다. 2NF는 부분 함수 종속만 없으면 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Third_normal_form"
+      ]
+    },
+    {
+      "id": "database-third-nf-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "3nf",
+        "transitive-dependency"
+      ],
+      "content": {
+        "prompt": "이행 함수 종속이 하나 남은 2NF 테이블은?",
+        "options": [
+          "3NF 만족",
+          "3NF 위반"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "3NF는 이행 함수 종속이 없어야 하므로, 하나라도 남아 있으면 3NF가 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Third_normal_form"
+      ]
+    },
+    {
+      "id": "database-third-nf-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "3nf",
+        "2nf"
+      ],
+      "content": {
+        "prompt": "부분 함수 종속만 없으면 3NF를 만족한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "부분 함수 종속이 없는 것은 2NF 조건입니다. 3NF는 이행 함수 종속까지 없어야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Third_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-3-bcnf-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "normalization",
+        "transitive-dependency"
+      ],
+      "content": {
+        "prompt": "A → B, B → C에서 생기는 A → C를 ___ 함수 종속이라고 한다.",
+        "hint": "B를 거쳐 전달되는 종속"
+      },
+      "answer_key": {
+        "accepted": [
+          "이행",
+          "transitive",
+          "이행적",
+          "이행 함수 종속"
+        ]
+      },
+      "explanation": "A가 B를 거쳐 C를 결정하므로 A → C를 이행 함수 종속이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Transitive_dependency"
+      ]
+    },
+    {
+      "id": "database-third-nf-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "3nf"
+      ],
+      "content": {
+        "prompt": "2NF이면서 이행 함수 종속이 없는 정규형은 ___ 이다.",
+        "hint": "숫자와 NF를 붙인 약자로 답한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "3NF",
+          "제3정규형",
+          "제3 정규형",
+          "3정규형",
+          "3 NF",
+          "third normal form"
+        ]
+      },
+      "explanation": "3NF(제3정규형)는 2NF를 만족하면서 이행 함수 종속이 없는 정규형입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Third_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-3-bcnf-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "transitive-dependency"
+      ],
+      "content": {
+        "prompt": "학번 → 학과, 학과 → 학과장이 있다. 학번 → 학과장은?",
+        "options": [
+          "이행 함수 종속",
+          "부분 함수 종속"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "학번이 학과를 거쳐 학과장을 결정하므로 이행 함수 종속입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Transitive_dependency"
+      ]
+    },
+    {
+      "id": "database-normal-forms-3-bcnf-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "3nf",
+        "transitive-dependency"
+      ],
+      "content": {
+        "prompt": "기본키 학번, 학번 → 학과, 학과 → 학과장인 2NF 테이블은 3NF인가?",
+        "options": [
+          "3NF이다",
+          "3NF가 아니다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "학번 → 학과 → 학과장의 이행 함수 종속이 있으므로 3NF가 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Third_normal_form"
+      ]
+    },
+    {
+      "id": "database-third-nf-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "3nf",
+        "transitive-dependency"
+      ],
+      "content": {
+        "prompt": "학번 → 학과, 학과 → 학과장. 3NF로 분리할 새 테이블의 기본키는?",
+        "options": [
+          "학번",
+          "학과장",
+          "학과"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "학과 → 학과장 부분을 학과가 기본키인 테이블로 떼어 내면 이행 함수 종속이 사라집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Third_normal_form"
+      ]
+    },
+    {
+      "id": "database-normal-forms-3-bcnf-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "normalization",
+        "transitive-dependency"
+      ],
+      "content": {
+        "prompt": "주문번호 → 회원번호, 회원번호 → 등급이면 주문번호 → 등급이 성립한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "A → B, B → C이면 A → C가 성립하며, 이를 이행 함수 종속이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Transitive_dependency"
+      ]
+    }
+  ]
+}

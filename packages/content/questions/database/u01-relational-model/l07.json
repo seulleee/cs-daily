@@ -4,243 +4,245 @@
   "lesson": "l07",
   "questions": [
     {
-      "id": "database-anomalies-001",
+      "id": "database-relationship-types-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "normalization",
-        "anomaly"
+        "relationship",
+        "many-to-many"
       ],
       "content": {
-        "prompt": "중복 저장 때문에 생기는 문제를 부르는 용어는?",
+        "prompt": "양쪽 행이 모두 여러 행과 연결되는 관계는?",
         "options": [
-          "함수 종속",
-          "이상 현상",
-          "무결성"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "같은 정보를 여러 곳에 중복 저장하면 삽입·갱신·삭제 때 문제가 생기는데, 이를 이상 현상이라고 합니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Database_normalization"
-      ]
-    },
-    {
-      "id": "database-anomalies-002",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "normalization",
-        "anomaly",
-        "update-anomaly"
-      ],
-      "content": {
-        "prompt": "중복된 값 중 일부만 바뀌어 불일치가 생기는 것은?",
-        "options": [
-          "삽입 이상",
-          "삭제 이상",
-          "갱신 이상"
+          "1:1",
+          "1:N",
+          "N:M"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "중복 저장된 값 중 일부만 고쳐져 값이 서로 달라지는 것이 갱신 이상입니다.",
+      "explanation": "N:M은 양쪽 모두 여러 행과 연결되는 관계입니다. 학생 한 명은 여러 강의를, 강의 하나는 여러 학생을 가집니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Database_normalization"
+        "https://en.wikipedia.org/wiki/Many-to-many_(data_model)"
       ]
     },
     {
-      "id": "database-anomalies-003",
+      "id": "database-relationship-types-002",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "normalization",
-        "anomaly",
-        "deletion-anomaly"
+        "relationship",
+        "one-to-many",
+        "foreign-key"
       ],
       "content": {
-        "prompt": "행을 지우면 다른 정보까지 사라지는 것은?",
+        "prompt": "1:N 관계에서 외래키는 어느 쪽 테이블에 두나?",
         "options": [
-          "갱신 이상",
-          "삭제 이상"
+          "1쪽",
+          "N쪽",
+          "양쪽 모두"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "행 하나를 지웠는데 함께 저장된 다른 정보까지 없어지는 것이 삭제 이상입니다.",
+      "explanation": "N쪽 행 하나는 1쪽 행 하나만 가리키므로 외래키를 N쪽에 둡니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Database_normalization"
+        "https://en.wikipedia.org/wiki/One-to-many_(data_model)"
       ]
     },
     {
-      "id": "database-anomalies-004",
+      "id": "database-relationship-types-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "relationship",
+        "one-to-many"
+      ],
+      "content": {
+        "prompt": "회원 1명이 주문 여러 건을 가지고, 주문은 회원 1명에 속한다. 관계는?",
+        "options": [
+          "1:N",
+          "N:M"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "주문 하나는 회원 한 명에게만 속하므로 1:N입니다. N:M은 양쪽 모두 여러 행과 연결될 때입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/One-to-many_(data_model)"
+      ]
+    },
+    {
+      "id": "database-relationship-types-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
-        "normalization",
-        "anomaly",
-        "insertion-anomaly"
+        "relationship",
+        "one-to-many",
+        "foreign-key"
       ],
       "content": {
-        "prompt": "삽입 이상은 행을 지울 때 다른 정보가 사라지는 문제이다."
+        "prompt": "1:N 관계에서 외래키는 1쪽 테이블에 둔다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "그것은 삭제 이상입니다. 삽입 이상은 불필요한 값 없이는 행을 넣을 수 없는 문제입니다.",
+      "explanation": "1쪽 행 하나에 N쪽 행이 여러 개라 1쪽에는 외래키 값을 하나로 담을 수 없습니다. 외래키는 N쪽에 둡니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Database_normalization"
+        "https://en.wikipedia.org/wiki/One-to-many_(data_model)"
       ]
     },
     {
-      "id": "database-anomalies-005",
+      "id": "database-relationship-types-005",
       "type": "fill",
       "difficulty": 1,
       "tags": [
-        "normalization",
-        "anomaly",
-        "insertion-anomaly"
+        "relationship",
+        "junction-table"
       ],
       "content": {
-        "prompt": "불필요한 값 없이는 행을 넣을 수 없는 문제는 ___ 이상이다.",
-        "hint": "행을 추가하는 연산과 관련된 이상"
+        "prompt": "두 테이블의 외래키를 함께 가진 테이블을 ___ 테이블이라고 한다.",
+        "hint": "N:M 관계를 풀 때 두 테이블 사이에 만드는 테이블"
       },
       "answer_key": {
         "accepted": [
-          "삽입",
-          "insertion",
-          "insert",
-          "삽입 이상",
-          "삽입이상"
+          "연결",
+          "연결 테이블",
+          "junction",
+          "junction table",
+          "매핑",
+          "교차",
+          "중간"
         ]
       },
-      "explanation": "행을 넣으려면 관계없는 값까지 있어야 하는 문제를 삽입 이상이라고 합니다.",
+      "explanation": "N:M 관계는 두 테이블의 외래키를 함께 가진 연결 테이블을 만들어 풉니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Database_normalization"
+        "https://en.wikipedia.org/wiki/Associative_entity"
       ]
     },
     {
-      "id": "database-anomalies-006",
+      "id": "database-relationship-types-006",
       "type": "fill",
       "difficulty": 2,
       "tags": [
-        "normalization",
-        "anomaly"
+        "relationship",
+        "one-to-many",
+        "foreign-key"
       ],
       "content": {
-        "prompt": "삽입, 갱신, 삭제 때 중복 저장 때문에 생기는 문제를 ___ (이)라고 한다.",
-        "hint": "삽입·갱신·삭제 때 생기는 문제를 통틀어 부르는 용어"
+        "prompt": "1:N 관계에서 외래키는 ___ 쪽 테이블에 둔다.",
+        "hint": "여러 행이 있는 쪽"
       },
       "answer_key": {
         "accepted": [
-          "이상 현상",
-          "이상현상",
-          "anomaly",
-          "anomalies",
-          "이상"
+          "N",
+          "N쪽",
+          "N 쪽",
+          "엔",
+          "다수"
         ]
       },
-      "explanation": "중복 저장 때문에 삽입·갱신·삭제 시 생기는 문제를 통틀어 이상 현상이라고 합니다.",
+      "explanation": "N쪽 행 하나는 1쪽 행 하나만 가리키므로 외래키를 N쪽 테이블에 둡니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Database_normalization"
+        "https://en.wikipedia.org/wiki/One-to-many_(data_model)"
       ]
     },
     {
-      "id": "database-anomalies-007",
+      "id": "database-relationship-types-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "normalization",
-        "anomaly",
-        "update-anomaly"
+        "relationship",
+        "one-to-many",
+        "foreign-key"
       ],
       "content": {
-        "prompt": "같은 강의의 교수명이 여러 행에 있는데 한 행만 고쳤다. 생기는 이상은?",
+        "prompt": "회원과 주문이 1:N이다. 회원번호 외래키를 둘 테이블은?",
         "options": [
-          "갱신 이상",
-          "삽입 이상",
-          "삭제 이상"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "중복된 교수명 중 한 행만 바뀌어 같은 강의의 교수명이 서로 달라지므로 갱신 이상입니다.",
-      "refs": [
-        "https://en.wikipedia.org/wiki/Database_normalization"
-      ]
-    },
-    {
-      "id": "database-anomalies-008",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "normalization",
-        "anomaly",
-        "deletion-anomaly"
-      ],
-      "content": {
-        "prompt": "강의 정보가 수강 행에만 있다. 마지막 수강 행을 지우면 생기는 이상은?",
-        "options": [
-          "삭제 이상",
-          "삽입 이상",
-          "갱신 이상"
+          "회원",
+          "주문",
+          "둘 다"
         ]
       },
       "answer_key": {
-        "index": 0
+        "index": 1
       },
-      "explanation": "수강 행을 지우면서 그 강의 정보까지 함께 사라지므로 삭제 이상입니다.",
+      "explanation": "N쪽인 주문 테이블에 회원번호 외래키를 둡니다. 주문 하나가 회원 한 명을 가리킵니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Database_normalization"
+        "https://en.wikipedia.org/wiki/One-to-many_(data_model)"
       ]
     },
     {
-      "id": "database-anomalies-009",
+      "id": "database-relationship-types-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "normalization",
-        "anomaly",
-        "insertion-anomaly"
+        "relationship",
+        "many-to-many",
+        "junction-table"
       ],
       "content": {
-        "prompt": "수강 테이블에 수강생 없는 새 강의를 학번 없이 넣을 수 없다. 이 이상은?",
+        "prompt": "학생과 강의는 N:M이다. 연결 테이블 수강에 둘 외래키는?",
         "options": [
-          "갱신 이상",
-          "삭제 이상",
-          "삽입 이상"
+          "학번만",
+          "강의번호만",
+          "학번과 강의번호"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "강의 정보를 넣으려면 관계없는 학번 값이 필요하므로 삽입 이상입니다.",
+      "explanation": "연결 테이블은 양쪽 테이블의 외래키를 함께 가집니다. 수강에는 학번과 강의번호를 둡니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Database_normalization"
+        "https://en.wikipedia.org/wiki/Associative_entity"
       ]
     },
     {
-      "id": "database-anomalies-010",
+      "id": "database-relationship-types-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "relationship",
+        "one-to-one",
+        "foreign-key"
+      ],
+      "content": {
+        "prompt": "회원과 회원 상세가 1:1이다. 외래키는 어디에 두나?",
+        "options": [
+          "한쪽에만",
+          "양쪽 모두",
+          "연결 테이블"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "1:1 관계는 외래키를 한쪽 테이블에만 둡니다. 양쪽에 두면 같은 연결을 두 번 저장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/One-to-one_(data_model)"
+      ]
+    },
+    {
+      "id": "database-relationship-types-010",
       "type": "ox",
       "difficulty": 2,
       "tags": [
-        "normalization",
-        "anomaly"
+        "relationship",
+        "many-to-many",
+        "junction-table"
       ],
       "content": {
-        "prompt": "이상 현상은 같은 정보를 여러 곳에 중복 저장해서 생긴다."
+        "prompt": "N:M 관계는 연결 테이블을 만들어 푼다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "삽입·갱신·삭제 이상은 모두 같은 정보를 중복 저장한 구조 때문에 생깁니다.",
+      "explanation": "N:M은 외래키 하나로 표현할 수 없어 두 테이블의 외래키를 함께 가진 연결 테이블로 풉니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Database_normalization"
+        "https://en.wikipedia.org/wiki/Many-to-many_(data_model)"
       ]
     }
   ]

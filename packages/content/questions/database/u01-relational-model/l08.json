@@ -4,235 +4,234 @@
   "lesson": "l08",
   "questions": [
     {
-      "id": "database-normal-forms-1-2-001",
+      "id": "database-column-constraints-001",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "normalization",
-        "1nf"
+        "constraint",
+        "unique"
       ],
       "content": {
-        "prompt": "모든 속성 값이 원자값이어야 하는 정규형은?",
+        "prompt": "같은 값이 두 번 들어오면 저장을 거부하는 제약은?",
         "options": [
-          "2NF",
-          "1NF",
-          "3NF"
+          "NOT NULL",
+          "UNIQUE",
+          "DEFAULT"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "1NF(제1정규형)는 모든 속성 값이 더 나눌 수 없는 원자값이어야 합니다.",
+      "explanation": "UNIQUE는 열에 같은 값이 두 번 들어오면 저장을 거부해 중복을 막습니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/First_normal_form"
+        "https://www.postgresql.org/docs/current/ddl-constraints.html"
       ]
     },
     {
-      "id": "database-normal-forms-1-2-002",
+      "id": "database-column-constraints-002",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "normalization",
-        "partial-dependency"
+        "constraint",
+        "default"
       ],
       "content": {
-        "prompt": "복합키의 일부에만 종속되는 것은?",
+        "prompt": "값을 주지 않으면 넣을 기본값을 정하는 것은?",
         "options": [
-          "완전 함수 종속",
-          "이행 함수 종속",
-          "부분 함수 종속"
+          "CHECK",
+          "UNIQUE",
+          "DEFAULT"
         ]
       },
       "answer_key": {
         "index": 2
       },
-      "explanation": "속성이 복합키 전체가 아니라 일부에만 종속되는 것을 부분 함수 종속이라고 합니다.",
+      "explanation": "DEFAULT는 행을 넣을 때 그 열 값을 주지 않으면 대신 넣을 기본값을 정합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Second_normal_form"
+        "https://www.postgresql.org/docs/current/ddl-default.html"
       ]
     },
     {
-      "id": "database-normal-forms-1-2-003",
+      "id": "database-column-constraints-003",
       "type": "single",
       "difficulty": 1,
       "tags": [
-        "normalization",
-        "2nf"
+        "constraint",
+        "not-null",
+        "unique"
       ],
       "content": {
-        "prompt": "1NF와 2NF 중 부분 함수 종속까지 없어야 하는 것은?",
+        "prompt": "NOT NULL만 걸린 열에 같은 값을 두 번 넣으면?",
         "options": [
-          "2NF",
-          "1NF"
+          "저장된다",
+          "거부된다"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "2NF는 1NF이면서 부분 함수 종속이 없어야 합니다. 1NF는 원자값 조건만 봅니다.",
+      "explanation": "NOT NULL은 NULL만 거부합니다. 같은 값의 중복을 막는 것은 UNIQUE입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Second_normal_form"
+        "https://www.postgresql.org/docs/current/ddl-constraints.html"
       ]
     },
     {
-      "id": "database-normal-forms-1-2-004",
+      "id": "database-column-constraints-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
-        "normalization",
-        "1nf",
-        "2nf"
+        "constraint",
+        "check",
+        "default"
       ],
       "content": {
-        "prompt": "1NF의 조건은 부분 함수 종속이 없는 것이다."
+        "prompt": "DEFAULT는 조건식에 맞지 않는 값을 거부한다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "1NF의 조건은 모든 속성 값이 원자값인 것입니다. 부분 함수 종속이 없어야 하는 것은 2NF입니다.",
+      "explanation": "조건식으로 값을 거르는 것은 CHECK입니다. DEFAULT는 값을 주지 않았을 때 넣을 기본값입니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/First_normal_form"
+        "https://www.postgresql.org/docs/current/ddl-constraints.html"
       ]
     },
     {
-      "id": "database-normal-forms-1-2-005",
+      "id": "database-column-constraints-005",
       "type": "fill",
       "difficulty": 1,
       "tags": [
-        "normalization",
-        "1nf"
+        "constraint",
+        "not-null"
       ],
       "content": {
-        "prompt": "더 나눌 수 없는 하나의 값을 ___ (이)라고 한다.",
-        "hint": "1NF의 조건에 나오는 값"
+        "prompt": "값이 NULL이면 저장을 거부하는 제약은 ___ 이다.",
+        "hint": "NULL 앞에 부정어를 붙인 두 단어"
       },
       "answer_key": {
         "accepted": [
-          "원자값",
-          "atomic value",
-          "원자 값",
-          "atomic",
-          "원자적 값"
+          "NOT NULL",
+          "NOTNULL",
+          "낫 널",
+          "낫널"
         ]
       },
-      "explanation": "더 나눌 수 없는 값을 원자값이라고 하며, 1NF는 모든 속성 값이 원자값이어야 합니다.",
+      "explanation": "NOT NULL 제약이 걸린 열은 값이 NULL이면 저장을 거부합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/First_normal_form"
+        "https://www.postgresql.org/docs/current/ddl-constraints.html"
       ]
     },
     {
-      "id": "database-normal-forms-1-2-006",
+      "id": "database-column-constraints-006",
       "type": "fill",
       "difficulty": 2,
       "tags": [
-        "normalization",
-        "partial-dependency"
+        "constraint",
+        "check"
       ],
       "content": {
-        "prompt": "복합키의 일부에만 종속되는 것을 ___ 함수 종속이라고 한다.",
-        "hint": "2NF가 되려면 없애야 하는 종속"
+        "prompt": "조건식을 만족하는 값만 허용하는 제약은 ___ 이다.",
+        "hint": "괄호 안에 조건식을 적는 제약"
       },
       "answer_key": {
         "accepted": [
-          "부분",
-          "partial",
-          "부분적",
-          "부분 함수 종속"
+          "CHECK",
+          "체크"
         ]
       },
-      "explanation": "복합키 전체가 아니라 일부에만 종속되는 것을 부분 함수 종속이라고 합니다.",
+      "explanation": "CHECK 제약은 괄호 안 조건식을 만족하는 값만 받고, 나머지는 저장을 거부합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Second_normal_form"
+        "https://www.postgresql.org/docs/current/ddl-constraints.html"
       ]
     },
     {
-      "id": "database-normal-forms-1-2-007",
+      "id": "database-column-constraints-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "normalization",
-        "1nf"
+        "constraint",
+        "check"
       ],
       "content": {
-        "prompt": "전화번호 속성 값 하나에 번호가 두 개 들어 있다. 어긴 정규형은?",
+        "prompt": "가격 INT CHECK (가격 >= 0) 열에 -100을 넣으면?",
         "options": [
-          "1NF",
-          "2NF"
+          "거부된다",
+          "저장된다",
+          "0으로 바뀐다"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "번호 두 개는 더 나눌 수 있는 값이라 원자값이 아니므로 1NF를 어깁니다.",
+      "explanation": "-100은 조건식 가격 >= 0을 만족하지 않으므로 CHECK 제약이 저장을 거부합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/First_normal_form"
+        "https://www.postgresql.org/docs/current/ddl-constraints.html"
       ]
     },
     {
-      "id": "database-normal-forms-1-2-008",
+      "id": "database-column-constraints-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "normalization",
-        "2nf",
-        "partial-dependency"
+        "constraint",
+        "default"
       ],
       "content": {
-        "prompt": "기본키 (학번, 강의번호)에서 이름이 학번만으로 정해진다. 2NF인가?",
+        "prompt": "상태 TEXT DEFAULT '대기' 열에 값 없이 행을 넣으면?",
         "options": [
-          "2NF 만족",
-          "2NF 위반"
+          "NULL이 들어감",
+          "'대기'가 들어감",
+          "저장 거부"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "이름이 복합키의 일부인 학번에만 종속되는 부분 함수 종속이 있으므로 2NF가 아닙니다.",
+      "explanation": "값을 주지 않았으므로 DEFAULT로 정한 기본값 '대기'가 들어갑니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Second_normal_form"
+        "https://www.postgresql.org/docs/current/ddl-default.html"
       ]
     },
     {
-      "id": "database-normal-forms-1-2-009",
+      "id": "database-column-constraints-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
-        "normalization",
-        "2nf",
-        "partial-dependency"
+        "constraint",
+        "unique"
       ],
       "content": {
-        "prompt": "후보키가 학번 하나뿐인 1NF 테이블은 2NF인가?",
+        "prompt": "회원 이메일이 중복되지 않게 하려면 붙일 제약은?",
         "options": [
-          "2NF가 아니다",
-          "2NF이다"
+          "NOT NULL",
+          "CHECK",
+          "UNIQUE"
         ]
       },
       "answer_key": {
-        "index": 1
+        "index": 2
       },
-      "explanation": "부분 함수 종속은 복합키의 일부에 종속되는 것이라 단일 속성 키에서는 생기지 않습니다. 그래서 2NF입니다.",
+      "explanation": "같은 값이 두 번 들어오는 것을 막는 제약은 UNIQUE입니다. NOT NULL은 NULL만 막습니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/Second_normal_form"
+        "https://www.postgresql.org/docs/current/ddl-constraints.html"
       ]
     },
     {
-      "id": "database-normal-forms-1-2-010",
+      "id": "database-column-constraints-010",
       "type": "ox",
       "difficulty": 2,
       "tags": [
-        "normalization",
-        "1nf"
+        "constraint",
+        "unique"
       ],
       "content": {
-        "prompt": "모든 속성 값이 원자값이면 1NF를 만족한다."
+        "prompt": "UNIQUE 열에는 같은 값이 두 번 들어갈 수 없다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "1NF는 모든 속성 값이 더 나눌 수 없는 원자값이어야 한다는 정규형입니다.",
+      "explanation": "UNIQUE 제약은 이미 있는 값과 같은 값이 들어오면 저장을 거부합니다.",
       "refs": [
-        "https://en.wikipedia.org/wiki/First_normal_form"
+        "https://www.postgresql.org/docs/current/ddl-constraints.html"
       ]
     }
   ]
