@@ -3,11 +3,12 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import type { CompleteSessionResponse, RetryAnswerResponse, SessionResponse, SubmitAnswerResponse, UserAnswer } from '@cs-daily/contracts';
 import { api, ApiError } from '@/lib/api';
 import { CheckIcon, RepeatIcon, XIcon } from './icons';
 import { QuestionRenderer, correctAnswerText } from './question-renderers';
+import { Window } from './window';
 
 /**
  * 레슨 플레이어 (기획서 5절): 풀스크린, 진행 바, 문제 1개, 하단 고정 확인 버튼, 정오답 시트.
@@ -18,6 +19,9 @@ type Phase = 'intro' | 'main' | 'retry';
 type Graded = { isCorrect: boolean; correctAnswer?: unknown; explanation: string; xpDelta: number };
 
 const MAX_RETRY = 2;
+
+/** 오답 시트의 본문 바탕. 주 버튼 링의 간격색도 같은 바탕에 맞춘다 */
+const WRONG_BODY = { background: 'var(--color-wrong-bg)', '--ring-gap': 'var(--color-wrong-bg)' } as CSSProperties;
 
 /** "용어 — 정의" 형태의 핵심 정리를 첫 " — " 기준으로 나눈다. 구분자가 없으면 통째로 정의로 본다 */
 function splitKeyPoint(kp: string): { term: string | null; definition: string } {
@@ -166,18 +170,18 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
         </header>
         <section className="flex flex-1 flex-col items-center justify-center px-6 pb-40 text-center">
           <div className="w-full max-w-[520px]">
-            <p className="font-mono text-cap font-semibold text-brand">이번 레슨</p>
-            <h1 className="mt-2 text-h2 font-semibold">{session.data.lessonName ?? '레슨'}</h1>
+            <p className="bit text-ink">이번 레슨</p>
+            <h1 className="bit-2 mt-2">{session.data.lessonName ?? '레슨'}</h1>
             {session.data.lessonObjective && <p className="mt-4 text-body text-ink-2">{session.data.lessonObjective}</p>}
             {keyPoints.length > 0 && (
               <div className="card mt-6 p-5 text-left">
-                <h2 className="font-mono text-cap font-semibold">핵심 정리</h2>
+                <h2 className="bit">핵심 정리</h2>
                 <ul className="mt-3 space-y-3 text-body">
                   {keyPoints.map((kp) => {
                     const { term, definition } = splitKeyPoint(kp);
                     return (
                       <li key={kp} className="flex gap-3">
-                        <span aria-hidden className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                        <span aria-hidden className="mt-[0.6em] h-1.5 w-1.5 shrink-0 bg-ink" />
                         <span className="text-ink-2">
                           {term && <strong className="font-semibold text-ink">{term}</strong>}
                           {term && ' — '}
@@ -189,12 +193,12 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
                 </ul>
               </div>
             )}
-            <p className="mt-6 font-mono text-cap text-ink-2">
+            <p className="bit mt-6 text-ink-2">
               {total}문제 · 약 5분 · 틀린 문제는 끝에서 다시 풀어요
             </p>
           </div>
         </section>
-        <footer className="fixed inset-x-0 bottom-0 border-t border-line bg-surface pb-[max(env(safe-area-inset-bottom),16px)] pt-4">
+        <footer className="fixed inset-x-0 bottom-0 border-t border-ink bg-surface pb-[max(env(safe-area-inset-bottom),16px)] pt-4">
           <div className="mx-auto max-w-[720px] px-4">
             <button type="button" onClick={() => setPhase('main')} className="btn-3d w-full" autoFocus>시작</button>
           </div>
@@ -215,10 +219,10 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
     <div className="flex min-h-dvh flex-col">
       <header className="flex items-center gap-3 px-4 pt-[max(env(safe-area-inset-top),12px)] pb-3 md:mx-auto md:w-full md:max-w-[720px]">
         <ExitLink />
-        <div className="h-3 flex-1 overflow-hidden rounded-full bg-line" role="progressbar" aria-label="진행률" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100}>
-          <div className="h-full rounded-full bg-brand-fill transition-[width] duration-500" style={{ width: `${progress}%` }} />
+        <div className="meter flex-1" role="progressbar" aria-label="진행률" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100}>
+          <span style={{ width: `${progress}%` }} />
         </div>
-        <span className="font-mono text-body font-semibold tabular-nums text-ink-2">
+        <span className="bit text-ink-2">
           {phase === 'retry' ? `다시 ${retryDone}/${retryTotal}` : `${answered}/${total}`}
         </span>
       </header>
@@ -226,14 +230,14 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
       {/* 문제 영역은 헤더와 하단 버튼 사이에서 세로 가운데 정렬 (콘텐츠가 길면 위에서부터 스크롤) */}
       <section className={`flex flex-1 flex-col justify-center px-4 pt-4 ${result ? 'pb-72' : 'pb-40 md:pb-44'}`}>
         <div className="mx-auto w-full max-w-[600px]">
-          {session.data.kind === 'review' && <p className="mb-3 flex items-center gap-1.5 font-mono text-cap font-semibold text-streak">복습 세션 · XP ×1.5</p>}
+          {session.data.kind === 'review' && <p className="bit mb-3 flex items-center gap-1.5 text-ink">복습 세션 · XP ×1.5</p>}
           {session.data.kind === 'placement' && (
-            <p className="mb-3 font-mono text-cap font-semibold text-brand">
+            <p className="bit mb-3 text-ink">
               건너뛰기 테스트{session.data.lessonName ? ` · ${session.data.lessonName}` : ''} — 80% 이상 맞히면 이 유닛까지 완료돼요
             </p>
           )}
           {phase === 'retry' && (
-            <p className="mb-3 flex items-center gap-1.5 font-mono text-cap font-semibold text-streak">
+            <p className="bit mb-3 flex items-center gap-1.5 text-ink">
               <RepeatIcon size={16} /> 틀린 문제 다시 풀기
             </p>
           )}
@@ -242,43 +246,44 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
         </div>
       </section>
 
-      {/* 하단 고정: 확인 또는 정오답 시트 */}
+      {/* 하단 고정: 확인 또는 정오답 시트(창 크롬, 제목 "결과") */}
       {result ? (
-        <div
-          role="status"
-          className={`sheet-up fixed inset-x-0 bottom-0 rounded-t-[24px] p-5 pb-[max(env(safe-area-inset-bottom),20px)] ${result.isCorrect ? 'bg-correct-bg' : 'bg-wrong-bg'}`}
-        >
-          <div className="mx-auto flex max-w-[720px] flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div className="flex-1">
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                <span
-                  aria-hidden
-                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${result.isCorrect ? 'bg-correct-fill text-on-correct' : 'bg-wrong text-on-wrong'}`}
-                >
-                  {result.isCorrect ? <CheckIcon size={18} strokeWidth={3} /> : <XIcon size={18} strokeWidth={3} />}
-                </span>
-                <p className={`text-title font-semibold ${result.isCorrect ? 'text-correct' : 'text-wrong'}`}>
-                  {result.isCorrect ? (result.xpDelta > 0 ? `정답! +${result.xpDelta} XP` : '정답!') : phase === 'retry' ? '한 번 더 볼게요' : '아쉬워요'}
-                </p>
-                {!result.isCorrect && phase === 'main' && (
-                  <span className="rounded-full bg-surface px-2.5 py-0.5 text-cap font-medium text-ink-2">끝에서 다시 풀어요</span>
-                )}
+        <div role="status" className="fixed inset-x-0 bottom-0 px-4 pb-[max(env(safe-area-inset-bottom),16px)]">
+          <div className="sheet-up mx-auto max-w-[720px]">
+            <Window title="결과" bodyStyle={result.isCorrect ? undefined : WRONG_BODY}>
+              <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span
+                      aria-hidden
+                      className={`flex h-6 w-6 shrink-0 items-center justify-center ${result.isCorrect ? 'bg-correct-fill text-on-correct' : 'bg-wrong text-on-wrong'}`}
+                    >
+                      {result.isCorrect ? <CheckIcon size={16} strokeWidth={3} /> : <XIcon size={16} strokeWidth={3} />}
+                    </span>
+                    <p className={`bit ${result.isCorrect ? 'text-ink' : 'text-wrong'}`}>
+                      {result.isCorrect ? (result.xpDelta > 0 ? `정답! +${result.xpDelta} XP` : '정답!') : phase === 'retry' ? '한 번 더 볼게요' : '아쉬워요'}
+                    </p>
+                    {!result.isCorrect && phase === 'main' && (
+                      <span className="rounded-full border border-ink px-2.5 py-0.5 text-cap font-medium text-ink-2">끝에서 다시 풀어요</span>
+                    )}
+                  </div>
+                  {answerText && (
+                    <p className="mt-3 text-body">
+                      <span className="text-ink-2">정답 </span>
+                      <strong className="font-semibold">{answerText}</strong>
+                    </p>
+                  )}
+                  <p className="mt-2 text-body">{result.explanation}</p>
+                </div>
+                <button type="button" onClick={next} className="btn-3d w-full md:w-40" autoFocus>
+                  계속
+                </button>
               </div>
-              {answerText && (
-                <p className="mt-3 text-body">
-                  <span className="text-ink-2">정답 </span>
-                  <strong className="font-semibold">{answerText}</strong>
-                </p>
-              )}
-              <p className="mt-2 text-body">{result.explanation}</p>
-            </div>
-            <button type="button" onClick={next} className="btn-3d w-full md:w-40" autoFocus>
-              계속
-            </button>
+            </Window>
           </div>
         </div>
       ) : (
-        <footer className="fixed inset-x-0 bottom-0 border-t border-line bg-surface pb-[max(env(safe-area-inset-bottom),16px)] pt-4">
+        <footer className="fixed inset-x-0 bottom-0 border-t border-ink bg-surface pb-[max(env(safe-area-inset-bottom),16px)] pt-4">
           <div className="mx-auto max-w-[720px] px-4">
             <button type="button" disabled={!canSubmit || pending} onClick={check} className="btn-3d w-full">
               {pending ? '채점 중…' : '확인'}
@@ -292,7 +297,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
 
 function ExitLink() {
   return (
-    <Link href="/learn" aria-label="나가기" className="-m-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-ink-2">
+    <Link href="/learn" aria-label="나가기" className="-m-2 flex h-11 w-11 shrink-0 items-center justify-center text-ink">
       <XIcon size={24} />
     </Link>
   );

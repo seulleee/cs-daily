@@ -159,14 +159,17 @@ export const SnowflakeIcon = (p: IconProps) => (
   </Icon>
 );
 
-/** 로고 마크: 배선으로 이어진 패드 셋. 로그인 화면에서만 쓴다 */
+/**
+ * 로고 마크: 배선으로 이어진 패드 셋을 흑백 1px 선화로. 로그인 화면에서만 쓴다.
+ * 48px에서 1:1로 그려야 또렷하다(crispEdges + 반 픽셀 좌표). 위 두 패드는 윤곽, 아래 패드는 반전(채움).
+ */
 export function TraceMark({ size = 48, ...rest }: Omit<IconProps, 'solid'>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false" {...rest}>
-      <path d="M10 18v2l10 10M38 18v2L28 30" stroke="currentColor" strokeWidth="4" strokeLinejoin="round" strokeLinecap="round" />
-      <rect x="2" y="2" width="16" height="16" rx="5" fill="currentColor" opacity=".45" />
-      <rect x="30" y="2" width="16" height="16" rx="5" fill="currentColor" opacity=".45" />
-      <rect x="16" y="30" width="16" height="16" rx="5" fill="currentColor" />
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false" shapeRendering="crispEdges" {...rest}>
+      <path d="M10.5 18V24.5H24.5V30M37.5 18V24.5H24.5" stroke="currentColor" strokeWidth="1" />
+      <rect x="2.5" y="2.5" width="15" height="15" stroke="currentColor" strokeWidth="1" />
+      <rect x="30.5" y="2.5" width="15" height="15" stroke="currentColor" strokeWidth="1" />
+      <rect x="16" y="30" width="16" height="16" fill="currentColor" />
     </svg>
   );
 }

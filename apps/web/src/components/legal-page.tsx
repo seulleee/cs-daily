@@ -24,14 +24,14 @@ export function LegalPage({ current, title, effectiveDate, children }: LegalPage
   return (
     <div className="min-h-dvh">
       <header className="mx-auto max-w-[680px] px-4 pt-6">
-        <Link href="/" className="text-title font-semibold text-brand">
+        <Link href="/" className="bit-2 text-ink">
           CS 데일리
         </Link>
       </header>
       <main className="mx-auto max-w-[680px] px-4 pb-10 pt-6">
         <article className="card p-6 sm:p-8">
-          <h1 className="text-h2 font-semibold">{title}</h1>
-          <p className="mt-2 font-mono text-cap text-ink-2">시행일 {effectiveDate}</p>
+          <h1 className="bit-2">{title}</h1>
+          <p className="bit mt-2 text-ink-2">시행일 {effectiveDate}</p>
           {children}
         </article>
         <nav aria-label="약관 및 방침" className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-1 text-cap">

@@ -3,6 +3,7 @@
 import type { PublicQuestion, UserAnswer } from '@cs-daily/contracts';
 import { useEffect, useRef } from 'react';
 import { CheckIcon, XIcon } from './icons';
+import { SelectMark } from './select-mark';
 
 interface RendererProps {
   question: PublicQuestion;
@@ -40,7 +41,7 @@ function Prompt({ prompt, code }: { prompt: string; code?: { language: string; s
 
 function CodeBlock({ source, className = '' }: { source: string; className?: string }) {
   return (
-    <pre className={`overflow-x-auto rounded-[14px] border border-line bg-surface p-3 font-mono text-cap text-ink [word-spacing:normal] ${className}`}>
+    <pre className={`overflow-x-auto border border-ink bg-surface p-3 font-mono text-cap text-ink [word-spacing:normal] ${className}`}>
       <code>{source}</code>
     </pre>
   );
@@ -67,7 +68,7 @@ export function correctAnswerText(question: PublicQuestion, correctAnswer: unkno
   }
 }
 
-/** 채점 후 보기 오른쪽 끝의 상태 아이콘. 색만으로 정오답을 구분하지 않도록 함께 쓴다 */
+/** 채점 후 보기 오른쪽 끝의 상태 아이콘. 정답은 색이 아니라 아이콘(check)+굵은 테두리로, 오답은 x+wrong 테두리로 구분한다 */
 function StateIcon({ state }: { state: 'correct' | 'wrong' | undefined }) {
   if (state === 'correct') return <CheckIcon size={22} strokeWidth={3} className="shrink-0 text-correct" />;
   if (state === 'wrong') return <XIcon size={22} strokeWidth={3} className="shrink-0 text-wrong" />;
@@ -120,9 +121,7 @@ function ChoiceRenderer({ question, value, onChange, revealed, multi }: Renderer
               onClick={() => toggle(i)}
               className="option flex items-center gap-3"
             >
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-surface-2 font-mono text-cap font-semibold text-ink-2">
-                {i + 1}
-              </span>
+              <SelectMark kind={multi ? 'box' : 'radio'} />
               <span className="flex-1 text-body">{opt}</span>
               <StateIcon state={state} />
             </button>
@@ -153,7 +152,8 @@ function OxRenderer({ question, value, onChange, revealed }: RendererProps) {
             onClick={() => onChange({ value: b })}
             className="option flex flex-col items-center py-5 text-center"
           >
-            <span className="text-h2 font-semibold">{b ? 'O' : 'X'}</span>
+            <SelectMark corner />
+            <span className="bit-2">{b ? 'O' : 'X'}</span>
             <span className="mt-1 text-cap font-medium text-ink-2">{b ? '맞다' : '틀리다'}</span>
             <span className="absolute right-3 top-3">
               <StateIcon state={revealed ? (correct === b ? 'correct' : v === b ? 'wrong' : undefined) : undefined} />
@@ -183,8 +183,8 @@ function FillRenderer({ question, value, onChange, revealed }: RendererProps) {
           onChange={(e) => onChange({ text: e.target.value })}
           aria-label="빈칸"
           autoComplete="off"
-          className="mx-1 inline-block w-40 border-b-2 border-line bg-transparent px-2 py-0.5 text-center text-ink focus:border-brand"
-          style={revealed ? { borderColor: revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)', color: revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)' } : undefined}
+          className="mx-1 inline-block w-40 border border-ink bg-paper px-2 py-0.5 text-center text-ink focus:shadow-[inset_0_0_0_1px_var(--color-ink)]"
+          style={revealed ? { borderColor: revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)', color: revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)', boxShadow: `inset 0 0 0 1px ${revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)'}` } : undefined}
         />
         {revealed && (
           <span className="mr-1 inline-block align-middle">

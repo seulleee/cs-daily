@@ -32,24 +32,25 @@ export function AppShell({ children, aside }: { children: ReactNode; aside?: Rea
     <div className="min-h-dvh md:flex">
       <nav
         aria-label="주 메뉴"
-        className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-surface pb-[env(safe-area-inset-bottom)] md:sticky md:top-0 md:h-dvh md:w-[72px] md:shrink-0 md:border-t-0 md:border-r md:px-2 md:py-6 md:pb-6 lg:w-60 lg:px-4"
+        className="fixed inset-x-0 bottom-0 z-20 border-t border-ink bg-surface pb-[env(safe-area-inset-bottom)] md:sticky md:top-0 md:h-dvh md:w-[72px] md:shrink-0 md:border-t-0 md:border-r md:px-2 md:py-6 md:pb-6 lg:w-60 lg:px-4"
       >
-        <Link href="/learn" className="mb-6 hidden px-3 text-title font-semibold text-brand lg:block">
+        <Link href="/learn" className="bit-2 mb-6 hidden px-3 text-ink lg:block">
           CS 데일리
         </Link>
-        <ul className="grid h-16 grid-cols-4 md:h-auto md:grid-cols-1 md:gap-1">
+        <ul className="grid h-16 grid-cols-4 md:h-auto md:grid-cols-1 md:gap-2">
           {NAV.map(({ href, label, Icon }) => {
             const active = pathname.startsWith(href);
             const badge = href === '/review' && due > 0 ? (due > 99 ? '99+' : String(due)) : null;
             return (
-              <li key={href} className="min-w-0">
+              <li key={href} className="min-w-0 p-1 md:p-0">
                 <Link
                   href={href}
                   aria-current={active ? 'page' : undefined}
                   aria-label={badge ? `${label}, 복습할 문제 ${due}개` : label}
                   className={clsx(
-                    'flex h-full min-h-11 flex-col items-center justify-center gap-0.5 text-cap font-medium md:h-auto md:flex-row md:justify-center md:gap-3 md:rounded-xl md:px-3 md:py-2.5 lg:justify-start lg:text-body',
-                    active ? 'text-brand md:bg-[color-mix(in_oklab,var(--color-brand)_12%,transparent)]' : 'text-ink-2',
+                    // 선택 탭 = 아이콘+라벨 반전 상자(반경 6). 라벨은 비트맵 16px, 줄 높이 16
+                    'bit flex h-full min-h-11 flex-col items-center justify-center gap-0.5 rounded-md leading-4! md:h-auto md:flex-row md:justify-center md:gap-3 md:px-3 md:py-2.5 lg:justify-start',
+                    active ? 'bg-brand-fill text-on-brand' : 'text-ink-2',
                   )}
                 >
                   <span className="relative">
@@ -57,13 +58,13 @@ export function AppShell({ children, aside }: { children: ReactNode; aside?: Rea
                     {badge && (
                       <span
                         aria-hidden
-                        className="absolute -right-2.5 -top-1.5 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-brand-fill px-1 font-mono text-[11px] font-semibold leading-none text-on-brand"
+                        className="bit absolute -right-3 -top-2 flex h-5 min-w-5 items-center justify-center border border-ink bg-surface px-1 leading-4! text-ink"
                       >
                         {badge}
                       </span>
                     )}
                   </span>
-                  <span className="md:hidden lg:inline">{label}</span>
+                  <span className="md:hidden lg:ml-2 lg:inline">{label}</span>
                 </Link>
               </li>
             );

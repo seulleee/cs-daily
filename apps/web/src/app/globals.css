@@ -1,149 +1,164 @@
 @import "tailwindcss";
 
 /*
- * 디자인 "Trace": 드라큘라(Dracula) 기반 팔레트(다크는 공식 팔레트, 라이트는 Alucard 계열). 학습 경로를 회로 기판의 배선처럼 그린다.
- *  - 보라(brand)는 "켜진 신호"에만 쓴다: 켜진 배선·현재/선택·액션·커서. 초록(correct)은 "정답 순간"(보기 테두리·정답 시트의 아이콘·글자)에만 쓰고 큰 면으로는 쓰지 않는다. 본문·제목은 ink.
- *  - 정보 위계: 현재 진행 중인 것만 밝고, 지나간 것은 가라앉히고(--done-*), 앞으로 올 것은 꺼 둔다.
- *  - 시안·핑크는 쓰지 않는다(절제).
- *  - 색은 전부 CSS 변수. 컴포넌트·TSX에 hex를 쓰지 않는다.
- *  - `brand`는 글자·아이콘·링·켜진 배선·테두리용, `*-fill`은 그 위에 `on-*` 글자가 올라가는 채움(버튼·현재 패드·선택 칩·진행 바)용.
- *  - 3D 그림자는 .btn-3d 하나뿐. 카드는 1px 테두리, 그림자·그라데이션 없음. 스캔라인·글로우 없음.
+ * 디자인 "Platinum": 1990년대 흑백 데스크톱 GUI의 문법(창 타이틀바의 가로 줄무늬, 1px 검정 테두리와 블러 없는 그림자, 반전 선택, 디더, 비트맵 글꼴)을 빌린다.
+ * Apple 고유 요소(로고·Chicago/Charcoal 글꼴·Finder 아이콘·실제 Mac OS 창 모양)는 쓰지 않는다. 글꼴은 한국 90년대 PC의 비트맵 글꼴 Neo둥근모.
+ *  - 기억에 남는 요소는 하나: 창(window) 크롬 + 반전된 현재 노드와 '개미 행렬(marching ants)' 점선. 색은 거의 흑백, 유일한 유채색은 오답의 빨강.
+ *  - 선택·활성은 색이 아니라 반전(brand-fill 배경 + on-brand 글자)으로, 정답은 아이콘+굵은 테두리로 표현한다.
+ *  - 색은 전부 CSS 변수. 컴포넌트·TSX에 hex를 쓰지 않는다. 그라데이션(디더·결과 링 제외)과 블러 그림자는 쓰지 않는다.
+ *  - 비트맵 글꼴(font-display)은 16px의 정수배(16·32·48)로만 쓴다. 그 외 크기는 번진다. 굵게(font-weight)도 쓰지 않는다(가짜 굵기가 번진다).
  * `static`: 클래스로 참조되지 않는 변수(인라인 style의 var(--color-…))도 항상 내보낸다.
  */
 @theme static {
-  /* 라이트(기본) */
-  --color-surface-2: #fffbeb;         /* 화면 배경(ground) */
-  --color-surface: #ffffff;           /* 카드 */
-  --color-line: #e6dfc8;
-  --color-ink: #1f1f1f;
-  --color-ink-2: #6c664b;
+  /* 라이트(기본) "Platinum" */
+  --color-surface-2: #dcdcdc;         /* 화면 배경(ground) */
+  --color-surface: #f4f4f4;           /* 창·카드 */
+  --color-line: #8a8a8a;              /* 구분선·잠김 테두리 */
+  --color-ink: #000000;
+  --color-ink-2: #555555;
+  --color-paper: #ffffff;             /* 반전 글자·디더의 밝은 칸·입력칸 바탕 */
 
-  --color-brand: #644ac9;             /* 글자·아이콘·링·켜진 배선 */
-  --color-brand-fill: #644ac9;        /* on-brand 글자가 올라가는 채움 */
+  --color-brand: #000000;             /* 링크·"건너뛰기"·선택 텍스트 */
+  --color-brand-fill: #000000;        /* 주 버튼·현재 패드·선택 칩 = 반전 */
   --color-on-brand: #ffffff;
-  --color-brand-dark: #4b35a0;        /* 3D 버튼 그림자 */
+  --color-brand-dark: #000000;        /* 사용 안 함 */
 
-  --color-correct: #14710a;
-  --color-correct-bg: #e3f5df;
-  --color-correct-fill: #14710a;      /* 정답 시트의 체크 원 채움 */
+  --color-correct: #000000;           /* 정답은 색이 아니라 아이콘+굵은 테두리 */
+  --color-correct-bg: #f4f4f4;
+  --color-correct-fill: #000000;
   --color-on-correct: #ffffff;
-  --color-correct-dark: #0e5207;      /* 현재 쓰는 곳 없음 — 정답 강조가 더 필요할 때를 위한 예비 토큰 */
-  --color-wrong: #b83224;
-  --color-wrong-bg: #fbeae7;
+  --color-wrong: #bd0f29;             /* 유일한 유채색. 시안 #c8102e는 ground 위 4.29:1이라 4.5:1 이상이 되도록 살짝 어둡게 */
+  --color-wrong-bg: #fbe9ec;
   --color-on-wrong: #ffffff;
 
-  --color-streak: #a34d14;
-  --color-xp: #846e15;
+  --color-streak: #000000;
+  --color-xp: #000000;
 
-  /* 타이포: IBM Plex Sans KR(제목·본문·UI) + IBM Plex Mono(숫자·라벨·진행 표시). 폰트는 layout.tsx의 <link>로 로드 */
+  /* 타이포: 본문·문제·보기·해설 = IBM Plex Sans KR. 제목·큰 숫자·버튼·칩·라벨·창 제목 = 비트맵 글꼴. 폰트는 layout.tsx의 <link>로 로드 */
   --font-sans: "IBM Plex Sans KR", Pretendard, system-ui, sans-serif;
+  /* 코드 블록 전용 */
   --font-mono: "IBM Plex Mono", "IBM Plex Sans KR", ui-monospace, SFMono-Regular, Menlo, monospace;
-  /* 스케일 1.25: 13 / 16 / 20 / 25 / 31 / 39 / 49 */
+  /* Neo둥근모(CDN 스타일시트의 이름 NeoDunggeunmo, 설치된 로컬 글꼴이면 Neo둥근모) → Galmuri11 → IBM Plex Mono(CDN이 안 열리면 여기까지 내려온다) → 한글은 Plex Sans KR */
+  --font-display: "NeoDunggeunmo", "Neo둥근모", "Galmuri11", "IBM Plex Mono", "IBM Plex Sans KR", monospace;
+  /* Plex 본문 스케일. 비트맵 글꼴 크기는 아래 @utility bit / bit-2 / bit-3 */
   --text-cap: 13px;
   --text-cap--line-height: 1.55;
   --text-body: 16px;
   --text-body--line-height: 1.55;
   --text-title: 20px;
   --text-title--line-height: 1.35;
-  --text-h3: 25px;
-  --text-h3--line-height: 1.15;
-  --text-h2: 31px;
-  --text-h2--line-height: 1.15;
-  --text-h1: 39px;
-  --text-h1--line-height: 1.15;
-  --text-hero: 49px;
-  --text-hero--line-height: 1.15;
 
-  /* 반경은 역할별로: 히어로 24 · 카드 16 · 보기 14 · 패드 16 · 버튼 14 · 칩 999 */
-  --radius-hero: 24px;
-  --radius-card: 16px;
-  --radius-option: 14px;
-  --radius-pad: 16px;
-  --radius-btn: 14px;
+  /* 반경: 버튼 8 · 칩 999. 나머지(창·카드·보기·패드·입력)는 0(각진 모서리) */
+  --radius-btn: 8px;
 }
 
 /*
- * 다크 테마. 설정 > 테마에서 고른 값이 <html data-theme>로 들어온다 (lib/theme.ts).
+ * 다크 테마 "Dark Platinum". 설정 > 테마에서 고른 값이 <html data-theme>로 들어온다 (lib/theme.ts).
  * - data-theme="dark": 강제 다크
  * - data-theme 없음(시스템): OS가 다크면 다크
  * - data-theme="light": OS가 다크여도 라이트
  */
 :root { color-scheme: light; }
 :root[data-theme="dark"] {
-  --color-surface-2: #21222c;
-  --color-surface: #282a36;
-  --color-line: #44475a;
-  --color-ink: #f8f8f2;
-  --color-ink-2: #a9aec8;
+  --color-surface-2: #262626;
+  --color-surface: #363636;
+  --color-line: #7a7a7a;
+  --color-ink: #f2f2f2;
+  --color-ink-2: #b5b5b5;
+  --color-paper: #262626;
 
-  --color-brand: #bd93f9;
-  --color-brand-fill: #bd93f9;
-  --color-on-brand: #282a36;
-  --color-brand-dark: #8e63e8;
+  --color-brand: #f2f2f2;
+  --color-brand-fill: #f2f2f2;
+  --color-on-brand: #000000;
+  --color-brand-dark: #f2f2f2;
 
-  --color-correct: #50fa7b;
-  --color-correct-bg: #233b2e;
-  --color-correct-fill: #50fa7b;
-  --color-on-correct: #282a36;
-  --color-correct-dark: #2fb85a;
-  --color-wrong: #ff5555;
-  --color-wrong-bg: #301f26;
-  --color-on-wrong: #282a36;
+  --color-correct: #f2f2f2;
+  --color-correct-bg: #363636;
+  --color-correct-fill: #f2f2f2;
+  --color-on-correct: #000000;
+  --color-wrong: #ff7474;
+  --color-wrong-bg: #4a2323;
+  --color-on-wrong: #000000;
 
-  --color-streak: #ffb86c;
-  --color-xp: #f1fa8c;
+  --color-streak: #f2f2f2;
+  --color-xp: #f2f2f2;
   color-scheme: dark;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-surface-2: #21222c;
-    --color-surface: #282a36;
-    --color-line: #44475a;
-    --color-ink: #f8f8f2;
-    --color-ink-2: #a9aec8;
+    --color-surface-2: #262626;
+    --color-surface: #363636;
+    --color-line: #7a7a7a;
+    --color-ink: #f2f2f2;
+    --color-ink-2: #b5b5b5;
+    --color-paper: #262626;
 
-    --color-brand: #bd93f9;
-    --color-brand-fill: #bd93f9;
-    --color-on-brand: #282a36;
-    --color-brand-dark: #8e63e8;
+    --color-brand: #f2f2f2;
+    --color-brand-fill: #f2f2f2;
+    --color-on-brand: #000000;
+    --color-brand-dark: #f2f2f2;
 
-    --color-correct: #50fa7b;
-    --color-correct-bg: #233b2e;
-    --color-correct-fill: #50fa7b;
-    --color-on-correct: #282a36;
-    --color-correct-dark: #2fb85a;
-    --color-wrong: #ff5555;
-    --color-wrong-bg: #301f26;
-    --color-on-wrong: #282a36;
+    --color-correct: #f2f2f2;
+    --color-correct-bg: #363636;
+    --color-correct-fill: #f2f2f2;
+    --color-on-correct: #000000;
+    --color-wrong: #ff7474;
+    --color-wrong-bg: #4a2323;
+    --color-on-wrong: #000000;
 
-    --color-streak: #ffb86c;
-    --color-xp: #f1fa8c;
+    --color-streak: #f2f2f2;
+    --color-xp: #f2f2f2;
     color-scheme: dark;
   }
 }
 
 /*
- * 파생 색: "현재만 밝게, 지나온 것은 가라앉히고, 앞으로 올 것은 꺼 둔다". 테마 변수에서 계산하므로 라이트·다크가 함께 따라간다.
- *  --done-bg  완료 패드·완료 표시의 배경 (brand를 18%만 섞은 면)
- *  --done-ink 그 위의 check 아이콘 색
- *  --wire-done 현재 패드 이전의 완료 구간 배선(켜져 있되 어둡게)
+ * 디더: ink/paper 2px 체커보드(4px 타일). 완료 패드의 바탕에 쓴다. :root에서 해석되므로 라이트·다크가 함께 따라간다.
+ * 사용: `background: var(--dither)` (위치·크기가 값에 들어 있다)
  */
 :root {
-  --done-bg: color-mix(in oklab, var(--color-brand) 18%, var(--color-surface));
-  --done-ink: color-mix(in oklab, var(--color-brand) 65%, var(--color-ink-2));
-  --wire-done: color-mix(in oklab, var(--color-brand) 45%, var(--color-line));
+  --dither: repeating-conic-gradient(var(--color-ink) 0 25%, var(--color-paper) 0 50%) 0 0 / 4px 4px;
 }
 
 html, body { background: var(--color-surface-2); color: var(--color-ink); }
 
 @layer base {
   html { line-height: 1.55; }
-  /* 한국어는 어절 단위로 줄바꿈하고, 어절이 한 줄보다 길 때만 글자 단위로 끊는다 */
-  body { word-break: keep-all; overflow-wrap: anywhere; }
-  /* 모노 폰트의 공백(0.6em)은 한글 문장 사이에서 지나치게 넓다. 어절 간격을 본문 수준으로 좁힌다(코드 블록은 [word-spacing:normal]로 되돌린다) */
-  .font-mono { word-spacing: -0.3em; }
+  /* 한국어는 어절 단위로 줄바꿈하고, 어절이 한 줄보다 길 때만 글자 단위로 끊는다. 없는 굵기를 흉내 내지 않는다(비트맵 글꼴이 번진다) */
+  body { word-break: keep-all; overflow-wrap: anywhere; font-synthesis: none; }
   /* 모든 인터랙티브 요소의 키보드 포커스 */
-  :focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; }
+  :focus-visible { outline: 2px dashed var(--color-ink); outline-offset: 2px; }
+}
+
+/*
+ * 비트맵 글꼴 크기. 16의 정수배(16·32·48)와 정수 줄 높이만 쓴다.
+ *   bit    16px  버튼·칩·라벨·숫자·창 제목
+ *   bit-2  32px  히어로 제목·레슨 제목·유닛 번호·큰 숫자
+ *   bit-3  48px  정답률
+ */
+@utility bit {
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-synthesis: none;
+}
+@utility bit-2 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-synthesis: none;
+}
+@utility bit-3 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-synthesis: none;
 }
 
 /*
@@ -151,71 +166,167 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
  * 우선순위가 높아져 `card bg-…` 같은 조합에서 유틸리티가 무시된다 (유닛 헤더가 흰 배경+흰 글씨로 보이지 않던 버그).
  */
 @layer components {
-  /* 주 버튼: 3D 그림자는 이 버튼에만 쓴다. 글자는 fill 위의 반전색(on-brand) */
+  /* 창(Window): 1px ink 테두리, 각진 모서리, 블러 없는 2px 그림자. 타이틀바는 가로 줄무늬 위에 제목 상자를 올려 줄무늬를 끊는다 (components/window.tsx) */
+  .win {
+    background: var(--color-surface);
+    border: 1px solid var(--color-ink);
+    box-shadow: 2px 2px 0 var(--color-ink);
+    color: var(--color-ink);
+  }
+  .win-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    border-bottom: 1px solid var(--color-ink);
+    background: var(--color-surface);
+  }
+  /* 줄무늬: 1px 줄을 3px 간격으로. 위 4px·아래 3px 여백 */
+  .win-bar::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    height: 16px;
+    background: repeating-linear-gradient(0deg, var(--color-ink) 0 1px, transparent 1px 3px);
+  }
+  .win-title {
+    position: relative;
+    display: block;
+    height: 23px;
+    padding: 0 8px;
+    background: var(--color-surface);
+    font-family: var(--font-display);
+    font-size: 16px;
+    line-height: 23px;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+  /* 12px 닫기 상자. 눌림 영역은 ::after로 24px 이상 확보한다 */
+  .win-close {
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: 1px solid var(--color-ink);
+    background: var(--color-surface);
+  }
+  .win-close::after { content: ""; position: absolute; inset: -8px; }
+  .win-close:active { background: var(--color-ink); }
+
+  /* 주 버튼(이름은 유지): 반전 바탕 + 바깥 2px 간격 + 2px ink 링. 눌리면 반전이 풀린다 */
   .btn-3d {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    min-height: 52px;
+    min-height: 48px;
     padding: 0 20px;
+    border: 1px solid var(--color-ink);
     border-radius: var(--radius-btn);
-    font-size: var(--text-body);
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
     color: var(--color-on-brand);
     background: var(--color-brand-fill);
-    box-shadow: 0 4px 0 var(--color-brand-dark);
+    box-shadow: 0 0 0 2px var(--ring-gap, var(--color-surface)), 0 0 0 4px var(--color-ink);
     user-select: none;
-    transition: transform 80ms ease-out, box-shadow 80ms ease-out;
+    transition: background-color 100ms linear, color 100ms linear;
   }
-  .btn-3d:active { transform: translateY(4px); box-shadow: 0 0 0 var(--color-brand-dark); }
-  .btn-3d:disabled { opacity: .5; box-shadow: none; transform: none; }
+  .btn-3d:active:not(:disabled) { background: var(--color-surface); color: var(--color-ink); }
+  .btn-3d:disabled {
+    cursor: not-allowed;
+    color: var(--color-ink-2);
+    background: var(--color-surface-2);
+    border-color: var(--color-line);
+    box-shadow: 0 0 0 2px var(--ring-gap, var(--color-surface)), 0 0 0 4px var(--color-line);
+  }
+  /* 포커스 점선이 링과 겹치지 않도록 링 바깥으로 */
+  .btn-3d:focus-visible { outline-offset: 6px; }
 
-  /* 보조 버튼(그림자 없음) */
+  /* 보조 버튼 */
   .btn-outline {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    min-height: 52px;
+    min-height: 48px;
     padding: 0 20px;
+    border: 1px solid var(--color-ink);
     border-radius: var(--radius-btn);
-    border: 2px solid var(--color-line);
-    background: transparent;
-    font-size: var(--text-body);
-    font-weight: 600;
+    background: var(--color-surface);
+    font-family: var(--font-display);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
     color: var(--color-ink);
   }
+  .btn-outline:active { background: var(--color-ink); color: var(--color-on-brand); }
 
+  /*
+   * 보기: 1px ink 테두리, 각진 모서리. 선택 = 2px 테두리(안쪽 1px를 더해 레이아웃이 밀리지 않게).
+   * 정답 = 2px 테두리 + 오른쪽 check + 왼쪽 라디오 채움. 오답 = wrong 2px 테두리 + x. 선택 표시(.mark)는 부모의 data-* 를 따라간다.
+   */
   .option {
     position: relative;
     width: 100%;
     min-height: 56px;
     padding: 12px 16px;
     text-align: left;
-    border-radius: var(--radius-option);
-    border: 2px solid var(--color-line);
+    border: 1px solid var(--color-ink);
+    border-radius: 0;
     background: var(--color-surface);
     color: var(--color-ink);
   }
-  .option[data-selected="true"] { border-color: var(--color-brand); background: color-mix(in oklab, var(--color-brand) 10%, var(--color-surface)); }
-  .option[data-state="correct"] { border-color: var(--color-correct); background: var(--color-correct-bg); }
-  .option[data-state="wrong"] { border-color: var(--color-wrong); background: var(--color-wrong-bg); }
+  .option[data-selected="true"] { box-shadow: inset 0 0 0 1px var(--color-ink); }
+  .option[data-state="correct"] { box-shadow: inset 0 0 0 1px var(--color-ink); background: var(--color-correct-bg); }
+  .option[data-state="wrong"] { border-color: var(--color-wrong); box-shadow: inset 0 0 0 1px var(--color-wrong); background: var(--color-wrong-bg); }
 
-  .card { background: var(--color-surface); border: 1px solid var(--color-line); border-radius: var(--radius-card); }
+  /* 라디오 원(.mark) / 체크 상자(.mark-box). 켜지면 안쪽이 채워진다 */
+  .mark {
+    position: relative;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--color-ink);
+    border-radius: 50%;
+    background: var(--color-paper);
+  }
+  .mark-box { border-radius: 0; }
+  .option[data-selected="true"] .mark::after,
+  .option[data-state="correct"] .mark::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: var(--color-ink);
+  }
+  .option[data-selected="true"] .mark-box::after,
+  .option[data-state="correct"] .mark-box::after { inset: 2px; border-radius: 0; }
+  .option[data-state="wrong"] .mark { border-color: var(--color-wrong); }
+  .option[data-state="wrong"] .mark::after { background: var(--color-wrong); }
+  /* 타일형 보기(OX·목표·테마)에서는 왼쪽 위 모서리에 둔다 */
+  .mark-corner { position: absolute; top: 12px; left: 12px; }
+
+  .card { background: var(--color-surface); border: 1px solid var(--color-ink); border-radius: 0; }
 
   .input {
     width: 100%;
     min-height: 48px;
-    border: 2px solid var(--color-line);
-    border-radius: var(--radius-btn);
+    border: 1px solid var(--color-ink);
+    border-radius: 0;
     padding: 10px 14px;
-    background: var(--color-surface);
+    background: var(--color-paper);
     color: var(--color-ink);
   }
-  .input:focus { border-color: var(--color-brand); }
+  .input:focus { box-shadow: inset 0 0 0 1px var(--color-ink); }
 
-  /* 트랙 선택 칩 */
+  /* 트랙 선택 칩. 선택 = 반전 */
   .chip {
     display: inline-flex;
     flex-shrink: 0;
@@ -225,21 +336,33 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
     min-height: 40px;
     padding: 0 16px;
     border-radius: 999px;
-    border: 1px solid var(--color-line);
+    border: 1px solid var(--color-ink);
     background: var(--color-surface);
-    font-family: var(--font-mono);
-    font-size: var(--text-cap);
-    font-weight: 600;
-    color: var(--color-ink-2);
+    font-family: var(--font-display);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: var(--color-ink);
     white-space: nowrap;
   }
   .chip[aria-selected="true"], .chip[data-selected="true"] {
     background: var(--color-brand-fill);
-    border-color: var(--color-brand-fill);
     color: var(--color-on-brand);
   }
 
-  /* 학습 경로의 레슨 패드: 배선 위의 접점. 현재/열림 = brand 채움(가장 밝게), 완료 = brand를 18%만 섞은 가라앉은 면, 잠김 = 속이 빈 윤곽(흐리게) */
+  /* 진행 바: 높이 12, 1px ink 테두리, 채움 ink */
+  .meter {
+    height: 12px;
+    border: 1px solid var(--color-ink);
+    background: var(--color-surface);
+    overflow: hidden;
+  }
+  .meter > span { display: block; height: 100%; background: var(--color-ink); }
+
+  /*
+   * 학습 경로의 레슨 패드(각진 56px). 열림 = surface + 2px ink 테두리, 현재 = 반전(+ 바깥 개미 행렬),
+   * 완료 = 디더 바탕 + 1px 테두리(가운데 28px surface 판 위에 check), 잠김 = 속이 빈 윤곽(line)
+   */
   .pad {
     position: relative;
     display: flex;
@@ -247,28 +370,36 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
     justify-content: center;
     width: 56px;
     height: 56px;
-    border-radius: var(--radius-pad);
-    border: 2px solid transparent;
-    background: var(--color-brand-fill);
-    color: var(--color-on-brand);
+    border: 2px solid var(--color-ink);
+    border-radius: 0;
+    background: var(--color-surface);
+    color: var(--color-ink);
   }
-  .pad:not(:disabled):active { transform: translateY(2px); }
-  .pad[data-state="completed"] { background: var(--done-bg); color: var(--done-ink); }
-  .pad[data-state="locked"] { background: var(--color-surface-2); border-color: var(--color-line); color: var(--color-ink-2); }
-  .pad[data-state="locked"] svg { opacity: .55; }
+  .pad[data-current="true"] { background: var(--color-brand-fill); color: var(--color-on-brand); }
+  .pad[data-state="completed"] { border-width: 1px; background: var(--dither); color: var(--color-ink); }
+  .pad[data-state="locked"] { border: 1px solid var(--color-line); background: var(--color-surface-2); color: var(--color-line); }
+  .pad:not(:disabled):active { background: var(--color-ink); color: var(--color-on-brand); }
+  .pad[data-current="true"]:not(:disabled):active { background: var(--color-surface); color: var(--color-ink); }
   .pad:disabled { cursor: not-allowed; }
-  /* 현재 패드: 소켓처럼 한 칸 띄운 4px 링(움직이지 않는다). 움직임은 레슨 이름 뒤의 블록 커서가 맡는다 */
-  .pad[data-current="true"] { box-shadow: 0 0 0 4px var(--color-surface-2), 0 0 0 8px var(--color-brand); }
+  /* 완료 패드의 가운데 판 */
+  .pad-plate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--color-surface);
+    color: var(--color-ink);
+  }
 
-  /* 터미널 블록 커서(▮): 현재 레슨 이름 뒤에서 1초 간격으로 깜빡인다 */
-  .term-cursor {
-    display: inline-block;
-    width: .55em;
-    height: 1em;
-    margin-left: 6px;
-    vertical-align: -.14em;
-    background: var(--color-brand);
-    animation: cursor-blink 1s linear infinite;
+  /* 개미 행렬: 현재 패드 바깥 3px에서 도는 2px 점선 사각형. SVG rect (패드 안 .ants). 패드의 2px 테두리 안쪽 기준이라 -7px = 바깥 가장자리에서 5px */
+  .ants { position: absolute; top: -7px; left: -7px; width: 66px; height: 66px; overflow: visible; pointer-events: none; }
+  .ants rect {
+    fill: none;
+    stroke: var(--color-ink);
+    stroke-width: 2;
+    stroke-dasharray: 4 3;
+    animation: ants 0.6s linear infinite;
   }
 
   /* 정답·오답 시트: 하단에서 올라온다 */
@@ -281,16 +412,17 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   &::-webkit-scrollbar { display: none; }
 }
 
-@keyframes cursor-blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+/* rect에 pathLength=252(= 7 × 36)를 줬으므로 한 주기(4+3)는 7 단위. 7만큼 움직이면 처음 모양으로 돌아와 끊김이 없다 */
+@keyframes ants {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -7; }
 }
 @keyframes sheet-up {
   from { transform: translateY(100%); }
   to { transform: translateY(0); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .term-cursor { animation: none; }
+  .ants rect { animation: none; }
   .sheet-up { animation: none; }
   .btn-3d { transition: none; }
 }

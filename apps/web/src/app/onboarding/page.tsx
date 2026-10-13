@@ -7,6 +7,8 @@ import type { PathResponse, SessionResponse, TrackSummary } from '@cs-daily/cont
 import { api, ApiError } from '@/lib/api';
 import { writeLastTrack } from '@/lib/last-track';
 import { writePlacementChain } from '@/lib/placement-chain';
+import { SelectMark } from '@/components/select-mark';
+import { Window } from '@/components/window';
 
 type PathUnit = PathResponse['units'][number];
 type Level = 'beginner' | 'some' | 'expert';
@@ -76,92 +78,105 @@ export default function OnboardingPage() {
   return (
     <div className="mx-auto flex min-h-dvh max-w-[480px] flex-col justify-center p-6">
       <div className="mb-6 flex gap-2" aria-label={`${step}/3 단계`}>
-        {[1, 2, 3].map((s) => <div key={s} className="h-2 flex-1 rounded-full" style={{ background: s <= step ? 'var(--color-brand-fill)' : 'var(--color-line)' }} />)}
+        {[1, 2, 3].map((s) => <div key={s} className="meter flex-1">{s <= step && <span style={{ width: '100%' }} />}</div>)}
       </div>
+      <Window title={`시작하기 ${step}/3`} bodyClassName="p-5">
+        {step === 1 && (
+          <>
+            <h1 className="bit-2">무엇을 공부할까요?</h1>
+            <p className="mt-1 text-body text-ink-2">여러 개 골라도 됩니다. 나중에 설정에서 바꿀 수 있어요.</p>
+            <div className="mt-6 space-y-3">
+              {tracks.data?.map((t) => {
+                const on = selected.includes(t.id);
+                return (
+                  <button key={t.id} type="button" data-selected={on} onClick={() => setSelected(on ? selected.filter((id) => id !== t.id) : [...selected, t.id])} className="option flex items-start gap-3">
+                    <SelectMark kind="box" className="mt-1" />
+                    <span className="block min-w-0 flex-1">
+                      <span className="block font-semibold">{t.name}</span>
+                      <span className="block text-cap text-ink-2">{t.description}</span>
+                      <span className="bit mt-1 block text-ink-2">{t.unitCount}유닛 · {t.lessonCount}레슨</span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+            <button type="button" disabled={selected.length === 0} onClick={() => setStep(2)} className="btn-3d mt-8 w-full">다음</button>
+          </>
+        )}
 
-      {step === 1 && (
-        <>
-          <h1 className="text-h2 font-semibold">무엇을 공부할까요?</h1>
-          <p className="mt-1 text-body text-ink-2">여러 개 골라도 됩니다. 나중에 설정에서 바꿀 수 있어요.</p>
-          <div className="mt-6 space-y-3">
-            {tracks.data?.map((t) => {
-              const on = selected.includes(t.id);
-              return (
-                <button key={t.id} type="button" data-selected={on} onClick={() => setSelected(on ? selected.filter((id) => id !== t.id) : [...selected, t.id])} className="option">
-                  <div className="font-semibold">{t.name}</div>
-                  <div className="text-cap text-ink-2">{t.description}</div>
-                  <div className="mt-1 font-mono text-cap text-ink-2">{t.unitCount}유닛 · {t.lessonCount}레슨</div>
+        {step === 2 && (
+          <>
+            <h1 className="bit-2">하루에 얼마나 할까요?</h1>
+            <p className="mt-1 text-body text-ink-2">목표를 채운 날이 이어지면 스트릭이 쌓입니다. 한 레슨은 약 5분이에요.</p>
+            <div className="mt-6 space-y-3">
+              {[
+                [1, '가볍게', '하루 1레슨 · 5분'],
+                [2, '꾸준히', '하루 2레슨 · 10분'],
+                [3, '진지하게', '하루 3레슨 · 15분'],
+              ].map(([n, title, desc]) => (
+                <button key={n} type="button" data-selected={goal === n} onClick={() => setGoal(n as number)} className="option flex items-start gap-3">
+                  <SelectMark className="mt-1" />
+                  <span className="block min-w-0 flex-1">
+                    <span className="block font-semibold">{title}</span>
+                    <span className="block text-cap text-ink-2">{desc}</span>
+                  </span>
                 </button>
-              );
-            })}
-          </div>
-          <button type="button" disabled={selected.length === 0} onClick={() => setStep(2)} className="btn-3d mt-8 w-full">다음</button>
-        </>
-      )}
+              ))}
+            </div>
+            <button type="button" onClick={() => setStep(3)} className="btn-3d mt-8 w-full">다음</button>
+            <button type="button" onClick={() => setStep(1)} className="mt-3 min-h-11 w-full text-body text-ink-2 underline underline-offset-4">이전</button>
+          </>
+        )}
 
-      {step === 2 && (
-        <>
-          <h1 className="text-h2 font-semibold">하루에 얼마나 할까요?</h1>
-          <p className="mt-1 text-body text-ink-2">목표를 채운 날이 이어지면 스트릭이 쌓입니다. 한 레슨은 약 5분이에요.</p>
-          <div className="mt-6 space-y-3">
-            {[
-              [1, '가볍게', '하루 1레슨 · 5분'],
-              [2, '꾸준히', '하루 2레슨 · 10분'],
-              [3, '진지하게', '하루 3레슨 · 15분'],
-            ].map(([n, title, desc]) => (
-              <button key={n} type="button" data-selected={goal === n} onClick={() => setGoal(n as number)} className="option">
-                <div className="font-semibold">{title}</div>
-                <div className="text-cap text-ink-2">{desc}</div>
-              </button>
-            ))}
-          </div>
-          <button type="button" onClick={() => setStep(3)} className="btn-3d mt-8 w-full">다음</button>
-          <button type="button" onClick={() => setStep(1)} className="mt-3 min-h-11 w-full text-body text-ink-2 underline underline-offset-4">이전</button>
-        </>
-      )}
+        {step === 3 && !pickUnits && (
+          <>
+            <h1 className="bit-2">얼마나 알고 있나요?</h1>
+            <p className="mt-1 text-body text-ink-2">첫 번째로 고른 트랙 기준이에요. 다른 트랙은 학습 경로에서 유닛별로 건너뛸 수 있어요.</p>
+            <div className="mt-6 space-y-3">
+              {LEVELS.map(([value, title, desc]) => (
+                <button key={value} type="button" data-selected={level === value} onClick={() => setLevel(value)} className="option flex items-start gap-3">
+                  <SelectMark className="mt-1" />
+                  <span className="block min-w-0 flex-1">
+                    <span className="block font-semibold">{title}</span>
+                    <span className="block text-cap text-ink-2">{desc}</span>
+                  </span>
+                </button>
+              ))}
+            </div>
+            {error && <p className="mt-3 text-cap text-wrong">{error.message}</p>}
+            <button type="button" disabled={begin.isPending} onClick={() => begin.mutate()} className="btn-3d mt-8 w-full">시작하기</button>
+            <button type="button" onClick={() => { begin.reset(); setStep(2); }} className="mt-3 min-h-11 w-full text-body text-ink-2 underline underline-offset-4">이전</button>
+          </>
+        )}
 
-      {step === 3 && !pickUnits && (
-        <>
-          <h1 className="text-h2 font-semibold">얼마나 알고 있나요?</h1>
-          <p className="mt-1 text-body text-ink-2">첫 번째로 고른 트랙 기준이에요. 다른 트랙은 학습 경로에서 유닛별로 건너뛸 수 있어요.</p>
-          <div className="mt-6 space-y-3">
-            {LEVELS.map(([value, title, desc]) => (
-              <button key={value} type="button" data-selected={level === value} onClick={() => setLevel(value)} className="option">
-                <div className="font-semibold">{title}</div>
-                <div className="text-cap text-ink-2">{desc}</div>
-              </button>
-            ))}
-          </div>
-          {error && <p className="mt-3 text-cap text-wrong">{error.message}</p>}
-          <button type="button" disabled={begin.isPending} onClick={() => begin.mutate()} className="btn-3d mt-8 w-full">시작하기</button>
-          <button type="button" onClick={() => { begin.reset(); setStep(2); }} className="mt-3 min-h-11 w-full text-body text-ink-2 underline underline-offset-4">이전</button>
-        </>
-      )}
-
-      {step === 3 && pickUnits && (
-        <>
-          <h1 className="text-h2 font-semibold">어디까지 알고 있나요?</h1>
-          <p className="mt-1 text-body text-ink-2">아는 범위의 마지막 유닛을 고르세요. 테스트를 통과하면 그 유닛까지 건너뛰어요.</p>
-          <div className="mt-6 space-y-3">
-            {pickUnits.map((u) => (
-              <button key={u.id} type="button" data-selected={pickedId === u.id} onClick={() => setPickedId(u.id)} className="option">
-                <div className="font-semibold">유닛 {u.sortOrder} · {u.name}</div>
-                <div className="mt-1 font-mono text-cap text-ink-2">레슨 {u.lessons.length}개</div>
-              </button>
-            ))}
-          </div>
-          {error && <p className="mt-3 text-cap text-wrong">{error.message}</p>}
-          <button
-            type="button"
-            disabled={!firstTrack || !pickedUnit || startPicked.isPending}
-            onClick={() => firstTrack && pickedUnit && startPicked.mutate({ track: firstTrack.slug, unit: { id: pickedUnit.id, name: pickedUnit.name } })}
-            className="btn-3d mt-8 w-full"
-          >
-            테스트 시작
-          </button>
-          <button type="button" onClick={() => { startPicked.reset(); setPickUnits(null); setPickedId(null); }} className="mt-3 min-h-11 w-full text-body text-ink-2 underline underline-offset-4">이전</button>
-        </>
-      )}
+        {step === 3 && pickUnits && (
+          <>
+            <h1 className="bit-2">어디까지 알고 있나요?</h1>
+            <p className="mt-1 text-body text-ink-2">아는 범위의 마지막 유닛을 고르세요. 테스트를 통과하면 그 유닛까지 건너뛰어요.</p>
+            <div className="mt-6 space-y-3">
+              {pickUnits.map((u) => (
+                <button key={u.id} type="button" data-selected={pickedId === u.id} onClick={() => setPickedId(u.id)} className="option flex items-start gap-3">
+                  <SelectMark className="mt-1" />
+                  <span className="block min-w-0 flex-1">
+                    <span className="block font-semibold">유닛 {u.sortOrder} · {u.name}</span>
+                    <span className="bit mt-1 block text-ink-2">레슨 {u.lessons.length}개</span>
+                  </span>
+                </button>
+              ))}
+            </div>
+            {error && <p className="mt-3 text-cap text-wrong">{error.message}</p>}
+            <button
+              type="button"
+              disabled={!firstTrack || !pickedUnit || startPicked.isPending}
+              onClick={() => firstTrack && pickedUnit && startPicked.mutate({ track: firstTrack.slug, unit: { id: pickedUnit.id, name: pickedUnit.name } })}
+              className="btn-3d mt-8 w-full"
+            >
+              테스트 시작
+            </button>
+            <button type="button" onClick={() => { startPicked.reset(); setPickUnits(null); setPickedId(null); }} className="mt-3 min-h-11 w-full text-body text-ink-2 underline underline-offset-4">이전</button>
+          </>
+        )}
+      </Window>
     </div>
   );
 }

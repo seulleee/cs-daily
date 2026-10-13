@@ -48,7 +48,7 @@ function LearnInner() {
     return (
       <AppShell>
         <div className="card p-8 text-center">
-          <h1 className="text-h3 font-semibold">아직 선택한 트랙이 없어요</h1>
+          <h1 className="bit-2">아직 선택한 트랙이 없어요</h1>
           <p className="mt-2 text-ink-2">공부할 분야를 고르면 경로가 만들어집니다.</p>
           <Link href="/onboarding" className="btn-3d mt-6">트랙 고르기</Link>
         </div>
@@ -61,13 +61,13 @@ function LearnInner() {
       <header className="space-y-4">
         {/* 스트릭·XP 한 줄 (PC에서는 우측 보조 패널이 같은 정보를 보여 준다) */}
         <div className="flex items-center justify-between lg:hidden">
-          <div className="flex items-center gap-1.5 text-streak" aria-label={`스트릭 ${me.data.stats.currentStreak}일`}>
+          <div className="flex items-center gap-1.5 text-ink" aria-label={`스트릭 ${me.data.stats.currentStreak}일`}>
             <FlameIcon size={22} />
-            <span className="font-mono text-title font-semibold tabular-nums">{me.data.stats.currentStreak}일</span>
+            <span className="bit">{me.data.stats.currentStreak}일</span>
           </div>
-          <div className="flex items-center gap-1.5 text-xp" aria-label={`총 ${me.data.stats.totalXp} XP`}>
+          <div className="flex items-center gap-1.5 text-ink" aria-label={`총 ${me.data.stats.totalXp} XP`}>
             <ZapIcon size={22} />
-            <span className="font-mono text-title font-semibold tabular-nums">{me.data.stats.totalXp.toLocaleString()} XP</span>
+            <span className="bit">{me.data.stats.totalXp.toLocaleString()} XP</span>
           </div>
         </div>
 
@@ -102,14 +102,14 @@ function Skeleton() {
 }
 
 function HeroSkeleton() {
-  return <div className="h-40 rounded-hero bg-line" aria-hidden />;
+  return <div className="h-52 border border-line bg-surface" aria-hidden />;
 }
 
 function PadsSkeleton() {
   return (
     <div className="space-y-9" aria-busy>
-      <div className="mx-auto h-14 w-14 rounded-2xl bg-line" />
-      <div className="mx-auto h-14 w-14 rounded-2xl bg-line" />
+      <div className="mx-auto h-14 w-14 border border-line bg-surface" />
+      <div className="mx-auto h-14 w-14 border border-line bg-surface" />
     </div>
   );
 }
