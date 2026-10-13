@@ -49,7 +49,7 @@ export function AppShell({ children, aside }: { children: ReactNode; aside?: Rea
                   aria-label={badge ? `${label}, 복습할 문제 ${due}개` : label}
                   className={clsx(
                     'flex h-full min-h-11 flex-col items-center justify-center gap-0.5 text-cap font-medium md:h-auto md:flex-row md:justify-center md:gap-3 md:rounded-xl md:px-3 md:py-2.5 lg:justify-start lg:text-body',
-                    active ? 'text-brand md:bg-[color-mix(in_oklab,var(--color-brand)_15%,transparent)]' : 'text-ink-2',
+                    active ? 'text-brand md:bg-[color-mix(in_oklab,var(--color-brand)_12%,transparent)]' : 'text-ink-2',
                   )}
                 >
                   <span className="relative">

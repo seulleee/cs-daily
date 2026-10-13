@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-/** PWA 매니페스트 (홈 화면 설치). 서비스 워커·오프라인 캐시는 2단계. 색은 globals.css 라이트 토큰(surface-2, brand-fill)과 같은 값 */
+/** PWA 매니페스트 (홈 화면 설치). 서비스 워커·오프라인 캐시는 2단계. 색은 globals.css 다크 토큰(surface, brand)과 같은 값(스플래시는 다크) */
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'CS 데일리',
@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: '하루 5분, 매일 푸는 컴퓨터 사이언스',
     start_url: '/learn',
     display: 'standalone',
-    background_color: '#f2f5f2',
-    theme_color: '#22c55e',
+    background_color: '#282a36',
+    theme_color: '#bd93f9',
     lang: 'ko',
     icons: [
       { src: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
