@@ -15,7 +15,7 @@
 | 배치 | Cloud Scheduler `cs-daily-tick`: 매시 07분(Asia/Seoul) `POST /internal/jobs/tick` → 스트릭 프리즈·리마인더 |
 | 백업 | `backup.yml` 매일 03:17 KST pg_dump(PG17 클라이언트) → Actions artifact 90일 보관. 2026-10-08 수동 실행 성공(약 0.5MB) |
 | 예산 | GCP 월 ₩10,000 알림, 무료 체험 2027-01-05 종료 |
-| 콘텐츠 | 4트랙 37유닛 **348레슨**(유닛당 7~10) 중 **앞 3유닛×4트랙 = 12유닛 101레슨 1,010문제** 작성됨. 레슨당 10문제, 레슨마다 핵심 정리(keyPoints) 2~4줄. 자료구조 트랙은 2026-10-13부터 배열·연결 리스트 → 스택·큐·덱 → 복잡도 순서(slug 번호와 다름) |
+| 콘텐츠 | 4트랙 39유닛 **359레슨**(유닛당 7~10) 중 **14유닛 115레슨 1,150문제** 작성됨(자료구조 앞 3, 데이터베이스 앞 4, 운영체제 앞 4, 네트워크 앞 3). 레슨당 10문제, 레슨마다 핵심 정리(keyPoints) 2~4줄. 2026-10-13 순서 재배치: 자료구조 배열→스택·큐→복잡도→정렬→이진 탐색→…, 데이터베이스 테이블과 키→SQL→서브쿼리→정규화(`u11`)→인덱스…, 운영체제 프로세스→커널·인터럽트·시스템 콜(`u08`)→스케줄링→…→I/O 모델(`u06`, 맨 뒤). slug 번호 ≠ 순서 |
 | 온보딩 | 트랙 선택 → 하루 목표 → **시작 지점**(처음 / 조금 알아요=앞 3유닛 배치 테스트 체인 / 잘 알아요=유닛 골라 테스트 1회). 체인 상태는 `apps/web/src/lib/placement-chain.ts`(sessionStorage), API는 기존 `POST /units/:id/skip-test` 재사용 |
 
 ## 작업 흐름
@@ -33,7 +33,8 @@
 - Prisma 엔진 다운로드가 막혀 있다. 로컬 타입 생성은 `PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING=1 PRISMA_SCHEMA_ENGINE_BINARY=/bin/true PRISMA_QUERY_ENGINE_LIBRARY=/bin/true npx prisma generate --no-engine`, **마이그레이션 파일은 `chore/migration-*` 브랜치에 schema.prisma를 푸시해 `prisma-migration.yml`이 생성**하게 한다.
 - pnpm 10은 postinstall을 돌리지 않으므로 `prisma generate`를 항상 명시적으로 실행한다.
 - 새 워크트리에서는 `pnpm typecheck` 전에 `pnpm --filter @cs-daily/contracts build`가 필요하다(dist가 없으면 api가 `@cs-daily/contracts`를 못 찾는다). 백그라운드 dev 서버는 `pkill -f` 패턴이 자기 셸과 겹치면 셸이 죽으니 PID로 종료한다.
-- 시드는 유닛·레슨 순서 변경을 견딘다(`(track_id, sort_order)`·`(unit_id, sort_order)` 유니크 때문에 기존 행을 음수로 비켜 둔 뒤 재부여, 트랙별 트랜잭션). CI는 첫 트랙 유닛을 회전시킨 콘텐츠로 재시드하는 스모크 단계를 돈다(`apps/api/test-e2e/rotate-units.mjs`, `SEED_CONTENT_ROOT`).
+- 시드는 유닛·레슨 순서 변경을 견딘다(`(track_id, sort_order)`·`(unit_id, sort_order)` 유니크 때문에 기존 행을 음수로 비켜 둔 뒤 재부여, 트랙별 트랜잭션). **sortOrder 음수 = 콘텐츠에서 빠진 퇴역 행**: 문제·세션·진도 참조가 없으면 시드가 삭제하고, 있으면 음수로 남긴다. 경로·잠금·nextLessonId·유닛/레슨 카운트는 양수만 본다(`get-path.handler.ts`, `question-grading.adapter.ts`, `me.controller.ts`). CI는 첫 트랙 유닛을 회전시키고 레슨 하나를 뺀 콘텐츠로 재시드한 뒤 단언하는 스모크 단계를 돈다(`apps/api/test-e2e/rotate-units.mjs`, `assert-retired.mjs`, `SEED_CONTENT_ROOT`).
+- 레슨을 다른 유닛으로 옮길 때 옛 slug 자리를 새 레슨으로 재사용하면 퇴역 행이 생기지 않는다(DB 1유닛 l06~l09가 그 예). 옮긴 레슨은 문제 id를 유지해 복습 기록을 보존한다.
 - 비밀값(OAuth 시크릿, DB 비밀번호 등)은 절대 보거나 적지 않는다. 필요하면 사용자가 Cloud Shell에서 `read -rsp`로 직접 입력하게 하고, 입력 후 `gcloud run services update ... --update-labels=secrets-rev=...`로 새 리비전을 띄운다.
 
 ## 아키텍처 규칙 (API)
@@ -79,9 +80,9 @@
 
 - [ ] 디자인 개편("Deep Focus": 스픽의 차분한 다크 네이비 + 듀오링고의 경로·3D 버튼). 시안은 Claude 디자인 캔버스 "CS 데일리 디자인 시안"(8장), 토큰·구성 스펙은 세션 스크래치 `design-spec.md`. 사용자 톤 결정 후 Sonnet 서브에이전트가 구현
 - [ ] 계정 탈퇴: 로그인 화면이 "설정에서 탈퇴"라고 안내하지만 삭제 기능·API가 없다 → `DELETE /me` + 설정 화면 버튼 추가, 또는 안내 문구 수정
-- [ ] 데이터베이스 트랙도 같은 원칙으로 순서 검토(1유닛 "관계형 모델·정규화"가 첫날 주제 — SQL 기초를 앞에 두고 정규화를 뒤로). 사용자 결정 후 진행
+- [ ] 미작성 유닛 keyPoints 손질(2026-10-13 재배치 뒤 어긋난 것): os `u04` l07 "페이지 폴트 … 트랩" → "예외(폴트)"로(새 2유닛의 트랩 정의와 충돌), os `u07` l08 파이프의 "블로킹"은 I/O 모델 유닛보다 먼저 나오니 풀어서 쓰기, dsa `u09` l08 "비교 정렬의 하한"에서 결정 트리·힙 정렬 언급 제거(트리·힙 유닛보다 앞)
 - [ ] Resend API 키 등록(이메일 리마인더)
-- [ ] 나머지 25유닛 247레슨 문제 작성 (curriculum.json의 keyPoints + docs/content-guide.md v4 기준, 유닛 단위로 서브에이전트 병렬)
+- [ ] 나머지 25유닛 244레슨 문제 작성 (curriculum.json의 keyPoints + docs/content-guide.md v4 기준, 유닛 단위로 서브에이전트 병렬)
 - [ ] README의 운영·배포 절은 오래됐다(GitHub Secrets 기준) → CLAUDE.md 운영 현황과 맞추기
 - [ ] 머지된 원격 브랜치 정리(이 환경에서 삭제 불가 — 레포 설정 "Automatically delete head branches" 권장)
 - [ ] 무료 체험 종료(2027-01-05) 전 결제 계정 전환 알림
