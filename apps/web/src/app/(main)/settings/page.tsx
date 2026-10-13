@@ -36,11 +36,11 @@ export default function SettingsPage() {
     },
   });
 
-  if (!me.data) return <AppShell><p className="text-(--color-ink-2)">불러오는 중…</p></AppShell>;
+  if (!me.data) return <AppShell><p className="text-ink-2">불러오는 중…</p></AppShell>;
 
   return (
     <AppShell>
-      <h1 className="mb-6 text-2xl font-black">설정</h1>
+      <h1 className="mb-6 text-h2 font-semibold">설정</h1>
       <form
         className="space-y-6"
         onSubmit={(e) => {
@@ -55,9 +55,9 @@ export default function SettingsPage() {
         <Field label="하루 목표 (레슨 수)">
           <div className="grid grid-cols-3 gap-2">
             {[1, 2, 3].map((n) => (
-              <button key={n} type="button" data-selected={form.dailyGoal === n} onClick={() => setForm({ ...form, dailyGoal: n })} className="option text-center font-bold">
-                {n}개
-                <div className="text-xs font-normal text-(--color-ink-2)">{['가볍게', '꾸준히', '진지하게'][n - 1]}</div>
+              <button key={n} type="button" data-selected={form.dailyGoal === n} onClick={() => setForm({ ...form, dailyGoal: n })} className="option text-center font-semibold">
+                <span className="font-mono tabular-nums">{n}개</span>
+                <div className="text-cap font-normal text-ink-2">{['가볍게', '꾸준히', '진지하게'][n - 1]}</div>
               </button>
             ))}
           </div>
@@ -65,8 +65,8 @@ export default function SettingsPage() {
 
         <Field label="리마인더 (이메일)">
           <div className="flex items-center gap-3">
-            <input type="time" className="input w-36" value={form.reminderAt ?? ''} onChange={(e) => setForm({ ...form, reminderAt: e.target.value || null })} />
-            <button type="button" className="text-sm text-(--color-ink-2) underline" onClick={() => setForm({ ...form, reminderAt: null })}>끄기</button>
+            <input type="time" className="input w-36 font-mono" value={form.reminderAt ?? ''} onChange={(e) => setForm({ ...form, reminderAt: e.target.value || null })} />
+            <button type="button" className="min-h-11 px-2 text-body text-ink-2 underline underline-offset-4" onClick={() => setForm({ ...form, reminderAt: null })}>끄기</button>
           </div>
         </Field>
 
@@ -81,26 +81,26 @@ export default function SettingsPage() {
               const on = selected.includes(t.id);
               return (
                 <button key={t.id} type="button" data-selected={on} onClick={() => setSelected(on ? selected.filter((id) => id !== t.id) : [...selected, t.id])} className="option">
-                  <div className="font-bold">{t.name}</div>
-                  <div className="text-xs text-(--color-ink-2)">{t.unitCount}유닛 · {t.lessonCount}레슨</div>
+                  <div className="font-semibold">{t.name}</div>
+                  <div className="font-mono text-cap text-ink-2">{t.unitCount}유닛 · {t.lessonCount}레슨</div>
                 </button>
               );
             })}
           </div>
         </Field>
 
-        {save.isError && <p className="text-sm text-(--color-wrong)">{(save.error as ApiError).message}</p>}
-        {save.isSuccess && <p className="text-sm text-(--color-correct)">저장했습니다.</p>}
+        {save.isError && <p className="text-cap text-wrong">{(save.error as ApiError).message}</p>}
+        {save.isSuccess && <p className="text-cap text-correct">저장했습니다.</p>}
         <button type="submit" disabled={save.isPending || selected.length === 0} className="btn-3d w-full">저장</button>
       </form>
 
       <section className="mt-10">
-        <h2 className="mb-2 text-sm font-bold">테마</h2>
+        <h2 className="mb-2 font-semibold">테마</h2>
         <ThemePicker />
-        <p className="mt-2 text-xs text-(--color-ink-2)">고르는 즉시 적용되며 이 기기에 저장됩니다.</p>
+        <p className="mt-2 text-cap text-ink-2">고르는 즉시 적용되며 이 기기에 저장됩니다.</p>
       </section>
 
-      <button type="button" onClick={() => logout.mutate()} className="mt-10 w-full text-sm text-(--color-ink-2) underline">로그아웃</button>
+      <button type="button" onClick={() => logout.mutate()} className="mt-10 min-h-11 w-full text-body text-ink-2 underline underline-offset-4">로그아웃</button>
     </AppShell>
   );
 }
@@ -108,7 +108,7 @@ export default function SettingsPage() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-2 block text-sm font-bold">{label}</span>
+      <span className="mb-2 block font-semibold">{label}</span>
       {children}
     </label>
   );

@@ -1,87 +1,169 @@
 'use client';
 
-import type { PathResponse } from '@cs-daily/contracts';
+import type { PathResponse, SessionResponse } from '@cs-daily/contracts';
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import { api } from '@/lib/api';
-import type { SessionResponse } from '@cs-daily/contracts';
+import { CheckIcon, LockIcon, PlayIcon, StarIcon } from './icons';
 
-/** 듀오링고식 세로 경로: 유닛 헤더 아래 레슨 노드가 지그재그로 이어진다 */
-export function LearningPath({ path }: { path: PathResponse }) {
+/** 레슨 세션 시작 → 레슨 플레이어로 이동. 학습 경로와 "다음 레슨" 카드가 함께 쓴다 */
+export function useStartLesson() {
   const router = useRouter();
-  const start = useMutation({
+  return useMutation({
     mutationFn: (lessonId: number) => api<SessionResponse>(`/lessons/${lessonId}/sessions`, { method: 'POST' }),
     onSuccess: (s) => router.push(`/lesson/${s.id}`),
   });
+}
+
+/* ---------- 배선 기하 ----------
+ * 패드 56px, 패드 사이 36px. 패드 중심은 컨테이너 가운데(x=0)를 기준으로 좌우로 어긋난다.
+ * 배선은 패드 아래 가장자리 중앙에서 다음 패드 위 가장자리 중앙까지, 세로 → 45° → 가로 → 45° → 세로로 꺾는다(회로 기판의 트레이스).
+ */
+const PAD = 56;
+const GAP = 36;
+const WIRE_WIDTH = 4;
+const OFFSETS = [0, 44, 0, -44] as const;
+/** 45° 꺾임의 한 변 */
+const CHAMFER = 8;
+
+const offsetOf = (i: number) => OFFSETS[i % OFFSETS.length] ?? 0;
+
+/** x1에서 x2로 가는 36px 높이의 배선 경로 */
+function wirePath(x1: number, x2: number): string {
+  if (x1 === x2) return `M ${x1} 0 V ${GAP}`;
+  const s = Math.sign(x2 - x1);
+  const d = Math.min(CHAMFER, Math.abs(x2 - x1) / 2);
+  const a = GAP / 2 - d; // 위쪽 세로 구간
+  return `M ${x1} 0 V ${a} L ${x1 + s * d} ${a + d} H ${x2 - s * d} L ${x2} ${a + 2 * d} V ${GAP}`;
+}
+
+/** 패드 사이 배선. 앞 패드가 완료면 신호가 들어온(brand) 색, 아니면 꺼진(line) 색 */
+function Wire({ from, to, lit }: { from: number; to: number; lit: boolean }) {
+  return (
+    <svg aria-hidden focusable="false" width="100%" height={GAP} className="block overflow-visible">
+      {/* 중첩 svg의 x=50%가 컨테이너 가운데를 원점으로 만든다 */}
+      <svg x="50%" y="0" overflow="visible">
+        <path
+          d={wirePath(from, to)}
+          fill="none"
+          stroke={lit ? 'var(--color-brand)' : 'var(--color-line)'}
+          strokeWidth={WIRE_WIDTH}
+          strokeLinejoin="round"
+        />
+      </svg>
+    </svg>
+  );
+}
+
+/** 유닛 헤더 아래에서 첫 패드로 내려가는 직선 */
+function Stub({ lit }: { lit: boolean }) {
+  return <div aria-hidden className={clsx('mx-auto h-7 rounded-full', lit ? 'bg-brand' : 'bg-line')} style={{ width: WIRE_WIDTH }} />;
+}
+
+type Unit = PathResponse['units'][number];
+
+export function LearningPath({ path }: { path: PathResponse }) {
+  const start = useStartLesson();
+  const router = useRouter();
   const skip = useMutation({
     mutationFn: (unitId: number) => api<SessionResponse>(`/units/${unitId}/skip-test`, { method: 'POST' }),
     onSuccess: (s) => router.push(`/lesson/${s.id}`),
   });
 
   return (
-    <div className="space-y-10">
-      {path.units.map((unit) => (
-        <section key={unit.id} aria-labelledby={`unit-${unit.id}`}>
-          <div className="card mb-6 flex items-center justify-between bg-(--color-brand) p-4 text-white">
-            <div>
-              <div className="text-xs font-semibold opacity-80">유닛 {unit.sortOrder}</div>
-              <h2 id={`unit-${unit.id}`} className="text-lg font-black">
+    // 600px 이상에서는 경로 폭을 420px로 고정해 가운데에 둔다
+    <div className="mx-auto w-full min-[600px]:max-w-[420px]">
+      {path.units.map((unit, ui) => {
+        const prev: Unit | undefined = path.units[ui - 1];
+        const prevLast = prev?.lessons[prev.lessons.length - 1];
+        const prevLit = prevLast?.status === 'completed';
+        const doneCount = unit.lessons.filter((l) => l.status === 'completed').length;
+        return (
+          <section key={unit.id} aria-labelledby={`unit-${unit.id}`}>
+            {prev && prevLast && <Wire from={offsetOf(prev.lessons.length - 1)} to={0} lit={prevLit} />}
+
+            <div className="flex items-center gap-3 border-b border-line bg-surface-2 pb-3 pt-3">
+              <span aria-hidden className="font-mono text-[28px] font-semibold leading-none tabular-nums text-ink-2">
+                {String(unit.sortOrder).padStart(2, '0')}
+              </span>
+              <h2 id={`unit-${unit.id}`} className="min-w-0 flex-1 text-title font-semibold">
+                <span className="sr-only">유닛 {unit.sortOrder} </span>
                 {unit.name}
               </h2>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="text-sm opacity-80">{unit.lessons.filter((l) => l.status === 'completed').length}/{unit.lessons.length}</div>
-              {unit.lessons.some((l) => l.status !== 'completed') && (
-                <button
-                  type="button"
-                  disabled={skip.isPending}
-                  onClick={() => skip.mutate(unit.id)}
-                  title="유닛 문제 몇 개를 풀어 80% 이상 맞히면 이 유닛까지 완료로 처리됩니다"
-                  className="rounded-xl border-2 border-white/60 px-3 py-1.5 text-xs font-bold text-white transition-colors hover:bg-white/15 disabled:opacity-50"
-                >
-                  ⏭ 건너뛰기
-                </button>
-              )}
-            </div>
-          </div>
-
-          <ol className="flex flex-col items-center gap-5">
-            {unit.lessons.map((lesson, i) => {
-              const offset = [0, 40, 60, 40, 0, -40, -60, -40][i % 8] ?? 0;
-              const isNext = lesson.id === path.nextLessonId;
-              const disabled = lesson.status === 'locked' || start.isPending;
-              return (
-                <li key={lesson.id} style={{ transform: `translateX(${offset}px)` }} className="flex flex-col items-center">
-                  {isNext && (
-                    <div className="mb-1 animate-bounce rounded-full bg-(--color-surface) px-3 py-1 text-xs font-bold text-(--color-brand) shadow" aria-hidden>
-                      시작
-                    </div>
-                  )}
+              <div className="flex shrink-0 items-center gap-2">
+                <span className="font-mono text-cap font-medium tabular-nums text-ink-2">
+                  {doneCount}/{unit.lessons.length}
+                </span>
+                {doneCount < unit.lessons.length && (
                   <button
                     type="button"
-                    disabled={disabled}
-                    onClick={() => start.mutate(lesson.id)}
-                    aria-label={`${lesson.name} — ${lesson.status === 'locked' ? '잠김' : lesson.status === 'completed' ? `완료, 최고 ${lesson.bestScore}점` : '시작 가능'}`}
-                    className={clsx(
-                      'flex h-16 w-16 items-center justify-center rounded-full text-2xl shadow-[0_6px_0_rgba(0,0,0,.15)] transition-transform active:translate-y-1 active:shadow-none disabled:cursor-not-allowed',
-                      lesson.status === 'completed' && 'bg-(--color-correct) text-white',
-                      lesson.status === 'available' && 'bg-(--color-brand) text-white',
-                      lesson.status === 'locked' && 'bg-(--color-line) text-(--color-ink-2) shadow-none',
-                      isNext && 'ring-4 ring-(--color-brand)/30',
-                    )}
+                    disabled={skip.isPending}
+                    onClick={() => skip.mutate(unit.id)}
+                    title="유닛 문제 몇 개를 풀어 80% 이상 맞히면 이 유닛까지 완료로 처리됩니다"
+                    className="min-h-11 px-1 text-cap font-semibold text-brand disabled:opacity-50"
                   >
-                    {lesson.status === 'completed' ? '✓' : lesson.status === 'locked' ? '🔒' : '★'}
+                    건너뛰기
                   </button>
-                  <div className="mt-2 max-w-40 text-center text-xs font-semibold text-(--color-ink-2)">{lesson.name}</div>
-                </li>
-              );
-            })}
-          </ol>
-        </section>
-      ))}
-      {start.isError && <p className="text-center text-sm text-(--color-wrong)">{(start.error as Error).message}</p>}
-      {skip.isError && <p className="text-center text-sm text-(--color-wrong)">{(skip.error as Error).message}</p>}
+                )}
+              </div>
+            </div>
+
+            {prev ? <Stub lit={prevLit} /> : <div className="h-6" />}
+
+            <ol>
+              {unit.lessons.map((lesson, i) => {
+                const off = offsetOf(i);
+                const isCurrent = lesson.id === path.nextLessonId;
+                const locked = lesson.status === 'locked';
+                const completed = lesson.status === 'completed';
+                const disabled = locked || start.isPending;
+                const begin = () => {
+                  if (!disabled) start.mutate(lesson.id);
+                };
+                const isLast = i === unit.lessons.length - 1;
+                return (
+                  <li key={lesson.id}>
+                    <div className="relative" style={{ height: PAD }}>
+                      <button
+                        type="button"
+                        disabled={disabled}
+                        onClick={begin}
+                        aria-label={`${lesson.name} — ${locked ? '잠김' : completed ? `완료, 최고 ${lesson.bestScore}점` : '시작 가능'}`}
+                        aria-current={isCurrent ? 'step' : undefined}
+                        data-state={lesson.status}
+                        data-current={isCurrent}
+                        className="pad absolute top-0 z-[1] -translate-x-1/2"
+                        style={{ left: `calc(50% + ${off}px)` }}
+                      >
+                        {completed ? <CheckIcon size={28} strokeWidth={3} /> : locked ? <LockIcon size={24} /> : isCurrent ? <PlayIcon size={24} solid /> : <StarIcon size={24} solid />}
+                      </button>
+                      {/* 패드 오른쪽(오프셋이 음수면 왼쪽)에 레슨 이름 */}
+                      <div
+                        aria-hidden
+                        onClick={begin}
+                        className={clsx(
+                          'absolute top-1/2 -translate-y-1/2 text-cap font-medium',
+                          off < 0 && 'text-right',
+                          locked || completed ? 'text-ink-2' : 'text-ink',
+                          !locked && 'cursor-pointer',
+                        )}
+                        style={off < 0 ? { left: 0, right: `calc(50% - ${off}px + ${PAD / 2 + 12}px)` } : { right: 0, left: `calc(50% + ${off}px + ${PAD / 2 + 12}px)` }}
+                      >
+                        {lesson.name}
+                        {isCurrent && <span className="term-cursor" />}
+                      </div>
+                    </div>
+                    {!isLast && <Wire from={off} to={offsetOf(i + 1)} lit={completed} />}
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
+        );
+      })}
+      {start.isError && <p className="mt-6 text-center text-cap text-wrong">{(start.error as Error).message}</p>}
+      {skip.isError && <p className="mt-6 text-center text-cap text-wrong">{(skip.error as Error).message}</p>}
     </div>
   );
 }

@@ -2,56 +2,76 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useQuery } from '@tanstack/react-query';
 import clsx from 'clsx';
 import type { ReactNode } from 'react';
+import type { MeResponse } from '@cs-daily/contracts';
+import { api } from '@/lib/api';
+import { BookOpenIcon, RepeatIcon, SettingsIcon, UserIcon, type IconProps } from './icons';
 
 /**
  * 반응형 셸 (기획서 5절):
- *  <768px   하단 탭 바 4개, 1컬럼
+ *  <768px   하단 탭 바 4개(높이 64), 1컬럼
  *  768~1024 좌측 아이콘 사이드바 72px
  *  ≥1024    좌측 사이드바 240px + 콘텐츠 720px + 우측 보조 패널 320px
  */
-const NAV = [
-  { href: '/learn', label: '학습', icon: '📚' },
-  { href: '/review', label: '복습', icon: '🔁' },
-  { href: '/profile', label: '프로필', icon: '👤' },
-  { href: '/settings', label: '설정', icon: '⚙️' },
-] as const;
+const NAV: readonly { href: string; label: string; Icon: (p: IconProps) => ReactNode }[] = [
+  { href: '/learn', label: '학습', Icon: BookOpenIcon },
+  { href: '/review', label: '복습', Icon: RepeatIcon },
+  { href: '/profile', label: '프로필', Icon: UserIcon },
+  { href: '/settings', label: '설정', Icon: SettingsIcon },
+];
 
 export function AppShell({ children, aside }: { children: ReactNode; aside?: ReactNode }) {
   const pathname = usePathname();
+  // 각 화면이 쓰는 ['me'] 쿼리와 같은 키라 요청은 하나로 합쳐진다. 복습 탭 배지에만 쓴다
+  const me = useQuery({ queryKey: ['me'], queryFn: () => api<MeResponse>('/me') });
+  const due = me.data?.dueReviewCount ?? 0;
+
   return (
     <div className="min-h-dvh md:flex">
       <nav
         aria-label="주 메뉴"
-        className="fixed inset-x-0 bottom-0 z-20 flex justify-around border-t bg-(--color-surface) py-1 pb-[max(env(safe-area-inset-bottom),4px)] md:static md:w-[72px] md:flex-col md:justify-start md:gap-1 md:border-t-0 md:border-r md:px-2 md:py-6 lg:w-60 lg:px-4"
-        style={{ borderColor: 'var(--color-line)' }}
+        className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-surface pb-[env(safe-area-inset-bottom)] md:sticky md:top-0 md:h-dvh md:w-[72px] md:shrink-0 md:border-t-0 md:border-r md:px-2 md:py-6 md:pb-6 lg:w-60 lg:px-4"
       >
-        <Link href="/learn" className="mb-6 hidden px-3 text-xl font-black text-(--color-brand) lg:block">
+        <Link href="/learn" className="mb-6 hidden px-3 text-title font-semibold text-brand lg:block">
           CS 데일리
         </Link>
-        {NAV.map((n) => {
-          const active = pathname.startsWith(n.href);
-          return (
-            <Link
-              key={n.href}
-              href={n.href}
-              aria-current={active ? 'page' : undefined}
-              className={clsx(
-                'flex min-h-11 min-w-11 flex-col items-center justify-center gap-0.5 rounded-xl px-2 text-xs font-semibold md:flex-row md:justify-start md:gap-3 md:px-3 md:py-2 md:text-sm',
-                active ? 'bg-(--color-brand)/10 text-(--color-brand)' : 'text-(--color-ink-2) hover:bg-(--color-surface-2)',
-              )}
-            >
-              <span aria-hidden className="text-xl md:text-lg">
-                {n.icon}
-              </span>
-              <span className="md:hidden lg:inline">{n.label}</span>
-            </Link>
-          );
-        })}
+        <ul className="grid h-16 grid-cols-4 md:h-auto md:grid-cols-1 md:gap-1">
+          {NAV.map(({ href, label, Icon }) => {
+            const active = pathname.startsWith(href);
+            const badge = href === '/review' && due > 0 ? (due > 99 ? '99+' : String(due)) : null;
+            return (
+              <li key={href} className="min-w-0">
+                <Link
+                  href={href}
+                  aria-current={active ? 'page' : undefined}
+                  aria-label={badge ? `${label}, 복습할 문제 ${due}개` : label}
+                  className={clsx(
+                    'flex h-full min-h-11 flex-col items-center justify-center gap-0.5 text-cap font-medium md:h-auto md:flex-row md:justify-center md:gap-3 md:rounded-xl md:px-3 md:py-2.5 lg:justify-start lg:text-body',
+                    active ? 'text-brand md:bg-[color-mix(in_oklab,var(--color-brand)_15%,transparent)]' : 'text-ink-2',
+                  )}
+                >
+                  <span className="relative">
+                    <Icon size={24} />
+                    {badge && (
+                      <span
+                        aria-hidden
+                        className="absolute -right-2.5 -top-1.5 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-brand-fill px-1 font-mono text-[11px] font-semibold leading-none text-on-brand"
+                      >
+                        {badge}
+                      </span>
+                    )}
+                  </span>
+                  <span className="md:hidden lg:inline">{label}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </nav>
 
-      <main className="mx-auto w-full max-w-[720px] px-4 pb-24 pt-4 md:px-6 md:pb-8 md:pt-8">{children}</main>
+      <main className="mx-auto w-full max-w-[720px] px-4 pb-28 pt-4 md:px-6 md:pb-8 md:pt-8">{children}</main>
 
       {aside && (
         <aside className="hidden w-80 shrink-0 space-y-4 px-4 py-8 lg:block" aria-label="보조 패널">

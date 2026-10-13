@@ -2,6 +2,7 @@
 
 import type { PublicQuestion, UserAnswer } from '@cs-daily/contracts';
 import { useEffect, useRef } from 'react';
+import { CheckIcon, XIcon } from './icons';
 
 interface RendererProps {
   question: PublicQuestion;
@@ -31,14 +32,46 @@ export function QuestionRenderer(props: RendererProps) {
 function Prompt({ prompt, code }: { prompt: string; code?: { language: string; source: string } | null }) {
   return (
     <div className="mb-6">
-      <h2 className="text-xl font-bold leading-snug md:text-2xl">{prompt}</h2>
-      {code && (
-        <pre className="mt-3 overflow-x-auto rounded-xl bg-(--color-ink) p-3 text-sm text-(--color-surface)">
-          <code>{code.source}</code>
-        </pre>
-      )}
+      <h2 className="text-title font-semibold">{prompt}</h2>
+      {code && <CodeBlock source={code.source} className="mt-3" />}
     </div>
   );
+}
+
+function CodeBlock({ source, className = '' }: { source: string; className?: string }) {
+  return (
+    <pre className={`overflow-x-auto rounded-[14px] border border-line bg-surface p-3 font-mono text-cap text-ink [word-spacing:normal] ${className}`}>
+      <code>{source}</code>
+    </pre>
+  );
+}
+
+/** 채점 후 "정답 ○○"으로 보여 줄 문장. 정답 키 모양이 예상과 다르면 null */
+export function correctAnswerText(question: PublicQuestion, correctAnswer: unknown): string | null {
+  const a = correctAnswer as Record<string, unknown> | null;
+  if (!a || typeof a !== 'object') return null;
+  switch (question.type) {
+    case 'single':
+    case 'multi': {
+      const options = (question.content as SingleContent).options;
+      const idx = question.type === 'multi' ? (a.indices as number[] | undefined) : typeof a.index === 'number' ? [a.index] : undefined;
+      const texts = idx?.map((i) => options[i]).filter((t): t is string => !!t);
+      return texts && texts.length > 0 ? texts.join(', ') : null;
+    }
+    case 'ox':
+      return typeof a.value === 'boolean' ? (a.value ? 'O (맞다)' : 'X (틀리다)') : null;
+    case 'fill': {
+      const accepted = a.accepted as string[] | undefined;
+      return accepted?.[0] ?? null;
+    }
+  }
+}
+
+/** 채점 후 보기 오른쪽 끝의 상태 아이콘. 색만으로 정오답을 구분하지 않도록 함께 쓴다 */
+function StateIcon({ state }: { state: 'correct' | 'wrong' | undefined }) {
+  if (state === 'correct') return <CheckIcon size={22} strokeWidth={3} className="shrink-0 text-correct" />;
+  if (state === 'wrong') return <XIcon size={22} strokeWidth={3} className="shrink-0 text-wrong" />;
+  return null;
 }
 
 /** 객관식(단일·복수). 숫자 키 1~6으로 선택 가능 */
@@ -71,7 +104,7 @@ function ChoiceRenderer({ question, value, onChange, revealed, multi }: Renderer
   return (
     <div>
       <Prompt prompt={c.prompt} code={c.code} />
-      {multi && <p className="mb-2 text-xs font-semibold text-(--color-ink-2)">해당하는 것을 모두 고르세요</p>}
+      {multi && <p className="mb-2 text-cap font-medium text-ink-2">해당하는 것을 모두 고르세요</p>}
       <div role={multi ? 'group' : 'radiogroup'} className="space-y-3">
         {c.options.map((opt, i) => {
           const state = revealed ? (correct.has(i) ? 'correct' : selected.has(i) ? 'wrong' : undefined) : undefined;
@@ -85,12 +118,13 @@ function ChoiceRenderer({ question, value, onChange, revealed, multi }: Renderer
               data-state={state}
               disabled={!!revealed}
               onClick={() => toggle(i)}
-              className="option flex items-start gap-3"
+              className="option flex items-center gap-3"
             >
-              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border text-xs font-bold text-(--color-ink-2)" style={{ borderColor: 'var(--color-line)' }}>
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-surface-2 font-mono text-cap font-semibold text-ink-2">
                 {i + 1}
               </span>
-              <span className="text-sm md:text-base">{opt}</span>
+              <span className="flex-1 text-body">{opt}</span>
+              <StateIcon state={state} />
             </button>
           );
         })}
@@ -117,10 +151,13 @@ function OxRenderer({ question, value, onChange, revealed }: RendererProps) {
             data-state={revealed ? (correct === b ? 'correct' : v === b ? 'wrong' : undefined) : undefined}
             disabled={!!revealed}
             onClick={() => onChange({ value: b })}
-            className="option py-6 text-center text-2xl font-black"
+            className="option flex flex-col items-center py-5 text-center"
           >
-            {b ? 'O' : 'X'}
-            <div className="mt-1 text-xs font-semibold text-(--color-ink-2)">{b ? '맞다' : '틀리다'}</div>
+            <span className="text-h2 font-semibold">{b ? 'O' : 'X'}</span>
+            <span className="mt-1 text-cap font-medium text-ink-2">{b ? '맞다' : '틀리다'}</span>
+            <span className="absolute right-3 top-3">
+              <StateIcon state={revealed ? (correct === b ? 'correct' : v === b ? 'wrong' : undefined) : undefined} />
+            </span>
           </button>
         ))}
       </div>
@@ -134,10 +171,9 @@ function FillRenderer({ question, value, onChange, revealed }: RendererProps) {
   useEffect(() => ref.current?.focus(), [question.id]);
   const [before, after] = c.prompt.split('___');
   const text = (value as { text: string } | null)?.text ?? '';
-  const accepted = revealed ? ((revealed.correctAnswer as { accepted: string[] }).accepted ?? []) : [];
   return (
     <div>
-      <h2 className="mb-5 text-lg font-bold leading-relaxed md:text-xl">
+      <h2 className="mb-5 text-title font-semibold">
         {before}
         <input
           ref={ref}
@@ -147,18 +183,18 @@ function FillRenderer({ question, value, onChange, revealed }: RendererProps) {
           onChange={(e) => onChange({ text: e.target.value })}
           aria-label="빈칸"
           autoComplete="off"
-          className="mx-1 inline-block w-40 rounded-lg border-b-2 bg-transparent px-2 py-0.5 text-center text-(--color-brand) outline-none focus:border-(--color-brand)"
-          style={{ borderColor: revealed ? (revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)') : 'var(--color-line)' }}
+          className="mx-1 inline-block w-40 border-b-2 border-line bg-transparent px-2 py-0.5 text-center text-ink focus:border-brand"
+          style={revealed ? { borderColor: revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)', color: revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)' } : undefined}
         />
+        {revealed && (
+          <span className="mr-1 inline-block align-middle">
+            <StateIcon state={revealed.isCorrect ? 'correct' : 'wrong'} />
+          </span>
+        )}
         {after}
       </h2>
-      {c.code && (
-        <pre className="mb-4 overflow-x-auto rounded-xl bg-(--color-ink) p-3 text-sm text-(--color-surface)">
-          <code>{c.code.source}</code>
-        </pre>
-      )}
-      {c.hint && !revealed && <p className="text-sm text-(--color-ink-2)">힌트: {c.hint}</p>}
-      {revealed && !revealed.isCorrect && accepted.length > 0 && <p className="text-sm font-semibold text-(--color-correct)">정답: {accepted[0]}</p>}
+      {c.code && <CodeBlock source={c.code.source} className="mb-4" />}
+      {c.hint && !revealed && <p className="text-cap text-ink-2">힌트: {c.hint}</p>}
     </div>
   );
 }

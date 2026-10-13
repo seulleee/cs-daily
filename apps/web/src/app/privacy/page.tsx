@@ -8,7 +8,7 @@ const CONTACT = 'gkstmvdl@gmail.com';
 export default function PrivacyPage() {
   return (
     <LegalPage current="/privacy" title="개인정보처리방침" effectiveDate="2026-10-08">
-      <p className="mt-6 text-[15px] leading-7">
+      <p className="mt-6 text-body leading-7">
         CS 데일리(https://cs-daily-iota.vercel.app, 이하 &ldquo;서비스&rdquo;)는 어떤 정보를 왜 모으고 어떻게 보관하는지 아래와 같이 안내합니다.
         운영자 연락처는 <a href={`mailto:${CONTACT}`} className="underline underline-offset-4">{CONTACT}</a>입니다.
       </p>
