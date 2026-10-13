@@ -1,10 +1,12 @@
 'use client';
 
 import { useMutation, useQuery } from '@tanstack/react-query';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type { MeResponse, SessionResponse } from '@cs-daily/contracts';
 import { api, ApiError } from '@/lib/api';
 import { AppShell } from '@/components/app-shell';
+import { RepeatIcon } from '@/components/icons';
 import { StatsPanel } from '@/components/stats-panel';
 
 type Due = { count: number; byTrack: { trackSlug: string; trackName: string; count: number }[] };
@@ -20,31 +22,53 @@ export default function ReviewPage() {
 
   return (
     <AppShell aside={me.data && <StatsPanel me={me.data} />}>
-      <h1 className="mb-4 text-2xl font-black">복습</h1>
-      <div className="card p-6">
-        {due.isLoading && <p className="text-(--color-ink-2)">확인 중…</p>}
-        {due.data && due.data.count === 0 && (
-          <div className="text-center">
-            <div className="text-4xl" aria-hidden>🌱</div>
-            <p className="mt-2 font-bold">오늘 복습할 문제가 없어요</p>
-            <p className="mt-1 text-sm text-(--color-ink-2)">레슨을 풀면 틀린 문제와 오래된 문제가 자동으로 쌓입니다.</p>
+      <h1 className="text-h2 font-semibold">복습</h1>
+      <p className="mt-1 text-cap text-ink-2">지금 복습할 문제</p>
+
+      {due.isLoading && <p className="card mt-6 p-5 text-ink-2">확인 중…</p>}
+
+      {due.data && due.data.count === 0 && (
+        <div className="card mt-6 p-5">
+          <p className="text-body">지금 복습할 문제가 없어요. 레슨을 풀면 내일부터 쌓여요.</p>
+          <Link href="/learn" className="mt-4 inline-flex min-h-11 items-center font-semibold text-brand underline underline-offset-4">
+            학습으로 가기
+          </Link>
+        </div>
+      )}
+
+      {due.data && due.data.count > 0 && (
+        <>
+          <div className="card mt-6 flex items-center justify-between rounded-hero p-5">
+            <div className="flex items-baseline gap-2">
+              <span className="font-mono text-hero font-semibold tabular-nums">{due.data.count}</span>
+              <span className="text-body text-ink-2">문제</span>
+            </div>
+            <span
+              aria-hidden
+              className="flex h-16 w-16 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--color-brand)_15%,transparent)] text-brand"
+            >
+              <RepeatIcon size={30} />
+            </span>
           </div>
-        )}
-        {due.data && due.data.count > 0 && (
-          <>
-            <p className="text-3xl font-black">{due.data.count}<span className="ml-1 text-base font-bold text-(--color-ink-2)">문제</span></p>
-            <ul className="mt-3 space-y-1 text-sm text-(--color-ink-2)">
+
+          {due.data.byTrack.length > 0 && (
+            <ul className="card mt-4 divide-y divide-line">
               {due.data.byTrack.map((t) => (
-                <li key={t.trackSlug} className="flex justify-between"><span>{t.trackName}</span><span>{t.count}</span></li>
+                <li key={t.trackSlug} className="flex items-center justify-between px-5 py-3.5">
+                  <span>{t.trackName}</span>
+                  <span className="font-mono font-semibold tabular-nums">{t.count}</span>
+                </li>
               ))}
             </ul>
-            <button type="button" onClick={() => start.mutate()} disabled={start.isPending} className="btn-3d mt-6 w-full">
-              복습 시작 (최대 10문제, XP ×1.5)
-            </button>
-            {start.isError && <p className="mt-2 text-sm text-(--color-wrong)">{(start.error as ApiError).message}</p>}
-          </>
-        )}
-      </div>
+          )}
+
+          <p className="mt-4 font-mono text-cap text-ink-2">한 번에 최대 10문제 · 복습 세션은 XP ×1.5</p>
+          <button type="button" onClick={() => start.mutate()} disabled={start.isPending} className="btn-3d mt-4 w-full">
+            복습 시작
+          </button>
+          {start.isError && <p className="mt-2 text-cap text-wrong">{(start.error as ApiError).message}</p>}
+        </>
+      )}
     </AppShell>
   );
 }

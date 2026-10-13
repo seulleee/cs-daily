@@ -9,6 +9,8 @@ import { api } from '@/lib/api';
 import { AppShell } from '@/components/app-shell';
 import { StatsPanel } from '@/components/stats-panel';
 import { LearningPath } from '@/components/learning-path';
+import { NextLessonCard } from '@/components/next-lesson-card';
+import { FlameIcon, ZapIcon } from '@/components/icons';
 import { readLastTrack, writeLastTrack } from '@/lib/last-track';
 
 export default function LearnPage() {
@@ -46,8 +48,8 @@ function LearnInner() {
     return (
       <AppShell>
         <div className="card p-8 text-center">
-          <h1 className="text-xl font-black">아직 선택한 트랙이 없어요</h1>
-          <p className="mt-2 text-(--color-ink-2)">공부할 분야를 고르면 경로가 만들어집니다.</p>
+          <h1 className="text-h3 font-semibold">아직 선택한 트랙이 없어요</h1>
+          <p className="mt-2 text-ink-2">공부할 분야를 고르면 경로가 만들어집니다.</p>
           <Link href="/onboarding" className="btn-3d mt-6">트랙 고르기</Link>
         </div>
       </AppShell>
@@ -56,35 +58,58 @@ function LearnInner() {
 
   return (
     <AppShell aside={<StatsPanel me={me.data} />}>
-      <header className="mb-6">
-        <div className="lg:hidden"><StatsPanel me={me.data} compact /></div>
-        <div className="mt-4 flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label="트랙">
+      <header className="space-y-4">
+        {/* 스트릭·XP 한 줄 (PC에서는 우측 보조 패널이 같은 정보를 보여 준다) */}
+        <div className="flex items-center justify-between lg:hidden">
+          <div className="flex items-center gap-1.5 text-streak" aria-label={`스트릭 ${me.data.stats.currentStreak}일`}>
+            <FlameIcon size={22} />
+            <span className="font-mono text-title font-semibold tabular-nums">{me.data.stats.currentStreak}일</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-xp" aria-label={`총 ${me.data.stats.totalXp} XP`}>
+            <ZapIcon size={22} />
+            <span className="font-mono text-title font-semibold tabular-nums">{me.data.stats.totalXp.toLocaleString()} XP</span>
+          </div>
+        </div>
+
+        {path.data ? <NextLessonCard path={path.data} me={me.data} /> : <HeroSkeleton />}
+
+        <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 md:mx-0 md:px-0" role="tablist" aria-label="트랙">
           {me.data.tracks.map((t) => (
-            <Link
-              key={t.slug}
-              href={`/learn?track=${t.slug}`}
-              role="tab"
-              aria-selected={t.slug === trackSlug}
-              className={`shrink-0 rounded-full border-2 px-4 py-1.5 text-sm font-bold ${t.slug === trackSlug ? 'border-(--color-brand) bg-(--color-brand) text-white' : 'border-(--color-line) text-(--color-ink-2)'}`}
-            >
+            <Link key={t.slug} href={`/learn?track=${t.slug}`} role="tab" aria-selected={t.slug === trackSlug} className="chip">
               {t.name}
             </Link>
           ))}
         </div>
       </header>
 
-      {path.isLoading && <Skeleton />}
-      {path.data && <LearningPath path={path.data} />}
+      <div className="mt-8">
+        {path.isLoading && <PadsSkeleton />}
+        {path.data && <LearningPath path={path.data} />}
+      </div>
     </AppShell>
   );
 }
 
 function Skeleton() {
   return (
-    <div className="space-y-4" aria-busy>
-      <div className="h-24 animate-pulse rounded-2xl bg-(--color-line)" />
-      <div className="h-16 w-16 animate-pulse rounded-full bg-(--color-line)" />
-      <div className="h-16 w-16 animate-pulse rounded-full bg-(--color-line)" />
+    <div aria-busy>
+      <HeroSkeleton />
+      <div className="mt-8">
+        <PadsSkeleton />
+      </div>
+    </div>
+  );
+}
+
+function HeroSkeleton() {
+  return <div className="h-40 rounded-hero bg-line" aria-hidden />;
+}
+
+function PadsSkeleton() {
+  return (
+    <div className="space-y-9" aria-busy>
+      <div className="mx-auto h-14 w-14 rounded-2xl bg-line" />
+      <div className="mx-auto h-14 w-14 rounded-2xl bg-line" />
     </div>
   );
 }

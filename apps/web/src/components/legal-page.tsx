@@ -24,25 +24,25 @@ export function LegalPage({ current, title, effectiveDate, children }: LegalPage
   return (
     <div className="min-h-dvh">
       <header className="mx-auto max-w-[680px] px-4 pt-6">
-        <Link href="/" className="text-xl font-black text-(--color-brand)">
+        <Link href="/" className="text-title font-semibold text-brand">
           CS 데일리
         </Link>
       </header>
       <main className="mx-auto max-w-[680px] px-4 pb-10 pt-6">
         <article className="card p-6 sm:p-8">
-          <h1 className="text-2xl font-black">{title}</h1>
-          <p className="mt-2 text-sm text-(--color-ink-2)">시행일 {effectiveDate}</p>
+          <h1 className="text-h2 font-semibold">{title}</h1>
+          <p className="mt-2 font-mono text-cap text-ink-2">시행일 {effectiveDate}</p>
           {children}
         </article>
-        <nav aria-label="약관 및 방침" className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm">
+        <nav aria-label="약관 및 방침" className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-1 text-cap">
           {LEGAL_LINKS.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               aria-current={l.href === current ? 'page' : undefined}
               className={clsx(
-                'underline underline-offset-4',
-                l.href === current ? 'font-bold text-(--color-ink)' : 'text-(--color-ink-2)',
+                'inline-flex min-h-11 items-center underline underline-offset-4',
+                l.href === current ? 'font-semibold text-ink' : 'text-ink-2',
               )}
             >
               {l.label}
@@ -57,8 +57,8 @@ export function LegalPage({ current, title, effectiveDate, children }: LegalPage
 export function LegalSection({ heading, children }: { heading: string; children: ReactNode }) {
   return (
     <section className="mt-8">
-      <h2 className="text-lg font-bold">{heading}</h2>
-      <div className="mt-3 space-y-3 text-[15px] leading-7">{children}</div>
+      <h2 className="text-title font-semibold">{heading}</h2>
+      <div className="mt-3 space-y-3 text-body leading-7">{children}</div>
     </section>
   );
 }
