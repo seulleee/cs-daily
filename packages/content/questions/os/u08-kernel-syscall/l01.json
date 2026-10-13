@@ -1,0 +1,249 @@
+{
+  "track": "os",
+  "unit": "u08-kernel-syscall",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "os-kernel-mode-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "kernel-mode",
+        "user-mode"
+      ],
+      "content": {
+        "prompt": "일반 프로그램이 실행되는 제한된 CPU 모드는?",
+        "options": [
+          "커널 모드",
+          "사용자 모드",
+          "모드 비트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "사용자 모드는 일반 프로그램이 실행되는 제한된 모드입니다. 하드웨어와 메모리 전체에 접근하는 것은 커널 모드입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/User_space_and_kernel_space",
+        "https://en.wikipedia.org/wiki/CPU_modes"
+      ]
+    },
+    {
+      "id": "os-kernel-mode-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "kernel-mode",
+        "privileged-mode"
+      ],
+      "content": {
+        "prompt": "하드웨어와 메모리 전체에 접근하는 특권 모드는?",
+        "options": [
+          "사용자 모드",
+          "대기 상태",
+          "커널 모드"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "커널 모드는 하드웨어와 메모리 전체에 접근할 수 있는 특권 모드로, 운영체제 커널이 이 모드에서 실행됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/CPU_modes",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-kernel-mode-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "kernel-mode",
+        "mode-bit"
+      ],
+      "content": {
+        "prompt": "CPU가 지금 어느 모드인지 기억하는 것은?",
+        "options": [
+          "모드 비트",
+          "PCB",
+          "프로그램 카운터"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "모드 비트는 CPU가 현재 사용자 모드인지 커널 모드인지 기억하는 비트입니다. PCB는 프로세스 정보를 담는 관리 블록입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/CPU_modes"
+      ]
+    },
+    {
+      "id": "os-kernel-mode-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "kernel-mode",
+        "user-mode"
+      ],
+      "content": {
+        "prompt": "일반 프로그램은 커널 모드에서 실행된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "일반 프로그램은 제한된 사용자 모드에서 실행됩니다. 커널 모드에서는 운영체제 커널이 실행됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/User_space_and_kernel_space",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-kernel-mode-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "kernel-mode",
+        "privileged-mode"
+      ],
+      "content": {
+        "prompt": "하드웨어와 메모리 전체에 접근하는 특권 모드는 ___ 이다.",
+        "hint": "사용자 모드와 짝을 이루는 모드"
+      },
+      "answer_key": {
+        "accepted": [
+          "커널 모드",
+          "커널모드",
+          "kernel mode",
+          "kernelmode",
+          "슈퍼바이저 모드",
+          "슈퍼바이저모드",
+          "supervisor mode"
+        ]
+      },
+      "explanation": "커널 모드는 하드웨어와 메모리 전체에 접근하는 특권 모드입니다. 일반 프로그램은 사용자 모드에서 실행됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/CPU_modes",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-kernel-mode-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "kernel-mode",
+        "mode-bit"
+      ],
+      "content": {
+        "prompt": "CPU가 사용자·커널 중 현재 모드를 기억하는 비트는 ___ 이다.",
+        "hint": "두 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "모드 비트",
+          "모드비트",
+          "mode bit",
+          "modebit"
+        ]
+      },
+      "explanation": "모드 비트는 CPU가 현재 사용자 모드인지 커널 모드인지 기억하는 비트로, 모드가 바뀔 때 함께 바뀝니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/CPU_modes"
+      ]
+    },
+    {
+      "id": "os-kernel-mode-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "kernel-mode",
+        "user-mode",
+        "protection"
+      ],
+      "content": {
+        "prompt": "사용자 모드 프로그램이 장치를 직접 제어하려 하면?",
+        "options": [
+          "CPU가 막음",
+          "그대로 실행됨"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "사용자 모드에서는 하드웨어를 직접 건드릴 수 없어 CPU가 막습니다. 장치 제어는 커널 모드의 커널이 맡습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Protection_ring",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-kernel-mode-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "kernel-mode",
+        "mode-bit"
+      ],
+      "content": {
+        "prompt": "모드 비트가 커널 모드를 가리킬 때 실행 중인 것은?",
+        "options": [
+          "일반 프로그램",
+          "운영체제 커널"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "모드 비트가 커널 모드이면 지금 실행 중인 것은 운영체제 커널 코드입니다. 일반 프로그램은 사용자 모드에서 실행됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/CPU_modes"
+      ]
+    },
+    {
+      "id": "os-kernel-mode-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "kernel-mode",
+        "protection"
+      ],
+      "content": {
+        "prompt": "CPU 모드를 둘로 나눠서 얻는 효과는?",
+        "options": [
+          "병렬성",
+          "보호",
+          "오버헤드 감소"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "모드를 나누면 사용자 프로그램이 하드웨어를 직접 건드리지 못하므로 시스템을 보호할 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Protection_ring",
+        "https://en.wikipedia.org/wiki/User_space_and_kernel_space"
+      ]
+    },
+    {
+      "id": "os-kernel-mode-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "kernel-mode",
+        "user-mode",
+        "protection"
+      ],
+      "content": {
+        "prompt": "사용자 모드는 하드웨어에 직접 접근할 수 없는 제한된 모드다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "사용자 모드는 일반 프로그램이 실행되는 제한된 모드로, 하드웨어 접근은 커널 모드의 커널에 맡깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/User_space_and_kernel_space",
+        "https://en.wikipedia.org/wiki/CPU_modes"
+      ]
+    }
+  ]
+}

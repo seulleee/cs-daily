@@ -1,0 +1,252 @@
+{
+  "track": "os",
+  "unit": "u08-kernel-syscall",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "os-syscall-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "syscall",
+        "system-call"
+      ],
+      "content": {
+        "prompt": "프로그램이 커널 기능을 요청하는 공식 통로는?",
+        "options": [
+          "모드 비트",
+          "인터럽트 핸들러",
+          "시스템 콜"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "시스템 콜은 사용자 프로그램이 파일·프로세스 등 커널 기능을 요청하는 공식 통로입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/System_call",
+        "https://man7.org/linux/man-pages/man2/syscalls.2.html"
+      ]
+    },
+    {
+      "id": "os-syscall-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "syscall",
+        "system-call",
+        "library-function"
+      ],
+      "content": {
+        "prompt": "안에서 시스템 콜을 부르는 printf 같은 함수는?",
+        "options": [
+          "시스템 콜",
+          "라이브러리 함수",
+          "인터럽트 핸들러"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "printf 같은 라이브러리 함수는 사용자 모드에서 실행되다가 필요할 때 안에서 시스템 콜을 부릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/System_call",
+        "https://man7.org/linux/man-pages/man2/intro.2.html"
+      ]
+    },
+    {
+      "id": "os-syscall-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "syscall",
+        "system-call",
+        "library-function"
+      ],
+      "content": {
+        "prompt": "printf와 write 중 시스템 콜은?",
+        "options": [
+          "printf",
+          "write"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "write는 커널에 출력을 요청하는 시스템 콜입니다. printf는 안에서 write를 부르는 라이브러리 함수입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/syscalls.2.html",
+        "https://en.wikipedia.org/wiki/System_call"
+      ]
+    },
+    {
+      "id": "os-syscall-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "syscall",
+        "system-call",
+        "protection"
+      ],
+      "content": {
+        "prompt": "사용자 프로그램은 시스템 콜 없이 디스크를 직접 읽는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "사용자 모드 프로그램은 하드웨어를 직접 다룰 수 없어 read 같은 시스템 콜로 커널에 요청해야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/System_call",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-syscall-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "syscall",
+        "system-call"
+      ],
+      "content": {
+        "prompt": "프로그램이 커널 기능을 요청하는 공식 통로는 ___ 이다.",
+        "hint": "두 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "시스템 콜",
+          "시스템콜",
+          "system call",
+          "systemcall",
+          "syscall",
+          "시스템 호출",
+          "시스템호출"
+        ]
+      },
+      "explanation": "시스템 콜은 프로그램이 커널 기능을 요청하는 공식 통로로, open·read·write·fork 등이 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/System_call",
+        "https://man7.org/linux/man-pages/man2/syscalls.2.html"
+      ]
+    },
+    {
+      "id": "os-syscall-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "syscall",
+        "system-call",
+        "errno"
+      ],
+      "content": {
+        "prompt": "시스템 콜이 실패했을 때 원인을 담는 변수는 ___ 이다.",
+        "hint": "영문 5글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "errno"
+        ]
+      },
+      "explanation": "시스템 콜은 실패하면 보통 −1을 돌려주고, 실패 원인은 errno에 오류 코드로 담깁니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man3/errno.3.html",
+        "https://man7.org/linux/man-pages/man2/intro.2.html"
+      ]
+    },
+    {
+      "id": "os-syscall-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "syscall",
+        "library-function",
+        "system-call"
+      ],
+      "content": {
+        "prompt": "printf가 화면에 출력할 때 안에서 부르는 시스템 콜은?",
+        "options": [
+          "open",
+          "fork",
+          "write"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "printf는 출력할 문자열을 만든 뒤 안에서 write 시스템 콜을 불러 커널에 출력을 요청합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/System_call",
+        "https://man7.org/linux/man-pages/man2/syscalls.2.html"
+      ]
+    },
+    {
+      "id": "os-syscall-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "syscall",
+        "system-call"
+      ],
+      "content": {
+        "prompt": "파일 내용을 읽으려는 프로그램이 부르는 시스템 콜은?",
+        "options": [
+          "read",
+          "fork",
+          "printf"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "read는 파일 내용을 읽어 달라고 커널에 요청하는 시스템 콜입니다. printf는 라이브러리 함수입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/syscalls.2.html"
+      ]
+    },
+    {
+      "id": "os-syscall-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "syscall",
+        "system-call",
+        "errno"
+      ],
+      "content": {
+        "prompt": "read 시스템 콜이 −1을 돌려줬다. 뜻은?",
+        "options": [
+          "1바이트 읽음",
+          "호출 실패",
+          "파일을 엶"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시스템 콜은 실패하면 −1을 돌려줍니다. 실패 원인은 errno에 담긴 오류 코드로 확인합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/intro.2.html",
+        "https://man7.org/linux/man-pages/man3/errno.3.html"
+      ]
+    },
+    {
+      "id": "os-syscall-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "syscall",
+        "system-call"
+      ],
+      "content": {
+        "prompt": "시스템 콜은 프로그램이 커널 기능을 요청하는 공식 통로다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "프로그램은 하드웨어를 직접 다룰 수 없으므로 시스템 콜이라는 공식 통로로 커널에 요청합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/System_call"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "track": "os",
+  "unit": "u08-kernel-syscall",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "os-syscall-cost-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "syscall-cost",
+        "mode-switch",
+        "system-call"
+      ],
+      "content": {
+        "prompt": "시스템 콜 때 사용자→커널→사용자로 오가는 것은?",
+        "options": [
+          "컨텍스트 스위칭",
+          "모드 전환",
+          "프로세스 생성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "모드 전환은 시스템 콜 때 사용자 모드에서 커널 모드로 들어갔다가 다시 사용자 모드로 돌아오는 왕복입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/System_call",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-syscall-cost-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "syscall-cost",
+        "buffering",
+        "system-call"
+      ],
+      "content": {
+        "prompt": "데이터를 모아 시스템 콜 횟수를 줄이는 방법은?",
+        "options": [
+          "트랩",
+          "버퍼링",
+          "컨텍스트 스위칭"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "버퍼링은 데이터를 버퍼에 모았다가 한 번에 시스템 콜을 불러 호출 횟수를 줄이는 방법입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Data_buffer"
+      ]
+    },
+    {
+      "id": "os-syscall-cost-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "syscall-cost",
+        "mode-switch",
+        "context-switch"
+      ],
+      "content": {
+        "prompt": "시스템 콜을 호출할 때 일어나는 것은?",
+        "options": [
+          "모드 전환",
+          "컨텍스트 스위칭"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "시스템 콜은 같은 프로세스가 사용자 모드와 커널 모드를 오가는 모드 전환입니다. 프로세스가 바뀌는 컨텍스트 스위칭이 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/System_call",
+        "https://en.wikipedia.org/wiki/Context_switch"
+      ]
+    },
+    {
+      "id": "os-syscall-cost-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "syscall-cost",
+        "mode-switch",
+        "context-switch"
+      ],
+      "content": {
+        "prompt": "모드 전환은 실행 중인 프로세스가 다른 프로세스로 바뀌는 일이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "모드 전환은 같은 프로세스가 사용자·커널 모드를 오가는 것입니다. 프로세스가 바뀌는 것은 컨텍스트 스위칭입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Context_switch",
+        "https://en.wikipedia.org/wiki/System_call"
+      ]
+    },
+    {
+      "id": "os-syscall-cost-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "syscall-cost",
+        "mode-switch"
+      ],
+      "content": {
+        "prompt": "사용자 모드와 커널 모드를 오가는 것을 ___ 이라고 한다.",
+        "hint": "두 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "모드 전환",
+          "모드전환",
+          "mode switch",
+          "modeswitch",
+          "mode switching",
+          "모드 스위칭",
+          "모드스위칭",
+          "모드 스위치"
+        ]
+      },
+      "explanation": "모드 전환은 사용자 모드와 커널 모드 사이를 오가는 것으로, 시스템 콜 한 번마다 왕복이 한 번 생깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/System_call",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-syscall-cost-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "syscall-cost",
+        "buffering"
+      ],
+      "content": {
+        "prompt": "데이터를 모았다가 시스템 콜을 한 번에 부르는 기법은 ___ 이다.",
+        "hint": "한글 3글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "버퍼링",
+          "buffering"
+        ]
+      },
+      "explanation": "버퍼링은 데이터를 버퍼에 모아 한 번에 처리해 시스템 콜 횟수와 모드 전환 비용을 줄입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Data_buffer"
+      ]
+    },
+    {
+      "id": "os-syscall-cost-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "syscall-cost",
+        "mode-switch",
+        "buffering"
+      ],
+      "content": {
+        "prompt": "100바이트를 1바이트씩 write로 쓰면 모드 전환 왕복은?",
+        "options": [
+          "1번",
+          "10번",
+          "100번"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "write를 100번 부르므로 사용자→커널→사용자 모드 왕복도 100번 생깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/System_call",
+        "https://en.wikipedia.org/wiki/Data_buffer"
+      ]
+    },
+    {
+      "id": "os-syscall-cost-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "syscall-cost",
+        "buffering",
+        "mode-switch"
+      ],
+      "content": {
+        "prompt": "100바이트를 버퍼에 모아 write 한 번으로 쓰면 왕복은?",
+        "options": [
+          "1번",
+          "100번"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "버퍼에 모아 write를 한 번만 부르면 모드 전환 왕복도 1번으로 줄어듭니다. 이것이 버퍼링의 효과입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Data_buffer"
+      ]
+    },
+    {
+      "id": "os-syscall-cost-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "syscall-cost",
+        "system-call",
+        "overhead"
+      ],
+      "content": {
+        "prompt": "같은 일을 할 때 비용이 더 큰 호출은?",
+        "options": [
+          "일반 함수 호출",
+          "시스템 콜"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시스템 콜은 모드 전환 때 레지스터 저장·복원과 캐시 영향이 생겨 일반 함수 호출보다 비쌉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/System_call",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-syscall-cost-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "syscall-cost",
+        "mode-switch",
+        "system-call"
+      ],
+      "content": {
+        "prompt": "시스템 콜 한 번에는 사용자·커널 모드 사이 왕복이 한 번 생긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "시스템 콜을 부르면 사용자 모드에서 커널 모드로 들어갔다가 다시 사용자 모드로 돌아오는 모드 전환이 한 번 생깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/System_call"
+      ]
+    }
+  ]
+}

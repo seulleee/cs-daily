@@ -1,0 +1,246 @@
+{
+  "track": "os",
+  "unit": "u08-kernel-syscall",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "os-trap-exception-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "trap-exception",
+        "trap",
+        "system-call"
+      ],
+      "content": {
+        "prompt": "프로그램이 의도적으로 커널을 부르는 것은?",
+        "options": [
+          "예외",
+          "트랩",
+          "모드 비트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "트랩은 프로그램이 시스템 콜 등으로 의도적으로 커널을 부르는 것입니다. 예외는 실행 중 생긴 오류입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-trap-exception-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "trap-exception",
+        "exception"
+      ],
+      "content": {
+        "prompt": "0으로 나누기 같은 실행 중 오류를 뜻하는 용어는?",
+        "options": [
+          "트랩",
+          "인터럽트",
+          "예외"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "예외는 0으로 나누기, 잘못된 메모리 접근 등 명령 실행 중 생긴 오류입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-trap-exception-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "trap-exception",
+        "trap",
+        "exception"
+      ],
+      "content": {
+        "prompt": "잘못된 메모리 접근은 트랩과 예외 중 무엇인가?",
+        "options": [
+          "트랩",
+          "예외"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "잘못된 메모리 접근은 의도하지 않은 실행 중 오류이므로 예외입니다. 트랩은 의도적으로 커널을 부르는 것입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-trap-exception-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "trap-exception",
+        "synchronous",
+        "exception"
+      ],
+      "content": {
+        "prompt": "트랩과 예외는 명령 실행의 결과로 생기는 동기적 사건이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "트랩과 예외는 실행 중인 명령 때문에 생기므로 동기적입니다. 장치가 보내는 인터럽트는 비동기적입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-trap-exception-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "trap-exception",
+        "trap"
+      ],
+      "content": {
+        "prompt": "프로그램이 의도적으로 커널을 부르는 것은 ___ 이다.",
+        "hint": "한글 2글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "트랩",
+          "trap"
+        ]
+      },
+      "explanation": "트랩은 프로그램이 시스템 콜 등으로 의도적으로 커널을 부르는 것으로, CPU가 커널 모드로 바뀝니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-trap-exception-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "trap-exception",
+        "synchronous",
+        "trap"
+      ],
+      "content": {
+        "prompt": "명령 실행의 결과로 생기는 트랩·예외의 성질은 ___ 이다.",
+        "hint": "한글 2글자, 인터럽트는 그 반대"
+      },
+      "answer_key": {
+        "accepted": [
+          "동기",
+          "동기적",
+          "동기식",
+          "synchronous",
+          "sync"
+        ]
+      },
+      "explanation": "트랩과 예외는 명령 실행의 결과로 생기는 동기적 사건입니다. 장치가 아무 때나 보내는 인터럽트는 비동기적입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt"
+      ]
+    },
+    {
+      "id": "os-trap-exception-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "trap-exception",
+        "trap",
+        "system-call"
+      ],
+      "content": {
+        "prompt": "프로그램이 시스템 콜을 호출했다. 이때 생기는 사건은?",
+        "options": [
+          "예외",
+          "인터럽트",
+          "트랩"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "시스템 콜은 프로그램이 의도적으로 커널을 부르는 것이므로 트랩입니다. 오류로 생기는 예외와 다릅니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf",
+        "https://en.wikipedia.org/wiki/System_call"
+      ]
+    },
+    {
+      "id": "os-trap-exception-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "trap-exception",
+        "synchronous",
+        "interrupt"
+      ],
+      "content": {
+        "prompt": "타이머 인터럽트와 시스템 콜 중 비동기 사건은?",
+        "options": [
+          "시스템 콜",
+          "타이머 인터럽트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "타이머 인터럽트는 실행 중인 명령과 상관없이 장치가 보내므로 비동기입니다. 시스템 콜은 명령 실행으로 생기는 동기 사건입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt"
+      ]
+    },
+    {
+      "id": "os-trap-exception-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "trap-exception",
+        "trap",
+        "exception"
+      ],
+      "content": {
+        "prompt": "트랩이나 예외가 생기면 CPU가 바뀌는 모드는?",
+        "options": [
+          "커널 모드",
+          "사용자 모드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "트랩·예외·인터럽트 모두 CPU를 커널 모드로 바꾸고, 커널 코드가 그 사건을 처리합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-trap-exception-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "trap-exception",
+        "trap",
+        "exception"
+      ],
+      "content": {
+        "prompt": "0으로 나누기는 프로그램이 의도적으로 커널을 부르는 트랩이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "0으로 나누기는 의도하지 않은 실행 중 오류라서 예외입니다. 트랩은 시스템 콜 등 의도적으로 커널을 부르는 것입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    }
+  ]
+}
