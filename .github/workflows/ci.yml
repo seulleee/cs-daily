@@ -44,6 +44,17 @@ jobs:
         run: |
           pnpm --filter @cs-daily/api exec prisma migrate deploy
           pnpm --filter @cs-daily/api prisma:seed
+      - name: Seed again with units reordered (unique sort_order smoke)
+        run: |
+          node apps/api/test-e2e/rotate-units.mjs packages/content /tmp/content-rotated
+          if ! SEED_CONTENT_ROOT=/tmp/content-rotated pnpm --filter @cs-daily/api prisma:seed > /tmp/seed-rot.log 2>&1; then
+            cat /tmp/seed-rot.log
+            echo "::error title=seed-reorder::유닛 순서를 바꾼 재시드 실패 — $(tail -c 1200 /tmp/seed-rot.log | tr '\n' ' ')"
+            exit 1
+          fi
+          tail -n 3 /tmp/seed-rot.log
+          # 원래 순서로 되돌려 e2e가 실제 콘텐츠 순서로 돌게 한다
+          pnpm --filter @cs-daily/api prisma:seed
       - name: Build
         run: pnpm build
       - name: API E2E (built server + CI Postgres)
