@@ -22,7 +22,7 @@
       "answer_key": {
         "index": 2
       },
-      "explanation": "중간에 원소를 넣으면 자리를 만들기 위해 뒤 원소를 모두 한 칸씩 밀어야 합니다. 그래서 O(n)입니다.",
+      "explanation": "중간에 원소를 넣으면 자리를 만들기 위해 뒤 원소를 모두 한 칸씩 밀어야 합니다. 뒤 원소가 많을수록 이동도 늘어납니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)"
       ]
@@ -46,7 +46,7 @@
       "answer_key": {
         "index": 1
       },
-      "explanation": "중간 원소를 지우면 빈자리를 메우기 위해 뒤 원소를 모두 한 칸씩 당겨야 합니다. 그래서 O(n)입니다.",
+      "explanation": "중간 원소를 지우면 빈자리를 메우기 위해 뒤 원소를 모두 한 칸씩 당겨야 합니다. 뒤 원소가 많을수록 이동도 늘어납니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)"
       ]
@@ -60,16 +60,16 @@
         "insertion"
       ],
       "content": {
-        "prompt": "빈 칸이 남은 배열 끝에 원소를 넣는 시간 복잡도는?",
+        "prompt": "빈 칸이 남은 배열에서 이동 없이 끝나는 연산은?",
         "options": [
-          "O(1)",
-          "O(n)"
+          "끝 삽입",
+          "중간 삽입"
         ]
       },
       "answer_key": {
         "index": 0
       },
-      "explanation": "끝에 넣을 때는 밀어야 할 뒤 원소가 없어 이동 없이 O(1)에 끝납니다.",
+      "explanation": "끝에 넣을 때는 밀어야 할 뒤 원소가 없어 한 번에 끝납니다. 중간 삽입은 뒤 원소를 모두 밉니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)"
       ]
@@ -83,12 +83,12 @@
         "deletion"
       ],
       "content": {
-        "prompt": "배열 중간 삭제는 원소 이동이 없어 O(1)이다."
+        "prompt": "배열 중간 삭제는 원소 이동 없이 한 번에 끝난다."
       },
       "answer_key": {
         "value": false
       },
-      "explanation": "중간 원소를 지우면 뒤 원소를 모두 한 칸씩 당겨야 하므로 O(n)입니다. 이동이 없는 것은 끝 삭제입니다.",
+      "explanation": "중간 원소를 지우면 뒤 원소를 모두 한 칸씩 당겨야 합니다. 이동 없이 끝나는 것은 끝 삭제입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)"
       ]
@@ -103,7 +103,7 @@
         "deletion"
       ],
       "content": {
-        "prompt": "배열 끝 삽입·삭제는 원소 ___ 이 없어 O(1)이다.",
+        "prompt": "배열 끝 삽입·삭제는 원소 ___ 이 없어 한 번에 끝난다.",
         "hint": "다른 원소의 자리를 바꾸는 일"
       },
       "answer_key": {
@@ -114,7 +114,7 @@
           "옮김"
         ]
       },
-      "explanation": "끝에서 넣거나 빼면 다른 원소의 자리를 바꿀 필요가 없어 O(1)입니다.",
+      "explanation": "끝에서 넣거나 빼면 다른 원소의 자리를 바꿀 필요가 없어 한 번에 끝납니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)"
       ]
@@ -125,19 +125,23 @@
       "difficulty": 2,
       "tags": [
         "array",
-        "time-complexity"
+        "insertion",
+        "deletion"
       ],
       "content": {
-        "prompt": "배열 중간 삽입·삭제의 시간 복잡도는 O(___) 이다.",
-        "hint": "옮겨야 하는 원소 수를 생각해 보세요"
+        "prompt": "배열 중간 삽입·삭제 때 한 칸씩 옮겨지는 것은 ___ 원소다.",
+        "hint": "삽입·삭제 위치를 기준으로 생각해 보세요"
       },
       "answer_key": {
         "accepted": [
-          "n",
-          "N"
+          "뒤",
+          "뒤쪽",
+          "뒤의",
+          "뒤쪽의",
+          "뒤에 있는"
         ]
       },
-      "explanation": "중간 삽입은 뒤 원소를 밀고, 중간 삭제는 당겨야 하므로 원소 수에 비례하는 O(n)입니다.",
+      "explanation": "삽입 위치 뒤의 원소는 한 칸씩 밀리고, 삭제 위치 뒤의 원소는 한 칸씩 당겨집니다. 앞쪽 원소는 그대로입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)"
       ]
@@ -208,7 +212,7 @@
       "answer_key": {
         "index": 1
       },
-      "explanation": "마지막 원소 뒤에는 다른 원소가 없어 이동 없이 O(1)에 삭제됩니다.",
+      "explanation": "마지막 원소 뒤에는 다른 원소가 없어 이동 없이 한 번에 삭제됩니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)"
       ]
@@ -227,7 +231,7 @@
       "answer_key": {
         "value": true
       },
-      "explanation": "중간 삽입은 넣을 자리를 비우려고 뒤 원소를 모두 한 칸씩 밀기 때문에 O(n)입니다.",
+      "explanation": "중간 삽입은 넣을 자리를 비우려고 뒤 원소를 모두 한 칸씩 밉니다. 이동 없이 끝나는 것은 끝 삽입입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)"
       ]

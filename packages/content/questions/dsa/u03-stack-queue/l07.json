@@ -204,20 +204,20 @@
       "difficulty": 2,
       "tags": [
         "deque",
-        "time-complexity"
+        "double-ended"
       ],
       "content": {
-        "prompt": "원소 n개인 덱의 앞에 원소 하나를 넣는 시간은?",
+        "prompt": "원소 n개인 덱의 앞에 원소 하나를 넣을 때 옮기는 원소 수는?",
         "options": [
-          "O(n)",
-          "O(1)",
-          "O(log n)"
+          "n개",
+          "0개",
+          "1개"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "덱은 양 끝 삽입·삭제가 모두 O(1)이라 원소 수와 관계없이 앞에 바로 넣습니다.",
+      "explanation": "덱은 앞뒤 양 끝 연산이 모두 이동 없이 한 번에 끝나므로 원소 수와 관계없이 앞에 바로 넣습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Double-ended_queue",
         "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Deque.html"

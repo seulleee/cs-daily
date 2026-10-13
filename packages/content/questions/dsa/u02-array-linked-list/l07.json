@@ -13,7 +13,7 @@
         "access"
       ],
       "content": {
-        "prompt": "인덱스로 원소에 O(1) 접근할 수 있는 구조는?",
+        "prompt": "인덱스로 원소에 한 번에 접근할 수 있는 구조는?",
         "options": [
           "연결 리스트",
           "배열",
@@ -23,7 +23,7 @@
       "answer_key": {
         "index": 1
       },
-      "explanation": "배열은 주소 계산으로 O(1)에 접근합니다. 연결 리스트는 head부터 따라가야 해서 O(n)입니다.",
+      "explanation": "배열은 주소 계산으로 한 번에 접근합니다. 연결 리스트는 head부터 next를 따라가야 합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Linked_list",
         "https://en.wikipedia.org/wiki/Array_(data_structure)",
@@ -96,7 +96,7 @@
       "answer_key": {
         "value": false
       },
-      "explanation": "배열은 뒤 원소를 밀어야 해서 O(n)이고, 연결 리스트는 포인터만 바꿔 O(1)입니다.",
+      "explanation": "배열은 뒤 원소를 모두 밀어야 하고, 연결 리스트는 포인터만 바꾸면 됩니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Linked_list",
         "https://en.wikipedia.org/wiki/Array_(data_structure)",
@@ -177,7 +177,7 @@
       "answer_key": {
         "index": 0
       },
-      "explanation": "배열은 인덱스 접근이 O(1)이고 연결 리스트는 O(n)이므로 배열이 알맞습니다.",
+      "explanation": "배열은 인덱스로 한 번에 접근하고 연결 리스트는 head부터 따라가야 하므로 배열이 알맞습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Linked_list",
         "https://en.wikipedia.org/wiki/Array_(data_structure)",
@@ -203,7 +203,7 @@
       "answer_key": {
         "index": 1
       },
-      "explanation": "연결 리스트는 위치를 알면 포인터만 바꿔 O(1)에 삽입·삭제합니다. 배열은 원소 이동으로 O(n)입니다.",
+      "explanation": "연결 리스트는 위치를 알면 포인터만 바꿔 삽입·삭제합니다. 배열은 뒤 원소를 모두 옮겨야 합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Linked_list",
         "https://en.wikipedia.org/wiki/Array_(data_structure)",
@@ -245,12 +245,12 @@
         "access"
       ],
       "content": {
-        "prompt": "인덱스 접근은 배열이 O(1), 연결 리스트가 O(n)이다."
+        "prompt": "연결 리스트는 k번째 원소를 찾을 때 head부터 따라가야 한다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "배열은 주소 계산으로 바로 접근하고, 연결 리스트는 head부터 next를 따라가야 합니다.",
+      "explanation": "연결 리스트는 주소 계산이 안 되어 next를 따라가야 합니다. 배열은 주소 계산으로 한 번에 접근합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Linked_list",
         "https://en.wikipedia.org/wiki/Array_(data_structure)",

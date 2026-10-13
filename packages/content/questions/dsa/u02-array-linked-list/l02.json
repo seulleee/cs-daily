@@ -62,16 +62,16 @@
         "random-access"
       ],
       "content": {
-        "prompt": "배열에서 인덱스로 원소 하나를 읽는 시간 복잡도는?",
+        "prompt": "배열에서 인덱스로 원소 하나를 읽을 때 주소 계산 횟수는?",
         "options": [
-          "O(n)",
-          "O(1)"
+          "인덱스만큼",
+          "한 번"
         ]
       },
       "answer_key": {
         "index": 1
       },
-      "explanation": "주소 계산 한 번으로 위치를 구하므로 배열의 인덱스 접근은 O(1)입니다.",
+      "explanation": "시작 주소 + 인덱스 × 원소 크기를 한 번 계산하면 위치가 나옵니다. 인덱스가 커도 계산 횟수는 같습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)",
         "https://en.wikipedia.org/wiki/Random_access"
@@ -106,7 +106,7 @@
         "random-access"
       ],
       "content": {
-        "prompt": "어느 위치든 O(1)에 접근하는 것을 ___ 접근이라 한다.",
+        "prompt": "어느 위치든 계산 한 번으로 접근하는 것을 ___ 접근이라 한다.",
         "hint": "순차 접근과 대비되는 말"
       },
       "answer_key": {
@@ -212,7 +212,7 @@
       "content": {
         "prompt": "원소 100만 개 배열에서 첫 원소와 마지막 원소를 읽는 시간은?",
         "options": [
-          "둘 다 O(1)",
+          "둘 다 같음",
           "뒤쪽이 더 느림",
           "앞쪽이 더 느림"
         ]
@@ -220,7 +220,7 @@
       "answer_key": {
         "index": 0
       },
-      "explanation": "주소 계산 한 번이면 어느 인덱스든 바로 접근하므로 위치와 상관없이 O(1)입니다.",
+      "explanation": "주소 계산 한 번이면 어느 인덱스든 바로 접근하므로 위치와 상관없이 걸리는 시간이 같습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)",
         "https://en.wikipedia.org/wiki/Random_access"
@@ -235,12 +235,12 @@
         "random-access"
       ],
       "content": {
-        "prompt": "배열은 어느 인덱스든 O(1)에 접근할 수 있다."
+        "prompt": "배열은 어느 인덱스든 계산 한 번으로 접근할 수 있다."
       },
       "answer_key": {
         "value": true
       },
-      "explanation": "주소를 계산으로 바로 구하므로 위치와 상관없이 O(1)에 접근합니다. 이를 임의 접근이라 합니다.",
+      "explanation": "주소를 계산으로 바로 구하므로 위치와 상관없이 한 번에 접근합니다. 이를 임의 접근이라 합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)",
         "https://en.wikipedia.org/wiki/Random_access"
