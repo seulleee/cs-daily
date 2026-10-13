@@ -2,7 +2,8 @@
 
 /*
  * 디자인 "Trace": 드라큘라(Dracula) 기반 팔레트(다크는 공식 팔레트, 라이트는 Alucard 계열). 학습 경로를 회로 기판의 배선처럼 그린다.
- *  - 보라(brand)는 "켜진 신호"에만 쓴다: 켜진 배선·현재/선택·액션·커서. 초록(correct)은 정답·완료. 본문·제목은 ink.
+ *  - 보라(brand)는 "켜진 신호"에만 쓴다: 켜진 배선·현재/선택·액션·커서. 초록(correct)은 "정답 순간"(보기 테두리·정답 시트의 아이콘·글자)에만 쓰고 큰 면으로는 쓰지 않는다. 본문·제목은 ink.
+ *  - 정보 위계: 현재 진행 중인 것만 밝고, 지나간 것은 가라앉히고(--done-*), 앞으로 올 것은 꺼 둔다.
  *  - 시안·핑크는 쓰지 않는다(절제).
  *  - 색은 전부 CSS 변수. 컴포넌트·TSX에 hex를 쓰지 않는다.
  *  - `brand`는 글자·아이콘·링·켜진 배선·테두리용, `*-fill`은 그 위에 `on-*` 글자가 올라가는 채움(버튼·현재 패드·선택 칩·진행 바)용.
@@ -24,9 +25,9 @@
 
   --color-correct: #14710a;
   --color-correct-bg: #e3f5df;
-  --color-correct-fill: #14710a;      /* 정답 버튼·완료 패드 채움 */
+  --color-correct-fill: #14710a;      /* 정답 시트의 체크 원 채움 */
   --color-on-correct: #ffffff;
-  --color-correct-dark: #0e5207;      /* 정답 3D 버튼 그림자 */
+  --color-correct-dark: #0e5207;      /* 현재 쓰는 곳 없음 — 정답 강조가 더 필요할 때를 위한 예비 토큰 */
   --color-wrong: #b83224;
   --color-wrong-bg: #fbeae7;
   --color-on-wrong: #ffffff;
@@ -121,6 +122,18 @@
   }
 }
 
+/*
+ * 파생 색: "현재만 밝게, 지나온 것은 가라앉히고, 앞으로 올 것은 꺼 둔다". 테마 변수에서 계산하므로 라이트·다크가 함께 따라간다.
+ *  --done-bg  완료 패드·완료 표시의 배경 (brand를 18%만 섞은 면)
+ *  --done-ink 그 위의 check 아이콘 색
+ *  --wire-done 현재 패드 이전의 완료 구간 배선(켜져 있되 어둡게)
+ */
+:root {
+  --done-bg: color-mix(in oklab, var(--color-brand) 18%, var(--color-surface));
+  --done-ink: color-mix(in oklab, var(--color-brand) 65%, var(--color-ink-2));
+  --wire-done: color-mix(in oklab, var(--color-brand) 45%, var(--color-line));
+}
+
 html, body { background: var(--color-surface-2); color: var(--color-ink); }
 
 @layer base {
@@ -157,8 +170,6 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   }
   .btn-3d:active { transform: translateY(4px); box-shadow: 0 0 0 var(--color-brand-dark); }
   .btn-3d:disabled { opacity: .5; box-shadow: none; transform: none; }
-  .btn-3d.correct { background: var(--color-correct-fill); color: var(--color-on-correct); box-shadow: 0 4px 0 var(--color-correct-dark); }
-  .btn-3d.correct:active { box-shadow: 0 0 0 var(--color-correct-dark); }
 
   /* 보조 버튼(그림자 없음) */
   .btn-outline {
@@ -228,7 +239,7 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
     color: var(--color-on-brand);
   }
 
-  /* 학습 경로의 레슨 패드: 배선 위의 접점. 완료 = correct 채움(초록), 열림/현재 = brand 채움(보라), 잠김 = 속이 빈 윤곽. 켜진 배선은 brand */
+  /* 학습 경로의 레슨 패드: 배선 위의 접점. 현재/열림 = brand 채움(가장 밝게), 완료 = brand를 18%만 섞은 가라앉은 면, 잠김 = 속이 빈 윤곽(흐리게) */
   .pad {
     position: relative;
     display: flex;
@@ -242,8 +253,9 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
     color: var(--color-on-brand);
   }
   .pad:not(:disabled):active { transform: translateY(2px); }
-  .pad[data-state="completed"] { background: var(--color-correct-fill); color: var(--color-on-correct); }
+  .pad[data-state="completed"] { background: var(--done-bg); color: var(--done-ink); }
   .pad[data-state="locked"] { background: var(--color-surface-2); border-color: var(--color-line); color: var(--color-ink-2); }
+  .pad[data-state="locked"] svg { opacity: .55; }
   .pad:disabled { cursor: not-allowed; }
   /* 현재 패드: 소켓처럼 한 칸 띄운 4px 링(움직이지 않는다). 움직임은 레슨 이름 뒤의 블록 커서가 맡는다 */
   .pad[data-current="true"] { box-shadow: 0 0 0 4px var(--color-surface-2), 0 0 0 8px var(--color-brand); }

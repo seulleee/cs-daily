@@ -87,8 +87,8 @@ function WeekStrip({ today }: { today: string }) {
               <span
                 aria-hidden
                 className={`flex h-8 w-8 items-center justify-center rounded-full border-2 ${
-                  d?.achieved ? 'border-correct-fill bg-correct-fill text-on-correct' : isToday ? 'border-brand text-ink-2' : 'border-line text-ink-2'
-                }`}
+                  d?.achieved ? 'bg-(--done-bg) text-(color:--done-ink)' : 'text-ink-2'
+                } ${isToday ? 'border-brand' : d?.achieved ? 'border-transparent' : 'border-line'}`}
               >
                 {d?.achieved ? <CheckIcon size={16} strokeWidth={3} /> : d?.usedFreeze ? <SnowflakeIcon size={14} /> : null}
               </span>
@@ -118,7 +118,7 @@ function CalendarGrid({ month, days }: { month: string; days: Calendar['days'] }
           <div
             key={date}
             title={d ? `${date}: ${d.xp} XP` : date}
-            className={`flex aspect-square flex-col items-center justify-center rounded-lg ${d?.achieved ? 'bg-correct-bg' : d ? 'bg-surface-2' : ''}`}
+            className={`flex aspect-square flex-col items-center justify-center rounded-lg ${d?.achieved ? 'bg-(--done-bg)' : d ? 'bg-surface-2' : ''}`}
           >
             {d?.usedFreeze ? (
               <SnowflakeIcon size={16} className="text-ink-2" />

@@ -38,27 +38,31 @@ function wirePath(x1: number, x2: number): string {
   return `M ${x1} 0 V ${a} L ${x1 + s * d} ${a + d} H ${x2 - s * d} L ${x2} ${a + 2 * d} V ${GAP}`;
 }
 
-/** 패드 사이 배선. 앞 패드가 완료면 신호가 들어온(brand) 색, 아니면 꺼진(line) 색 */
-function Wire({ from, to, lit }: { from: number; to: number; lit: boolean }) {
+/**
+ * 배선의 밝기는 세 단계다(정보 위계): 현재 패드로 들어오는 구간만 가장 밝게(on), 이미 지나온 구간은 켜져 있되 어둡게(done),
+ * 앞으로 올 구간은 꺼 둔다(off). done 색은 globals.css의 --wire-done.
+ */
+type WireTone = 'on' | 'done' | 'off';
+const WIRE_COLOR: Record<WireTone, string> = { on: 'var(--color-brand)', done: 'var(--wire-done)', off: 'var(--color-line)' };
+
+/** 앞 패드가 완료여야 신호가 들어온다. 뒤 패드가 현재 레슨이면 가장 밝게 */
+const wireTone = (fromCompleted: boolean, intoCurrent: boolean): WireTone => (!fromCompleted ? 'off' : intoCurrent ? 'on' : 'done');
+
+/** 패드 사이 배선 */
+function Wire({ from, to, tone }: { from: number; to: number; tone: WireTone }) {
   return (
     <svg aria-hidden focusable="false" width="100%" height={GAP} className="block overflow-visible">
       {/* 중첩 svg의 x=50%가 컨테이너 가운데를 원점으로 만든다 */}
       <svg x="50%" y="0" overflow="visible">
-        <path
-          d={wirePath(from, to)}
-          fill="none"
-          stroke={lit ? 'var(--color-brand)' : 'var(--color-line)'}
-          strokeWidth={WIRE_WIDTH}
-          strokeLinejoin="round"
-        />
+        <path d={wirePath(from, to)} fill="none" style={{ stroke: WIRE_COLOR[tone] }} strokeWidth={WIRE_WIDTH} strokeLinejoin="round" />
       </svg>
     </svg>
   );
 }
 
 /** 유닛 헤더 아래에서 첫 패드로 내려가는 직선 */
-function Stub({ lit }: { lit: boolean }) {
-  return <div aria-hidden className={clsx('mx-auto h-7 rounded-full', lit ? 'bg-brand' : 'bg-line')} style={{ width: WIRE_WIDTH }} />;
+function Stub({ tone }: { tone: WireTone }) {
+  return <div aria-hidden className="mx-auto h-7 rounded-full" style={{ width: WIRE_WIDTH, background: WIRE_COLOR[tone] }} />;
 }
 
 type Unit = PathResponse['units'][number];
@@ -79,15 +83,19 @@ export function LearningPath({ path }: { path: PathResponse }) {
         const prevLast = prev?.lessons[prev.lessons.length - 1];
         const prevLit = prevLast?.status === 'completed';
         const doneCount = unit.lessons.filter((l) => l.status === 'completed').length;
+        // 현재 레슨이 속한 유닛만 번호·이름을 밝게, 나머지(완료든 미래든)는 가라앉힌다
+        const isCurrentUnit = unit.lessons.some((l) => l.id === path.nextLessonId);
+        // 이전 유닛 마지막 패드 → 헤더 → 이 유닛 첫 패드로 이어지는 배선
+        const enter = wireTone(prevLit, unit.lessons[0]?.id === path.nextLessonId);
         return (
           <section key={unit.id} aria-labelledby={`unit-${unit.id}`}>
-            {prev && prevLast && <Wire from={offsetOf(prev.lessons.length - 1)} to={0} lit={prevLit} />}
+            {prev && prevLast && <Wire from={offsetOf(prev.lessons.length - 1)} to={0} tone={enter} />}
 
             <div className="flex items-center gap-3 border-b border-line bg-surface-2 pb-3 pt-3">
-              <span aria-hidden className="font-mono text-[28px] font-semibold leading-none tabular-nums text-ink-2">
+              <span aria-hidden className={clsx('font-mono text-[28px] font-semibold leading-none tabular-nums', isCurrentUnit ? 'text-ink' : 'text-ink-2')}>
                 {String(unit.sortOrder).padStart(2, '0')}
               </span>
-              <h2 id={`unit-${unit.id}`} className="min-w-0 flex-1 text-title font-semibold">
+              <h2 id={`unit-${unit.id}`} className={clsx('min-w-0 flex-1 text-title font-semibold', isCurrentUnit ? 'text-ink' : 'text-ink-2')}>
                 <span className="sr-only">유닛 {unit.sortOrder} </span>
                 {unit.name}
               </h2>
@@ -109,7 +117,7 @@ export function LearningPath({ path }: { path: PathResponse }) {
               </div>
             </div>
 
-            {prev ? <Stub lit={prevLit} /> : <div className="h-6" />}
+            {prev ? <Stub tone={enter} /> : <div className="h-6" />}
 
             <ol>
               {unit.lessons.map((lesson, i) => {
@@ -143,9 +151,10 @@ export function LearningPath({ path }: { path: PathResponse }) {
                         aria-hidden
                         onClick={begin}
                         className={clsx(
-                          'absolute top-1/2 -translate-y-1/2 text-cap font-medium',
+                          'absolute top-1/2 -translate-y-1/2 text-cap',
                           off < 0 && 'text-right',
-                          locked || completed ? 'text-ink-2' : 'text-ink',
+                          // 현재 = ink 600, 열림 = ink 500, 완료 = ink-2 400, 잠김 = ink-2 400 + 흐리게
+                          isCurrent ? 'font-semibold text-ink' : completed ? 'font-normal text-ink-2' : locked ? 'font-normal text-ink-2 opacity-70' : 'font-medium text-ink',
                           !locked && 'cursor-pointer',
                         )}
                         style={off < 0 ? { left: 0, right: `calc(50% - ${off}px + ${PAD / 2 + 12}px)` } : { right: 0, left: `calc(50% + ${off}px + ${PAD / 2 + 12}px)` }}
@@ -154,7 +163,7 @@ export function LearningPath({ path }: { path: PathResponse }) {
                         {isCurrent && <span className="term-cursor" />}
                       </div>
                     </div>
-                    {!isLast && <Wire from={off} to={offsetOf(i + 1)} lit={completed} />}
+                    {!isLast && <Wire from={off} to={offsetOf(i + 1)} tone={wireTone(completed, unit.lessons[i + 1]?.id === path.nextLessonId)} />}
                   </li>
                 );
               })}

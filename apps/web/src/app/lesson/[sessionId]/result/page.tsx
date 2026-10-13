@@ -48,7 +48,7 @@ export default function ResultPage({ params }: { params: Promise<{ sessionId: st
             <span className="flex items-center justify-center gap-1">
               {r.dailyGoal.achieved && (
                 <>
-                  <CheckIcon size={18} strokeWidth={3} className="text-correct" />
+                  <CheckIcon size={18} strokeWidth={3} className="text-brand" />
                   <span className="sr-only">달성</span>
                 </>
               )}
@@ -71,8 +71,8 @@ export default function ResultPage({ params }: { params: Promise<{ sessionId: st
 }
 
 /** 정답률 링: 160px 원 안쪽에 136px ground 원을 얹어 두께 12px의 링을 만든다 */
-function ScoreRing({ pct, tone = 'correct' }: { pct: number; tone?: 'correct' | 'ink' }) {
-  const fill = tone === 'correct' ? 'var(--color-correct-fill)' : 'var(--color-ink)';
+function ScoreRing({ pct, tone = 'brand' }: { pct: number; tone?: 'brand' | 'ink' }) {
+  const fill = tone === 'brand' ? 'var(--color-brand)' : 'var(--color-ink)';
   return (
     <div
       role="img"
@@ -130,8 +130,8 @@ function PlacementResult({ sessionId, r, placement: p, pct }: { sessionId: strin
     return (
       <div className="flex min-h-dvh flex-col items-center justify-center p-6">
         <div className="w-full max-w-[420px] space-y-6 text-center">
-          <ScoreRing pct={pct} tone={p.passed ? 'correct' : 'ink'} />
-          <h1 className={`text-h3 font-semibold ${p.passed ? 'text-correct' : ''}`}>{p.passed ? '유닛 통과!' : '여기서 시작하면 딱 좋아요'}</h1>
+          <ScoreRing pct={pct} tone={p.passed ? 'brand' : 'ink'} />
+          <h1 className={`text-h3 font-semibold ${p.passed ? 'text-brand' : ''}`}>{p.passed ? '유닛 통과!' : '여기서 시작하면 딱 좋아요'}</h1>
           {score}
           <p className="card p-4 text-body">
             {!p.passed
@@ -159,8 +159,8 @@ function PlacementResult({ sessionId, r, placement: p, pct }: { sessionId: strin
   return (
     <div className="flex min-h-dvh flex-col items-center justify-center p-6">
       <div className="w-full max-w-[420px] space-y-6 text-center">
-        <ScoreRing pct={pct} tone={p.passed ? 'correct' : 'ink'} />
-        <h1 className={`text-h3 font-semibold ${p.passed ? 'text-correct' : ''}`}>{p.passed ? `${p.unitName} 건너뛰기 성공!` : '조금만 더 배워 봐요'}</h1>
+        <ScoreRing pct={pct} tone={p.passed ? 'brand' : 'ink'} />
+        <h1 className={`text-h3 font-semibold ${p.passed ? 'text-brand' : ''}`}>{p.passed ? `${p.unitName} 건너뛰기 성공!` : '조금만 더 배워 봐요'}</h1>
         <p className="font-mono text-cap text-ink-2">
           {r.total}문제 중 {r.correct}개 정답 ({pct}%) · 통과 기준 {p.passPercent}%
         </p>

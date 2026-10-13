@@ -253,9 +253,9 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                 <span
                   aria-hidden
-                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${result.isCorrect ? 'bg-correct-fill text-on-correct' : 'bg-wrong text-on-wrong'}`}
+                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${result.isCorrect ? 'bg-correct-fill text-on-correct' : 'bg-wrong text-on-wrong'}`}
                 >
-                  {result.isCorrect ? <CheckIcon size={20} strokeWidth={3} /> : <XIcon size={20} strokeWidth={3} />}
+                  {result.isCorrect ? <CheckIcon size={18} strokeWidth={3} /> : <XIcon size={18} strokeWidth={3} />}
                 </span>
                 <p className={`text-title font-semibold ${result.isCorrect ? 'text-correct' : 'text-wrong'}`}>
                   {result.isCorrect ? (result.xpDelta > 0 ? `정답! +${result.xpDelta} XP` : '정답!') : phase === 'retry' ? '한 번 더 볼게요' : '아쉬워요'}
@@ -272,7 +272,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
               )}
               <p className="mt-2 text-body">{result.explanation}</p>
             </div>
-            <button type="button" onClick={next} className={`btn-3d w-full md:w-40 ${result.isCorrect ? 'correct' : ''}`} autoFocus>
+            <button type="button" onClick={next} className="btn-3d w-full md:w-40" autoFocus>
               계속
             </button>
           </div>

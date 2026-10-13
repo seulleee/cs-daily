@@ -90,7 +90,7 @@ export default function SettingsPage() {
         </Field>
 
         {save.isError && <p className="text-cap text-wrong">{(save.error as ApiError).message}</p>}
-        {save.isSuccess && <p className="text-cap text-correct">저장했습니다.</p>}
+        {save.isSuccess && <p className="text-cap text-brand">저장했습니다.</p>}
         <button type="submit" disabled={save.isPending || selected.length === 0} className="btn-3d w-full">저장</button>
       </form>
 
