@@ -90,7 +90,7 @@
       "answer_key": {
         "value": false
       },
-      "explanation": "1쪽 행 하나에 N쪽 행이 여러 개라 1쪽에는 외래키 값을 하나로 담을 수 없습니다. 외래키는 N쪽에 둡니다.",
+      "explanation": "1쪽 행 하나에는 N쪽 행이 여러 개 이어지므로 외래키 값 하나로 담을 수 없습니다. 외래키는 N쪽에 둡니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/One-to-many_(data_model)"
       ]

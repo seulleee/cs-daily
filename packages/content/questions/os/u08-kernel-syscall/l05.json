@@ -13,7 +13,7 @@
         "system-call"
       ],
       "content": {
-        "prompt": "시스템 콜 때 사용자→커널→사용자로 오가는 것은?",
+        "prompt": "시스템 콜을 부를 때 사용자→커널→사용자로 오가는 것은?",
         "options": [
           "컨텍스트 스위칭",
           "모드 전환",
@@ -23,7 +23,7 @@
       "answer_key": {
         "index": 1
       },
-      "explanation": "모드 전환은 시스템 콜 때 사용자 모드에서 커널 모드로 들어갔다가 다시 사용자 모드로 돌아오는 왕복입니다.",
+      "explanation": "모드 전환은 시스템 콜을 부를 때 사용자 모드에서 커널 모드로 들어갔다가 다시 사용자 모드로 돌아오는 왕복입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/System_call",
         "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
