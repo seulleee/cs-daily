@@ -19,12 +19,16 @@ export class GetPathHandler implements IQueryHandler<GetPathQuery, PathResponse>
 
   async execute(q: GetPathQuery): Promise<PathResponse> {
     const db = this.uow.client;
+    // sortOrder 음수 = 콘텐츠에서 빠진 퇴역 행(seed.ts 참고) — 경로·잠금·nextLessonId에서 제외한다
     const track = await db.track.findUnique({
       where: { slug: q.trackSlug },
       include: {
         units: {
+          where: { sortOrder: { gt: 0 } },
           orderBy: { sortOrder: 'asc' },
-          include: { lessons: { orderBy: { sortOrder: 'asc' }, select: { id: true, name: true, sortOrder: true, questionCount: true } } },
+          include: {
+            lessons: { where: { sortOrder: { gt: 0 } }, orderBy: { sortOrder: 'asc' }, select: { id: true, name: true, sortOrder: true, questionCount: true } },
+          },
         },
       },
     });
@@ -70,10 +74,11 @@ export class GetPathHandler implements IQueryHandler<GetPathQuery, PathResponse>
 export class ListTracksHandler implements IQueryHandler<ListTracksQuery, TrackSummary[]> {
   constructor(private readonly uow: UnitOfWork) {}
   async execute(): Promise<TrackSummary[]> {
+    // sortOrder 음수 = 콘텐츠에서 빠진 퇴역 행(seed.ts 참고) — 유닛·레슨 수에서 제외한다
     const tracks = await this.uow.client.track.findMany({
       where: { isActive: true },
       orderBy: { sortOrder: 'asc' },
-      include: { units: { select: { _count: { select: { lessons: true } } } } },
+      include: { units: { where: { sortOrder: { gt: 0 } }, select: { _count: { select: { lessons: { where: { sortOrder: { gt: 0 } } } } } } } },
     });
     return tracks.map((t) => ({
       id: t.id,

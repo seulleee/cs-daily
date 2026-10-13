@@ -5,6 +5,7 @@
  * 실행: pnpm --filter @cs-daily/api test:e2e
  *
  * 시나리오 (dsa 트랙)
+ *  0. 콘텐츠에서 빠진 퇴역 행(sortOrder 음수)을 만들어 두고, 경로·카운트·잠금·레슨 시작에서 보이지 않음을 확인
  *  1. 유닛 2 건너뛰기 테스트를 1문제만 틀리고 통과 → 유닛 1~2의 레슨 6개 완료, 유닛 3 첫 레슨이 열림
  *  2. 같은 유닛 레슨 세션을 시작해도 건너뛰기 세션이 이어지지 않는다 (kind 분리)
  *  3. 유닛 3 테스트를 전부 틀림 → 불합격, 완료 처리 없음, XP 0
@@ -18,7 +19,11 @@ const prisma = new PrismaClient();
 
 type Session = { id: string; kind: string; lessonId: number | null; lessonName: string | null; questions: { id: string; type: string }[] };
 type Complete = { correct: number; total: number; xpEarned: number; placement: { passed: boolean; skippedLessons: number; unitName: string } | null };
-type Path = { units: { id: number; sortOrder: number; lessons: { id: number; status: string }[] }[] };
+type Path = {
+  track: { unitCount: number; lessonCount: number };
+  nextLessonId: number | null;
+  units: { id: number; sortOrder: number; lessons: { id: number; status: string }[] }[];
+};
 
 async function main() {
   const user = await prisma.user.create({ data: { email: `e2e-${Date.now()}@example.test`, nickname: `e2e${Date.now() % 1e9}` } });
@@ -35,7 +40,8 @@ async function main() {
   };
 
   try {
-    const track = await prisma.track.findUniqueOrThrow({ where: { slug: 'dsa' }, include: { units: { orderBy: { sortOrder: 'asc' } } } });
+    // sortOrder 음수 = 콘텐츠에서 빠진 퇴역 행(seed.ts 참고) — API와 같이 양수만 본다
+    const track = await prisma.track.findUniqueOrThrow({ where: { slug: 'dsa' }, include: { units: { where: { sortOrder: { gt: 0 } }, orderBy: { sortOrder: 'asc' } } } });
     const [u1, u2, u3] = track.units;
     assert.ok(u1 && u2 && u3, 'dsa 트랙에 유닛 3개 이상');
 
@@ -65,6 +71,36 @@ async function main() {
       return call<Complete>('POST', `/sessions/${s.id}/complete`);
     };
 
+    // 0. 퇴역 행 숨김. 퇴역 레슨(유닛 1 안, 순서 음수)과 퇴역 유닛(순서 음수, 그 레슨의 순서는 양수 — 유닛째 콘텐츠에서 빠진 경우)을 직접 만든다.
+    //    음수 순서는 "바로 앞 레슨"·경로 맨 앞으로 잡히기 쉬워, 필터가 빠지면 첫 레슨이 영원히 잠긴다
+    const retiredUnit = await prisma.unit.create({ data: { trackId: track.id, slug: 'e2e-retired-unit', name: 'e2e 퇴역 유닛', sortOrder: -999 } });
+    const retiredUnitLesson = await prisma.lesson.create({ data: { unitId: retiredUnit.id, slug: 'e2e-retired-1', name: 'e2e 퇴역 유닛의 레슨', sortOrder: 1 } });
+    const retiredLesson = await prisma.lesson.create({ data: { unitId: u1.id, slug: 'e2e-retired-lesson', name: 'e2e 퇴역 레슨', sortOrder: -999 } });
+    const positiveLessonCount = await prisma.lesson.count({ where: { sortOrder: { gt: 0 }, unit: { trackId: track.id, sortOrder: { gt: 0 } } } });
+
+    const path0 = await call<Path>('GET', '/me/path?track=dsa');
+    assert.ok(!path0.units.some((u) => u.id === retiredUnit.id), '퇴역 유닛은 경로에 없다');
+    const pathLessonIds = path0.units.flatMap((u) => u.lessons.map((l) => l.id));
+    assert.ok(!pathLessonIds.includes(retiredLesson.id), '퇴역 레슨은 경로에 없다');
+    assert.ok(!pathLessonIds.includes(retiredUnitLesson.id), '퇴역 유닛의 레슨은 경로에 없다');
+    assert.equal(path0.units[0]!.id, u1.id, '경로 첫 유닛');
+    const firstLesson = path0.units[0]!.lessons[0]!;
+    assert.equal(firstLesson.status, 'available', '퇴역 레슨이 앞에 있어도 첫 레슨은 열려 있다');
+    assert.equal(path0.nextLessonId, firstLesson.id, '다음 레슨은 첫 레슨');
+    assert.equal(path0.track.unitCount, track.units.length, '경로 유닛 수에 퇴역 유닛 제외');
+    assert.equal(path0.track.lessonCount, positiveLessonCount, '경로 레슨 수에 퇴역 레슨 제외');
+    const listed = (await call<{ slug: string; unitCount: number; lessonCount: number }[]>('GET', '/tracks')).find((t) => t.slug === 'dsa')!;
+    assert.equal(listed.unitCount, track.units.length, '트랙 목록 유닛 수에 퇴역 유닛 제외');
+    assert.equal(listed.lessonCount, positiveLessonCount, '트랙 목록 레슨 수에 퇴역 레슨 제외');
+    for (const id of [retiredLesson.id, retiredUnitLesson.id]) {
+      const res = await fetch(`${API}/lessons/${id}/sessions`, { method: 'POST', headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' } });
+      assert.equal(res.status, 404, `퇴역 레슨 ${id} 시작은 없는 레슨(404): ${res.status}`);
+    }
+    const retiredUnitSkip = await fetch(`${API}/units/${retiredUnit.id}/skip-test`, { method: 'POST', headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' } });
+    assert.equal(retiredUnitSkip.status, 404, `퇴역 유닛 건너뛰기는 없는 유닛(404): ${retiredUnitSkip.status}`);
+    const firstSession = await call<Session>('POST', `/lessons/${firstLesson.id}/sessions`);
+    assert.equal(firstSession.kind, 'lesson', '퇴역 행이 앞에 있어도 첫 레슨을 시작할 수 있다(잠금 계산에서 제외)');
+
     // 1. 유닛 2 통과
     const s1 = await call<Session>('POST', `/units/${u2.id}/skip-test`);
     assert.equal(s1.kind, 'placement');
@@ -75,7 +111,7 @@ async function main() {
     const r1 = await solve(s1, 1);
     assert.ok(r1.placement?.passed, `통과해야 함: ${JSON.stringify(r1)}`);
     assert.equal(r1.xpEarned, 0, '건너뛰기 테스트는 XP 없음');
-    const lessonsThroughU2 = await prisma.lesson.count({ where: { unitId: { in: [u1.id, u2.id] } } });
+    const lessonsThroughU2 = await prisma.lesson.count({ where: { unitId: { in: [u1.id, u2.id] }, sortOrder: { gt: 0 } } });
     assert.equal(r1.placement?.skippedLessons, lessonsThroughU2);
 
     const path = await call<Path>('GET', '/me/path?track=dsa');
@@ -115,6 +151,9 @@ async function main() {
 
     console.log('✓ unit skip test e2e passed');
   } finally {
+    // 시나리오 0에서 만든 퇴역 행 정리 (레슨 → 유닛 순서)
+    await prisma.lesson.deleteMany({ where: { slug: { startsWith: 'e2e-retired' } } });
+    await prisma.unit.deleteMany({ where: { slug: 'e2e-retired-unit' } });
     await prisma.user.delete({ where: { id: user.id } });
     await prisma.$disconnect();
   }
