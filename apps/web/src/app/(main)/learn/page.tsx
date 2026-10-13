@@ -10,7 +10,7 @@ import { AppShell } from '@/components/app-shell';
 import { StatsPanel } from '@/components/stats-panel';
 import { LearningPath } from '@/components/learning-path';
 import { NextLessonCard } from '@/components/next-lesson-card';
-import { FlameIcon, ZapIcon } from '@/components/icons';
+import { StreakWindow } from '@/components/streak-week';
 import { readLastTrack, writeLastTrack } from '@/lib/last-track';
 
 export default function LearnPage() {
@@ -59,17 +59,8 @@ function LearnInner() {
   return (
     <AppShell aside={<StatsPanel me={me.data} />}>
       <header className="space-y-4">
-        {/* 스트릭·XP 한 줄 (PC에서는 우측 보조 패널이 같은 정보를 보여 준다) */}
-        <div className="flex items-center justify-between lg:hidden">
-          <div className="flex items-center gap-1.5 text-ink" aria-label={`스트릭 ${me.data.stats.currentStreak}일`}>
-            <FlameIcon size={22} />
-            <span className="bit">{me.data.stats.currentStreak}일</span>
-          </div>
-          <div className="flex items-center gap-1.5 text-ink" aria-label={`총 ${me.data.stats.totalXp} XP`}>
-            <ZapIcon size={22} />
-            <span className="bit">{me.data.stats.totalXp.toLocaleString()} XP</span>
-          </div>
-        </div>
+        {/* 연속 학습 창 (PC에서는 우측 보조 패널의 스트릭 카드가 같은 정보를 보여 준다) */}
+        <StreakWindow me={me.data} className="lg:hidden" />
 
         {path.data ? <NextLessonCard path={path.data} me={me.data} /> : <HeroSkeleton />}
 

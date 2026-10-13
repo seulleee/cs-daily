@@ -3,9 +3,13 @@
 import type { MeResponse } from '@cs-daily/contracts';
 import Link from 'next/link';
 import { FlameIcon } from './icons';
+import { StreakWeek } from './streak-week';
 
-/** 우측 보조 패널(PC) / 프로필 상단 타일(모바일)에 쓰는 스트릭·목표·복습 요약 */
-export function StatsPanel({ me, compact = false }: { me: MeResponse; compact?: boolean }) {
+/**
+ * 우측 보조 패널(PC) / 프로필 상단 타일(모바일)에 쓰는 스트릭·목표·복습 요약.
+ * 스트릭 카드에는 이번 주 7칸이 붙는다(compact 제외). 프로필 화면은 본문에 같은 주간 표시가 이미 있어 `week={false}`로 끈다.
+ */
+export function StatsPanel({ me, compact = false, week = !compact }: { me: MeResponse; compact?: boolean; week?: boolean }) {
   const { stats, today, user, dueReviewCount } = me;
   const goalPct = Math.min(100, Math.round((today.lessonsCompleted / user.dailyGoal) * 100));
   return (
@@ -18,6 +22,7 @@ export function StatsPanel({ me, compact = false }: { me: MeResponse; compact?: 
           <span className="text-cap text-ink-2">일</span>
         </div>
         {!compact && <div className="mt-1 text-cap text-ink-2">최장 {stats.longestStreak}일 · 프리즈 {stats.freezeCount}개</div>}
+        {week && <StreakWeek today={today.date} className="mt-3" />}
       </div>
       <div className="card p-4">
         <div className="text-cap font-medium text-ink-2">오늘 목표</div>

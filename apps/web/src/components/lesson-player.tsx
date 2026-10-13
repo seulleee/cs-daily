@@ -87,6 +87,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
       qc.setQueryData(['session-retried', sessionId], retried);
       qc.invalidateQueries({ queryKey: ['me'] });
       qc.invalidateQueries({ queryKey: ['path'] });
+      qc.invalidateQueries({ queryKey: ['calendar'] }); // 홈의 이번 주 7칸·프로필 달력
       router.replace(`/lesson/${sessionId}/result`);
     },
   });

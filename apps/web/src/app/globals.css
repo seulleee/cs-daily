@@ -392,9 +392,29 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
     color: var(--color-ink);
   }
 
+  /*
+   * 이번 주 7칸의 한 칸(components/streak-week.tsx): 20px 상자, 1px 테두리. 상태는 data-state.
+   *   done = ink 채움 · freeze = 디더 · today = 개미 행렬(테두리는 SVG가 그린다) · future = line 윤곽 · missed = surface-2 채움
+   */
+  .day {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--color-line);
+  }
+  .day[data-state="done"] { border-color: var(--color-ink); background: var(--color-brand-fill); color: var(--color-on-brand); }
+  .day[data-state="freeze"] { border-color: var(--color-ink); background: var(--dither); }
+  .day[data-state="today"] { border-color: transparent; }
+  .day[data-state="missed"] { background: var(--color-surface-2); }
+
   /* 개미 행렬: 현재 패드 바깥 3px에서 도는 2px 점선 사각형. SVG rect (패드 안 .ants). 패드의 2px 테두리 안쪽 기준이라 -7px = 바깥 가장자리에서 5px */
   .ants { position: absolute; top: -7px; left: -7px; width: 66px; height: 66px; overflow: visible; pointer-events: none; }
-  .ants rect {
+  /* 이번 주 7칸의 오늘 칸용 작은 개미 행렬: 칸(20px, 테두리는 투명)을 꽉 채운다. 둘레 72px을 pathLength 70(= 7 × 10)으로 맞춰 점선 주기가 끊기지 않게 한다 */
+  .ants-sm { position: absolute; top: -1px; left: -1px; width: 20px; height: 20px; overflow: visible; pointer-events: none; }
+  .ants rect, .ants-sm rect {
     fill: none;
     stroke: var(--color-ink);
     stroke-width: 2;
@@ -422,7 +442,7 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   to { transform: translateY(0); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ants rect { animation: none; }
+  .ants rect, .ants-sm rect { animation: none; }
   .sheet-up { animation: none; }
   .btn-3d { transition: none; }
 }

@@ -1,16 +1,13 @@
 'use client';
 
-import { useQueries, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import type { MeResponse } from '@cs-daily/contracts';
 import { api } from '@/lib/api';
 import { AppShell } from '@/components/app-shell';
 import { CheckIcon, ChevronLeftIcon, ChevronRightIcon, FlameIcon, SnowflakeIcon } from '@/components/icons';
 import { StatsPanel } from '@/components/stats-panel';
-
-type Calendar = { month: string; days: { date: string; xp: number; achieved: boolean; usedFreeze: boolean }[] };
-
-const fetchCalendar = (month: string) => api<Calendar>(`/me/stats/calendar?month=${month}`);
+import { WEEKDAYS, fetchCalendar, useWeekCalendar, type Calendar } from '@/lib/calendar';
 
 export default function ProfilePage() {
   const me = useQuery({ queryKey: ['me'], queryFn: () => api<MeResponse>('/me') });
@@ -24,7 +21,7 @@ export default function ProfilePage() {
   };
 
   return (
-    <AppShell aside={me.data && <StatsPanel me={me.data} />}>
+    <AppShell aside={me.data && <StatsPanel me={me.data} week={false} />}>
       {me.data && (
         <header className="mb-6 flex items-center gap-4">
           {me.data.user.avatarUrl ? (
@@ -62,18 +59,11 @@ export default function ProfilePage() {
   );
 }
 
-const WEEKDAYS = ['월', '화', '수', '목', '금', '토', '일'] as const;
-
 /** 오늘이 속한 주(월~일). 달력 API 데이터가 모두 도착했을 때만 그린다 — 없는 날을 "못 한 날"로 꾸며 보이지 않는다 */
 function WeekStrip({ today }: { today: string }) {
-  const base = new Date(`${today}T00:00:00Z`);
-  const monday = new Date(base.getTime() - ((base.getUTCDay() + 6) % 7) * 86_400_000);
-  const dates = WEEKDAYS.map((_, i) => new Date(monday.getTime() + i * 86_400_000).toISOString().slice(0, 10));
-  const months = [...new Set(dates.map((d) => d.slice(0, 7)))];
-  const results = useQueries({ queries: months.map((m) => ({ queryKey: ['calendar', m], queryFn: () => fetchCalendar(m) })) });
-  if (results.some((r) => !r.data)) return null;
+  const { dates, byDate } = useWeekCalendar(today);
+  if (!byDate) return null;
 
-  const byDate = new Map(results.flatMap((r) => r.data?.days ?? []).map((d) => [d.date, d]));
   return (
     <section className="card mt-6 p-4" aria-labelledby="week-title">
       <h2 id="week-title" className="text-cap font-medium text-ink-2">이번 주</h2>
