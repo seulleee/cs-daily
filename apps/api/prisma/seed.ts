@@ -33,6 +33,11 @@ async function main() {
         // 첫 upsert가 아직 옛 자리에 있는 다른 행의 sort_order를 쓰려다 P2002가 난다.
         // 그래서 기존 행을 먼저 음수로 비켜 둔다(서로 다른 양수였으니 음수도 유니크). 이어지는 upsert가 1, 2, 3…을 다시 매긴다.
         // 콘텐츠에서 빠진 행(삭제하지 않음)은 음수로 남는다 — 아래 트랜잭션 뒤에서 경고한다.
+        // 이미 음수인(콘텐츠에서 빠진) 행은 더 멀리 밀어 새로 비키는 음수 값과 겹치지 않게 한다
+        await tx.unit.updateMany({
+          where: { trackId: track.id, sortOrder: { lt: 0 } },
+          data: { sortOrder: { decrement: 10000 } },
+        });
         await tx.unit.updateMany({
           where: { trackId: track.id, sortOrder: { gt: 0 } },
           data: { sortOrder: { multiply: -1 } },
@@ -42,6 +47,11 @@ async function main() {
             where: { trackId_slug: { trackId: track.id, slug: u.slug } },
             create: { trackId: track.id, slug: u.slug, name: u.name, sortOrder: ui + 1 },
             update: { name: u.name, sortOrder: ui + 1 },
+          });
+          // 레슨도 같은 방식: 이미 음수인 행을 먼저 더 멀리 밀어 둔다
+          await tx.lesson.updateMany({
+            where: { unitId: unit.id, sortOrder: { lt: 0 } },
+            data: { sortOrder: { decrement: 10000 } },
           });
           await tx.lesson.updateMany({
             where: { unitId: unit.id, sortOrder: { gt: 0 } },
