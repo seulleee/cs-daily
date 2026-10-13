@@ -2,6 +2,7 @@
 
 /*
  * 디자인 "Platinum": 1990년대 흑백 데스크톱 GUI의 문법(창 타이틀바의 가로 줄무늬, 1px 검정 테두리와 블러 없는 그림자, 반전 선택, 디더, 비트맵 글꼴)을 빌린다.
+ * 면(창·카드·시트·칩·보기·탭 바·사이드바)은 전부 바탕(ground)과 같은 색 하나다. 면을 나누는 것은 1px ink 테두리와 딱딱한 그림자뿐이고, 흰색은 입력칸(--color-field)과 반전 글자(on-*)에만 남는다.
  * Apple 고유 요소(로고·Chicago/Charcoal 글꼴·Finder 아이콘·실제 Mac OS 창 모양)는 쓰지 않는다. 글꼴은 한국 90년대 PC의 비트맵 글꼴 Neo둥근모.
  *  - 기억에 남는 요소는 하나: 창(window) 크롬 + 반전된 현재 노드와 '개미 행렬(marching ants)' 점선. 색은 거의 흑백, 유일한 유채색은 오답의 빨강.
  *  - 선택·활성은 색이 아니라 반전(brand-fill 배경 + on-brand 글자)으로, 정답은 아이콘+굵은 테두리로 표현한다.
@@ -12,11 +13,12 @@
 @theme static {
   /* 라이트(기본) "Platinum" */
   --color-surface-2: #dcdcdc;         /* 화면 배경(ground) */
-  --color-surface: #f4f4f4;           /* 창·카드 */
+  --color-surface: #dcdcdc;           /* 창·카드·시트·칩·보기·탭 바 = ground와 같은 색 (평면) */
   --color-line: #8a8a8a;              /* 구분선·잠김 테두리 */
   --color-ink: #000000;
   --color-ink-2: #555555;
-  --color-paper: #ffffff;             /* 반전 글자·디더의 밝은 칸·입력칸 바탕 */
+  --color-paper: #dcdcdc;             /* 디더의 밝은 칸 = ground (디더가 ink/바탕 격자가 된다) */
+  --color-field: #ffffff;             /* 입력칸(.input·빈칸)만 바탕에서 올라온다 */
 
   --color-brand: #000000;             /* 링크·"건너뛰기"·선택 텍스트 */
   --color-brand-fill: #000000;        /* 주 버튼·현재 패드·선택 칩 = 반전 */
@@ -24,11 +26,11 @@
   --color-brand-dark: #000000;        /* 사용 안 함 */
 
   --color-correct: #000000;           /* 정답은 색이 아니라 아이콘+굵은 테두리 */
-  --color-correct-bg: #f4f4f4;
+  --color-correct-bg: #dcdcdc;
   --color-correct-fill: #000000;
   --color-on-correct: #ffffff;
   --color-wrong: #bd0f29;             /* 유일한 유채색. 시안 #c8102e는 ground 위 4.29:1이라 4.5:1 이상이 되도록 살짝 어둡게 */
-  --color-wrong-bg: #fbe9ec;
+  --color-wrong-bg: #dcdcdc;          /* 평면: 오답은 wrong 2px 테두리·x·글자색으로 구분한다 (바탕을 어둡게 틴트하면 wrong 글자가 4.5:1 아래로 내려간다) */
   --color-on-wrong: #ffffff;
 
   --color-streak: #000000;
@@ -61,11 +63,12 @@
 :root { color-scheme: light; }
 :root[data-theme="dark"] {
   --color-surface-2: #262626;
-  --color-surface: #363636;
+  --color-surface: #262626;
   --color-line: #7a7a7a;
   --color-ink: #f2f2f2;
   --color-ink-2: #b5b5b5;
   --color-paper: #262626;
+  --color-field: #1c1c1c;
 
   --color-brand: #f2f2f2;
   --color-brand-fill: #f2f2f2;
@@ -73,11 +76,11 @@
   --color-brand-dark: #f2f2f2;
 
   --color-correct: #f2f2f2;
-  --color-correct-bg: #363636;
+  --color-correct-bg: #262626;
   --color-correct-fill: #f2f2f2;
   --color-on-correct: #000000;
   --color-wrong: #ff7474;
-  --color-wrong-bg: #4a2323;
+  --color-wrong-bg: #262626;
   --color-on-wrong: #000000;
 
   --color-streak: #f2f2f2;
@@ -87,11 +90,12 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --color-surface-2: #262626;
-    --color-surface: #363636;
+    --color-surface: #262626;
     --color-line: #7a7a7a;
     --color-ink: #f2f2f2;
     --color-ink-2: #b5b5b5;
     --color-paper: #262626;
+    --color-field: #1c1c1c;
 
     --color-brand: #f2f2f2;
     --color-brand-fill: #f2f2f2;
@@ -99,11 +103,11 @@
     --color-brand-dark: #f2f2f2;
 
     --color-correct: #f2f2f2;
-    --color-correct-bg: #363636;
+    --color-correct-bg: #262626;
     --color-correct-fill: #f2f2f2;
     --color-on-correct: #000000;
     --color-wrong: #ff7474;
-    --color-wrong-bg: #4a2323;
+    --color-wrong-bg: #262626;
     --color-on-wrong: #000000;
 
     --color-streak: #f2f2f2;
@@ -113,7 +117,7 @@
 }
 
 /*
- * 디더: ink/paper 2px 체커보드(4px 타일). 완료 패드의 바탕에 쓴다. :root에서 해석되므로 라이트·다크가 함께 따라간다.
+ * 디더: ink/바탕(paper = ground) 2px 체커보드(4px 타일). 완료 패드의 바탕에 쓴다. :root에서 해석되므로 라이트·다크가 함께 따라간다.
  * 사용: `background: var(--dither)` (위치·크기가 값에 들어 있다)
  */
 :root {
@@ -300,7 +304,7 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
     height: 16px;
     border: 1px solid var(--color-ink);
     border-radius: 50%;
-    background: var(--color-paper);
+    background: var(--color-surface);
   }
   .mark-box { border-radius: 0; }
   .option[data-selected="true"] .mark::after,
@@ -329,7 +333,7 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
     border: 1px solid var(--color-ink);
     border-radius: 0;
     padding: 10px 14px;
-    background: var(--color-paper);
+    background: var(--color-field);
     color: var(--color-ink);
   }
   .input:focus { box-shadow: inset 0 0 0 1px var(--color-ink); }
@@ -407,7 +411,7 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
 
   /*
    * 이번 주 7칸의 한 칸(components/streak-week.tsx): 20px 상자, 1px 테두리. 상태는 data-state. 학습 홈 상태 바는 .day-sm(12px).
-   *   done = ink 채움 · freeze = 디더 · today = 개미 행렬(테두리는 SVG가 그린다) · future = line 윤곽 · missed = surface-2 채움
+   *   done = ink 채움 · freeze = 디더 · today = 개미 행렬(테두리는 SVG가 그린다) · future = line 윤곽 · missed = line 색 채움(면이 평면이라 surface-2 채움은 바탕과 구분되지 않는다)
    */
   .day {
     position: relative;
@@ -421,7 +425,7 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   .day[data-state="done"] { border-color: var(--color-ink); background: var(--color-brand-fill); color: var(--color-on-brand); }
   .day[data-state="freeze"] { border-color: var(--color-ink); background: var(--dither); }
   .day[data-state="today"] { border-color: transparent; }
-  .day[data-state="missed"] { background: var(--color-surface-2); }
+  .day[data-state="missed"] { background: var(--color-line); }
   .day-sm { width: 12px; height: 12px; }
 
   /* 개미 행렬: 현재 패드 바깥 3px에서 도는 2px 점선 사각형. SVG rect (패드 안 .ants). 패드의 2px 테두리 안쪽 기준이라 -7px = 바깥 가장자리에서 5px */

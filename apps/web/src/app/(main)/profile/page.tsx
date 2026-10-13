@@ -108,7 +108,7 @@ function CalendarGrid({ month, days }: { month: string; days: Calendar['days'] }
           <div
             key={date}
             title={d ? `${date}: ${d.xp} XP` : date}
-            className={`flex aspect-square flex-col items-center justify-center ${d?.achieved ? 'bg-brand-fill text-on-brand' : d?.usedFreeze ? 'border border-dashed border-ink' : d ? 'bg-surface-2' : ''}`}
+            className={`flex aspect-square flex-col items-center justify-center ${d?.achieved ? 'bg-brand-fill text-on-brand' : d?.usedFreeze ? 'border border-dashed border-ink' : d ? 'border border-line' : ''}`}
           >
             {d?.usedFreeze ? (
               <SnowflakeIcon size={16} />

@@ -44,7 +44,7 @@ export default function ReviewPage() {
               <span className="bit-3">{due.data.count}</span>
               <span className="text-body text-ink-2">문제</span>
             </div>
-            <span aria-hidden className="flex h-16 w-16 items-center justify-center border border-ink bg-paper text-ink">
+            <span aria-hidden className="flex h-16 w-16 items-center justify-center border border-ink bg-surface text-ink">
               <RepeatIcon size={30} />
             </span>
           </Window>

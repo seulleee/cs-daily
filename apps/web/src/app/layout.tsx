@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap"
         />
         {/*
           비트맵 글꼴: Neo둥근모(font-family NeoDunggeunmo)가 기본, Galmuri11이 폴백. 둘 다 안 열리면 globals.css의 --font-display 스택이 Plex Mono로 내려간다.

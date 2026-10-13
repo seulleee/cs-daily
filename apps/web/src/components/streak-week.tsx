@@ -12,7 +12,7 @@ const NOTE: Record<DayState, string> = { done: ' 달성', freeze: ' 프리즈 �
 /**
  * 이번 주(월~일) 7칸. 상태 표현은 두 크기가 같다.
  *  done   = ink 채움                      freeze = 디더 채움(프리즈로 지킨 날)
- *  today  = 개미 행렬 점선 테두리, 속은 빔   future = line 색 1px 테두리, 속은 빔     missed = surface-2 채움 + line 테두리
+ *  today  = 개미 행렬 점선 테두리, 속은 빔   future = line 색 1px 테두리, 속은 빔     missed = line 색 채움
  * 기본(보조 패널): 칸 20px·간격 6, done에 작은 check, 아래에 요일 글자(비트맵 16px).
  * `bar`(학습 홈 상태 바): 칸 12px·간격 4, check 없이 채움만, 요일 글자 없이 칸마다 title·aria-label("월요일 달성").
  * 달력 데이터가 도착하기 전에는 같은 크기의 빈 자리만 남기고(옆 요소가 밀리지 않게), 실패하면 아무것도 그리지 않는다.

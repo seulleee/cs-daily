@@ -186,7 +186,7 @@ function FillRenderer({ question, value, onChange, revealed }: RendererProps) {
           onChange={(e) => onChange({ text: e.target.value })}
           aria-label="빈칸"
           autoComplete="off"
-          className={`mx-1 inline-block w-40 border border-ink bg-paper px-2 py-0.5 text-center text-ink focus:shadow-[inset_0_0_0_1px_var(--color-ink)]${revealed && !revealed.isCorrect ? ' shake' : ''}`}
+          className={`mx-1 inline-block w-40 border border-ink bg-field px-2 py-0.5 text-center text-ink focus:shadow-[inset_0_0_0_1px_var(--color-ink)]${revealed && !revealed.isCorrect ? ' shake' : ''}`}
           style={revealed ? { borderColor: revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)', color: revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)', boxShadow: `inset 0 0 0 1px ${revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)'}` } : undefined}
         />
         {revealed && (
