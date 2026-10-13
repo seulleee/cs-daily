@@ -7,7 +7,7 @@ import { use, useState, type CSSProperties } from 'react';
 import type { CompleteSessionResponse, SessionResponse } from '@cs-daily/contracts';
 import { api, ApiError } from '@/lib/api';
 import { clearPlacementChain, nextPlacementStep, readPlacementChain, writePlacementChain } from '@/lib/placement-chain';
-import { CheckIcon, FlameIcon } from '@/components/icons';
+import { CheckIcon, FlameLive } from '@/components/icons';
 import { Window } from '@/components/window';
 
 /** 레슨 완료 화면. 결과는 complete 응답을 QueryClient에 넣어 둔 것을 읽는다 (새로고침 시 홈으로) */
@@ -41,7 +41,7 @@ export default function ResultPage({ params }: { params: Promise<{ sessionId: st
         <div className="grid grid-cols-3 gap-2">
           <Tile label="스트릭">
             <span className="flex items-center justify-center gap-1 text-streak">
-              <FlameIcon size={18} />
+              <FlameLive live={r.streak.current >= 1} size={18} />
               {r.streak.current}일
             </span>
           </Tile>

@@ -467,6 +467,14 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   /* 정답 체크는 도장처럼 쿵 찍힌다 / 오답 보기와 빈칸은 좌우로 흔들린다 */
   .stamp { animation: stamp 120ms steps(3, end); }
   .shake { animation: shake 240ms steps(1, end); }
+
+  /*
+   * 스트릭 불꽃(components/icons.tsx FlameLive): 프레임 A·B 두 <g>가 700ms 주기로 번갈아 보인다(0~55% A, 55~100% B, 중간 모양 없음).
+   * 기본은 A만 보인다(B는 숨김). 움직이는 것은 스트릭이 1 이상일 때 컴포넌트가 data-live를 단 경우뿐이고, 줄이기 설정에서는 아래 미디어 쿼리가 뺀다.
+   */
+  .flame-b { visibility: hidden; }
+  .flame-a[data-live="true"] { animation: flame-flicker 700ms steps(1, end) infinite; }
+  .flame-b[data-live="true"] { animation: flame-flicker-b 700ms steps(1, end) infinite; }
 }
 
 /* 가로 스크롤 영역의 스크롤바를 숨긴다(칩 행) */
@@ -529,6 +537,15 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   from { opacity: 0; }
   to { opacity: 1; }
 }
+/* 불꽃 2프레임: A는 앞 55%(385ms), B는 뒤 45%(315ms). 구간마다 steps(1, end)라 값이 구간 끝에서 한 번에 바뀐다 */
+@keyframes flame-flicker {
+  0% { visibility: visible; }
+  55%, 100% { visibility: hidden; }
+}
+@keyframes flame-flicker-b {
+  0% { visibility: hidden; }
+  55%, 100% { visibility: visible; }
+}
 /* --p는 숫자로 등록해야 키프레임이 값을 칸 단위로 보간한다. 미지원 브라우저는 JS가 .score-ring-anim을 붙이지 않아 최종 값이 바로 보인다 */
 @property --p {
   syntax: "<number>";
@@ -545,4 +562,6 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   .btn-3d.is-flash, .pad.is-flash,
   .option[data-state="wrong"], .option[data-selected="true"] .mark::after, .option[data-state="correct"] .mark::after,
   .stamp, .shake, .zoom-rect, .sheet-win, .score-ring-anim { animation: none; }
+  /* 불꽃은 A 프레임 고정 (B는 기본값대로 숨김) */
+  .flame-a[data-live="true"], .flame-b[data-live="true"] { animation: none; }
 }

@@ -2,7 +2,7 @@
 
 import type { MeResponse } from '@cs-daily/contracts';
 import Link from 'next/link';
-import { FlameIcon } from './icons';
+import { FlameLive } from './icons';
 import { StreakWeek } from './streak-week';
 
 /**
@@ -17,7 +17,7 @@ export function StatsPanel({ me, compact = false, week = !compact }: { me: MeRes
       <div className="card p-4">
         <div className="text-cap font-medium text-ink-2">스트릭</div>
         <div className="mt-1 flex items-center gap-1.5 text-streak">
-          <FlameIcon size={compact ? 20 : 24} />
+          <FlameLive live={stats.currentStreak >= 1} size={compact ? 20 : 24} />
           <span className="bit-2">{stats.currentStreak}</span>
           <span className="text-cap text-ink-2">일</span>
         </div>

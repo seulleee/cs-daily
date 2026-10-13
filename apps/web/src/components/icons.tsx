@@ -37,6 +37,26 @@ export const FlameIcon = (p: IconProps) => (
   </Icon>
 );
 
+/**
+ * 살아 있는 불꽃: 24×24 SVG 하나 안에 프레임 A(위 FlameIcon과 같은 모양)와 프레임 B(불꽃 끝이 왼쪽으로 2px 기울고, 안쪽 작은 불꽃이 1px 올라간
+ * 변형, 같은 stroke 2) 두 <g>를 두고 CSS `flame-flicker`(globals.css, 총 700ms, steps(1, end))로 번갈아 보여 준다.
+ * 0~55%(385ms) A, 55~100%(315ms) B. 중간 모양 없이 두 프레임만 뚝뚝 바뀐다.
+ * `live`는 "불이 살아 있음" = 스트릭이 1 이상일 때만 true로 준다. false면 A 한 장만 그려 정지한다(B를 DOM에 두지도 않는다).
+ * 줄이기 설정(prefers-reduced-motion)에서는 CSS가 애니메이션을 빼서 A만 보인다. 색은 currentColor라 놓인 자리의 글자색을 따른다.
+ */
+export const FlameLive = ({ live = false, ...p }: IconProps & { live?: boolean }) => (
+  <Icon {...p}>
+    <g className="flame-a" data-live={live ? 'true' : undefined}>
+      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+    </g>
+    {live && (
+      <g className="flame-b" data-live="true">
+        <path d="M8.5 13.5A2.5 2.5 0 0 0 11 11c0-1.2-.6-2.1-1.2-3.1-1.1-2.1-.8-3.4.2-4.9.4 2.4 1.9 4.8 5.5 6.5 2 1.6 3.5 3.5 3.5 5.5a7 7 0 1 1-14 0c0-1.4.433-2.7 1-4a2.5 2.5 0 0 0 2.5 2.5z" />
+      </g>
+    )}
+  </Icon>
+);
+
 /** XP */
 export const ZapIcon = (p: IconProps) => (
   <Icon {...p}>
