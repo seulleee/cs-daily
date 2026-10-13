@@ -38,7 +38,7 @@
         "library-function"
       ],
       "content": {
-        "prompt": "안에서 시스템 콜을 부르는 printf 같은 함수는?",
+        "prompt": "printf 같이 내부에서 시스템 콜을 부르는 함수는?",
         "options": [
           "시스템 콜",
           "라이브러리 함수",
@@ -48,7 +48,7 @@
       "answer_key": {
         "index": 1
       },
-      "explanation": "printf 같은 라이브러리 함수는 사용자 모드에서 실행되다가 필요할 때 안에서 시스템 콜을 부릅니다.",
+      "explanation": "printf 같은 라이브러리 함수는 사용자 모드에서 실행되다가 필요할 때 내부에서 시스템 콜을 부릅니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/System_call",
         "https://man7.org/linux/man-pages/man2/intro.2.html"
@@ -73,7 +73,7 @@
       "answer_key": {
         "index": 1
       },
-      "explanation": "write는 커널에 출력을 요청하는 시스템 콜입니다. printf는 안에서 write를 부르는 라이브러리 함수입니다.",
+      "explanation": "write는 커널에 출력을 요청하는 시스템 콜입니다. printf는 내부에서 write를 부르는 라이브러리 함수입니다.",
       "refs": [
         "https://man7.org/linux/man-pages/man2/syscalls.2.html",
         "https://en.wikipedia.org/wiki/System_call"
@@ -163,7 +163,7 @@
         "system-call"
       ],
       "content": {
-        "prompt": "printf가 화면에 출력할 때 안에서 부르는 시스템 콜은?",
+        "prompt": "printf가 화면에 출력할 때 내부에서 부르는 시스템 콜은?",
         "options": [
           "open",
           "fork",
@@ -173,7 +173,7 @@
       "answer_key": {
         "index": 2
       },
-      "explanation": "printf는 출력할 문자열을 만든 뒤 안에서 write 시스템 콜을 불러 커널에 출력을 요청합니다.",
+      "explanation": "printf는 출력할 문자열을 만든 뒤 내부에서 write 시스템 콜을 불러 커널에 출력을 요청합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/System_call",
         "https://man7.org/linux/man-pages/man2/syscalls.2.html"
