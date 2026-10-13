@@ -26,12 +26,12 @@
   --color-correct-fill: #22c55e;      /* 정답 버튼·완료 패드 채움 */
   --color-on-correct: #04150b;
   --color-correct-dark: #15803d;      /* 정답 3D 버튼 그림자 */
-  --color-wrong: #d23f2f;
+  --color-wrong: #b9311f;
   --color-wrong-bg: #fee4e0;
   --color-on-wrong: #ffffff;
 
   --color-streak: #c2410c;
-  --color-xp: #a16207;
+  --color-xp: #8a5406;
 
   /* 타이포: IBM Plex Sans KR(제목·본문·UI) + IBM Plex Mono(숫자·라벨·진행 표시). 폰트는 layout.tsx의 <link>로 로드 */
   --font-sans: "IBM Plex Sans KR", Pretendard, system-ui, sans-serif;
