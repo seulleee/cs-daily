@@ -15,7 +15,8 @@
 | 배치 | Cloud Scheduler `cs-daily-tick`: 매시 07분(Asia/Seoul) `POST /internal/jobs/tick` → 스트릭 프리즈·리마인더 |
 | 백업 | `backup.yml` 매일 03:17 KST pg_dump(PG17 클라이언트) → Actions artifact 90일 보관. 2026-10-08 수동 실행 성공(약 0.5MB) |
 | 예산 | GCP 월 ₩10,000 알림, 무료 체험 2027-01-05 종료 |
-| 콘텐츠 | 4트랙 37유닛 **348레슨**(유닛당 7~10) 중 **앞 3유닛×4트랙 = 12유닛 101레슨 1,010문제** 작성됨. 레슨당 10문제, 레슨마다 핵심 정리(keyPoints) 2~4줄 |
+| 콘텐츠 | 4트랙 37유닛 **348레슨**(유닛당 7~10) 중 **앞 3유닛×4트랙 = 12유닛 101레슨 1,010문제** 작성됨. 레슨당 10문제, 레슨마다 핵심 정리(keyPoints) 2~4줄. 자료구조 트랙은 2026-10-13부터 배열·연결 리스트 → 스택·큐·덱 → 복잡도 순서(slug 번호와 다름) |
+| 온보딩 | 트랙 선택 → 하루 목표 → **시작 지점**(처음 / 조금 알아요=앞 3유닛 배치 테스트 체인 / 잘 알아요=유닛 골라 테스트 1회). 체인 상태는 `apps/web/src/lib/placement-chain.ts`(sessionStorage), API는 기존 `POST /units/:id/skip-test` 재사용 |
 
 ## 작업 흐름
 
@@ -31,6 +32,8 @@
 - `run.app` 도메인은 이 환경에서 직접 호출할 수 없다. 운영 확인은 Chrome(사용자 로그인 세션) 또는 Vercel 경유 `/api/*`로 한다.
 - Prisma 엔진 다운로드가 막혀 있다. 로컬 타입 생성은 `PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING=1 PRISMA_SCHEMA_ENGINE_BINARY=/bin/true PRISMA_QUERY_ENGINE_LIBRARY=/bin/true npx prisma generate --no-engine`, **마이그레이션 파일은 `chore/migration-*` 브랜치에 schema.prisma를 푸시해 `prisma-migration.yml`이 생성**하게 한다.
 - pnpm 10은 postinstall을 돌리지 않으므로 `prisma generate`를 항상 명시적으로 실행한다.
+- 새 워크트리에서는 `pnpm typecheck` 전에 `pnpm --filter @cs-daily/contracts build`가 필요하다(dist가 없으면 api가 `@cs-daily/contracts`를 못 찾는다). 백그라운드 dev 서버는 `pkill -f` 패턴이 자기 셸과 겹치면 셸이 죽으니 PID로 종료한다.
+- 시드는 유닛·레슨 순서 변경을 견딘다(`(track_id, sort_order)`·`(unit_id, sort_order)` 유니크 때문에 기존 행을 음수로 비켜 둔 뒤 재부여, 트랙별 트랜잭션). CI는 첫 트랙 유닛을 회전시킨 콘텐츠로 재시드하는 스모크 단계를 돈다(`apps/api/test-e2e/rotate-units.mjs`, `SEED_CONTENT_ROOT`).
 - 비밀값(OAuth 시크릿, DB 비밀번호 등)은 절대 보거나 적지 않는다. 필요하면 사용자가 Cloud Shell에서 `read -rsp`로 직접 입력하게 하고, 입력 후 `gcloud run services update ... --update-labels=secrets-rev=...`로 새 리비전을 띄운다.
 
 ## 아키텍처 규칙 (API)
@@ -62,6 +65,7 @@
 - 주관식 대표 정답(`accepted[0]`)은 한글·영문·숫자·공백만(`FILL_PLAIN_ANSWER`, validate가 강제). Θ·²·^ 같은 기호가 필요한 답은 객관식으로.
 - 문제 id는 `{track}-{qslug}-{NNN}`(qslug는 레슨마다 정한 전 트랙 유일값). 같은 레슨을 고칠 때는 **id를 유지**한다(진도·복습 기록 보존). 레슨 구조 자체를 바꿀 때(2026-10-08 유닛당 7~10레슨 개편처럼)만 새 id를 쓰고, 빠진 옛 문제는 시드가 retired로 내린다. 레슨 slug(l01…)는 자리를 이어받아 진도가 보존된다.
 - 저장 후 `pnpm content:validate` 통과 필수. 대량 재작성은 트랙별 서브에이전트로 병렬 처리하고, 끝나면 길이·유형·OX 균형을 스크립트로 전수 점검한다.
+- **유닛 순서는 구체(자료구조 조작·동작) → 추상(분석·표기).** 앞 유닛의 정답·보기에 뒤 유닛 개념(O 표기, 상각 등)을 쓰지 않는다. 유닛 slug는 진도 보존 때문에 바꾸지 않으므로 slug 번호 ≠ 실제 순서(curriculum.json 배열 순서가 기준).
 
 ## 사용자 선호
 
@@ -75,6 +79,7 @@
 
 - [ ] 디자인 개편("Deep Focus": 스픽의 차분한 다크 네이비 + 듀오링고의 경로·3D 버튼). 시안은 Claude 디자인 캔버스 "CS 데일리 디자인 시안"(8장), 토큰·구성 스펙은 세션 스크래치 `design-spec.md`. 사용자 톤 결정 후 Sonnet 서브에이전트가 구현
 - [ ] 계정 탈퇴: 로그인 화면이 "설정에서 탈퇴"라고 안내하지만 삭제 기능·API가 없다 → `DELETE /me` + 설정 화면 버튼 추가, 또는 안내 문구 수정
+- [ ] 데이터베이스 트랙도 같은 원칙으로 순서 검토(1유닛 "관계형 모델·정규화"가 첫날 주제 — SQL 기초를 앞에 두고 정규화를 뒤로). 사용자 결정 후 진행
 - [ ] Resend API 키 등록(이메일 리마인더)
 - [ ] 나머지 25유닛 247레슨 문제 작성 (curriculum.json의 keyPoints + docs/content-guide.md v4 기준, 유닛 단위로 서브에이전트 병렬)
 - [ ] README의 운영·배포 절은 오래됐다(GitHub Secrets 기준) → CLAUDE.md 운영 현황과 맞추기
