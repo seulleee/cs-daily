@@ -1,0 +1,247 @@
+{
+  "track": "os",
+  "unit": "u08-kernel-syscall",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "os-interrupt-polling-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "interrupt-polling",
+        "polling"
+      ],
+      "content": {
+        "prompt": "CPU가 장치 상태를 반복해서 확인하는 방식은?",
+        "options": [
+          "인터럽트",
+          "폴링",
+          "트랩"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "폴링은 CPU가 장치가 준비됐는지 상태를 반복해서 확인하는 방식입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Polling_(computer_science)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    },
+    {
+      "id": "os-interrupt-polling-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "interrupt-polling",
+        "interrupt",
+        "polling"
+      ],
+      "content": {
+        "prompt": "장치가 준비되면 CPU에 알리는 방식은?",
+        "options": [
+          "폴링",
+          "버퍼링",
+          "인터럽트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "인터럽트 방식에서는 장치가 준비되면 CPU에 신호를 보내므로, CPU가 계속 확인할 필요가 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    },
+    {
+      "id": "os-interrupt-polling-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "interrupt-polling",
+        "polling",
+        "tradeoff"
+      ],
+      "content": {
+        "prompt": "장치를 기다리는 동안 CPU를 낭비하는 쪽은?",
+        "options": [
+          "폴링",
+          "인터럽트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "폴링은 장치가 준비될 때까지 CPU가 상태를 반복 확인하므로 기다리는 동안 CPU를 낭비합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Polling_(computer_science)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    },
+    {
+      "id": "os-interrupt-polling-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "interrupt-polling",
+        "interrupt",
+        "polling"
+      ],
+      "content": {
+        "prompt": "인터럽트 방식에서는 CPU가 장치 상태를 반복해서 확인한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "장치 상태를 반복해서 확인하는 것은 폴링입니다. 인터럽트 방식에서는 장치가 준비되면 CPU에 알립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Polling_(computer_science)",
+        "https://en.wikipedia.org/wiki/Interrupt"
+      ]
+    },
+    {
+      "id": "os-interrupt-polling-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "interrupt-polling",
+        "polling"
+      ],
+      "content": {
+        "prompt": "CPU가 장치 상태를 반복해서 확인하는 방식은 ___ 이다.",
+        "hint": "한글 2글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "폴링",
+          "polling"
+        ]
+      },
+      "explanation": "폴링은 CPU가 장치 상태를 반복해서 확인하는 방식으로, 기다리는 동안에도 CPU를 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Polling_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-interrupt-polling-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "interrupt-polling",
+        "interrupt",
+        "tradeoff"
+      ],
+      "content": {
+        "prompt": "장치가 준비되면 CPU에 알리는 방식은 ___ 이다.",
+        "hint": "한글 4글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "인터럽트",
+          "interrupt"
+        ]
+      },
+      "explanation": "인터럽트 방식은 장치가 준비되면 CPU에 알려 주므로 기다리며 낭비하지 않지만, 건마다 처리 비용이 듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    },
+    {
+      "id": "os-interrupt-polling-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "interrupt-polling",
+        "interrupt",
+        "tradeoff"
+      ],
+      "content": {
+        "prompt": "몇 초에 한 번 오는 키보드 입력에 알맞은 방식은?",
+        "options": [
+          "폴링",
+          "인터럽트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "입력이 드물면 폴링은 대부분 헛되이 확인하며 CPU를 낭비합니다. 준비될 때만 알리는 인터럽트가 알맞습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    },
+    {
+      "id": "os-interrupt-polling-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "interrupt-polling",
+        "polling",
+        "high-speed-device"
+      ],
+      "content": {
+        "prompt": "초당 수백만 건 이벤트가 오는 고속 장치에 유리할 수 있는 방식은?",
+        "options": [
+          "폴링",
+          "인터럽트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "이벤트가 매우 잦으면 건마다 드는 인터럽트 처리 비용이 커져, 반복 확인하는 폴링이 더 유리할 때가 있습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf",
+        "https://en.wikipedia.org/wiki/Polling_(computer_science)"
+      ]
+    },
+    {
+      "id": "os-interrupt-polling-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "interrupt-polling",
+        "interrupt",
+        "tradeoff"
+      ],
+      "content": {
+        "prompt": "인터럽트 방식에서 드는 비용은?",
+        "options": [
+          "대기 중 CPU 낭비",
+          "건마다 처리 비용",
+          "디스크 공간 낭비"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인터럽트는 기다리며 CPU를 낭비하지 않는 대신, 올 때마다 상태 저장과 핸들러 실행 비용이 듭니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf",
+        "https://en.wikipedia.org/wiki/Interrupt"
+      ]
+    },
+    {
+      "id": "os-interrupt-polling-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "interrupt-polling",
+        "polling"
+      ],
+      "content": {
+        "prompt": "폴링은 CPU가 장치 상태를 반복해서 확인하는 방식이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "폴링은 CPU가 장치 상태를 반복해서 확인하는 방식으로, 장치가 먼저 알려 주는 인터럽트와 반대입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Polling_(computer_science)",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    }
+  ]
+}

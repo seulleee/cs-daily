@@ -1,0 +1,248 @@
+{
+  "track": "os",
+  "unit": "u08-kernel-syscall",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "os-interrupt-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "interrupt",
+        "hardware"
+      ],
+      "content": {
+        "prompt": "장치가 CPU에 보내는 처리 요청 신호는?",
+        "options": [
+          "인터럽트",
+          "프로세스",
+          "모드 비트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인터럽트는 키보드·디스크·타이머 같은 장치가 CPU에 처리를 요청하는 신호입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    },
+    {
+      "id": "os-interrupt-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "interrupt",
+        "interrupt-handler"
+      ],
+      "content": {
+        "prompt": "인터럽트 종류마다 실행되는 커널 코드는?",
+        "options": [
+          "사용자 프로그램",
+          "인터럽트 핸들러",
+          "모드 비트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인터럽트 핸들러는 인터럽트 종류마다 정해진 커널 코드로, 해당 장치의 요청을 처리합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt_handler"
+      ]
+    },
+    {
+      "id": "os-interrupt-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "interrupt",
+        "interrupt-handler",
+        "kernel-mode"
+      ],
+      "content": {
+        "prompt": "인터럽트 핸들러가 실행되는 CPU 모드는?",
+        "options": [
+          "사용자 모드",
+          "커널 모드"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인터럽트 핸들러는 커널 코드이므로 커널 모드에서 실행됩니다. 일반 프로그램이 도는 사용자 모드가 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt_handler",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf"
+      ]
+    },
+    {
+      "id": "os-interrupt-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "interrupt",
+        "context-save"
+      ],
+      "content": {
+        "prompt": "인터럽트 처리가 끝나면 하던 작업을 처음부터 다시 실행한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "인터럽트가 오면 하던 작업 상태를 저장해 두고, 처리 후 그 상태를 복원해 멈춘 지점부터 이어 갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt"
+      ]
+    },
+    {
+      "id": "os-interrupt-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "interrupt",
+        "hardware"
+      ],
+      "content": {
+        "prompt": "장치가 CPU에 보내는 처리 요청 신호는 ___ 이다.",
+        "hint": "한글 4글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "인터럽트",
+          "interrupt",
+          "인터럽트 신호",
+          "인터럽트신호"
+        ]
+      },
+      "explanation": "인터럽트는 장치가 CPU에 처리를 요청하는 신호입니다. CPU는 하던 일을 잠시 멈추고 이를 처리합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt"
+      ]
+    },
+    {
+      "id": "os-interrupt-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "interrupt",
+        "interrupt-handler"
+      ],
+      "content": {
+        "prompt": "인터럽트가 오면 그 종류에 맞춰 실행되는 커널 코드는 ___ 이다.",
+        "hint": "두 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "인터럽트 핸들러",
+          "인터럽트핸들러",
+          "interrupt handler",
+          "interrupthandler",
+          "핸들러",
+          "handler",
+          "ISR",
+          "인터럽트 서비스 루틴",
+          "interrupt service routine"
+        ]
+      },
+      "explanation": "인터럽트 핸들러는 인터럽트 종류마다 정해진 커널 코드로, 커널 모드에서 실행됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt_handler"
+      ]
+    },
+    {
+      "id": "os-interrupt-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "interrupt",
+        "interrupt-handler"
+      ],
+      "content": {
+        "prompt": "프로그램 실행 중 키보드 입력이 들어오면 CPU는?",
+        "options": [
+          "무시하고 계속 실행",
+          "프로그램 즉시 종료",
+          "상태 저장 후 핸들러 실행"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "키보드 인터럽트가 오면 CPU는 하던 작업 상태를 저장하고 키보드용 인터럽트 핸들러를 실행합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt",
+        "https://en.wikipedia.org/wiki/Interrupt_handler"
+      ]
+    },
+    {
+      "id": "os-interrupt-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "interrupt",
+        "hardware"
+      ],
+      "content": {
+        "prompt": "다음 중 인터럽트를 일으키는 사건은?",
+        "options": [
+          "디스크 읽기 완료",
+          "변수 값 변경",
+          "함수 호출"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "디스크 읽기 완료는 장치가 CPU에 알리는 인터럽트입니다. 변수 변경과 함수 호출은 프로그램 안에서 일어나는 일입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    },
+    {
+      "id": "os-interrupt-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "interrupt",
+        "context-save"
+      ],
+      "content": {
+        "prompt": "핸들러 실행이 끝나면 CPU가 이어서 하는 일은?",
+        "options": [
+          "새 프로그램 시작",
+          "중단된 작업 재개"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "CPU는 인터럽트 전에 저장해 둔 상태를 복원해, 중단됐던 작업을 멈춘 지점부터 이어서 실행합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt"
+      ]
+    },
+    {
+      "id": "os-interrupt-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "interrupt",
+        "hardware"
+      ],
+      "content": {
+        "prompt": "인터럽트는 장치가 CPU에 처리를 요청하는 신호다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "인터럽트는 키보드 입력, 디스크 읽기 완료, 타이머 등 장치가 CPU에 처리를 요청하는 신호입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Interrupt",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    }
+  ]
+}
