@@ -69,7 +69,7 @@
       "answer_key": {
         "index": 0
       },
-      "explanation": "SELECT에는 GROUP BY 열과 집계 함수만 쓸 수 있습니다. name은 한 그룹 안에 값이 여러 개일 수 있습니다.",
+      "explanation": "SQL 표준 기준으로 SELECT에는 GROUP BY 열과 집계 함수만 쓸 수 있습니다. name은 그룹 안에 값이 여러 개일 수 있고, MySQL은 설정에 따라 허용합니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
       ]
@@ -135,7 +135,7 @@
           "애그리게이트"
         ]
       },
-      "explanation": "그룹당 한 행만 나오므로 SELECT에는 GROUP BY 열과 COUNT·SUM 등 집계 함수만 올 수 있습니다.",
+      "explanation": "그룹당 한 행만 나오므로 SELECT에는 GROUP BY 열과 COUNT·SUM 등 집계 함수만 올 수 있습니다. SQL 표준 기준이며 MySQL은 설정에 따라 다른 열도 허용합니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/tutorial-agg.html"
       ]
@@ -207,7 +207,7 @@
       "answer_key": {
         "index": 1
       },
-      "explanation": "GROUP BY 열이 아닌 name, salary는 그대로 쓸 수 없고, 집계 함수 COUNT(*)는 쓸 수 있습니다.",
+      "explanation": "GROUP BY 열이 아닌 name, salary는 그대로 쓸 수 없고, 집계 함수 COUNT(*)는 쓸 수 있습니다. SQL 표준 기준이며 MySQL은 설정에 따라 다른 열도 허용합니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-table-expressions.html"
       ]

@@ -46,7 +46,7 @@
       "answer_key": {
         "index": 2
       },
-      "explanation": "파이프는 한쪽 끝에 쓴 바이트를 다른 끝에서 읽는 한 방향 바이트 흐름입니다.",
+      "explanation": "POSIX 기준으로 파이프는 한쪽 끝에 쓴 바이트를 다른 끝에서 읽는 한 방향 바이트 흐름입니다.",
       "refs": [
         "https://man7.org/linux/man-pages/man7/pipe.7.html",
         "https://en.wikipedia.org/wiki/Inter-process_communication"
@@ -189,7 +189,7 @@
       "answer_key": {
         "index": 0
       },
-      "explanation": "파이프는 한 방향 바이트 흐름이므로 반대 방향으로 보내려면 파이프가 하나 더 필요합니다.",
+      "explanation": "POSIX 기준으로 파이프는 한 방향 바이트 흐름이므로 반대 방향으로 보내려면 파이프가 하나 더 필요합니다.",
       "refs": [
         "https://man7.org/linux/man-pages/man7/pipe.7.html"
       ]
