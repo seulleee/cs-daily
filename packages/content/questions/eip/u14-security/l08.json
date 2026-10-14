@@ -1,0 +1,206 @@
+{
+  "track": "eip",
+  "unit": "u14-security",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "eip-mgmt-sec-malware-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sniffing"
+      ],
+      "content": {
+        "prompt": "네트워크 패킷을 몰래 엿보는 공격은?",
+        "options": [
+          "스니핑",
+          "스푸핑",
+          "재밍"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스니핑(sniffing)은 네트워크에 흐르는 패킷을 몰래 엿보는 공격입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-malware-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "session-hijacking"
+      ],
+      "content": {
+        "prompt": "인증된 세션을 가로채 사용자 행세를 하는 공격은?",
+        "options": [
+          "스위치 재밍",
+          "세션 하이재킹",
+          "스니핑"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "세션 하이재킹은 인증된 세션을 가로채 그 사용자 행세를 하는 공격입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-malware-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "spoofing",
+        "sniffing"
+      ],
+      "content": {
+        "prompt": "IP·MAC 등을 위조해 다른 주체로 가장하는 공격은?",
+        "options": [
+          "스니핑",
+          "스푸핑"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스푸핑(spoofing)은 IP·MAC 주소 등을 위조해 다른 주체로 가장합니다. 스니핑은 엿보기입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-malware-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sniffing",
+        "spoofing"
+      ],
+      "content": {
+        "prompt": "스니핑은 IP 주소를 위조해 다른 주체로 가장하는 공격이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "주소를 위조해 가장하는 것은 스푸핑입니다. 스니핑은 패킷을 몰래 엿보는 공격입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-malware-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ransomware",
+        "malware"
+      ],
+      "content": {
+        "prompt": "파일을 암호화하고 대가를 요구하는 악성코드는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "랜섬웨어",
+          "ransomware"
+        ]
+      },
+      "explanation": "랜섬웨어는 파일을 암호화한 뒤 복구 대가를 요구하는 악성코드입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-malware-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "switch-jamming"
+      ],
+      "content": {
+        "prompt": "위조 MAC으로 스위치 MAC 테이블을 넘치게 하는 공격은 스위치 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "재밍",
+          "jamming"
+        ]
+      },
+      "explanation": "스위치 재밍은 위조 MAC 주소를 흘려 스위치의 MAC 테이블을 넘치게 하는 공격입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-malware-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "worm",
+        "malware"
+      ],
+      "content": {
+        "prompt": "스스로 복제해 네트워크로 퍼지는 악성코드는?",
+        "options": [
+          "웜",
+          "랜섬웨어",
+          "스푸핑"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "웜은 스스로 복제하며 네트워크를 통해 다른 시스템으로 전파되는 악성코드입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-malware-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "switch-jamming"
+      ],
+      "content": {
+        "prompt": "위조 MAC 주소가 대량 유입돼 스위치 테이블이 가득 찼다. 공격은?",
+        "options": [
+          "세션 하이재킹",
+          "스위치 재밍",
+          "스니핑"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "위조 MAC으로 스위치 MAC 테이블을 넘치게 하는 것은 스위치 재밍입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-malware-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "session-hijacking"
+      ],
+      "content": {
+        "prompt": "공격자가 남의 로그인 세션을 탈취해 그 사용자로 행동했다. 공격은?",
+        "options": [
+          "스니핑",
+          "스푸핑",
+          "세션 하이재킹"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "인증된 세션을 가로채 사용자 행세를 했으므로 세션 하이재킹입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-malware-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sniffing"
+      ],
+      "content": {
+        "prompt": "스니핑은 네트워크 패킷을 몰래 엿보는 공격이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "스니핑은 네트워크를 흐르는 패킷을 몰래 엿봐 정보를 빼내는 공격입니다.",
+      "refs": []
+    }
+  ]
+}

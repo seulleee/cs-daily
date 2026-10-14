@@ -1,0 +1,208 @@
+{
+  "track": "eip",
+  "unit": "u14-security",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "eip-mgmt-sec-access-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dac",
+        "access-control"
+      ],
+      "content": {
+        "prompt": "데이터 소유자가 사용자 신원에 따라 권한을 정하는 접근 통제는?",
+        "options": [
+          "DAC",
+          "MAC",
+          "RBAC"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DAC(임의적 접근 통제)는 데이터 소유자가 사용자 신원에 따라 권한을 정합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-access-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mac",
+        "access-control"
+      ],
+      "content": {
+        "prompt": "주체·객체의 보안 등급에 따라 시스템이 강제하는 접근 통제는?",
+        "options": [
+          "DAC",
+          "MAC",
+          "RBAC"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "MAC(강제적 접근 통제)는 주체와 객체의 보안 등급에 따라 시스템이 접근을 강제합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-access-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rbac",
+        "access-control"
+      ],
+      "content": {
+        "prompt": "역할에 권한을 주고 사용자에게 역할을 부여하는 접근 통제는?",
+        "options": [
+          "RBAC",
+          "DAC"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "RBAC(역할 기반 접근 통제)는 직무·직책 같은 역할에 권한을 주고 사용자에게 역할을 부여합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-access-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "mac",
+        "dac"
+      ],
+      "content": {
+        "prompt": "MAC에서는 데이터 소유자가 권한을 마음대로 정한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "소유자가 권한을 정하는 것은 DAC입니다. MAC은 보안 등급에 따라 시스템이 강제합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-access-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tcp-wrapper"
+      ],
+      "content": {
+        "prompt": "외부 접속을 허용 목록으로 검사해 허용·거부하는 유틸리티는 tcp ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "wrapper",
+          "래퍼",
+          "tcp wrapper"
+        ]
+      },
+      "explanation": "tcp wrapper는 외부 접속을 허용 목록으로 검사해 허용하거나 거부하는 유틸리티입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-access-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "rbac"
+      ],
+      "content": {
+        "prompt": "역할 기반 접근 통제의 영문 약자는 ___ 이다.",
+        "hint": "네 글자 영문 약자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "RBAC",
+          "Role Based Access Control"
+        ]
+      },
+      "explanation": "RBAC는 Role-Based Access Control의 약자로 역할 기반 접근 통제입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-access-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rbac"
+      ],
+      "content": {
+        "prompt": "팀장 역할에 결재 권한을 주고 직원에게 그 역할을 줬다. 방식은?",
+        "options": [
+          "DAC",
+          "MAC",
+          "RBAC"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "권한을 역할에 주고 사용자에게 역할을 부여하므로 RBAC입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-access-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dac"
+      ],
+      "content": {
+        "prompt": "파일 소유자가 동료 A에게만 읽기 권한을 줬다. 방식은?",
+        "options": [
+          "MAC",
+          "DAC",
+          "RBAC"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "데이터 소유자가 사용자 신원에 따라 권한을 정했으므로 DAC입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-access-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "mac"
+      ],
+      "content": {
+        "prompt": "비밀 등급 사용자가 극비 문서를 못 열게 시스템이 막는다. 방식은?",
+        "options": [
+          "MAC",
+          "DAC",
+          "RBAC"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "주체와 객체의 보안 등급을 비교해 시스템이 강제로 막으므로 MAC입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-access-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dac"
+      ],
+      "content": {
+        "prompt": "DAC는 데이터 소유자가 사용자 신원에 따라 권한을 정한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "DAC(임의적 접근 통제)는 데이터 소유자가 사용자 신원에 따라 접근 권한을 정합니다.",
+      "refs": []
+    }
+  ]
+}

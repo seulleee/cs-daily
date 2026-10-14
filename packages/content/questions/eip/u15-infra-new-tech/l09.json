@@ -1,0 +1,231 @@
+{
+  "track": "eip",
+  "unit": "u15-infra-new-tech",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "eip-mgmt-infra-mock-001",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "topology"
+      ],
+      "content": {
+        "prompt": "노드끼리 서로 직접 연결되어 장애에 강한 네트워크 토폴로지는?",
+        "options": [
+          "성형",
+          "버스형",
+          "링형",
+          "망형"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "망형(메시형)은 노드끼리 서로 직접 연결되어 한 회선이 끊겨도 다른 경로가 있어 장애에 강합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-mock-002",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "circuit-switching"
+      ],
+      "content": {
+        "prompt": "회선 교환 방식에 대한 설명으로 옳은 것은?",
+        "options": [
+          "데이터를 패킷으로 나눠 보낸다",
+          "통신 전에 전용 경로를 확보한다",
+          "회선을 여러 통신이 공유한다",
+          "노드를 원형으로 연결한다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "회선 교환은 통신 전에 전용 경로를 확보하고 독점합니다. 패킷으로 나눠 공유 회선에 보내는 것은 패킷 교환입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-mock-003",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ids",
+        "ips"
+      ],
+      "content": {
+        "prompt": "방화벽·IDS·VPN 등 보안 솔루션에 대한 설명으로 틀린 것은?",
+        "options": [
+          "방화벽은 규칙으로 트래픽을 허용·차단한다",
+          "IDS는 탐지한 침입을 실시간 차단한다",
+          "VPN은 암호화된 터널을 만든다",
+          "허니팟은 공격자를 유인한다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "IDS는 침입을 탐지해 알리는 역할입니다. 탐지한 침입을 실시간으로 차단하는 것은 IPS입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-mock-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "umask"
+      ],
+      "content": {
+        "prompt": "유닉스에서 umask 값이 022일 때 새로 만든 일반 파일의 기본 권한은? (기준 666)",
+        "options": [
+          "644",
+          "666",
+          "622",
+          "600"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "새 파일 기본 권한 666에서 umask 022를 빼면 644입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-mock-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rto"
+      ],
+      "content": {
+        "prompt": "재해 복구 지표인 RTO에 대한 설명으로 옳은 것은?",
+        "options": [
+          "재해 후 서비스 복구 목표 시간",
+          "유실을 허용하는 데이터 시점",
+          "여러 디스크를 묶는 기술",
+          "서버에 직접 연결한 저장 장치"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "RTO는 재해 후 서비스를 복구해야 하는 목표 시간입니다. 유실 허용 데이터 시점은 RPO입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-mock-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "paas",
+        "cloud"
+      ],
+      "content": {
+        "prompt": "클라우드 서비스 모델 중 개발·실행 플랫폼을 서비스로 제공하는 것은?",
+        "options": [
+          "PaaS",
+          "IaaS",
+          "SaaS",
+          "NFV"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "PaaS는 개발·실행 플랫폼을 제공합니다. IaaS는 인프라, SaaS는 완성된 소프트웨어를 제공합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-mock-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "big-data",
+        "data-mining"
+      ],
+      "content": {
+        "prompt": "빅데이터 관련 설명으로 틀린 것은?",
+        "options": [
+          "하둡은 분산 저장·처리 프레임워크다",
+          "맵리듀스는 나눠 처리하고 결과를 합친다",
+          "3V는 규모·속도·다양성이다",
+          "데이터 마이닝은 데이터를 암호화한다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "데이터 마이닝은 대량 데이터에서 숨은 규칙·패턴을 찾는 기법입니다. 암호화와는 관계가 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-mock-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "nfv",
+        "sdn"
+      ],
+      "content": {
+        "prompt": "라우터·방화벽 등 네트워크 장비 기능을 소프트웨어로 가상화하는 기술에 해당하는 것은?",
+        "options": [
+          "SDN",
+          "NFV",
+          "컨테이너",
+          "IaaS"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "NFV는 네트워크 장비 기능을 소프트웨어로 가상화합니다. SDN은 네트워크 제어를 소프트웨어로 중앙에서 프로그래밍합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-mock-009",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "chmod"
+      ],
+      "content": {
+        "prompt": "chmod 644를 적용한 파일에 대한 설명으로 옳은 것은?",
+        "options": [
+          "소유자만 읽을 수 있다",
+          "그룹은 쓰기도 할 수 있다",
+          "소유자는 읽기·쓰기가 가능하다",
+          "모든 사용자가 실행할 수 있다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "644는 소유자 rw(6), 그룹·기타 r(4)입니다. 소유자는 읽기·쓰기, 나머지는 읽기만 가능합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-mock-010",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "bluetooth-attack"
+      ],
+      "content": {
+        "prompt": "블루투스 공격 중 장비의 파일에 무단으로 접근하는 것은?",
+        "options": [
+          "블루재킹",
+          "스니핑",
+          "블루스나프",
+          "스위치 재밍"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "블루스나프는 블루투스로 장비 파일에 무단 접근합니다. 블루재킹은 원치 않는 메시지를 보내는 공격입니다.",
+      "refs": []
+    }
+  ]
+}

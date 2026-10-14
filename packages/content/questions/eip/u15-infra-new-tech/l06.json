@@ -1,0 +1,205 @@
+{
+  "track": "eip",
+  "unit": "u15-infra-new-tech",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "eip-mgmt-infra-iot-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "iot"
+      ],
+      "content": {
+        "prompt": "사물에 센서·통신을 넣어 인터넷으로 정보를 주고받는 기술은?",
+        "options": [
+          "IoT",
+          "NFC",
+          "SDN"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "IoT(사물 인터넷)는 사물에 센서와 통신 기능을 넣어 인터넷으로 정보를 주고받는 기술입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-iot-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nfc",
+        "wireless"
+      ],
+      "content": {
+        "prompt": "약 10cm 안에서 쓰는 근거리 무선 통신은?",
+        "options": [
+          "메시 네트워크",
+          "NFC",
+          "SDN"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "NFC는 약 10cm 안의 아주 가까운 거리에서 쓰는 근거리 무선 통신입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-iot-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bluetooth-attack"
+      ],
+      "content": {
+        "prompt": "원치 않는 메시지를 블루투스로 보내는 공격은?",
+        "options": [
+          "블루재킹",
+          "블루스나프"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "블루재킹은 블루투스로 원치 않는 메시지를 보내는 공격입니다. 블루스나프는 파일 무단 접근입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-iot-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "bluetooth-attack"
+      ],
+      "content": {
+        "prompt": "블루재킹은 블루투스로 장비 파일에 무단 접근하는 공격이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "장비 파일에 무단 접근하는 것은 블루스나프입니다. 블루재킹은 원치 않는 메시지를 보냅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-iot-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "mesh-network"
+      ],
+      "content": {
+        "prompt": "노드가 그물 형태로 서로 중계하는 무선 네트워크는 ___ 네트워크이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "메시",
+          "매시",
+          "mesh"
+        ]
+      },
+      "explanation": "메시 네트워크는 노드가 그물 형태로 서로 중계하는 대규모 무선 네트워크입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-iot-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "zing",
+        "wireless"
+      ],
+      "content": {
+        "prompt": "NFC보다 빠른 근접 무선 통신 기술은 ___ 이다.",
+        "hint": "네 글자 영문 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Zing",
+          "징"
+        ]
+      },
+      "explanation": "Zing은 NFC처럼 가까운 거리에서 쓰지만 더 빠른 근접 무선 통신 기술입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-iot-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nfc"
+      ],
+      "content": {
+        "prompt": "휴대폰을 결제 단말기에 가까이 대 결제한다. 쓰인 기술은?",
+        "options": [
+          "메시 네트워크",
+          "NFC",
+          "블루재킹"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "약 10cm 안의 근거리에서 데이터를 주고받으므로 NFC입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-iot-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bluetooth-attack"
+      ],
+      "content": {
+        "prompt": "블루투스로 남의 휴대폰 주소록을 몰래 빼냈다. 공격은?",
+        "options": [
+          "블루재킹",
+          "블루스나프"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "블루투스로 장비의 파일에 무단 접근했으므로 블루스나프입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-iot-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "mesh-network"
+      ],
+      "content": {
+        "prompt": "센서 수천 개가 서로 중계하며 데이터를 전달한다. 구성은?",
+        "options": [
+          "메시 네트워크",
+          "NFC",
+          "Zing"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "노드가 그물 형태로 서로 중계하므로 메시 네트워크입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-iot-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "iot"
+      ],
+      "content": {
+        "prompt": "IoT는 사물에 센서와 통신을 넣어 정보를 주고받는 기술이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "IoT는 사물에 센서·통신 기능을 넣어 인터넷으로 정보를 주고받게 합니다.",
+      "refs": []
+    }
+  ]
+}

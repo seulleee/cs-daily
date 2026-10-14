@@ -1,0 +1,217 @@
+{
+  "track": "eip",
+  "unit": "u13-project-mgmt",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "eip-mgmt-cocomo-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cocomo",
+        "cost-estimation"
+      ],
+      "content": {
+        "prompt": "보헴이 제안한 원시 코드 라인 수 기반 비용 산정 모형은?",
+        "options": [
+          "COCOMO",
+          "푸트남 모형",
+          "PERT"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "COCOMO는 보헴(Boehm)이 제안한 원시 코드 라인 수 기반 비용 산정 모형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cocomo-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cocomo",
+        "organic"
+      ],
+      "content": {
+        "prompt": "5만 라인 이하 중소 규모 업무용인 COCOMO 유형은?",
+        "options": [
+          "내장형",
+          "조직형",
+          "반분리형"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "조직형(Organic)은 5만 라인 이하의 중소 규모 업무용 소프트웨어에 해당합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cocomo-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cocomo",
+        "semi-detached"
+      ],
+      "content": {
+        "prompt": "30만 라인 이하 중간 규모(컴파일러 등)인 COCOMO 유형은?",
+        "options": [
+          "반분리형",
+          "내장형"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "반분리형(Semi-detached)은 30만 라인 이하의 중간 규모로, 컴파일러·DBMS가 예입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cocomo-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cocomo",
+        "embedded"
+      ],
+      "content": {
+        "prompt": "내장형은 5만 라인 이하의 업무용 소프트웨어에 쓴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "내장형은 30만 라인 이상의 초대형·실시간 시스템입니다. 5만 라인 이하 업무용은 조직형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cocomo-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cocomo"
+      ],
+      "content": {
+        "prompt": "COCOMO를 제안한 사람은 ___ 이다.",
+        "hint": "영문 성은 B로 시작합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "보헴",
+          "Boehm",
+          "베리 보헴",
+          "Barry Boehm",
+          "뵘"
+        ]
+      },
+      "explanation": "COCOMO는 보헴(Barry Boehm)이 제안한 비용 산정 모형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cocomo-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cocomo",
+        "embedded"
+      ],
+      "content": {
+        "prompt": "초대형·실시간 시스템에 맞는 COCOMO 유형은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "내장형",
+          "내장",
+          "임베디드형",
+          "embedded"
+        ]
+      },
+      "explanation": "내장형(Embedded)은 30만 라인 이상의 초대형·실시간 시스템에 해당합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cocomo-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cocomo",
+        "organic"
+      ],
+      "content": {
+        "prompt": "2만 라인 규모의 급여 관리 업무 프로그램. COCOMO 유형은?",
+        "options": [
+          "조직형",
+          "반분리형",
+          "내장형"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "5만 라인 이하의 중소 규모 업무용이므로 조직형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cocomo-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cocomo",
+        "semi-detached"
+      ],
+      "content": {
+        "prompt": "20만 라인 규모의 DBMS를 개발한다. COCOMO 유형은?",
+        "options": [
+          "조직형",
+          "반분리형",
+          "내장형"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "30만 라인 이하의 중간 규모이고 DBMS는 반분리형의 대표 예입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cocomo-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cocomo",
+        "embedded"
+      ],
+      "content": {
+        "prompt": "50만 라인 규모의 실시간 제어 시스템. COCOMO 유형은?",
+        "options": [
+          "조직형",
+          "반분리형",
+          "내장형"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "30만 라인 이상이고 실시간 시스템이므로 내장형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cocomo-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cocomo",
+        "cost-estimation"
+      ],
+      "content": {
+        "prompt": "COCOMO는 원시 코드 라인 수를 바탕으로 비용을 산정한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "COCOMO는 원시 코드 라인 수(LOC)를 기반으로 비용을 산정하는 모형입니다.",
+      "refs": []
+    }
+  ]
+}

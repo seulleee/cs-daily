@@ -1,0 +1,207 @@
+{
+  "track": "eip",
+  "unit": "u13-project-mgmt",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "eip-mgmt-framework-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "framework"
+      ],
+      "content": {
+        "prompt": "공통 기능을 반제품 형태로 제공해 재사용성을 높이는 소프트웨어는?",
+        "options": [
+          "개발 프레임워크",
+          "컴파일러",
+          "DBMS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "개발 프레임워크는 공통 기능을 반제품 형태로 제공해 재사용성을 높입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-framework-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ioc",
+        "framework"
+      ],
+      "content": {
+        "prompt": "프레임워크가 흐름을 제어하고 개발자 코드를 호출하는 것은?",
+        "options": [
+          "캡슐화",
+          "제어의 역전",
+          "다형성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "제어의 역전(IoC)은 개발자 코드가 아니라 프레임워크가 흐름을 제어하고 코드를 호출하는 것입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-framework-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "library",
+        "framework"
+      ],
+      "content": {
+        "prompt": "개발자 코드가 필요할 때 직접 호출해 쓰는 것은?",
+        "options": [
+          "라이브러리",
+          "프레임워크"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "라이브러리는 개발자 코드가 필요할 때 호출합니다. 프레임워크는 반대로 개발자 코드를 호출합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-framework-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "library",
+        "ioc"
+      ],
+      "content": {
+        "prompt": "라이브러리를 쓰면 라이브러리가 개발자 코드를 호출한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "라이브러리는 개발자 코드가 호출합니다. 개발자 코드를 호출하는 쪽은 프레임워크(IoC)입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-framework-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ioc"
+      ],
+      "content": {
+        "prompt": "제어의 역전의 영문 약자는 ___ 이다.",
+        "hint": "세 글자 영문 약자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "IoC",
+          "IOC",
+          "Inversion of Control"
+        ]
+      },
+      "explanation": "제어의 역전은 Inversion of Control, 줄여서 IoC입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-framework-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "framework"
+      ],
+      "content": {
+        "prompt": "개발 프레임워크는 공통 기능을 ___ 형태로 제공한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "반제품",
+          "반 제품",
+          "반완성품"
+        ]
+      },
+      "explanation": "프레임워크는 완성품이 아니라 반제품 형태로 공통 기능을 제공하고, 개발자가 나머지를 채웁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-framework-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ioc"
+      ],
+      "content": {
+        "prompt": "프레임워크가 정한 시점에 개발자 메서드가 불린다. 이 특징은?",
+        "options": [
+          "IoC",
+          "캡슐화",
+          "정규화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "프레임워크가 흐름을 쥐고 개발자 코드를 호출하므로 제어의 역전(IoC)입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-framework-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "framework"
+      ],
+      "content": {
+        "prompt": "Python으로 만든 개발 프레임워크는?",
+        "options": [
+          "스프링",
+          "장고",
+          "전자정부 프레임워크"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "장고(Django)는 Python 개발 프레임워크입니다. 스프링과 전자정부 프레임워크는 Java 기반입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-framework-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "library"
+      ],
+      "content": {
+        "prompt": "개발자가 흐름을 짜고 필요한 함수만 불러 썼다. 쓴 것은?",
+        "options": [
+          "프레임워크",
+          "라이브러리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "개발자 코드가 흐름을 쥐고 필요할 때 호출하는 것은 라이브러리입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-framework-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "framework"
+      ],
+      "content": {
+        "prompt": "개발 프레임워크는 공통 기능을 반제품 형태로 제공한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "개발 프레임워크는 공통 기능을 반제품으로 제공해 재사용성을 높이는 소프트웨어입니다.",
+      "refs": []
+    }
+  ]
+}

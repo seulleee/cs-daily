@@ -1,0 +1,207 @@
+{
+  "track": "eip",
+  "unit": "u15-infra-new-tech",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "eip-mgmt-infra-topology-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "topology"
+      ],
+      "content": {
+        "prompt": "모든 노드를 중앙 장치 하나에 연결하는 토폴로지는?",
+        "options": [
+          "성형",
+          "버스형",
+          "링형"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "성형(스타형)은 모든 노드를 중앙 장치에 연결하는 토폴로지입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-topology-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "topology",
+        "mesh"
+      ],
+      "content": {
+        "prompt": "노드끼리 서로 직접 연결해 장애에 강한 토폴로지는?",
+        "options": [
+          "버스형",
+          "망형",
+          "링형"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "망형(메시형)은 노드끼리 서로 직접 연결되어 한 회선이 끊겨도 다른 경로가 있어 장애에 강합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-topology-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "circuit-switching"
+      ],
+      "content": {
+        "prompt": "통신 전에 전용 경로를 확보하고 독점 사용하는 교환 방식은?",
+        "options": [
+          "회선 교환",
+          "패킷 교환"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "회선 교환은 통신 전에 전용 경로를 확보하고 통신 동안 독점합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-topology-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "packet-switching"
+      ],
+      "content": {
+        "prompt": "패킷 교환은 데이터를 패킷으로 나눠 공유 회선으로 보낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "패킷 교환은 데이터를 패킷 단위로 나눠 여러 통신이 공유하는 회선으로 보냅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-topology-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "topology"
+      ],
+      "content": {
+        "prompt": "공유 회선 하나에 모든 노드를 연결하는 토폴로지는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "버스형",
+          "버스",
+          "bus"
+        ]
+      },
+      "explanation": "버스형은 공유 회선 하나에 모든 노드를 연결하는 토폴로지입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-topology-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "topology"
+      ],
+      "content": {
+        "prompt": "노드를 원형으로 연결하는 토폴로지는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "링형",
+          "링",
+          "환형",
+          "ring"
+        ]
+      },
+      "explanation": "링형은 노드를 원형으로 이어 연결하는 토폴로지입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-topology-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "topology"
+      ],
+      "content": {
+        "prompt": "중앙 장치가 고장 나면 전체 통신이 끊기는 토폴로지는?",
+        "options": [
+          "망형",
+          "성형",
+          "링형"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "성형은 모든 노드가 중앙 장치를 거치므로 중앙 장치가 고장 나면 전체 통신이 끊깁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-topology-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "circuit-switching"
+      ],
+      "content": {
+        "prompt": "연결 설정 후 해제할 때까지 경로를 독점한다. 교환 방식은?",
+        "options": [
+          "패킷 교환",
+          "회선 교환"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "전용 경로를 확보해 독점하므로 회선 교환입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-topology-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "topology",
+        "mesh"
+      ],
+      "content": {
+        "prompt": "한 회선이 끊겨도 다른 경로로 우회하기 쉬운 토폴로지는?",
+        "options": [
+          "망형",
+          "버스형",
+          "성형"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "망형은 노드끼리 직접 연결된 경로가 여러 개라 장애에 강합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-topology-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "circuit-switching",
+        "packet-switching"
+      ],
+      "content": {
+        "prompt": "회선 교환은 데이터를 패킷으로 나눠 공유 회선으로 보낸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "패킷으로 나눠 공유 회선으로 보내는 것은 패킷 교환입니다. 회선 교환은 전용 경로를 독점합니다.",
+      "refs": []
+    }
+  ]
+}

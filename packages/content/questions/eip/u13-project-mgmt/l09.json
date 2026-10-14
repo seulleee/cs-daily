@@ -1,0 +1,230 @@
+{
+  "track": "eip",
+  "unit": "u13-project-mgmt",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "eip-mgmt-pm-mock-001",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "3p"
+      ],
+      "content": {
+        "prompt": "프로젝트 관리의 3P에 해당하지 않는 것은?",
+        "options": [
+          "People",
+          "Problem",
+          "Process",
+          "Product"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "3P는 사람(People), 문제(Problem), 프로세스(Process)입니다. Product는 포함되지 않습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-pm-mock-002",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "loc",
+        "estimation"
+      ],
+      "content": {
+        "prompt": "LOC 기법에서 낙관치 2,000, 중간치 3,500, 비관치 8,000 라인일 때 추정 LOC는?",
+        "options": [
+          "3,500",
+          "4,000",
+          "4,500",
+          "6,000"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "(2,000 + 4 × 3,500 + 8,000) ÷ 6 = 24,000 ÷ 6 = 4,000입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-pm-mock-003",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cocomo"
+      ],
+      "content": {
+        "prompt": "COCOMO의 개발 유형에 대한 설명으로 옳은 것은?",
+        "options": [
+          "조직형은 30만 라인 이상이다",
+          "반분리형의 예로 컴파일러가 있다",
+          "내장형은 5만 라인 이하 업무용이다",
+          "유형은 조직형과 내장형 두 가지다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "반분리형은 30만 라인 이하 중간 규모로 컴파일러·DBMS가 예입니다. 조직형은 5만 라인 이하, 내장형은 30만 라인 이상입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-pm-mock-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "loc",
+        "duration"
+      ],
+      "content": {
+        "prompt": "노력이 120인월인 프로젝트에 8명을 투입하면 개발 기간은?",
+        "options": [
+          "12개월",
+          "960개월",
+          "15개월",
+          "20개월"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "개발 기간은 노력(인월) ÷ 투입 인원이므로 120 ÷ 8 = 15개월입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-pm-mock-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "critical-path"
+      ],
+      "content": {
+        "prompt": "프로젝트 일정에서 임계 경로에 대한 설명으로 옳은 것은?",
+        "options": [
+          "전체 프로젝트 기간을 결정한다",
+          "가장 짧은 경로이다",
+          "작업을 수평 막대로 표시한다",
+          "작업을 계층적으로 나눈 것이다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "임계 경로는 시작부터 끝까지 가장 긴 경로로 전체 기간을 결정합니다. 수평 막대는 간트 차트, 계층 분해는 WBS입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-pm-mock-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "risk-management"
+      ],
+      "content": {
+        "prompt": "위험 관리 절차를 순서대로 바르게 나열한 것은?",
+        "options": [
+          "분석·평가→식별→대응 계획→모니터링",
+          "식별→대응 계획→분석·평가→모니터링",
+          "식별→분석·평가→대응 계획→모니터링",
+          "모니터링→식별→분석·평가→대응 계획"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "위험 관리는 위험 식별 → 분석·평가 → 대응 계획 → 위험 모니터링 순으로 진행합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-pm-mock-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "function-point"
+      ],
+      "content": {
+        "prompt": "기능 점수(FP)에 대한 설명으로 틀린 것은?",
+        "options": [
+          "기능의 수와 복잡도로 규모를 측정한다",
+          "사용자 관점의 기능으로 측정한다",
+          "개발 언어에 따라 값이 달라진다",
+          "외부 입력·출력·조회를 측정 요소로 쓴다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "기능 점수는 언어와 무관하게 사용자 관점의 기능으로 측정합니다. 언어에 따라 달라지는 것은 LOC입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-pm-mock-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "cmmi"
+      ],
+      "content": {
+        "prompt": "CMMI 성숙도 단계를 낮은 단계부터 바르게 나열한 것은?",
+        "options": [
+          "초기→관리→정의→정량적 관리→최적화",
+          "초기→정의→관리→정량적 관리→최적화",
+          "관리→초기→정의→최적화→정량적 관리",
+          "초기→관리→정량적 관리→정의→최적화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "CMMI는 초기 → 관리 → 정의 → 정량적 관리 → 최적화의 5단계입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-pm-mock-009",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "framework",
+        "ioc"
+      ],
+      "content": {
+        "prompt": "개발 프레임워크에 대한 설명으로 틀린 것은?",
+        "options": [
+          "공통 기능을 반제품으로 제공한다",
+          "프레임워크가 개발자 코드를 호출한다",
+          "재사용성을 높인다",
+          "개발자 코드가 프레임워크 흐름을 제어한다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "프레임워크에서는 제어의 역전(IoC)으로 프레임워크가 흐름을 제어하고 개발자 코드를 호출합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-pm-mock-010",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "critical-path"
+      ],
+      "content": {
+        "prompt": "경로 A는 12일, B는 15일, C는 9일이다. 경로 B의 작업이 2일 늦어지면 전체 기간은?",
+        "options": [
+          "17일",
+          "15일",
+          "14일",
+          "12일"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "B(15일)가 임계 경로이므로 2일 늦어지면 17일이 되고, 여전히 가장 긴 경로라 전체 기간도 17일입니다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "track": "eip",
+  "unit": "u14-security",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "eip-mgmt-sec-cia-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "confidentiality",
+        "cia"
+      ],
+      "content": {
+        "prompt": "인가되지 않은 사람은 정보 내용을 볼 수 없게 하는 보안 요소는?",
+        "options": [
+          "기밀성",
+          "무결성",
+          "가용성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "기밀성은 인가되지 않은 사람이 정보 내용을 볼 수 없게 하는 성질입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-cia-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "availability",
+        "cia"
+      ],
+      "content": {
+        "prompt": "인가된 사용자가 필요할 때 시스템을 쓸 수 있게 하는 요소는?",
+        "options": [
+          "기밀성",
+          "가용성",
+          "무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "가용성은 인가된 사용자가 필요할 때 정보와 시스템을 쓸 수 있는 성질입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-cia-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "integrity",
+        "cia"
+      ],
+      "content": {
+        "prompt": "인가되지 않은 변경을 막고, 변조되면 알아채는 보안 요소는?",
+        "options": [
+          "무결성",
+          "가용성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "무결성은 인가되지 않은 변경을 막고 변조를 알아채는 성질입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-cia-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "availability",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "서버 장애로 정상 사용자가 접속하지 못하면 무결성이 깨진 것이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "인가된 사용자가 필요할 때 쓰지 못하는 것은 가용성이 깨진 것입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-cia-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "confidentiality"
+      ],
+      "content": {
+        "prompt": "정보를 인가된 사람만 볼 수 있게 하는 보안 요소는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "기밀성",
+          "비밀성",
+          "confidentiality"
+        ]
+      },
+      "explanation": "기밀성(Confidentiality)은 인가되지 않은 사람이 정보 내용을 볼 수 없게 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-cia-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "vulnerability-management"
+      ],
+      "content": {
+        "prompt": "패치 적용과 미사용 포트 차단으로 공격 면을 줄이는 일은 ___ 관리이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "취약점",
+          "vulnerability"
+        ]
+      },
+      "explanation": "취약점 관리는 보안 패치를 적용하고 쓰지 않는 서비스·포트를 닫아 공격 면을 줄입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-cia-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "integrity",
+        "cia"
+      ],
+      "content": {
+        "prompt": "계좌 잔액이 허가 없이 바뀌었다. 깨진 보안 요소는?",
+        "options": [
+          "기밀성",
+          "무결성",
+          "가용성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인가되지 않은 변경이 일어났으므로 무결성이 깨졌습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-cia-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "confidentiality",
+        "cia"
+      ],
+      "content": {
+        "prompt": "고객 명단이 외부에 노출됐다. 깨진 보안 요소는?",
+        "options": [
+          "가용성",
+          "무결성",
+          "기밀성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "인가되지 않은 사람이 정보 내용을 보게 되었으므로 기밀성이 깨졌습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-cia-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vulnerability-management"
+      ],
+      "content": {
+        "prompt": "취약점 관리 활동에 해당하는 것은?",
+        "options": [
+          "미사용 포트 닫기",
+          "로그 삭제",
+          "관리자 계정 공유"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "쓰지 않는 서비스·포트를 닫아 공격 면을 줄이는 것이 취약점 관리입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-cia-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "confidentiality"
+      ],
+      "content": {
+        "prompt": "기밀성은 인가되지 않은 사람이 정보 내용을 볼 수 없게 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "기밀성은 인가된 사람만 정보 내용을 볼 수 있게 하는 보안 요소입니다.",
+      "refs": []
+    }
+  ]
+}

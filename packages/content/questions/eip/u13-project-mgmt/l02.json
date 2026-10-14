@@ -1,0 +1,216 @@
+{
+  "track": "eip",
+  "unit": "u13-project-mgmt",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "eip-mgmt-loc-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "loc",
+        "cost-estimation"
+      ],
+      "content": {
+        "prompt": "원시 코드 라인 수로 비용을 산정하는 기법은?",
+        "options": [
+          "LOC 기법",
+          "기능 점수",
+          "PERT"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "LOC(Lines of Code) 기법은 원시 코드 라인 수로 비용을 산정합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-loc-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "loc",
+        "man-month"
+      ],
+      "content": {
+        "prompt": "LOC ÷ 1인당 월평균 생산 라인 수로 구하는 값은?",
+        "options": [
+          "개발 기간",
+          "노력(인월)",
+          "추정 LOC"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "노력(인월)은 LOC를 1인당 월평균 생산 라인 수로 나눈 값입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-loc-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "loc",
+        "duration"
+      ],
+      "content": {
+        "prompt": "노력(인월) ÷ 투입 인원으로 구하는 값은?",
+        "options": [
+          "개발 기간",
+          "추정 LOC"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "개발 기간은 노력(인월)을 투입 인원으로 나눈 값입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-loc-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "loc",
+        "estimation"
+      ],
+      "content": {
+        "prompt": "추정 LOC 공식에서는 비관치에 4를 곱한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "추정 LOC는 (낙관치 + 4 × 중간치 + 비관치) ÷ 6입니다. 4를 곱하는 것은 중간치입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-loc-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "loc",
+        "cost-estimation"
+      ],
+      "content": {
+        "prompt": "LOC 기법은 원시 코드 ___ 수로 비용을 산정한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "라인",
+          "줄",
+          "행",
+          "line"
+        ]
+      },
+      "explanation": "LOC 기법은 원시 코드 라인 수를 기준으로 비용을 산정합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-loc-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "loc",
+        "estimation"
+      ],
+      "content": {
+        "prompt": "추정 LOC = (낙관치 + 4 × ___ + 비관치) ÷ 6"
+      },
+      "answer_key": {
+        "accepted": [
+          "중간치",
+          "기대치",
+          "중간값",
+          "최빈치"
+        ]
+      },
+      "explanation": "추정 LOC는 중간치(기대치)에 가중치 4를 주어 (낙관치 + 4 × 중간치 + 비관치) ÷ 6으로 구합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-loc-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "loc",
+        "estimation"
+      ],
+      "content": {
+        "prompt": "낙관치 600, 중간치 900, 비관치 1,800 LOC. 추정 LOC는?",
+        "options": [
+          "900",
+          "1,000",
+          "1,100"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "(600 + 4 × 900 + 1,800) ÷ 6 = 6,000 ÷ 6 = 1,000입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-loc-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "loc",
+        "man-month"
+      ],
+      "content": {
+        "prompt": "30,000 LOC, 1인당 월평균 300라인이면 노력은 몇 인월?",
+        "options": [
+          "100",
+          "300",
+          "1,000"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "노력은 LOC ÷ 1인당 월평균 생산 라인 수이므로 30,000 ÷ 300 = 100인월입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-loc-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "loc",
+        "duration"
+      ],
+      "content": {
+        "prompt": "노력 50인월, 투입 인원 10명이면 개발 기간은?",
+        "options": [
+          "500개월",
+          "10개월",
+          "5개월"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "개발 기간은 노력 ÷ 투입 인원이므로 50 ÷ 10 = 5개월입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-loc-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "loc",
+        "cost-estimation"
+      ],
+      "content": {
+        "prompt": "LOC 기법은 원시 코드 라인 수를 바탕으로 비용을 산정한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "LOC 기법은 원시 코드 라인 수로 노력과 개발 기간을 계산해 비용을 산정합니다.",
+      "refs": []
+    }
+  ]
+}

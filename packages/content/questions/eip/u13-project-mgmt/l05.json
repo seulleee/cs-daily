@@ -1,0 +1,208 @@
+{
+  "track": "eip",
+  "unit": "u13-project-mgmt",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "eip-mgmt-schedule-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "pert",
+        "schedule"
+      ],
+      "content": {
+        "prompt": "낙관·중간·비관 시간으로 작업 일정을 추정하는 네트워크 기법은?",
+        "options": [
+          "PERT",
+          "CPM",
+          "간트 차트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "PERT는 낙관·중간·비관 세 시간 추정치로 작업 일정을 추정하는 네트워크 기법입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-schedule-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "gantt-chart",
+        "schedule"
+      ],
+      "content": {
+        "prompt": "작업별 일정을 수평 막대로 나타낸 표는?",
+        "options": [
+          "PERT",
+          "간트 차트",
+          "WBS"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "간트 차트는 작업별 일정을 수평 막대로 나타내며, 막대 길이가 작업 기간입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-schedule-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "critical-path"
+      ],
+      "content": {
+        "prompt": "시작부터 끝까지 가장 긴 경로로, 전체 기간을 정하는 것은?",
+        "options": [
+          "임계 경로",
+          "최단 경로"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "임계 경로는 가장 긴 경로이며 전체 프로젝트 기간을 결정합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-schedule-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "gantt-chart"
+      ],
+      "content": {
+        "prompt": "간트 차트에서 막대 길이는 작업 기간을 나타낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "간트 차트의 수평 막대 길이는 그 작업의 기간을 나타냅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-schedule-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "critical-path"
+      ],
+      "content": {
+        "prompt": "전체 프로젝트 기간을 결정하는 가장 긴 경로는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "임계 경로",
+          "임계경로",
+          "critical path",
+          "크리티컬 패스"
+        ]
+      },
+      "explanation": "임계 경로(Critical Path)는 시작부터 끝까지 가장 긴 경로로 전체 기간을 결정합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-schedule-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cpm",
+        "schedule"
+      ],
+      "content": {
+        "prompt": "작업 순서와 소요 시간으로 전체 일정을 계산하는 기법은 ___ 이다.",
+        "hint": "세 글자 영문 약자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "CPM",
+          "Critical Path Method"
+        ]
+      },
+      "explanation": "CPM은 작업 순서와 소요 시간으로 전체 일정을 계산하는 네트워크 기법입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-schedule-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "critical-path"
+      ],
+      "content": {
+        "prompt": "경로 A→B 7일, A→C 10일, A→D 4일. 임계 경로는?",
+        "options": [
+          "A→B",
+          "A→C",
+          "A→D"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "임계 경로는 가장 긴 경로이므로 10일이 걸리는 A→C입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-schedule-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "critical-path"
+      ],
+      "content": {
+        "prompt": "경로 길이가 5일·9일·12일인 프로젝트의 전체 기간은?",
+        "options": [
+          "5일",
+          "9일",
+          "12일"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "전체 기간은 가장 긴 경로인 임계 경로가 결정하므로 12일입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-schedule-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "critical-path"
+      ],
+      "content": {
+        "prompt": "임계 경로 위 작업이 3일 늦어지면?",
+        "options": [
+          "전체 기간이 늦어짐",
+          "영향 없음",
+          "전체 기간이 줄어듦"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "임계 경로가 전체 기간을 결정하므로 그 위의 작업이 늦어지면 프로젝트 전체가 늦어집니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-schedule-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "pert"
+      ],
+      "content": {
+        "prompt": "PERT는 작업 시간을 한 가지 값으로만 추정한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "PERT는 낙관·중간·비관 세 가지 시간으로 작업 일정을 추정합니다.",
+      "refs": []
+    }
+  ]
+}

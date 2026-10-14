@@ -1,0 +1,203 @@
+{
+  "track": "eip",
+  "unit": "u15-infra-new-tech",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "eip-mgmt-infra-newtech-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "blockchain"
+      ],
+      "content": {
+        "prompt": "거래 기록을 블록에 담아 체인으로 잇고 여러 노드가 보관하는 기술은?",
+        "options": [
+          "블록체인",
+          "LOD",
+          "HSM"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "블록체인은 거래 기록을 블록에 담아 체인으로 잇고 여러 노드가 나눠 보관합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-newtech-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "digital-twin"
+      ],
+      "content": {
+        "prompt": "현실 사물을 가상 공간에 똑같이 구현해 시뮬레이션하는 기술은?",
+        "options": [
+          "LOD",
+          "디지털 트윈",
+          "HSM"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "디지털 트윈은 현실 사물을 가상 공간에 똑같이 구현해 시뮬레이션합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-newtech-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "hsm"
+      ],
+      "content": {
+        "prompt": "암호화 키를 안전하게 생성·저장하는 보안 장치는?",
+        "options": [
+          "HSM",
+          "LOD"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "HSM은 암호화 키를 안전하게 생성·저장하는 보안 장치이며 클라우드형도 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-newtech-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "lod"
+      ],
+      "content": {
+        "prompt": "LOD는 웹 데이터를 누구나 연결·재사용하게 공개한 링크드 데이터이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "LOD(Linked Open Data)는 웹의 데이터를 누구나 연결·재사용할 수 있게 공개한 링크드 데이터입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-newtech-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "digital-twin"
+      ],
+      "content": {
+        "prompt": "현실 사물을 가상 공간에 똑같이 만든 것은 디지털 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "트윈",
+          "twin"
+        ]
+      },
+      "explanation": "디지털 트윈은 현실 사물을 가상 공간에 똑같이 구현해 시뮬레이션하는 기술입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-newtech-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "blockchain"
+      ],
+      "content": {
+        "prompt": "거래 기록을 여러 노드가 나눠 보관하는 기술은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "블록체인",
+          "blockchain"
+        ]
+      },
+      "explanation": "블록체인은 거래 기록을 블록으로 체인처럼 잇고 여러 노드가 나눠 보관합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-newtech-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "digital-twin"
+      ],
+      "content": {
+        "prompt": "공장 설비를 가상 공간에 복제해 고장을 미리 시험했다. 기술은?",
+        "options": [
+          "디지털 트윈",
+          "LOD",
+          "블록체인"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "현실 설비를 가상 공간에 똑같이 구현해 시뮬레이션했으므로 디지털 트윈입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-newtech-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "hsm"
+      ],
+      "content": {
+        "prompt": "클라우드에서 암호 키를 전용 보안 장치로 관리한다. 해당하는 것은?",
+        "options": [
+          "LOD",
+          "HSM",
+          "블록체인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "암호화 키를 안전하게 생성·저장하는 장치는 HSM이며 클라우드형 HSM도 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-newtech-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lod"
+      ],
+      "content": {
+        "prompt": "공공 데이터를 링크로 연결해 누구나 재사용하게 공개했다. 해당하는 것은?",
+        "options": [
+          "HSM",
+          "디지털 트윈",
+          "LOD"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "웹 데이터를 연결·재사용할 수 있게 공개한 것은 LOD입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-newtech-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "hsm",
+        "blockchain"
+      ],
+      "content": {
+        "prompt": "HSM은 여러 노드가 거래 기록을 나눠 보관하는 기술이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "거래 기록을 여러 노드가 나눠 보관하는 것은 블록체인입니다. HSM은 암호 키를 보관하는 보안 장치입니다.",
+      "refs": []
+    }
+  ]
+}

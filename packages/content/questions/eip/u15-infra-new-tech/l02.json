@@ -1,0 +1,207 @@
+{
+  "track": "eip",
+  "unit": "u15-infra-new-tech",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "eip-mgmt-infra-secsol-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "firewall"
+      ],
+      "content": {
+        "prompt": "정해진 규칙에 따라 네트워크 트래픽을 허용·차단하는 장비는?",
+        "options": [
+          "방화벽",
+          "VPN",
+          "허니팟"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "방화벽은 정해진 규칙에 따라 네트워크 트래픽을 허용하거나 차단합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-secsol-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ips"
+      ],
+      "content": {
+        "prompt": "탐지한 침입을 실시간으로 차단하는 시스템은?",
+        "options": [
+          "IDS",
+          "IPS",
+          "VPN"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "IPS(침입 방지 시스템)는 탐지한 침입을 실시간으로 차단합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-secsol-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ids",
+        "ips"
+      ],
+      "content": {
+        "prompt": "침입을 탐지해 알리는 역할을 하는 시스템은?",
+        "options": [
+          "IDS",
+          "IPS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "IDS(침입 탐지 시스템)는 침입을 탐지해 알립니다. 실시간 차단까지 하는 것은 IPS입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-secsol-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ids",
+        "ips"
+      ],
+      "content": {
+        "prompt": "IDS는 탐지한 침입을 실시간으로 차단한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "IDS는 침입을 탐지해 알리는 역할입니다. 실시간으로 차단하는 것은 IPS입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-secsol-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "vpn"
+      ],
+      "content": {
+        "prompt": "공중망 위에 암호화된 사설 통신 터널을 만드는 기술은 ___ 이다.",
+        "hint": "세 글자 영문 약자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "VPN",
+          "가상 사설망",
+          "가상사설망"
+        ]
+      },
+      "explanation": "VPN은 공중망 위에 암호화된 사설 통신 터널을 만듭니다. IPsec, SSL/TLS 방식이 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-secsol-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "honeypot"
+      ],
+      "content": {
+        "prompt": "공격자를 유인해 관찰하려고 일부러 노출한 시스템은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "허니팟",
+          "허니 팟",
+          "honeypot"
+        ]
+      },
+      "explanation": "허니팟은 공격자를 유인해 행동을 관찰하려고 일부러 노출한 시스템입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-secsol-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpn"
+      ],
+      "content": {
+        "prompt": "재택근무자가 사내망에 암호화 터널로 접속한다. 쓰는 것은?",
+        "options": [
+          "IDS",
+          "VPN",
+          "허니팟"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "공중망 위에 암호화된 사설 터널을 만들어 접속하므로 VPN입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-secsol-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ips"
+      ],
+      "content": {
+        "prompt": "공격 패킷을 발견하는 즉시 연결을 끊는다. 해당 시스템은?",
+        "options": [
+          "IDS",
+          "허니팟",
+          "IPS"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "탐지한 침입을 실시간으로 차단하는 것은 IPS입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-secsol-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "honeypot"
+      ],
+      "content": {
+        "prompt": "일부러 취약하게 꾸민 서버로 공격자 행동을 기록한다. 해당하는 것은?",
+        "options": [
+          "허니팟",
+          "방화벽",
+          "VPN"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "공격자를 유인해 행동을 관찰하는 시스템은 허니팟입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-secsol-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "firewall"
+      ],
+      "content": {
+        "prompt": "방화벽은 정해진 규칙에 따라 트래픽을 허용하거나 차단한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "방화벽은 미리 정한 규칙으로 네트워크 트래픽의 통과 여부를 결정합니다.",
+      "refs": []
+    }
+  ]
+}

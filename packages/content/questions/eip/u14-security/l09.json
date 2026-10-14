@@ -1,0 +1,231 @@
+{
+  "track": "eip",
+  "unit": "u14-security",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "eip-mgmt-sec-mock-001",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "availability",
+        "cia"
+      ],
+      "content": {
+        "prompt": "정보 보안 3요소 중 가용성에 대한 설명으로 옳은 것은?",
+        "options": [
+          "인가되지 않은 사람은 내용을 볼 수 없다",
+          "인가되지 않은 변경을 막는다",
+          "인가된 사용자가 필요할 때 쓸 수 있다",
+          "사용한 자원과 시간을 기록한다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "가용성은 인가된 사용자가 필요할 때 정보와 시스템을 쓸 수 있는 성질입니다. 첫째는 기밀성, 둘째는 무결성입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-mock-002",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "authentication-type"
+      ],
+      "content": {
+        "prompt": "인증 유형과 그 예를 잘못 연결한 것은?",
+        "options": [
+          "지식 - 비밀번호",
+          "소유 - 스마트카드",
+          "존재 - 지문",
+          "행위 - 토큰"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "토큰은 소유 기반 인증의 예입니다. 행위 기반 인증의 예는 서명입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-mock-003",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "authorization",
+        "aaa"
+      ],
+      "content": {
+        "prompt": "AAA에서 인증된 주체에게 허용된 권한을 부여하는 것은?",
+        "options": [
+          "인증",
+          "인가",
+          "계정 관리",
+          "암호화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인가(Authorization)는 인증된 주체에게 권한을 부여합니다. 계정 관리는 활동을 기록합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-mock-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rbac"
+      ],
+      "content": {
+        "prompt": "직무·직책 같은 역할에 권한을 주고 사용자에게 역할을 부여하는 접근 통제는?",
+        "options": [
+          "DAC",
+          "MAC",
+          "RBAC",
+          "tcp wrapper"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "RBAC는 역할에 권한을 주는 역할 기반 접근 통제입니다. DAC는 소유자, MAC는 보안 등급 기준입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-mock-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "symmetric-key",
+        "rsa"
+      ],
+      "content": {
+        "prompt": "다음 중 대칭키 암호 알고리즘에 해당하지 않는 것은?",
+        "options": [
+          "DES",
+          "RSA",
+          "AES",
+          "SEED"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "RSA는 공개키와 개인키 한 쌍을 쓰는 공개키 암호입니다. DES·AES·SEED는 대칭키 암호입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-mock-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sql-injection"
+      ],
+      "content": {
+        "prompt": "SQL 삽입 공격에 대한 대응으로 옳은 것은?",
+        "options": [
+          "매개변수화된 쿼리 사용",
+          "입력값 검증 생략",
+          "오류 메시지에 쿼리 노출",
+          "모든 입력을 그대로 실행"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "매개변수화된 쿼리와 입력값 검증은 SQL 삽입의 대표 대응입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-mock-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "land-attack"
+      ],
+      "content": {
+        "prompt": "Land 공격에 대한 설명으로 옳은 것은?",
+        "options": [
+          "SYN만 대량으로 보낸다",
+          "규정보다 큰 ICMP 패킷을 보낸다",
+          "출발지와 목적지 IP를 같게 위조한다",
+          "브로드캐스트로 응답을 증폭한다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Land 공격은 출발지와 목적지 IP를 같게 위조합니다. 나머지는 SYN 플러딩, Ping of Death, 스머프입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-mock-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "public-key"
+      ],
+      "content": {
+        "prompt": "RSA 같은 공개키 암호 방식에 대한 설명으로 틀린 것은?",
+        "options": [
+          "공개키와 개인키 한 쌍을 쓴다",
+          "RSA가 대표적이다",
+          "개인키로 전자서명을 만든다",
+          "암호화와 복호화에 같은 키를 쓴다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "같은 키로 암호화와 복호화를 하는 것은 대칭키 암호입니다. 공개키 암호는 키 한 쌍을 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-mock-009",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "salt",
+        "hash"
+      ],
+      "content": {
+        "prompt": "해시와 솔트에 대한 설명으로 옳은 것은?",
+        "options": [
+          "MD5는 현재 안전한 해시다",
+          "솔트는 같은 비밀번호도 해시를 다르게 한다",
+          "해시 값에서 입력을 쉽게 역산한다",
+          "해시 출력 길이는 입력에 비례한다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "솔트를 덧붙이면 같은 비밀번호도 다른 해시가 됩니다. MD5는 취약하고, 해시는 역산이 어려우며 출력은 고정 길이입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-mock-010",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "switch-jamming"
+      ],
+      "content": {
+        "prompt": "위조 MAC 주소를 대량으로 흘려 스위치의 MAC 테이블을 넘치게 하는 공격은?",
+        "options": [
+          "스위치 재밍",
+          "세션 하이재킹",
+          "스머프",
+          "랜섬웨어"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스위치 재밍은 위조 MAC 주소로 스위치 MAC 테이블을 넘치게 하는 공격입니다.",
+      "refs": []
+    }
+  ]
+}

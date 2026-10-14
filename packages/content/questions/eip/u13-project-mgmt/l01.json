@@ -1,0 +1,213 @@
+{
+  "track": "eip",
+  "unit": "u13-project-mgmt",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "eip-mgmt-project-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "project-management"
+      ],
+      "content": {
+        "prompt": "일정·비용·품질 목표를 맞추도록 계획하고 통제하는 활동은?",
+        "options": [
+          "프로젝트 관리",
+          "형상 관리",
+          "요구 분석"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "프로젝트 관리는 일정·비용·품질 목표를 맞추도록 계획하고 통제하는 활동입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-project-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "wbs",
+        "project-management"
+      ],
+      "content": {
+        "prompt": "프로젝트 작업을 계층적으로 잘게 나눈 작업 분해 구조는?",
+        "options": [
+          "CPM",
+          "WBS",
+          "DFD"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "WBS(Work Breakdown Structure)는 프로젝트 작업을 계층적으로 잘게 나눈 작업 분해 구조입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-project-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "3p",
+        "project-management"
+      ],
+      "content": {
+        "prompt": "프로젝트 관리의 3P에 속하지 않는 것은?",
+        "options": [
+          "사람",
+          "문제",
+          "제품"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "3P는 사람(People), 문제(Problem), 프로세스(Process)입니다. 제품은 3P에 들어가지 않습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-project-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "3p",
+        "project-management"
+      ],
+      "content": {
+        "prompt": "3P의 Process는 프로젝트에 참여하는 사람을 뜻한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Process는 일을 진행하는 절차를 뜻합니다. 참여하는 사람은 People입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-project-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "3p",
+        "project-management"
+      ],
+      "content": {
+        "prompt": "3P에서 People을 우리말로 쓰면 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "사람",
+          "인력",
+          "인적 자원"
+        ]
+      },
+      "explanation": "People은 사람입니다. 3P는 사람, 문제, 프로세스로 이루어집니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-project-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "wbs",
+        "project-management"
+      ],
+      "content": {
+        "prompt": "작업을 계층적으로 분해한 구조의 영문 약자는 ___ 이다.",
+        "hint": "세 글자 영문 약자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "WBS",
+          "Work Breakdown Structure"
+        ]
+      },
+      "explanation": "WBS는 Work Breakdown Structure의 약자로, 작업을 계층적으로 잘게 나눈 구조입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-project-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "3p",
+        "people"
+      ],
+      "content": {
+        "prompt": "팀원의 역량과 의사소통을 다루는 것은 3P 중 무엇인가?",
+        "options": [
+          "사람",
+          "문제",
+          "프로세스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "팀원 역량·의사소통은 사람(People) 관리입니다. 문제는 과제 범위, 프로세스는 진행 절차입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-project-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "3p",
+        "problem"
+      ],
+      "content": {
+        "prompt": "해결할 과제의 범위와 요구를 분석하는 것은 3P 중 무엇인가?",
+        "options": [
+          "사람",
+          "문제",
+          "프로세스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "해결할 과제의 범위와 요구를 분석하는 것은 문제(Problem) 관리입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-project-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "wbs",
+        "project-management"
+      ],
+      "content": {
+        "prompt": "'설계'를 '화면 설계'와 'DB 설계'로 나눴다. 만드는 것은?",
+        "options": [
+          "간트 차트",
+          "WBS",
+          "3P"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "작업을 하위 작업으로 계층적으로 나누는 것은 WBS를 만드는 일입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-project-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "project-management"
+      ],
+      "content": {
+        "prompt": "프로젝트 관리의 대상에는 일정·비용·품질·위험이 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "프로젝트 관리는 일정, 비용, 품질, 위험을 대상으로 계획하고 통제합니다.",
+      "refs": []
+    }
+  ]
+}

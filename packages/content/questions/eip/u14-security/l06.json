@@ -1,0 +1,215 @@
+{
+  "track": "eip",
+  "unit": "u14-security",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "eip-mgmt-sec-input-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sql-injection",
+        "secure-coding"
+      ],
+      "content": {
+        "prompt": "외부 입력값에 SQL을 넣어 DB 쿼리를 조작하는 공격은?",
+        "options": [
+          "SQL 삽입",
+          "XSS",
+          "CSRF"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SQL 삽입은 외부 입력값에 SQL을 넣어 DB 쿼리를 조작하는 공격입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-input-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "xss",
+        "secure-coding"
+      ],
+      "content": {
+        "prompt": "검증 안 된 입력으로 브라우저에서 악성 스크립트를 실행하는 공격은?",
+        "options": [
+          "CSRF",
+          "XSS",
+          "SQL 삽입"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "XSS는 검증되지 않은 입력으로 사용자 브라우저에서 악성 스크립트를 실행시키는 공격입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-input-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "csrf",
+        "secure-coding"
+      ],
+      "content": {
+        "prompt": "사용자가 의도치 않은 요청을 인증된 상태로 보내게 하는 공격은?",
+        "options": [
+          "XSS",
+          "CSRF"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "CSRF는 인증된 사용자가 의도하지 않은 요청을 서버에 보내게 만드는 공격입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-input-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sql-injection",
+        "xss"
+      ],
+      "content": {
+        "prompt": "SQL 삽입은 사용자 브라우저에서 스크립트를 실행하는 공격이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "브라우저에서 스크립트를 실행하는 것은 XSS입니다. SQL 삽입은 DB 쿼리를 조작합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-input-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sql-injection",
+        "secure-coding"
+      ],
+      "content": {
+        "prompt": "SQL 삽입 대응으로 입력을 값으로만 넘기는 ___ 쿼리를 쓴다.",
+        "hint": "쿼리에 변수 자리를 두고 값을 따로 바인딩하는 방식입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "매개변수화된",
+          "매개변수화",
+          "파라미터화된",
+          "parameterized",
+          "prepared statement"
+        ]
+      },
+      "explanation": "매개변수화된 쿼리는 입력을 SQL 문장이 아닌 값으로만 넘겨 쿼리 조작을 막습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-input-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "xss",
+        "secure-coding"
+      ],
+      "content": {
+        "prompt": "XSS 대응으로 출력 시 특수문자를 바꾸는 것은 출력 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "이스케이프",
+          "이스케이핑",
+          "escape",
+          "escaping"
+        ]
+      },
+      "explanation": "출력 이스케이프는 특수문자를 안전한 문자로 바꿔 스크립트가 실행되지 않게 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-input-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sql-injection"
+      ],
+      "content": {
+        "prompt": "아이디 칸에 ' OR '1'='1 을 넣어 로그인됐다. 공격은?",
+        "options": [
+          "SQL 삽입",
+          "XSS",
+          "CSRF"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "입력값에 SQL 조건을 끼워 넣어 쿼리를 조작했으므로 SQL 삽입입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-input-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "xss"
+      ],
+      "content": {
+        "prompt": "게시글 속 스크립트가 읽는 사람 브라우저에서 실행됐다. 공격은?",
+        "options": [
+          "CSRF",
+          "SQL 삽입",
+          "XSS"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "검증 안 된 입력이 다른 사용자 브라우저에서 스크립트로 실행되었으므로 XSS입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-input-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "csrf"
+      ],
+      "content": {
+        "prompt": "로그인한 사용자가 링크를 눌러 원치 않는 송금 요청을 보냈다. 공격은?",
+        "options": [
+          "XSS",
+          "CSRF",
+          "SQL 삽입"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인증된 상태를 이용해 사용자가 의도하지 않은 요청을 보내게 했으므로 CSRF입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-input-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sql-injection",
+        "secure-coding"
+      ],
+      "content": {
+        "prompt": "입력값 검증은 SQL 삽입을 막는 대응 방법이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "입력값 검증과 매개변수화된 쿼리는 SQL 삽입을 막는 대표 대응입니다.",
+      "refs": []
+    }
+  ]
+}

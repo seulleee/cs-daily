@@ -1,0 +1,209 @@
+{
+  "track": "eip",
+  "unit": "u14-security",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "eip-mgmt-sec-dos-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dos"
+      ],
+      "content": {
+        "prompt": "자원을 고갈시켜 서비스를 못 쓰게 하는 공격은?",
+        "options": [
+          "DoS",
+          "스니핑",
+          "XSS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DoS(서비스 거부)는 자원을 고갈시켜 정상 사용자가 서비스를 쓰지 못하게 하는 공격입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-dos-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "syn-flooding",
+        "dos"
+      ],
+      "content": {
+        "prompt": "연결 요청(SYN)만 대량으로 보내 연결 대기 자원을 고갈시키는 공격은?",
+        "options": [
+          "Land 공격",
+          "SYN 플러딩",
+          "스머프"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SYN 플러딩은 SYN만 대량으로 보내 서버의 연결 대기 자원을 고갈시킵니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-dos-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "land-attack",
+        "dos"
+      ],
+      "content": {
+        "prompt": "출발지와 목적지 IP를 같게 위조한 패킷을 보내는 공격은?",
+        "options": [
+          "Land 공격",
+          "Ping of Death"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Land 공격은 출발지와 목적지 IP를 같게 위조한 패킷을 보냅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-dos-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ddos"
+      ],
+      "content": {
+        "prompt": "여러 대가 동시에 서비스 거부 공격을 하면 DDoS라 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "여러 대의 시스템이 동시에 서비스 거부 공격을 하면 분산 서비스 거부(DDoS)입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-dos-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ping-of-death",
+        "dos"
+      ],
+      "content": {
+        "prompt": "규정보다 큰 ICMP 패킷을 보내는 공격은 Ping of ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Death",
+          "데스"
+        ]
+      },
+      "explanation": "Ping of Death는 규정 크기보다 큰 ICMP 패킷을 보내 대상 시스템을 마비시키는 공격입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-dos-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "smurf",
+        "dos"
+      ],
+      "content": {
+        "prompt": "브로드캐스트로 ICMP 응답을 증폭시키는 공격은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스머프",
+          "스머핑",
+          "Smurf",
+          "smurfing"
+        ]
+      },
+      "explanation": "스머프 공격은 브로드캐스트를 이용해 대상에게 ICMP 응답이 몰리도록 증폭시킵니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-dos-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "land-attack"
+      ],
+      "content": {
+        "prompt": "출발지·목적지 IP가 모두 10.0.0.5인 패킷이 쏟아진다. 공격은?",
+        "options": [
+          "스머프",
+          "SYN 플러딩",
+          "Land 공격"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "출발지와 목적지 IP가 같게 위조된 패킷이므로 Land 공격입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-dos-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ddos"
+      ],
+      "content": {
+        "prompt": "수천 대의 감염 PC가 한 서버로 동시에 요청을 보낸다. 공격은?",
+        "options": [
+          "DDoS",
+          "Land 공격",
+          "Ping of Death"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "여러 대가 동시에 서비스 거부 공격을 하므로 DDoS입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-dos-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "syn-flooding"
+      ],
+      "content": {
+        "prompt": "SYN만 오고 ACK가 오지 않아 연결 대기가 가득 찼다. 공격은?",
+        "options": [
+          "스머프",
+          "SYN 플러딩",
+          "Ping of Death"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SYN만 대량으로 보내 연결 대기 자원을 고갈시키는 SYN 플러딩입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-dos-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "syn-flooding",
+        "land-attack"
+      ],
+      "content": {
+        "prompt": "SYN 플러딩은 출발지와 목적지 IP를 같게 위조한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "출발지와 목적지 IP를 같게 위조하는 것은 Land 공격입니다. SYN 플러딩은 SYN만 대량으로 보냅니다.",
+      "refs": []
+    }
+  ]
+}
