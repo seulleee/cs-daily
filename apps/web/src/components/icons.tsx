@@ -50,6 +50,24 @@ const FLAME_INNER = 'M12 20.2a2.7 2.7 0 0 0 2.7-2.7c0-1.2-.7-1.9-1.3-2.8-.5-.7-.
  *  - 아직: 윤곽선 불꽃(stroke 2, currentColor)이 정지해 있다. 놓인 자리의 글자색을 따른다.
  * 외곽선 굵기는 렌더 크기와 무관하게 화면 1px이 되도록 viewBox 단위로 환산한다.
  */
+/** 채움 불꽃 한 프레임(바깥 빨강 + 안쪽 주황 + 1px ink 외곽선). FlameLive의 프레임 A와 FlameFilled이 같은 경로·색을 쓴다 */
+function FlameFrameA({ size }: { size: number }) {
+  const outline = 24 / size;
+  return (
+    <>
+      <path d={FLAME_A} style={{ fill: 'var(--color-flame-outer)', stroke: 'var(--color-ink)', strokeWidth: outline }} />
+      <path d={FLAME_INNER} style={{ fill: 'var(--color-flame-inner)', stroke: 'none' }} />
+    </>
+  );
+}
+
+/** 정지한 채움 불꽃(애니메이션 없음). 달력의 목표 달성일·범례처럼 움직임 없이 FlameLive 채움 모양만 필요할 때 */
+export const FlameFilled = ({ size = 24, ...p }: Omit<IconProps, 'solid'>) => (
+  <Icon size={size} {...p}>
+    <FlameFrameA size={Number(size)} />
+  </Icon>
+);
+
 export const FlameLive = ({ lit = false, size = 24, ...p }: Omit<IconProps, 'solid'> & { lit?: boolean }) => {
   if (!lit) {
     return (
@@ -64,8 +82,7 @@ export const FlameLive = ({ lit = false, size = 24, ...p }: Omit<IconProps, 'sol
   return (
     <Icon size={size} {...p}>
       <g className="flame-a" data-live="true">
-        <path d={FLAME_A} style={outer} />
-        <path d={FLAME_INNER} style={inner} />
+        <FlameFrameA size={Number(size)} />
       </g>
       <g className="flame-b" data-live="true">
         <path d={FLAME_B} style={outer} />
