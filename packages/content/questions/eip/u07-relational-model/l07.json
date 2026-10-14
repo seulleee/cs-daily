@@ -1,0 +1,205 @@
+{
+  "track": "eip",
+  "unit": "u07-relational-model",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "eip-db-rel-calculus-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "relational-calculus"
+      ],
+      "content": {
+        "prompt": "원하는 결과만 정의하는 비절차적 언어는?",
+        "options": [
+          "관계대수",
+          "관계해석",
+          "디비전"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "관계해석은 어떻게 구할지가 아니라 원하는 결과만 정의하는 비절차적 언어입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-calculus-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "quantifier",
+        "relational-calculus"
+      ],
+      "content": {
+        "prompt": "'모든 것에 대하여'를 뜻하는 정량자 기호는?",
+        "options": [
+          "∀",
+          "∃",
+          "σ"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "∀는 전칭 정량자로 \"모든 것에 대하여\"를 뜻합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-calculus-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "quantifier",
+        "relational-calculus"
+      ],
+      "content": {
+        "prompt": "'어느 것 하나라도 존재한다'를 뜻하는 기호는?",
+        "options": [
+          "∀",
+          "∃"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "∃는 존재 정량자로 \"어느 것 하나라도 존재한다\"를 뜻합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-calculus-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "relational-calculus",
+        "relational-algebra"
+      ],
+      "content": {
+        "prompt": "관계해석은 관계대수보다 표현력이 약하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "관계해석과 관계대수는 표현력이 같습니다. 차이는 절차적이냐 비절차적이냐입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-calculus-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "quantifier"
+      ],
+      "content": {
+        "prompt": "∀는 ___ 정량자이다.",
+        "hint": "\"모든 것에 대하여\"를 뜻하는 두 글자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "전칭",
+          "universal"
+        ]
+      },
+      "explanation": "∀는 전칭 정량자, ∃는 존재 정량자입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-calculus-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "quantifier"
+      ],
+      "content": {
+        "prompt": "∃는 ___ 정량자이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "존재",
+          "existential"
+        ]
+      },
+      "explanation": "∃는 존재 정량자로, 조건을 만족하는 것이 하나라도 있음을 뜻합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-calculus-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "relational-calculus"
+      ],
+      "content": {
+        "prompt": "변수로 튜플을 쓰는 관계해석은?",
+        "options": [
+          "튜플 관계해석",
+          "도메인 관계해석"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "튜플 관계해석은 튜플을, 도메인 관계해석은 속성 값을 변수로 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-calculus-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "relational-calculus"
+      ],
+      "content": {
+        "prompt": "변수로 속성 값(도메인)을 쓰는 관계해석은?",
+        "options": [
+          "튜플 관계해석",
+          "도메인 관계해석"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "도메인 관계해석은 속성 값을 변수로 씁니다. 튜플을 변수로 쓰면 튜플 관계해석입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-calculus-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "quantifier",
+        "relational-calculus"
+      ],
+      "content": {
+        "prompt": "'90점 이상인 학생이 한 명이라도 있다'에 쓰는 기호는?",
+        "options": [
+          "∀",
+          "π",
+          "∃"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "\"하나라도 존재한다\"는 존재 정량자 ∃로 표현합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-calculus-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "relational-calculus"
+      ],
+      "content": {
+        "prompt": "관계해석은 구하는 방법이 아니라 원하는 결과를 정의한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "관계해석은 비절차적 언어라서 결과를 얻는 순서 대신 결과의 조건만 정의합니다.",
+      "refs": []
+    }
+  ]
+}

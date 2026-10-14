@@ -1,0 +1,212 @@
+{
+  "track": "eip",
+  "unit": "u08-sql",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "eip-sql-join-set-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "join"
+      ],
+      "content": {
+        "prompt": "조건에 따라 두 테이블의 행을 연결해 한 행으로 만드는 것은?",
+        "options": [
+          "UNION",
+          "JOIN",
+          "EXCEPT"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "JOIN은 조건이 맞는 두 테이블의 행을 옆으로 이어 한 행으로 만듭니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-join-set-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "union",
+        "set-operation"
+      ],
+      "content": {
+        "prompt": "중복을 제거한 합집합을 구하는 집합 연산은?",
+        "options": [
+          "UNION",
+          "UNION ALL",
+          "INTERSECT"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "UNION은 합집합에서 중복 행을 제거합니다. UNION ALL은 중복을 그대로 둡니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-join-set-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "union",
+        "set-operation"
+      ],
+      "content": {
+        "prompt": "중복을 포함한 합집합을 구하는 집합 연산은?",
+        "options": [
+          "UNION",
+          "UNION ALL"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "UNION ALL은 두 결과를 중복 제거 없이 모두 합칩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-join-set-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "intersect",
+        "set-operation"
+      ],
+      "content": {
+        "prompt": "INTERSECT는 두 결과 중 한쪽에만 있는 행을 남긴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "INTERSECT는 양쪽 모두에 있는 행(교집합)을 남깁니다. 한쪽에만 있는 행은 EXCEPT로 구합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-join-set-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "except",
+        "set-operation"
+      ],
+      "content": {
+        "prompt": "차집합을 구하는 집합 연산은 ___ 이다.",
+        "hint": "\"제외하고\"를 뜻하는 영어 단어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "EXCEPT",
+          "MINUS",
+          "익셉트"
+        ]
+      },
+      "explanation": "EXCEPT는 앞 결과에서 뒤 결과에 있는 행을 뺀 차집합입니다. 일부 DBMS는 MINUS라고 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-join-set-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "intersect",
+        "set-operation"
+      ],
+      "content": {
+        "prompt": "교집합을 구하는 집합 연산은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "INTERSECT",
+          "인터섹트"
+        ]
+      },
+      "explanation": "INTERSECT는 두 결과 모두에 있는 행만 남깁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-join-set-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "union",
+        "set-operation"
+      ],
+      "content": {
+        "prompt": "한 열짜리 A={1,2,3}, B={2,3,4}일 때 A UNION B의 행 수는?",
+        "options": [
+          "4",
+          "6",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "UNION은 중복을 제거하므로 1, 2, 3, 4의 4행입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-join-set-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "union",
+        "set-operation"
+      ],
+      "content": {
+        "prompt": "한 열짜리 A={1,2,3}, B={2,3,4}일 때 A UNION ALL B의 행 수는?",
+        "options": [
+          "4",
+          "6",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "UNION ALL은 중복을 그대로 두므로 3행 + 3행 = 6행입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-join-set-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "except",
+        "set-operation"
+      ],
+      "content": {
+        "prompt": "한 열짜리 A={1,2,3}, B={2,3,4}일 때 A EXCEPT B의 결과는?",
+        "options": [
+          "4",
+          "2와 3",
+          "1"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "A에서 B에도 있는 2, 3을 빼면 1만 남습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-join-set-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "join"
+      ],
+      "content": {
+        "prompt": "JOIN은 두 테이블의 행을 조건으로 짝지어 한 행으로 합친다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "JOIN은 조건이 맞는 행끼리 짝지어 열을 이어 붙입니다. 결과를 위아래로 합치는 것은 UNION입니다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "track": "eip",
+  "unit": "u08-sql",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "eip-sql-view-index-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "view"
+      ],
+      "content": {
+        "prompt": "기본 테이블에서 유도된 가상 테이블은?",
+        "options": [
+          "뷰",
+          "인덱스",
+          "스키마"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "뷰는 기본 테이블에서 유도된 가상 테이블입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-view-index-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "index"
+      ],
+      "content": {
+        "prompt": "열 값으로 행 위치를 빠르게 찾게 하는 자료구조는?",
+        "options": [
+          "뷰",
+          "인덱스",
+          "도메인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인덱스는 열 값으로 행의 위치를 빠르게 찾도록 따로 만든 자료구조입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-view-index-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "view"
+      ],
+      "content": {
+        "prompt": "뷰의 정의를 바꾸려면 어떻게 하는가?",
+        "options": [
+          "삭제 후 다시 생성",
+          "ALTER로 변경"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "뷰는 ALTER로 정의를 바꾸지 않고, 삭제한 뒤 다시 생성합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-view-index-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "view"
+      ],
+      "content": {
+        "prompt": "뷰 위에 다시 뷰를 만들 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "뷰를 기반으로 또 다른 뷰를 정의할 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-view-index-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "view",
+        "check-option"
+      ],
+      "content": {
+        "prompt": "뷰 조건을 벗어나는 갱신을 막는 옵션은 WITH ___ OPTION이다.",
+        "hint": "검사한다는 뜻의 영어 단어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "CHECK",
+          "체크"
+        ]
+      },
+      "explanation": "WITH CHECK OPTION은 뷰의 조건을 벗어나는 삽입·갱신을 막습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-view-index-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "view"
+      ],
+      "content": {
+        "prompt": "뷰는 삽입·갱신·___ 연산에 제약이 있다."
+      },
+      "answer_key": {
+        "accepted": [
+          "삭제",
+          "DELETE"
+        ]
+      },
+      "explanation": "뷰는 가상 테이블이라 삽입·갱신·삭제에 제약이 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-view-index-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "view",
+        "check-option"
+      ],
+      "content": {
+        "prompt": "학년=3 조건 뷰에 WITH CHECK OPTION이 있다. 학년=2 행을 넣으면?",
+        "options": [
+          "거부된다",
+          "허용된다",
+          "뷰가 삭제된다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "WITH CHECK OPTION은 뷰 조건(학년=3)을 벗어나는 행의 삽입을 거부합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-view-index-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "index"
+      ],
+      "content": {
+        "prompt": "이메일로 행을 자주 찾는데 느리다. 이메일 열에 만들 것은?",
+        "options": [
+          "뷰",
+          "인덱스",
+          "외래키"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인덱스를 만들면 이메일 값으로 행 위치를 빠르게 찾을 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-view-index-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "view"
+      ],
+      "content": {
+        "prompt": "뷰에 대한 설명으로 맞는 것은?",
+        "options": [
+          "기본 테이블과 무관",
+          "데이터를 따로 저장",
+          "가상 테이블"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "뷰는 기본 테이블에서 유도된 가상 테이블이라 기본 테이블에 의존합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-view-index-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "view",
+        "index"
+      ],
+      "content": {
+        "prompt": "인덱스는 기본 테이블에서 유도된 가상 테이블이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "기본 테이블에서 유도된 가상 테이블은 뷰입니다. 인덱스는 행 위치를 빠르게 찾기 위한 자료구조입니다.",
+      "refs": []
+    }
+  ]
+}

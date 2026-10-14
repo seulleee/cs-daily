@@ -1,0 +1,210 @@
+{
+  "track": "eip",
+  "unit": "u09-normalization-transaction",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "eip-dist-db-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "distributed-db"
+      ],
+      "content": {
+        "prompt": "여러 사이트의 데이터를 논리적으로 하나의 DB로 쓰는 것은?",
+        "options": [
+          "분산 데이터베이스",
+          "데이터 사전",
+          "뷰"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "분산 데이터베이스는 여러 사이트에 나뉜 데이터를 논리적으로 하나의 DB처럼 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dist-db-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "partitioning"
+      ],
+      "content": {
+        "prompt": "한 테이블을 기준 열 값으로 여러 조각에 나눠 저장하는 것은?",
+        "options": [
+          "정규화",
+          "파티셔닝",
+          "인덱스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "파티셔닝은 기준 열 값에 따라 한 테이블을 여러 파티션으로 나눠 저장합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dist-db-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "transparency",
+        "distributed-db"
+      ],
+      "content": {
+        "prompt": "데이터가 어느 사이트에 있는지 몰라도 되는 투명성은?",
+        "options": [
+          "위치 투명성",
+          "장애 투명성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "위치 투명성은 사용자가 데이터의 저장 위치를 몰라도 쓸 수 있게 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dist-db-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "transparency",
+        "distributed-db"
+      ],
+      "content": {
+        "prompt": "분산 DB 사용자는 데이터가 어떻게 나뉘었는지 알아야 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "투명성 덕분에 사용자는 데이터가 분산되어 있다는 사실을 몰라도 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dist-db-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "partitioning",
+        "range-partition"
+      ],
+      "content": {
+        "prompt": "값의 구간으로 나누는 파티셔닝은 ___ 분할이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "범위",
+          "RANGE",
+          "레인지"
+        ]
+      },
+      "explanation": "범위(RANGE) 분할은 날짜·숫자 같은 값의 구간으로 파티션을 나눕니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dist-db-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "partitioning",
+        "hash-partition"
+      ],
+      "content": {
+        "prompt": "해시 함수 값으로 나누는 파티셔닝은 ___ 분할이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "해시",
+          "HASH"
+        ]
+      },
+      "explanation": "해시(HASH) 분할은 기준 열에 해시 함수를 적용한 값으로 파티션을 정합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dist-db-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "partitioning",
+        "range-partition"
+      ],
+      "content": {
+        "prompt": "주문일을 월 구간별로 나눠 저장한다. 분할 방식은?",
+        "options": [
+          "목록",
+          "범위",
+          "해시"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "날짜를 구간으로 나누므로 범위(RANGE) 분할입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dist-db-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "partitioning",
+        "list-partition"
+      ],
+      "content": {
+        "prompt": "지역 값 '서울', '부산'처럼 값 목록으로 나눈다. 분할 방식은?",
+        "options": [
+          "해시",
+          "범위",
+          "목록"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "정해진 값의 목록으로 파티션을 나누므로 목록(LIST) 분할입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dist-db-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "transparency",
+        "distributed-db"
+      ],
+      "content": {
+        "prompt": "한 사이트가 고장 나도 사용자는 모르고 계속 쓴다. 이 투명성은?",
+        "options": [
+          "장애 투명성",
+          "위치 투명성",
+          "중복 투명성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "일부 사이트 장애를 사용자가 의식하지 않게 하는 것이 장애 투명성입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dist-db-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "distributed-db"
+      ],
+      "content": {
+        "prompt": "분산 DB는 나뉜 데이터를 논리적으로 하나의 DB로 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "분산 데이터베이스는 물리적으로 여러 사이트에 있지만 논리적으로는 하나의 DB입니다.",
+      "refs": []
+    }
+  ]
+}

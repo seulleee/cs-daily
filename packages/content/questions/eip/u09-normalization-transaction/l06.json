@@ -1,0 +1,206 @@
+{
+  "track": "eip",
+  "unit": "u09-normalization-transaction",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "eip-tx-locking-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "concurrency-control"
+      ],
+      "content": {
+        "prompt": "동시 트랜잭션들이 일관성을 해치지 않게 조정하는 것은?",
+        "options": [
+          "병행 제어",
+          "정규화",
+          "반정규화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "병행 제어는 동시에 실행되는 트랜잭션들이 일관성을 해치지 않도록 조정합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-locking-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "locking",
+        "concurrency-control"
+      ],
+      "content": {
+        "prompt": "데이터에 락을 걸어 다른 트랜잭션의 접근을 제어하는 기법은?",
+        "options": [
+          "인덱싱",
+          "로킹",
+          "정규화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "로킹은 데이터에 락을 걸어 다른 트랜잭션의 접근을 제어하는 병행 제어 기법입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-locking-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "locking",
+        "lock-granularity"
+      ],
+      "content": {
+        "prompt": "로킹 단위가 클 때 병행성은?",
+        "options": [
+          "높아진다",
+          "낮아진다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "로킹 단위가 크면 한 번에 많은 데이터가 잠겨 병행성이 낮아집니다. 대신 관리는 쉽습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-locking-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "locking",
+        "lock-granularity"
+      ],
+      "content": {
+        "prompt": "로킹 단위가 작으면 관리가 쉬워진다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "로킹 단위가 작으면 락 수가 늘어 관리가 어렵습니다. 대신 병행성은 높아집니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-locking-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "two-phase-locking"
+      ],
+      "content": {
+        "prompt": "2PL에서 락을 얻기만 하는 단계는 ___ 단계이다.",
+        "hint": "늘어난다는 뜻의 두 글자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "확장",
+          "growing"
+        ]
+      },
+      "explanation": "2단계 로킹은 락을 얻기만 하는 확장 단계 뒤에 풀기만 하는 축소 단계가 옵니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-locking-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "two-phase-locking"
+      ],
+      "content": {
+        "prompt": "2PL에서 락을 풀기만 하는 단계는 ___ 단계이다.",
+        "hint": "줄어든다는 뜻의 두 글자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "축소",
+          "shrinking"
+        ]
+      },
+      "explanation": "축소 단계에서는 락을 풀기만 하고 새 락을 얻지 않습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-locking-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lock-granularity"
+      ],
+      "content": {
+        "prompt": "로킹 단위를 테이블에서 행으로 줄이면?",
+        "options": [
+          "병행성 증가",
+          "병행성 감소",
+          "변화 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "로킹 단위가 작아지면 잠기는 범위가 줄어 병행성이 높아집니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-locking-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "two-phase-locking"
+      ],
+      "content": {
+        "prompt": "2PL에서 락을 하나 푼 트랜잭션이 새 락을 얻을 수 있나?",
+        "options": [
+          "있다",
+          "없다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "락을 하나라도 풀면 축소 단계라서 새 락을 얻을 수 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-locking-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lock-granularity"
+      ],
+      "content": {
+        "prompt": "로킹 단위를 데이터베이스 전체로 잡으면 관리 부담은?",
+        "options": [
+          "커진다",
+          "변화 없다",
+          "작아진다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "로킹 단위가 크면 락 수가 적어 관리가 쉬워집니다. 대신 병행성은 낮습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-locking-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "concurrency-control"
+      ],
+      "content": {
+        "prompt": "병행 제어는 동시 실행 트랜잭션이 일관성을 해치지 않게 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "병행 제어의 목적은 동시에 실행되는 트랜잭션들 사이에서 데이터 일관성을 지키는 것입니다.",
+      "refs": []
+    }
+  ]
+}

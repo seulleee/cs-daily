@@ -1,0 +1,211 @@
+{
+  "track": "eip",
+  "unit": "u09-normalization-transaction",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "eip-norm-bcnf-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bcnf",
+        "normal-form"
+      ],
+      "content": {
+        "prompt": "결정자가 하나도 빠짐없이 후보키여야 하는 정규형은?",
+        "options": [
+          "3NF",
+          "BCNF",
+          "4NF"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "BCNF는 모든 결정자가 후보키인 정규형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-bcnf-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "읽기 속도를 위해 정규화된 테이블에 중복을 다시 들이는 것은?",
+        "options": [
+          "반정규화",
+          "정규화",
+          "분해"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "반정규화는 조회 성능을 높이려고 일부러 중복을 허용하는 것입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-bcnf-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "4nf",
+        "normal-form"
+      ],
+      "content": {
+        "prompt": "BCNF 다음 단계인 4NF에서 제거하는 종속은?",
+        "options": [
+          "다치 종속",
+          "이행 함수 종속"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "4NF는 다치 종속을 제거합니다. 이행 함수 종속은 3NF에서 제거합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-bcnf-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "5nf",
+        "normal-form"
+      ],
+      "content": {
+        "prompt": "5NF는 조인 종속을 제거한 정규형이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "5NF는 조인 종속을, 4NF는 다치 종속을 제거한 정규형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-bcnf-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "bcnf",
+        "normal-form"
+      ],
+      "content": {
+        "prompt": "3NF 다음 단계의 정규형은 ___ 이다.",
+        "hint": "영문 약어 네 글자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "BCNF",
+          "보이스코드 정규형",
+          "보이스 코드 정규형"
+        ]
+      },
+      "explanation": "정규형 순서는 1NF → 2NF → 3NF → BCNF → 4NF → 5NF입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-bcnf-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "4nf",
+        "normal-form"
+      ],
+      "content": {
+        "prompt": "다치 종속을 제거한 정규형은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "4NF",
+          "제4정규형",
+          "4정규형"
+        ]
+      },
+      "explanation": "4NF는 다치 종속을 제거한 정규형입니다. 조인 종속 제거는 5NF입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-bcnf-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normal-form"
+      ],
+      "content": {
+        "prompt": "정규형 순서로 옳은 것은?",
+        "options": [
+          "BCNF→3NF→4NF",
+          "3NF→4NF→BCNF",
+          "3NF→BCNF→4NF"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "순서는 1NF → 2NF → 3NF → BCNF → 4NF → 5NF입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-bcnf-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bcnf",
+        "determinant"
+      ],
+      "content": {
+        "prompt": "후보키가 아닌 결정자가 남아 있다. 만족하지 못하는 정규형은?",
+        "options": [
+          "1NF",
+          "BCNF"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "BCNF는 모든 결정자가 후보키여야 하므로, 후보키가 아닌 결정자가 있으면 BCNF가 아닙니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-bcnf-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "조인이 많아 조회가 느려 일부 열을 일부러 중복 저장했다. 이것은?",
+        "options": [
+          "정규화",
+          "반정규화",
+          "이상 현상"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "조회 성능을 위해 의도적으로 중복을 허용했으므로 반정규화입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-bcnf-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "bcnf",
+        "determinant"
+      ],
+      "content": {
+        "prompt": "BCNF는 결정자 중 하나만 후보키이면 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "BCNF는 모든 결정자가 후보키여야 합니다. 하나라도 후보키가 아닌 결정자가 있으면 BCNF가 아닙니다.",
+      "refs": []
+    }
+  ]
+}
