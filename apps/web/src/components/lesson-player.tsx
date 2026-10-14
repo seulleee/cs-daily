@@ -7,6 +7,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import type { CompleteSessionResponse, RetryAnswerResponse, SessionResponse, SubmitAnswerResponse, UserAnswer } from '@cs-daily/contracts';
 import { api, ApiError } from '@/lib/api';
 import { CheckIcon, RepeatIcon, XIcon } from './icons';
+import { useKeyboardInset } from '@/lib/use-keyboard-inset';
 import { useHeight, useOverflowing } from '@/lib/use-measure';
 import { QuestionRenderer, correctAnswerText } from './question-renderers';
 import { Window } from './window';
@@ -155,6 +156,13 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
   const [rowRef, rowH] = useHeight<HTMLDivElement>();
   const [resultRef, resultH] = useHeight<HTMLDivElement>();
   const [resultBodyRef, resultScrolls] = useOverflowing<HTMLDivElement>();
+  // 가상 키보드: iOS는 inset만큼 도크를 올리고, 열려 있으면 하단 safe-area 여백을 뺀다(Android는 inset 0)
+  const kb = useKeyboardInset();
+  useEffect(() => {
+    if (!kb.open) return;
+    const el = document.activeElement;
+    if (el instanceof HTMLInputElement) el.scrollIntoView({ block: 'nearest' });
+  }, [kb.open, kb.inset, rowH]);
 
   // 포커스: 결과가 열리면 "계속"(autoFocus), 새 문제로 넘어가면 문제 제목(빈칸 문제는 입력창)
   const focusKey = phase === 'intro' || phase === null || result ? null : `${phase}:${q?.id}`;
@@ -169,6 +177,8 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Enter' || e.defaultPrevented) return;
+      // 한글 IME 조합 중 Enter(isComposing, keyCode 229)는 조합 확정용이다. 제출하지 않는다
+      if (e.isComposing || e.keyCode === 229) return;
       const t = e.target;
       if (t instanceof HTMLButtonElement || t instanceof HTMLAnchorElement || t instanceof HTMLTextAreaElement) return;
       if (phase === 'intro') setPhase('main');
@@ -251,7 +261,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
 
       {/* 문제 영역은 헤더 아래 위쪽 고정이다. 아래 여백은 도크의 버튼 줄 높이 + 24px, 결과 창이 열리면 영역 끝에 창 높이만큼 빈 자리를 더해
           위쪽 콘텐츠는 1px도 움직이지 않고 창에 가린 보기는 스크롤로 볼 수 있다 */}
-      <section className="flex flex-1 flex-col px-4" style={{ paddingTop: 'clamp(16px, 6dvh, 48px)', paddingBottom: rowH + 24 }}>
+      <section className="flex flex-1 flex-col px-4" style={{ paddingTop: 'clamp(16px, 6dvh, 48px)', paddingBottom: rowH + 24 + kb.inset }}>
         <div className="mx-auto w-full max-w-[600px]">
           {session.data.kind === 'review' && <p className="bit mb-3 flex items-center gap-1.5 text-ink">복습 세션 · XP ×1.5</p>}
           {session.data.kind === 'placement' && (
@@ -277,7 +287,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
 
       {/* 하단 도크: 풀기 전후로 계속 같은 자리에 있다. 위쪽 = 결과 창 자리(풀기 전에는 비어 있음), 아래쪽 = 주 버튼 줄.
           "확인"과 "계속"은 같은 줄·같은 폭이라 버튼 아래 끝 y가 변하지 않는다 */}
-      <div className="fixed inset-x-0 bottom-0 border-t border-ink bg-surface">
+      <div className="fixed inset-x-0 bottom-0 border-t border-ink bg-surface" style={{ bottom: kb.inset }}>
         {result && (
           <div ref={resultRef} className="mx-auto max-w-[720px] px-4 pt-3">
             {/* 열릴 때 줌 사각형 세 개(60ms 간격)가 지나간 뒤 창이 나타난다. 닫을 때는 효과 없이 즉시 (globals.css .zoom-rect) */}
@@ -317,7 +327,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
             </div>
           </div>
         )}
-        <div ref={rowRef} className="mx-auto max-w-[720px] px-4 pb-[max(env(safe-area-inset-bottom),16px)] pt-4">
+        <div ref={rowRef} className={`mx-auto max-w-[720px] px-4 ${kb.open ? 'pb-2 pt-2' : 'pb-[max(env(safe-area-inset-bottom),16px)] pt-4'}`}>
           {/* key: 확인 ↔ 계속처럼 같은 자리의 버튼 DOM이 재사용되면 앞 버튼의 클릭 깜빡임(lib/use-flash.ts)이 다음 버튼 위에서 이어지므로 버튼마다 분리한다 */}
           {result ? (
             <button key="next" type="button" onClick={next} className="btn-3d w-full" autoFocus>

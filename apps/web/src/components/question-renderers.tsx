@@ -236,6 +236,11 @@ function FillRenderer({ question, value, onChange, revealed }: RendererProps) {
         onChange={(e) => onChange({ text: e.target.value })}
         aria-label="빈칸"
         autoComplete="off"
+        autoCapitalize="off"
+        autoCorrect="off"
+        spellCheck={false}
+        inputMode="text"
+        enterKeyHint="done"
         className="mx-1 inline-block w-40 border border-ink bg-field px-2 py-0.5 text-center text-ink focus:shadow-[inset_0_0_0_1px_var(--color-ink)]"
         style={revealed ? { borderColor: stateColor, color: stateColor, boxShadow: `inset 0 0 0 1px ${stateColor}` } : undefined}
       />

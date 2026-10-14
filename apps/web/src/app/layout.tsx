@@ -18,6 +18,8 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
+  // Android Chrome: 키보드가 열리면 레이아웃 뷰포트가 줄어 fixed bottom 도크가 키보드 위로 온다(iOS는 lib/use-keyboard-inset)
+  interactiveWidget: 'resizes-content',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
