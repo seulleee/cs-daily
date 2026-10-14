@@ -76,7 +76,7 @@ export function StreakBar({ me, className }: { me: MeResponse; className?: strin
     <div role="group" aria-label="연속 학습" className={clsx('flex h-9 flex-wrap overflow-hidden border-b border-ink bg-surface', className)}>
       <div className="flex h-[35px] items-center gap-2">
         <p className="bit flex items-center gap-1 whitespace-nowrap bg-brand-fill px-2 py-0.5 text-on-brand">
-          <FlameLive live={stats.currentStreak >= 1} size={16} className="shrink-0" />
+          <FlameLive lit={today.lessonsCompleted >= 1} size={16} className="shrink-0" />
           <span>
             <span className="sr-only">연속 학습 </span>
             {stats.currentStreak}일째

@@ -37,25 +37,43 @@ export const FlameIcon = (p: IconProps) => (
   </Icon>
 );
 
+const FLAME_A = 'M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z';
+const FLAME_B = 'M8.5 13.5A2.5 2.5 0 0 0 11 11c0-1.2-.6-2.1-1.2-3.1-1.1-2.1-.8-3.4.2-4.9.4 2.4 1.9 4.8 5.5 6.5 2 1.6 3.5 3.5 3.5 5.5a7 7 0 1 1-14 0c0-1.4.433-2.7 1-4a2.5 2.5 0 0 0 2.5 2.5z';
+/** 채움 불꽃의 안쪽 작은 불꽃(물방울 모양, 아래 가운데) */
+const FLAME_INNER = 'M12 20.2a2.7 2.7 0 0 0 2.7-2.7c0-1.2-.7-1.9-1.3-2.8-.5-.7-.9-1.4-1.4-2.2-.5.8-.9 1.5-1.4 2.2-.6.9-1.3 1.6-1.3 2.8a2.7 2.7 0 0 0 2.7 2.7z';
+
 /**
- * 살아 있는 불꽃: 24×24 SVG 하나 안에 프레임 A(위 FlameIcon과 같은 모양)와 프레임 B(불꽃 끝이 왼쪽으로 2px 기울고, 안쪽 작은 불꽃이 1px 올라간
- * 변형, 같은 stroke 2) 두 <g>를 두고 CSS `flame-flicker`(globals.css, 총 700ms, steps(1, end))로 번갈아 보여 준다.
- * 0~55%(385ms) A, 55~100%(315ms) B. 중간 모양 없이 두 프레임만 뚝뚝 바뀐다.
- * `live`는 "불이 살아 있음" = 스트릭이 1 이상일 때만 true로 준다. false면 A 한 장만 그려 정지한다(B를 DOM에 두지도 않는다).
- * 줄이기 설정(prefers-reduced-motion)에서는 CSS가 애니메이션을 빼서 A만 보인다. 색은 currentColor라 놓인 자리의 글자색을 따른다.
+ * 스트릭 불꽃, 두 상태. `lit` = 오늘 레슨을 1개 이상 끝냄.
+ *  - lit: 채움 불꽃. 바깥 실루엣 flame-outer(빨강), 안쪽 작은 불꽃 flame-inner(주황), 바깥에 1px ink 외곽선(바탕과 분리, 반전 배지 위에서도 색이 그대로 보인다).
+ *    프레임 A·B 두 <g>가 CSS `flame-flicker`(globals.css, 총 700ms, steps(1, end))로 번갈아 보인다. 0~55%(385ms) A, 55~100%(315ms) B, 중간 모양 없음.
+ *    B는 불꽃 끝이 왼쪽으로 2px 기울고 안쪽 불꽃이 1px 올라간 변형이며 두 프레임 모두 채움이다. 줄이기 설정(prefers-reduced-motion)에서는 A로 정지한다.
+ *  - 아직: 윤곽선 불꽃(stroke 2, currentColor)이 정지해 있다. 놓인 자리의 글자색을 따른다.
+ * 외곽선 굵기는 렌더 크기와 무관하게 화면 1px이 되도록 viewBox 단위로 환산한다.
  */
-export const FlameLive = ({ live = false, ...p }: IconProps & { live?: boolean }) => (
-  <Icon {...p}>
-    <g className="flame-a" data-live={live ? 'true' : undefined}>
-      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
-    </g>
-    {live && (
-      <g className="flame-b" data-live="true">
-        <path d="M8.5 13.5A2.5 2.5 0 0 0 11 11c0-1.2-.6-2.1-1.2-3.1-1.1-2.1-.8-3.4.2-4.9.4 2.4 1.9 4.8 5.5 6.5 2 1.6 3.5 3.5 3.5 5.5a7 7 0 1 1-14 0c0-1.4.433-2.7 1-4a2.5 2.5 0 0 0 2.5 2.5z" />
+export const FlameLive = ({ lit = false, size = 24, ...p }: Omit<IconProps, 'solid'> & { lit?: boolean }) => {
+  if (!lit) {
+    return (
+      <Icon size={size} {...p}>
+        <path d={FLAME_A} />
+      </Icon>
+    );
+  }
+  const outline = 24 / Number(size);
+  const outer = { fill: 'var(--color-flame-outer)', stroke: 'var(--color-ink)', strokeWidth: outline } as const;
+  const inner = { fill: 'var(--color-flame-inner)', stroke: 'none' } as const;
+  return (
+    <Icon size={size} {...p}>
+      <g className="flame-a" data-live="true">
+        <path d={FLAME_A} style={outer} />
+        <path d={FLAME_INNER} style={inner} />
       </g>
-    )}
-  </Icon>
-);
+      <g className="flame-b" data-live="true">
+        <path d={FLAME_B} style={outer} />
+        <path d={FLAME_INNER} style={inner} transform="translate(0 -1)" />
+      </g>
+    </Icon>
+  );
+};
 
 /** XP */
 export const ZapIcon = (p: IconProps) => (

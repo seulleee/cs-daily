@@ -36,6 +36,10 @@
   --color-streak: #000000;
   --color-xp: #000000;
 
+  /* 스트릭 불꽃(오늘 레슨을 끝냈을 때 채움). 라이트·다크 공통. 바깥 실루엣 빨강, 안쪽 주황. 바탕과의 분리는 1px ink 외곽선이 한다 */
+  --color-flame-outer: #e0301e;
+  --color-flame-inner: #ff9f1c;
+
   /* 타이포: 본문·문제·보기·해설 = IBM Plex Sans KR. 제목·큰 숫자·버튼·칩·라벨·창 제목 = 비트맵 글꼴. 폰트는 layout.tsx의 <link>로 로드 */
   --font-sans: "IBM Plex Sans KR", Pretendard, system-ui, sans-serif;
   /* 코드 블록 전용 */
@@ -468,8 +472,8 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   .stamp { animation: stamp 120ms steps(3, end); }
 
   /*
-   * 스트릭 불꽃(components/icons.tsx FlameLive): 프레임 A·B 두 <g>가 700ms 주기로 번갈아 보인다(0~55% A, 55~100% B, 중간 모양 없음).
-   * 기본은 A만 보인다(B는 숨김). 움직이는 것은 스트릭이 1 이상일 때 컴포넌트가 data-live를 단 경우뿐이고, 줄이기 설정에서는 아래 미디어 쿼리가 뺀다.
+   * 스트릭 불꽃(components/icons.tsx FlameLive): 오늘 레슨을 끝낸 채움 상태에서만 프레임 A·B 두 <g>가 700ms 주기로 번갈아 보인다(0~55% A, 55~100% B, 중간 모양 없음, 두 프레임 모두 채움).
+   * 윤곽 상태(오늘 아직)는 <g> 없이 정지한다. 줄이기 설정에서는 아래 미디어 쿼리가 애니메이션을 빼 A로 정지한다.
    */
   .flame-b { visibility: hidden; }
   .flame-a[data-live="true"] { animation: flame-flicker 700ms steps(1, end) infinite; }
