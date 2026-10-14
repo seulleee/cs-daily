@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useId, type CSSProperties, type ReactNode } from 'react';
+import { useId, type CSSProperties, type HTMLAttributes, type ReactNode, type Ref } from 'react';
 
 /**
  * 창(Window) 크롬 — 디자인 "Platinum"의 기억에 남는 요소.
@@ -16,6 +16,7 @@ export function Window({
   className,
   bodyClassName = 'p-4',
   bodyStyle,
+  bodyProps,
   children,
 }: {
   title: string;
@@ -24,6 +25,8 @@ export function Window({
   /** 본문 영역(타이틀바 아래)의 클래스. 기본 패딩 16px */
   bodyClassName?: string;
   bodyStyle?: CSSProperties;
+  /** 본문 div에 그대로 넘기는 속성(ref·tabIndex·aria-label·role). 스크롤되는 본문을 키보드로 닿게 할 때 쓴다 */
+  bodyProps?: HTMLAttributes<HTMLDivElement> & { ref?: Ref<HTMLDivElement> };
   children: ReactNode;
 }) {
   const titleId = useId();
@@ -35,7 +38,7 @@ export function Window({
           {title}
         </span>
       </div>
-      <div className={bodyClassName} style={bodyStyle}>
+      <div {...bodyProps} className={bodyClassName} style={bodyStyle}>
         {children}
       </div>
     </section>

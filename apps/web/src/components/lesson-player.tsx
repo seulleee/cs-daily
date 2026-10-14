@@ -7,6 +7,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import type { CompleteSessionResponse, RetryAnswerResponse, SessionResponse, SubmitAnswerResponse, UserAnswer } from '@cs-daily/contracts';
 import { api, ApiError } from '@/lib/api';
 import { CheckIcon, RepeatIcon, XIcon } from './icons';
+import { useHeight, useOverflowing } from '@/lib/use-measure';
 import { QuestionRenderer, correctAnswerText } from './question-renderers';
 import { Window } from './window';
 
@@ -20,8 +21,8 @@ type Graded = { isCorrect: boolean; correctAnswer?: unknown; explanation: string
 
 const MAX_RETRY = 2;
 
-/** 오답 시트의 본문 바탕. 주 버튼 링의 간격색도 같은 바탕에 맞춘다 */
-const WRONG_BODY = { background: 'var(--color-wrong-bg)', '--ring-gap': 'var(--color-wrong-bg)' } as CSSProperties;
+/** 결과 창 높이 상한: 화면의 절반, 최대 360px. 본문(타이틀바 24 + 테두리 2를 뺀 부분)만 스크롤된다 */
+const RESULT_BODY_STYLE = { maxHeight: 'calc(min(50dvh, 360px) - 26px)' } as CSSProperties;
 
 /** "용어 — 정의" 형태의 핵심 정리를 첫 " — " 기준으로 나눈다. 구분자가 없으면 통째로 정의로 본다 */
 function splitKeyPoint(kp: string): { term: string | null; definition: string } {
@@ -122,6 +123,10 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
   }, [phase, retryQueue.length]);
 
   const next = () => {
+    // 결과를 먼저 걷어 다음 문제가 앞 문제의 정오답 표시를 한 프레임도 물려받지 않게 한다
+    setDraft(null);
+    setResult(null);
+    startedAt.current = Date.now();
     if (phase === 'main') {
       setIndex((i) => i + 1);
       return;
@@ -146,10 +151,27 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
   const canSubmit = draft !== null && !(typeof draft === 'object' && 'text' in draft && !draft.text.trim()) && !(('indices' in (draft ?? {})) && (draft as { indices: number[] }).indices.length === 0);
   const pending = submit.isPending || retry.isPending;
 
-  // Enter: 확인 또는 다음
+  // 하단 도크: 버튼 줄 높이(문제 영역 아래 여백)와 결과 창 높이(문제 영역 끝의 빈 자리), 해설이 넘칠 때의 스크롤 여부
+  const [rowRef, rowH] = useHeight<HTMLDivElement>();
+  const [resultRef, resultH] = useHeight<HTMLDivElement>();
+  const [resultBodyRef, resultScrolls] = useOverflowing<HTMLDivElement>();
+
+  // 포커스: 결과가 열리면 "계속"(autoFocus), 새 문제로 넘어가면 문제 제목(빈칸 문제는 입력창)
+  const focusKey = phase === 'intro' || phase === null || result ? null : `${phase}:${q?.id}`;
+  useEffect(() => {
+    if (!focusKey) return;
+    const el = document.querySelector<HTMLElement>('input[aria-label="빈칸"], [data-question-heading]');
+    el?.focus({ preventScroll: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [focusKey]);
+
+  // Enter: 확인 또는 다음. 버튼·링크에 포커스가 있으면 브라우저가 Enter를 click으로 바꿔 주므로 여기서는 건드리지 않는다(이중 실행 방지).
+  // 빈칸 입력창의 Enter는 기본 동작이 없어 여기서 제출로 받는다
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Enter') return;
+      if (e.key !== 'Enter' || e.defaultPrevented) return;
+      const t = e.target;
+      if (t instanceof HTMLButtonElement || t instanceof HTMLAnchorElement || t instanceof HTMLTextAreaElement) return;
       if (phase === 'intro') setPhase('main');
       else if (result) next();
       else if (canSubmit && q && !pending) check();
@@ -228,8 +250,9 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
         </span>
       </header>
 
-      {/* 문제 영역은 헤더와 하단 버튼 사이에서 세로 가운데 정렬 (콘텐츠가 길면 위에서부터 스크롤) */}
-      <section className={`flex flex-1 flex-col justify-center px-4 pt-4 ${result ? 'pb-72' : 'pb-40 md:pb-44'}`}>
+      {/* 문제 영역은 헤더 아래 위쪽 고정이다. 아래 여백은 도크의 버튼 줄 높이 + 24px, 결과 창이 열리면 영역 끝에 창 높이만큼 빈 자리를 더해
+          위쪽 콘텐츠는 1px도 움직이지 않고 창에 가린 보기는 스크롤로 볼 수 있다 */}
+      <section className="flex flex-1 flex-col px-4" style={{ paddingTop: 'clamp(16px, 6dvh, 48px)', paddingBottom: rowH + 24 }}>
         <div className="mx-auto w-full max-w-[600px]">
           {session.data.kind === 'review' && <p className="bit mb-3 flex items-center gap-1.5 text-ink">복습 세션 · XP ×1.5</p>}
           {session.data.kind === 'placement' && (
@@ -245,58 +268,69 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
           <QuestionRenderer question={q} value={draft} onChange={setDraft} revealed={result ? { correctAnswer: result.correctAnswer, isCorrect: result.isCorrect } : null} />
           {(submit.isError || retry.isError) && <p className="mt-3 text-cap text-wrong">{((submit.error ?? retry.error) as ApiError).message}</p>}
         </div>
+        <div aria-hidden style={{ height: result ? resultH : 0 }} />
       </section>
 
-      {/* 하단 고정: 확인 또는 정오답 시트(창 크롬, 제목 "결과") */}
-      {result ? (
-        <div role="status" className="fixed inset-x-0 bottom-0 px-4 pb-[max(env(safe-area-inset-bottom),16px)]">
-          {/* 열릴 때 줌 사각형 세 개(60ms 간격)가 지나간 뒤 창이 나타난다. 닫을 때는 효과 없이 즉시 (globals.css .zoom-rect) */}
-          <div className="relative mx-auto max-w-[720px]">
-            <div aria-hidden className="zoom-rect zoom-rect-1" />
-            <div aria-hidden className="zoom-rect zoom-rect-2" />
-            <div aria-hidden className="zoom-rect zoom-rect-3" />
-            <Window title="결과" className="sheet-win" bodyStyle={result.isCorrect ? undefined : WRONG_BODY}>
-              <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <span
-                      aria-hidden
-                      className={`flex h-6 w-6 shrink-0 items-center justify-center ${result.isCorrect ? 'bg-correct-fill text-on-correct' : 'bg-wrong text-on-wrong'}`}
-                    >
-                      {result.isCorrect ? <CheckIcon size={16} strokeWidth={3} /> : <XIcon size={16} strokeWidth={3} />}
-                    </span>
-                    <p className={`bit ${result.isCorrect ? 'text-ink' : 'text-wrong'}`}>
-                      {result.isCorrect ? (result.xpDelta > 0 ? `정답! +${result.xpDelta} XP` : '정답!') : phase === 'retry' ? '한 번 더 볼게요' : '아쉬워요'}
-                    </p>
-                    {!result.isCorrect && phase === 'main' && (
-                      <span className="rounded-full border border-ink px-2.5 py-0.5 text-cap font-medium text-ink-2">끝에서 다시 풀어요</span>
-                    )}
-                  </div>
-                  {answerText && (
-                    <p className="mt-3 text-body">
-                      <span className="text-ink-2">정답 </span>
-                      <strong className="font-semibold">{answerText}</strong>
-                    </p>
+      {/* 스크린 리더용 결과 안내(시각적으로는 결과 창이 같은 내용을 보여 준다) */}
+      <div className="sr-only" aria-live="polite">
+        {result && `${result.isCorrect ? '정답입니다.' : '오답입니다.'}${answerText ? ` 정답 ${answerText}.` : ''} ${result.explanation}`}
+      </div>
+
+      {/* 하단 도크: 풀기 전후로 계속 같은 자리에 있다. 위쪽 = 결과 창 자리(풀기 전에는 비어 있음), 아래쪽 = 주 버튼 줄.
+          "확인"과 "계속"은 같은 줄·같은 폭이라 버튼 아래 끝 y가 변하지 않는다 */}
+      <div className="fixed inset-x-0 bottom-0 border-t border-ink bg-surface">
+        {result && (
+          <div ref={resultRef} className="mx-auto max-w-[720px] px-4 pt-3">
+            {/* 열릴 때 줌 사각형 세 개(60ms 간격)가 지나간 뒤 창이 나타난다. 닫을 때는 효과 없이 즉시 (globals.css .zoom-rect) */}
+            <div className="relative">
+              <div aria-hidden className="zoom-rect zoom-rect-1" />
+              <div aria-hidden className="zoom-rect zoom-rect-2" />
+              <div aria-hidden className="zoom-rect zoom-rect-3" />
+              <Window
+                title="결과"
+                className="sheet-win"
+                bodyClassName="overflow-y-auto p-4"
+                bodyStyle={RESULT_BODY_STYLE}
+                bodyProps={{ ref: resultBodyRef, ...(resultScrolls ? { tabIndex: 0, role: 'region', 'aria-label': '해설' } : {}) }}
+              >
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <span
+                    aria-hidden
+                    className={`flex h-6 w-6 shrink-0 items-center justify-center ${result.isCorrect ? 'bg-correct-fill text-on-correct' : 'bg-wrong text-on-wrong'}`}
+                  >
+                    {result.isCorrect ? <CheckIcon size={16} strokeWidth={3} /> : <XIcon size={16} strokeWidth={3} />}
+                  </span>
+                  <p className={`bit ${result.isCorrect ? 'text-ink' : 'text-wrong'}`}>
+                    {result.isCorrect ? (result.xpDelta > 0 ? `정답! +${result.xpDelta} XP` : '정답!') : phase === 'retry' ? '한 번 더 볼게요' : '아쉬워요'}
+                  </p>
+                  {!result.isCorrect && phase === 'main' && (
+                    <span className="border border-ink px-2.5 py-0.5 text-cap font-medium text-ink-2">끝에서 다시 풀어요</span>
                   )}
-                  <p className="mt-2 text-body">{result.explanation}</p>
                 </div>
-                <button key="next" type="button" onClick={next} className="btn-3d w-full md:w-40" autoFocus>
-                  계속
-                </button>
-              </div>
-            </Window>
+                {answerText && (
+                  <p className="mt-3 text-body">
+                    <span className="text-ink-2">정답 </span>
+                    <strong className="font-semibold">{answerText}</strong>
+                  </p>
+                )}
+                <p className="mt-2 text-body">{result.explanation}</p>
+              </Window>
+            </div>
           </div>
-        </div>
-      ) : (
-        <footer className="fixed inset-x-0 bottom-0 border-t border-ink bg-surface pb-[max(env(safe-area-inset-bottom),16px)] pt-4">
-          <div className="mx-auto max-w-[720px] px-4">
-            {/* key: 시작 → 확인처럼 같은 자리의 버튼 DOM이 재사용되면 앞 버튼의 클릭 깜빡임(lib/use-flash.ts)이 비활성 버튼 위에서 이어지므로 버튼마다 분리한다 */}
+        )}
+        <div ref={rowRef} className="mx-auto max-w-[720px] px-4 pb-[max(env(safe-area-inset-bottom),16px)] pt-4">
+          {/* key: 확인 ↔ 계속처럼 같은 자리의 버튼 DOM이 재사용되면 앞 버튼의 클릭 깜빡임(lib/use-flash.ts)이 다음 버튼 위에서 이어지므로 버튼마다 분리한다 */}
+          {result ? (
+            <button key="next" type="button" onClick={next} className="btn-3d w-full" autoFocus>
+              계속
+            </button>
+          ) : (
             <button key="check" type="button" disabled={!canSubmit || pending} onClick={check} className="btn-3d w-full">
               {pending ? '채점 중…' : '확인'}
             </button>
-          </div>
-        </footer>
-      )}
+          )}
+        </div>
+      </div>
     </div>
   );
 }

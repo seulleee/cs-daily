@@ -33,7 +33,7 @@ export function QuestionRenderer(props: RendererProps) {
 function Prompt({ prompt, code }: { prompt: string; code?: { language: string; source: string } | null }) {
   return (
     <div className="mb-6">
-      <h2 className="text-title font-semibold">{prompt}</h2>
+      <h2 tabIndex={-1} data-question-heading className="text-title font-semibold outline-none">{prompt}</h2>
       {code && <CodeBlock source={code.source} className="mt-3" />}
     </div>
   );
