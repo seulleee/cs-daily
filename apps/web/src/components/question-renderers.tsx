@@ -70,7 +70,7 @@ export function correctAnswerText(question: PublicQuestion, correctAnswer: unkno
 
 /**
  * 채점 후 보기 오른쪽 끝의 상태 아이콘. 정답은 색이 아니라 아이콘(check)+굵은 테두리로, 오답은 x+wrong 테두리로 구분한다.
- * 정답 check는 도장처럼 찍히고(.stamp), 오답은 아이콘이 아니라 보기 줄 전체가 흔들린다(.option[data-state="wrong"]).
+ * 정답 check는 도장처럼 찍히고(.stamp), 오답은 wrong 2px 테두리와 x 아이콘만 보여 준다(움직임 없음).
  */
 function StateIcon({ state }: { state: 'correct' | 'wrong' | undefined }) {
   if (state === 'correct') return <CheckIcon size={22} strokeWidth={3} className="stamp shrink-0 text-correct" />;
@@ -186,7 +186,7 @@ function FillRenderer({ question, value, onChange, revealed }: RendererProps) {
           onChange={(e) => onChange({ text: e.target.value })}
           aria-label="빈칸"
           autoComplete="off"
-          className={`mx-1 inline-block w-40 border border-ink bg-field px-2 py-0.5 text-center text-ink focus:shadow-[inset_0_0_0_1px_var(--color-ink)]${revealed && !revealed.isCorrect ? ' shake' : ''}`}
+          className="mx-1 inline-block w-40 border border-ink bg-field px-2 py-0.5 text-center text-ink focus:shadow-[inset_0_0_0_1px_var(--color-ink)]"
           style={revealed ? { borderColor: revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)', color: revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)', boxShadow: `inset 0 0 0 1px ${revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)'}` } : undefined}
         />
         {revealed && (

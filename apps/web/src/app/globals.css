@@ -294,7 +294,7 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   }
   .option[data-selected="true"] { box-shadow: inset 0 0 0 1px var(--color-ink); }
   .option[data-state="correct"] { box-shadow: inset 0 0 0 1px var(--color-ink); background: var(--color-correct-bg); }
-  .option[data-state="wrong"] { border-color: var(--color-wrong); box-shadow: inset 0 0 0 1px var(--color-wrong); background: var(--color-wrong-bg); animation: shake 240ms steps(1, end); }
+  .option[data-state="wrong"] { border-color: var(--color-wrong); box-shadow: inset 0 0 0 1px var(--color-wrong); background: var(--color-wrong-bg); }
 
   /* 라디오 원(.mark) / 체크 상자(.mark-box). 켜지면 안쪽이 채워진다 */
   .mark {
@@ -464,9 +464,8 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   .score-ring { background: conic-gradient(var(--color-ink) calc(var(--p) * 1%), var(--color-surface-2) 0); }
   .score-ring-anim { animation: ring-fill 600ms steps(10, end); }
 
-  /* 정답 체크는 도장처럼 쿵 찍힌다 / 오답 보기와 빈칸은 좌우로 흔들린다 */
+  /* 정답 체크는 도장처럼 쿵 찍힌다. 오답은 움직이지 않는다(wrong 테두리와 x만) */
   .stamp { animation: stamp 120ms steps(3, end); }
-  .shake { animation: shake 240ms steps(1, end); }
 
   /*
    * 스트릭 불꽃(components/icons.tsx FlameLive): 프레임 A·B 두 <g>가 700ms 주기로 번갈아 보인다(0~55% A, 55~100% B, 중간 모양 없음).
@@ -511,13 +510,6 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   from { transform: scale(1.6); }
   to { transform: scale(1); }
 }
-/* −3px → +3px → −2px → 0, 60ms씩 4칸 */
-@keyframes shake {
-  0% { transform: translateX(-3px); }
-  25% { transform: translateX(3px); }
-  50% { transform: translateX(-2px); }
-  75%, 100% { transform: translateX(0); }
-}
 /* 줌 사각형: 60ms마다 하나씩 (작은 → 중간 → 최종 크기). 창은 사각형이 끝나는 180ms에 나타난다 */
 @keyframes zoom-rect-1 {
   0% { opacity: 1; }
@@ -560,8 +552,8 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
 @media (prefers-reduced-motion: reduce) {
   .ants rect, .ants-sm rect, .ants-xs rect { animation: none; }
   .btn-3d.is-flash, .pad.is-flash,
-  .option[data-state="wrong"], .option[data-selected="true"] .mark::after, .option[data-state="correct"] .mark::after,
-  .stamp, .shake, .zoom-rect, .sheet-win, .score-ring-anim { animation: none; }
+  .option[data-selected="true"] .mark::after, .option[data-state="correct"] .mark::after,
+  .stamp, .zoom-rect, .sheet-win, .score-ring-anim { animation: none; }
   /* 불꽃은 A 프레임 고정 (B는 기본값대로 숨김) */
   .flame-a[data-live="true"], .flame-b[data-live="true"] { animation: none; }
 }
