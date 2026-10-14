@@ -14,6 +14,7 @@ type ToastState = { id: number; message: string; kind: ToastKind; leaving?: bool
 type ToastApi = { show: (message: string, opts?: { kind?: ToastKind }) => void };
 
 const DURATION_MS = 2500;
+const EXIT_FALLBACK_MS = 300;
 const Ctx = createContext<ToastApi | null>(null);
 
 export function useToast(): ToastApi {
@@ -36,9 +37,21 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       return;
     }
     setToast((t) => (t ? { ...t, leaving: true } : t));
+    // animationend가 오지 않는 경우(백그라운드 탭, CSS 미적용 등)의 폴백
+    const id = seq.current;
+    timer.current = setTimeout(() => {
+      timer.current = null;
+      setToast((t) => (t && t.id === id ? null : t));
+    }, EXIT_FALLBACK_MS);
   }, []);
 
-  const remove = useCallback((id: number) => setToast((t) => (t && t.id === id ? null : t)), []);
+  const remove = useCallback((id: number) => {
+    if (id === seq.current && timer.current) {
+      clearTimeout(timer.current);
+      timer.current = null;
+    }
+    setToast((t) => (t && t.id === id ? null : t));
+  }, []);
 
   // 교체(연속 저장)는 퇴장 없이 바로 새 토스트로 바꾼다
   const show = useCallback<ToastApi['show']>((message, opts) => {
