@@ -50,7 +50,13 @@
 
 ## 화면 규칙 (웹)
 
-- 전역 컴포넌트 클래스(`.card .btn-3d .option .input`)는 `@layer components` 안에 둔다. 밖에 두면 Tailwind 유틸리티보다 우선해 `bg-*` 같은 조합이 무시된다(실제로 유닛 헤더가 사라졌던 버그).
+- **디자인 "Platinum"(2026-10-14, #37)** — 90년대 데스크톱 GUI의 문법을 빌린 거의 흑백 룩. Apple 고유 요소(사과 로고·Chicago 글꼴·Finder 창 모양)는 쓰지 않는다. 기억 요소: 줄무늬 타이틀바 **창**(`components/window.tsx`), **반전(inverse video)** 선택, **디더** 패턴, 현재 노드의 **개미 행렬** 점선. 모든 면은 바탕과 같은 색(평면) + 1px ink 테두리 + 블러 없는 `2px 2px 0` 그림자. 입력 필드만 `--color-field`(흰색).
+  - 토큰: 라이트 ground/surface `#DCDCDC`, line `#8A8A8A`, ink `#000`, ink-2 `#555`, wrong `#BD0F29`; 다크 ground/surface `#262626`, line `#7A7A7A`, ink `#F2F2F2`, ink-2 `#B5B5B5`, wrong `#FF7474`. brand/correct는 ink와 같다(색이 아니라 반전·테두리·아이콘으로 표현). 유채색은 오답 빨강 하나.
+  - 글꼴: 디스플레이(제목·숫자·버튼·라벨·창 제목) **Neo둥근모**(jsdelivr `neodgm/neodgm-webfont`, 폴백 Galmuri11 → Plex Mono) — **16px 정수배(`bit`16 / `bit-2`32 / `bit-3`48)로만**. 본문·문제·해설은 IBM Plex Sans KR. `next/font/google`은 이 환경에서 빌드가 막혀 쓰지 않고 `<link>`로 로드한다.
+  - 정보 위계: 현재 레슨만 반전(검정 패드 + 개미 행렬), 완료는 디더 + 판 위 check, 잠김은 윤곽만. 현재 유닛 헤더만 ink. 스트릭은 홈 상단 36px 상태 바의 **반전 배지**(`3일째`) + 12px 주간 칸(달성 채움·프리즈 디더·오늘 미달성 개미 행렬·미래 윤곽). 탭 바·사이드바 선택은 **아이콘 타일(28px)만 반전**.
+  - 모션(전부 `steps()`, ≤200ms, `prefers-reduced-motion`에서 제거): 주 버튼 클릭 깜빡임 1회(`lib/use-flash.ts`), 누르는 동안 반전, 정답 check 스탬프, 오답 행 흔들림, 정·오답 창 **줌 사각형** 열림, 결과 링 10단계 채움, 스트릭 불꽃 2프레임(`FlameLive`, 스트릭 ≥1일 때만). 그 외 모션 금지.
+  - 아이콘은 `components/icons.tsx` 인라인 SVG(이모지 금지). 글자 대비 4.5:1 이상(토큰 바꾸면 전 조합 재계산).
+- 전역 컴포넌트 클래스(`.card .btn-3d .btn-outline .option .input .chip .pad .meter`)는 `@layer components` 안에 둔다. 밖에 두면 Tailwind 유틸리티보다 우선해 `bg-*` 같은 조합이 무시된다(실제로 유닛 헤더가 사라졌던 버그). `ring` 같은 Tailwind 유틸리티 이름과 겹치는 클래스명을 만들지 않는다(결과 링은 `score-ring`).
 - 테마는 `<html data-theme>`로 제어한다(`lib/theme.ts`, 시스템/라이트/다크, 기기별 localStorage, 첫 페인트 전 인라인 스크립트). 색은 CSS 변수만 쓰고 하드코딩하지 않는다.
 - 레슨 플레이어 문제 영역은 헤더와 하단 버튼 사이에서 **세로 가운데 정렬**, 폭 600px.
 - 마지막으로 본 트랙 탭은 기기에 저장한다(`lib/last-track.ts`). `/learn`으로 돌아올 때 URL → 저장값 → 첫 트랙 순.
@@ -78,7 +84,7 @@
 
 ## 남은 일
 
-- [ ] 디자인 개편("Deep Focus": 스픽의 차분한 다크 네이비 + 듀오링고의 경로·3D 버튼). 시안은 Claude 디자인 캔버스 "CS 데일리 디자인 시안"(8장), 토큰·구성 스펙은 세션 스크래치 `design-spec.md`. 사용자 톤 결정 후 Sonnet 서브에이전트가 구현
+- [ ] 디자인 후속: 실기기(iOS 안전 영역, DPR 2~3에서 비트맵 선명도, 11px 배지 가독성, 150ms 깜빡임 체감) 확인, Safari·Firefox의 `@property` 결과 링 확인, 필요하면 Neo둥근모 woff2(44KB, OFL) `public/fonts` 자체 호스팅
 - [ ] 계정 탈퇴: 로그인 화면이 "설정에서 탈퇴"라고 안내하지만 삭제 기능·API가 없다 → `DELETE /me` + 설정 화면 버튼 추가, 또는 안내 문구 수정
 - [ ] 미작성 유닛 keyPoints 손질(2026-10-13 재배치 뒤 어긋난 것): os `u04` l07 "페이지 폴트 … 트랩" → "예외(폴트)"로(새 2유닛의 트랩 정의와 충돌), os `u07` l08 파이프의 "블로킹"은 I/O 모델 유닛보다 먼저 나오니 풀어서 쓰기, dsa `u09` l08 "비교 정렬의 하한"에서 결정 트리·힙 정렬 언급 제거(트리·힙 유닛보다 앞)
 - [ ] Resend API 키 등록(이메일 리마인더)
