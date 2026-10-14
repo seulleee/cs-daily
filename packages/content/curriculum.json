@@ -4157,7 +4157,7 @@
       "slug": "eip",
       "name": "정보처리기사",
       "description": "필기 5과목 — 소프트웨어 설계부터 정보시스템 구축 관리까지 시험 범위 드릴",
-      "phase": "phase2",
+      "phase": "mvp",
       "units": [
         {
           "slug": "u01-sw-lifecycle",
