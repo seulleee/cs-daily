@@ -338,14 +338,17 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   @media (min-width: 768px) {
     .toast-host { top: 24px; }
   }
+  /* 성공 = 반전(brand-fill), 오류 = wrong 바탕. 그림자는 반전 바탕과 붙지 않게 line 색 */
   .toast {
-    background: var(--color-surface);
+    background: var(--color-brand-fill);
     border: 1px solid var(--color-ink);
     border-radius: 0;
-    box-shadow: 2px 2px 0 var(--color-ink);
-    color: var(--color-ink);
+    box-shadow: 2px 2px 0 var(--color-line);
+    color: var(--color-on-brand);
     animation: toast-in 160ms steps(4, end);
   }
+  .toast[data-kind="error"] { background: var(--color-wrong); color: var(--color-on-wrong); }
+  .toast button:focus-visible { outline: 2px solid currentColor; outline-offset: -4px; }
   .toast.toast-leaving { animation: toast-out 120ms steps(4, end) forwards; }
 
   .card { background: var(--color-surface); border: 1px solid var(--color-ink); border-radius: 0; }

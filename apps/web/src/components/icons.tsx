@@ -167,6 +167,13 @@ export const XIcon = (p: IconProps) => (
   </Icon>
 );
 
+export const AlertIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M12 4v11" />
+    <path d="M12 20h.01" />
+  </Icon>
+);
+
 export const PlayIcon = (p: IconProps) => (
   <Icon {...p}>
     <polygon points="6 3 20 12 6 21 6 3" />
