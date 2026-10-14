@@ -91,7 +91,7 @@
       "answer_key": {
         "index": 1
       },
-      "explanation": "동적 배열은 가득 차면 보통 2배 크기의 배열을 새로 만들어 원소를 복사합니다.",
+      "explanation": "동적 배열은 가득 차면 보통 2배 크기의 배열을 새로 만들어 원소를 복사합니다. 비율은 구현마다 달라 Java ArrayList는 약 1.5배입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Dynamic_array",
         "https://en.wikipedia.org/wiki/Amortized_analysis"

@@ -46,7 +46,7 @@
       "answer_key": {
         "index": 2
       },
-      "explanation": "LIMIT n은 결과의 앞에서 n행만 돌려줍니다. ORDER BY와 함께 쓰면 상위 n행을 얻습니다.",
+      "explanation": "LIMIT n은 결과의 앞에서 n행만 돌려줍니다(MySQL·PostgreSQL). SQL Server는 TOP, 표준 SQL과 Oracle은 FETCH FIRST n ROWS ONLY를 씁니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-limit.html"
       ]
@@ -135,7 +135,7 @@
           "리밋"
         ]
       },
-      "explanation": "LIMIT 3은 결과의 앞에서 3행만 돌려줍니다.",
+      "explanation": "LIMIT 3은 결과의 앞에서 3행만 돌려줍니다. MySQL·PostgreSQL 문법이며 SQL Server는 TOP 3, Oracle은 FETCH FIRST 3 ROWS ONLY를 씁니다.",
       "refs": [
         "https://www.postgresql.org/docs/current/queries-limit.html"
       ]

@@ -73,7 +73,7 @@
       "answer_key": {
         "index": 1
       },
-      "explanation": "write는 커널에 출력을 요청하는 시스템 콜입니다. printf는 내부에서 write를 부르는 라이브러리 함수입니다.",
+      "explanation": "write는 커널에 출력을 요청하는 시스템 콜이고 printf는 이를 부르는 라이브러리 함수입니다. 리눅스·macOS 기준이며 Windows는 이름이 다릅니다.",
       "refs": [
         "https://man7.org/linux/man-pages/man2/syscalls.2.html",
         "https://en.wikipedia.org/wiki/System_call"
@@ -147,7 +147,7 @@
           "errno"
         ]
       },
-      "explanation": "시스템 콜은 실패하면 보통 −1을 돌려주고, 실패 원인은 errno에 오류 코드로 담깁니다.",
+      "explanation": "유닉스 계열(리눅스·macOS)의 C에서는 시스템 콜이 실패하면 보통 −1을 돌려주고, 원인은 errno에 오류 코드로 담깁니다.",
       "refs": [
         "https://man7.org/linux/man-pages/man3/errno.3.html",
         "https://man7.org/linux/man-pages/man2/intro.2.html"
@@ -173,7 +173,7 @@
       "answer_key": {
         "index": 2
       },
-      "explanation": "printf는 출력할 문자열을 만든 뒤 내부에서 write 시스템 콜을 불러 커널에 출력을 요청합니다.",
+      "explanation": "printf는 문자열을 만든 뒤 write 시스템 콜로 커널에 출력을 요청합니다. 리눅스·macOS 기준이며 Windows는 WriteFile 등을 거칩니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/System_call",
         "https://man7.org/linux/man-pages/man2/syscalls.2.html"
@@ -223,7 +223,7 @@
       "answer_key": {
         "index": 1
       },
-      "explanation": "시스템 콜은 실패하면 −1을 돌려줍니다. 실패 원인은 errno에 담긴 오류 코드로 확인합니다.",
+      "explanation": "유닉스 계열에서 시스템 콜은 실패하면 −1을 돌려주고, 원인은 errno에 담긴 오류 코드로 확인합니다.",
       "refs": [
         "https://man7.org/linux/man-pages/man2/intro.2.html",
         "https://man7.org/linux/man-pages/man3/errno.3.html"
