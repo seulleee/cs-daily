@@ -2,8 +2,10 @@
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useState, type ReactNode } from 'react';
+import { useFlash } from './use-flash';
 
 export function Providers({ children }: { children: ReactNode }) {
+  useFlash();
   const [client] = useState(
     () =>
       new QueryClient({

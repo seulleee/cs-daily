@@ -5,13 +5,17 @@ import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import { api } from '@/lib/api';
+import { afterFlash } from '@/lib/use-flash';
 import { CheckIcon, LockIcon, PlayIcon, StarIcon } from './icons';
 
-/** 레슨 세션 시작 → 레슨 플레이어로 이동. 학습 경로와 "다음 레슨" 카드가 함께 쓴다 */
+/** 레슨 세션 시작 → 레슨 플레이어로 이동. 학습 경로와 "다음 레슨" 카드가 함께 쓴다. 응답이 아무리 빨라도 클릭 깜빡임(150ms)이 끝난 뒤에 넘어간다 */
 export function useStartLesson() {
   const router = useRouter();
   return useMutation({
-    mutationFn: (lessonId: number) => api<SessionResponse>(`/lessons/${lessonId}/sessions`, { method: 'POST' }),
+    mutationFn: async (lessonId: number) => {
+      const [session] = await Promise.all([api<SessionResponse>(`/lessons/${lessonId}/sessions`, { method: 'POST' }), afterFlash()]);
+      return session;
+    },
     onSuccess: (s) => router.push(`/lesson/${s.id}`),
   });
 }
@@ -19,10 +23,11 @@ export function useStartLesson() {
 /* ---------- 배선 기하 ----------
  * 패드 56px, 패드 사이 36px. 패드 중심은 컨테이너 가운데(x=0)를 기준으로 좌우로 어긋난다.
  * 배선은 패드 아래 가장자리 중앙에서 다음 패드 위 가장자리 중앙까지, 세로 → 45° → 가로 → 45° → 세로로 꺾는다(회로 기판의 트레이스).
+ * 선은 crispEdges로 그려 안티앨리어싱 없이 픽셀 단위로 또렷하게 보이게 한다(45° 구간은 계단처럼 보인다).
  */
 const PAD = 56;
 const GAP = 36;
-const WIRE_WIDTH = 4;
+const STUB = 28;
 const OFFSETS = [0, 44, 0, -44] as const;
 /** 45° 꺾임의 한 변 */
 const CHAMFER = 8;
@@ -39,14 +44,23 @@ function wirePath(x1: number, x2: number): string {
 }
 
 /**
- * 배선의 밝기는 세 단계다(정보 위계): 현재 패드로 들어오는 구간만 가장 밝게(on), 이미 지나온 구간은 켜져 있되 어둡게(done),
- * 앞으로 올 구간은 꺼 둔다(off). done 색은 globals.css의 --wire-done.
+ * 배선은 세 가지다(정보 위계): 현재 패드로 들어오는 구간은 ink 2px 실선(on), 이미 지나온 구간은 ink 2px 점선 4 3(done),
+ * 앞으로 올 구간은 line 색 1px 실선(off).
  */
 type WireTone = 'on' | 'done' | 'off';
-const WIRE_COLOR: Record<WireTone, string> = { on: 'var(--color-brand)', done: 'var(--wire-done)', off: 'var(--color-line)' };
+const WIRE: Record<WireTone, { stroke: string; width: number; dash?: string }> = {
+  on: { stroke: 'var(--color-ink)', width: 2 },
+  done: { stroke: 'var(--color-ink)', width: 2, dash: '4 3' },
+  off: { stroke: 'var(--color-line)', width: 1 },
+};
 
-/** 앞 패드가 완료여야 신호가 들어온다. 뒤 패드가 현재 레슨이면 가장 밝게 */
+/** 앞 패드가 완료여야 신호가 들어온다. 뒤 패드가 현재 레슨이면 실선 */
 const wireTone = (fromCompleted: boolean, intoCurrent: boolean): WireTone => (!fromCompleted ? 'off' : intoCurrent ? 'on' : 'done');
+
+function WirePath({ d, tone }: { d: string; tone: WireTone }) {
+  const w = WIRE[tone];
+  return <path d={d} fill="none" style={{ stroke: w.stroke }} strokeWidth={w.width} strokeDasharray={w.dash} shapeRendering="crispEdges" />;
+}
 
 /** 패드 사이 배선 */
 function Wire({ from, to, tone }: { from: number; to: number; tone: WireTone }) {
@@ -54,7 +68,7 @@ function Wire({ from, to, tone }: { from: number; to: number; tone: WireTone }) 
     <svg aria-hidden focusable="false" width="100%" height={GAP} className="block overflow-visible">
       {/* 중첩 svg의 x=50%가 컨테이너 가운데를 원점으로 만든다 */}
       <svg x="50%" y="0" overflow="visible">
-        <path d={wirePath(from, to)} fill="none" style={{ stroke: WIRE_COLOR[tone] }} strokeWidth={WIRE_WIDTH} strokeLinejoin="round" />
+        <WirePath d={wirePath(from, to)} tone={tone} />
       </svg>
     </svg>
   );
@@ -62,7 +76,13 @@ function Wire({ from, to, tone }: { from: number; to: number; tone: WireTone }) 
 
 /** 유닛 헤더 아래에서 첫 패드로 내려가는 직선 */
 function Stub({ tone }: { tone: WireTone }) {
-  return <div aria-hidden className="mx-auto h-7 rounded-full" style={{ width: WIRE_WIDTH, background: WIRE_COLOR[tone] }} />;
+  return (
+    <svg aria-hidden focusable="false" width="100%" height={STUB} className="block overflow-visible">
+      <svg x="50%" y="0" overflow="visible">
+        <WirePath d={`M 0 0 V ${STUB}`} tone={tone} />
+      </svg>
+    </svg>
+  );
 }
 
 type Unit = PathResponse['units'][number];
@@ -91,8 +111,8 @@ export function LearningPath({ path }: { path: PathResponse }) {
           <section key={unit.id} aria-labelledby={`unit-${unit.id}`}>
             {prev && prevLast && <Wire from={offsetOf(prev.lessons.length - 1)} to={0} tone={enter} />}
 
-            <div className="flex items-center gap-3 border-b border-line bg-surface-2 pb-3 pt-3">
-              <span aria-hidden className={clsx('font-mono text-[28px] font-semibold leading-none tabular-nums', isCurrentUnit ? 'text-ink' : 'text-ink-2')}>
+            <div className="flex items-center gap-3 border-b border-ink bg-surface-2 pb-3 pt-3">
+              <span aria-hidden className={clsx('bit-2 shrink-0', isCurrentUnit ? 'text-ink' : 'text-ink-2')}>
                 {String(unit.sortOrder).padStart(2, '0')}
               </span>
               <h2 id={`unit-${unit.id}`} className={clsx('min-w-0 flex-1 text-title font-semibold', isCurrentUnit ? 'text-ink' : 'text-ink-2')}>
@@ -100,7 +120,7 @@ export function LearningPath({ path }: { path: PathResponse }) {
                 {unit.name}
               </h2>
               <div className="flex shrink-0 items-center gap-2">
-                <span className="font-mono text-cap font-medium tabular-nums text-ink-2">
+                <span className="bit text-ink-2">
                   {doneCount}/{unit.lessons.length}
                 </span>
                 {doneCount < unit.lessons.length && (
@@ -109,7 +129,7 @@ export function LearningPath({ path }: { path: PathResponse }) {
                     disabled={skip.isPending}
                     onClick={() => skip.mutate(unit.id)}
                     title="유닛 문제 몇 개를 풀어 80% 이상 맞히면 이 유닛까지 완료로 처리됩니다"
-                    className="min-h-11 px-1 text-cap font-semibold text-brand disabled:opacity-50"
+                    className="bit min-h-11 px-1 text-brand underline underline-offset-4 enabled:active:bg-brand-fill enabled:active:text-on-brand disabled:opacity-50"
                   >
                     건너뛰기
                   </button>
@@ -144,23 +164,38 @@ export function LearningPath({ path }: { path: PathResponse }) {
                         className="pad absolute top-0 z-[1] -translate-x-1/2"
                         style={{ left: `calc(50% + ${off}px)` }}
                       >
-                        {completed ? <CheckIcon size={28} strokeWidth={3} /> : locked ? <LockIcon size={24} /> : isCurrent ? <PlayIcon size={24} solid /> : <StarIcon size={24} solid />}
+                        {completed ? (
+                          <span className="pad-plate">
+                            <CheckIcon size={20} strokeWidth={3} />
+                          </span>
+                        ) : locked ? (
+                          <LockIcon size={24} />
+                        ) : isCurrent ? (
+                          <PlayIcon size={24} solid />
+                        ) : (
+                          <StarIcon size={24} solid />
+                        )}
+                        {/* 현재 패드 바깥 3px에서 도는 개미 행렬. pathLength=252(= 7 × 36)로 점선 주기가 둘레에 딱 맞게 한다 */}
+                        {isCurrent && (
+                          <svg aria-hidden focusable="false" className="ants" viewBox="0 0 66 66">
+                            <rect x="1" y="1" width="64" height="64" pathLength={252} />
+                          </svg>
+                        )}
                       </button>
-                      {/* 패드 오른쪽(오프셋이 음수면 왼쪽)에 레슨 이름 */}
+                      {/* 레슨 이름은 경로 안쪽(여유가 큰 쪽)에: 패드가 오른쪽으로 치우치면 왼쪽, 아니면 오른쪽. 비트맵 16px 글자는 폭을 많이 쓰므로 좁은 바깥쪽(95px)을 피한다 */}
                       <div
                         aria-hidden
                         onClick={begin}
                         className={clsx(
-                          'absolute top-1/2 -translate-y-1/2 text-cap',
-                          off < 0 && 'text-right',
-                          // 현재 = ink 600, 열림 = ink 500, 완료 = ink-2 400, 잠김 = ink-2 400 + 흐리게
-                          isCurrent ? 'font-semibold text-ink' : completed ? 'font-normal text-ink-2' : locked ? 'font-normal text-ink-2 opacity-70' : 'font-medium text-ink',
+                          'bit absolute top-1/2 -translate-y-1/2',
+                          off > 0 && 'text-right',
+                          // 현재·열림 = ink, 완료·잠김 = ink-2 (잠김에 opacity .7을 주면 ground 위 대비가 2.96:1이라 4.5:1을 못 넘는다. 잠김은 패드 윤곽과 자물쇠가 말해 준다)
+                          isCurrent ? 'text-ink' : completed || locked ? 'text-ink-2' : 'text-ink',
                           !locked && 'cursor-pointer',
                         )}
-                        style={off < 0 ? { left: 0, right: `calc(50% - ${off}px + ${PAD / 2 + 12}px)` } : { right: 0, left: `calc(50% + ${off}px + ${PAD / 2 + 12}px)` }}
+                        style={off > 0 ? { left: 0, right: `calc(50% - ${off}px + ${PAD / 2 + 12}px)` } : { right: 0, left: `calc(50% + ${off}px + ${PAD / 2 + 12}px)` }}
                       >
                         {lesson.name}
-                        {isCurrent && <span className="term-cursor" />}
                       </div>
                     </div>
                     {!isLast && <Wire from={off} to={offsetOf(i + 1)} tone={wireTone(completed, unit.lessons[i + 1]?.id === path.nextLessonId)} />}

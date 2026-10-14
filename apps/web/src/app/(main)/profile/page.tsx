@@ -1,16 +1,13 @@
 'use client';
 
-import { useQueries, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import type { MeResponse } from '@cs-daily/contracts';
 import { api } from '@/lib/api';
 import { AppShell } from '@/components/app-shell';
 import { CheckIcon, ChevronLeftIcon, ChevronRightIcon, FlameIcon, SnowflakeIcon } from '@/components/icons';
 import { StatsPanel } from '@/components/stats-panel';
-
-type Calendar = { month: string; days: { date: string; xp: number; achieved: boolean; usedFreeze: boolean }[] };
-
-const fetchCalendar = (month: string) => api<Calendar>(`/me/stats/calendar?month=${month}`);
+import { WEEKDAYS, fetchCalendar, useWeekCalendar, type Calendar } from '@/lib/calendar';
 
 export default function ProfilePage() {
   const me = useQuery({ queryKey: ['me'], queryFn: () => api<MeResponse>('/me') });
@@ -24,18 +21,18 @@ export default function ProfilePage() {
   };
 
   return (
-    <AppShell aside={me.data && <StatsPanel me={me.data} />}>
+    <AppShell aside={me.data && <StatsPanel me={me.data} week={false} />}>
       {me.data && (
         <header className="mb-6 flex items-center gap-4">
           {me.data.user.avatarUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={me.data.user.avatarUrl} alt="" className="h-14 w-14 rounded-full" />
+            <img src={me.data.user.avatarUrl} alt="" className="h-14 w-14 border border-ink" />
           ) : (
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-fill text-title font-semibold text-on-brand">{me.data.user.nickname[0]}</div>
+            <div className="bit-2 flex h-14 w-14 items-center justify-center border border-ink bg-brand-fill text-on-brand">{me.data.user.nickname[0]}</div>
           )}
           <div className="min-w-0">
-            <h1 className="text-h3 font-semibold">{me.data.user.nickname}</h1>
-            <p className="font-mono text-cap text-ink-2">총 {me.data.stats.totalXp.toLocaleString()} XP · 최장 스트릭 {me.data.stats.longestStreak}일</p>
+            <h1 className="bit-2">{me.data.user.nickname}</h1>
+            <p className="bit text-ink-2">총 {me.data.stats.totalXp.toLocaleString()} XP · 최장 스트릭 {me.data.stats.longestStreak}일</p>
           </div>
         </header>
       )}
@@ -45,11 +42,11 @@ export default function ProfilePage() {
 
       <section className="card mt-6 p-4" aria-labelledby="cal-title">
         <div className="mb-3 flex items-center justify-between">
-          <button type="button" onClick={() => shift(-1)} aria-label="이전 달" className="flex h-11 w-11 items-center justify-center rounded-full text-ink-2">
+          <button type="button" onClick={() => shift(-1)} aria-label="이전 달" className="flex h-11 w-11 items-center justify-center text-ink">
             <ChevronLeftIcon size={22} />
           </button>
-          <h2 id="cal-title" className="font-mono font-semibold tabular-nums">{month}</h2>
-          <button type="button" onClick={() => shift(1)} aria-label="다음 달" className="flex h-11 w-11 items-center justify-center rounded-full text-ink-2">
+          <h2 id="cal-title" className="bit">{month}</h2>
+          <button type="button" onClick={() => shift(1)} aria-label="다음 달" className="flex h-11 w-11 items-center justify-center text-ink">
             <ChevronRightIcon size={22} />
           </button>
         </div>
@@ -62,18 +59,11 @@ export default function ProfilePage() {
   );
 }
 
-const WEEKDAYS = ['월', '화', '수', '목', '금', '토', '일'] as const;
-
 /** 오늘이 속한 주(월~일). 달력 API 데이터가 모두 도착했을 때만 그린다 — 없는 날을 "못 한 날"로 꾸며 보이지 않는다 */
 function WeekStrip({ today }: { today: string }) {
-  const base = new Date(`${today}T00:00:00Z`);
-  const monday = new Date(base.getTime() - ((base.getUTCDay() + 6) % 7) * 86_400_000);
-  const dates = WEEKDAYS.map((_, i) => new Date(monday.getTime() + i * 86_400_000).toISOString().slice(0, 10));
-  const months = [...new Set(dates.map((d) => d.slice(0, 7)))];
-  const results = useQueries({ queries: months.map((m) => ({ queryKey: ['calendar', m], queryFn: () => fetchCalendar(m) })) });
-  if (results.some((r) => !r.data)) return null;
+  const { dates, byDate } = useWeekCalendar(today);
+  if (!byDate) return null;
 
-  const byDate = new Map(results.flatMap((r) => r.data?.days ?? []).map((d) => [d.date, d]));
   return (
     <section className="card mt-6 p-4" aria-labelledby="week-title">
       <h2 id="week-title" className="text-cap font-medium text-ink-2">이번 주</h2>
@@ -86,9 +76,9 @@ function WeekStrip({ today }: { today: string }) {
             <li key={date} className="flex flex-col items-center gap-1.5" aria-label={label} aria-current={isToday ? 'date' : undefined}>
               <span
                 aria-hidden
-                className={`flex h-8 w-8 items-center justify-center rounded-full border-2 ${
-                  d?.achieved ? 'bg-(--done-bg) text-(color:--done-ink)' : 'text-ink-2'
-                } ${isToday ? 'border-brand' : d?.achieved ? 'border-transparent' : 'border-line'}`}
+                className={`flex h-8 w-8 items-center justify-center border ${
+                  d?.achieved ? 'bg-brand-fill text-on-brand' : 'bg-surface text-ink-2'
+                } ${isToday ? 'border-2 border-ink' : d?.achieved ? 'border-ink' : 'border-line'}`}
               >
                 {d?.achieved ? <CheckIcon size={16} strokeWidth={3} /> : d?.usedFreeze ? <SnowflakeIcon size={14} /> : null}
               </span>
@@ -118,16 +108,16 @@ function CalendarGrid({ month, days }: { month: string; days: Calendar['days'] }
           <div
             key={date}
             title={d ? `${date}: ${d.xp} XP` : date}
-            className={`flex aspect-square flex-col items-center justify-center rounded-lg ${d?.achieved ? 'bg-(--done-bg)' : d ? 'bg-surface-2' : ''}`}
+            className={`flex aspect-square flex-col items-center justify-center ${d?.achieved ? 'bg-brand-fill text-on-brand' : d?.usedFreeze ? 'border border-dashed border-ink' : d ? 'border border-line' : ''}`}
           >
             {d?.usedFreeze ? (
-              <SnowflakeIcon size={16} className="text-ink-2" />
+              <SnowflakeIcon size={16} />
             ) : d?.achieved ? (
-              <FlameIcon size={16} className="text-streak" />
+              <FlameIcon size={16} />
             ) : (
-              <span className="font-mono font-medium tabular-nums">{i + 1}</span>
+              <span className="bit leading-4!">{i + 1}</span>
             )}
-            {d && d.xp > 0 && <span className="font-mono text-[11px] tabular-nums text-ink-2">{d.xp}</span>}
+            {d && d.xp > 0 && <span className="text-[11px] tabular-nums">{d.xp}</span>}
           </div>
         );
       })}

@@ -3,6 +3,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { applyThemePref, readThemePref, type ThemePref } from '@/lib/theme';
 import { MonitorIcon, MoonIcon, SunIcon } from './icons';
+import { SelectMark } from './select-mark';
 
 const OPTIONS: { value: ThemePref; label: string; icon: ReactNode; desc: string }[] = [
   { value: 'system', label: '시스템', icon: <MonitorIcon size={20} />, desc: '기기 설정 따름' },
@@ -28,11 +29,12 @@ export function ThemePicker() {
             applyThemePref(o.value);
             setPref(o.value);
           }}
-          className="option flex flex-col items-center gap-1 px-2 text-center font-semibold"
+          className="option flex flex-col items-center gap-1 px-2 pt-9 text-center"
         >
+          <SelectMark corner />
           {o.icon}
-          {o.label}
-          <div className="text-cap font-normal text-ink-2">{o.desc}</div>
+          <span className="bit">{o.label}</span>
+          <div className="text-cap text-ink-2">{o.desc}</div>
         </button>
       ))}
     </div>

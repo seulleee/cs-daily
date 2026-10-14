@@ -32,38 +32,49 @@ export function AppShell({ children, aside }: { children: ReactNode; aside?: Rea
     <div className="min-h-dvh md:flex">
       <nav
         aria-label="주 메뉴"
-        className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-surface pb-[env(safe-area-inset-bottom)] md:sticky md:top-0 md:h-dvh md:w-[72px] md:shrink-0 md:border-t-0 md:border-r md:px-2 md:py-6 md:pb-6 lg:w-60 lg:px-4"
+        className="fixed inset-x-0 bottom-0 z-20 border-t border-ink bg-surface pb-[env(safe-area-inset-bottom)] md:sticky md:top-0 md:h-dvh md:w-[72px] md:shrink-0 md:border-t-0 md:border-r md:px-2 md:py-6 md:pb-6 lg:w-60 lg:px-4"
       >
-        <Link href="/learn" className="mb-6 hidden px-3 text-title font-semibold text-brand lg:block">
+        <Link href="/learn" className="bit-2 mb-6 hidden px-3 text-ink lg:block">
           CS 데일리
         </Link>
-        <ul className="grid h-16 grid-cols-4 md:h-auto md:grid-cols-1 md:gap-1">
+        <ul className="grid grid-cols-4 md:grid-cols-1 md:gap-2">
           {NAV.map(({ href, label, Icon }) => {
             const active = pathname.startsWith(href);
             const badge = href === '/review' && due > 0 ? (due > 99 ? '99+' : String(due)) : null;
             return (
               <li key={href} className="min-w-0">
+                {/*
+                  탭 한 칸(모바일): 아이콘 타일(28) → 라벨(16), 간격 2, 위 6·아래 4 = 높이 56. 가운데 정렬.
+                  선택은 칸 전체가 아니라 아이콘 타일만 반전한다(ink 배경 + on-brand 아이콘). 라벨은 선택 여부와 상관없이 ink.
+                  누르는 동안(:active)도 타일만 뒤집힌다(선택 안 된 탭은 반전, 선택된 탭은 반전이 풀림). 전환 효과 없음.
+                  사이드바(md 이상)는 같은 규칙으로 타일 + 가로 라벨.
+                */}
                 <Link
                   href={href}
                   aria-current={active ? 'page' : undefined}
                   aria-label={badge ? `${label}, 복습할 문제 ${due}개` : label}
-                  className={clsx(
-                    'flex h-full min-h-11 flex-col items-center justify-center gap-0.5 text-cap font-medium md:h-auto md:flex-row md:justify-center md:gap-3 md:rounded-xl md:px-3 md:py-2.5 lg:justify-start lg:text-body',
-                    active ? 'text-brand md:bg-[color-mix(in_oklab,var(--color-brand)_12%,transparent)]' : 'text-ink-2',
-                  )}
+                  className="group flex h-14 flex-col items-center justify-start gap-0.5 pb-1 pt-1.5 md:h-auto md:flex-row md:justify-center md:gap-3 md:px-3 md:py-2 lg:justify-start"
                 >
-                  <span className="relative">
-                    <Icon size={24} />
+                  <span
+                    className={clsx(
+                      'relative flex h-7 w-7 shrink-0 items-center justify-center',
+                      active
+                        ? 'bg-brand-fill text-on-brand group-active:bg-surface group-active:text-ink'
+                        : 'text-ink group-active:bg-brand-fill group-active:text-on-brand',
+                    )}
+                  >
+                    <Icon size={22} />
+                    {/* 배지: 타일의 오른쪽 위 모서리에 걸친다. 바깥 1px 바탕색 테두리로 아이콘과 갈라 놓는다. 11px Plex Mono는 비트맵 16px 아래라 번지므로 쓰지 않는 크기지만, 이 작은 칩만 예외 */}
                     {badge && (
                       <span
                         aria-hidden
-                        className="absolute -right-2.5 -top-1.5 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-brand-fill px-1 font-mono text-[11px] font-semibold leading-none text-on-brand"
+                        className="absolute -right-2.5 -top-1.5 flex h-4 items-center justify-center border border-surface bg-brand-fill px-[3px] font-mono text-[11px] font-semibold leading-none text-on-brand"
                       >
                         {badge}
                       </span>
                     )}
                   </span>
-                  <span className="md:hidden lg:inline">{label}</span>
+                  <span className="bit text-center leading-4! text-ink md:hidden lg:ml-2 lg:inline">{label}</span>
                 </Link>
               </li>
             );
@@ -71,7 +82,7 @@ export function AppShell({ children, aside }: { children: ReactNode; aside?: Rea
         </ul>
       </nav>
 
-      <main className="mx-auto w-full max-w-[720px] px-4 pb-28 pt-4 md:px-6 md:pb-8 md:pt-8">{children}</main>
+      <main className="mx-auto w-full max-w-[720px] px-4 pb-[calc(env(safe-area-inset-bottom)+81px)] pt-4 md:px-6 md:pb-8 md:pt-8">{children}</main>
 
       {aside && (
         <aside className="hidden w-80 shrink-0 space-y-4 px-4 py-8 lg:block" aria-label="보조 패널">
