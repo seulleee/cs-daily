@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { PublicQuestion, UserAnswer } from './questions.js';
+import { PracticeLink } from './curriculum.js';
 
 /** placement = 유닛 건너뛰기 테스트 */
 export const SessionKind = z.enum(['lesson', 'review', 'placement']);
@@ -55,6 +56,8 @@ export const SessionResponse = z.object({
   lessonObjective: z.string().nullable(),
   /** 레슨 시작 카드의 핵심 정리 ("용어 — 정의"). lesson 종류가 아니면 빈 배열 */
   lessonKeyPoints: z.array(z.string()),
+  /** 레슨 완료 화면의 "실전 문제" 링크 (없으면 생략·빈 배열). API가 아직 내려주지 않는 동안은 optional */
+  lessonPractice: z.array(PracticeLink).optional(),
   questions: z.array(PublicQuestion),
   /** 이어 풀기용: 이미 답한 문제 */
   answered: z.array(AnsweredQuestion),

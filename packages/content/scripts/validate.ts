@@ -14,8 +14,8 @@ import { CurriculumFile, LessonFile } from '@cs-daily/contracts';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors: string[] = [];
 
-/** 코드 문제는 정보처리기사 트랙에서만, 짧은 코드의 빈칸 형태로만 허용한다. */
-const CODE_TRACK = 'eip';
+/** 코드 문제는 정보처리기사(eip)·코딩 테스트(ct) 트랙에서만, 짧은 코드의 빈칸 형태로만 허용한다. */
+const CODE_TRACKS: readonly string[] = ['eip', 'ct'];
 const CODE_MAX_LINES = 12;
 const CODE_MAX_COLS = 48;
 
@@ -29,6 +29,21 @@ const lessonKeys = new Set<string>();
 for (const t of curriculum.data.tracks) {
   for (const u of t.units) {
     for (const l of u.lessons) lessonKeys.add(`${t.slug}/${u.slug}/${l.slug}`);
+  }
+}
+
+// 실전 문제 링크: 형식은 스키마(PracticeLink)가 검사하고, 같은 트랙 안 id 중복은 경고만 한다
+for (const t of curriculum.data.tracks) {
+  const seenPractice = new Map<number, string>();
+  for (const u of t.units) {
+    for (const l of u.lessons) {
+      const at = `${t.slug}/${u.slug}/${l.slug}`;
+      for (const p of l.practice ?? []) {
+        const prev = seenPractice.get(p.id);
+        if (prev) console.warn(`경고 ${at}: 실전 문제 ${p.site} ${p.id}가 같은 트랙의 ${prev}에도 있습니다`);
+        else seenPractice.set(p.id, at);
+      }
+    }
   }
 }
 
@@ -73,8 +88,8 @@ function checkLessonFile(path: string) {
     if (!q.id.startsWith(`${track}-`)) errors.push(`${rel}#${i}: id는 '${track}-'로 시작해야 합니다 (${q.id})`);
     const code = (q.content as { code?: { source: string } | null }).code;
     if (code) {
-      if (track !== CODE_TRACK) {
-        errors.push(`${rel}#${i}: 코드(content.code)는 '${CODE_TRACK}' 트랙에서만 허용됩니다 (${q.id})`);
+      if (!CODE_TRACKS.includes(track)) {
+        errors.push(`${rel}#${i}: 코드(content.code)는 ${CODE_TRACKS.map((t) => `'${t}'`).join('·')} 트랙에서만 허용됩니다 (${q.id})`);
       } else {
         const lines = code.source.replace(/\n+$/, '').split('\n');
         if (lines.length > CODE_MAX_LINES) errors.push(`${rel}#${i}: 코드 ${lines.length}줄 — ${CODE_MAX_LINES}줄 이하여야 합니다`);
