@@ -29,8 +29,9 @@ export class DomainExceptionFilter implements ExceptionFilter {
         : 400;
       return { status, body: { error: { code: e.code, message: e.message, details: e.details } } };
     }
-    if (e instanceof ZodError) {
-      return { status: 400, body: { error: { code: ErrorCode.VALIDATION_FAILED, message: '요청 형식이 올바르지 않습니다', details: e.issues } } };
+    // contracts(ESM)와 API(CJS)가 서로 다른 zod 모듈 인스턴스를 쓰면 instanceof가 실패해 500이 되므로 이름으로도 판별한다
+    if (e instanceof ZodError || (e instanceof Error && e.name === 'ZodError' && Array.isArray((e as { issues?: unknown }).issues))) {
+      return { status: 400, body: { error: { code: ErrorCode.VALIDATION_FAILED, message: '요청 형식이 올바르지 않습니다', details: (e as ZodError).issues } } };
     }
     if (e instanceof HttpException) {
       const status = e.getStatus();
