@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 // themeColor는 메타 태그 값이라 CSS 변수를 쓸 수 없다. globals.css의 surface-2(ground)와 같은 값으로 맞춘다
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#dcdcdc' },
+    { media: '(prefers-color-scheme: light)', color: '#ebebeb' },
     { media: '(prefers-color-scheme: dark)', color: '#262626' },
   ],
   width: 'device-width',
