@@ -1,0 +1,207 @@
+{
+  "track": "eip",
+  "unit": "u15-infra-new-tech",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "eip-mgmt-infra-bigdata-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "hadoop",
+        "big-data"
+      ],
+      "content": {
+        "prompt": "대용량 데이터를 여러 서버에 분산 저장·처리하는 오픈소스 프레임워크는?",
+        "options": [
+          "하둡",
+          "맵리듀스",
+          "데이터 마이닝"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "하둡(Hadoop)은 대용량 데이터를 여러 서버에 분산 저장·처리하는 오픈소스 프레임워크입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-bigdata-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mapreduce",
+        "big-data"
+      ],
+      "content": {
+        "prompt": "데이터를 나눠 처리하고 결과를 합치는 분산 처리 모델은?",
+        "options": [
+          "하둡",
+          "맵리듀스",
+          "블록체인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "맵리듀스는 데이터를 나눠 처리(Map)하고 결과를 합치는(Reduce) 분산 처리 모델입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-bigdata-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "data-mining"
+      ],
+      "content": {
+        "prompt": "대량 데이터에서 숨은 규칙·패턴을 찾아내는 기법은?",
+        "options": [
+          "데이터 마이닝",
+          "맵리듀스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "데이터 마이닝은 대량 데이터에서 숨은 규칙과 패턴을 찾아냅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-bigdata-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "big-data",
+        "3v"
+      ],
+      "content": {
+        "prompt": "빅데이터의 3V는 규모, 속도, 다양성이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "빅데이터 3V는 규모(Volume), 속도(Velocity), 다양성(Variety)입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-bigdata-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "big-data",
+        "3v"
+      ],
+      "content": {
+        "prompt": "빅데이터 3V에서 Velocity의 뜻은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "속도",
+          "처리 속도"
+        ]
+      },
+      "explanation": "Velocity는 속도입니다. 3V는 규모(Volume), 속도(Velocity), 다양성(Variety)입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-bigdata-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "mapreduce"
+      ],
+      "content": {
+        "prompt": "맵리듀스에서 결과를 합치는 단계는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Reduce",
+          "리듀스"
+        ]
+      },
+      "explanation": "맵리듀스는 Map 단계에서 나눠 처리하고 Reduce 단계에서 결과를 합칩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-bigdata-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "mapreduce"
+      ],
+      "content": {
+        "prompt": "로그를 여러 노드가 나눠 집계한 뒤 결과를 합쳤다. 처리 모델은?",
+        "options": [
+          "데이터 마이닝",
+          "맵리듀스",
+          "블록체인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "나눠 처리하고 결과를 합치는 분산 처리 모델은 맵리듀스입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-bigdata-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "data-mining"
+      ],
+      "content": {
+        "prompt": "구매 기록에서 함께 팔리는 상품 패턴을 찾았다. 기법은?",
+        "options": [
+          "맵리듀스",
+          "하둡",
+          "데이터 마이닝"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "대량 데이터에서 숨은 규칙·패턴을 찾았으므로 데이터 마이닝입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-bigdata-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "big-data",
+        "3v"
+      ],
+      "content": {
+        "prompt": "텍스트·이미지·로그가 섞여 있다. 3V 중 해당하는 것은?",
+        "options": [
+          "규모",
+          "속도",
+          "다양성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "여러 형태의 데이터가 섞인 것은 다양성(Variety)에 해당합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-infra-bigdata-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "hadoop"
+      ],
+      "content": {
+        "prompt": "하둡은 데이터를 서버 한 대에 모아 처리하는 프레임워크이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "하둡은 대용량 데이터를 여러 서버에 분산 저장·처리합니다.",
+      "refs": []
+    }
+  ]
+}

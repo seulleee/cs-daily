@@ -1,0 +1,211 @@
+{
+  "track": "eip",
+  "unit": "u14-security",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "eip-mgmt-sec-auth-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "authentication",
+        "aaa"
+      ],
+      "content": {
+        "prompt": "접근하는 주체가 누구인지 확인하는 것은?",
+        "options": [
+          "인증",
+          "인가",
+          "계정 관리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인증(Authentication)은 접근하는 주체가 누구인지 확인하는 과정입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-auth-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "authorization",
+        "aaa"
+      ],
+      "content": {
+        "prompt": "인증된 주체에게 허용된 권한을 부여하는 것은?",
+        "options": [
+          "인증",
+          "인가",
+          "암호화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인가(Authorization)는 인증된 주체에게 허용된 권한을 부여하는 과정입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-auth-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "accounting",
+        "aaa"
+      ],
+      "content": {
+        "prompt": "계정 관리는 사용한 자원·시간 등 활동을 기록한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "계정 관리(Accounting)는 사용한 자원·시간 같은 활동을 기록하는 AAA의 마지막 A입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-auth-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "authorization",
+        "authentication"
+      ],
+      "content": {
+        "prompt": "인가는 접근하는 주체가 누구인지 확인하는 과정이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "주체가 누구인지 확인하는 것은 인증입니다. 인가는 인증된 주체에게 권한을 부여합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-auth-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "authentication-type"
+      ],
+      "content": {
+        "prompt": "지문처럼 신체 특징을 쓰는 인증 유형은 ___ 기반 인증이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "존재",
+          "something you are"
+        ]
+      },
+      "explanation": "지문 같은 신체 특징은 존재 기반 인증입니다. 지식·소유·존재·행위 네 유형이 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-auth-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aaa"
+      ],
+      "content": {
+        "prompt": "AAA는 인증, 인가, ___ 의 세 요소이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "계정 관리",
+          "계정관리",
+          "Accounting",
+          "어카운팅",
+          "과금"
+        ]
+      },
+      "explanation": "AAA는 인증(Authentication), 인가(Authorization), 계정 관리(Accounting)입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-auth-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "authentication-type"
+      ],
+      "content": {
+        "prompt": "비밀번호를 입력해 로그인했다. 인증 유형은?",
+        "options": [
+          "지식",
+          "소유",
+          "존재"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "비밀번호는 사용자가 알고 있는 것이므로 지식 기반 인증입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-auth-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "authentication-type"
+      ],
+      "content": {
+        "prompt": "스마트카드를 대 로그인했다. 인증 유형은?",
+        "options": [
+          "지식",
+          "소유",
+          "행위"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스마트카드·토큰처럼 가지고 있는 것으로 확인하면 소유 기반 인증입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-auth-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "authentication-type"
+      ],
+      "content": {
+        "prompt": "서명하는 동작의 특징으로 본인을 확인했다. 인증 유형은?",
+        "options": [
+          "소유",
+          "존재",
+          "행위"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "서명처럼 사용자의 행동 특징으로 확인하면 행위 기반 인증입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-auth-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "authentication",
+        "aaa"
+      ],
+      "content": {
+        "prompt": "인증이 확인하는 것은?",
+        "options": [
+          "주체의 신원",
+          "주체의 권한",
+          "자원 사용 시간"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인증은 주체가 누구인지(신원)를 확인합니다. 권한 부여는 인가, 사용 기록은 계정 관리입니다.",
+      "refs": []
+    }
+  ]
+}

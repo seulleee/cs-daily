@@ -1,0 +1,203 @@
+{
+  "track": "eip",
+  "unit": "u13-project-mgmt",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "eip-mgmt-risk-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "risk-management"
+      ],
+      "content": {
+        "prompt": "위험 요소를 미리 예측해 대비하는 활동은?",
+        "options": [
+          "위험 관리",
+          "형상 관리",
+          "일정 관리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "위험 관리는 위험 요소를 미리 예측하고 대비하는 활동입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-risk-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "risk-monitoring"
+      ],
+      "content": {
+        "prompt": "식별한 위험이 실제로 나타나는지 계속 관찰하는 단계는?",
+        "options": [
+          "위험 식별",
+          "위험 모니터링",
+          "대응 계획"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "위험 모니터링은 식별한 위험이 실제로 나타나는지 계속 관찰하는 단계입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-risk-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "risk-management"
+      ],
+      "content": {
+        "prompt": "위험 관리 절차의 첫 단계는?",
+        "options": [
+          "위험 식별",
+          "위험 모니터링"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "절차는 위험 식별 → 분석·평가 → 대응 계획 → 위험 모니터링 순입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-risk-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "risk-monitoring"
+      ],
+      "content": {
+        "prompt": "위험 모니터링은 위험 관리 절차의 첫 단계이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "위험 모니터링은 마지막 단계입니다. 첫 단계는 위험 식별입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-risk-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "risk-management"
+      ],
+      "content": {
+        "prompt": "위험 관리 절차는 식별 → 분석·평가 → ___ 계획 → 모니터링이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "대응",
+          "위험 대응"
+        ]
+      },
+      "explanation": "위험 관리는 위험 식별, 분석·평가, 대응 계획, 위험 모니터링 순으로 진행합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-risk-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "risk-response"
+      ],
+      "content": {
+        "prompt": "위험을 피하지 않고 그대로 받아들이는 대응 전략은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "수용",
+          "위험 수용",
+          "acceptance"
+        ]
+      },
+      "explanation": "수용은 위험을 감수하고 받아들이는 전략입니다. 대응 전략은 회피, 전가, 완화, 수용입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-risk-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "risk-response"
+      ],
+      "content": {
+        "prompt": "보험에 가입해 위험의 책임을 제3자에게 넘겼다. 대응 전략은?",
+        "options": [
+          "회피",
+          "전가",
+          "수용"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "위험의 책임이나 영향을 제3자에게 넘기는 것은 전가입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-risk-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "risk-response"
+      ],
+      "content": {
+        "prompt": "위험한 신기술 대신 검증된 기술을 써 위험을 없앴다. 전략은?",
+        "options": [
+          "회피",
+          "전가",
+          "완화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "위험이 생기는 원인 자체를 피해 없애는 것은 회피입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-risk-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "risk-response"
+      ],
+      "content": {
+        "prompt": "핵심 인력 이탈에 대비해 대체 인력을 미리 교육했다. 전략은?",
+        "options": [
+          "전가",
+          "수용",
+          "완화"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "위험이 일어났을 때의 영향을 줄이도록 미리 대비하는 것은 완화입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-risk-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "risk-management"
+      ],
+      "content": {
+        "prompt": "위험 관리는 위험 요소를 미리 예측해 대비하는 활동이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "위험 관리는 위험이 실제로 일어나기 전에 예측하고 대비하는 활동입니다.",
+      "refs": []
+    }
+  ]
+}

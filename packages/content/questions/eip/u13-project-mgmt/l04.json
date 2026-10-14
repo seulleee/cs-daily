@@ -1,0 +1,206 @@
+{
+  "track": "eip",
+  "unit": "u13-project-mgmt",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "eip-mgmt-fp-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "function-point"
+      ],
+      "content": {
+        "prompt": "기능의 수와 복잡도로 소프트웨어 규모를 측정하는 것은?",
+        "options": [
+          "기능 점수",
+          "LOC",
+          "COCOMO"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "기능 점수(FP)는 기능의 수와 복잡도로 소프트웨어 규모를 측정합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-fp-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "putnam"
+      ],
+      "content": {
+        "prompt": "생명주기 전 과정의 노력 분포를 가정하는 산정 모형은?",
+        "options": [
+          "기능 점수",
+          "푸트남 모형",
+          "조직형"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "푸트남(Putnam) 모형은 생명주기 전 과정에 걸친 노력 분포를 가정하는 산정 모형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-fp-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "function-point",
+        "loc"
+      ],
+      "content": {
+        "prompt": "언어와 무관하게 사용자 관점의 기능으로 측정하는 것은?",
+        "options": [
+          "LOC",
+          "기능 점수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "기능 점수는 개발 언어와 무관하게 사용자 관점의 기능으로 측정합니다. LOC는 코드 라인 수를 셉니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-fp-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "function-point"
+      ],
+      "content": {
+        "prompt": "기능 점수는 개발 언어가 바뀌면 같은 기능도 값이 달라진다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "기능 점수는 사용자 관점의 기능을 세므로 개발 언어와 무관합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-fp-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "function-point"
+      ],
+      "content": {
+        "prompt": "기능 점수의 영문 약자는 ___ 이다.",
+        "hint": "두 글자 영문 약자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "FP",
+          "Function Point"
+        ]
+      },
+      "explanation": "기능 점수는 Function Point, 줄여서 FP라고 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-fp-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "putnam"
+      ],
+      "content": {
+        "prompt": "푸트남 모형은 ___ 전 과정의 노력 분포를 가정한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "생명주기",
+          "생명 주기",
+          "라이프사이클",
+          "수명주기"
+        ]
+      },
+      "explanation": "푸트남 모형은 소프트웨어 생명주기 전 과정에 걸친 노력 분포를 가정합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-fp-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "function-point"
+      ],
+      "content": {
+        "prompt": "기능 점수의 측정 요소가 아닌 것은?",
+        "options": [
+          "외부 입력",
+          "내부 논리 파일",
+          "코드 라인 수"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "측정 요소는 외부 입력·출력·조회, 내부 논리 파일, 외부 인터페이스 파일입니다. 코드 라인 수는 LOC 기준입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-fp-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "function-point"
+      ],
+      "content": {
+        "prompt": "조회 화면을 하나 더 만들었다. 늘어나는 FP 측정 요소는?",
+        "options": [
+          "외부 조회",
+          "내부 논리 파일",
+          "외부 출력"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "사용자가 데이터를 조회하는 기능은 외부 조회로 셉니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-fp-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "function-point"
+      ],
+      "content": {
+        "prompt": "다른 시스템이 관리하는 파일을 참조한다. 해당 FP 요소는?",
+        "options": [
+          "내부 논리 파일",
+          "외부 인터페이스 파일",
+          "외부 출력"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다른 시스템이 관리하고 이 시스템은 참조만 하는 파일은 외부 인터페이스 파일입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-fp-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "function-point"
+      ],
+      "content": {
+        "prompt": "기능 점수는 기능의 수와 복잡도로 소프트웨어 규모를 잰다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "기능 점수(FP)는 기능의 수와 각 기능의 복잡도로 규모를 측정합니다.",
+      "refs": []
+    }
+  ]
+}

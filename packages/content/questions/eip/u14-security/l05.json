@@ -1,0 +1,209 @@
+{
+  "track": "eip",
+  "unit": "u14-security",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "eip-mgmt-sec-hash-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "hash"
+      ],
+      "content": {
+        "prompt": "임의 입력을 고정 길이로 바꾸고 역산이 어려운 함수는?",
+        "options": [
+          "암호학적 해시",
+          "대칭키 암호",
+          "공개키 암호"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "암호학적 해시는 임의 입력을 고정 길이 값으로 바꾸며 역산과 충돌 찾기가 어렵습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-hash-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "salt",
+        "hash"
+      ],
+      "content": {
+        "prompt": "같은 비밀번호도 다른 해시가 되게 덧붙이는 임의 값은?",
+        "options": [
+          "개인키",
+          "솔트",
+          "블록"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "솔트(salt)는 같은 비밀번호라도 다른 해시 값이 나오도록 덧붙이는 임의 값입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-hash-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "md5",
+        "hash"
+      ],
+      "content": {
+        "prompt": "출력이 128비트이며 현재는 취약하다고 보는 해시는?",
+        "options": [
+          "SHA-256",
+          "MD5"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "MD5는 128비트 해시로 현재는 취약합니다. SHA-256은 256비트 해시입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-hash-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "hash",
+        "sha"
+      ],
+      "content": {
+        "prompt": "SHA-256 해시 값에서 원래 입력을 쉽게 되돌릴 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "암호학적 해시는 출력에서 입력을 역산하기 어렵게 설계되어 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-hash-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "hash"
+      ],
+      "content": {
+        "prompt": "해시 함수는 임의 길이 입력을 ___ 길이 값으로 바꾼다."
+      },
+      "answer_key": {
+        "accepted": [
+          "고정",
+          "일정한",
+          "고정된"
+        ]
+      },
+      "explanation": "해시 함수는 입력 길이와 상관없이 고정 길이의 값을 출력합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-hash-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "integrity",
+        "hash"
+      ],
+      "content": {
+        "prompt": "받은 데이터의 해시를 다시 계산해 비교하는 것은 ___ 검증이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "무결성",
+          "integrity"
+        ]
+      },
+      "explanation": "해시를 다시 계산해 원래 값과 같으면 변조되지 않았다고 보는 것이 무결성 검증입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-hash-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "salt"
+      ],
+      "content": {
+        "prompt": "두 사용자 비밀번호가 같은데 저장된 해시가 다르다. 쓰인 것은?",
+        "options": [
+          "솔트",
+          "공개키",
+          "MD5"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "비밀번호마다 다른 솔트를 덧붙여 해시하면 같은 비밀번호도 해시 값이 달라집니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-hash-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "integrity",
+        "hash"
+      ],
+      "content": {
+        "prompt": "받은 파일의 SHA-256 값이 공개된 값과 다르다. 판단은?",
+        "options": [
+          "정상 파일",
+          "변조 가능성",
+          "암호화된 파일"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "해시를 다시 계산한 값이 원래 값과 다르면 데이터가 바뀌었다고 판단합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-hash-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "integrity",
+        "hash"
+      ],
+      "content": {
+        "prompt": "다시 계산한 해시가 원래 값과 같다. 판단은?",
+        "options": [
+          "변조되지 않음",
+          "복호화 성공",
+          "키 유출"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "해시 값이 같으면 데이터가 바뀌지 않았다고 보고 무결성이 확인됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-sec-hash-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "hash"
+      ],
+      "content": {
+        "prompt": "해시 함수의 출력은 입력 길이와 상관없이 길이가 일정하다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "암호학적 해시는 임의 길이 입력을 고정 길이 값으로 바꿉니다.",
+      "refs": []
+    }
+  ]
+}

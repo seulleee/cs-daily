@@ -1,0 +1,205 @@
+{
+  "track": "eip",
+  "unit": "u13-project-mgmt",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "eip-mgmt-cmmi-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cmmi",
+        "process-maturity"
+      ],
+      "content": {
+        "prompt": "조직의 개발 프로세스 성숙도를 5단계로 평가하는 모델은?",
+        "options": [
+          "CMMI",
+          "SPICE",
+          "WBS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "CMMI는 조직의 개발 프로세스 성숙도를 5단계로 평가하는 모델입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cmmi-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "spice",
+        "process-maturity"
+      ],
+      "content": {
+        "prompt": "소프트웨어 프로세스 평가 국제 표준(ISO/IEC 15504)은?",
+        "options": [
+          "CMMI",
+          "SPICE",
+          "COCOMO"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SPICE는 ISO/IEC 15504로 정한 소프트웨어 프로세스 평가 국제 표준입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cmmi-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "iso-25000",
+        "quality"
+      ],
+      "content": {
+        "prompt": "소프트웨어 품질 평가 통합 표준(SQuaRE)은?",
+        "options": [
+          "ISO/IEC 25000",
+          "ISO/IEC 15504"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ISO/IEC 25000(SQuaRE)은 소프트웨어 품질 평가 통합 표준입니다. 15504는 SPICE입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cmmi-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "spice"
+      ],
+      "content": {
+        "prompt": "SPICE는 ISO/IEC 15504로 정한 프로세스 평가 표준이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "SPICE는 소프트웨어 프로세스 평가 국제 표준으로 ISO/IEC 15504입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cmmi-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cmmi"
+      ],
+      "content": {
+        "prompt": "CMMI의 마지막 5단계는 ___ 단계이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "최적화",
+          "optimizing"
+        ]
+      },
+      "explanation": "CMMI 단계는 초기 → 관리 → 정의 → 정량적 관리 → 최적화이며 마지막이 최적화입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cmmi-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cmmi"
+      ],
+      "content": {
+        "prompt": "CMMI에서 관리 다음, 정량적 관리 앞의 단계는 ___ 단계이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "정의",
+          "defined"
+        ]
+      },
+      "explanation": "CMMI는 초기 → 관리 → 정의 → 정량적 관리 → 최적화 순서이므로 3단계는 정의입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cmmi-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cmmi"
+      ],
+      "content": {
+        "prompt": "CMMI에서 초기 단계 바로 다음 단계는?",
+        "options": [
+          "정의",
+          "관리",
+          "최적화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "CMMI는 초기 → 관리 → 정의 → 정량적 관리 → 최적화 순이므로 초기 다음은 관리입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cmmi-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cmmi"
+      ],
+      "content": {
+        "prompt": "CMMI에서 정량적 관리 다음 단계는?",
+        "options": [
+          "정의",
+          "최적화",
+          "초기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "정량적 관리(4단계) 다음은 마지막 단계인 최적화(5단계)입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cmmi-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cmmi"
+      ],
+      "content": {
+        "prompt": "조직이 CMMI 3단계에 있다. 이 단계의 이름은?",
+        "options": [
+          "정의",
+          "관리",
+          "최적화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "CMMI 3단계는 정의 단계입니다. 1단계 초기, 2단계 관리, 4단계 정량적 관리, 5단계 최적화입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-mgmt-cmmi-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cmmi"
+      ],
+      "content": {
+        "prompt": "CMMI는 프로세스 성숙도를 3단계로 평가한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "CMMI는 초기부터 최적화까지 5단계로 성숙도를 평가합니다.",
+      "refs": []
+    }
+  ]
+}
