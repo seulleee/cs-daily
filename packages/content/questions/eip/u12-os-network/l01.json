@@ -1,0 +1,223 @@
+{
+  "track": "eip",
+  "unit": "u12-os-network",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "eip-lang-process-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "process",
+        "os"
+      ],
+      "content": {
+        "prompt": "메모리에 올라가 실행 중인 프로그램은?",
+        "options": [
+          "프로세스",
+          "스레드",
+          "PCB"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "프로세스는 메모리에 올라가 실행 중인 프로그램입니다. 디스크의 실행 파일과 달리 동적인 개념입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-process-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "process",
+        "pcb"
+      ],
+      "content": {
+        "prompt": "운영체제가 프로세스마다 ID·상태·레지스터를 기록해 두는 블록은?",
+        "options": [
+          "스레드",
+          "PCB",
+          "페이지"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "PCB(프로세스 제어 블록)는 운영체제가 프로세스를 관리하려고 ID, 상태, 레지스터 값 등을 담아 두는 블록입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-process-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "process",
+        "process-state"
+      ],
+      "content": {
+        "prompt": "실행 준비는 끝났고 CPU 할당만 기다리는 상태는?",
+        "options": [
+          "대기",
+          "준비"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "준비 상태는 CPU만 받으면 바로 실행할 수 있는 상태입니다. 대기 상태는 입출력 같은 이벤트를 기다립니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-process-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "thread",
+        "process"
+      ],
+      "content": {
+        "prompt": "한 프로세스 안에서 여러 스레드가 실행될 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "스레드는 프로세스 안에서 실행되는 흐름 단위이며, 사용자 수준과 커널 수준으로 나뉩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-process-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "process",
+        "process-state"
+      ],
+      "content": {
+        "prompt": "입출력 같은 이벤트를 기다리는 프로세스 상태는 ___ 상태다."
+      },
+      "answer_key": {
+        "accepted": [
+          "대기",
+          "waiting",
+          "blocked",
+          "블록"
+        ]
+      },
+      "explanation": "대기 상태의 프로세스는 이벤트가 끝날 때까지 CPU를 받아도 진행할 수 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-process-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "process",
+        "process-state"
+      ],
+      "content": {
+        "prompt": "준비 상태 프로세스에 CPU를 할당할 때 바뀌는 상태는?",
+        "code": {
+          "language": "pseudo",
+          "source": "procedure dispatch(p)\n    p.state ← \"___\"\n    CPU를 p에 할당\nend"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "실행",
+          "running",
+          "run"
+        ]
+      },
+      "explanation": "CPU를 할당받은 프로세스는 준비 상태에서 실행 상태가 되어 CPU를 사용합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-process-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pcb",
+        "python"
+      ],
+      "content": {
+        "prompt": "이 클래스가 표현하는 운영체제의 관리 블록은?",
+        "code": {
+          "language": "python",
+          "source": "class Block:\n    def __init__(self, pid):\n        self.pid = pid\n        self.state = \"준비\"\n        self.registers = {}"
+        },
+        "options": [
+          "PCB",
+          "스레드",
+          "TTL"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "프로세스 ID, 상태, 레지스터 값을 묶어 두는 것은 운영체제의 프로세스 관리 블록인 PCB입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-process-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "process",
+        "process-state"
+      ],
+      "content": {
+        "prompt": "실행 중인 프로세스가 입출력을 요청하면 가는 상태는?",
+        "options": [
+          "준비",
+          "대기",
+          "실행"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "입출력을 요청하면 완료 이벤트를 기다려야 하므로 대기 상태로 갑니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-process-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "thread",
+        "process"
+      ],
+      "content": {
+        "prompt": "한 프로세스 안의 여러 실행 흐름 각각을 무엇이라 하는가?",
+        "options": [
+          "PCB",
+          "페이지",
+          "스레드"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "프로세스 내부의 실행 흐름 하나하나를 스레드라고 부르며, 한 프로세스가 스레드를 여럿 가질 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-process-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "process",
+        "os"
+      ],
+      "content": {
+        "prompt": "프로세스는 디스크에 저장된 실행 파일 그 자체이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "프로세스는 메모리에 올라가 실행 중인 프로그램입니다. 디스크의 실행 파일은 아직 프로세스가 아닙니다.",
+      "refs": []
+    }
+  ]
+}

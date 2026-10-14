@@ -1,0 +1,229 @@
+{
+  "track": "eip",
+  "unit": "u10-language-basics",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "eip-lang-types-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "data-type",
+        "integer"
+      ],
+      "content": {
+        "prompt": "소수점 없는 수를 저장하는 자료형은?",
+        "options": [
+          "실수형",
+          "정수형",
+          "논리형"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "정수형(int, long)은 소수점 없는 수를 저장합니다. 소수점 있는 수는 실수형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-types-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "data-type",
+        "boolean"
+      ],
+      "content": {
+        "prompt": "참·거짓 두 값만 갖는 자료형은?",
+        "options": [
+          "문자형",
+          "정수형",
+          "논리형"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "논리형(boolean)은 참과 거짓 두 값만 가집니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-types-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "data-type",
+        "char"
+      ],
+      "content": {
+        "prompt": "한 문자만 저장하는 자료형은?",
+        "options": [
+          "char",
+          "string",
+          "double"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "char는 문자 하나를 저장합니다. string은 문자들의 나열, double은 실수형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-types-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "data-type",
+        "integer"
+      ],
+      "content": {
+        "prompt": "long은 실수형 자료형이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "long은 int처럼 소수점 없는 수를 저장하는 정수형입니다. 실수형은 float, double입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-types-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "data-type",
+        "real-number"
+      ],
+      "content": {
+        "prompt": "소수점 있는 수를 저장하는 자료형을 ___ 이라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "실수형",
+          "실수",
+          "부동소수점형"
+        ]
+      },
+      "explanation": "실수형(float, double)은 소수점 있는 수를 저장합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-types-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "data-type",
+        "real-number",
+        "c"
+      ],
+      "content": {
+        "prompt": "원주율 3.14를 저장할 실수형 자료형은?",
+        "code": {
+          "language": "c",
+          "source": "___ pi = 3.14;\nprintf(\"%.2f\", pi);"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "double",
+          "float"
+        ]
+      },
+      "explanation": "double과 float는 소수점 있는 수를 저장하는 실수형입니다. int에 넣으면 소수점 아래가 사라집니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-types-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "data-type",
+        "boolean",
+        "java"
+      ],
+      "content": {
+        "prompt": "빈칸에 들어갈 자료형은?",
+        "code": {
+          "language": "java",
+          "source": "___ passed = true;\nif (passed) {\n    System.out.print(\"합격\");\n}"
+        },
+        "options": [
+          "int",
+          "boolean",
+          "char"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "true·false를 저장하는 변수는 논리형 boolean으로 선언합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-types-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "data-type",
+        "string",
+        "java"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "java",
+          "source": "String s = \"AB\";\nchar c = 'C';\nSystem.out.print(s + c);"
+        },
+        "options": [
+          "ABC",
+          "AB",
+          "C"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "문자열 \"AB\" 뒤에 문자 'C'가 이어져 ABC가 출력됩니다. char는 한 문자, String은 문자들의 나열입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-types-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "data-type",
+        "integer"
+      ],
+      "content": {
+        "prompt": "정수형 변수에 저장하기 알맞은 값은?",
+        "options": [
+          "3.5",
+          "'A'",
+          "42"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "42는 소수점 없는 수라 정수형에 맞습니다. 3.5는 실수형, 'A'는 문자형 값입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-types-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "data-type",
+        "integer"
+      ],
+      "content": {
+        "prompt": "int는 소수점 없는 수를 저장하는 정수형이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "int는 대표적인 정수형으로 소수점 없는 수를 저장합니다.",
+      "refs": []
+    }
+  ]
+}

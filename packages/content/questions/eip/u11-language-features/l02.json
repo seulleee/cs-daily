@@ -1,0 +1,226 @@
+{
+  "track": "eip",
+  "unit": "u11-language-features",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "eip-lang-pointer-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "pointer",
+        "address"
+      ],
+      "content": {
+        "prompt": "다른 변수의 메모리 주소를 저장하는 변수는?",
+        "options": [
+          "배열",
+          "포인터",
+          "정적 변수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "포인터는 다른 변수의 메모리 주소를 값으로 저장하는 변수입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pointer-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "pointer",
+        "address-of"
+      ],
+      "content": {
+        "prompt": "변수의 주소를 구하는 연산자는?",
+        "options": [
+          "&",
+          "*",
+          "%"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "&는 변수의 주소를 구합니다. *는 포인터가 가리키는 곳의 값을 읽거나 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pointer-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "pointer",
+        "dereference"
+      ],
+      "content": {
+        "prompt": "int *p일 때 *p가 뜻하는 것은?",
+        "options": [
+          "p에 저장된 주소",
+          "p가 가리키는 값"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "*p는 p가 가리키는 주소에 있는 값입니다(간접 참조). p 자체는 주소를 담고 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pointer-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "pointer",
+        "pointer-arithmetic"
+      ],
+      "content": {
+        "prompt": "int형 포인터 p에서 p + 1은 주소를 1바이트 늘린다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "포인터에 1을 더하면 가리키는 자료형 크기만큼 이동합니다. int면 4바이트 뒤 주소입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pointer-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "pointer",
+        "dereference"
+      ],
+      "content": {
+        "prompt": "포인터가 가리키는 주소의 값을 읽거나 쓰는 것을 간접 ___ 라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "참조",
+          "reference"
+        ]
+      },
+      "explanation": "* 연산자로 포인터가 가리키는 주소의 값을 다루는 것을 간접 참조라고 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pointer-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "pointer",
+        "pointer-arithmetic"
+      ],
+      "content": {
+        "prompt": "int 포인터 p가 100번지를 가리키면 p + 1은 ___ 번지다."
+      },
+      "answer_key": {
+        "accepted": [
+          "104"
+        ]
+      },
+      "explanation": "int는 4바이트이므로 p + 1은 100 + 4 = 104번지를 가리킵니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pointer-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pointer",
+        "dereference",
+        "c"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "c",
+          "source": "int a = 10;\nint *p = &a;\n*p = 20;\nprintf(\"%d\", a);"
+        },
+        "options": [
+          "10",
+          "20",
+          "주소값"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "p는 a의 주소를 가지므로 *p = 20은 a에 20을 씁니다. 따라서 a는 20입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pointer-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pointer",
+        "address-of",
+        "c"
+      ],
+      "content": {
+        "prompt": "5가 출력되도록 빈칸에 들어갈 것은?",
+        "code": {
+          "language": "c",
+          "source": "int a = 5;\nint *p = ___;\nprintf(\"%d\", *p);"
+        },
+        "options": [
+          "&a",
+          "*a",
+          "a"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "포인터 p에는 a의 주소를 넣어야 하므로 &a입니다. 그러면 *p가 a의 값 5를 읽습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pointer-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pointer",
+        "pointer-arithmetic",
+        "c"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "c",
+          "source": "int a[3] = {7, 8, 9};\nint *p = &a[0];\nprintf(\"%d\", *(p + 2));"
+        },
+        "options": [
+          "7",
+          "8",
+          "9"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "p는 a[0]을 가리키고, p + 2는 int 두 개만큼 뒤인 a[2]입니다. *(p + 2)는 9입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pointer-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "pointer",
+        "address"
+      ],
+      "content": {
+        "prompt": "포인터는 다른 변수의 주소를 값으로 저장한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "포인터는 다른 변수의 메모리 주소를 저장하는 변수입니다.",
+      "refs": []
+    }
+  ]
+}
