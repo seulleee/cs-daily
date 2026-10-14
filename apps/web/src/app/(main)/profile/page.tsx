@@ -5,7 +5,7 @@ import { useState } from 'react';
 import type { MeResponse } from '@cs-daily/contracts';
 import { api } from '@/lib/api';
 import { AppShell } from '@/components/app-shell';
-import { CheckIcon, ChevronLeftIcon, ChevronRightIcon, FlameIcon, SnowflakeIcon } from '@/components/icons';
+import { ChevronLeftIcon, ChevronRightIcon, FlameFilled, SnowflakeIcon } from '@/components/icons';
 import { StatsPanel } from '@/components/stats-panel';
 import { WEEKDAYS, fetchCalendar, useWeekCalendar, type Calendar } from '@/lib/calendar';
 
@@ -52,7 +52,7 @@ export default function ProfilePage() {
         </div>
         <CalendarGrid month={month} days={cal.data?.days ?? []} />
         <p className="mt-3 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-cap text-ink-2">
-          <FlameIcon size={14} className="text-streak" /> 목표 달성 · <SnowflakeIcon size={14} /> 프리즈 사용 · 숫자는 그날 XP
+          <FlameFilled size={16} /> 목표 달성 · <SnowflakeIcon size={14} /> 프리즈 사용 · 숫자는 그날 XP
         </p>
       </section>
     </AppShell>
@@ -77,10 +77,10 @@ function WeekStrip({ today }: { today: string }) {
               <span
                 aria-hidden
                 className={`flex h-8 w-8 items-center justify-center border ${
-                  d?.achieved ? 'bg-brand-fill text-on-brand' : 'bg-surface text-ink-2'
-                } ${isToday ? 'border-2 border-ink' : d?.achieved ? 'border-ink' : 'border-line'}`}
+                  d?.achieved ? 'text-ink' : 'text-ink-2'
+                } bg-surface ${isToday ? 'border-2 border-ink' : d?.achieved ? 'border-ink' : 'border-line'}`}
               >
-                {d?.achieved ? <CheckIcon size={16} strokeWidth={3} /> : d?.usedFreeze ? <SnowflakeIcon size={14} /> : null}
+                {d?.achieved ? <FlameFilled size={20} /> : d?.usedFreeze ? <SnowflakeIcon size={14} /> : null}
               </span>
               <span aria-hidden className={`text-cap ${isToday ? 'font-semibold text-ink' : 'text-ink-2'}`}>{WEEKDAYS[i]}</span>
             </li>
@@ -108,12 +108,12 @@ function CalendarGrid({ month, days }: { month: string; days: Calendar['days'] }
           <div
             key={date}
             title={d ? `${date}: ${d.xp} XP` : date}
-            className={`flex aspect-square flex-col items-center justify-center ${d?.achieved ? 'bg-brand-fill text-on-brand' : d?.usedFreeze ? 'border border-dashed border-ink' : d ? 'border border-line' : ''}`}
+            className={`flex aspect-square flex-col items-center justify-center ${d?.achieved ? 'border border-ink bg-surface' : d?.usedFreeze ? 'border border-dashed border-ink' : d ? 'border border-line' : ''}`}
           >
             {d?.usedFreeze ? (
               <SnowflakeIcon size={16} />
             ) : d?.achieved ? (
-              <FlameIcon size={16} />
+              <FlameFilled size={20} />
             ) : (
               <span className="bit leading-4!">{i + 1}</span>
             )}
