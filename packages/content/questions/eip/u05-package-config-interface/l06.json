@@ -1,0 +1,216 @@
+{
+  "track": "eip",
+  "unit": "u05-package-config-interface",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "eip-dev-reuse-reeng-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "reuse",
+        "productivity"
+      ],
+      "content": {
+        "prompt": "이미 만든 컴포넌트를 다시 써 생산성을 높이는 것은?",
+        "options": [
+          "재사용",
+          "재공학",
+          "역공학"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "재사용은 이미 만든 소프트웨어·컴포넌트를 다시 써 생산성과 품질을 높이는 것입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-reuse-reeng-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "reengineering",
+        "maintenance"
+      ],
+      "content": {
+        "prompt": "기존 시스템을 분석·개조해 유지보수성을 높이는 것은?",
+        "options": [
+          "재사용",
+          "재공학",
+          "패키징"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "재공학은 기존 시스템을 버리지 않고 분석·개조해 유지보수성을 높이는 활동입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-reuse-reeng-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "alien-code",
+        "maintenance"
+      ],
+      "content": {
+        "prompt": "만든 사람도 문서도 남지 않아 고치기 어려운 오래된 코드는?",
+        "options": [
+          "클린 코드",
+          "외계인 코드",
+          "형상 항목"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "외계인 코드는 작성자와 문서가 남지 않아 유지보수가 매우 어려운 오래된 코드입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-reuse-reeng-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "reengineering",
+        "maintenance"
+      ],
+      "content": {
+        "prompt": "재공학은 기존 시스템을 버리고 새로 개발하는 것이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "재공학은 기존 시스템을 버리지 않고 분석·개조해 유지보수성을 높입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-reuse-reeng-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "reengineering",
+        "migration"
+      ],
+      "content": {
+        "prompt": "재공학 활동은 분석, 재구성, 역공학, ___(Migration)이다.",
+        "hint": "다른 환경으로 옮겨 심는다는 뜻의 한자어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "이식",
+          "migration",
+          "마이그레이션"
+        ]
+      },
+      "explanation": "재공학 활동은 분석, 재구성, 역공학, 이식(Migration)으로 이루어집니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-reuse-reeng-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "reengineering",
+        "maintenance"
+      ],
+      "content": {
+        "prompt": "기존 시스템을 분석·개조해 유지보수성을 높이는 것은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "재공학",
+          "reengineering",
+          "리엔지니어링"
+        ]
+      },
+      "explanation": "재공학은 기존 시스템을 살린 채 분석·개조해 유지보수성을 높이는 활동입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-reuse-reeng-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "reengineering",
+        "activity"
+      ],
+      "content": {
+        "prompt": "다음 중 재공학 활동이 아닌 것은?",
+        "options": [
+          "분석",
+          "역공학",
+          "패키징"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "재공학 활동은 분석, 재구성, 역공학, 이식입니다. 패키징은 배포를 위한 작업입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-reuse-reeng-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "reuse",
+        "component"
+      ],
+      "content": {
+        "prompt": "검증된 로그인 모듈을 새 프로젝트에 그대로 가져다 썼다. 해당하는 것은?",
+        "options": [
+          "재사용",
+          "재공학",
+          "이식"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "이미 만든 컴포넌트를 다시 써 생산성을 높였으므로 재사용입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-reuse-reeng-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "reengineering",
+        "maintenance"
+      ],
+      "content": {
+        "prompt": "오래된 시스템을 버리지 않고 구조를 고쳐 계속 쓰려 한다. 해당하는 것은?",
+        "options": [
+          "재사용",
+          "재공학",
+          "패키징"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "기존 시스템을 분석·개조해 유지보수성을 높이는 것은 재공학입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-reuse-reeng-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "alien-code",
+        "maintenance"
+      ],
+      "content": {
+        "prompt": "외계인 코드는 작성자와 문서가 없어 유지보수가 어렵다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "외계인 코드는 만든 사람도 문서도 남지 않은 오래된 코드라 고치기 어렵습니다.",
+      "refs": []
+    }
+  ]
+}

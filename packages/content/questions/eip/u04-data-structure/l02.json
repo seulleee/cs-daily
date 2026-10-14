@@ -1,0 +1,215 @@
+{
+  "track": "eip",
+  "unit": "u04-data-structure",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "eip-dev-ds-stackq-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "stack",
+        "lifo"
+      ],
+      "content": {
+        "prompt": "LIFO로 동작하며 top에서만 삽입·삭제하는 구조는?",
+        "options": [
+          "큐",
+          "스택",
+          "덱"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스택은 top 한쪽에서만 삽입·삭제가 일어나 나중에 넣은 원소가 먼저 나오는 LIFO 구조입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-stackq-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "queue",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "먼저 넣은 원소가 먼저 나오는 FIFO 자료구조는?",
+        "options": [
+          "큐",
+          "스택",
+          "트리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "큐는 rear로 삽입하고 front에서 삭제하므로 먼저 넣은 원소가 먼저 나오는 FIFO 구조입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-stackq-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "deque",
+        "data-structure"
+      ],
+      "content": {
+        "prompt": "삽입·삭제 위치가 앞뒤 양 끝 모두인 자료구조는?",
+        "options": [
+          "큐",
+          "덱",
+          "스택"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "덱은 앞과 뒤 양쪽 끝에서 삽입과 삭제를 모두 할 수 있습니다. 큐는 삽입·삭제 위치가 정해져 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-stackq-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "queue",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "큐는 LIFO 방식으로 동작한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "큐는 먼저 넣은 원소가 먼저 나오는 FIFO입니다. LIFO는 스택의 동작 방식입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-stackq-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "stack",
+        "push"
+      ],
+      "content": {
+        "prompt": "원소 A를 스택 맨 위에 올리는 연산은 ___(A)이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "push",
+          "푸시"
+        ]
+      },
+      "explanation": "push는 스택의 top에 원소를 넣는 연산이고, 반대로 top 원소를 꺼내는 연산은 pop입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-stackq-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "queue",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "큐처럼 먼저 넣은 원소가 먼저 나오는 방식의 약자는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "FIFO",
+          "피포",
+          "first in first out",
+          "선입선출"
+        ]
+      },
+      "explanation": "FIFO(First In, First Out)는 먼저 들어온 원소가 먼저 나가는 방식으로 큐의 특징입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-stackq-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "stack",
+        "pop"
+      ],
+      "content": {
+        "prompt": "push(A) → push(B) → push(C) → pop(). 꺼낸 값은?",
+        "options": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "스택은 마지막에 넣은 원소가 top에 있으므로 pop은 C를 꺼냅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-stackq-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "queue",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "큐에 A, B, C를 차례로 넣고 하나를 뺐다. 나온 값은?",
+        "options": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "큐는 FIFO이므로 가장 먼저 넣은 A가 front에서 먼저 나옵니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-stackq-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "stack",
+        "push-pop"
+      ],
+      "content": {
+        "prompt": "push(1)→push(2)→pop()→push(3)→pop(). 남은 값은?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "pop()이 2를 꺼내고, 다시 넣은 3도 pop()으로 꺼내므로 스택에는 1만 남습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-stackq-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "stack",
+        "lifo"
+      ],
+      "content": {
+        "prompt": "LIFO는 나중에 넣은 원소가 먼저 나오는 방식이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "LIFO(Last In, First Out)는 나중에 들어온 원소가 먼저 나가는 방식으로 스택의 특징입니다.",
+      "refs": []
+    }
+  ]
+}

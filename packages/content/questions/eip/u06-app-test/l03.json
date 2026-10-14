@@ -1,0 +1,213 @@
+{
+  "track": "eip",
+  "unit": "u06-app-test",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "eip-dev-test-coverage-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "coverage",
+        "statement"
+      ],
+      "content": {
+        "prompt": "모든 문장을 최소 한 번 실행하는 커버리지는?",
+        "options": [
+          "구문 커버리지",
+          "결정 커버리지",
+          "조건 커버리지"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "구문 커버리지는 프로그램의 모든 문장이 최소 한 번 실행되도록 하는 기준입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-coverage-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "coverage",
+        "decision"
+      ],
+      "content": {
+        "prompt": "조건문의 참·거짓 결과를 최소 한 번씩 갖게 하는 커버리지는?",
+        "options": [
+          "구문 커버리지",
+          "결정 커버리지",
+          "조건 커버리지"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "결정(분기) 커버리지는 모든 조건문의 전체 결과가 참과 거짓을 최소 한 번씩 갖게 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-coverage-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "coverage",
+        "condition"
+      ],
+      "content": {
+        "prompt": "결정 안의 개별 조건식이 참·거짓을 한 번씩 갖게 하는 것은?",
+        "options": [
+          "결정 커버리지",
+          "조건 커버리지"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "조건 커버리지는 결정 전체가 아니라 그 안의 개별 조건식마다 참·거짓을 확인합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-coverage-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "coverage",
+        "decision"
+      ],
+      "content": {
+        "prompt": "결정 커버리지는 분기 커버리지라고도 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "결정 커버리지는 조건문의 참·거짓 분기를 모두 지나게 하므로 분기 커버리지라고도 부릅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-coverage-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cyclomatic",
+        "basis-path"
+      ],
+      "content": {
+        "prompt": "독립 경로 수를 나타내는 척도는 순환 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "복잡도",
+          "complexity"
+        ]
+      },
+      "explanation": "순환 복잡도는 프로그램의 독립 경로 수를 나타내며 기초 경로 검사에 쓰입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-coverage-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cyclomatic",
+        "basis-path"
+      ],
+      "content": {
+        "prompt": "순환 복잡도 = 간선 수 − 노드 수 + ___"
+      },
+      "answer_key": {
+        "accepted": [
+          "2",
+          "둘",
+          "two"
+        ]
+      },
+      "explanation": "순환 복잡도는 간선 수 − 노드 수 + 2로 계산합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-coverage-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cyclomatic",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "간선 9개, 노드 7개인 흐름 그래프의 순환 복잡도는?",
+        "options": [
+          "2",
+          "4",
+          "16"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "간선 수 − 노드 수 + 2 = 9 − 7 + 2 = 4입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-coverage-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cyclomatic",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "간선 6개, 노드 5개인 흐름 그래프의 순환 복잡도는?",
+        "options": [
+          "3",
+          "1",
+          "11"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "간선 수 − 노드 수 + 2 = 6 − 5 + 2 = 3입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-coverage-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "coverage",
+        "condition"
+      ],
+      "content": {
+        "prompt": "if (A && B)에서 A, B 각각이 참·거짓을 갖게 하는 기준은?",
+        "options": [
+          "구문 커버리지",
+          "결정 커버리지",
+          "조건 커버리지"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "개별 조건식 A와 B가 각각 참·거짓을 갖게 하는 것은 조건 커버리지입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-coverage-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "coverage",
+        "statement"
+      ],
+      "content": {
+        "prompt": "구문 커버리지는 모든 분기의 참·거짓을 한 번씩 확인한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "구문 커버리지는 모든 문장을 한 번 실행하는 기준입니다. 분기의 참·거짓은 결정 커버리지입니다.",
+      "refs": []
+    }
+  ]
+}

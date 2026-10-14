@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u06-app-test",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "eip-dev-test-oracle-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "test-case",
+        "testing"
+      ],
+      "content": {
+        "prompt": "입력 값, 실행 조건, 예상 결과의 집합은?",
+        "options": [
+          "테스트 케이스",
+          "테스트 오라클",
+          "베이스라인"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "테스트 케이스는 입력 값, 실행 조건, 예상 결과를 묶은 집합입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-oracle-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "test-oracle",
+        "testing"
+      ],
+      "content": {
+        "prompt": "테스트 결과가 맞는지 판단하는 기준은?",
+        "options": [
+          "테스트 케이스",
+          "테스트 오라클",
+          "드라이버"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "테스트 오라클은 실행 결과가 참인지 거짓인지 판단하는 기준입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-oracle-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "xunit",
+        "automation"
+      ],
+      "content": {
+        "prompt": "JUnit, CppUnit처럼 단위 테스트를 자동화하는 프레임워크는?",
+        "options": [
+          "EAI",
+          "RCS",
+          "xUnit"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "xUnit은 JUnit, CppUnit 등 단위 테스트 자동화 프레임워크를 통틀어 부르는 이름입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-oracle-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "defect",
+        "management"
+      ],
+      "content": {
+        "prompt": "결함 관리는 결함을 기록하고 수정·확인까지 추적한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "결함 관리는 결함을 기록·분류하고 수정과 확인이 끝날 때까지 추적하는 활동입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-oracle-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "test-oracle",
+        "testing"
+      ],
+      "content": {
+        "prompt": "결과가 맞는지 판단하는 기준은 테스트 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "오라클",
+          "oracle"
+        ]
+      },
+      "explanation": "테스트 오라클은 테스트 결과가 맞는지 판단하는 기준입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-oracle-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "defect",
+        "priority"
+      ],
+      "content": {
+        "prompt": "결함을 분류하는 두 기준은 심각도와 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "우선순위",
+          "priority",
+          "우선 순위"
+        ]
+      },
+      "explanation": "결함 관리에서는 결함을 심각도와 우선순위로 분류해 처리 순서를 정합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-oracle-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "test-case",
+        "testing"
+      ],
+      "content": {
+        "prompt": "다음 중 테스트 케이스의 구성 요소가 아닌 것은?",
+        "options": [
+          "입력 값",
+          "예상 결과",
+          "개발 비용"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "테스트 케이스는 입력 값, 실행 조건, 예상 결과로 구성됩니다. 개발 비용은 해당하지 않습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-oracle-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "test-oracle",
+        "testing"
+      ],
+      "content": {
+        "prompt": "덧셈 기능 테스트에서 2+3의 기대값 5를 판정 기준으로 삼았다. 이것은?",
+        "options": [
+          "테스트 오라클",
+          "테스트 드라이버",
+          "코드 스멜"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "결과가 맞는지 판단하는 기준(기대값 5)이므로 테스트 오라클입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-oracle-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "xunit",
+        "automation"
+      ],
+      "content": {
+        "prompt": "Java 단위 테스트를 자동화하려 한다. 알맞은 도구는?",
+        "options": [
+          "JUnit",
+          "SVN",
+          "UDDI"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "JUnit은 Java용 xUnit 단위 테스트 자동화 프레임워크입니다. SVN은 버전 관리 도구입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-oracle-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "test-oracle",
+        "testing"
+      ],
+      "content": {
+        "prompt": "테스트 오라클은 테스트 대상 모듈을 호출하는 임시 모듈이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "테스트 오라클은 결과가 맞는지 판단하는 기준입니다. 대상 모듈을 호출하는 임시 모듈은 드라이버입니다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "track": "eip",
+  "unit": "u05-package-config-interface",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "eip-dev-eai-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "interface",
+        "integration"
+      ],
+      "content": {
+        "prompt": "서로 다른 시스템·모듈이 데이터를 주고받는 접점은?",
+        "options": [
+          "인터페이스",
+          "베이스라인",
+          "버킷"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인터페이스는 서로 다른 시스템이나 모듈이 데이터를 주고받는 접점입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-eai-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "eai",
+        "integration"
+      ],
+      "content": {
+        "prompt": "기업 안의 여러 애플리케이션을 연계해 통합하는 솔루션은?",
+        "options": [
+          "DRM",
+          "EAI",
+          "RCS"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "EAI(Enterprise Application Integration)는 기업 내 여러 애플리케이션을 연계·통합하는 솔루션입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-eai-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "esb",
+        "integration"
+      ],
+      "content": {
+        "prompt": "표준 기반 버스를 중심으로 서비스를 느슨하게 연계하는 것은?",
+        "options": [
+          "DRM",
+          "SVN",
+          "ESB"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "ESB는 표준 기반의 버스를 중심에 두고 서비스들을 느슨하게 연계합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-eai-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "eai",
+        "hub-and-spoke"
+      ],
+      "content": {
+        "prompt": "허브 앤 스포크는 EAI 유형의 하나이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "EAI 유형은 포인트 투 포인트, 허브 앤 스포크, 메시지 버스, 하이브리드입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-eai-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "eai",
+        "message-bus"
+      ],
+      "content": {
+        "prompt": "EAI 유형: 포인트 투 포인트, 허브 앤 스포크, 메시지 ___, 하이브리드"
+      },
+      "answer_key": {
+        "accepted": [
+          "버스",
+          "bus"
+        ]
+      },
+      "explanation": "EAI 유형은 포인트 투 포인트, 허브 앤 스포크, 메시지 버스, 하이브리드의 네 가지입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-eai-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "eai",
+        "integration"
+      ],
+      "content": {
+        "prompt": "기업 내 애플리케이션 통합 솔루션의 약자는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "EAI",
+          "이에이아이"
+        ]
+      },
+      "explanation": "EAI는 Enterprise Application Integration의 약자로 기업 내 애플리케이션을 연계·통합합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-eai-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "eai",
+        "type"
+      ],
+      "content": {
+        "prompt": "다음 중 EAI 유형이 아닌 것은?",
+        "options": [
+          "메시지 버스",
+          "허브 앤 스포크",
+          "클라이언트 서버"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "EAI 유형은 포인트 투 포인트, 허브 앤 스포크, 메시지 버스, 하이브리드입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-eai-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "esb",
+        "loose-coupling"
+      ],
+      "content": {
+        "prompt": "ESB가 서비스들을 연계하는 방식은?",
+        "options": [
+          "느슨하게 연계",
+          "강하게 결합",
+          "수동으로 복사"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ESB는 표준 기반 버스를 중심으로 서비스들을 느슨하게 연계합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-eai-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "eai",
+        "type"
+      ],
+      "content": {
+        "prompt": "다음 중 EAI 유형에 해당하는 것은?",
+        "options": [
+          "하이브리드",
+          "분산형",
+          "베이스라인"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "하이브리드는 EAI 유형의 하나입니다. 분산형은 버전 관리 방식, 베이스라인은 형상 관리 용어입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-eai-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "esb",
+        "integration"
+      ],
+      "content": {
+        "prompt": "ESB는 버스 없이 애플리케이션끼리 직접 연결하는 방식이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "ESB는 표준 기반 버스를 중심에 두고 서비스들을 느슨하게 연계합니다.",
+      "refs": []
+    }
+  ]
+}

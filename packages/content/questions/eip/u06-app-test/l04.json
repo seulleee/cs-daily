@@ -1,0 +1,215 @@
+{
+  "track": "eip",
+  "unit": "u06-app-test",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "eip-dev-test-blackbox-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "black-box",
+        "equivalence"
+      ],
+      "content": {
+        "prompt": "입력을 같은 결과가 나오는 그룹으로 나눠 대표값으로 테스트하는 기법은?",
+        "options": [
+          "동등 분할",
+          "경계값 분석",
+          "오류 예측"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "동등(동치) 분할은 같은 결과가 나오는 입력끼리 묶고 그룹마다 대표값으로 테스트합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-blackbox-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "black-box",
+        "boundary"
+      ],
+      "content": {
+        "prompt": "경계 바로 아래·위 값을 테스트하는 기법은?",
+        "options": [
+          "동등 분할",
+          "경계값 분석",
+          "원인-결과 그래프"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "경계값 분석은 결함이 경계에 몰리는 점을 이용해 경계 바로 아래·위 값을 테스트합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-blackbox-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "black-box",
+        "cause-effect"
+      ],
+      "content": {
+        "prompt": "입력 조건과 결과의 관계를 그래프로 분석하는 기법은?",
+        "options": [
+          "오류 예측",
+          "동등 분할",
+          "원인-결과 그래프"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "원인-결과 그래프는 입력 조건(원인)과 결과의 관계를 그래프로 분석해 케이스를 만듭니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-blackbox-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "black-box",
+        "error-guessing"
+      ],
+      "content": {
+        "prompt": "오류 예측은 경험으로 결함이 날 만한 곳을 골라 테스트한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "오류 예측은 테스터의 경험을 바탕으로 결함이 생길 만한 곳을 골라 테스트하는 블랙박스 기법입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-blackbox-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "black-box",
+        "boundary"
+      ],
+      "content": {
+        "prompt": "결함이 경계에 몰린다는 점을 이용한 기법은 ___ 분석이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "경계값",
+          "boundary value",
+          "경계 값"
+        ]
+      },
+      "explanation": "경계값 분석은 결함이 경계 부근에 몰리기 때문에 경계 바로 아래·위 값을 테스트합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-blackbox-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "black-box",
+        "equivalence"
+      ],
+      "content": {
+        "prompt": "입력을 같은 결과 그룹으로 나누는 기법은 동등 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "분할",
+          "partitioning",
+          "partition"
+        ]
+      },
+      "explanation": "동등 분할은 입력을 같은 결과가 나오는 그룹으로 나누고 대표값으로 테스트합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-blackbox-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "black-box",
+        "boundary"
+      ],
+      "content": {
+        "prompt": "점수 0~100이 유효할 때 경계값 분석으로 고를 값은?",
+        "options": [
+          "-1, 0, 100, 101",
+          "50, 60, 70",
+          "0, 50, 99"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "경계 0과 100의 바로 아래·위인 -1, 0, 100, 101을 테스트합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-blackbox-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "black-box",
+        "equivalence"
+      ],
+      "content": {
+        "prompt": "나이 1~19는 미성년, 20 이상은 성인이다. 동등 분할로 그룹별 하나씩 고른 값은?",
+        "options": [
+          "10, 30",
+          "15, 18",
+          "25, 40"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "미성년 그룹에서 10, 성인 그룹에서 30을 대표값으로 골랐습니다. 나머지는 한 그룹에서만 골랐습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-blackbox-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "black-box",
+        "error-guessing"
+      ],
+      "content": {
+        "prompt": "선배 테스터가 경험상 결함이 잦던 입력만 골랐다. 해당 기법은?",
+        "options": [
+          "경계값 분석",
+          "오류 예측",
+          "동등 분할"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "경험을 바탕으로 결함이 날 만한 곳을 고르는 기법은 오류 예측입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-blackbox-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "black-box",
+        "boundary"
+      ],
+      "content": {
+        "prompt": "경계값 분석은 입력 범위의 가운데 값만 테스트한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "경계값 분석은 경계 바로 아래·위 값을 테스트합니다. 결함이 경계에 몰리기 때문입니다.",
+      "refs": []
+    }
+  ]
+}

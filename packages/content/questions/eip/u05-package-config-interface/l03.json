@@ -1,0 +1,215 @@
+{
+  "track": "eip",
+  "unit": "u05-package-config-interface",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "eip-dev-scm-proc-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scm",
+        "identification"
+      ],
+      "content": {
+        "prompt": "관리할 항목을 정하고 이름·번호를 붙이는 절차는?",
+        "options": [
+          "형상 식별",
+          "형상 통제",
+          "형상 감사"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "형상 식별은 관리할 형상 항목을 정하고 이름과 번호를 붙이는 첫 절차입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-proc-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scm",
+        "control"
+      ],
+      "content": {
+        "prompt": "변경 요청을 검토·승인해 베이스라인에 반영하는 절차는?",
+        "options": [
+          "형상 식별",
+          "형상 통제",
+          "형상 기록"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "형상 통제는 변경 요청을 검토·승인한 뒤 베이스라인에 반영하는 절차입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-proc-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scm",
+        "audit"
+      ],
+      "content": {
+        "prompt": "변경이 제대로 되었는지 검증하는 절차는?",
+        "options": [
+          "형상 통제",
+          "형상 기록",
+          "형상 감사"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "형상 감사는 승인된 변경이 제대로 반영되었는지 검증하는 절차입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-proc-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "scm",
+        "status-accounting"
+      ],
+      "content": {
+        "prompt": "형상 기록은 변경 요청을 검토·승인하는 절차이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "변경 요청을 검토·승인하는 것은 형상 통제입니다. 형상 기록은 변경 내용과 상태를 기록·보고합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-proc-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "scm",
+        "status-accounting"
+      ],
+      "content": {
+        "prompt": "변경 내용과 상태를 기록·보고하는 절차는 형상 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "기록",
+          "상태 보고",
+          "상태보고",
+          "기록 상태 보고"
+        ]
+      },
+      "explanation": "형상 기록(상태 보고)은 변경 내용과 현재 상태를 기록하고 보고하는 절차입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-proc-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "scm",
+        "identification"
+      ],
+      "content": {
+        "prompt": "형상 관리 절차의 첫 단계는 형상 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "식별",
+          "identification"
+        ]
+      },
+      "explanation": "형상 관리는 식별 → 통제 → 감사 → 기록 순서로 진행되며, 식별이 첫 단계입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-proc-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scm",
+        "process"
+      ],
+      "content": {
+        "prompt": "형상 관리 절차를 순서대로 나열한 것은?",
+        "options": [
+          "통제→식별→기록→감사",
+          "식별→통제→감사→기록",
+          "기록→감사→통제→식별"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "항목을 정하고(식별) 변경을 승인하고(통제) 검증한 뒤(감사) 기록·보고(기록)합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-proc-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scm",
+        "control"
+      ],
+      "content": {
+        "prompt": "개발자가 낸 변경 요청을 위원회가 검토해 승인했다. 해당 절차는?",
+        "options": [
+          "형상 통제",
+          "형상 식별",
+          "형상 감사"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "변경 요청을 검토·승인해 베이스라인에 반영하는 것은 형상 통제입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-proc-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scm",
+        "audit"
+      ],
+      "content": {
+        "prompt": "배포 전 변경이 승인대로 반영됐는지 확인했다. 해당 절차는?",
+        "options": [
+          "형상 식별",
+          "형상 감사",
+          "형상 기록"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "변경이 제대로 되었는지 검증하는 절차는 형상 감사입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-proc-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "scm",
+        "identification"
+      ],
+      "content": {
+        "prompt": "형상 식별은 관리 항목에 이름과 번호를 붙이는 절차이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "형상 식별은 관리할 항목을 정하고 이름·번호를 붙이는 절차로, 형상 관리의 첫 단계입니다.",
+      "refs": []
+    }
+  ]
+}
