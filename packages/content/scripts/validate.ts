@@ -14,6 +14,11 @@ import { CurriculumFile, LessonFile } from '@cs-daily/contracts';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors: string[] = [];
 
+/** 코드 문제는 정보처리기사 트랙에서만, 짧은 코드의 빈칸 형태로만 허용한다. */
+const CODE_TRACK = 'eip';
+const CODE_MAX_LINES = 12;
+const CODE_MAX_COLS = 48;
+
 const curriculum = CurriculumFile.safeParse(JSON.parse(readFileSync(join(root, 'curriculum.json'), 'utf8')));
 if (!curriculum.success) {
   console.error('curriculum.json 스키마 오류:\n' + curriculum.error.issues.map((i) => `  ${i.path.join('.')}: ${i.message}`).join('\n'));
@@ -66,6 +71,21 @@ function checkLessonFile(path: string) {
     if (seenIds.has(q.id)) errors.push(`${rel}#${i}: 중복 id ${q.id} (이미 ${seenIds.get(q.id)})`);
     seenIds.set(q.id, rel);
     if (!q.id.startsWith(`${track}-`)) errors.push(`${rel}#${i}: id는 '${track}-'로 시작해야 합니다 (${q.id})`);
+    const code = (q.content as { code?: { source: string } | null }).code;
+    if (code) {
+      if (track !== CODE_TRACK) {
+        errors.push(`${rel}#${i}: 코드(content.code)는 '${CODE_TRACK}' 트랙에서만 허용됩니다 (${q.id})`);
+      } else {
+        const lines = code.source.replace(/\n+$/, '').split('\n');
+        if (lines.length > CODE_MAX_LINES) errors.push(`${rel}#${i}: 코드 ${lines.length}줄 — ${CODE_MAX_LINES}줄 이하여야 합니다`);
+        const longIdx = lines.findIndex((l) => [...l.replace(/\t/g, '    ')].length > CODE_MAX_COLS);
+        if (longIdx >= 0) errors.push(`${rel}#${i}: 코드 ${longIdx + 1}번째 줄이 ${CODE_MAX_COLS}자를 넘습니다`);
+        const blanks = code.source.split('___').length - 1;
+        if (q.type === 'fill' && blanks > 1) errors.push(`${rel}#${i}: fill 코드의 빈칸(___)은 1개여야 합니다 (${blanks}개)`);
+        if (q.type === 'single' && blanks > 1) errors.push(`${rel}#${i}: single 코드의 빈칸(___)은 0~1개여야 합니다 (${blanks}개)`);
+        if (q.type === 'fill' && blanks === 0) errors.push(`${rel}#${i}: fill 코드 문제는 코드 안에 빈칸(___) 1개가 있어야 합니다`);
+      }
+    }
     if (q.type === 'single' || q.type === 'multi') {
       const opts = (q.content as { options: string[] }).options;
       const dup = opts.find((o, j) => opts.indexOf(o) !== j);

@@ -11,9 +11,13 @@ import { z } from 'zod';
 export const QuestionType = z.enum(['single', 'multi', 'ox', 'fill']);
 export type QuestionType = z.infer<typeof QuestionType>;
 
+/** 코드 문제는 정보처리기사(eip) 트랙에서만 허용된다(validate가 강제). */
+export const CodeLanguage = z.enum(['c', 'java', 'python', 'sql', 'pseudo']);
+export type CodeLanguage = z.infer<typeof CodeLanguage>;
+
 const CodeBlock = z
   .object({
-    language: z.string().min(1).max(32),
+    language: CodeLanguage,
     source: z.string().min(1).max(4000),
   })
   .nullable()
@@ -30,12 +34,17 @@ export const OxContent = z.object({
   prompt: z.string().min(1).max(300),
   code: CodeBlock,
 });
-export const FillContent = z.object({
-  /** 빈칸은 ___ (언더스코어 3개)로 표시 */
-  prompt: z.string().min(1).max(300).refine((s) => s.includes('___'), '빈칸(___)이 있어야 합니다'),
-  code: CodeBlock,
-  hint: z.string().max(120).optional(),
-});
+export const FillContent = z
+  .object({
+    /** 빈칸은 ___ (언더스코어 3개)로 표시. 코드 안에 빈칸이 있으면 prompt에는 없어도 된다 */
+    prompt: z.string().min(1).max(300),
+    code: CodeBlock,
+    hint: z.string().max(120).optional(),
+  })
+  .refine((c) => c.prompt.includes('___') || !!c.code?.source.includes('___'), {
+    path: ['prompt'],
+    message: '빈칸(___)이 prompt 또는 code에 있어야 합니다',
+  });
 
 export const QuestionContent = z.discriminatedUnion('type', [
   z.object({ type: z.literal('single'), content: SingleContent }),
