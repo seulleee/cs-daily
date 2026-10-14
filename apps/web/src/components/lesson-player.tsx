@@ -162,7 +162,6 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
     if (!focusKey) return;
     const el = document.querySelector<HTMLElement>('input[aria-label="빈칸"], [data-question-heading]');
     el?.focus({ preventScroll: true });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focusKey]);
 
   // Enter: 확인 또는 다음. 버튼·링크에 포커스가 있으면 브라우저가 Enter를 click으로 바꿔 주므로 여기서는 건드리지 않는다(이중 실행 방지).
