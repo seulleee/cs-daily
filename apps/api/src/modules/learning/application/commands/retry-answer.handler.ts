@@ -4,6 +4,7 @@ import type { RetryAnswerResponse } from '@cs-daily/contracts';
 import { QuestionId, SessionId, UserId } from '../../../../shared/domain/ids';
 import { SessionNotFound } from '../../domain/errors';
 import { LESSON_SESSION_REPO, QUESTION_GRADING_PORT, type LessonSessionRepository, type QuestionGradingPort } from '../../domain/ports';
+import { resolveGradingKey } from '../../domain/services/code-variants';
 import { Grader } from '../../domain/services/grader';
 import { RetryAnswerCommand } from './commands';
 
@@ -22,7 +23,9 @@ export class RetryAnswerHandler implements ICommandHandler<RetryAnswerCommand, R
   async execute(cmd: RetryAnswerCommand): Promise<RetryAnswerResponse> {
     const session = await this.sessions.findById(SessionId.of(cmd.sessionId));
     if (!session || !session.userId.equals(UserId.of(cmd.userId))) throw new SessionNotFound(cmd.sessionId);
-    const q = await this.questions.forGrading(QuestionId.of(cmd.questionId));
+    const full = await this.questions.forGrading(QuestionId.of(cmd.questionId));
+    const { answerKey, explanation } = resolveGradingKey(full.answerKey, full.explanation, cmd.lang);
+    const q = { ...full, answerKey, explanation };
     const isCorrect = session.retry(q, cmd.answer, this.grader);
     return { isCorrect, correctAnswer: q.answerKey, explanation: q.explanation };
   }

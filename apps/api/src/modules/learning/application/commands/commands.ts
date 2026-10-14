@@ -1,3 +1,5 @@
+import type { CodingLanguage } from '@cs-daily/contracts';
+
 /** 커맨드 객체. 컨트롤러가 DTO를 이걸로 바꿔 CommandBus에 넘긴다 */
 export class StartLessonSessionCommand {
   constructor(
@@ -17,6 +19,8 @@ export class SubmitAnswerCommand {
     readonly questionId: string,
     readonly answer: unknown,
     readonly timeMs: number,
+    /** 언어별 코드 문제를 풀 때 받은 언어 (그 언어 variant의 정답으로 채점) */
+    readonly lang?: CodingLanguage,
   ) {}
 }
 
@@ -42,5 +46,6 @@ export class RetryAnswerCommand {
     readonly sessionId: string,
     readonly questionId: string,
     readonly answer: unknown,
+    readonly lang?: CodingLanguage,
   ) {}
 }

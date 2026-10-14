@@ -9,13 +9,15 @@
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { CurriculumFile, LessonFile } from '@cs-daily/contracts';
+import { CODING_LANGUAGES, CurriculumFile, LessonFile } from '@cs-daily/contracts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors: string[] = [];
 
 /** 코드 문제는 정보처리기사(eip)·코딩 테스트(ct) 트랙에서만, 짧은 코드의 빈칸 형태로만 허용한다. */
 const CODE_TRACKS: readonly string[] = ['eip', 'ct'];
+/** 언어별 variants(Python·Java·JavaScript·C++)로만 코드 문제를 내는 트랙 */
+const VARIANT_TRACK = 'ct';
 const CODE_MAX_LINES = 12;
 const CODE_MAX_COLS = 48;
 
@@ -45,6 +47,23 @@ function walk(dir: string) {
   }
 }
 
+/** 코드 한 덩어리(content.code 또는 variants[lang].code)의 줄 수·폭·빈칸 개수 */
+function checkCode(where: string, source: string, type: string) {
+  const lines = source.replace(/\n+$/, '').split('\n');
+  if (lines.length > CODE_MAX_LINES) errors.push(`${where}: 코드 ${lines.length}줄 — ${CODE_MAX_LINES}줄 이하여야 합니다`);
+  const longIdx = lines.findIndex((l) => [...l.replace(/\t/g, '    ')].length > CODE_MAX_COLS);
+  if (longIdx >= 0) errors.push(`${where}: 코드 ${longIdx + 1}번째 줄이 ${CODE_MAX_COLS}자를 넘습니다`);
+  const blanks = source.split('___').length - 1;
+  if (type === 'fill' && blanks > 1) errors.push(`${where}: fill 코드의 빈칸(___)은 1개여야 합니다 (${blanks}개)`);
+  if (type === 'single' && blanks > 1) errors.push(`${where}: single 코드의 빈칸(___)은 0~1개여야 합니다 (${blanks}개)`);
+  if (type === 'fill' && blanks === 0) errors.push(`${where}: fill 코드 문제는 코드 안에 빈칸(___) 1개가 있어야 합니다`);
+}
+
+function checkDupOptions(where: string, opts: string[] | undefined) {
+  const dup = opts?.find((o, j) => opts.indexOf(o) !== j);
+  if (dup) errors.push(`${where}: 중복 보기 "${dup}"`);
+}
+
 function checkLessonFile(path: string) {
   fileCount += 1;
   const rel = path.slice(root.length + 1);
@@ -71,26 +90,29 @@ function checkLessonFile(path: string) {
     if (seenIds.has(q.id)) errors.push(`${rel}#${i}: 중복 id ${q.id} (이미 ${seenIds.get(q.id)})`);
     seenIds.set(q.id, rel);
     if (!q.id.startsWith(`${track}-`)) errors.push(`${rel}#${i}: id는 '${track}-'로 시작해야 합니다 (${q.id})`);
-    const code = (q.content as { code?: { source: string } | null }).code;
-    if (code) {
+    const content = q.content as { code?: { source: string } | null; options?: string[]; variants?: Record<string, { code: { source: string }; options?: string[] }> };
+    if (content.variants) {
+      // 언어별 variants는 ct 트랙에서만 허용되고, 4개 언어를 모두 제공해야 한다
+      if (track !== VARIANT_TRACK) {
+        errors.push(`${rel}#${i}: variants(언어별 코드)는 '${VARIANT_TRACK}' 트랙에서만 허용됩니다 (${q.id})`);
+      } else {
+        const missing = CODING_LANGUAGES.filter((l) => !content.variants![l]);
+        if (missing.length) errors.push(`${rel}#${i}: variants에 언어가 빠졌습니다: ${missing.join(', ')} — ${CODING_LANGUAGES.join('·')} 모두 필요합니다 (${q.id})`);
+      }
+      for (const [lang, v] of Object.entries(content.variants)) {
+        checkCode(`${rel}#${i} variants.${lang}`, v.code.source, q.type);
+        checkDupOptions(`${rel}#${i} variants.${lang}`, v.options);
+      }
+    } else if (content.code) {
       if (!CODE_TRACKS.includes(track)) {
         errors.push(`${rel}#${i}: 코드(content.code)는 ${CODE_TRACKS.map((t) => `'${t}'`).join('·')} 트랙에서만 허용됩니다 (${q.id})`);
+      } else if (track === VARIANT_TRACK) {
+        errors.push(`${rel}#${i}: '${VARIANT_TRACK}' 트랙의 코드 문제는 content.code가 아니라 variants로 4개 언어를 모두 제공해야 합니다 (${q.id})`);
       } else {
-        const lines = code.source.replace(/\n+$/, '').split('\n');
-        if (lines.length > CODE_MAX_LINES) errors.push(`${rel}#${i}: 코드 ${lines.length}줄 — ${CODE_MAX_LINES}줄 이하여야 합니다`);
-        const longIdx = lines.findIndex((l) => [...l.replace(/\t/g, '    ')].length > CODE_MAX_COLS);
-        if (longIdx >= 0) errors.push(`${rel}#${i}: 코드 ${longIdx + 1}번째 줄이 ${CODE_MAX_COLS}자를 넘습니다`);
-        const blanks = code.source.split('___').length - 1;
-        if (q.type === 'fill' && blanks > 1) errors.push(`${rel}#${i}: fill 코드의 빈칸(___)은 1개여야 합니다 (${blanks}개)`);
-        if (q.type === 'single' && blanks > 1) errors.push(`${rel}#${i}: single 코드의 빈칸(___)은 0~1개여야 합니다 (${blanks}개)`);
-        if (q.type === 'fill' && blanks === 0) errors.push(`${rel}#${i}: fill 코드 문제는 코드 안에 빈칸(___) 1개가 있어야 합니다`);
+        checkCode(`${rel}#${i}`, content.code.source, q.type);
       }
     }
-    if (q.type === 'single' || q.type === 'multi') {
-      const opts = (q.content as { options: string[] }).options;
-      const dup = opts.find((o, j) => opts.indexOf(o) !== j);
-      if (dup) errors.push(`${rel}#${i}: 중복 보기 "${dup}"`);
-    }
+    checkDupOptions(`${rel}#${i}`, content.options);
   });
   // 난이도가 레슨 안에서 내려가지 않는지(1→3 상승 규칙) 경고
   for (let i = 1; i < questions.length; i += 1) {

@@ -3,10 +3,11 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import type { PathResponse, SessionResponse, TrackSummary } from '@cs-daily/contracts';
+import { DEFAULT_CODING_LANGUAGE, type CodingLanguage, type PathResponse, type SessionResponse, type TrackSummary } from '@cs-daily/contracts';
 import { api, ApiError } from '@/lib/api';
 import { writeLastTrack } from '@/lib/last-track';
 import { writePlacementChain } from '@/lib/placement-chain';
+import { CodeLanguagePicker } from '@/components/code-language-picker';
 import { SelectMark } from '@/components/select-mark';
 import { Window } from '@/components/window';
 
@@ -31,14 +32,25 @@ async function startPlacement(mode: 'chain' | 'pick', track: string, units: { id
   return session.id;
 }
 
-/** 온보딩 3스텝: 트랙 선택 → 데일리 목표 → 시작 지점(처음 / 배치 테스트). 배치 테스트는 3단계 */
+type StepKey = 'track' | 'goal' | 'lang' | 'level';
+
+/** 코딩 테스트(ct) 트랙을 고르면 하루 목표 다음에 코드 문제 언어 선택 단계가 끼어든다 */
+const CODE_LANGUAGE_TRACK = 'ct';
+
+/** 온보딩: 트랙 선택 → 데일리 목표 → (ct 트랙이면) 코딩 테스트 언어 → 시작 지점(처음 / 배치 테스트) */
 export default function OnboardingPage() {
   const router = useRouter();
   const qc = useQueryClient();
   const tracks = useQuery({ queryKey: ['tracks'], queryFn: () => api<TrackSummary[]>('/tracks') });
-  const [step, setStep] = useState<1 | 2 | 3>(1);
+  const [stepIdx, setStepIdx] = useState(0);
   const [selected, setSelected] = useState<number[]>([]);
   const [goal, setGoal] = useState(1);
+  const [codeLanguage, setCodeLanguage] = useState<CodingLanguage>(DEFAULT_CODING_LANGUAGE);
+  const hasCt = selected.some((id) => tracks.data?.find((t) => t.id === id)?.slug === CODE_LANGUAGE_TRACK);
+  const steps: StepKey[] = hasCt ? ['track', 'goal', 'lang', 'level'] : ['track', 'goal', 'level'];
+  const step = steps[Math.min(stepIdx, steps.length - 1)]!;
+  const next = () => setStepIdx((i) => i + 1);
+  const back = () => setStepIdx((i) => i - 1);
   const [level, setLevel] = useState<Level>('beginner');
   /** "잘 알아요" 유닛 선택 뷰: null이면 시작 지점 선택 화면 */
   const [pickUnits, setPickUnits] = useState<PathUnit[] | null>(null);
@@ -50,7 +62,7 @@ export default function OnboardingPage() {
   const begin = useMutation({
     mutationFn: async (): Promise<{ to: string } | { units: PathUnit[] }> => {
       await api('/me/tracks', { method: 'PUT', json: { trackIds: selected } });
-      await api('/me', { method: 'PATCH', json: { dailyGoal: goal, timezone: Intl.DateTimeFormat().resolvedOptions().timeZone } });
+      await api('/me', { method: 'PATCH', json: { dailyGoal: goal, timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, ...(hasCt ? { codeLanguage } : {}) } });
       if (firstTrack) writeLastTrack(firstTrack.slug);
       if (!firstTrack || level === 'beginner') return { to: '/learn' };
 
@@ -77,11 +89,11 @@ export default function OnboardingPage() {
 
   return (
     <div className="mx-auto flex min-h-dvh max-w-[480px] flex-col justify-center p-6">
-      <div className="mb-6 flex gap-2" aria-label={`${step}/3 단계`}>
-        {[1, 2, 3].map((s) => <div key={s} className="meter flex-1">{s <= step && <span style={{ width: '100%' }} />}</div>)}
+      <div className="mb-6 flex gap-2" aria-label={`${stepIdx + 1}/${steps.length} 단계`}>
+        {steps.map((s, i) => <div key={s} className="meter flex-1">{i <= stepIdx && <span style={{ width: '100%' }} />}</div>)}
       </div>
-      <Window title={`시작하기 ${step}/3`} bodyClassName="p-5">
-        {step === 1 && (
+      <Window title={`시작하기 ${stepIdx + 1}/${steps.length}`} bodyClassName="p-5">
+        {step === 'track' && (
           <>
             <h1 className="bit-2">무엇을 공부할까요?</h1>
             <p className="mt-1 text-body text-ink-2">여러 개 골라도 됩니다. 나중에 설정에서 바꿀 수 있어요.</p>
@@ -100,11 +112,11 @@ export default function OnboardingPage() {
                 );
               })}
             </div>
-            <button type="button" disabled={selected.length === 0} onClick={() => setStep(2)} className="btn-3d mt-8 w-full">다음</button>
+            <button type="button" disabled={selected.length === 0} onClick={next} className="btn-3d mt-8 w-full">다음</button>
           </>
         )}
 
-        {step === 2 && (
+        {step === 'goal' && (
           <>
             <h1 className="bit-2">하루에 얼마나 할까요?</h1>
             <p className="mt-1 text-body text-ink-2">목표를 채운 날이 이어지면 스트릭이 쌓입니다. 한 레슨은 약 5분이에요.</p>
@@ -123,12 +135,24 @@ export default function OnboardingPage() {
                 </button>
               ))}
             </div>
-            <button type="button" onClick={() => setStep(3)} className="btn-3d mt-8 w-full">다음</button>
-            <button type="button" onClick={() => setStep(1)} className="mt-3 min-h-11 w-full text-body text-ink-2 underline underline-offset-4">이전</button>
+            <button type="button" onClick={next} className="btn-3d mt-8 w-full">다음</button>
+            <button type="button" onClick={back} className="mt-3 min-h-11 w-full text-body text-ink-2 underline underline-offset-4">이전</button>
           </>
         )}
 
-        {step === 3 && !pickUnits && (
+        {step === 'lang' && (
+          <>
+            <h1 className="bit-2">어떤 언어로 풀까요?</h1>
+            <p className="mt-1 text-body text-ink-2">코딩 테스트 트랙의 코드 문제가 이 언어로 나와요. 나중에 설정에서 바꿀 수 있어요.</p>
+            <div className="mt-6">
+              <CodeLanguagePicker value={codeLanguage} onChange={setCodeLanguage} />
+            </div>
+            <button type="button" onClick={next} className="btn-3d mt-8 w-full">다음</button>
+            <button type="button" onClick={back} className="mt-3 min-h-11 w-full text-body text-ink-2 underline underline-offset-4">이전</button>
+          </>
+        )}
+
+        {step === 'level' && !pickUnits && (
           <>
             <h1 className="bit-2">얼마나 알고 있나요?</h1>
             <p className="mt-1 text-body text-ink-2">첫 번째로 고른 트랙 기준이에요. 다른 트랙은 학습 경로에서 유닛별로 건너뛸 수 있어요.</p>
@@ -145,11 +169,11 @@ export default function OnboardingPage() {
             </div>
             {error && <p className="mt-3 text-cap text-wrong">{error.message}</p>}
             <button type="button" disabled={begin.isPending} onClick={() => begin.mutate()} className="btn-3d mt-8 w-full">시작하기</button>
-            <button type="button" onClick={() => { begin.reset(); setStep(2); }} className="mt-3 min-h-11 w-full text-body text-ink-2 underline underline-offset-4">이전</button>
+            <button type="button" onClick={() => { begin.reset(); back(); }} className="mt-3 min-h-11 w-full text-body text-ink-2 underline underline-offset-4">이전</button>
           </>
         )}
 
-        {step === 3 && pickUnits && (
+        {step === 'level' && pickUnits && (
           <>
             <h1 className="bit-2">어디까지 알고 있나요?</h1>
             <p className="mt-1 text-body text-ink-2">아는 범위의 마지막 유닛을 고르세요. 테스트를 통과하면 그 유닛까지 건너뛰어요.</p>

@@ -107,7 +107,72 @@ single 예시 (c, 출력값 고르기):
 ## 코딩 테스트(ct) 트랙 (뼈대 전)
 알고리즘 사고를 같은 문제 형식(single·ox·fill + 코드 빈칸)으로 드릴한다.
 - **코드 빈칸 허용**: 위 "코드 빈칸 문제" 규칙(12줄·48자·빈칸 개수·기호 답은 single)을 그대로 쓴다.
-- 언어별 버전(python·java·javascript·cpp)은 후속 PR에서 정의한다.
+- **코드가 있는 문제는 언어별 variants로만 낸다**(validate가 강제). 사용자가 설정·온보딩에서 고른 언어(python·java·javascript·cpp)의 코드만 나가고, 채점도 그 언어 버전으로 한다. 코드가 없는 문제는 언어와 무관하게 하나다.
+  - `content.code`는 쓰지 않는다. 대신 `content.variants`에 **4개 언어를 모두** 둔다(하나라도 빠지면 실패). variants는 `ct` 트랙에서만 허용된다.
+  - 파일 관례(content = 화면에 나가는 것, answer_key = 서버 전용)를 그대로 따른다: 코드와 보기는 `content.variants[lang]`(`code`, 필요하면 `options`), 정답은 `answer_key.variants[lang]`(single `{ index }` · fill `{ accepted }` · ox `{ value }`). 언어 키 집합이 둘이 같아야 하고 `code.language`는 키와 같은 값이다.
+  - `prompt`·`hint`·`explanation`은 공통이다. 언어 때문에 해설이 달라야 하면 `answer_key.variants[lang].explanation`에만 따로 쓴다(없으면 공통 해설).
+  - single의 보기는 `content.options`(공통)에 두고, 언어마다 달라야 할 때만 `variants[lang].options`로 덮는다. **정답 index는 언어별로 따로 센다**(보기가 다르면 위치도 다르다).
+  - 각 variant 코드에 12줄·48자·빈칸 개수 규칙을 따로 적용한다. fill의 대표 정답(`accepted[0]`)은 한글·영문·숫자·공백에 더해 식별자용 밑줄(`push_back`)을 허용한다. `()`·`.` 같은 기호가 필요하면 single로 낸다.
+  - 언어 문법 차이를 묻는 문제가 아니라면 4개 언어가 **같은 알고리즘·같은 개념**을 가리키게 쓴다(변수 이름·구조를 맞춘다).
+
+fill 예시 (리스트 끝에 원소 추가 — python `append` / java `add` / javascript `push` / cpp `push_back`):
+
+```json
+{
+  "id": "ct-listadd-005",
+  "type": "fill",
+  "difficulty": 1,
+  "tags": ["리스트", "추가"],
+  "content": {
+    "prompt": "리스트 끝에 3을 추가하는 메서드는?",
+    "variants": {
+      "python": { "code": { "language": "python", "source": "a = [1, 2]\na.___(3)" } },
+      "java": { "code": { "language": "java", "source": "List<Integer> a = new ArrayList<>();\na.___(3);" } },
+      "javascript": { "code": { "language": "javascript", "source": "const a = [1, 2];\na.___(3);" } },
+      "cpp": { "code": { "language": "cpp", "source": "vector<int> a = {1, 2};\na.___(3);" } }
+    }
+  },
+  "answer_key": {
+    "variants": {
+      "python": { "accepted": ["append"] },
+      "java": { "accepted": ["add"] },
+      "javascript": { "accepted": ["push"] },
+      "cpp": { "accepted": ["push_back", "pushback"] }
+    }
+  },
+  "explanation": "리스트 끝에 원소를 넣는 메서드 이름은 언어마다 다르다."
+}
+```
+
+single 예시 (같은 코드 모양이라도 결과가 언어마다 다른 경우 — 정답 index가 언어별):
+
+```json
+{
+  "id": "ct-divide-007",
+  "type": "single",
+  "difficulty": 2,
+  "tags": ["나눗셈"],
+  "content": {
+    "prompt": "출력되는 값은?",
+    "options": ["3", "3.5"],
+    "variants": {
+      "python": { "code": { "language": "python", "source": "print(7 // 2)" } },
+      "java": { "code": { "language": "java", "source": "System.out.println(7 / 2);" } },
+      "javascript": { "code": { "language": "javascript", "source": "console.log(7 / 2);" } },
+      "cpp": { "code": { "language": "cpp", "source": "cout << 7 / 2;" } }
+    }
+  },
+  "answer_key": {
+    "variants": {
+      "python": { "index": 0, "explanation": "파이썬의 // 는 몫(정수 나눗셈)을 구하므로 7 // 2 는 3이 된다." },
+      "java": { "index": 0 },
+      "javascript": { "index": 1 },
+      "cpp": { "index": 0 }
+    }
+  },
+  "explanation": "JavaScript는 정수 나눗셈이 없어 7 / 2가 3.5이고, 나머지 언어는 정수 몫 3이다."
+}
+```
 
 ## 완성 예시 (dsa/u03-stack-queue/l01, 개념: 스택·push/pop·LIFO)
 001 single "나중에 넣은 것을 먼저 꺼내는 자료구조는?" [큐, 스택, 배열] → 1

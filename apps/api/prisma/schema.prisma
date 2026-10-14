@@ -18,6 +18,14 @@ enum UserRole {
   admin
 }
 
+/// 코딩 테스트(ct) 트랙 코드 문제를 어떤 언어로 풀지 (콘텐츠 variants 키와 같은 값)
+enum CodingLanguage {
+  python
+  java
+  javascript
+  cpp
+}
+
 model User {
   id          String   @id @default(uuid()) @db.Uuid
   /// 저장 전 소문자로 정규화 (citext 확장 없이 유일성 보장)
@@ -28,6 +36,7 @@ model User {
   dailyGoal   Int      @default(1) @map("daily_goal") @db.SmallInt
   /// "HH:mm" 로컬 시각. null이면 리마인더 끔
   reminderAt  String?  @map("reminder_at") @db.VarChar(5)
+  codeLanguage CodingLanguage @default(python) @map("code_language")
   role        UserRole @default(user)
   createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
 

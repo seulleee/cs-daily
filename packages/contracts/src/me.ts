@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { TrackSummary } from './curriculum.js';
+import { CodingLanguage } from './questions.js';
 
 export const UserProfile = z.object({
   id: z.string().uuid(),
@@ -12,6 +13,8 @@ export const UserProfile = z.object({
   /** "HH:mm" 로컬 시각, null이면 리마인더 끔 */
   reminderAt: z.string().regex(/^\d{2}:\d{2}$/).nullable(),
   role: z.enum(['user', 'admin']),
+  /** 코딩 테스트(ct) 트랙 코드 문제를 풀 언어 */
+  codeLanguage: CodingLanguage,
 });
 
 export const UserStats = z.object({
@@ -46,6 +49,7 @@ export const UpdateMeRequest = z
     timezone: z.string().min(1).max(64),
     dailyGoal: z.number().int().min(1).max(3),
     reminderAt: z.string().regex(/^\d{2}:\d{2}$/).nullable(),
+    codeLanguage: CodingLanguage,
   })
   .partial();
 export type UpdateMeRequest = z.infer<typeof UpdateMeRequest>;

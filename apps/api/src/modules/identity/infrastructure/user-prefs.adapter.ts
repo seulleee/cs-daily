@@ -8,7 +8,7 @@ import type { UserPrefs, UserPrefsPort } from '../../learning/domain/ports';
 export class UserPrefsAdapter implements UserPrefsPort {
   constructor(private readonly uow: UnitOfWork) {}
   async prefsOf(userId: UserId): Promise<UserPrefs> {
-    const u = await this.uow.client.user.findUniqueOrThrow({ where: { id: userId.value }, select: { timezone: true, dailyGoal: true } });
-    return { timeZone: u.timezone, dailyGoal: u.dailyGoal };
+    const u = await this.uow.client.user.findUniqueOrThrow({ where: { id: userId.value }, select: { timezone: true, dailyGoal: true, codeLanguage: true } });
+    return { timeZone: u.timezone, dailyGoal: u.dailyGoal, codeLanguage: u.codeLanguage };
   }
 }

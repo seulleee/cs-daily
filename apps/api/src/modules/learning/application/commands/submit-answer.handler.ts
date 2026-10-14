@@ -5,6 +5,7 @@ import { QuestionId, SessionId, UserId } from '../../../../shared/domain/ids';
 import { UnitOfWork } from '../../../../shared/infrastructure/unit-of-work';
 import { SessionNotFound } from '../../domain/errors';
 import { LESSON_SESSION_REPO, QUESTION_GRADING_PORT, type LessonSessionRepository, type QuestionGradingPort } from '../../domain/ports';
+import { resolveGradingKey, withLanguage } from '../../domain/services/code-variants';
 import { Grader } from '../../domain/services/grader';
 import { XpPolicy } from '../../domain/services/xp-policy';
 import { SubmitAnswerCommand } from './commands';
@@ -34,8 +35,11 @@ export class SubmitAnswerHandler implements ICommandHandler<SubmitAnswerCommand,
     const result = await this.uow.run(async () => {
       const session = await this.sessions.findById(sessionId);
       if (!session || !session.userId.equals(userId)) throw new SessionNotFound(cmd.sessionId);
-      const q = await this.questions.forGrading(QuestionId.of(cmd.questionId));
-      const answer = session.submitAnswer(q, cmd.answer, cmd.timeMs, this.grader);
+      const full = await this.questions.forGrading(QuestionId.of(cmd.questionId));
+      // 언어별 코드 문제는 제출된 lang의 variant 정답·해설로 채점한다 (없는 lang이면 거부)
+      const { answerKey, explanation, lang } = resolveGradingKey(full.answerKey, full.explanation, cmd.lang);
+      const q = { ...full, answerKey, explanation };
+      const answer = session.submitAnswer(q, withLanguage(cmd.answer, lang), cmd.timeMs, this.grader);
       await this.sessions.save(session);
       return { session, q, answer };
     });

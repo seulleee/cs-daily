@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { PublicQuestion, UserAnswer } from './questions.js';
+import { CodingLanguage, PublicQuestion, UserAnswer } from './questions.js';
 
 /** placement = 유닛 건너뛰기 테스트 */
 export const SessionKind = z.enum(['lesson', 'review', 'placement']);
@@ -9,6 +9,8 @@ export type SessionKind = z.infer<typeof SessionKind>;
 export const SubmitAnswerRequest = z.object({
   questionId: z.string().uuid(),
   answer: UserAnswer,
+  /** 언어별 variants 문제(PublicQuestion.lang이 있는 문제)는 받은 언어를 그대로 보낸다. 서버는 이 언어의 정답으로 채점한다 */
+  lang: CodingLanguage.optional(),
   timeMs: z.number().int().min(0).max(600_000),
 });
 export type SubmitAnswerRequest = z.infer<typeof SubmitAnswerRequest>;
@@ -28,6 +30,7 @@ export type SubmitAnswerResponse = z.infer<typeof SubmitAnswerResponse>;
 export const RetryAnswerRequest = z.object({
   questionId: z.string().uuid(),
   answer: UserAnswer,
+  lang: CodingLanguage.optional(),
 });
 export type RetryAnswerRequest = z.infer<typeof RetryAnswerRequest>;
 

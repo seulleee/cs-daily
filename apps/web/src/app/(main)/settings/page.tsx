@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import type { MeResponse, TrackSummary, UpdateMeRequest } from '@cs-daily/contracts';
 import { api, ApiError } from '@/lib/api';
 import { AppShell } from '@/components/app-shell';
+import { CodeLanguagePicker } from '@/components/code-language-picker';
 import { SelectMark } from '@/components/select-mark';
 import { useToast } from '@/components/toast';
 import { ThemePicker } from '@/components/theme-picker';
@@ -20,7 +21,7 @@ export default function SettingsPage() {
   const [selected, setSelected] = useState<number[]>([]);
   useEffect(() => {
     if (me.data) {
-      setForm({ nickname: me.data.user.nickname, dailyGoal: me.data.user.dailyGoal, reminderAt: me.data.user.reminderAt, timezone: me.data.user.timezone });
+      setForm({ nickname: me.data.user.nickname, dailyGoal: me.data.user.dailyGoal, codeLanguage: me.data.user.codeLanguage, reminderAt: me.data.user.reminderAt, timezone: me.data.user.timezone });
       setSelected(me.data.tracks.map((t) => t.id));
     }
   }, [me.data]);
@@ -86,6 +87,13 @@ export default function SettingsPage() {
               ))}
             </div>
           </Field>
+
+          {/* label이 아니라 div: 라디오 타일의 접근 가능한 이름이 라벨 전체 글자로 덮이지 않게 한다 */}
+          <div>
+            <span id="code-language-label" className="bit mb-2 block">코딩 테스트 언어</span>
+            <CodeLanguagePicker value={form.codeLanguage ?? 'python'} onChange={(codeLanguage) => setForm({ ...form, codeLanguage })} labelledBy="code-language-label" />
+            <p className="mt-2 text-cap text-ink-2">코딩 테스트 트랙의 코드 문제를 이 언어로 풀어요.</p>
+          </div>
 
           <Field label="학습 트랙 (최소 1개)">
             <div className="grid gap-2 sm:grid-cols-2">
