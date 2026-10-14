@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u07-relational-model",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "eip-db-integrity-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "entity-integrity",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "기본키의 NULL과 중복을 모두 금지하는 무결성은?",
+        "options": [
+          "개체 무결성",
+          "참조 무결성",
+          "도메인 무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "개체 무결성은 기본키가 NULL이거나 중복될 수 없다는 규칙입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-integrity-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "referential-integrity",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "외래키에 참조 대상에 없는 값을 넣지 못하게 하는 무결성은?",
+        "options": [
+          "개체 무결성",
+          "참조 무결성",
+          "도메인 무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "참조 무결성은 외래키 값이 참조하는 테이블에 실제로 존재해야 한다는 규칙입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-integrity-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "domain-integrity",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "나이 속성에 -5를 넣지 못하게 하는 규칙은?",
+        "options": [
+          "참조 무결성",
+          "도메인 무결성",
+          "개체 무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "속성 값이 허용 값의 집합(도메인) 안이어야 한다는 도메인 무결성입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-integrity-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "referential-integrity",
+        "entity-integrity"
+      ],
+      "content": {
+        "prompt": "참조 무결성은 기본키의 NULL을 금지하는 규칙이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "기본키의 NULL·중복 금지는 개체 무결성입니다. 참조 무결성은 외래키 값에 관한 규칙입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-integrity-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "domain-integrity",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "성별 열에 '남'·'여'만 허용하는 규칙은 ___ 무결성이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "도메인",
+          "domain"
+        ]
+      },
+      "explanation": "도메인은 속성이 가질 수 있는 값의 집합이고, 이를 지키는 규칙이 도메인 무결성입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-integrity-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cascade",
+        "referential-action"
+      ],
+      "content": {
+        "prompt": "참조된 행을 지울 때 참조하는 행도 함께 지우는 동작은 ___ 이다.",
+        "hint": "연쇄적으로 따라 지운다는 뜻의 영어 단어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "CASCADE",
+          "캐스케이드"
+        ]
+      },
+      "explanation": "CASCADE는 참조된 행을 지우면 그 행을 참조하는 행도 연쇄적으로 지웁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-integrity-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "restrict",
+        "referential-action"
+      ],
+      "content": {
+        "prompt": "참조하는 행이 있으면 삭제를 거부하는 동작은?",
+        "options": [
+          "CASCADE",
+          "RESTRICT",
+          "SET NULL"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "RESTRICT는 참조하는 행이 남아 있으면 삭제를 거부합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-integrity-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "set-null",
+        "referential-action"
+      ],
+      "content": {
+        "prompt": "부서를 지울 때 사원의 부서번호를 NULL로 바꾸는 동작은?",
+        "options": [
+          "SET NULL",
+          "RESTRICT",
+          "CASCADE"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SET NULL은 참조된 행을 지우고, 참조하던 외래키 값을 NULL로 바꿉니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-integrity-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "referential-integrity",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "없는 부서번호 99로 사원 행을 넣으려 한다. 어기는 규칙은?",
+        "options": [
+          "개체 무결성",
+          "도메인 무결성",
+          "참조 무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "외래키 값 99가 참조 대상인 부서 테이블에 없으므로 참조 무결성을 어깁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-integrity-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "entity-integrity",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "기본키 값이 같은 튜플이 두 개면 개체 무결성 위반이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "개체 무결성은 기본키의 중복과 NULL을 모두 금지합니다.",
+      "refs": []
+    }
+  ]
+}

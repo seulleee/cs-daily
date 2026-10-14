@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u07-relational-model",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "eip-db-keys-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "candidate-key",
+        "key"
+      ],
+      "content": {
+        "prompt": "유일성과 최소성을 함께 갖춘 속성 집합은?",
+        "options": [
+          "후보키",
+          "슈퍼키",
+          "외래키"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "후보키는 유일성과 최소성을 모두 만족하는 속성 집합입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-keys-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "foreign-key",
+        "key"
+      ],
+      "content": {
+        "prompt": "참조하는 쪽 테이블에 두어 상대 기본키 값을 담는 속성은?",
+        "options": [
+          "대체키",
+          "외래키",
+          "기본키"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "외래키는 다른 테이블의 기본키를 가리키는 속성입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-keys-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "super-key",
+        "key"
+      ],
+      "content": {
+        "prompt": "유일성은 있지만 최소성은 없을 수도 있는 키는?",
+        "options": [
+          "후보키",
+          "슈퍼키"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "슈퍼키는 행을 유일하게 식별하지만 최소가 아닐 수도 있습니다. 후보키는 최소성까지 만족합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-keys-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "primary-key",
+        "key"
+      ],
+      "content": {
+        "prompt": "후보키 중 기본키로 뽑힌 속성은 NULL을 허용한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "기본키는 후보키 중 대표로 고른 키이며 NULL을 가질 수 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-keys-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "primary-key",
+        "key"
+      ],
+      "content": {
+        "prompt": "여러 후보키 가운데 대표로 선택된 키는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "기본키",
+          "primary key",
+          "pk",
+          "주키"
+        ]
+      },
+      "explanation": "후보키 중 대표로 고른 하나가 기본키입니다. 나머지 후보키는 대체키입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-keys-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "candidate-key",
+        "key"
+      ],
+      "content": {
+        "prompt": "후보키가 만족해야 하는 두 성질은 유일성과 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "최소성",
+          "minimality"
+        ]
+      },
+      "explanation": "후보키는 유일성과 최소성을 함께 만족합니다. 최소성은 속성을 하나라도 빼면 식별이 안 된다는 뜻입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-keys-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "alternate-key",
+        "key"
+      ],
+      "content": {
+        "prompt": "학번·주민번호가 후보키다. 학번을 기본키로 고르면 주민번호는?",
+        "options": [
+          "대체키",
+          "외래키",
+          "슈퍼키"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "기본키로 고르지 않은 나머지 후보키는 대체키입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-keys-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "super-key",
+        "key"
+      ],
+      "content": {
+        "prompt": "학번만으로 식별될 때, 이름을 덧붙인 {학번, 이름}은?",
+        "options": [
+          "후보키",
+          "슈퍼키",
+          "외래키"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "{학번, 이름}은 유일하게 식별하지만 이름을 빼도 식별되므로 최소가 아닙니다. 따라서 슈퍼키입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-keys-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "foreign-key",
+        "key"
+      ],
+      "content": {
+        "prompt": "수강.학번이 학생 테이블의 기본키를 가리킨다. 수강.학번은?",
+        "options": [
+          "대체키",
+          "후보키",
+          "외래키"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "다른 테이블의 기본키를 가리키는 속성이므로 외래키입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-keys-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "candidate-key",
+        "key"
+      ],
+      "content": {
+        "prompt": "후보키는 유일성과 최소성을 모두 만족한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "후보키는 행을 유일하게 식별하는 최소 속성 집합이므로 두 성질을 모두 만족합니다.",
+      "refs": []
+    }
+  ]
+}

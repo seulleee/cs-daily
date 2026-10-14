@@ -1,0 +1,229 @@
+{
+  "track": "eip",
+  "unit": "u07-relational-model",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "eip-db-rel-mock-001",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "relation"
+      ],
+      "content": {
+        "prompt": "릴레이션의 특징으로 옳지 않은 것은?",
+        "options": [
+          "튜플들은 모두 서로 다르다",
+          "튜플 사이에는 순서가 없다",
+          "속성 값은 원자값이다",
+          "튜플은 삽입 순서대로 정렬된다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "릴레이션은 튜플의 집합이므로 튜플 사이에 순서가 없습니다. 튜플은 모두 다르고 속성 값은 원자값입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-mock-002",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "degree",
+        "cardinality"
+      ],
+      "content": {
+        "prompt": "속성 6개, 튜플 20개인 릴레이션에 튜플 5개를 더 넣었다. 이때 차수와 카디널리티는?",
+        "options": [
+          "차수 6, 카디널리티 20",
+          "차수 6, 카디널리티 25",
+          "차수 11, 카디널리티 20",
+          "차수 25, 카디널리티 6"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "차수는 속성 수라 그대로 6이고, 카디널리티는 튜플 수라 20+5=25입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-mock-003",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "candidate-key"
+      ],
+      "content": {
+        "prompt": "후보키에 대한 설명으로 옳은 것은?",
+        "options": [
+          "유일성과 최소성을 모두 만족한다",
+          "유일성만 만족하면 된다",
+          "다른 테이블의 기본키를 참조한다",
+          "반드시 NULL을 포함한다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "후보키는 튜플을 유일하게 식별하는 최소 속성 집합입니다. 유일성만 만족하면 슈퍼키, 참조하는 것은 외래키입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-mock-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "alternate-key"
+      ],
+      "content": {
+        "prompt": "학생(학번, 주민번호, 이름)에서 학번과 주민번호가 각각 후보키이고 학번을 기본키로 정했다. 주민번호는?",
+        "options": [
+          "외래키",
+          "대체키",
+          "기본키",
+          "도메인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "후보키 중 기본키로 선택되지 않은 나머지 후보키를 대체키라고 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-mock-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "entity-integrity"
+      ],
+      "content": {
+        "prompt": "기본키 속성에 NULL 값이나 중복 값을 허용하지 않는 무결성 제약은?",
+        "options": [
+          "참조 무결성",
+          "도메인 무결성",
+          "개체 무결성",
+          "사용자 정의 무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "개체 무결성은 기본키가 NULL이거나 중복될 수 없다는 제약입니다. 참조 무결성은 외래키에 관한 제약입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-mock-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "referential-integrity"
+      ],
+      "content": {
+        "prompt": "참조 무결성에 대한 설명으로 옳은 것은?",
+        "options": [
+          "외래키 값은 참조 대상에 존재해야 한다",
+          "기본키는 NULL일 수 없다",
+          "속성 값은 도메인 안이어야 한다",
+          "튜플 사이에는 순서가 없다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "참조 무결성은 외래키 값이 참조하는 릴레이션에 실제로 존재해야 한다는 규칙입니다. 두 번째는 개체, 세 번째는 도메인 무결성입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-mock-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "three-level-schema"
+      ],
+      "content": {
+        "prompt": "3단계 스키마 중 데이터가 저장 장치에 실제로 저장되는 방식을 정의한 것은?",
+        "options": [
+          "외부 스키마",
+          "개념 스키마",
+          "내부 스키마",
+          "서브 스키마"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "내부 스키마는 물리 저장 구조를 정의합니다. 외부(서브) 스키마는 사용자 관점, 개념 스키마는 전체 논리 구조입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-mock-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "er-diagram"
+      ],
+      "content": {
+        "prompt": "E-R 다이어그램의 기호와 의미의 연결로 옳지 않은 것은?",
+        "options": [
+          "개체 - 사각형",
+          "관계 - 마름모",
+          "속성 - 타원",
+          "개체 - 타원"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "개체는 사각형으로 그립니다. 타원은 속성을 나타냅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-mock-009",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "select",
+        "relational-algebra"
+      ],
+      "content": {
+        "prompt": "학생 릴레이션에서 학과가 '컴퓨터'인 튜플만 골라내는 관계대수 연산은?",
+        "options": [
+          "σ(셀렉트)",
+          "π(프로젝트)",
+          "⋈(조인)",
+          "÷(디비전)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "조건을 만족하는 튜플(행)을 고르는 연산은 셀렉트(σ)입니다. 프로젝트(π)는 속성(열)을 고릅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-rel-mock-010",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "relational-calculus"
+      ],
+      "content": {
+        "prompt": "관계해석에 대한 설명으로 틀린 것은?",
+        "options": [
+          "원하는 결과만 정의하는 비절차적 언어다",
+          "관계대수보다 표현력이 떨어진다",
+          "∀는 '모든 것에 대하여'를 뜻한다",
+          "∃는 '하나라도 존재한다'를 뜻한다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "관계해석과 관계대수는 표현력이 같습니다. 관계해석은 비절차적, 관계대수는 절차적이라는 점이 다릅니다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "track": "eip",
+  "unit": "u08-sql",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "eip-sql-dml-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "insert",
+        "dml"
+      ],
+      "content": {
+        "prompt": "테이블에 새 행을 넣는 명령은?",
+        "options": [
+          "INSERT",
+          "UPDATE",
+          "DELETE"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "INSERT INTO … VALUES로 새 행을 넣습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dml-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "update",
+        "dml"
+      ],
+      "content": {
+        "prompt": "조건에 맞는 행의 값을 바꾸는 명령은?",
+        "options": [
+          "DELETE",
+          "UPDATE",
+          "ALTER"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "UPDATE … SET … WHERE는 조건에 맞는 행의 값을 바꿉니다. ALTER는 구조를 바꿉니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dml-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "delete",
+        "drop"
+      ],
+      "content": {
+        "prompt": "행 데이터만 지우고 테이블 구조는 남기는 명령은?",
+        "options": [
+          "DROP",
+          "DELETE"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DELETE는 행만 지우고 테이블 구조는 남깁니다. DROP은 테이블 자체를 삭제합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dml-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "delete",
+        "drop"
+      ],
+      "content": {
+        "prompt": "WHERE 없는 DELETE는 테이블 구조까지 삭제한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "WHERE 없는 DELETE는 모든 행을 지우지만 테이블 구조는 남습니다. 구조까지 지우는 것은 DROP입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dml-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "update",
+        "dml"
+      ],
+      "content": {
+        "prompt": "UPDATE 학생 ___ 학년 = 2 WHERE 학번 = 1의 빈칸 키워드는?"
+      },
+      "answer_key": {
+        "accepted": [
+          "SET",
+          "셋"
+        ]
+      },
+      "explanation": "UPDATE 테이블 SET 열 = 값 WHERE 조건 형태로 값을 바꿉니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dml-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "insert",
+        "dml"
+      ],
+      "content": {
+        "prompt": "INSERT INTO 학생 ___ (1, '김')의 빈칸 키워드는?"
+      },
+      "answer_key": {
+        "accepted": [
+          "VALUES",
+          "밸류즈"
+        ]
+      },
+      "explanation": "INSERT INTO 테이블 VALUES (값, …) 형태로 새 행을 넣습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dml-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "delete",
+        "where"
+      ],
+      "content": {
+        "prompt": "학번이 3인 행 하나만 지우려면 DELETE에 꼭 붙일 절은?",
+        "options": [
+          "WHERE",
+          "ORDER BY",
+          "SET"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "WHERE 학번 = 3으로 지울 행을 정해야 합니다. 없으면 모든 행이 지워집니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dml-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "delete",
+        "dml"
+      ],
+      "content": {
+        "prompt": "5행인 학생 테이블에 DELETE FROM 학생을 실행하면 남는 행 수는?",
+        "options": [
+          "5",
+          "0",
+          "테이블 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "WHERE가 없으므로 모든 행이 지워져 0행이 남습니다. 테이블 구조는 그대로 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dml-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "update",
+        "where"
+      ],
+      "content": {
+        "prompt": "점수 50인 행이 2개일 때 SET 점수=60 WHERE 점수=50으로 바뀌는 행 수는?",
+        "options": [
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "WHERE 점수=50을 만족하는 2개 행이 모두 60으로 바뀝니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dml-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "insert",
+        "dml"
+      ],
+      "content": {
+        "prompt": "INSERT INTO … VALUES는 테이블에 새 행을 넣는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "INSERT는 새 행을 넣는 DML입니다. 기존 행을 바꾸는 것은 UPDATE입니다.",
+      "refs": []
+    }
+  ]
+}

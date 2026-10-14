@@ -1,0 +1,212 @@
+{
+  "track": "eip",
+  "unit": "u08-sql",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "eip-sql-dcl-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "grant",
+        "dcl"
+      ],
+      "content": {
+        "prompt": "사용자에게 권한을 부여하는 명령은?",
+        "options": [
+          "GRANT",
+          "REVOKE",
+          "COMMIT"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "GRANT는 사용자에게 권한을 부여합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dcl-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "revoke",
+        "dcl"
+      ],
+      "content": {
+        "prompt": "부여한 권한을 회수하는 명령은?",
+        "options": [
+          "GRANT",
+          "ROLLBACK",
+          "REVOKE"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "REVOKE는 GRANT로 준 권한을 회수합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dcl-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rollback",
+        "dcl"
+      ],
+      "content": {
+        "prompt": "변경을 취소하고 이전 상태로 되돌리는 명령은?",
+        "options": [
+          "COMMIT",
+          "ROLLBACK"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ROLLBACK은 확정 전 변경을 취소합니다. COMMIT은 변경을 확정합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dcl-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "grant",
+        "dcl"
+      ],
+      "content": {
+        "prompt": "WITH GRANT OPTION으로 받은 권한은 남에게 다시 줄 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "WITH GRANT OPTION을 붙여 받은 권한은 다른 사용자에게 다시 부여할 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dcl-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "commit",
+        "dcl"
+      ],
+      "content": {
+        "prompt": "변경 내용을 확정하는 명령은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "COMMIT",
+          "커밋"
+        ]
+      },
+      "explanation": "COMMIT은 변경을 확정하고, ROLLBACK은 변경을 취소합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dcl-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "grant",
+        "dcl"
+      ],
+      "content": {
+        "prompt": "받은 권한을 다시 줄 수 있게 하는 옵션은 WITH ___ OPTION이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "GRANT",
+          "그랜트"
+        ]
+      },
+      "explanation": "WITH GRANT OPTION을 붙이면 받은 사용자가 그 권한을 다른 사용자에게 줄 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dcl-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "revoke",
+        "dcl"
+      ],
+      "content": {
+        "prompt": "사용자 kim에게서 테이블 생성 권한을 회수하는 명령은?",
+        "options": [
+          "GRANT",
+          "REVOKE",
+          "DROP"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이미 부여한 권한을 회수할 때는 REVOKE를 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dcl-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rollback",
+        "dcl"
+      ],
+      "content": {
+        "prompt": "UPDATE 후 COMMIT 없이 ROLLBACK하면?",
+        "options": [
+          "변경이 확정됨",
+          "권한이 회수됨",
+          "변경이 취소됨"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "COMMIT 전에 ROLLBACK하면 그 변경은 취소되고 이전 상태로 돌아갑니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dcl-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "grant",
+        "dcl"
+      ],
+      "content": {
+        "prompt": "GRANT CREATE TABLE TO kim의 의미는?",
+        "options": [
+          "kim에게 권한 부여",
+          "kim의 권한 회수",
+          "kim의 테이블 삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "GRANT … TO 사용자는 그 사용자에게 권한을 부여합니다. 여기서는 테이블 생성 권한입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-dcl-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "revoke",
+        "grant"
+      ],
+      "content": {
+        "prompt": "REVOKE는 사용자에게 새 권한을 부여한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "권한 부여는 GRANT입니다. REVOKE는 부여한 권한을 회수합니다.",
+      "refs": []
+    }
+  ]
+}

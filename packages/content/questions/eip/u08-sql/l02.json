@@ -1,0 +1,213 @@
+{
+  "track": "eip",
+  "unit": "u08-sql",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "eip-sql-ddl-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "alter",
+        "ddl"
+      ],
+      "content": {
+        "prompt": "테이블에 열을 추가·변경·삭제하는 명령은?",
+        "options": [
+          "ALTER",
+          "CREATE",
+          "DROP"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ALTER TABLE은 열 추가·변경·삭제처럼 테이블 구조를 바꿉니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-ddl-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "drop",
+        "ddl"
+      ],
+      "content": {
+        "prompt": "테이블·뷰·인덱스 같은 객체를 삭제하는 명령은?",
+        "options": [
+          "DROP",
+          "DELETE",
+          "ALTER"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DROP은 객체 자체를 삭제합니다. DELETE는 행 데이터만 지우는 DML입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-ddl-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cascade",
+        "ddl"
+      ],
+      "content": {
+        "prompt": "참조하는 객체까지 함께 삭제하는 옵션은?",
+        "options": [
+          "RESTRICT",
+          "CASCADE"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "CASCADE는 삭제 대상을 참조하는 객체까지 함께 삭제합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-ddl-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "restrict",
+        "ddl"
+      ],
+      "content": {
+        "prompt": "RESTRICT는 참조하는 객체가 있으면 삭제를 거부한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "RESTRICT는 다른 객체가 참조하고 있으면 삭제를 거부합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-ddl-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "create",
+        "ddl"
+      ],
+      "content": {
+        "prompt": "새 테이블을 만드는 명령은 ___ TABLE 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "CREATE",
+          "크리에이트"
+        ]
+      },
+      "explanation": "CREATE TABLE로 테이블 이름, 열 이름·타입, 제약을 선언합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-ddl-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "restrict",
+        "ddl"
+      ],
+      "content": {
+        "prompt": "참조가 있으면 삭제를 거부하는 DROP 옵션은 ___ 이다.",
+        "hint": "제한한다는 뜻의 영어 단어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "RESTRICT",
+          "리스트릭트"
+        ]
+      },
+      "explanation": "RESTRICT는 참조가 있으면 삭제를 거부하고, CASCADE는 참조하는 객체까지 함께 지웁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-ddl-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "alter",
+        "ddl"
+      ],
+      "content": {
+        "prompt": "학생 테이블에 전화번호 열을 추가할 때 쓰는 명령은?",
+        "options": [
+          "ALTER TABLE",
+          "CREATE TABLE",
+          "UPDATE"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "기존 테이블에 열을 추가하는 것은 구조 변경이므로 ALTER TABLE을 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-ddl-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "create",
+        "constraint"
+      ],
+      "content": {
+        "prompt": "CREATE TABLE에서 값이 비면 안 되는 열에 붙이는 제약은?",
+        "options": [
+          "CASCADE",
+          "NOT NULL",
+          "RESTRICT"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "NOT NULL 제약을 붙인 열에는 NULL을 넣을 수 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-ddl-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cascade",
+        "drop"
+      ],
+      "content": {
+        "prompt": "학과를 참조하는 뷰가 있다. DROP TABLE 학과 CASCADE의 결과는?",
+        "options": [
+          "학과만 삭제",
+          "삭제 거부",
+          "뷰까지 함께 삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "CASCADE는 학과 테이블을 참조하는 뷰까지 함께 삭제합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-ddl-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "alter",
+        "ddl"
+      ],
+      "content": {
+        "prompt": "ALTER TABLE은 테이블의 행 데이터를 바꾸는 명령이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "ALTER TABLE은 테이블 구조를 바꿉니다. 행의 값을 바꾸는 명령은 DML인 UPDATE입니다.",
+      "refs": []
+    }
+  ]
+}

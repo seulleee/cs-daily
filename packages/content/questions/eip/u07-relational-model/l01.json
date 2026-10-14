@@ -1,0 +1,215 @@
+{
+  "track": "eip",
+  "unit": "u07-relational-model",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "eip-db-relation-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "relation",
+        "tuple"
+      ],
+      "content": {
+        "prompt": "릴레이션을 표로 볼 때 가로 한 줄에 해당하는 것은?",
+        "options": [
+          "속성",
+          "튜플",
+          "도메인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "튜플은 릴레이션의 행 하나입니다. 속성은 열 하나를 가리킵니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-relation-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "relation",
+        "attribute"
+      ],
+      "content": {
+        "prompt": "릴레이션에서 이름·나이처럼 열 하나를 이루는 것은?",
+        "options": [
+          "속성",
+          "튜플",
+          "차수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "속성(attribute)은 릴레이션의 열 하나입니다. 차수는 속성의 개수입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-relation-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "relation",
+        "tuple"
+      ],
+      "content": {
+        "prompt": "한 릴레이션 안에 똑같은 튜플이 두 개 있을 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "릴레이션의 튜플은 모두 서로 달라야 합니다. 완전히 같은 튜플은 함께 존재할 수 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-relation-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "relation",
+        "tuple"
+      ],
+      "content": {
+        "prompt": "릴레이션의 튜플 사이에는 순서가 없다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "릴레이션은 튜플의 집합이라 튜플 사이에 순서가 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-relation-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "degree",
+        "relation"
+      ],
+      "content": {
+        "prompt": "릴레이션의 속성(열) 수를 ___ 라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "차수",
+          "degree",
+          "디그리"
+        ]
+      },
+      "explanation": "차수(Degree)는 릴레이션의 속성 수입니다. 튜플 수는 카디널리티입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-relation-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cardinality",
+        "relation"
+      ],
+      "content": {
+        "prompt": "릴레이션의 튜플(행) 수를 ___ 라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "카디널리티",
+          "cardinality",
+          "기수"
+        ]
+      },
+      "explanation": "카디널리티(Cardinality)는 릴레이션의 튜플 수입니다. 속성 수는 차수입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-relation-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "degree",
+        "relation"
+      ],
+      "content": {
+        "prompt": "속성 5개, 튜플 8개인 릴레이션의 차수는?",
+        "options": [
+          "5",
+          "8",
+          "13"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "차수는 속성 수이므로 5입니다. 튜플 수 8은 카디널리티입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-relation-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cardinality",
+        "relation"
+      ],
+      "content": {
+        "prompt": "속성 4개, 튜플 10개인 릴레이션의 카디널리티는?",
+        "options": [
+          "4",
+          "10",
+          "40"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "카디널리티는 튜플 수이므로 10입니다. 속성 수 4는 차수입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-relation-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "relation",
+        "atomic-value"
+      ],
+      "content": {
+        "prompt": "속성 값 하나에 '010, 011' 두 값을 넣었다. 어긋난 특징은?",
+        "options": [
+          "튜플 순서 없음",
+          "원자값",
+          "차수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "속성 값은 더 나눌 수 없는 원자값이어야 합니다. 한 칸에 값 두 개를 넣으면 이 특징을 어깁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-relation-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "relation",
+        "tuple"
+      ],
+      "content": {
+        "prompt": "튜플이 뜻하는 것은?",
+        "options": [
+          "열 하나",
+          "테이블 전체",
+          "행 하나"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "튜플은 릴레이션의 행 하나입니다. 열 하나는 속성, 테이블 전체는 릴레이션입니다.",
+      "refs": []
+    }
+  ]
+}

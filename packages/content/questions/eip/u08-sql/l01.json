@@ -1,0 +1,215 @@
+{
+  "track": "eip",
+  "unit": "u08-sql",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "eip-sql-class-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ddl",
+        "sql-category"
+      ],
+      "content": {
+        "prompt": "테이블 같은 구조를 정의하는 SQL 분류는?",
+        "options": [
+          "DDL",
+          "DML",
+          "DCL"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DDL(데이터 정의어)은 CREATE·ALTER·DROP으로 구조를 정의합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-class-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dml",
+        "sql-category"
+      ],
+      "content": {
+        "prompt": "데이터를 조회·삽입·수정·삭제하는 SQL 분류는?",
+        "options": [
+          "DDL",
+          "DML",
+          "DCL"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DML(데이터 조작어)은 SELECT·INSERT·UPDATE·DELETE로 데이터를 다룹니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-class-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dcl",
+        "sql-category"
+      ],
+      "content": {
+        "prompt": "GRANT·REVOKE가 속하는 SQL 분류는?",
+        "options": [
+          "DML",
+          "DDL",
+          "DCL"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DCL(데이터 제어어)은 GRANT·REVOKE로 권한을 다룹니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-class-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dml",
+        "ddl"
+      ],
+      "content": {
+        "prompt": "SELECT는 DDL에 속한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "SELECT는 데이터를 조회하는 DML입니다. DDL은 CREATE·ALTER·DROP처럼 구조를 정의합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-class-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tcl",
+        "sql-category"
+      ],
+      "content": {
+        "prompt": "DCL에서 COMMIT·ROLLBACK만 떼어 부르는 이름은 ___ 이다.",
+        "hint": "세 글자 영문 약어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "TCL",
+          "티씨엘"
+        ]
+      },
+      "explanation": "트랜잭션을 다루는 COMMIT·ROLLBACK을 DCL에서 따로 떼어 TCL이라고 부르기도 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-class-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ddl",
+        "sql-category"
+      ],
+      "content": {
+        "prompt": "ALTER는 SQL 분류 중 ___ 에 속한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "DDL",
+          "데이터 정의어",
+          "데이터정의어"
+        ]
+      },
+      "explanation": "ALTER는 테이블 구조를 바꾸는 명령이라 DDL입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-class-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dml",
+        "sql-category"
+      ],
+      "content": {
+        "prompt": "UPDATE가 속하는 SQL 분류는?",
+        "options": [
+          "DDL",
+          "DML",
+          "DCL"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "UPDATE는 행의 값을 바꾸는 데이터 조작이므로 DML입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-class-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ddl",
+        "sql-category"
+      ],
+      "content": {
+        "prompt": "DROP이 속하는 SQL 분류는?",
+        "options": [
+          "DCL",
+          "DML",
+          "DDL"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DROP은 테이블 같은 객체를 삭제해 구조를 바꾸므로 DDL입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-class-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dcl",
+        "tcl"
+      ],
+      "content": {
+        "prompt": "시험 분류 기준으로 ROLLBACK이 속하는 곳은?",
+        "options": [
+          "DML",
+          "DCL",
+          "DDL"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시험에서는 COMMIT·ROLLBACK을 DCL에 포함합니다. 실무에서는 따로 TCL로 부르기도 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sql-class-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ddl",
+        "sql-category"
+      ],
+      "content": {
+        "prompt": "CREATE·ALTER·DROP은 모두 DDL이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "세 명령 모두 데이터베이스 구조를 정의하거나 바꾸는 DDL입니다.",
+      "refs": []
+    }
+  ]
+}

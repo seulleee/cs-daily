@@ -1,0 +1,231 @@
+{
+  "track": "eip",
+  "unit": "u09-normalization-transaction",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "eip-norm-tx-mock-001",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normalization"
+      ],
+      "content": {
+        "prompt": "정규화에 대한 설명으로 옳은 것은?",
+        "options": [
+          "이상 현상을 없애도록 릴레이션을 분해한다",
+          "조회 성능을 위해 중복을 허용한다",
+          "여러 릴레이션을 하나로 합친다",
+          "트랜잭션을 동시에 실행한다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "정규화는 이상 현상을 없애도록 릴레이션을 분해하는 과정입니다. 중복을 허용하는 것은 반정규화입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-tx-mock-002",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "3nf",
+        "transitive-dependency"
+      ],
+      "content": {
+        "prompt": "2NF인 릴레이션에 학번 → 학과, 학과 → 학과장이 있다. 이 이행 함수 종속을 제거하면 되는 정규형은?",
+        "options": [
+          "1NF",
+          "3NF",
+          "BCNF",
+          "4NF"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "3NF는 2NF에서 이행 함수 종속을 제거한 정규형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-tx-mock-003",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bcnf"
+      ],
+      "content": {
+        "prompt": "BCNF에 대한 설명으로 옳은 것은?",
+        "options": [
+          "다치 종속을 제거한 정규형이다",
+          "부분 함수 종속만 제거한 정규형이다",
+          "모든 결정자가 후보키인 정규형이다",
+          "조인 종속을 제거한 정규형이다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "BCNF는 모든 결정자가 후보키인 정규형입니다. 다치 종속 제거는 4NF, 조인 종속 제거는 5NF입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-tx-mock-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "normal-form"
+      ],
+      "content": {
+        "prompt": "정규형을 낮은 단계부터 바르게 나열한 것은?",
+        "options": [
+          "1NF→2NF→BCNF→3NF",
+          "1NF→2NF→3NF→BCNF",
+          "1NF→3NF→2NF→BCNF",
+          "2NF→1NF→3NF→BCNF"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "정규형 순서는 1NF → 2NF → 3NF → BCNF → 4NF → 5NF입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-tx-mock-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "atomicity",
+        "acid"
+      ],
+      "content": {
+        "prompt": "트랜잭션의 성질 중 '변경이 전부 반영되거나 전혀 반영되지 않는다'에 해당하는 것은?",
+        "options": [
+          "일관성",
+          "고립성",
+          "지속성",
+          "원자성"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "원자성(Atomicity)에 대한 설명입니다. 지속성은 COMMIT된 결과가 장애 뒤에도 남는 성질입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-tx-mock-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "transaction-state"
+      ],
+      "content": {
+        "prompt": "트랜잭션이 마지막 연산까지 실행했지만 아직 COMMIT하기 전인 상태는?",
+        "options": [
+          "활동",
+          "완료",
+          "철회",
+          "부분 완료"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "부분 완료는 마지막 연산은 끝났지만 결과를 아직 반영하기 전인 상태입니다. COMMIT되면 완료가 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-tx-mock-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "two-phase-locking"
+      ],
+      "content": {
+        "prompt": "2단계 로킹(2PL)에 대한 설명으로 옳은 것은?",
+        "options": [
+          "확장 단계에서는 락을 얻기만 한다",
+          "축소 단계에서 새 락을 얻을 수 있다",
+          "락을 얻고 푸는 순서에 제한이 없다",
+          "로킹 단위를 두 가지로 나눈다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "2PL은 락을 얻기만 하는 확장 단계 뒤에 풀기만 하는 축소 단계가 옵니다. 축소 단계에서는 새 락을 얻지 못합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-tx-mock-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "lock-granularity"
+      ],
+      "content": {
+        "prompt": "로킹 단위에 대한 설명으로 옳은 것은?",
+        "options": [
+          "단위가 크면 병행성이 높아진다",
+          "단위가 작으면 관리가 쉬워진다",
+          "단위가 크면 병행성이 낮고 관리가 쉽다",
+          "단위와 병행성은 관계가 없다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "로킹 단위가 크면 병행성은 낮지만 락 관리가 쉽고, 작으면 병행성은 높지만 관리가 어렵습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-tx-mock-009",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "deferred-update",
+        "recovery"
+      ],
+      "content": {
+        "prompt": "지연 갱신 회복 기법에 대한 설명으로 옳은 것은?",
+        "options": [
+          "변경을 즉시 DB에 반영한다",
+          "장애 시 UNDO가 필요 없다",
+          "장애 시 REDO가 필요 없다",
+          "커밋 전에 변경을 DB에 반영한다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "지연 갱신은 커밋 때 한꺼번에 반영하므로 커밋 전 변경을 되돌릴 UNDO가 필요 없습니다. REDO는 필요할 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-norm-tx-mock-010",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "transparency",
+        "distributed-db"
+      ],
+      "content": {
+        "prompt": "분산 데이터베이스의 투명성 중 사용자가 데이터가 저장된 사이트를 몰라도 되게 하는 것은?",
+        "options": [
+          "장애 투명성",
+          "병행 투명성",
+          "중복 투명성",
+          "위치 투명성"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "위치 투명성은 데이터의 물리적 저장 위치를 몰라도 접근할 수 있게 합니다.",
+      "refs": []
+    }
+  ]
+}

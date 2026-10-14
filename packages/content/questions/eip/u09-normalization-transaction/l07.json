@@ -1,0 +1,212 @@
+{
+  "track": "eip",
+  "unit": "u09-normalization-transaction",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "eip-tx-recovery-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "redo",
+        "recovery"
+      ],
+      "content": {
+        "prompt": "커밋된 변경을 로그로 다시 적용하는 회복 연산은?",
+        "options": [
+          "REDO",
+          "UNDO",
+          "COMMIT"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "REDO는 커밋됐지만 데이터 파일에 반영되지 않은 변경을 로그로 다시 적용합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-recovery-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "undo",
+        "recovery"
+      ],
+      "content": {
+        "prompt": "커밋되지 않은 트랜잭션의 변경을 되돌리는 연산은?",
+        "options": [
+          "REDO",
+          "UNDO",
+          "GRANT"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "UNDO는 커밋되지 않은 트랜잭션의 변경을 취소해 되돌립니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-recovery-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "deferred-update",
+        "recovery"
+      ],
+      "content": {
+        "prompt": "변경을 커밋 때 한꺼번에 반영하는 회복 기법은?",
+        "options": [
+          "즉시 갱신",
+          "지연 갱신"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "지연 갱신은 커밋 때 변경을 한꺼번에 반영합니다. 즉시 갱신은 바로 반영합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-recovery-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "immediate-update",
+        "recovery"
+      ],
+      "content": {
+        "prompt": "즉시 갱신은 장애 시 REDO와 UNDO가 모두 필요하다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "즉시 갱신은 커밋 전 변경도 DB에 반영되므로 UNDO가, 커밋 후 미반영분 때문에 REDO가 필요합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-recovery-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "deferred-update",
+        "undo"
+      ],
+      "content": {
+        "prompt": "지연 갱신은 장애 시 ___ 가 필요 없다."
+      },
+      "answer_key": {
+        "accepted": [
+          "UNDO",
+          "언두"
+        ]
+      },
+      "explanation": "지연 갱신은 커밋 전에는 DB에 반영하지 않으므로 되돌릴 것이 없어 UNDO가 필요 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-recovery-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "immediate-update",
+        "recovery"
+      ],
+      "content": {
+        "prompt": "변경을 바로 DB에 반영하는 회복 기법은 ___ 갱신이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "즉시",
+          "immediate"
+        ]
+      },
+      "explanation": "즉시 갱신은 변경을 바로 DB에 반영하므로 장애 시 REDO·UNDO가 모두 필요합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-recovery-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "redo",
+        "recovery"
+      ],
+      "content": {
+        "prompt": "T1은 커밋했지만 데이터 파일 반영 전에 장애가 났다. T1에 필요한 것은?",
+        "options": [
+          "UNDO",
+          "아무것도 없음",
+          "REDO"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "커밋됐지만 반영되지 않은 변경은 로그로 다시 적용하는 REDO가 필요합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-recovery-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "undo",
+        "immediate-update"
+      ],
+      "content": {
+        "prompt": "즉시 갱신에서 T2가 커밋 전에 장애가 났다. T2에 필요한 것은?",
+        "options": [
+          "REDO",
+          "UNDO",
+          "아무것도 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "즉시 갱신이라 커밋 전 변경이 이미 DB에 반영됐을 수 있으므로 UNDO로 되돌립니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-recovery-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "deferred-update",
+        "recovery"
+      ],
+      "content": {
+        "prompt": "지연 갱신에서 T3가 커밋 전에 장애가 났다. T3에 필요한 것은?",
+        "options": [
+          "UNDO",
+          "REDO",
+          "아무것도 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "지연 갱신은 커밋 때 반영하므로 커밋 전 T3의 변경은 DB에 없어 할 일이 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-recovery-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "redo",
+        "undo"
+      ],
+      "content": {
+        "prompt": "UNDO는 커밋된 변경을 로그로 다시 적용한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "커밋된 변경을 다시 적용하는 것은 REDO입니다. UNDO는 커밋되지 않은 변경을 되돌립니다.",
+      "refs": []
+    }
+  ]
+}

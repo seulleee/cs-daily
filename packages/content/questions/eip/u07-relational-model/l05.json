@@ -1,0 +1,209 @@
+{
+  "track": "eip",
+  "unit": "u07-relational-model",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "eip-db-design-phase-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "conceptual-design",
+        "db-design"
+      ],
+      "content": {
+        "prompt": "DBMS와 무관하게 E-R 다이어그램을 만드는 단계는?",
+        "options": [
+          "개념적 설계",
+          "논리적 설계",
+          "물리적 설계"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "개념적 설계는 특정 DBMS와 무관하게 E-R 다이어그램으로 개념 스키마를 만듭니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-design-phase-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "physical-design",
+        "db-design"
+      ],
+      "content": {
+        "prompt": "저장 레코드 형식과 접근 경로를 정하는 단계는?",
+        "options": [
+          "개념적 설계",
+          "논리적 설계",
+          "물리적 설계"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "물리적 설계에서 저장 레코드 형식과 접근 경로를 결정합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-design-phase-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "er-diagram"
+      ],
+      "content": {
+        "prompt": "E-R 다이어그램에서 관계를 나타내는 기호는?",
+        "options": [
+          "사각형",
+          "마름모",
+          "타원"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "E-R 다이어그램에서 관계는 마름모, 개체는 사각형, 속성은 타원으로 그립니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-design-phase-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "er-diagram"
+      ],
+      "content": {
+        "prompt": "E-R 다이어그램에서 개체는 타원으로 그린다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "개체는 사각형으로 그립니다. 타원은 속성을 나타냅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-design-phase-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "er-diagram"
+      ],
+      "content": {
+        "prompt": "E-R 다이어그램에서 속성은 ___ 으로 그린다."
+      },
+      "answer_key": {
+        "accepted": [
+          "타원",
+          "타원형",
+          "ellipse"
+        ]
+      },
+      "explanation": "속성은 타원, 개체는 사각형, 관계는 마름모로 나타냅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-design-phase-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "logical-design",
+        "db-design"
+      ],
+      "content": {
+        "prompt": "개념 스키마를 관계형 스키마로 바꾸는 단계는 ___ 설계이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "논리적",
+          "논리",
+          "logical"
+        ]
+      },
+      "explanation": "논리적 설계에서 E-R 다이어그램으로 만든 개념 스키마를 관계형 스키마로 변환합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-design-phase-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "db-design"
+      ],
+      "content": {
+        "prompt": "요구 분석 바로 다음 설계 단계는?",
+        "options": [
+          "개념적 설계",
+          "논리적 설계",
+          "구현"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "순서는 요구 분석 → 개념적 설계 → 논리적 설계 → 물리적 설계 → 구현입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-design-phase-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "db-design"
+      ],
+      "content": {
+        "prompt": "논리적 설계 바로 다음 단계는?",
+        "options": [
+          "구현",
+          "물리적 설계",
+          "개념적 설계"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "논리적 설계 뒤에 물리적 설계를 하고, 그다음 구현합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-design-phase-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "er-diagram"
+      ],
+      "content": {
+        "prompt": "E-R 다이어그램에서 '학생' 개체를 그리는 기호는?",
+        "options": [
+          "마름모",
+          "타원",
+          "사각형"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "개체는 사각형으로 그립니다. 마름모는 관계, 타원은 속성입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-db-design-phase-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "conceptual-design",
+        "er-diagram"
+      ],
+      "content": {
+        "prompt": "개념 스키마를 E-R 다이어그램으로 만드는 단계는 개념적 설계다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "개념적 설계는 DBMS와 무관하게 E-R 다이어그램으로 개념 스키마를 만드는 단계입니다.",
+      "refs": []
+    }
+  ]
+}

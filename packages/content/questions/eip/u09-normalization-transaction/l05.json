@@ -1,0 +1,206 @@
+{
+  "track": "eip",
+  "unit": "u09-normalization-transaction",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "eip-tx-state-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "transaction-state"
+      ],
+      "content": {
+        "prompt": "트랜잭션이 실행 중인 상태는?",
+        "options": [
+          "활동",
+          "완료",
+          "철회"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "활동(Active)은 트랜잭션이 실행 중인 상태입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-state-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "transaction-state"
+      ],
+      "content": {
+        "prompt": "마지막 연산까지 실행했지만 COMMIT 전인 상태는?",
+        "options": [
+          "완료",
+          "부분 완료",
+          "실패"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "부분 완료는 마지막 연산까지 끝났지만 결과를 아직 반영(COMMIT)하기 전인 상태입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-state-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "transaction-state",
+        "rollback"
+      ],
+      "content": {
+        "prompt": "ROLLBACK을 실행한 상태는?",
+        "options": [
+          "완료",
+          "철회"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "철회(Aborted)는 ROLLBACK을 실행한 상태입니다. 완료는 COMMIT된 상태입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-state-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "transaction-state"
+      ],
+      "content": {
+        "prompt": "부분 완료는 결과가 이미 DB에 확정된 상태다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "부분 완료는 마지막 연산까지 실행했지만 아직 COMMIT하기 전입니다. 확정된 상태는 완료입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-state-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "transaction-state",
+        "commit"
+      ],
+      "content": {
+        "prompt": "COMMIT되어 성공적으로 끝난 상태는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "완료",
+          "committed",
+          "커밋됨"
+        ]
+      },
+      "explanation": "완료(Committed)는 COMMIT되어 트랜잭션이 성공적으로 끝난 상태입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-state-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "transaction-state"
+      ],
+      "content": {
+        "prompt": "오류로 트랜잭션이 중단된 상태는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "실패",
+          "failed"
+        ]
+      },
+      "explanation": "실행 중 오류로 중단된 상태가 실패입니다. 그 뒤 ROLLBACK을 실행하면 철회 상태가 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-state-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "transaction-state"
+      ],
+      "content": {
+        "prompt": "마지막 UPDATE까지 끝났고 COMMIT을 기다린다. 현재 상태는?",
+        "options": [
+          "활동",
+          "부분 완료",
+          "완료"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "마지막 연산은 끝났지만 아직 COMMIT 전이므로 부분 완료입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-state-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "transaction-state"
+      ],
+      "content": {
+        "prompt": "실행 중 오류가 나 중단됐다. 현재 상태는?",
+        "options": [
+          "활동",
+          "완료",
+          "실패"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "오류로 실행이 중단된 상태는 실패입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-state-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "transaction-state",
+        "commit"
+      ],
+      "content": {
+        "prompt": "부분 완료에서 COMMIT이 성공하면 가는 상태는?",
+        "options": [
+          "완료",
+          "철회",
+          "활동"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "COMMIT이 성공하면 트랜잭션은 완료(Committed) 상태가 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-tx-state-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "transaction-state"
+      ],
+      "content": {
+        "prompt": "활동은 트랜잭션이 실행 중인 상태이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "활동(Active)은 트랜잭션이 연산을 실행하고 있는 상태입니다.",
+      "refs": []
+    }
+  ]
+}
