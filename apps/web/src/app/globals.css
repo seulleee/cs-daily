@@ -329,15 +329,24 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   /* 타일형 보기(OX·목표·테마)에서는 왼쪽 위 모서리에 둔다 */
   .mark-corner { position: absolute; top: 12px; left: 12px; }
 
-  /* 토스트(components/toast.tsx): 작은 창. 타이틀바 없음. 아래에서 4px 올라오며 2칸으로 나타난다(줌 사각형은 결과 창 전용) */
+  /* 토스트(components/toast.tsx): 작은 창. 타이틀바 없음. 화면 밖 위에서 4칸으로 내려온다(퇴장은 같은 경로로 올라간다)(줌 사각형은 결과 창 전용) */
+  .toast-host {
+    top: calc(env(safe-area-inset-top) + 12px);
+    padding-inline: 16px;
+  }
+  .toast-host > div { width: min(100%, 360px); margin-inline: auto; }
+  @media (min-width: 768px) {
+    .toast-host { top: 24px; }
+  }
   .toast {
     background: var(--color-surface);
     border: 1px solid var(--color-ink);
     border-radius: 0;
     box-shadow: 2px 2px 0 var(--color-ink);
     color: var(--color-ink);
-    animation: toast-in 120ms steps(2, end);
+    animation: toast-in 160ms steps(4, end);
   }
+  .toast.toast-leaving { animation: toast-out 120ms steps(4, end) forwards; }
 
   .card { background: var(--color-surface); border: 1px solid var(--color-ink); border-radius: 0; }
 
@@ -570,8 +579,12 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   100% { opacity: 0; }
 }
 @keyframes toast-in {
-  from { transform: translateY(4px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from { transform: translateY(calc(-100% - 12px)); }
+  to { transform: translateY(0); }
+}
+@keyframes toast-out {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-100% - 12px)); }
 }
 @keyframes sheet-show {
   from { opacity: 0; }
@@ -601,7 +614,7 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   .ants rect, .ants-sm rect { animation: none; }
   .btn-3d.is-flash, .pad.is-flash,
   .option[data-selected="true"] .mark::after, .option[data-state="correct"] .mark::after,
-  .stamp, .zoom-rect, .sheet-win, .score-ring-anim, .toast { animation: none; }
+  .stamp, .zoom-rect, .sheet-win, .score-ring-anim, .toast, .toast.toast-leaving { animation: none; }
   /* 불꽃은 A 프레임 고정 (B는 기본값대로 숨김) */
   .flame-a[data-live="true"], .flame-b[data-live="true"] { animation: none; }
 }
