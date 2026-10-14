@@ -1,0 +1,215 @@
+{
+  "track": "eip",
+  "unit": "u03-oo-architecture",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "eip-sd-gof-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "design-pattern",
+        "gof"
+      ],
+      "content": {
+        "prompt": "자주 나오는 설계 문제에 대한 검증된 해결 구조는?",
+        "options": [
+          "디자인 패턴",
+          "테일러링",
+          "미들웨어"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "디자인 패턴은 자주 나오는 설계 문제에 대한 검증된 해결 구조입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-gof-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "design-pattern",
+        "creational"
+      ],
+      "content": {
+        "prompt": "싱글톤·빌더·추상 팩토리가 속한 GoF 분류는?",
+        "options": [
+          "구조 패턴",
+          "행위 패턴",
+          "생성 패턴"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "싱글톤·팩토리 메서드·추상 팩토리·빌더·프로토타입은 생성 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-gof-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "design-pattern",
+        "creational"
+      ],
+      "content": {
+        "prompt": "싱글톤 패턴은 어느 분류에 속하나?",
+        "options": [
+          "생성",
+          "구조",
+          "행위"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "싱글톤은 GoF 생성 패턴에 속합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-gof-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "design-pattern",
+        "structural"
+      ],
+      "content": {
+        "prompt": "어댑터는 GoF의 행위 패턴에 속한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "어댑터는 구조 패턴입니다. 행위 패턴에는 옵서버·전략·템플릿 메서드 등이 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-gof-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "design-pattern",
+        "gof"
+      ],
+      "content": {
+        "prompt": "GoF는 디자인 패턴을 생성, ___, 행위 패턴으로 분류한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "구조",
+          "구조적",
+          "structural"
+        ]
+      },
+      "explanation": "GoF 디자인 패턴은 생성·구조·행위 세 분류로 나뉩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-gof-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "design-pattern",
+        "behavioral"
+      ],
+      "content": {
+        "prompt": "옵서버·전략·커맨드가 속한 GoF 분류는 ___ 패턴이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "행위",
+          "행동",
+          "behavioral"
+        ]
+      },
+      "explanation": "옵서버·전략·템플릿 메서드·커맨드·이터레이터는 행위 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-gof-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "design-pattern",
+        "structural"
+      ],
+      "content": {
+        "prompt": "다음 중 구조 패턴은?",
+        "options": [
+          "빌더",
+          "데코레이터",
+          "전략"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "데코레이터는 구조 패턴입니다. 빌더는 생성, 전략은 행위 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-gof-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "design-pattern",
+        "creational"
+      ],
+      "content": {
+        "prompt": "다음 중 생성 패턴이 아닌 것은?",
+        "options": [
+          "추상 팩토리",
+          "프로토타입",
+          "프록시"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "프록시는 구조 패턴입니다. 추상 팩토리와 프로토타입은 생성 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-gof-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "design-pattern",
+        "behavioral"
+      ],
+      "content": {
+        "prompt": "다음 중 행위 패턴은?",
+        "options": [
+          "템플릿 메서드",
+          "퍼사드",
+          "팩토리 메서드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "템플릿 메서드는 행위 패턴입니다. 퍼사드는 구조, 팩토리 메서드는 생성 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-gof-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "design-pattern",
+        "gof"
+      ],
+      "content": {
+        "prompt": "디자인 패턴은 자주 나오는 설계 문제의 검증된 해결 구조다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "디자인 패턴은 반복되는 설계 문제에 대해 검증된 해결 구조를 정리한 것입니다.",
+      "refs": []
+    }
+  ]
+}

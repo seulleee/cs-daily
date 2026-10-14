@@ -1,0 +1,217 @@
+{
+  "track": "eip",
+  "unit": "u01-sw-lifecycle",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "eip-sd-proto-spiral-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "prototype-model",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "견본을 먼저 만들어 사용자 요구를 확인하는 모형은?",
+        "options": [
+          "폭포수 모형",
+          "프로토타입 모형",
+          "나선형 모형"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "프로토타입 모형은 견본(시제품)을 먼저 만들어 사용자 요구를 확인합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-proto-spiral-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "spiral-model",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "계획·위험 분석·개발·평가를 반복하며 완성하는 모형은?",
+        "options": [
+          "나선형 모형",
+          "프로토타입 모형",
+          "V 모델"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "나선형 모형은 계획·위험 분석·개발·평가를 반복하며 점점 완성해 갑니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-proto-spiral-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "spiral-model",
+        "risk-analysis"
+      ],
+      "content": {
+        "prompt": "나선형 모형은 반복할 때마다 위험 분석을 수행한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "위험 분석은 나선형 모형이 반복마다 수행하는 핵심 활동입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-proto-spiral-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "prototype-model",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "프로토타입 모형은 반복 없이 한 번에 순차로 진행한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "프로토타입 모형은 견본을 보여 주고 고치기를 반복하며 요구를 다듬습니다. 한 번에 순차 진행하는 것은 폭포수입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-proto-spiral-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "prototype-model",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "사용자 요구 확인용 견본을 먼저 만드는 모형은 ___ 모형이다.",
+        "hint": "견본을 뜻하는 외래어"
+      },
+      "answer_key": {
+        "accepted": [
+          "프로토타입",
+          "prototype",
+          "프로토타이핑",
+          "시제품"
+        ]
+      },
+      "explanation": "프로토타입 모형은 견본을 먼저 만들어 사용자 요구를 확인하는 모형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-proto-spiral-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "spiral-model",
+        "risk-analysis"
+      ],
+      "content": {
+        "prompt": "나선형 모형에서 반복마다 수행하는 핵심 활동은 ___ 분석이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "위험",
+          "risk",
+          "리스크"
+        ]
+      },
+      "explanation": "나선형 모형은 반복할 때마다 위험 분석을 수행해 위험을 줄여 나갑니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-proto-spiral-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "prototype-model",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "사용자가 원하는 화면을 말로 설명하기 어려워한다. 알맞은 모형은?",
+        "options": [
+          "폭포수 모형",
+          "V 모델",
+          "프로토타입 모형"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "견본을 먼저 보여 주고 요구를 확인하는 프로토타입 모형이 알맞습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-proto-spiral-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "spiral-model",
+        "risk-analysis"
+      ],
+      "content": {
+        "prompt": "대형 프로젝트에서 위험 요소를 반복해 점검하려 한다. 알맞은 모형은?",
+        "options": [
+          "나선형 모형",
+          "폭포수 모형",
+          "V 모델"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "나선형 모형은 반복할 때마다 위험 분석을 수행하므로 위험 점검이 중요한 대형 프로젝트에 맞습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-proto-spiral-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "iterative",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "프로토타입·나선형 모형이 폭포수와 다른 공통점은?",
+        "options": [
+          "문서를 쓰지 않음",
+          "반복하며 요구를 다듬음",
+          "검증 단계가 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "두 모형 모두 폭포수와 달리 반복하며 요구를 다듬어 갑니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-proto-spiral-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "prototype-model",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "프로토타입 모형에서 가장 먼저 만드는 것은?",
+        "options": [
+          "요구사항 명세서",
+          "견본(시제품)",
+          "위험 분석표"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "프로토타입 모형은 견본(시제품)을 먼저 만들어 사용자에게 보이고 요구를 확인합니다.",
+      "refs": []
+    }
+  ]
+}

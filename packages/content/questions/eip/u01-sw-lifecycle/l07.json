@@ -1,0 +1,237 @@
+{
+  "track": "eip",
+  "unit": "u01-sw-lifecycle",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "eip-sd-lifecycle-mock-001",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "waterfall",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "폭포수 모형에 대한 설명으로 옳은 것은?",
+        "options": [
+          "각 단계를 끝내고 다음 단계로 진행한다",
+          "반복할 때마다 위험 분석을 수행한다",
+          "견본을 먼저 만들어 요구를 확인한다",
+          "스프린트 단위로 반복한다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "폭포수 모형은 단계를 끝내고 검토한 뒤 다음 단계로 내려가는 순차 모형입니다. 위험 분석 반복은 나선형, 견본은 프로토타입입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-mock-002",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "spiral-model",
+        "risk-analysis"
+      ],
+      "content": {
+        "prompt": "나선형 모형에서 반복할 때마다 수행하는 핵심 활동은?",
+        "options": [
+          "짝 프로그래밍",
+          "위험 분석",
+          "테일러링",
+          "지속적 통합"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "나선형 모형은 계획·위험 분석·개발·평가를 반복하며, 위험 분석이 핵심 활동입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-mock-003",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "agile",
+        "agile-values"
+      ],
+      "content": {
+        "prompt": "애자일이 더 중시하는 가치에 해당하지 않는 것은?",
+        "options": [
+          "개인과 상호작용",
+          "동작하는 소프트웨어",
+          "고객과의 협력",
+          "계획 준수"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "애자일은 계획 준수보다 변화 대응을 중시합니다. 나머지 셋은 애자일이 더 중시하는 가치입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-mock-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scrum",
+        "roles"
+      ],
+      "content": {
+        "prompt": "스크럼 팀을 구성하는 역할이 아닌 것은?",
+        "options": [
+          "제품 책임자",
+          "스크럼 마스터",
+          "품질 감리인",
+          "개발팀"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "스크럼의 역할은 제품 책임자(PO), 스크럼 마스터, 개발팀입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-mock-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "xp",
+        "pair-programming"
+      ],
+      "content": {
+        "prompt": "XP의 실천 방법에 해당하는 것은?",
+        "options": [
+          "짝 프로그래밍",
+          "반복마다 위험 분석",
+          "단계별 검증 짝짓기",
+          "산출물 테일러링"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "짝 프로그래밍은 XP의 대표 실천입니다. 위험 분석 반복은 나선형, 검증 단계 짝짓기는 V 모델의 특징입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-mock-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tailoring",
+        "methodology"
+      ],
+      "content": {
+        "prompt": "표준 방법론을 프로젝트 규모와 특성에 맞게 다듬어 쓰는 것은?",
+        "options": [
+          "CBD",
+          "테일러링",
+          "프로토타이핑",
+          "리팩토링"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "테일러링은 표준 방법론을 프로젝트 규모·특성에 맞게 다듬어 쓰는 것입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-mock-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "rumbaugh",
+        "methodology"
+      ],
+      "content": {
+        "prompt": "개발 방법론에 대한 설명으로 틀린 것은?",
+        "options": [
+          "구조적 방법론은 기능 중심이다",
+          "정보공학 방법론은 데이터 중심이다",
+          "CBD는 컴포넌트를 조립해 개발한다",
+          "럼바우 기법은 구조적 방법론의 기법이다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "럼바우 기법(객체·동적·기능 모델링)은 객체지향 방법론의 기법입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-mock-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "v-model",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "V 모델에 대한 설명으로 옳은 것은?",
+        "options": [
+          "계획·위험 분석·개발·평가를 반복한다",
+          "스프린트마다 동작하는 결과를 낸다",
+          "폭포수를 변형해 단계마다 검증 단계를 둔다",
+          "견본을 먼저 만들어 요구를 확인한다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "V 모델은 폭포수를 변형해 개발 단계마다 짝이 되는 검증 단계를 둔 모형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-mock-009",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "xp",
+        "agile"
+      ],
+      "content": {
+        "prompt": "요구가 자주 바뀌고 고객이 개발에 계속 참여하는 프로젝트에 가장 알맞은 것은?",
+        "options": [
+          "폭포수 모형",
+          "V 모델",
+          "XP",
+          "정보공학 방법론"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "XP는 고객 참여와 짧은 릴리스를 강조하는 애자일 방법론이라 잦은 요구 변경에 맞습니다. 폭포수·V 모델은 변경에 약합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-mock-010",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "scrum",
+        "sprint"
+      ],
+      "content": {
+        "prompt": "스크럼에 대한 설명으로 틀린 것은?",
+        "options": [
+          "스프린트는 보통 1~4주의 고정 주기다",
+          "제품 백로그는 우선순위가 매겨진 요구 목록이다",
+          "백로그 우선순위는 제품 책임자가 정한다",
+          "스프린트 길이는 정하지 않고 계속 늘린다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "스프린트는 보통 1~4주로 길이가 고정된 주기입니다. 길이를 정하지 않고 늘리지 않습니다.",
+      "refs": []
+    }
+  ]
+}

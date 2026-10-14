@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u03-oo-architecture",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "eip-sd-solid-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "solid",
+        "srp"
+      ],
+      "content": {
+        "prompt": "클래스는 하나의 책임만 가진다는 원칙은?",
+        "options": [
+          "SRP",
+          "OCP",
+          "LSP"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SRP(단일 책임 원칙)는 클래스가 하나의 책임만 가져야 한다는 원칙입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-solid-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "solid",
+        "ocp"
+      ],
+      "content": {
+        "prompt": "확장에는 열려 있고 변경에는 닫혀 있어야 한다는 원칙은?",
+        "options": [
+          "SRP",
+          "OCP",
+          "DIP"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "OCP(개방-폐쇄 원칙)는 확장에는 열려 있고 변경에는 닫혀 있어야 한다는 원칙입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-solid-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "solid",
+        "dip"
+      ],
+      "content": {
+        "prompt": "구체 클래스가 아닌 추상화에 의존하라는 원칙은?",
+        "options": [
+          "ISP",
+          "DIP"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DIP(의존 역전 원칙)는 추상화에 의존하라는 원칙입니다. ISP는 인터페이스를 작게 나누라는 원칙입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-solid-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "solid",
+        "lsp"
+      ],
+      "content": {
+        "prompt": "LSP는 하위 타입이 상위 타입을 대체할 수 있어야 한다는 원칙이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "LSP(리스코프 치환 원칙)는 하위 타입이 상위 타입 자리를 대체할 수 있어야 한다는 원칙입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-solid-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "solid",
+        "isp"
+      ],
+      "content": {
+        "prompt": "인터페이스를 작게 나누라는 원칙의 약자는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "ISP",
+          "isp",
+          "Interface Segregation Principle"
+        ]
+      },
+      "explanation": "ISP(인터페이스 분리 원칙)는 인터페이스를 작게 나누어 필요한 것만 의존하게 하는 원칙입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-solid-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "solid",
+        "lsp"
+      ],
+      "content": {
+        "prompt": "LSP는 ___ 치환 원칙이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "리스코프",
+          "Liskov",
+          "리스코브"
+        ]
+      },
+      "explanation": "LSP는 리스코프 치환 원칙으로, 하위 타입이 상위 타입을 대체할 수 있어야 한다는 원칙입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-solid-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "solid",
+        "ocp"
+      ],
+      "content": {
+        "prompt": "새 결제 수단을 기존 코드 수정 없이 클래스 추가로 지원했다. 원칙은?",
+        "options": [
+          "OCP",
+          "SRP",
+          "ISP"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "기존 코드는 바꾸지 않고(변경에 닫힘) 새 클래스로 확장(확장에 열림)했으므로 OCP입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-solid-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "solid",
+        "srp"
+      ],
+      "content": {
+        "prompt": "보고서 클래스가 계산·출력·저장을 모두 맡는다. 어긴 원칙은?",
+        "options": [
+          "DIP",
+          "SRP",
+          "LSP"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "한 클래스가 여러 책임을 지고 있으므로 단일 책임 원칙(SRP)을 어깁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-solid-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "solid",
+        "dip"
+      ],
+      "content": {
+        "prompt": "서비스가 MySQL 클래스 대신 저장소 인터페이스에 의존한다. 원칙은?",
+        "options": [
+          "ISP",
+          "OCP",
+          "DIP"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "구체 클래스가 아닌 추상화(인터페이스)에 의존하도록 한 것은 DIP입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-solid-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "solid",
+        "isp"
+      ],
+      "content": {
+        "prompt": "ISP는 여러 인터페이스를 하나로 크게 합치라는 원칙이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "ISP는 인터페이스를 작게 나누라는 원칙입니다.",
+      "refs": []
+    }
+  ]
+}

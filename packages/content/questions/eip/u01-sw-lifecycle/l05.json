@@ -1,0 +1,217 @@
+{
+  "track": "eip",
+  "unit": "u01-sw-lifecycle",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "eip-sd-scrum-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scrum",
+        "agile"
+      ],
+      "content": {
+        "prompt": "스프린트 단위로 반복하는 애자일 프레임워크는?",
+        "options": [
+          "스크럼",
+          "XP",
+          "V 모델"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스크럼은 스프린트 단위로 반복하는 애자일 프레임워크입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-scrum-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scrum",
+        "sprint"
+      ],
+      "content": {
+        "prompt": "보통 1~4주인 스크럼의 짧고 고정된 개발 주기는?",
+        "options": [
+          "릴리스",
+          "스프린트",
+          "마일스톤"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스프린트는 보통 1~4주의 짧고 고정된 개발 주기입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-scrum-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scrum",
+        "product-owner"
+      ],
+      "content": {
+        "prompt": "제품 백로그의 우선순위를 매기는 역할은?",
+        "options": [
+          "스크럼 마스터",
+          "제품 책임자",
+          "개발팀"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "제품 백로그는 제품 책임자(PO)가 우선순위를 매긴 요구사항 목록입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-scrum-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "scrum",
+        "sprint"
+      ],
+      "content": {
+        "prompt": "스크럼의 스프린트는 길이가 정해지지 않은 개발 주기다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "스프린트는 보통 1~4주로 길이가 고정된 짧은 개발 주기입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-scrum-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "scrum",
+        "backlog"
+      ],
+      "content": {
+        "prompt": "제품 책임자가 우선순위를 매긴 요구사항 목록은 제품 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "백로그",
+          "backlog",
+          "백 로그"
+        ]
+      },
+      "explanation": "제품 백로그는 제품 책임자가 우선순위를 매긴 요구사항 목록입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-scrum-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "scrum",
+        "product-owner"
+      ],
+      "content": {
+        "prompt": "스크럼의 제품 책임자를 영문 약자로 ___ 라고 한다.",
+        "hint": "영문 이름의 머리글자 두 개"
+      },
+      "answer_key": {
+        "accepted": [
+          "PO",
+          "po",
+          "피오",
+          "Product Owner"
+        ]
+      },
+      "explanation": "제품 책임자는 Product Owner, 줄여서 PO라고 부릅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-scrum-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scrum",
+        "roles"
+      ],
+      "content": {
+        "prompt": "스크럼의 역할에 해당하지 않는 것은?",
+        "options": [
+          "제품 책임자",
+          "스크럼 마스터",
+          "프로젝트 감리인"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "스크럼의 역할은 제품 책임자(PO), 스크럼 마스터, 개발팀 셋입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-scrum-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scrum",
+        "backlog"
+      ],
+      "content": {
+        "prompt": "\"검색 기능\"을 우선순위와 함께 적어 두는 곳은?",
+        "options": [
+          "스크럼 마스터",
+          "제품 백로그",
+          "스프린트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "요구사항을 우선순위와 함께 모아 둔 목록은 제품 백로그입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-scrum-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scrum",
+        "sprint"
+      ],
+      "content": {
+        "prompt": "스크럼의 스프린트 길이로 알맞은 것은?",
+        "options": [
+          "2주",
+          "6개월",
+          "1년"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스프린트는 보통 1~4주의 짧은 주기이므로 2주가 알맞습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-scrum-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "scrum",
+        "agile"
+      ],
+      "content": {
+        "prompt": "스크럼은 스프린트 단위로 반복하는 애자일 프레임워크다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "스크럼은 고정된 스프린트를 반복하며 개발하는 애자일 프레임워크입니다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "track": "eip",
+  "unit": "u02-requirements-uml-ui",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "eip-sd-uml-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "uml",
+        "modeling"
+      ],
+      "content": {
+        "prompt": "시스템을 시각적으로 모델링하는 표준 모델링 언어는?",
+        "options": [
+          "UML",
+          "DFD",
+          "SQL"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "UML은 시스템을 시각적으로 모델링하는 표준 모델링 언어입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "uml",
+        "modeling"
+      ],
+      "content": {
+        "prompt": "UML의 구성 요소를 바르게 묶은 것은?",
+        "options": [
+          "클래스·객체·패키지",
+          "사물·관계·다이어그램",
+          "처리·흐름·저장소"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "UML은 사물, 관계, 다이어그램으로 구성됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "uml",
+        "structural-diagram"
+      ],
+      "content": {
+        "prompt": "클래스 다이어그램은 어느 분류에 속하나?",
+        "options": [
+          "구조 다이어그램",
+          "행위 다이어그램"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "클래스 다이어그램은 정적 구조를 보여 주는 구조 다이어그램입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "uml",
+        "behavioral-diagram"
+      ],
+      "content": {
+        "prompt": "시퀀스 다이어그램은 구조(정적) 다이어그램이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "시퀀스 다이어그램은 행위(동적) 다이어그램입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "uml",
+        "modeling"
+      ],
+      "content": {
+        "prompt": "UML 구성 요소는 사물, 관계, ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "다이어그램",
+          "diagram",
+          "다이아그램"
+        ]
+      },
+      "explanation": "UML은 사물, 관계, 다이어그램 세 가지로 구성됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "behavioral-diagram"
+      ],
+      "content": {
+        "prompt": "유스케이스·상태·활동 다이어그램이 속한 분류는 ___ 다이어그램이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "행위",
+          "동적",
+          "behavior",
+          "behavioral",
+          "행위적"
+        ]
+      },
+      "explanation": "유스케이스·시퀀스·커뮤니케이션·상태·활동 다이어그램은 행위(동적) 다이어그램입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "structural-diagram"
+      ],
+      "content": {
+        "prompt": "구조(정적) 다이어그램에 해당하는 것은?",
+        "options": [
+          "상태",
+          "활동",
+          "패키지"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "패키지 다이어그램은 구조 다이어그램입니다. 상태·활동 다이어그램은 행위 다이어그램입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "behavioral-diagram"
+      ],
+      "content": {
+        "prompt": "행위(동적) 다이어그램에 해당하는 것은?",
+        "options": [
+          "배치",
+          "커뮤니케이션",
+          "컴포넌트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "커뮤니케이션 다이어그램은 행위 다이어그램입니다. 배치·컴포넌트는 구조 다이어그램입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "structural-diagram"
+      ],
+      "content": {
+        "prompt": "시스템의 정적 구조를 보이려 할 때 고르는 다이어그램은?",
+        "options": [
+          "클래스",
+          "활동",
+          "상태"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "정적 구조는 구조 다이어그램으로 보이며, 클래스 다이어그램이 이에 속합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "modeling"
+      ],
+      "content": {
+        "prompt": "UML은 시스템을 시각적으로 모델링하는 표준 언어이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "UML은 시스템을 그림으로 모델링하는 표준 모델링 언어입니다.",
+      "refs": []
+    }
+  ]
+}

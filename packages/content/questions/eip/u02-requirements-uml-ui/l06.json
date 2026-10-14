@@ -1,0 +1,215 @@
+{
+  "track": "eip",
+  "unit": "u02-requirements-uml-ui",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "eip-sd-usecase-seq-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "uml",
+        "use-case"
+      ],
+      "content": {
+        "prompt": "액터와 시스템이 제공하는 기능을 표현하는 다이어그램은?",
+        "options": [
+          "유스케이스",
+          "시퀀스",
+          "클래스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "유스케이스 다이어그램은 액터와 시스템이 제공하는 기능(유스케이스)을 표현합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-usecase-seq-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "uml",
+        "actor"
+      ],
+      "content": {
+        "prompt": "시스템과 상호작용하는 사람 또는 외부 시스템은?",
+        "options": [
+          "객체",
+          "액터",
+          "유스케이스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "액터는 시스템과 상호작용하는 사람이나 외부 시스템입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-usecase-seq-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "uml",
+        "sequence-diagram"
+      ],
+      "content": {
+        "prompt": "객체 사이 메시지를 시간 순서로 표현하는 다이어그램은?",
+        "options": [
+          "유스케이스",
+          "시퀀스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시퀀스(순차) 다이어그램은 객체들이 주고받는 메시지를 시간 순서로 표현합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-usecase-seq-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "uml",
+        "actor"
+      ],
+      "content": {
+        "prompt": "액터는 사람만 될 수 있고 외부 시스템은 될 수 없다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "액터는 시스템과 상호작용하는 사람 또는 외부 시스템입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-usecase-seq-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "uml",
+        "sequence-diagram"
+      ],
+      "content": {
+        "prompt": "시퀀스 다이어그램은 객체들이 주고받는 ___ 를 시간 순서로 표현한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "메시지",
+          "메세지",
+          "message",
+          "messages"
+        ]
+      },
+      "explanation": "시퀀스 다이어그램은 객체 사이의 메시지를 시간 순서대로 보여 줍니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-usecase-seq-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "use-case"
+      ],
+      "content": {
+        "prompt": "유스케이스 사이의 관계는 포함, ___, 일반화이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "확장",
+          "extend",
+          "extends"
+        ]
+      },
+      "explanation": "유스케이스 관계에는 포함(include), 확장(extend), 일반화가 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-usecase-seq-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "actor"
+      ],
+      "content": {
+        "prompt": "은행 고객이 ATM으로 현금을 출금한다. 액터는?",
+        "options": [
+          "은행 고객",
+          "출금",
+          "현금"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "시스템과 상호작용하는 사람인 은행 고객이 액터이고, 출금은 유스케이스입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-usecase-seq-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "use-case"
+      ],
+      "content": {
+        "prompt": "유스케이스의 포함 관계를 나타내는 표기는?",
+        "options": [
+          "<<extend>>",
+          "<<include>>",
+          "<<use>>"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "포함 관계는 include, 확장 관계는 extend로 표기합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-usecase-seq-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "sequence-diagram"
+      ],
+      "content": {
+        "prompt": "로그인 요청이 서버와 DB를 오가는 순서를 보이려면?",
+        "options": [
+          "유스케이스",
+          "클래스",
+          "시퀀스"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "객체 사이에 오가는 메시지를 시간 순서로 보이는 것은 시퀀스 다이어그램입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-usecase-seq-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "use-case"
+      ],
+      "content": {
+        "prompt": "유스케이스 다이어그램은 액터와 시스템 기능을 표현한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "유스케이스 다이어그램은 액터와 시스템이 제공하는 기능(유스케이스)을 표현합니다.",
+      "refs": []
+    }
+  ]
+}

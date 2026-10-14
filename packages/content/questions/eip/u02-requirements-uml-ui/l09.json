@@ -1,0 +1,237 @@
+{
+  "track": "eip",
+  "unit": "u02-requirements-uml-ui",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "eip-sd-requml-mock-001",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "requirements",
+        "non-functional"
+      ],
+      "content": {
+        "prompt": "비기능 요구사항에 해당하는 것은?",
+        "options": [
+          "회원 가입 기능",
+          "주문 조회 기능",
+          "응답 시간 2초 이내",
+          "장바구니 담기 기능"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "응답 시간은 성능 조건이라 비기능 요구사항입니다. 나머지는 시스템이 하는 일인 기능 요구사항입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-requml-mock-002",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "requirements",
+        "process"
+      ],
+      "content": {
+        "prompt": "요구사항 개발 과정을 순서대로 나열한 것은?",
+        "options": [
+          "도출 - 분석 - 명세 - 확인",
+          "분석 - 도출 - 확인 - 명세",
+          "명세 - 도출 - 분석 - 확인",
+          "도출 - 명세 - 분석 - 확인"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "요구사항은 수집(도출) → 충돌·누락 정리(분석) → 문서화(명세) → 검토(확인) 순으로 개발합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-requml-mock-003",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dfd",
+        "notation"
+      ],
+      "content": {
+        "prompt": "DFD 기호와 의미의 연결로 틀린 것은?",
+        "options": [
+          "원 - 처리",
+          "화살표 - 자료 흐름",
+          "평행선 - 자료 저장소",
+          "사각형 - 자료 사전"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "DFD에서 사각형은 단말입니다. 자료 사전은 DFD 기호가 아니라 자료 항목을 정의하는 별도 문서입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-requml-mock-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "behavioral-diagram"
+      ],
+      "content": {
+        "prompt": "UML의 행위(동적) 다이어그램에 해당하는 것은?",
+        "options": [
+          "클래스 다이어그램",
+          "시퀀스 다이어그램",
+          "배치 다이어그램",
+          "패키지 다이어그램"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시퀀스 다이어그램은 행위 다이어그램입니다. 클래스·배치·패키지는 구조(정적) 다이어그램입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-requml-mock-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ui",
+        "ui-principle"
+      ],
+      "content": {
+        "prompt": "다음 중 UI 설계의 기본 원칙이 아닌 것은?",
+        "options": [
+          "직관성",
+          "유효성",
+          "학습성",
+          "독창성"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "UI 설계 원칙은 직관성·유효성·학습성·유연성입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-requml-mock-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "composition"
+      ],
+      "content": {
+        "prompt": "UML 관계 중 전체가 사라지면 부분도 함께 사라지는 관계는?",
+        "options": [
+          "연관",
+          "합성",
+          "집합",
+          "의존"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "합성은 전체가 사라지면 부분도 사라지는 전체-부분 관계입니다. 집합은 부분이 따로 남을 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-requml-mock-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "uml",
+        "sequence-diagram"
+      ],
+      "content": {
+        "prompt": "시퀀스 다이어그램에 대한 설명으로 옳은 것은?",
+        "options": [
+          "액터와 유스케이스를 표현한다",
+          "시스템의 정적 구조를 표현한다",
+          "객체 사이 메시지를 시간 순서로 표현한다",
+          "자료 항목의 구성을 정의한다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "시퀀스 다이어그램은 객체들이 주고받는 메시지를 시간 순서로 표현하는 행위 다이어그램입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-requml-mock-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "uml",
+        "use-case"
+      ],
+      "content": {
+        "prompt": "유스케이스 다이어그램에 대한 설명으로 틀린 것은?",
+        "options": [
+          "액터는 사람 또는 외부 시스템이다",
+          "관계에는 포함·확장·일반화가 있다",
+          "시스템이 제공하는 기능을 표현한다",
+          "구조(정적) 다이어그램에 속한다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "유스케이스 다이어그램은 행위(동적) 다이어그램입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-requml-mock-009",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "ui",
+        "wireframe"
+      ],
+      "content": {
+        "prompt": "UI 설계 산출물에 대한 설명으로 옳은 것은?",
+        "options": [
+          "와이어프레임은 화면 배치의 윤곽이다",
+          "목업은 동작을 확인하는 모형이다",
+          "스토리보드는 명령어 입력 방식이다",
+          "프로토타입은 정적인 화면 그림이다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "와이어프레임은 화면 배치 윤곽입니다. 목업은 정적 모형, 프로토타입은 동작 확인 모형, 스토리보드는 화면별 설명·흐름 문서입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-requml-mock-010",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "data-dictionary",
+        "structured-analysis"
+      ],
+      "content": {
+        "prompt": "자료 사전(DD)에 대한 설명으로 옳은 것은?",
+        "options": [
+          "처리 하나의 상세 절차를 기술한다",
+          "자료 흐름·저장소의 자료 항목을 정의한다",
+          "객체 사이 메시지를 표현한다",
+          "화면별 설명과 흐름을 담는다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "자료 사전은 자료 흐름·저장소에 들어가는 자료 항목을 정의합니다. 처리의 상세 절차는 소단위 명세서입니다.",
+      "refs": []
+    }
+  ]
+}
