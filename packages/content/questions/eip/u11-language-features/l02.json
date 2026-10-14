@@ -82,7 +82,7 @@
       "answer_key": {
         "value": false
       },
-      "explanation": "포인터에 1을 더하면 가리키는 자료형 크기만큼 이동합니다. int면 4바이트 뒤 주소입니다.",
+      "explanation": "포인터에 1을 더하면 가리키는 자료형 크기만큼 이동합니다. int가 4바이트(시험 기준)면 4바이트 뒤 주소입니다.",
       "refs": []
     },
     {
@@ -114,14 +114,14 @@
         "pointer-arithmetic"
       ],
       "content": {
-        "prompt": "int 포인터 p가 100번지를 가리키면 p + 1은 ___ 번지다."
+        "prompt": "int(4바이트) 포인터 p가 100번지를 가리키면 p + 1은 ___ 번지다."
       },
       "answer_key": {
         "accepted": [
           "104"
         ]
       },
-      "explanation": "int는 4바이트이므로 p + 1은 100 + 4 = 104번지를 가리킵니다.",
+      "explanation": "int가 4바이트이므로 p + 1은 100 + 4 = 104번지를 가리킵니다. int 크기는 환경마다 다를 수 있어 문제에 밝혀 둡니다.",
       "refs": []
     },
     {

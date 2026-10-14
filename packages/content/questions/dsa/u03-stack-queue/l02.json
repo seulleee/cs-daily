@@ -115,7 +115,7 @@
           "stack underflow"
         ]
       },
-      "explanation": "빈 스택에는 꺼낼 원소가 없어 pop하면 underflow 오류가 납니다. 공간이 넘쳐 push하지 못하면 overflow입니다.",
+      "explanation": "빈 스택에는 꺼낼 원소가 없어 pop하면 underflow 오류가 납니다. JS 배열의 pop은 오류 대신 undefined를 돌려주니 직접 확인해야 합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Stack_(abstract_data_type)"
       ]

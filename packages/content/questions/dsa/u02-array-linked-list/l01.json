@@ -22,7 +22,7 @@
       "answer_key": {
         "index": 1
       },
-      "explanation": "배열은 같은 타입의 원소를 연속된 메모리에 나란히 저장합니다. 연결 리스트는 노드가 메모리에 흩어져 있습니다.",
+      "explanation": "배열은 같은 타입의 원소를 연속된 메모리에 나란히 저장합니다. JS·파이썬은 타입이 섞여도 되는데, 내부에선 각 값의 참조(주소)를 연속 저장합니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)"
       ]
@@ -60,7 +60,7 @@
         "fixed-size"
       ],
       "content": {
-        "prompt": "배열의 크기가 정해지는 시점은?",
+        "prompt": "C·Java 배열의 크기가 정해지는 시점은?",
         "options": [
           "만들 때",
           "원소를 넣을 때마다"
@@ -69,7 +69,7 @@
       "answer_key": {
         "index": 0
       },
-      "explanation": "배열은 만들 때 크기가 정해지는 고정 크기 구조입니다. 원소를 넣는다고 칸이 늘어나지 않습니다.",
+      "explanation": "C·Java 배열은 만들 때 크기가 정해집니다. JS 배열·파이썬 리스트가 늘어나는 건 내부에서 더 큰 배열로 옮기는 동적 배열이라서입니다(뒤 '동적 배열' 레슨).",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)"
       ]
@@ -88,7 +88,7 @@
       "answer_key": {
         "value": false
       },
-      "explanation": "배열 인덱스는 0부터 시작합니다. 첫 원소가 인덱스 0, 두 번째 원소가 인덱스 1입니다.",
+      "explanation": "C·Java·JS·파이썬 등 대부분의 언어에서 배열 인덱스는 0부터 시작합니다. Lua·MATLAB처럼 1부터 세는 언어도 있습니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)"
       ]
@@ -128,7 +128,7 @@
         "fixed-size"
       ],
       "content": {
-        "prompt": "배열은 만들 때 크기가 정해지는 ___ 크기 구조이다.",
+        "prompt": "C·Java 배열은 만들 때 크기가 정해지는 ___ 크기 구조이다.",
         "hint": "만든 뒤에는 칸 수가 바뀌지 않는다"
       },
       "answer_key": {
@@ -139,7 +139,7 @@
           "정적"
         ]
       },
-      "explanation": "배열은 만들 때 크기가 정해지는 고정 크기 구조입니다. 이후 칸 수를 바꿀 수 없습니다.",
+      "explanation": "C·Java 배열은 만든 뒤 칸 수를 바꿀 수 없는 고정 크기 구조입니다. JS·파이썬처럼 늘어나는 것은 동적 배열입니다.",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)"
       ]
@@ -201,7 +201,7 @@
         "fixed-size"
       ],
       "content": {
-        "prompt": "크기 3인 배열이 가득 찼을 때 원소를 더 넣으려면?",
+        "prompt": "크기 3인 C·Java 배열이 가득 찼을 때 원소를 더 넣으려면?",
         "options": [
           "칸이 자동으로 늘어남",
           "더 큰 배열이 필요"
@@ -210,7 +210,7 @@
       "answer_key": {
         "index": 1
       },
-      "explanation": "배열은 만들 때 크기가 고정되어 칸이 늘지 않습니다. 더 큰 배열을 새로 만들어야 합니다.",
+      "explanation": "C·Java 배열은 칸이 늘지 않아 더 큰 배열을 새로 만들어야 합니다. JS·파이썬은 이 일을 내부에서 자동으로 합니다(동적 배열).",
       "refs": [
         "https://en.wikipedia.org/wiki/Array_(data_structure)"
       ]
