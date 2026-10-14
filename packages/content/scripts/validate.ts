@@ -14,8 +14,8 @@ import { CurriculumFile, LessonFile } from '@cs-daily/contracts';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors: string[] = [];
 
-/** 코드 문제는 정보처리기사 트랙에서만, 짧은 코드의 빈칸 형태로만 허용한다. */
-const CODE_TRACK = 'eip';
+/** 코드 문제는 정보처리기사(eip)·코딩 테스트(ct) 트랙에서만, 짧은 코드의 빈칸 형태로만 허용한다. */
+const CODE_TRACKS: readonly string[] = ['eip', 'ct'];
 const CODE_MAX_LINES = 12;
 const CODE_MAX_COLS = 48;
 
@@ -73,8 +73,8 @@ function checkLessonFile(path: string) {
     if (!q.id.startsWith(`${track}-`)) errors.push(`${rel}#${i}: id는 '${track}-'로 시작해야 합니다 (${q.id})`);
     const code = (q.content as { code?: { source: string } | null }).code;
     if (code) {
-      if (track !== CODE_TRACK) {
-        errors.push(`${rel}#${i}: 코드(content.code)는 '${CODE_TRACK}' 트랙에서만 허용됩니다 (${q.id})`);
+      if (!CODE_TRACKS.includes(track)) {
+        errors.push(`${rel}#${i}: 코드(content.code)는 ${CODE_TRACKS.map((t) => `'${t}'`).join('·')} 트랙에서만 허용됩니다 (${q.id})`);
       } else {
         const lines = code.source.replace(/\n+$/, '').split('\n');
         if (lines.length > CODE_MAX_LINES) errors.push(`${rel}#${i}: 코드 ${lines.length}줄 — ${CODE_MAX_LINES}줄 이하여야 합니다`);
