@@ -72,6 +72,26 @@ jobs:
             exit 1
           fi
           cat /tmp/assert-restored.log
+      - name: Seed again with the same content (no-op seed — 변경분만 쓰는지 단언)
+        run: |
+          # 운영 시드가 왕복 지연 때문에 느렸다. 같은 콘텐츠로 다시 돌리면 아무것도 쓰지 않아야 하고(문제 생성·수정 0, 트랙 건너뜀, version 불변),
+          # 일부만 변조하면 그 변경분만 고쳐 쓰고 version은 바뀐 문제만 +1 이어야 한다
+          node apps/api/test-e2e/assert-seed-diff.mjs snapshot
+          if ! pnpm --filter @cs-daily/api prisma:seed > /tmp/seed-noop.log 2>&1; then
+            cat /tmp/seed-noop.log
+            echo "::error title=seed-noop::같은 콘텐츠 재시드 실패 — $(tail -c 1200 /tmp/seed-noop.log | tr '\n' ' ')"
+            exit 1
+          fi
+          tail -n 5 /tmp/seed-noop.log
+          node apps/api/test-e2e/assert-seed-diff.mjs noop /tmp/seed-noop.log
+          node apps/api/test-e2e/assert-seed-diff.mjs tamper
+          if ! pnpm --filter @cs-daily/api prisma:seed > /tmp/seed-tamper.log 2>&1; then
+            cat /tmp/seed-tamper.log
+            echo "::error title=seed-tamper::변조 후 재시드 실패 — $(tail -c 1200 /tmp/seed-tamper.log | tr '\n' ' ')"
+            exit 1
+          fi
+          tail -n 5 /tmp/seed-tamper.log
+          node apps/api/test-e2e/assert-seed-diff.mjs tampered /tmp/seed-tamper.log
       - name: Build
         run: pnpm build
       - name: API E2E (built server + CI Postgres)
