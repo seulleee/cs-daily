@@ -102,6 +102,9 @@ export function LearningPath({ path }: { path: PathResponse }) {
         const prev: Unit | undefined = path.units[ui - 1];
         const prevLast = prev?.lessons[prev.lessons.length - 1];
         const prevLit = prevLast?.status === 'completed';
+        // 앞 유닛이 아직 안 끝났으면 그 유닛 맨 아래에 "이 유닛 건너뛰기" 버튼이 있다(아래 참고)
+        const prevHasSkip = !!prev && prev.lessons.some((l) => l.status !== 'completed');
+        const hasSkip = unit.lessons.some((l) => l.status !== 'completed');
         const doneCount = unit.lessons.filter((l) => l.status === 'completed').length;
         // 현재 레슨이 속한 유닛만 번호·이름을 밝게, 나머지(완료든 미래든)는 가라앉힌다
         const isCurrentUnit = unit.lessons.some((l) => l.id === path.nextLessonId);
@@ -109,7 +112,8 @@ export function LearningPath({ path }: { path: PathResponse }) {
         const enter = wireTone(prevLit, unit.lessons[0]?.id === path.nextLessonId);
         return (
           <section key={unit.id} aria-labelledby={`unit-${unit.id}`}>
-            {prev && prevLast && <Wire from={offsetOf(prev.lessons.length - 1)} to={0} tone={enter} />}
+            {/* 앞 유닛에 건너뛰기 버튼이 있으면 배선은 그 버튼 위쪽에서 끝났으므로 여기서는 간격만 둔다 */}
+            {prev && prevLast && (prevHasSkip ? <div aria-hidden className="h-6" /> : <Wire from={offsetOf(prev.lessons.length - 1)} to={0} tone={enter} />)}
 
             <div className="flex items-center gap-3 border-b border-ink bg-surface-2 pb-3 pt-3">
               <span aria-hidden className={clsx('bit-2 shrink-0', isCurrentUnit ? 'text-ink' : 'text-ink-2')}>
@@ -123,17 +127,6 @@ export function LearningPath({ path }: { path: PathResponse }) {
                 <span className="bit text-ink-2">
                   {doneCount}/{unit.lessons.length}
                 </span>
-                {doneCount < unit.lessons.length && (
-                  <button
-                    type="button"
-                    disabled={skip.isPending}
-                    onClick={() => skip.mutate(unit.id)}
-                    title="유닛 문제 몇 개를 풀어 80% 이상 맞히면 이 유닛까지 완료로 처리됩니다"
-                    className="bit min-h-11 px-1 text-brand underline underline-offset-4 enabled:active:bg-brand-fill enabled:active:text-on-brand disabled:opacity-50"
-                  >
-                    건너뛰기
-                  </button>
-                )}
               </div>
             </div>
 
@@ -203,6 +196,25 @@ export function LearningPath({ path }: { path: PathResponse }) {
                 );
               })}
             </ol>
+
+            {/* 유닛 맨 아래의 건너뛰기. 마지막 패드에서 내려온 배선은 버튼 윗면 가운데에서 끝난다. 끝난 유닛에는 없다 */}
+            {hasSkip && (
+              <div className="flex flex-col items-center">
+                <Wire from={offsetOf(unit.lessons.length - 1)} to={0} tone="off" />
+                <button
+                  type="button"
+                  disabled={skip.isPending}
+                  onClick={() => skip.mutate(unit.id)}
+                  aria-describedby={`skip-note-${unit.id}`}
+                  className="btn-outline bit disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  이 유닛 건너뛰기
+                </button>
+                <p id={`skip-note-${unit.id}`} className="mt-2 text-cap text-ink-2">
+                  테스트 8문제 · 80% 이상이면 완료 처리
+                </p>
+              </div>
+            )}
           </section>
         );
       })}

@@ -12,12 +12,12 @@
  */
 @theme static {
   /* 라이트(기본) "Platinum" */
-  --color-surface-2: #dcdcdc;         /* 화면 배경(ground) */
-  --color-surface: #dcdcdc;           /* 창·카드·시트·칩·보기·탭 바 = ground와 같은 색 (평면) */
-  --color-line: #8a8a8a;              /* 구분선·잠김 테두리 */
+  --color-surface-2: #ebebeb;         /* 화면 배경(ground) */
+  --color-surface: #ebebeb;           /* 창·카드·시트·칩·보기·탭 바 = ground와 같은 색 (평면) */
+  --color-line: #868686;              /* 구분선·잠김 테두리 */
   --color-ink: #000000;
   --color-ink-2: #555555;
-  --color-paper: #dcdcdc;             /* 디더의 밝은 칸 = ground (디더가 ink/바탕 격자가 된다) */
+  --color-paper: #ebebeb;             /* 디더의 밝은 칸 = ground (디더가 ink/바탕 격자가 된다) */
   --color-field: #ffffff;             /* 입력칸(.input·빈칸)만 바탕에서 올라온다 */
 
   --color-brand: #000000;             /* 링크·"건너뛰기"·선택 텍스트 */
@@ -26,15 +26,19 @@
   --color-brand-dark: #000000;        /* 사용 안 함 */
 
   --color-correct: #000000;           /* 정답은 색이 아니라 아이콘+굵은 테두리 */
-  --color-correct-bg: #dcdcdc;
+  --color-correct-bg: #ebebeb;
   --color-correct-fill: #000000;
   --color-on-correct: #ffffff;
-  --color-wrong: #bd0f29;             /* 유일한 유채색. 시안 #c8102e는 ground 위 4.29:1이라 4.5:1 이상이 되도록 살짝 어둡게 */
-  --color-wrong-bg: #dcdcdc;          /* 평면: 오답은 wrong 2px 테두리·x·글자색으로 구분한다 (바탕을 어둡게 틴트하면 wrong 글자가 4.5:1 아래로 내려간다) */
+  --color-wrong: #bd0f29;             /* 유일한 유채색. 시안 #c8102e는 옛 ground(#dcdcdc) 위 4.29:1이라 4.5:1 이상이 되도록 살짝 어둡게 */
+  --color-wrong-bg: #ebebeb;          /* 평면: 오답은 wrong 2px 테두리·x·글자색으로 구분한다 (바탕을 어둡게 틴트하면 wrong 글자가 4.5:1 아래로 내려간다) */
   --color-on-wrong: #ffffff;
 
   --color-streak: #000000;
   --color-xp: #000000;
+
+  /* 스트릭 불꽃(오늘 레슨을 끝냈을 때 채움). 라이트·다크 공통. 바깥 실루엣 빨강, 안쪽 주황. 바탕과의 분리는 1px ink 외곽선이 한다 */
+  --color-flame-outer: #e0301e;
+  --color-flame-inner: #ff9f1c;
 
   /* 타이포: 본문·문제·보기·해설 = IBM Plex Sans KR. 제목·큰 숫자·버튼·칩·라벨·창 제목 = 비트맵 글꼴. 폰트는 layout.tsx의 <link>로 로드 */
   --font-sans: "IBM Plex Sans KR", Pretendard, system-ui, sans-serif;
@@ -294,7 +298,7 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   }
   .option[data-selected="true"] { box-shadow: inset 0 0 0 1px var(--color-ink); }
   .option[data-state="correct"] { box-shadow: inset 0 0 0 1px var(--color-ink); background: var(--color-correct-bg); }
-  .option[data-state="wrong"] { border-color: var(--color-wrong); box-shadow: inset 0 0 0 1px var(--color-wrong); background: var(--color-wrong-bg); animation: shake 240ms steps(1, end); }
+  .option[data-state="wrong"] { border-color: var(--color-wrong); box-shadow: inset 0 0 0 1px var(--color-wrong); background: var(--color-wrong-bg); }
 
   /* 라디오 원(.mark) / 체크 상자(.mark-box). 켜지면 안쪽이 채워진다 */
   .mark {
@@ -410,7 +414,7 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   }
 
   /*
-   * 이번 주 7칸의 한 칸(components/streak-week.tsx): 20px 상자, 1px 테두리. 상태는 data-state. 학습 홈 상태 바는 .day-sm(12px).
+   * 이번 주 7칸(PC 보조 패널·프로필)의 한 칸(components/streak-week.tsx): 20px 상자, 1px 테두리. 상태는 data-state.
    *   done = ink 채움 · freeze = 디더 · today = 개미 행렬(테두리는 SVG가 그린다) · future = line 윤곽 · missed = line 색 채움(면이 평면이라 surface-2 채움은 바탕과 구분되지 않는다)
    */
   .day {
@@ -426,27 +430,17 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   .day[data-state="freeze"] { border-color: var(--color-ink); background: var(--dither); }
   .day[data-state="today"] { border-color: transparent; }
   .day[data-state="missed"] { background: var(--color-line); }
-  .day-sm { width: 12px; height: 12px; }
 
   /* 개미 행렬: 현재 패드 바깥 3px에서 도는 2px 점선 사각형. SVG rect (패드 안 .ants). 패드의 2px 테두리 안쪽 기준이라 -7px = 바깥 가장자리에서 5px */
   .ants { position: absolute; top: -7px; left: -7px; width: 66px; height: 66px; overflow: visible; pointer-events: none; }
   /* 이번 주 7칸의 오늘 칸용 작은 개미 행렬: 칸(20px, 테두리는 투명)을 꽉 채운다. 둘레 72px을 pathLength 70(= 7 × 10)으로 맞춰 점선 주기가 끊기지 않게 한다 */
   .ants-sm { position: absolute; top: -1px; left: -1px; width: 20px; height: 20px; overflow: visible; pointer-events: none; }
-  /* 상태 바의 12px 칸용: 칸이 작아 선을 1px, 점선을 2 2로 줄인다. 둘레 44를 pathLength 44(= 4 × 11)로 두어 주기가 끊기지 않는다 */
-  .ants-xs { position: absolute; top: -1px; left: -1px; width: 12px; height: 12px; overflow: visible; pointer-events: none; }
   .ants rect, .ants-sm rect {
     fill: none;
     stroke: var(--color-ink);
     stroke-width: 2;
     stroke-dasharray: 4 3;
     animation: ants 0.6s linear infinite;
-  }
-  .ants-xs rect {
-    fill: none;
-    stroke: var(--color-ink);
-    stroke-width: 1;
-    stroke-dasharray: 2 2;
-    animation: ants-xs 0.6s linear infinite;
   }
 
   /*
@@ -464,13 +458,12 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   .score-ring { background: conic-gradient(var(--color-ink) calc(var(--p) * 1%), var(--color-surface-2) 0); }
   .score-ring-anim { animation: ring-fill 600ms steps(10, end); }
 
-  /* 정답 체크는 도장처럼 쿵 찍힌다 / 오답 보기와 빈칸은 좌우로 흔들린다 */
+  /* 정답 체크는 도장처럼 쿵 찍힌다. 오답은 움직이지 않는다(wrong 테두리와 x만) */
   .stamp { animation: stamp 120ms steps(3, end); }
-  .shake { animation: shake 240ms steps(1, end); }
 
   /*
-   * 스트릭 불꽃(components/icons.tsx FlameLive): 프레임 A·B 두 <g>가 700ms 주기로 번갈아 보인다(0~55% A, 55~100% B, 중간 모양 없음).
-   * 기본은 A만 보인다(B는 숨김). 움직이는 것은 스트릭이 1 이상일 때 컴포넌트가 data-live를 단 경우뿐이고, 줄이기 설정에서는 아래 미디어 쿼리가 뺀다.
+   * 스트릭 불꽃(components/icons.tsx FlameLive): 오늘 레슨을 끝낸 채움 상태에서만 프레임 A·B 두 <g>가 700ms 주기로 번갈아 보인다(0~55% A, 55~100% B, 중간 모양 없음, 두 프레임 모두 채움).
+   * 윤곽 상태(오늘 아직)는 <g> 없이 정지한다. 줄이기 설정에서는 아래 미디어 쿼리가 애니메이션을 빼 A로 정지한다.
    */
   .flame-b { visibility: hidden; }
   .flame-a[data-live="true"] { animation: flame-flicker 700ms steps(1, end) infinite; }
@@ -487,10 +480,6 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
 @keyframes ants {
   from { stroke-dashoffset: 0; }
   to { stroke-dashoffset: -7; }
-}
-@keyframes ants-xs {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -4; }
 }
 
 /*
@@ -510,13 +499,6 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
 @keyframes stamp {
   from { transform: scale(1.6); }
   to { transform: scale(1); }
-}
-/* −3px → +3px → −2px → 0, 60ms씩 4칸 */
-@keyframes shake {
-  0% { transform: translateX(-3px); }
-  25% { transform: translateX(3px); }
-  50% { transform: translateX(-2px); }
-  75%, 100% { transform: translateX(0); }
 }
 /* 줌 사각형: 60ms마다 하나씩 (작은 → 중간 → 최종 크기). 창은 사각형이 끝나는 180ms에 나타난다 */
 @keyframes zoom-rect-1 {
@@ -558,10 +540,10 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
 
 /* 줄이기 설정: 위 움직임을 모두 뺀다(눌림 상태의 즉시 반전·1px 눌림은 애니메이션이 아니라 그대로 둔다) */
 @media (prefers-reduced-motion: reduce) {
-  .ants rect, .ants-sm rect, .ants-xs rect { animation: none; }
+  .ants rect, .ants-sm rect { animation: none; }
   .btn-3d.is-flash, .pad.is-flash,
-  .option[data-state="wrong"], .option[data-selected="true"] .mark::after, .option[data-state="correct"] .mark::after,
-  .stamp, .shake, .zoom-rect, .sheet-win, .score-ring-anim { animation: none; }
+  .option[data-selected="true"] .mark::after, .option[data-state="correct"] .mark::after,
+  .stamp, .zoom-rect, .sheet-win, .score-ring-anim { animation: none; }
   /* 불꽃은 A 프레임 고정 (B는 기본값대로 숨김) */
   .flame-a[data-live="true"], .flame-b[data-live="true"] { animation: none; }
 }

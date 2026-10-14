@@ -41,7 +41,7 @@ export default function ResultPage({ params }: { params: Promise<{ sessionId: st
         <div className="grid grid-cols-3 gap-2">
           <Tile label="스트릭">
             <span className="flex items-center justify-center gap-1 text-streak">
-              <FlameLive live={r.streak.current >= 1} size={18} />
+              <FlameLive lit size={18} />
               {r.streak.current}일
             </span>
           </Tile>

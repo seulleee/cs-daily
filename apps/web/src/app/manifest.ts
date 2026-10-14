@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: '하루 5분, 매일 푸는 컴퓨터 사이언스',
     start_url: '/learn',
     display: 'standalone',
-    background_color: '#dcdcdc',
-    theme_color: '#dcdcdc',
+    background_color: '#ebebeb',
+    theme_color: '#ebebeb',
     lang: 'ko',
     icons: [
       { src: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },

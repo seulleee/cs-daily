@@ -51,14 +51,14 @@
 ## 화면 규칙 (웹)
 
 - **디자인 "Platinum"(2026-10-14, #37)** — 90년대 데스크톱 GUI의 문법을 빌린 거의 흑백 룩. Apple 고유 요소(사과 로고·Chicago 글꼴·Finder 창 모양)는 쓰지 않는다. 기억 요소: 줄무늬 타이틀바 **창**(`components/window.tsx`), **반전(inverse video)** 선택, **디더** 패턴, 현재 노드의 **개미 행렬** 점선. 모든 면은 바탕과 같은 색(평면) + 1px ink 테두리 + 블러 없는 `2px 2px 0` 그림자. 입력 필드만 `--color-field`(흰색).
-  - 토큰: 라이트 ground/surface `#DCDCDC`, line `#8A8A8A`, ink `#000`, ink-2 `#555`, wrong `#BD0F29`; 다크 ground/surface `#262626`, line `#7A7A7A`, ink `#F2F2F2`, ink-2 `#B5B5B5`, wrong `#FF7474`. brand/correct는 ink와 같다(색이 아니라 반전·테두리·아이콘으로 표현). 유채색은 오답 빨강 하나.
+  - 토큰: 라이트 ground/surface `#EBEBEB`, line `#868686`(바탕 대비 3:1), ink `#000`, ink-2 `#555`, wrong `#BD0F29`; 다크 ground/surface `#262626`, line `#7A7A7A`, ink `#F2F2F2`, ink-2 `#B5B5B5`, wrong `#FF7474`. brand/correct는 ink와 같다(색이 아니라 반전·테두리·아이콘으로 표현). 유채색은 오답 빨강과, 오늘 레슨을 끝냈을 때 채워지는 스트릭 불꽃(`--color-flame-outer #E0301E` 빨강 · `--color-flame-inner #FF9F1C` 주황, 라이트·다크 공통, 1px ink 외곽선으로 바탕과 분리)뿐이다.
   - 글꼴: 디스플레이(제목·숫자·버튼·라벨·창 제목) **Neo둥근모**(jsdelivr `neodgm/neodgm-webfont`, 폴백 Galmuri11 → Plex Mono) — **16px 정수배(`bit`16 / `bit-2`32 / `bit-3`48)로만**. 본문·문제·해설은 IBM Plex Sans KR. `next/font/google`은 이 환경에서 빌드가 막혀 쓰지 않고 `<link>`로 로드한다.
-  - 정보 위계: 현재 레슨만 반전(검정 패드 + 개미 행렬), 완료는 디더 + 판 위 check, 잠김은 윤곽만. 현재 유닛 헤더만 ink. 스트릭은 홈 상단 36px 상태 바의 **반전 배지**(`3일째`) + 12px 주간 칸(달성 채움·프리즈 디더·오늘 미달성 개미 행렬·미래 윤곽). 탭 바·사이드바 선택은 **아이콘 타일(28px)만 반전**.
-  - 모션(전부 `steps()`, ≤200ms, `prefers-reduced-motion`에서 제거): 주 버튼 클릭 깜빡임 1회(`lib/use-flash.ts`), 누르는 동안 반전, 정답 check 스탬프, 오답 행 흔들림, 정·오답 창 **줌 사각형** 열림, 결과 링 10단계 채움, 스트릭 불꽃 2프레임(`FlameLive`, 스트릭 ≥1일 때만). 그 외 모션 금지.
+  - 정보 위계: 현재 레슨만 반전(검정 패드 + 개미 행렬), 완료는 디더 + 판 위 check, 잠김은 윤곽만. 현재 유닛 헤더만 ink. 스트릭은 홈 상단 36px 상태 바의 **반전 배지**(`3일째`)와 XP만(주간 칸은 요일 표기가 없어 뜻이 전달되지 않아 뺐다. 주간 7칸은 요일 글자가 있는 PC 보조 패널과 프로필에만). 유닛의 "이 유닛 건너뛰기"는 헤더가 아니라 유닛 레슨 목록 맨 아래의 `.btn-outline` 버튼(완료된 유닛엔 없음). 탭 바·사이드바 선택은 **아이콘 타일(28px)만 반전**.
+  - 모션(전부 `steps()`, ≤200ms, `prefers-reduced-motion`에서 제거): 주 버튼 클릭 깜빡임 1회(`lib/use-flash.ts`), 누르는 동안 반전, 정답 check 스탬프, 정·오답 창 **줌 사각형** 열림(결과 창 영역에만), 결과 링 10단계 채움, 스트릭 불꽃 2프레임(`FlameLive`, 오늘 레슨을 1개 이상 끝내 주황·빨강으로 채워졌을 때만. 아직이면 정지한 윤곽선, reduced-motion은 채움 정지). 오답은 움직이지 않는다(wrong 테두리·X만). 그 외 모션 금지.
   - 아이콘은 `components/icons.tsx` 인라인 SVG(이모지 금지). 글자 대비 4.5:1 이상(토큰 바꾸면 전 조합 재계산).
 - 전역 컴포넌트 클래스(`.card .btn-3d .btn-outline .option .input .chip .pad .meter`)는 `@layer components` 안에 둔다. 밖에 두면 Tailwind 유틸리티보다 우선해 `bg-*` 같은 조합이 무시된다(실제로 유닛 헤더가 사라졌던 버그). `ring` 같은 Tailwind 유틸리티 이름과 겹치는 클래스명을 만들지 않는다(결과 링은 `score-ring`).
 - 테마는 `<html data-theme>`로 제어한다(`lib/theme.ts`, 시스템/라이트/다크, 기기별 localStorage, 첫 페인트 전 인라인 스크립트). 색은 CSS 변수만 쓰고 하드코딩하지 않는다.
-- 레슨 플레이어 문제 영역은 헤더와 하단 버튼 사이에서 **세로 가운데 정렬**, 폭 600px.
+- 레슨 플레이어 문제 영역은 헤더 아래 위쪽 고정, 폭 600px. 결과 창은 하단 도크 안에서 위로 자라며 문제 영역을 움직이지 않는다(영역 끝에 결과 창 높이만큼 빈 자리를 더하고, 창은 최대 `min(50dvh, 360px)`에 본문만 스크롤). 확인/계속 버튼은 같은 자리·같은 폭(버튼은 창 밖).
 - 마지막으로 본 트랙 탭은 기기에 저장한다(`lib/last-track.ts`). `/learn`으로 돌아올 때 URL → 저장값 → 첫 트랙 순.
 - `/api/*`·`/auth/*`는 Next.js 리라이트로 API에 전달한다. OAuth 콜백은 **웹 오리진**(`OAUTH_CALLBACK_BASE_URL` = `WEB_BASE_URL`)으로 받아야 쿠키가 웹 도메인에 붙는다.
 

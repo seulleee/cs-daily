@@ -13,8 +13,8 @@ export default function LoginPage() {
         <h1 className="bit-2 mt-4">CS 데일리</h1>
         <p className="mt-2 text-body text-ink-2">하루 5분, 매일 푸는 컴퓨터 사이언스</p>
         <div className="mt-8 w-full space-y-4">
-          <a href="/auth/github" className="btn-3d w-full">GitHub로 계속하기</a>
-          <a href="/auth/google" className="btn-outline w-full">Google로 계속하기</a>
+          <a href="/auth/google" className="btn-3d w-full">Google로 계속하기</a>
+          <a href="/auth/github" className="btn-outline w-full">GitHub로 계속하기</a>
         </div>
       </Window>
       <p className="mt-8 text-cap text-ink-2">로그인하면 이메일과 닉네임만 저장됩니다. 언제든 설정에서 탈퇴할 수 있어요.</p>
