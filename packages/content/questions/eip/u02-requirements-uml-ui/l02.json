@@ -1,0 +1,215 @@
+{
+  "track": "eip",
+  "unit": "u02-requirements-uml-ui",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "eip-sd-req-process-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "requirements",
+        "elicitation"
+      ],
+      "content": {
+        "prompt": "이해관계자에게서 요구사항을 수집하는 단계는?",
+        "options": [
+          "도출",
+          "명세",
+          "확인"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "도출은 인터뷰·설문·브레인스토밍 등으로 이해관계자의 요구사항을 수집하는 단계입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-req-process-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "requirements",
+        "analysis"
+      ],
+      "content": {
+        "prompt": "수집한 요구사항의 충돌·누락을 찾아 정리하는 단계는?",
+        "options": [
+          "도출",
+          "분석",
+          "명세"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "분석은 수집한 요구사항에서 충돌과 누락을 찾아 정리하는 단계입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-req-process-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "requirements",
+        "specification"
+      ],
+      "content": {
+        "prompt": "요구사항을 문서로 작성하는 단계는?",
+        "options": [
+          "분석",
+          "명세"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "명세는 요구사항을 요구사항 명세서로 작성하는 단계입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-req-process-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "requirements",
+        "elicitation"
+      ],
+      "content": {
+        "prompt": "인터뷰·설문·브레인스토밍은 요구사항 확인 기법이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "인터뷰·설문·브레인스토밍은 요구사항을 수집하는 도출 기법입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-req-process-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "requirements",
+        "specification"
+      ],
+      "content": {
+        "prompt": "요구사항 개발 순서는 도출 → 분석 → ___ → 확인이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "명세",
+          "명세화",
+          "specification"
+        ]
+      },
+      "explanation": "요구사항 개발은 도출, 분석, 명세, 확인 순서로 진행합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-req-process-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "requirements",
+        "validation"
+      ],
+      "content": {
+        "prompt": "명세가 이해관계자 요구와 맞는지 검토하는 단계는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "확인",
+          "검증",
+          "validation",
+          "verification"
+        ]
+      },
+      "explanation": "확인(검증)은 작성된 명세가 이해관계자의 요구와 맞는지 검토하는 단계입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-req-process-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "requirements",
+        "analysis"
+      ],
+      "content": {
+        "prompt": "두 부서의 요구가 서로 충돌하는 것을 찾았다. 어느 단계?",
+        "options": [
+          "도출",
+          "분석",
+          "확인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "수집한 요구사항의 충돌·누락을 찾아 정리하는 것은 분석 단계입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-req-process-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "requirements",
+        "elicitation"
+      ],
+      "content": {
+        "prompt": "사용자들과 인터뷰를 진행했다. 어느 단계?",
+        "options": [
+          "명세",
+          "확인",
+          "도출"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "인터뷰는 요구사항을 수집하는 도출 단계의 기법입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-req-process-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "requirements",
+        "validation"
+      ],
+      "content": {
+        "prompt": "완성된 명세서를 고객과 함께 검토했다. 어느 단계?",
+        "options": [
+          "확인",
+          "분석",
+          "도출"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "명세가 요구와 맞는지 이해관계자와 검토하는 것은 확인(검증) 단계입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-req-process-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "requirements",
+        "elicitation"
+      ],
+      "content": {
+        "prompt": "요구사항 개발은 도출로 시작해 확인으로 끝난다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "요구사항 개발은 도출 → 분석 → 명세 → 확인 순서로 진행합니다.",
+      "refs": []
+    }
+  ]
+}

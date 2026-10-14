@@ -1,0 +1,213 @@
+{
+  "track": "eip",
+  "unit": "u03-oo-architecture",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "eip-sd-middleware-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "middleware"
+      ],
+      "content": {
+        "prompt": "OS와 응용 프로그램 사이에서 시스템 간 통신을 중개하는 것은?",
+        "options": [
+          "미들웨어",
+          "펌웨어",
+          "디바이스 드라이버"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "미들웨어는 운영체제와 응용 프로그램 사이에서 서로 다른 시스템의 통신을 중개합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-middleware-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "middleware",
+        "mom"
+      ],
+      "content": {
+        "prompt": "메시지 큐로 애플리케이션 사이 비동기 통신을 지원하는 것은?",
+        "options": [
+          "TP 모니터",
+          "MOM",
+          "RPC"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "MOM(메시지 지향 미들웨어)은 메시지 큐로 비동기 통신을 지원합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-middleware-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "middleware",
+        "tp-monitor"
+      ],
+      "content": {
+        "prompt": "대량의 온라인 처리 요청을 감시·제어하는 미들웨어는?",
+        "options": [
+          "TP 모니터",
+          "MOM"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "TP 모니터는 대량의 온라인 처리 요청을 감시·제어합니다. MOM은 메시지 큐 기반 비동기 통신입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-middleware-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "middleware",
+        "rpc"
+      ],
+      "content": {
+        "prompt": "RPC는 원격 프로시저를 호출하게 해 주는 미들웨어다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "RPC는 원격 프로시저 호출을 지원하는 미들웨어입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-middleware-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "middleware",
+        "mom"
+      ],
+      "content": {
+        "prompt": "메시지 지향 미들웨어의 영문 약자는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "MOM",
+          "mom",
+          "Message Oriented Middleware"
+        ]
+      },
+      "explanation": "MOM(Message Oriented Middleware)은 메시지 큐로 비동기 통신을 지원합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-middleware-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "middleware",
+        "orb"
+      ],
+      "content": {
+        "prompt": "분산 객체 사이의 요청을 중개하는 미들웨어는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "ORB",
+          "orb",
+          "Object Request Broker"
+        ]
+      },
+      "explanation": "ORB는 분산 객체 사이의 요청을 중개하는 미들웨어입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-middleware-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "middleware",
+        "mom"
+      ],
+      "content": {
+        "prompt": "수신 측이 꺼져 있어도 메시지를 큐에 두었다 전달한다. 미들웨어는?",
+        "options": [
+          "RPC",
+          "ORB",
+          "MOM"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "메시지 큐로 비동기 통신을 지원하는 것은 MOM입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-middleware-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "middleware",
+        "tp-monitor"
+      ],
+      "content": {
+        "prompt": "수천 건의 온라인 거래 요청을 감시·제어해야 한다. 알맞은 것은?",
+        "options": [
+          "MOM",
+          "TP 모니터",
+          "ORB"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "대량의 온라인 처리 요청을 감시·제어하는 미들웨어는 TP 모니터입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-middleware-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "middleware",
+        "rpc"
+      ],
+      "content": {
+        "prompt": "다른 서버의 프로시저를 로컬처럼 호출한다. 알맞은 것은?",
+        "options": [
+          "RPC",
+          "MOM",
+          "TP 모니터"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "원격 프로시저 호출을 지원하는 미들웨어는 RPC입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-middleware-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "middleware",
+        "mom"
+      ],
+      "content": {
+        "prompt": "MOM은 동기 방식으로만 통신한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "MOM은 메시지 큐를 이용해 비동기 통신을 지원하는 미들웨어입니다.",
+      "refs": []
+    }
+  ]
+}

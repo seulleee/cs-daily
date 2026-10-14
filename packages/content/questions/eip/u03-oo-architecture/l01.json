@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u03-oo-architecture",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "eip-sd-coupling-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "module",
+        "modularity"
+      ],
+      "content": {
+        "prompt": "독립된 기능과 고유한 이름을 가진 프로그램 단위는?",
+        "options": [
+          "모듈",
+          "객체",
+          "패키지"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "모듈은 독립된 기능과 고유한 이름을 가진 프로그램 단위입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-coupling-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "coupling",
+        "modularity"
+      ],
+      "content": {
+        "prompt": "모듈과 모듈 사이의 의존 정도를 뜻하는 것은?",
+        "options": [
+          "응집도",
+          "결합도",
+          "복잡도"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "결합도는 모듈 사이의 의존 정도이며 낮을수록 좋습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-coupling-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "coupling",
+        "modularity"
+      ],
+      "content": {
+        "prompt": "좋은 설계에서 결합도는 어떠해야 하나?",
+        "options": [
+          "낮을수록 좋다",
+          "높을수록 좋다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "결합도는 모듈 사이 의존 정도이므로 낮을수록 서로 영향을 덜 주는 좋은 설계입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-coupling-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "coupling",
+        "content-coupling"
+      ],
+      "content": {
+        "prompt": "내용 결합도는 결합도 가운데 가장 약하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "내용 결합도는 다른 모듈의 내부를 직접 참조해 가장 강합니다. 가장 약한 것은 자료 결합도입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-coupling-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "coupling",
+        "modularity"
+      ],
+      "content": {
+        "prompt": "모듈 사이의 의존 정도를 ___ 라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "결합도",
+          "coupling",
+          "커플링"
+        ]
+      },
+      "explanation": "결합도는 모듈과 모듈 사이의 의존 정도이며 낮을수록 좋습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-coupling-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "coupling",
+        "data-coupling"
+      ],
+      "content": {
+        "prompt": "결합도가 가장 약한 것은 ___ 결합도이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "자료",
+          "데이터",
+          "data"
+        ]
+      },
+      "explanation": "결합도 순서(약→강)는 자료 < 스탬프 < 제어 < 외부 < 공통 < 내용입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-coupling-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "coupling",
+        "content-coupling"
+      ],
+      "content": {
+        "prompt": "다른 모듈의 내부 자료를 직접 참조한다. 이 결합도는?",
+        "options": [
+          "자료 결합도",
+          "내용 결합도",
+          "스탬프 결합도"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다른 모듈의 내부 기능·자료를 직접 참조하는 것은 가장 강한 내용 결합도입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-coupling-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "coupling",
+        "modularity"
+      ],
+      "content": {
+        "prompt": "다음 중 결합도가 가장 강한 것은?",
+        "options": [
+          "제어",
+          "스탬프",
+          "공통"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "순서는 자료 < 스탬프 < 제어 < 외부 < 공통 < 내용이므로 셋 중 공통이 가장 강합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-coupling-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "coupling",
+        "modularity"
+      ],
+      "content": {
+        "prompt": "결합도가 약한 것부터 바르게 나열한 것은?",
+        "options": [
+          "제어-자료-스탬프",
+          "자료-스탬프-제어",
+          "스탬프-자료-제어"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "결합도 순서(약→강)는 자료 < 스탬프 < 제어 < 외부 < 공통 < 내용입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-coupling-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "coupling",
+        "modularity"
+      ],
+      "content": {
+        "prompt": "결합도는 낮을수록 좋은 설계이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "모듈 사이 의존이 적을수록 변경의 영향이 줄어 결합도는 낮을수록 좋습니다.",
+      "refs": []
+    }
+  ]
+}

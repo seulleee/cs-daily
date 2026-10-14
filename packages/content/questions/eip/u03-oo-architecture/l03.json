@@ -1,0 +1,215 @@
+{
+  "track": "eip",
+  "unit": "u03-oo-architecture",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "eip-sd-oo-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "object-oriented",
+        "class"
+      ],
+      "content": {
+        "prompt": "같은 속성·연산을 가진 객체들의 틀은?",
+        "options": [
+          "클래스",
+          "인스턴스",
+          "메시지"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "클래스는 같은 속성·연산을 가진 객체들의 틀이고, 그 틀로 만든 것이 객체(인스턴스)입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-oo-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "object-oriented",
+        "encapsulation"
+      ],
+      "content": {
+        "prompt": "속성과 연산을 묶고 내부 구현을 숨기는 것은?",
+        "options": [
+          "상속",
+          "캡슐화",
+          "다형성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "캡슐화는 속성과 연산을 하나로 묶고 내부 구현을 숨기는 것입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-oo-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "object-oriented",
+        "polymorphism"
+      ],
+      "content": {
+        "prompt": "같은 메시지에 객체마다 다르게 응답하는 성질은?",
+        "options": [
+          "상속",
+          "다형성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다형성은 같은 메시지에 객체마다 다른 방식으로 응답하는 성질입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-oo-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "object-oriented",
+        "inheritance"
+      ],
+      "content": {
+        "prompt": "상속은 하위 클래스의 속성을 상위 클래스가 물려받는 것이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "상속은 상위 클래스의 속성·연산을 하위 클래스가 물려받는 것입니다. 방향이 반대입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-oo-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "object-oriented",
+        "class"
+      ],
+      "content": {
+        "prompt": "클래스라는 틀로 만든 실체를 ___ 라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "인스턴스",
+          "instance",
+          "객체",
+          "object"
+        ]
+      },
+      "explanation": "클래스로 만든 실체를 인스턴스(객체)라고 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-oo-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "object-oriented",
+        "encapsulation"
+      ],
+      "content": {
+        "prompt": "캡슐화로 내부 구현을 숨기는 것을 정보 ___ 이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "은닉",
+          "은폐",
+          "hiding"
+        ]
+      },
+      "explanation": "캡슐화는 내부 구현을 숨기며, 이를 정보 은닉이라고 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-oo-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "object-oriented",
+        "polymorphism"
+      ],
+      "content": {
+        "prompt": "도형의 draw()를 원·사각형이 각자 다르게 그린다. 해당 개념은?",
+        "options": [
+          "캡슐화",
+          "상속",
+          "다형성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "같은 메시지 draw()에 객체마다 다르게 응답하므로 다형성입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-oo-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "object-oriented",
+        "inheritance"
+      ],
+      "content": {
+        "prompt": "차량 클래스의 속성·연산을 트럭 클래스가 물려받는다. 개념은?",
+        "options": [
+          "상속",
+          "다형성",
+          "캡슐화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "상위 클래스의 속성·연산을 하위 클래스가 물려받는 것은 상속입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-oo-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "object-oriented",
+        "encapsulation"
+      ],
+      "content": {
+        "prompt": "잔액 필드를 숨기고 입금 메서드로만 바꾸게 한다. 개념은?",
+        "options": [
+          "다형성",
+          "캡슐화",
+          "상속"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "속성과 연산을 묶고 내부를 숨겨 메서드로만 접근하게 하는 것은 캡슐화입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-oo-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "object-oriented",
+        "class"
+      ],
+      "content": {
+        "prompt": "객체는 클래스라는 틀로 만든 인스턴스이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "클래스는 틀이고, 그 틀로 만든 객체를 인스턴스라고 합니다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u02-requirements-uml-ui",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "eip-sd-uml-rel-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "uml",
+        "association"
+      ],
+      "content": {
+        "prompt": "사물들이 서로 관련되어 있음을 실선으로 표현하는 관계는?",
+        "options": [
+          "연관",
+          "의존",
+          "일반화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "연관 관계는 사물들이 서로 관련되어 있음을 실선으로 표현합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-rel-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "uml",
+        "generalization"
+      ],
+      "content": {
+        "prompt": "하위가 상위의 한 종류인 관계는?",
+        "options": [
+          "집합",
+          "일반화",
+          "의존"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "일반화는 하위가 상위의 한 종류인 관계이며, 속 빈 삼각형 화살표로 그립니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-rel-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "uml",
+        "composition"
+      ],
+      "content": {
+        "prompt": "전체가 사라지면 부분도 함께 사라지는 관계는?",
+        "options": [
+          "집합",
+          "합성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "합성은 전체가 사라지면 부분도 사라집니다. 집합은 부분이 따로 남을 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-rel-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "uml",
+        "dependency"
+      ],
+      "content": {
+        "prompt": "의존 관계는 점선 화살표로 표현한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "의존은 한 사물이 다른 사물을 잠시 사용하는 관계로, 점선 화살표로 그립니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-rel-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "uml",
+        "generalization"
+      ],
+      "content": {
+        "prompt": "속 빈 삼각형 화살표로 표현하는 관계는 ___ 관계이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "일반화",
+          "generalization",
+          "상속"
+        ]
+      },
+      "explanation": "일반화 관계는 하위에서 상위로 향하는 속 빈 삼각형 화살표로 표현합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-rel-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "dependency"
+      ],
+      "content": {
+        "prompt": "한 사물이 다른 사물을 잠시 사용하는 관계는 ___ 관계이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "의존",
+          "의존성",
+          "dependency"
+        ]
+      },
+      "explanation": "의존 관계는 한 사물이 다른 사물을 잠시 사용하는 관계이며 점선 화살표로 그립니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-rel-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "generalization"
+      ],
+      "content": {
+        "prompt": "트럭 클래스는 차량 클래스의 한 종류다. 알맞은 관계는?",
+        "options": [
+          "연관",
+          "합성",
+          "일반화"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "하위가 상위의 한 종류인 관계는 일반화입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-rel-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "composition"
+      ],
+      "content": {
+        "prompt": "주문이 삭제되면 주문 항목도 삭제된다. 알맞은 관계는?",
+        "options": [
+          "합성",
+          "의존",
+          "일반화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "전체가 사라질 때 부분도 사라지는 전체-부분 관계는 합성입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-rel-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "dependency"
+      ],
+      "content": {
+        "prompt": "메서드 안에서 다른 클래스를 잠시 매개변수로 쓴다. 관계는?",
+        "options": [
+          "연관",
+          "의존",
+          "집합"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다른 사물을 잠시 사용하는 관계는 의존입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-uml-rel-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "uml",
+        "composition"
+      ],
+      "content": {
+        "prompt": "합성 관계에서는 전체가 사라져도 부분은 남는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "합성은 전체가 사라지면 부분도 함께 사라지는 관계입니다.",
+      "refs": []
+    }
+  ]
+}

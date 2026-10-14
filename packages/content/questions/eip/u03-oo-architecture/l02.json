@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u03-oo-architecture",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "eip-sd-cohesion-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cohesion",
+        "modularity"
+      ],
+      "content": {
+        "prompt": "한 모듈 안의 요소들이 서로 관련된 정도는?",
+        "options": [
+          "결합도",
+          "응집도",
+          "복잡도"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "응집도는 한 모듈 안 요소들이 서로 관련된 정도이며 높을수록 좋습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-cohesion-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cohesion",
+        "functional-cohesion"
+      ],
+      "content": {
+        "prompt": "모든 요소가 한 가지 기능을 위해 모인 응집도는?",
+        "options": [
+          "기능적",
+          "우연적",
+          "논리적"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "기능적 응집도는 모든 요소가 한 가지 기능을 위해 모인 가장 강한 응집도입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-cohesion-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cohesion",
+        "coupling"
+      ],
+      "content": {
+        "prompt": "좋은 모듈의 조건은?",
+        "options": [
+          "결합도 높고 응집도 낮음",
+          "결합도 낮고 응집도 높음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "좋은 모듈은 결합도는 낮게, 응집도는 높게 설계합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-cohesion-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cohesion",
+        "modularity"
+      ],
+      "content": {
+        "prompt": "우연적 응집도는 응집도 가운데 가장 강하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "우연적 응집도는 가장 약합니다. 가장 강한 것은 기능적 응집도입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-cohesion-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cohesion",
+        "modularity"
+      ],
+      "content": {
+        "prompt": "응집도가 가장 약한 것은 ___ 응집도이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "우연적",
+          "우연",
+          "coincidental"
+        ]
+      },
+      "explanation": "응집도 순서(강→약)는 기능 > 순차 > 교환 > 절차 > 시간 > 논리 > 우연입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-cohesion-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cohesion",
+        "coupling"
+      ],
+      "content": {
+        "prompt": "좋은 모듈은 결합도는 낮게, ___ 는 높게 설계한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "응집도",
+          "응집",
+          "cohesion"
+        ]
+      },
+      "explanation": "결합도는 낮고 응집도는 높을수록 독립성이 높은 좋은 모듈입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-cohesion-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cohesion",
+        "modularity"
+      ],
+      "content": {
+        "prompt": "다음 중 응집도가 가장 강한 것은?",
+        "options": [
+          "논리적",
+          "순차적",
+          "시간적"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "순서는 기능 > 순차 > 교환 > 절차 > 시간 > 논리 > 우연이므로 셋 중 순차적이 가장 강합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-cohesion-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cohesion",
+        "modularity"
+      ],
+      "content": {
+        "prompt": "다음 중 응집도가 가장 약한 것은?",
+        "options": [
+          "절차적",
+          "교환적",
+          "논리적"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "순서는 기능 > 순차 > 교환 > 절차 > 시간 > 논리 > 우연이므로 셋 중 논리적이 가장 약합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-cohesion-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cohesion",
+        "modularity"
+      ],
+      "content": {
+        "prompt": "응집도가 강한 것부터 바르게 나열한 것은?",
+        "options": [
+          "기능-순차-교환",
+          "순차-기능-교환",
+          "교환-순차-기능"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "응집도 순서(강→약)는 기능 > 순차 > 교환 > 절차 > 시간 > 논리 > 우연입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-cohesion-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cohesion",
+        "modularity"
+      ],
+      "content": {
+        "prompt": "응집도는 높을수록 좋은 설계이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "모듈 안 요소들이 한 목적으로 강하게 모일수록 좋으므로 응집도는 높을수록 좋습니다.",
+      "refs": []
+    }
+  ]
+}

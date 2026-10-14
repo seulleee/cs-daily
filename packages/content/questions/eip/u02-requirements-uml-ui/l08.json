@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u02-requirements-uml-ui",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "eip-sd-ui-tools-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ui",
+        "cli"
+      ],
+      "content": {
+        "prompt": "명령어를 입력해 조작하는 UI는?",
+        "options": [
+          "CLI",
+          "GUI",
+          "NUI"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "CLI는 명령어를 입력해 조작하는 방식입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-tools-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ui",
+        "nui"
+      ],
+      "content": {
+        "prompt": "터치·동작 인식 등 자연스러운 움직임으로 조작하는 UI는?",
+        "options": [
+          "CLI",
+          "GUI",
+          "NUI"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "NUI는 터치·동작 인식처럼 사람의 자연스러운 움직임으로 조작하는 방식입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-tools-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ui",
+        "wireframe"
+      ],
+      "content": {
+        "prompt": "화면 배치의 윤곽만 잡은 설계 산출물은?",
+        "options": [
+          "와이어프레임",
+          "프로토타입"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "와이어프레임은 화면 배치의 윤곽입니다. 프로토타입은 동작을 확인하는 모형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-tools-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ui",
+        "mockup"
+      ],
+      "content": {
+        "prompt": "목업은 실제 동작을 확인할 수 있는 모형이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "목업은 실제와 비슷한 정적 모형입니다. 동작을 확인하는 것은 프로토타입입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-tools-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ui",
+        "gui"
+      ],
+      "content": {
+        "prompt": "그래픽 요소를 마우스로 조작하는 UI는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "GUI",
+          "gui",
+          "지유아이"
+        ]
+      },
+      "explanation": "GUI는 아이콘·버튼 같은 그래픽 요소를 마우스로 조작하는 방식입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-tools-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ui",
+        "storyboard"
+      ],
+      "content": {
+        "prompt": "화면별 설명과 흐름을 담은 설계 문서는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스토리보드",
+          "스토리 보드",
+          "storyboard"
+        ]
+      },
+      "explanation": "스토리보드는 화면별 설명과 화면 사이의 흐름을 담은 문서입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-tools-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ui",
+        "mockup"
+      ],
+      "content": {
+        "prompt": "실제와 비슷하지만 동작하지 않는 정적 화면 모형은?",
+        "options": [
+          "와이어프레임",
+          "목업",
+          "스토리보드"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "목업은 실제와 비슷한 정적 모형입니다. 와이어프레임은 배치 윤곽만 잡습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-tools-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ui",
+        "nui"
+      ],
+      "content": {
+        "prompt": "화면을 두 손가락으로 벌려 확대한다. 이 조작 방식은?",
+        "options": [
+          "CLI",
+          "NUI",
+          "GUI"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "터치 동작처럼 자연스러운 움직임으로 조작하는 방식은 NUI입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-tools-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ui",
+        "prototype"
+      ],
+      "content": {
+        "prompt": "버튼을 눌러 화면 전환까지 확인해 보는 모형은?",
+        "options": [
+          "프로토타입",
+          "목업",
+          "와이어프레임"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "동작을 확인하는 모형은 프로토타입입니다. 목업은 정적 모형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-tools-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ui",
+        "cli"
+      ],
+      "content": {
+        "prompt": "CLI는 명령어를 입력해 조작하는 방식이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "CLI는 명령어를 입력하는 방식, GUI는 그래픽 요소를 마우스로 조작하는 방식입니다.",
+      "refs": []
+    }
+  ]
+}

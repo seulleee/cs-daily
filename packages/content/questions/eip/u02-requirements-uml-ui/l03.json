@@ -1,0 +1,216 @@
+{
+  "track": "eip",
+  "unit": "u02-requirements-uml-ui",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "eip-sd-dfd-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dfd",
+        "structured-analysis"
+      ],
+      "content": {
+        "prompt": "자료의 흐름과 처리 과정을 그림으로 표현한 도구는?",
+        "options": [
+          "DFD",
+          "자료 사전",
+          "소단위 명세서"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DFD(자료 흐름도)는 자료의 흐름과 처리 과정을 그림으로 표현합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-dfd-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "data-dictionary",
+        "structured-analysis"
+      ],
+      "content": {
+        "prompt": "자료 흐름·저장소에 들어가는 자료 항목을 정의한 것은?",
+        "options": [
+          "DFD",
+          "자료 사전",
+          "유스케이스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "자료 사전(DD)은 자료 흐름과 저장소에 들어가는 자료 항목을 정의합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-dfd-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dfd",
+        "notation"
+      ],
+      "content": {
+        "prompt": "DFD에서 처리(프로세스)를 나타내는 기호는?",
+        "options": [
+          "원",
+          "평행선",
+          "사각형"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DFD에서 처리는 원으로 그립니다. 평행선은 자료 저장소, 사각형은 단말입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-dfd-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dfd",
+        "notation"
+      ],
+      "content": {
+        "prompt": "DFD에서 자료 저장소는 평행선으로 그린다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "DFD의 자료 저장소는 평행선 두 줄로 표현합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-dfd-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dfd",
+        "structured-analysis"
+      ],
+      "content": {
+        "prompt": "자료 흐름도를 영문 약자로 ___ 라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "DFD",
+          "dfd",
+          "Data Flow Diagram"
+        ]
+      },
+      "explanation": "자료 흐름도는 Data Flow Diagram, 줄여서 DFD라고 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-dfd-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "mini-spec",
+        "structured-analysis"
+      ],
+      "content": {
+        "prompt": "처리 하나의 상세 절차를 기술한 문서는 ___ 명세서이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "소단위",
+          "소 단위",
+          "미니",
+          "mini"
+        ]
+      },
+      "explanation": "소단위 명세서는 DFD의 처리 하나에 대한 상세 절차를 기술한 문서입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-dfd-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dfd",
+        "notation"
+      ],
+      "content": {
+        "prompt": "DFD에서 화살표가 뜻하는 것은?",
+        "options": [
+          "처리",
+          "자료 흐름",
+          "단말"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DFD에서 화살표는 자료 흐름을 나타냅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-dfd-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dfd",
+        "notation"
+      ],
+      "content": {
+        "prompt": "DFD에서 사각형으로 그리는 요소는?",
+        "options": [
+          "처리",
+          "자료 저장소",
+          "단말"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DFD에서 단말은 사각형으로 그립니다. 처리는 원, 자료 저장소는 평행선입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-dfd-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "data-dictionary",
+        "structured-analysis"
+      ],
+      "content": {
+        "prompt": "\"주문번호 = 주문일자 + 일련번호\"처럼 자료 항목을 정의한 문서는?",
+        "options": [
+          "소단위 명세서",
+          "자료 사전",
+          "DFD"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "자료 항목의 구성을 정의하는 것은 자료 사전(DD)입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-dfd-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dfd",
+        "notation"
+      ],
+      "content": {
+        "prompt": "DFD에서 처리는 평행선으로 그린다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "DFD에서 처리는 원으로 그립니다. 평행선은 자료 저장소를 나타냅니다.",
+      "refs": []
+    }
+  ]
+}

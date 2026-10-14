@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u03-oo-architecture",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "eip-sd-arch-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "architecture",
+        "mvc"
+      ],
+      "content": {
+        "prompt": "모델·뷰·컨트롤러로 나눈 아키텍처 패턴은?",
+        "options": [
+          "MVC",
+          "계층 패턴",
+          "파이프-필터"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "MVC는 모델(데이터·로직), 뷰(화면 표시), 컨트롤러(입력 처리)로 나눈 구조입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-arch-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "architecture",
+        "pipe-filter"
+      ],
+      "content": {
+        "prompt": "데이터가 처리 단계를 차례로 거치며 변환되는 패턴은?",
+        "options": [
+          "클라이언트-서버",
+          "파이프-필터",
+          "MVC"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "파이프-필터 패턴은 데이터가 필터(처리 단계)를 차례로 거치며 변환됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-arch-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "architecture",
+        "mvc"
+      ],
+      "content": {
+        "prompt": "MVC에서 사용자 입력을 처리하는 요소는?",
+        "options": [
+          "뷰",
+          "컨트롤러",
+          "모델"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "컨트롤러는 입력을 처리합니다. 뷰는 화면 표시, 모델은 데이터·로직을 맡습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-arch-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "architecture",
+        "layered"
+      ],
+      "content": {
+        "prompt": "계층 패턴에서 각 계층은 바로 아래 계층만 사용한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "계층 패턴은 시스템을 계층으로 나누고 각 계층이 바로 아래 계층만 사용하게 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-arch-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "architecture",
+        "mvc"
+      ],
+      "content": {
+        "prompt": "MVC에서 화면 표시를 맡는 요소는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "뷰",
+          "view",
+          "뷰어"
+        ]
+      },
+      "explanation": "MVC에서 뷰는 화면 표시를 맡습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-arch-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "architecture",
+        "mvc"
+      ],
+      "content": {
+        "prompt": "MVC에서 데이터와 로직을 맡는 요소는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "모델",
+          "model"
+        ]
+      },
+      "explanation": "MVC에서 모델은 데이터와 로직을 맡습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-arch-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "architecture",
+        "client-server"
+      ],
+      "content": {
+        "prompt": "웹 브라우저가 요청하고 웹 서버가 응답한다. 해당 패턴은?",
+        "options": [
+          "파이프-필터",
+          "MVC",
+          "클라이언트-서버"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "서버가 서비스를 제공하고 클라이언트가 요청하는 구조는 클라이언트-서버 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-arch-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "architecture",
+        "pipe-filter"
+      ],
+      "content": {
+        "prompt": "로그를 읽기→걸러내기→집계 단계로 차례로 처리한다. 패턴은?",
+        "options": [
+          "파이프-필터",
+          "계층 패턴",
+          "MVC"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "데이터가 처리 단계(필터)를 차례로 거치며 변환되므로 파이프-필터 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-arch-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "architecture",
+        "layered"
+      ],
+      "content": {
+        "prompt": "표현·업무·데이터 계층으로 나누고 아래 계층만 호출한다. 패턴은?",
+        "options": [
+          "MVC",
+          "계층 패턴",
+          "클라이언트-서버"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "계층으로 나누고 각 계층이 바로 아래 계층만 쓰는 구조는 계층 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-arch-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "architecture",
+        "mvc"
+      ],
+      "content": {
+        "prompt": "MVC에서 뷰는 사용자 입력을 처리한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "MVC에서 입력 처리는 컨트롤러가 맡습니다. 뷰는 화면 표시를 맡습니다.",
+      "refs": []
+    }
+  ]
+}

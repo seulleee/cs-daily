@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u02-requirements-uml-ui",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "eip-sd-ui-principle-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ui",
+        "ui-principle"
+      ],
+      "content": {
+        "prompt": "누구나 쉽게 이해하고 쓸 수 있어야 한다는 UI 원칙은?",
+        "options": [
+          "직관성",
+          "유연성",
+          "유효성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "직관성은 누구나 쉽게 이해하고 쓸 수 있어야 한다는 UI 설계 원칙입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-principle-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ui",
+        "feedback"
+      ],
+      "content": {
+        "prompt": "시스템 상태와 명령의 결과를 사용자에게 알려 주는 것은?",
+        "options": [
+          "학습성",
+          "피드백",
+          "직관성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "피드백은 시스템 상태와 명령의 결과를 사용자에게 알려 주는 것입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-principle-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ui",
+        "ui-principle"
+      ],
+      "content": {
+        "prompt": "UI 설계 원칙에 해당하지 않는 것은?",
+        "options": [
+          "학습성",
+          "유연성",
+          "복잡성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "UI 설계 원칙은 직관성, 유효성, 학습성, 유연성입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-principle-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ui",
+        "error-message"
+      ],
+      "content": {
+        "prompt": "오류 메시지는 무엇이 잘못됐고 어떻게 바로잡는지 알려야 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "오류 메시지는 무엇이 잘못됐는지와 바로잡는 방법을 알기 쉽게 알려야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-principle-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ui",
+        "ui-principle"
+      ],
+      "content": {
+        "prompt": "UI 설계 원칙은 직관성, 유효성, 학습성, ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "유연성",
+          "flexibility"
+        ]
+      },
+      "explanation": "UI 설계 원칙은 직관성·유효성·학습성·유연성 네 가지입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-principle-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ui",
+        "feedback"
+      ],
+      "content": {
+        "prompt": "명령의 처리 결과를 사용자에게 알려 주는 것을 ___ 이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "피드백",
+          "피드 백",
+          "feedback"
+        ]
+      },
+      "explanation": "피드백은 시스템 상태와 명령 결과를 사용자에게 알려 주는 것입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-principle-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ui",
+        "feedback"
+      ],
+      "content": {
+        "prompt": "저장 버튼을 누르자 \"저장했습니다\"가 표시됐다. 해당하는 것은?",
+        "options": [
+          "피드백",
+          "유연성",
+          "학습성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "명령의 결과를 사용자에게 알려 준 것이므로 피드백입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-principle-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ui",
+        "error-message"
+      ],
+      "content": {
+        "prompt": "알기 쉬운 오류 메시지로 알맞은 것은?",
+        "options": [
+          "오류 E42",
+          "잘못된 입력",
+          "이메일에 @ 필요"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "무엇이 잘못됐고 어떻게 고치는지 알려 주는 메시지가 알맞습니다. 코드나 막연한 문구는 알기 어렵습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-principle-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ui",
+        "ui-principle"
+      ],
+      "content": {
+        "prompt": "처음 쓰는 사람도 설명 없이 바로 쓸 수 있다. 해당 원칙은?",
+        "options": [
+          "직관성",
+          "유효성",
+          "유연성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "누구나 쉽게 이해하고 쓸 수 있는 성질은 직관성입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ui-principle-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ui",
+        "ui-principle"
+      ],
+      "content": {
+        "prompt": "직관성은 UI의 기능이 많을수록 높아진다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "직관성은 누구나 쉽게 이해하고 쓸 수 있는 정도로, 기능 수와는 상관이 없습니다.",
+      "refs": []
+    }
+  ]
+}

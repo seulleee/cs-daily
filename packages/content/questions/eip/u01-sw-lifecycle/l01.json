@@ -1,0 +1,219 @@
+{
+  "track": "eip",
+  "unit": "u01-sw-lifecycle",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "eip-sd-lifecycle-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lifecycle",
+        "sdlc"
+      ],
+      "content": {
+        "prompt": "개발 시작부터 운용·유지보수·폐기까지의 전 과정은?",
+        "options": [
+          "요구사항 명세",
+          "소프트웨어 생명주기",
+          "형상 관리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "소프트웨어 생명주기는 개발 시작부터 운용·유지보수·폐기까지 전 과정을 가리킵니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "waterfall",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "각 단계를 끝내고 검토한 뒤 다음 단계로 내려가는 모형은?",
+        "options": [
+          "폭포수 모형",
+          "V 모델",
+          "애자일"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "폭포수 모형은 한 단계를 끝내고 검토한 뒤 다음 단계로 내려가는 순차 모형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "waterfall",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "폭포수 모형은 요구사항 변경에 유연하게 대응한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "폭포수 모형은 앞 단계로 되돌아가기 어려워 요구사항 변경에 약합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "v-model",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "V 모델은 개발 단계마다 짝이 되는 검증 단계를 둔다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "V 모델은 폭포수를 변형해 개발 단계마다 짝이 되는 검증 단계를 둔 모형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "lifecycle",
+        "sdlc"
+      ],
+      "content": {
+        "prompt": "개발부터 폐기까지의 전 과정을 소프트웨어 ___ 라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "생명주기",
+          "생명 주기",
+          "라이프사이클",
+          "life cycle",
+          "lifecycle",
+          "SDLC"
+        ]
+      },
+      "explanation": "소프트웨어 생명주기는 개발 시작부터 운용·유지보수·폐기까지의 전 과정입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "v-model",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "폭포수를 변형해 단계마다 검증 단계를 짝지은 모형은 ___ 모델이다.",
+        "hint": "알파벳 한 글자, 그림 모양이 그 글자를 닮았다"
+      },
+      "answer_key": {
+        "accepted": [
+          "V",
+          "v",
+          "브이"
+        ]
+      },
+      "explanation": "V 모델은 폭포수를 변형해 개발 단계와 검증 단계를 짝지은 모형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "waterfall",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "설계 도중 요구사항이 크게 바뀌었다. 폭포수에서 생기는 문제는?",
+        "options": [
+          "되돌아가기 어려움",
+          "검증 단계 없음",
+          "폐기 불가"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "폭포수 모형은 순차로 진행해 앞 단계로 되돌아가기 어렵고, 그래서 요구사항 변경에 약합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "waterfall",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "폭포수 모형에서 다음 단계로 넘어가기 전에 하는 일은?",
+        "options": [
+          "시제품 제작",
+          "현재 단계 검토",
+          "위험 분석"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "폭포수 모형은 각 단계를 끝내고 검토한 뒤에 다음 단계로 내려갑니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "v-model",
+        "lifecycle"
+      ],
+      "content": {
+        "prompt": "V 모델에서 각 개발 단계와 짝을 이루는 것은?",
+        "options": [
+          "유지보수 단계",
+          "폐기 단계",
+          "검증 단계"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "V 모델은 개발 단계마다 그 결과를 확인하는 검증 단계를 짝으로 둡니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-lifecycle-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lifecycle",
+        "sdlc"
+      ],
+      "content": {
+        "prompt": "소프트웨어 생명주기의 범위로 옳은 것은?",
+        "options": [
+          "개발 단계만",
+          "개발부터 폐기까지",
+          "운용 단계만"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "생명주기는 개발만이 아니라 운용·유지보수·폐기까지 포함하는 전 과정입니다.",
+      "refs": []
+    }
+  ]
+}

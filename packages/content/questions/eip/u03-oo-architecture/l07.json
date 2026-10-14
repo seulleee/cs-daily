@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u03-oo-architecture",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "eip-sd-pattern-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "design-pattern",
+        "singleton"
+      ],
+      "content": {
+        "prompt": "인스턴스를 하나만 만들고 어디서나 그것을 쓰는 패턴은?",
+        "options": [
+          "싱글톤",
+          "어댑터",
+          "전략"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "싱글톤은 클래스의 인스턴스를 하나만 만들고 어디서나 그것을 쓰게 하는 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-pattern-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "design-pattern",
+        "adapter"
+      ],
+      "content": {
+        "prompt": "호환되지 않는 인터페이스를 맞춰 함께 동작하게 하는 패턴은?",
+        "options": [
+          "옵서버",
+          "어댑터",
+          "싱글톤"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "어댑터는 호환되지 않는 인터페이스를 맞춰 함께 동작하게 하는 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-pattern-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "design-pattern",
+        "observer"
+      ],
+      "content": {
+        "prompt": "상태가 바뀌면 의존 객체들에 자동으로 알리는 패턴은?",
+        "options": [
+          "옵서버",
+          "전략"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "옵서버는 한 객체의 상태 변화를 의존 객체들에 자동으로 알립니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-pattern-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "design-pattern",
+        "strategy"
+      ],
+      "content": {
+        "prompt": "전략 패턴은 알고리즘을 실행 중에 바꿔 쓸 수 있게 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "전략 패턴은 알고리즘을 캡슐화해 실행 중에 바꿔 쓸 수 있게 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-pattern-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "design-pattern",
+        "singleton"
+      ],
+      "content": {
+        "prompt": "설정 객체를 프로그램 전체에서 하나만 두려면 ___ 패턴을 쓴다."
+      },
+      "answer_key": {
+        "accepted": [
+          "싱글톤",
+          "싱글턴",
+          "singleton"
+        ]
+      },
+      "explanation": "인스턴스를 하나만 만들고 어디서나 공유하게 하는 것은 싱글톤 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-pattern-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "design-pattern",
+        "observer"
+      ],
+      "content": {
+        "prompt": "상태가 바뀌면 등록된 객체들에 알리는 패턴은 ___ 패턴이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "옵서버",
+          "옵저버",
+          "observer"
+        ]
+      },
+      "explanation": "옵서버 패턴은 상태 변화를 의존 객체들에 자동으로 알립니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-pattern-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "design-pattern",
+        "adapter"
+      ],
+      "content": {
+        "prompt": "외부 라이브러리 인터페이스가 우리 코드와 맞지 않는다. 패턴은?",
+        "options": [
+          "싱글톤",
+          "옵서버",
+          "어댑터"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "호환되지 않는 인터페이스를 맞춰 주는 것은 어댑터 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-pattern-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "design-pattern",
+        "strategy"
+      ],
+      "content": {
+        "prompt": "정렬 알고리즘을 실행 중에 다른 것으로 바꿔 끼운다. 패턴은?",
+        "options": [
+          "전략",
+          "어댑터",
+          "싱글톤"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "알고리즘을 캡슐화해 실행 중에 바꿔 쓰는 것은 전략 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-pattern-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "design-pattern",
+        "observer"
+      ],
+      "content": {
+        "prompt": "주가가 바뀌면 여러 차트 화면이 자동 갱신된다. 패턴은?",
+        "options": [
+          "전략",
+          "옵서버",
+          "어댑터"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "한 객체의 상태 변화를 의존 객체들에 자동으로 알리는 것은 옵서버 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-pattern-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "design-pattern",
+        "adapter"
+      ],
+      "content": {
+        "prompt": "어댑터 패턴은 인스턴스를 하나만 만들게 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "인스턴스를 하나만 만드는 것은 싱글톤입니다. 어댑터는 호환되지 않는 인터페이스를 맞춥니다.",
+      "refs": []
+    }
+  ]
+}

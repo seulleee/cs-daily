@@ -1,0 +1,237 @@
+{
+  "track": "eip",
+  "unit": "u03-oo-architecture",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "eip-sd-ooarch-mock-001",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "coupling",
+        "cohesion"
+      ],
+      "content": {
+        "prompt": "모듈 설계에 대한 설명으로 옳은 것은?",
+        "options": [
+          "결합도는 낮고 응집도는 높게 한다",
+          "결합도와 응집도 모두 높게 한다",
+          "결합도는 높고 응집도는 낮게 한다",
+          "결합도와 응집도 모두 낮게 한다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "좋은 모듈은 모듈 사이 의존(결합도)은 낮고, 모듈 안 요소 간 관련(응집도)은 높습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ooarch-mock-002",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "coupling",
+        "content-coupling"
+      ],
+      "content": {
+        "prompt": "결합도가 가장 강한 것은?",
+        "options": [
+          "자료 결합도",
+          "스탬프 결합도",
+          "제어 결합도",
+          "내용 결합도"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "결합도 순서(약→강)는 자료 < 스탬프 < 제어 < 외부 < 공통 < 내용입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ooarch-mock-003",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cohesion",
+        "modularity"
+      ],
+      "content": {
+        "prompt": "응집도에 대한 설명으로 틀린 것은?",
+        "options": [
+          "한 모듈 안 요소들의 관련 정도이다",
+          "높을수록 좋은 모듈이다",
+          "기능적 응집도가 가장 강하다",
+          "우연적 응집도가 가장 강하다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "우연적 응집도는 가장 약합니다. 가장 강한 것은 기능적 응집도입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ooarch-mock-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "object-oriented",
+        "encapsulation"
+      ],
+      "content": {
+        "prompt": "캡슐화에 대한 설명으로 옳은 것은?",
+        "options": [
+          "상위 클래스의 속성을 물려받는다",
+          "속성과 연산을 묶고 내부 구현을 숨긴다",
+          "같은 메시지에 객체마다 다르게 응답한다",
+          "인스턴스를 하나만 만든다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "캡슐화는 속성과 연산을 하나로 묶고 내부 구현을 숨기는 것입니다. 물려받기는 상속, 다르게 응답은 다형성입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ooarch-mock-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "design-pattern",
+        "creational"
+      ],
+      "content": {
+        "prompt": "GoF 디자인 패턴 중 생성 패턴에 해당하는 것은?",
+        "options": [
+          "어댑터",
+          "옵서버",
+          "싱글톤",
+          "데코레이터"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "싱글톤은 생성 패턴입니다. 어댑터·데코레이터는 구조, 옵서버는 행위 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ooarch-mock-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "middleware",
+        "mom"
+      ],
+      "content": {
+        "prompt": "MOM에 대한 설명으로 옳은 것은?",
+        "options": [
+          "메시지 큐로 비동기 통신을 지원한다",
+          "대량 온라인 처리 요청을 감시·제어한다",
+          "원격 프로시저 호출을 지원한다",
+          "분산 객체 사이 요청을 중개한다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "MOM은 메시지 큐 기반 비동기 통신 미들웨어입니다. 나머지는 각각 TP 모니터, RPC, ORB의 설명입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ooarch-mock-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "solid",
+        "dip"
+      ],
+      "content": {
+        "prompt": "SOLID 원칙과 설명의 연결로 틀린 것은?",
+        "options": [
+          "SRP - 클래스는 하나의 책임만 가진다",
+          "OCP - 확장에 열리고 변경에 닫힌다",
+          "LSP - 하위 타입이 상위 타입을 대체한다",
+          "DIP - 인터페이스를 작게 나눈다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "DIP는 구체 클래스가 아닌 추상화에 의존하라는 원칙입니다. 인터페이스를 작게 나누는 것은 ISP입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ooarch-mock-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "design-pattern",
+        "gof"
+      ],
+      "content": {
+        "prompt": "GoF 패턴과 분류의 연결로 틀린 것은?",
+        "options": [
+          "싱글톤 - 생성",
+          "전략 - 생성",
+          "어댑터 - 구조",
+          "옵서버 - 행위"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "전략은 행위 패턴입니다. 싱글톤은 생성, 어댑터는 구조, 옵서버는 행위 패턴입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ooarch-mock-009",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "design-pattern",
+        "observer"
+      ],
+      "content": {
+        "prompt": "한 객체의 상태가 바뀌면 의존 객체들에 자동으로 알리는 패턴은?",
+        "options": [
+          "전략",
+          "어댑터",
+          "옵서버",
+          "싱글톤"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "옵서버 패턴은 상태 변화를 의존 객체들에 자동으로 알립니다. 전략은 알고리즘 교체, 어댑터는 인터페이스 맞춤입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-sd-ooarch-mock-010",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "architecture",
+        "mvc"
+      ],
+      "content": {
+        "prompt": "MVC 패턴에 대한 설명으로 옳은 것은?",
+        "options": [
+          "모델은 사용자 입력을 처리한다",
+          "뷰는 화면 표시를 맡는다",
+          "컨트롤러는 데이터를 저장한다",
+          "세 요소를 한 클래스로 합친다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "MVC에서 뷰는 화면 표시, 모델은 데이터·로직, 컨트롤러는 입력 처리를 맡아 역할을 나눕니다.",
+      "refs": []
+    }
+  ]
+}
