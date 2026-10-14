@@ -48,6 +48,7 @@
 - 결과 화면 `newReviewCount`("내일 복습 예정")는 사용자 로컬 **내일의 마지막 순간**까지 due인 수다(`learning/domain/services/review-preview.ts`). SM-2가 방금 푼 문제를 답한 시각+24시간으로 예약하므로 "내일 00:00"까지로 끊으면 0이 된다. 복습 예약은 `AnswerGraded` 비동기 처리라 완료 시점에 저장 전일 수 있어, 이번 세션 오답 수를 하한으로 둔다.
 - 콘텐츠에서 빠진 문제는 시드가 삭제하지 않고 `status=retired`로 내린다(답안·복습 기록 FK 보존). `lesson.questionCount`는 콘텐츠 파일의 문제 수를 따른다.
 - 도메인 규칙은 단위 테스트가 있어야 한다(`apps/api/test/*.spec.ts`, vitest). HTTP 흐름은 `apps/api/test-e2e/`가 CI에서 빌드된 서버 + CI Postgres로 돈다.
+- 로그인: 액세스 15분·리프레시 14일(회전·슬라이딩). 웹 `api()`는 refresh를 single-flight로 묶고, 서버는 폐기 30초 이내 토큰 재사용을 동시 요청으로 보고 허용한다(`identity/domain/services/refresh-grace.ts`).
 
 ## 화면 규칙 (웹)
 

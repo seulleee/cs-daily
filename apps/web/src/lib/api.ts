@@ -14,7 +14,23 @@ export class ApiError extends Error {
 /**
  * 브라우저용 fetch 래퍼. /api/* 리라이트를 타므로 쿠키가 자동으로 붙는다.
  * 401이면 /auth/refresh로 한 번 회전 후 재시도, 그래도 실패하면 로그인으로.
+ * 동시에 401이 난 요청들은 하나의 refresh 결과를 함께 기다린다(single-flight).
  */
+let refreshPromise: Promise<boolean> | null = null;
+let redirectingToLogin = false;
+
+function refreshOnce(): Promise<boolean> {
+  if (!refreshPromise) {
+    refreshPromise = fetch('/auth/refresh', { method: 'POST', credentials: 'include' })
+      .then((r) => r.ok)
+      .catch(() => false)
+      .finally(() => {
+        refreshPromise = null;
+      });
+  }
+  return refreshPromise;
+}
+
 export async function api<T>(path: string, init: RequestInit & { json?: unknown } = {}): Promise<T> {
   const doFetch = () =>
     fetch(`/api${path}`, {
@@ -33,10 +49,17 @@ export async function api<T>(path: string, init: RequestInit & { json?: unknown 
   }
 
   if (res.status === 401) {
-    const refreshed = await fetch('/auth/refresh', { method: 'POST', credentials: 'include' });
-    if (refreshed.ok) res = await doFetch();
-    else {
-      if (typeof window !== 'undefined') window.location.href = '/login';
+    if (await refreshOnce()) {
+      try {
+        res = await doFetch();
+      } catch {
+        throw new ApiError(0, 'NETWORK', '네트워크 연결을 확인해 주세요');
+      }
+    } else {
+      if (typeof window !== 'undefined' && !redirectingToLogin) {
+        redirectingToLogin = true;
+        window.location.href = '/login';
+      }
       throw new ApiError(401, 'UNAUTHORIZED', '로그인이 필요합니다');
     }
   }
