@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import clsx from 'clsx';
-import { CheckIcon, XIcon } from './icons';
+import { AlertIcon, CheckIcon, XIcon } from './icons';
 
 /**
  * 토스트 (Platinum): 1px ink 테두리 + 반전(성공) / wrong 바탕(오류) + 2px 2px 0 line 그림자의 작은 창. 타이틀바 없음.
@@ -93,7 +93,7 @@ function ToastView({ toast, onClose, onGone }: { toast: ToastState; onClose: () 
         if (toast.leaving && e.currentTarget === e.target) onGone(toast.id);
       }}
     >
-      <span className="shrink-0">{error ? <XIcon size={16} /> : <CheckIcon size={16} />}</span>
+      <span className="shrink-0">{error ? <AlertIcon size={16} /> : <CheckIcon size={16} />}</span>
       <p className="bit min-w-0 flex-1">{toast.message}</p>
       <button type="button" aria-label="닫기" onClick={onClose} className="-my-3 flex h-11 w-11 shrink-0 items-center justify-center">
         <XIcon size={16} />
