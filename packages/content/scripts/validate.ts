@@ -32,21 +32,6 @@ for (const t of curriculum.data.tracks) {
   }
 }
 
-// 실전 문제 링크: 형식은 스키마(PracticeLink)가 검사하고, 같은 트랙 안 id 중복은 경고만 한다
-for (const t of curriculum.data.tracks) {
-  const seenPractice = new Map<number, string>();
-  for (const u of t.units) {
-    for (const l of u.lessons) {
-      const at = `${t.slug}/${u.slug}/${l.slug}`;
-      for (const p of l.practice ?? []) {
-        const prev = seenPractice.get(p.id);
-        if (prev) console.warn(`경고 ${at}: 실전 문제 ${p.site} ${p.id}가 같은 트랙의 ${prev}에도 있습니다`);
-        else seenPractice.set(p.id, at);
-      }
-    }
-  }
-}
-
 const seenIds = new Map<string, string>();
 let fileCount = 0;
 let questionCount = 0;

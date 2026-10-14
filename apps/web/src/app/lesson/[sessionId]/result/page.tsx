@@ -7,7 +7,7 @@ import { use, useState, type CSSProperties } from 'react';
 import type { CompleteSessionResponse, SessionResponse } from '@cs-daily/contracts';
 import { api, ApiError } from '@/lib/api';
 import { clearPlacementChain, nextPlacementStep, readPlacementChain, writePlacementChain } from '@/lib/placement-chain';
-import { CheckIcon, ExternalLinkIcon, FlameLive } from '@/components/icons';
+import { CheckIcon, FlameLive } from '@/components/icons';
 import { Window } from '@/components/window';
 
 /** 레슨 완료 화면. 결과는 complete 응답을 QueryClient에 넣어 둔 것을 읽는다 (새로고침 시 홈으로) */
@@ -28,8 +28,6 @@ export default function ResultPage({ params }: { params: Promise<{ sessionId: st
   const pct = r.total > 0 ? Math.round((r.correct / r.total) * 100) : 0;
   // 응답에 없는 값이라 레슨 플레이어가 complete 직전에 따로 캐시에 둔다
   const retried = qc.getQueryData<number>(['session-retried', sessionId]) ?? 0;
-  // 실전 문제 링크는 레슨 플레이어가 캐시에 둔 세션 응답에서 읽는다 (API가 아직 안 내려주면 없음)
-  const practice = qc.getQueryData<SessionResponse>(['session', sessionId])?.lessonPractice ?? [];
 
   if (r.placement) return <PlacementResult sessionId={sessionId} r={r} placement={r.placement} pct={pct} />;
 
@@ -64,8 +62,6 @@ export default function ResultPage({ params }: { params: Promise<{ sessionId: st
         {r.streak.extended && <p className="text-cap font-medium text-streak">스트릭이 {r.streak.current}일로 늘었어요!</p>}
         <p className="bit text-ink-2">내일 복습 예정 {r.newReviewCount}문제</p>
 
-        <PracticeLinks items={practice} />
-
         <div className="flex flex-col gap-4">
           <Link href="/learn" className="btn-3d">계속하기</Link>
           {r.newReviewCount > 0 && <Link href="/review" className="btn-outline">복습 보기</Link>}
@@ -94,34 +90,6 @@ function ScoreRing({ pct }: { pct: number }) {
         <span className="text-cap text-ink-2">정답률</span>
       </div>
     </div>
-  );
-}
-
-/** 레슨 관련 실전 문제(백준) 링크. 번호·제목만 보여 주고 문제는 원문 사이트에서 푼다. 없으면 블록 자체를 그리지 않는다 */
-function PracticeLinks({ items }: { items: NonNullable<SessionResponse['lessonPractice']> }) {
-  if (items.length === 0) return null;
-  return (
-    <section aria-labelledby="practice-title" className="text-left">
-      <h2 id="practice-title" className="bit">실전 문제</h2>
-      <ul className="card mt-2 divide-y divide-ink">
-        {items.map((p) => (
-          <li key={`${p.site}-${p.id}`}>
-            <a
-              href={`https://www.acmicpc.net/problem/${p.id}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex min-h-11 items-center justify-between gap-3 px-4 py-2 text-body"
-            >
-              <span>
-                <span className="font-semibold">백준 {p.id}</span> · {p.title}
-              </span>
-              <ExternalLinkIcon size={18} />
-              <span className="sr-only">(새 탭에서 열림)</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
   );
 }
 

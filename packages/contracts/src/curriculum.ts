@@ -43,14 +43,6 @@ export const SetTracksRequest = z.object({
   trackIds: z.array(z.number().int()).min(1).max(12),
 });
 
-/** 레슨의 실전 문제 링크. 지문·예제는 옮기지 않고 번호·제목만 둔다 (현재 백준 `boj`만) */
-export const PracticeLink = z.object({
-  site: z.literal('boj'),
-  id: z.number().int().positive(),
-  title: z.string().min(1).max(40),
-});
-export type PracticeLink = z.infer<typeof PracticeLink>;
-
 /** 콘텐츠 패키지의 curriculum.json 스키마 */
 export const CurriculumFile = z.object({
   tracks: z.array(
@@ -71,8 +63,6 @@ export const CurriculumFile = z.object({
               objective: z.string(),
               /** 핵심 정리 2~4줄 — "용어 — 한 줄 정의". 선택 필드(없으면 시작 카드에 목표만 표시) */
               keyPoints: z.array(z.string().min(1).max(80)).max(4).default([]),
-              /** 관련 실전 문제 링크 0~3개. 선택 필드(ct 트랙) */
-              practice: z.array(PracticeLink).max(3).optional(),
             }),
           ).min(1),
         }),
