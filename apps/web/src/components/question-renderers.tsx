@@ -30,19 +30,62 @@ export function QuestionRenderer(props: RendererProps) {
   }
 }
 
-function Prompt({ prompt, code }: { prompt: string; code?: { language: string; source: string } | null }) {
+/** 코드 안 빈칸 상자의 상태. text는 입력 중인 글자(fill) 또는 선택한 보기(single) */
+type BlankView = { text: string; state?: 'correct' | 'wrong' };
+
+function Prompt({ prompt, code, blank }: { prompt: string; code?: { language: string; source: string } | null; blank?: BlankView }) {
   return (
     <div className="mb-6">
       <h2 tabIndex={-1} data-question-heading className="text-title font-semibold outline-none">{prompt}</h2>
-      {code && <CodeBlock source={code.source} className="mt-3" />}
+      {code && <CodeBlock source={code.source} language={code.language} blank={blank} className="mt-3" />}
     </div>
   );
 }
 
-function CodeBlock({ source, className = '' }: { source: string; className?: string }) {
+/** 코드 안 ___ 자리. 기본은 반전 상자("?"), 입력·선택하면 그 글자를 보여 준다. 오답은 wrong 테두리 상자 */
+function CodeBlank({ view }: { view: BlankView }) {
+  const label = view.text ? `빈칸: ${view.text}` : '빈칸';
   return (
-    <pre className={`overflow-x-auto border border-ink bg-surface p-3 font-mono text-cap text-ink [word-spacing:normal] ${className}`}>
-      <code>{source}</code>
+    <span role="img" aria-label={label} data-state={view.state} className="code-blank">
+      {view.text || '?'}
+      {view.state === 'correct' && <CheckIcon size={14} strokeWidth={3} aria-hidden />}
+    </span>
+  );
+}
+
+function CodeBlock({
+  source,
+  language,
+  blank,
+  className = '',
+}: {
+  source: string;
+  language?: string;
+  blank?: BlankView;
+  className?: string;
+}) {
+  const lines = source.replace(/\t/g, '    ').replace(/\n+$/, '').split('\n');
+  const blanks = source.split('___').length - 1;
+  return (
+    <pre
+      role="group"
+      aria-label={blanks > 0 ? `코드, 빈칸 ${blanks}개` : '코드'}
+      data-lang={language}
+      className={`code-block [word-spacing:normal] ${className}`}
+    >
+      <code>
+        {lines.map((line, i) => (
+          <span key={i} className="code-line">
+            {line.split('___').map((part, j) => (
+              <span key={j}>
+                {j > 0 && <CodeBlank view={blank ?? { text: '' }} />}
+                {part}
+              </span>
+            ))}
+            {line === '' && ' '}
+          </span>
+        ))}
+      </code>
     </pre>
   );
 }
@@ -105,9 +148,15 @@ function ChoiceRenderer({ question, value, onChange, revealed, multi }: Renderer
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [c.options.length, value, revealed]);
 
+  const sel = !multi && value ? (value as { index: number }).index : undefined;
+  const blank: BlankView = {
+    text: sel !== undefined ? (c.options[sel] ?? '') : '',
+    state: revealed && sel !== undefined ? (correct.has(sel) ? 'correct' : 'wrong') : undefined,
+  };
+
   return (
     <div>
-      <Prompt prompt={c.prompt} code={c.code} />
+      <Prompt prompt={c.prompt} code={c.code} blank={blank} />
       {multi && <p className="mb-2 text-cap font-medium text-ink-2">해당하는 것을 모두 고르세요</p>}
       <div role={multi ? 'group' : 'radiogroup'} className="space-y-3">
         {c.options.map((opt, i) => {
@@ -172,31 +221,47 @@ function FillRenderer({ question, value, onChange, revealed }: RendererProps) {
   const c = question.content as FillContent;
   const ref = useRef<HTMLInputElement>(null);
   useEffect(() => ref.current?.focus(), [question.id]);
-  const [before, after] = c.prompt.split('___');
+  const codeBlank = !!c.code?.source.includes('___');
+  // 코드 안에 빈칸이 있으면 prompt는 ___ 없이 질문만 두고, 입력란은 코드 아래에 둔다
+  const [before, after] = codeBlank ? [c.prompt, ''] : c.prompt.split('___');
   const text = (value as { text: string } | null)?.text ?? '';
+  const stateColor = revealed ? (revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)') : undefined;
+  const input = (
+    <>
+      <input
+        ref={ref}
+        type="text"
+        value={text}
+        disabled={!!revealed}
+        onChange={(e) => onChange({ text: e.target.value })}
+        aria-label="빈칸"
+        autoComplete="off"
+        className="mx-1 inline-block w-40 border border-ink bg-field px-2 py-0.5 text-center text-ink focus:shadow-[inset_0_0_0_1px_var(--color-ink)]"
+        style={revealed ? { borderColor: stateColor, color: stateColor, boxShadow: `inset 0 0 0 1px ${stateColor}` } : undefined}
+      />
+      {revealed && (
+        <span className="mr-1 inline-block align-middle">
+          <StateIcon state={revealed.isCorrect ? 'correct' : 'wrong'} />
+        </span>
+      )}
+    </>
+  );
   return (
     <div>
       <h2 className="mb-5 text-title font-semibold">
         {before}
-        <input
-          ref={ref}
-          type="text"
-          value={text}
-          disabled={!!revealed}
-          onChange={(e) => onChange({ text: e.target.value })}
-          aria-label="빈칸"
-          autoComplete="off"
-          className="mx-1 inline-block w-40 border border-ink bg-field px-2 py-0.5 text-center text-ink focus:shadow-[inset_0_0_0_1px_var(--color-ink)]"
-          style={revealed ? { borderColor: revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)', color: revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)', boxShadow: `inset 0 0 0 1px ${revealed.isCorrect ? 'var(--color-correct)' : 'var(--color-wrong)'}` } : undefined}
-        />
-        {revealed && (
-          <span className="mr-1 inline-block align-middle">
-            <StateIcon state={revealed.isCorrect ? 'correct' : 'wrong'} />
-          </span>
-        )}
+        {!codeBlank && input}
         {after}
       </h2>
-      {c.code && <CodeBlock source={c.code.source} className="mb-4" />}
+      {c.code && (
+        <CodeBlock
+          source={c.code.source}
+          language={c.code.language}
+          blank={{ text: text.trim() ? text : '', state: revealed ? (revealed.isCorrect ? 'correct' : 'wrong') : undefined }}
+          className="mb-4"
+        />
+      )}
+      {codeBlank && <div className="mb-4">{input}</div>}
       {c.hint && !revealed && <p className="text-cap text-ink-2">힌트: {c.hint}</p>}
     </div>
   );
