@@ -1,0 +1,216 @@
+{
+  "track": "eip",
+  "unit": "u04-data-structure",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "eip-dev-ds-basic-sort-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sort",
+        "bubble-sort"
+      ],
+      "content": {
+        "prompt": "이웃한 두 원소를 비교해 순서가 틀리면 교환하는 정렬은?",
+        "options": [
+          "버블 정렬",
+          "선택 정렬",
+          "삽입 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "버블 정렬은 이웃한 두 원소를 차례로 비교해 순서가 틀리면 교환합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-basic-sort-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sort",
+        "selection-sort"
+      ],
+      "content": {
+        "prompt": "남은 구간의 최솟값을 찾아 구간 맨 앞과 교환하는 정렬은?",
+        "options": [
+          "버블 정렬",
+          "선택 정렬",
+          "삽입 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "선택 정렬은 남은 구간에서 최솟값을 골라 그 구간의 맨 앞 원소와 교환합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-basic-sort-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sort",
+        "insertion-sort"
+      ],
+      "content": {
+        "prompt": "원소를 앞쪽 정렬된 부분의 알맞은 자리에 끼워 넣는 정렬은?",
+        "options": [
+          "삽입 정렬",
+          "선택 정렬",
+          "버블 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "삽입 정렬은 원소를 하나씩 꺼내 앞쪽 정렬된 부분의 알맞은 위치에 끼워 넣습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-basic-sort-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sort",
+        "bubble-sort"
+      ],
+      "content": {
+        "prompt": "오름차순 버블 정렬은 회차마다 가장 작은 값이 맨 끝으로 간다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "오름차순 버블 정렬은 회차마다 가장 큰 값이 맨 끝으로 이동합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-basic-sort-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sort",
+        "pass"
+      ],
+      "content": {
+        "prompt": "정렬에서 데이터를 한 번 훑는 단위를 ___ 라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "회차",
+          "pass",
+          "패스"
+        ]
+      },
+      "explanation": "회차(PASS)는 데이터를 처음부터 끝까지 한 번 훑는 단위입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-basic-sort-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sort",
+        "selection-sort"
+      ],
+      "content": {
+        "prompt": "최솟값을 골라 맨 앞과 교환하는 방식은 ___ 정렬이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "선택",
+          "선택 정렬",
+          "selection",
+          "selection sort"
+        ]
+      },
+      "explanation": "선택 정렬은 남은 구간의 최솟값을 찾아 구간 맨 앞과 교환하는 방식입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-basic-sort-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sort",
+        "bubble-sort"
+      ],
+      "content": {
+        "prompt": "[4, 3, 1, 2]를 오름차순 버블 정렬할 때 1회차 후 결과는?",
+        "options": [
+          "[1, 2, 3, 4]",
+          "[3, 1, 2, 4]",
+          "[3, 4, 1, 2]"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "4가 이웃과 차례로 교환되며 맨 끝으로 가 [3, 1, 2, 4]가 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-basic-sort-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sort",
+        "selection-sort"
+      ],
+      "content": {
+        "prompt": "[4, 3, 1, 2]를 오름차순 선택 정렬할 때 1회차 후 결과는?",
+        "options": [
+          "[1, 3, 4, 2]",
+          "[3, 1, 2, 4]",
+          "[1, 2, 3, 4]"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "최솟값 1을 찾아 맨 앞의 4와 교환하므로 [1, 3, 4, 2]가 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-basic-sort-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sort",
+        "bubble-sort"
+      ],
+      "content": {
+        "prompt": "오름차순 버블 정렬의 1회차가 끝나면 맨 끝 원소는?",
+        "options": [
+          "최솟값",
+          "중앙값",
+          "최댓값"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "이웃끼리 비교·교환하는 동안 가장 큰 값이 계속 뒤로 밀려 1회차 끝에 맨 끝에 놓입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-basic-sort-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sort",
+        "bubble-sort"
+      ],
+      "content": {
+        "prompt": "버블 정렬은 이웃한 두 원소끼리 비교한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "버블 정렬은 이웃한 두 원소를 비교해 순서가 틀리면 교환하는 방식입니다.",
+      "refs": []
+    }
+  ]
+}

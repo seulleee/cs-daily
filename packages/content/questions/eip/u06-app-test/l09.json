@@ -1,0 +1,237 @@
+{
+  "track": "eip",
+  "unit": "u06-app-test",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "eip-dev-test-mock-001",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "testing",
+        "pesticide-paradox"
+      ],
+      "content": {
+        "prompt": "테스트 원리 중 살충제 패러독스에 대한 설명으로 옳은 것은?",
+        "options": [
+          "결함은 소수 모듈에 몰려 있다",
+          "같은 테스트만 반복하면 새 결함을 못 찾는다",
+          "테스트로 결함이 없음을 증명할 수 있다",
+          "결함이 없으면 품질이 항상 높다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "살충제 패러독스는 같은 테스트만 반복하면 새 결함을 찾지 못한다는 원리입니다. 첫 보기는 결함 집중입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-mock-002",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "black-box",
+        "coverage"
+      ],
+      "content": {
+        "prompt": "블랙박스 테스트 기법에 해당하지 않는 것은?",
+        "options": [
+          "동등 분할",
+          "경계값 분석",
+          "원인-결과 그래프",
+          "구문 커버리지"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "구문 커버리지는 내부 문장 실행을 보는 화이트박스 기준입니다. 나머지는 블랙박스 기법입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-mock-003",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "white-box",
+        "testing"
+      ],
+      "content": {
+        "prompt": "화이트박스 테스트에 대한 설명으로 옳은 것은?",
+        "options": [
+          "명세의 입력·출력만 보고 설계한다",
+          "내부 논리 흐름을 보고 설계한다",
+          "사용자가 직접 수락 여부를 정한다",
+          "경계값만 골라 테스트한다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "화이트박스 테스트는 코드와 논리 흐름 같은 내부 구조를 보고 설계합니다. 첫 보기는 블랙박스입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-mock-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "integration",
+        "stub"
+      ],
+      "content": {
+        "prompt": "하향식 통합 테스트에서 아직 없는 하위 모듈을 대신하는 것은?",
+        "options": [
+          "드라이버",
+          "스텁",
+          "오라클",
+          "테스트 케이스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "하향식 통합은 상위부터 결합하므로 없는 하위 모듈을 스텁으로 대신합니다. 드라이버는 상향식에서 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-mock-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "test-oracle",
+        "testing"
+      ],
+      "content": {
+        "prompt": "테스트 결과가 맞는지 판단하는 기준은?",
+        "options": [
+          "테스트 오라클",
+          "테스트 케이스",
+          "테스트 드라이버",
+          "테스트 스텁"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "테스트 오라클은 결과의 참·거짓을 판단하는 기준입니다. 테스트 케이스는 입력·조건·예상 결과의 집합입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-mock-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "test-level",
+        "acceptance"
+      ],
+      "content": {
+        "prompt": "인수 테스트에 대한 설명으로 옳은 것은?",
+        "options": [
+          "모듈 하나를 따로 테스트한다",
+          "모듈 간 인터페이스를 테스트한다",
+          "사용자가 받아들일지 확인한다",
+          "실행 없이 산출물을 검토한다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "인수 테스트는 사용자가 받아들일지 확인하며 알파·베타 테스트가 포함됩니다. 앞 두 보기는 단위·통합 테스트입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-mock-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "cyclomatic",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "간선 10개, 노드 8개인 흐름 그래프의 순환 복잡도는?",
+        "options": [
+          "4",
+          "2",
+          "6",
+          "18"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "순환 복잡도 = 간선 수 − 노드 수 + 2 = 10 − 8 + 2 = 4입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-mock-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "black-box",
+        "boundary"
+      ],
+      "content": {
+        "prompt": "입력 범위 1~50이 유효할 때 경계값 분석의 테스트 값으로 알맞은 것은?",
+        "options": [
+          "10, 20, 30",
+          "25",
+          "1, 25, 49",
+          "0, 1, 50, 51"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "경계값 분석은 경계 1과 50의 바로 아래·위 값을 고르므로 0, 1, 50, 51을 테스트합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-mock-009",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "integration",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "상향식 통합 테스트에 대한 설명으로 옳은 것은?",
+        "options": [
+          "하위 모듈부터 결합하고 드라이버를 쓴다",
+          "상위 모듈부터 결합한다",
+          "없는 하위 모듈을 스텁으로 대신한다",
+          "모듈을 한꺼번에 결합한다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "상향식 통합은 하위 모듈부터 결합하며 상위 호출부를 드라이버로 대신합니다. 스텁은 하향식에서 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-mock-010",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "review",
+        "static-test"
+      ],
+      "content": {
+        "prompt": "소프트웨어 리뷰에 대한 설명으로 틀린 것은?",
+        "options": [
+          "인스펙션은 공식 검토이다",
+          "워크스루는 비공식 검토이다",
+          "FTR은 결함을 찾는 공식 검토 회의다",
+          "리뷰는 프로그램을 실행하며 검사한다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "리뷰는 산출물을 실행하지 않고 사람이 검토하는 정적 테스트입니다.",
+      "refs": []
+    }
+  ]
+}

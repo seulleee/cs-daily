@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u05-package-config-interface",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "eip-dev-pkg-drm-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "packaging",
+        "release"
+      ],
+      "content": {
+        "prompt": "개발한 SW를 사용자가 설치·실행할 수 있게 묶는 것은?",
+        "options": [
+          "패키징",
+          "리팩토링",
+          "형상 관리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "패키징은 개발한 소프트웨어를 사용자가 설치하고 실행할 수 있는 형태로 묶는 작업입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-drm-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "drm",
+        "copyright"
+      ],
+      "content": {
+        "prompt": "디지털 콘텐츠의 사용 권한·유통을 관리하는 보호 기술은?",
+        "options": [
+          "EAI",
+          "DRM",
+          "RCS"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DRM은 디지털 콘텐츠의 사용 권한과 유통을 관리하는 저작권 보호 기술입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-drm-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "release-note",
+        "packaging"
+      ],
+      "content": {
+        "prompt": "버전의 변경 사항·수정 내용을 사용자에게 알리는 문서는?",
+        "options": [
+          "테스트 케이스",
+          "요구사항 명세서",
+          "릴리스 노트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "릴리스 노트는 새 버전에서 무엇이 바뀌고 고쳐졌는지 사용자에게 알리는 문서입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-drm-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "packaging",
+        "user-centric"
+      ],
+      "content": {
+        "prompt": "패키징은 개발자의 실행 환경만 고려해 만든다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "패키징은 사용자 중심으로, 사용자의 실행 환경을 고려해 범용 배포 형태로 만듭니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-drm-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "release-note",
+        "packaging"
+      ],
+      "content": {
+        "prompt": "버전별 변경·수정 내용을 알리는 문서는 ___ 노트이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "릴리스",
+          "release",
+          "릴리즈"
+        ]
+      },
+      "explanation": "릴리스 노트는 버전의 변경 사항과 수정 내용을 사용자에게 알리는 문서입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-drm-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "drm",
+        "copyright"
+      ],
+      "content": {
+        "prompt": "콘텐츠 사용 권한을 관리하는 저작권 보호 기술의 약자는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "DRM",
+          "디알엠"
+        ]
+      },
+      "explanation": "DRM(Digital Rights Management)은 디지털 콘텐츠의 사용 권한·유통을 관리하는 기술입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-drm-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "release-note",
+        "packaging"
+      ],
+      "content": {
+        "prompt": "새 버전에서 고친 버그 목록을 사용자에게 알리려 한다. 쓸 문서는?",
+        "options": [
+          "릴리스 노트",
+          "DRM",
+          "소스 코드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "버전의 변경·수정 내용을 사용자에게 알리는 문서는 릴리스 노트입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-drm-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "drm",
+        "copyright"
+      ],
+      "content": {
+        "prompt": "구매한 사용자만 전자책을 열게 하려 한다. 필요한 기술은?",
+        "options": [
+          "리팩토링",
+          "DRM",
+          "릴리스 노트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "콘텐츠의 사용 권한을 구매자에게만 주는 것은 저작권 보호 기술인 DRM의 역할입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-drm-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "packaging",
+        "user-centric"
+      ],
+      "content": {
+        "prompt": "패키징을 할 때 중심에 두는 관점은?",
+        "options": [
+          "사용자",
+          "개발자",
+          "테스터"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "패키징은 사용자 중심으로 진행하며 사용자의 실행 환경을 고려해 배포 형태를 정합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-drm-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "packaging",
+        "release"
+      ],
+      "content": {
+        "prompt": "패키징은 사용자 실행 환경을 고려해 범용 배포 형태로 만든다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "패키징은 사용자가 설치·실행할 수 있도록 실행 환경을 고려한 범용 배포 형태로 묶습니다.",
+      "refs": []
+    }
+  ]
+}

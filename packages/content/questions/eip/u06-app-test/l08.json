@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u06-app-test",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "eip-dev-review-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "review",
+        "static-test"
+      ],
+      "content": {
+        "prompt": "산출물을 실행하지 않고 사람이 검토해 결함을 찾는 활동은?",
+        "options": [
+          "소프트웨어 리뷰",
+          "동적 테스트",
+          "결함 집중"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "소프트웨어 리뷰는 산출물을 실행하지 않고 사람이 직접 검토해 결함을 찾는 활동입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-review-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "review",
+        "inspection"
+      ],
+      "content": {
+        "prompt": "훈련된 검토자가 정해진 절차로 결함을 찾는 공식 검토는?",
+        "options": [
+          "워크스루",
+          "인스펙션",
+          "동료 검토"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인스펙션은 훈련된 검토자가 정해진 절차에 따라 결함을 찾는 공식 검토입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-review-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "review",
+        "walkthrough"
+      ],
+      "content": {
+        "prompt": "자료를 미리 배포하고 짧은 회의로 오류를 찾는 비공식 검토는?",
+        "options": [
+          "인스펙션",
+          "워크스루",
+          "FTR"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "워크스루는 검토 자료를 미리 나눠 주고 짧은 회의로 오류를 찾는 비공식 검토입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-review-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "review",
+        "inspection"
+      ],
+      "content": {
+        "prompt": "인스펙션은 비공식 검토 방식이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "인스펙션은 정해진 절차를 따르는 공식 검토입니다. 비공식 검토는 워크스루입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-review-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "review",
+        "ftr"
+      ],
+      "content": {
+        "prompt": "정형 기술 검토의 영문 약자는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "FTR",
+          "에프티알"
+        ]
+      },
+      "explanation": "FTR(Formal Technical Review)은 산출물의 결함을 찾는 공식 검토 회의입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "review",
+        "walkthrough"
+      ],
+      "content": {
+        "prompt": "자료를 미리 나눠 주고 짧은 회의로 오류를 찾는 비공식 검토는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "워크스루",
+          "walkthrough",
+          "walk through",
+          "워크 스루"
+        ]
+      },
+      "explanation": "워크스루는 자료를 미리 배포한 뒤 짧은 회의로 오류를 찾는 비공식 검토입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-review-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "review",
+        "walkthrough"
+      ],
+      "content": {
+        "prompt": "검토 문서를 회의 전날 배포하고 1시간 동안 훑었다. 해당하는 것은?",
+        "options": [
+          "워크스루",
+          "인스펙션",
+          "단위 테스트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "자료를 미리 배포하고 짧은 회의로 오류를 찾았으므로 워크스루입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-review-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "review",
+        "inspection"
+      ],
+      "content": {
+        "prompt": "정해진 역할·체크리스트대로 진행한 공식 결함 검토는?",
+        "options": [
+          "워크스루",
+          "베타 테스트",
+          "인스펙션"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "훈련된 검토자가 정해진 절차로 결함을 찾는 공식 검토는 인스펙션입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-review-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "review",
+        "static-test"
+      ],
+      "content": {
+        "prompt": "소프트웨어 리뷰는 정적·동적 테스트 중 어디에 속하는가?",
+        "options": [
+          "정적 테스트",
+          "동적 테스트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "리뷰는 산출물을 실행하지 않고 검토하므로 정적 테스트에 속합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-review-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "review",
+        "static-test"
+      ],
+      "content": {
+        "prompt": "소프트웨어 리뷰는 산출물을 실행하지 않고 검토한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "소프트웨어 리뷰는 사람이 산출물을 직접 읽고 검토해 실행 없이 결함을 찾습니다.",
+      "refs": []
+    }
+  ]
+}

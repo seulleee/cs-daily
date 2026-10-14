@@ -1,0 +1,237 @@
+{
+  "track": "eip",
+  "unit": "u05-package-config-interface",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "eip-dev-pkg-mock-001",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scm",
+        "configuration"
+      ],
+      "content": {
+        "prompt": "형상 관리에 대한 설명으로 옳은 것은?",
+        "options": [
+          "산출물의 변경을 추적·통제한다",
+          "소프트웨어를 설치 형태로 묶는다",
+          "콘텐츠의 저작권을 보호한다",
+          "외부 동작을 유지하며 구조를 개선한다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "형상 관리는 산출물의 변경을 추적·통제하는 활동입니다. 나머지는 패키징, DRM, 리팩토링입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-mock-002",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scm",
+        "process"
+      ],
+      "content": {
+        "prompt": "형상 관리 절차를 순서대로 바르게 나열한 것은?",
+        "options": [
+          "통제 → 식별 → 감사 → 기록",
+          "식별 → 통제 → 감사 → 기록",
+          "식별 → 감사 → 통제 → 기록",
+          "기록 → 식별 → 통제 → 감사"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "항목을 정하고(식별), 변경을 승인하고(통제), 검증한 뒤(감사), 기록·보고(기록)합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-mock-003",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "refactoring",
+        "clean-code"
+      ],
+      "content": {
+        "prompt": "리팩토링에 대한 설명으로 옳은 것은?",
+        "options": [
+          "새 기능을 추가하는 작업이다",
+          "외부 동작은 유지하고 내부 구조를 개선한다",
+          "다른 플랫폼으로 이식하는 작업이다",
+          "형상 항목에 번호를 붙이는 작업이다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "리팩토링은 외부 동작은 그대로 두고 내부 구조만 개선합니다. 기능 추가나 이식과는 다릅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-mock-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "eai",
+        "type"
+      ],
+      "content": {
+        "prompt": "EAI 유형에 해당하지 않는 것은?",
+        "options": [
+          "포인트 투 포인트",
+          "허브 앤 스포크",
+          "메시지 버스",
+          "중앙 집중형"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "EAI 유형은 포인트 투 포인트, 허브 앤 스포크, 메시지 버스, 하이브리드입니다. 중앙 집중형은 버전 관리 방식입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-mock-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "json",
+        "data-format"
+      ],
+      "content": {
+        "prompt": "이름: 값 쌍으로 데이터를 표현하는 경량 데이터 형식은?",
+        "options": [
+          "XML",
+          "JSON",
+          "UDDI",
+          "WSDL"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "JSON은 이름: 값 쌍으로 표현하는 경량 형식입니다. XML은 사용자 정의 태그를 쓰는 마크업 언어입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-mock-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vcs",
+        "distributed"
+      ],
+      "content": {
+        "prompt": "버전 관리 도구에 대한 설명으로 틀린 것은?",
+        "options": [
+          "Git은 분산형 도구이다",
+          "SVN은 중앙 집중형 도구이다",
+          "RCS는 파일 잠금으로 동시 수정을 막는다",
+          "분산형은 서버에만 이력을 둔다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "분산형은 개발자마다 전체 저장소 복사본을 가집니다. 서버 저장소 하나에만 이력을 두는 것은 중앙 집중형입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-mock-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "reengineering",
+        "activity"
+      ],
+      "content": {
+        "prompt": "재공학 활동에 해당하지 않는 것은?",
+        "options": [
+          "분석",
+          "재구성",
+          "역공학",
+          "패키징"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "재공학 활동은 분석, 재구성, 역공학, 이식(Migration)입니다. 패키징은 배포를 위해 묶는 작업입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-mock-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "web-service",
+        "wsdl"
+      ],
+      "content": {
+        "prompt": "웹 서비스 구성 요소와 역할의 연결로 옳은 것은?",
+        "options": [
+          "SOAP – 서비스 등록·검색",
+          "UDDI – 메시지 규약",
+          "WSDL – 서비스 명세",
+          "AJAX – 서비스 명세"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "WSDL은 서비스 명세, SOAP은 메시지 규약, UDDI는 서비스 등록·검색을 담당합니다. AJAX는 비동기 통신 기법입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-mock-009",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "scm",
+        "control"
+      ],
+      "content": {
+        "prompt": "형상 관리 절차 중 변경 요청을 검토·승인해 베이스라인에 반영하는 것은?",
+        "options": [
+          "형상 통제",
+          "형상 식별",
+          "형상 감사",
+          "형상 기록"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "형상 통제는 변경 요청을 검토·승인해 베이스라인에 반영합니다. 감사는 검증, 기록은 기록·보고입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-pkg-mock-010",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "packaging",
+        "release"
+      ],
+      "content": {
+        "prompt": "소프트웨어 패키징에 대한 설명으로 옳은 것은?",
+        "options": [
+          "개발자 PC 환경에 맞춰 만든다",
+          "릴리스 노트는 개발자만 보는 내부 문서다",
+          "사용자 실행 환경을 고려해 범용 배포 형태로 만든다",
+          "DRM은 소스 코드의 변경 이력을 관리한다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "패키징은 사용자 중심으로 실행 환경을 고려해 만듭니다. 릴리스 노트는 사용자에게 알리는 문서, DRM은 저작권 보호 기술입니다.",
+      "refs": []
+    }
+  ]
+}

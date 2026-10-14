@@ -1,0 +1,213 @@
+{
+  "track": "eip",
+  "unit": "u05-package-config-interface",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "eip-dev-json-ws-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "json",
+        "data-format"
+      ],
+      "content": {
+        "prompt": "이름: 값 쌍으로 데이터를 표현하는 경량 텍스트 형식은?",
+        "options": [
+          "JSON",
+          "XML",
+          "WSDL"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "JSON은 이름: 값 쌍으로 데이터를 표현하는 가벼운 텍스트 형식입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-json-ws-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "xml",
+        "data-format"
+      ],
+      "content": {
+        "prompt": "사용자가 정의한 태그로 구조를 표현하는 마크업 언어는?",
+        "options": [
+          "JSON",
+          "XML",
+          "AJAX"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "XML은 사용자가 직접 정의한 태그로 데이터 구조를 표현하는 마크업 언어입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-json-ws-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "web-service",
+        "wsdl"
+      ],
+      "content": {
+        "prompt": "웹 서비스 구성 요소 중 서비스 명세를 기술하는 것은?",
+        "options": [
+          "SOAP",
+          "WSDL",
+          "UDDI"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "WSDL은 웹 서비스의 명세를 기술합니다. SOAP은 메시지 규약, UDDI는 서비스 등록·검색입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-json-ws-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ajax",
+        "async"
+      ],
+      "content": {
+        "prompt": "AJAX는 페이지 전체를 새로 고쳐 서버와 데이터를 주고받는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "AJAX는 페이지 전체를 새로 고치지 않고 서버와 비동기로 데이터를 주고받는 기법입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-json-ws-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "web-service",
+        "uddi"
+      ],
+      "content": {
+        "prompt": "웹 서비스를 등록하고 검색하는 구성 요소는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "UDDI",
+          "유디디아이"
+        ]
+      },
+      "explanation": "UDDI는 웹 서비스를 등록하고 검색하는 구성 요소입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-json-ws-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "web-service",
+        "soap"
+      ],
+      "content": {
+        "prompt": "웹 서비스에서 메시지 규약을 담당하는 것은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "SOAP",
+          "솝"
+        ]
+      },
+      "explanation": "SOAP은 웹 서비스에서 메시지를 주고받는 규약입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-json-ws-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "json",
+        "data-format"
+      ],
+      "content": {
+        "prompt": "{\"name\": \"kim\", \"age\": 20} 은 어떤 형식인가?",
+        "options": [
+          "XML",
+          "SOAP",
+          "JSON"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "중괄호 안에 이름: 값 쌍으로 데이터를 적었으므로 JSON 형식입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-json-ws-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "xml",
+        "data-format"
+      ],
+      "content": {
+        "prompt": "<user><name>kim</name></user> 는 어떤 형식인가?",
+        "options": [
+          "JSON",
+          "XML",
+          "UDDI"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "사용자가 정의한 user, name 태그로 구조를 표현했으므로 XML입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-json-ws-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ajax",
+        "async"
+      ],
+      "content": {
+        "prompt": "입력할 때마다 화면 갱신 없이 추천어가 뜬다. 쓰인 기법은?",
+        "options": [
+          "AJAX",
+          "UDDI",
+          "XML"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "페이지 전체를 새로 고치지 않고 서버와 비동기로 데이터를 주고받는 기법은 AJAX입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-json-ws-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "json",
+        "data-format"
+      ],
+      "content": {
+        "prompt": "JSON은 이름: 값 쌍으로 데이터를 표현한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "JSON은 이름: 값 쌍으로 데이터를 표현하는 경량 텍스트 형식입니다.",
+      "refs": []
+    }
+  ]
+}

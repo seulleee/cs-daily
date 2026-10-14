@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u06-app-test",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "eip-dev-test-principle-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "testing",
+        "pesticide-paradox"
+      ],
+      "content": {
+        "prompt": "같은 테스트만 반복하면 새 결함을 찾지 못한다는 원리는?",
+        "options": [
+          "살충제 패러독스",
+          "결함 집중",
+          "오류-부재의 궤변"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "살충제 패러독스는 같은 테스트 케이스만 반복하면 새로운 결함을 찾지 못한다는 원리입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-principle-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "testing",
+        "defect-clustering"
+      ],
+      "content": {
+        "prompt": "결함이 소수 모듈에 몰려 있다는 원리는?",
+        "options": [
+          "결함 존재 증명",
+          "결함 집중",
+          "살충제 패러독스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "결함 집중은 결함 대부분이 소수 모듈에 몰려 있다는 원리로 파레토 법칙과 연결됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-principle-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "testing",
+        "absence-of-errors"
+      ],
+      "content": {
+        "prompt": "결함이 없어도 요구를 못 맞추면 품질이 낮다는 원리는?",
+        "options": [
+          "결함 집중",
+          "살충제 패러독스",
+          "오류-부재의 궤변"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "오류-부재의 궤변은 결함이 없어도 사용자 요구를 충족하지 못하면 품질이 낮다는 원리입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-principle-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "testing",
+        "presence-of-defects"
+      ],
+      "content": {
+        "prompt": "테스트로 결함이 없음을 증명할 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "테스트는 결함이 있음을 보여 줄 수 있을 뿐, 결함이 없음을 증명하지는 못합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-principle-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "testing",
+        "defect-clustering"
+      ],
+      "content": {
+        "prompt": "결함이 소수 모듈에 몰리는 현상은 ___ 법칙과 관련된다."
+      },
+      "answer_key": {
+        "accepted": [
+          "파레토",
+          "pareto"
+        ]
+      },
+      "explanation": "결함 집중은 소수 모듈에 결함이 몰린다는 원리로, 파레토 법칙(80:20)과 연결됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-principle-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "testing",
+        "pesticide-paradox"
+      ],
+      "content": {
+        "prompt": "같은 테스트 반복으로 새 결함을 못 찾는 것은 살충제 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "패러독스",
+          "paradox",
+          "역설"
+        ]
+      },
+      "explanation": "살충제 패러독스는 같은 테스트만 반복하면 새 결함을 찾지 못한다는 원리입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-principle-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "testing",
+        "defect-clustering"
+      ],
+      "content": {
+        "prompt": "전체 결함의 80%가 모듈 2개에서 나왔다. 해당 원리는?",
+        "options": [
+          "결함 집중",
+          "결함 존재 증명",
+          "오류-부재의 궤변"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "결함이 소수 모듈에 몰려 있으므로 결함 집중 원리에 해당합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-principle-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "testing",
+        "pesticide-paradox"
+      ],
+      "content": {
+        "prompt": "1년째 같은 테스트 케이스로 결함이 안 나온다. 의심할 원리는?",
+        "options": [
+          "결함 집중",
+          "살충제 패러독스",
+          "오류-부재의 궤변"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "같은 테스트만 반복하면 새 결함을 찾지 못하므로 살충제 패러독스를 의심하고 케이스를 바꿔야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-principle-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "testing",
+        "absence-of-errors"
+      ],
+      "content": {
+        "prompt": "결함은 0건인데 사용자가 원한 기능이 빠졌다. 해당 원리는?",
+        "options": [
+          "결함 집중",
+          "살충제 패러독스",
+          "오류-부재의 궤변"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "결함이 없어도 사용자 요구를 맞추지 못하면 품질이 낮다는 오류-부재의 궤변에 해당합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-principle-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "testing",
+        "presence-of-defects"
+      ],
+      "content": {
+        "prompt": "테스트는 결함이 있음을 보일 뿐 없음을 증명하지 못한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "이를 결함 존재 증명 원리라고 하며, 결함이 발견되지 않아도 결함이 없다고 단정할 수 없습니다.",
+      "refs": []
+    }
+  ]
+}

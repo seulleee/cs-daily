@@ -1,0 +1,215 @@
+{
+  "track": "eip",
+  "unit": "u05-package-config-interface",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "eip-dev-clean-refactor-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "clean-code",
+        "maintainability"
+      ],
+      "content": {
+        "prompt": "다른 사람이 읽고 고치기 쉬운 코드는?",
+        "options": [
+          "클린 코드",
+          "레거시 코드",
+          "난독화 코드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "클린 코드는 다른 사람이 읽고 고치기 쉽게 작성한 코드입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-clean-refactor-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "refactoring",
+        "clean-code"
+      ],
+      "content": {
+        "prompt": "외부 동작은 그대로 두고 내부 구조를 개선하는 것은?",
+        "options": [
+          "디버깅",
+          "리팩토링",
+          "패키징"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "리팩토링은 프로그램의 외부 동작을 바꾸지 않고 내부 구조만 개선하는 작업입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-clean-refactor-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "code-smell",
+        "refactoring"
+      ],
+      "content": {
+        "prompt": "중복 코드·긴 메서드처럼 리팩토링이 필요한 징후는?",
+        "options": [
+          "베이스라인",
+          "릴리스 노트",
+          "코드 스멜"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "코드 스멜은 중복 코드, 긴 메서드처럼 리팩토링이 필요하다는 징후입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-clean-refactor-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "refactoring",
+        "clean-code"
+      ],
+      "content": {
+        "prompt": "리팩토링은 프로그램에 새 기능을 추가하는 작업이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "리팩토링은 외부 동작을 그대로 두고 내부 구조만 개선합니다. 기능 추가는 리팩토링이 아닙니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-clean-refactor-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "refactoring",
+        "code-smell"
+      ],
+      "content": {
+        "prompt": "코드 스멜을 발견하면 ___ 으로 내부 구조를 개선한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "리팩토링",
+          "refactoring",
+          "리팩터링"
+        ]
+      },
+      "explanation": "코드 스멜은 리팩토링이 필요한 징후이며, 리팩토링은 외부 동작을 유지한 채 구조를 개선합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-clean-refactor-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "code-smell",
+        "refactoring"
+      ],
+      "content": {
+        "prompt": "리팩토링이 필요하다는 징후를 코드 ___ 이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스멜",
+          "smell",
+          "냄새"
+        ]
+      },
+      "explanation": "코드 스멜은 중복 코드·긴 메서드처럼 리팩토링이 필요하다는 징후입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-clean-refactor-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "clean-code",
+        "principle"
+      ],
+      "content": {
+        "prompt": "다음 중 클린 코드 원칙이 아닌 것은?",
+        "options": [
+          "가독성",
+          "중복성 최소",
+          "의존성 최대"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "클린 코드 원칙은 가독성, 단순성, 의존성 최소, 중복성 최소, 추상화입니다. 의존성은 최소로 줄입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-clean-refactor-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "clean-code",
+        "principle"
+      ],
+      "content": {
+        "prompt": "같은 로직이 다섯 곳에 복사돼 있다. 어긋난 클린 코드 원칙은?",
+        "options": [
+          "중복성 최소",
+          "추상화",
+          "가독성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "같은 코드가 여러 곳에 반복되면 중복성 최소 원칙에 어긋납니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-clean-refactor-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "refactoring",
+        "clean-code"
+      ],
+      "content": {
+        "prompt": "리팩토링 전후로 반드시 같아야 하는 것은?",
+        "options": [
+          "외부 동작",
+          "내부 구조",
+          "코드 줄 수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "리팩토링은 내부 구조를 바꾸되 외부에서 보이는 동작은 그대로 유지해야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-clean-refactor-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "clean-code",
+        "maintainability"
+      ],
+      "content": {
+        "prompt": "클린 코드는 다른 사람이 읽고 고치기 쉬운 코드이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "클린 코드는 가독성이 높고 단순해 다른 사람이 읽고 고치기 쉬운 코드입니다.",
+      "refs": []
+    }
+  ]
+}

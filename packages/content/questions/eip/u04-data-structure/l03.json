@@ -1,0 +1,217 @@
+{
+  "track": "eip",
+  "unit": "u04-data-structure",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "eip-dev-ds-tree-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tree",
+        "root"
+      ],
+      "content": {
+        "prompt": "트리에서 부모가 없는 맨 위 노드는?",
+        "options": [
+          "리프",
+          "루트",
+          "형제 노드"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "루트는 부모가 없는 트리의 맨 위 노드입니다. 리프는 자식이 없는 노드입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-tree-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tree",
+        "leaf"
+      ],
+      "content": {
+        "prompt": "트리에서 자식이 없는 노드는?",
+        "options": [
+          "리프",
+          "루트",
+          "내부 노드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "리프는 자식이 없어 차수가 0인 노드입니다. 루트는 부모가 없는 맨 위 노드입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-tree-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tree",
+        "preorder"
+      ],
+      "content": {
+        "prompt": "루트 → 왼쪽 → 오른쪽 순서로 방문하는 순회는?",
+        "options": [
+          "전위 순회",
+          "중위 순회",
+          "후위 순회"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "전위 순회는 루트를 먼저 방문한 뒤 왼쪽, 오른쪽 서브트리를 차례로 방문합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-tree-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "tree",
+        "postorder"
+      ],
+      "content": {
+        "prompt": "후위 순회는 루트를 가장 먼저 방문한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "후위 순회는 왼쪽 → 오른쪽 → 루트 순서로 루트를 마지막에 방문합니다. 루트를 먼저 보는 것은 전위 순회입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-tree-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tree",
+        "degree"
+      ],
+      "content": {
+        "prompt": "노드가 가진 자식의 수를 그 노드의 ___ 라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "차수",
+          "degree",
+          "디그리"
+        ]
+      },
+      "explanation": "노드의 차수는 그 노드의 자식 수입니다. 리프 노드는 자식이 없어 차수가 0입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-tree-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "tree",
+        "inorder"
+      ],
+      "content": {
+        "prompt": "왼쪽 → 루트 → 오른쪽 순서의 순회는 ___ 순회이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "중위",
+          "중위 순회",
+          "inorder",
+          "in order",
+          "인오더"
+        ]
+      },
+      "explanation": "중위 순회는 왼쪽 서브트리, 루트, 오른쪽 서브트리 순서로 방문합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-tree-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tree",
+        "preorder"
+      ],
+      "content": {
+        "prompt": "루트 A의 왼쪽 자식 B, 오른쪽 자식 C. 전위 순회 결과는?",
+        "options": [
+          "A B C",
+          "B A C",
+          "B C A"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "전위 순회는 루트 → 왼쪽 → 오른쪽이므로 A, B, C 순서입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-tree-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tree",
+        "postorder"
+      ],
+      "content": {
+        "prompt": "루트 A의 왼쪽 자식 B, 오른쪽 자식 C. 후위 순회 결과는?",
+        "options": [
+          "A B C",
+          "B A C",
+          "B C A"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "후위 순회는 왼쪽 → 오른쪽 → 루트이므로 B, C, A 순서입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-tree-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tree",
+        "degree"
+      ],
+      "content": {
+        "prompt": "자식으로 D, E, F를 가진 노드의 차수는?",
+        "options": [
+          "0",
+          "3",
+          "1"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "노드의 차수는 자식 수이므로 자식이 3개인 노드의 차수는 3입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-ds-tree-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "tree",
+        "root"
+      ],
+      "content": {
+        "prompt": "트리는 사이클 없이 연결된 계층 구조이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "트리는 사이클이 없는 계층 구조이며, 맨 위에 부모가 없는 루트 노드가 하나 있습니다.",
+      "refs": []
+    }
+  ]
+}

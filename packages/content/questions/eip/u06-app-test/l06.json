@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u06-app-test",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "eip-dev-test-stub-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "integration",
+        "stub"
+      ],
+      "content": {
+        "prompt": "호출될 하위 모듈을 대신하는 임시 모듈은?",
+        "options": [
+          "스텁",
+          "드라이버",
+          "인터페이스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스텁은 아직 없는 하위 모듈을 대신해 호출을 받아 주는 임시 모듈입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-stub-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "integration",
+        "driver"
+      ],
+      "content": {
+        "prompt": "테스트 대상 모듈을 호출하고 값을 넘기는 임시 상위 모듈은?",
+        "options": [
+          "스텁",
+          "드라이버",
+          "인터페이스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "드라이버는 테스트 대상 모듈을 호출하고 값을 넘겨 주는 임시 상위 모듈입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-stub-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "integration",
+        "top-down"
+      ],
+      "content": {
+        "prompt": "상위 모듈부터 결합해 내려가는 통합 방식은?",
+        "options": [
+          "상향식 통합",
+          "하향식 통합"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "하향식 통합은 상위 모듈부터 결합하고, 아직 없는 하위 모듈은 스텁으로 대신합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-stub-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "integration",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "상향식 통합에서는 아직 없는 상위 호출부를 드라이버로 대신한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "상향식 통합은 하위 모듈부터 결합하므로, 이를 호출할 상위 부분을 드라이버로 대신합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-stub-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "integration",
+        "stub"
+      ],
+      "content": {
+        "prompt": "하향식 통합에서 아직 없는 하위 모듈은 ___ 으로 대신한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스텁",
+          "stub"
+        ]
+      },
+      "explanation": "하향식 통합은 상위부터 결합하므로 아직 없는 하위 모듈을 스텁으로 대신합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-stub-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "integration",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "하위 모듈부터 결합해 올라가는 통합 방식은 ___ 통합이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "상향식",
+          "bottom up",
+          "bottomup",
+          "상향"
+        ]
+      },
+      "explanation": "상향식 통합은 하위 모듈부터 결합하며 상위 호출부는 드라이버로 대신합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-stub-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "integration",
+        "stub"
+      ],
+      "content": {
+        "prompt": "메인 모듈만 완성됐고 하위 계산 모듈이 아직 없다. 필요한 것은?",
+        "options": [
+          "스텁",
+          "드라이버",
+          "릴리스 노트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "아직 없는 하위 모듈을 대신하는 임시 모듈은 스텁입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-stub-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "integration",
+        "driver"
+      ],
+      "content": {
+        "prompt": "하위 DB 모듈만 완성돼 이를 호출할 쪽이 없다. 필요한 것은?",
+        "options": [
+          "스텁",
+          "드라이버",
+          "베이스라인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "테스트 대상 모듈을 호출하고 값을 넘겨 줄 임시 상위 모듈, 즉 드라이버가 필요합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-stub-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "integration",
+        "stub-driver"
+      ],
+      "content": {
+        "prompt": "하향식과 상향식 통합에 각각 필요한 임시 모듈은?",
+        "options": [
+          "드라이버, 스텁",
+          "둘 다 스텁",
+          "스텁, 드라이버"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "하향식은 없는 하위 모듈을 스텁으로, 상향식은 없는 상위 호출부를 드라이버로 대신합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-test-stub-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "integration",
+        "stub"
+      ],
+      "content": {
+        "prompt": "스텁은 테스트 대상 모듈을 호출하는 상위 모듈이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "스텁은 호출될 하위 모듈을 대신합니다. 테스트 대상을 호출하는 임시 상위 모듈은 드라이버입니다.",
+      "refs": []
+    }
+  ]
+}

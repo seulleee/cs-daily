@@ -1,0 +1,214 @@
+{
+  "track": "eip",
+  "unit": "u05-package-config-interface",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "eip-dev-scm-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scm",
+        "configuration"
+      ],
+      "content": {
+        "prompt": "개발 중 생기는 산출물의 변경을 추적·통제하는 활동은?",
+        "options": [
+          "형상 관리",
+          "패키징",
+          "리팩토링"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "형상 관리(SCM)는 개발 산출물의 변경을 추적하고 통제하는 활동입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scm",
+        "baseline"
+      ],
+      "content": {
+        "prompt": "검토·승인되어 변경 통제의 기준이 되는 시점의 산출물은?",
+        "options": [
+          "형상 항목",
+          "베이스라인",
+          "릴리스 노트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "베이스라인은 검토·승인을 거쳐 이후 변경을 통제하는 기준점이 되는 산출물입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scm",
+        "configuration-item"
+      ],
+      "content": {
+        "prompt": "소스 코드·문서·설정 파일처럼 형상 관리 대상인 산출물은?",
+        "options": [
+          "베이스라인",
+          "DRM",
+          "형상 항목"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "형상 항목은 소스 코드, 문서, 설정 파일처럼 형상 관리의 대상이 되는 산출물입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "scm",
+        "configuration"
+      ],
+      "content": {
+        "prompt": "형상 관리는 누가 언제 무엇을 바꿨는지 알 수 있게 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "형상 관리는 변경 이력을 남겨 누가 언제 무엇을 바꿨는지 알게 하고 무질서한 변경을 막습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "scm",
+        "configuration"
+      ],
+      "content": {
+        "prompt": "형상 관리의 영문 약자는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "SCM",
+          "에스씨엠"
+        ]
+      },
+      "explanation": "형상 관리는 Software Configuration Management, 줄여서 SCM이라고 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "scm",
+        "baseline"
+      ],
+      "content": {
+        "prompt": "변경 통제의 기준이 되는 승인된 산출물 시점을 ___ 이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "베이스라인",
+          "baseline",
+          "기준선"
+        ]
+      },
+      "explanation": "베이스라인은 검토·승인되어 변경 통제의 기준이 되는 시점의 산출물입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scm",
+        "configuration-item"
+      ],
+      "content": {
+        "prompt": "다음 중 형상 항목으로 보기 어려운 것은?",
+        "options": [
+          "소스 코드",
+          "설계 문서",
+          "사무실 비품"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "형상 항목은 소스 코드·문서·설정 파일 같은 개발 산출물입니다. 사무실 비품은 산출물이 아닙니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scm",
+        "configuration"
+      ],
+      "content": {
+        "prompt": "승인된 설계서를 아무나 고쳐 버전이 엉켰다. 부족했던 활동은?",
+        "options": [
+          "형상 관리",
+          "패키징",
+          "DRM"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "산출물의 변경을 추적·통제하지 못해 생긴 문제이므로 형상 관리가 부족했습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scm",
+        "baseline"
+      ],
+      "content": {
+        "prompt": "베이스라인이 정해진 산출물을 바꾸려면?",
+        "options": [
+          "변경 요청 후 승인",
+          "바로 수정",
+          "삭제 후 재작성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "베이스라인은 변경 통제의 기준이므로 변경 요청을 검토·승인받은 뒤에만 바꿀 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-dev-scm-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "scm",
+        "configuration"
+      ],
+      "content": {
+        "prompt": "형상 관리는 변경 이력을 기록만 하고 통제하지는 않는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "형상 관리는 변경을 추적할 뿐 아니라 통제해 무질서한 변경을 막습니다.",
+      "refs": []
+    }
+  ]
+}
