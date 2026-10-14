@@ -35,6 +35,7 @@
 - pnpm 10은 postinstall을 돌리지 않으므로 `prisma generate`를 항상 명시적으로 실행한다.
 - 새 워크트리에서는 `pnpm typecheck` 전에 `pnpm --filter @cs-daily/contracts build`가 필요하다(dist가 없으면 api가 `@cs-daily/contracts`를 못 찾는다). 백그라운드 dev 서버는 `pkill -f` 패턴이 자기 셸과 겹치면 셸이 죽으니 PID로 종료한다.
 - 시드는 유닛·레슨 순서 변경을 견딘다(`(track_id, sort_order)`·`(unit_id, sort_order)` 유니크 때문에 기존 행을 음수로 비켜 둔 뒤 재부여, 트랙별 트랜잭션). **sortOrder 음수 = 콘텐츠에서 빠진 퇴역 행**: 문제·세션·진도 참조가 없으면 시드가 삭제하고, 있으면 음수로 남긴다. 경로·잠금·nextLessonId·유닛/레슨 카운트는 양수만 본다(`get-path.handler.ts`, `question-grading.adapter.ts`, `me.controller.ts`). CI는 첫 트랙 유닛을 회전시키고 레슨 하나를 뺀 콘텐츠로 재시드한 뒤 단언하는 스모크 단계를 돈다(`apps/api/test-e2e/rotate-units.mjs`, `assert-retired.mjs`, `SEED_CONTENT_ROOT`).
+- 시드는 기존 행을 한 번에 읽어 비교하고 바뀐 것만 쓴다(변경 없는 트랙은 건너뜀, 문제 version은 내용이 바뀔 때만 +1). 운영 DB 왕복 지연 때문에 행 단위 순차 쿼리를 늘리지 않는다.
 - 레슨을 다른 유닛으로 옮길 때 옛 slug 자리를 새 레슨으로 재사용하면 퇴역 행이 생기지 않는다(DB 1유닛 l06~l09가 그 예). 옮긴 레슨은 문제 id를 유지해 복습 기록을 보존한다.
 - 비밀값(OAuth 시크릿, DB 비밀번호 등)은 절대 보거나 적지 않는다. 필요하면 사용자가 Cloud Shell에서 `read -rsp`로 직접 입력하게 하고, 입력 후 `gcloud run services update ... --update-labels=secrets-rev=...`로 새 리비전을 띄운다.
 
