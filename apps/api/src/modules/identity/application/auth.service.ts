@@ -4,6 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { createHash, randomBytes } from 'node:crypto';
 import { UnitOfWork } from '../../../shared/infrastructure/unit-of-work';
 
+import { canRotate } from '../domain/services/refresh-grace';
 import type { OAuthProfile } from '../domain/oauth-profile';
 export type { OAuthProfile };
 
@@ -63,11 +64,18 @@ export class AuthService {
     return { accessToken, refreshToken: raw, refreshExpiresAt };
   }
 
-  /** 리프레시 토큰 회전: 기존 토큰 폐기 + 새 쌍 발급. 폐기된 토큰 재사용은 거부 */
-  async rotate(rawRefresh: string): Promise<TokenPair | null> {
+  /**
+   * 리프레시 토큰 회전: 기존 토큰 폐기 + 새 쌍 발급.
+   * 폐기 후 30초 이내 재사용은 동시 요청/다른 탭으로 보고 새 쌍을 발급한다(기존 행은 그대로).
+   * 유예를 넘긴 폐기 토큰 재사용은 거부.
+   */
+  async rotate(rawRefresh: string | undefined): Promise<TokenPair | null> {
+    if (!rawRefresh) return null;
+    const now = new Date();
     const row = await this.uow.client.refreshToken.findUnique({ where: { tokenHash: hash(rawRefresh) } });
-    if (!row || row.revokedAt || row.expiresAt < new Date()) return null;
-    await this.uow.client.refreshToken.update({ where: { id: row.id }, data: { revokedAt: new Date() } });
+    if (!row || !canRotate(row, now)) return null;
+    // 처음 폐기한 시각을 유지하도록 미폐기 행만 갱신
+    await this.uow.client.refreshToken.updateMany({ where: { id: row.id, revokedAt: null }, data: { revokedAt: now } });
     return this.issueTokens(row.userId);
   }
 
