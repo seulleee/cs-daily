@@ -6,11 +6,13 @@ import type { MeResponse, TrackSummary, UpdateMeRequest } from '@cs-daily/contra
 import { api, ApiError } from '@/lib/api';
 import { AppShell } from '@/components/app-shell';
 import { SelectMark } from '@/components/select-mark';
+import { useToast } from '@/components/toast';
 import { ThemePicker } from '@/components/theme-picker';
 import { Window } from '@/components/window';
 
 export default function SettingsPage() {
   const qc = useQueryClient();
+  const toast = useToast();
   const me = useQuery({ queryKey: ['me'], queryFn: () => api<MeResponse>('/me') });
   const tracks = useQuery({ queryKey: ['tracks'], queryFn: () => api<TrackSummary[]>('/tracks') });
 
@@ -28,7 +30,11 @@ export default function SettingsPage() {
       await api('/me', { method: 'PATCH', json: form });
       await api('/me/tracks', { method: 'PUT', json: { trackIds: selected } });
     },
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['me'] }),
+    onSuccess: () => {
+      toast.show('저장했어요');
+      return qc.invalidateQueries({ queryKey: ['me'] });
+    },
+    onError: (err) => toast.show(err instanceof ApiError ? err.message : '저장하지 못했어요', { kind: 'error' }),
   });
   const logout = useMutation({
     mutationFn: () => fetch('/auth/logout', { method: 'POST', credentials: 'include' }).then(() => undefined),
@@ -98,8 +104,6 @@ export default function SettingsPage() {
             </div>
           </Field>
 
-          {save.isError && <p className="text-cap text-wrong">{(save.error as ApiError).message}</p>}
-          {save.isSuccess && <p className="text-cap text-brand">저장했습니다.</p>}
           <button type="submit" disabled={save.isPending || selected.length === 0} className="btn-3d w-full">저장</button>
         </Window>
       </form>
