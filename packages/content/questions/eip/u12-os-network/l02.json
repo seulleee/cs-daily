@@ -1,0 +1,221 @@
+{
+  "track": "eip",
+  "unit": "u12-os-network",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "eip-lang-sched-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scheduling",
+        "fcfs"
+      ],
+      "content": {
+        "prompt": "도착한 순서대로 CPU를 할당하는 스케줄링은?",
+        "options": [
+          "FCFS",
+          "SJF",
+          "HRN"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "FCFS는 먼저 도착한 프로세스부터 CPU를 할당하는 비선점 기법입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-sched-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scheduling",
+        "round-robin"
+      ],
+      "content": {
+        "prompt": "타임 퀀텀을 다 쓰면 준비 큐 끝으로 돌려보내는 스케줄링은?",
+        "options": [
+          "SJF",
+          "라운드 로빈",
+          "FCFS"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "라운드 로빈은 프로세스마다 타임 퀀텀을 주고, 다 쓰면 CPU를 회수해 준비 큐 끝에 다시 넣습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-sched-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scheduling",
+        "preemptive"
+      ],
+      "content": {
+        "prompt": "타임 퀀텀이 끝나면 CPU를 회수하는 라운드 로빈의 방식은?",
+        "options": [
+          "비선점",
+          "선점"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "라운드 로빈은 타임 퀀텀이 끝나면 CPU를 빼앗으므로 선점 기법입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-sched-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "scheduling",
+        "sjf"
+      ],
+      "content": {
+        "prompt": "SJF는 실행 시간이 가장 긴 작업을 먼저 처리한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "SJF는 실행 시간이 가장 짧은 작업을 먼저 처리하는 비선점 기법입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-sched-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "scheduling",
+        "preemptive"
+      ],
+      "content": {
+        "prompt": "실행 중인 CPU를 운영체제가 뺏을 수 있는 방식은 ___ 스케줄링이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "선점",
+          "preemptive"
+        ]
+      },
+      "explanation": "선점 스케줄링은 실행 중에도 운영체제가 CPU를 회수할 수 있습니다. 뺏을 수 없으면 비선점입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-sched-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "scheduling",
+        "hrn",
+        "python"
+      ],
+      "content": {
+        "prompt": "HRN 우선순위를 구하도록 빈칸에 들어갈 이름은?",
+        "code": {
+          "language": "python",
+          "source": "def hrn(wait, service):\n    return (wait + service) / ___\n\nprint(hrn(10, 5))"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "service"
+        ]
+      },
+      "explanation": "HRN 우선순위는 (대기 시간 + 서비스 시간) ÷ 서비스 시간입니다. (10 + 5) ÷ 5 = 3.0입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-sched-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scheduling",
+        "hrn"
+      ],
+      "content": {
+        "prompt": "HRN에서 A(대기 4, 서비스 2)와 B(대기 6, 서비스 6) 중 먼저 실행되는 것은?",
+        "options": [
+          "A",
+          "B",
+          "동시"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "A는 (4 + 2) ÷ 2 = 3, B는 (6 + 6) ÷ 6 = 2입니다. 값이 큰 A가 먼저 실행됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-sched-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scheduling",
+        "hrn",
+        "python"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "python",
+          "source": "wait, service = 9, 3\nprint((wait + service) / service)"
+        },
+        "options": [
+          "3.0",
+          "4.0",
+          "12.0"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "HRN 우선순위는 (9 + 3) ÷ 3 = 4.0입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-sched-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scheduling",
+        "non-preemptive"
+      ],
+      "content": {
+        "prompt": "FCFS, SJF, HRN의 공통점은?",
+        "options": [
+          "선점",
+          "타임 퀀텀 사용",
+          "비선점"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "세 기법 모두 한 번 CPU를 받은 작업이 끝날 때까지 뺏기지 않는 비선점 기법입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-sched-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "scheduling",
+        "fcfs"
+      ],
+      "content": {
+        "prompt": "FCFS는 먼저 도착한 프로세스부터 CPU를 할당한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "FCFS(First Come First Served)는 도착 순서대로 CPU를 할당합니다.",
+      "refs": []
+    }
+  ]
+}

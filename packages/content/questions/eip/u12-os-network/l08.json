@@ -1,0 +1,218 @@
+{
+  "track": "eip",
+  "unit": "u12-os-network",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "eip-lang-routing-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "routing",
+        "rip"
+      ],
+      "content": {
+        "prompt": "홉 수를 기준으로 하는 거리 벡터 라우팅 프로토콜은?",
+        "options": [
+          "RIP",
+          "OSPF",
+          "BGP"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "RIP는 홉 수를 기준으로 경로를 고르는 거리 벡터 라우팅이며 최대 15홉까지 허용합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-routing-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nat",
+        "ip"
+      ],
+      "content": {
+        "prompt": "내부망의 사설 IP를 외부로 나갈 때 공인 IP로 변환하는 것은?",
+        "options": [
+          "ARP",
+          "NAT",
+          "ICMP"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "NAT는 내부의 사설 IP를 외부로 나갈 때 공인 IP로 바꿉니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-routing-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "routing",
+        "ospf"
+      ],
+      "content": {
+        "prompt": "대규모 네트워크에 적합한 링크 상태 라우팅은?",
+        "options": [
+          "RIP",
+          "OSPF"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "OSPF는 링크 상태 라우팅으로 대규모 네트워크에 적합합니다. RIP는 홉 수 기준 거리 벡터입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-routing-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "routing",
+        "bgp"
+      ],
+      "content": {
+        "prompt": "BGP는 외부 라우팅 프로토콜(EGP)이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "라우팅 프로토콜은 내부(IGP: RIP, OSPF)와 외부(EGP: BGP)로 나뉩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-routing-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "routing",
+        "igp"
+      ],
+      "content": {
+        "prompt": "RIP·OSPF는 내부 라우팅 프로토콜인 ___ 에 속한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "IGP",
+          "내부 라우팅 프로토콜"
+        ]
+      },
+      "explanation": "RIP와 OSPF는 내부 라우팅 프로토콜(IGP)이고, BGP는 외부 라우팅 프로토콜(EGP)입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-routing-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "routing",
+        "rip",
+        "python"
+      ],
+      "content": {
+        "prompt": "RIP 기준으로 True False가 출력되게 빈칸에 들어갈 수는?",
+        "code": {
+          "language": "python",
+          "source": "def rip_ok(hops):\n    return hops <= ___\n\nprint(rip_ok(15), rip_ok(16))"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "15"
+        ]
+      },
+      "explanation": "RIP는 최대 15홉까지 허용하므로 15홉은 도달 가능, 16홉은 도달 불가입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-routing-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nat",
+        "python"
+      ],
+      "content": {
+        "prompt": "NAT가 바꾼 출발지 IP의 출력값은?",
+        "code": {
+          "language": "python",
+          "source": "nat = {\"192.168.0.5\": \"203.0.113.7\"}\nsrc = \"192.168.0.5\"\nprint(nat[src])"
+        },
+        "options": [
+          "192.168.0.5",
+          "203.0.113.7"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "NAT는 사설 출발지 IP 192.168.0.5를 대응하는 공인 IP 203.0.113.7로 바꿉니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-routing-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "routing",
+        "rip"
+      ],
+      "content": {
+        "prompt": "R1 경로는 3홉, R2 경로는 5홉일 때 RIP가 고르는 것은?",
+        "options": [
+          "R1",
+          "R2"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "RIP는 홉 수가 적은 경로를 고르므로 3홉인 R1을 선택합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-routing-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "routing",
+        "bgp"
+      ],
+      "content": {
+        "prompt": "외부 라우팅 프로토콜(EGP)에 해당하는 것은?",
+        "options": [
+          "RIP",
+          "OSPF",
+          "BGP"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "BGP는 외부 라우팅 프로토콜(EGP)입니다. RIP와 OSPF는 내부 라우팅 프로토콜(IGP)입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-routing-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "routing",
+        "rip"
+      ],
+      "content": {
+        "prompt": "RIP는 링크 상태 라우팅 프로토콜이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "RIP는 홉 수 기준의 거리 벡터 라우팅입니다. 링크 상태 라우팅은 OSPF입니다.",
+      "refs": []
+    }
+  ]
+}

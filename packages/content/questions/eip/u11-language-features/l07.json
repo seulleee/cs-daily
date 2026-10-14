@@ -1,0 +1,228 @@
+{
+  "track": "eip",
+  "unit": "u11-language-features",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "eip-lang-pytypes-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "python",
+        "tuple"
+      ],
+      "content": {
+        "prompt": "내용을 바꿀 수 없는 순서 있는 시퀀스는?",
+        "options": [
+          "list",
+          "tuple",
+          "set"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "tuple은 순서가 있지만 만든 뒤 내용을 바꿀 수 없습니다. list는 바꿀 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pytypes-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "python",
+        "dict"
+      ],
+      "content": {
+        "prompt": "키-값 쌍의 모음인 자료형은?",
+        "options": [
+          "dict",
+          "set",
+          "tuple"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "dict는 {'a': 1}처럼 키와 값을 쌍으로 묶어 저장합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pytypes-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "python",
+        "list"
+      ],
+      "content": {
+        "prompt": "[1, 2]처럼 대괄호로 만드는 자료형은?",
+        "options": [
+          "tuple",
+          "list"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "list는 대괄호, tuple은 소괄호로 만듭니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pytypes-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "python",
+        "set"
+      ],
+      "content": {
+        "prompt": "set은 같은 값을 여러 번 저장할 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "set은 중복 없는 값의 모음이라 같은 값은 한 번만 저장됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pytypes-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "python",
+        "dict"
+      ],
+      "content": {
+        "prompt": "{'a': 1}처럼 키와 값을 짝지어 담는 자료형은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "dict",
+          "dictionary",
+          "딕셔너리"
+        ]
+      },
+      "explanation": "dict는 키로 값을 찾는 자료형으로 {'a': 1}처럼 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pytypes-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "python",
+        "set"
+      ],
+      "content": {
+        "prompt": "중복을 없애 3이 출력되게 하려면 빈칸에 들어갈 이름은?",
+        "code": {
+          "language": "python",
+          "source": "nums = [3, 1, 3, 2, 1]\nuniq = ___(nums)\nprint(len(uniq))"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "set"
+        ]
+      },
+      "explanation": "set은 중복 없는 값의 모음이라 3, 1, 2만 남아 길이가 3입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pytypes-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "python",
+        "list"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "python",
+          "source": "a = [1, 2, 3]\na[0] = 9\nprint(a)"
+        },
+        "options": [
+          "[1, 2, 3]",
+          "[9, 2, 3]",
+          "오류 발생"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "list는 내용을 바꿀 수 있으므로 a[0]이 9로 바뀌어 [9, 2, 3]이 출력됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pytypes-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "python",
+        "tuple"
+      ],
+      "content": {
+        "prompt": "실행 결과는?",
+        "code": {
+          "language": "python",
+          "source": "t = (1, 2, 3)\nt[0] = 9\nprint(t)"
+        },
+        "options": [
+          "(9, 2, 3)",
+          "(1, 2, 3)",
+          "오류 발생"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "tuple은 내용을 바꿀 수 없으므로 t[0]에 값을 넣는 순간 오류(TypeError)가 발생합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pytypes-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "python",
+        "dict"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "python",
+          "source": "d = {'x': 10, 'y': 20}\nprint(d['y'])"
+        },
+        "options": [
+          "20",
+          "10",
+          "y"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "dict는 키로 값을 찾습니다. 키 'y'에 짝지은 값은 20입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-pytypes-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "python",
+        "tuple"
+      ],
+      "content": {
+        "prompt": "tuple은 순서가 있지만 내용을 바꿀 수 없다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "tuple은 순서가 있는 시퀀스이지만 만든 뒤에는 원소를 바꿀 수 없습니다.",
+      "refs": []
+    }
+  ]
+}

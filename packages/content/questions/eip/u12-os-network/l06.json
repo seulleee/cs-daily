@@ -1,0 +1,223 @@
+{
+  "track": "eip",
+  "unit": "u12-os-network",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "eip-lang-tcpudp-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tcp",
+        "transport-layer"
+      ],
+      "content": {
+        "prompt": "연결 지향이며 재전송으로 신뢰성을 보장하는 프로토콜은?",
+        "options": [
+          "TCP",
+          "UDP",
+          "IP"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "TCP는 연결을 맺고 ACK와 재전송으로 신뢰성과 순서를 보장합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-tcpudp-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ip",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "패킷이 라우터 한 대를 거칠 때마다 1 감소하는 필드는?",
+        "options": [
+          "ACK",
+          "TTL",
+          "MAC"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "TTL 값은 라우터를 하나 거칠 때마다 감소하고, 0에 이른 패킷은 더 전달되지 않고 버려집니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-tcpudp-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "udp",
+        "transport-layer"
+      ],
+      "content": {
+        "prompt": "재전송·순서 보장이 없어 헤더가 단순한 것은?",
+        "options": [
+          "TCP",
+          "UDP"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "UDP는 비연결 방식이며 재전송과 순서 보장이 없어 헤더가 단순하고 빠릅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-tcpudp-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ip",
+        "best-effort"
+      ],
+      "content": {
+        "prompt": "IP는 최선 노력(Best Effort) 방식으로 전달한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "IP는 비연결형이며 전달을 보장하지 않는 최선 노력 방식으로 패킷을 보냅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-tcpudp-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tcp",
+        "ack"
+      ],
+      "content": {
+        "prompt": "TCP에서 수신 확인 응답 신호는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "ACK",
+          "확인응답",
+          "확인 응답"
+        ]
+      },
+      "explanation": "TCP는 받은 쪽이 ACK를 보내고, ACK가 오지 않으면 재전송해 신뢰성을 보장합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-tcpudp-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ip",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "TTL이 0이 된 패킷을 처리하는 방법은?",
+        "code": {
+          "language": "pseudo",
+          "source": "procedure forward(packet)\n    packet.TTL ← packet.TTL - 1\n    if packet.TTL = 0 then\n        packet을 ___\nend"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "폐기",
+          "버림",
+          "drop",
+          "discard"
+        ]
+      },
+      "explanation": "TTL은 라우터마다 1씩 줄어드는 패킷 수명이며, 0이 되면 라우터가 그 패킷을 폐기합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-tcpudp-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ip",
+        "ttl",
+        "python"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "python",
+          "source": "ttl = 5\nhops = 0\nwhile ttl > 0:\n    ttl -= 1\n    hops += 1\nprint(hops)"
+        },
+        "options": [
+          "5",
+          "4",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "TTL 5가 라우터를 지날 때마다 1씩 줄어 0이 될 때까지 5번 반복하므로 5입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-tcpudp-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "udp",
+        "transport-layer"
+      ],
+      "content": {
+        "prompt": "재전송보다 속도가 중요한 실시간 전송에 알맞은 것은?",
+        "options": [
+          "UDP",
+          "TCP"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "UDP는 재전송·순서 보장이 없어 빠르므로 약간의 손실보다 지연이 문제인 실시간 전송에 맞습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-tcpudp-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ip",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "TTL이 3인 패킷이 라우터 2개를 지나면 TTL은?",
+        "options": [
+          "3",
+          "2",
+          "1"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "라우터마다 1씩 줄어 3 - 2 = 1이 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-tcpudp-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "udp",
+        "tcp"
+      ],
+      "content": {
+        "prompt": "UDP는 연결을 맺고 순서를 보장한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "연결을 맺고 순서를 보장하는 것은 TCP입니다. UDP는 비연결이며 순서를 보장하지 않습니다.",
+      "refs": []
+    }
+  ]
+}

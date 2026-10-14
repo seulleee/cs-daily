@@ -1,0 +1,225 @@
+{
+  "track": "eip",
+  "unit": "u10-language-basics",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "eip-lang-ops-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "operator",
+        "arithmetic"
+      ],
+      "content": {
+        "prompt": "나눗셈의 나머지를 구하는 연산자는?",
+        "options": [
+          "/",
+          "%",
+          "*"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "%는 나머지 연산자로 7 % 3은 1입니다. /는 나눗셈, *는 곱셈입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ops-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "operator",
+        "logical"
+      ],
+      "content": {
+        "prompt": "두 조건이 모두 참일 때만 참인 논리 연산자는?",
+        "options": [
+          "&&",
+          "||",
+          "!"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "&&는 두 조건이 모두 참일 때만 1(참)입니다. ||는 하나라도 참이면 참입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ops-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "operator",
+        "increment"
+      ],
+      "content": {
+        "prompt": "a++의 동작은?",
+        "options": [
+          "증가 후 사용",
+          "사용 후 증가"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "a++는 현재 값을 먼저 사용한 뒤 1 증가합니다. ++a는 먼저 증가한 뒤 사용합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ops-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "operator",
+        "relational"
+      ],
+      "content": {
+        "prompt": "C에서 관계식 5 > 3의 결과는 1이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "관계 연산의 결과는 참이면 1, 거짓이면 0입니다. 5 > 3은 참이므로 1입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ops-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "operator",
+        "arithmetic"
+      ],
+      "content": {
+        "prompt": "17 % 5의 결과는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "2"
+        ]
+      },
+      "explanation": "17을 5로 나누면 몫은 3, 나머지는 2입니다. %는 나머지를 구합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ops-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "operator",
+        "increment"
+      ],
+      "content": {
+        "prompt": "a가 5일 때 b = ++a; 를 실행하면 b는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "6"
+        ]
+      },
+      "explanation": "++a는 먼저 a를 6으로 증가시킨 뒤 그 값을 b에 대입합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ops-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "operator",
+        "arithmetic",
+        "c"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "c",
+          "source": "int a = 17, b = 5;\nprintf(\"%d %d\", a / b, a % b);"
+        },
+        "options": [
+          "2 3",
+          "3 2",
+          "3.4 2"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "int끼리의 17 / 5는 몫 3, 17 % 5는 나머지 2입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ops-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "operator",
+        "logical",
+        "c"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "c",
+          "source": "int x = 3, y = 7;\nprintf(\"%d\", (x > 1) && (y < 5));"
+        },
+        "options": [
+          "1",
+          "7",
+          "0"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "x > 1은 참(1)이지만 y < 5는 거짓(0)입니다. &&는 둘 다 참이어야 하므로 결과는 0입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ops-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "operator",
+        "increment",
+        "c"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "c",
+          "source": "int a = 4;\nint b = a++ + 1;\nprintf(\"%d %d\", a, b);"
+        },
+        "options": [
+          "4 5",
+          "5 6",
+          "5 5"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "a++는 4를 먼저 사용해 b는 4 + 1 = 5가 되고, 그다음 a가 5로 증가합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ops-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "operator",
+        "arithmetic"
+      ],
+      "content": {
+        "prompt": "7 % 3의 결과는 2이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "7을 3으로 나누면 몫 2, 나머지 1입니다. %는 나머지를 구하므로 결과는 1입니다.",
+      "refs": []
+    }
+  ]
+}

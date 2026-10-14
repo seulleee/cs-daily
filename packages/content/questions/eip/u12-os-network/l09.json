@@ -1,0 +1,261 @@
+{
+  "track": "eip",
+  "unit": "u12-os-network",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "eip-lang-osnet-mock-001",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "process",
+        "process-state"
+      ],
+      "content": {
+        "prompt": "프로세스 상태에 대한 설명으로 옳은 것은?",
+        "options": [
+          "대기는 입출력 등 이벤트를 기다린다",
+          "준비는 CPU를 사용 중인 상태다",
+          "실행은 CPU 할당을 기다린다",
+          "PCB는 스레드의 다른 이름이다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "대기 상태는 입출력 같은 이벤트를 기다립니다. 준비는 CPU 할당을 기다리고, 실행은 CPU를 사용 중인 상태입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-osnet-mock-002",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scheduling",
+        "hrn",
+        "python"
+      ],
+      "content": {
+        "prompt": "HRN 우선순위가 가장 높은 작업을 고르는 다음 Python 코드의 출력 결과는?",
+        "code": {
+          "language": "python",
+          "source": "w = {\"A\": 6, \"B\": 10, \"C\": 9}\ns = {\"A\": 3, \"B\": 5, \"C\": 2}\nbest, top = \"\", 0\nfor k in w:\n    p = (w[k] + s[k]) / s[k]\n    if p > top:\n        best, top = k, p\nprint(best)"
+        },
+        "options": [
+          "A",
+          "B",
+          "C",
+          "A와 B"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "우선순위는 (대기 + 서비스) ÷ 서비스로 A = 3, B = 3, C = 5.5입니다. 가장 큰 C가 출력됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-osnet-mock-003",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "page-replacement",
+        "lru",
+        "python"
+      ],
+      "content": {
+        "prompt": "프레임 3개로 LRU 교체를 구현한 다음 Python 코드의 출력 결과는?",
+        "code": {
+          "language": "python",
+          "source": "cache = []\nfor p in [1, 2, 3, 1, 4, 2]:\n    if p in cache:\n        cache.remove(p)\n    elif len(cache) == 3:\n        cache.pop(0)\n    cache.append(p)\nprint(cache)"
+        },
+        "options": [
+          "[1, 4, 2]",
+          "[4, 2, 3]",
+          "[2, 3, 4]",
+          "[1, 2, 4]"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "1이 다시 쓰여 가장 최근이 되므로 4가 올 때 2, 다음 2가 올 때 3이 나갑니다. FIFO였다면 [2, 3, 4]입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-osnet-mock-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "deadlock",
+        "os"
+      ],
+      "content": {
+        "prompt": "교착 상태의 발생 조건에 해당하지 않는 것은?",
+        "options": [
+          "상호 배제",
+          "점유 대기",
+          "선점",
+          "순환 대기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "교착 상태 조건은 상호 배제, 점유 대기, 비선점, 순환 대기입니다. 선점이 가능하면 교착 상태가 풀릴 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-osnet-mock-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "semaphore",
+        "mutual-exclusion"
+      ],
+      "content": {
+        "prompt": "다음 의사코드를 차례로 실행했을 때 C의 상태로 옳은 것은?",
+        "code": {
+          "language": "pseudo",
+          "source": "S ← 2\nA: P(S)\nB: P(S)\nC: P(S)"
+        },
+        "options": [
+          "즉시 진입한다",
+          "대기한다",
+          "S가 1이 된다",
+          "S가 3이 된다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "S가 2이므로 A와 B의 P(S)로 0이 됩니다. 남은 자원이 없어 C는 다른 프로세스가 V(S)를 할 때까지 대기합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-osnet-mock-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "osi",
+        "switch"
+      ],
+      "content": {
+        "prompt": "OSI 계층과 장비의 연결로 옳은 것은?",
+        "options": [
+          "허브 — 네트워크 계층",
+          "스위치 — 데이터링크 계층",
+          "라우터 — 물리 계층",
+          "허브 — 전송 계층"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "허브는 물리 계층, 스위치는 데이터링크 계층, 라우터는 네트워크 계층 장비입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-osnet-mock-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "udp",
+        "transport-layer"
+      ],
+      "content": {
+        "prompt": "UDP에 대한 설명으로 옳은 것은?",
+        "options": [
+          "연결을 설정한 뒤 전송한다",
+          "ACK로 재전송을 보장한다",
+          "라우터마다 경로를 선택한다",
+          "순서 보장 없이 빠르게 전송한다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "UDP는 비연결이며 재전송·순서 보장이 없어 빠릅니다. 연결 설정과 ACK 재전송은 TCP의 특징입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-osnet-mock-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "routing",
+        "rip",
+        "python"
+      ],
+      "content": {
+        "prompt": "RIP의 최대 홉 수 기준으로 도달 가능한 경로를 세는 다음 Python 코드의 출력 결과는?",
+        "code": {
+          "language": "python",
+          "source": "hops = {\"R1\": 3, \"R2\": 16, \"R3\": 15, \"R4\": 20}\ncnt = 0\nfor r in hops:\n    if hops[r] <= 15:\n        cnt += 1\nprint(cnt)"
+        },
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "RIP는 최대 15홉까지 허용하므로 3홉인 R1과 15홉인 R3만 도달 가능해 2입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-osnet-mock-009",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "memory",
+        "best-fit",
+        "python"
+      ],
+      "content": {
+        "prompt": "다음 Python 코드가 구현한 배치 전략과 출력 결과로 옳은 것은?",
+        "code": {
+          "language": "python",
+          "source": "holes = [15, 9, 30, 10]\nneed = 9\nbest = None\nfor h in holes:\n    if h >= need:\n        if best is None or h < best:\n            best = h\nprint(best)"
+        },
+        "options": [
+          "최초 적합, 15",
+          "최적 적합, 10",
+          "최악 적합, 30",
+          "최적 적합, 9"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "9 이상인 공간 중 가장 작은 것을 고르므로 최적 적합이며 9가 출력됩니다. 최초 적합이면 15, 최악 적합이면 30입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-osnet-mock-010",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "ipv6",
+        "ip"
+      ],
+      "content": {
+        "prompt": "IPv6에 대한 설명으로 틀린 것은?",
+        "options": [
+          "128비트 주소를 쓴다",
+          "16비트씩 8부분으로 표기한다",
+          "주소 자동 설정을 지원한다",
+          "점으로 나눈 네 숫자로 쓴다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "점으로 나눈 네 숫자(0~255)로 쓰는 것은 IPv4입니다. IPv6는 16비트씩 8부분을 16진수로 표기합니다.",
+      "refs": []
+    }
+  ]
+}

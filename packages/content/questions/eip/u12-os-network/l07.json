@@ -1,0 +1,217 @@
+{
+  "track": "eip",
+  "unit": "u12-os-network",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "eip-lang-ipv6-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ipv6",
+        "ip"
+      ],
+      "content": {
+        "prompt": "IPv6 주소의 길이는?",
+        "options": [
+          "32비트",
+          "64비트",
+          "128비트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "IPv6는 128비트 주소로, 16비트씩 8부분을 16진수로 표기합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ipv6-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "arp",
+        "ip"
+      ],
+      "content": {
+        "prompt": "IP 주소로 같은 네트워크 장치의 MAC 주소를 찾는 것은?",
+        "options": [
+          "ARP",
+          "ICMP",
+          "TCP"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "같은 네트워크 장치의 IP 주소만 알 때, 그 장치의 MAC 주소를 얻으려고 ARP를 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ipv6-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "icmp",
+        "ip"
+      ],
+      "content": {
+        "prompt": "ping 명령이 사용하는 프로토콜은?",
+        "options": [
+          "ARP",
+          "ICMP"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ping은 ICMP 메시지로 상대가 응답하는지 확인합니다. ARP는 MAC 주소를 찾습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ipv6-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ipv4",
+        "ip"
+      ],
+      "content": {
+        "prompt": "IPv4는 점으로 나눈 네 숫자로 표기한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "IPv4는 32비트 주소를 점으로 나눈 네 숫자(각 0~255)로 표기합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ipv6-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ipv4",
+        "ip"
+      ],
+      "content": {
+        "prompt": "IPv4 주소는 총 ___ 비트로 이루어진다."
+      },
+      "answer_key": {
+        "accepted": [
+          "32"
+        ]
+      },
+      "explanation": "IPv4는 32비트 주소입니다. 8비트씩 네 부분으로 나누어 표기합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ipv6-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ipv6",
+        "python"
+      ],
+      "content": {
+        "prompt": "IPv6 전체 길이 128이 출력되도록 빈칸에 들어갈 수는?",
+        "code": {
+          "language": "python",
+          "source": "groups = 8\nbits_per_group = ___\nprint(groups * bits_per_group)"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "16"
+        ]
+      },
+      "explanation": "IPv6는 16비트씩 8부분으로 이루어져 8 × 16 = 128비트입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ipv6-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ipv4",
+        "python"
+      ],
+      "content": {
+        "prompt": "IPv4 숫자 범위를 검사한 출력값은?",
+        "code": {
+          "language": "python",
+          "source": "parts = [192, 168, 10, 300]\nok = True\nfor p in parts:\n    if p < 0 or p > 255:\n        ok = False\nprint(ok)"
+        },
+        "options": [
+          "True",
+          "False"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "IPv4의 각 숫자는 0~255여야 하는데 300이 범위를 넘으므로 ok가 False가 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ipv6-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ipv4",
+        "ip"
+      ],
+      "content": {
+        "prompt": "IPv4 주소로 올바른 것은?",
+        "options": [
+          "10.0.0.256",
+          "172.16.5.4",
+          "1.2.3"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "각 자리는 0~255여야 하므로 256이 들어가면 틀리고, 1.2.3은 네 자리가 아니라서 틀립니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ipv6-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "icmp",
+        "ip"
+      ],
+      "content": {
+        "prompt": "IP 전송 중 오류를 알리는 메시지를 보내는 것은?",
+        "options": [
+          "ICMP",
+          "ARP",
+          "UDP"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ICMP는 IP 전송 중에 생긴 오류와 제어 메시지를 알리는 프로토콜입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-ipv6-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ipv6",
+        "ip"
+      ],
+      "content": {
+        "prompt": "IPv6는 32비트 주소를 쓴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "IPv6는 128비트 주소를 씁니다. 32비트 주소는 IPv4입니다.",
+      "refs": []
+    }
+  ]
+}

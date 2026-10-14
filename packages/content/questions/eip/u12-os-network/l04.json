@@ -1,0 +1,222 @@
+{
+  "track": "eip",
+  "unit": "u12-os-network",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "eip-lang-mutex-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mutual-exclusion",
+        "os"
+      ],
+      "content": {
+        "prompt": "임계 구역에 한 번에 하나만 들어가게 하는 것은?",
+        "options": [
+          "상호 배제",
+          "교착 상태",
+          "순환 대기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "상호 배제는 임계 구역에 한 번에 하나의 프로세스만 들어가도록 보장합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-mutex-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "semaphore",
+        "os"
+      ],
+      "content": {
+        "prompt": "정수 카운터와 P·V 연산으로 자원을 관리하는 기법은?",
+        "options": [
+          "PCB",
+          "세마포어",
+          "라운드 로빈"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "세마포어는 정수 카운터로 자원 수를 관리하고 P(wait)와 V(signal) 연산을 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-mutex-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "semaphore",
+        "os"
+      ],
+      "content": {
+        "prompt": "세마포어에서 자원을 반납하는 연산은?",
+        "options": [
+          "P",
+          "V"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "V(signal)는 자원을 반납해 카운터를 늘립니다. P(wait)는 자원을 얻으려 할 때 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-mutex-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "deadlock",
+        "os"
+      ],
+      "content": {
+        "prompt": "네 조건 가운데 순환 대기만 성립해도 교착 상태가 생긴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "교착 상태는 상호 배제, 점유 대기, 비선점, 순환 대기 네 조건이 모두 성립해야 발생합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-mutex-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "deadlock",
+        "os"
+      ],
+      "content": {
+        "prompt": "프로세스들이 서로의 자원을 기다리다 모두 멈춘 상태는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "교착 상태",
+          "교착상태",
+          "데드락",
+          "deadlock"
+        ]
+      },
+      "explanation": "교착 상태는 프로세스들이 서로 상대가 가진 자원을 기다리며 모두 멈춰 있는 상태입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-mutex-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "semaphore",
+        "mutual-exclusion"
+      ],
+      "content": {
+        "prompt": "임계 구역에 들어가기 전에 실행할 세마포어 연산은?",
+        "code": {
+          "language": "pseudo",
+          "source": "___(S)\n임계 구역 실행\nV(S)"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "P",
+          "wait"
+        ]
+      },
+      "explanation": "임계 구역에 들어가기 전에는 P(wait)로 자원을 얻고, 나온 뒤 V(signal)로 반납합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-mutex-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "semaphore",
+        "mutual-exclusion"
+      ],
+      "content": {
+        "prompt": "S가 1일 때 A 다음에 B가 P(S)를 하면 B는?",
+        "code": {
+          "language": "pseudo",
+          "source": "S ← 1\nA: P(S)\nB: P(S)"
+        },
+        "options": [
+          "대기한다",
+          "바로 진입한다",
+          "S를 2로 만든다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "A의 P(S)로 S가 0이 되어 남은 자원이 없습니다. B는 A가 V(S)를 할 때까지 대기합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-mutex-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "deadlock",
+        "os"
+      ],
+      "content": {
+        "prompt": "자원을 가진 채 다른 자원을 기다리는 교착 상태 조건은?",
+        "options": [
+          "비선점",
+          "순환 대기",
+          "점유 대기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "점유 대기는 자원을 하나 이상 가진 채 다른 자원을 기다리는 조건입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-mutex-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "deadlock",
+        "os"
+      ],
+      "content": {
+        "prompt": "A는 B의 자원을, B는 A의 자원을 기다린다. 해당하는 조건은?",
+        "options": [
+          "순환 대기",
+          "상호 배제",
+          "비선점"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "프로세스들이 원 모양으로 서로의 자원을 기다리는 것이 순환 대기입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-mutex-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "mutual-exclusion",
+        "os"
+      ],
+      "content": {
+        "prompt": "상호 배제는 임계 구역에 한 번에 하나만 들어가게 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "상호 배제는 임계 구역에 동시에 둘 이상 들어가지 못하게 하는 것입니다.",
+      "refs": []
+    }
+  ]
+}

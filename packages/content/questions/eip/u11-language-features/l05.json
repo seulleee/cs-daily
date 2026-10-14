@@ -1,0 +1,223 @@
+{
+  "track": "eip",
+  "unit": "u11-language-features",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "eip-lang-override-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "java",
+        "overloading"
+      ],
+      "content": {
+        "prompt": "같은 이름의 메서드를 매개변수를 달리해 여러 개 정의하는 것은?",
+        "options": [
+          "오버로딩",
+          "오버라이딩",
+          "캡슐화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "오버로딩은 이름은 같고 매개변수의 개수나 타입이 다른 메서드를 여러 개 정의하는 것입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-override-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "java",
+        "overriding"
+      ],
+      "content": {
+        "prompt": "상위 클래스 메서드를 하위 클래스가 같은 형태로 재정의하는 것은?",
+        "options": [
+          "오버로딩",
+          "오버라이딩",
+          "인스턴스화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "오버라이딩은 상위 클래스의 메서드를 하위 클래스가 같은 이름·매개변수로 다시 정의하는 것입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-override-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "java",
+        "overloading"
+      ],
+      "content": {
+        "prompt": "한 클래스에 print(int)와 print(String)을 함께 두는 것은?",
+        "options": [
+          "오버라이딩",
+          "오버로딩"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이름은 같고 매개변수 타입이 다르므로 오버로딩입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-override-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "java",
+        "overriding"
+      ],
+      "content": {
+        "prompt": "오버라이딩은 매개변수 개수를 바꿔 다시 정의하는 것이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "매개변수를 바꿔 정의하는 것은 오버로딩입니다. 오버라이딩은 같은 형태로 재정의합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-override-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "java",
+        "abstract-class"
+      ],
+      "content": {
+        "prompt": "구현 없는 메서드를 두어 하위 클래스가 구현하게 하는 클래스는 ___ 클래스다."
+      },
+      "answer_key": {
+        "accepted": [
+          "추상",
+          "abstract"
+        ]
+      },
+      "explanation": "추상 클래스는 구현 없는 메서드를 가지며, 이를 상속한 하위 클래스가 반드시 구현해야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-override-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "java",
+        "inheritance"
+      ],
+      "content": {
+        "prompt": "Cat이 Animal을 상속하도록 빈칸에 들어갈 키워드는?",
+        "code": {
+          "language": "java",
+          "source": "class Animal {\n    String sound() { return \"...\"; }\n}\nclass Cat ___ Animal {\n    String sound() { return \"Meow\"; }\n}"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "extends"
+        ]
+      },
+      "explanation": "Java에서 상위 클래스를 상속할 때 extends를 씁니다. Cat은 sound()를 오버라이딩합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-override-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "java",
+        "overriding"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "java",
+          "source": "class P { String f() { return \"P\"; } }\nclass C extends P {\n    String f() { return \"C\"; }\n}\npublic class Main {\n    public static void main(String[] s) {\n        P x = new C();\n        System.out.print(x.f());\n    }\n}"
+        },
+        "options": [
+          "P",
+          "C",
+          "PC"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "x가 가리키는 실제 객체는 C이고, C가 f()를 오버라이딩했으므로 C의 f()가 실행됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-override-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "java",
+        "overloading"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "java",
+          "source": "public class Main {\n    static int sum(int a, int b) {\n        return a + b;\n    }\n    static int sum(int a, int b, int c) {\n        return a + b + c;\n    }\n    public static void main(String[] s) {\n        System.out.print(sum(1, 2, 3));\n    }\n}"
+        },
+        "options": [
+          "6",
+          "3",
+          "오류"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인자가 세 개이므로 매개변수 세 개인 sum이 호출되어 1 + 2 + 3 = 6입니다. 오버로딩은 매개변수로 구분됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-override-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "java",
+        "overloading"
+      ],
+      "content": {
+        "prompt": "오버로딩이 성립하는 경우는?",
+        "options": [
+          "매개변수 타입 다름",
+          "반환형만 다름",
+          "이름이 다름"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "오버로딩은 이름이 같고 매개변수의 개수나 타입이 달라야 합니다. 반환형만 다르면 성립하지 않습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-override-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "java",
+        "overloading"
+      ],
+      "content": {
+        "prompt": "오버로딩은 같은 이름의 메서드를 매개변수를 달리해 여러 개 두는 것이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "오버로딩은 메서드 이름은 같게, 매개변수 개수나 타입은 다르게 여러 개 정의하는 것입니다.",
+      "refs": []
+    }
+  ]
+}

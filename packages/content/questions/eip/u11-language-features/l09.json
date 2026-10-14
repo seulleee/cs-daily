@@ -1,0 +1,260 @@
+{
+  "track": "eip",
+  "unit": "u11-language-features",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "eip-lang-feat-mock-001",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "array",
+        "address"
+      ],
+      "content": {
+        "prompt": "int형(4바이트) 배열 a에서 a[0]의 주소가 1000일 때 a[5]의 주소는?",
+        "options": [
+          "1020",
+          "1005",
+          "1016",
+          "1024"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "주소는 시작 주소 + 인덱스 × 원소 크기이므로 1000 + 5 × 4 = 1020입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-feat-mock-002",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "c-string",
+        "strcmp"
+      ],
+      "content": {
+        "prompt": "C 문자열 함수에 대한 설명으로 틀린 것은?",
+        "options": [
+          "strlen은 널 문자를 뺀 길이를 구한다",
+          "strcpy는 문자열을 복사한다",
+          "strcmp는 같으면 1을 반환한다",
+          "strcat은 문자열을 이어 붙인다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "strcmp는 두 문자열이 같으면 0을 반환합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-feat-mock-003",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "java",
+        "overriding"
+      ],
+      "content": {
+        "prompt": "오버라이딩에 대한 설명으로 옳은 것은?",
+        "options": [
+          "상위 클래스 메서드를 하위에서 재정의",
+          "같은 클래스에서 매개변수만 다르게 정의",
+          "생성자 이름을 클래스와 다르게 정의",
+          "private 멤버를 외부에 공개"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "오버라이딩은 상위 클래스의 메서드를 하위 클래스가 같은 형태로 재정의하는 것입니다. 매개변수만 다르게 정의하는 것은 오버로딩입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-feat-mock-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "python",
+        "set",
+        "tuple"
+      ],
+      "content": {
+        "prompt": "다음 Python 코드의 출력 결과는?",
+        "code": {
+          "language": "python",
+          "source": "a = [1, 2, 2, 3, 3, 3]\ns = set(a)\nt = (1, 2)\nprint(len(a), len(s), len(t))"
+        },
+        "options": [
+          "6 6 2",
+          "6 3 2",
+          "3 3 2",
+          "6 3 1"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "list a는 원소 6개, set은 중복을 없애 1, 2, 3의 3개, tuple t는 2개입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-feat-mock-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pointer",
+        "array",
+        "c"
+      ],
+      "content": {
+        "prompt": "다음 C 코드의 출력 결과는?",
+        "code": {
+          "language": "c",
+          "source": "int a[4] = {10, 20, 30, 40};\nint *p = &a[1];\n*(p + 1) = 99;\nprintf(\"%d %d\", a[1], a[2]);"
+        },
+        "options": [
+          "99 30",
+          "20 99",
+          "10 99",
+          "20 30"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "p는 a[1]을 가리키므로 p + 1은 a[2]입니다. *(p + 1) = 99로 a[2]가 바뀌고 a[1]은 20 그대로입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-feat-mock-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "exception",
+        "finally"
+      ],
+      "content": {
+        "prompt": "예외 처리에 대한 설명으로 옳은 것은?",
+        "options": [
+          "finally는 예외가 날 때만 실행된다",
+          "catch는 예외가 없을 때 실행된다",
+          "문법 오류도 예외로 처리한다",
+          "finally는 항상 실행된다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "finally는 예외 발생 여부와 관계없이 항상 실행됩니다. catch는 예외가 발생했을 때 실행됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-feat-mock-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "java",
+        "overriding",
+        "super"
+      ],
+      "content": {
+        "prompt": "다음 Java 코드의 출력 결과는?",
+        "code": {
+          "language": "java",
+          "source": "class A {\n    String f() { return \"A\"; }\n}\nclass B extends A {\n    String f() { return \"B\" + super.f(); }\n}\npublic class Main {\n    public static void main(String[] s) {\n        A x = new B();\n        System.out.print(x.f());\n    }\n}"
+        },
+        "options": [
+          "A",
+          "B",
+          "AB",
+          "BA"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "x의 실제 객체는 B라서 오버라이딩된 B의 f()가 실행됩니다. \"B\" 뒤에 super.f()가 돌려준 \"A\"가 붙어 BA입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-feat-mock-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "c-string",
+        "c"
+      ],
+      "content": {
+        "prompt": "다음 C 코드의 출력 결과는?",
+        "code": {
+          "language": "c",
+          "source": "char a[20] = \"ab\";\nchar b[20];\nstrcpy(b, a);\nstrcat(a, b);\nint n = strlen(a);\nprintf(\"%s %d\", a, n);"
+        },
+        "options": [
+          "ab 2",
+          "abab 5",
+          "abab 4",
+          "ab 4"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "strcpy로 b에 \"ab\"를 복사하고, strcat으로 a 뒤에 b를 붙여 a는 \"abab\"입니다. strlen은 널 문자를 빼고 4입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-feat-mock-009",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "exception",
+        "java"
+      ],
+      "content": {
+        "prompt": "다음 Java 코드의 출력 결과는?",
+        "code": {
+          "language": "java",
+          "source": "int[] a = {1, 2, 3};\nint s = 0;\ntry {\n    for (int i = 0; i <= 3; i++) s += a[i];\n} catch (Exception e) {\n    s += 10;\n} finally {\n    s += 100;\n}\nSystem.out.print(s);"
+        },
+        "options": [
+          "6",
+          "106",
+          "116",
+          "16"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "a[0]~a[2]를 더해 6이 된 뒤 a[3]에서 범위 초과 예외가 납니다. catch에서 10, finally에서 100을 더해 116입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-feat-mock-010",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "python",
+        "set"
+      ],
+      "content": {
+        "prompt": "Python 자료형에 대한 설명으로 틀린 것은?",
+        "options": [
+          "list는 내용을 바꿀 수 있다",
+          "tuple은 내용을 바꿀 수 없다",
+          "dict는 키-값 쌍의 모음이다",
+          "set은 순서가 있는 시퀀스다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "set은 중복 없는 값의 모음이며 순서가 없습니다. 순서가 있는 시퀀스는 list와 tuple입니다.",
+      "refs": []
+    }
+  ]
+}

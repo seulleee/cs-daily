@@ -1,0 +1,224 @@
+{
+  "track": "eip",
+  "unit": "u11-language-features",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "eip-lang-except-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "exception",
+        "java"
+      ],
+      "content": {
+        "prompt": "실행 중에 발생해 정상 흐름을 방해하는 오류는?",
+        "options": [
+          "예외",
+          "문법 오류",
+          "경고"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "예외는 프로그램 실행 중에 발생해 정상 흐름을 방해하는 오류입니다. 문법 오류는 실행 전에 걸립니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-except-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "exception",
+        "finally"
+      ],
+      "content": {
+        "prompt": "예외 발생 여부와 관계없이 항상 실행되는 블록은?",
+        "options": [
+          "try",
+          "catch",
+          "finally"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "finally 블록은 예외가 나든 안 나든 항상 실행됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-except-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "exception",
+        "try-catch"
+      ],
+      "content": {
+        "prompt": "예외가 발생했을 때 처리 코드를 두는 블록은?",
+        "options": [
+          "try",
+          "catch"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "try는 예외가 날 수 있는 코드를 감싸고, 예외가 발생하면 catch 블록에서 처리합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-except-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "exception",
+        "java"
+      ],
+      "content": {
+        "prompt": "세미콜론 누락 같은 문법 오류도 예외다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "예외는 실행 중에 생기는 오류입니다. 문법 오류는 컴파일 단계에서 걸리므로 예외가 아닙니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-except-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "exception",
+        "try-catch"
+      ],
+      "content": {
+        "prompt": "예외가 날 수 있는 코드를 감싸는 블록은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "try"
+        ]
+      },
+      "explanation": "try 블록으로 감싼 코드에서 예외가 나면 catch 블록으로 넘어가 처리합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-except-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "exception",
+        "finally",
+        "java"
+      ],
+      "content": {
+        "prompt": "예외와 관계없이 C를 출력하려면 빈칸에 들어갈 키워드는?",
+        "code": {
+          "language": "java",
+          "source": "try {\n    int r = 10 / 0;\n    System.out.print(\"A\");\n} catch (ArithmeticException e) {\n    System.out.print(\"B\");\n} ___ {\n    System.out.print(\"C\");\n}"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "finally"
+        ]
+      },
+      "explanation": "0으로 나누어 예외가 나면 catch가 B를 출력하고, finally는 항상 실행되어 C를 출력합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-except-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "exception",
+        "java"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "java",
+          "source": "try {\n    int[] a = new int[3];\n    a[3] = 1;\n    System.out.print(\"1\");\n} catch (Exception e) {\n    System.out.print(\"2\");\n} finally {\n    System.out.print(\"3\");\n}"
+        },
+        "options": [
+          "13",
+          "23",
+          "123"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "크기 3인 배열에 a[3]을 쓰면 인덱스 범위 초과 예외가 나서 1은 출력되지 않습니다. catch가 2, finally가 3을 출력합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-except-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "exception",
+        "finally",
+        "java"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "java",
+          "source": "try {\n    System.out.print(\"A\");\n} catch (Exception e) {\n    System.out.print(\"B\");\n} finally {\n    System.out.print(\"C\");\n}"
+        },
+        "options": [
+          "AC",
+          "A",
+          "ABC"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "예외가 없으므로 catch는 건너뛰고, finally는 항상 실행되어 AC가 출력됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-except-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "exception",
+        "java"
+      ],
+      "content": {
+        "prompt": "다음 중 예외에 해당하는 것은?",
+        "options": [
+          "괄호 짝 오류",
+          "0으로 나누기",
+          "세미콜론 누락"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "0으로 나누기는 실행 중에 발생하는 예외입니다. 괄호 짝 오류와 세미콜론 누락은 문법 오류입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-except-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "exception",
+        "java"
+      ],
+      "content": {
+        "prompt": "예외는 프로그램 실행 중에 발생한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "예외는 배열 범위 초과, 0으로 나누기처럼 실행 중에 발생해 정상 흐름을 방해합니다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "track": "eip",
+  "unit": "u11-language-features",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "eip-lang-langtools-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "build-tool",
+        "language"
+      ],
+      "content": {
+        "prompt": "컴파일·테스트·패키징을 자동화하는 도구는?",
+        "options": [
+          "빌드 도구",
+          "라이브러리",
+          "인터프리터"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "빌드 도구는 컴파일·테스트·패키징을 자동화합니다. Ant, Maven, Gradle이 대표적입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-langtools-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "library",
+        "language"
+      ],
+      "content": {
+        "prompt": "자주 쓰는 기능을 모아 둔 재사용 코드 묶음은?",
+        "options": [
+          "빌드 도구",
+          "라이브러리",
+          "컴파일러"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "라이브러리는 자주 쓰는 기능을 모아 두어 여러 프로그램에서 재사용하는 코드 묶음입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-langtools-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "language",
+        "procedural"
+      ],
+      "content": {
+        "prompt": "C는 어느 쪽 언어인가?",
+        "options": [
+          "객체지향 언어",
+          "절차적 언어"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "C는 절차 중심의 절차적 언어입니다. Java, C++는 객체지향 언어입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-langtools-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "language",
+        "script"
+      ],
+      "content": {
+        "prompt": "Python은 별도 컴파일 없이 인터프리터로 실행하는 스크립트 언어다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "스크립트 언어는 별도 컴파일 없이 인터프리터로 실행합니다. Python, JavaScript가 그 예입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-langtools-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "build-tool",
+        "language"
+      ],
+      "content": {
+        "prompt": "Maven, Gradle처럼 빌드를 자동화하는 것을 ___ 도구라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "빌드",
+          "build"
+        ]
+      },
+      "explanation": "Ant, Maven, Gradle은 컴파일·테스트·패키징을 자동화하는 빌드 도구입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-langtools-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "language",
+        "oop"
+      ],
+      "content": {
+        "prompt": "C가 절차적 언어라면 Java·C++는 ___ 언어이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "객체지향",
+          "객체 지향",
+          "OOP"
+        ]
+      },
+      "explanation": "Java와 C++는 객체를 중심으로 프로그램을 구성하는 객체지향 언어입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-langtools-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "library",
+        "python"
+      ],
+      "content": {
+        "prompt": "math처럼 기능을 모아 둔 재사용 코드 묶음은?",
+        "code": {
+          "language": "python",
+          "source": "import math\nprint(math.sqrt(16))"
+        },
+        "options": [
+          "라이브러리",
+          "빌드 도구",
+          "컴파일러"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "math는 수학 기능을 모아 둔 라이브러리입니다. 불러와서 sqrt 같은 기능을 바로 재사용합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-langtools-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "language",
+        "oop",
+        "java"
+      ],
+      "content": {
+        "prompt": "이 코드처럼 클래스로 프로그램을 짜는 Java는?",
+        "code": {
+          "language": "java",
+          "source": "class Dog {\n    void bark() {\n        System.out.print(\"W\");\n    }\n}"
+        },
+        "options": [
+          "절차적 언어",
+          "객체지향 언어",
+          "스크립트 언어"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Java는 클래스와 객체를 중심으로 프로그램을 구성하는 객체지향 언어입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-langtools-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "build-tool",
+        "language"
+      ],
+      "content": {
+        "prompt": "Ant, Maven, Gradle의 공통점은?",
+        "options": [
+          "스크립트 언어",
+          "라이브러리",
+          "빌드 도구"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "세 가지 모두 컴파일·테스트·패키징을 자동화하는 빌드 도구입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-langtools-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "build-tool",
+        "language"
+      ],
+      "content": {
+        "prompt": "Gradle은 객체지향 프로그래밍 언어이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Gradle은 언어가 아니라 컴파일·테스트·패키징을 자동화하는 빌드 도구입니다.",
+      "refs": []
+    }
+  ]
+}

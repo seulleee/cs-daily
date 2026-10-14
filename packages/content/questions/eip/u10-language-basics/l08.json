@@ -1,0 +1,261 @@
+{
+  "track": "eip",
+  "unit": "u10-language-basics",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "eip-lang-basics-mock-001",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "naming",
+        "hungarian"
+      ],
+      "content": {
+        "prompt": "헝가리안 표기법에 해당하는 변수 이름은?",
+        "options": [
+          "nUserCount",
+          "userName",
+          "UserName",
+          "user_name"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "헝가리안 표기법은 자료형을 뜻하는 접두어(n)를 이름 앞에 붙입니다. 나머지는 카멜, 파스칼, 스네이크 표기법입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-basics-mock-002",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "identifier",
+        "variable"
+      ],
+      "content": {
+        "prompt": "C 언어의 변수 이름(식별자)으로 사용할 수 없는 것은?",
+        "options": [
+          "_total",
+          "total2",
+          "totalSum",
+          "2total"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "식별자는 숫자로 시작할 수 없습니다. 밑줄로 시작하거나 숫자가 뒤에 오는 이름은 사용할 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-basics-mock-003",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "loop",
+        "continue"
+      ],
+      "content": {
+        "prompt": "반복문에 대한 설명으로 틀린 것은?",
+        "options": [
+          "do-while은 최소 한 번 실행된다",
+          "break는 반복문을 즉시 빠져나간다",
+          "continue는 반복문을 종료한다",
+          "for는 초기식·조건식·증감식을 쓴다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "continue는 반복문을 끝내지 않고 이번 반복의 나머지만 건너뛰어 다음 반복으로 갑니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-basics-mock-004",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "operator",
+        "increment",
+        "c"
+      ],
+      "content": {
+        "prompt": "다음 C 코드의 출력 결과는?",
+        "code": {
+          "language": "c",
+          "source": "int a = 3, b;\nb = ++a * 2;\nprintf(\"%d %d\", a, b);"
+        },
+        "options": [
+          "3 6",
+          "4 8",
+          "4 6",
+          "3 8"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "++a는 a를 먼저 4로 증가시킨 뒤 사용하므로 b = 4 * 2 = 8입니다. a는 4입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-basics-mock-005",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bitwise",
+        "xor",
+        "c"
+      ],
+      "content": {
+        "prompt": "다음 C 코드의 출력 결과는?",
+        "code": {
+          "language": "c",
+          "source": "int a = 12, b = 10;\nprintf(\"%d\", a ^ b);"
+        },
+        "options": [
+          "2",
+          "6",
+          "8",
+          "14"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "12는 1100, 10은 1010입니다. XOR은 서로 다른 비트만 1이 되어 0110, 즉 6입니다. 8은 AND, 14는 OR의 결과입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-basics-mock-006",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "operator",
+        "logical"
+      ],
+      "content": {
+        "prompt": "논리 연산자에 대한 설명으로 옳은 것은?",
+        "options": [
+          "&&는 하나라도 참이면 참이다",
+          "||는 둘 다 참일 때만 참이다",
+          "&&는 비트 단위로 계산한다",
+          "!는 참과 거짓을 뒤집는다"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "!는 부정 연산자로 참을 거짓으로, 거짓을 참으로 바꿉니다. &&와 ||의 설명은 서로 바뀌었습니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-basics-mock-007",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "loop",
+        "continue",
+        "c"
+      ],
+      "content": {
+        "prompt": "다음 C 코드의 출력 결과는?",
+        "code": {
+          "language": "c",
+          "source": "int sum = 0;\nfor (int i = 1; i <= 6; i++) {\n    if (i % 3 == 0) continue;\n    sum += i;\n}\nprintf(\"%d\", sum);"
+        },
+        "options": [
+          "21",
+          "9",
+          "12",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "i가 3, 6일 때 continue로 덧셈을 건너뜁니다. 1 + 2 + 4 + 5 = 12입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-basics-mock-008",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "switch",
+        "c"
+      ],
+      "content": {
+        "prompt": "다음 C 코드의 출력 결과는?",
+        "code": {
+          "language": "c",
+          "source": "int n = 1, r = 0;\nswitch (n) {\n    case 1: r += 1;\n    case 2: r += 10; break;\n    case 3: r += 100;\n}\nprintf(\"%d\", r);"
+        },
+        "options": [
+          "1",
+          "11",
+          "111",
+          "10"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "case 1부터 실행되고 break가 없어 case 2까지 이어집니다. r은 1 + 10 = 11이 되고 case 2의 break에서 멈춥니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-basics-mock-009",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "function",
+        "static",
+        "c"
+      ],
+      "content": {
+        "prompt": "다음 C 코드의 출력 결과는?",
+        "code": {
+          "language": "c",
+          "source": "int f() {\n    static int s = 0;\n    int t = 0;\n    s++; t++;\n    return s + t;\n}\nint main() {\n    f(); f();\n    printf(\"%d\", f());\n}"
+        },
+        "options": [
+          "2",
+          "3",
+          "4",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "정적 변수 s는 호출마다 누적되어 세 번째 호출에서 3이고, 지역 변수 t는 매번 0에서 시작해 1입니다. 3 + 1 = 4입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-basics-mock-010",
+      "type": "single",
+      "difficulty": 3,
+      "tags": [
+        "precedence",
+        "shift"
+      ],
+      "content": {
+        "prompt": "C에서 연산식 3 + 4 << 1의 결과는?",
+        "options": [
+          "14",
+          "11",
+          "8",
+          "7"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "산술 연산자가 시프트보다 우선하므로 3 + 4 = 7을 먼저 구하고, 7 << 1 = 14가 됩니다.",
+      "refs": []
+    }
+  ]
+}

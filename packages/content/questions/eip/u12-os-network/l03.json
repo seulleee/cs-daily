@@ -1,0 +1,221 @@
+{
+  "track": "eip",
+  "unit": "u12-os-network",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "eip-lang-memory-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "memory",
+        "first-fit"
+      ],
+      "content": {
+        "prompt": "들어갈 수 있는 첫 번째 빈 공간에 배치하는 전략은?",
+        "options": [
+          "최초 적합",
+          "최적 적합",
+          "최악 적합"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "최초 적합은 처음부터 살펴 들어갈 수 있는 첫 번째 빈 공간에 배치합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-memory-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "page-replacement",
+        "lru"
+      ],
+      "content": {
+        "prompt": "가장 오랫동안 사용되지 않은 페이지를 내보내는 기법은?",
+        "options": [
+          "FIFO",
+          "LRU",
+          "최적 적합"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "LRU는 가장 오랫동안 사용되지 않은 페이지를 교체 대상으로 고릅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-memory-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "memory",
+        "best-fit"
+      ],
+      "content": {
+        "prompt": "남는 공간이 가장 작은 곳에 배치하는 전략은?",
+        "options": [
+          "최악 적합",
+          "최적 적합"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "최적 적합은 남는 공간이 가장 작은 곳에, 최악 적합은 가장 큰 곳에 배치합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-memory-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "page-replacement",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "FIFO는 가장 먼저 들어온 페이지를 내보낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "FIFO는 메모리에 가장 먼저 들어온 페이지를 교체 대상으로 고릅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-memory-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "memory",
+        "worst-fit"
+      ],
+      "content": {
+        "prompt": "남는 공간이 가장 큰 곳에 배치하는 전략은 ___ 적합이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "최악",
+          "worst"
+        ]
+      },
+      "explanation": "최악 적합은 남는 공간이 가장 큰 빈 공간에 배치합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-memory-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "page-replacement",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "가장 먼저 들어온 페이지를 내보내는 교체 기법은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "FIFO",
+          "선입선출"
+        ]
+      },
+      "explanation": "FIFO(First In First Out)는 들어온 순서가 가장 빠른 페이지를 내보냅니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-memory-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "memory",
+        "first-fit",
+        "python"
+      ],
+      "content": {
+        "prompt": "최초 적합으로 고른 빈 공간의 크기를 출력하면?",
+        "code": {
+          "language": "python",
+          "source": "holes = [8, 20, 12, 30]\nneed = 10\nfor i in range(4):\n    if holes[i] >= need:\n        print(holes[i])\n        break"
+        },
+        "options": [
+          "12",
+          "20",
+          "30"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "앞에서부터 10 이상인 첫 공간을 찾으면 8은 작고 20이 처음입니다. 최적 적합이었다면 12입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-memory-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "page-replacement",
+        "lru"
+      ],
+      "content": {
+        "prompt": "이 의사코드가 나타내는 교체 기법은?",
+        "code": {
+          "language": "pseudo",
+          "source": "procedure replace(new)\n    victim ← 가장 오랫동안 안 쓰인 페이지\n    victim을 내보낸다\n    new를 적재한다\nend"
+        },
+        "options": [
+          "FIFO",
+          "최적 적합",
+          "LRU"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "가장 오랫동안 사용되지 않은 페이지를 내보내므로 LRU입니다. 들어온 순서로 고르면 FIFO입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-memory-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "page-replacement",
+        "lru"
+      ],
+      "content": {
+        "prompt": "프레임 3개, 참조 1,2,3,1,4에서 4 적재 시 LRU가 내보내는 것은?",
+        "options": [
+          "3",
+          "1",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "4가 올 때 마지막 사용 시점은 1이 가장 최근, 2가 가장 오래전입니다. 그래서 2를 내보냅니다. FIFO라면 1입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-memory-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "memory",
+        "first-fit"
+      ],
+      "content": {
+        "prompt": "최초 적합은 남는 공간이 가장 작은 곳에 배치한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "남는 공간이 가장 작은 곳에 배치하는 것은 최적 적합입니다. 최초 적합은 첫 번째로 맞는 공간에 배치합니다.",
+      "refs": []
+    }
+  ]
+}

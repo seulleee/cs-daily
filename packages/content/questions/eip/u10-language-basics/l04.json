@@ -1,0 +1,227 @@
+{
+  "track": "eip",
+  "unit": "u10-language-basics",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "eip-lang-bitops-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bitwise",
+        "xor"
+      ],
+      "content": {
+        "prompt": "두 비트가 서로 다를 때만 1이 되는 연산은?",
+        "options": [
+          "AND",
+          "OR",
+          "XOR"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "XOR(^)은 두 비트가 서로 다르면 1, 같으면 0입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-bitops-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bitwise",
+        "not"
+      ],
+      "content": {
+        "prompt": "비트를 모두 반전시키는 연산자는?",
+        "options": [
+          "^",
+          "~",
+          "|"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "~(NOT)은 0을 1로, 1을 0으로 반전합니다. ^는 XOR, |는 OR입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-bitops-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "precedence",
+        "shift"
+      ],
+      "content": {
+        "prompt": "a + b << 1에서 먼저 계산되는 연산자는?",
+        "options": [
+          "+",
+          "<<"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "산술 연산자가 시프트 연산자보다 우선순위가 높으므로 a + b를 먼저 계산합니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-bitops-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "shift",
+        "bitwise"
+      ],
+      "content": {
+        "prompt": "<< 1은 값을 2배로 만든다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "왼쪽으로 1비트 시프트하면 값이 2배가 됩니다. << n은 2의 n제곱배입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-bitops-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "bitwise",
+        "and"
+      ],
+      "content": {
+        "prompt": "두 비트가 모두 1일 때만 1이 되는 비트 연산은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "AND",
+          "앤드",
+          "논리곱"
+        ]
+      },
+      "explanation": "AND(&)는 두 비트가 모두 1일 때만 1입니다. 하나라도 1이면 1인 것은 OR입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-bitops-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "shift",
+        "bitwise"
+      ],
+      "content": {
+        "prompt": "1 << 3의 결과는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "8"
+        ]
+      },
+      "explanation": "1을 왼쪽으로 3비트 시프트하면 2의 3제곱배인 8이 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-bitops-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bitwise",
+        "and",
+        "c"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "c",
+          "source": "int a = 6, b = 3;\nprintf(\"%d\", a & b);"
+        },
+        "options": [
+          "2",
+          "7",
+          "5"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "6은 110, 3은 011입니다. 두 비트가 모두 1인 자리만 남아 010, 즉 2입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-bitops-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bitwise",
+        "xor",
+        "c"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "c",
+          "source": "int a = 5, b = 3;\nprintf(\"%d\", a ^ b);"
+        },
+        "options": [
+          "1",
+          "6",
+          "7"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "5는 101, 3은 011입니다. 서로 다른 자리만 1이 되어 110, 즉 6입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-bitops-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "shift",
+        "bitwise",
+        "c"
+      ],
+      "content": {
+        "prompt": "출력이 20이 되도록 빈칸에 들어갈 연산자는?",
+        "code": {
+          "language": "c",
+          "source": "int a = 5;\nprintf(\"%d\", a ___ 2);"
+        },
+        "options": [
+          "<<",
+          ">>",
+          "^"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "5 << 2는 5의 2의 2제곱배인 20입니다. 5 >> 2는 1, 5 ^ 2는 7입니다.",
+      "refs": []
+    },
+    {
+      "id": "eip-lang-bitops-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "bitwise",
+        "xor"
+      ],
+      "content": {
+        "prompt": "XOR은 두 비트가 같으면 1이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "XOR은 두 비트가 서로 다를 때 1이고, 같으면 0입니다.",
+      "refs": []
+    }
+  ]
+}
