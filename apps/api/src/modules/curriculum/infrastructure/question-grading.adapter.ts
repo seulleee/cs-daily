@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { ErrorCode, type QuestionType } from '@cs-daily/contracts';
+import { ErrorCode, type CodingLanguage, type QuestionType } from '@cs-daily/contracts';
 import { NotFoundError } from '../../../shared/domain/domain-error';
 import { LessonId, QuestionId, UserId } from '../../../shared/domain/ids';
 import { UnitOfWork } from '../../../shared/infrastructure/unit-of-work';
+import { publicContentFor } from '../../learning/domain/services/code-variants';
 import type { CurriculumQueryPort, LessonOutline, QuestionForGrading, QuestionGradingPort, QuestionPublic, UnitOutline } from '../../learning/domain/ports';
 
 const MVP_TYPES: ReadonlySet<string> = new Set(['single', 'multi', 'ox', 'fill']);
@@ -86,12 +87,16 @@ export class CurriculumAdapter implements QuestionGradingPort, CurriculumQueryPo
     return !!done?.completedAt;
   }
 
-  async publicQuestions(ids: string[]): Promise<QuestionPublic[]> {
+  async publicQuestions(ids: string[], codeLanguage: CodingLanguage): Promise<QuestionPublic[]> {
     if (ids.length === 0) return [];
     const rows = await this.db.question.findMany({
       where: { id: { in: ids } },
       select: { id: true, type: true, content: true, difficulty: true }, // answerKey 제외
     });
-    return rows.map((r) => ({ id: r.id, type: r.type as QuestionType, content: r.content, difficulty: r.difficulty }));
+    return rows.map((r) => {
+      // 언어별 variants 문제는 사용자 언어의 variant만 content.code(+options)로 펼친다 — 다른 언어는 내려가지 않는다
+      const { content, lang } = publicContentFor(r.content, codeLanguage);
+      return { id: r.id, type: r.type as QuestionType, content, difficulty: r.difficulty, ...(lang ? { lang } : {}) };
+    });
   }
 }

@@ -54,7 +54,7 @@ export class SessionsController {
     @Param('id', ParseUUIDPipe) id: string,
     @Body(new ZodBody(SubmitAnswerRequest)) body: SubmitAnswerRequest,
   ): Promise<SubmitAnswerResponse> {
-    return this.commandBus.execute(new SubmitAnswerCommand(user.id, id, body.questionId, body.answer, body.timeMs));
+    return this.commandBus.execute(new SubmitAnswerCommand(user.id, id, body.questionId, body.answer, body.timeMs, body.lang));
   }
 
   /** 틀린 문제 다시 풀기 — 채점만 하고 기록·XP·복습엔 영향 없음. 첫 답이 오답인 문제만 허용 */
@@ -65,7 +65,7 @@ export class SessionsController {
     @Param('id', ParseUUIDPipe) id: string,
     @Body(new ZodBody(RetryAnswerRequest)) body: RetryAnswerRequest,
   ): Promise<RetryAnswerResponse> {
-    return this.commandBus.execute(new RetryAnswerCommand(user.id, id, body.questionId, body.answer));
+    return this.commandBus.execute(new RetryAnswerCommand(user.id, id, body.questionId, body.answer, body.lang));
   }
 
   @Post('sessions/:id/complete')

@@ -1,4 +1,4 @@
-import type { QuestionType } from '@cs-daily/contracts';
+import type { CodingLanguage, QuestionType } from '@cs-daily/contracts';
 import type { LessonSession } from '../lesson-session.aggregate';
 import type { LessonId, QuestionId, SessionId, UserId } from '../../../../shared/domain/ids';
 import type { SessionKind } from '../services/session-kind';
@@ -27,6 +27,8 @@ export interface QuestionPublic {
   type: QuestionType;
   content: unknown;
   difficulty: number;
+  /** 언어별 variants 문제에서 content를 펼친 언어 (일반 문제는 없음) */
+  lang?: CodingLanguage;
 }
 export interface LessonOutline {
   id: number;
@@ -62,7 +64,8 @@ export interface CurriculumQueryPort {
   publishedQuestionIds(lessonId: LessonId): Promise<string[]>;
   /** 이 레슨이 사용자에게 열려 있는가 (앞 레슨 완료 또는 첫 레슨) */
   isLessonUnlocked(userId: UserId, lessonId: LessonId): Promise<boolean>;
-  publicQuestions(ids: string[]): Promise<QuestionPublic[]>;
+  /** 정답 없는 문제 content. 언어별 variants 문제는 codeLanguage의 variant만 펼쳐 내려보낸다 */
+  publicQuestions(ids: string[], codeLanguage: CodingLanguage): Promise<QuestionPublic[]>;
 }
 export const CURRICULUM_QUERY_PORT = Symbol('CURRICULUM_QUERY_PORT');
 
@@ -70,6 +73,8 @@ export const CURRICULUM_QUERY_PORT = Symbol('CURRICULUM_QUERY_PORT');
 export interface UserPrefs {
   timeZone: string;
   dailyGoal: number;
+  /** 코딩 테스트 트랙 코드 문제를 풀 언어 */
+  codeLanguage: CodingLanguage;
 }
 export interface UserPrefsPort {
   prefsOf(userId: UserId): Promise<UserPrefs>;

@@ -4,7 +4,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
-import type { CompleteSessionResponse, RetryAnswerResponse, SessionResponse, SubmitAnswerResponse, UserAnswer } from '@cs-daily/contracts';
+import type { CodingLanguage, CompleteSessionResponse, RetryAnswerResponse, SessionResponse, SubmitAnswerResponse, UserAnswer } from '@cs-daily/contracts';
 import { api, ApiError } from '@/lib/api';
 import { CheckIcon, RepeatIcon, XIcon } from './icons';
 import { useKeyboardInset } from '@/lib/use-keyboard-inset';
@@ -69,7 +69,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
   const startedAt = useRef<number>(Date.now());
 
   const submit = useMutation({
-    mutationFn: (p: { questionId: string; answer: UserAnswer }) =>
+    mutationFn: (p: { questionId: string; answer: UserAnswer; lang?: CodingLanguage }) =>
       api<SubmitAnswerResponse>(`/sessions/${sessionId}/answers`, { json: { ...p, timeMs: Math.min(600_000, Date.now() - startedAt.current) } }),
     onSuccess: (r, p) => {
       setResult(r);
@@ -78,7 +78,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
     },
   });
   const retry = useMutation({
-    mutationFn: (p: { questionId: string; answer: UserAnswer }) => api<RetryAnswerResponse>(`/sessions/${sessionId}/retry`, { json: p }),
+    mutationFn: (p: { questionId: string; answer: UserAnswer; lang?: CodingLanguage }) => api<RetryAnswerResponse>(`/sessions/${sessionId}/retry`, { json: p }),
     onSuccess: (r) => setResult({ ...r, xpDelta: 0 }),
   });
   // 인자는 "다시 푼 문제" 수. 응답에 없는 값이라 결과 화면용으로 따로 캐시에 둔다
@@ -149,8 +149,8 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
     if (!q || !draft || inFlight.current) return;
     inFlight.current = true;
     const settle = { onSettled: () => { inFlight.current = false; } };
-    if (phase === 'retry') retry.mutate({ questionId: q.id, answer: draft }, settle);
-    else submit.mutate({ questionId: q.id, answer: draft }, settle);
+    if (phase === 'retry') retry.mutate({ questionId: q.id, answer: draft, lang: q.lang }, settle);
+    else submit.mutate({ questionId: q.id, answer: draft, lang: q.lang }, settle);
   };
 
   const canSubmit = draft !== null && !(typeof draft === 'object' && 'text' in draft && !draft.text.trim()) && !(('indices' in (draft ?? {})) && (draft as { indices: number[] }).indices.length === 0);

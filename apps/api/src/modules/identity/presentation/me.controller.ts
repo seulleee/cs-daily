@@ -57,6 +57,7 @@ export class MeController {
         timezone: user.timezone,
         dailyGoal: user.dailyGoal,
         reminderAt: user.reminderAt,
+        codeLanguage: user.codeLanguage,
         role: user.role,
       },
       stats: {
@@ -93,7 +94,7 @@ export class MeController {
     return this.uow.client.user.update({
       where: { id: auth.id },
       data: body,
-      select: { id: true, nickname: true, timezone: true, dailyGoal: true, reminderAt: true },
+      select: { id: true, nickname: true, timezone: true, dailyGoal: true, reminderAt: true, codeLanguage: true },
     });
   }
 

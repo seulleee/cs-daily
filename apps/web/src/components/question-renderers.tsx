@@ -1,6 +1,6 @@
 'use client';
 
-import type { PublicQuestion, UserAnswer } from '@cs-daily/contracts';
+import { CODING_LANGUAGE_LABEL, type CodingLanguage, type PublicQuestion, type UserAnswer } from '@cs-daily/contracts';
 import { useEffect, useRef } from 'react';
 import { CheckIcon, XIcon } from './icons';
 import { SelectMark } from './select-mark';
@@ -33,11 +33,11 @@ export function QuestionRenderer(props: RendererProps) {
 /** 코드 안 빈칸 상자의 상태. text는 입력 중인 글자(fill) 또는 선택한 보기(single) */
 type BlankView = { text: string; state?: 'correct' | 'wrong' };
 
-function Prompt({ prompt, code, blank }: { prompt: string; code?: { language: string; source: string } | null; blank?: BlankView }) {
+function Prompt({ prompt, code, lang, blank }: { prompt: string; code?: { language: string; source: string } | null; lang?: CodingLanguage; blank?: BlankView }) {
   return (
     <div className="mb-6">
       <h2 tabIndex={-1} data-question-heading className="text-title font-semibold outline-none">{prompt}</h2>
-      {code && <CodeBlock source={code.source} language={code.language} blank={blank} className="mt-3" />}
+      {code && <CodeBlock source={code.source} language={code.language} lang={lang} blank={blank} className="mt-3" />}
     </div>
   );
 }
@@ -56,37 +56,44 @@ function CodeBlank({ view }: { view: BlankView }) {
 function CodeBlock({
   source,
   language,
+  lang,
   blank,
   className = '',
 }: {
   source: string;
   language?: string;
+  /** 사용자가 고른 풀이 언어(언어별 variants 문제). 있으면 코드 위에 작은 언어 라벨을 단다 */
+  lang?: CodingLanguage;
   blank?: BlankView;
   className?: string;
 }) {
   const lines = source.replace(/\t/g, '    ').replace(/\n+$/, '').split('\n');
   const blanks = source.split('___').length - 1;
+  const label = lang ? CODING_LANGUAGE_LABEL[lang] : null;
   return (
-    <pre
-      role="group"
-      aria-label={blanks > 0 ? `코드, 빈칸 ${blanks}개` : '코드'}
-      data-lang={language}
-      className={`code-block [word-spacing:normal] ${className}`}
-    >
-      <code>
-        {lines.map((line, i) => (
-          <span key={i} className="code-line">
-            {line.split('___').map((part, j) => (
-              <span key={j}>
-                {j > 0 && <CodeBlank view={blank ?? { text: '' }} />}
-                {part}
-              </span>
-            ))}
-            {line === '' && ' '}
-          </span>
-        ))}
-      </code>
-    </pre>
+    <div className={className}>
+      {label && <div data-code-lang-label className="bit mb-1 text-ink-2">{label}</div>}
+      <pre
+        role="group"
+        aria-label={`${label ? `${label} ` : ''}${blanks > 0 ? `코드, 빈칸 ${blanks}개` : '코드'}`}
+        data-lang={language}
+        className="code-block [word-spacing:normal]"
+      >
+        <code>
+          {lines.map((line, i) => (
+            <span key={i} className="code-line">
+              {line.split('___').map((part, j) => (
+                <span key={j}>
+                  {j > 0 && <CodeBlank view={blank ?? { text: '' }} />}
+                  {part}
+                </span>
+              ))}
+              {line === '' && ' '}
+            </span>
+          ))}
+        </code>
+      </pre>
+    </div>
   );
 }
 
@@ -156,7 +163,7 @@ function ChoiceRenderer({ question, value, onChange, revealed, multi }: Renderer
 
   return (
     <div>
-      <Prompt prompt={c.prompt} code={c.code} blank={blank} />
+      <Prompt prompt={c.prompt} code={c.code} lang={question.lang} blank={blank} />
       {multi && <p className="mb-2 text-cap font-medium text-ink-2">해당하는 것을 모두 고르세요</p>}
       <div role={multi ? 'group' : 'radiogroup'} className="space-y-3">
         {c.options.map((opt, i) => {
@@ -190,7 +197,7 @@ function OxRenderer({ question, value, onChange, revealed }: RendererProps) {
   const correct = revealed ? (revealed.correctAnswer as { value: boolean }).value : null;
   return (
     <div>
-      <Prompt prompt={c.prompt} code={c.code} />
+      <Prompt prompt={c.prompt} code={c.code} lang={question.lang} />
       <div className="grid grid-cols-2 gap-3" role="radiogroup">
         {[true, false].map((b) => (
           <button
@@ -262,6 +269,7 @@ function FillRenderer({ question, value, onChange, revealed }: RendererProps) {
         <CodeBlock
           source={c.code.source}
           language={c.code.language}
+          lang={question.lang}
           blank={{ text: text.trim() ? text : '', state: revealed ? (revealed.isCorrect ? 'correct' : 'wrong') : undefined }}
           className="mb-4"
         />
