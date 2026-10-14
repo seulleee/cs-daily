@@ -143,10 +143,14 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
       }
     }
   };
+  // 응답 전 재호출(Enter 연타·IME 이벤트 중복) 방지. pending 상태는 다음 렌더 전엔 반영되지 않아 ref로 막는다
+  const inFlight = useRef(false);
   const check = () => {
-    if (!q || !draft) return;
-    if (phase === 'retry') retry.mutate({ questionId: q.id, answer: draft });
-    else submit.mutate({ questionId: q.id, answer: draft });
+    if (!q || !draft || inFlight.current) return;
+    inFlight.current = true;
+    const settle = { onSettled: () => { inFlight.current = false; } };
+    if (phase === 'retry') retry.mutate({ questionId: q.id, answer: draft }, settle);
+    else submit.mutate({ questionId: q.id, answer: draft }, settle);
   };
 
   const canSubmit = draft !== null && !(typeof draft === 'object' && 'text' in draft && !draft.text.trim()) && !(('indices' in (draft ?? {})) && (draft as { indices: number[] }).indices.length === 0);
@@ -177,8 +181,9 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Enter' || e.defaultPrevented) return;
-      // 한글 IME 조합 중 Enter(isComposing, keyCode 229)는 조합 확정용이다. 제출하지 않는다
-      if (e.isComposing || e.keyCode === 229) return;
+      // 한글 IME 조합 중 Enter는 조합 확정용이다. 제출하지 않는다.
+      // keyCode 229만으로는 막지 않는다: iOS Safari·Android Gboard는 조합 직후 리턴도 229(isComposing=false)로 보낸다
+      if (e.isComposing) return;
       const t = e.target;
       if (t instanceof HTMLButtonElement || t instanceof HTMLAnchorElement || t instanceof HTMLTextAreaElement) return;
       if (phase === 'intro') setPhase('main');
