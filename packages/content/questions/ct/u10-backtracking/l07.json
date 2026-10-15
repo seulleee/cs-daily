@@ -1,0 +1,297 @@
+{
+  "track": "ct",
+  "unit": "u10-backtracking",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ct-u10-prune-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "pruning"
+      ],
+      "content": {
+        "prompt": "답이 될 수 없는 분기를 미리 끊는 것은?",
+        "options": [
+          "완전 탐색",
+          "이진 탐색",
+          "가지치기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "가지치기는 더 내려가도 답이 될 수 없는 분기를 미리 끊어 탐색량을 줄인다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-prune-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "pruning",
+        "best-bound"
+      ],
+      "content": {
+        "prompt": "최소 비용을 찾는데 현재 비용이 최선 이상이면?",
+        "options": [
+          "중단한다",
+          "계속 내려간다",
+          "최선을 바꾼다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "더 내려가면 비용이 늘기만 하므로 지금까지의 최선보다 나아질 수 없어 중단한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-prune-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "pruning",
+        "sum-bound"
+      ],
+      "content": {
+        "prompt": "값이 모두 양수면 합이 목표를 넘을 때 중단해도 된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "양수만 더하면 합이 줄지 않으므로 목표를 넘은 분기에서 답이 나올 수 없다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-prune-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "pruning"
+      ],
+      "content": {
+        "prompt": "가지치기는 답이 될 수 있는 분기도 끊는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "가지치기는 더 내려가도 답이 될 수 없는 분기만 끊는다. 답이 될 수 있는 분기를 끊으면 답을 놓친다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-prune-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "pruning"
+      ],
+      "content": {
+        "prompt": "답이 될 수 없는 분기를 미리 끊는 것을 ___라 한다.",
+        "hint": "네 글자 용어"
+      },
+      "answer_key": {
+        "accepted": [
+          "가지치기",
+          "pruning",
+          "프루닝"
+        ]
+      },
+      "explanation": "가지치기는 더 내려가도 답이 될 수 없는 분기를 미리 끊는 기법이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-prune-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "pruning",
+        "best-bound"
+      ],
+      "content": {
+        "prompt": "최선 비교로 가지치기하는 빈칸의 변수는?",
+        "hint": "지금까지 찾은 가장 좋은 값을 담은 변수",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "best = float('inf')\ndef go(i, cost):\n    global best\n    if cost >= ___:\n        return\n    if i == n:\n        best = cost\n        return\n    for c in costs[i]:\n        go(i + 1, cost + c)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int best = Integer.MAX_VALUE;\nvoid go(int i, int cost) {\n    if (cost >= ___) return;\n    if (i == n) {\n        best = cost;\n        return;\n    }\n    for (int c : costs[i]) go(i + 1, cost + c);\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let best = Infinity;\nfunction go(i, cost) {\n  if (cost >= ___) return;\n  if (i === n) {\n    best = cost;\n    return;\n  }\n  for (const c of costs[i]) go(i + 1, cost + c);\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int best = INT_MAX;\nvoid go(int i, int cost) {\n    if (cost >= ___) return;\n    if (i == n) {\n        best = cost;\n        return;\n    }\n    for (int c : costs[i]) go(i + 1, cost + c);\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "best"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "best"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "best"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "best"
+            ]
+          }
+        }
+      },
+      "explanation": "현재 비용이 지금까지 찾은 최선 best 이상이면 더 내려가도 나아질 수 없어 중단한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-prune-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pruning",
+        "sum-bound"
+      ],
+      "content": {
+        "prompt": "값이 모두 양수일 때 가지치기 조건 빈칸은?",
+        "options": [
+          "s < target",
+          "s > target",
+          "s == target"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def go(i, s):\n    if ___:\n        return 0\n    if i == n:\n        return 1 if s == target else 0\n    return go(i + 1, s + a[i]) + go(i + 1, s)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int go(int i, int s) {\n    if (___) return 0;\n    if (i == n) return s == target ? 1 : 0;\n    return go(i + 1, s + a[i]) + go(i + 1, s);\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function go(i, s) {\n  if (___) return 0;\n  if (i === n) return s === target ? 1 : 0;\n  return go(i + 1, s + a[i]) + go(i + 1, s);\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int go(int i, int s) {\n    if (___) return 0;\n    if (i == n) return s == target ? 1 : 0;\n    return go(i + 1, s + a[i]) + go(i + 1, s);\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "양수만 더하므로 합이 목표를 넘으면 더 내려가도 목표와 같아질 수 없어 0을 반환한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-prune-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pruning",
+        "sum-bound"
+      ],
+      "content": {
+        "prompt": "양수만, 목표 합 10, 지금 합 12. 다음 동작은?",
+        "options": [
+          "중단한다",
+          "계속 탐색한다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "양수만 더하면 합이 줄지 않아 10이 될 수 없으므로 이 분기를 중단한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-prune-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pruning",
+        "best-bound"
+      ],
+      "content": {
+        "prompt": "최소 비용 최선이 7, 현재 비용이 7이면?",
+        "options": [
+          "중단한다",
+          "계속 탐색한다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "현재 비용이 최선 이상이면 더 내려가도 7보다 작아질 수 없으므로 중단한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-prune-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "backtracking",
+        "pruning"
+      ],
+      "content": {
+        "prompt": "가지치기를 하면 줄어드는 것은?",
+        "options": [
+          "답의 개수",
+          "탐색량",
+          "입력 크기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "답이 될 수 없는 분기를 끊으므로 탐색량이 줄고, 찾는 답은 그대로다.",
+      "refs": []
+    }
+  ]
+}

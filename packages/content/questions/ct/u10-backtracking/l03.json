@@ -1,0 +1,298 @@
+{
+  "track": "ct",
+  "unit": "u10-backtracking",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ct-u10-perm-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "permutation"
+      ],
+      "content": {
+        "prompt": "이미 고른 원소를 표시하는 배열은?",
+        "options": [
+          "dp 배열",
+          "누적 합 배열",
+          "used 배열"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "used 배열에 고른 원소를 표시해 두면 같은 원소를 두 번 고르지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-perm-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "permutation"
+      ],
+      "content": {
+        "prompt": "순열 재귀에서 깊이가 뜻하는 것은?",
+        "options": [
+          "고른 개수",
+          "남은 원소의 합",
+          "원소의 값"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "재귀 한 단계마다 원소를 하나씩 고르므로 깊이는 지금까지 고른 개수와 같다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-perm-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "copy"
+      ],
+      "content": {
+        "prompt": "결과 목록에 현재 목록을 넣는 방법은?",
+        "options": [
+          "그대로 넣는다",
+          "복사해 넣는다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "현재 목록은 이후 취소로 계속 바뀐다. 복사본을 넣어야 저장한 결과가 그대로 남는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-perm-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "copy"
+      ],
+      "content": {
+        "prompt": "현재 목록을 그대로 저장해도 이후 취소에 안 바뀐다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "그대로 넣으면 같은 목록을 가리키므로 이후 취소에 함께 바뀐다. 복사해 저장해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-perm-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "permutation",
+        "used-array"
+      ],
+      "content": {
+        "prompt": "이미 고른 원소를 건너뛰는 빈칸의 키워드는?",
+        "hint": "반복문의 다음 차례로 넘어가는 키워드",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def go(depth):\n    if depth == n:\n        return 1\n    total = 0\n    for i in range(n):\n        if used[i]:\n            ___\n        used[i] = True\n        total += go(depth + 1)\n        used[i] = False\n    return total"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int go(int depth) {\n    if (depth == n) return 1;\n    int total = 0;\n    for (int i = 0; i < n; i++) {\n        if (used[i]) ___;\n        used[i] = true;\n        total += go(depth + 1);\n        used[i] = false;\n    }\n    return total;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function go(depth) {\n  if (depth === n) return 1;\n  let total = 0;\n  for (let i = 0; i < n; i++) {\n    if (used[i]) ___;\n    used[i] = true;\n    total += go(depth + 1);\n    used[i] = false;\n  }\n  return total;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int go(int depth) {\n    if (depth == n) return 1;\n    int total = 0;\n    for (int i = 0; i < n; i++) {\n        if (used[i]) ___;\n        used[i] = true;\n        total += go(depth + 1);\n        used[i] = false;\n    }\n    return total;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "continue"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "continue"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "continue"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "continue"
+            ]
+          }
+        }
+      },
+      "explanation": "used[i]가 참이면 continue로 이번 반복을 건너뛰어 같은 원소를 두 번 고르지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-perm-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "backtracking",
+        "permutation"
+      ],
+      "content": {
+        "prompt": "N개를 모두 고르는 순열은 깊이 N에서 ___ 하나가 완성된다.",
+        "hint": "원소를 순서 있게 늘어놓은 결과"
+      },
+      "answer_key": {
+        "accepted": [
+          "순열",
+          "permutation"
+        ]
+      },
+      "explanation": "깊이는 고른 개수이므로 깊이 N에 닿으면 N개를 모두 고른 순열 하나가 완성된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-perm-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "backtracking",
+        "copy"
+      ],
+      "content": {
+        "prompt": "go(0) 실행 후 res 첫 원소의 길이는?",
+        "options": [
+          "0",
+          "1",
+          "2"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "res = []\npath = []\ndef go(d):\n    if d == 2:\n        res.append(path)\n        return\n    for x in (1, 2):\n        path.append(x)\n        go(d + 1)\n        path.pop()"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "List<List<Integer>> res = new ArrayList<>();\nList<Integer> path = new ArrayList<>();\nvoid go(int d) {\n    if (d == 2) { res.add(path); return; }\n    for (int x = 1; x <= 2; x++) {\n        path.add(x);\n        go(d + 1);\n        path.remove(path.size() - 1);\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const res = [];\nconst path = [];\nfunction go(d) {\n  if (d === 2) { res.push(path); return; }\n  for (const x of [1, 2]) {\n    path.push(x);\n    go(d + 1);\n    path.pop();\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<vector<int>> res;\nvector<int> path;\nvoid go(int d) {\n    if (d == 2) { res.push_back(path); return; }\n    for (int x = 1; x <= 2; x++) {\n        path.push_back(x);\n        go(d + 1);\n        path.pop_back();\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 2,
+            "explanation": "C++의 push_back은 vector를 복사해 넣으므로 이후 취소에 바뀌지 않고 길이 2가 남는다. 다른 언어는 같은 목록을 가리켜 0이 된다."
+          }
+        }
+      },
+      "explanation": "현재 목록을 복사하지 않고 그대로 넣어, 이후 취소로 그 목록이 비면서 저장한 결과도 비었다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-perm-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "backtracking",
+        "permutation"
+      ],
+      "content": {
+        "prompt": "N = 3일 때 순열 하나가 완성되는 깊이는?",
+        "options": [
+          "2",
+          "3",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "깊이는 고른 개수이므로 3개를 모두 고르는 깊이 3에서 순열 하나가 완성된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-perm-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "permutation",
+        "used-array"
+      ],
+      "content": {
+        "prompt": "used가 [참, 거짓, 참]이면 고를 수 있는 인덱스는?",
+        "options": [
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "used가 참인 0번과 2번은 이미 골랐으므로 거짓인 1번만 고를 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-perm-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "permutation",
+        "used-array"
+      ],
+      "content": {
+        "prompt": "used[i]가 참이면 i번째 원소는 이미 고른 것이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "used 배열은 이미 고른 원소를 표시하므로 참인 원소는 다시 고르지 않는다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,338 @@
+{
+  "track": "ct",
+  "unit": "u11-dp",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ct-u11-dp-state-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "state"
+      ],
+      "content": {
+        "prompt": "dp[i]가 무엇을 뜻하는지 정한 것은?",
+        "options": [
+          "점화식",
+          "상태",
+          "초기값"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "상태는 dp 배열의 한 칸 dp[i]가 무엇을 뜻하는지 정한 것이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-state-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "state"
+      ],
+      "content": {
+        "prompt": "DP 풀이에서 가장 먼저 쓰는 것은?",
+        "options": [
+          "dp[i]의 뜻",
+          "반복문",
+          "출력 코드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "dp[i]가 무엇을 뜻하는지 한 문장으로 먼저 써야 그 뒤 계산을 맞게 세울 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-state-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "answer-position"
+      ],
+      "content": {
+        "prompt": "dp[i] = i에서 끝나는 최대 합이면 답 위치는?",
+        "options": [
+          "dp[N]",
+          "dp 전체의 최댓값"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "끝나는 위치가 정해져 있지 않으므로 dp[N]이 아니라 dp 전체의 최댓값이 답이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-state-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "state"
+      ],
+      "content": {
+        "prompt": "dp[i]의 뜻은 코드를 다 짠 뒤에 정한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "dp[i]의 뜻은 코드를 짜기 전에 한 문장으로 먼저 정한다. 그래야 계산과 답 위치가 맞는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-state-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "state"
+      ],
+      "content": {
+        "prompt": "dp[i]가 무엇을 뜻하는지 정한 것을 ___ 라 한다.",
+        "hint": "두 글자, 지금 놓인 상황"
+      },
+      "answer_key": {
+        "accepted": [
+          "상태",
+          "state",
+          "스테이트"
+        ]
+      },
+      "explanation": "상태는 dp 한 칸의 뜻이다. DP 풀이는 상태를 한 문장으로 정의하는 데서 시작한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-state-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "answer-position"
+      ],
+      "content": {
+        "prompt": "dp[i] = i에서 끝나는 최대 합일 때 답의 빈칸은?",
+        "hint": "가장 큰 값을 고르는 함수",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "dp = [0] * n\ndp[0] = a[0]\nfor i in range(1, n):\n    dp[i] = max(dp[i - 1] + a[i], a[i])\nans = ___(dp)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] dp = new int[n];\ndp[0] = a[0];\nfor (int i = 1; i < n; i++)\n    dp[i] = Math.max(dp[i - 1] + a[i], a[i]);\nint ans = Arrays.stream(dp).___().getAsInt();"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const dp = new Array(n).fill(0);\ndp[0] = a[0];\nfor (let i = 1; i < n; i++) {\n  dp[i] = Math.max(dp[i - 1] + a[i], a[i]);\n}\nconst ans = Math.___(...dp);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> dp(n);\ndp[0] = a[0];\nfor (int i = 1; i < n; i++)\n    dp[i] = max(dp[i - 1] + a[i], a[i]);\nint ans = *___(dp.begin(), dp.end());"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "max"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "max"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "max"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "max_element",
+              "maxelement"
+            ]
+          }
+        }
+      },
+      "explanation": "dp[i]가 i에서 끝나는 최대 합이므로 답은 마지막 칸이 아니라 dp 전체의 최댓값이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-state-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "state"
+      ],
+      "content": {
+        "prompt": "이 코드의 dp[i]가 뜻하는 것은?",
+        "options": [
+          "i번 칸의 점수",
+          "i번 칸까지 최대 점수",
+          "남은 칸의 수"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "dp = [0] * n\ndp[0] = a[0]\ndp[1] = a[0] + a[1]\nfor i in range(2, n):\n    dp[i] = max(dp[i - 1], dp[i - 2]) + a[i]"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] dp = new int[n];\ndp[0] = a[0];\ndp[1] = a[0] + a[1];\nfor (int i = 2; i < n; i++) {\n    int best = Math.max(dp[i - 1], dp[i - 2]);\n    dp[i] = best + a[i];\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const dp = new Array(n).fill(0);\ndp[0] = a[0];\ndp[1] = a[0] + a[1];\nfor (let i = 2; i < n; i++) {\n  const best = Math.max(dp[i - 1], dp[i - 2]);\n  dp[i] = best + a[i];\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> dp(n);\ndp[0] = a[0];\ndp[1] = a[0] + a[1];\nfor (int i = 2; i < n; i++) {\n    int best = max(dp[i - 1], dp[i - 2]);\n    dp[i] = best + a[i];\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "직전 한 칸·두 칸 중 큰 값에 a[i]를 더하므로 dp[i]는 i번 칸까지 왔을 때 얻는 최대 점수다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-state-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "trace"
+      ],
+      "content": {
+        "prompt": "a = [2, -5, 3, -1]일 때 출력되는 값은?",
+        "options": [
+          "5",
+          "4",
+          "-1"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a = [2, -5, 3, -1]\nn = len(a)\ndp = [0] * n\ndp[0] = a[0]\ndp[1] = a[0] + a[1]\nfor i in range(2, n):\n    dp[i] = max(dp[i - 1], dp[i - 2]) + a[i]\nprint(dp[n - 1])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {2, -5, 3, -1};\nint n = a.length;\nint[] dp = new int[n];\ndp[0] = a[0];\ndp[1] = a[0] + a[1];\nfor (int i = 2; i < n; i++) {\n    int best = Math.max(dp[i - 1], dp[i - 2]);\n    dp[i] = best + a[i];\n}\nSystem.out.println(dp[n - 1]);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [2, -5, 3, -1];\nconst n = a.length;\nconst dp = new Array(n).fill(0);\ndp[0] = a[0];\ndp[1] = a[0] + a[1];\nfor (let i = 2; i < n; i++) {\n  const best = Math.max(dp[i - 1], dp[i - 2]);\n  dp[i] = best + a[i];\n}\nconsole.log(dp[n - 1]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {2, -5, 3, -1};\nint n = a.size();\nvector<int> dp(n);\ndp[0] = a[0];\ndp[1] = a[0] + a[1];\nfor (int i = 2; i < n; i++) {\n    int best = max(dp[i - 1], dp[i - 2]);\n    dp[i] = best + a[i];\n}\ncout << dp[n - 1];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "dp는 2, −3, 5, 4 순으로 채워진다. 마지막 칸에 도착해야 하므로 답은 dp[3] = 4다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-state-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "answer-position"
+      ],
+      "content": {
+        "prompt": "dp[i] = i번 칸에 도착할 때 최대 점수, N번 칸이 끝이면 답은?",
+        "options": [
+          "dp[N]",
+          "dp의 최댓값",
+          "dp[1]"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "마지막 N번 칸에 도착할 때의 값이 답이므로 dp[N]이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-state-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "state"
+      ],
+      "content": {
+        "prompt": "dp[i]의 뜻은 한 문장으로 먼저 정해 둔다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "상태의 뜻을 한 문장으로 먼저 써 두어야 dp를 어떻게 채우고 어디서 답을 읽을지 정할 수 있다.",
+      "refs": []
+    }
+  ]
+}

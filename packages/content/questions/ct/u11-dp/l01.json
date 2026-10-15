@@ -1,0 +1,301 @@
+{
+  "track": "ct",
+  "unit": "u11-dp",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ct-u11-dp-when-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "signal"
+      ],
+      "content": {
+        "prompt": "부분 문제의 답을 저장해 두고 재사용하는 방법은?",
+        "options": [
+          "그리디",
+          "DP",
+          "백트래킹"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DP(동적 계획법)는 부분 문제의 답을 저장해 두었다가 같은 부분 문제가 다시 나오면 꺼내 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-when-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "cost"
+      ],
+      "content": {
+        "prompt": "DP의 시간 비용을 어림하는 식은?",
+        "options": [
+          "상태 수 + 입력 크기",
+          "입력 크기의 제곱",
+          "상태 수 × 계산 비용"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DP는 상태마다 한 번씩 계산하므로 상태 수에 상태 하나의 계산 비용을 곱한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-when-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "signal"
+      ],
+      "content": {
+        "prompt": "같은 부분 문제가 반복되면 DP를 고려한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "같은 부분 문제가 반복해서 나오는 것이 DP로 바꿀 신호다. 저장해 두면 다시 계산하지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-when-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "signal"
+      ],
+      "content": {
+        "prompt": "DP는 같은 부분 문제를 나올 때마다 새로 계산한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "DP는 부분 문제의 답을 저장해 두고 재사용한다. 매번 새로 계산하는 것은 저장 없는 재귀다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-when-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "signal"
+      ],
+      "content": {
+        "prompt": "부분 문제의 답을 저장해 재사용하는 방법을 ___ 라 한다.",
+        "hint": "영문 약자 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "DP",
+          "동적 계획법",
+          "동적계획법",
+          "dynamic programming"
+        ]
+      },
+      "explanation": "DP(동적 계획법)는 부분 문제의 답을 저장해 두고 같은 부분 문제가 나오면 다시 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-when-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "memo"
+      ],
+      "content": {
+        "prompt": "저장해 둔 답이 있는지 확인하는 빈칸은?",
+        "hint": "키가 들어 있는지 묻는 연산자나 메서드",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "memo = {}\ndef fib(n):\n    if n < 2:\n        return n\n    if n ___ memo:\n        return memo[n]\n    memo[n] = fib(n - 1) + fib(n - 2)\n    return memo[n]"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "Map<Integer, Long> memo = new HashMap<>();\nlong fib(int n) {\n    if (n < 2) return n;\n    if (memo.___(n)) return memo.get(n);\n    long v = fib(n - 1) + fib(n - 2);\n    memo.put(n, v);\n    return v;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const memo = new Map();\nfunction fib(n) {\n  if (n < 2) return n;\n  if (memo.___(n)) return memo.get(n);\n  const v = fib(n - 1) + fib(n - 2);\n  memo.set(n, v);\n  return v;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "unordered_map<int, long long> memo;\nlong long fib(int n) {\n    if (n < 2) return n;\n    if (memo.___(n)) return memo[n];\n    return memo[n] = fib(n - 1) + fib(n - 2);\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "in"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "containsKey"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "has"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "count",
+              "contains"
+            ]
+          }
+        }
+      },
+      "explanation": "같은 부분 문제의 답이 이미 저장돼 있으면 다시 계산하지 않고 꺼내 쓴다. 확인 방법은 언어마다 다르다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-when-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "cost"
+      ],
+      "content": {
+        "prompt": "상태 1000개, 상태 하나에 계산 10번이면 총 계산은?",
+        "options": [
+          "1010번",
+          "10000번",
+          "100000번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DP 비용은 상태 수 × 상태 하나의 계산 비용이므로 1000 × 10 = 10000번이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-when-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "signal"
+      ],
+      "content": {
+        "prompt": "DP로 바꿀 신호가 있는 질문은?",
+        "options": [
+          "경우의 수 구하기",
+          "배열 뒤집기",
+          "원소 하나 검색"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "경우의 수·최댓값·최솟값을 묻고 부분 문제가 반복되면 DP 신호다. 뒤집기·검색은 저장할 부분 문제가 없다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-when-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "cost"
+      ],
+      "content": {
+        "prompt": "n = 100일 때 dp를 채우는 계산은 대략 몇 번?",
+        "options": [
+          "100번",
+          "10000번",
+          "2의 100제곱번"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "dp = [0] * (n + 1)\ndp[1] = 1\nfor i in range(2, n + 1):\n    dp[i] = dp[i - 1] + dp[i - 2]"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long[] dp = new long[n + 1];\ndp[1] = 1;\nfor (int i = 2; i <= n; i++)\n    dp[i] = dp[i - 1] + dp[i - 2];"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const dp = new Array(n + 1).fill(0);\ndp[1] = 1;\nfor (let i = 2; i <= n; i++) {\n  dp[i] = dp[i - 1] + dp[i - 2];\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<long long> dp(n + 1);\ndp[1] = 1;\nfor (int i = 2; i <= n; i++)\n    dp[i] = dp[i - 1] + dp[i - 2];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "상태 dp[i]가 약 100개이고 하나에 덧셈 한 번이므로 약 100번이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-when-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "signal"
+      ],
+      "content": {
+        "prompt": "DP가 같은 문제를 빠르게 푸는 이유는?",
+        "options": [
+          "입력을 정렬해서",
+          "분기를 끊어서",
+          "답을 저장해 재사용"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "부분 문제의 답을 저장해 두고 재사용하므로 같은 계산을 반복하지 않는다.",
+      "refs": []
+    }
+  ]
+}

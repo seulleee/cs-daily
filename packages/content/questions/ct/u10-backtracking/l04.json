@@ -1,0 +1,342 @@
+{
+  "track": "ct",
+  "unit": "u10-backtracking",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ct-u10-comb-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "combination"
+      ],
+      "content": {
+        "prompt": "조합에서 순서만 다른 중복을 막는 방법은?",
+        "options": [
+          "used 배열",
+          "시작 인덱스",
+          "결과 복사"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다음 선택을 직전 인덱스 + 1부터 하는 시작 인덱스가 [1, 2]와 [2, 1] 같은 중복을 막는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-comb-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "combination"
+      ],
+      "content": {
+        "prompt": "N개에서 R개를 고르는 조합의 개수는?",
+        "options": [
+          "N × R",
+          "N!",
+          "C(N, R)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "순서를 따지지 않고 N개 중 R개를 고르는 경우의 수는 C(N, R)이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-comb-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "combination"
+      ],
+      "content": {
+        "prompt": "조합은 다음 선택을 직전 인덱스 + 1부터 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "직전 인덱스보다 뒤에서만 고르므로 인덱스가 늘어나는 순서 하나만 만들어진다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-comb-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "combination"
+      ],
+      "content": {
+        "prompt": "조합은 다음 선택을 인덱스 0부터 다시 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "0부터 다시 고르면 [2, 1]처럼 순서만 다른 결과가 다시 생긴다. 직전 인덱스 + 1부터 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-comb-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "combination",
+        "start-index"
+      ],
+      "content": {
+        "prompt": "순서만 다른 중복을 막으려면 빈칸은?",
+        "hint": "재귀 함수가 받는 첫 번째 매개변수",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def go(start, path):\n    if len(path) == r:\n        print(*path)\n        return\n    for i in range(___, n):\n        path.append(a[i])\n        go(i + 1, path)\n        path.pop()"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "void go(int start, List<Integer> path) {\n    if (path.size() == r) {\n        System.out.println(path);\n        return;\n    }\n    for (int i = ___; i < n; i++) {\n        path.add(a[i]);\n        go(i + 1, path);\n        path.remove(path.size() - 1);\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function go(start, path) {\n  if (path.length === r) {\n    console.log(path.join(' '));\n    return;\n  }\n  for (let i = ___; i < n; i++) {\n    path.push(a[i]);\n    go(i + 1, path);\n    path.pop();\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "void go(int start, vector<int>& path) {\n    if ((int)path.size() == r) {\n        for (int x : path) cout << x << ' ';\n        cout << '\\n';\n        return;\n    }\n    for (int i = ___; i < n; i++) {\n        path.push_back(a[i]);\n        go(i + 1, path);\n        path.pop_back();\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "start"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "start"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "start"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "start"
+            ]
+          }
+        }
+      },
+      "explanation": "반복을 매개변수 start부터 시작해야 직전에 고른 인덱스보다 뒤의 원소만 고른다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-comb-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "combination",
+        "repetition"
+      ],
+      "content": {
+        "prompt": "같은 원소를 다시 고를 수 있게 하는 빈칸은?",
+        "hint": "방금 고른 원소의 인덱스 변수",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def go(start, depth):\n    if depth == r:\n        return 1\n    total = 0\n    for i in range(start, n):\n        total += go(___, depth + 1)\n    return total"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int go(int start, int depth) {\n    if (depth == r) return 1;\n    int total = 0;\n    for (int i = start; i < n; i++)\n        total += go(___, depth + 1);\n    return total;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function go(start, depth) {\n  if (depth === r) return 1;\n  let total = 0;\n  for (let i = start; i < n; i++) {\n    total += go(___, depth + 1);\n  }\n  return total;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int go(int start, int depth) {\n    if (depth == r) return 1;\n    int total = 0;\n    for (int i = start; i < n; i++)\n        total += go(___, depth + 1);\n    return total;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "i"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "i"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "i"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "i"
+            ]
+          }
+        }
+      },
+      "explanation": "중복 선택을 허용하면 다음 재귀를 직전 인덱스 i부터 시작한다. i + 1이면 같은 원소를 다시 못 고른다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-comb-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "backtracking",
+        "combination"
+      ],
+      "content": {
+        "prompt": "4개에서 2개를 고르는 조합의 개수는?",
+        "options": [
+          "12",
+          "6",
+          "8"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "C(4, 2) = (4 × 3) ÷ 2 = 6이다. 순서를 따지는 12에서 순서만 다른 쌍을 하나로 센다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-comb-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "backtracking",
+        "combination"
+      ],
+      "content": {
+        "prompt": "n = 4, r = 3일 때 go(0, 0)의 반환값은?",
+        "options": [
+          "4",
+          "12",
+          "24"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def go(start, depth):\n    if depth == r:\n        return 1\n    total = 0\n    for i in range(start, n):\n        total += go(i + 1, depth + 1)\n    return total"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int go(int start, int depth) {\n    if (depth == r) return 1;\n    int total = 0;\n    for (int i = start; i < n; i++)\n        total += go(i + 1, depth + 1);\n    return total;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function go(start, depth) {\n  if (depth === r) return 1;\n  let total = 0;\n  for (let i = start; i < n; i++) {\n    total += go(i + 1, depth + 1);\n  }\n  return total;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int go(int start, int depth) {\n    if (depth == r) return 1;\n    int total = 0;\n    for (int i = start; i < n; i++)\n        total += go(i + 1, depth + 1);\n    return total;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "시작 인덱스를 i + 1로 넘기므로 조합 C(4, 3) = 4개를 센다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-comb-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "combination",
+        "start-index"
+      ],
+      "content": {
+        "prompt": "직전에 인덱스 2를 골랐다. 조합의 다음 시작은?",
+        "options": [
+          "0",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "조합은 다음 선택을 직전 인덱스 + 1부터 하므로 3부터 시작한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-comb-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "backtracking",
+        "combination"
+      ],
+      "content": {
+        "prompt": "시작 인덱스를 직전 + 1로 두면 막히는 것은?",
+        "options": [
+          "깊은 재귀",
+          "순서만 다른 중복",
+          "결과 저장"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "뒤쪽 인덱스만 고르므로 [1, 2]와 [2, 1]처럼 순서만 다른 결과가 다시 만들어지지 않는다.",
+      "refs": []
+    }
+  ]
+}

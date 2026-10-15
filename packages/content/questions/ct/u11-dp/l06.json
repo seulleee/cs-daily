@@ -1,0 +1,299 @@
+{
+  "track": "ct",
+  "unit": "u11-dp",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ct-u11-dp-2d-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "grid"
+      ],
+      "content": {
+        "prompt": "오른쪽·아래로만 갈 때 dp[r][c]가 참조하는 칸은?",
+        "options": [
+          "아래·오른쪽",
+          "위·왼쪽",
+          "대각선 칸"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "(r, c)에는 위 칸이나 왼쪽 칸에서만 올 수 있으므로 dp[r − 1][c] + dp[r][c − 1]이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-2d-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "string"
+      ],
+      "content": {
+        "prompt": "두 문자열 DP에서 dp[i][j]의 뜻은?",
+        "options": [
+          "앞 i·j글자의 답",
+          "i·j번째 글자",
+          "두 길이의 합"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "dp[i][j]는 첫 문자열의 앞 i글자와 둘째 문자열의 앞 j글자에 대한 답이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-2d-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "boundary"
+      ],
+      "content": {
+        "prompt": "격자 경로 DP는 마지막 행부터 채운다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "첫 행과 첫 열은 경로가 하나뿐이라 먼저 채운다. 그 뒤 위·왼쪽을 참조하며 아래로 채운다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-2d-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "grid"
+      ],
+      "content": {
+        "prompt": "격자 경로 수는 dp[r][c] = dp[r − 1][c] + dp[r][c − 1]이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "오른쪽·아래로만 움직이면 위 칸과 왼쪽 칸에서 오는 경로 수를 더한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-2d-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "boundary"
+      ],
+      "content": {
+        "prompt": "첫 행을 채우는 빈칸의 값은?",
+        "hint": "경계 칸에 이르는 경로의 개수",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "dp = [[0] * m for _ in range(n)]\nfor r in range(n):\n    dp[r][0] = 1\nfor c in range(m):\n    dp[0][c] = ___\nfor r in range(1, n):\n    for c in range(1, m):\n        dp[r][c] = dp[r - 1][c] + dp[r][c - 1]"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[][] dp = new int[n][m];\nfor (int r = 0; r < n; r++) dp[r][0] = 1;\nfor (int c = 0; c < m; c++) dp[0][c] = ___;\nfor (int r = 1; r < n; r++)\n    for (int c = 1; c < m; c++)\n        dp[r][c] = dp[r - 1][c] + dp[r][c - 1];"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const dp = Array.from({ length: n },\n  () => new Array(m).fill(0));\nfor (let r = 0; r < n; r++) dp[r][0] = 1;\nfor (let c = 0; c < m; c++) dp[0][c] = ___;\nfor (let r = 1; r < n; r++) {\n  for (let c = 1; c < m; c++) {\n    dp[r][c] = dp[r - 1][c] + dp[r][c - 1];\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<vector<int>> dp(n, vector<int>(m));\nfor (int r = 0; r < n; r++) dp[r][0] = 1;\nfor (int c = 0; c < m; c++) dp[0][c] = ___;\nfor (int r = 1; r < n; r++)\n    for (int c = 1; c < m; c++)\n        dp[r][c] = dp[r - 1][c] + dp[r][c - 1];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "1"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "1"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "1"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "1"
+            ]
+          }
+        }
+      },
+      "explanation": "첫 행의 칸은 왼쪽에서 오는 길 하나뿐이라 경로 수가 1이다. 첫 열도 같다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-2d-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "boundary"
+      ],
+      "content": {
+        "prompt": "격자 경로 DP는 첫 행과 첫 ___을 먼저 채운다.",
+        "hint": "격자의 세로 한 줄"
+      },
+      "answer_key": {
+        "accepted": [
+          "열",
+          "column",
+          "세로줄"
+        ]
+      },
+      "explanation": "첫 행과 첫 열은 위나 왼쪽 칸이 없어 점화식을 쓸 수 없으므로 경계로 먼저 채운다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-2d-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "grid"
+      ],
+      "content": {
+        "prompt": "dp[1][2] = 3, dp[2][1] = 3이면 dp[2][2]는?",
+        "options": [
+          "6",
+          "9",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "dp[2][2]는 위 칸 dp[1][2]와 왼쪽 칸 dp[2][1]을 더한 3 + 3 = 6이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-2d-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "trace"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "6",
+          "4",
+          "8"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "n, m = 2, 4\ndp = [[1] * m for _ in range(n)]\nfor r in range(1, n):\n    for c in range(1, m):\n        dp[r][c] = dp[r - 1][c] + dp[r][c - 1]\nprint(dp[n - 1][m - 1])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int n = 2, m = 4;\nint[][] dp = new int[n][m];\nfor (int[] row : dp) Arrays.fill(row, 1);\nfor (int r = 1; r < n; r++)\n    for (int c = 1; c < m; c++)\n        dp[r][c] = dp[r - 1][c] + dp[r][c - 1];\nSystem.out.println(dp[n - 1][m - 1]);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const n = 2, m = 4;\nconst dp = Array.from({ length: n },\n  () => new Array(m).fill(1));\nfor (let r = 1; r < n; r++) {\n  for (let c = 1; c < m; c++) {\n    dp[r][c] = dp[r - 1][c] + dp[r][c - 1];\n  }\n}\nconsole.log(dp[n - 1][m - 1]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int n = 2, m = 4;\nvector<vector<int>> dp(n, vector<int>(m, 1));\nfor (int r = 1; r < n; r++)\n    for (int c = 1; c < m; c++)\n        dp[r][c] = dp[r - 1][c] + dp[r][c - 1];\ncout << dp[n - 1][m - 1];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "첫 행은 모두 1, 둘째 행은 1, 2, 3, 4로 채워지므로 마지막 칸은 4다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-2d-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "string"
+      ],
+      "content": {
+        "prompt": "s = \"ab\", t = \"abc\"일 때 최종 답의 위치는?",
+        "options": [
+          "dp[0][0]",
+          "dp[1][2]",
+          "dp[2][3]"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "dp[i][j]는 앞 i글자와 앞 j글자에 대한 답이므로 두 문자열 전체는 dp[2][3]이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-2d-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "grid"
+      ],
+      "content": {
+        "prompt": "격자 경로에서 dp[r][c]를 채울 때 더하는 값은?",
+        "options": [
+          "위 칸과 왼쪽 칸",
+          "오른쪽 칸만",
+          "아래 칸만"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "오른쪽·아래로만 움직이면 (r, c)에는 위 칸과 왼쪽 칸에서만 들어온다.",
+      "refs": []
+    }
+  ]
+}
