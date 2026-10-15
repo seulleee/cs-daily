@@ -1,0 +1,300 @@
+{
+  "track": "ct",
+  "unit": "u12-shortest-path-uf",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ct-u12-dijk-bug-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dijkstra",
+        "stale-entry"
+      ],
+      "content": {
+        "prompt": "꺼낸 거리가 dist[정점]보다 큰 큐 항목을 무엇이라 하나?",
+        "options": [
+          "음수 간선",
+          "낡은 항목",
+          "시작점"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "그 정점의 거리가 이미 더 작게 갱신된 뒤 남은 항목이라 낡은 항목이라 부른다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-bug-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dijkstra",
+        "stale-entry"
+      ],
+      "content": {
+        "prompt": "다익스트라에서 낡은 항목을 꺼내면 어떻게 하나?",
+        "options": [
+          "이웃을 갱신한다",
+          "건너뛴다",
+          "큐에 다시 넣는다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "낡은 항목은 이미 더 짧은 거리로 처리된 정점이므로 그냥 건너뛴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-bug-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dijkstra",
+        "stale-entry"
+      ],
+      "content": {
+        "prompt": "낡은 항목 검사를 빠뜨리면 생기는 일은?",
+        "options": [
+          "같은 정점 중복 처리",
+          "무한 반복",
+          "답이 틀려짐"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "검사를 빠뜨려도 거리는 맞지만, 같은 정점의 이웃을 여러 번 다시 훑어 느려진다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-bug-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dijkstra",
+        "stale-entry"
+      ],
+      "content": {
+        "prompt": "낡은 항목 검사를 빠뜨리면 최단 거리 값이 틀려진다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "낡은 항목으로는 더 짧은 거리가 나오지 않아 값은 맞다. 대신 같은 정점을 여러 번 처리해 느려진다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-bug-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dijkstra",
+        "stale-entry"
+      ],
+      "content": {
+        "prompt": "낡은 항목인지 확인하려고 d와 비교할 배열은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "while pq:\n    d, u = heapq.heappop(pq)\n    if d > ___[u]:\n        continue\n    for v, w in g[u]:\n        if d + w < dist[v]:\n            dist[v] = d + w\n            heapq.heappush(pq, (dist[v], v))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "while (!pq.isEmpty()) {\n    int[] cur = pq.poll();\n    int d = cur[0], u = cur[1];\n    if (d > ___[u]) continue;\n    for (int[] e : g[u]) {\n        int v = e[0], nd = d + e[1];\n        if (nd < dist[v]) {\n            dist[v] = nd;\n            pq.add(new int[]{nd, v});\n        }\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "while (pq.size() > 0) {\n  const [d, u] = pq.pop();\n  if (d > ___[u]) continue;\n  for (const [v, w] of g[u]) {\n    if (d + w < dist[v]) {\n      dist[v] = d + w;\n      pq.push([dist[v], v]);\n    }\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "while (!pq.empty()) {\n    auto [d, u] = pq.top();\n    pq.pop();\n    if (d > ___[u]) continue;\n    for (auto [v, w] : g[u]) {\n        if (d + w < dist[v]) {\n            dist[v] = d + w;\n            pq.push({dist[v], v});\n        }\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "dist"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "dist"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "dist"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "dist"
+            ]
+          }
+        }
+      },
+      "explanation": "꺼낸 거리 d가 지금 기록된 dist[u]보다 크면 이미 갱신된 낡은 항목이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-bug-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dijkstra",
+        "inf"
+      ],
+      "content": {
+        "prompt": "INF는 가능한 최대 경로 합보다 ___ 잡는다.",
+        "hint": "INF는 실제 경로와 헷갈리면 안 된다."
+      },
+      "answer_key": {
+        "accepted": [
+          "크게",
+          "크다",
+          "큰 값",
+          "더 크게"
+        ]
+      },
+      "explanation": "INF가 실제 경로 합보다 작으면 진짜 경로를 도달 불가로 오인한다. 그래서 최대 경로 합보다 크게 잡는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-bug-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dijkstra",
+        "inf",
+        "overflow"
+      ],
+      "content": {
+        "prompt": "경로 합이 최대 10⁶일 때 32비트 int INF로 알맞은 값은?",
+        "options": [
+          "10⁹",
+          "10⁶",
+          "int 최댓값"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "10⁹는 최대 경로 합보다 크고 INF끼리 더해도 int 범위(약 2.1×10⁹) 안이다. int 최댓값은 더하면 넘친다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-bug-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dijkstra",
+        "stale-entry"
+      ],
+      "content": {
+        "prompt": "큐에 (5, B), (3, B)가 있고 (3, B)를 처리했다. (5, B)를 꺼내면?",
+        "options": [
+          "B를 다시 처리",
+          "dist[B]를 5로",
+          "건너뛴다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "dist[B]가 이미 3이라 꺼낸 거리 5가 더 크므로 낡은 항목이다. 건너뛴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-bug-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dijkstra",
+        "stale-entry"
+      ],
+      "content": {
+        "prompt": "낡은 항목을 건너뛰려면 빈칸에 알맞은 것은?",
+        "options": [
+          "break",
+          "continue",
+          "return"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "while pq:\n    d, u = heapq.heappop(pq)\n    if d > dist[u]:\n        ___\n    for v, w in g[u]:\n        if d + w < dist[v]:\n            dist[v] = d + w\n            heapq.heappush(pq, (dist[v], v))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "while (!pq.isEmpty()) {\n    int[] cur = pq.poll();\n    int d = cur[0], u = cur[1];\n    if (d > dist[u]) ___;\n    for (int[] e : g[u]) {\n        int v = e[0], nd = d + e[1];\n        if (nd < dist[v]) {\n            dist[v] = nd;\n            pq.add(new int[]{nd, v});\n        }\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "while (pq.size() > 0) {\n  const [d, u] = pq.pop();\n  if (d > dist[u]) ___;\n  for (const [v, w] of g[u]) {\n    if (d + w < dist[v]) {\n      dist[v] = d + w;\n      pq.push([dist[v], v]);\n    }\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "while (!pq.empty()) {\n    auto [d, u] = pq.top();\n    pq.pop();\n    if (d > dist[u]) ___;\n    for (auto [v, w] : g[u]) {\n        if (d + w < dist[v]) {\n            dist[v] = d + w;\n            pq.push({dist[v], v});\n        }\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "continue는 이번 항목만 건너뛰고 큐의 다음 항목을 계속 꺼낸다. break는 반복 전체를 멈춰 남은 정점을 처리하지 못한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-bug-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dijkstra",
+        "stale-entry"
+      ],
+      "content": {
+        "prompt": "낡은 항목을 건너뛰면 같은 정점을 여러 번 처리하지 않는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "정점마다 가장 짧은 거리로 꺼낸 한 번만 이웃을 훑고, 나머지 낡은 항목은 건너뛴다.",
+      "refs": []
+    }
+  ]
+}

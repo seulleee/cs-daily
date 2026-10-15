@@ -1,0 +1,358 @@
+{
+  "track": "ct",
+  "unit": "u13-math-string",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ct-u13-fastpow-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "fast-power"
+      ],
+      "content": {
+        "prompt": "지수를 절반씩 줄여 aⁿ을 구하는 방법은?",
+        "options": [
+          "에라토스테네스의 체",
+          "유클리드 호제법",
+          "빠른 거듭제곱"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "빠른 거듭제곱은 aⁿ을 a^(n/2)의 제곱으로 바꿔 지수를 절반씩 줄인다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-fastpow-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "fast-power"
+      ],
+      "content": {
+        "prompt": "빠른 거듭제곱으로 aⁿ을 구할 때 곱셈 횟수는 약?",
+        "options": [
+          "n²번",
+          "log n번",
+          "n번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "지수를 매번 절반으로 줄이므로 약 log n단계, 곱셈도 약 log n번이면 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-fastpow-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "fast-power"
+      ],
+      "content": {
+        "prompt": "지수 n이 홀수일 때 더 해야 하는 일은?",
+        "options": [
+          "결과를 제곱",
+          "지수를 2배로",
+          "a를 한 번 더 곱함"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "n이 홀수면 aⁿ = (a^(n/2))² × a이므로 제곱한 뒤 a를 한 번 더 곱한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-fastpow-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "fast-power"
+      ],
+      "content": {
+        "prompt": "빠른 거듭제곱은 지수를 1씩 줄이며 곱한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "지수를 1씩 줄이면 n번 곱하는 것과 같다. 빠른 거듭제곱은 지수를 절반씩 줄인다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-fastpow-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "fast-power"
+      ],
+      "content": {
+        "prompt": "n이 홀수일 때 한 번 더 곱하도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def power(a, n, m):\n    if n == 0:\n        return 1\n    half = power(a, n // 2, m)\n    r = half * half % m\n    if n % 2 == 1:\n        r = r * ___ % m\n    return r"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long power(long a, long n, long m) {\n    if (n == 0) return 1;\n    long half = power(a, n / 2, m);\n    long r = half * half % m;\n    if (n % 2 == 1) r = r * ___ % m;\n    return r;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function power(a, n, m) {  // BigInt\n  if (n === 0n) return 1n;\n  const half = power(a, n / 2n, m);\n  let r = half * half % m;\n  if (n % 2n === 1n) r = r * ___ % m;\n  return r;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long power(long long a, long long n,\n                long long m) {\n    if (n == 0) return 1;\n    long long half = power(a, n / 2, m);\n    long long r = half * half % m;\n    if (n % 2 == 1) r = r * ___ % m;\n    return r;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "a"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "a"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "a"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "a"
+            ]
+          }
+        }
+      },
+      "explanation": "n이 홀수면 (a^(n/2))²에 a를 한 번 더 곱해야 aⁿ이 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-fastpow-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "fast-power"
+      ],
+      "content": {
+        "prompt": "짝수일 때 aⁿ = (a^(n/2))²이 되도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def power(a, n, m):\n    if n == 0:\n        return 1\n    half = power(a, n // 2, m)\n    r = half * ___ % m\n    if n % 2 == 1:\n        r = r * a % m\n    return r"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long power(long a, long n, long m) {\n    if (n == 0) return 1;\n    long half = power(a, n / 2, m);\n    long r = half * ___ % m;\n    if (n % 2 == 1) r = r * a % m;\n    return r;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function power(a, n, m) {  // BigInt\n  if (n === 0n) return 1n;\n  const half = power(a, n / 2n, m);\n  let r = half * ___ % m;\n  if (n % 2n === 1n) r = r * a % m;\n  return r;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long power(long long a, long long n,\n                long long m) {\n    if (n == 0) return 1;\n    long long half = power(a, n / 2, m);\n    long long r = half * ___ % m;\n    if (n % 2 == 1) r = r * a % m;\n    return r;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "half"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "half"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "half"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "half"
+            ]
+          }
+        }
+      },
+      "explanation": "half = a^(n/2)이므로 half × half가 aⁿ이고, 곱할 때마다 m으로 나머지를 취한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-fastpow-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "fast-power"
+      ],
+      "content": {
+        "prompt": "2¹⁰을 빠른 거듭제곱으로 구할 때 지수의 변화는?",
+        "options": [
+          "10→9→8→…→0",
+          "10→5→2→1→0",
+          "10→20→40"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "지수를 2로 나눈 몫으로 줄여 10, 5, 2, 1, 0 순서로 내려간다. 4단계 정도면 끝난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-fastpow-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "fast-power",
+        "modular"
+      ],
+      "content": {
+        "prompt": "3⁵을 7로 나눈 나머지는?",
+        "options": [
+          "1",
+          "3",
+          "5"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "3⁵ = 243이고 243 = 7 × 34 + 5이므로 나머지는 5다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-fastpow-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "fast-power"
+      ],
+      "content": {
+        "prompt": "지수를 절반으로 줄이도록 빈칸에 알맞은 것은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def power(a, n, m):\n    r = 1\n    a %= m\n    while n > 0:\n        if n % 2 == 1:\n            r = r * a % m\n        a = a * a % m\n        n ___\n    return r"
+            },
+            "options": [
+              "//= 2",
+              "-= 1",
+              "/= 2"
+            ]
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long power(long a, long n, long m) {\n    long r = 1;\n    a %= m;\n    while (n > 0) {\n        if (n % 2 == 1) r = r * a % m;\n        a = a * a % m;\n        n ___;\n    }\n    return r;\n}"
+            },
+            "options": [
+              "/= 2",
+              "-= 1",
+              "-= 2"
+            ]
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function power(a, n, m) {  // BigInt\n  let r = 1n;\n  a %= m;\n  while (n > 0n) {\n    if (n % 2n === 1n) r = r * a % m;\n    a = a * a % m;\n    n ___;\n  }\n  return r;\n}"
+            },
+            "options": [
+              "/= 2n",
+              "-= 1n",
+              "-= 2n"
+            ]
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long power(long long a, long long n,\n                long long m) {\n    long long r = 1;\n    a %= m;\n    while (n > 0) {\n        if (n % 2 == 1) r = r * a % m;\n        a = a * a % m;\n        n ___;\n    }\n    return r;\n}"
+            },
+            "options": [
+              "-= 1",
+              "-= 2",
+              "/= 2"
+            ]
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0,
+            "explanation": "//= 2는 정수 몫으로 지수를 절반씩 줄인다. /= 2는 실수가 되고, -= 1은 지수를 하나씩만 줄인다."
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0,
+            "explanation": "BigInt의 /= 2n은 정수 몫으로 지수를 절반씩 줄인다. -= 1n, -= 2n은 절반으로 줄지 않는다."
+          },
+          "cpp": {
+            "index": 2
+          }
+        }
+      },
+      "explanation": "정수 나눗셈으로 지수를 절반씩 줄여야 약 log n번 만에 끝난다. 1이나 2씩 빼면 절반으로 줄지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-fastpow-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "fast-power"
+      ],
+      "content": {
+        "prompt": "지수를 절반씩 줄이면 aⁿ을 약 log n번의 곱셈으로 구한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "지수가 매번 절반이 되므로 약 log n단계 만에 0이 된다. 곱셈도 그만큼만 한다.",
+      "refs": []
+    }
+  ]
+}

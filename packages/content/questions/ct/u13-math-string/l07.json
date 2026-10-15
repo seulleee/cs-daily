@@ -1,0 +1,383 @@
+{
+  "track": "ct",
+  "unit": "u13-math-string",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ct-u13-palin-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "string",
+        "palindrome"
+      ],
+      "content": {
+        "prompt": "앞에서 읽어도 뒤에서 읽어도 같은 문자열은?",
+        "options": [
+          "접두사",
+          "부분 문자열",
+          "회문"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "회문은 거꾸로 읽어도 원래와 같은 문자열이다. level, abba가 그 예다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-palin-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "string",
+        "palindrome"
+      ],
+      "content": {
+        "prompt": "양 끝 비교로 회문을 판별할 때 두 인덱스를 옮기는 방향은?",
+        "options": [
+          "한쪽으로만",
+          "바깥으로",
+          "가운데로"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "왼쪽 인덱스는 오른쪽으로, 오른쪽 인덱스는 왼쪽으로 옮기며 가운데에서 만날 때까지 비교한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-palin-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "string",
+        "palindrome"
+      ],
+      "content": {
+        "prompt": "다음 중 회문인 것은?",
+        "options": [
+          "lever",
+          "label",
+          "level"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "level은 뒤집어도 level이다. lever는 revel, label은 lebal이 되어 원래와 다르다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-palin-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "string",
+        "substring"
+      ],
+      "content": {
+        "prompt": "부분 문자열을 잘라 내는 연산은 길이와 상관없이 비용이 없다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "부분 문자열을 새로 만들면 그 길이만큼 문자를 복사할 수 있다. 반복 안에서 자주 자르면 느려진다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-palin-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "string",
+        "palindrome"
+      ],
+      "content": {
+        "prompt": "양 끝 문자를 비교하도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def is_pal(s):\n    i, j = 0, len(s) - 1\n    while i < j:\n        if s[i] != s[___]:\n            return False\n        i += 1\n        j -= 1\n    return True"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "boolean isPal(String s) {\n    int i = 0, j = s.length() - 1;\n    while (i < j) {\n        if (s.charAt(i) != s.charAt(___))\n            return false;\n        i++;\n        j--;\n    }\n    return true;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function isPal(s) {\n  let i = 0, j = s.length - 1;\n  while (i < j) {\n    if (s[i] !== s[___]) return false;\n    i++;\n    j--;\n  }\n  return true;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "bool isPal(const string& s) {\n    int i = 0, j = (int)s.size() - 1;\n    while (i < j) {\n        if (s[i] != s[___]) return false;\n        i++;\n        j--;\n    }\n    return true;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "j"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "j"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "j"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "j"
+            ]
+          }
+        }
+      },
+      "explanation": "왼쪽 인덱스 i의 문자와 오른쪽 인덱스 j의 문자를 비교해 다르면 회문이 아니다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-palin-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "string",
+        "palindrome"
+      ],
+      "content": {
+        "prompt": "오른쪽 인덱스가 마지막 문자에서 시작하도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def is_pal(s):\n    i, j = 0, len(s) - ___\n    while i < j:\n        if s[i] != s[j]:\n            return False\n        i += 1\n        j -= 1\n    return True"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "boolean isPal(String s) {\n    int i = 0, j = s.length() - ___;\n    while (i < j) {\n        if (s.charAt(i) != s.charAt(j))\n            return false;\n        i++;\n        j--;\n    }\n    return true;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function isPal(s) {\n  let i = 0, j = s.length - ___;\n  while (i < j) {\n    if (s[i] !== s[j]) return false;\n    i++;\n    j--;\n  }\n  return true;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "bool isPal(const string& s) {\n    int i = 0, j = (int)s.size() - ___;\n    while (i < j) {\n        if (s[i] != s[j]) return false;\n        i++;\n        j--;\n    }\n    return true;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "1"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "1"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "1"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "1"
+            ]
+          }
+        }
+      },
+      "explanation": "인덱스는 0부터 시작하므로 마지막 문자의 인덱스는 길이 − 1이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-palin-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "string",
+        "palindrome"
+      ],
+      "content": {
+        "prompt": "두 인덱스가 만날 때까지 비교하도록 빈칸에 알맞은 것은?",
+        "options": [
+          "i == j",
+          "i < j",
+          "i > j"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def is_pal(s):\n    i, j = 0, len(s) - 1\n    while ___:\n        if s[i] != s[j]:\n            return False\n        i += 1\n        j -= 1\n    return True"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "boolean isPal(String s) {\n    int i = 0, j = s.length() - 1;\n    while (___) {\n        if (s.charAt(i) != s.charAt(j))\n            return false;\n        i++;\n        j--;\n    }\n    return true;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function isPal(s) {\n  let i = 0, j = s.length - 1;\n  while (___) {\n    if (s[i] !== s[j]) return false;\n    i++;\n    j--;\n  }\n  return true;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "bool isPal(const string& s) {\n    int i = 0, j = (int)s.size() - 1;\n    while (___) {\n        if (s[i] != s[j]) return false;\n        i++;\n        j--;\n    }\n    return true;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "i < j인 동안 양 끝을 비교한다. i > j면 처음부터 반복하지 않고, i == j면 길이 1일 때만 돈다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-palin-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "string",
+        "substring"
+      ],
+      "content": {
+        "prompt": "이 코드가 호출마다 추가로 치를 수 있는 비용은?",
+        "options": [
+          "부분 문자열 복사",
+          "비용 없음",
+          "문자열 정렬"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def is_pal(s):\n    if len(s) < 2:\n        return True\n    if s[0] != s[-1]:\n        return False\n    return is_pal(s[1:-1])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "boolean isPal(String s) {\n    int n = s.length();\n    if (n < 2) return true;\n    if (s.charAt(0) != s.charAt(n - 1))\n        return false;\n    return isPal(s.substring(1, n - 1));\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function isPal(s) {\n  if (s.length < 2) return true;\n  if (s[0] !== s[s.length - 1]) return false;\n  return isPal(s.slice(1, -1));\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "bool isPal(const string& s) {\n    int n = s.size();\n    if (n < 2) return true;\n    if (s[0] != s[n - 1]) return false;\n    return isPal(s.substr(1, n - 2));\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0,
+            "explanation": "s[1:-1]은 새 문자열을 만들어 길이만큼 복사한다. 인덱스 두 개로 비교하면 복사가 없다."
+          },
+          "java": {
+            "index": 0,
+            "explanation": "substring은 새 문자열을 만들어 길이만큼 복사한다. 인덱스 두 개로 비교하면 복사가 없다."
+          },
+          "javascript": {
+            "index": 0,
+            "explanation": "slice는 엔진에 따라 복사를 피하기도 하지만 길이만큼 복사가 생길 수 있다. 인덱스로 비교하는 편이 안전하다."
+          },
+          "cpp": {
+            "index": 0,
+            "explanation": "substr은 새 string을 만들어 길이만큼 복사한다. 인덱스 두 개로 비교하면 복사가 없다."
+          }
+        }
+      },
+      "explanation": "호출마다 양 끝을 뺀 부분 문자열을 새로 만들어, 길이만큼 복사가 생길 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-palin-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "string",
+        "palindrome"
+      ],
+      "content": {
+        "prompt": "길이 10인 문자열을 양 끝 비교로 판별할 때 비교는 최대 몇 번?",
+        "options": [
+          "10",
+          "5",
+          "9"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "양쪽 인덱스가 한 번에 한 칸씩 가운데로 오므로 길이의 절반인 5번 비교하면 만난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-palin-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "string",
+        "palindrome"
+      ],
+      "content": {
+        "prompt": "회문은 거꾸로 읽어도 원래 문자열과 같다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "회문은 앞에서 읽든 뒤에서 읽든 같은 문자열이다. 그래서 양 끝부터 짝지어 비교한다.",
+      "refs": []
+    }
+  ]
+}

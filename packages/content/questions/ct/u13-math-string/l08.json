@@ -1,0 +1,342 @@
+{
+  "track": "ct",
+  "unit": "u13-math-string",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "ct-u13-review-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "sieve"
+      ],
+      "content": {
+        "prompt": "10⁶ 이하 수가 소수인지 여러 번 물을 때 알맞은 것은?",
+        "options": [
+          "에라토스테네스의 체",
+          "매번 √N 판별"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "여러 번 물을 때는 체를 한 번 만들어 두고 배열을 보기만 하면 된다. 하나만 물으면 √N 판별로 충분하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-review-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "modular",
+        "negative"
+      ],
+      "content": {
+        "prompt": "답을 M으로 나눈 나머지로 낼 때 a − b는 어떻게 계산하나?",
+        "options": [
+          "(a − b) % M",
+          "(a − b + M) % M"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "a − b가 음수면 언어에 따라 %가 음수를 낸다. M을 더한 뒤 나머지를 취하면 항상 0 이상이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-review-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "fast-power"
+      ],
+      "content": {
+        "prompt": "aⁿ을 M으로 나눈 나머지, n = 10¹⁸이면?",
+        "options": [
+          "n번 곱하기",
+          "빠른 거듭제곱"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "n번 곱하면 10¹⁸번이라 끝나지 않는다. 지수를 절반씩 줄이면 약 60번 곱셈이면 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-review-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "lcm"
+      ],
+      "content": {
+        "prompt": "최소공배수는 a × b를 먼저 곱한 뒤 gcd로 나누는 편이 안전하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "a × b를 먼저 곱하면 중간값이 커져 넘칠 수 있다. a / gcd × b 순서로 나눈 뒤 곱한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-review-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "sieve"
+      ],
+      "content": {
+        "prompt": "소수 p의 배수를 차례로 지우도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "is_prime = [True] * (n + 1)\nis_prime[0] = is_prime[1] = False\np = 2\nwhile p * p <= n:\n    if is_prime[p]:\n        for m in range(p * p, n + 1, ___):\n            is_prime[m] = False\n    p += 1"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "boolean[] isPrime = new boolean[n + 1];\nArrays.fill(isPrime, 2, n + 1, true);\nfor (int p = 2; p * p <= n; p++)\n    if (isPrime[p])\n        for (int m = p * p; m <= n; m += ___)\n            isPrime[m] = false;"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const isPrime = new Array(n + 1).fill(true);\nisPrime[0] = isPrime[1] = false;\nfor (let p = 2; p * p <= n; p++)\n  if (isPrime[p])\n    for (let m = p * p; m <= n; m += ___)\n      isPrime[m] = false;"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<bool> isPrime(n + 1, true);\nisPrime[0] = isPrime[1] = false;\nfor (int p = 2; p * p <= n; p++)\n    if (isPrime[p])\n        for (int m = p * p; m <= n; m += ___)\n            isPrime[m] = false;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "p"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "p"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "p"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "p"
+            ]
+          }
+        }
+      },
+      "explanation": "p × p부터 p씩 건너뛰며 지우면 p의 배수만 차례로 지운다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "lcm"
+      ],
+      "content": {
+        "prompt": "최소공배수를 나눈 뒤 곱하기로 구하도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from math import gcd\n\ndef lcm(a, b):\n    return a // gcd(a, b) * ___"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long lcm(long a, long b) {\n    return a / gcd(a, b) * ___;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function lcm(a, b) {\n  return a / gcd(a, b) * ___;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long lcm(long long a, long long b) {\n    return a / gcd(a, b) * ___;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "b"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "b"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "b"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "b"
+            ]
+          }
+        }
+      },
+      "explanation": "a를 최대공약수로 먼저 나눈 뒤 b를 곱하면 중간값이 작게 유지된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-review-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "modular",
+        "negative"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "1",
+          "3",
+          "-3"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "print((3 - 10) % 4)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "System.out.println((3 - 10) % 4);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "console.log((3 - 10) % 4);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "cout << (3 - 10) % 4;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0,
+            "explanation": "파이썬은 %의 결과 부호가 나누는 수 4를 따라 −7 % 4 = 1이다."
+          },
+          "java": {
+            "index": 2,
+            "explanation": "%의 결과 부호가 나눠지는 수 −7을 따라 −7 % 4 = −3이다. 0 이상이 필요하면 + M을 한다."
+          },
+          "javascript": {
+            "index": 2,
+            "explanation": "%의 결과 부호가 나눠지는 수 −7을 따라 −7 % 4 = −3이다. 0 이상이 필요하면 + M을 한다."
+          },
+          "cpp": {
+            "index": 2,
+            "explanation": "%의 결과 부호가 나눠지는 수 −7을 따라 −7 % 4 = −3이다. 0 이상이 필요하면 + M을 한다."
+          }
+        }
+      },
+      "explanation": "3 − 10 = −7의 나머지는 언어마다 다르다. 파이썬은 1, Java·JavaScript·C++는 −3이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-review-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "gcd"
+      ],
+      "content": {
+        "prompt": "gcd(84, 36)은?",
+        "options": [
+          "4",
+          "12",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "gcd(84, 36) → gcd(36, 12) → gcd(12, 0) = 12다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-review-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "string",
+        "substring"
+      ],
+      "content": {
+        "prompt": "회문 판별에서 매번 부분 문자열을 잘라 재귀하면 생기는 문제는?",
+        "options": [
+          "답이 틀린다",
+          "복사가 반복된다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "답은 맞지만 호출마다 길이만큼 복사가 생길 수 있다. 양 끝 인덱스로 비교하면 복사가 없다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-review-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "prime"
+      ],
+      "content": {
+        "prompt": "N 하나만 판별할 때는 √N까지 나눠 보면 충분하다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "N이 합성수면 √N 이하의 약수가 반드시 있으므로 하나만 판별할 때는 √N까지면 된다.",
+      "refs": []
+    }
+  ]
+}

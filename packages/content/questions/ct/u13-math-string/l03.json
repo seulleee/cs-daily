@@ -1,0 +1,354 @@
+{
+  "track": "ct",
+  "unit": "u13-math-string",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ct-u13-gcd-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "gcd"
+      ],
+      "content": {
+        "prompt": "gcd(a, b) = gcd(b, a % b)로 최대공약수를 구하는 방법은?",
+        "options": [
+          "에라토스테네스의 체",
+          "유클리드 호제법",
+          "이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "유클리드 호제법은 (a, b)를 (b, a % b)로 바꾸기를 b가 0이 될 때까지 반복해 최대공약수를 구한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-gcd-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "gcd"
+      ],
+      "content": {
+        "prompt": "유클리드 호제법에서 b가 0이면 gcd(a, b)는?",
+        "options": [
+          "1",
+          "b",
+          "a"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "어떤 수 a와 0의 최대공약수는 a다. 그래서 b가 0이 되면 남은 a가 답이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-gcd-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "lcm"
+      ],
+      "content": {
+        "prompt": "최소공배수를 오버플로가 덜 나게 구하는 순서는?",
+        "options": [
+          "a / gcd × b",
+          "a × b / gcd"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "a × b를 먼저 곱하면 중간값이 커져 넘칠 수 있다. a를 gcd로 먼저 나눈 뒤 b를 곱한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-gcd-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "gcd"
+      ],
+      "content": {
+        "prompt": "gcd(48, 18)의 다음 단계는 gcd(48, 12)이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "다음 단계는 gcd(18, 48 % 18) = gcd(18, 12)다. 앞자리에는 b가 온다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-gcd-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "gcd"
+      ],
+      "content": {
+        "prompt": "반복이 끝났을 때 최대공약수를 돌려주도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return ___"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int gcd(int a, int b) {\n    while (b != 0) {\n        int t = a % b;\n        a = b;\n        b = t;\n    }\n    return ___;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function gcd(a, b) {\n  while (b !== 0) [a, b] = [b, a % b];\n  return ___;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int gcd(int a, int b) {\n    while (b != 0) {\n        int t = a % b;\n        a = b;\n        b = t;\n    }\n    return ___;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "a"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "a"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "a"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "a"
+            ]
+          }
+        }
+      },
+      "explanation": "b가 0이 되면 반복이 끝나고, 그때 남은 a가 최대공약수다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-gcd-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "gcd"
+      ],
+      "content": {
+        "prompt": "재귀로 호제법을 쓰도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def gcd(a, b):\n    if b == 0:\n        return a\n    return gcd(___, a % b)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(___, a % b);\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function gcd(a, b) {\n  if (b === 0) return a;\n  return gcd(___, a % b);\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(___, a % b);\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "b"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "b"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "b"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "b"
+            ]
+          }
+        }
+      },
+      "explanation": "gcd(a, b) = gcd(b, a % b)이므로 다음 호출의 첫 인자는 b다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-gcd-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "lcm"
+      ],
+      "content": {
+        "prompt": "중간 계산값이 더 작게 유지되는 최소공배수 식은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "g = gcd(a, b)\nlcm = ___"
+            },
+            "options": [
+              "a // g * b",
+              "a * b // g"
+            ]
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int g = gcd(a, b);\nint lcm = ___;"
+            },
+            "options": [
+              "a * b / g",
+              "a / g * b"
+            ]
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const g = gcd(a, b);\nconst lcm = ___;"
+            },
+            "options": [
+              "a / g * b",
+              "a * b / g"
+            ]
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int g = gcd(a, b);\nint lcm = ___;"
+            },
+            "options": [
+              "a / g * b",
+              "a * b / g"
+            ]
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0,
+            "explanation": "파이썬 정수는 넘치지 않아 두 식의 값은 같지만, a // g * b는 a × b 같은 큰 중간값을 만들지 않는다."
+          },
+          "java": {
+            "index": 1,
+            "explanation": "a * b는 int 범위를 넘어 오버플로가 날 수 있다. a / g * b는 먼저 나눠 중간값이 작다."
+          },
+          "javascript": {
+            "index": 0,
+            "explanation": "JavaScript 숫자는 2⁵³을 넘으면 정밀도를 잃는다. a / g * b는 큰 중간값 a × b를 만들지 않는다."
+          },
+          "cpp": {
+            "index": 0,
+            "explanation": "a * b는 int 범위를 넘어 오버플로가 날 수 있다. a / g * b는 먼저 나눠 중간값이 작다."
+          }
+        }
+      },
+      "explanation": "최소공배수는 a / gcd × b 순서로 계산해 중간값을 작게 유지한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-gcd-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "gcd"
+      ],
+      "content": {
+        "prompt": "gcd(30, 12)는?",
+        "options": [
+          "12",
+          "3",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "gcd(30, 12) → gcd(12, 6) → gcd(6, 0) = 6이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-gcd-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "lcm"
+      ],
+      "content": {
+        "prompt": "a = 12, b = 18일 때 a / gcd × b는?",
+        "options": [
+          "216",
+          "72",
+          "36"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "gcd(12, 18) = 6이므로 12 / 6 × 18 = 36이 최소공배수다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-gcd-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "gcd"
+      ],
+      "content": {
+        "prompt": "유클리드 호제법은 b가 0이 되면 a를 최대공약수로 돌려준다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "gcd(a, 0) = a이므로 b가 0이 되는 순간 남은 a가 최대공약수다.",
+      "refs": []
+    }
+  ]
+}
