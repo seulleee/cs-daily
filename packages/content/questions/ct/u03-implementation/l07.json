@@ -1,0 +1,390 @@
+{
+  "track": "ct",
+  "unit": "u03-implementation",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ct-u03-digits-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "자릿수",
+        "나머지"
+      ],
+      "content": {
+        "prompt": "정수의 끝자리를 얻는 연산은?",
+        "options": [
+          "% 10",
+          "/ 10",
+          "* 10"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "10으로 나눈 나머지가 끝자리다. 1234 % 10 = 4다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-digits-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "자릿수",
+        "몫"
+      ],
+      "content": {
+        "prompt": "정수의 끝자리를 지우는 연산은?",
+        "options": [
+          "% 10",
+          "+ 10",
+          "10으로 나눈 몫"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "10으로 나눈 몫을 취하면 끝자리가 사라진다. 1234의 몫은 123이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-digits-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "자릿수",
+        "나머지"
+      ],
+      "content": {
+        "prompt": "정수 n을 10으로 나눈 나머지는 n의 첫째 자리이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "10으로 나눈 나머지는 끝자리다. 1234 % 10은 1이 아니라 4다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-digits-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "형-변환",
+        "앞자리-0"
+      ],
+      "content": {
+        "prompt": "\"007\"을 정수로 바꾸면 앞자리 0이 사라진다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "정수로 변환하면 7이 되어 앞자리 0이 없어진다. 변환 후 앞자리 0이 필요한지 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-digits-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "자릿수",
+        "나머지"
+      ],
+      "content": {
+        "prompt": "자릿수 합을 구하도록 빈칸을 채우면?",
+        "hint": "끝자리를 얻는 나머지 연산",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "n, s = 1234, 0\nwhile n > 0:\n    s += n % ___\n    n //= 10\nprint(s)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int n = 1234, s = 0;\nwhile (n > 0) {\n    s += n % ___;\n    n /= 10;\n}\nSystem.out.println(s);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let n = 1234, s = 0;\nwhile (n > 0) {\n  s += n % ___;\n  n = Math.floor(n / 10);\n}\nconsole.log(s);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int n = 1234, s = 0;\nwhile (n > 0) {\n    s += n % ___;\n    n /= 10;\n}\ncout << s;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "10",
+              "열"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "10",
+              "열"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "10",
+              "열"
+            ],
+            "explanation": "JS의 /는 실수 나눗셈이라 Math.floor로 몫을 구해 끝자리를 지운다."
+          },
+          "cpp": {
+            "accepted": [
+              "10",
+              "열"
+            ]
+          }
+        }
+      },
+      "explanation": "% 10으로 끝자리를 더하고 10으로 나눈 몫으로 끝자리를 지우기를 반복한다. 4 + 3 + 2 + 1 = 10이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-digits-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "형-변환",
+        "정수"
+      ],
+      "content": {
+        "prompt": "문자열 \"042\"를 정수로 바꾸도록 빈칸을 채우면?",
+        "hint": "문자열을 정수로 바꾸는 함수",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "x = ___(\"042\")"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int x = Integer.___(\"042\");"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const x = ___(\"042\");"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int x = ___(\"042\");"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "int"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "parseInt",
+              "valueOf"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "Number",
+              "parseInt"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "stoi"
+            ]
+          }
+        }
+      },
+      "explanation": "문자열을 정수로 바꾸면 42가 된다. 앞자리 0은 사라진다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-digits-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "자릿수",
+        "몫"
+      ],
+      "content": {
+        "prompt": "출력 결과는?",
+        "options": [
+          "7 50",
+          "5 07",
+          "7 50.7"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "n = 507\nprint(n % 10, n // 10)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int n = 507;\nSystem.out.println(n % 10 + \" \" + n / 10);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const n = 507;\nconsole.log(n % 10, Math.floor(n / 10));"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int n = 507;\ncout << n % 10 << \" \" << n / 10;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0,
+            "explanation": "//는 몫을 구하므로 507 // 10은 50이다. /를 쓰면 50.7이 된다."
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0,
+            "explanation": "JS의 /는 실수 나눗셈이라 Math.floor로 몫 50을 구한다. 그냥 n / 10이면 50.7이다."
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "% 10은 끝자리 7, 10으로 나눈 몫은 끝자리를 지운 50이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-digits-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "형-변환",
+        "문자-숫자"
+      ],
+      "content": {
+        "prompt": "출력 결과는?",
+        "options": [
+          "8",
+          "152",
+          "305"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "t = 0\nfor ch in \"305\":\n    t += ord(ch) - ord('0')\nprint(t)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int t = 0;\nfor (char ch : \"305\".toCharArray()) {\n    t += ch - '0';\n}\nSystem.out.println(t);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let t = 0;\nfor (const ch of \"305\") {\n  t += ch.charCodeAt(0) - \"0\".charCodeAt(0);\n}\nconsole.log(t);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int t = 0;\nfor (char ch : string(\"305\")) {\n    t += ch - '0';\n}\ncout << t;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "문자 숫자에서 '0'을 빼면 그 숫자 값이 된다. 3 + 0 + 5 = 8이다. 빼지 않으면 문자 코드를 더해 152가 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-digits-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "형-변환",
+        "부호"
+      ],
+      "content": {
+        "prompt": "\"-05\"를 정수로 변환한 값은?",
+        "options": [
+          "-5",
+          "5",
+          "-05"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "부호는 유지되고 앞자리 0은 사라져 −5가 된다. 변환 후 부호와 앞자리 0을 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-digits-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "자릿수",
+        "나머지"
+      ],
+      "content": {
+        "prompt": "1234 % 10의 값은?",
+        "options": [
+          "1",
+          "123",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "10으로 나눈 나머지는 끝자리라 4다. 끝자리를 지우려면 10으로 나눈 몫을 쓴다.",
+      "refs": []
+    }
+  ]
+}

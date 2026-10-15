@@ -1,0 +1,329 @@
+{
+  "track": "ct",
+  "unit": "u01-basics",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ct-u01-pickds-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "자료구조-선택",
+        "집합"
+      ],
+      "content": {
+        "prompt": "포함 여부를 자주 묻는다. 고를 자료구조는?",
+        "options": [
+          "집합",
+          "덱",
+          "우선순위 큐"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "집합은 어떤 값이 있는지 평균 한 번에 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pickds-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "자료구조-선택",
+        "우선순위-큐"
+      ],
+      "content": {
+        "prompt": "가장 작은 값을 반복해서 꺼낸다. 고를 것은?",
+        "options": [
+          "해시맵",
+          "우선순위 큐",
+          "덱"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "우선순위 큐는 넣은 순서와 무관하게 가장 작은 값부터 꺼낸다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pickds-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "자료구조-선택",
+        "덱"
+      ],
+      "content": {
+        "prompt": "가장 작은 값을 반복해 꺼낼 때는 덱이 알맞다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "덱은 양 끝에서 넣고 빼는 자료구조다. 가장 작은 값을 반복해 꺼낼 때는 우선순위 큐를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pickds-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "자료구조-선택",
+        "덱"
+      ],
+      "content": {
+        "prompt": "양 끝에서 넣고 빼는 작업에는 덱이 알맞다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "덱은 앞과 뒤 양쪽에서 넣기·빼기가 모두 한 번에 끝난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pickds-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "자료구조-선택",
+        "해시맵"
+      ],
+      "content": {
+        "prompt": "키별로 값을 모으거나 셀 때 쓰는 자료구조는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "해시맵",
+          "hashmap",
+          "해시 맵",
+          "hash map",
+          "맵",
+          "map",
+          "dict",
+          "딕셔너리"
+        ]
+      },
+      "explanation": "해시맵은 키로 값을 평균 한 번에 찾고 바꿔 키별 개수 세기나 묶기에 알맞다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pickds-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "자료구조-선택",
+        "덱"
+      ],
+      "content": {
+        "prompt": "양 끝에서 넣고 빼는 자료구조는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "덱",
+          "deque",
+          "데크"
+        ]
+      },
+      "explanation": "덱(deque)은 앞과 뒤 양쪽에서 넣기·빼기가 모두 한 번에 끝난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pickds-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "자료구조-선택",
+        "해시맵"
+      ],
+      "content": {
+        "prompt": "단어별 개수를 세도록 ___에 알맞은 것은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "cnt = ___()\nfor w in [\"up\", \"go\", \"up\"]:\n    cnt[w] = cnt.get(w, 0) + 1\nprint(cnt[\"up\"])"
+            },
+            "options": [
+              "set",
+              "dict",
+              "list"
+            ]
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "var cnt = new ___<String, Integer>();\nfor (String w : List.of(\"up\", \"go\", \"up\")) {\n    cnt.merge(w, 1, Integer::sum);\n}\nSystem.out.println(cnt.get(\"up\"));"
+            },
+            "options": [
+              "HashSet",
+              "HashMap",
+              "ArrayDeque"
+            ]
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const cnt = new ___();\nfor (const w of [\"up\", \"go\", \"up\"]) {\n  cnt.set(w, (cnt.get(w) ?? 0) + 1);\n}\nconsole.log(cnt.get(\"up\"));"
+            },
+            "options": [
+              "Set",
+              "Map",
+              "Array"
+            ]
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "___<string, int> cnt;\nfor (string w : {\"up\", \"go\", \"up\"}) {\n    cnt[w]++;\n}\ncout << cnt[\"up\"];"
+            },
+            "options": [
+              "unordered_set",
+              "unordered_map",
+              "deque"
+            ]
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "키(단어)별로 값(개수)을 세려면 해시맵을 쓴다. 집합은 값만 담고 개수를 저장하지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pickds-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "자료구조-선택",
+        "덱"
+      ],
+      "content": {
+        "prompt": "맨 뒤 원소를 빼서 맨 앞에 넣기를 반복한다. 고를 것은?",
+        "options": [
+          "우선순위 큐",
+          "덱",
+          "집합"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "양 끝에서 넣고 빼는 작업이므로 덱이 알맞다. 두 연산 모두 한 번에 끝난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pickds-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "자료구조-선택",
+        "집합"
+      ],
+      "content": {
+        "prompt": "값의 중복을 빠르게 확인하도록 ___에 알맞은 것은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "seen = ___()\nfor x in [4, 8, 4]:\n    if x in seen:\n        print(\"dup\")\n    seen.add(x)"
+            },
+            "options": [
+              "set",
+              "list",
+              "dict"
+            ]
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "var seen = new ___<Integer>();\nfor (int x : new int[]{4, 8, 4}) {\n    if (!seen.add(x)) System.out.println(\"dup\");\n}"
+            },
+            "options": [
+              "ArrayDeque",
+              "PriorityQueue",
+              "HashSet"
+            ]
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const seen = new ___();\nfor (const x of [4, 8, 4]) {\n  if (seen.has(x)) console.log(\"dup\");\n  seen.add(x);\n}"
+            },
+            "options": [
+              "Set",
+              "Map",
+              "Array"
+            ]
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "___<int> seen;\nfor (int x : {4, 8, 4}) {\n    if (seen.count(x)) cout << \"dup\";\n    seen.insert(x);\n}"
+            },
+            "options": [
+              "vector",
+              "queue",
+              "unordered_set"
+            ]
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 2,
+            "explanation": "HashSet.add는 이미 있는 값이면 false를 돌려줘 중복을 바로 알 수 있다. 덱·우선순위 큐의 add는 항상 true다."
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 2
+          }
+        }
+      },
+      "explanation": "이미 본 값인지(포함 여부)를 자주 물을 때는 집합이 알맞다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pickds-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "자료구조-선택",
+        "집합"
+      ],
+      "content": {
+        "prompt": "\"이미 본 값인가?\"를 자주 묻는 문제에 알맞은 것은?",
+        "options": [
+          "덱",
+          "집합",
+          "우선순위 큐"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "포함 여부를 반복해서 묻는다면 평균 한 번에 확인하는 집합을 쓴다.",
+      "refs": []
+    }
+  ]
+}

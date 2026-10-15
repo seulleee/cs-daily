@@ -1,0 +1,351 @@
+{
+  "track": "ct",
+  "unit": "u02-input-size",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ct-u02-overflow-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "정수-범위",
+        "32비트"
+      ],
+      "content": {
+        "prompt": "32비트 정수가 담을 수 있는 최댓값은 약?",
+        "options": [
+          "2.1 × 10⁹",
+          "9.2 × 10¹⁸",
+          "10⁵"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "32비트 부호 있는 정수는 약 ±21억(2,147,483,647)까지 담는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-overflow-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "정수-범위",
+        "64비트"
+      ],
+      "content": {
+        "prompt": "64비트 정수의 최댓값은 약?",
+        "options": [
+          "2.1 × 10⁹",
+          "10³⁸",
+          "9.2 × 10¹⁸"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "64비트 부호 있는 정수는 약 ±9.2 × 10¹⁸까지 담는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-overflow-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "정수-범위",
+        "오버플로"
+      ],
+      "content": {
+        "prompt": "10⁵ × 10⁵ = 10¹⁰을 담으려면?",
+        "options": [
+          "32비트 정수",
+          "64비트 정수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "10¹⁰은 32비트 최댓값 약 2.1 × 10⁹을 넘으므로 64비트 정수가 필요하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-overflow-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "오버플로",
+        "정수-범위"
+      ],
+      "content": {
+        "prompt": "고정 크기 정수가 범위를 넘으면 가장 큰 값에서 멈춘다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "범위를 넘으면 멈추지 않고 값이 엉뚱하게 바뀐다. 이것이 오버플로다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-overflow-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "오버플로",
+        "정수-범위"
+      ],
+      "content": {
+        "prompt": "고정 크기 정수가 범위를 넘어 값이 바뀌는 현상은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "오버플로",
+          "overflow",
+          "오버플로우"
+        ]
+      },
+      "explanation": "오버플로는 고정 크기 정수가 담을 수 있는 범위를 넘어 값이 엉뚱하게 바뀌는 현상이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-overflow-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "오버플로",
+        "곱"
+      ],
+      "content": {
+        "prompt": "10⁵ × 10⁵는 10의 ___제곱이라 32비트를 넘는다."
+      },
+      "answer_key": {
+        "accepted": [
+          "10",
+          "열"
+        ]
+      },
+      "explanation": "10⁵ × 10⁵ = 10¹⁰으로 32비트 최댓값 약 2.1 × 10⁹보다 크다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-overflow-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "오버플로",
+        "곱"
+      ],
+      "content": {
+        "prompt": "출력 결과로 알맞은 것은?",
+        "options": [
+          "10000000000",
+          "엉뚱한 값"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a = b = 100000\nc = a * b\nprint(c)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int a = 100000, b = 100000;\nlong c = a * b;\nSystem.out.println(c);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = 100000, b = 100000;\nconst c = a * b;\nconsole.log(c);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int a = 100000, b = 100000;\nlong long c = a * b;\ncout << c;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0,
+            "explanation": "파이썬 정수는 크기 제한이 없어(임의 정밀도) 오버플로 없이 10000000000이 나온다."
+          },
+          "java": {
+            "index": 1,
+            "explanation": "int끼리 먼저 곱해 32비트에서 넘친 뒤 long에 담으므로 1410065408이 나온다. (long) a * b로 써야 한다."
+          },
+          "javascript": {
+            "index": 0,
+            "explanation": "JS Number는 2⁵³(약 9 × 10¹⁵)까지 정수를 정확히 담아 10¹⁰은 그대로 나온다. 그보다 크면 BigInt를 쓴다."
+          },
+          "cpp": {
+            "index": 1,
+            "explanation": "int끼리 먼저 곱해 32비트에서 넘친다(부호 있는 오버플로는 정의되지 않은 동작). 1LL * a * b로 써야 한다."
+          }
+        }
+      },
+      "explanation": "10⁵ × 10⁵ = 10¹⁰은 32비트를 넘는다. 고정 크기 32비트로 곱하는 언어에서는 값이 엉뚱하게 바뀐다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-overflow-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "오버플로",
+        "합"
+      ],
+      "content": {
+        "prompt": "출력 결과로 알맞은 것은?",
+        "options": [
+          "3000000000",
+          "엉뚱한 값"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "s = 0\nfor _ in range(3):\n    s += 1_000_000_000\nprint(s)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int s = 0;\nfor (int i = 0; i < 3; i++) {\n    s += 1_000_000_000;\n}\nSystem.out.println(s);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let s = 0;\nfor (let i = 0; i < 3; i++) {\n  s += 1_000_000_000;\n}\nconsole.log(s);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int s = 0;\nfor (int i = 0; i < 3; i++) {\n    s += 1000000000;\n}\ncout << s;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0,
+            "explanation": "파이썬 정수는 크기 제한이 없어 합이 3 × 10⁹이어도 그대로 나온다."
+          },
+          "java": {
+            "index": 1,
+            "explanation": "int 합이 약 2.1 × 10⁹을 넘어 -1294967296이 된다. 합을 담을 변수는 long으로 둔다."
+          },
+          "javascript": {
+            "index": 0,
+            "explanation": "JS Number는 2⁵³(약 9 × 10¹⁵)까지 정수를 정확히 담아 3 × 10⁹은 그대로 나온다."
+          },
+          "cpp": {
+            "index": 1,
+            "explanation": "int 합이 32비트 범위를 넘어 엉뚱한 값이 된다(부호 있는 오버플로는 정의되지 않은 동작). 합은 long long에 담는다."
+          }
+        }
+      },
+      "explanation": "큰 값을 여러 번 더한 합은 32비트를 넘기 쉽다. 고정 크기 32비트 변수에 담으면 값이 엉뚱하게 바뀐다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-overflow-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "오버플로",
+        "자료형"
+      ],
+      "content": {
+        "prompt": "곱을 정확히 구하도록 ___에 들어갈 것은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a = b = 1_000_000_007\nc = ___ * b\nprint(c)"
+            },
+            "options": [
+              "a",
+              "float(a)"
+            ]
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int a = 1_000_000_007, b = 1_000_000_007;\nlong c = ___ * b;\nSystem.out.println(c);"
+            },
+            "options": [
+              "a",
+              "(long) a"
+            ]
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = 1000000007, b = 1000000007;\nconst c = ___ * BigInt(b);\nconsole.log(c.toString());"
+            },
+            "options": [
+              "a",
+              "BigInt(a)"
+            ]
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int a = 1000000007, b = 1000000007;\nlong long c = ___ * b;\ncout << c;"
+            },
+            "options": [
+              "a",
+              "(long long)a"
+            ]
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0,
+            "explanation": "파이썬 정수는 크기 제한이 없어 a * b가 정확하다. float로 바꾸면 오히려 정밀도를 잃는다."
+          },
+          "java": {
+            "index": 1,
+            "explanation": "(long) a로 바꾸면 곱이 64비트로 계산된다. a * b는 int끼리 곱해 넘친다."
+          },
+          "javascript": {
+            "index": 1,
+            "explanation": "약 10¹⁸은 Number의 안전 정수 2⁵³(약 9 × 10¹⁵)을 넘어 BigInt로 계산한다. Number와 BigInt는 섞어 곱할 수 없다."
+          },
+          "cpp": {
+            "index": 1,
+            "explanation": "(long long)a로 바꾸면 곱이 64비트로 계산된다. a * b는 int끼리 곱해 넘친다."
+          }
+        }
+      },
+      "explanation": "곱이 약 10¹⁸이라 64비트 범위(약 9.2 × 10¹⁸) 안이다. 곱하기 전에 64비트(또는 큰 정수)로 바꿔야 정확하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-overflow-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "정수-범위",
+        "32비트"
+      ],
+      "content": {
+        "prompt": "32비트 정수는 약 ±21억까지 담는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "32비트 부호 있는 정수의 범위는 약 ±2.1 × 10⁹, 곧 ±21억이다.",
+      "refs": []
+    }
+  ]
+}

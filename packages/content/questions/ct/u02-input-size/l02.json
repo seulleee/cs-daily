@@ -1,0 +1,291 @@
+{
+  "track": "ct",
+  "unit": "u02-input-size",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ct-u02-1e8-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "연산-횟수",
+        "시간-제한"
+      ],
+      "content": {
+        "prompt": "1초에 단순 연산은 대략 몇 번으로 잡나?",
+        "options": [
+          "10⁴번",
+          "10¹²번",
+          "10⁸번"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "코딩 테스트에서는 1초에 단순 연산 약 1억(10⁸) 번으로 어림한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-1e8-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "연산-횟수",
+        "복잡도"
+      ],
+      "content": {
+        "prompt": "N = 10⁵에서 O(N²)의 연산 횟수는?",
+        "options": [
+          "10¹⁰번",
+          "10⁵번",
+          "10⁷번"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "N²에 10⁵를 넣으면 10⁵ × 10⁵ = 10¹⁰번이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-1e8-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "연산-횟수",
+        "판단"
+      ],
+      "content": {
+        "prompt": "제한 1초, 예상 연산 10¹⁰번이다. 판단은?",
+        "options": [
+          "다른 방법 필요",
+          "시간 안에 끝남"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "1초에 약 10⁸번이므로 10¹⁰번은 100배나 많다. 더 빠른 방법이 필요하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-1e8-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "연산-횟수",
+        "판단"
+      ],
+      "content": {
+        "prompt": "N = 1,000이면 O(N²)은 1초 안에 넉넉히 끝난다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "1,000² = 10⁶번으로 1초 기준 10⁸번보다 훨씬 적다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-1e8-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "연산-횟수",
+        "시간-제한"
+      ],
+      "content": {
+        "prompt": "1초에 단순 연산을 약 ___ 번으로 어림한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "1억",
+          "억",
+          "100000000",
+          "10의 8승",
+          "10의8승"
+        ]
+      },
+      "explanation": "1초에 약 1억(10⁸) 번을 기준으로 N을 넣은 연산 횟수와 비교한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-1e8-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "연산-횟수",
+        "복잡도"
+      ],
+      "content": {
+        "prompt": "N = 10⁶이고 O(N)이면 연산은 약 10의 ___제곱 번이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "6",
+          "여섯"
+        ]
+      },
+      "explanation": "O(N)에 N = 10⁶을 넣으면 10⁶번이다. 1초 기준 10⁸번보다 적어 충분하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-1e8-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "연산-횟수",
+        "반복문"
+      ],
+      "content": {
+        "prompt": "n = 10⁵일 때 cnt가 1 늘어나는 횟수는?",
+        "options": [
+          "10⁵번",
+          "10¹⁰번",
+          "2 × 10⁵번"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "cnt = 0\nfor i in range(n):\n    for j in range(n):\n        cnt += 1"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long cnt = 0;\nfor (int i = 0; i < n; i++) {\n    for (int j = 0; j < n; j++) {\n        cnt++;\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let cnt = 0;\nfor (let i = 0; i < n; i++) {\n  for (let j = 0; j < n; j++) {\n    cnt++;\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long cnt = 0;\nfor (int i = 0; i < n; i++) {\n    for (int j = 0; j < n; j++) {\n        cnt++;\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "n번 도는 반복문이 겹쳐 n × n = 10¹⁰번이다. 1초 기준 10⁸번의 100배다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-1e8-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "연산-횟수",
+        "판단"
+      ],
+      "content": {
+        "prompt": "n = 10⁵이고 제한이 1초일 때 이 코드는?",
+        "options": [
+          "시간 안에 끝남",
+          "시간 초과"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "cnt = 0\nfor i in range(n):\n    for k in range(20):\n        cnt += 1"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long cnt = 0;\nfor (int i = 0; i < n; i++) {\n    for (int k = 0; k < 20; k++) {\n        cnt++;\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let cnt = 0;\nfor (let i = 0; i < n; i++) {\n  for (let k = 0; k < 20; k++) {\n    cnt++;\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long cnt = 0;\nfor (int i = 0; i < n; i++) {\n    for (int k = 0; k < 20; k++) {\n        cnt++;\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "안쪽 반복은 20번 고정이라 전체 20 × 10⁵ = 2 × 10⁶번이다. 10⁸번보다 훨씬 적다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-1e8-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "연산-횟수",
+        "판단"
+      ],
+      "content": {
+        "prompt": "제한 2초, 예상 연산 3 × 10⁸번이다. 판단은?",
+        "options": [
+          "충분하다",
+          "다른 방법 필요"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "2초면 약 2 × 10⁸번까지다. 3 × 10⁸번은 이를 넘어 다른 방법이 필요하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-1e8-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "연산-횟수",
+        "시간-제한"
+      ],
+      "content": {
+        "prompt": "1초에 단순 연산 약 10¹⁰번을 처리한다고 어림한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "어림 기준은 1초에 약 10⁸(1억) 번이다. 10¹⁰번은 약 100초가 걸린다.",
+      "refs": []
+    }
+  ]
+}

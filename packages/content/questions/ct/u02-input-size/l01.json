@@ -1,0 +1,291 @@
+{
+  "track": "ct",
+  "unit": "u02-input-size",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ct-u02-bigo-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "복잡도",
+        "시간-복잡도"
+      ],
+      "content": {
+        "prompt": "N이 커지면 연산 횟수가 얼마나 늘어나는지 나타내는 것은?",
+        "options": [
+          "시간 복잡도",
+          "메모리 제한",
+          "재귀 깊이"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "시간 복잡도는 N이 커질수록 연산 횟수가 얼마나 빨리 늘어나는지를 나타낸다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bigo-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "복잡도",
+        "o-표기"
+      ],
+      "content": {
+        "prompt": "3N² + N을 O 표기로 쓰면?",
+        "options": [
+          "O(N)",
+          "O(N²)",
+          "O(3N²)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "O 표기는 가장 빨리 커지는 항 N²만 남기고 계수 3도 뗀다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bigo-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "복잡도",
+        "o-표기"
+      ],
+      "content": {
+        "prompt": "O 표기는 가장 빨리 커지는 항만 남겨 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "N이 커지면 가장 빨리 커지는 항이 연산 횟수를 좌우하므로 그 항만 남긴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bigo-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "복잡도",
+        "o-표기"
+      ],
+      "content": {
+        "prompt": "O 표기에서 5N은 O(5N)으로 쓴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "O 표기는 계수를 떼고 쓴다. 5N은 O(N)이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bigo-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "복잡도",
+        "입력-크기"
+      ],
+      "content": {
+        "prompt": "입력 개수나 값의 크기를 흔히 나타내는 문자는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "N",
+          "엔"
+        ]
+      },
+      "explanation": "문제에 주어진 입력 개수나 값의 크기를 N으로 두고 복잡도를 N에 대한 식으로 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bigo-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "복잡도",
+        "시간-복잡도"
+      ],
+      "content": {
+        "prompt": "N이 커질 때 연산 횟수가 늘어나는 정도를 시간 ___ 라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "복잡도",
+          "complexity"
+        ]
+      },
+      "explanation": "시간 복잡도는 입력 크기에 따라 연산 횟수가 늘어나는 정도다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bigo-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "복잡도",
+        "반복문"
+      ],
+      "content": {
+        "prompt": "이 코드의 시간 복잡도는?",
+        "options": [
+          "O(N)",
+          "O(N²)",
+          "O(2N)"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "cnt = 0\nfor i in range(n):\n    for j in range(n):\n        cnt += 1"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long cnt = 0;\nfor (int i = 0; i < n; i++) {\n    for (int j = 0; j < n; j++) {\n        cnt++;\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let cnt = 0;\nfor (let i = 0; i < n; i++) {\n  for (let j = 0; j < n; j++) {\n    cnt++;\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long cnt = 0;\nfor (int i = 0; i < n; i++) {\n    for (int j = 0; j < n; j++) {\n        cnt++;\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "n번 도는 반복문 안에서 다시 n번 돌아 cnt += 1이 N²번 실행된다. O(N²)이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bigo-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "복잡도",
+        "반복문"
+      ],
+      "content": {
+        "prompt": "이 코드의 시간 복잡도는?",
+        "options": [
+          "O(N)",
+          "O(N²)",
+          "O(2N)"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "cnt = 0\nfor i in range(n):\n    cnt += 1\nfor j in range(n):\n    cnt += 1"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int cnt = 0;\nfor (int i = 0; i < n; i++) cnt++;\nfor (int j = 0; j < n; j++) cnt++;"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let cnt = 0;\nfor (let i = 0; i < n; i++) cnt++;\nfor (let j = 0; j < n; j++) cnt++;"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int cnt = 0;\nfor (int i = 0; i < n; i++) cnt++;\nfor (int j = 0; j < n; j++) cnt++;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "반복문이 따로따로 n번씩 돌아 2N번이다. 계수를 떼면 O(N)이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bigo-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "복잡도",
+        "o-표기"
+      ],
+      "content": {
+        "prompt": "4N + N² + 10에서 가장 빨리 커지는 항은?",
+        "options": [
+          "N²",
+          "4N",
+          "10"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "N이 커지면 N²이 4N이나 상수 10보다 훨씬 빨리 커진다. 그래서 O(N²)이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bigo-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "복잡도",
+        "시간-복잡도"
+      ],
+      "content": {
+        "prompt": "시간 복잡도가 나타내는 것은?",
+        "options": [
+          "실제 실행 초",
+          "연산 횟수 증가 정도",
+          "코드 줄 수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시간 복잡도는 실행 시간 자체가 아니라 N에 따라 연산 횟수가 늘어나는 정도를 나타낸다.",
+      "refs": []
+    }
+  ]
+}

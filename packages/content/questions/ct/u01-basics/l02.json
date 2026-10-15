@@ -1,0 +1,353 @@
+{
+  "track": "ct",
+  "unit": "u01-basics",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ct-u01-sortkey-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "정렬",
+        "키-함수"
+      ],
+      "content": {
+        "prompt": "원소마다 기준 값을 뽑아 그 값으로 정렬하게 하는 함수는?",
+        "options": [
+          "키 함수",
+          "비교 함수",
+          "해시 함수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "키 함수는 원소 하나를 받아 정렬 기준 값을 돌려준다. 정렬은 그 값을 비교해 순서를 정한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-sortkey-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "정렬",
+        "비교-함수"
+      ],
+      "content": {
+        "prompt": "두 원소 중 어느 쪽이 앞인지 정하는 함수는?",
+        "options": [
+          "키 함수",
+          "재귀 함수",
+          "비교 함수"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "비교 함수는 두 원소를 받아 어느 쪽이 앞에 와야 하는지 돌려준다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-sortkey-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "정렬",
+        "다중-기준"
+      ],
+      "content": {
+        "prompt": "(나이, 이름) 순 정렬에서 이름을 비교하는 경우는?",
+        "options": [
+          "항상",
+          "나이가 다를 때만",
+          "나이가 같을 때만"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "다중 기준 정렬은 첫 기준이 같을 때만 다음 기준으로 비교한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-sortkey-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "정렬",
+        "키-함수"
+      ],
+      "content": {
+        "prompt": "키 함수는 두 원소를 받아 어느 쪽이 앞인지 돌려준다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "두 원소를 받아 앞뒤를 정하는 것은 비교 함수다. 키 함수는 원소 하나에서 기준 값을 뽑는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-sortkey-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "정렬",
+        "키-함수"
+      ],
+      "content": {
+        "prompt": "문자열을 길이 순으로 정렬하도록 빈칸을 채우면?",
+        "hint": "정렬 함수에 기준을 넘기는 부분",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "words = [\"ccc\", \"a\", \"bb\"]\nwords.sort(___=len)\nprint(words)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "List<String> words = new ArrayList<>(\n    List.of(\"ccc\", \"a\", \"bb\"));\nwords.sort(Comparator.___(String::length));\nSystem.out.println(words);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const words = [\"ccc\", \"a\", \"bb\"];\nconst byLen = (a, b) => a.length - b.length;\nwords.sort(___);\nconsole.log(words.join(\" \"));"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<string> w = {\"ccc\", \"a\", \"bb\"};\nauto byLen = [](const string& a,\n                const string& b) {\n    return a.size() < b.size();\n};\nsort(w.begin(), w.end(), ___);"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "key"
+            ],
+            "explanation": "key=len은 각 문자열의 길이를 정렬 기준 값으로 쓰는 키 함수 지정이다."
+          },
+          "java": {
+            "accepted": [
+              "comparingInt",
+              "comparing"
+            ],
+            "explanation": "Comparator.comparingInt(String::length)는 길이를 기준 값으로 뽑아 비교하는 Comparator를 만든다."
+          },
+          "javascript": {
+            "accepted": [
+              "byLen"
+            ],
+            "explanation": "sort에 비교 함수 byLen을 넘기면 길이가 짧은 문자열이 앞에 온다."
+          },
+          "cpp": {
+            "accepted": [
+              "byLen"
+            ],
+            "explanation": "sort의 세 번째 인자로 비교 함수 byLen을 넘기면 길이가 짧은 쪽이 앞에 온다."
+          }
+        }
+      },
+      "explanation": "정렬에 기준(키 함수나 비교 함수)을 넘겨 길이 순서로 정렬한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-sortkey-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "정렬",
+        "내림차순"
+      ],
+      "content": {
+        "prompt": "큰 수가 앞에 오도록 빈칸을 채우면?",
+        "hint": "비교 방향을 뒤집는 부분",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a = [70, 95, 80]\na.sort(___=True)\nprint(a)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "Integer[] a = {70, 95, 80};\nArrays.sort(a, Collections.___());\nSystem.out.println(Arrays.toString(a));"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [70, 95, 80];\na.sort((x, y) => ___ - x);\nconsole.log(a.join(\" \"));"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {70, 95, 80};\nsort(a.begin(), a.end(), ___<int>());"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "reverse"
+            ],
+            "explanation": "reverse=True는 비교 방향을 뒤집어 큰 값부터 정렬한다."
+          },
+          "java": {
+            "accepted": [
+              "reverseOrder",
+              "reverseorder"
+            ],
+            "explanation": "Collections.reverseOrder()는 비교 방향을 뒤집은 Comparator라 큰 값이 앞에 온다."
+          },
+          "javascript": {
+            "accepted": [
+              "y"
+            ],
+            "explanation": "비교 함수가 y - x를 돌려주면 비교 방향이 뒤집혀 큰 값이 앞에 온다."
+          },
+          "cpp": {
+            "accepted": [
+              "greater"
+            ],
+            "explanation": "greater<int>()는 비교 방향을 뒤집은 비교 함수라 큰 값이 앞에 온다."
+          }
+        }
+      },
+      "explanation": "내림차순은 비교 방향을 뒤집거나 키의 부호를 바꿔서 만든다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-sortkey-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "정렬",
+        "다중-기준"
+      ],
+      "content": {
+        "prompt": "점수 내림차순, 같으면 이름 오름차순일 때 출력은?",
+        "options": [
+          "kim",
+          "lee",
+          "park"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a = [(\"park\", 95), (\"kim\", 90), (\"lee\", 95)]\na.sort(key=lambda p: (-p[1], p[0]))\nprint(a[0][0])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "record P(String name, int score) {}\nList<P> a = new ArrayList<>(List.of(\n    new P(\"park\", 95), new P(\"kim\", 90),\n    new P(\"lee\", 95)));\na.sort(Comparator\n    .comparingInt((P p) -> -p.score())\n    .thenComparing(P::name));\nSystem.out.println(a.get(0).name());"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [[\"park\", 95], [\"kim\", 90],\n           [\"lee\", 95]];\na.sort((x, y) =>\n  y[1] - x[1] || x[0].localeCompare(y[0]));\nconsole.log(a[0][0]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<pair<string, int>> a =\n    {{\"park\", 95}, {\"kim\", 90}, {\"lee\", 95}};\nsort(a.begin(), a.end(),\n     [](auto& x, auto& y) {\n    if (x.second != y.second)\n        return x.second > y.second;\n    return x.first < y.first;\n});\ncout << a[0].first;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1,
+            "explanation": "키 (-점수, 이름)으로 점수는 내림차순, 같은 점수끼리는 이름 오름차순이 되어 lee가 맨 앞이다."
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "점수 95인 park와 lee 중 이름이 앞서는 lee가 첫 번째다. 이름은 점수가 같을 때만 비교한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-sortkey-008",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "정렬",
+        "내림차순"
+      ],
+      "content": {
+        "prompt": "숫자 키의 부호를 바꿔 오름차순 정렬하면 내림차순이 된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "키에 −1을 곱하면 큰 값이 가장 작은 키가 되어 앞에 온다. 비교 방향을 뒤집어도 같다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-sortkey-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "정렬",
+        "다중-기준"
+      ],
+      "content": {
+        "prompt": "(2, b) (1, c) (2, a)를 첫 값→둘째 값 순 오름차순 정렬. 맨 뒤는?",
+        "options": [
+          "(1, c)",
+          "(2, a)",
+          "(2, b)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "첫 값으로 (1, c)가 맨 앞이고, 첫 값이 2로 같은 둘은 둘째 값으로 비교해 (2, a), (2, b) 순이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-sortkey-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "정렬",
+        "키-함수"
+      ],
+      "content": {
+        "prompt": "단어를 길이로 정렬할 때 키 함수가 돌려주는 값은?",
+        "options": [
+          "두 단어 비교 결과",
+          "단어의 길이",
+          "단어의 위치"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "키 함수는 원소 하나에서 정렬 기준 값을 뽑는다. 길이로 정렬하면 단어의 길이를 돌려준다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,387 @@
+{
+  "track": "ct",
+  "unit": "u03-implementation",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ct-u03-string-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "문자열",
+        "분리"
+      ],
+      "content": {
+        "prompt": "구분자로 잘라 토큰 목록을 만드는 작업은?",
+        "options": [
+          "분리",
+          "정렬",
+          "회전"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "분리는 공백·쉼표 같은 구분자를 기준으로 문자열을 잘라 토큰 목록을 만든다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-string-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "문자열",
+        "문자-코드"
+      ],
+      "content": {
+        "prompt": "소문자를 0~25 인덱스로 바꾸는 식은?",
+        "options": [
+          "문자 + 'a'",
+          "문자 − 'z'",
+          "문자 − 'a'"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "문자 코드에서 'a'의 코드를 빼면 'a'는 0, 'z'는 25가 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-string-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "문자열",
+        "이어-붙이기"
+      ],
+      "content": {
+        "prompt": "조각을 매번 이어 붙이는 것이 모아서 한 번에 합치는 것보다 빠르다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "불변 문자열은 이어 붙일 때마다 복사가 생겨 느리다. 조각을 목록에 모은 뒤 한 번에 합친다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-string-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "문자열",
+        "불변"
+      ],
+      "content": {
+        "prompt": "불변 문자열은 이어 붙일 때마다 새로 복사될 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "불변 문자열은 바꿀 수 없어 이어 붙이면 새 문자열을 만든다. 반복하면 복사가 쌓여 느려진다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-string-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "문자열",
+        "분리"
+      ],
+      "content": {
+        "prompt": "공백으로 잘라 토큰 목록을 만들도록 빈칸을 채우면?",
+        "hint": "문자열을 구분자로 자르는 함수",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "tokens = \"3 1 4\".___()\nprint(len(tokens))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "String[] tokens = \"3 1 4\".___(\" \");\nSystem.out.println(tokens.length);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const tokens = \"3 1 4\".___(\" \");\nconsole.log(tokens.length);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "istringstream ss(\"3 1 4\");\nvector<string> tokens;\nstring tok;\nwhile (___(ss, tok, ' ')) {\n    tokens.push_back(tok);\n}\ncout << tokens.size();"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "split"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "split"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "split"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "getline"
+            ],
+            "explanation": "C++ 문자열에는 split이 없어 getline(ss, tok, ' ')으로 구분자까지 하나씩 잘라 모은다."
+          }
+        }
+      },
+      "explanation": "구분자(공백)를 기준으로 문자열을 잘라 토큰 3개를 만든다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-string-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "문자열",
+        "문자-코드"
+      ],
+      "content": {
+        "prompt": "알파벳 소문자별 개수를 세도록 빈칸을 채우면?",
+        "hint": "소문자 인덱스 범위는 0~25",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "cnt = [0] * ___\nfor ch in \"abca\":\n    cnt[ord(ch) - ord('a')] += 1\nprint(cnt[0])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] cnt = new int[___];\nfor (char ch : \"abca\".toCharArray()) {\n    cnt[ch - 'a']++;\n}\nSystem.out.println(cnt[0]);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const cnt = new Array(___).fill(0);\nfor (const ch of \"abca\") {\n  cnt[ch.charCodeAt(0) - 97]++;\n}\nconsole.log(cnt[0]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> cnt(___);\nfor (char ch : string(\"abca\")) {\n    cnt[ch - 'a']++;\n}\ncout << cnt[0];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "26",
+              "스물여섯"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "26",
+              "스물여섯"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "26",
+              "스물여섯"
+            ],
+            "explanation": "JS는 문자끼리 뺄 수 없어 charCodeAt으로 코드를 얻고 'a'의 코드 97을 뺀다."
+          },
+          "cpp": {
+            "accepted": [
+              "26",
+              "스물여섯"
+            ]
+          }
+        }
+      },
+      "explanation": "문자 − 'a'는 0~25이므로 칸 26개짜리 배열에 소문자별 개수를 센다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-string-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "문자열",
+        "문자-코드"
+      ],
+      "content": {
+        "prompt": "출력 결과는?",
+        "options": [
+          "3",
+          "4",
+          "100"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "print(ord('d') - ord('a'))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "System.out.println('d' - 'a');"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const d = \"d\".charCodeAt(0);\nconsole.log(d - \"a\".charCodeAt(0));"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "cout << 'd' - 'a';"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "'a'가 0이면 'b' 1, 'c' 2, 'd' 3이다. 문자 코드끼리 빼서 인덱스를 얻는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-string-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "문자열",
+        "이어-붙이기"
+      ],
+      "content": {
+        "prompt": "문자열 조각 10만 개를 매번 이어 붙였다. 고칠 점은?",
+        "options": [
+          "목록에 모아 합치기",
+          "분리 후 정렬",
+          "문자 코드 쓰기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "반복 이어 붙이기는 매번 복사가 생길 수 있다. 조각을 목록에 모은 뒤 한 번에 합친다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-string-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "문자열",
+        "분리"
+      ],
+      "content": {
+        "prompt": "출력 결과는?",
+        "options": [
+          "10",
+          "20",
+          "30"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "print(\"10,20,30\".split(\",\")[1])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "System.out.println(\"10,20,30\".split(\",\")[1]);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "console.log(\"10,20,30\".split(\",\")[1]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "stringstream ss(\"10,20,30\");\nvector<string> v;\nstring tok;\nwhile (getline(ss, tok, ',')) v.push_back(tok);\ncout << v[1];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "쉼표로 나누면 [\"10\", \"20\", \"30\"]이고 인덱스 1은 \"20\"이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-string-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "문자열",
+        "분리"
+      ],
+      "content": {
+        "prompt": "\"1,2,3\"을 쉼표로 분리하면 토큰 수는?",
+        "options": [
+          "1",
+          "3",
+          "5"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "구분자 쉼표 두 개로 잘려 \"1\", \"2\", \"3\" 세 토큰이 된다.",
+      "refs": []
+    }
+  ]
+}

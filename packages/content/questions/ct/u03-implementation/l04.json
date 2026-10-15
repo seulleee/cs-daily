@@ -1,0 +1,340 @@
+{
+  "track": "ct",
+  "unit": "u03-implementation",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ct-u03-turn-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "방향-회전",
+        "방향-번호"
+      ],
+      "content": {
+        "prompt": "방향 0이 북, 1이 동일 때 2는?",
+        "options": [
+          "서",
+          "남",
+          "동"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시계 방향으로 0 북, 1 동, 2 남, 3 서 순서로 번호를 매긴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-turn-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "방향-회전",
+        "나머지"
+      ],
+      "content": {
+        "prompt": "방향 d에서 오른쪽으로 돈 방향 번호는?",
+        "options": [
+          "(d + 1) % 4",
+          "(d + 3) % 4",
+          "d + 2"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "시계 방향 번호에서 오른쪽 회전은 다음 번호이고, 3 다음은 0이라 % 4를 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-turn-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "방향-회전",
+        "나머지"
+      ],
+      "content": {
+        "prompt": "왼쪽 회전은 (d − 1) % 4로 쓰면 어느 언어에서나 안전하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "d = 0일 때 d − 1이 음수가 되고, 음수의 나머지는 언어마다 다르다. (d + 3) % 4로 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-turn-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "방향-회전",
+        "방향-번호"
+      ],
+      "content": {
+        "prompt": "방향 번호가 시계 방향이면 (d + 1) % 4는 오른쪽 회전이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "시계 방향으로 번호를 매기면 번호가 하나 늘 때 오른쪽으로 90도 돈다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-turn-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "방향-회전",
+        "방향-번호"
+      ],
+      "content": {
+        "prompt": "방향 번호는 북부터 ___ 방향으로 매긴다."
+      },
+      "answer_key": {
+        "accepted": [
+          "시계",
+          "시계방향",
+          "시계 방향"
+        ]
+      },
+      "explanation": "0 북, 1 동, 2 남, 3 서처럼 시계 방향으로 매기면 회전을 나머지 연산으로 계산할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-turn-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "방향-회전",
+        "나머지"
+      ],
+      "content": {
+        "prompt": "왼쪽으로 돌도록 빈칸을 채우면?",
+        "hint": "오른쪽으로 몇 번 돌면 왼쪽 회전과 같은가",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "d = (d + ___) % 4"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "d = (d + ___) % 4;"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "d = (d + ___) % 4;"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "d = (d + ___) % 4;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "3"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "3"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "3"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "3"
+            ]
+          }
+        }
+      },
+      "explanation": "왼쪽 회전은 오른쪽으로 세 번 도는 것과 같아 (d + 3) % 4다. d − 1처럼 음수가 되지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-turn-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "방향-회전",
+        "나머지"
+      ],
+      "content": {
+        "prompt": "출력 결과는?",
+        "options": [
+          "3",
+          "-1"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "d = 0\nd = (d - 1) % 4\nprint(d)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int d = 0;\nd = (d - 1) % 4;\nSystem.out.println(d);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let d = 0;\nd = (d - 1) % 4;\nconsole.log(d);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int d = 0;\nd = (d - 1) % 4;\ncout << d;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0,
+            "explanation": "파이썬의 %는 결과가 나누는 수의 부호를 따라 (−1) % 4가 3이다. 다른 언어에선 −1이 나온다."
+          },
+          "java": {
+            "index": 1,
+            "explanation": "Java의 %는 결과가 왼쪽 수의 부호를 따라 −1 % 4가 −1이다. 배열 인덱스로 쓰면 오류가 난다."
+          },
+          "javascript": {
+            "index": 1,
+            "explanation": "JS의 %는 결과가 왼쪽 수의 부호를 따라 −1 % 4가 −1이다. 배열 인덱스로 쓰면 undefined가 된다."
+          },
+          "cpp": {
+            "index": 1,
+            "explanation": "C++의 %는 결과가 왼쪽 수의 부호를 따라 −1 % 4가 −1이다. 배열 인덱스로 쓰면 범위를 벗어난다."
+          }
+        }
+      },
+      "explanation": "음수의 나머지는 언어마다 다르다. 왼쪽 회전은 (d + 3) % 4로 써서 음수를 피한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-turn-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "방향-회전",
+        "방향-번호"
+      ],
+      "content": {
+        "prompt": "북(0)에서 오른쪽으로 두 번 돌면?",
+        "options": [
+          "동",
+          "서",
+          "남"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "(0 + 1) % 4 = 1(동), (1 + 1) % 4 = 2(남)이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-turn-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "방향-회전",
+        "나머지"
+      ],
+      "content": {
+        "prompt": "출력 결과는?",
+        "options": [
+          "0",
+          "2",
+          "3"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "d = 1\nfor turn in \"RRL\":\n    if turn == \"L\":\n        d = (d + 3) % 4\n    else:\n        d = (d + 1) % 4\nprint(d)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int d = 1;\nfor (char turn : \"RRL\".toCharArray()) {\n    if (turn == 'L') d = (d + 3) % 4;\n    else d = (d + 1) % 4;\n}\nSystem.out.println(d);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let d = 1;\nfor (const turn of \"RRL\") {\n  if (turn === \"L\") d = (d + 3) % 4;\n  else d = (d + 1) % 4;\n}\nconsole.log(d);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int d = 1;\nfor (char turn : string(\"RRL\")) {\n    if (turn == 'L') d = (d + 3) % 4;\n    else d = (d + 1) % 4;\n}\ncout << d;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "1에서 오른쪽 두 번으로 2, 3이 되고 왼쪽 한 번으로 (3 + 3) % 4 = 2가 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-turn-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "방향-회전",
+        "나머지"
+      ],
+      "content": {
+        "prompt": "왼쪽 회전을 나타내는 식은?",
+        "options": [
+          "(d + 1) % 4",
+          "(d + 3) % 4",
+          "(d + 2) % 4"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "왼쪽 회전은 (d + 3) % 4다. (d + 1) % 4는 오른쪽, (d + 2) % 4는 반대 방향이다.",
+      "refs": []
+    }
+  ]
+}

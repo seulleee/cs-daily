@@ -1,0 +1,291 @@
+{
+  "track": "ct",
+  "unit": "u02-input-size",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ct-u02-smalln-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "복잡도",
+        "작은-n"
+      ],
+      "content": {
+        "prompt": "N ≤ 20이면 허용되는 가장 느린 복잡도는?",
+        "options": [
+          "O(N!)",
+          "O(2ᴺ)",
+          "O(N²)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "2²⁰은 약 100만이라 충분하다. 20!은 약 2.4 × 10¹⁸이라 불가능하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-smalln-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "복잡도",
+        "작은-n"
+      ],
+      "content": {
+        "prompt": "N ≤ 10이면 허용되는 가장 느린 복잡도는?",
+        "options": [
+          "O(N!)",
+          "O(2ᴺ)",
+          "O(N³)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "10!은 약 363만이라 1초 안에 끝난다. 모든 순서를 다 보는 풀이가 가능하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-smalln-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "복잡도",
+        "작은-n"
+      ],
+      "content": {
+        "prompt": "N ≤ 500이면 허용되는 가장 느린 복잡도는?",
+        "options": [
+          "O(N²)",
+          "O(N³)",
+          "O(2ᴺ)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "500³ = 1.25억 번이라 O(N³)까지 가능하다. 2⁵⁰⁰은 셀 수 없이 크다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-smalln-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "복잡도",
+        "작은-n"
+      ],
+      "content": {
+        "prompt": "N ≤ 5,000이면 O(N²) 풀이가 가능하다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "5,000² = 2,500만 번으로 1초 기준 10⁸번보다 적다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-smalln-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "복잡도",
+        "작은-n"
+      ],
+      "content": {
+        "prompt": "10!은 약 ___만이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "363",
+          "362"
+        ]
+      },
+      "explanation": "10! = 3,628,800으로 약 363만이다. 그래서 N ≤ 10이면 O(N!)이 가능하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-smalln-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "복잡도",
+        "작은-n"
+      ],
+      "content": {
+        "prompt": "2²⁰은 약 ___만이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "100",
+          "105",
+          "104"
+        ]
+      },
+      "explanation": "2²⁰ = 1,048,576으로 약 100만이다. 그래서 N ≤ 20이면 O(2ᴺ)이 가능하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-smalln-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "복잡도",
+        "반복문"
+      ],
+      "content": {
+        "prompt": "n = 500일 때 cnt가 1 늘어나는 횟수는?",
+        "options": [
+          "25만 번",
+          "1.25억 번",
+          "2,500만 번"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "cnt = 0\nfor i in range(n):\n    for j in range(n):\n        for k in range(n):\n            cnt += 1"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long cnt = 0;\nfor (int i = 0; i < n; i++)\n    for (int j = 0; j < n; j++)\n        for (int k = 0; k < n; k++)\n            cnt++;"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let cnt = 0;\nfor (let i = 0; i < n; i++)\n  for (let j = 0; j < n; j++)\n    for (let k = 0; k < n; k++)\n      cnt++;"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long cnt = 0;\nfor (int i = 0; i < n; i++)\n    for (int j = 0; j < n; j++)\n        for (int k = 0; k < n; k++)\n            cnt++;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "반복문 세 개가 겹쳐 500³ = 1.25억 번이다. N ≤ 500이면 O(N³)까지 허용되는 이유다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-smalln-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "복잡도",
+        "반복문"
+      ],
+      "content": {
+        "prompt": "n = 5,000일 때 cnt가 1 늘어나는 횟수는?",
+        "options": [
+          "2,500만 번",
+          "5,000번",
+          "1.25억 번"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "cnt = 0\nfor i in range(n):\n    for j in range(n):\n        cnt += 1"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long cnt = 0;\nfor (int i = 0; i < n; i++) {\n    for (int j = 0; j < n; j++) {\n        cnt++;\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let cnt = 0;\nfor (let i = 0; i < n; i++) {\n  for (let j = 0; j < n; j++) {\n    cnt++;\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long cnt = 0;\nfor (int i = 0; i < n; i++) {\n    for (int j = 0; j < n; j++) {\n        cnt++;\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "반복문 두 개가 겹쳐 5,000² = 2,500만 번이다. 1초 안에 넉넉히 끝난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-smalln-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "복잡도",
+        "작은-n"
+      ],
+      "content": {
+        "prompt": "N ≤ 20에서 모든 부분집합(2ᴺ개)을 본다. 판단은?",
+        "options": [
+          "가능하다",
+          "시간 초과"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "2²⁰은 약 100만이라 모든 부분집합을 봐도 1초 안에 끝난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-smalln-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "복잡도",
+        "작은-n"
+      ],
+      "content": {
+        "prompt": "N ≤ 20이면 O(N!)도 1초 안에 끝난다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "20!은 약 2.4 × 10¹⁸이라 불가능하다. O(N!)은 N ≤ 10 정도까지만 가능하다.",
+      "refs": []
+    }
+  ]
+}
