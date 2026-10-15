@@ -1,0 +1,297 @@
+{
+  "track": "ct",
+  "unit": "u05-prefix-two-pointer",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ct-u05-prefix2d-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "2차원-누적-합",
+        "정의"
+      ],
+      "content": {
+        "prompt": "2차원 누적 합 S[r][c]가 담는 값은?",
+        "options": [
+          "r행 전체 합",
+          "왼쪽 위 사각형 합",
+          "c열 전체 합"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "S[r][c]는 (0, 0)부터 (r − 1, c − 1)까지, 곧 왼쪽 위 사각형의 합이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix2d-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "2차원-누적-합",
+        "만들기"
+      ],
+      "content": {
+        "prompt": "S를 만들 때 두 번 더해져서 한 번 빼는 부분은?",
+        "options": [
+          "위",
+          "왼쪽",
+          "왼쪽 위"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "위 사각형과 왼쪽 사각형에 왼쪽 위 사각형이 모두 들어 있어 두 번 더해지므로 한 번 뺀다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix2d-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "2차원-누적-합",
+        "사각형-합"
+      ],
+      "content": {
+        "prompt": "사각형 합에서 마지막에 다시 더하는 것은?",
+        "options": [
+          "두 번 뺀 왼쪽 위",
+          "위 부분",
+          "왼쪽 부분"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "위 부분과 왼쪽 부분을 빼면 왼쪽 위가 두 번 빠지므로 한 번 다시 더한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix2d-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "2차원-누적-합",
+        "만들기"
+      ],
+      "content": {
+        "prompt": "S[r][c]는 위 + 왼쪽 + 현재 값으로 만든다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "위와 왼쪽에 겹친 왼쪽 위가 두 번 들어가므로 위 + 왼쪽 − 왼쪽 위 + 현재 값이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix2d-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "2차원-누적-합",
+        "만들기"
+      ],
+      "content": {
+        "prompt": "S를 만들 때 두 번 더해진 왼쪽 위 사각형은 한 번 ___.",
+        "hint": "더하기의 반대 연산"
+      },
+      "answer_key": {
+        "accepted": [
+          "뺀다",
+          "빼준다",
+          "빼",
+          "뺌",
+          "빼기"
+        ]
+      },
+      "explanation": "위와 왼쪽 사각형에 왼쪽 위 사각형이 겹쳐 두 번 더해지므로 한 번 뺀다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix2d-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "2차원-누적-합",
+        "사각형-합"
+      ],
+      "content": {
+        "prompt": "사각형 합은 위·왼쪽 부분을 빼고 두 번 빠진 ___ 부분을 더한다.",
+        "hint": "위 부분과 왼쪽 부분이 겹치는 곳"
+      },
+      "answer_key": {
+        "accepted": [
+          "왼쪽 위",
+          "왼쪽위",
+          "좌상단",
+          "좌상"
+        ]
+      },
+      "explanation": "위와 왼쪽 부분에 모두 들어 있던 왼쪽 위 부분이 두 번 빠지므로 한 번 더한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix2d-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "2차원-누적-합",
+        "계산"
+      ],
+      "content": {
+        "prompt": "격자 [[1, 2], [3, 4]]의 S[2][2]는?",
+        "options": [
+          "4",
+          "7",
+          "10"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "S[2][2]는 (0, 0)~(1, 1) 전체 사각형의 합이므로 1 + 2 + 3 + 4 = 10이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix2d-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "2차원-누적-합",
+        "실행-결과"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "7",
+          "3",
+          "4"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "g = [[1, 2], [3, 4]]\nS = [[0] * 3 for _ in range(3)]\nfor r in range(1, 3):\n    for c in range(1, 3):\n        S[r][c] = (S[r-1][c] + S[r][c-1]\n                   - S[r-1][c-1] + g[r-1][c-1])\nprint(S[2][2] - S[1][2])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[][] g = {{1, 2}, {3, 4}};\nint[][] S = new int[3][3];\nfor (int r = 1; r <= 2; r++)\n    for (int c = 1; c <= 2; c++)\n        S[r][c] = S[r-1][c] + S[r][c-1]\n                - S[r-1][c-1] + g[r-1][c-1];\nSystem.out.println(S[2][2] - S[1][2]);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const g = [[1, 2], [3, 4]];\nconst S = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];\nfor (let r = 1; r <= 2; r++)\n  for (let c = 1; c <= 2; c++)\n    S[r][c] = S[r-1][c] + S[r][c-1]\n      - S[r-1][c-1] + g[r-1][c-1];\nconsole.log(S[2][2] - S[1][2]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int g[2][2] = {{1, 2}, {3, 4}};\nint S[3][3] = {};\nfor (int r = 1; r <= 2; r++)\n    for (int c = 1; c <= 2; c++)\n        S[r][c] = S[r-1][c] + S[r][c-1]\n                - S[r-1][c-1] + g[r-1][c-1];\ncout << S[2][2] - S[1][2];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "S[2][2] = 10은 전체 합, S[1][2] = 3은 첫 행의 합이므로 차는 둘째 행의 합 3 + 4 = 7이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix2d-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "2차원-누적-합",
+        "만들기"
+      ],
+      "content": {
+        "prompt": "2차원 누적 합을 만들도록 빈칸에 알맞은 연산자는?",
+        "options": [
+          "+",
+          "-"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "R, C = len(g), len(g[0])\nS = [[0] * (C + 1) for _ in range(R + 1)]\nfor r in range(1, R + 1):\n    for c in range(1, C + 1):\n        S[r][c] = (S[r-1][c] + S[r][c-1]\n                   ___ S[r-1][c-1]\n                   + g[r-1][c-1])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int R = g.length, C = g[0].length;\nint[][] S = new int[R + 1][C + 1];\nfor (int r = 1; r <= R; r++)\n    for (int c = 1; c <= C; c++)\n        S[r][c] = S[r-1][c] + S[r][c-1]\n                ___ S[r-1][c-1] + g[r-1][c-1];"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const R = g.length, C = g[0].length;\nconst S = Array.from({ length: R + 1 },\n  () => new Array(C + 1).fill(0));\nfor (let r = 1; r <= R; r++)\n  for (let c = 1; c <= C; c++)\n    S[r][c] = S[r-1][c] + S[r][c-1]\n      ___ S[r-1][c-1] + g[r-1][c-1];"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int R = g.size(), C = g[0].size();\nvector<vector<int>> S(R + 1,\n                      vector<int>(C + 1));\nfor (int r = 1; r <= R; r++)\n    for (int c = 1; c <= C; c++)\n        S[r][c] = S[r-1][c] + S[r][c-1]\n                ___ S[r-1][c-1] + g[r-1][c-1];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "위와 왼쪽을 더하면 왼쪽 위 사각형이 두 번 들어가므로 S[r − 1][c − 1]을 한 번 뺀다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix2d-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "2차원-누적-합",
+        "정의"
+      ],
+      "content": {
+        "prompt": "S[r][c]는 (0, 0)부터 (r − 1, c − 1)까지 사각형의 합이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "1차원 P[i]처럼 한 칸씩 밀려 있어, S[r][c]에는 r행·c열 앞까지의 사각형 합이 들어 있다.",
+      "refs": []
+    }
+  ]
+}

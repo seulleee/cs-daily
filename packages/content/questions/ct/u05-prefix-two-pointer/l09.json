@@ -1,0 +1,295 @@
+{
+  "track": "ct",
+  "unit": "u05-prefix-two-pointer",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "ct-u05-review-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "구간-문제",
+        "도구-선택"
+      ],
+      "content": {
+        "prompt": "값이 고정된 배열에 구간 합 질의가 10⁵개면?",
+        "options": [
+          "차분 배열",
+          "비트마스크",
+          "누적 합"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "질의마다 뺄셈 한 번으로 답하도록 누적 합을 미리 만든다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-review-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "구간-문제",
+        "도구-선택"
+      ],
+      "content": {
+        "prompt": "구간에 값을 일괄로 더하는 연산이 많을 때는?",
+        "options": [
+          "누적 합",
+          "투 포인터",
+          "차분 배열"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "차분 배열은 구간 더하기마다 두 칸만 바꾸고 마지막에 누적 합으로 복원한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-review-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "구간-문제",
+        "도구-선택"
+      ],
+      "content": {
+        "prompt": "양수 배열에서 합이 K 이상인 가장 짧은 연속 구간은?",
+        "options": [
+          "차분 배열",
+          "가변 윈도우"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "조건을 만족하는 연속 구간이고 값이 음수가 아니므로 가변 윈도우(투 포인터)를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-review-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "구간-문제",
+        "도구-선택"
+      ],
+      "content": {
+        "prompt": "길이가 정해진 구간의 최대 합은 고정 길이 슬라이딩 윈도우로 구한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "길이 K 구간을 한 칸씩 밀며 들어온 값은 더하고 나간 값은 빼 모든 구간 합을 본다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-review-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "구간-문제",
+        "누적-합"
+      ],
+      "content": {
+        "prompt": "값이 고정이고 구간 합 질의가 많으면 ___ 합을 미리 만든다."
+      },
+      "answer_key": {
+        "accepted": [
+          "누적",
+          "누적 합",
+          "누적합",
+          "prefix"
+        ]
+      },
+      "explanation": "누적 합을 한 번 만들면 이후 질의마다 뺄셈 한 번으로 구간 합을 구한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "구간-문제",
+        "슬라이딩-윈도우"
+      ],
+      "content": {
+        "prompt": "합이 t 이상인 길이 k 윈도우 수를 세도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def count_windows(a, k, t):\n    s = sum(a[:k])\n    cnt = int(s >= t)\n    for i in range(k, len(a)):\n        s += a[i] - a[i - ___]\n        cnt += s >= t\n    return cnt"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static int countWindows(int[] a, int k, int t) {\n    int s = 0;\n    for (int i = 0; i < k; i++) s += a[i];\n    int cnt = s >= t ? 1 : 0;\n    for (int i = k; i < a.length; i++) {\n        s += a[i] - a[i - ___];\n        if (s >= t) cnt++;\n    }\n    return cnt;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function countWindows(a, k, t) {\n  let s = 0;\n  for (let i = 0; i < k; i++) s += a[i];\n  let cnt = s >= t ? 1 : 0;\n  for (let i = k; i < a.length; i++) {\n    s += a[i] - a[i - ___];\n    if (s >= t) cnt++;\n  }\n  return cnt;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int countWindows(const vector<int>& a,\n                 int k, int t) {\n    int s = 0;\n    for (int i = 0; i < k; i++) s += a[i];\n    int cnt = s >= t ? 1 : 0;\n    for (int i = k; i < (int)a.size(); i++) {\n        s += a[i] - a[i - ___];\n        if (s >= t) cnt++;\n    }\n    return cnt;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "k"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "k"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "k"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "k"
+            ]
+          }
+        }
+      },
+      "explanation": "i번이 들어오면 k칸 앞인 i − k번이 빠지므로 a[i − k]를 뺀다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-review-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "구간-문제",
+        "누적-합"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "6 8",
+          "10 8",
+          "10 5"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a = [3, 1, 4, 1, 5]\np = [0]\nfor x in a:\n    p.append(p[-1] + x)\nprint(p[5] - p[2], p[3] - p[0])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {3, 1, 4, 1, 5};\nint[] p = new int[a.length + 1];\nfor (int i = 0; i < a.length; i++)\n    p[i + 1] = p[i] + a[i];\nint x = p[5] - p[2], y = p[3] - p[0];\nSystem.out.println(x + \" \" + y);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [3, 1, 4, 1, 5];\nconst p = [0];\nfor (const x of a) p.push(p[p.length - 1] + x);\nconsole.log(p[5] - p[2], p[3] - p[0]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {3, 1, 4, 1, 5};\nvector<int> p(a.size() + 1, 0);\nfor (size_t i = 0; i < a.size(); i++)\n    p[i + 1] = p[i] + a[i];\ncout << p[5] - p[2] << \" \" << p[3] - p[0];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "P = [0, 3, 4, 8, 9, 14]이고 P[5] − P[2] = 10(4 + 1 + 5), P[3] − P[0] = 8(3 + 1 + 4)이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-review-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "구간-문제",
+        "음수"
+      ],
+      "content": {
+        "prompt": "[−1, 2, −3, 4]에서 합 조건 구간 문제에 맞지 않는 도구는?",
+        "options": [
+          "투 포인터",
+          "누적 합"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "음수가 섞여 구간을 늘려도 합이 줄 수 있으므로 합 조건 투 포인터가 깨진다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-review-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "구간-문제",
+        "차분-배열"
+      ],
+      "content": {
+        "prompt": "일괄 더하기를 마친 뒤 각 칸 값을 얻는 방법은?",
+        "options": [
+          "D를 정렬",
+          "D를 누적 합"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "차분 배열 D를 앞에서부터 누적 합하면 각 칸의 최종 값이 나온다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-review-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "구간-문제",
+        "도구-선택"
+      ],
+      "content": {
+        "prompt": "구간 합 질의가 많을 때는 차분 배열이 알맞다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "구간 합 질의에는 누적 합이 알맞다. 차분 배열은 구간에 값을 일괄로 더할 때 쓴다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,340 @@
+{
+  "track": "ct",
+  "unit": "u05-prefix-two-pointer",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ct-u05-prefix-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "누적-합",
+        "정의"
+      ],
+      "content": {
+        "prompt": "앞에서부터 i개 원소의 합을 담은 배열은?",
+        "options": [
+          "방향 배열",
+          "비트마스크",
+          "누적 합 배열"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "누적 합 배열 P는 P[i]에 앞에서부터 i개 원소의 합을 담고 P[0] = 0이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "누적-합",
+        "정의"
+      ],
+      "content": {
+        "prompt": "누적 합 P[0]의 값은?",
+        "options": [
+          "0",
+          "a[0]",
+          "1"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "P[0]은 앞에서부터 0개 원소의 합이므로 0이다. a[0]은 P[1]에 들어간다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "누적-합",
+        "구간-합"
+      ],
+      "content": {
+        "prompt": "0부터 인덱스로 [l, r] 구간 합을 구하는 식은?",
+        "options": [
+          "P[r] − P[l]",
+          "P[r+1] − P[l]",
+          "P[r+1] − P[l−1]"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "P[r + 1]은 0~r번 합, P[l]은 0~l − 1번 합이므로 둘을 빼면 l~r번 합이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "누적-합",
+        "효과"
+      ],
+      "content": {
+        "prompt": "누적 합을 만든 뒤에는 구간 합을 뺄셈 한 번으로 구한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "만들 때 N번 더해 두면 이후 구간 합 질의마다 P[r + 1] − P[l] 한 번이면 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "누적-합",
+        "만들기"
+      ],
+      "content": {
+        "prompt": "누적 합 배열을 만들도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def build(a):\n    p = [0] * (len(a) + 1)\n    for i in range(len(a)):\n        p[i + 1] = p[___] + a[i]\n    return p"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static long[] build(int[] a) {\n    long[] p = new long[a.length + 1];\n    for (int i = 0; i < a.length; i++)\n        p[i + 1] = p[___] + a[i];\n    return p;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function build(a) {\n  const p = new Array(a.length + 1).fill(0);\n  for (let i = 0; i < a.length; i++) {\n    p[i + 1] = p[___] + a[i];\n  }\n  return p;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<long long> build(const vector<int>& a) {\n    vector<long long> p(a.size() + 1, 0);\n    for (size_t i = 0; i < a.size(); i++)\n        p[i + 1] = p[___] + a[i];\n    return p;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "i"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "i"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "i"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "i"
+            ]
+          }
+        }
+      },
+      "explanation": "P[i + 1]은 P[i]에 a[i]를 더한 값이다. 바로 앞 칸까지의 합에 현재 원소를 더한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "누적-합",
+        "구간-합"
+      ],
+      "content": {
+        "prompt": "[l, r] 구간 합을 구하도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def range_sum(p, l, r):\n    return p[r + 1] - p[___]"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static long rangeSum(long[] p, int l, int r) {\n    return p[r + 1] - p[___];\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function rangeSum(p, l, r) {\n  return p[r + 1] - p[___];\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long rangeSum(const vector<long long>& p,\n                   int l, int r) {\n    return p[r + 1] - p[___];\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "l"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "l"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "l"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "l"
+            ]
+          }
+        }
+      },
+      "explanation": "[l, r] 합은 P[r + 1] − P[l]이다. P[l]에는 l번 앞까지의 합이 들어 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "누적-합",
+        "만들기"
+      ],
+      "content": {
+        "prompt": "a = [2, 4, 6]일 때 누적 합 P는?",
+        "options": [
+          "2 6 12",
+          "0 2 4 6",
+          "0 2 6 12"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "P[0] = 0에서 시작해 2, 2 + 4 = 6, 6 + 6 = 12를 차례로 담아 0 2 6 12다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "누적-합",
+        "실행-결과"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "4",
+          "6",
+          "9"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a = [5, 1, 3, 2]\np = [0]\nfor x in a:\n    p.append(p[-1] + x)\nprint(p[3] - p[1])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {5, 1, 3, 2};\nint[] p = new int[a.length + 1];\nfor (int i = 0; i < a.length; i++)\n    p[i + 1] = p[i] + a[i];\nSystem.out.println(p[3] - p[1]);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [5, 1, 3, 2];\nconst p = [0];\nfor (const x of a) p.push(p[p.length - 1] + x);\nconsole.log(p[3] - p[1]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {5, 1, 3, 2};\nvector<int> p(a.size() + 1, 0);\nfor (size_t i = 0; i < a.size(); i++)\n    p[i + 1] = p[i] + a[i];\ncout << p[3] - p[1];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "P = [0, 5, 6, 9, 11]이고 P[3] − P[1] = 9 − 5 = 4로, a[1] + a[2] = 1 + 3과 같다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "누적-합",
+        "효과"
+      ],
+      "content": {
+        "prompt": "N = 10⁵, 구간 합 질의 10⁵개면 누적 합 사용 시 연산은 약?",
+        "options": [
+          "약 10¹⁰번",
+          "약 2 × 10⁵번",
+          "약 10번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "만들 때 10⁵번, 질의마다 뺄셈 한 번씩 10⁵번이라 약 2 × 10⁵번이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "누적-합",
+        "정의"
+      ],
+      "content": {
+        "prompt": "P[i]는 앞에서부터 i + 1개 원소의 합이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "P[i]는 앞에서부터 i개 원소의 합이다. 그래서 P[0] = 0이고 P[1] = a[0]이다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,298 @@
+{
+  "track": "ct",
+  "unit": "u04-brute-force",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ct-u04-perm-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "순열",
+        "정의"
+      ],
+      "content": {
+        "prompt": "N개를 순서를 고려해 모두 나열한 것은?",
+        "options": [
+          "정렬",
+          "쌍",
+          "순열"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "순열은 N개를 순서를 고려해 나열한 것이다. 같은 원소라도 놓는 순서가 다르면 다른 경우다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-perm-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "순열",
+        "개수"
+      ],
+      "content": {
+        "prompt": "서로 다른 N개를 나열하는 순열의 수는?",
+        "options": [
+          "N!",
+          "N²",
+          "2N"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "첫 자리 N가지, 다음 N − 1가지, … 마지막 1가지를 곱해 N!가지다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-perm-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "순열",
+        "개수"
+      ],
+      "content": {
+        "prompt": "8!의 값은?",
+        "options": [
+          "5,040",
+          "3,628,800",
+          "40,320"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "8! = 40,320이다. 5,040은 7!, 3,628,800은 10!이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-perm-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "순열",
+        "개수"
+      ],
+      "content": {
+        "prompt": "12!은 약 4.8억이라 1초 안에 모두 나열하기 어렵다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "1초에 약 1억 번으로 어림하면 4.8억 가지는 나열만으로도 시간을 넘기기 쉽다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-perm-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "순열",
+        "팩토리얼"
+      ],
+      "content": {
+        "prompt": "n!을 구하도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def fact(n):\n    f = 1\n    for i in range(1, n + 1):\n        f *= ___\n    return f"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static long fact(int n) {\n    long f = 1;\n    for (int i = 1; i <= n; i++)\n        f *= ___;\n    return f;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function fact(n) {\n  let f = 1;\n  for (let i = 1; i <= n; i++) f *= ___;\n  return f;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long fact(int n) {\n    long long f = 1;\n    for (int i = 1; i <= n; i++)\n        f *= ___;\n    return f;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "i"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "i"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "i"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "i"
+            ]
+          }
+        }
+      },
+      "explanation": "f에 1부터 n까지의 i를 차례로 곱해야 n! = 1 × 2 × … × n이 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-perm-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "순열",
+        "정의"
+      ],
+      "content": {
+        "prompt": "N개를 순서를 고려해 나열한 것을 ___ 이라 한다.",
+        "hint": "놓는 순서가 다르면 다른 경우로 센다"
+      },
+      "answer_key": {
+        "accepted": [
+          "순열",
+          "permutation",
+          "퍼뮤테이션"
+        ]
+      },
+      "explanation": "순서를 고려한 나열은 순열이고, 서로 다른 N개의 순열은 N!가지다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-perm-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "순열",
+        "실행-결과"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "25",
+          "120",
+          "15"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "f = 1\nfor i in range(1, 6):\n    f *= i\nprint(f)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int f = 1;\nfor (int i = 1; i <= 5; i++)\n    f *= i;\nSystem.out.println(f);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let f = 1;\nfor (let i = 1; i <= 5; i++) f *= i;\nconsole.log(f);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int f = 1;\nfor (int i = 1; i <= 5; i++)\n    f *= i;\ncout << f;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "1부터 5까지 곱하므로 5! = 120이다. 5개를 순서대로 나열하는 순열의 수와 같다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-perm-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "순열",
+        "적용"
+      ],
+      "content": {
+        "prompt": "도시 5곳을 방문하는 순서를 모두 시도하면 몇 가지?",
+        "options": [
+          "25",
+          "60",
+          "120"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "방문 순서가 다르면 다른 경우이므로 순열이고, 5! = 120가지다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-perm-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "순열",
+        "연산-수"
+      ],
+      "content": {
+        "prompt": "N = 10, 순열마다 확인 10번이면 전체 연산은 약?",
+        "options": [
+          "약 3,600만",
+          "약 360만",
+          "약 36억"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "10! = 3,628,800가지 × 10번 ≈ 3,600만 번이라 1초 안에 가능하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-perm-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "순열",
+        "정의"
+      ],
+      "content": {
+        "prompt": "순열에서는 고른 순서가 달라도 같은 경우로 센다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "순열은 순서를 고려하므로 (1, 2)와 (2, 1)은 서로 다른 경우다.",
+      "refs": []
+    }
+  ]
+}

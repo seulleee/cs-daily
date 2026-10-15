@@ -1,0 +1,300 @@
+{
+  "track": "ct",
+  "unit": "u06-hash-stack-queue",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ct-u06-paren-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "괄호-검사",
+        "스택"
+      ],
+      "content": {
+        "prompt": "괄호 짝 검사에 쓰는 자료구조는?",
+        "options": [
+          "큐",
+          "해시맵",
+          "스택"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "닫는 괄호는 가장 최근에 연 괄호와 짝지어지므로 스택의 top과 비교한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-paren-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "괄호-검사",
+        "push"
+      ],
+      "content": {
+        "prompt": "여는 괄호를 만나면 할 일은?",
+        "options": [
+          "무시",
+          "pop",
+          "push"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "여는 괄호는 스택에 push해 두고, 닫는 괄호가 오면 top과 짝을 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-paren-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "괄호-검사",
+        "끝-확인"
+      ],
+      "content": {
+        "prompt": "다 읽은 뒤 올바른 괄호 문자열의 스택은?",
+        "options": [
+          "비어 있다",
+          "하나 남는다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "모든 여는 괄호가 짝을 만나 pop되었어야 하므로 스택이 비어 있어야 올바르다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-paren-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "괄호-검사",
+        "실패"
+      ],
+      "content": {
+        "prompt": "'(]'는 닫는 괄호의 짝이 달라 실패한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "]가 왔을 때 top은 (라서 짝이 맞지 않으므로 바로 실패다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-paren-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "괄호-검사",
+        "끝-확인"
+      ],
+      "content": {
+        "prompt": "다 읽은 뒤 스택이 비었는지 확인하도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def valid(s):\n    st = []\n    for ch in s:\n        if ch == '(':\n            st.append(')')\n        elif ch == '[':\n            st.append(']')\n        elif not st or st.pop() != ch:\n            return False\n    return ___ st"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static boolean valid(String s) {\n    Deque<Character> st = new ArrayDeque<>();\n    for (char ch : s.toCharArray()) {\n        if (ch == '(') st.push(')');\n        else if (ch == '[') st.push(']');\n        else if (st.isEmpty() || st.pop() != ch)\n            return false;\n    }\n    return st.___();\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function valid(s) {\n  const st = [];\n  for (const ch of s) {\n    if (ch === '(') st.push(')');\n    else if (ch === '[') st.push(']');\n    else if (st.pop() !== ch) return false;\n  }\n  return st.length === ___;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "bool valid(const string& s) {\n    stack<char> st;\n    for (char ch : s) {\n        if (ch == '(') st.push(')');\n        else if (ch == '[') st.push(']');\n        else if (st.empty() || st.top() != ch)\n            return false;\n        else st.pop();\n    }\n    return st.___();\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "not"
+            ],
+            "explanation": "Python에서 빈 리스트는 거짓이므로 not st가 스택이 비었는지를 뜻한다."
+          },
+          "java": {
+            "accepted": [
+              "isEmpty"
+            ],
+            "explanation": "Java Deque의 isEmpty()가 스택이 비었는지 확인한다."
+          },
+          "javascript": {
+            "accepted": [
+              "0"
+            ],
+            "explanation": "배열 길이가 0이면 스택이 빈 것이다. 빈 배열의 pop()은 undefined라 닫는 괄호와 달라 실패한다."
+          },
+          "cpp": {
+            "accepted": [
+              "empty"
+            ],
+            "explanation": "C++ stack의 empty()가 스택이 비었는지 확인한다."
+          }
+        }
+      },
+      "explanation": "끝까지 읽은 뒤 스택이 비어 있어야 모든 여는 괄호가 짝을 만난 것이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-paren-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "괄호-검사",
+        "pop"
+      ],
+      "content": {
+        "prompt": "닫는 괄호를 만나면 top과 짝을 확인한 뒤 ___ 한다.",
+        "hint": "스택에서 원소를 꺼내는 연산"
+      },
+      "answer_key": {
+        "accepted": [
+          "pop",
+          "팝"
+        ]
+      },
+      "explanation": "짝이 맞으면 그 여는 괄호는 처리가 끝났으므로 스택에서 pop한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-paren-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "괄호-검사",
+        "실패"
+      ],
+      "content": {
+        "prompt": "'[(])'가 실패하는 이유는?",
+        "options": [
+          "짝이 다른 닫기",
+          "빈 스택에서 닫기",
+          "끝에 남은 괄호"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "]가 왔을 때 top은 (이므로 짝이 달라 실패한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-paren-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "괄호-검사",
+        "실패"
+      ],
+      "content": {
+        "prompt": "'())'가 실패하는 이유는?",
+        "options": [
+          "끝에 남은 괄호",
+          "빈 스택에서 닫기",
+          "짝이 다른 닫기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "앞의 ()가 짝지어져 스택이 빈 상태에서 마지막 )가 와 닫을 괄호가 없다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-paren-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "괄호-검사",
+        "실행-결과"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "1",
+          "2",
+          "0"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "st = []\nfor ch in \"(()(\":\n    if ch == '(':\n        st.append(ch)\n    else:\n        st.pop()\nprint(len(st))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "Deque<Character> st = new ArrayDeque<>();\nfor (char ch : \"(()(\".toCharArray()) {\n    if (ch == '(') st.push(ch);\n    else st.pop();\n}\nSystem.out.println(st.size());"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const st = [];\nfor (const ch of '(()(') {\n  if (ch === '(') st.push(ch);\n  else st.pop();\n}\nconsole.log(st.length);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "stack<char> st;\nfor (char ch : string(\"(()(\")) {\n    if (ch == '(') st.push(ch);\n    else st.pop();\n}\ncout << st.size();"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "( ( 를 push하고 )에서 하나 pop, 다시 (를 push해 두 개가 남는다. 끝에 스택이 비지 않아 올바르지 않다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-paren-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "괄호-검사",
+        "실패"
+      ],
+      "content": {
+        "prompt": "닫는 괄호를 만났을 때 스택이 비어 있으면 그대로 넘어간다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "짝지을 여는 괄호가 없으므로 그 자리에서 실패다.",
+      "refs": []
+    }
+  ]
+}

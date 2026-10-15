@@ -1,0 +1,296 @@
+{
+  "track": "ct",
+  "unit": "u04-brute-force",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ct-u04-comb-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "조합",
+        "정의"
+      ],
+      "content": {
+        "prompt": "순서 없이 N개 중 R개를 고른 것은?",
+        "options": [
+          "순열",
+          "조합",
+          "부분 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "조합은 순서 없이 N개에서 R개를 고른 것이고 C(N, R)가지다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-comb-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "조합",
+        "개수"
+      ],
+      "content": {
+        "prompt": "C(5, 2)의 값은?",
+        "options": [
+          "10",
+          "20",
+          "25"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "C(5, 2) = 5 × 4 / 2 = 10이다. 20은 순서를 고려한 순열의 수다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-comb-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "조합",
+        "순열과-구분"
+      ],
+      "content": {
+        "prompt": "고른 순서가 결과를 바꾸지 않을 때 세는 방법은?",
+        "options": [
+          "순열",
+          "조합"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "고른 순서가 결과를 바꾸지 않으면 조합, 순서가 결과를 바꾸면 순열이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-comb-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "조합",
+        "순열과-구분"
+      ],
+      "content": {
+        "prompt": "팀원 3명 뽑기는 고른 순서가 결과를 바꾸므로 순열이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "같은 3명이면 뽑은 순서와 상관없이 같은 팀이므로 조합이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-comb-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "조합",
+        "개수"
+      ],
+      "content": {
+        "prompt": "n개 중 2개를 고르는 C(n, 2)를 구하도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def comb2(n):\n    return n * (n - 1) // ___"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static long comb2(long n) {\n    return n * (n - 1) / ___;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function comb2(n) {\n  return n * (n - 1) / ___;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long comb2(long long n) {\n    return n * (n - 1) / ___;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "2"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "2"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "2"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "2"
+            ]
+          }
+        }
+      },
+      "explanation": "C(n, 2) = n(n − 1) / 2다. 순서를 고려한 n(n − 1)을 같은 쌍의 두 순서 수 2로 나눈다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-comb-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "조합",
+        "정의"
+      ],
+      "content": {
+        "prompt": "순서 없이 N개에서 R개를 고른 것을 ___ 이라 한다.",
+        "hint": "고른 순서는 결과에 영향이 없다"
+      },
+      "answer_key": {
+        "accepted": [
+          "조합",
+          "combination",
+          "컴비네이션"
+        ]
+      },
+      "explanation": "순서 없이 고른 것은 조합이며 C(N, R)로 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-comb-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "조합",
+        "개수"
+      ],
+      "content": {
+        "prompt": "C(20, 10)의 값은 약?",
+        "options": [
+          "약 1,800",
+          "약 1,800만",
+          "약 18만"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "C(20, 10) = 184,756으로 약 18만이다. 모두 확인해도 1초 안에 충분하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-comb-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "조합",
+        "실행-결과"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "4",
+          "24",
+          "12"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "cnt = 0\nfor i in range(4):\n    for j in range(i + 1, 4):\n        for k in range(j + 1, 4):\n            cnt += 1\nprint(cnt)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int cnt = 0;\nfor (int i = 0; i < 4; i++)\n    for (int j = i + 1; j < 4; j++)\n        for (int k = j + 1; k < 4; k++)\n            cnt++;\nSystem.out.println(cnt);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let cnt = 0;\nfor (let i = 0; i < 4; i++)\n  for (let j = i + 1; j < 4; j++)\n    for (let k = j + 1; k < 4; k++) cnt++;\nconsole.log(cnt);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int cnt = 0;\nfor (int i = 0; i < 4; i++)\n    for (int j = i + 1; j < 4; j++)\n        for (int k = j + 1; k < 4; k++)\n            cnt++;\ncout << cnt;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "i < j < k인 세 인덱스를 고르므로 4개에서 3개를 고르는 C(4, 3) = 4가지다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-comb-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "조합",
+        "순열과-구분"
+      ],
+      "content": {
+        "prompt": "5명 중 대표 1명과 부대표 1명을 뽑는 경우는?",
+        "options": [
+          "순열",
+          "조합"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "같은 두 명이라도 누가 대표인지에 따라 결과가 달라지므로 순서가 의미 있는 순열이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-comb-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "조합",
+        "정의"
+      ],
+      "content": {
+        "prompt": "같은 원소를 순서만 다르게 고르면 조합에서는 한 가지로 센다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "조합은 순서를 따지지 않으므로 {1, 2}와 {2, 1}은 같은 경우다.",
+      "refs": []
+    }
+  ]
+}

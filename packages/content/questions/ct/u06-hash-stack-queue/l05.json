@@ -1,0 +1,298 @@
+{
+  "track": "ct",
+  "unit": "u06-hash-stack-queue",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "ct-u06-recent-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "스택-활용",
+        "스택-신호"
+      ],
+      "content": {
+        "prompt": "가장 최근 것과 짝짓거나 취소하는 규칙에 쓰는 도구는?",
+        "options": [
+          "스택",
+          "큐",
+          "집합"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가장 최근에 넣은 것을 먼저 꺼내는 스택이 직전 원소와의 비교·취소에 맞다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-recent-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "스택-활용",
+        "취소"
+      ],
+      "content": {
+        "prompt": "'ab#c'에서 #이 직전 문자 삭제면 결과는?",
+        "options": [
+          "bc",
+          "abc",
+          "ac"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "a, b를 쌓은 뒤 #이 b를 지우고 c를 쌓아 ac가 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-recent-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "스택-활용",
+        "중첩"
+      ],
+      "content": {
+        "prompt": "중첩된 구조를 안쪽부터 처리할 때 쓰는 것은?",
+        "options": [
+          "큐",
+          "스택"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스택에 쌓았다가 닫힐 때 꺼내면 가장 안쪽, 곧 가장 나중에 열린 것부터 처리된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-recent-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "스택-활용",
+        "취소"
+      ],
+      "content": {
+        "prompt": "'abc##'에서 #이 직전 문자 삭제면 결과는 'a'다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "a, b, c를 쌓은 뒤 #이 c, 다음 #이 b를 지워 a만 남는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-recent-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "스택-활용",
+        "취소"
+      ],
+      "content": {
+        "prompt": "#이면 직전 문자를 지우도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def apply(s):\n    st = []\n    for ch in s:\n        if ch != '#':\n            st.append(ch)\n        elif st:\n            st.___()\n    return ''.join(st)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static String apply(String s) {\n    StringBuilder st = new StringBuilder();\n    for (char ch : s.toCharArray()) {\n        if (ch != '#') st.append(ch);\n        else if (st.length() > 0)\n            st.___(st.length() - 1);\n    }\n    return st.toString();\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function apply(s) {\n  const st = [];\n  for (const ch of s) {\n    if (ch !== '#') st.push(ch);\n    else st.___();\n  }\n  return st.join('');\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "string apply(const string& s) {\n    string st;\n    for (char ch : s) {\n        if (ch != '#') st.push_back(ch);\n        else if (!st.empty()) st.___();\n    }\n    return st;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "pop"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "deleteCharAt"
+            ],
+            "explanation": "Java는 StringBuilder를 스택처럼 쓰고 deleteCharAt(길이 − 1)로 마지막 문자를 지운다."
+          },
+          "javascript": {
+            "accepted": [
+              "pop"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "pop_back",
+              "popback"
+            ],
+            "explanation": "C++은 string을 스택처럼 쓰고 pop_back()으로 마지막 문자를 지운다."
+          }
+        }
+      },
+      "explanation": "가장 최근에 쌓은 문자를 꺼내 지운다. 빈칸은 언어별로 끝 원소를 빼는 메서드다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-recent-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "스택-활용",
+        "스택-신호"
+      ],
+      "content": {
+        "prompt": "가장 최근 것과 짝짓거나 취소하는 규칙에는 ___ 을 쓴다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스택",
+          "stack"
+        ]
+      },
+      "explanation": "가장 최근에 넣은 원소가 top에 있어 바로 비교하거나 꺼낼 수 있는 스택을 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-recent-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "스택-활용",
+        "취소"
+      ],
+      "content": {
+        "prompt": "'xy#z##'에서 #이 직전 문자 삭제면 결과는?",
+        "options": [
+          "x",
+          "빈 문자열",
+          "xz"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "x, y → #로 x → z로 xz → #로 x → #로 모두 지워져 빈 문자열이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-recent-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "스택-활용",
+        "중첩"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "2 0",
+          "0 2",
+          "0 0"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "st, out = [], []\nfor i, ch in enumerate(\"(a(b)c)\"):\n    if ch == '(':\n        st.append(i)\n    elif ch == ')':\n        out.append(st.pop())\nprint(*out)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "Deque<Integer> st = new ArrayDeque<>();\nList<Integer> out = new ArrayList<>();\nString s = \"(a(b)c)\";\nfor (int i = 0; i < s.length(); i++) {\n    char ch = s.charAt(i);\n    if (ch == '(') st.push(i);\n    else if (ch == ')') out.add(st.pop());\n}\nfor (int x : out) System.out.print(x + \" \");"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const st = [], out = [];\nconst s = '(a(b)c)';\nfor (let i = 0; i < s.length; i++) {\n  if (s[i] === '(') st.push(i);\n  else if (s[i] === ')') out.push(st.pop());\n}\nconsole.log(out.join(' '));"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "stack<int> st;\nvector<int> out;\nstring s = \"(a(b)c)\";\nfor (int i = 0; i < (int)s.size(); i++) {\n    if (s[i] == '(') st.push(i);\n    else if (s[i] == ')') {\n        out.push_back(st.top());\n        st.pop();\n    }\n}\nfor (int x : out) cout << x << ' ';"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "0번 (를 쌓고 2번 (를 쌓은 뒤, 먼저 닫히는 것은 안쪽 2번이다. 그래서 2, 0 순으로 처리된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-recent-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "스택-활용",
+        "스택-신호"
+      ],
+      "content": {
+        "prompt": "'같은 문자가 연달아 오면 둘 다 지운다' 규칙에 알맞은 도구는?",
+        "options": [
+          "큐",
+          "해시맵",
+          "스택"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "새 문자를 직전 문자(top)와 비교해 같으면 pop하므로 가장 최근 것과 짝짓는 스택 규칙이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-recent-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "스택-활용",
+        "스택-신호"
+      ],
+      "content": {
+        "prompt": "가장 최근 원소를 취소하는 규칙은 큐로 처리한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "큐는 먼저 들어온 것을 먼저 꺼낸다. 가장 최근 원소를 꺼내 취소하려면 스택을 쓴다.",
+      "refs": []
+    }
+  ]
+}
