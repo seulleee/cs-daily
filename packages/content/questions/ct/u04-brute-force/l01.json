@@ -1,0 +1,300 @@
+{
+  "track": "ct",
+  "unit": "u04-brute-force",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ct-u04-bf-basic-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "완전-탐색",
+        "정의"
+      ],
+      "content": {
+        "prompt": "가능한 경우를 모두 만들어 보고 조건을 확인하는 방법은?",
+        "options": [
+          "시뮬레이션",
+          "완전 탐색",
+          "정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "완전 탐색은 가능한 경우를 빠짐없이 만들어 하나씩 조건을 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bf-basic-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "완전-탐색",
+        "적용-조건"
+      ],
+      "content": {
+        "prompt": "완전 탐색의 전체 연산 수를 어림하는 식은?",
+        "options": [
+          "확인 비용만",
+          "경우의 수만",
+          "경우의 수 × 확인 비용"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "경우마다 확인 비용이 들므로 전체 연산 수는 경우의 수 × 경우마다 확인 비용이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bf-basic-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "완전-탐색",
+        "적용-조건"
+      ],
+      "content": {
+        "prompt": "완전 탐색을 써도 되는 경우는?",
+        "options": [
+          "전체 연산이 허용 범위 안",
+          "경우의 수가 10¹²개"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "경우의 수 × 확인 비용이 허용 연산 수 안이면 완전 탐색이 가능하다. 10¹²개는 1초 기준(약 10⁸번)을 크게 넘는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bf-basic-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "완전-탐색",
+        "적용-조건"
+      ],
+      "content": {
+        "prompt": "경우의 수가 10¹²개여도 완전 탐색이 1초 안에 끝난다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "1초에 약 10⁸번으로 어림하면 10¹²개는 1만 배나 많아 시간 안에 끝나지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bf-basic-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "완전-탐색",
+        "정의"
+      ],
+      "content": {
+        "prompt": "가능한 경우를 빠짐없이 모두 확인하는 방법은 ___ 탐색이다.",
+        "hint": "빠짐없이, 전부라는 뜻의 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "완전",
+          "완전 탐색",
+          "완전탐색",
+          "전수",
+          "브루트 포스",
+          "brute force"
+        ]
+      },
+      "explanation": "가능한 경우를 모두 만들어 조건을 확인하는 방법을 완전 탐색이라 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bf-basic-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "완전-탐색",
+        "반복문"
+      ],
+      "content": {
+        "prompt": "1부터 n까지 모든 x를 확인하도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def find(n, target):\n    for x in range(1, ___ + 1):\n        if x * x == target:\n            return x\n    return -1"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static int find(int n, int target) {\n    for (int x = 1; x <= ___; x++)\n        if (x * x == target) return x;\n    return -1;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function find(n, target) {\n  for (let x = 1; x <= ___; x++) {\n    if (x * x === target) return x;\n  }\n  return -1;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int find(int n, int target) {\n    for (int x = 1; x <= ___; x++)\n        if (x * x == target) return x;\n    return -1;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "n"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "n"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "n"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "n"
+            ]
+          }
+        }
+      },
+      "explanation": "완전 탐색은 가능한 경우 1부터 n까지를 빠짐없이 돌며 조건을 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bf-basic-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "완전-탐색",
+        "연산-수"
+      ],
+      "content": {
+        "prompt": "n = 1000일 때 출력되는 값은?",
+        "options": [
+          "1010",
+          "10000",
+          "1000000"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "n = 1000\nops = 0\nfor x in range(1, n + 1):\n    for k in range(10):\n        ops += 1\nprint(ops)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int n = 1000, ops = 0;\nfor (int x = 1; x <= n; x++)\n    for (int k = 0; k < 10; k++)\n        ops++;\nSystem.out.println(ops);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const n = 1000;\nlet ops = 0;\nfor (let x = 1; x <= n; x++) {\n  for (let k = 0; k < 10; k++) ops++;\n}\nconsole.log(ops);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int n = 1000, ops = 0;\nfor (int x = 1; x <= n; x++)\n    for (int k = 0; k < 10; k++)\n        ops++;\ncout << ops;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "경우가 1000개이고 경우마다 확인에 10번씩 들어 전체는 1000 × 10 = 10000번이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bf-basic-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "완전-탐색",
+        "연산-수"
+      ],
+      "content": {
+        "prompt": "경우가 10⁶개, 경우마다 확인에 100번이면 전체 연산은?",
+        "options": [
+          "10⁴번",
+          "10⁶번",
+          "10⁸번"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "전체 연산은 경우의 수 × 확인 비용이므로 10⁶ × 100 = 10⁸번이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bf-basic-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "완전-탐색",
+        "검증"
+      ],
+      "content": {
+        "prompt": "빠른 풀이의 답을 작은 입력에서 맞춰 볼 때 쓰기 좋은 것은?",
+        "options": [
+          "버퍼 입력",
+          "완전 탐색 풀이",
+          "출력 모으기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "완전 탐색은 답을 놓치지 않으므로 작은 입력에서 다른 풀이의 답과 비교하는 검증용으로 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bf-basic-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "완전-탐색",
+        "검증"
+      ],
+      "content": {
+        "prompt": "완전 탐색은 답을 놓치지 않아 다른 풀이의 검증용으로도 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "모든 경우를 확인하므로 답이 확실해, 작은 입력에서 다른 풀이의 답과 비교하는 데 쓴다.",
+      "refs": []
+    }
+  ]
+}

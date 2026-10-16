@@ -1,0 +1,343 @@
+{
+  "track": "ct",
+  "unit": "u06-hash-stack-queue",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ct-u06-freq-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "빈도-세기",
+        "해시맵"
+      ],
+      "content": {
+        "prompt": "값마다 등장 횟수를 누적할 자료구조는?",
+        "options": [
+          "스택",
+          "해시맵",
+          "큐"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "해시맵에 값을 키로, 등장 횟수를 값으로 두고 나올 때마다 1씩 더한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-freq-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "빈도-세기",
+        "배열"
+      ],
+      "content": {
+        "prompt": "값이 0~25뿐일 때 빈도를 세기 좋은 것은?",
+        "options": [
+          "길이 26 배열",
+          "정렬된 리스트",
+          "스택"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "값의 범위가 좁으면 값 자체를 배열 인덱스로 써서 cnt[값]을 1 늘리면 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-freq-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "빈도-세기",
+        "최빈값"
+      ],
+      "content": {
+        "prompt": "최빈값을 찾는 순서로 알맞은 것은?",
+        "options": [
+          "세기 전에 정렬",
+          "다 센 뒤 한 번 훑기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "빈도를 모두 센 뒤 한 번 훑어 가장 큰 횟수를 가진 값을 찾는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-freq-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "빈도-세기",
+        "배열"
+      ],
+      "content": {
+        "prompt": "값이 10⁹까지 흩어져 있으면 배열 인덱스로 센다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "값의 범위가 넓으면 길이 10⁹ 배열은 메모리를 넘는다. 이때는 해시맵으로 센다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-freq-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "빈도-세기",
+        "해시맵"
+      ],
+      "content": {
+        "prompt": "값마다 등장 횟수를 세도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from collections import Counter\na = [3, 1, 3, 2, 3, 1]\ncnt = ___(a)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {3, 1, 3, 2, 3, 1};\nMap<Integer, Integer> cnt = new HashMap<>();\nfor (int x : a)\n    cnt.put(x, cnt.___(x, 0) + 1);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [3, 1, 3, 2, 3, 1];\nconst cnt = new Map();\nfor (const x of a) {\n  cnt.set(x, (cnt.___(x) ?? 0) + 1);\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {3, 1, 3, 2, 3, 1};\n___<int, int> cnt;\nfor (int x : a) cnt[x]++;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "Counter"
+            ],
+            "explanation": "Python의 collections.Counter는 원소마다 등장 횟수를 세어 해시맵으로 돌려준다."
+          },
+          "java": {
+            "accepted": [
+              "getOrDefault"
+            ],
+            "explanation": "Java는 getOrDefault(x, 0)으로 처음 나온 값을 0으로 보고 1을 더해 누적한다."
+          },
+          "javascript": {
+            "accepted": [
+              "get"
+            ],
+            "explanation": "JavaScript Map은 get으로 지금 횟수를 읽고(없으면 0) 1을 더해 set으로 저장한다."
+          },
+          "cpp": {
+            "accepted": [
+              "unordered_map",
+              "map"
+            ],
+            "explanation": "C++ unordered_map은 없는 키를 0으로 만들어 주므로 cnt[x]++로 바로 센다."
+          }
+        }
+      },
+      "explanation": "해시맵에 값마다 등장 횟수를 누적한다. 빈칸은 언어마다 다른 해시맵 도구 이름이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-freq-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "빈도-세기",
+        "배열"
+      ],
+      "content": {
+        "prompt": "소문자 빈도를 배열로 세도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "s = \"banana\"\ncnt = [0] * ___\nfor ch in s:\n    cnt[ord(ch) - ord('a')] += 1"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "String s = \"banana\";\nint[] cnt = new int[___];\nfor (char ch : s.toCharArray())\n    cnt[ch - 'a']++;"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const s = 'banana';\nconst cnt = new Array(___).fill(0);\nfor (const ch of s) {\n  cnt[ch.charCodeAt(0) - 'a'.charCodeAt(0)]++;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "string s = \"banana\";\nvector<int> cnt(___, 0);\nfor (char ch : s) cnt[ch - 'a']++;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "26"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "26"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "26"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "26"
+            ]
+          }
+        }
+      },
+      "explanation": "소문자는 a~z 26개라 문자 − 'a'를 0~25 인덱스로 쓰는 길이 26 배열로 센다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-freq-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "빈도-세기",
+        "최빈값"
+      ],
+      "content": {
+        "prompt": "[2, 7, 2, 5, 7, 2]의 최빈값은?",
+        "options": [
+          "7",
+          "5",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "2가 3번, 7이 2번, 5가 1번 나오므로 최빈값은 2다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-freq-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "빈도-세기",
+        "실행-결과"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "3",
+          "2",
+          "6"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "cnt = {}\nfor w in [\"b\", \"a\", \"b\", \"c\", \"b\", \"a\"]:\n    cnt[w] = cnt.get(w, 0) + 1\nprint(max(cnt.values()))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "String[] ws = {\"b\", \"a\", \"b\", \"c\", \"b\", \"a\"};\nMap<String, Integer> cnt = new HashMap<>();\nfor (String w : ws)\n    cnt.put(w, cnt.getOrDefault(w, 0) + 1);\nint best = Collections.max(cnt.values());\nSystem.out.println(best);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const ws = ['b', 'a', 'b', 'c', 'b', 'a'];\nconst cnt = new Map();\nfor (const w of ws) {\n  cnt.set(w, (cnt.get(w) ?? 0) + 1);\n}\nconsole.log(Math.max(...cnt.values()));"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "unordered_map<string, int> cnt;\nfor (string w : {\"b\", \"a\", \"b\", \"c\", \"b\", \"a\"})\n    cnt[w]++;\nint best = 0;\nfor (auto& [w, c] : cnt) best = max(best, c);\ncout << best;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "b가 3번, a가 2번, c가 1번이므로 가장 큰 빈도는 3이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-freq-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "빈도-세기",
+        "해시맵"
+      ],
+      "content": {
+        "prompt": "값 10⁶개의 빈도를 해시맵으로 세면 연산은 약?",
+        "options": [
+          "약 10¹²번",
+          "약 10⁶번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "값마다 해시맵에서 평균 한 번에 찾고 더하므로 약 10⁶번이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-freq-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "빈도-세기",
+        "해시맵"
+      ],
+      "content": {
+        "prompt": "빈도 세기는 해시맵에 값마다 등장 횟수를 누적한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "값을 키로, 등장 횟수를 값으로 두고 값이 나올 때마다 1씩 더한다.",
+      "refs": []
+    }
+  ]
+}

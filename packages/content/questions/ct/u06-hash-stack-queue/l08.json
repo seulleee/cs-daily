@@ -1,0 +1,302 @@
+{
+  "track": "ct",
+  "unit": "u06-hash-stack-queue",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "ct-u06-review-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "도구-선택",
+        "집합"
+      ],
+      "content": {
+        "prompt": "값이 이미 나왔는지 자주 확인할 때 도구는?",
+        "options": [
+          "집합",
+          "스택",
+          "큐"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "집합은 포함 여부를 평균 한 번에 확인하므로 존재 확인에 알맞다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-review-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "도구-선택",
+        "큐"
+      ],
+      "content": {
+        "prompt": "맨 앞을 꺼내 맨 뒤로 보내는 규칙에는?",
+        "options": [
+          "해시맵",
+          "큐",
+          "스택"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "들어온 순서대로 앞에서 꺼내고 뒤에 다시 넣는 규칙은 큐(덱)로 옮긴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-review-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "도구-선택",
+        "스택"
+      ],
+      "content": {
+        "prompt": "직전 문자와 짝지어 지우는 규칙에는?",
+        "options": [
+          "큐",
+          "스택"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "가장 최근 것과 짝짓거나 취소하는 규칙은 스택의 신호다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-review-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "도구-선택",
+        "단조-스택"
+      ],
+      "content": {
+        "prompt": "원소마다 다음 큰 값을 구할 때는 단조 스택을 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "단조 스택은 새 값보다 작은 top을 pop하며 답을 정해 한 번의 순회로 모든 다음 큰 값을 구한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-review-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "도구-선택",
+        "집합"
+      ],
+      "content": {
+        "prompt": "값이 이미 나왔는지 확인하도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def has_dup(a):\n    seen = set()\n    for x in a:\n        if x ___ seen:\n            return True\n        seen.add(x)\n    return False"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static boolean hasDup(int[] a) {\n    Set<Integer> seen = new HashSet<>();\n    for (int x : a) {\n        if (seen.___(x)) return true;\n        seen.add(x);\n    }\n    return false;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function hasDup(a) {\n  const seen = new Set();\n  for (const x of a) {\n    if (seen.___(x)) return true;\n    seen.add(x);\n  }\n  return false;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "bool hasDup(const vector<int>& a) {\n    unordered_set<int> seen;\n    for (int x : a) {\n        if (seen.___(x)) return true;\n        seen.insert(x);\n    }\n    return false;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "in"
+            ],
+            "explanation": "Python은 x in seen으로 집합에 x가 있는지 확인한다."
+          },
+          "java": {
+            "accepted": [
+              "contains"
+            ],
+            "explanation": "Java Set은 contains(x)로 x가 있는지 확인한다."
+          },
+          "javascript": {
+            "accepted": [
+              "has"
+            ],
+            "explanation": "JavaScript Set은 has(x)로 x가 있는지 확인한다."
+          },
+          "cpp": {
+            "accepted": [
+              "count",
+              "contains"
+            ],
+            "explanation": "C++ unordered_set은 count(x)가 1이면 x가 있다(C++20부터 contains도 있다)."
+          }
+        }
+      },
+      "explanation": "이미 본 값을 집합에 두고 새 값이 들어 있는지 확인한다. 빈칸은 언어별 포함 확인 방법이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "도구-선택",
+        "집합"
+      ],
+      "content": {
+        "prompt": "개수를 세거나 존재를 확인할 때는 해시맵이나 ___ 을 쓴다."
+      },
+      "answer_key": {
+        "accepted": [
+          "집합",
+          "set",
+          "셋",
+          "해시셋"
+        ]
+      },
+      "explanation": "개수는 해시맵으로 세고, 존재 여부는 집합으로 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-review-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "도구-선택",
+        "스택"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "ab",
+          "cab",
+          "cdab"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "st = []\nfor ch in \"cddcab\":\n    if st and st[-1] == ch:\n        st.pop()\n    else:\n        st.append(ch)\nprint(''.join(st))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "StringBuilder st = new StringBuilder();\nfor (char ch : \"cddcab\".toCharArray()) {\n    int n = st.length();\n    if (n > 0 && st.charAt(n - 1) == ch)\n        st.deleteCharAt(n - 1);\n    else st.append(ch);\n}\nSystem.out.println(st);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const st = [];\nfor (const ch of 'cddcab') {\n  if (st.length && st.at(-1) === ch) st.pop();\n  else st.push(ch);\n}\nconsole.log(st.join(''));"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "string st;\nfor (char ch : string(\"cddcab\")) {\n    if (!st.empty() && st.back() == ch)\n        st.pop_back();\n    else st.push_back(ch);\n}\ncout << st;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "c, d를 쌓고 d가 top과 같아 pop, c도 top과 같아 pop한 뒤 a, b가 남아 ab다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-review-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "도구-선택",
+        "해시맵"
+      ],
+      "content": {
+        "prompt": "글자 빈도가 같은 단어끼리 묶을 때 도구는?",
+        "options": [
+          "스택",
+          "큐",
+          "해시맵"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "정규화 키 → 단어 목록으로 해시맵에 모은다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-review-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "도구-선택",
+        "덱"
+      ],
+      "content": {
+        "prompt": "앞뒤 양쪽에서 원소를 넣고 뺄 때는?",
+        "options": [
+          "덱",
+          "단조 스택",
+          "집합"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "덱은 양 끝에서 넣기·빼기가 모두 한 번에 끝난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-review-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "도구-선택",
+        "집합"
+      ],
+      "content": {
+        "prompt": "값의 존재 여부를 자주 확인할 때는 스택이 알맞다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "스택은 top만 바로 볼 수 있어 존재 확인에 느리다. 존재 확인은 집합을 쓴다.",
+      "refs": []
+    }
+  ]
+}

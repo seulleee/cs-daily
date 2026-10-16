@@ -1,0 +1,303 @@
+{
+  "track": "ct",
+  "unit": "u06-hash-stack-queue",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ct-u06-queue-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "큐-활용",
+        "큐-시뮬레이션"
+      ],
+      "content": {
+        "prompt": "들어온 순서대로 처리하고 다시 뒤로 보내는 규칙의 도구는?",
+        "options": [
+          "스택",
+          "집합",
+          "큐"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "큐는 먼저 들어온 것을 앞에서 꺼내고 뒤에 다시 넣을 수 있어 순서 처리 규칙에 맞다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-queue-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "큐-활용",
+        "덱"
+      ],
+      "content": {
+        "prompt": "앞뒤 양쪽에서 넣고 빼야 할 때 쓰는 것은?",
+        "options": [
+          "덱",
+          "스택",
+          "배열"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "덱은 양 끝에서 넣기·빼기가 모두 한 번에 끝난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-queue-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "큐-활용",
+        "배열-맨-앞-삭제"
+      ],
+      "content": {
+        "prompt": "배열 맨 앞 원소를 계속 삭제하면?",
+        "options": [
+          "한 번에 끝난다",
+          "매번 당겨 느리다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "배열 맨 앞을 지우면 뒤 원소를 모두 한 칸씩 당겨야 하므로 반복하면 느리다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-queue-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "큐-활용",
+        "큐-시뮬레이션"
+      ],
+      "content": {
+        "prompt": "큐는 먼저 들어온 원소부터 처리한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "큐는 넣은 순서대로 앞에서 꺼내므로 먼저 들어온 원소가 먼저 처리된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-queue-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "큐-활용",
+        "큐-시뮬레이션"
+      ],
+      "content": {
+        "prompt": "맨 앞을 버리고 다음 원소를 맨 뒤로 보내도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from collections import deque\nq = deque(range(1, 7))\nwhile len(q) > 1:\n    q.popleft()\n    q.append(q.___())"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "Deque<Integer> q = new ArrayDeque<>();\nfor (int i = 1; i <= 6; i++) q.offer(i);\nwhile (q.size() > 1) {\n    q.poll();\n    q.offer(q.___());\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const q = [1, 2, 3, 4, 5, 6];\nlet head = 0;\nwhile (q.length - head > 1) {\n  head++;\n  q.push(q[___++]);\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "queue<int> q;\nfor (int i = 1; i <= 6; i++) q.push(i);\nwhile (q.size() > 1) {\n    q.pop();\n    q.push(q.___());\n    q.pop();\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "popleft"
+            ],
+            "explanation": "Python deque의 popleft()가 맨 앞을 한 번에 꺼낸다. 리스트의 pop(0)은 매번 당겨 느리다."
+          },
+          "java": {
+            "accepted": [
+              "poll",
+              "pollFirst",
+              "removeFirst",
+              "remove"
+            ],
+            "explanation": "Java ArrayDeque의 poll()이 맨 앞을 꺼내고 offer()가 맨 뒤에 넣는다."
+          },
+          "javascript": {
+            "accepted": [
+              "head"
+            ],
+            "explanation": "JavaScript 배열의 shift()는 맨 앞 삭제라 느리므로 head 인덱스로 맨 앞을 가리키고 옮긴다."
+          },
+          "cpp": {
+            "accepted": [
+              "front"
+            ],
+            "explanation": "C++ queue는 front()로 맨 앞 값을 읽고 pop()으로 지운다. 읽은 값을 push로 뒤에 넣는다."
+          }
+        }
+      },
+      "explanation": "맨 앞 원소를 꺼내 뒤에 다시 넣는 것을 반복한다. 빈칸은 언어별로 맨 앞을 꺼내는 방법이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-queue-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "큐-활용",
+        "덱"
+      ],
+      "content": {
+        "prompt": "양 끝에서 넣고 빼기가 모두 한 번에 끝나는 자료구조는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "덱",
+          "deque",
+          "데크",
+          "디큐"
+        ]
+      },
+      "explanation": "덱은 앞뒤 양쪽에서 넣고 빼기가 모두 한 번에 끝나 양 끝을 다루는 규칙에 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-queue-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "큐-활용",
+        "실행-과정"
+      ],
+      "content": {
+        "prompt": "큐 [1, 2, 3]에서 맨 앞을 꺼내 맨 뒤로 보내면?",
+        "options": [
+          "3 2 1",
+          "1 3 2",
+          "2 3 1"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "맨 앞 1을 꺼내 맨 뒤에 넣으므로 2 3 1이 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-queue-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "큐-활용",
+        "실행-결과"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "3 4 2",
+          "2 3 4",
+          "4 2 3"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from collections import deque\nq = deque([1, 2, 3, 4])\nq.popleft()\nq.append(q.popleft())\nprint(*q)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "var q = new ArrayDeque<>(List.of(1, 2, 3, 4));\nq.poll();\nq.offer(q.poll());\nStringBuilder sb = new StringBuilder();\nfor (int x : q) sb.append(x).append(\" \");\nSystem.out.println(sb.toString().trim());"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const q = [1, 2, 3, 4];\nlet head = 0;\nhead++;\nq.push(q[head++]);\nconsole.log(q.slice(head).join(' '));"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "deque<int> q = {1, 2, 3, 4};\nq.pop_front();\nq.push_back(q.front());\nq.pop_front();\nfor (int x : q) cout << x << ' ';"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "1을 버리고 다음 맨 앞 2를 꺼내 뒤로 보내 3 4 2가 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-queue-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "큐-활용",
+        "배열-맨-앞-삭제"
+      ],
+      "content": {
+        "prompt": "길이 10⁵ 배열에서 맨 앞 삭제를 계속하면 당기는 횟수는 약?",
+        "options": [
+          "약 5 × 10⁹번",
+          "약 10⁵번"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "삭제마다 남은 원소를 모두 당겨 약 N² / 2 = 5 × 10⁹번이다. 덱을 쓰면 약 10⁵번이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-queue-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "큐-활용",
+        "덱"
+      ],
+      "content": {
+        "prompt": "앞뒤를 모두 다룰 때는 배열 맨 앞 삭제를 쓰는 것이 가장 빠르다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "배열 맨 앞 삭제는 뒤 원소를 모두 당겨 느리다. 앞뒤를 모두 다룰 때는 덱을 쓴다.",
+      "refs": []
+    }
+  ]
+}

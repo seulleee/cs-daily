@@ -1,0 +1,344 @@
+{
+  "track": "ct",
+  "unit": "u04-brute-force",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ct-u04-bitop-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "비트-연산",
+        "시프트"
+      ],
+      "content": {
+        "prompt": "i번 비트만 1인 수를 만드는 식은?",
+        "options": [
+          "1 << i",
+          "i << 1",
+          "1 >> i"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "1을 왼쪽으로 i칸 밀면 i번 비트만 1인 수가 된다. i << 1은 i의 2배다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bitop-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "비트-연산",
+        "추가"
+      ],
+      "content": {
+        "prompt": "mask에 i번 원소를 추가하는 식은?",
+        "options": [
+          "mask & (1 << i)",
+          "mask | (1 << i)",
+          "mask + i"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "OR(|)는 i번 비트를 1로 만들고 나머지 비트는 그대로 둔다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bitop-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "비트-연산",
+        "포함-확인"
+      ],
+      "content": {
+        "prompt": "i번 원소가 들어 있는지 확인하는 식은?",
+        "options": [
+          "mask & (1 << i)",
+          "mask | (1 << i)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "AND(&)로 i번 비트만 남겨 0이 아니면 포함이다. OR은 원소를 추가하는 식이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bitop-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "비트-연산",
+        "포함-확인"
+      ],
+      "content": {
+        "prompt": "mask & (1 << i)가 0이면 i번 원소가 들어 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "AND 결과가 0이면 i번 비트가 0이라 포함되지 않은 것이다. 0이 아니어야 포함이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bitop-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "비트-연산",
+        "추가"
+      ],
+      "content": {
+        "prompt": "mask에 i번 원소를 추가할 때 쓰는 비트 연산은 ___ 이다.",
+        "hint": "두 비트 중 하나라도 1이면 1이 되는 연산"
+      },
+      "answer_key": {
+        "accepted": [
+          "OR",
+          "오어",
+          "비트 OR",
+          "비트OR"
+        ]
+      },
+      "explanation": "mask | (1 << i)처럼 OR로 i번 비트를 1로 만들면 다른 원소는 그대로 두고 i번 원소만 추가된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bitop-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "비트-연산",
+        "고른-개수"
+      ],
+      "content": {
+        "prompt": "mask에서 1인 비트의 개수를 구하도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "mask = 0b1011\ncnt = mask.___()"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int mask = 0b1011;\nint cnt = Integer.___(mask);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const mask = 0b1011;\nconst bits = mask.toString(___);\nconst cnt = bits.split('1').length - 1;"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int mask = 0b1011;\nint cnt = ___(mask);"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "bit_count",
+              "bitcount"
+            ],
+            "explanation": "Python 3.10부터 int.bit_count()가 1인 비트 수를 센다. 0b1011은 1이 3개다."
+          },
+          "java": {
+            "accepted": [
+              "bitCount"
+            ],
+            "explanation": "Java는 Integer.bitCount가 1인 비트 수를 센다. 0b1011은 1이 3개다."
+          },
+          "javascript": {
+            "accepted": [
+              "2"
+            ],
+            "explanation": "JavaScript는 개수 함수가 없어 toString(2)로 이진 문자열을 만든 뒤 1의 개수를 센다. 0b1011은 1이 3개다."
+          },
+          "cpp": {
+            "accepted": [
+              "__builtin_popcount",
+              "builtin_popcount",
+              "popcount"
+            ],
+            "explanation": "GCC 계열 C++은 __builtin_popcount가 1인 비트 수를 센다. 0b1011은 1이 3개다."
+          }
+        }
+      },
+      "explanation": "1인 비트의 개수가 mask로 고른 원소의 개수다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bitop-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "비트-연산",
+        "추가"
+      ],
+      "content": {
+        "prompt": "mask에 i번 원소를 추가하도록 빈칸에 알맞은 연산자는?",
+        "options": [
+          "&",
+          "|",
+          "^"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def add(mask, i):\n    return mask ___ (1 << i)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static int add(int mask, int i) {\n    return mask ___ (1 << i);\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function add(mask, i) {\n  return mask ___ (1 << i);\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int add(int mask, int i) {\n    return mask ___ (1 << i);\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "OR(|)는 i번 비트를 1로 만든다. &는 다른 비트를 지우고, ^는 이미 있던 원소를 빼 버린다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bitop-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "비트-연산",
+        "실행-결과"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "3",
+          "5",
+          "4"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "mask = 0\nmask |= 1 << 0\nmask |= 1 << 2\nprint(mask)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int mask = 0;\nmask |= 1 << 0;\nmask |= 1 << 2;\nSystem.out.println(mask);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let mask = 0;\nmask |= 1 << 0;\nmask |= 1 << 2;\nconsole.log(mask);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int mask = 0;\nmask |= 1 << 0;\nmask |= 1 << 2;\ncout << mask;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "0번 비트(1)와 2번 비트(4)를 차례로 추가하므로 mask는 이진수 101, 곧 5다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bitop-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "비트-연산",
+        "고른-개수"
+      ],
+      "content": {
+        "prompt": "mask = 6(이진수 110)으로 고른 원소는 몇 개?",
+        "options": [
+          "2",
+          "3",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "110에서 1인 비트는 1번과 2번 두 개이므로 고른 원소는 2개다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bitop-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "비트-연산",
+        "시프트"
+      ],
+      "content": {
+        "prompt": "1 << i는 i번 비트만 1인 수다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "1을 왼쪽으로 i칸 밀면 i번 비트만 1이 된다. 원소 추가·포함 확인에 이 값을 쓴다.",
+      "refs": []
+    }
+  ]
+}

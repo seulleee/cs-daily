@@ -1,0 +1,297 @@
+{
+  "track": "ct",
+  "unit": "u04-brute-force",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ct-u04-subset-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "비트마스크",
+        "정의"
+      ],
+      "content": {
+        "prompt": "정수의 비트로 원소 포함 여부를 나타내는 기법은?",
+        "options": [
+          "방향 배열",
+          "비트마스크",
+          "순열"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "비트마스크는 정수의 i번 비트로 i번 원소를 포함하는지 나타낸다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-subset-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "부분집합",
+        "개수"
+      ],
+      "content": {
+        "prompt": "원소 N개로 만들 수 있는 부분집합의 수는?",
+        "options": [
+          "2ᴺ",
+          "N²",
+          "N!"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "원소마다 넣거나 빼는 2가지 선택이 N번 있으므로 2ᴺ가지다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-subset-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "비트마스크",
+        "해석"
+      ],
+      "content": {
+        "prompt": "mask = 5(이진수 101)가 담은 원소 번호는?",
+        "options": [
+          "1번만",
+          "0번과 1번",
+          "0번과 2번"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "101은 0번 비트와 2번 비트가 1이므로 0번과 2번 원소를 담는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-subset-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "부분집합",
+        "개수"
+      ],
+      "content": {
+        "prompt": "원소 3개로 만들 수 있는 부분집합은 8가지다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "2³ = 8이다. 아무것도 고르지 않은 빈 집합도 한 가지로 센다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-subset-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "비트마스크",
+        "전체-순회"
+      ],
+      "content": {
+        "prompt": "모든 부분집합을 훑도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def count_subsets(n):\n    cnt = 0\n    for mask in range(2 ** ___):\n        cnt += 1\n    return cnt"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static int countSubsets(int n) {\n    int cnt = 0;\n    int total = 1 << ___;\n    for (int mask = 0; mask < total; mask++)\n        cnt++;\n    return cnt;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function countSubsets(n) {\n  let cnt = 0;\n  const total = 2 ** ___;\n  for (let m = 0; m < total; m++) cnt++;\n  return cnt;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int countSubsets(int n) {\n    int cnt = 0;\n    int total = 1 << ___;\n    for (int mask = 0; mask < total; mask++)\n        cnt++;\n    return cnt;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "n"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "n"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "n"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "n"
+            ]
+          }
+        }
+      },
+      "explanation": "mask를 0부터 2ⁿ − 1까지 돌리면 n개 원소의 모든 부분집합을 한 번씩 본다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-subset-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "부분집합",
+        "개수"
+      ],
+      "content": {
+        "prompt": "원소 N개의 부분집합 수는 2의 ___ 제곱이다.",
+        "hint": "원소마다 넣거나 빼는 선택을 몇 번 하는지 생각한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "N",
+          "엔"
+        ]
+      },
+      "explanation": "원소마다 넣거나 빼는 선택이 N번이라 부분집합은 2ᴺ가지다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-subset-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "부분집합",
+        "개수"
+      ],
+      "content": {
+        "prompt": "N = 20이면 부분집합은 약 몇 개?",
+        "options": [
+          "약 400",
+          "약 2만",
+          "약 100만"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "2²⁰ = 1,048,576이므로 약 100만 개다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-subset-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "비트마스크",
+        "실행-결과"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "16",
+          "8",
+          "15"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "n = 4\ncnt = 0\nfor mask in range(1 << n):\n    cnt += 1\nprint(cnt)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int n = 4, cnt = 0;\nfor (int mask = 0; mask < (1 << n); mask++)\n    cnt++;\nSystem.out.println(cnt);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const n = 4;\nlet cnt = 0;\nfor (let mask = 0; mask < (1 << n); mask++) {\n  cnt++;\n}\nconsole.log(cnt);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int n = 4, cnt = 0;\nfor (int mask = 0; mask < (1 << n); mask++)\n    cnt++;\ncout << cnt;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "mask가 0부터 2⁴ − 1 = 15까지 돌아 모두 16번 반복한다. 4개 원소의 부분집합 수와 같다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-subset-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "비트마스크",
+        "해석"
+      ],
+      "content": {
+        "prompt": "0번과 1번 원소만 담은 부분집합의 mask 값은?",
+        "options": [
+          "2",
+          "6",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "0번 비트(1)와 1번 비트(2)가 1이므로 이진수 11, 곧 3이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-subset-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "비트마스크",
+        "전체-순회"
+      ],
+      "content": {
+        "prompt": "모든 부분집합을 보려면 mask를 0부터 2ᴺ까지 돌린다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "mask는 0부터 2ᴺ − 1까지다. 2ᴺ은 N번 비트가 1이라 없는 원소를 가리킨다.",
+      "refs": []
+    }
+  ]
+}

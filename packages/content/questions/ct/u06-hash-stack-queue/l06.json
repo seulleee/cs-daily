@@ -1,0 +1,297 @@
+{
+  "track": "ct",
+  "unit": "u06-hash-stack-queue",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ct-u06-mono-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "단조-스택",
+        "정의"
+      ],
+      "content": {
+        "prompt": "스택 안 값이 한 방향 순서를 유지하도록 관리하는 스택은?",
+        "options": [
+          "덱",
+          "우선순위 큐",
+          "단조 스택"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "단조 스택은 새 값을 넣기 전에 순서를 깨는 top을 pop해 한 방향 순서를 유지한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-mono-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "단조-스택",
+        "다음-큰-원소"
+      ],
+      "content": {
+        "prompt": "다음 큰 원소 구하기: 새 값보다 작은 top은?",
+        "options": [
+          "pop, 답은 새 값",
+          "그대로 둔다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "새 값이 그 top 원소의 오른쪽 첫 큰 값이므로 답을 새 값으로 정하고 pop한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-mono-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "단조-스택",
+        "비용"
+      ],
+      "content": {
+        "prompt": "단조 스택으로 다음 큰 원소를 구하는 전체 비용은?",
+        "options": [
+          "O(N)",
+          "O(N²)",
+          "O(N log N)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "원소마다 push 한 번, pop 최대 한 번이라 전체 O(N)이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-mono-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "단조-스택",
+        "비용"
+      ],
+      "content": {
+        "prompt": "단조 스택에서 각 원소는 최대 한 번 pop된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "한 번 pop된 원소는 다시 들어오지 않으므로 pop은 원소마다 최대 한 번이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-mono-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "단조-스택",
+        "다음-큰-원소"
+      ],
+      "content": {
+        "prompt": "pop되는 원소의 다음 큰 원소를 기록하도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "ans = [-1] * len(a)\ns = []\nfor i, x in enumerate(a):\n    while s and a[s[-1]] < x:\n        ans[s.pop()] = ___\n    s.append(i)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] ans = new int[a.length];\nArrays.fill(ans, -1);\nDeque<Integer> s = new ArrayDeque<>();\nfor (int i = 0; i < a.length; i++) {\n    int x = a[i];\n    while (!s.isEmpty() && a[s.peek()] < x)\n        ans[s.pop()] = ___;\n    s.push(i);\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const ans = new Array(a.length).fill(-1);\nconst s = [];\nfor (let i = 0; i < a.length; i++) {\n  const x = a[i];\n  while (s.length && a[s.at(-1)] < x) {\n    ans[s.pop()] = ___;\n  }\n  s.push(i);\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> ans(a.size(), -1);\nstack<int> s;\nfor (int i = 0; i < (int)a.size(); i++) {\n    int x = a[i];\n    while (!s.empty() && a[s.top()] < x) {\n        ans[s.top()] = ___;\n        s.pop();\n    }\n    s.push(i);\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "x"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "x"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "x"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "x"
+            ]
+          }
+        }
+      },
+      "explanation": "새 값 x보다 작은 top은 오른쪽에서 처음 만난 큰 값이 x이므로 답을 x로 정한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-mono-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "단조-스택",
+        "정의"
+      ],
+      "content": {
+        "prompt": "스택 안 값이 한 방향 순서를 유지하는 스택은 ___ 스택이다.",
+        "hint": "한 방향으로만 늘거나 줄어드는 성질의 이름"
+      },
+      "answer_key": {
+        "accepted": [
+          "단조",
+          "monotonic",
+          "모노토닉"
+        ]
+      },
+      "explanation": "넣기 전에 순서를 깨는 값을 pop해 한 방향 순서를 유지하는 스택을 단조 스택이라 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-mono-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "단조-스택",
+        "다음-큰-원소"
+      ],
+      "content": {
+        "prompt": "[3, 1, 4]에서 1의 다음 큰 원소는?",
+        "options": [
+          "4",
+          "3",
+          "없음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "다음 큰 원소는 오른쪽에서 처음 만나는 더 큰 값이다. 1의 오른쪽에서 처음 큰 값은 4다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-mono-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "단조-스택",
+        "실행-결과"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "1",
+          "3",
+          "4"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a = [4, 2, 1, 5]\ns = []\npops = 0\nfor x in a:\n    while s and s[-1] < x:\n        s.pop()\n        pops += 1\n    s.append(x)\nprint(pops)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {4, 2, 1, 5};\nDeque<Integer> s = new ArrayDeque<>();\nint pops = 0;\nfor (int x : a) {\n    while (!s.isEmpty() && s.peek() < x) {\n        s.pop();\n        pops++;\n    }\n    s.push(x);\n}\nSystem.out.println(pops);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [4, 2, 1, 5];\nconst s = [];\nlet pops = 0;\nfor (const x of a) {\n  while (s.length && s.at(-1) < x) {\n    s.pop();\n    pops++;\n  }\n  s.push(x);\n}\nconsole.log(pops);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {4, 2, 1, 5};\nstack<int> s;\nint pops = 0;\nfor (int x : a) {\n    while (!s.empty() && s.top() < x) {\n        s.pop();\n        pops++;\n    }\n    s.push(x);\n}\ncout << pops;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "4, 2, 1은 줄어드는 순서라 pop 없이 쌓이고, 5가 들어올 때 1, 2, 4를 모두 pop해 3번이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-mono-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "단조-스택",
+        "실행-과정"
+      ],
+      "content": {
+        "prompt": "작은 top을 pop하며 [5, 4, 3, 6]을 넣은 뒤 스택에 남는 값은?",
+        "options": [
+          "5 4 3 6",
+          "6",
+          "3 6"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "5, 4, 3은 쌓이고 6이 들어올 때 6보다 작은 3, 4, 5를 모두 pop해 6만 남는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u06-mono-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "단조-스택",
+        "비용"
+      ],
+      "content": {
+        "prompt": "단조 스택은 원소마다 스택 전체를 다시 훑어 다음 큰 원소를 찾는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "pop된 원소는 다시 보지 않으므로 원소마다 push 한 번, pop 최대 한 번이다. 전체 O(N)이다.",
+      "refs": []
+    }
+  ]
+}

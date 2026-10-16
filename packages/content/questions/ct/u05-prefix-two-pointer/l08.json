@@ -1,0 +1,304 @@
+{
+  "track": "ct",
+  "unit": "u05-prefix-two-pointer",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "ct-u05-varwin-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "가변-윈도우",
+        "정의"
+      ],
+      "content": {
+        "prompt": "오른쪽 끝을 늘리고 조건이 깨지면 왼쪽 끝을 줄이는 기법은?",
+        "options": [
+          "고정 윈도우",
+          "차분 배열",
+          "가변 윈도우"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "가변 윈도우는 길이가 정해져 있지 않아 오른쪽을 늘리다 조건이 깨지면 왼쪽을 줄인다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-varwin-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "가변-윈도우",
+        "최소-길이"
+      ],
+      "content": {
+        "prompt": "합 ≥ S인 가장 짧은 구간: 합 ≥ S인 동안 할 일은?",
+        "options": [
+          "왼쪽 끝을 줄인다",
+          "오른쪽 끝을 늘린다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "합 ≥ S인 동안 길이를 갱신하며 왼쪽 끝을 줄여 더 짧은 구간을 찾는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-varwin-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "가변-윈도우",
+        "중복-없는-구간"
+      ],
+      "content": {
+        "prompt": "중복 없는 가장 긴 구간에서 윈도우 안 문자를 담을 것은?",
+        "options": [
+          "스택",
+          "우선순위 큐",
+          "집합"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "집합에 윈도우 안 문자를 두면 새 문자가 이미 있는지 바로 확인할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-varwin-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "가변-윈도우",
+        "정의"
+      ],
+      "content": {
+        "prompt": "가변 윈도우에서 왼쪽 끝은 다시 왼쪽으로 돌아가기도 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "두 끝은 모두 오른쪽으로만 움직인다. 그래서 각각 최대 N번 움직여 전체가 빠르다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-varwin-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "가변-윈도우",
+        "최소-길이"
+      ],
+      "content": {
+        "prompt": "합이 target 이상인 동안 왼쪽을 줄이도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def min_len(a, target):\n    best = len(a) + 1\n    s = l = 0\n    for r in range(len(a)):\n        s += a[r]\n        ___ s >= target:\n            best = min(best, r - l + 1)\n            s -= a[l]\n            l += 1\n    return best if best <= len(a) else 0"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static int minLen(int[] a, int target) {\n    int best = a.length + 1, s = 0, l = 0;\n    for (int r = 0; r < a.length; r++) {\n        s += a[r];\n        ___ (s >= target) {\n            best = Math.min(best, r - l + 1);\n            s -= a[l++];\n        }\n    }\n    return best <= a.length ? best : 0;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function minLen(a, target) {\n  let best = a.length + 1, s = 0, l = 0;\n  for (let r = 0; r < a.length; r++) {\n    s += a[r];\n    ___ (s >= target) {\n      best = Math.min(best, r - l + 1);\n      s -= a[l++];\n    }\n  }\n  return best <= a.length ? best : 0;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int minLen(const vector<int>& a, int target) {\n    int n = a.size(), best = n + 1;\n    int s = 0, l = 0;\n    for (int r = 0; r < n; r++) {\n        s += a[r];\n        ___ (s >= target) {\n            best = min(best, r - l + 1);\n            s -= a[l++];\n        }\n    }\n    return best <= n ? best : 0;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "while"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "while"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "while"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "while"
+            ]
+          }
+        }
+      },
+      "explanation": "조건(합 ≥ target)이 유지되는 동안 반복해 줄여야 하므로 if가 아니라 while이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-varwin-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "가변-윈도우",
+        "중복-없는-구간"
+      ],
+      "content": {
+        "prompt": "중복이 생기면 왼쪽 문자를 집합에서 빼도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def longest_unique(s):\n    seen = set()\n    l = best = 0\n    for r, ch in enumerate(s):\n        while ch in seen:\n            seen.___(s[l])\n            l += 1\n        seen.add(ch)\n        best = max(best, r - l + 1)\n    return best"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static int longestUnique(String s) {\n    Set<Character> seen = new HashSet<>();\n    int l = 0, best = 0;\n    for (int r = 0; r < s.length(); r++) {\n        char ch = s.charAt(r);\n        while (seen.contains(ch))\n            seen.___(s.charAt(l++));\n        seen.add(ch);\n        best = Math.max(best, r - l + 1);\n    }\n    return best;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function longestUnique(s) {\n  const seen = new Set();\n  let l = 0, best = 0;\n  for (let r = 0; r < s.length; r++) {\n    while (seen.has(s[r])) seen.___(s[l++]);\n    seen.add(s[r]);\n    best = Math.max(best, r - l + 1);\n  }\n  return best;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int longestUnique(const string& s) {\n    unordered_set<char> seen;\n    int l = 0, best = 0;\n    for (int r = 0; r < (int)s.size(); r++) {\n        while (seen.count(s[r]))\n            seen.___(s[l++]);\n        seen.insert(s[r]);\n        best = max(best, r - l + 1);\n    }\n    return best;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "remove",
+              "discard"
+            ],
+            "explanation": "Python 집합에서 원소를 빼는 메서드는 remove(또는 discard)다."
+          },
+          "java": {
+            "accepted": [
+              "remove"
+            ],
+            "explanation": "Java Set에서 원소를 빼는 메서드는 remove다."
+          },
+          "javascript": {
+            "accepted": [
+              "delete"
+            ],
+            "explanation": "JavaScript Set에서 원소를 빼는 메서드는 delete다."
+          },
+          "cpp": {
+            "accepted": [
+              "erase"
+            ],
+            "explanation": "C++ unordered_set에서 원소를 빼는 메서드는 erase다."
+          }
+        }
+      },
+      "explanation": "중복이 사라질 때까지 왼쪽 끝 문자를 집합에서 빼고 왼쪽 끝을 한 칸 줄인다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-varwin-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "가변-윈도우",
+        "최소-길이"
+      ],
+      "content": {
+        "prompt": "[2, 1, 5, 2]에서 합 ≥ 7인 가장 짧은 구간의 길이는?",
+        "options": [
+          "3",
+          "2",
+          "1"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "[5, 2]의 합이 7이라 길이 2가 가장 짧다. 길이 1인 구간 중 7 이상인 것은 없다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-varwin-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "가변-윈도우",
+        "중복-없는-구간"
+      ],
+      "content": {
+        "prompt": "'abcab'에서 중복 문자 없는 가장 긴 구간의 길이는?",
+        "options": [
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "abc, bca, cab 모두 길이 3이고, 길이 4부터는 a나 b가 두 번 들어간다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-varwin-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "가변-윈도우",
+        "비용"
+      ],
+      "content": {
+        "prompt": "가변 윈도우에서 두 끝이 각각 최대 N번 움직이면 전체는?",
+        "options": [
+          "O(N²)",
+          "O(N)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "오른쪽 끝 N번, 왼쪽 끝 최대 N번이라 합쳐 2N번, 곧 O(N)이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-varwin-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "가변-윈도우",
+        "정의"
+      ],
+      "content": {
+        "prompt": "가변 윈도우는 오른쪽 끝을 늘리다 조건이 깨지면 왼쪽 끝을 줄인다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "오른쪽을 늘려 구간을 키우고, 조건이 깨지면 다시 맞을 때까지 왼쪽을 줄인다.",
+      "refs": []
+    }
+  ]
+}

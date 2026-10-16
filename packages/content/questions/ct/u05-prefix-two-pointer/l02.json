@@ -1,0 +1,294 @@
+{
+  "track": "ct",
+  "unit": "u05-prefix-two-pointer",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ct-u05-prefix-pit-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "누적-합",
+        "인덱스"
+      ],
+      "content": {
+        "prompt": "누적 합 P를 N + 1 크기로 두는 이유는?",
+        "options": [
+          "메모리 절약",
+          "정렬 유지",
+          "경계 처리 제거"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "P[0] = 0을 두면 l = 0인 구간도 P[r + 1] − P[0]으로 같은 식이 되어 경계 처리가 사라진다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-pit-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "누적-합",
+        "오버플로"
+      ],
+      "content": {
+        "prompt": "합이 커질 때 누적에 쓸 정수형은?",
+        "options": [
+          "64비트",
+          "32비트",
+          "16비트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "누적 합은 원소를 계속 더해 커지므로 오버플로를 막으려면 64비트 정수로 누적한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-pit-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "누적-합",
+        "값-변경"
+      ],
+      "content": {
+        "prompt": "누적 합이 맞지 않는 상황은?",
+        "options": [
+          "구간 합 질의가 많음",
+          "원소가 자주 바뀜"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "원소가 바뀌면 그 뒤 누적 합을 다시 만들어야 해 맞지 않다. 값이 고정이고 질의가 많을 때 알맞다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-pit-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "누적-합",
+        "오버플로"
+      ],
+      "content": {
+        "prompt": "원소 10⁵개가 각각 10⁹ 이하면 합은 32비트 정수에 담긴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "합이 최대 10¹⁴까지 커져 32비트 범위(약 21억)를 넘는다. 64비트로 누적해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-pit-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "누적-합",
+        "인덱스"
+      ],
+      "content": {
+        "prompt": "누적 합 배열을 한 칸 크게 만들도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a = [4, 2, 7]\nn = len(a)\np = [0] * (n + ___)\nfor i in range(n):\n    p[i + 1] = p[i] + a[i]"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {4, 2, 7};\nint n = a.length;\nlong[] p = new long[n + ___];\nfor (int i = 0; i < n; i++)\n    p[i + 1] = p[i] + a[i];"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [4, 2, 7];\nconst n = a.length;\nconst p = new Array(n + ___).fill(0);\nfor (let i = 0; i < n; i++) {\n  p[i + 1] = p[i] + a[i];\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {4, 2, 7};\nint n = a.size();\nvector<long long> p(n + ___, 0);\nfor (int i = 0; i < n; i++)\n    p[i + 1] = p[i] + a[i];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "1"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "1"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "1"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "1"
+            ]
+          }
+        }
+      },
+      "explanation": "P는 N + 1 크기로 두고 P[0] = 0으로 시작해야 [l, r] 합을 P[r + 1] − P[l] 하나로 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-pit-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "누적-합",
+        "오버플로"
+      ],
+      "content": {
+        "prompt": "합이 커질 수 있으면 누적 합은 ___비트 정수로 누적한다.",
+        "hint": "32비트의 두 배"
+      },
+      "answer_key": {
+        "accepted": [
+          "64",
+          "육십사"
+        ]
+      },
+      "explanation": "원소를 계속 더하면 32비트 범위를 넘기 쉬우므로 64비트 정수로 누적한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-pit-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "누적-합",
+        "인덱스"
+      ],
+      "content": {
+        "prompt": "[1, 2] 구간 합(답 9)을 구하려 한 코드의 출력은?",
+        "options": [
+          "9",
+          "6",
+          "2"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a = [4, 2, 7]\np = [0]\nfor x in a:\n    p.append(p[-1] + x)\nl, r = 1, 2\nprint(p[r] - p[l])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {4, 2, 7};\nint[] p = new int[a.length + 1];\nfor (int i = 0; i < a.length; i++)\n    p[i + 1] = p[i] + a[i];\nint l = 1, r = 2;\nSystem.out.println(p[r] - p[l]);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [4, 2, 7];\nconst p = [0];\nfor (const x of a) p.push(p[p.length - 1] + x);\nconst l = 1, r = 2;\nconsole.log(p[r] - p[l]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {4, 2, 7};\nvector<int> p(a.size() + 1, 0);\nfor (size_t i = 0; i < a.size(); i++)\n    p[i + 1] = p[i] + a[i];\nint l = 1, r = 2;\ncout << p[r] - p[l];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 2
+          },
+          "java": {
+            "index": 2
+          },
+          "javascript": {
+            "index": 2
+          },
+          "cpp": {
+            "index": 2
+          }
+        }
+      },
+      "explanation": "P = [0, 4, 6, 13]에서 P[2] − P[1] = 2로 a[1]만 더해졌다. 바른 식은 P[r + 1] − P[l] = 13 − 4 = 9다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-pit-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "누적-합",
+        "값-변경"
+      ],
+      "content": {
+        "prompt": "원소 하나가 바뀐 뒤 기존 누적 합 배열은?",
+        "options": [
+          "다시 만들어야 함",
+          "그대로 쓸 수 있음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "바뀐 원소 뒤의 모든 P 값이 달라지므로 그대로 쓸 수 없고 다시 만들어야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-pit-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "누적-합",
+        "값-변경"
+      ],
+      "content": {
+        "prompt": "N = 10⁵, 값이 바뀔 때마다 P를 다시 만들기 10⁵번이면?",
+        "options": [
+          "약 2 × 10⁵번",
+          "약 10¹⁰번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다시 만들 때마다 N번이 들어 10⁵ × 10⁵ = 10¹⁰번이다. 값이 자주 바뀌면 누적 합이 맞지 않다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-pit-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "누적-합",
+        "인덱스"
+      ],
+      "content": {
+        "prompt": "P[0] = 0을 두면 l = 0인 구간도 같은 식으로 구한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "[0, r] 합도 P[r + 1] − P[0]으로 계산되므로 l = 0을 따로 처리할 필요가 없다.",
+      "refs": []
+    }
+  ]
+}

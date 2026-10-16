@@ -1,0 +1,300 @@
+{
+  "track": "ct",
+  "unit": "u05-prefix-two-pointer",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ct-u05-twoptr-cond-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "투-포인터",
+        "단조성"
+      ],
+      "content": {
+        "prompt": "구간을 늘리면 합이 한 방향으로만 변하는 성질은?",
+        "options": [
+          "대칭성",
+          "독립성",
+          "단조성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "단조성은 구간을 늘리면 값이 커지기만 하는 것처럼 한 방향으로만 변하는 성질이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-twoptr-cond-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "투-포인터",
+        "음수"
+      ],
+      "content": {
+        "prompt": "합 조건 투 포인터가 깨지는 배열은?",
+        "options": [
+          "음수가 섞인 배열",
+          "양수만 있는 배열"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "음수가 섞이면 구간을 늘려도 합이 줄 수 있어 포인터를 옮길 방향을 정할 수 없다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-twoptr-cond-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "투-포인터",
+        "대안"
+      ],
+      "content": {
+        "prompt": "음수가 섞인 배열의 구간 합 조건 문제에서 찾을 대안은?",
+        "options": [
+          "누적 합 활용",
+          "투 포인터 그대로"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "음수가 있으면 합 조건 투 포인터가 깨지므로 누적 합 같은 다른 방법을 찾는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-twoptr-cond-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "투-포인터",
+        "단조성"
+      ],
+      "content": {
+        "prompt": "값이 모두 양수면 구간을 늘릴수록 합이 커진다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "양수를 더하면 합이 커지기만 하므로 단조성이 성립해 합 조건 투 포인터를 쓸 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-twoptr-cond-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "투-포인터",
+        "단조성"
+      ],
+      "content": {
+        "prompt": "구간을 늘리면 값이 한 방향으로만 변하는 성질을 ___성이라 한다.",
+        "hint": "한 방향으로만 늘거나 줄어드는 성질"
+      },
+      "answer_key": {
+        "accepted": [
+          "단조",
+          "단조성",
+          "monotonic",
+          "monotonicity"
+        ]
+      },
+      "explanation": "단조성이 있어야 조건이 깨졌을 때 어느 포인터를 옮길지 정할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-twoptr-cond-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "투-포인터",
+        "음수"
+      ],
+      "content": {
+        "prompt": "투 포인터 전에 모든 값이 0 이상인지 확인하도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def can_use(a):\n    return ___(x >= 0 for x in a)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static boolean canUse(int[] a) {\n    return Arrays.stream(a).___(x -> x >= 0);\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function canUse(a) {\n  return a.___((x) => x >= 0);\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "bool canUse(const vector<int>& a) {\n    return ___(a.begin(), a.end(),\n               [](int x) { return x >= 0; });\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "all"
+            ],
+            "explanation": "Python의 all은 모든 원소가 조건을 만족할 때만 True다."
+          },
+          "java": {
+            "accepted": [
+              "allMatch"
+            ],
+            "explanation": "Java 스트림의 allMatch는 모든 원소가 조건을 만족할 때만 true다."
+          },
+          "javascript": {
+            "accepted": [
+              "every"
+            ],
+            "explanation": "JavaScript 배열의 every는 모든 원소가 조건을 만족할 때만 true다."
+          },
+          "cpp": {
+            "accepted": [
+              "all_of",
+              "allof"
+            ],
+            "explanation": "C++의 all_of는 범위의 모든 원소가 조건을 만족할 때만 true다."
+          }
+        }
+      },
+      "explanation": "값이 모두 0 이상이어야 구간을 늘릴 때 합이 줄지 않아 합 조건 투 포인터를 쓸 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-twoptr-cond-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "투-포인터",
+        "단조성"
+      ],
+      "content": {
+        "prompt": "값이 모두 양수인 배열에서 구간을 줄이면 합은?",
+        "options": [
+          "커진다",
+          "줄어든다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "양수 원소를 빼므로 합이 줄어든다. 늘리면 커지고 줄이면 작아지는 단조성이 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-twoptr-cond-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "투-포인터",
+        "음수"
+      ],
+      "content": {
+        "prompt": "구간을 늘리며 합을 출력하면?",
+        "options": [
+          "3 5 9",
+          "3 1 5",
+          "3 2 4"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a = [3, -2, 4]\ns = 0\nfor x in a:\n    s += x\n    print(s, end=' ')"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {3, -2, 4};\nint s = 0;\nfor (int x : a) {\n    s += x;\n    System.out.print(s + \" \");\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [3, -2, 4];\nlet s = 0;\nconst out = [];\nfor (const x of a) out.push((s += x));\nconsole.log(out.join(' '));"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {3, -2, 4};\nint s = 0;\nfor (int x : a) {\n    s += x;\n    cout << s << ' ';\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "3, 3 + (−2) = 1, 1 + 4 = 5다. −2 때문에 구간을 늘렸는데 합이 줄어 단조성이 깨진다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-twoptr-cond-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "투-포인터",
+        "단조성"
+      ],
+      "content": {
+        "prompt": "합 조건 투 포인터를 그대로 쓸 수 있는 배열은?",
+        "options": [
+          "[3, −1, 4, 1]",
+          "[3, 1, 4, 1]"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "[3, 1, 4, 1]은 모두 양수라 단조성이 있다. −1이 섞이면 구간을 늘려도 합이 줄 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-twoptr-cond-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "투-포인터",
+        "음수"
+      ],
+      "content": {
+        "prompt": "음수가 섞여도 합 조건 투 포인터를 그대로 쓸 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "음수가 있으면 구간을 늘려도 합이 줄 수 있어 단조성이 깨진다. 누적 합 같은 다른 방법을 찾는다.",
+      "refs": []
+    }
+  ]
+}
