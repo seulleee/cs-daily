@@ -1,0 +1,340 @@
+{
+  "track": "ct",
+  "unit": "u07-sort-search",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "ct-u07-bsmiss-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "이진-탐색",
+        "무한-루프"
+      ],
+      "content": {
+        "prompt": "lo = mid처럼 범위가 줄지 않는 갱신이 일으키는 문제는?",
+        "options": [
+          "무한 루프",
+          "오버플로",
+          "정렬 오류"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "lo = mid는 lo와 mid가 같을 때 범위가 그대로라 같은 반복이 끝없이 계속된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bsmiss-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "이진-탐색",
+        "정렬-기준"
+      ],
+      "content": {
+        "prompt": "내림차순 배열에 오름차순 이진 탐색을 쓰면?",
+        "options": [
+          "더 빨라진다",
+          "그대로 맞다",
+          "틀린 답이 나온다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "오름차순 탐색은 a[mid] < t면 오른쪽을 보지만 내림차순 배열에서 target은 왼쪽에 있어 엉뚱한 답이 나온다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bsmiss-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "이진-탐색",
+        "무한-루프"
+      ],
+      "content": {
+        "prompt": "닫힌 구간에서 a[mid] < t일 때 lo = mid로 갱신해도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "lo = hi − 1일 때 mid = lo라서 lo = mid로는 범위가 줄지 않아 무한 루프가 된다. lo = mid + 1로 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bsmiss-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "lower-bound",
+        "답-없음"
+      ],
+      "content": {
+        "prompt": "lower bound가 N을 돌려주면 target 이상인 값이 배열에 없다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "N은 마지막 원소 다음 자리라 target 이상인 값이 하나도 없다는 뜻이다. a[N]에 접근하면 안 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bsmiss-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "무한-루프"
+      ],
+      "content": {
+        "prompt": "범위가 줄지 않는 갱신은 무한 ___ 를 만든다."
+      },
+      "answer_key": {
+        "accepted": [
+          "루프",
+          "loop",
+          "반복",
+          "무한루프"
+        ]
+      },
+      "explanation": "lo = mid처럼 범위가 줄지 않으면 같은 상태가 반복되어 무한 루프가 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bsmiss-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "답-없음",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "lower(a, t)는 t 이상인 첫 위치다. 답이 없을 때를 거르는 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def first_at_least(a, t):\n    n = len(a)\n    i = lower(a, t)\n    if i == ___:\n        return -1\n    return a[i]"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static int firstAtLeast(int[] a, int t) {\n    int n = a.length;\n    int i = lower(a, t);\n    if (i == ___) return -1;\n    return a[i];\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function firstAtLeast(a, t) {\n  const n = a.length;\n  const i = lower(a, t);\n  if (i === ___) return -1;\n  return a[i];\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int firstAtLeast(const vector<int>& a, int t) {\n    int n = a.size();\n    int i = lower(a, t);\n    if (i == ___) return -1;\n    return a[i];\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "n"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "n"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "n"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "n"
+            ]
+          }
+        }
+      },
+      "explanation": "lower bound가 n(배열 길이)이면 t 이상인 값이 없으므로 a[i]에 접근하기 전에 따로 처리한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bsmiss-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "정렬-기준",
+        "라이브러리"
+      ],
+      "content": {
+        "prompt": "내림차순 배열에서 7을 찾는다. 출력값은?",
+        "options": [
+          "1",
+          "5",
+          "-1"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from bisect import bisect_left\na = [9, 7, 5, 3, 1]\nprint(bisect_left(a, 7))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {9, 7, 5, 3, 1};\nSystem.out.println(Arrays.binarySearch(a, 7));"
+            },
+            "options": [
+              "1",
+              "-6",
+              "-1"
+            ]
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "// JS에는 표준 이진 탐색이 없어 직접 만든다\nfunction lowerBound(a, t) {\n  let lo = 0, hi = a.length;\n  while (lo < hi) {\n    const mid = (lo + hi) >> 1;\n    if (a[mid] < t) lo = mid + 1;\n    else hi = mid;\n  }\n  return lo;\n}\nconsole.log(lowerBound([9, 7, 5, 3, 1], 7));"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {9, 7, 5, 3, 1};\nauto it = lower_bound(a.begin(), a.end(), 7);\ncout << it - a.begin();"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1,
+            "explanation": "binarySearch가 5, 3, 1을 보고 계속 오른쪽으로 가서 삽입 위치 5로 판단하고 −5 − 1 = −6을 준다. 7은 위치 1에 있지만 찾지 못한다."
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "오름차순 기준 탐색은 a[mid] < 7이면 오른쪽으로만 가서 끝까지 밀려난다. 7의 실제 위치 1을 찾지 못한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bsmiss-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "무한-루프"
+      ],
+      "content": {
+        "prompt": "[1, 3]에서 3을 찾는다. 이 코드의 결과는?",
+        "options": [
+          "0을 출력",
+          "1을 출력",
+          "끝나지 않는다"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a, t = [1, 3], 3\nlo, hi = 0, len(a) - 1\nwhile lo <= hi:\n    mid = (lo + hi) // 2\n    if a[mid] == t:\n        break\n    if a[mid] < t:\n        lo = mid\n    else:\n        hi = mid - 1\nprint(mid)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {1, 3};\nint t = 3, lo = 0, hi = a.length - 1, mid = 0;\nwhile (lo <= hi) {\n    mid = lo + (hi - lo) / 2;\n    if (a[mid] == t) break;\n    if (a[mid] < t) lo = mid;\n    else hi = mid - 1;\n}\nSystem.out.println(mid);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [1, 3], t = 3;\nlet lo = 0, hi = a.length - 1, mid = 0;\nwhile (lo <= hi) {\n  mid = Math.floor((lo + hi) / 2);\n  if (a[mid] === t) break;\n  if (a[mid] < t) lo = mid;\n  else hi = mid - 1;\n}\nconsole.log(mid);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {1, 3};\nint t = 3, lo = 0, hi = 1, mid = 0;\nwhile (lo <= hi) {\n    mid = lo + (hi - lo) / 2;\n    if (a[mid] == t) break;\n    if (a[mid] < t) lo = mid;\n    else hi = mid - 1;\n}\ncout << mid;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 2
+          },
+          "java": {
+            "index": 2
+          },
+          "javascript": {
+            "index": 2
+          },
+          "cpp": {
+            "index": 2
+          }
+        }
+      },
+      "explanation": "mid = 0에서 a[0] = 1 < 3이라 lo = mid = 0이 되어 범위가 줄지 않는다. 같은 반복이 끝없이 계속된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bsmiss-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "답-없음"
+      ],
+      "content": {
+        "prompt": "lower bound로 찾은 i가 N인데 a[i]를 읽으면?",
+        "options": [
+          "0을 읽는다",
+          "범위 밖 접근",
+          "마지막 값을 읽는다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "i = N은 배열 끝 다음 자리라 a[N]은 범위 밖 접근이다. 답이 없는 경우로 따로 처리해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bsmiss-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "무한-루프",
+        "닫힌-구간"
+      ],
+      "content": {
+        "prompt": "닫힌 구간에서 a[mid] < t일 때 범위가 확실히 줄어드는 갱신은?",
+        "options": [
+          "lo = mid",
+          "lo = mid + 1",
+          "hi = mid"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "lo = mid + 1은 mid를 범위에서 빼므로 매번 범위가 줄어든다. lo = mid는 줄지 않을 수 있다.",
+      "refs": []
+    }
+  ]
+}

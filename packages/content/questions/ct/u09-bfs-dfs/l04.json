@@ -1,0 +1,292 @@
+{
+  "track": "ct",
+  "unit": "u09-bfs-dfs",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ct-u09-bfsdist-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "최단-거리",
+        "bfs"
+      ],
+      "content": {
+        "prompt": "간선 비용이 모두 같을 때 최단 거리를 구하는 탐색은?",
+        "options": [
+          "DFS",
+          "BFS",
+          "이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "간선 비용이 같으면 BFS가 가까운 정점부터 차례로 방문해, 처음 도달한 거리가 최단 거리다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfsdist-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "거리-배열"
+      ],
+      "content": {
+        "prompt": "BFS 거리 배열에서 아직 방문하지 않은 정점의 값은?",
+        "options": [
+          "-1",
+          "0",
+          "1"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "미방문을 −1로 두면 거리 배열이 방문 배열 역할도 한다. 0은 시작점의 거리다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfsdist-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "최단-거리"
+      ],
+      "content": {
+        "prompt": "간선 비용이 서로 달라도 BFS가 처음 도달한 거리가 최소이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "BFS는 간선 개수 기준으로 퍼진다. 비용이 서로 다르면 간선이 많은 경로가 더 짧을 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfsdist-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "거리-배열",
+        "도달-불가"
+      ],
+      "content": {
+        "prompt": "BFS가 끝난 뒤 dist가 −1이면 그 정점에는 갈 수 없다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "시작점에서 이어진 정점은 모두 거리가 채워진다. 끝까지 −1이면 도달할 수 없는 정점이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfsdist-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "거리-배열"
+      ],
+      "content": {
+        "prompt": "BFS에서 dist[다음] = dist[현재] + ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "1",
+          "일",
+          "하나"
+        ]
+      },
+      "explanation": "간선 하나를 지날 때마다 거리가 1 늘어나므로 다음 정점의 거리는 현재 거리 + 1이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfsdist-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "거리-배열",
+        "bfs"
+      ],
+      "content": {
+        "prompt": "BFS로 거리 배열을 채운다. 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "dist = [-1] * n\ndist[s] = 0\nq = deque([s])\nwhile q:\n    x = q.popleft()\n    for y in g[x]:\n        if dist[y] == -1:\n            dist[y] = dist[___] + 1\n            q.append(y)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] dist = new int[n];\nArrays.fill(dist, -1); dist[s] = 0;\nDeque<Integer> q = new ArrayDeque<>();\nq.add(s);\nwhile (!q.isEmpty()) {\n    int x = q.poll();\n    for (int y : g[x]) {\n        if (dist[y] != -1) continue;\n        dist[y] = dist[___] + 1;\n        q.add(y);\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const dist = Array(n).fill(-1);\ndist[s] = 0;\nconst q = [s];\nfor (let h = 0; h < q.length; h++) {\n  const x = q[h];\n  for (const y of g[x]) {\n    if (dist[y] !== -1) continue;\n    dist[y] = dist[___] + 1;\n    q.push(y);\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> dist(n, -1);\ndist[s] = 0;\nqueue<int> q;\nq.push(s);\nwhile (!q.empty()) {\n    int x = q.front(); q.pop();\n    for (int y : g[x]) {\n        if (dist[y] != -1) continue;\n        dist[y] = dist[___] + 1;\n        q.push(y);\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "x"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "x"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "x"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "x"
+            ]
+          }
+        }
+      },
+      "explanation": "y는 지금 꺼낸 x에서 간선 하나로 처음 닿았으므로 dist[y] = dist[x] + 1이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfsdist-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "최단-거리",
+        "추적"
+      ],
+      "content": {
+        "prompt": "0에서 BFS로 정점 3까지의 거리를 출력한다. 출력값은?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from collections import deque\ng = [[1, 2], [0, 2], [0, 1, 3], [2]]\ndist = [0, -1, -1, -1]\nq = deque([0])\nwhile q:\n    x = q.popleft()\n    for y in g[x]:\n        if dist[y] == -1:\n            dist[y] = dist[x] + 1\n            q.append(y)\nprint(dist[3])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[][] g = {{1, 2}, {0, 2}, {0, 1, 3}, {2}};\nint[] dist = {0, -1, -1, -1};\nDeque<Integer> q = new ArrayDeque<>();\nq.add(0);\nwhile (!q.isEmpty()) {\n    int x = q.poll();\n    for (int y : g[x]) {\n        if (dist[y] != -1) continue;\n        dist[y] = dist[x] + 1; q.add(y);\n    }\n}\nSystem.out.println(dist[3]);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const g = [[1, 2], [0, 2], [0, 1, 3], [2]];\nconst dist = [0, -1, -1, -1];\nconst q = [0];\nfor (let h = 0; h < q.length; h++) {\n  const x = q[h];\n  for (const y of g[x]) {\n    if (dist[y] !== -1) continue;\n    dist[y] = dist[x] + 1; q.push(y);\n  }\n}\nconsole.log(dist[3]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> g[] =\n    {{1, 2}, {0, 2}, {0, 1, 3}, {2}};\nvector<int> dist = {0, -1, -1, -1};\nqueue<int> q({0});\nwhile (!q.empty()) {\n    int x = q.front(); q.pop();\n    for (int y : g[x]) {\n        if (dist[y] != -1) continue;\n        dist[y] = dist[x] + 1; q.push(y);\n    }\n}\ncout << dist[3];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "0의 이웃 1, 2가 거리 1이고, 2의 이웃 3이 거리 2다. 0 → 2 → 3이 최단 경로다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfsdist-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "도달-불가"
+      ],
+      "content": {
+        "prompt": "BFS 후 dist가 [0, 1, −1, 2]이다. 정점 2는?",
+        "options": [
+          "거리 1",
+          "시작점",
+          "갈 수 없다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "dist가 끝까지 −1로 남은 정점은 시작점에서 도달하지 못한 것이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfsdist-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "최단-거리"
+      ],
+      "content": {
+        "prompt": "BFS로 처음 도달한 거리가 최소가 되는 조건은?",
+        "options": [
+          "정점 수가 짝수",
+          "간선 비용이 모두 같다",
+          "그래프가 격자다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "간선 비용이 모두 같아야 간선 개수가 곧 거리라서 BFS가 처음 닿은 거리가 최소다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfsdist-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "최단-거리",
+        "bfs"
+      ],
+      "content": {
+        "prompt": "가중치 없는 그래프에서 두 정점의 최단 거리를 구할 방법은?",
+        "options": [
+          "BFS",
+          "DFS 첫 경로",
+          "정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가중치가 없으면 모든 간선 비용이 같으므로 BFS 거리 배열로 최단 거리를 구한다.",
+      "refs": []
+    }
+  ]
+}

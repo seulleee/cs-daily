@@ -1,0 +1,292 @@
+{
+  "track": "ct",
+  "unit": "u09-bfs-dfs",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ct-u09-dfstpl-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dfs"
+      ],
+      "content": {
+        "prompt": "한 이웃으로 끝까지 들어갔다가 막히면 돌아오는 탐색은?",
+        "options": [
+          "BFS",
+          "이진 탐색",
+          "DFS"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DFS는 한 이웃으로 갈 수 있는 데까지 깊이 들어가고, 막히면 돌아와 다음 이웃으로 간다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-dfstpl-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dfs",
+        "구현"
+      ],
+      "content": {
+        "prompt": "DFS를 구현하는 두 방법은?",
+        "options": [
+          "재귀·명시적 스택",
+          "큐·거리 배열",
+          "정렬·이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DFS는 재귀 호출로 짜거나, 명시적 스택에 정점을 쌓고 꺼내는 반복문으로 짠다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-dfstpl-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dfs",
+        "bfs"
+      ],
+      "content": {
+        "prompt": "DFS는 시작점에서 가까운 정점부터 차례로 방문한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "가까운 정점부터 차례로 방문하는 것은 BFS다. DFS는 한 방향으로 끝까지 들어간다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-dfstpl-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "재귀-깊이"
+      ],
+      "content": {
+        "prompt": "격자 10⁶칸에서 재귀 DFS는 재귀 깊이 한도를 넘을 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "칸이 한 줄로 이어지면 재귀가 10⁶ 깊이까지 쌓여 한도를 넘는다. 스택 방식이나 BFS를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-dfstpl-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dfs",
+        "구현"
+      ],
+      "content": {
+        "prompt": "재귀 대신 명시적 ___ 으로 DFS를 구현할 수 있다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스택",
+          "stack"
+        ]
+      },
+      "explanation": "재귀 호출이 쌓이는 대신 정점을 명시적 스택에 넣고 꺼내며 같은 순서로 탐색할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-dfstpl-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dfs",
+        "재귀"
+      ],
+      "content": {
+        "prompt": "재귀로 DFS를 짠다. 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def dfs(x):\n    seen[x] = True\n    order.append(x)\n    for y in g[x]:\n        if not seen[y]:\n            ___(y)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static void dfs(int x) {\n    seen[x] = true;\n    order.add(x);\n    for (int y : g[x])\n        if (!seen[y]) ___(y);\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function dfs(x) {\n  seen[x] = true;\n  order.push(x);\n  for (const y of g[x])\n    if (!seen[y]) ___(y);\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "void dfs(int x) {\n    seen[x] = true;\n    order.push_back(x);\n    for (int y : g[x])\n        if (!seen[y]) ___(y);\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "dfs"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "dfs"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "dfs"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "dfs"
+            ]
+          }
+        }
+      },
+      "explanation": "방문 안 한 이웃 y에서 같은 함수를 다시 불러 끝까지 들어간다. 돌아오면 다음 이웃으로 넘어간다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-dfstpl-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dfs",
+        "스택"
+      ],
+      "content": {
+        "prompt": "명시적 스택으로 0부터 DFS한다. 출력값은?",
+        "options": [
+          "0 1 2 3",
+          "0 2 1 3",
+          "0 1 3 2"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "g = [[1, 2], [0, 3], [0], [1]]\nseen = [False] * 4\nstack, order = [0], []\nwhile stack:\n    x = stack.pop()\n    if seen[x]: continue\n    seen[x] = True\n    order.append(x)\n    for y in g[x]:\n        if not seen[y]:\n            stack.append(y)\nprint(*order)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[][] g = {{1, 2}, {0, 3}, {0}, {1}};\nboolean[] seen = new boolean[4];\nDeque<Integer> st = new ArrayDeque<>();\nst.push(0);\nwhile (!st.isEmpty()) {\n    int x = st.pop();\n    if (seen[x]) continue;\n    seen[x] = true;\n    System.out.print(x + \" \");\n    for (int y : g[x])\n        if (!seen[y]) st.push(y);\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const g = [[1, 2], [0, 3], [0], [1]];\nconst seen = Array(4).fill(false);\nconst st = [0], order = [];\nwhile (st.length) {\n  const x = st.pop();\n  if (seen[x]) continue;\n  seen[x] = true;\n  order.push(x);\n  for (const y of g[x])\n    if (!seen[y]) st.push(y);\n}\nconsole.log(order.join(' '));"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> g[] = {{1, 2}, {0, 3}, {0}, {1}};\nvector<bool> seen(4);\nstack<int> st;\nst.push(0);\nwhile (!st.empty()) {\n    int x = st.top(); st.pop();\n    if (seen[x]) continue;\n    seen[x] = true;\n    cout << x << ' ';\n    for (int y : g[x])\n        if (!seen[y]) st.push(y);\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "0을 꺼내 1, 2를 쌓으면 나중에 넣은 2가 먼저 나온다. 그다음 1, 그리고 1의 이웃 3 순서다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-dfstpl-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "재귀-깊이"
+      ],
+      "content": {
+        "prompt": "1000 × 1000 격자에서 재귀 DFS 대신 고려할 것은?",
+        "options": [
+          "재귀 그대로",
+          "스택 방식이나 BFS",
+          "이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "10⁶칸이면 재귀 깊이 한도를 넘을 수 있어 명시적 스택 DFS나 BFS로 바꾼다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-dfstpl-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dfs",
+        "추적"
+      ],
+      "content": {
+        "prompt": "간선 0-1, 1-2, 0-3에서 0부터 재귀 DFS(작은 번호 먼저) 순서는?",
+        "options": [
+          "0 1 2 3",
+          "0 1 3 2",
+          "0 3 1 2"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "0 → 1로 들어가 1의 이웃 2까지 끝까지 간 뒤, 돌아와 0의 다음 이웃 3을 방문한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-dfstpl-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dfs"
+      ],
+      "content": {
+        "prompt": "DFS가 다음 이웃으로 넘어가는 때는?",
+        "options": [
+          "처음부터 바로",
+          "이웃을 큐에 다 넣은 뒤",
+          "막혀서 돌아왔을 때"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DFS는 한 이웃으로 끝까지 들어갔다가 더 갈 곳이 없어 돌아오면 다음 이웃으로 넘어간다.",
+      "refs": []
+    }
+  ]
+}
