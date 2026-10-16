@@ -1,0 +1,300 @@
+{
+  "track": "ct",
+  "unit": "u11-dp",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ct-u11-knapsack-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "knapsack"
+      ],
+      "content": {
+        "prompt": "무게 한도 안에서 물건마다 고르거나 말거나 해 가치 합을 최대로 하는 문제는?",
+        "options": [
+          "N-Queen",
+          "격자 경로",
+          "0/1 배낭"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "0/1 배낭은 물건마다 넣거나(1) 안 넣거나(0) 골라 무게 한도 안에서 가치 합을 최대로 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-knapsack-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "knapsack",
+        "state"
+      ],
+      "content": {
+        "prompt": "1차원 배낭에서 dp[w]의 뜻은?",
+        "options": [
+          "한도 w의 최대 가치",
+          "물건 w개의 가치",
+          "무게 w인 물건 수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "dp[w]는 무게 한도가 w일 때 얻을 수 있는 최대 가치다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-knapsack-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "knapsack",
+        "order"
+      ],
+      "content": {
+        "prompt": "0/1 배낭의 1차원 dp는 w를 작은 쪽부터 돈다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "작은 쪽부터 돌면 방금 갱신한 값을 다시 써 같은 물건이 두 번 들어간다. 큰 쪽부터 돈다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-knapsack-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "knapsack",
+        "order"
+      ],
+      "content": {
+        "prompt": "w를 작은 쪽부터 돌면 같은 물건을 두 번 쓸 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "작은 w에서 이 물건을 넣어 갱신한 값을 큰 w에서 다시 참조해 같은 물건이 두 번 들어간다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-knapsack-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "knapsack"
+      ],
+      "content": {
+        "prompt": "물건을 넣을 때 더하는 빈칸의 값은?",
+        "hint": "물건 하나의 가치를 담은 변수",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "dp = [0] * (W + 1)\nfor wt, val in items:\n    for w in range(W, wt - 1, -1):\n        dp[w] = max(dp[w], dp[w - wt] + ___)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] dp = new int[W + 1];\nfor (int[] it : items) {\n    int wt = it[0], val = it[1];\n    for (int w = W; w >= wt; w--)\n        dp[w] = Math.max(dp[w],\n                dp[w - wt] + ___);\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const dp = new Array(W + 1).fill(0);\nfor (const [wt, val] of items) {\n  for (let w = W; w >= wt; w--) {\n    dp[w] = Math.max(dp[w], dp[w - wt] + ___);\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> dp(W + 1);\nfor (auto [wt, val] : items)\n    for (int w = W; w >= wt; w--)\n        dp[w] = max(dp[w], dp[w - wt] + ___);"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "val"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "val"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "val"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "val"
+            ]
+          }
+        }
+      },
+      "explanation": "물건을 넣으면 무게 wt를 쓴 dp[w − wt]에 그 물건의 가치 val을 더한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-knapsack-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "knapsack",
+        "order"
+      ],
+      "content": {
+        "prompt": "0/1 배낭의 1차원 dp는 w를 ___으로 돌며 갱신한다.",
+        "hint": "큰 값에서 작은 값으로 가는 순서"
+      },
+      "answer_key": {
+        "accepted": [
+          "역순",
+          "내림차순",
+          "큰 쪽부터",
+          "거꾸로"
+        ]
+      },
+      "explanation": "w를 큰 쪽부터 역순으로 돌아야 이번 물건으로 갱신한 값을 다시 참조하지 않아 같은 물건을 한 번만 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-knapsack-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "knapsack",
+        "order"
+      ],
+      "content": {
+        "prompt": "w를 작은 쪽부터 돈 이 코드의 출력은?",
+        "options": [
+          "3",
+          "6",
+          "0"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "W, wt, val = 4, 2, 3\ndp = [0] * (W + 1)\nfor w in range(wt, W + 1):\n    dp[w] = max(dp[w], dp[w - wt] + val)\nprint(dp[W])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int W = 4, wt = 2, val = 3;\nint[] dp = new int[W + 1];\nfor (int w = wt; w <= W; w++)\n    dp[w] = Math.max(dp[w], dp[w - wt] + val);\nSystem.out.println(dp[W]);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const W = 4, wt = 2, val = 3;\nconst dp = new Array(W + 1).fill(0);\nfor (let w = wt; w <= W; w++) {\n  dp[w] = Math.max(dp[w], dp[w - wt] + val);\n}\nconsole.log(dp[W]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int W = 4, wt = 2, val = 3;\nvector<int> dp(W + 1);\nfor (int w = wt; w <= W; w++)\n    dp[w] = max(dp[w], dp[w - wt] + val);\ncout << dp[W];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "dp[2]에 물건을 넣은 값 3을 dp[4]에서 다시 써 같은 물건이 두 번 들어간 6이 된다. 역순이면 3이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-knapsack-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "knapsack"
+      ],
+      "content": {
+        "prompt": "한도 5, 물건 (무게 2, 가치 3)·(무게 3, 가치 4). 최대 가치는?",
+        "options": [
+          "7",
+          "4",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "두 물건의 무게 합이 5로 한도 안이므로 둘 다 넣어 3 + 4 = 7이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-knapsack-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "knapsack",
+        "cost"
+      ],
+      "content": {
+        "prompt": "물건 N개, 한도 W인 1차원 배낭의 계산은 대략?",
+        "options": [
+          "N + W번",
+          "N × W번",
+          "2의 N제곱번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "물건마다 w를 W부터 한 번씩 도므로 약 N × W번 계산한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-knapsack-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "knapsack"
+      ],
+      "content": {
+        "prompt": "0/1 배낭의 '0/1'이 뜻하는 것은?",
+        "options": [
+          "무게가 0 또는 1",
+          "고르거나 말거나",
+          "가치가 0 또는 1"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "물건마다 넣지 않거나(0) 넣거나(1) 둘 중 하나만 고른다는 뜻이다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,341 @@
+{
+  "track": "ct",
+  "unit": "u11-dp",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "ct-u11-dp-1d-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "1d-dp"
+      ],
+      "content": {
+        "prompt": "dp[i] = dp[i − 1] + dp[i − 2] 꼴의 점화식은?",
+        "options": [
+          "고르기형",
+          "격자형",
+          "계단형"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "계단형은 직전 몇 칸의 값을 더해 dp[i]를 구하는 1차원 DP다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-1d-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "1d-dp"
+      ],
+      "content": {
+        "prompt": "이웃한 두 원소를 함께 못 고르는 최대 합 문제는?",
+        "options": [
+          "계단형",
+          "고르기형",
+          "격자형"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "고르기형은 a[i]를 고르면 dp[i − 2]에, 안 고르면 dp[i − 1]에 기대 dp[i]를 구한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-1d-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "memory"
+      ],
+      "content": {
+        "prompt": "dp[i]가 직전 두 칸만 보면 필요한 저장 공간은?",
+        "options": [
+          "변수 몇 개",
+          "크기 N 배열 둘"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "직전 두 칸만 참조하므로 크기 N 배열 대신 변수 몇 개만 두고 갱신하면 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-1d-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "1d-dp"
+      ],
+      "content": {
+        "prompt": "고르기형에서 dp[i − 1]은 a[i]를 고르는 경우다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "dp[i − 1]은 a[i]를 고르지 않는 경우다. a[i]를 고르면 이웃을 못 고르므로 dp[i − 2] + a[i]가 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-1d-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "1d-dp"
+      ],
+      "content": {
+        "prompt": "고르기형 점화식에서 빈칸의 함수는?",
+        "hint": "두 값 중 큰 값을 고르는 함수",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "dp = [0] * n\ndp[0] = a[0]\ndp[1] = max(a[0], a[1])\nfor i in range(2, n):\n    take = dp[i - 2] + a[i]\n    dp[i] = ___(dp[i - 1], take)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] dp = new int[n];\ndp[0] = a[0];\ndp[1] = Math.max(a[0], a[1]);\nfor (int i = 2; i < n; i++) {\n    int take = dp[i - 2] + a[i];\n    dp[i] = Math.___(dp[i - 1], take);\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const dp = new Array(n).fill(0);\ndp[0] = a[0];\ndp[1] = Math.max(a[0], a[1]);\nfor (let i = 2; i < n; i++) {\n  const take = dp[i - 2] + a[i];\n  dp[i] = Math.___(dp[i - 1], take);\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> dp(n);\ndp[0] = a[0];\ndp[1] = max(a[0], a[1]);\nfor (int i = 2; i < n; i++) {\n    int take = dp[i - 2] + a[i];\n    dp[i] = ___(dp[i - 1], take);\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "max"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "max"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "max"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "max"
+            ]
+          }
+        }
+      },
+      "explanation": "a[i]를 고르지 않는 dp[i − 1]과 고르는 dp[i − 2] + a[i] 중 큰 값을 dp[i]로 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-1d-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "memory"
+      ],
+      "content": {
+        "prompt": "변수 두 개로 줄인 계단형에서 빈칸의 변수는?",
+        "hint": "이번 반복에서 새로 구한 값",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "prev2, prev1 = 1, 1\nfor i in range(2, n + 1):\n    cur = prev1 + prev2\n    prev2 = prev1\n    prev1 = ___\nprint(prev1)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long prev2 = 1, prev1 = 1;\nfor (int i = 2; i <= n; i++) {\n    long cur = prev1 + prev2;\n    prev2 = prev1;\n    prev1 = ___;\n}\nSystem.out.println(prev1);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let prev2 = 1, prev1 = 1;\nfor (let i = 2; i <= n; i++) {\n  const cur = prev1 + prev2;\n  prev2 = prev1;\n  prev1 = ___;\n}\nconsole.log(prev1);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long prev2 = 1, prev1 = 1;\nfor (int i = 2; i <= n; i++) {\n    long long cur = prev1 + prev2;\n    prev2 = prev1;\n    prev1 = ___;\n}\ncout << prev1;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "cur"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "cur"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "cur"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "cur"
+            ]
+          }
+        }
+      },
+      "explanation": "새로 구한 cur가 다음 반복의 직전 값 prev1이 된다. 직전 두 칸만 보므로 배열이 필요 없다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-1d-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "1d-dp"
+      ],
+      "content": {
+        "prompt": "a = [5, 1, 3]에서 이웃을 함께 못 고를 때 최대 합은?",
+        "options": [
+          "6",
+          "9",
+          "8"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "이웃하지 않은 5와 3을 고르면 8이다. 5와 1, 1과 3은 이웃이라 함께 고를 수 없다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-1d-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "trace"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "11",
+          "12",
+          "10"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a = [2, 7, 9, 3]\ndp = [0] * 4\ndp[0] = a[0]\ndp[1] = max(a[0], a[1])\nfor i in range(2, 4):\n    take = dp[i - 2] + a[i]\n    dp[i] = max(dp[i - 1], take)\nprint(dp[3])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {2, 7, 9, 3};\nint[] dp = new int[4];\ndp[0] = a[0];\ndp[1] = Math.max(a[0], a[1]);\nfor (int i = 2; i < 4; i++) {\n    int take = dp[i - 2] + a[i];\n    dp[i] = Math.max(dp[i - 1], take);\n}\nSystem.out.println(dp[3]);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [2, 7, 9, 3];\nconst dp = new Array(4).fill(0);\ndp[0] = a[0];\ndp[1] = Math.max(a[0], a[1]);\nfor (let i = 2; i < 4; i++) {\n  const take = dp[i - 2] + a[i];\n  dp[i] = Math.max(dp[i - 1], take);\n}\nconsole.log(dp[3]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {2, 7, 9, 3};\nvector<int> dp(4);\ndp[0] = a[0];\ndp[1] = max(a[0], a[1]);\nfor (int i = 2; i < 4; i++) {\n    int take = dp[i - 2] + a[i];\n    dp[i] = max(dp[i - 1], take);\n}\ncout << dp[3];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "dp는 2, 7, 11, 11로 채워진다. 2와 9를 고른 11이 최대다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-1d-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "1d-dp"
+      ],
+      "content": {
+        "prompt": "1칸·2칸씩 오른다. dp[0] = dp[1] = 1이면 dp[3]은?",
+        "options": [
+          "2",
+          "4",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "dp[2] = 1 + 1 = 2이고 dp[3] = dp[2] + dp[1] = 2 + 1 = 3이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-1d-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "1d-dp"
+      ],
+      "content": {
+        "prompt": "계단형은 직전 몇 칸의 dp 값을 더해 dp[i]를 구한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "계단형은 dp[i] = dp[i − 1] + dp[i − 2]처럼 직전 몇 칸의 값을 더한다.",
+      "refs": []
+    }
+  ]
+}

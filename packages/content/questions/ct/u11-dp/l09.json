@@ -1,0 +1,337 @@
+{
+  "track": "ct",
+  "unit": "u11-dp",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "ct-u11-dp-mix-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "state"
+      ],
+      "content": {
+        "prompt": "DP 풀이에서 가장 먼저 할 일은?",
+        "options": [
+          "점화식 쓰기",
+          "상태 정의",
+          "메모리 확인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "dp 한 칸의 뜻을 한 문장으로 정하는 상태 정의가 먼저다. 점화식과 초기값은 그 뒤에 세운다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-mix-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "top-down"
+      ],
+      "content": {
+        "prompt": "재귀 + 메모이제이션으로 구현하는 방식은?",
+        "options": [
+          "상향식",
+          "그리디",
+          "하향식"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "하향식은 재귀로 큰 상태에서 내려가며 계산한 값을 메모해 둔다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-mix-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "cost"
+      ],
+      "content": {
+        "prompt": "상태 N × M개, 상태당 전이 비용 K면 시간 비용은?",
+        "options": [
+          "N × M × K",
+          "N + M + K",
+          "N × M"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DP 비용은 상태 수 × 전이 비용이므로 N × M × K다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-mix-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "base-case"
+      ],
+      "content": {
+        "prompt": "초기값은 가장 큰 상태부터 채운다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "초기값은 점화식이 참조하는 가장 작은 상태를 먼저 채운다. 그 뒤 작은 상태에서 큰 상태로 계산한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-mix-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "base-case"
+      ],
+      "content": {
+        "prompt": "1·2·3칸씩 오를 때 dp[2]의 초기값 빈칸은?",
+        "hint": "2칸을 오르는 방법의 가짓수",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "dp = [0] * (n + 1)\ndp[0], dp[1], dp[2] = 1, 1, ___\nfor i in range(3, n + 1):\n    dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3]"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] dp = new int[n + 1];\ndp[0] = 1;\ndp[1] = 1;\ndp[2] = ___;\nfor (int i = 3; i <= n; i++)\n    dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const dp = new Array(n + 1).fill(0);\ndp[0] = 1;\ndp[1] = 1;\ndp[2] = ___;\nfor (let i = 3; i <= n; i++) {\n  dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> dp(n + 1);\ndp[0] = 1;\ndp[1] = 1;\ndp[2] = ___;\nfor (int i = 3; i <= n; i++)\n    dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "2"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "2"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "2"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "2"
+            ]
+          }
+        }
+      },
+      "explanation": "2칸까지 오르는 방법은 1+1, 2 두 가지다. 점화식이 세 칸 앞까지 보므로 dp[0]~dp[2]를 먼저 채운다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-mix-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "cost"
+      ],
+      "content": {
+        "prompt": "DP 시간 비용은 상태 수 × ___ 비용으로 어림한다.",
+        "hint": "상태 하나를 구할 때 드는 일"
+      },
+      "answer_key": {
+        "accepted": [
+          "전이",
+          "계산",
+          "상태 계산"
+        ]
+      },
+      "explanation": "상태마다 한 번씩 계산하므로 상태 수에 상태 하나를 계산하는 전이 비용을 곱한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-mix-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "trace"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "5",
+          "8",
+          "7"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "dp = [0] * 5\ndp[0], dp[1], dp[2] = 1, 1, 2\nfor i in range(3, 5):\n    dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3]\nprint(dp[4])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] dp = new int[5];\ndp[0] = 1;\ndp[1] = 1;\ndp[2] = 2;\nfor (int i = 3; i < 5; i++)\n    dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];\nSystem.out.println(dp[4]);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const dp = new Array(5).fill(0);\ndp[0] = 1;\ndp[1] = 1;\ndp[2] = 2;\nfor (let i = 3; i < 5; i++) {\n  dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];\n}\nconsole.log(dp[4]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> dp(5);\ndp[0] = 1;\ndp[1] = 1;\ndp[2] = 2;\nfor (int i = 3; i < 5; i++)\n    dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];\ncout << dp[4];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 2
+          },
+          "java": {
+            "index": 2
+          },
+          "javascript": {
+            "index": 2
+          },
+          "cpp": {
+            "index": 2
+          }
+        }
+      },
+      "explanation": "dp[3] = 2 + 1 + 1 = 4이고 dp[4] = 4 + 2 + 1 = 7이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-mix-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "top-down"
+      ],
+      "content": {
+        "prompt": "이 코드의 DP 구현 방식은?",
+        "options": [
+          "상향식",
+          "하향식"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "memo = [-1] * 100\ndef f(i):\n    if i <= 1:\n        return 1\n    if memo[i] == -1:\n        memo[i] = f(i - 1) + f(i - 2)\n    return memo[i]"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "Long[] memo = new Long[100];\nlong f(int i) {\n    if (i <= 1) return 1;\n    if (memo[i] == null)\n        memo[i] = f(i - 1) + f(i - 2);\n    return memo[i];\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const memo = new Array(100).fill(-1);\nfunction f(i) {\n  if (i <= 1) return 1;\n  if (memo[i] === -1) {\n    memo[i] = f(i - 1) + f(i - 2);\n  }\n  return memo[i];\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<long long> memo(100, -1);\nlong long f(int i) {\n    if (i <= 1) return 1;\n    if (memo[i] == -1)\n        memo[i] = f(i - 1) + f(i - 2);\n    return memo[i];\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "재귀로 큰 상태에서 내려가며 아직 계산하지 않은 칸만 계산해 메모하므로 하향식이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-mix-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "memory"
+      ],
+      "content": {
+        "prompt": "dp[5000][5000], 원소 4바이트면 메모리는 약?",
+        "options": [
+          "100MB",
+          "10MB",
+          "1GB"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "상태가 2500만 개이고 하나에 4바이트이므로 약 10⁸바이트, 100MB다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-mix-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "state"
+      ],
+      "content": {
+        "prompt": "DP는 상태 정의 → 점화식 → 초기값 순으로 세운다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "dp 한 칸의 뜻을 먼저 정해야 점화식을 세울 수 있고, 점화식이 참조하는 가장 작은 상태가 초기값이 된다.",
+      "refs": []
+    }
+  ]
+}

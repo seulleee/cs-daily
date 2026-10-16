@@ -1,0 +1,339 @@
+{
+  "track": "ct",
+  "unit": "u10-backtracking",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ct-u10-bt-tpl-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "template"
+      ],
+      "content": {
+        "prompt": "백트래킹 템플릿의 순서는?",
+        "options": [
+          "재귀→선택→취소",
+          "선택→재귀→취소",
+          "취소→선택→재귀"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "상태를 바꾸는 선택, 그 상태로 재귀 호출, 돌아와서 원래대로 되돌리는 취소 순서다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-bt-tpl-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "template"
+      ],
+      "content": {
+        "prompt": "고른 개수가 목표에 닿으면 하는 일은?",
+        "options": [
+          "결과 기록 후 반환",
+          "선택 하나 더",
+          "처음부터 다시"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "종료 조건에 닿으면 지금 결과를 기록하고 반환한다. 더 고르지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-bt-tpl-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "template"
+      ],
+      "content": {
+        "prompt": "재귀 호출 뒤 상태를 원래대로 돌리는 단계는?",
+        "options": [
+          "선택",
+          "취소",
+          "종료 조건"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "재귀에서 돌아온 뒤 바꿨던 상태를 되돌리는 단계가 취소다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-bt-tpl-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "bug"
+      ],
+      "content": {
+        "prompt": "취소를 빠뜨리면 다음 분기에 이전 선택이 남는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "바꾼 상태를 되돌리지 않으면 다음 분기가 이전 선택이 남은 상태에서 시작한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-bt-tpl-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "template"
+      ],
+      "content": {
+        "prompt": "목표 개수에 닿은 뒤 빈칸에 들어갈 키워드는?",
+        "hint": "함수를 끝내고 호출한 곳으로 돌아가는 키워드",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def go(path, k):\n    if len(path) == k:\n        print(*path)\n        ___\n    for x in range(2):\n        path.append(x)\n        go(path, k)\n        path.pop()"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "void go(List<Integer> path, int k) {\n    if (path.size() == k) {\n        System.out.println(path);\n        ___;\n    }\n    for (int x = 0; x < 2; x++) {\n        path.add(x);\n        go(path, k);\n        path.remove(path.size() - 1);\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function go(path, k) {\n  if (path.length === k) {\n    console.log(path.join(' '));\n    ___;\n  }\n  for (let x = 0; x < 2; x++) {\n    path.push(x);\n    go(path, k);\n    path.pop();\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "void go(vector<int>& path, int k) {\n    if ((int)path.size() == k) {\n        for (int x : path) cout << x << ' ';\n        cout << '\\n';\n        ___;\n    }\n    for (int x = 0; x < 2; x++) {\n        path.push_back(x);\n        go(path, k);\n        path.pop_back();\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "return"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "return"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "return"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "return"
+            ]
+          }
+        }
+      },
+      "explanation": "결과를 기록한 뒤 return으로 반환해야 목표 개수를 넘겨 더 고르지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-bt-tpl-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "backtracking",
+        "template"
+      ],
+      "content": {
+        "prompt": "선택 → 재귀 → ___ 순서로 백트래킹을 짠다.",
+        "hint": "재귀에서 돌아온 뒤 하는 일"
+      },
+      "answer_key": {
+        "accepted": [
+          "취소",
+          "되돌리기",
+          "원상 복구",
+          "undo"
+        ]
+      },
+      "explanation": "재귀에서 돌아오면 바꿨던 상태를 원래대로 되돌리는 취소를 해야 다음 분기가 깨끗하게 시작한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-bt-tpl-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "backtracking",
+        "template"
+      ],
+      "content": {
+        "prompt": "빈칸 줄이 해야 할 일은?",
+        "options": [
+          "결과 기록",
+          "선택 취소",
+          "종료 조건 검사"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def go(path):\n    if len(path) == 2:\n        print(*path)\n        return\n    for x in (1, 2):\n        path.append(x)\n        go(path)\n        ___"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "void go(List<Integer> path) {\n    if (path.size() == 2) {\n        System.out.println(path);\n        return;\n    }\n    for (int x = 1; x <= 2; x++) {\n        path.add(x);\n        go(path);\n        ___\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function go(path) {\n  if (path.length === 2) {\n    console.log(path.join(' '));\n    return;\n  }\n  for (const x of [1, 2]) {\n    path.push(x);\n    go(path);\n    ___\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "void go(vector<int>& path) {\n    if (path.size() == 2) {\n        printf(\"%d %d\\n\", path[0], path[1]);\n        return;\n    }\n    for (int x = 1; x <= 2; x++) {\n        path.push_back(x);\n        go(path);\n        ___\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "재귀에서 돌아온 직후이므로 방금 넣은 선택을 빼는 취소 자리다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-bt-tpl-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "backtracking",
+        "bug"
+      ],
+      "content": {
+        "prompt": "go(0)을 호출할 때 두 번째로 출력되는 값은?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "path = []\ndef go(d):\n    if d == 2:\n        print(len(path))\n        return\n    for x in (1, 2):\n        path.append(x)\n        go(d + 1)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "List<Integer> path = new ArrayList<>();\nvoid go(int d) {\n    if (d == 2) {\n        System.out.println(path.size());\n        return;\n    }\n    for (int x = 1; x <= 2; x++) {\n        path.add(x);\n        go(d + 1);\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const path = [];\nfunction go(d) {\n  if (d === 2) {\n    console.log(path.length);\n    return;\n  }\n  for (const x of [1, 2]) {\n    path.push(x);\n    go(d + 1);\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> path;\nvoid go(int d) {\n    if (d == 2) {\n        cout << path.size() << '\\n';\n        return;\n    }\n    for (int x = 1; x <= 2; x++) {\n        path.push_back(x);\n        go(d + 1);\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "취소가 없어 첫 출력 뒤 경로 길이가 줄지 않는다. 다음 분기에서 원소가 하나 더 붙어 3이 출력된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-bt-tpl-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "backtracking",
+        "template"
+      ],
+      "content": {
+        "prompt": "목표 2개, 지금 2개를 골랐다. 다음 동작은?",
+        "options": [
+          "하나 더 고른다",
+          "선택을 취소한다",
+          "결과 기록 후 반환"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "고른 개수가 목표에 닿았으므로 결과를 기록하고 반환한다. 더 고르면 목표를 넘는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-bt-tpl-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "backtracking",
+        "template"
+      ],
+      "content": {
+        "prompt": "백트래킹은 재귀 호출 전에 선택을 취소한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "취소는 재귀 호출이 끝나고 돌아온 뒤에 한다. 호출 전에 취소하면 선택이 재귀에 반영되지 않는다.",
+      "refs": []
+    }
+  ]
+}

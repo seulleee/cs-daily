@@ -1,0 +1,299 @@
+{
+  "track": "ct",
+  "unit": "u11-dp",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "ct-u11-dp-dim-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "state-dimension"
+      ],
+      "content": {
+        "prompt": "다음 선택에 영향을 주는 정보는 어떻게 다루나?",
+        "options": [
+          "무시한다",
+          "상태에 넣는다",
+          "입력을 정렬한다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "직전 선택·남은 횟수처럼 다음 선택에 영향을 주는 정보는 상태의 차원으로 넣는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-dim-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "state-dimension"
+      ],
+      "content": {
+        "prompt": "dp[i][1]이 i번째를 고름이면 dp[i][0]은?",
+        "options": [
+          "i번째를 안 고름",
+          "i − 1번째를 고름",
+          "둘 다 고름"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "둘째 차원이 i번째를 골랐는지를 나타내므로 dp[i][0]은 i번째를 고르지 않은 경우다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-dim-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "state-dimension"
+      ],
+      "content": {
+        "prompt": "dp[i][0]과 dp[i][1]은 i번째를 안 고름·고름을 나눈 상태다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "직전 선택이 다음 선택에 영향을 주므로 i번째를 골랐는지를 둘째 차원으로 나눈다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-dim-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "state-dimension"
+      ],
+      "content": {
+        "prompt": "직전 선택이 다음 선택을 막아도 dp[i]만으로 상태가 충분하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "다음 선택에 영향을 주는 직전 선택은 dp[i][0], dp[i][1]처럼 상태에 넣어야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-dim-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "state-dimension"
+      ],
+      "content": {
+        "prompt": "이웃한 두 원소를 함께 못 고를 때 빈칸은?",
+        "hint": "직전 원소를 고르지 않은 쪽의 인덱스",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "dp = [[0, 0] for _ in range(n)]\ndp[0][1] = a[0]\nfor i in range(1, n):\n    prev = dp[i - 1]\n    dp[i][0] = max(prev[0], prev[1])\n    dp[i][1] = prev[___] + a[i]"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[][] dp = new int[n][2];\ndp[0][1] = a[0];\nfor (int i = 1; i < n; i++) {\n    int[] prev = dp[i - 1];\n    dp[i][0] = Math.max(prev[0], prev[1]);\n    dp[i][1] = prev[___] + a[i];\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const dp = Array.from({ length: n },\n  () => [0, 0]);\ndp[0][1] = a[0];\nfor (let i = 1; i < n; i++) {\n  const prev = dp[i - 1];\n  dp[i][0] = Math.max(prev[0], prev[1]);\n  dp[i][1] = prev[___] + a[i];\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<array<int, 2>> dp(n);\ndp[0][1] = a[0];\nfor (int i = 1; i < n; i++) {\n    auto& prev = dp[i - 1];\n    dp[i][0] = max(prev[0], prev[1]);\n    dp[i][1] = prev[___] + a[i];\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "0"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "0"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "0"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "0"
+            ]
+          }
+        }
+      },
+      "explanation": "i번째를 고르려면 i − 1번째를 고르지 않았어야 하므로 dp[i − 1][0]에 a[i]를 더한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-dim-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "memory"
+      ],
+      "content": {
+        "prompt": "상태 수 × 원소 크기가 ___ 제한 안인지 확인한다.",
+        "hint": "dp 배열이 차지하는 크기에 걸린 제한"
+      },
+      "answer_key": {
+        "accepted": [
+          "메모리",
+          "memory",
+          "공간"
+        ]
+      },
+      "explanation": "차원을 더하면 상태 수가 곱으로 늘어나므로 dp 배열 크기가 메모리 제한 안인지 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-dim-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "trace"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "10",
+          "8",
+          "7"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a = [3, 2, 5]\nn = len(a)\ndp = [[0, 0] for _ in range(n)]\ndp[0][1] = a[0]\nfor i in range(1, n):\n    prev = dp[i - 1]\n    dp[i][0] = max(prev[0], prev[1])\n    dp[i][1] = prev[0] + a[i]\nprint(max(dp[n - 1]))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {3, 2, 5};\nint n = a.length;\nint[][] dp = new int[n][2];\ndp[0][1] = a[0];\nfor (int i = 1; i < n; i++) {\n    int[] prev = dp[i - 1];\n    dp[i][0] = Math.max(prev[0], prev[1]);\n    dp[i][1] = prev[0] + a[i];\n}\nint[] last = dp[n - 1];\nSystem.out.println(Math.max(last[0], last[1]));"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [3, 2, 5];\nconst n = a.length;\nconst dp = Array.from({ length: n },\n  () => [0, 0]);\ndp[0][1] = a[0];\nfor (let i = 1; i < n; i++) {\n  const prev = dp[i - 1];\n  dp[i][0] = Math.max(prev[0], prev[1]);\n  dp[i][1] = prev[0] + a[i];\n}\nconsole.log(Math.max(...dp[n - 1]));"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {3, 2, 5};\nint n = a.size();\nvector<array<int, 2>> dp(n);\ndp[0][1] = a[0];\nfor (int i = 1; i < n; i++) {\n    auto& prev = dp[i - 1];\n    dp[i][0] = max(prev[0], prev[1]);\n    dp[i][1] = prev[0] + a[i];\n}\ncout << max(dp[n - 1][0], dp[n - 1][1]);"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "이웃한 원소를 함께 못 고르므로 3과 5를 고른 8이 최대다. 셋을 모두 더한 10은 이웃을 함께 고른 값이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-dim-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "state-dimension"
+      ],
+      "content": {
+        "prompt": "N칸에 남은 횟수 0~2를 상태로 더하면 상태 수는?",
+        "options": [
+          "N + 3",
+          "N × 3",
+          "N"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "칸 N개마다 남은 횟수 0, 1, 2 세 경우가 있으므로 상태는 N × 3개다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-dim-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "memory"
+      ],
+      "content": {
+        "prompt": "dp[1000][1000], 원소 8바이트면 메모리는 약?",
+        "options": [
+          "8MB",
+          "1MB",
+          "80MB"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "상태가 10⁶개이고 하나에 8바이트이므로 약 8 × 10⁶바이트, 8MB다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-dim-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "state-dimension"
+      ],
+      "content": {
+        "prompt": "dp에 '직전 선택' 차원을 더하는 이유는?",
+        "options": [
+          "메모리를 줄이려고",
+          "정렬하려고",
+          "다음 선택에 영향"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "직전 선택이 다음에 고를 수 있는 것을 바꾸므로 그 정보를 상태에 넣어야 점화식이 맞는다.",
+      "refs": []
+    }
+  ]
+}

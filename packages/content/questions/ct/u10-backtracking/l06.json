@@ -1,0 +1,301 @@
+{
+  "track": "ct",
+  "unit": "u10-backtracking",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ct-u10-nqueen-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "n-queen"
+      ],
+      "content": {
+        "prompt": "N×N 판에 서로 공격 못 하게 퀸 N개를 놓는 문제는?",
+        "options": [
+          "순열 생성",
+          "조합 생성",
+          "N-Queen"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "N-Queen은 N×N 판에 서로 공격하지 않도록 퀸 N개를 놓는 백트래킹 문제다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-nqueen-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "n-queen"
+      ],
+      "content": {
+        "prompt": "N-Queen에서 퀸을 놓는 단위는?",
+        "options": [
+          "한 행에 하나",
+          "한 칸씩 아무 데나",
+          "한 열에 둘"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "한 행에 퀸을 하나씩 놓으며 다음 행으로 진행한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-nqueen-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "n-queen",
+        "diagonal"
+      ],
+      "content": {
+        "prompt": "N-Queen 대각선 사용 배열의 인덱스는?",
+        "options": [
+          "r × c",
+          "r + c",
+          "r"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "같은 대각선 위의 칸은 r + c가 같으므로 r + c를 인덱스로 사용 여부를 기록한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-nqueen-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "n-queen"
+      ],
+      "content": {
+        "prompt": "행 단위로 놓으면 같은 행 충돌은 검사하지 않아도 된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "한 행에 퀸을 하나만 놓고 다음 행으로 넘어가므로 같은 행에 두 퀸이 놓일 일이 없다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-nqueen-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "backtracking",
+        "n-queen"
+      ],
+      "content": {
+        "prompt": "N-Queen은 한 ___에 퀸을 하나씩 놓으며 진행한다.",
+        "hint": "판의 가로 한 줄"
+      },
+      "answer_key": {
+        "accepted": [
+          "행",
+          "row",
+          "가로줄"
+        ]
+      },
+      "explanation": "행 단위로 진행하면 같은 행 충돌이 생기지 않아 열과 두 대각선만 검사하면 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-nqueen-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "n-queen",
+        "undo"
+      ],
+      "content": {
+        "prompt": "선택을 취소하는 줄의 빈칸 값은?",
+        "hint": "사용 표시를 끄는 논리값",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def go(r):\n    if r == n:\n        return 1\n    total = 0\n    for c in range(n):\n        d, k = r + c, r - c + n - 1\n        if col[c] or d1[d] or d2[k]:\n            continue\n        col[c] = d1[d] = d2[k] = True\n        total += go(r + 1)\n        col[c] = d1[d] = d2[k] = ___\n    return total"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int go(int r) {\n    if (r == n) return 1;\n    int total = 0;\n    for (int c = 0; c < n; c++) {\n        int d = r + c, k = r - c + n - 1;\n        if (col[c] || d1[d] || d2[k]) continue;\n        col[c] = d1[d] = d2[k] = true;\n        total += go(r + 1);\n        col[c] = d1[d] = d2[k] = ___;\n    }\n    return total;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function go(r) {\n  if (r === n) return 1;\n  let total = 0;\n  for (let c = 0; c < n; c++) {\n    const d = r + c, k = r - c + n - 1;\n    if (col[c] || d1[d] || d2[k]) continue;\n    col[c] = d1[d] = d2[k] = true;\n    total += go(r + 1);\n    col[c] = d1[d] = d2[k] = ___;\n  }\n  return total;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int go(int r) {\n    if (r == n) return 1;\n    int total = 0;\n    for (int c = 0; c < n; c++) {\n        int d = r + c, k = r - c + n - 1;\n        if (col[c] || d1[d] || d2[k]) continue;\n        col[c] = d1[d] = d2[k] = true;\n        total += go(r + 1);\n        col[c] = d1[d] = d2[k] = ___;\n    }\n    return total;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "False",
+              "false"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "false"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "false"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "false",
+              "0"
+            ]
+          }
+        }
+      },
+      "explanation": "재귀에서 돌아오면 열과 두 대각선의 사용 표시를 거짓으로 되돌려야 다음 칸을 시도할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-nqueen-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "n-queen",
+        "diagonal"
+      ],
+      "content": {
+        "prompt": "반대 대각선 인덱스 k의 빈칸은?",
+        "options": [
+          "r + c",
+          "c",
+          "r - c + n - 1"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def go(r):\n    if r == n:\n        return 1\n    total = 0\n    for c in range(n):\n        d, k = r + c, ___\n        if col[c] or d1[d] or d2[k]:\n            continue\n        col[c] = d1[d] = d2[k] = True\n        total += go(r + 1)\n        col[c] = d1[d] = d2[k] = False\n    return total"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int go(int r) {\n    if (r == n) return 1;\n    int total = 0;\n    for (int c = 0; c < n; c++) {\n        int d = r + c, k = ___;\n        if (col[c] || d1[d] || d2[k]) continue;\n        col[c] = d1[d] = d2[k] = true;\n        total += go(r + 1);\n        col[c] = d1[d] = d2[k] = false;\n    }\n    return total;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function go(r) {\n  if (r === n) return 1;\n  let total = 0;\n  for (let c = 0; c < n; c++) {\n    const d = r + c, k = ___;\n    if (col[c] || d1[d] || d2[k]) continue;\n    col[c] = d1[d] = d2[k] = true;\n    total += go(r + 1);\n    col[c] = d1[d] = d2[k] = false;\n  }\n  return total;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int go(int r) {\n    if (r == n) return 1;\n    int total = 0;\n    for (int c = 0; c < n; c++) {\n        int d = r + c, k = ___;\n        if (col[c] || d1[d] || d2[k]) continue;\n        col[c] = d1[d] = d2[k] = true;\n        total += go(r + 1);\n        col[c] = d1[d] = d2[k] = false;\n    }\n    return total;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 2
+          },
+          "java": {
+            "index": 2
+          },
+          "javascript": {
+            "index": 2
+          },
+          "cpp": {
+            "index": 2
+          }
+        }
+      },
+      "explanation": "반대 대각선은 r − c가 같은 칸끼리 묶인다. r − c는 음수가 될 수 있어 n − 1을 더해 인덱스로 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-nqueen-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "n-queen",
+        "diagonal"
+      ],
+      "content": {
+        "prompt": "퀸이 (1, 2)에 있다. r + c가 같아 막히는 칸은?",
+        "options": [
+          "(0, 3)",
+          "(0, 1)",
+          "(2, 3)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "(1, 2)의 r + c는 3이고, (0, 3)도 0 + 3 = 3이라 같은 대각선 위에 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-nqueen-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "n-queen",
+        "diagonal"
+      ],
+      "content": {
+        "prompt": "퀸이 (1, 1)에 있다. r − c가 같아 막히는 칸은?",
+        "options": [
+          "(0, 2)",
+          "(2, 2)",
+          "(2, 0)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "(1, 1)의 r − c는 0이고, (2, 2)도 2 − 2 = 0이라 같은 반대 대각선 위에 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-nqueen-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "backtracking",
+        "n-queen"
+      ],
+      "content": {
+        "prompt": "N-Queen은 열 충돌만 검사하면 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "퀸은 대각선으로도 공격하므로 열과 함께 대각선(r + c)과 반대 대각선(r − c)도 검사한다.",
+      "refs": []
+    }
+  ]
+}

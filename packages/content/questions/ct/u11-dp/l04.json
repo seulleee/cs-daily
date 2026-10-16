@@ -1,0 +1,303 @@
+{
+  "track": "ct",
+  "unit": "u11-dp",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ct-u11-dp-topdown-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "top-down",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "재귀 + 메모이제이션으로 구현하는 DP 방식은?",
+        "options": [
+          "상향식",
+          "하향식",
+          "그리디"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "하향식은 큰 상태에서 재귀로 내려가며 계산한 값을 메모해 두는 방식이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-topdown-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "top-down",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "반복문으로 작은 상태부터 표를 채우는 방식은?",
+        "options": [
+          "하향식",
+          "백트래킹",
+          "상향식"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "상향식은 반복문으로 작은 상태부터 차례로 dp 표를 채운다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-topdown-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "top-down",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "재귀가 너무 깊어질까 걱정되면 고를 방식은?",
+        "options": [
+          "상향식",
+          "하향식"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "상향식은 재귀 없이 반복문으로 채우므로 재귀 깊이 걱정이 없다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-topdown-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "top-down",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "하향식은 필요한 상태만 계산한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "하향식은 답에 필요한 상태만 재귀로 찾아 계산한다. 대신 재귀 깊이에 주의해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-topdown-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dp",
+        "top-down",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "재귀 + 메모이제이션 방식을 ___식이라 한다.",
+        "hint": "큰 문제에서 아래로 내려가는 방향"
+      },
+      "answer_key": {
+        "accepted": [
+          "하향",
+          "top down",
+          "topdown",
+          "탑다운"
+        ]
+      },
+      "explanation": "하향식은 큰 문제에서 재귀로 내려가며 계산한 부분 문제의 답을 메모해 둔다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-topdown-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "top-down",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "반복문으로 작은 상태부터 표를 채우는 방식을 ___식이라 한다.",
+        "hint": "작은 쪽에서 위로 올라가는 방향"
+      },
+      "answer_key": {
+        "accepted": [
+          "상향",
+          "bottom up",
+          "bottomup",
+          "바텀업"
+        ]
+      },
+      "explanation": "상향식은 가장 작은 상태부터 반복문으로 표를 채워 올라간다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-topdown-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "memo"
+      ],
+      "content": {
+        "prompt": "f(5)의 반환값은?",
+        "options": [
+          "8",
+          "0",
+          "5"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "memo = [0] * 10\ndef f(i):\n    if i <= 1:\n        return 1\n    if memo[i] != -1:\n        return memo[i]\n    memo[i] = f(i - 1) + f(i - 2)\n    return memo[i]"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long[] memo = new long[10];\nlong f(int i) {\n    if (i <= 1) return 1;\n    if (memo[i] != -1) return memo[i];\n    return memo[i] = f(i - 1) + f(i - 2);\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const memo = new Array(10).fill(0);\nfunction f(i) {\n  if (i <= 1) return 1;\n  if (memo[i] !== -1) return memo[i];\n  return (memo[i] = f(i - 1) + f(i - 2));\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<long long> memo(10);\nlong long f(int i) {\n    if (i <= 1) return 1;\n    if (memo[i] != -1) return memo[i];\n    return memo[i] = f(i - 1) + f(i - 2);\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "memo가 0으로 채워져 −1이 아니므로 계산 전에 0을 꺼낸다. 미계산 표시는 답이 될 수 없는 값이어야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-topdown-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "top-down",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "이 코드의 DP 구현 방식은?",
+        "options": [
+          "하향식",
+          "상향식"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "dp = [0] * (n + 1)\ndp[0] = dp[1] = 1\nfor i in range(2, n + 1):\n    dp[i] = dp[i - 1] + dp[i - 2]"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long[] dp = new long[n + 1];\ndp[0] = dp[1] = 1;\nfor (int i = 2; i <= n; i++)\n    dp[i] = dp[i - 1] + dp[i - 2];"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const dp = new Array(n + 1).fill(0);\ndp[0] = dp[1] = 1;\nfor (let i = 2; i <= n; i++) {\n  dp[i] = dp[i - 1] + dp[i - 2];\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<long long> dp(n + 1);\ndp[0] = dp[1] = 1;\nfor (int i = 2; i <= n; i++)\n    dp[i] = dp[i - 1] + dp[i - 2];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "재귀 없이 반복문으로 dp[2]부터 작은 상태 순서로 표를 채우므로 상향식이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-topdown-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "memo"
+      ],
+      "content": {
+        "prompt": "답이 0 이상일 때 미계산 표시로 알맞은 값은?",
+        "options": [
+          "-1",
+          "0",
+          "1"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "0이나 1은 실제 답이 될 수 있어 계산한 값과 구분되지 않는다. 답이 될 수 없는 −1로 채운다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u11-dp-topdown-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dp",
+        "top-down",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "상향식은 재귀 호출로 큰 상태부터 계산한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "상향식은 반복문으로 작은 상태부터 표를 채운다. 재귀로 큰 상태에서 내려가는 것은 하향식이다.",
+      "refs": []
+    }
+  ]
+}
