@@ -1,0 +1,308 @@
+{
+  "track": "ct",
+  "unit": "u01-basics",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ct-u01-deque-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "큐",
+        "자료구조"
+      ],
+      "content": {
+        "prompt": "넣은 순서대로 앞에서 꺼내는 자료구조는?",
+        "options": [
+          "스택",
+          "집합",
+          "큐"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "큐는 먼저 넣은 원소를 먼저 꺼낸다(FIFO).",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-deque-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "덱",
+        "자료구조"
+      ],
+      "content": {
+        "prompt": "양 끝에서 넣기·빼기가 모두 한 번에 끝나는 것은?",
+        "options": [
+          "덱",
+          "배열",
+          "집합"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "덱은 앞과 뒤 양쪽에서 넣고 빼는 연산이 모두 한 번에 끝난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-deque-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "큐",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "큐는 가장 나중에 넣은 원소를 먼저 꺼낸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "나중에 넣은 것을 먼저 꺼내는 것은 스택이다. 큐는 먼저 넣은 것을 먼저 꺼낸다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-deque-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "배열",
+        "덱"
+      ],
+      "content": {
+        "prompt": "배열 맨 앞 원소를 지우면 뒤 원소를 모두 당긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "배열은 칸이 이어져 있어 맨 앞을 지우면 뒤 원소를 한 칸씩 옮긴다. 그래서 앞에서 꺼낼 땐 덱을 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-deque-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "덱",
+        "큐"
+      ],
+      "content": {
+        "prompt": "앞에서 원소를 꺼내도록 빈칸을 채우면?",
+        "hint": "앞쪽에서 꺼내는 부분",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from collections import deque\nq = deque([1, 2, 3])\nx = q.___()\nprint(x)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "Deque<Integer> q = new ArrayDeque<>(\n    List.of(1, 2, 3));\nint x = q.___();\nSystem.out.println(x);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const q = [1, 2, 3];\nlet head = 0;\nconst x = q[___++];\nconsole.log(x);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "deque<int> q = {1, 2, 3};\nint x = q.front();\nq.___();\ncout << x;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "popleft"
+            ],
+            "explanation": "deque.popleft()는 앞에서 한 번에 꺼낸다. 리스트의 pop(0)은 뒤 원소를 모두 당겨 느리다."
+          },
+          "java": {
+            "accepted": [
+              "pollFirst",
+              "poll",
+              "removeFirst",
+              "remove",
+              "pop"
+            ],
+            "explanation": "ArrayDeque.pollFirst()(또는 poll)는 앞에서 한 번에 꺼낸다."
+          },
+          "javascript": {
+            "accepted": [
+              "head"
+            ],
+            "explanation": "JS에는 내장 덱이 없어 시작 위치 head를 옮기며 앞에서 꺼낸다. shift()는 뒤 원소를 모두 당겨 느리다."
+          },
+          "cpp": {
+            "accepted": [
+              "pop_front",
+              "popfront"
+            ],
+            "explanation": "deque.pop_front()는 앞 원소를 한 번에 지운다."
+          }
+        }
+      },
+      "explanation": "앞에서 꺼낼 때 배열 맨 앞 삭제를 쓰면 뒤 원소를 모두 당겨 느리다. 덱(또는 시작 위치)을 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-deque-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "큐",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "넣은 순서대로 꺼내는 성질의 영문 약자는 ___ 이다.",
+        "hint": "First In, First Out"
+      },
+      "answer_key": {
+        "accepted": [
+          "FIFO",
+          "피포",
+          "first in first out"
+        ]
+      },
+      "explanation": "FIFO는 First In, First Out의 약자로 먼저 넣은 것을 먼저 꺼낸다는 뜻이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-deque-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "큐",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "1",
+          "2",
+          "4"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from collections import deque\nq = deque()\nfor x in [1, 2, 3]:\n    q.append(x)\nq.popleft()\nq.append(4)\nprint(q[0])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "Deque<Integer> q = new ArrayDeque<>();\nfor (int x : new int[]{1, 2, 3}) q.offer(x);\nq.poll();\nq.offer(4);\nSystem.out.println(q.peek());"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const q = [];\nlet head = 0;\nfor (const x of [1, 2, 3]) q.push(x);\nhead++;\nq.push(4);\nconsole.log(q[head]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "queue<int> q;\nfor (int x : {1, 2, 3}) q.push(x);\nq.pop();\nq.push(4);\ncout << q.front();"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1,
+            "explanation": "head를 1 옮겨 1을 꺼낸 것으로 친다. 남은 맨 앞 q[head]는 2다."
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "1, 2, 3을 넣고 앞에서 하나(1)를 꺼낸 뒤 4를 뒤에 넣으면 맨 앞은 2다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-deque-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "덱",
+        "배열"
+      ],
+      "content": {
+        "prompt": "배열 맨 앞에서 10만 번 꺼내 느리다. 바꿀 것은?",
+        "options": [
+          "해시맵",
+          "집합",
+          "덱"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "배열 맨 앞 삭제는 매번 뒤 원소를 당긴다. 덱은 앞에서 꺼내기가 한 번에 끝난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-deque-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "덱",
+        "자료구조"
+      ],
+      "content": {
+        "prompt": "뒤에 1, 앞에 2, 뒤에 3을 넣은 덱의 맨 앞 값은?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "덱 상태는 [1] → [2, 1] → [2, 1, 3]이 되어 맨 앞은 2다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-deque-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "큐",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "큐에 1, 2, 3을 넣고 하나 꺼내면 나오는 값은?",
+        "options": [
+          "1",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "큐는 넣은 순서대로 앞에서 꺼내므로 가장 먼저 넣은 1이 나온다.",
+      "refs": []
+    }
+  ]
+}

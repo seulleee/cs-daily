@@ -1,0 +1,291 @@
+{
+  "track": "ct",
+  "unit": "u02-input-size",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ct-u02-bign-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "복잡도",
+        "큰-n"
+      ],
+      "content": {
+        "prompt": "N ≤ 10⁵일 때 쓸 수 있는 가장 느린 복잡도는?",
+        "options": [
+          "O(N²)",
+          "O(N³)",
+          "O(N log N)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "N = 10⁵이면 N log N은 약 1.7 × 10⁶번이라 충분하고, N²은 10¹⁰번이라 초과다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bign-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "복잡도",
+        "큰-n"
+      ],
+      "content": {
+        "prompt": "N이 10¹⁸까지일 때 필요한 복잡도는?",
+        "options": [
+          "O(log N)",
+          "O(N)",
+          "O(N log N)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "10¹⁸번은 돌 수 없다. N을 반씩 줄이는 O(log N)이나 식으로 바로 구하는 O(1)이 필요하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bign-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "복잡도",
+        "큰-n"
+      ],
+      "content": {
+        "prompt": "N ≤ 10⁷에 알맞은 복잡도는?",
+        "options": [
+          "O(N²)",
+          "O(N)",
+          "O(N³)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "N = 10⁷이면 O(N)이 10⁷번으로 충분하다. O(N²)은 10¹⁴번이라 불가능하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bign-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "복잡도",
+        "큰-n"
+      ],
+      "content": {
+        "prompt": "N = 10⁵이면 O(N²) 풀이도 1초 안에 끝난다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "10⁵의 제곱은 10¹⁰번이라 1초 기준 10⁸번의 100배다. O(N log N) 이하가 필요하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bign-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "복잡도",
+        "큰-n"
+      ],
+      "content": {
+        "prompt": "N ≤ 10⁵이면 O(N ___ N)까지 가능하다."
+      },
+      "answer_key": {
+        "accepted": [
+          "log",
+          "로그"
+        ]
+      },
+      "explanation": "N ≤ 10⁵~10⁶이면 O(N log N)까지 1초 안에 끝난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bign-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "복잡도",
+        "큰-n"
+      ],
+      "content": {
+        "prompt": "N ≤ 10⁷이면 O(___) 정도만 가능하다."
+      },
+      "answer_key": {
+        "accepted": [
+          "N",
+          "엔"
+        ]
+      },
+      "explanation": "N = 10⁷이면 N log N도 2억 번을 넘기 쉬워 O(N) 정도만 안전하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bign-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "복잡도",
+        "로그"
+      ],
+      "content": {
+        "prompt": "n = 10¹⁸일 때 반복은 약 몇 번 도나?",
+        "options": [
+          "약 60번",
+          "약 10⁹번",
+          "약 10¹⁸번"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "n = 10 ** 18\ncnt = 0\nwhile n > 0:\n    n //= 2\n    cnt += 1\nprint(cnt)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long n = 1_000_000_000_000_000_000L;\nint cnt = 0;\nwhile (n > 0) {\n    n /= 2;\n    cnt++;\n}\nSystem.out.println(cnt);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let n = 10n ** 18n;\nlet cnt = 0;\nwhile (n > 0n) {\n  n /= 2n;\n  cnt++;\n}\nconsole.log(cnt);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long n = 1000000000000000000LL;\nint cnt = 0;\nwhile (n > 0) {\n    n /= 2;\n    cnt++;\n}\ncout << cnt;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0,
+            "explanation": "n을 매번 반으로 줄여 약 log₂10¹⁸ ≈ 60번 돈다. 10¹⁸은 Number로 정확히 다룰 수 없는 크기라 BigInt로 썼다."
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "n을 매번 반으로 줄이면 약 log₂N번 만에 0이 된다. 10¹⁸이어도 60번이면 끝나는 O(log N)이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bign-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "복잡도",
+        "판단"
+      ],
+      "content": {
+        "prompt": "n = 10⁵이고 제한이 1초일 때 이 코드는?",
+        "options": [
+          "시간 안에 끝남",
+          "시간 초과"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "cnt = 0\nfor i in range(n):\n    for j in range(i + 1, n):\n        cnt += 1"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long cnt = 0;\nfor (int i = 0; i < n; i++) {\n    for (int j = i + 1; j < n; j++) {\n        cnt++;\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let cnt = 0;\nfor (let i = 0; i < n; i++) {\n  for (let j = i + 1; j < n; j++) {\n    cnt++;\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long cnt = 0;\nfor (int i = 0; i < n; i++) {\n    for (int j = i + 1; j < n; j++) {\n        cnt++;\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "j가 i + 1부터라 약 N² / 2 = 5 × 10⁹번이다. 절반이어도 O(N²)이라 1초 기준 10⁸번을 크게 넘는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bign-009",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "복잡도",
+        "큰-n"
+      ],
+      "content": {
+        "prompt": "N ≤ 10⁶이면 O(N²) 대신 더 빠른 방법을 찾아야 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "10⁶의 제곱은 10¹²번이라 시간 안에 끝나지 않는다. O(N log N) 이하가 필요하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-bign-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "복잡도",
+        "큰-n"
+      ],
+      "content": {
+        "prompt": "N ≤ 10⁵에서 허용되지 않는 복잡도는?",
+        "options": [
+          "O(N)",
+          "O(N log N)",
+          "O(N²)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "N = 10⁵에서 O(N²)은 10¹⁰번이라 초과다. O(N log N)까지는 가능하다.",
+      "refs": []
+    }
+  ]
+}

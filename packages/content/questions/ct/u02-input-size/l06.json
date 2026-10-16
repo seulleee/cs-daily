@@ -1,0 +1,293 @@
+{
+  "track": "ct",
+  "unit": "u02-input-size",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ct-u02-memory-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "메모리",
+        "정수-크기"
+      ],
+      "content": {
+        "prompt": "32비트 정수 하나의 크기는?",
+        "options": [
+          "2바이트",
+          "8바이트",
+          "4바이트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "1바이트는 8비트이므로 32비트 정수는 4바이트다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-memory-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "메모리",
+        "정수-크기"
+      ],
+      "content": {
+        "prompt": "64비트 정수 하나의 크기는?",
+        "options": [
+          "8바이트",
+          "4바이트",
+          "16바이트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "64비트는 8바이트다. 같은 개수라면 32비트 정수 배열의 두 배 메모리를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-memory-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "메모리",
+        "배열"
+      ],
+      "content": {
+        "prompt": "N = 10⁵이면 N×N 정수 배열을 만들어도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "N×N은 10¹⁰칸이라 4바이트씩이면 약 40GB다. 메모리 제한을 크게 넘는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-memory-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "메모리",
+        "어림"
+      ],
+      "content": {
+        "prompt": "4바이트 정수 1,000만 개는 약 40MB이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "4바이트 × 10⁷개 = 4 × 10⁷바이트 ≈ 40MB다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-memory-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "메모리",
+        "정수-크기"
+      ],
+      "content": {
+        "prompt": "64비트 정수 하나는 ___바이트이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "8",
+          "여덟"
+        ]
+      },
+      "explanation": "64비트 = 8바이트다. 32비트 정수는 4바이트다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-memory-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "메모리",
+        "배열"
+      ],
+      "content": {
+        "prompt": "N = 10⁵일 때 N×N 배열은 10의 ___제곱 칸이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "10",
+          "열"
+        ]
+      },
+      "explanation": "10⁵ × 10⁵ = 10¹⁰칸이다. 이런 배열은 메모리에 만들 수 없다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-memory-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "메모리",
+        "어림"
+      ],
+      "content": {
+        "prompt": "이 배열이 쓰는 메모리는 약 얼마인가?",
+        "options": [
+          "약 40MB",
+          "약 80MB",
+          "약 400MB"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from array import array\na = array('i', [0]) * 10_000_000"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = new int[10_000_000];"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = new Int32Array(10_000_000);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a(10000000);"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0,
+            "explanation": "array('i')는 4바이트 정수를 이어 담아 약 40MB다. 일반 리스트는 칸마다 8바이트 참조라 약 80MB를 쓴다."
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "4바이트 정수 1,000만 개는 약 40MB다. 칸 수 × 원소 크기로 어림한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-memory-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "메모리",
+        "어림"
+      ],
+      "content": {
+        "prompt": "이 배열이 쓰는 메모리는 약 얼마인가?",
+        "options": [
+          "약 20MB",
+          "약 40MB",
+          "약 80MB"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from array import array\na = array('q', [0]) * 5_000_000"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long[] a = new long[5_000_000];"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = new BigInt64Array(5_000_000);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<long long> a(5000000);"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1,
+            "explanation": "array('q')는 8바이트 정수를 이어 담아 500만 개면 약 40MB다."
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "8바이트 원소 500만 개는 8 × 5 × 10⁶ = 4 × 10⁷바이트 ≈ 40MB다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-memory-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "메모리",
+        "배열"
+      ],
+      "content": {
+        "prompt": "N = 10⁵에서 N×N 4바이트 배열은 약 얼마인가?",
+        "options": [
+          "약 40MB",
+          "약 400MB",
+          "약 40GB"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "10¹⁰칸 × 4바이트 = 4 × 10¹⁰바이트 ≈ 40GB다. 보통 제한 128~512MB를 크게 넘는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-memory-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "메모리",
+        "정수-크기"
+      ],
+      "content": {
+        "prompt": "32비트 정수 2,500만 개는 약 몇 MB인가?",
+        "options": [
+          "약 25MB",
+          "약 200MB",
+          "약 100MB"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "4바이트 × 2.5 × 10⁷개 = 10⁸바이트 ≈ 100MB다.",
+      "refs": []
+    }
+  ]
+}

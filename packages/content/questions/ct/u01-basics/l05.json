@@ -1,0 +1,350 @@
+{
+  "track": "ct",
+  "unit": "u01-basics",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "ct-u01-pq-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "우선순위-큐",
+        "자료구조"
+      ],
+      "content": {
+        "prompt": "넣은 순서와 무관하게 가장 작은 값부터 꺼내는 것은?",
+        "options": [
+          "큐",
+          "우선순위 큐",
+          "스택"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "우선순위 큐는 넣은 순서가 아니라 값의 크기로 꺼낼 원소를 정한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pq-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "우선순위-큐",
+        "최댓값"
+      ],
+      "content": {
+        "prompt": "최소 우선순위 큐로 최댓값부터 꺼내는 흔한 방법은?",
+        "options": [
+          "부호 바꿔 넣기",
+          "정렬 후 넣기",
+          "두 번 꺼내기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "값에 −1을 곱해 넣으면 가장 큰 값이 가장 작은 값이 되어 먼저 나온다. 꺼낸 뒤 부호를 되돌린다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pq-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "우선순위-큐",
+        "큐"
+      ],
+      "content": {
+        "prompt": "3, 1, 2를 넣고 하나 꺼낸다. 최소 우선순위 큐면?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "최소 우선순위 큐는 넣은 순서와 무관하게 가장 작은 1을 꺼낸다. 일반 큐라면 3이 나온다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pq-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "우선순위-큐",
+        "큐"
+      ],
+      "content": {
+        "prompt": "우선순위 큐는 넣은 순서대로 꺼낸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "넣은 순서대로 꺼내는 것은 큐다. 우선순위 큐는 가장 작은(또는 큰) 값부터 꺼낸다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pq-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "우선순위-큐",
+        "자료구조"
+      ],
+      "content": {
+        "prompt": "넣은 순서와 무관하게 가장 작은 값부터 꺼내는 자료구조는 ___ 큐이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "우선순위",
+          "priority",
+          "프라이어리티"
+        ]
+      },
+      "explanation": "우선순위 큐는 값의 크기를 우선순위로 삼아 가장 작은(또는 큰) 값부터 꺼낸다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pq-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "우선순위-큐",
+        "기본-방향"
+      ],
+      "content": {
+        "prompt": "가장 작은 값부터 꺼내도록 빈칸을 채우면?",
+        "hint": "언어마다 우선순위 큐에서 최솟값을 다루는 이름이 다르다",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "import heapq\nh = []\nfor x in [5, 1, 3]:\n    heapq.heappush(h, x)\nprint(heapq.___(h))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "PriorityQueue<Integer> pq =\n    new PriorityQueue<>();\nfor (int x : new int[]{5, 1, 3}) pq.add(x);\nSystem.out.println(pq.___());"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "// MinHeap·MaxHeap은 직접 구현해 두었다\nconst pq = new ___();\nfor (const x of [5, 1, 3]) pq.push(x);\nconsole.log(pq.pop());"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "priority_queue<int, vector<int>,\n               ___<int>> pq;\nfor (int x : {5, 1, 3}) pq.push(x);\ncout << pq.top();"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "heappop"
+            ],
+            "explanation": "heapq는 최소 힙이라 heappop이 가장 작은 값을 꺼낸다."
+          },
+          "java": {
+            "accepted": [
+              "poll",
+              "remove"
+            ],
+            "explanation": "Java PriorityQueue는 기본이 최소라 poll()이 가장 작은 값을 꺼낸다."
+          },
+          "javascript": {
+            "accepted": [
+              "MinHeap",
+              "minheap"
+            ],
+            "explanation": "JS에는 내장 우선순위 큐가 없어 힙을 직접 구현한다. 작은 값부터 꺼내려면 최소 힙(MinHeap)을 쓴다."
+          },
+          "cpp": {
+            "accepted": [
+              "greater"
+            ],
+            "explanation": "C++ priority_queue는 기본이 최대라, 비교 함수 greater<int>를 줘야 가장 작은 값이 top에 온다."
+          }
+        }
+      },
+      "explanation": "우선순위 큐의 기본 방향(최소·최대)이 언어마다 달라 최소 쪽으로 쓰는 방법도 다르다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pq-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "우선순위-큐",
+        "최댓값"
+      ],
+      "content": {
+        "prompt": "최댓값부터 꺼내도록 ___에 들어갈 것은?",
+        "options": [
+          "x",
+          "-x"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "import heapq\nh = []\nfor x in [5, 1, 3]:\n    heapq.heappush(h, ___)\nprint(-heapq.heappop(h))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "PriorityQueue<Integer> pq =\n    new PriorityQueue<>();\nfor (int x : new int[]{5, 1, 3}) {\n    pq.add(___);\n}\nSystem.out.println(-pq.poll());"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const pq = new MinHeap(); // 최소 힙\nfor (const x of [5, 1, 3]) pq.push(___);\nconsole.log(-pq.pop());"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "priority_queue<int> pq;\nfor (int x : {5, 1, 3}) pq.push(___);\ncout << pq.top();"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1,
+            "explanation": "heapq는 최소 힙이라 −x를 넣으면 가장 큰 5가 −5로 가장 먼저 나온다. 꺼낸 뒤 부호를 되돌린다."
+          },
+          "java": {
+            "index": 1,
+            "explanation": "PriorityQueue는 기본이 최소라 −x를 넣으면 가장 큰 값이 먼저 나온다. Collections.reverseOrder()를 줘도 된다."
+          },
+          "javascript": {
+            "index": 1,
+            "explanation": "최소 힙에 −x를 넣으면 가장 큰 값이 먼저 나온다. 꺼낸 뒤 부호를 되돌린다."
+          },
+          "cpp": {
+            "index": 0,
+            "explanation": "C++ priority_queue는 기본이 최대라 x를 그대로 넣으면 top이 가장 큰 5다. −x를 넣으면 −1이 나온다."
+          }
+        }
+      },
+      "explanation": "최소 우선순위 큐에서는 부호를 바꿔 넣어야 최댓값이 먼저 나오고, 기본이 최대인 언어는 그대로 넣는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pq-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "우선순위-큐",
+        "기본-방향"
+      ],
+      "content": {
+        "prompt": "출력되는 값은?",
+        "options": [
+          "2",
+          "4",
+          "9"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "import heapq\nh = [4, 9, 2]\nheapq.heapify(h)\nprint(h[0])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "PriorityQueue<Integer> pq =\n    new PriorityQueue<>(List.of(4, 9, 2));\nSystem.out.println(pq.peek());"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const pq = new MinHeap(); // 최소 힙\nfor (const x of [4, 9, 2]) pq.push(x);\nconsole.log(pq.peek());"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "priority_queue<int> pq;\nfor (int x : {4, 9, 2}) pq.push(x);\ncout << pq.top();"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0,
+            "explanation": "heapq는 최소 힙이라 h[0]이 가장 작은 2다."
+          },
+          "java": {
+            "index": 0,
+            "explanation": "Java PriorityQueue는 기본이 최소라 peek()이 가장 작은 2다."
+          },
+          "javascript": {
+            "index": 0,
+            "explanation": "JS는 내장 우선순위 큐가 없어 직접 만든 최소 힙을 쓴다. 맨 위는 가장 작은 2다."
+          },
+          "cpp": {
+            "index": 2,
+            "explanation": "C++ priority_queue는 기본이 최대라 top()이 가장 큰 9다."
+          }
+        }
+      },
+      "explanation": "우선순위 큐의 기본 방향은 언어마다 다르다. Python heapq·Java는 최소, C++은 최대가 기본이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pq-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "우선순위-큐",
+        "자료구조"
+      ],
+      "content": {
+        "prompt": "마감이 가장 이른 작업을 반복해서 꺼낸다. 고를 것은?",
+        "options": [
+          "큐",
+          "집합",
+          "우선순위 큐"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "가장 작은 값(이른 마감)을 반복해서 꺼낼 때는 우선순위 큐가 알맞다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u01-pq-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "우선순위-큐",
+        "자료구조"
+      ],
+      "content": {
+        "prompt": "우선순위 큐는 넣은 순서와 무관하게 가장 작은(또는 큰) 값부터 꺼낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "우선순위 큐는 값의 크기로 꺼낼 순서를 정한다. 어느 쪽이 먼저인지는 언어의 기본 방향을 따른다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,336 @@
+{
+  "track": "ct",
+  "unit": "u03-implementation",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ct-u03-bounds-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "격자",
+        "구현"
+      ],
+      "content": {
+        "prompt": "행 r, 열 c로 위치를 나타내는 2차원 배열은?",
+        "options": [
+          "격자",
+          "큐",
+          "집합"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "격자는 행 번호 r과 열 번호 c로 칸의 위치를 나타내는 2차원 배열이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-bounds-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "격자",
+        "범위-검사"
+      ],
+      "content": {
+        "prompt": "R행 C열 격자에서 행 번호 r의 범위는?",
+        "options": [
+          "0 ≤ r ≤ R",
+          "0 ≤ r < R",
+          "1 ≤ r ≤ C"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "행 번호는 0부터 R − 1까지라 0 ≤ r < R이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-bounds-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "격자",
+        "범위-검사"
+      ],
+      "content": {
+        "prompt": "범위 검사는 배열에 접근하기 전에 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "격자 밖 칸에 접근하면 오류가 나거나 엉뚱한 값을 읽는다. 접근하기 전에 범위를 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-bounds-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "격자",
+        "실수"
+      ],
+      "content": {
+        "prompt": "R행 C열 격자에서 열 번호는 0 이상 R 미만이면 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "열 번호의 범위는 열 수 C 기준인 0 ≤ c < C다. 행·열 크기를 바꿔 쓰는 것은 흔한 실수다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-bounds-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "격자",
+        "범위-검사"
+      ],
+      "content": {
+        "prompt": "격자 안인지 확인하도록 빈칸을 채우면?",
+        "hint": "열 번호는 무엇의 미만이어야 하나",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "rows, cols = 3, 4\nnr, nc = 2, 3\nif 0 <= nr < rows and 0 <= nc < ___:\n    print(\"in\")\nelse:\n    print(\"out\")"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int rows = 3, cols = 4;\nint nr = 2, nc = 3;\nif (nr >= 0 && nr < rows\n        && nc >= 0 && nc < ___) {\n    System.out.println(\"in\");\n} else {\n    System.out.println(\"out\");\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const rows = 3, cols = 4;\nconst nr = 2, nc = 3;\nif (nr >= 0 && nr < rows &&\n    nc >= 0 && nc < ___) {\n  console.log(\"in\");\n} else {\n  console.log(\"out\");\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int rows = 3, cols = 4;\nint nr = 2, nc = 3;\nif (nr >= 0 && nr < rows &&\n    nc >= 0 && nc < ___) {\n    cout << \"in\";\n} else {\n    cout << \"out\";\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "cols"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "cols"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "cols"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "cols"
+            ]
+          }
+        }
+      },
+      "explanation": "열 번호 nc는 열 수 cols 미만이어야 한다. 행 수와 바꿔 쓰지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-bounds-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "격자",
+        "범위-검사"
+      ],
+      "content": {
+        "prompt": "격자 밖인지 접근 전에 확인하는 것을 범위 ___ 라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "검사",
+          "체크",
+          "확인"
+        ]
+      },
+      "explanation": "범위 검사는 0 ≤ r < 행 수, 0 ≤ c < 열 수를 배열 접근 전에 확인하는 것이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-bounds-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "격자",
+        "범위-검사"
+      ],
+      "content": {
+        "prompt": "3행 5열 격자에서 범위 안인 칸은?",
+        "options": [
+          "(3, 0)",
+          "(2, 4)",
+          "(0, 5)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "행은 0~2, 열은 0~4가 범위다. (3, 0)은 행이, (0, 5)는 열이 범위를 벗어난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-bounds-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "격자",
+        "실수"
+      ],
+      "content": {
+        "prompt": "열 수를 바르게 구하도록 ___에 들어갈 것은?",
+        "options": [
+          "grid",
+          "grid[0]"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "grid = [[0] * 4 for _ in range(3)]\nrows = len(grid)\ncols = len(___)\nprint(rows, cols)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[][] grid = new int[3][4];\nint rows = grid.length;\nint cols = ___.length;\nSystem.out.println(rows + \" \" + cols);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const grid = Array.from({ length: 3 },\n  () => Array(4).fill(0));\nconst rows = grid.length;\nconst cols = ___.length;\nconsole.log(rows, cols);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<vector<int>> grid(3, vector<int>(4));\nint rows = grid.size();\nint cols = ___.size();\ncout << rows << \" \" << cols;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "격자의 길이는 행 수이고, 한 행(grid[0])의 길이가 열 수다. 둘을 바꿔 쓰면 범위 검사가 틀린다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-bounds-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "격자",
+        "범위-검사"
+      ],
+      "content": {
+        "prompt": "출력 결과는?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "dr = [-1, 1, 0, 0]\ndc = [0, 0, -1, 1]\nr, c, cnt = 0, 0, 0\nfor d in range(4):\n    nr, nc = r + dr[d], c + dc[d]\n    if 0 <= nr < 3 and 0 <= nc < 3:\n        cnt += 1\nprint(cnt)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] dr = {-1, 1, 0, 0};\nint[] dc = {0, 0, -1, 1};\nint r = 0, c = 0, cnt = 0;\nfor (int d = 0; d < 4; d++) {\n    int nr = r + dr[d], nc = c + dc[d];\n    if (nr >= 0 && nr < 3 && nc >= 0 && nc < 3)\n        cnt++;\n}\nSystem.out.println(cnt);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const dr = [-1, 1, 0, 0];\nconst dc = [0, 0, -1, 1];\nlet r = 0, c = 0, cnt = 0;\nfor (let d = 0; d < 4; d++) {\n  const nr = r + dr[d], nc = c + dc[d];\n  if (nr >= 0 && nr < 3 && nc >= 0 && nc < 3)\n    cnt++;\n}\nconsole.log(cnt);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int dr[] = {-1, 1, 0, 0};\nint dc[] = {0, 0, -1, 1};\nint r = 0, c = 0, cnt = 0;\nfor (int d = 0; d < 4; d++) {\n    int nr = r + dr[d], nc = c + dc[d];\n    if (nr >= 0 && nr < 3 && nc >= 0 && nc < 3)\n        cnt++;\n}\ncout << cnt;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "3×3 격자의 모서리 (0, 0)에서 위·왼쪽은 범위 밖이고 아래·오른쪽 2칸만 범위 안이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u03-bounds-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "격자",
+        "구현"
+      ],
+      "content": {
+        "prompt": "격자에서 칸의 위치를 나타내는 두 값은?",
+        "options": [
+          "키와 값",
+          "앞과 뒤",
+          "행과 열"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "격자는 2차원 배열이라 행 번호 r과 열 번호 c로 칸을 가리킨다.",
+      "refs": []
+    }
+  ]
+}

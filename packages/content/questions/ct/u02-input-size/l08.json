@@ -1,0 +1,293 @@
+{
+  "track": "ct",
+  "unit": "u02-input-size",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "ct-u02-review-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "종합",
+        "복잡도"
+      ],
+      "content": {
+        "prompt": "풀이 방향을 정하는 순서로 알맞은 것은?",
+        "options": [
+          "N → 연산 수 → 복잡도",
+          "복잡도 → 연산 수 → N"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "N 범위를 읽고, 허용 연산 수를 어림한 뒤, 그 안에 드는 복잡도를 고른다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-review-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "종합",
+        "복잡도"
+      ],
+      "content": {
+        "prompt": "N ≤ 2 × 10⁵이면 쓸 수 있는 복잡도는?",
+        "options": [
+          "O(N²)",
+          "O(N log N)",
+          "O(2ᴺ)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "N이 10⁵ 정도면 O(N log N)까지 가능하다. O(N²)은 4 × 10¹⁰번이라 초과다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-review-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "종합",
+        "자료형"
+      ],
+      "content": {
+        "prompt": "답이 최대 5 × 10⁹이면 32비트 정수로 충분하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "32비트 최댓값은 약 2.1 × 10⁹이다. 5 × 10⁹은 넘으므로 64비트 정수가 필요하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-review-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "종합",
+        "자료형"
+      ],
+      "content": {
+        "prompt": "답이 최대 10⁹이면 32비트 정수로 충분하다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "10⁹은 32비트 최댓값 약 2.1 × 10⁹보다 작다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-review-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "종합",
+        "메모리"
+      ],
+      "content": {
+        "prompt": "메모리 사용량은 배열 칸 수 × 원소 ___로 어림한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "크기",
+          "size",
+          "바이트"
+        ]
+      },
+      "explanation": "칸 수에 원소 하나의 크기(4바이트, 8바이트)를 곱해 메모리 제한과 비교한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "종합",
+        "자료형"
+      ],
+      "content": {
+        "prompt": "답의 최댓값을 어림해 ___비트로 충분한지 확인한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "32",
+          "삼십이"
+        ]
+      },
+      "explanation": "답이 약 2.1 × 10⁹을 넘을 수 있으면 32비트로 부족해 64비트 정수를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-review-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "종합",
+        "복잡도"
+      ],
+      "content": {
+        "prompt": "n ≤ 10⁵이고 제한이 1초일 때 이 코드는?",
+        "options": [
+          "시간 안에 끝남",
+          "시간 초과"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "cnt = 0\nfor i in range(n):\n    for j in range(i + 1, n):\n        cnt += 1"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long cnt = 0;\nfor (int i = 0; i < n; i++) {\n    for (int j = i + 1; j < n; j++) {\n        cnt++;\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "let cnt = 0;\nfor (let i = 0; i < n; i++) {\n  for (let j = i + 1; j < n; j++) {\n    cnt++;\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long cnt = 0;\nfor (int i = 0; i < n; i++) {\n    for (int j = i + 1; j < n; j++) {\n        cnt++;\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "모든 쌍을 보므로 약 N² / 2 = 5 × 10⁹번이다. 1초 기준 10⁸번을 크게 넘는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-review-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "종합",
+        "오버플로"
+      ],
+      "content": {
+        "prompt": "출력 결과로 알맞은 것은?",
+        "options": [
+          "4999950000",
+          "엉뚱한 값"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "n = 100000\npairs = n * (n - 1) // 2\nprint(pairs)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int n = 100000;\nint pairs = n * (n - 1) / 2;\nSystem.out.println(pairs);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const n = 100000;\nconst pairs = n * (n - 1) / 2;\nconsole.log(pairs);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int n = 100000;\nint pairs = n * (n - 1) / 2;\ncout << pairs;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0,
+            "explanation": "파이썬 정수는 크기 제한이 없어 4999950000이 그대로 나온다."
+          },
+          "java": {
+            "index": 1,
+            "explanation": "n * (n − 1)이 int 범위를 넘어 엉뚱한 값 704982704가 된다. long으로 계산해야 한다."
+          },
+          "javascript": {
+            "index": 0,
+            "explanation": "JS Number는 2⁵³(약 9 × 10¹⁵)까지 정수를 정확히 담아 4999950000이 그대로 나온다."
+          },
+          "cpp": {
+            "index": 1,
+            "explanation": "n * (n − 1)이 int 범위를 넘어 값이 엉뚱해진다(부호 있는 오버플로는 정의되지 않은 동작). long long으로 계산한다."
+          }
+        }
+      },
+      "explanation": "쌍의 수 약 5 × 10⁹은 32비트를 넘는다. 32비트로 곱하는 언어는 64비트로 계산해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-review-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "종합",
+        "메모리"
+      ],
+      "content": {
+        "prompt": "N = 10⁴에서 N×N 64비트 정수 배열은 약 얼마인가?",
+        "options": [
+          "약 80MB",
+          "약 8GB",
+          "약 800MB"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "10⁸칸 × 8바이트 = 8 × 10⁸바이트 ≈ 800MB다. 보통 제한 128~512MB를 넘는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u02-review-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "종합",
+        "복잡도"
+      ],
+      "content": {
+        "prompt": "풀이 방향을 정할 때 가장 먼저 보는 것은?",
+        "options": [
+          "자료형",
+          "N의 범위",
+          "출력 형식"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "N 범위부터 읽어야 허용 연산 수와 쓸 수 있는 복잡도를 정할 수 있다.",
+      "refs": []
+    }
+  ]
+}
