@@ -88,37 +88,42 @@
     },
     {
       "id": "ct-u05-window-005",
-      "type": "fill",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "슬라이딩-윈도우",
         "갱신"
       ],
       "content": {
-        "prompt": "길이 k 윈도우를 한 칸 밀도록 빈칸을 채우면?",
+        "prompt": "길이 k 윈도우를 한 칸 밀도록 빈칸에 알맞은 것은?",
+        "options": [
+          "i - 1",
+          "i - k",
+          "i - k + 1"
+        ],
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "def max_window(a, k):\n    s = sum(a[:k])\n    best = s\n    for i in range(k, len(a)):\n        s += a[i] - a[i - ___]\n        best = max(best, s)\n    return best"
+              "source": "def max_window(a, k):\n    s = sum(a[:k])\n    best = s\n    for i in range(k, len(a)):\n        s += a[i] - a[___]\n        best = max(best, s)\n    return best"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "static int maxWindow(int[] a, int k) {\n    int s = 0;\n    for (int i = 0; i < k; i++) s += a[i];\n    int best = s;\n    for (int i = k; i < a.length; i++) {\n        s += a[i] - a[i - ___];\n        best = Math.max(best, s);\n    }\n    return best;\n}"
+              "source": "static int maxWindow(int[] a, int k) {\n    int s = 0;\n    for (int i = 0; i < k; i++) s += a[i];\n    int best = s;\n    for (int i = k; i < a.length; i++) {\n        s += a[i] - a[___];\n        best = Math.max(best, s);\n    }\n    return best;\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "function maxWindow(a, k) {\n  let s = 0;\n  for (let i = 0; i < k; i++) s += a[i];\n  let best = s;\n  for (let i = k; i < a.length; i++) {\n    s += a[i] - a[i - ___];\n    best = Math.max(best, s);\n  }\n  return best;\n}"
+              "source": "function maxWindow(a, k) {\n  let s = 0;\n  for (let i = 0; i < k; i++) s += a[i];\n  let best = s;\n  for (let i = k; i < a.length; i++) {\n    s += a[i] - a[___];\n    best = Math.max(best, s);\n  }\n  return best;\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "int maxWindow(const vector<int>& a, int k) {\n    int s = 0;\n    for (int i = 0; i < k; i++) s += a[i];\n    int best = s;\n    for (int i = k; i < (int)a.size(); i++) {\n        s += a[i] - a[i - ___];\n        best = max(best, s);\n    }\n    return best;\n}"
+              "source": "int maxWindow(const vector<int>& a, int k) {\n    int s = 0;\n    for (int i = 0; i < k; i++) s += a[i];\n    int best = s;\n    for (int i = k; i < (int)a.size(); i++) {\n        s += a[i] - a[___];\n        best = max(best, s);\n    }\n    return best;\n}"
             }
           }
         }
@@ -126,24 +131,16 @@
       "answer_key": {
         "variants": {
           "python": {
-            "accepted": [
-              "k"
-            ]
+            "index": 1
           },
           "java": {
-            "accepted": [
-              "k"
-            ]
+            "index": 1
           },
           "javascript": {
-            "accepted": [
-              "k"
-            ]
+            "index": 1
           },
           "cpp": {
-            "accepted": [
-              "k"
-            ]
+            "index": 1
           }
         }
       },
@@ -173,24 +170,21 @@
     },
     {
       "id": "ct-u05-window-007",
-      "type": "single",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
         "슬라이딩-윈도우",
         "계산"
       ],
       "content": {
-        "prompt": "a = [2, 5, 1, 4], K = 2일 때 윈도우 합의 최댓값은?",
-        "options": [
-          "6",
-          "7",
-          "9"
-        ]
+        "prompt": "a = [2, 5, 6, 4], K = 2이면 윈도우 합의 최댓값은 ___ 이다."
       },
       "answer_key": {
-        "index": 1
+        "accepted": [
+          "11"
+        ]
       },
-      "explanation": "윈도우 합은 2 + 5 = 7, 5 + 1 = 6, 1 + 4 = 5이므로 최댓값은 7이다.",
+      "explanation": "윈도우 합은 2 + 5 = 7, 5 + 6 = 11, 6 + 4 = 10이므로 최댓값은 11이다.",
       "refs": []
     },
     {

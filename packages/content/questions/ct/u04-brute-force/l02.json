@@ -88,37 +88,42 @@
     },
     {
       "id": "ct-u04-nested-005",
-      "type": "fill",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "중첩-반복",
         "중복-없는-쌍"
       ],
       "content": {
-        "prompt": "각 쌍을 한 번씩만 보도록 빈칸을 채우면?",
+        "prompt": "각 쌍을 한 번씩만 보도록 빈칸에 알맞은 것은?",
+        "options": [
+          "i + 1",
+          "0",
+          "i"
+        ],
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "def count_pairs(a, k):\n    n = len(a)\n    cnt = 0\n    for i in range(n):\n        for j in range(___ + 1, n):\n            if a[i] + a[j] == k:\n                cnt += 1\n    return cnt"
+              "source": "def count_pairs(a, k):\n    n = len(a)\n    cnt = 0\n    for i in range(n):\n        for j in range(___, n):\n            if a[i] + a[j] == k:\n                cnt += 1\n    return cnt"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "static int countPairs(int[] a, int k) {\n    int n = a.length, cnt = 0;\n    for (int i = 0; i < n; i++)\n        for (int j = ___ + 1; j < n; j++)\n            if (a[i] + a[j] == k) cnt++;\n    return cnt;\n}"
+              "source": "static int countPairs(int[] a, int k) {\n    int n = a.length, cnt = 0;\n    for (int i = 0; i < n; i++)\n        for (int j = ___; j < n; j++)\n            if (a[i] + a[j] == k) cnt++;\n    return cnt;\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "function countPairs(a, k) {\n  let cnt = 0;\n  for (let i = 0; i < a.length; i++) {\n    for (let j = ___ + 1; j < a.length; j++) {\n      if (a[i] + a[j] === k) cnt++;\n    }\n  }\n  return cnt;\n}"
+              "source": "function countPairs(a, k) {\n  let cnt = 0;\n  for (let i = 0; i < a.length; i++) {\n    for (let j = ___; j < a.length; j++) {\n      if (a[i] + a[j] === k) cnt++;\n    }\n  }\n  return cnt;\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "int countPairs(const vector<int>& a, int k) {\n    int n = a.size(), cnt = 0;\n    for (int i = 0; i < n; i++)\n        for (int j = ___ + 1; j < n; j++)\n            if (a[i] + a[j] == k) cnt++;\n    return cnt;\n}"
+              "source": "int countPairs(const vector<int>& a, int k) {\n    int n = a.size(), cnt = 0;\n    for (int i = 0; i < n; i++)\n        for (int j = ___; j < n; j++)\n            if (a[i] + a[j] == k) cnt++;\n    return cnt;\n}"
             }
           }
         }
@@ -126,24 +131,16 @@
       "answer_key": {
         "variants": {
           "python": {
-            "accepted": [
-              "i"
-            ]
+            "index": 0
           },
           "java": {
-            "accepted": [
-              "i"
-            ]
+            "index": 0
           },
           "javascript": {
-            "accepted": [
-              "i"
-            ]
+            "index": 0
           },
           "cpp": {
-            "accepted": [
-              "i"
-            ]
+            "index": 0
           }
         }
       },
@@ -152,37 +149,42 @@
     },
     {
       "id": "ct-u04-nested-006",
-      "type": "fill",
+      "type": "single",
       "difficulty": 2,
       "tags": [
         "중첩-반복",
         "세-쌍"
       ],
       "content": {
-        "prompt": "세 원소를 중복 없이 고르도록 빈칸을 채우면?",
+        "prompt": "세 원소를 중복 없이 고르도록 빈칸에 알맞은 것은?",
+        "options": [
+          "i + 1",
+          "j",
+          "j + 1"
+        ],
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "def count_zero(a):\n    n = len(a)\n    cnt = 0\n    for i in range(n):\n        for j in range(i + 1, n):\n            for k in range(___ + 1, n):\n                if a[i] + a[j] + a[k] == 0:\n                    cnt += 1\n    return cnt"
+              "source": "def count_zero(a):\n    n = len(a)\n    cnt = 0\n    for i in range(n):\n        for j in range(i + 1, n):\n            for k in range(___, n):\n                if a[i] + a[j] + a[k] == 0:\n                    cnt += 1\n    return cnt"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "static int countZero(int[] a) {\n    int n = a.length, cnt = 0;\n    for (int i = 0; i < n; i++)\n        for (int j = i + 1; j < n; j++)\n            for (int k = ___ + 1; k < n; k++)\n                if (a[i] + a[j] + a[k] == 0)\n                    cnt++;\n    return cnt;\n}"
+              "source": "static int countZero(int[] a) {\n    int n = a.length, cnt = 0;\n    for (int i = 0; i < n; i++)\n        for (int j = i + 1; j < n; j++)\n            for (int k = ___; k < n; k++)\n                if (a[i] + a[j] + a[k] == 0)\n                    cnt++;\n    return cnt;\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "function countZero(a) {\n  const n = a.length;\n  let cnt = 0;\n  for (let i = 0; i < n; i++)\n    for (let j = i + 1; j < n; j++)\n      for (let k = ___ + 1; k < n; k++)\n        if (a[i] + a[j] + a[k] === 0) cnt++;\n  return cnt;\n}"
+              "source": "function countZero(a) {\n  const n = a.length;\n  let cnt = 0;\n  for (let i = 0; i < n; i++)\n    for (let j = i + 1; j < n; j++)\n      for (let k = ___; k < n; k++)\n        if (a[i] + a[j] + a[k] === 0) cnt++;\n  return cnt;\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "int countZero(const vector<int>& a) {\n    int n = a.size(), cnt = 0;\n    for (int i = 0; i < n; i++)\n        for (int j = i + 1; j < n; j++)\n            for (int k = ___ + 1; k < n; k++)\n                if (a[i] + a[j] + a[k] == 0)\n                    cnt++;\n    return cnt;\n}"
+              "source": "int countZero(const vector<int>& a) {\n    int n = a.size(), cnt = 0;\n    for (int i = 0; i < n; i++)\n        for (int j = i + 1; j < n; j++)\n            for (int k = ___; k < n; k++)\n                if (a[i] + a[j] + a[k] == 0)\n                    cnt++;\n    return cnt;\n}"
             }
           }
         }
@@ -190,24 +192,16 @@
       "answer_key": {
         "variants": {
           "python": {
-            "accepted": [
-              "j"
-            ]
+            "index": 2
           },
           "java": {
-            "accepted": [
-              "j"
-            ]
+            "index": 2
           },
           "javascript": {
-            "accepted": [
-              "j"
-            ]
+            "index": 2
           },
           "cpp": {
-            "accepted": [
-              "j"
-            ]
+            "index": 2
           }
         }
       },
@@ -216,22 +210,20 @@
     },
     {
       "id": "ct-u04-nested-007",
-      "type": "single",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
         "쌍의-개수",
         "계산"
       ],
       "content": {
-        "prompt": "N = 1,000일 때 중복 없는 쌍의 개수는 약?",
-        "options": [
-          "약 100만",
-          "약 1,000",
-          "약 50만"
-        ]
+        "prompt": "N = 1,000이면 중복 없는 쌍은 약 ___만 개다."
       },
       "answer_key": {
-        "index": 2
+        "accepted": [
+          "50",
+          "오십"
+        ]
       },
       "explanation": "N(N − 1) / 2 = 1000 × 999 / 2 = 499,500이므로 약 50만 개다.",
       "refs": []
@@ -299,22 +291,21 @@
     },
     {
       "id": "ct-u04-nested-009",
-      "type": "single",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
         "쌍의-개수",
         "계산"
       ],
       "content": {
-        "prompt": "N = 5,000에서 중복 없는 쌍을 모두 보면 약 몇 개?",
-        "options": [
-          "약 2,500만",
-          "약 1,250만",
-          "약 5,000"
-        ]
+        "prompt": "N = 5,000이면 중복 없는 쌍은 약 ___만 개다."
       },
       "answer_key": {
-        "index": 1
+        "accepted": [
+          "1250",
+          "1,250",
+          "천이백오십"
+        ]
       },
       "explanation": "5000 × 4999 / 2 ≈ 1,250만 개다. N × N으로 세면 2배인 2,500만이 된다.",
       "refs": []

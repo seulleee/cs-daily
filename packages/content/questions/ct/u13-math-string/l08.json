@@ -93,30 +93,30 @@
         "sieve"
       ],
       "content": {
-        "prompt": "소수 p의 배수를 차례로 지우도록 빈칸을 채우면?",
+        "prompt": "소수 p의 배수를 지우도록 빈칸을 채우면?",
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "is_prime = [True] * (n + 1)\nis_prime[0] = is_prime[1] = False\np = 2\nwhile p * p <= n:\n    if is_prime[p]:\n        for m in range(p * p, n + 1, ___):\n            is_prime[m] = False\n    p += 1"
+              "source": "is_prime = [True] * (n + 1)\nis_prime[0] = is_prime[1] = False\np = 2\nwhile p * p <= n:\n    if is_prime[p]:\n        for m in range(p * p, n + 1, p):\n            is_prime[m] = ___\n    p += 1"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "boolean[] isPrime = new boolean[n + 1];\nArrays.fill(isPrime, 2, n + 1, true);\nfor (int p = 2; p * p <= n; p++)\n    if (isPrime[p])\n        for (int m = p * p; m <= n; m += ___)\n            isPrime[m] = false;"
+              "source": "boolean[] isPrime = new boolean[n + 1];\nArrays.fill(isPrime, 2, n + 1, true);\nfor (int p = 2; p * p <= n; p++)\n    if (isPrime[p])\n        for (int m = p * p; m <= n; m += p)\n            isPrime[m] = ___;"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "const isPrime = new Array(n + 1).fill(true);\nisPrime[0] = isPrime[1] = false;\nfor (let p = 2; p * p <= n; p++)\n  if (isPrime[p])\n    for (let m = p * p; m <= n; m += ___)\n      isPrime[m] = false;"
+              "source": "const isPrime = new Array(n + 1).fill(true);\nisPrime[0] = isPrime[1] = false;\nfor (let p = 2; p * p <= n; p++)\n  if (isPrime[p])\n    for (let m = p * p; m <= n; m += p)\n      isPrime[m] = ___;"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "vector<bool> isPrime(n + 1, true);\nisPrime[0] = isPrime[1] = false;\nfor (int p = 2; p * p <= n; p++)\n    if (isPrime[p])\n        for (int m = p * p; m <= n; m += ___)\n            isPrime[m] = false;"
+              "source": "vector<bool> isPrime(n + 1, true);\nisPrime[0] = isPrime[1] = false;\nfor (int p = 2; p * p <= n; p++)\n    if (isPrime[p])\n        for (int m = p * p; m <= n; m += p)\n            isPrime[m] = ___;"
             }
           }
         }
@@ -125,27 +125,28 @@
         "variants": {
           "python": {
             "accepted": [
-              "p"
+              "False",
+              "false"
             ]
           },
           "java": {
             "accepted": [
-              "p"
+              "false"
             ]
           },
           "javascript": {
             "accepted": [
-              "p"
+              "false"
             ]
           },
           "cpp": {
             "accepted": [
-              "p"
+              "false"
             ]
           }
         }
       },
-      "explanation": "p × p부터 p씩 건너뛰며 지우면 p의 배수만 차례로 지운다.",
+      "explanation": "p × p부터 p씩 건너뛰며 그 배수를 거짓으로 바꿔 소수 후보에서 지운다.",
       "refs": []
     },
     {
@@ -162,25 +163,25 @@
           "python": {
             "code": {
               "language": "python",
-              "source": "from math import gcd\n\ndef lcm(a, b):\n    return a // gcd(a, b) * ___"
+              "source": "from math import gcd\n\ndef lcm(a, b):\n    return a // ___(a, b) * b"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "long lcm(long a, long b) {\n    return a / gcd(a, b) * ___;\n}"
+              "source": "long lcm(long a, long b) {\n    return a / ___(a, b) * b;\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "function lcm(a, b) {\n  return a / gcd(a, b) * ___;\n}"
+              "source": "function lcm(a, b) {\n  return a / ___(a, b) * b;\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "long long lcm(long long a, long long b) {\n    return a / gcd(a, b) * ___;\n}"
+              "source": "long long lcm(long long a, long long b) {\n    return a / ___(a, b) * b;\n}"
             }
           }
         }
@@ -189,27 +190,27 @@
         "variants": {
           "python": {
             "accepted": [
-              "b"
+              "gcd"
             ]
           },
           "java": {
             "accepted": [
-              "b"
+              "gcd"
             ]
           },
           "javascript": {
             "accepted": [
-              "b"
+              "gcd"
             ]
           },
           "cpp": {
             "accepted": [
-              "b"
+              "gcd"
             ]
           }
         }
       },
-      "explanation": "a를 최대공약수로 먼저 나눈 뒤 b를 곱하면 중간값이 작게 유지된다.",
+      "explanation": "a를 최대공약수 gcd(a, b)로 먼저 나눈 뒤 b를 곱하면 중간값이 작게 유지된다.",
       "refs": []
     },
     {

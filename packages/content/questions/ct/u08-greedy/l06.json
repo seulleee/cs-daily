@@ -110,30 +110,30 @@
         "투-포인터"
       ],
       "content": {
-        "prompt": "합 L 이하로 둘씩 묶는다. 가장 가벼운 w[i]와 묶어 볼 짝의 빈칸은?",
+        "prompt": "양 끝 짝짓기 전에 할 일이 되도록 빈칸을 채우면?",
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "def groups(w, L):\n    w.sort()\n    i, j, cnt = 0, len(w) - 1, 0\n    while i <= j:\n        if w[i] + w[___] <= L:\n            i += 1\n        j -= 1\n        cnt += 1\n    return cnt"
+              "source": "def groups(w, L):\n    w.___()\n    i, j, cnt = 0, len(w) - 1, 0\n    while i <= j:\n        if w[i] + w[j] <= L:\n            i += 1\n        j -= 1\n        cnt += 1\n    return cnt"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "static int groups(int[] w, int L) {\n    Arrays.sort(w);\n    int i = 0, j = w.length - 1, cnt = 0;\n    while (i <= j) {\n        if (w[i] + w[___] <= L) i++;\n        j--;\n        cnt++;\n    }\n    return cnt;\n}"
+              "source": "static int groups(int[] w, int L) {\n    Arrays.___(w);\n    int i = 0, j = w.length - 1, cnt = 0;\n    while (i <= j) {\n        if (w[i] + w[j] <= L) i++;\n        j--;\n        cnt++;\n    }\n    return cnt;\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "function groups(w, L) {\n  w.sort((x, y) => x - y);\n  let i = 0, j = w.length - 1, cnt = 0;\n  while (i <= j) {\n    if (w[i] + w[___] <= L) i++;\n    j--;\n    cnt++;\n  }\n  return cnt;\n}"
+              "source": "function groups(w, L) {\n  w.___((x, y) => x - y);\n  let i = 0, j = w.length - 1, cnt = 0;\n  while (i <= j) {\n    if (w[i] + w[j] <= L) i++;\n    j--;\n    cnt++;\n  }\n  return cnt;\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "int groups(vector<int> w, int L) {\n    sort(w.begin(), w.end());\n    int i = 0, j = (int)w.size() - 1, cnt = 0;\n    while (i <= j) {\n        if (w[i] + w[___] <= L) i++;\n        j--;\n        cnt++;\n    }\n    return cnt;\n}"
+              "source": "int groups(vector<int> w, int L) {\n    ___(w.begin(), w.end());\n    int i = 0, j = (int)w.size() - 1, cnt = 0;\n    while (i <= j) {\n        if (w[i] + w[j] <= L) i++;\n        j--;\n        cnt++;\n    }\n    return cnt;\n}"
             }
           }
         }
@@ -142,27 +142,27 @@
         "variants": {
           "python": {
             "accepted": [
-              "j"
+              "sort"
             ]
           },
           "java": {
             "accepted": [
-              "j"
+              "sort"
             ]
           },
           "javascript": {
             "accepted": [
-              "j"
+              "sort"
             ]
           },
           "cpp": {
             "accepted": [
-              "j"
+              "sort"
             ]
           }
         }
       },
-      "explanation": "w[j]는 남은 것 중 가장 무겁다. w[i] + w[j] ≤ L이면 함께 묶고, 아니면 w[j]만 따로 한 묶음이 된다.",
+      "explanation": "먼저 정렬해야 양 끝이 가장 가벼운 것과 가장 무거운 것이 되고, 투 포인터로 양 끝을 옮길 수 있다.",
       "refs": []
     },
     {

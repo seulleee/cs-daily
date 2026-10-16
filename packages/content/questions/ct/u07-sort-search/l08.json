@@ -116,25 +116,25 @@
           "python": {
             "code": {
               "language": "python",
-              "source": "def first_at_least(a, t):\n    n = len(a)\n    i = lower(a, t)\n    if i == ___:\n        return -1\n    return a[i]"
+              "source": "def first_at_least(a, t):\n    i = lower(a, t)\n    if i == ___(a):\n        return -1\n    return a[i]"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "static int firstAtLeast(int[] a, int t) {\n    int n = a.length;\n    int i = lower(a, t);\n    if (i == ___) return -1;\n    return a[i];\n}"
+              "source": "static int firstAtLeast(int[] a, int t) {\n    int i = lower(a, t);\n    if (i == a.___) return -1;\n    return a[i];\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "function firstAtLeast(a, t) {\n  const n = a.length;\n  const i = lower(a, t);\n  if (i === ___) return -1;\n  return a[i];\n}"
+              "source": "function firstAtLeast(a, t) {\n  const i = lower(a, t);\n  if (i === a.___) return -1;\n  return a[i];\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "int firstAtLeast(const vector<int>& a, int t) {\n    int n = a.size();\n    int i = lower(a, t);\n    if (i == ___) return -1;\n    return a[i];\n}"
+              "source": "int firstAtLeast(const vector<int>& a, int t) {\n    int i = lower(a, t);\n    if (i == (int)a.___()) return -1;\n    return a[i];\n}"
             }
           }
         }
@@ -143,27 +143,27 @@
         "variants": {
           "python": {
             "accepted": [
-              "n"
+              "len"
             ]
           },
           "java": {
             "accepted": [
-              "n"
+              "length"
             ]
           },
           "javascript": {
             "accepted": [
-              "n"
+              "length"
             ]
           },
           "cpp": {
             "accepted": [
-              "n"
+              "size"
             ]
           }
         }
       },
-      "explanation": "lower bound가 n(배열 길이)이면 t 이상인 값이 없으므로 a[i]에 접근하기 전에 따로 처리한다.",
+      "explanation": "lower bound가 배열 길이 N이면 t 이상인 값이 없으므로 a[i]에 접근하기 전에 따로 처리한다.",
       "refs": []
     },
     {

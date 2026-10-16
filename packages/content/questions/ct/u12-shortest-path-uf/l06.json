@@ -151,37 +151,42 @@
     },
     {
       "id": "ct-u12-uf-opt-006",
-      "type": "fill",
+      "type": "single",
       "difficulty": 2,
       "tags": [
         "union-find",
         "union-by-size"
       ],
       "content": {
-        "prompt": "합친 뒤 새 루트의 크기를 늘리도록 빈칸을 채우면?",
+        "prompt": "합친 뒤 새 루트의 크기를 늘리도록 빈칸에 알맞은 것은?",
+        "options": [
+          "1",
+          "sz[a]",
+          "sz[b]"
+        ],
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "def union(a, b):\n    a, b = find(a), find(b)\n    if a == b:\n        return\n    if sz[a] < sz[b]:\n        a, b = b, a\n    parent[b] = a\n    sz[a] += sz[___]"
+              "source": "def union(a, b):\n    a, b = find(a), find(b)\n    if a == b:\n        return\n    if sz[a] < sz[b]:\n        a, b = b, a\n    parent[b] = a\n    sz[a] += ___"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "void union(int a, int b) {\n    a = find(a); b = find(b);\n    if (a == b) return;\n    if (sz[a] < sz[b]) {\n        int t = a; a = b; b = t;\n    }\n    parent[b] = a;\n    sz[a] += sz[___];\n}"
+              "source": "void union(int a, int b) {\n    a = find(a); b = find(b);\n    if (a == b) return;\n    if (sz[a] < sz[b]) {\n        int t = a; a = b; b = t;\n    }\n    parent[b] = a;\n    sz[a] += ___;\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "function union(a, b) {\n  a = find(a); b = find(b);\n  if (a === b) return;\n  if (sz[a] < sz[b]) [a, b] = [b, a];\n  parent[b] = a;\n  sz[a] += sz[___];\n}"
+              "source": "function union(a, b) {\n  a = find(a); b = find(b);\n  if (a === b) return;\n  if (sz[a] < sz[b]) [a, b] = [b, a];\n  parent[b] = a;\n  sz[a] += ___;\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "void unite(int a, int b) {\n    a = find(a); b = find(b);\n    if (a == b) return;\n    if (sz[a] < sz[b]) swap(a, b);\n    parent[b] = a;\n    sz[a] += sz[___];\n}"
+              "source": "void unite(int a, int b) {\n    a = find(a); b = find(b);\n    if (a == b) return;\n    if (sz[a] < sz[b]) swap(a, b);\n    parent[b] = a;\n    sz[a] += ___;\n}"
             }
           }
         }
@@ -189,24 +194,16 @@
       "answer_key": {
         "variants": {
           "python": {
-            "accepted": [
-              "b"
-            ]
+            "index": 2
           },
           "java": {
-            "accepted": [
-              "b"
-            ]
+            "index": 2
           },
           "javascript": {
-            "accepted": [
-              "b"
-            ]
+            "index": 2
           },
           "cpp": {
-            "accepted": [
-              "b"
-            ]
+            "index": 2
           }
         }
       },
@@ -297,23 +294,21 @@
     },
     {
       "id": "ct-u12-uf-opt-009",
-      "type": "single",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
         "union-find",
         "union-by-size"
       ],
       "content": {
-        "prompt": "크기 5인 트리 A와 크기 2인 트리 B를 합치면 새 루트는?",
-        "options": [
-          "A의 루트",
-          "B의 루트"
-        ]
+        "prompt": "크기 12인 트리와 크기 5인 트리를 합치면 새 루트의 크기는 ___ 이다."
       },
       "answer_key": {
-        "index": 0
+        "accepted": [
+          "17"
+        ]
       },
-      "explanation": "작은 트리 B를 큰 트리 A의 루트 아래에 붙이므로 A의 루트가 새 루트가 된다.",
+      "explanation": "작은 트리를 큰 트리의 루트 아래에 붙이고 크기를 더하므로 12 + 5 = 17이다.",
       "refs": []
     },
     {

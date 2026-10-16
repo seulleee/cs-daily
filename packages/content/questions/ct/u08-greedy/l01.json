@@ -129,7 +129,7 @@
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "function bestSum(a, k) {\n  a.sort((x, y) => ___ - x);\n  let s = 0;\n  for (let i = 0; i < k; i++) s += a[i];\n  return s;\n}"
+              "source": "function bestSum(a, k) {\n  a.sort((x, y) => x - y).___();\n  let s = 0;\n  for (let i = 0; i < k; i++) s += a[i];\n  return s;\n}"
             }
           },
           "cpp": {
@@ -156,9 +156,9 @@
           },
           "javascript": {
             "accepted": [
-              "y"
+              "reverse"
             ],
-            "explanation": "비교 함수 (x, y) => y - x는 내림차순 정렬이다. 앞에서 k개를 더하면 가장 큰 합이다."
+            "explanation": "오름차순으로 정렬한 뒤 reverse()로 뒤집으면 내림차순이 된다. 앞에서 k개를 더하면 가장 큰 합이다."
           },
           "cpp": {
             "accepted": [

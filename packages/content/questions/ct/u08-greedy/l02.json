@@ -111,30 +111,30 @@
         "구간-선택"
       ],
       "content": {
-        "prompt": "고른 구간의 끝 시각을 기록한다. 빈칸은?",
+        "prompt": "고른 구간의 끝 시각을 기록하도록 빈칸을 채우면?",
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "def pick(iv):\n    iv.sort(key=lambda x: (x[1], x[0]))\n    cnt, end = 0, -1\n    for s, e in iv:\n        if s >= end:\n            cnt += 1\n            end = ___\n    return cnt"
+              "source": "def pick(iv):\n    iv.sort(key=lambda x: (x[1], x[0]))\n    cnt, last = 0, -1\n    for start, end in iv:\n        if start >= last:\n            cnt += 1\n            last = ___\n    return cnt"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "static int pick(int[][] iv) {\n    Arrays.sort(iv, (p, q) -> p[1] != q[1]\n        ? p[1] - q[1] : p[0] - q[0]);\n    int cnt = 0, end = -1;\n    for (int[] p : iv) {\n        int s = p[0], e = p[1];\n        if (s >= end) { cnt++; end = ___; }\n    }\n    return cnt;\n}"
+              "source": "static int pick(int[][] iv) {\n    Arrays.sort(iv, (p, q) -> p[1] != q[1]\n        ? p[1] - q[1] : p[0] - q[0]);\n    int cnt = 0, last = -1;\n    for (int[] p : iv) {\n        int start = p[0], end = p[1];\n        if (start < last) continue;\n        cnt++;\n        last = ___;\n    }\n    return cnt;\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "function pick(iv) {\n  iv.sort((p, q) => p[1] - q[1] || p[0] - q[0]);\n  let cnt = 0, end = -1;\n  for (const [s, e] of iv) {\n    if (s >= end) { cnt++; end = ___; }\n  }\n  return cnt;\n}"
+              "source": "function pick(iv) {\n  iv.sort((p, q) => p[1] - q[1] || p[0] - q[0]);\n  let cnt = 0, last = -1;\n  for (const [start, end] of iv) {\n    if (start >= last) { cnt++; last = ___; }\n  }\n  return cnt;\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "int pick(vector<pair<int, int>> iv) {\n    auto cmp = [](auto a, auto b) {\n        if (a.second != b.second)\n            return a.second < b.second;\n        return a.first < b.first;\n    };\n    sort(iv.begin(), iv.end(), cmp);\n    int cnt = 0, end = -1;\n    for (auto [s, e] : iv)\n        if (s >= end) { cnt++; end = ___; }\n    return cnt;\n}"
+              "source": "int pick(vector<pair<int, int>> iv) {\n    // iv[i] = {끝 시각, 시작 시각}\n    sort(iv.begin(), iv.end());\n    int cnt = 0, last = -1;\n    for (auto [end, start] : iv) {\n        if (start < last) continue;\n        cnt++;\n        last = ___;\n    }\n    return cnt;\n}"
             }
           }
         }
@@ -143,27 +143,27 @@
         "variants": {
           "python": {
             "accepted": [
-              "e"
+              "end"
             ]
           },
           "java": {
             "accepted": [
-              "e"
+              "end"
             ]
           },
           "javascript": {
             "accepted": [
-              "e"
+              "end"
             ]
           },
           "cpp": {
             "accepted": [
-              "e"
+              "end"
             ]
           }
         }
       },
-      "explanation": "구간을 고르면 그 끝 시각 e를 end에 기록하고, 다음 구간은 시작이 end 이상일 때만 고른다.",
+      "explanation": "구간을 고르면 그 끝 시각 end를 last에 기록한다. 다음 구간은 시작이 last 이상일 때만 고른다.",
       "refs": []
     },
     {

@@ -158,30 +158,30 @@
         "kruskal"
       ],
       "content": {
-        "prompt": "트리에 넣은 간선의 가중치를 더하는 빈칸은?",
+        "prompt": "크루스칼이 간선을 가중치 오름차순으로 보도록 빈칸을 채우면?",
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "edges.sort()  # (w, u, v)\ntotal = 0\nfor w, u, v in edges:\n    if find(u) != find(v):\n        union(u, v)\n        total += ___"
+              "source": "edges.___()  # (w, u, v)\ntotal = 0\nfor w, u, v in edges:\n    if find(u) != find(v):\n        union(u, v)\n        total += w"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "edges.sort(Comparator.comparingInt(e -> e[0]));\nlong total = 0;\nfor (int[] e : edges) {  // e = {w, u, v}\n    if (find(e[1]) != find(e[2])) {\n        union(e[1], e[2]);\n        total += e[___];\n    }\n}"
+              "source": "edges.___(Comparator.comparingInt(e -> e[0]));\nlong total = 0;\nfor (int[] e : edges) {  // e = {w, u, v}\n    if (find(e[1]) != find(e[2])) {\n        union(e[1], e[2]);\n        total += e[0];\n    }\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "edges.sort((x, y) => x[0] - y[0]);\nlet total = 0;\nfor (const [w, u, v] of edges) {\n  if (find(u) !== find(v)) {\n    union(u, v);\n    total += ___;\n  }\n}"
+              "source": "edges.___((x, y) => x[0] - y[0]);\nlet total = 0;\nfor (const [w, u, v] of edges) {\n  if (find(u) !== find(v)) {\n    union(u, v);\n    total += w;\n  }\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "sort(edges.begin(), edges.end());  // {w,u,v}\nlong long total = 0;\nfor (auto [w, u, v] : edges) {\n    if (find(u) != find(v)) {\n        unite(u, v);\n        total += ___;\n    }\n}"
+              "source": "___(edges.begin(), edges.end());  // {w,u,v}\nlong long total = 0;\nfor (auto [w, u, v] : edges) {\n    if (find(u) != find(v)) {\n        unite(u, v);\n        total += w;\n    }\n}"
             }
           }
         }
@@ -190,28 +190,27 @@
         "variants": {
           "python": {
             "accepted": [
-              "w"
+              "sort"
             ]
           },
           "java": {
             "accepted": [
-              "0"
-            ],
-            "explanation": "e = {w, u, v}라 가중치는 e[0]이다. 사이클이 안 생겨 트리에 넣은 간선의 가중치만 더한다."
+              "sort"
+            ]
           },
           "javascript": {
             "accepted": [
-              "w"
+              "sort"
             ]
           },
           "cpp": {
             "accepted": [
-              "w"
+              "sort"
             ]
           }
         }
       },
-      "explanation": "사이클이 안 생겨 트리에 넣은 간선의 가중치 w만 더하면 최소 신장 트리의 가중치 합이 된다.",
+      "explanation": "크루스칼은 간선을 가중치 오름차순으로 정렬한 뒤, 사이클이 안 생기는 간선만 트리에 넣는다.",
       "refs": []
     },
     {

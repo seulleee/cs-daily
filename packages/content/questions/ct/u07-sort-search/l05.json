@@ -105,36 +105,41 @@
     },
     {
       "id": "ct-u07-param-006",
-      "type": "fill",
+      "type": "single",
       "difficulty": 2,
       "tags": [
         "결정-함수"
       ],
       "content": {
         "prompt": "결정 함수: 길이 x 조각을 k개 이상 만들 수 있나? 빈칸은?",
+        "options": [
+          "cnt",
+          "cnt == k",
+          "cnt >= k"
+        ],
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "def can(a, x, k):\n    cnt = 0\n    for v in a:\n        cnt += v // ___\n    return cnt >= k"
+              "source": "def can(a, x, k):\n    cnt = 0\n    for v in a:\n        cnt += v // x\n    return ___"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "static boolean can(int[] a, int x, int k) {\n    long cnt = 0;\n    for (int v : a) cnt += v / ___;\n    return cnt >= k;\n}"
+              "source": "static boolean can(int[] a, int x, int k) {\n    long cnt = 0;\n    for (int v : a) cnt += v / x;\n    return ___;\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "function can(a, x, k) {\n  let cnt = 0;\n  for (const v of a) cnt += Math.floor(v / ___);\n  return cnt >= k;\n}"
+              "source": "function can(a, x, k) {\n  let cnt = 0;\n  for (const v of a) cnt += Math.floor(v / x);\n  return ___;\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "bool can(const vector<int>& a, int x, int k) {\n    long long cnt = 0;\n    for (int v : a) cnt += v / ___;\n    return cnt >= k;\n}"
+              "source": "bool can(const vector<int>& a, int x, int k) {\n    long long cnt = 0;\n    for (int v : a) cnt += v / x;\n    return ___;\n}"
             }
           }
         }
@@ -142,28 +147,20 @@
       "answer_key": {
         "variants": {
           "python": {
-            "accepted": [
-              "x"
-            ]
+            "index": 2
           },
           "java": {
-            "accepted": [
-              "x"
-            ]
+            "index": 2
           },
           "javascript": {
-            "accepted": [
-              "x"
-            ]
+            "index": 2
           },
           "cpp": {
-            "accepted": [
-              "x"
-            ]
+            "index": 2
           }
         }
       },
-      "explanation": "막대마다 길이 x 조각을 v ÷ x(몫)개 만들 수 있고, 그 합이 k 이상이면 x로 가능하다.",
+      "explanation": "결정 함수는 가능·불가능을 돌려준다. 막대마다 v ÷ x(몫)개를 만들고, 그 합이 k 이상이면 x로 가능하다.",
       "refs": []
     },
     {
@@ -253,20 +250,21 @@
     },
     {
       "id": "ct-u07-param-009",
-      "type": "single",
+      "type": "fill",
       "difficulty": 2,
       "tags": [
         "단조성"
       ],
       "content": {
-        "prompt": "x가 가능하면 더 작은 x도 가능하다. 이진 탐색으로 찾을 답은?",
-        "options": [
-          "가능한 최대 x",
-          "가능한 최소 x"
-        ]
+        "prompt": "x가 가능하면 더 작은 x도 가능할 때 찾는 답은 가능한 ___ x다."
       },
       "answer_key": {
-        "index": 0
+        "accepted": [
+          "최대",
+          "최댓값",
+          "가장 큰",
+          "max"
+        ]
       },
       "explanation": "작은 쪽이 모두 가능하고 어느 지점부터 불가능해지므로, 경계 직전인 가능한 최대 x를 찾는다.",
       "refs": []

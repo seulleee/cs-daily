@@ -108,33 +108,34 @@
       "type": "fill",
       "difficulty": 2,
       "tags": [
-        "인접-리스트"
+        "bfs",
+        "방문-배열"
       ],
       "content": {
-        "prompt": "무방향 간선을 인접 리스트에 넣는다. 빈칸은?",
+        "prompt": "큐에 넣는 이웃을 방문 표시하도록 빈칸을 채우면?",
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "g = [[] for _ in range(n)]\nfor u, v in edges:\n    g[u].append(v)\n    g[___].append(u)"
+              "source": "seen = [False] * n\nseen[s] = True\nq = deque([s])\nwhile q:\n    x = q.popleft()\n    for y in g[x]:\n        if not seen[y]:\n            seen[y] = ___\n            q.append(y)"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "List<List<Integer>> g = new ArrayList<>();\nfor (int i = 0; i < n; i++)\n    g.add(new ArrayList<>());\nfor (int[] e : edges) {\n    int u = e[0], v = e[1];\n    g.get(u).add(v);\n    g.get(___).add(u);\n}"
+              "source": "boolean[] seen = new boolean[n];\nseen[s] = true;\nDeque<Integer> q = new ArrayDeque<>();\nq.add(s);\nwhile (!q.isEmpty()) {\n    int x = q.poll();\n    for (int y : g.get(x)) {\n        if (seen[y]) continue;\n        seen[y] = ___;\n        q.add(y);\n    }\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "const g = Array.from({ length: n }, () => []);\nfor (const [u, v] of edges) {\n  g[u].push(v);\n  g[___].push(u);\n}"
+              "source": "const seen = Array(n).fill(false);\nseen[s] = true;\nconst q = [s];\nfor (let h = 0; h < q.length; h++) {\n  for (const y of g[q[h]]) {\n    if (seen[y]) continue;\n    seen[y] = ___;\n    q.push(y);\n  }\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "vector<vector<int>> g(n);\nfor (auto [u, v] : edges) {\n    g[u].push_back(v);\n    g[___].push_back(u);\n}"
+              "source": "vector<bool> seen(n);\nseen[s] = true;\nqueue<int> q;\nq.push(s);\nwhile (!q.empty()) {\n    int x = q.front(); q.pop();\n    for (int y : g[x]) {\n        if (seen[y]) continue;\n        seen[y] = ___;\n        q.push(y);\n    }\n}"
             }
           }
         }
@@ -143,27 +144,28 @@
         "variants": {
           "python": {
             "accepted": [
-              "v"
+              "True",
+              "true"
             ]
           },
           "java": {
             "accepted": [
-              "v"
+              "true"
             ]
           },
           "javascript": {
             "accepted": [
-              "v"
+              "true"
             ]
           },
           "cpp": {
             "accepted": [
-              "v"
+              "true"
             ]
           }
         }
       },
-      "explanation": "무방향 간선 (u, v)는 u의 이웃에 v를, v의 이웃에 u를 모두 넣어야 양쪽에서 이동할 수 있다.",
+      "explanation": "이웃을 큐에 넣을 때 방문 배열에 표시해 두어야 같은 정점을 다시 넣지 않는다.",
       "refs": []
     },
     {
