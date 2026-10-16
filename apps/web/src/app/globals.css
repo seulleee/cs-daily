@@ -367,13 +367,26 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
     counter-reset: code-line;
     tab-size: 4;
   }
-  .code-block code { display: block; width: max-content; min-width: 100%; font: inherit; }
-  .code-line { display: block; white-space: pre; counter-increment: code-line; }
+  .code-block code { display: block; font: inherit; }
+  /* 가로 스크롤 없이 긴 줄을 접는다(soft wrap). 줄 번호는 첫 줄에만(절대 위치).
+     --indent = 원래 줄의 선행 공백 수. 이어진 줄은 원래 들여쓰기 + 2ch(hanging indent)에서 시작한다 */
+  .code-line {
+    display: block;
+    position: relative;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    --gutter: calc(2ch + 12px);
+    padding-left: calc(var(--gutter) + (var(--indent, 0) + 2) * 1ch);
+    text-indent: calc(-1 * (var(--indent, 0) + 2) * 1ch);
+    counter-increment: code-line;
+  }
   .code-line::before {
     content: counter(code-line);
-    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 2ch;
-    margin-right: 12px;
+    text-indent: 0;
     text-align: right;
     color: var(--color-ink-2);
     user-select: none;
@@ -381,6 +394,8 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
   /* 빈칸 상자: 기본 = 반전(ink 바탕). 오답 = wrong 테두리 상자 */
   .code-blank {
     display: inline-block;
+    white-space: nowrap;
+    text-indent: 0; /* .code-line의 hanging indent 상속 차단 */
     min-width: 3ch;
     padding: 0 4px;
     text-align: center;

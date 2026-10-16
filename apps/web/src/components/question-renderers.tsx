@@ -81,7 +81,7 @@ function CodeBlock({
       >
         <code>
           {lines.map((line, i) => (
-            <span key={i} className="code-line">
+            <span key={i} className="code-line" style={{ ['--indent' as string]: line.length - line.trimStart().length }}>
               {line.split('___').map((part, j) => (
                 <span key={j}>
                   {j > 0 && <CodeBlank view={blank ?? { text: '' }} />}
