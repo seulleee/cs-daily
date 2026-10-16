@@ -120,6 +120,8 @@ model Lesson {
   objective     String?
   /// 핵심 정리 2~4줄 ("용어 — 한 줄 정의"), 레슨 시작 카드에 표시
   keyPoints     String[] @default([]) @map("key_points")
+  /// 도입 설명 1~3문단, 핵심 정리 위에 표시 (없으면 빈 배열)
+  intro         String[] @default([])
   sortOrder     Int      @map("sort_order")
   questionCount Int      @default(8) @map("question_count") @db.SmallInt
 

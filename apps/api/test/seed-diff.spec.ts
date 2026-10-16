@@ -87,14 +87,14 @@ function dbShape(): TrackShape {
     sortOrder: 2,
     isActive: true,
     units: [
-      { slug: 'u02-b', name: '유닛2', sortOrder: 2, lessons: [{ slug: 'l01', name: '레슨3', objective: '목표3', keyPoints: ['k3'], sortOrder: 1 }] },
+      { slug: 'u02-b', name: '유닛2', sortOrder: 2, lessons: [{ slug: 'l01', name: '레슨3', objective: '목표3', keyPoints: ['k3'], intro: [], sortOrder: 1 }] },
       {
         slug: 'u01-a',
         name: '유닛1',
         sortOrder: 1,
         lessons: [
-          { slug: 'l02', name: '레슨2', objective: '목표2', keyPoints: [], sortOrder: 2 },
-          { slug: 'l01', name: '레슨1', objective: '목표', keyPoints: ['k1', 'k2'], sortOrder: 1 },
+          { slug: 'l02', name: '레슨2', objective: '목표2', keyPoints: [], intro: [], sortOrder: 2 },
+          { slug: 'l01', name: '레슨1', objective: '목표', keyPoints: ['k1', 'k2'], intro: [], sortOrder: 1 },
         ],
       },
     ],
@@ -129,22 +129,35 @@ describe('trackStructureEqual', () => {
     const kp = dbShape();
     kp.units[0]!.lessons[0]!.keyPoints = ['k3', 'k4'];
     expect(trackStructureEqual(kp, desired)).toBe(false);
+    const intro = dbShape();
+    intro.units[0]!.lessons[0]!.intro = ['도입 설명 문단'];
+    expect(trackStructureEqual(intro, desired)).toBe(false);
     const order = dbShape();
     order.units[1]!.lessons[0]!.sortOrder = 1;
     order.units[1]!.lessons[1]!.sortOrder = 2;
     expect(trackStructureEqual(order, desired)).toBe(false);
+  });
+  it('콘텐츠에 intro가 있으면 DB와 같아야 true, 없는 레슨은 빈 배열로 본다', () => {
+    const withIntro = JSON.parse(JSON.stringify(content)) as typeof content;
+    (withIntro.units[0]!.lessons[0] as { intro?: string[] }).intro = ['도입 문단'];
+    const want = desiredTrackShape(withIntro, 1);
+    expect(trackStructureEqual(dbShape(), want)).toBe(false);
+    const s = dbShape();
+    s.units[1]!.lessons[1]!.intro = ['도입 문단'];
+    expect(trackStructureEqual(s, want)).toBe(true);
+    expect(want.units[0]!.lessons[1]!.intro).toEqual([]);
   });
   it('유닛·레슨이 추가되거나 빠지면 false', () => {
     const missing = dbShape();
     missing.units.pop();
     expect(trackStructureEqual(missing, desired)).toBe(false);
     const extra = dbShape();
-    extra.units[0]!.lessons.push({ slug: 'l09', name: '추가', objective: null, keyPoints: [], sortOrder: 3 });
+    extra.units[0]!.lessons.push({ slug: 'l09', name: '추가', objective: null, keyPoints: [], intro: [], sortOrder: 3 });
     expect(trackStructureEqual(extra, desired)).toBe(false);
   });
   it('음수(퇴역) 행은 비교에서 빠지고 hasRetiredRows가 따로 알린다', () => {
     const s = dbShape();
-    s.units[1]!.lessons.push({ slug: 'l07', name: '퇴역', objective: null, keyPoints: [], sortOrder: -3 });
+    s.units[1]!.lessons.push({ slug: 'l07', name: '퇴역', objective: null, keyPoints: [], intro: [], sortOrder: -3 });
     expect(trackStructureEqual(s, desired)).toBe(true);
     expect(hasRetiredRows(s.units)).toBe(true);
     expect(hasRetiredRows(dbShape().units)).toBe(false);

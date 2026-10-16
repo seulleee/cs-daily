@@ -32,10 +32,10 @@ export class CurriculumAdapter implements QuestionGradingPort, CurriculumQueryPo
   async lessonOutline(lessonId: LessonId): Promise<LessonOutline | null> {
     const l = await this.db.lesson.findUnique({
       where: { id: lessonId.value },
-      select: { id: true, name: true, objective: true, keyPoints: true, sortOrder: true, questionCount: true, unit: { select: { trackId: true, sortOrder: true } } },
+      select: { id: true, name: true, objective: true, keyPoints: true, intro: true, sortOrder: true, questionCount: true, unit: { select: { trackId: true, sortOrder: true } } },
     });
     if (!l || l.sortOrder <= 0 || l.unit.sortOrder <= 0) return null;
-    return { id: l.id, name: l.name, objective: l.objective, keyPoints: l.keyPoints, trackId: l.unit.trackId, unitSortOrder: l.unit.sortOrder, lessonSortOrder: l.sortOrder, questionCount: l.questionCount };
+    return { id: l.id, name: l.name, objective: l.objective, keyPoints: l.keyPoints, intro: l.intro, trackId: l.unit.trackId, unitSortOrder: l.unit.sortOrder, lessonSortOrder: l.sortOrder, questionCount: l.questionCount };
   }
 
   /** sortOrder 음수 = 콘텐츠에서 빠진 퇴역 행(seed.ts 참고). 퇴역 유닛은 null, 퇴역 레슨은 레슨 목록에서 뺀다 */

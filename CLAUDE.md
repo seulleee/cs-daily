@@ -44,6 +44,7 @@
 - DDD 모듈러 모놀리스. 컨텍스트: identity, curriculum, learning(핵심), progression, review, notification, jobs. 각 컨텍스트는 `domain / application / infrastructure / presentation` 4계층이며 `eslint-plugin-boundaries`가 의존 방향을 강제한다. 경계를 넘을 땐 포트 토큰(`QUESTION_GRADING_PORT`, `CURRICULUM_QUERY_PORT`, `REVIEW_QUEUE_PORT`, `USER_PREFS_PORT`)으로만 주입한다.
 - **정답 키(`answerKey`)는 `CurriculumAdapter.forGrading()` 한 곳에서만 읽는다.** 다른 어떤 쿼리도 select하지 않는다.
 - **코드 문제 언어 variants(`ct` 트랙)**: 코드가 있는 문제는 `content.variants[lang]`(코드·보기)와 `answer_key.variants[lang]`(정답·선택 해설)으로 python·java·javascript·cpp 4개를 모두 갖는다(validate 강제). 사용자 언어는 `User.codeLanguage`(기본 python, `/me`·`PATCH /me`). 세션 응답은 사용자 언어 variant만 `content.code`(+options)와 `lang`으로 펼치고 다른 언어·정답은 내려가지 않는다(`learning/domain/services/code-variants.ts`). 답안 제출·재도전은 받은 `lang`을 함께 보내고, 서버는 그 언어 variant가 있는지 검증해(없으면 422 `CODE_LANGUAGE_UNAVAILABLE`) 그 정답·해설로 채점하며 `lang`을 답안 기록에 남긴다 — 세션 도중 설정을 바꿔도 받은 문제는 받은 언어로 채점되고 이어 풀기에서도 답한 언어를 보여 준다.
+- 레슨 `intro`(도입 설명, 선택 `string[]` 1~3문단·문단 40~220자·합계 450자 이하)는 `curriculum.json` → `lessons.intro`(`String[] @default([])`) → `LessonOutline.intro` → 세션 응답 `lessonIntro`(선택 필드, 옛 API 호환)로 `lessonKeyPoints`와 같은 경로를 탄다. seed-diff의 트랙 구조 비교에 포함돼 바뀐 트랙만 갱신된다. 작성 규칙은 content-guide "도입 설명".
 - 세션 종류 `kind`: `lesson`(레슨) · `review`(복습, XP ×1.5) · `placement`(유닛 건너뛰기 테스트, XP 0). `findOpen`은 kind를 구분해서 서로 이어지지 않게 한다.
 - 레슨 흐름: 시작 카드 → 본 문제 → **틀린 문제 다시 풀기**(`POST /sessions/:id/retry`, 채점만 하고 답안·XP·SM-2에 영향 없음, 최대 2회) → 완료. 재도전 허용 여부는 애그리거트 `canRetry/retry`가 판단한다.
 - 유닛 건너뛰기: `POST /units/:unitId/skip-test` → 8문제, 80% 이상이면 트랙 처음부터 그 유닛까지 완료 처리(`UserLessonProgress.completedAt`만 찍고 점수 0). 정책은 `learning/domain/services/unit-skip-test.ts`.
@@ -64,6 +65,7 @@
 - 코드 블록은 가로 스크롤 없이 긴 줄을 접는다(hanging indent, 줄 번호는 첫 줄만).
 - 전역 컴포넌트 클래스(`.card .btn-3d .btn-outline .option .input .chip .pad .meter`)는 `@layer components` 안에 둔다. 밖에 두면 Tailwind 유틸리티보다 우선해 `bg-*` 같은 조합이 무시된다(실제로 유닛 헤더가 사라졌던 버그). `ring` 같은 Tailwind 유틸리티 이름과 겹치는 클래스명을 만들지 않는다(결과 링은 `score-ring`).
 - 테마는 `<html data-theme>`로 제어한다(`lib/theme.ts`, 시스템/라이트/다크, 기기별 localStorage, 첫 페인트 전 인라인 스크립트). 색은 CSS 변수만 쓰고 하드코딩하지 않는다.
+- 레슨 시작 카드는 레슨 이름·목표 아래 **도입 설명(intro) 문단**(Plex Sans KR 16px, 줄간격 1.75, ink, 왼쪽 정렬, 모션 없음), 그 아래 핵심 정리 카드 순이다. 폭 600px, 시작 버튼은 하단 고정이고 본문만 스크롤한다(하단 여백 `pb-40`으로 작은 화면에서 버튼에 가리지 않는다).
 - 레슨 플레이어 문제 영역은 헤더 아래 위쪽 고정, 폭 600px. 결과 창은 하단 도크 안에서 위로 자라며 문제 영역을 움직이지 않는다(영역 끝에 결과 창 높이만큼 빈 자리를 더하고, 창은 최대 `min(50dvh, 360px)`에 본문만 스크롤). 확인/계속 버튼은 같은 자리·같은 폭(버튼은 창 밖). 빈칸 입력 중엔 도크가 키보드 위에 붙고(visualViewport inset, Android는 `interactive-widget=resizes-content`), 키보드 리턴(`enterKeyHint=done`)으로 바로 확인한다.
 - 코딩 테스트 언어 선택(`components/code-language-picker.tsx`)은 설정 "학습" 창(하루 목표 카드와 같은 2×2 라디오 타일, 기존 저장 버튼·토스트)과 온보딩(`ct` 트랙을 고른 때만 하루 목표 다음 단계)에서 쓴다. `lang`이 있는 코드 문제는 코드 블록 위에 `bit` 16px ink-2 언어 라벨(`CODING_LANGUAGE_LABEL`)을 달고, 제출·재도전에 받은 `lang`을 그대로 보낸다.
 - 마지막으로 본 트랙 탭은 기기에 저장한다(`lib/last-track.ts`). `/learn`으로 돌아올 때 URL → 저장값 → 첫 트랙 순.

@@ -1,5 +1,11 @@
 import { z } from 'zod';
 
+/** 레슨 도입 설명(intro) 길이 규칙 — docs/content-guide.md 참고 */
+export const LESSON_INTRO_MAX_PARAGRAPHS = 3;
+export const LESSON_INTRO_PARAGRAPH_MIN = 40;
+export const LESSON_INTRO_PARAGRAPH_MAX = 220;
+export const LESSON_INTRO_MAX_TOTAL = 450;
+
 export const TrackSummary = z.object({
   id: z.number().int(),
   slug: z.string(),
@@ -63,6 +69,15 @@ export const CurriculumFile = z.object({
               objective: z.string(),
               /** 핵심 정리 2~4줄 — "용어 — 한 줄 정의". 선택 필드(없으면 시작 카드에 목표만 표시) */
               keyPoints: z.array(z.string().min(1).max(80)).max(4).default([]),
+              /** 도입 설명 1~3문단(문단당 40~220자, 합계 450자 이하) — 핵심 정리를 처음 보는 사람을 위한 배경. 선택 필드(없으면 핵심 정리만 표시) */
+              intro: z
+                .array(z.string().min(LESSON_INTRO_PARAGRAPH_MIN).max(LESSON_INTRO_PARAGRAPH_MAX))
+                .min(1)
+                .max(LESSON_INTRO_MAX_PARAGRAPHS)
+                .refine((ps) => ps.reduce((n, p) => n + [...p].length, 0) <= LESSON_INTRO_MAX_TOTAL, {
+                  message: `intro 합계는 ${LESSON_INTRO_MAX_TOTAL}자 이하여야 합니다`,
+                })
+                .optional(),
             }),
           ).min(1),
         }),

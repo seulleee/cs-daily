@@ -76,6 +76,7 @@ export interface LessonShape {
   name: string;
   objective: string | null;
   keyPoints: string[];
+  intro: string[];
   sortOrder: number;
 }
 
@@ -97,7 +98,7 @@ export interface TrackShape {
 /**
  * DB에서 읽은 트랙(퇴역 음수 행 포함)이 콘텐츠가 원하는 구조와 완전히 같은가.
  * 양수 순서의 유닛·레슨만 비교한다 — 음수(퇴역) 행은 `hasRetiredRows`가 따로 본다.
- * 순서(배열 위치가 아니라 sortOrder)·slug·이름·objective·keyPoints·트랙 필드가 모두 같아야 true.
+ * 순서(배열 위치가 아니라 sortOrder)·slug·이름·objective·keyPoints·intro·트랙 필드가 모두 같아야 true.
  */
 export function trackStructureEqual(existing: TrackShape, desired: TrackShape): boolean {
   if (
@@ -122,7 +123,7 @@ function positiveStructure(units: UnitShape[]) {
       lessons: u.lessons
         .filter((l) => l.sortOrder > 0)
         .sort((a, b) => a.sortOrder - b.sortOrder)
-        .map((l) => ({ slug: l.slug, name: l.name, objective: l.objective ?? null, keyPoints: l.keyPoints, sortOrder: l.sortOrder })),
+        .map((l) => ({ slug: l.slug, name: l.name, objective: l.objective ?? null, keyPoints: l.keyPoints, intro: l.intro, sortOrder: l.sortOrder })),
     }));
 }
 
@@ -137,7 +138,7 @@ export function desiredTrackShape(
     name: string;
     description: string;
     phase: string;
-    units: { slug: string; name: string; lessons: { slug: string; name: string; objective: string; keyPoints: string[] }[] }[];
+    units: { slug: string; name: string; lessons: { slug: string; name: string; objective: string; keyPoints: string[]; intro?: string[] }[] }[];
   },
   trackIndex: number,
 ): TrackShape {
@@ -150,7 +151,7 @@ export function desiredTrackShape(
       slug: u.slug,
       name: u.name,
       sortOrder: ui + 1,
-      lessons: u.lessons.map((l, li) => ({ slug: l.slug, name: l.name, objective: l.objective, keyPoints: l.keyPoints, sortOrder: li + 1 })),
+      lessons: u.lessons.map((l, li) => ({ slug: l.slug, name: l.name, objective: l.objective, keyPoints: l.keyPoints, intro: l.intro ?? [], sortOrder: li + 1 })),
     })),
   };
 }

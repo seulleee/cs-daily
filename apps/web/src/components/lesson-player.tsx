@@ -200,16 +200,24 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
   if (phase === 'intro') {
     // 배포 순서상 API가 아직 옛 버전이면 필드가 없을 수 있다
     const keyPoints = session.data.lessonKeyPoints ?? [];
+    const intro = session.data.lessonIntro ?? [];
     return (
       <div className="flex min-h-dvh flex-col">
         <header className="flex items-center gap-3 px-4 pt-[max(env(safe-area-inset-top),12px)] pb-3">
           <ExitLink />
         </header>
         <section className="flex flex-1 flex-col items-center justify-center px-6 pb-40 text-center">
-          <div className="w-full max-w-[520px]">
+          <div className="w-full max-w-[600px]">
             <p className="bit text-ink">이번 레슨</p>
             <h1 className="bit-2 mt-2">{session.data.lessonName ?? '레슨'}</h1>
             {session.data.lessonObjective && <p className="mt-4 text-body text-ink-2">{session.data.lessonObjective}</p>}
+            {intro.length > 0 && (
+              <div className="mt-6 space-y-4 text-left text-body leading-[1.75] text-ink" data-testid="lesson-intro">
+                {intro.map((para) => (
+                  <p key={para}>{para}</p>
+                ))}
+              </div>
+            )}
             {keyPoints.length > 0 && (
               <div className="card mt-6 p-5 text-left">
                 <h2 className="bit">핵심 정리</h2>

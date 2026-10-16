@@ -34,6 +34,18 @@ for (const t of curriculum.data.tracks) {
   }
 }
 
+// 도입 설명(intro): 길이 규칙은 스키마가 검사한다. 여기서는 keyPoints를 그대로 옮긴 문단만 막는다.
+for (const t of curriculum.data.tracks) {
+  for (const u of t.units) {
+    for (const l of u.lessons) {
+      for (const para of l.intro ?? []) {
+        const dup = l.keyPoints.find((kp) => para.includes(kp));
+        if (dup) errors.push(`${t.slug}/${u.slug}/${l.slug}: intro가 keyPoints 문장을 그대로 반복합니다 ("${dup}")`);
+      }
+    }
+  }
+}
+
 const seenIds = new Map<string, string>();
 let fileCount = 0;
 let questionCount = 0;
