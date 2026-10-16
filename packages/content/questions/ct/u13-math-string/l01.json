@@ -1,0 +1,295 @@
+{
+  "track": "ct",
+  "unit": "u13-math-string",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ct-u13-prime-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "prime"
+      ],
+      "content": {
+        "prompt": "1과 자기 자신으로만 나누어떨어지는 2 이상의 정수는?",
+        "options": [
+          "소수",
+          "합성수",
+          "약수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "소수는 2 이상의 정수 중 1과 자기 자신 말고는 나누어떨어지는 수가 없는 수다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-prime-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "prime"
+      ],
+      "content": {
+        "prompt": "N이 소수인지 판별할 때 나눠 볼 수의 범위는?",
+        "options": [
+          "N까지",
+          "√N까지",
+          "N / 2까지"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "N이 합성수면 √N 이하의 약수가 반드시 있으므로 √N까지만 나눠 보면 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-prime-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "prime"
+      ],
+      "content": {
+        "prompt": "1은 소수인가?",
+        "options": [
+          "소수가 아니다",
+          "소수다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "소수는 2 이상의 정수에서만 정의한다. 1은 소수가 아니다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-prime-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "prime"
+      ],
+      "content": {
+        "prompt": "반복 조건은 i ≤ sqrt(N)으로 써야 실수 오차가 없다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "sqrt는 실수 계산이라 오차가 생길 수 있다. i × i ≤ N처럼 정수 곱으로 쓰는 편이 안전하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-prime-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "prime"
+      ],
+      "content": {
+        "prompt": "나누어떨어지는지 확인하도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def is_prime(n):\n    if n < 2:\n        return False\n    i = 2\n    while i * i <= n:\n        if n % i == ___:\n            return False\n        i += 1\n    return True"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "boolean isPrime(long n) {\n    if (n < 2) return false;\n    for (long i = 2; i * i <= n; i++)\n        if (n % i == ___) return false;\n    return true;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function isPrime(n) {\n  if (n < 2) return false;\n  for (let i = 2; i * i <= n; i++)\n    if (n % i === ___) return false;\n  return true;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "bool isPrime(long long n) {\n    if (n < 2) return false;\n    for (long long i = 2; i * i <= n; i++)\n        if (n % i == ___) return false;\n    return true;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "0"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "0"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "0"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "0"
+            ]
+          }
+        }
+      },
+      "explanation": "n을 i로 나눈 나머지가 0이면 i가 약수이므로 소수가 아니다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-prime-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "prime"
+      ],
+      "content": {
+        "prompt": "√N 대신 i × i ≤ N으로 쓰면 실수 ___ 를 피할 수 있다.",
+        "hint": "실수 계산에서 값이 조금 어긋나는 현상이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "오차",
+          "오차 문제"
+        ]
+      },
+      "explanation": "sqrt 같은 실수 계산은 오차가 날 수 있다. 정수 곱 i × i로 비교하면 오차가 없다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-prime-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "prime"
+      ],
+      "content": {
+        "prompt": "N = 49를 판별할 때 나눠 보는 i의 최댓값은?",
+        "options": [
+          "24",
+          "7",
+          "48"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "i × i ≤ 49인 가장 큰 i는 7이다. 7에서 나누어떨어지므로 49는 합성수다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-prime-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "prime"
+      ],
+      "content": {
+        "prompt": "√N까지만 나눠 보는 반복 조건으로 알맞은 것은?",
+        "options": [
+          "i * i <= n",
+          "i * i < n"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def is_prime(n):\n    if n < 2:\n        return False\n    i = 2\n    while ___:\n        if n % i == 0:\n            return False\n        i += 1\n    return True"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "boolean isPrime(long n) {\n    if (n < 2) return false;\n    for (long i = 2; ___; i++)\n        if (n % i == 0) return false;\n    return true;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function isPrime(n) {\n  if (n < 2) return false;\n  for (let i = 2; ___; i++)\n    if (n % i === 0) return false;\n  return true;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "bool isPrime(long long n) {\n    if (n < 2) return false;\n    for (long long i = 2; ___; i++)\n        if (n % i == 0) return false;\n    return true;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "i × i < n이면 9 = 3 × 3처럼 제곱수의 약수 √N을 검사하지 못해 소수로 잘못 본다. 같을 때까지 포함해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-prime-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "prime"
+      ],
+      "content": {
+        "prompt": "91을 2부터 나눠 볼 때 처음 나누어떨어지는 i는?",
+        "options": [
+          "3",
+          "13",
+          "7"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "91 = 7 × 13이다. √91 이하인 7에서 먼저 나누어떨어져 합성수로 판별된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-prime-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "prime"
+      ],
+      "content": {
+        "prompt": "소수는 2 이상의 정수 중 1과 자기 자신으로만 나누어떨어지는 수다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "이것이 소수의 정의다. 그래서 1은 소수가 아니고, 2는 가장 작은 소수다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "track": "ct",
+  "unit": "u12-shortest-path-uf",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ct-u12-sp-pick-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "shortest-path",
+        "bfs"
+      ],
+      "content": {
+        "prompt": "가중치 없는 그래프에서 최단 거리를 구할 때 쓰는 것은?",
+        "options": [
+          "BFS",
+          "벨만-포드",
+          "DFS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가중치가 없으면 간선 수가 곧 거리라서 가까운 정점부터 넓혀 가는 BFS로 구한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-sp-pick-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "shortest-path",
+        "bellman-ford"
+      ],
+      "content": {
+        "prompt": "음수 간선이 있는 그래프의 한 출발점 최단 경로에 쓰는 것은?",
+        "options": [
+          "BFS",
+          "다익스트라",
+          "벨만-포드"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "음수 간선이 있으면 다익스트라를 쓸 수 없어 벨만-포드를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-sp-pick-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "shortest-path",
+        "floyd-warshall"
+      ],
+      "content": {
+        "prompt": "정점 300개, 모든 정점 쌍의 최단 거리가 필요하면?",
+        "options": [
+          "BFS",
+          "DFS",
+          "플로이드-워셜"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "모든 정점 쌍의 거리를 구하고 정점 수가 수백 이하라면 플로이드-워셜을 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-sp-pick-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "shortest-path",
+        "bfs"
+      ],
+      "content": {
+        "prompt": "가중치가 서로 다른 그래프도 BFS로 최단 거리를 구한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "BFS는 간선 수를 거리로 보므로 가중치가 없을 때만 맞다. 가중치가 0 이상이면 다익스트라를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-sp-pick-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "shortest-path",
+        "bfs"
+      ],
+      "content": {
+        "prompt": "가중치 없는 그래프의 BFS에서 빈칸에 들어갈 수는?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "q = deque([s])\ndist[s] = 0\nwhile q:\n    u = q.popleft()\n    for v in g[u]:\n        if dist[v] == -1:\n            dist[v] = dist[u] + ___\n            q.append(v)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "Deque<Integer> q = new ArrayDeque<>();\nq.add(s);\ndist[s] = 0;\nwhile (!q.isEmpty()) {\n    int u = q.poll();\n    for (int v : g.get(u)) {\n        if (dist[v] == -1) {\n            dist[v] = dist[u] + ___;\n            q.add(v);\n        }\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const q = [s];\ndist[s] = 0;\nfor (let h = 0; h < q.length; h++) {\n  const u = q[h];\n  for (const v of g[u]) {\n    if (dist[v] === -1) {\n      dist[v] = dist[u] + ___;\n      q.push(v);\n    }\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "queue<int> q;\nq.push(s);\ndist[s] = 0;\nwhile (!q.empty()) {\n    int u = q.front(); q.pop();\n    for (int v : g[u]) {\n        if (dist[v] == -1) {\n            dist[v] = dist[u] + ___;\n            q.push(v);\n        }\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "1"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "1"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "1"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "1"
+            ]
+          }
+        }
+      },
+      "explanation": "가중치가 없으면 간선 하나를 지날 때마다 거리가 1씩 늘어난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-sp-pick-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "shortest-path",
+        "bellman-ford"
+      ],
+      "content": {
+        "prompt": "음수 간선이 있으면 다익스트라 대신 ___ 을 쓴다.",
+        "hint": "두 사람 이름을 붙인 알고리즘이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "벨만포드",
+          "벨만 포드",
+          "벨만-포드",
+          "bellman ford",
+          "bellmanford",
+          "bellman-ford"
+        ]
+      },
+      "explanation": "다익스트라는 음수 간선이 있으면 틀린 답을 낼 수 있어, 음수 간선을 다룰 수 있는 벨만-포드를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-sp-pick-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "shortest-path",
+        "dijkstra"
+      ],
+      "content": {
+        "prompt": "이 코드가 구현한 최단 경로 알고리즘은?",
+        "options": [
+          "BFS",
+          "다익스트라",
+          "벨만-포드"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "while pq:\n    d, u = heapq.heappop(pq)\n    if d > dist[u]:\n        continue\n    for v, w in g[u]:\n        if d + w < dist[v]:\n            dist[v] = d + w\n            heapq.heappush(pq, (dist[v], v))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "while (!pq.isEmpty()) {\n    int[] cur = pq.poll();\n    int d = cur[0], u = cur[1];\n    if (d > dist[u]) continue;\n    for (int[] e : g[u]) {\n        int v = e[0], nd = d + e[1];\n        if (nd < dist[v]) {\n            dist[v] = nd;\n            pq.add(new int[]{nd, v});\n        }\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "while (pq.size() > 0) {\n  const [d, u] = pq.pop();\n  if (d > dist[u]) continue;\n  for (const [v, w] of g[u]) {\n    if (d + w < dist[v]) {\n      dist[v] = d + w;\n      pq.push([dist[v], v]);\n    }\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "while (!pq.empty()) {\n    auto [d, u] = pq.top();\n    pq.pop();\n    if (d > dist[u]) continue;\n    for (auto [v, w] : g[u]) {\n        if (d + w < dist[v]) {\n            dist[v] = d + w;\n            pq.push({dist[v], v});\n        }\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "우선순위 큐에서 거리가 가장 작은 정점을 꺼내 이웃 거리를 줄이므로 다익스트라다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-sp-pick-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "shortest-path",
+        "dijkstra"
+      ],
+      "content": {
+        "prompt": "가중치 0 이상, 출발점 하나, 정점 10만 개면?",
+        "options": [
+          "BFS",
+          "플로이드-워셜",
+          "다익스트라"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "가중치가 0 이상이고 출발점이 하나면 다익스트라다. 정점 10만 개면 플로이드-워셜은 너무 느리다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-sp-pick-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "shortest-path",
+        "bfs"
+      ],
+      "content": {
+        "prompt": "간선 가중치가 모두 1이고 출발점이 하나면?",
+        "options": [
+          "BFS",
+          "플로이드-워셜",
+          "벨만-포드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가중치가 모두 1이면 간선 수가 곧 거리라서 가중치 없는 그래프처럼 BFS로 구한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-sp-pick-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "shortest-path",
+        "bfs"
+      ],
+      "content": {
+        "prompt": "가중치 없는 그래프의 최단 거리는 BFS로 구한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "BFS는 시작점에서 가까운 정점부터 방문하므로 가중치 없는 그래프의 최단 거리를 바로 준다.",
+      "refs": []
+    }
+  ]
+}

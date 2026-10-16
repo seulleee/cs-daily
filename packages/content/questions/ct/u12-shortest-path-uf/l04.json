@@ -1,0 +1,298 @@
+{
+  "track": "ct",
+  "unit": "u12-shortest-path-uf",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ct-u12-floyd-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "floyd-warshall",
+        "all-pairs"
+      ],
+      "content": {
+        "prompt": "모든 정점 쌍의 최단 거리를 3중 반복으로 갱신하는 알고리즘은?",
+        "options": [
+          "플로이드-워셜",
+          "BFS",
+          "다익스트라"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "플로이드-워셜은 경유 정점 k, 출발 i, 도착 j의 3중 반복으로 모든 쌍의 거리를 갱신한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-floyd-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "floyd-warshall",
+        "loop-order"
+      ],
+      "content": {
+        "prompt": "플로이드-워셜에서 가장 바깥 반복이어야 하는 것은?",
+        "options": [
+          "출발 정점 i",
+          "경유 정점 k",
+          "도착 정점 j"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "경유 정점 k를 가장 바깥에 두어야 k까지 거쳐 가는 경로가 모든 쌍에 차례로 반영된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-floyd-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "floyd-warshall",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "정점이 V개일 때 플로이드-워셜의 반복 횟수는?",
+        "options": [
+          "V³",
+          "V²",
+          "V"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "k, i, j가 각각 V번씩 돌아 V × V × V = V³번 갱신을 시도한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-floyd-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "floyd-warshall",
+        "loop-order"
+      ],
+      "content": {
+        "prompt": "플로이드-워셜은 i, j, k 순서로 중첩해도 결과가 같다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "경유 정점 k가 가장 안쪽에 오면 아직 갱신되지 않은 거리로 계산해 틀린 답이 나올 수 있다. k가 가장 바깥이어야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-floyd-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "floyd-warshall",
+        "relax"
+      ],
+      "content": {
+        "prompt": "경유 정점을 거쳐 가는 거리가 되도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "for k in range(n):\n    for i in range(n):\n        for j in range(n):\n            if d[i][k] + d[___][j] < d[i][j]:\n                d[i][j] = d[i][k] + d[k][j]"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "for (int k = 0; k < n; k++)\n    for (int i = 0; i < n; i++)\n        for (int j = 0; j < n; j++)\n            if (d[i][k] + d[___][j] < d[i][j])\n                d[i][j] = d[i][k] + d[k][j];"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "for (let k = 0; k < n; k++)\n  for (let i = 0; i < n; i++)\n    for (let j = 0; j < n; j++)\n      if (d[i][k] + d[___][j] < d[i][j])\n        d[i][j] = d[i][k] + d[k][j];"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "for (int k = 0; k < n; k++)\n    for (int i = 0; i < n; i++)\n        for (int j = 0; j < n; j++)\n            if (d[i][k] + d[___][j] < d[i][j])\n                d[i][j] = d[i][k] + d[k][j];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "k"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "k"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "k"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "k"
+            ]
+          }
+        }
+      },
+      "explanation": "i에서 경유 정점 k까지, k에서 j까지의 거리를 더해 지금 d[i][j]보다 짧으면 바꾼다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-floyd-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "floyd-warshall",
+        "loop-order"
+      ],
+      "content": {
+        "prompt": "플로이드-워셜의 가장 바깥 반복은 ___ 정점이다.",
+        "hint": "i와 j 사이에서 거쳐 가는 정점이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "경유",
+          "경유 정점",
+          "중간",
+          "중간 정점"
+        ]
+      },
+      "explanation": "가장 바깥 반복은 경유 정점 k다. 그 안에서 출발 i, 도착 j를 돈다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-floyd-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "floyd-warshall",
+        "loop-order"
+      ],
+      "content": {
+        "prompt": "이 코드의 문제는?",
+        "options": [
+          "반복이 부족함",
+          "INF가 너무 큼",
+          "k가 가장 안쪽"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "for i in range(n):\n    for j in range(n):\n        for k in range(n):\n            if d[i][k] + d[k][j] < d[i][j]:\n                d[i][j] = d[i][k] + d[k][j]"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "for (int i = 0; i < n; i++)\n    for (int j = 0; j < n; j++)\n        for (int k = 0; k < n; k++)\n            if (d[i][k] + d[k][j] < d[i][j])\n                d[i][j] = d[i][k] + d[k][j];"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "for (let i = 0; i < n; i++)\n  for (let j = 0; j < n; j++)\n    for (let k = 0; k < n; k++)\n      if (d[i][k] + d[k][j] < d[i][j])\n        d[i][j] = d[i][k] + d[k][j];"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "for (int i = 0; i < n; i++)\n    for (int j = 0; j < n; j++)\n        for (int k = 0; k < n; k++)\n            if (d[i][k] + d[k][j] < d[i][j])\n                d[i][j] = d[i][k] + d[k][j];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 2
+          },
+          "java": {
+            "index": 2
+          },
+          "javascript": {
+            "index": 2
+          },
+          "cpp": {
+            "index": 2
+          }
+        }
+      },
+      "explanation": "경유 정점 k가 가장 안쪽 반복이라, 아직 갱신되지 않은 d[k][j]로 계산해 거리를 놓칠 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-floyd-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "floyd-warshall",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "정점이 300개면 플로이드-워셜의 갱신 시도는 약 몇 번인가?",
+        "options": [
+          "9만",
+          "2,700만",
+          "300"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "300³ = 27,000,000이다. 약 2,700만 번이라 시간 안에 충분히 돈다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-floyd-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "floyd-warshall",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "정점 2,000개의 모든 쌍 거리에 플로이드-워셜은?",
+        "options": [
+          "적합하다",
+          "V³이 너무 큼"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "2,000³ = 80억 번이라 너무 느리다. 플로이드-워셜은 V가 약 400 이하일 때 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-floyd-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "floyd-warshall",
+        "all-pairs"
+      ],
+      "content": {
+        "prompt": "플로이드-워셜은 모든 정점 쌍의 최단 거리를 한 번에 구한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "플로이드-워셜은 3중 반복이 끝나면 d[i][j]에 모든 i, j 쌍의 최단 거리가 담긴다.",
+      "refs": []
+    }
+  ]
+}

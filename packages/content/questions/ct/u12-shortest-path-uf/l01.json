@@ -1,0 +1,346 @@
+{
+  "track": "ct",
+  "unit": "u12-shortest-path-uf",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ct-u12-dijk-tpl-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dijkstra",
+        "shortest-path"
+      ],
+      "content": {
+        "prompt": "우선순위 큐에서 거리가 가장 작은 정점을 꺼내 이웃 거리를 줄이는 알고리즘은?",
+        "options": [
+          "다익스트라",
+          "BFS",
+          "DFS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "다익스트라는 우선순위 큐에서 거리가 가장 작은 정점을 꺼내 그 이웃의 거리를 줄여 나간다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-tpl-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dijkstra",
+        "condition"
+      ],
+      "content": {
+        "prompt": "다익스트라를 쓸 수 있는 간선 가중치 조건은?",
+        "options": [
+          "모두 0 이상",
+          "음수 포함",
+          "모두 같은 값"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "다익스트라는 간선 가중치가 모두 0 이상일 때만 올바른 최단 거리를 보장한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-tpl-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dijkstra",
+        "init"
+      ],
+      "content": {
+        "prompt": "다익스트라에서 시작점이 아닌 정점의 초기 거리는?",
+        "options": [
+          "INF",
+          "1",
+          "0"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "시작점은 0, 나머지 정점은 아직 도달하지 못했다는 뜻으로 충분히 큰 값(INF)으로 둔다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-tpl-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dijkstra",
+        "priority-queue"
+      ],
+      "content": {
+        "prompt": "다익스트라는 큐에서 거리가 가장 큰 정점을 먼저 꺼낸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "다익스트라는 거리가 가장 작은 정점을 먼저 꺼낸다. 그래서 최소 힙(우선순위 큐)을 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-tpl-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dijkstra",
+        "init"
+      ],
+      "content": {
+        "prompt": "시작점 s의 초기 거리가 되도록 빈칸을 채우면?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "INF = float('inf')\ndist = [INF] * n\ndist[s] = ___"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] dist = new int[n];\nArrays.fill(dist, INF);\ndist[s] = ___;"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const dist = new Array(n).fill(Infinity);\ndist[s] = ___;"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> dist(n, INF);\ndist[s] = ___;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "0"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "0"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "0"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "0"
+            ]
+          }
+        }
+      },
+      "explanation": "시작점까지의 거리는 0이고, 나머지 정점은 INF로 채워 둔 뒤 다익스트라를 시작한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-tpl-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dijkstra",
+        "priority-queue"
+      ],
+      "content": {
+        "prompt": "우선순위 큐에서 거리가 가장 작은 항목을 얻는 빈칸은?",
+        "hint": "최소 힙에서 맨 위 항목을 가져오는 연산이다.",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "pq = [(0, s)]\nwhile pq:\n    d, u = heapq.___(pq)\n    for v, w in g[u]:\n        if d + w < dist[v]:\n            dist[v] = d + w\n            heapq.heappush(pq, (dist[v], v))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "pq.add(new int[]{0, s});\nwhile (!pq.isEmpty()) {\n    int[] cur = pq.___();\n    int d = cur[0], u = cur[1];\n    for (int[] e : g[u]) {\n        int v = e[0], nd = d + e[1];\n        if (nd < dist[v]) {\n            dist[v] = nd;\n            pq.add(new int[]{nd, v});\n        }\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "pq.push([0, s]);  // pq: 최소 힙\nwhile (pq.size() > 0) {\n  const [d, u] = pq.___();\n  for (const [v, w] of g[u]) {\n    if (d + w < dist[v]) {\n      dist[v] = d + w;\n      pq.push([dist[v], v]);\n    }\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "pq.push({0, s});  // 최소 힙\nwhile (!pq.empty()) {\n    auto [d, u] = pq.___();\n    pq.pop();\n    for (auto [v, w] : g[u]) {\n        if (d + w < dist[v]) {\n            dist[v] = d + w;\n            pq.push({dist[v], v});\n        }\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "heappop"
+            ],
+            "explanation": "heapq.heappop은 힙에서 거리가 가장 작은 항목을 꺼내며 지운다."
+          },
+          "java": {
+            "accepted": [
+              "poll",
+              "remove"
+            ],
+            "explanation": "PriorityQueue의 poll은 거리가 가장 작은 항목을 꺼내며 지운다."
+          },
+          "javascript": {
+            "accepted": [
+              "pop"
+            ],
+            "explanation": "JavaScript에는 내장 우선순위 큐가 없어, 직접 만든 최소 힙의 pop으로 가장 작은 항목을 꺼낸다."
+          },
+          "cpp": {
+            "accepted": [
+              "top"
+            ],
+            "explanation": "priority_queue는 top으로 가장 작은 항목을 읽고 다음 줄 pop으로 지운다(greater로 최소 힙)."
+          }
+        }
+      },
+      "explanation": "다익스트라는 매번 우선순위 큐에서 거리가 가장 작은 정점을 꺼내 이웃을 본다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-tpl-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dijkstra",
+        "relax"
+      ],
+      "content": {
+        "prompt": "이웃의 거리를 줄이는 조건이 되도록 빈칸에 알맞은 것은?",
+        "options": [
+          ">",
+          "<",
+          "=="
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "pq = [(0, s)]\nwhile pq:\n    d, u = heapq.heappop(pq)\n    for v, w in g[u]:\n        if d + w ___ dist[v]:\n            dist[v] = d + w\n            heapq.heappush(pq, (dist[v], v))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "pq.add(new int[]{0, s});\nwhile (!pq.isEmpty()) {\n    int[] cur = pq.poll();\n    int d = cur[0], u = cur[1];\n    for (int[] e : g[u]) {\n        int v = e[0], nd = d + e[1];\n        if (nd ___ dist[v]) {\n            dist[v] = nd;\n            pq.add(new int[]{nd, v});\n        }\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "pq.push([0, s]);  // pq: 최소 힙\nwhile (pq.size() > 0) {\n  const [d, u] = pq.pop();\n  for (const [v, w] of g[u]) {\n    if (d + w ___ dist[v]) {\n      dist[v] = d + w;\n      pq.push([dist[v], v]);\n    }\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "pq.push({0, s});  // 최소 힙\nwhile (!pq.empty()) {\n    auto [d, u] = pq.top();\n    pq.pop();\n    for (auto [v, w] : g[u]) {\n        if (d + w ___ dist[v]) {\n            dist[v] = d + w;\n            pq.push({dist[v], v});\n        }\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "u를 거쳐 가는 거리 d + w가 지금 dist[v]보다 작을 때만 dist[v]를 줄이고 큐에 넣는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-tpl-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dijkstra",
+        "trace"
+      ],
+      "content": {
+        "prompt": "간선 A→B 2, A→C 5, B→C 1일 때 A에서 C까지 최단 거리는?",
+        "options": [
+          "6",
+          "5",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "A→B→C는 2 + 1 = 3으로 A→C 직행 5보다 짧다. 다익스트라는 B를 먼저 꺼내 C를 3으로 줄인다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-tpl-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dijkstra",
+        "relax"
+      ],
+      "content": {
+        "prompt": "dist[u]=3, 간선 u→v 4, dist[v]=9면 u를 꺼낸 뒤 dist[v]는?",
+        "options": [
+          "4",
+          "9",
+          "7"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "u를 거치면 3 + 4 = 7로 지금 값 9보다 작으므로 dist[v]가 7로 줄어든다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-dijk-tpl-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dijkstra",
+        "priority-queue"
+      ],
+      "content": {
+        "prompt": "다익스트라는 우선순위 큐에서 거리가 가장 작은 정점부터 꺼낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "거리가 가장 작은 정점은 더 짧아질 수 없으므로 먼저 꺼내 이웃의 거리를 줄인다.",
+      "refs": []
+    }
+  ]
+}
