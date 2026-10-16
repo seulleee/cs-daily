@@ -315,38 +315,39 @@
       "difficulty": 2,
       "tags": [
         "math",
-        "division",
+        "modular",
         "negative"
       ],
       "content": {
-        "prompt": "출력되는 값은?",
+        "prompt": "보정한 식의 출력값은?",
         "options": [
-          "-2",
-          "-3"
+          "-3",
+          "3",
+          "2"
         ],
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "print(-7 // 3)"
+              "source": "a, b, M = 1, 4, 5\nprint((a - b + M) % M)"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "System.out.println(-7 / 3);"
+              "source": "int a = 1, b = 4, M = 5;\nSystem.out.println((a - b + M) % M);"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "console.log(Math.trunc(-7 / 3));"
+              "source": "const a = 1, b = 4, M = 5;\nconsole.log((a - b + M) % M);"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "cout << -7 / 3;"
+              "source": "int a = 1, b = 4, M = 5;\ncout << (a - b + M) % M;"
             }
           }
         }
@@ -354,24 +355,20 @@
       "answer_key": {
         "variants": {
           "python": {
-            "index": 1,
-            "explanation": "파이썬 //는 아래로 내림해 −7 // 3 = −3이다. 그래서 −7 % 3이 2가 된다."
+            "index": 2
           },
           "java": {
-            "index": 0,
-            "explanation": "Java 정수 나눗셈은 0 쪽으로 버려 −7 / 3 = −2다. 그래서 −7 % 3이 −1이 된다."
+            "index": 2
           },
           "javascript": {
-            "index": 0,
-            "explanation": "Math.trunc는 0 쪽으로 버려 −2다. Math.floor를 쓰면 −3이 되므로 음수 몫은 버림 방향을 확인한다."
+            "index": 2
           },
           "cpp": {
-            "index": 0,
-            "explanation": "C++ 정수 나눗셈은 0 쪽으로 버려 −7 / 3 = −2다. 그래서 −7 % 3이 −1이 된다."
+            "index": 2
           }
         }
       },
-      "explanation": "음수 나머지가 언어마다 다른 것처럼, 음수 몫의 버림 방향도 언어마다 다르다.",
+      "explanation": "1 − 4 = −3에 M = 5를 더하면 2이고 2 % 5 = 2다. M을 먼저 더해 어느 언어에서나 같은 0 이상 값이 나온다.",
       "refs": []
     },
     {
