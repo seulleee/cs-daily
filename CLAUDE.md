@@ -61,6 +61,7 @@
   - 모션(전부 `steps()`, ≤200ms, `prefers-reduced-motion`에서 제거): 주 버튼 클릭 깜빡임 1회(`lib/use-flash.ts`), 누르는 동안 반전, 정답 check 스탬프, 정·오답 창 **줌 사각형** 열림(결과 창 영역에만), 결과 링 10단계 채움, 스트릭 불꽃 2프레임(`FlameLive`, 오늘 레슨을 1개 이상 끝내 주황·빨강으로 채워졌을 때만. 아직이면 정지한 윤곽선, reduced-motion은 채움 정지). 오답은 움직이지 않는다(wrong 테두리·X만). 토스트 위→아래 슬라이드(steps(4) 160ms, 퇴장 120ms)가 있다. 그 외 모션 금지.
   - 토스트(`components/toast.tsx`)는 성공이 반전(brand-fill 바탕 + on-brand 글자), 오류가 wrong 바탕(+ on-wrong 글자)이고 그림자는 line 색이다. 글자는 Neo둥근모 `bit`.
   - 아이콘은 `components/icons.tsx` 인라인 SVG(이모지 금지). 글자 대비 4.5:1 이상(토큰 바꾸면 전 조합 재계산).
+- 코드 블록은 가로 스크롤 없이 긴 줄을 접는다(hanging indent, 줄 번호는 첫 줄만).
 - 전역 컴포넌트 클래스(`.card .btn-3d .btn-outline .option .input .chip .pad .meter`)는 `@layer components` 안에 둔다. 밖에 두면 Tailwind 유틸리티보다 우선해 `bg-*` 같은 조합이 무시된다(실제로 유닛 헤더가 사라졌던 버그). `ring` 같은 Tailwind 유틸리티 이름과 겹치는 클래스명을 만들지 않는다(결과 링은 `score-ring`).
 - 테마는 `<html data-theme>`로 제어한다(`lib/theme.ts`, 시스템/라이트/다크, 기기별 localStorage, 첫 페인트 전 인라인 스크립트). 색은 CSS 변수만 쓰고 하드코딩하지 않는다.
 - 레슨 플레이어 문제 영역은 헤더 아래 위쪽 고정, 폭 600px. 결과 창은 하단 도크 안에서 위로 자라며 문제 영역을 움직이지 않는다(영역 끝에 결과 창 높이만큼 빈 자리를 더하고, 창은 최대 `min(50dvh, 360px)`에 본문만 스크롤). 확인/계속 버튼은 같은 자리·같은 폭(버튼은 창 밖). 빈칸 입력 중엔 도크가 키보드 위에 붙고(visualViewport inset, Android는 `interactive-widget=resizes-content`), 키보드 리턴(`enterKeyHint=done`)으로 바로 확인한다.
