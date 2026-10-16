@@ -65,6 +65,7 @@ export class GetSessionHandler implements IQueryHandler<GetSessionQuery, Session
     let title: string | null = null;
     let objective: string | null = null;
     let keyPoints: string[] = [];
+    let intro: string[] = [];
     if (session.kind === 'placement' && session.lessonId) {
       title = (await this.curriculum.unitOfLesson(session.lessonId))?.name ?? null;
     } else if (session.lessonId) {
@@ -72,6 +73,7 @@ export class GetSessionHandler implements IQueryHandler<GetSessionQuery, Session
       title = outline?.name ?? null;
       objective = outline?.objective ?? null;
       keyPoints = outline?.keyPoints ?? [];
+      intro = outline?.intro ?? [];
     }
     return {
       id: session.id.value,
@@ -80,6 +82,7 @@ export class GetSessionHandler implements IQueryHandler<GetSessionQuery, Session
       lessonName: title,
       lessonObjective: objective,
       lessonKeyPoints: keyPoints,
+      lessonIntro: intro,
       questions,
       answered,
       finished: session.isFinished,

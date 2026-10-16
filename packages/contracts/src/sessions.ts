@@ -58,6 +58,8 @@ export const SessionResponse = z.object({
   lessonObjective: z.string().nullable(),
   /** 레슨 시작 카드의 핵심 정리 ("용어 — 정의"). lesson 종류가 아니면 빈 배열 */
   lessonKeyPoints: z.array(z.string()),
+  /** 레슨 시작 카드의 도입 설명 문단. 없으면 빈 배열이거나 필드 자체가 없다(옛 API) */
+  lessonIntro: z.array(z.string()).optional(),
   questions: z.array(PublicQuestion),
   /** 이어 풀기용: 이미 답한 문제 */
   answered: z.array(AnsweredQuestion),

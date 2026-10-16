@@ -60,7 +60,7 @@ async function main() {
         slug: u.slug,
         name: u.name,
         sortOrder: u.sortOrder,
-        lessons: u.lessons.map((l) => ({ slug: l.slug, name: l.name, objective: l.objective, keyPoints: l.keyPoints, sortOrder: l.sortOrder })),
+        lessons: u.lessons.map((l) => ({ slug: l.slug, name: l.name, objective: l.objective, keyPoints: l.keyPoints, intro: l.intro ?? [], sortOrder: l.sortOrder })),
       })),
     };
 
@@ -215,8 +215,8 @@ async function syncTrack(
           for (const [li, l] of u.lessons.entries()) {
             const lesson = await tx.lesson.upsert({
               where: { unitId_slug: { unitId: unit.id, slug: l.slug } },
-              create: { unitId: unit.id, slug: l.slug, name: l.name, objective: l.objective, keyPoints: l.keyPoints, sortOrder: li + 1 },
-              update: { name: l.name, objective: l.objective, keyPoints: l.keyPoints, sortOrder: li + 1 },
+              create: { unitId: unit.id, slug: l.slug, name: l.name, objective: l.objective, keyPoints: l.keyPoints, intro: l.intro ?? [], sortOrder: li + 1 },
+              update: { name: l.name, objective: l.objective, keyPoints: l.keyPoints, intro: l.intro ?? [], sortOrder: li + 1 },
             });
             lessonIdByKey.set(`${t.slug}/${u.slug}/${l.slug}`, lesson.id);
             lessonQuestionCount.set(lesson.id, lesson.questionCount);
