@@ -110,30 +110,30 @@
         "그리디"
       ],
       "content": {
-        "prompt": "큰 단위부터 쓰는 거스름돈 그리디다. 빈칸은?",
+        "prompt": "큰 단위부터 쓰도록 빈칸을 채우면?",
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "# coins는 큰 단위부터 정렬되어 있다\ndef greedy(m, coins):\n    cnt = 0\n    for c in coins:\n        cnt += m // ___\n        m %= c\n    return cnt"
+              "source": "def greedy(m, coins):\n    cnt = 0\n    for c in sorted(coins, reverse=___):\n        cnt += m // c\n        m %= c\n    return cnt"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "// coins는 큰 단위부터 정렬되어 있다\nstatic int greedy(int m, int[] coins) {\n    int cnt = 0;\n    for (int c : coins) {\n        cnt += m / ___;\n        m %= c;\n    }\n    return cnt;\n}"
+              "source": "static int greedy(int m, Integer[] coins) {\n    Arrays.sort(coins, Collections.___());\n    int cnt = 0;\n    for (int c : coins) {\n        cnt += m / c;\n        m %= c;\n    }\n    return cnt;\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "// coins는 큰 단위부터 정렬되어 있다\nfunction greedy(m, coins) {\n  let cnt = 0;\n  for (const c of coins) {\n    cnt += Math.floor(m / ___);\n    m %= c;\n  }\n  return cnt;\n}"
+              "source": "function greedy(m, coins) {\n  coins.sort((x, y) => x - y).___();\n  let cnt = 0;\n  for (const c of coins) {\n    cnt += Math.floor(m / c);\n    m %= c;\n  }\n  return cnt;\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "// coins는 큰 단위부터 정렬되어 있다\nint greedy(int m, const vector<int>& coins) {\n    int cnt = 0;\n    for (int c : coins) {\n        cnt += m / ___;\n        m %= c;\n    }\n    return cnt;\n}"
+              "source": "int greedy(int m, vector<int> coins) {\n    sort(coins.begin(), coins.end(), ___<>());\n    int cnt = 0;\n    for (int c : coins) {\n        cnt += m / c;\n        m %= c;\n    }\n    return cnt;\n}"
             }
           }
         }
@@ -142,27 +142,33 @@
         "variants": {
           "python": {
             "accepted": [
-              "c"
-            ]
+              "True",
+              "true"
+            ],
+            "explanation": "reverse=True로 단위를 내림차순 정렬해 큰 단위부터 몫만큼 쓴다."
           },
           "java": {
             "accepted": [
-              "c"
-            ]
+              "reverseOrder",
+              "reverseorder"
+            ],
+            "explanation": "Collections.reverseOrder()로 단위를 내림차순 정렬해 큰 단위부터 몫만큼 쓴다."
           },
           "javascript": {
             "accepted": [
-              "c"
-            ]
+              "reverse"
+            ],
+            "explanation": "오름차순 정렬 뒤 reverse()로 뒤집어 큰 단위부터 몫만큼 쓴다."
           },
           "cpp": {
             "accepted": [
-              "c"
-            ]
+              "greater"
+            ],
+            "explanation": "greater<>()로 단위를 내림차순 정렬해 큰 단위부터 몫만큼 쓴다."
           }
         }
       },
-      "explanation": "단위 c로 쓸 수 있는 동전 수는 남은 금액 m을 c로 나눈 몫이고, 나머지가 다음 단위로 넘어간다.",
+      "explanation": "단위를 내림차순으로 정렬해야 큰 단위부터 몫만큼 쓰고 나머지 금액을 다음 단위로 넘긴다.",
       "refs": []
     },
     {

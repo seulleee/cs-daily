@@ -95,30 +95,30 @@
         "relax"
       ],
       "content": {
-        "prompt": "경유 정점을 거쳐 가는 거리가 되도록 빈칸을 채우면?",
+        "prompt": "경유 정점을 거친 거리가 더 짧으면 바꾸도록 빈칸을 채우면?",
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "for k in range(n):\n    for i in range(n):\n        for j in range(n):\n            if d[i][k] + d[___][j] < d[i][j]:\n                d[i][j] = d[i][k] + d[k][j]"
+              "source": "for k in range(n):\n    for i in range(n):\n        for j in range(n):\n            via = d[i][k] + d[k][j]\n            d[i][j] = ___(d[i][j], via)"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "for (int k = 0; k < n; k++)\n    for (int i = 0; i < n; i++)\n        for (int j = 0; j < n; j++)\n            if (d[i][k] + d[___][j] < d[i][j])\n                d[i][j] = d[i][k] + d[k][j];"
+              "source": "for (int k = 0; k < n; k++)\n    for (int i = 0; i < n; i++)\n        for (int j = 0; j < n; j++)\n            d[i][j] = Math.___(d[i][j],\n                d[i][k] + d[k][j]);"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "for (let k = 0; k < n; k++)\n  for (let i = 0; i < n; i++)\n    for (let j = 0; j < n; j++)\n      if (d[i][k] + d[___][j] < d[i][j])\n        d[i][j] = d[i][k] + d[k][j];"
+              "source": "for (let k = 0; k < n; k++)\n  for (let i = 0; i < n; i++)\n    for (let j = 0; j < n; j++)\n      d[i][j] = Math.___(d[i][j],\n        d[i][k] + d[k][j]);"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "for (int k = 0; k < n; k++)\n    for (int i = 0; i < n; i++)\n        for (int j = 0; j < n; j++)\n            if (d[i][k] + d[___][j] < d[i][j])\n                d[i][j] = d[i][k] + d[k][j];"
+              "source": "for (int k = 0; k < n; k++)\n    for (int i = 0; i < n; i++)\n        for (int j = 0; j < n; j++)\n            d[i][j] = ___(d[i][j],\n                d[i][k] + d[k][j]);"
             }
           }
         }
@@ -127,27 +127,27 @@
         "variants": {
           "python": {
             "accepted": [
-              "k"
+              "min"
             ]
           },
           "java": {
             "accepted": [
-              "k"
+              "min"
             ]
           },
           "javascript": {
             "accepted": [
-              "k"
+              "min"
             ]
           },
           "cpp": {
             "accepted": [
-              "k"
+              "min"
             ]
           }
         }
       },
-      "explanation": "i에서 경유 정점 k까지, k에서 j까지의 거리를 더해 지금 d[i][j]보다 짧으면 바꾼다.",
+      "explanation": "i에서 경유 정점 k를 거쳐 j로 가는 거리와 지금 d[i][j] 중 작은 값을 남긴다.",
       "refs": []
     },
     {

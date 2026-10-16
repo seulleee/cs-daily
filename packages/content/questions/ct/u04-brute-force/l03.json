@@ -92,10 +92,56 @@
       "difficulty": 1,
       "tags": [
         "순열",
+        "정의"
+      ],
+      "content": {
+        "prompt": "N개를 순서를 고려해 나열한 것을 ___ 이라 한다.",
+        "hint": "놓는 순서가 다르면 다른 경우로 센다"
+      },
+      "answer_key": {
+        "accepted": [
+          "순열",
+          "permutation",
+          "퍼뮤테이션"
+        ]
+      },
+      "explanation": "순서를 고려한 나열은 순열이고, 서로 다른 N개의 순열은 N!가지다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-perm-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "순열",
+        "적용"
+      ],
+      "content": {
+        "prompt": "도시 5곳의 방문 순서를 모두 시도하면 ___ 가지다."
+      },
+      "answer_key": {
+        "accepted": [
+          "120"
+        ]
+      },
+      "explanation": "방문 순서가 다르면 다른 경우이므로 순열이고, 5! = 120가지다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-perm-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "순열",
         "팩토리얼"
       ],
       "content": {
-        "prompt": "n!을 구하도록 빈칸을 채우면?",
+        "prompt": "n!을 구하도록 빈칸에 알맞은 것은?",
+        "options": [
+          "n",
+          "i",
+          "2"
+        ],
         "variants": {
           "python": {
             "code": {
@@ -126,54 +172,24 @@
       "answer_key": {
         "variants": {
           "python": {
-            "accepted": [
-              "i"
-            ]
+            "index": 1
           },
           "java": {
-            "accepted": [
-              "i"
-            ]
+            "index": 1
           },
           "javascript": {
-            "accepted": [
-              "i"
-            ]
+            "index": 1
           },
           "cpp": {
-            "accepted": [
-              "i"
-            ]
+            "index": 1
           }
         }
       },
-      "explanation": "f에 1부터 n까지의 i를 차례로 곱해야 n! = 1 × 2 × … × n이 된다.",
+      "explanation": "n! = 1 × 2 × … × n이라 f에 i를 차례로 곱한다. n을 곱하면 nⁿ, 2를 곱하면 2ⁿ이 된다.",
       "refs": []
     },
     {
-      "id": "ct-u04-perm-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "순열",
-        "정의"
-      ],
-      "content": {
-        "prompt": "N개를 순서를 고려해 나열한 것을 ___ 이라 한다.",
-        "hint": "놓는 순서가 다르면 다른 경우로 센다"
-      },
-      "answer_key": {
-        "accepted": [
-          "순열",
-          "permutation",
-          "퍼뮤테이션"
-        ]
-      },
-      "explanation": "순서를 고려한 나열은 순열이고, 서로 다른 N개의 순열은 N!가지다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u04-perm-007",
+      "id": "ct-u04-perm-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -231,28 +247,6 @@
         }
       },
       "explanation": "1부터 5까지 곱하므로 5! = 120이다. 5개를 순서대로 나열하는 순열의 수와 같다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u04-perm-008",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "순열",
-        "적용"
-      ],
-      "content": {
-        "prompt": "도시 5곳을 방문하는 순서를 모두 시도하면 몇 가지?",
-        "options": [
-          "25",
-          "60",
-          "120"
-        ]
-      },
-      "answer_key": {
-        "index": 2
-      },
-      "explanation": "방문 순서가 다르면 다른 경우이므로 순열이고, 5! = 120가지다.",
       "refs": []
     },
     {

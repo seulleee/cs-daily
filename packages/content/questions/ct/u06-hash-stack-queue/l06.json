@@ -94,30 +94,30 @@
         "다음-큰-원소"
       ],
       "content": {
-        "prompt": "pop되는 원소의 다음 큰 원소를 기록하도록 빈칸을 채우면?",
+        "prompt": "새 값보다 작은 top을 꺼내며 답을 정하도록 빈칸을 채우면?",
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "ans = [-1] * len(a)\ns = []\nfor i, x in enumerate(a):\n    while s and a[s[-1]] < x:\n        ans[s.pop()] = ___\n    s.append(i)"
+              "source": "ans = [-1] * len(a)\ns = []\nfor i, x in enumerate(a):\n    while s and a[s[-1]] < x:\n        ans[s.___()] = x\n    s.append(i)"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "int[] ans = new int[a.length];\nArrays.fill(ans, -1);\nDeque<Integer> s = new ArrayDeque<>();\nfor (int i = 0; i < a.length; i++) {\n    int x = a[i];\n    while (!s.isEmpty() && a[s.peek()] < x)\n        ans[s.pop()] = ___;\n    s.push(i);\n}"
+              "source": "int[] ans = new int[a.length];\nArrays.fill(ans, -1);\nDeque<Integer> s = new ArrayDeque<>();\nfor (int i = 0; i < a.length; i++) {\n    int x = a[i];\n    while (!s.isEmpty() && a[s.peek()] < x)\n        ans[s.___()] = x;\n    s.push(i);\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "const ans = new Array(a.length).fill(-1);\nconst s = [];\nfor (let i = 0; i < a.length; i++) {\n  const x = a[i];\n  while (s.length && a[s.at(-1)] < x) {\n    ans[s.pop()] = ___;\n  }\n  s.push(i);\n}"
+              "source": "const ans = new Array(a.length).fill(-1);\nconst s = [];\nfor (let i = 0; i < a.length; i++) {\n  const x = a[i];\n  while (s.length && a[s.at(-1)] < x) {\n    ans[s.___()] = x;\n  }\n  s.push(i);\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "vector<int> ans(a.size(), -1);\nstack<int> s;\nfor (int i = 0; i < (int)a.size(); i++) {\n    int x = a[i];\n    while (!s.empty() && a[s.top()] < x) {\n        ans[s.top()] = ___;\n        s.pop();\n    }\n    s.push(i);\n}"
+              "source": "vector<int> ans(a.size(), -1);\nstack<int> s;\nfor (int i = 0; i < (int)a.size(); i++) {\n    int x = a[i];\n    while (!s.empty() && a[s.top()] < x) {\n        ans[s.top()] = x;\n        s.___();\n    }\n    s.push(i);\n}"
             }
           }
         }
@@ -126,27 +126,27 @@
         "variants": {
           "python": {
             "accepted": [
-              "x"
+              "pop"
             ]
           },
           "java": {
             "accepted": [
-              "x"
+              "pop"
             ]
           },
           "javascript": {
             "accepted": [
-              "x"
+              "pop"
             ]
           },
           "cpp": {
             "accepted": [
-              "x"
+              "pop"
             ]
           }
         }
       },
-      "explanation": "새 값 x보다 작은 top은 오른쪽에서 처음 만난 큰 값이 x이므로 답을 x로 정한다.",
+      "explanation": "새 값 x보다 작은 top은 pop해서 꺼내고, 그 원소의 다음 큰 원소를 x로 정한다.",
       "refs": []
     },
     {

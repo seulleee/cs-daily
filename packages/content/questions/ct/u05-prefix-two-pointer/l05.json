@@ -91,70 +91,6 @@
       "difficulty": 1,
       "tags": [
         "투-포인터",
-        "두-수의-합"
-      ],
-      "content": {
-        "prompt": "합이 target보다 작을 때 옮길 포인터로 빈칸을 채우면?",
-        "variants": {
-          "python": {
-            "code": {
-              "language": "python",
-              "source": "def has_pair(a, target):\n    a.sort()\n    l, r = 0, len(a) - 1\n    while l < r:\n        s = a[l] + a[r]\n        if s == target:\n            return True\n        if s < target:\n            ___ += 1\n        else:\n            r -= 1\n    return False"
-            }
-          },
-          "java": {
-            "code": {
-              "language": "java",
-              "source": "static boolean hasPair(int[] a, int target) {\n    Arrays.sort(a);\n    int l = 0, r = a.length - 1;\n    while (l < r) {\n        int s = a[l] + a[r];\n        if (s == target) return true;\n        if (s < target) ___++;\n        else r--;\n    }\n    return false;\n}"
-            }
-          },
-          "javascript": {
-            "code": {
-              "language": "javascript",
-              "source": "function hasPair(a, target) {\n  a.sort((x, y) => x - y);\n  let l = 0, r = a.length - 1;\n  while (l < r) {\n    const s = a[l] + a[r];\n    if (s === target) return true;\n    if (s < target) ___++;\n    else r--;\n  }\n  return false;\n}"
-            }
-          },
-          "cpp": {
-            "code": {
-              "language": "cpp",
-              "source": "bool hasPair(vector<int> a, int target) {\n    sort(a.begin(), a.end());\n    int l = 0, r = a.size() - 1;\n    while (l < r) {\n        int s = a[l] + a[r];\n        if (s == target) return true;\n        if (s < target) ___++;\n        else r--;\n    }\n    return false;\n}"
-            }
-          }
-        }
-      },
-      "answer_key": {
-        "variants": {
-          "python": {
-            "accepted": [
-              "l"
-            ]
-          },
-          "java": {
-            "accepted": [
-              "l"
-            ]
-          },
-          "javascript": {
-            "accepted": [
-              "l"
-            ]
-          },
-          "cpp": {
-            "accepted": [
-              "l"
-            ]
-          }
-        }
-      },
-      "explanation": "합이 작으면 왼쪽 포인터 l을 오른쪽으로 옮겨 더 큰 값을 더한다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u05-twoptr-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "투-포인터",
         "정의"
       ],
       "content": {
@@ -172,7 +108,93 @@
       "refs": []
     },
     {
+      "id": "ct-u05-twoptr-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "투-포인터",
+        "이동-횟수"
+      ],
+      "content": {
+        "prompt": "N = 10⁵이면 두 포인터의 이동 횟수는 합쳐 최대 약 ___만 번이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "20",
+          "이십"
+        ]
+      },
+      "explanation": "두 포인터가 각각 최대 N번 움직이므로 합쳐 약 2N = 20만 번, 전체 O(N)이다.",
+      "refs": []
+    },
+    {
       "id": "ct-u05-twoptr-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "투-포인터",
+        "두-수의-합"
+      ],
+      "content": {
+        "prompt": "합이 target보다 작을 때 빈칸에 알맞은 것은?",
+        "options": [
+          "l--",
+          "r--",
+          "l++"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def has_pair(a, target):\n    a.sort()\n    l, r = 0, len(a) - 1\n    while l < r:\n        s = a[l] + a[r]\n        if s == target:\n            return True\n        if s < target:\n            ___\n        else:\n            r -= 1\n    return False"
+            },
+            "options": [
+              "l -= 1",
+              "r -= 1",
+              "l += 1"
+            ]
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static boolean hasPair(int[] a, int target) {\n    Arrays.sort(a);\n    int l = 0, r = a.length - 1;\n    while (l < r) {\n        int s = a[l] + a[r];\n        if (s == target) return true;\n        if (s < target) ___;\n        else r--;\n    }\n    return false;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function hasPair(a, target) {\n  a.sort((x, y) => x - y);\n  let l = 0, r = a.length - 1;\n  while (l < r) {\n    const s = a[l] + a[r];\n    if (s === target) return true;\n    if (s < target) ___;\n    else r--;\n  }\n  return false;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "bool hasPair(vector<int> a, int target) {\n    sort(a.begin(), a.end());\n    int l = 0, r = a.size() - 1;\n    while (l < r) {\n        int s = a[l] + a[r];\n        if (s == target) return true;\n        if (s < target) ___;\n        else r--;\n    }\n    return false;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 2
+          },
+          "java": {
+            "index": 2
+          },
+          "javascript": {
+            "index": 2
+          },
+          "cpp": {
+            "index": 2
+          }
+        }
+      },
+      "explanation": "합이 작으면 왼쪽 포인터 l을 오른쪽으로 옮겨 더 큰 값을 더한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-twoptr-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -194,7 +216,7 @@
       "refs": []
     },
     {
-      "id": "ct-u05-twoptr-008",
+      "id": "ct-u05-twoptr-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -252,27 +274,6 @@
         }
       },
       "explanation": "1 + 9 = 10 > 7이라 r을 줄이고, 1 + 6 = 7에서 멈춘다. 3 + 4도 7이지만 먼저 만나는 쌍은 1 6이다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u05-twoptr-009",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "투-포인터",
-        "이동-횟수"
-      ],
-      "content": {
-        "prompt": "N = 10⁵에서 두 포인터가 움직이는 횟수는 모두 합쳐 최대 약?",
-        "options": [
-          "약 10¹⁰번",
-          "약 2 × 10⁵번"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "두 포인터가 각각 최대 N번 움직이므로 합쳐 약 2N번, 전체 O(N)이다.",
       "refs": []
     },
     {

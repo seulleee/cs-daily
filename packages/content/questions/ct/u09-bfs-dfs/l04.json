@@ -104,34 +104,60 @@
       "type": "fill",
       "difficulty": 2,
       "tags": [
+        "최단-거리",
+        "bfs"
+      ],
+      "content": {
+        "prompt": "가중치 없는 그래프의 최단 거리는 ___ 로 구한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "BFS",
+          "너비 우선 탐색",
+          "너비우선탐색"
+        ]
+      },
+      "explanation": "가중치가 없으면 모든 간선 비용이 같으므로 BFS 거리 배열로 최단 거리를 구한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfsdist-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
         "거리-배열",
         "bfs"
       ],
       "content": {
-        "prompt": "BFS로 거리 배열을 채운다. 빈칸은?",
+        "prompt": "BFS로 거리 배열을 채우도록 빈칸에 알맞은 것은?",
+        "options": [
+          "dist[y] + 1",
+          "dist[x] + 1",
+          "1"
+        ],
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "dist = [-1] * n\ndist[s] = 0\nq = deque([s])\nwhile q:\n    x = q.popleft()\n    for y in g[x]:\n        if dist[y] == -1:\n            dist[y] = dist[___] + 1\n            q.append(y)"
+              "source": "dist = [-1] * n\ndist[s] = 0\nq = deque([s])\nwhile q:\n    x = q.popleft()\n    for y in g[x]:\n        if dist[y] == -1:\n            dist[y] = ___\n            q.append(y)"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "int[] dist = new int[n];\nArrays.fill(dist, -1); dist[s] = 0;\nDeque<Integer> q = new ArrayDeque<>();\nq.add(s);\nwhile (!q.isEmpty()) {\n    int x = q.poll();\n    for (int y : g[x]) {\n        if (dist[y] != -1) continue;\n        dist[y] = dist[___] + 1;\n        q.add(y);\n    }\n}"
+              "source": "int[] dist = new int[n];\nArrays.fill(dist, -1); dist[s] = 0;\nDeque<Integer> q = new ArrayDeque<>();\nq.add(s);\nwhile (!q.isEmpty()) {\n    int x = q.poll();\n    for (int y : g[x]) {\n        if (dist[y] != -1) continue;\n        dist[y] = ___;\n        q.add(y);\n    }\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "const dist = Array(n).fill(-1);\ndist[s] = 0;\nconst q = [s];\nfor (let h = 0; h < q.length; h++) {\n  const x = q[h];\n  for (const y of g[x]) {\n    if (dist[y] !== -1) continue;\n    dist[y] = dist[___] + 1;\n    q.push(y);\n  }\n}"
+              "source": "const dist = Array(n).fill(-1);\ndist[s] = 0;\nconst q = [s];\nfor (let h = 0; h < q.length; h++) {\n  const x = q[h];\n  for (const y of g[x]) {\n    if (dist[y] !== -1) continue;\n    dist[y] = ___;\n    q.push(y);\n  }\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "vector<int> dist(n, -1);\ndist[s] = 0;\nqueue<int> q;\nq.push(s);\nwhile (!q.empty()) {\n    int x = q.front(); q.pop();\n    for (int y : g[x]) {\n        if (dist[y] != -1) continue;\n        dist[y] = dist[___] + 1;\n        q.push(y);\n    }\n}"
+              "source": "vector<int> dist(n, -1);\ndist[s] = 0;\nqueue<int> q;\nq.push(s);\nwhile (!q.empty()) {\n    int x = q.front(); q.pop();\n    for (int y : g[x]) {\n        if (dist[y] != -1) continue;\n        dist[y] = ___;\n        q.push(y);\n    }\n}"
             }
           }
         }
@@ -139,24 +165,16 @@
       "answer_key": {
         "variants": {
           "python": {
-            "accepted": [
-              "x"
-            ]
+            "index": 1
           },
           "java": {
-            "accepted": [
-              "x"
-            ]
+            "index": 1
           },
           "javascript": {
-            "accepted": [
-              "x"
-            ]
+            "index": 1
           },
           "cpp": {
-            "accepted": [
-              "x"
-            ]
+            "index": 1
           }
         }
       },
@@ -164,7 +182,7 @@
       "refs": []
     },
     {
-      "id": "ct-u09-bfsdist-007",
+      "id": "ct-u09-bfsdist-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -225,7 +243,7 @@
       "refs": []
     },
     {
-      "id": "ct-u09-bfsdist-008",
+      "id": "ct-u09-bfsdist-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -246,7 +264,7 @@
       "refs": []
     },
     {
-      "id": "ct-u09-bfsdist-009",
+      "id": "ct-u09-bfsdist-010",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -264,28 +282,6 @@
         "index": 1
       },
       "explanation": "간선 비용이 모두 같아야 간선 개수가 곧 거리라서 BFS가 처음 닿은 거리가 최소다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u09-bfsdist-010",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "최단-거리",
-        "bfs"
-      ],
-      "content": {
-        "prompt": "가중치 없는 그래프에서 두 정점의 최단 거리를 구할 방법은?",
-        "options": [
-          "BFS",
-          "DFS 첫 경로",
-          "정렬"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "가중치가 없으면 모든 간선 비용이 같으므로 BFS 거리 배열로 최단 거리를 구한다.",
       "refs": []
     }
   ]

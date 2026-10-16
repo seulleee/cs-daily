@@ -49,27 +49,6 @@
     },
     {
       "id": "ct-u12-uf-tpl-003",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "union-find",
-        "union"
-      ],
-      "content": {
-        "prompt": "두 원소의 루트가 다르면 한 루트를 다른 루트 아래 붙이는 연산은?",
-        "options": [
-          "union",
-          "find"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "union은 두 원소의 루트를 찾아, 다르면 한 루트를 다른 루트 아래에 붙여 두 집합을 합친다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u12-uf-tpl-004",
       "type": "ox",
       "difficulty": 1,
       "tags": [
@@ -86,15 +65,20 @@
       "refs": []
     },
     {
-      "id": "ct-u12-uf-tpl-005",
-      "type": "fill",
+      "id": "ct-u12-uf-tpl-004",
+      "type": "single",
       "difficulty": 1,
       "tags": [
         "union-find",
         "init"
       ],
       "content": {
-        "prompt": "처음에 각 원소가 자기 자신을 부모로 갖게 빈칸을 채우면?",
+        "prompt": "각 원소가 자기 자신을 부모로 갖게 빈칸에 알맞은 것은?",
+        "options": [
+          "i + 1",
+          "0",
+          "i"
+        ],
         "variants": {
           "python": {
             "code": {
@@ -125,28 +109,41 @@
       "answer_key": {
         "variants": {
           "python": {
-            "accepted": [
-              "i"
-            ]
+            "index": 2
           },
           "java": {
-            "accepted": [
-              "i"
-            ]
+            "index": 2
           },
           "javascript": {
-            "accepted": [
-              "i"
-            ]
+            "index": 2
           },
           "cpp": {
-            "accepted": [
-              "i"
-            ]
+            "index": 2
           }
         }
       },
       "explanation": "parent[i] = i로 두면 모든 원소가 자기 자신이 루트인 집합 하나씩으로 시작한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-uf-tpl-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "union-find",
+        "union"
+      ],
+      "content": {
+        "prompt": "두 루트가 다르면 한 루트를 다른 루트 아래 붙이는 연산은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "union",
+          "유니온",
+          "합치기"
+        ]
+      },
+      "explanation": "union은 두 원소의 루트를 찾아, 다르면 한 루트를 다른 루트 아래에 붙여 두 집합을 합친다.",
       "refs": []
     },
     {

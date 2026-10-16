@@ -121,25 +121,25 @@
           "python": {
             "code": {
               "language": "python",
-              "source": "x, t = 0, 0\nfor cmd in \"RRL\":\n    if cmd == \"R\":\n        x += 1\n    else:\n        x -= 1\n    ___ += 1\nprint(x, t)"
+              "source": "pos, time = 0, 0\nfor cmd in \"RRL\":\n    if cmd == \"R\":\n        pos += 1\n    else:\n        pos -= 1\n    ___ += 1\nprint(pos, time)"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "int x = 0, t = 0;\nfor (char cmd : \"RRL\".toCharArray()) {\n    if (cmd == 'R') x++;\n    else x--;\n    ___++;\n}\nSystem.out.println(x + \" \" + t);"
+              "source": "int pos = 0, time = 0;\nfor (char cmd : \"RRL\".toCharArray()) {\n    if (cmd == 'R') pos++;\n    else pos--;\n    ___++;\n}\nSystem.out.println(pos + \" \" + time);"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "let x = 0, t = 0;\nfor (const cmd of \"RRL\") {\n  if (cmd === \"R\") x++;\n  else x--;\n  ___++;\n}\nconsole.log(x, t);"
+              "source": "let pos = 0, time = 0;\nfor (const cmd of \"RRL\") {\n  if (cmd === \"R\") pos++;\n  else pos--;\n  ___++;\n}\nconsole.log(pos, time);"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "int x = 0, t = 0;\nfor (char cmd : string(\"RRL\")) {\n    if (cmd == 'R') x++;\n    else x--;\n    ___++;\n}\ncout << x << \" \" << t;"
+              "source": "int pos = 0, time = 0;\nfor (char cmd : string(\"RRL\")) {\n    if (cmd == 'R') pos++;\n    else pos--;\n    ___++;\n}\ncout << pos << \" \" << time;"
             }
           }
         }
@@ -148,27 +148,31 @@
         "variants": {
           "python": {
             "accepted": [
-              "t"
+              "time",
+              "시간"
             ]
           },
           "java": {
             "accepted": [
-              "t"
+              "time",
+              "시간"
             ]
           },
           "javascript": {
             "accepted": [
-              "t"
+              "time",
+              "시간"
             ]
           },
           "cpp": {
             "accepted": [
-              "t"
+              "time",
+              "시간"
             ]
           }
         }
       },
-      "explanation": "위치 x와 시간 t가 상태다. 명령 하나를 처리할 때마다 시간 t를 1 늘린다.",
+      "explanation": "위치 pos와 시간 time이 상태다. 명령 하나를 처리할 때마다 위치와 함께 시간 time을 1 늘린다.",
       "refs": []
     },
     {

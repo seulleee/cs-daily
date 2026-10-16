@@ -95,7 +95,52 @@
         "만들기"
       ],
       "content": {
-        "prompt": "누적 합 배열을 만들도록 빈칸을 채우면?",
+        "prompt": "a = [2, 4, 6]이면 누적 합 P[3]은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "12"
+        ]
+      },
+      "explanation": "P[3]은 앞에서부터 3개 원소의 합이라 2 + 4 + 6 = 12다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "누적-합",
+        "효과"
+      ],
+      "content": {
+        "prompt": "누적 합을 만든 뒤 구간 합 질의는 ___ 한 번으로 답한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "뺄셈",
+          "빼기",
+          "뺄셈 연산"
+        ]
+      },
+      "explanation": "만들 때 N번 더해 두면, 이후 질의마다 P[r + 1] − P[l] 뺄셈 한 번이면 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "누적-합",
+        "만들기"
+      ],
+      "content": {
+        "prompt": "누적 합 배열을 만들도록 빈칸에 알맞은 것은?",
+        "options": [
+          "i - 1",
+          "i",
+          "i + 1"
+        ],
         "variants": {
           "python": {
             "code": {
@@ -126,24 +171,16 @@
       "answer_key": {
         "variants": {
           "python": {
-            "accepted": [
-              "i"
-            ]
+            "index": 1
           },
           "java": {
-            "accepted": [
-              "i"
-            ]
+            "index": 1
           },
           "javascript": {
-            "accepted": [
-              "i"
-            ]
+            "index": 1
           },
           "cpp": {
-            "accepted": [
-              "i"
-            ]
+            "index": 1
           }
         }
       },
@@ -151,38 +188,43 @@
       "refs": []
     },
     {
-      "id": "ct-u05-prefix-006",
-      "type": "fill",
+      "id": "ct-u05-prefix-008",
+      "type": "single",
       "difficulty": 2,
       "tags": [
         "누적-합",
         "구간-합"
       ],
       "content": {
-        "prompt": "[l, r] 구간 합을 구하도록 빈칸을 채우면?",
+        "prompt": "[l, r] 구간 합을 구하도록 빈칸에 알맞은 것은?",
+        "options": [
+          "r + 1",
+          "r",
+          "r - 1"
+        ],
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "def range_sum(p, l, r):\n    return p[r + 1] - p[___]"
+              "source": "def range_sum(p, l, r):\n    return p[___] - p[l]"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "static long rangeSum(long[] p, int l, int r) {\n    return p[r + 1] - p[___];\n}"
+              "source": "static long rangeSum(long[] p, int l, int r) {\n    return p[___] - p[l];\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "function rangeSum(p, l, r) {\n  return p[r + 1] - p[___];\n}"
+              "source": "function rangeSum(p, l, r) {\n  return p[___] - p[l];\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "long long rangeSum(const vector<long long>& p,\n                   int l, int r) {\n    return p[r + 1] - p[___];\n}"
+              "source": "long long rangeSum(const vector<long long>& p,\n                   int l, int r) {\n    return p[___] - p[l];\n}"
             }
           }
         }
@@ -190,54 +232,24 @@
       "answer_key": {
         "variants": {
           "python": {
-            "accepted": [
-              "l"
-            ]
+            "index": 0
           },
           "java": {
-            "accepted": [
-              "l"
-            ]
+            "index": 0
           },
           "javascript": {
-            "accepted": [
-              "l"
-            ]
+            "index": 0
           },
           "cpp": {
-            "accepted": [
-              "l"
-            ]
+            "index": 0
           }
         }
       },
-      "explanation": "[l, r] 합은 P[r + 1] − P[l]이다. P[l]에는 l번 앞까지의 합이 들어 있다.",
+      "explanation": "[l, r] 합은 P[r + 1] − P[l]이다. P[r + 1]에 r번까지의 합이, P[l]에 l번 앞까지의 합이 들어 있다.",
       "refs": []
     },
     {
-      "id": "ct-u05-prefix-007",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "누적-합",
-        "만들기"
-      ],
-      "content": {
-        "prompt": "a = [2, 4, 6]일 때 누적 합 P는?",
-        "options": [
-          "2 6 12",
-          "0 2 4 6",
-          "0 2 6 12"
-        ]
-      },
-      "answer_key": {
-        "index": 2
-      },
-      "explanation": "P[0] = 0에서 시작해 2, 2 + 4 = 6, 6 + 6 = 12를 차례로 담아 0 2 6 12다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u05-prefix-008",
+      "id": "ct-u05-prefix-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -295,28 +307,6 @@
         }
       },
       "explanation": "P = [0, 5, 6, 9, 11]이고 P[3] − P[1] = 9 − 5 = 4로, a[1] + a[2] = 1 + 3과 같다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u05-prefix-009",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "누적-합",
-        "효과"
-      ],
-      "content": {
-        "prompt": "N = 10⁵, 구간 합 질의 10⁵개면 누적 합 사용 시 연산은 약?",
-        "options": [
-          "약 10¹⁰번",
-          "약 2 × 10⁵번",
-          "약 10번"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "만들 때 10⁵번, 질의마다 뺄셈 한 번씩 10⁵번이라 약 2 × 10⁵번이다.",
       "refs": []
     },
     {

@@ -94,7 +94,50 @@
         "gcd"
       ],
       "content": {
-        "prompt": "반복이 끝났을 때 최대공약수를 돌려주도록 빈칸을 채우면?",
+        "prompt": "gcd(48, 36)은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "12"
+        ]
+      },
+      "explanation": "gcd(48, 36) → gcd(36, 12) → gcd(12, 0) = 12다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-gcd-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "lcm"
+      ],
+      "content": {
+        "prompt": "a = 12, b = 18이면 a / gcd × b는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "36"
+        ]
+      },
+      "explanation": "gcd(12, 18) = 6이므로 12 / 6 × 18 = 36이 최소공배수다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-gcd-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "gcd"
+      ],
+      "content": {
+        "prompt": "반복이 끝났을 때 최대공약수를 돌려주도록 빈칸에 알맞은 것은?",
+        "options": [
+          "b",
+          "a",
+          "1"
+        ],
         "variants": {
           "python": {
             "code": {
@@ -125,63 +168,60 @@
       "answer_key": {
         "variants": {
           "python": {
-            "accepted": [
-              "a"
-            ]
+            "index": 1
           },
           "java": {
-            "accepted": [
-              "a"
-            ]
+            "index": 1
           },
           "javascript": {
-            "accepted": [
-              "a"
-            ]
+            "index": 1
           },
           "cpp": {
-            "accepted": [
-              "a"
-            ]
+            "index": 1
           }
         }
       },
-      "explanation": "b가 0이 되면 반복이 끝나고, 그때 남은 a가 최대공약수다.",
+      "explanation": "b가 0이 되면 반복이 끝나고, 그때 남은 a가 최대공약수다. b는 0이라 답이 될 수 없다.",
       "refs": []
     },
     {
-      "id": "ct-u13-gcd-006",
-      "type": "fill",
+      "id": "ct-u13-gcd-008",
+      "type": "single",
       "difficulty": 2,
       "tags": [
         "math",
         "gcd"
       ],
       "content": {
-        "prompt": "재귀로 호제법을 쓰도록 빈칸을 채우면?",
+        "prompt": "재귀로 호제법을 쓰도록 빈칸에 알맞은 것은?",
+        "options": [
+          "b, a % b",
+          "a % b, b",
+          "a, a % b"
+        ],
         "variants": {
           "python": {
             "code": {
               "language": "python",
-              "source": "def gcd(a, b):\n    if b == 0:\n        return a\n    return gcd(___, a % b)"
+              "source": "def gcd(a, b):\n    if b == 0:\n        return a\n    return gcd(___)"
             }
           },
           "java": {
             "code": {
               "language": "java",
-              "source": "int gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(___, a % b);\n}"
+              "source": "int gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(___);\n}"
             }
           },
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "function gcd(a, b) {\n  if (b === 0) return a;\n  return gcd(___, a % b);\n}"
+              "source": "function gcd(a, b) {\n  if (b === 0) return a;\n  return gcd(___);\n}"
             }
           },
           "cpp": {
             "code": {
               "language": "cpp",
-              "source": "int gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(___, a % b);\n}"
+              "source": "int gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(___);\n}"
             }
           }
         }
@@ -189,32 +229,24 @@
       "answer_key": {
         "variants": {
           "python": {
-            "accepted": [
-              "b"
-            ]
+            "index": 0
           },
           "java": {
-            "accepted": [
-              "b"
-            ]
+            "index": 0
           },
           "javascript": {
-            "accepted": [
-              "b"
-            ]
+            "index": 0
           },
           "cpp": {
-            "accepted": [
-              "b"
-            ]
+            "index": 0
           }
         }
       },
-      "explanation": "gcd(a, b) = gcd(b, a % b)이므로 다음 호출의 첫 인자는 b다.",
+      "explanation": "gcd(a, b) = gcd(b, a % b)이므로 다음 호출은 b와 a % b 순서로 넘긴다.",
       "refs": []
     },
     {
-      "id": "ct-u13-gcd-007",
+      "id": "ct-u13-gcd-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -287,50 +319,6 @@
         }
       },
       "explanation": "최소공배수는 a / gcd × b 순서로 계산해 중간값을 작게 유지한다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u13-gcd-008",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "math",
-        "gcd"
-      ],
-      "content": {
-        "prompt": "gcd(30, 12)는?",
-        "options": [
-          "12",
-          "3",
-          "6"
-        ]
-      },
-      "answer_key": {
-        "index": 2
-      },
-      "explanation": "gcd(30, 12) → gcd(12, 6) → gcd(6, 0) = 6이다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u13-gcd-009",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "math",
-        "lcm"
-      ],
-      "content": {
-        "prompt": "a = 12, b = 18일 때 a / gcd × b는?",
-        "options": [
-          "216",
-          "72",
-          "36"
-        ]
-      },
-      "answer_key": {
-        "index": 2
-      },
-      "explanation": "gcd(12, 18) = 6이므로 12 / 6 × 18 = 36이 최소공배수다.",
       "refs": []
     },
     {

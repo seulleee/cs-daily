@@ -166,7 +166,7 @@
       ],
       "content": {
         "prompt": "큰 수가 앞에 오도록 빈칸을 채우면?",
-        "hint": "비교 방향을 뒤집는 부분",
+        "hint": "내림차순을 만드는 이름",
         "variants": {
           "python": {
             "code": {
@@ -183,7 +183,7 @@
           "javascript": {
             "code": {
               "language": "javascript",
-              "source": "const a = [70, 95, 80];\na.sort((x, y) => ___ - x);\nconsole.log(a.join(\" \"));"
+              "source": "const a = [70, 95, 80];\na.sort((x, y) => x - y).___();\nconsole.log(a.join(\" \"));"
             }
           },
           "cpp": {
@@ -211,9 +211,9 @@
           },
           "javascript": {
             "accepted": [
-              "y"
+              "reverse"
             ],
-            "explanation": "비교 함수가 y - x를 돌려주면 비교 방향이 뒤집혀 큰 값이 앞에 온다."
+            "explanation": "오름차순 비교 함수로 정렬한 뒤 reverse()로 순서를 뒤집으면 큰 값이 앞에 온다."
           },
           "cpp": {
             "accepted": [

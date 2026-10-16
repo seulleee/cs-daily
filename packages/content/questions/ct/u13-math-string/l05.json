@@ -138,71 +138,6 @@
       "difficulty": 1,
       "tags": [
         "math",
-        "modular",
-        "negative"
-      ],
-      "content": {
-        "prompt": "a, b가 0 이상 M 미만일 때 음수가 안 나오게 빈칸을 채우면?",
-        "variants": {
-          "python": {
-            "code": {
-              "language": "python",
-              "source": "M = 7\na, b = 2, 5\nprint((a - b + ___) % M)"
-            }
-          },
-          "java": {
-            "code": {
-              "language": "java",
-              "source": "int M = 7;\nint a = 2, b = 5;\nSystem.out.println((a - b + ___) % M);"
-            }
-          },
-          "javascript": {
-            "code": {
-              "language": "javascript",
-              "source": "const M = 7;\nconst a = 2, b = 5;\nconsole.log((a - b + ___) % M);"
-            }
-          },
-          "cpp": {
-            "code": {
-              "language": "cpp",
-              "source": "int M = 7;\nint a = 2, b = 5;\ncout << (a - b + ___) % M;"
-            }
-          }
-        }
-      },
-      "answer_key": {
-        "variants": {
-          "python": {
-            "accepted": [
-              "M"
-            ]
-          },
-          "java": {
-            "accepted": [
-              "M"
-            ]
-          },
-          "javascript": {
-            "accepted": [
-              "M"
-            ]
-          },
-          "cpp": {
-            "accepted": [
-              "M"
-            ]
-          }
-        }
-      },
-      "explanation": "a − b에 M을 더하면 0 이상이 되어, 어느 언어에서도 0 이상 M 미만의 나머지가 나온다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u13-negmod-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "math",
         "modular"
       ],
       "content": {
@@ -221,7 +156,89 @@
       "refs": []
     },
     {
+      "id": "ct-u13-negmod-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "modular",
+        "negative"
+      ],
+      "content": {
+        "prompt": "(20 − 31 + 37) % 37의 값은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "26"
+        ]
+      },
+      "explanation": "20 − 31 + 37 = 26이고 26 % 37 = 26이다. M을 더해 음수를 없앤 뒤 나머지를 취했다.",
+      "refs": []
+    },
+    {
       "id": "ct-u13-negmod-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "modular",
+        "negative"
+      ],
+      "content": {
+        "prompt": "a, b가 0 이상 M 미만일 때 음수가 안 나오게 빈칸에 알맞은 것은?",
+        "options": [
+          "+ 1",
+          "+ M",
+          "* M"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "M = 7\na, b = 2, 5\nprint((a - b ___) % M)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int M = 7;\nint a = 2, b = 5;\nSystem.out.println((a - b ___) % M);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const M = 7;\nconst a = 2, b = 5;\nconsole.log((a - b ___) % M);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int M = 7;\nint a = 2, b = 5;\ncout << (a - b ___) % M;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "a − b에 M을 더하면 0 이상이 되어, 어느 언어에서도 0 이상 M 미만의 나머지가 나온다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-negmod-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -284,29 +301,6 @@
         }
       },
       "explanation": "a − b가 음수면 언어에 따라 % 결과가 음수일 수 있다. (a − b + M) % M으로 쓰면 어디서나 4다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u13-negmod-008",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "math",
-        "modular",
-        "negative"
-      ],
-      "content": {
-        "prompt": "(2 − 5 + 7) % 7의 값은?",
-        "options": [
-          "4",
-          "-3",
-          "3"
-        ]
-      },
-      "answer_key": {
-        "index": 0
-      },
-      "explanation": "2 − 5 + 7 = 4이고 4 % 7 = 4다. M을 더해 음수를 없앤 뒤 나머지를 취했다.",
       "refs": []
     },
     {

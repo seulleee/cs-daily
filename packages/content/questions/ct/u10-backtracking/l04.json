@@ -151,12 +151,36 @@
       "type": "fill",
       "difficulty": 2,
       "tags": [
+        "backtracking",
+        "combination"
+      ],
+      "content": {
+        "prompt": "5개에서 2개를 고르는 조합은 ___ 가지다."
+      },
+      "answer_key": {
+        "accepted": [
+          "10",
+          "열"
+        ]
+      },
+      "explanation": "C(5, 2) = (5 × 4) ÷ 2 = 10이다. 순서를 따지는 20에서 순서만 다른 쌍을 하나로 센다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u10-comb-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
         "combination",
         "repetition"
       ],
       "content": {
         "prompt": "같은 원소를 다시 고를 수 있게 하는 빈칸은?",
-        "hint": "방금 고른 원소의 인덱스 변수",
+        "options": [
+          "i + 1",
+          "start",
+          "i"
+        ],
         "variants": {
           "python": {
             "code": {
@@ -187,50 +211,20 @@
       "answer_key": {
         "variants": {
           "python": {
-            "accepted": [
-              "i"
-            ]
+            "index": 2
           },
           "java": {
-            "accepted": [
-              "i"
-            ]
+            "index": 2
           },
           "javascript": {
-            "accepted": [
-              "i"
-            ]
+            "index": 2
           },
           "cpp": {
-            "accepted": [
-              "i"
-            ]
+            "index": 2
           }
         }
       },
       "explanation": "중복 선택을 허용하면 다음 재귀를 직전 인덱스 i부터 시작한다. i + 1이면 같은 원소를 다시 못 고른다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u10-comb-007",
-      "type": "single",
-      "difficulty": 2,
-      "tags": [
-        "backtracking",
-        "combination"
-      ],
-      "content": {
-        "prompt": "4개에서 2개를 고르는 조합의 개수는?",
-        "options": [
-          "12",
-          "6",
-          "8"
-        ]
-      },
-      "answer_key": {
-        "index": 1
-      },
-      "explanation": "C(4, 2) = (4 × 3) ÷ 2 = 6이다. 순서를 따지는 12에서 순서만 다른 쌍을 하나로 센다.",
       "refs": []
     },
     {
