@@ -1,0 +1,293 @@
+{
+  "track": "ct",
+  "unit": "u08-greedy",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ct-u08-counter-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "반례"
+      ],
+      "content": {
+        "prompt": "그리디 답이 최적이 아닌 입력 하나를 무엇이라 하나?",
+        "options": [
+          "반례",
+          "결정 함수",
+          "정당성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "반례는 그리디가 최적해를 내지 못하는 입력이다. 하나만 있어도 그 그리디는 틀린 풀이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-counter-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "반례",
+        "검증"
+      ],
+      "content": {
+        "prompt": "그리디를 검증할 때 먼저 시도하는 입력의 크기는?",
+        "options": [
+          "원소 10⁵개",
+          "원소 2~3개",
+          "원소 0개"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "원소 2~3개처럼 작은 입력은 완전 탐색 답을 쉽게 구할 수 있어 그리디 답과 바로 비교할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-counter-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "반례",
+        "완전-탐색"
+      ],
+      "content": {
+        "prompt": "작은 입력에서 그리디 답과 완전 탐색 답을 비교하면 반례를 찾을 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "완전 탐색은 모든 경우를 봐서 항상 최적이므로, 두 답이 다른 입력이 바로 반례다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-counter-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "반례"
+      ],
+      "content": {
+        "prompt": "반례가 하나 나와도 대부분 맞으면 그 그리디를 그대로 쓴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "반례가 하나라도 있으면 그 그리디는 정답이 아니다. 기준을 바꾸거나 다른 풀이로 넘어간다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-counter-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "완전-탐색"
+      ],
+      "content": {
+        "prompt": "그리디 답과 비교할 정답은 ___ 탐색으로 구한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "완전",
+          "brute force",
+          "브루트 포스",
+          "완전탐색"
+        ]
+      },
+      "explanation": "완전 탐색은 가능한 경우를 모두 확인해 항상 최적해를 주므로 작은 입력의 정답 기준으로 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-counter-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "완전-탐색",
+        "검증"
+      ],
+      "content": {
+        "prompt": "완전 탐색으로 합 7 이하의 최대 합을 구한다. 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a, S = [5, 4, 3], 7\nbest = 0\nfor m in range(1 << len(a)):\n    t = sum(v for i, v in enumerate(a)\n            if m >> i & 1)\n    if t <= S:\n        best = ___(best, t)\nprint(best)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {5, 4, 3};\nint S = 7, best = 0;\nfor (int m = 0; m < (1 << a.length); m++) {\n    int t = 0;\n    for (int i = 0; i < a.length; i++)\n        if ((m >> i & 1) == 1) t += a[i];\n    if (t <= S) best = Math.___(best, t);\n}\nSystem.out.println(best);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [5, 4, 3], S = 7;\nlet best = 0;\nfor (let m = 0; m < 1 << a.length; m++) {\n  let t = 0;\n  for (let i = 0; i < a.length; i++)\n    if ((m >> i) & 1) t += a[i];\n  if (t <= S) best = Math.___(best, t);\n}\nconsole.log(best);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {5, 4, 3};\nint S = 7, best = 0, n = a.size();\nfor (int m = 0; m < (1 << n); m++) {\n    int t = 0;\n    for (int i = 0; i < n; i++)\n        if (m >> i & 1) t += a[i];\n    if (t <= S) best = ___(best, t);\n}\ncout << best;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "max"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "max"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "max"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "max"
+            ]
+          }
+        }
+      },
+      "explanation": "모든 부분집합의 합 중 7 이하인 것의 최댓값을 max로 갱신한다. 4 + 3 = 7이 정답이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-counter-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "반례",
+        "그리디"
+      ],
+      "content": {
+        "prompt": "합 7 이하로 큰 수부터 담는 그리디다. 출력값은?",
+        "options": [
+          "5",
+          "7",
+          "12"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a, S = [5, 4, 3], 7\ntotal = 0\nfor v in sorted(a, reverse=True):\n    if total + v <= S:\n        total += v\nprint(total)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "Integer[] a = {5, 4, 3};\nint S = 7, total = 0;\nArrays.sort(a, Collections.reverseOrder());\nfor (int v : a)\n    if (total + v <= S) total += v;\nSystem.out.println(total);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [5, 4, 3], S = 7;\nlet total = 0;\na.sort((x, y) => y - x);\nfor (const v of a)\n  if (total + v <= S) total += v;\nconsole.log(total);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {5, 4, 3};\nint S = 7, total = 0;\nsort(a.rbegin(), a.rend());\nfor (int v : a)\n    if (total + v <= S) total += v;\ncout << total;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "5를 담으면 4와 3은 넘쳐서 못 담아 5에서 끝난다. 완전 탐색 답 7(4 + 3)보다 작으므로 이 입력은 반례다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-counter-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "반례",
+        "검증"
+      ],
+      "content": {
+        "prompt": "그리디 검증용 입력을 작게 만드는 이유는?",
+        "options": [
+          "그리디가 느려서",
+          "완전 탐색이 빨리 끝나서",
+          "반례가 없어서"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "완전 탐색은 경우의 수가 빠르게 늘어나므로, 작은 입력이어야 금방 정답을 구해 비교할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-counter-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "반례"
+      ],
+      "content": {
+        "prompt": "반례를 찾았을 때 할 일은?",
+        "options": [
+          "그대로 제출",
+          "입력을 키워 다시",
+          "기준 변경·다른 풀이"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "반례가 있으면 그 그리디는 틀린 것이므로 정렬 기준을 바꾸거나 다른 풀이 방법으로 넘어간다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-counter-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "반례"
+      ],
+      "content": {
+        "prompt": "반례의 뜻으로 알맞은 것은?",
+        "options": [
+          "그리디가 맞는 입력",
+          "그리디가 틀리는 입력",
+          "가장 큰 입력"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "반례는 그리디 답이 최적이 아니게 되는 입력이다. 그리디 답과 완전 탐색 답이 다르면 반례다.",
+      "refs": []
+    }
+  ]
+}

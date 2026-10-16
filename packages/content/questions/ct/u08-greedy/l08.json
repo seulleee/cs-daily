@@ -1,0 +1,295 @@
+{
+  "track": "ct",
+  "unit": "u08-greedy",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "ct-u08-review-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "정렬-기준",
+        "그리디"
+      ],
+      "content": {
+        "prompt": "그리디 풀이를 시작할 때 먼저 정할 것은?",
+        "options": [
+          "출력 형식",
+          "정렬·선택 기준",
+          "변수 이름"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "그리디는 무엇으로 정렬하고 무엇을 먼저 고를지 기준을 정하는 것에서 시작한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-review-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "그리디",
+        "정렬"
+      ],
+      "content": {
+        "prompt": "선택 순서가 처음부터 정해져 바뀌지 않으면 쓰는 구현 도구는?",
+        "options": [
+          "정렬",
+          "우선순위 큐",
+          "해시맵"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "고를 순서가 고정이면 처음에 한 번 정렬하고 앞에서부터 고르면 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-review-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "우선순위-큐"
+      ],
+      "content": {
+        "prompt": "합친 결과가 다시 후보가 되는 그리디의 도구는?",
+        "options": [
+          "정렬 한 번",
+          "우선순위 큐"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "새 후보가 계속 생겨 매번 가장 작은 값이 바뀌므로 우선순위 큐로 구현한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-review-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "반례",
+        "검증"
+      ],
+      "content": {
+        "prompt": "그리디 기준을 정하면 원소 2~3개 입력으로 반례를 찾아본다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "작은 입력에서 그리디 답과 완전 탐색 답을 비교해 반례가 없는지 확인한 뒤 기준을 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-review-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "구간-선택",
+        "정렬-기준"
+      ],
+      "content": {
+        "prompt": "구간 선택에서 정렬 기준은 ___ 시각이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "끝나는",
+          "끝",
+          "종료",
+          "end",
+          "끝난"
+        ]
+      },
+      "explanation": "구간 선택은 끝나는 시각 오름차순으로 정렬해 겹치지 않으면 고른다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "대기-시간",
+        "정렬"
+      ],
+      "content": {
+        "prompt": "대기 시간 합 최소: 처리 순서를 정하는 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def total_wait(t):\n    t.___()\n    wait = total = 0\n    for x in t:\n        total += wait\n        wait += x\n    return total"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static int totalWait(int[] t) {\n    Arrays.___(t);\n    int wait = 0, total = 0;\n    for (int x : t) {\n        total += wait;\n        wait += x;\n    }\n    return total;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function totalWait(t) {\n  t.___((x, y) => x - y);\n  let wait = 0, total = 0;\n  for (const x of t) {\n    total += wait;\n    wait += x;\n  }\n  return total;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int totalWait(vector<int> t) {\n    ___(t.begin(), t.end());\n    int wait = 0, total = 0;\n    for (int x : t) {\n        total += wait;\n        wait += x;\n    }\n    return total;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "sort"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "sort"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "sort"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "sort"
+            ]
+          }
+        }
+      },
+      "explanation": "처리 순서가 처음부터 고정되므로 짧은 작업부터 한 번 정렬하면 된다. [3, 1, 2]의 대기 시간 합은 4다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-review-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "우선순위-큐"
+      ],
+      "content": {
+        "prompt": "합치기 비용 함수에 [2, 3, 4]를 넣은 반환값은?",
+        "options": [
+          "9",
+          "14",
+          "18"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "import heapq\ndef merge_cost(a):\n    heapq.heapify(a)\n    cost = 0\n    while len(a) > 1:\n        x = heapq.heappop(a)\n        y = heapq.heappop(a)\n        cost += x + y\n        heapq.heappush(a, x + y)\n    return cost"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static long mergeCost(int[] a) {\n    var pq = new PriorityQueue<Long>();\n    for (int v : a) pq.add((long) v);\n    long cost = 0;\n    while (pq.size() > 1) {\n        long x = pq.poll(), y = pq.poll();\n        cost += x + y;\n        pq.add(x + y);\n    }\n    return cost;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "// MinHeap: 직접 만든 최소 힙 클래스\nfunction mergeCost(a) {\n  const h = new MinHeap();\n  for (const v of a) h.push(v);\n  let cost = 0;\n  while (h.size() > 1) {\n    const x = h.pop(), y = h.pop();\n    cost += x + y;\n    h.push(x + y);\n  }\n  return cost;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long mergeCost(const vector<int>& a) {\n    priority_queue<long long, vector<long long>,\n        greater<>> pq(a.begin(), a.end());\n    long long cost = 0;\n    while (pq.size() > 1) {\n        long long x = pq.top(); pq.pop();\n        long long y = pq.top(); pq.pop();\n        cost += x + y;\n        pq.push(x + y);\n    }\n    return cost;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "2 + 3 = 5를 넣어 [4, 5]가 되고 4 + 5 = 9다. 합친 값 5와 9를 더해 14다. 후보가 바뀌어 우선순위 큐를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-review-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "거스름돈",
+        "반례"
+      ],
+      "content": {
+        "prompt": "1·4·5원으로 8원을 큰 단위부터 거슬러 주면 동전 수는?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "그리디는 5 + 1 + 1 + 1로 4개를 쓴다. 최적은 4 + 4의 2개라 이 단위에서는 반례가 생긴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-review-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "반례"
+      ],
+      "content": {
+        "prompt": "그리디 4개, 완전 탐색 2개가 나왔다. 할 일은?",
+        "options": [
+          "다른 풀이를 찾는다",
+          "그리디 답 제출",
+          "입력을 늘린다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "두 답이 다르면 그 입력은 반례다. 그리디 기준을 바꾸거나 다른 풀이 방법을 찾는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-review-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "우선순위-큐",
+        "정렬"
+      ],
+      "content": {
+        "prompt": "합친 값이 다시 후보가 되는 문제도 정렬 한 번으로 구현한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "합친 값이 새로 생겨 순서가 매번 바뀌므로 정렬 한 번으로는 안 되고 우선순위 큐가 필요하다.",
+      "refs": []
+    }
+  ]
+}

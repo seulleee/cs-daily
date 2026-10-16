@@ -1,0 +1,292 @@
+{
+  "track": "ct",
+  "unit": "u09-bfs-dfs",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "ct-u09-multisrc-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "다중-시작"
+      ],
+      "content": {
+        "prompt": "시작점을 처음에 모두 큐에 넣고 시작하는 BFS는?",
+        "options": [
+          "재귀 DFS",
+          "다중 시작 BFS",
+          "이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다중 시작 BFS는 시작점들을 처음에 모두 큐에 넣고 거리 0으로 두어 동시에 퍼지게 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-multisrc-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "다중-시작",
+        "거리-배열"
+      ],
+      "content": {
+        "prompt": "다중 시작 BFS에서 시작점들의 처음 거리는?",
+        "options": [
+          "0",
+          "1",
+          "-1"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "시작점은 모두 출발 위치이므로 거리 0으로 두고, 나머지 칸은 미방문 −1로 둔다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-multisrc-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "다중-시작"
+      ],
+      "content": {
+        "prompt": "여러 곳에서 동시에 퍼지는 데 걸리는 시간은 다중 시작 BFS로 구한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "시작점을 모두 거리 0으로 넣으면 각 칸의 거리가 가장 가까운 시작점에서 닿는 시간이 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-multisrc-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "다중-시작",
+        "비용"
+      ],
+      "content": {
+        "prompt": "시작점마다 따로 BFS해도 다중 시작 BFS와 비용이 같다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "시작점마다 따로 하면 BFS를 시작점 수만큼 반복해 그만큼 느려진다. 다중 시작은 BFS 한 번이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-multisrc-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "다중-시작",
+        "비용"
+      ],
+      "content": {
+        "prompt": "시작점 K개를 따로 BFS하면 약 ___ 배 느려진다."
+      },
+      "answer_key": {
+        "accepted": [
+          "K",
+          "시작점 수",
+          "시작점 개수"
+        ]
+      },
+      "explanation": "BFS 한 번의 비용이 시작점 수 K만큼 반복되므로 약 K배 느리다. 다중 시작 BFS는 한 번으로 끝난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-multisrc-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "다중-시작",
+        "거리-배열"
+      ],
+      "content": {
+        "prompt": "시작점(S)을 모두 큐에 넣는다. 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "dist = [[-1] * C for _ in range(R)]\nq = deque()\nfor r in range(R):\n    for c in range(C):\n        if g[r][c] == 'S':\n            dist[r][c] = ___\n            q.append((r, c))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[][] dist = new int[R][C];\nfor (int[] row : dist) Arrays.fill(row, -1);\nDeque<int[]> q = new ArrayDeque<>();\nfor (int r = 0; r < R; r++)\n    for (int c = 0; c < C; c++)\n        if (g[r].charAt(c) == 'S') {\n            dist[r][c] = ___;\n            q.add(new int[]{r, c});\n        }"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const dist = g.map((row) => Array(C).fill(-1));\nconst q = [];\nfor (let r = 0; r < R; r++)\n  for (let c = 0; c < C; c++)\n    if (g[r][c] === 'S') {\n      dist[r][c] = ___;\n      q.push([r, c]);\n    }"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<vector<int>> dist(R, vector<int>(C, -1));\nqueue<pair<int, int>> q;\nfor (int r = 0; r < R; r++)\n    for (int c = 0; c < C; c++)\n        if (g[r][c] == 'S') {\n            dist[r][c] = ___;\n            q.push({r, c});\n        }"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "0"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "0"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "0"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "0"
+            ]
+          }
+        }
+      },
+      "explanation": "시작점은 출발 위치라 거리 0으로 두고 모두 처음에 큐에 넣는다. 그다음 평소처럼 BFS한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-multisrc-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "다중-시작"
+      ],
+      "content": {
+        "prompt": "0번과 6번 칸에서 동시에 퍼진다. 가운데 3번 칸에 닿는 시간은?",
+        "options": [
+          "3",
+          "6",
+          "2"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from collections import deque\nn, src = 7, [0, 6]\ndist = [-1] * n\nfor s in src: dist[s] = 0\nq = deque(src)\nwhile q:\n    x = q.popleft()\n    for y in (x - 1, x + 1):\n        if 0 <= y < n and dist[y] == -1:\n            dist[y] = dist[x] + 1\n            q.append(y)\nprint(dist[3])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] dist = {0, -1, -1, -1, -1, -1, 0};\nvar q = new ArrayDeque<>(List.of(0, 6));\nint n = dist.length;\nwhile (!q.isEmpty()) {\n    int x = q.poll();\n    for (int y : new int[]{x - 1, x + 1}) {\n        if (y < 0 || y >= n) continue;\n        if (dist[y] != -1) continue;\n        dist[y] = dist[x] + 1; q.add(y);\n    }\n}\nSystem.out.println(dist[3]);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const dist = [0, -1, -1, -1, -1, -1, 0];\nconst q = [0, 6], n = dist.length;\nfor (let h = 0; h < q.length; h++) {\n  const x = q[h];\n  for (const y of [x - 1, x + 1]) {\n    if (y < 0 || y >= n) continue;\n    if (dist[y] !== -1) continue;\n    dist[y] = dist[x] + 1;\n    q.push(y);\n  }\n}\nconsole.log(dist[3]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> dist = {0, -1, -1, -1, -1, -1, 0};\nqueue<int> q({0, 6});\nint n = dist.size();\nwhile (!q.empty()) {\n    int x = q.front(); q.pop();\n    for (int y : {x - 1, x + 1}) {\n        if (y < 0 || y >= n) continue;\n        if (dist[y] != -1) continue;\n        dist[y] = dist[x] + 1; q.push(y);\n    }\n}\ncout << dist[3];"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "양 끝에서 동시에 한 칸씩 퍼지므로 3번 칸에는 3초 만에 닿는다. 시작점 둘을 거리 0으로 함께 넣었기 때문이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-multisrc-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "다중-시작",
+        "비용"
+      ],
+      "content": {
+        "prompt": "시작점 K개, 칸 R × C개일 때 다중 시작 BFS의 비용은?",
+        "options": [
+          "K × R × C",
+          "R × C",
+          "K"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시작점을 한꺼번에 넣고 BFS를 한 번만 하므로 비용은 칸 수 R × C에 비례한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-multisrc-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "다중-시작"
+      ],
+      "content": {
+        "prompt": "여러 칸에서 동시에 번질 때 시작점을 넣는 방법은?",
+        "options": [
+          "하나씩 따로 BFS",
+          "가장 가까운 하나만",
+          "처음에 모두 넣기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "번지는 칸을 처음에 모두 거리 0으로 큐에 넣어야 동시에 퍼지는 시간을 한 번의 BFS로 구한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-multisrc-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "다중-시작"
+      ],
+      "content": {
+        "prompt": "S . . S 한 줄에서 다중 시작 BFS를 하면 처음 큐의 칸 수는?",
+        "options": [
+          "1",
+          "2",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시작점 S 두 칸을 처음에 모두 큐에 넣으므로 2칸으로 시작한다.",
+      "refs": []
+    }
+  ]
+}

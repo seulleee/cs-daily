@@ -1,0 +1,293 @@
+{
+  "track": "ct",
+  "unit": "u07-sort-search",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ct-u07-bound-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "target 이상인 첫 위치를 구하는 것은?",
+        "options": [
+          "lower bound",
+          "upper bound",
+          "mid"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "lower bound는 target 이상인 값이 처음 나오는 위치다. upper bound는 target보다 큰 첫 위치다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bound-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "upper-bound"
+      ],
+      "content": {
+        "prompt": "target보다 큰 첫 위치를 구하는 것은?",
+        "options": [
+          "mid",
+          "lower bound",
+          "upper bound"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "upper bound는 target을 넘는 값이 처음 나오는 위치다. target 이상인 첫 위치는 lower bound다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bound-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "upper-bound",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "upper bound는 target 이상인 첫 위치이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "target 이상인 첫 위치는 lower bound다. upper bound는 target보다 큰 첫 위치다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bound-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "개수",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "정렬된 배열에서 target의 개수는 upper bound − lower bound이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "lower bound부터 upper bound 직전까지가 target이 놓인 칸이므로 두 위치의 차가 개수다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bound-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "개수",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "target의 개수는 upper bound − ___ bound이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "lower",
+          "로어",
+          "로워"
+        ]
+      },
+      "explanation": "target 이상인 첫 위치(lower bound)부터 target보다 큰 첫 위치 직전까지가 target이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bound-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "lower-bound",
+        "이진-탐색"
+      ],
+      "content": {
+        "prompt": "target 이상인 첫 위치를 찾는다. 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def lower(a, t):\n    lo, hi = 0, len(a) - 1\n    ans = len(a)\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if a[mid] >= t:\n            ans = ___\n            hi = mid - 1\n        else:\n            lo = mid + 1\n    return ans"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static int lower(int[] a, int t) {\n    int lo = 0, hi = a.length - 1;\n    int ans = a.length;\n    while (lo <= hi) {\n        int mid = lo + (hi - lo) / 2;\n        if (a[mid] >= t) {\n            ans = ___;\n            hi = mid - 1;\n        } else lo = mid + 1;\n    }\n    return ans;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function lower(a, t) {\n  let lo = 0, hi = a.length - 1;\n  let ans = a.length;\n  while (lo <= hi) {\n    const mid = Math.floor((lo + hi) / 2);\n    if (a[mid] >= t) {\n      ans = ___;\n      hi = mid - 1;\n    } else lo = mid + 1;\n  }\n  return ans;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int lower(const vector<int>& a, int t) {\n    int lo = 0, hi = (int)a.size() - 1;\n    int ans = a.size();\n    while (lo <= hi) {\n        int mid = lo + (hi - lo) / 2;\n        if (a[mid] >= t) {\n            ans = ___;\n            hi = mid - 1;\n        } else lo = mid + 1;\n    }\n    return ans;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "mid"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "mid"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "mid"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "mid"
+            ]
+          }
+        }
+      },
+      "explanation": "a[mid] ≥ t이면 mid가 답 후보이므로 기록하고 더 왼쪽에 있는지 hi = mid − 1로 찾는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bound-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "upper-bound",
+        "이진-탐색"
+      ],
+      "content": {
+        "prompt": "upper bound(target보다 큰 첫 위치)가 되는 빈칸은?",
+        "options": [
+          ">=",
+          ">",
+          "<"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def upper(a, t):\n    lo, hi = 0, len(a) - 1\n    ans = len(a)\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if a[mid] ___ t:\n            ans = mid\n            hi = mid - 1\n        else:\n            lo = mid + 1\n    return ans"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static int upper(int[] a, int t) {\n    int lo = 0, hi = a.length - 1;\n    int ans = a.length;\n    while (lo <= hi) {\n        int mid = lo + (hi - lo) / 2;\n        if (a[mid] ___ t) {\n            ans = mid;\n            hi = mid - 1;\n        } else lo = mid + 1;\n    }\n    return ans;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function upper(a, t) {\n  let lo = 0, hi = a.length - 1;\n  let ans = a.length;\n  while (lo <= hi) {\n    const mid = Math.floor((lo + hi) / 2);\n    if (a[mid] ___ t) {\n      ans = mid;\n      hi = mid - 1;\n    } else lo = mid + 1;\n  }\n  return ans;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int upper(const vector<int>& a, int t) {\n    int lo = 0, hi = (int)a.size() - 1;\n    int ans = a.size();\n    while (lo <= hi) {\n        int mid = lo + (hi - lo) / 2;\n        if (a[mid] ___ t) {\n            ans = mid;\n            hi = mid - 1;\n        } else lo = mid + 1;\n    }\n    return ans;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "a[mid] > t일 때만 답 후보로 삼으면 target보다 큰 첫 위치가 된다. >=로 바꾸면 lower bound다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bound-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "개수",
+        "upper-bound"
+      ],
+      "content": {
+        "prompt": "lower(2) = 1, upper(2) = 4일 때 2의 개수는?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "개수는 upper bound − lower bound = 4 − 1 = 3이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bound-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "범위-개수"
+      ],
+      "content": {
+        "prompt": "a = [1, 3, 4, 7, 9]에서 upper(7) − lower(3)의 값은?",
+        "options": [
+          "3",
+          "4",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "upper(7)은 9의 위치 4, lower(3)은 3의 위치 1이라 4 − 1 = 3이고, 이것이 [3, 7] 안 원소(3, 4, 7) 수다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bound-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "a = [2, 4, 4, 8]에서 4의 lower bound는?",
+        "options": [
+          "0",
+          "2",
+          "1"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "4 이상인 값이 처음 나오는 자리는 인덱스 1이다. upper bound였다면 8의 위치 3이다.",
+      "refs": []
+    }
+  ]
+}

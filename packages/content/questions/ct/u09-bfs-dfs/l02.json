@@ -1,0 +1,289 @@
+{
+  "track": "ct",
+  "unit": "u09-bfs-dfs",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ct-u09-visittime-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "방문-표시"
+      ],
+      "content": {
+        "prompt": "BFS에서 방문 표시를 하는 시점은?",
+        "options": [
+          "큐에 넣을 때",
+          "큐에서 꺼낼 때",
+          "탐색이 끝난 뒤"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "큐에 넣는 순간 방문 표시해야 같은 정점이 큐에 두 번 들어가지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-visittime-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "방문-표시"
+      ],
+      "content": {
+        "prompt": "큐에서 꺼낼 때 방문 표시하면 생기는 문제는?",
+        "options": [
+          "무한 재귀",
+          "중복 삽입",
+          "정렬 오류"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "꺼내기 전까지 표시가 없어 여러 정점이 같은 이웃을 각각 큐에 넣는 중복 삽입이 생긴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-visittime-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "방문-표시"
+      ],
+      "content": {
+        "prompt": "BFS의 시작점은 방문 표시 없이 큐에 넣는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "시작점도 큐에 넣을 때 방문 표시해야 이웃에서 시작점을 다시 큐에 넣지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-visittime-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "방문-표시"
+      ],
+      "content": {
+        "prompt": "넣을 때 방문 표시하면 각 정점은 큐에 한 번만 들어간다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "큐에 넣는 순간 표시되므로 다른 정점이 같은 이웃을 만나도 다시 넣지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-visittime-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "방문-표시"
+      ],
+      "content": {
+        "prompt": "꺼낼 때 표시하면 중복 ___ 으로 큐가 커져 시간 초과가 날 수 있다."
+      },
+      "answer_key": {
+        "accepted": [
+          "삽입",
+          "추가",
+          "push",
+          "넣기"
+        ]
+      },
+      "explanation": "표시가 늦어 같은 정점이 큐에 여러 번 들어가는 중복 삽입이 생기고, 큐가 커져 시간·메모리가 늘어난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-visittime-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "방문-표시",
+        "bfs"
+      ],
+      "content": {
+        "prompt": "이웃을 큐에 넣는 순간 방문 처리한다. 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from collections import deque\ndef reach(g, s):\n    seen = [False] * len(g)\n    seen[s] = True\n    q = deque([s])\n    while q:\n        x = q.popleft()\n        for y in g[x]:\n            if not seen[y]:\n                seen[y] = ___\n                q.append(y)\n    return sum(seen)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static int reach(int[][] g, int s) {\n    boolean[] seen = new boolean[g.length];\n    seen[s] = true;\n    var q = new ArrayDeque<>(List.of(s));\n    int cnt = 1;\n    while (!q.isEmpty())\n        for (int y : g[q.poll()])\n            if (!seen[y]) {\n                seen[y] = ___; cnt++; q.add(y);\n            }\n    return cnt;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function reach(g, s) {\n  const seen = Array(g.length).fill(false);\n  seen[s] = true;\n  const q = [s];\n  for (let h = 0; h < q.length; h++) {\n    for (const y of g[q[h]]) {\n      if (seen[y]) continue;\n      seen[y] = ___; q.push(y);\n    }\n  }\n  return q.length;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int reach(const vector<vector<int>>& g, int s) {\n    vector<bool> seen(g.size()); seen[s] = true;\n    queue<int> q({s});\n    while (!q.empty()) {\n        int x = q.front(); q.pop();\n        for (int y : g[x])\n            if (!seen[y]) {\n                seen[y] = ___; q.push(y);\n            }\n    }\n    return count(begin(seen), end(seen), true);\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "True"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "true"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "true"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "true"
+            ]
+          }
+        }
+      },
+      "explanation": "큐에 넣는 순간 seen을 참으로 바꿔야 다른 정점이 같은 이웃을 다시 넣지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-visittime-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "방문-표시"
+      ],
+      "content": {
+        "prompt": "꺼낼 때 방문 표시하는 코드다. 큐에 넣은 횟수의 출력값은?",
+        "options": [
+          "3",
+          "4",
+          "6"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from collections import deque\ng = [[1, 2], [0, 2], [0, 1]]\nseen = [False] * 3\nq, pushes = deque([0]), 1\nwhile q:\n    x = q.popleft()\n    if seen[x]: continue\n    seen[x] = True\n    for y in g[x]:\n        if not seen[y]:\n            q.append(y); pushes += 1\nprint(pushes)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[][] g = {{1, 2}, {0, 2}, {0, 1}};\nboolean[] seen = new boolean[3];\nvar q = new ArrayDeque<>(List.of(0));\nint pushes = 1;\nwhile (!q.isEmpty()) {\n    int x = q.poll();\n    if (seen[x]) continue;\n    seen[x] = true;\n    for (int y : g[x])\n        if (!seen[y]) { q.add(y); pushes++; }\n}\nSystem.out.println(pushes);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const g = [[1, 2], [0, 2], [0, 1]];\nconst seen = [false, false, false];\nconst q = [0];\nfor (let h = 0; h < q.length; h++) {\n  const x = q[h];\n  if (seen[x]) continue;\n  seen[x] = true;\n  for (const y of g[x]) if (!seen[y]) q.push(y);\n}\nconsole.log(q.length);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> g[] = {{1, 2}, {0, 2}, {0, 1}};\nvector<bool> seen(3);\nqueue<int> q({0});\nint pushes = 1;\nwhile (!q.empty()) {\n    int x = q.front(); q.pop();\n    if (seen[x]) continue;\n    seen[x] = true;\n    for (int y : g[x])\n        if (!seen[y]) { q.push(y); pushes++; }\n}\ncout << pushes;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "0을 꺼내 1, 2를 넣고, 1을 꺼낼 때 2가 아직 표시 전이라 또 넣는다. 시작 포함 4번이고, 넣을 때 표시하면 3번이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-visittime-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "방문-표시"
+      ],
+      "content": {
+        "prompt": "칸이 10⁶개인 격자에서 꺼낼 때 방문 표시하면 생길 위험은?",
+        "options": [
+          "답이 작아짐",
+          "컴파일 오류",
+          "시간·메모리 초과"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "같은 칸이 큐에 여러 번 들어가 큐가 커지므로 시간 초과나 메모리 초과가 날 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-visittime-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "방문-표시"
+      ],
+      "content": {
+        "prompt": "시작점 s를 큐에 넣을 때 함께 할 일은?",
+        "options": [
+          "s 방문 표시",
+          "s 이웃 표시",
+          "아무것도 안 함"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "시작점도 큐에 넣는 순간 방문 표시해야 이웃을 탐색하다 s를 다시 넣지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-visittime-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "방문-표시"
+      ],
+      "content": {
+        "prompt": "BFS에서 seen[y] = true를 두는 자리는?",
+        "options": [
+          "반복문 밖",
+          "y를 꺼낸 직후",
+          "y를 넣을 때"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "y를 큐에 넣을 때 함께 방문 표시해야 같은 y가 큐에 두 번 들어가지 않는다.",
+      "refs": []
+    }
+  ]
+}

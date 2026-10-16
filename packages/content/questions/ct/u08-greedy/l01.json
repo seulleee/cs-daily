@@ -1,0 +1,294 @@
+{
+  "track": "ct",
+  "unit": "u08-greedy",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ct-u08-intro-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "그리디"
+      ],
+      "content": {
+        "prompt": "매 단계 지금 가장 좋아 보이는 선택을 하고 되돌리지 않는 방법은?",
+        "options": [
+          "완전 탐색",
+          "그리디",
+          "이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "그리디는 각 단계에서 당장 가장 좋아 보이는 것을 고르고, 한 번 고른 것은 다시 바꾸지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-intro-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "그리디",
+        "정당성"
+      ],
+      "content": {
+        "prompt": "그리디 선택이 항상 최적해로 이어지는지 확인하는 것은?",
+        "options": [
+          "정당성 확인",
+          "단조성 확인",
+          "재귀 깊이 확인"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "그리디는 고른 것을 되돌리지 않으므로 그 선택이 항상 최적해로 이어지는지(정당성) 확인해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-intro-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "그리디"
+      ],
+      "content": {
+        "prompt": "그리디는 앞의 선택이 틀리면 되돌아가 다시 고른다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "그리디는 한 번 한 선택을 되돌리지 않는다. 되돌아가 다른 선택을 시도하는 것은 그리디가 아니다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-intro-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "그리디",
+        "완전-탐색"
+      ],
+      "content": {
+        "prompt": "가능한 경우를 모두 만들어 비교하는 쪽은?",
+        "options": [
+          "그리디",
+          "완전 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "완전 탐색은 모든 경우를 확인하고, 그리디는 단계마다 하나만 골라 나머지 경우는 보지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-intro-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "정당성"
+      ],
+      "content": {
+        "prompt": "그리디가 항상 최적해를 내는지 따지는 것을 ___ 확인이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "정당성",
+          "correctness",
+          "정당성 증명"
+        ]
+      },
+      "explanation": "지금 좋아 보이는 선택이 최종 최적해로 이어진다는 정당성이 있어야 그리디를 쓸 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-intro-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "그리디",
+        "정렬"
+      ],
+      "content": {
+        "prompt": "합이 가장 크게 k개 고르려고 큰 값부터 정렬한다. 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def best_sum(a, k):\n    a.sort(reverse=___)\n    return sum(a[:k])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static int bestSum(Integer[] a, int k) {\n    Arrays.sort(a, Collections.___());\n    int s = 0;\n    for (int i = 0; i < k; i++) s += a[i];\n    return s;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function bestSum(a, k) {\n  a.sort((x, y) => ___ - x);\n  let s = 0;\n  for (let i = 0; i < k; i++) s += a[i];\n  return s;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int bestSum(vector<int> a, int k) {\n    sort(a.begin(), a.end(), ___<int>());\n    auto b = a.begin();\n    return accumulate(b, b + k, 0);\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "True"
+            ],
+            "explanation": "reverse=True로 내림차순 정렬한 뒤 앞에서 k개를 더하면 가장 큰 합이다."
+          },
+          "java": {
+            "accepted": [
+              "reverseOrder"
+            ],
+            "explanation": "Collections.reverseOrder()로 내림차순 정렬한 뒤 앞에서 k개를 더하면 가장 큰 합이다."
+          },
+          "javascript": {
+            "accepted": [
+              "y"
+            ],
+            "explanation": "비교 함수 (x, y) => y - x는 내림차순 정렬이다. 앞에서 k개를 더하면 가장 큰 합이다."
+          },
+          "cpp": {
+            "accepted": [
+              "greater"
+            ],
+            "explanation": "greater<int>()로 내림차순 정렬한 뒤 앞에서 k개를 더하면 가장 큰 합이다."
+          }
+        }
+      },
+      "explanation": "내림차순으로 정렬한 뒤 앞에서부터 k개를 고르면 합이 가장 크다. 기준으로 정렬하고 앞부터 고르는 흔한 그리디다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-intro-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "그리디",
+        "정렬"
+      ],
+      "content": {
+        "prompt": "합이 8 이하가 되게 최대한 많이 고른다. 출력값은?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a = [5, 1, 4, 2]\na.sort()\ntotal = cnt = 0\nfor v in a:\n    if total + v <= 8:\n        total += v\n        cnt += 1\nprint(cnt)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {5, 1, 4, 2};\nArrays.sort(a);\nint total = 0, cnt = 0;\nfor (int v : a) {\n    if (total + v > 8) break;\n    total += v;\n    cnt++;\n}\nSystem.out.println(cnt);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [5, 1, 4, 2];\na.sort((x, y) => x - y);\nlet total = 0, cnt = 0;\nfor (const v of a) {\n  if (total + v > 8) break;\n  total += v;\n  cnt++;\n}\nconsole.log(cnt);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {5, 1, 4, 2};\nsort(a.begin(), a.end());\nint total = 0, cnt = 0;\nfor (int v : a) {\n    if (total + v > 8) break;\n    total += v;\n    cnt++;\n}\ncout << cnt;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "작은 값부터 정렬해 1, 2, 4를 고르면 합 7이고 5를 더하면 8을 넘는다. 3개를 고른다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-intro-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "그리디",
+        "정렬"
+      ],
+      "content": {
+        "prompt": "그리디 풀이의 흔한 형태는?",
+        "options": [
+          "모든 순서 시도",
+          "절반씩 범위 축소",
+          "정렬 후 앞부터 선택"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "그리디는 보통 어떤 기준으로 정렬한 뒤 앞에서부터 고를 수 있는 것을 고른다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-intro-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "정당성"
+      ],
+      "content": {
+        "prompt": "그리디 답이 최적이 아닌 입력이 하나라도 있으면?",
+        "options": [
+          "그 그리디는 틀렸다",
+          "대부분 맞으니 쓴다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "정당성은 모든 입력에서 최적이어야 성립한다. 틀리는 입력이 하나라도 있으면 그 그리디로는 풀 수 없다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u08-intro-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "그리디"
+      ],
+      "content": {
+        "prompt": "그리디는 한 번 고른 것을 다시 바꾸지 않는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "그리디는 매 단계의 선택을 확정하고 다음 단계로 넘어간다. 그래서 빠르지만 정당성 확인이 필요하다.",
+      "refs": []
+    }
+  ]
+}

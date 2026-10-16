@@ -1,0 +1,289 @@
+{
+  "track": "ct",
+  "unit": "u09-bfs-dfs",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ct-u09-bfstpl-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bfs"
+      ],
+      "content": {
+        "prompt": "시작점을 큐에 넣고, 꺼낸 정점의 이웃을 큐에 넣기를 반복하는 탐색은?",
+        "options": [
+          "DFS",
+          "BFS",
+          "이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "BFS는 큐에서 정점을 꺼내 방문 안 한 이웃을 큐에 넣기를 큐가 빌 때까지 반복한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfstpl-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bfs",
+        "방문-배열"
+      ],
+      "content": {
+        "prompt": "이미 본 정점을 다시 넣지 않도록 표시하는 것은?",
+        "options": [
+          "방문 배열",
+          "거리 합",
+          "누적 합"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "방문 배열에 본 정점을 표시해 두면 같은 정점을 큐에 다시 넣지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfstpl-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "인접-리스트"
+      ],
+      "content": {
+        "prompt": "간선 목록을 정점별 이웃 목록으로 바꾼 것은?",
+        "options": [
+          "간선 리스트",
+          "인접 리스트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인접 리스트는 정점마다 이웃 목록을 담아 꺼낸 정점의 이웃을 바로 훑을 수 있게 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfstpl-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "bfs"
+      ],
+      "content": {
+        "prompt": "BFS는 스택으로 다음에 볼 정점을 관리한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "BFS는 먼저 넣은 정점부터 꺼내는 큐를 쓴다. 스택은 DFS를 반복문으로 짤 때 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfstpl-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "bfs"
+      ],
+      "content": {
+        "prompt": "BFS에서 정점을 넣고 꺼내는 자료구조는 ___ 다."
+      },
+      "answer_key": {
+        "accepted": [
+          "큐",
+          "queue",
+          "덱",
+          "deque"
+        ]
+      },
+      "explanation": "BFS는 시작점부터 큐에 넣고, 넣은 순서대로 꺼내며 이웃을 넣는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfstpl-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "인접-리스트"
+      ],
+      "content": {
+        "prompt": "무방향 간선을 인접 리스트에 넣는다. 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "g = [[] for _ in range(n)]\nfor u, v in edges:\n    g[u].append(v)\n    g[___].append(u)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "List<List<Integer>> g = new ArrayList<>();\nfor (int i = 0; i < n; i++)\n    g.add(new ArrayList<>());\nfor (int[] e : edges) {\n    int u = e[0], v = e[1];\n    g.get(u).add(v);\n    g.get(___).add(u);\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const g = Array.from({ length: n }, () => []);\nfor (const [u, v] of edges) {\n  g[u].push(v);\n  g[___].push(u);\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<vector<int>> g(n);\nfor (auto [u, v] : edges) {\n    g[u].push_back(v);\n    g[___].push_back(u);\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "v"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "v"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "v"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "v"
+            ]
+          }
+        }
+      },
+      "explanation": "무방향 간선 (u, v)는 u의 이웃에 v를, v의 이웃에 u를 모두 넣어야 양쪽에서 이동할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfstpl-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bfs",
+        "추적"
+      ],
+      "content": {
+        "prompt": "0에서 BFS로 방문한 순서를 출력한다. 출력값은?",
+        "options": [
+          "0 1 2 3",
+          "0 1 3 2",
+          "0 2 1 3"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from collections import deque\ng = [[1, 2], [0, 3], [0], [1]]\nseen = [True, False, False, False]\nq, order = deque([0]), []\nwhile q:\n    x = q.popleft()\n    order.append(x)\n    for y in g[x]:\n        if not seen[y]:\n            seen[y] = True\n            q.append(y)\nprint(*order)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[][] g = {{1, 2}, {0, 3}, {0}, {1}};\nboolean[] seen = new boolean[4];\nDeque<Integer> q = new ArrayDeque<>();\nq.add(0); seen[0] = true;\nwhile (!q.isEmpty()) {\n    int x = q.poll();\n    System.out.print(x + \" \");\n    for (int y : g[x]) {\n        if (seen[y]) continue;\n        seen[y] = true; q.add(y);\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const g = [[1, 2], [0, 3], [0], [1]];\nconst seen = [true, false, false, false];\nconst q = [0], order = [];\nfor (let h = 0; h < q.length; h++) {\n  const x = q[h];\n  order.push(x);\n  for (const y of g[x]) {\n    if (!seen[y]) { seen[y] = true; q.push(y); }\n  }\n}\nconsole.log(order.join(' '));"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> g[] = {{1, 2}, {0, 3}, {0}, {1}};\nvector<bool> seen(4);\nqueue<int> q;\nq.push(0); seen[0] = true;\nwhile (!q.empty()) {\n    int x = q.front(); q.pop();\n    cout << x << ' ';\n    for (int y : g[x]) {\n        if (seen[y]) continue;\n        seen[y] = true; q.push(y);\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "0의 이웃 1, 2를 먼저 넣고, 그다음 1의 이웃 3을 넣는다. 큐는 넣은 순서대로 꺼내 0 1 2 3이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfstpl-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "인접-리스트"
+      ],
+      "content": {
+        "prompt": "간선 (0, 1), (1, 2)를 무방향 인접 리스트로 바꾸면 1의 이웃은?",
+        "options": [
+          "[2]",
+          "[0]",
+          "[0, 2]"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "1은 간선 (0, 1)과 (1, 2)에 모두 들어 있어 이웃 목록이 [0, 2]가 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfstpl-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "방문-배열"
+      ],
+      "content": {
+        "prompt": "방문 배열 없이 BFS를 하면 생기는 일은?",
+        "options": [
+          "간선이 사라짐",
+          "같은 정점 재삽입",
+          "탐색이 빨라짐"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이미 본 정점을 구분하지 못해 같은 정점을 큐에 계속 다시 넣게 된다. 사이클이 있으면 끝나지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfstpl-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "bfs"
+      ],
+      "content": {
+        "prompt": "BFS는 꺼낸 정점의 방문 안 한 이웃을 큐에 넣는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "BFS는 큐에서 꺼낸 정점의 이웃 중 방문하지 않은 것만 큐에 넣고, 큐가 빌 때까지 반복한다.",
+      "refs": []
+    }
+  ]
+}

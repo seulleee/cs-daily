@@ -1,0 +1,295 @@
+{
+  "track": "ct",
+  "unit": "u09-bfs-dfs",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "ct-u09-review-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bfs",
+        "템플릿"
+      ],
+      "content": {
+        "prompt": "BFS 템플릿의 두 재료는?",
+        "options": [
+          "스택·정렬",
+          "해시·누적 합",
+          "큐·방문 배열"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "BFS는 다음에 볼 정점을 담는 큐와, 이미 본 정점을 표시하는 방문 배열로 짠다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-review-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "방문-표시"
+      ],
+      "content": {
+        "prompt": "BFS에서 방문 표시는 언제 하나?",
+        "options": [
+          "큐에 넣을 때",
+          "큐에서 꺼낼 때"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "큐에 넣을 때 표시해야 같은 정점이 큐에 여러 번 들어가지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-review-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "다중-시작"
+      ],
+      "content": {
+        "prompt": "시작점이 여러 개인 최단 거리는 어떻게 시작하나?",
+        "options": [
+          "하나씩 따로 BFS",
+          "모두 먼저 큐에 넣기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시작점을 모두 거리 0으로 먼저 큐에 넣고 BFS를 한 번 돌리면 가장 가까운 시작점까지의 거리가 나온다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-review-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "섬-개수"
+      ],
+      "content": {
+        "prompt": "섬 개수는 BFS가 방문한 전체 칸 수와 같다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "방문한 칸 수는 영역 크기의 합이다. 섬 개수는 새 탐색을 시작한 횟수다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-review-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "연결-요소"
+      ],
+      "content": {
+        "prompt": "묶음 개수는 새 탐색을 ___ 한 횟수다."
+      },
+      "answer_key": {
+        "accepted": [
+          "시작",
+          "start",
+          "시작한"
+        ]
+      },
+      "explanation": "방문 안 한 칸에서 새 탐색을 시작할 때마다 새 묶음을 하나 찾은 것이므로 그 횟수가 묶음 수다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "격자",
+        "거리-배열"
+      ],
+      "content": {
+        "prompt": "격자 BFS로 거리를 채운다. 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "while q:\n    r, c = q.popleft()\n    for dr, dc in DIRS:\n        nr, nc = r + dr, c + dc\n        if not (0 <= nr < R and 0 <= nc < C):\n            continue\n        if g[nr][nc] == '#':\n            continue\n        if dist[nr][nc] == -1:\n            dist[nr][nc] = dist[___][c] + 1\n            q.append((nr, nc))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "while (!q.isEmpty()) {\n    int[] p = q.poll(); int r = p[0], c = p[1];\n    for (int d = 0; d < 4; d++) {\n        int nr = r + DR[d], nc = c + DC[d];\n        if (nr < 0 || nr >= R) continue;\n        if (nc < 0 || nc >= C) continue;\n        if (g[nr][nc] == '#') continue;\n        if (dist[nr][nc] != -1) continue;\n        dist[nr][nc] = dist[___][c] + 1;\n        q.add(new int[]{nr, nc});\n    }\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "for (let h = 0; h < q.length; h++) {\n  const [r, c] = q[h];\n  for (const [dr, dc] of DIRS) {\n    const nr = r + dr, nc = c + dc;\n    if (nr < 0 || nr >= R) continue;\n    if (nc < 0 || nc >= C) continue;\n    if (g[nr][nc] === '#') continue;\n    if (dist[nr][nc] !== -1) continue;\n    dist[nr][nc] = dist[___][c] + 1;\n    q.push([nr, nc]);\n  }\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "while (!q.empty()) {\n    auto [r, c] = q.front(); q.pop();\n    for (int d = 0; d < 4; d++) {\n        int nr = r + DR[d], nc = c + DC[d];\n        if (nr < 0 || nr >= R) continue;\n        if (nc < 0 || nc >= C) continue;\n        if (g[nr][nc] == '#') continue;\n        if (dist[nr][nc] != -1) continue;\n        dist[nr][nc] = dist[___][c] + 1;\n        q.push({nr, nc});\n    }\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "r"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "r"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "r"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "r"
+            ]
+          }
+        }
+      },
+      "explanation": "다음 칸 (nr, nc)는 지금 꺼낸 칸 (r, c)에서 한 칸 이동했으므로 dist[r][c] + 1이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-review-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "다중-시작"
+      ],
+      "content": {
+        "prompt": "S가 두 칸인 격자에서 각 칸의 가장 가까운 S까지 거리를 구할 방법은?",
+        "options": [
+          "다중 시작 BFS",
+          "S마다 DFS",
+          "이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "S 두 칸을 모두 거리 0으로 큐에 넣고 BFS를 한 번 돌리면 각 칸에 가장 가까운 S의 거리가 채워진다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-review-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "방문-표시",
+        "bfs"
+      ],
+      "content": {
+        "prompt": "큐에 넣을 때 방문 표시하는 BFS다. 빈칸은?",
+        "options": [
+          "seen[y] = true",
+          "seen[x] = true",
+          "seen[y] = false"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from collections import deque\ndef bfs(g, s):\n    seen = [False] * len(g)\n    seen[s] = True\n    q, pops = deque([s]), 0\n    while q:\n        pops += 1\n        for y in g[q.popleft()]:\n            if not seen[y]:\n                ___\n                q.append(y)\n    return pops"
+            },
+            "options": [
+              "seen[y] = True",
+              "seen[x] = True",
+              "seen[y] = False"
+            ]
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static int bfs(int[][] g, int s) {\n    boolean[] seen = new boolean[g.length];\n    seen[s] = true;\n    var q = new ArrayDeque<>(List.of(s));\n    int pops = 0;\n    while (!q.isEmpty()) {\n        int x = q.poll(); pops++;\n        for (int y : g[x])\n            if (!seen[y]) { ___; q.add(y); }\n    }\n    return pops;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function bfs(g, s) {\n  const seen = Array(g.length).fill(false);\n  seen[s] = true;\n  const q = [s];\n  for (let h = 0; h < q.length; h++) {\n    for (const y of g[q[h]])\n      if (!seen[y]) { ___; q.push(y); }\n  }\n  return q.length;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int bfs(const vector<vector<int>>& g, int s) {\n    vector<bool> seen(g.size());\n    seen[s] = true;\n    queue<int> q({s});\n    int pops = 0;\n    while (!q.empty()) {\n        int x = q.front(); q.pop(); pops++;\n        for (int y : g[x])\n            if (!seen[y]) { ___; q.push(y); }\n    }\n    return pops;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "이웃 y를 큐에 넣는 순간 y를 방문 표시해야 다른 정점이 y를 다시 넣지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-review-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "최단-거리",
+        "거리-배열"
+      ],
+      "content": {
+        "prompt": "간선 비용이 모두 1인 그래프에서 최단 거리를 구할 재료는?",
+        "options": [
+          "재귀 DFS",
+          "정렬",
+          "거리 배열 BFS"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "간선 비용이 같으면 BFS에서 dist[다음] = dist[현재] + 1로 채운 거리가 최단 거리다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-review-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dfs",
+        "템플릿"
+      ],
+      "content": {
+        "prompt": "DFS는 재귀 호출이나 명시적 스택으로 구현한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "DFS는 재귀로 짜거나, 깊이가 걱정되면 명시적 스택에 정점을 쌓는 반복문으로 짠다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "track": "ct",
+  "unit": "u09-bfs-dfs",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ct-u09-components-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "연결-요소"
+      ],
+      "content": {
+        "prompt": "서로 이어진 정점들의 최대 묶음은?",
+        "options": [
+          "인접 리스트",
+          "연결 요소",
+          "최단 경로"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "연결 요소는 서로 경로로 이어진 정점·칸을 더 늘릴 수 없을 만큼 모은 묶음이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-components-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "섬-개수"
+      ],
+      "content": {
+        "prompt": "섬 개수를 셀 때 개수를 +1 하는 순간은?",
+        "options": [
+          "바다를 만날 때",
+          "탐색이 끝날 때",
+          "방문 안 한 땅 발견"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "방문 안 한 땅을 만나면 새 섬이므로 +1 하고, 탐색으로 그 섬의 칸을 모두 방문 표시한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-components-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "영역-크기"
+      ],
+      "content": {
+        "prompt": "한 번의 탐색에서 방문한 칸 수가 그 영역의 크기다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "한 번의 BFS·DFS는 시작 칸과 이어진 칸을 모두 방문하므로, 방문한 칸 수가 그 영역의 크기다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-components-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "섬-개수"
+      ],
+      "content": {
+        "prompt": "섬 개수는 땅 칸의 개수와 같다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "이어진 땅 칸들은 하나의 섬이다. 섬 개수는 새 탐색을 시작한 횟수로 센다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-components-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "연결-요소"
+      ],
+      "content": {
+        "prompt": "연결 요소 개수는 새 ___ 을 시작한 횟수다."
+      },
+      "answer_key": {
+        "accepted": [
+          "탐색",
+          "search",
+          "dfs",
+          "bfs"
+        ]
+      },
+      "explanation": "방문 안 한 정점에서 새 탐색을 시작할 때마다 새 연결 요소 하나를 찾은 것이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-components-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "연결-요소"
+      ],
+      "content": {
+        "prompt": "방문 안 한 정점에서 새 탐색을 시작한다. 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "# dfs(v): v와 이어진 정점을 모두 방문 표시\ncnt = 0\nfor v in range(n):\n    if not ___[v]:\n        cnt += 1\n        dfs(v)\nprint(cnt)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "// dfs(v): v와 이어진 정점을 모두 방문 표시\nint cnt = 0;\nfor (int v = 0; v < n; v++) {\n    if (!___[v]) {\n        cnt++;\n        dfs(v);\n    }\n}\nSystem.out.println(cnt);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "// dfs(v): v와 이어진 정점을 모두 방문 표시\nlet cnt = 0;\nfor (let v = 0; v < n; v++) {\n  if (!___[v]) {\n    cnt++;\n    dfs(v);\n  }\n}\nconsole.log(cnt);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "// dfs(v): v와 이어진 정점을 모두 방문 표시\nint cnt = 0;\nfor (int v = 0; v < n; v++) {\n    if (!___[v]) {\n        cnt++;\n        dfs(v);\n    }\n}\ncout << cnt;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "seen"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "seen"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "seen"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "seen"
+            ]
+          }
+        }
+      },
+      "explanation": "아직 방문하지 않은 정점은 새 연결 요소의 시작이므로 개수를 늘리고 탐색으로 그 묶음을 모두 표시한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-components-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "섬-개수"
+      ],
+      "content": {
+        "prompt": "격자 110 / 001 / 101(1은 땅)의 상하좌우 섬 개수는?",
+        "options": [
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "맨 위 두 칸이 한 섬, 오른쪽 세로 두 칸이 한 섬, 왼쪽 아래 한 칸이 한 섬이라 3개다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-components-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "영역-크기",
+        "dfs"
+      ],
+      "content": {
+        "prompt": "간선 0-1, 1-2, 3-4에서 size(0)의 반환값은?",
+        "options": [
+          "2",
+          "3",
+          "5"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def size(v):\n    seen[v] = True\n    s = 1\n    for y in g[v]:\n        if not seen[y]:\n            s += size(y)\n    return s"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static int size(int v) {\n    seen[v] = true;\n    int s = 1;\n    for (int y : g[v])\n        if (!seen[y]) s += size(y);\n    return s;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function size(v) {\n  seen[v] = true;\n  let s = 1;\n  for (const y of g[v])\n    if (!seen[y]) s += size(y);\n  return s;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int size(int v) {\n    seen[v] = true;\n    int s = 1;\n    for (int y : g[v])\n        if (!seen[y]) s += size(y);\n    return s;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "0에서 시작한 탐색은 0, 1, 2를 방문하고 3, 4에는 닿지 않는다. 영역 크기는 3이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-components-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "섬-개수",
+        "영역-크기"
+      ],
+      "content": {
+        "prompt": "땅 칸 5개가 모두 이어져 있다. 섬 개수와 영역 크기는?",
+        "options": [
+          "5개, 1칸",
+          "1개, 5칸",
+          "1개, 1칸"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "모두 이어져 있으면 탐색을 한 번만 시작하므로 섬은 1개이고, 그 탐색이 방문한 5칸이 영역 크기다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-components-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "연결-요소"
+      ],
+      "content": {
+        "prompt": "정점 0~4, 간선 0-1, 2-3만 있다. 연결 요소 수는?",
+        "options": [
+          "2",
+          "5",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "{0, 1}, {2, 3}, 혼자 있는 {4}로 묶음이 3개다. 홀로 떨어진 정점도 하나의 연결 요소다.",
+      "refs": []
+    }
+  ]
+}

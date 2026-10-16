@@ -1,0 +1,293 @@
+{
+  "track": "ct",
+  "unit": "u09-bfs-dfs",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ct-u09-gridbfs-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "격자",
+        "그래프"
+      ],
+      "content": {
+        "prompt": "격자를 그래프로 볼 때 정점은?",
+        "options": [
+          "각 행",
+          "각 칸",
+          "벽"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "격자 그래프에서는 각 칸이 정점이고, 상하좌우로 맞닿은 칸끼리 간선으로 이어진다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-gridbfs-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "격자",
+        "비용"
+      ],
+      "content": {
+        "prompt": "격자 BFS의 비용은 무엇에 비례하나?",
+        "options": [
+          "칸 수 R × C",
+          "벽의 수",
+          "행 수 R"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "각 칸이 큐에 한 번 들어가고 이웃 4개를 보므로 비용은 칸 수 R × C에 비례한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-gridbfs-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "격자"
+      ],
+      "content": {
+        "prompt": "격자에서는 상하좌우로 맞닿은 칸이 이웃이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "격자 그래프에서 한 칸의 이웃은 위·아래·왼쪽·오른쪽으로 맞닿은 칸이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-gridbfs-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "격자",
+        "범위-검사"
+      ],
+      "content": {
+        "prompt": "다음 칸을 만들면 범위 검사 없이 바로 격자에 접근해도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "가장자리 칸에서 만든 다음 칸은 격자 밖일 수 있어, 범위부터 검사한 뒤 벽·방문을 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-gridbfs-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "방향-배열"
+      ],
+      "content": {
+        "prompt": "격자 BFS에서 다음 칸은 ___ 배열로 만든다."
+      },
+      "answer_key": {
+        "accepted": [
+          "방향",
+          "direction",
+          "dir"
+        ]
+      },
+      "explanation": "dr·dc 같은 방향 배열에 방향별 이동량을 담아 반복문으로 다음 칸을 만든다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-gridbfs-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "방향-배열",
+        "격자"
+      ],
+      "content": {
+        "prompt": "상하좌우 이웃 중 빈 칸(.)을 센다. 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "DR = [-1, 1, 0, 0]\nDC = [0, 0, -1, 1]\ndef count_open(g, r, c):\n    R, C = len(g), len(g[0])\n    cnt = 0\n    for d in range(___):\n        nr, nc = r + DR[d], c + DC[d]\n        if not (0 <= nr < R and 0 <= nc < C):\n            continue\n        if g[nr][nc] == '.':\n            cnt += 1\n    return cnt"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static int[] DR = {-1, 1, 0, 0};\nstatic int[] DC = {0, 0, -1, 1};\nstatic int countOpen(char[][] g, int r, int c) {\n    int R = g.length, C = g[0].length, cnt = 0;\n    for (int d = 0; d < ___; d++) {\n        int nr = r + DR[d], nc = c + DC[d];\n        if (nr < 0 || nr >= R) continue;\n        if (nc < 0 || nc >= C) continue;\n        if (g[nr][nc] == '.') cnt++;\n    }\n    return cnt;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const DR = [-1, 1, 0, 0], DC = [0, 0, -1, 1];\nfunction countOpen(g, r, c) {\n  const R = g.length, C = g[0].length;\n  let cnt = 0;\n  for (let d = 0; d < ___; d++) {\n    const nr = r + DR[d], nc = c + DC[d];\n    if (nr < 0 || nr >= R) continue;\n    if (nc < 0 || nc >= C) continue;\n    if (g[nr][nc] === '.') cnt++;\n  }\n  return cnt;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int DR[] = {-1, 1, 0, 0};\nint DC[] = {0, 0, -1, 1};\nint countOpen(vector<string>& g, int r, int c) {\n    int R = g.size(), C = g[0].size(), cnt = 0;\n    for (int d = 0; d < ___; d++) {\n        int nr = r + DR[d], nc = c + DC[d];\n        if (nr < 0 || nr >= R) continue;\n        if (nc < 0 || nc >= C) continue;\n        if (g[nr][nc] == '.') cnt++;\n    }\n    return cnt;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "4"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "4"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "4"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "4"
+            ]
+          }
+        }
+      },
+      "explanation": "방향 배열에 상하좌우 4방향이 들어 있으므로 d를 0부터 3까지 4번 돌며 다음 칸을 만든다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-gridbfs-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "방향-배열",
+        "범위-검사"
+      ],
+      "content": {
+        "prompt": "3×3 격자의 (2, 0) 칸에서 범위 안 이웃 수를 센다. 출력값은?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "DR = [-1, 1, 0, 0]\nDC = [0, 0, -1, 1]\nR = C = 3\nr, c, cnt = 2, 0, 0\nfor d in range(4):\n    nr, nc = r + DR[d], c + DC[d]\n    if 0 <= nr < R and 0 <= nc < C:\n        cnt += 1\nprint(cnt)"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] DR = {-1, 1, 0, 0}, DC = {0, 0, -1, 1};\nint R = 3, C = 3, r = 2, c = 0, cnt = 0;\nfor (int d = 0; d < 4; d++) {\n    int nr = r + DR[d], nc = c + DC[d];\n    if (nr >= 0 && nr < R && nc >= 0 && nc < C)\n        cnt++;\n}\nSystem.out.println(cnt);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const DR = [-1, 1, 0, 0], DC = [0, 0, -1, 1];\nconst R = 3, C = 3, r = 2, c = 0;\nlet cnt = 0;\nfor (let d = 0; d < 4; d++) {\n  const nr = r + DR[d], nc = c + DC[d];\n  if (nr >= 0 && nr < R && nc >= 0 && nc < C)\n    cnt++;\n}\nconsole.log(cnt);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "int DR[] = {-1, 1, 0, 0}, DC[] = {0, 0, -1, 1};\nint R = 3, C = 3, r = 2, c = 0, cnt = 0;\nfor (int d = 0; d < 4; d++) {\n    int nr = r + DR[d], nc = c + DC[d];\n    if (nr >= 0 && nr < R && nc >= 0 && nc < C)\n        cnt++;\n}\ncout << cnt;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "(2, 0)은 왼쪽 아래 모서리라 위 (1, 0)과 오른쪽 (2, 1)만 격자 안에 있다. 아래와 왼쪽은 범위 밖이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-gridbfs-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "격자",
+        "비용"
+      ],
+      "content": {
+        "prompt": "1,000 × 1,000 격자 BFS의 대략적인 연산 규모는?",
+        "options": [
+          "10³",
+          "10⁹",
+          "10⁶"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "칸 수가 10⁶이고 칸마다 이웃 4개를 보므로 약 4 × 10⁶번으로 10⁶ 규모다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-gridbfs-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "범위-검사"
+      ],
+      "content": {
+        "prompt": "다음 칸 (nr, nc)를 검사하는 알맞은 순서는?",
+        "options": [
+          "벽·방문 → 범위",
+          "범위 → 벽·방문",
+          "방문만 검사"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "범위를 먼저 확인해야 격자 밖 칸의 벽·방문 값을 읽는 범위 밖 접근을 막는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-gridbfs-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "격자"
+      ],
+      "content": {
+        "prompt": "격자 그래프에서 (1, 1)과 이웃인 칸은?",
+        "options": [
+          "(0, 0)",
+          "(2, 2)",
+          "(0, 1)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "(0, 1)은 (1, 1)의 바로 위 칸이다. (0, 0)과 (2, 2)는 대각선이라 상하좌우 이웃이 아니다.",
+      "refs": []
+    }
+  ]
+}

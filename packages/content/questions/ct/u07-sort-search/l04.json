@@ -1,0 +1,316 @@
+{
+  "track": "ct",
+  "unit": "u07-sort-search",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ct-u07-bslib-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "라이브러리",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "대부분 언어의 표준 라이브러리가 제공하는 이진 탐색 함수 계열은?",
+        "options": [
+          "lower bound",
+          "좌표 압축",
+          "누적 합"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Python bisect_left, C++ lower_bound처럼 대부분 언어가 lower bound 계열 함수를 표준으로 제공한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bslib-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "라이브러리",
+        "정렬"
+      ],
+      "content": {
+        "prompt": "표준 이진 탐색 함수를 쓰기 위한 전제는?",
+        "options": [
+          "중복이 없다",
+          "같은 기준으로 정렬",
+          "길이가 짝수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "표준 이진 탐색은 함수가 쓰는 기준과 같은 기준으로 정렬된 배열에서만 올바른 위치를 준다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bslib-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "라이브러리",
+        "반환값"
+      ],
+      "content": {
+        "prompt": "모든 언어의 표준 이진 탐색 함수는 못 찾으면 −1을 돌려준다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "언어마다 다르다. Python bisect_left는 삽입 위치를, Java Arrays.binarySearch는 음수를 돌려준다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bslib-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "라이브러리",
+        "정렬"
+      ],
+      "content": {
+        "prompt": "내림차순 배열에 오름차순 기준 함수를 쓰면 결과를 믿을 수 없다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "표준 함수는 오름차순 정렬을 전제로 범위를 버리므로 기준이 다르면 엉뚱한 위치를 준다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bslib-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "라이브러리",
+        "반환값"
+      ],
+      "content": {
+        "prompt": "Python bisect_left는 값이 없으면 ___ 위치를 준다.",
+        "hint": "정렬 순서를 지키며 그 값을 넣을 자리"
+      },
+      "answer_key": {
+        "accepted": [
+          "삽입",
+          "삽입 위치",
+          "insertion",
+          "들어갈 위치"
+        ]
+      },
+      "explanation": "bisect_left는 값이 없어도 정렬 순서를 지키며 넣을 수 있는 위치, 즉 x 이상인 첫 위치를 준다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bslib-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "라이브러리",
+        "정렬"
+      ],
+      "content": {
+        "prompt": "표준 이진 탐색은 같은 기준으로 ___된 배열에만 쓴다."
+      },
+      "answer_key": {
+        "accepted": [
+          "정렬",
+          "sort",
+          "sorted",
+          "정렬 된"
+        ]
+      },
+      "explanation": "이진 탐색은 정렬 순서를 이용해 절반을 버리므로 같은 기준으로 정렬된 배열이 전제다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bslib-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "라이브러리",
+        "반환값"
+      ],
+      "content": {
+        "prompt": "4는 배열에 없다. 출력값은?",
+        "options": [
+          "2",
+          "-1",
+          "-3"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from bisect import bisect_left\na = [1, 3, 5, 7]\nprint(bisect_left(a, 4))"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {1, 3, 5, 7};\nSystem.out.println(Arrays.binarySearch(a, 4));"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "// JS에는 표준 이진 탐색이 없어 직접 만든다\nfunction lowerBound(a, t) {\n  let lo = 0, hi = a.length;\n  while (lo < hi) {\n    const mid = (lo + hi) >> 1;\n    if (a[mid] < t) lo = mid + 1;\n    else hi = mid;\n  }\n  return lo;\n}\nconsole.log(lowerBound([1, 3, 5, 7], 4));"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {1, 3, 5, 7};\nauto it = lower_bound(a.begin(), a.end(), 4);\ncout << it - a.begin();"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0,
+            "explanation": "bisect_left는 값이 없으면 삽입 위치를 준다. 4 이상인 첫 값 5의 위치 2가 출력된다."
+          },
+          "java": {
+            "index": 2,
+            "explanation": "Arrays.binarySearch는 값이 없으면 −(삽입 위치) − 1을 준다. 삽입 위치가 2라서 −3이다."
+          },
+          "javascript": {
+            "index": 0,
+            "explanation": "JavaScript에는 표준 이진 탐색이 없어 직접 만든 lower bound를 쓴다. 4 이상인 첫 값 5의 위치 2를 준다."
+          },
+          "cpp": {
+            "index": 0,
+            "explanation": "lower_bound는 4 이상인 첫 원소의 반복자를 준다. a.begin()을 빼면 위치 2다."
+          }
+        }
+      },
+      "explanation": "4 이상인 첫 위치(삽입 위치)는 2다. 값이 없을 때 무엇을 돌려주는지는 언어마다 다르다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bslib-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "라이브러리",
+        "반환값"
+      ],
+      "content": {
+        "prompt": "x가 배열 a에 있는지 판정한다. 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "from bisect import bisect_left\ndef has(a, x):\n    i = bisect_left(a, x)\n    return i < len(a) and ___"
+            },
+            "options": [
+              "a[i] == x",
+              "i >= 0",
+              "i > 0"
+            ]
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static boolean has(int[] a, int x) {\n    int i = Arrays.binarySearch(a, x);\n    return ___;\n}"
+            },
+            "options": [
+              "i >= 0",
+              "i < a.length",
+              "i != 0"
+            ]
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "// lowerBound: 직접 만든 lower bound 함수\nfunction has(a, x) {\n  const i = lowerBound(a, x);\n  return i < a.length && ___;\n}"
+            },
+            "options": [
+              "a[i] === x",
+              "i >= 0",
+              "i > 0"
+            ]
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "bool has(const vector<int>& a, int x) {\n    auto p = lower_bound(a.begin(), a.end(), x);\n    return p != a.end() && ___;\n}"
+            },
+            "options": [
+              "*p == x",
+              "p > a.begin()",
+              "*p > x"
+            ]
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 0
+          },
+          "java": {
+            "index": 0,
+            "explanation": "Arrays.binarySearch는 찾으면 그 위치(0 이상), 없으면 음수를 주므로 i >= 0이면 있다."
+          },
+          "javascript": {
+            "index": 0
+          },
+          "cpp": {
+            "index": 0
+          }
+        }
+      },
+      "explanation": "표준 함수가 준 위치가 범위 안이고 그 값이 x일 때만 x가 있다. 판정 방법은 반환값 형태에 따라 언어마다 다르다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bslib-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "라이브러리",
+        "정렬"
+      ],
+      "content": {
+        "prompt": "정렬되지 않은 배열에 lower bound 함수를 쓰면?",
+        "options": [
+          "자동으로 정렬된다",
+          "결과를 믿을 수 없다",
+          "오류가 난다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이진 탐색은 정렬을 전제로 절반을 버리므로 정렬되지 않은 배열에서는 틀린 위치를 줄 수 있다. 오류를 알려 주지도 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-bslib-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "라이브러리",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "Python bisect_left·C++ lower_bound가 주는 위치는?",
+        "options": [
+          "x보다 큰 첫 위치",
+          "x 이상인 첫 위치",
+          "마지막 x 위치"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "두 함수 모두 lower bound 계열로 x 이상인 첫 위치를 준다. x보다 큰 첫 위치는 bisect_right·upper_bound다.",
+      "refs": []
+    }
+  ]
+}

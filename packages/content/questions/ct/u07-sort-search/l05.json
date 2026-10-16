@@ -1,0 +1,291 @@
+{
+  "track": "ct",
+  "unit": "u07-sort-search",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "ct-u07-param-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "매개변수-탐색"
+      ],
+      "content": {
+        "prompt": "답 x를 직접 구하지 않고 'x로 가능한가?'를 이진 탐색하는 기법은?",
+        "options": [
+          "좌표 압축",
+          "매개변수 탐색",
+          "완전 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "매개변수 탐색은 최적값을 묻는 문제를 'x로 가능한가?'라는 결정 문제로 바꿔 x를 이진 탐색한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-param-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "결정-함수"
+      ],
+      "content": {
+        "prompt": "x를 받아 가능·불가능을 돌려주는 함수는?",
+        "options": [
+          "결정 함수",
+          "비교 함수",
+          "해시 함수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "결정 함수는 후보 답 x로 조건을 만족할 수 있는지 참·거짓으로 답한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-param-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "단조성"
+      ],
+      "content": {
+        "prompt": "매개변수 탐색은 결정 함수의 답이 x에 따라 한 방향으로만 바뀌어야 쓸 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "가능한 x와 불가능한 x가 한 경계로 나뉘어야(단조성) 가운데와 비교해 절반을 버릴 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-param-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "매개변수-탐색",
+        "결정-함수"
+      ],
+      "content": {
+        "prompt": "'조건을 만족하는 최솟값' 문제를 바꾼 결정 문제는?",
+        "options": [
+          "x로 가능한가?",
+          "x는 몇 개인가?",
+          "x는 어디 있나?"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "최솟값을 직접 찾는 대신 'x로 가능한가?'를 묻고, 가능한 x 중 가장 작은 것을 이진 탐색으로 찾는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-param-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "단조성"
+      ],
+      "content": {
+        "prompt": "x가 가능하면 더 큰 x도 가능해야 한다. 이 성질은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "단조성",
+          "monotonicity",
+          "단조"
+        ]
+      },
+      "explanation": "결정 함수의 결과가 한 방향으로만 바뀌는 단조성이 있어야 가능·불가능의 경계를 이진 탐색할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-param-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "결정-함수"
+      ],
+      "content": {
+        "prompt": "결정 함수: 길이 x 조각을 k개 이상 만들 수 있나? 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def can(a, x, k):\n    cnt = 0\n    for v in a:\n        cnt += v // ___\n    return cnt >= k"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static boolean can(int[] a, int x, int k) {\n    long cnt = 0;\n    for (int v : a) cnt += v / ___;\n    return cnt >= k;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function can(a, x, k) {\n  let cnt = 0;\n  for (const v of a) cnt += Math.floor(v / ___);\n  return cnt >= k;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "bool can(const vector<int>& a, int x, int k) {\n    long long cnt = 0;\n    for (int v : a) cnt += v / ___;\n    return cnt >= k;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "x"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "x"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "x"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "x"
+            ]
+          }
+        }
+      },
+      "explanation": "막대마다 길이 x 조각을 v ÷ x(몫)개 만들 수 있고, 그 합이 k 이상이면 x로 가능하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-param-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "매개변수-탐색",
+        "단조성"
+      ],
+      "content": {
+        "prompt": "결정 함수 결과가 x = 1~5에서 참, 참, 참, 거짓, 거짓이다. 가능한 최대 x는?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "참에서 거짓으로 바뀌는 경계 바로 앞인 x = 3이 가능한 최대 x다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-param-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "결정-함수"
+      ],
+      "content": {
+        "prompt": "a = [7, 5, 9], x = 4, k = 5일 때 can의 결과는?",
+        "options": [
+          "true",
+          "false"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def can(a, x, k):\n    cnt = 0\n    for v in a:\n        cnt += v // x\n    return cnt >= k"
+            },
+            "options": [
+              "True",
+              "False"
+            ]
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static boolean can(int[] a, int x, int k) {\n    long cnt = 0;\n    for (int v : a) cnt += v / x;\n    return cnt >= k;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function can(a, x, k) {\n  let cnt = 0;\n  for (const v of a) cnt += Math.floor(v / x);\n  return cnt >= k;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "bool can(const vector<int>& a, int x, int k) {\n    long long cnt = 0;\n    for (int v : a) cnt += v / x;\n    return cnt >= k;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "조각 수는 7 ÷ 4 = 1, 5 ÷ 4 = 1, 9 ÷ 4 = 2로 합 4개다. 5개보다 적어 x = 4로는 불가능하다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-param-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "단조성"
+      ],
+      "content": {
+        "prompt": "x가 가능하면 더 작은 x도 가능하다. 이진 탐색으로 찾을 답은?",
+        "options": [
+          "가능한 최대 x",
+          "가능한 최소 x"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "작은 쪽이 모두 가능하고 어느 지점부터 불가능해지므로, 경계 직전인 가능한 최대 x를 찾는다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-param-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "매개변수-탐색"
+      ],
+      "content": {
+        "prompt": "매개변수 탐색은 정렬된 배열에서 x의 위치를 찾는 기법이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "위치 찾기는 일반 이진 탐색이다. 매개변수 탐색은 답 x 자체를 'x로 가능한가?'로 이진 탐색한다.",
+      "refs": []
+    }
+  ]
+}

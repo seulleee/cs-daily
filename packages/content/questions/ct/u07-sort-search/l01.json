@@ -1,0 +1,301 @@
+{
+  "track": "ct",
+  "unit": "u07-sort-search",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ct-u07-sortpre-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "정렬",
+        "전처리"
+      ],
+      "content": {
+        "prompt": "같은 값을 붙이고 크기 순 비교를 쉽게 하려고 먼저 하는 일은?",
+        "options": [
+          "누적 합",
+          "정렬 전처리",
+          "좌표 압축"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "정렬 전처리를 하면 같은 값이 이웃하고 크기 순서대로 놓여 비교가 쉬워진다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-sortpre-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "정렬",
+        "복잡도"
+      ],
+      "content": {
+        "prompt": "정렬 후 한 번 훑는 풀이에서 전체 시간의 기준이 되는 것은?",
+        "options": [
+          "정렬 O(N log N)",
+          "훑기 O(N)",
+          "출력 O(1)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "훑기는 O(N)이라 더 큰 정렬 비용 O(N log N)이 전체 시간을 정한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-sortpre-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "정렬",
+        "인덱스"
+      ],
+      "content": {
+        "prompt": "값만 정렬해도 각 값의 원래 인덱스를 알 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "값만 정렬하면 원래 위치 정보가 사라진다. 원래 위치가 필요하면 (값, 인덱스) 쌍으로 정렬한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-sortpre-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "정렬",
+        "전처리"
+      ],
+      "content": {
+        "prompt": "오름차순으로 정렬하면 같은 값들은 서로 이웃하게 된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "정렬하면 같은 값은 연속한 자리에 모이므로 바로 옆 원소와만 비교하면 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-sortpre-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "정렬",
+        "인덱스"
+      ],
+      "content": {
+        "prompt": "원래 위치가 필요하면 (값, ___) 쌍으로 정렬한다.",
+        "hint": "원소가 배열의 몇 번째 자리였는지"
+      },
+      "answer_key": {
+        "accepted": [
+          "인덱스",
+          "index",
+          "위치",
+          "원래 위치",
+          "원래 인덱스",
+          "idx"
+        ]
+      },
+      "explanation": "(값, 인덱스) 쌍을 정렬하면 값 순서로 놓여도 각 원소의 원래 위치를 함께 알 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-sortpre-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "정렬",
+        "중복"
+      ],
+      "content": {
+        "prompt": "중복이 있는지 보려고 먼저 정렬한다. 빈칸은?",
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def has_dup(a):\n    a.___()\n    for i in range(1, len(a)):\n        if a[i] == a[i - 1]:\n            return True\n    return False"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "static boolean hasDup(int[] a) {\n    Arrays.___(a);\n    for (int i = 1; i < a.length; i++)\n        if (a[i] == a[i - 1]) return true;\n    return false;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function hasDup(a) {\n  a.___((x, y) => x - y);\n  for (let i = 1; i < a.length; i++)\n    if (a[i] === a[i - 1]) return true;\n  return false;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "bool hasDup(vector<int> a) {\n    ___(a.begin(), a.end());\n    for (int i = 1; i < (int)a.size(); i++)\n        if (a[i] == a[i - 1]) return true;\n    return false;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "accepted": [
+              "sort"
+            ]
+          },
+          "java": {
+            "accepted": [
+              "sort"
+            ]
+          },
+          "javascript": {
+            "accepted": [
+              "sort"
+            ]
+          },
+          "cpp": {
+            "accepted": [
+              "sort"
+            ]
+          }
+        }
+      },
+      "explanation": "정렬하면 같은 값이 이웃하므로 바로 앞 원소와만 비교해 중복을 찾을 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-sortpre-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "정렬",
+        "인덱스"
+      ],
+      "content": {
+        "prompt": "가장 작은 값의 원래 인덱스를 출력한다. 출력값은?",
+        "options": [
+          "0",
+          "1",
+          "2"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "a = [30, 10, 20]\np = sorted((v, i) for i, v in enumerate(a))\nprint(p[0][1])"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "int[] a = {30, 10, 20};\nInteger[] idx = {0, 1, 2};\nArrays.sort(idx, (x, y) -> a[x] - a[y]);\nSystem.out.println(idx[0]);"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "const a = [30, 10, 20];\nconst p = a.map((v, i) => [v, i]);\np.sort((x, y) => x[0] - y[0]);\nconsole.log(p[0][1]);"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "vector<int> a = {30, 10, 20};\nvector<pair<int, int>> p;\nfor (int i = 0; i < 3; i++)\n    p.push_back({a[i], i});\nsort(p.begin(), p.end());\ncout << p[0].second;"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "가장 작은 값 10의 원래 인덱스는 1이다. 인덱스를 함께 정렬해 두어 정렬 뒤에도 원래 위치를 안다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-sortpre-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "정렬",
+        "복잡도"
+      ],
+      "content": {
+        "prompt": "N = 10⁵, 정렬한 뒤 한 번 훑는 풀이의 시간 복잡도는?",
+        "options": [
+          "O(N)",
+          "O(N log N)",
+          "O(N²)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "정렬 O(N log N)과 훑기 O(N) 중 큰 항만 남아 O(N log N)이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-sortpre-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "정렬",
+        "비교"
+      ],
+      "content": {
+        "prompt": "차가 가장 작은 두 수를 찾을 때, 정렬 후 비교할 쌍은?",
+        "options": [
+          "양 끝 두 수",
+          "모든 쌍",
+          "이웃한 두 수"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "정렬하면 크기 순서로 놓여 차가 가장 작은 쌍은 이웃한 두 수 중에 있다. 그래서 N − 1쌍만 보면 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u07-sortpre-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "정렬",
+        "전처리"
+      ],
+      "content": {
+        "prompt": "[4, 1, 4, 2]를 정렬하면 두 4는 어디에 놓이나?",
+        "options": [
+          "맨 앞 두 칸",
+          "떨어진 두 칸",
+          "맨 뒤 두 칸"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "정렬 결과는 [1, 2, 4, 4]로 같은 값 4가 끝에 이웃해 놓인다. 정렬 전처리로 같은 값이 붙는다.",
+      "refs": []
+    }
+  ]
+}
