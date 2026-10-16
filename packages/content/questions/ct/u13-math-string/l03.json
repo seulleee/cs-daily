@@ -87,8 +87,46 @@
     },
     {
       "id": "ct-u13-gcd-005",
-      "type": "single",
+      "type": "fill",
       "difficulty": 1,
+      "tags": [
+        "math",
+        "gcd"
+      ],
+      "content": {
+        "prompt": "gcd(48, 36)은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "12"
+        ]
+      },
+      "explanation": "gcd(48, 36) → gcd(36, 12) → gcd(12, 0) = 12다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-gcd-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "lcm"
+      ],
+      "content": {
+        "prompt": "a = 12, b = 18이면 a / gcd × b는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "36"
+        ]
+      },
+      "explanation": "gcd(12, 18) = 6이므로 12 / 6 × 18 = 36이 최소공배수다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-gcd-007",
+      "type": "single",
+      "difficulty": 2,
       "tags": [
         "math",
         "gcd"
@@ -147,7 +185,7 @@
       "refs": []
     },
     {
-      "id": "ct-u13-gcd-006",
+      "id": "ct-u13-gcd-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -208,7 +246,7 @@
       "refs": []
     },
     {
-      "id": "ct-u13-gcd-007",
+      "id": "ct-u13-gcd-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -281,44 +319,6 @@
         }
       },
       "explanation": "최소공배수는 a / gcd × b 순서로 계산해 중간값을 작게 유지한다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u13-gcd-008",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "math",
-        "gcd"
-      ],
-      "content": {
-        "prompt": "gcd(48, 36)은 ___ 이다."
-      },
-      "answer_key": {
-        "accepted": [
-          "12"
-        ]
-      },
-      "explanation": "gcd(48, 36) → gcd(36, 12) → gcd(12, 0) = 12다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u13-gcd-009",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "math",
-        "lcm"
-      ],
-      "content": {
-        "prompt": "a = 12, b = 18이면 a / gcd × b는 ___ 이다."
-      },
-      "answer_key": {
-        "accepted": [
-          "36"
-        ]
-      },
-      "explanation": "gcd(12, 18) = 6이므로 12 / 6 × 18 = 36이 최소공배수다.",
       "refs": []
     },
     {

@@ -88,8 +88,48 @@
     },
     {
       "id": "ct-u05-prefix-005",
-      "type": "single",
+      "type": "fill",
       "difficulty": 1,
+      "tags": [
+        "누적-합",
+        "만들기"
+      ],
+      "content": {
+        "prompt": "a = [2, 4, 6]이면 누적 합 P[3]은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "12"
+        ]
+      },
+      "explanation": "P[3]은 앞에서부터 3개 원소의 합이라 2 + 4 + 6 = 12다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "누적-합",
+        "효과"
+      ],
+      "content": {
+        "prompt": "누적 합을 만든 뒤 구간 합 질의는 ___ 한 번으로 답한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "뺄셈",
+          "빼기",
+          "뺄셈 연산"
+        ]
+      },
+      "explanation": "만들 때 N번 더해 두면, 이후 질의마다 P[r + 1] − P[l] 뺄셈 한 번이면 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-prefix-007",
+      "type": "single",
+      "difficulty": 2,
       "tags": [
         "누적-합",
         "만들기"
@@ -148,7 +188,7 @@
       "refs": []
     },
     {
-      "id": "ct-u05-prefix-006",
+      "id": "ct-u05-prefix-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -209,26 +249,7 @@
       "refs": []
     },
     {
-      "id": "ct-u05-prefix-007",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "누적-합",
-        "만들기"
-      ],
-      "content": {
-        "prompt": "a = [2, 4, 6]이면 누적 합 P[3]은 ___ 이다."
-      },
-      "answer_key": {
-        "accepted": [
-          "12"
-        ]
-      },
-      "explanation": "P[3]은 앞에서부터 3개 원소의 합이라 2 + 4 + 6 = 12다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u05-prefix-008",
+      "id": "ct-u05-prefix-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -286,27 +307,6 @@
         }
       },
       "explanation": "P = [0, 5, 6, 9, 11]이고 P[3] − P[1] = 9 − 5 = 4로, a[1] + a[2] = 1 + 3과 같다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u05-prefix-009",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "누적-합",
-        "효과"
-      ],
-      "content": {
-        "prompt": "누적 합을 만든 뒤 구간 합 질의는 ___ 한 번으로 답한다."
-      },
-      "answer_key": {
-        "accepted": [
-          "뺄셈",
-          "빼기",
-          "뺄셈 연산"
-        ]
-      },
-      "explanation": "만들 때 N번 더해 두면, 이후 질의마다 P[r + 1] − P[l] 뺄셈 한 번이면 된다.",
       "refs": []
     },
     {

@@ -88,8 +88,49 @@
     },
     {
       "id": "ct-u04-nested-005",
-      "type": "single",
+      "type": "fill",
       "difficulty": 1,
+      "tags": [
+        "쌍의-개수",
+        "계산"
+      ],
+      "content": {
+        "prompt": "N = 1,000이면 중복 없는 쌍은 약 ___만 개다."
+      },
+      "answer_key": {
+        "accepted": [
+          "50",
+          "오십"
+        ]
+      },
+      "explanation": "N(N − 1) / 2 = 1000 × 999 / 2 = 499,500이므로 약 50만 개다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-nested-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "쌍의-개수",
+        "계산"
+      ],
+      "content": {
+        "prompt": "N = 5,000이면 중복 없는 쌍은 약 ___만 개다."
+      },
+      "answer_key": {
+        "accepted": [
+          "1250",
+          "1,250",
+          "천이백오십"
+        ]
+      },
+      "explanation": "5000 × 4999 / 2 ≈ 1,250만 개다. N × N으로 세면 2배인 2,500만이 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-nested-007",
+      "type": "single",
+      "difficulty": 2,
       "tags": [
         "중첩-반복",
         "중복-없는-쌍"
@@ -148,7 +189,7 @@
       "refs": []
     },
     {
-      "id": "ct-u04-nested-006",
+      "id": "ct-u04-nested-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -209,27 +250,7 @@
       "refs": []
     },
     {
-      "id": "ct-u04-nested-007",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "쌍의-개수",
-        "계산"
-      ],
-      "content": {
-        "prompt": "N = 1,000이면 중복 없는 쌍은 약 ___만 개다."
-      },
-      "answer_key": {
-        "accepted": [
-          "50",
-          "오십"
-        ]
-      },
-      "explanation": "N(N − 1) / 2 = 1000 × 999 / 2 = 499,500이므로 약 50만 개다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u04-nested-008",
+      "id": "ct-u04-nested-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -287,27 +308,6 @@
         }
       },
       "explanation": "j가 i + 1부터 돌아 5개에서 서로 다른 쌍을 한 번씩 세므로 5 × 4 / 2 = 10이다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u04-nested-009",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "쌍의-개수",
-        "계산"
-      ],
-      "content": {
-        "prompt": "N = 5,000이면 중복 없는 쌍은 약 ___만 개다."
-      },
-      "answer_key": {
-        "accepted": [
-          "1250",
-          "1,250",
-          "천이백오십"
-        ]
-      },
-      "explanation": "5000 × 4999 / 2 ≈ 1,250만 개다. N × N으로 세면 2배인 2,500만이 된다.",
       "refs": []
     },
     {

@@ -112,6 +112,27 @@
     },
     {
       "id": "ct-u04-bf-basic-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "완전-탐색",
+        "검증"
+      ],
+      "content": {
+        "prompt": "빠른 풀이를 작은 입력에서 맞춰 보는 ___ 용으로 완전 탐색을 쓴다."
+      },
+      "answer_key": {
+        "accepted": [
+          "검증",
+          "확인",
+          "비교"
+        ]
+      },
+      "explanation": "완전 탐색은 답을 놓치지 않으므로 작은 입력에서 다른 풀이의 답과 비교하는 검증용으로 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-bf-basic-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -177,7 +198,7 @@
       "refs": []
     },
     {
-      "id": "ct-u04-bf-basic-007",
+      "id": "ct-u04-bf-basic-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -238,7 +259,7 @@
       "refs": []
     },
     {
-      "id": "ct-u04-bf-basic-008",
+      "id": "ct-u04-bf-basic-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -257,27 +278,6 @@
         "index": 2
       },
       "explanation": "전체 연산은 경우의 수 × 확인 비용이므로 10⁶ × 100 = 10⁸번이다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u04-bf-basic-009",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "완전-탐색",
-        "검증"
-      ],
-      "content": {
-        "prompt": "빠른 풀이를 작은 입력에서 맞춰 보는 ___ 용으로 완전 탐색을 쓴다."
-      },
-      "answer_key": {
-        "accepted": [
-          "검증",
-          "확인",
-          "비교"
-        ]
-      },
-      "explanation": "완전 탐색은 답을 놓치지 않으므로 작은 입력에서 다른 풀이의 답과 비교하는 검증용으로 쓴다.",
       "refs": []
     },
     {

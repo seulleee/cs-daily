@@ -27,26 +27,6 @@
     },
     {
       "id": "ct-u13-fastpow-002",
-      "type": "fill",
-      "difficulty": 1,
-      "tags": [
-        "math",
-        "fast-power"
-      ],
-      "content": {
-        "prompt": "빠른 거듭제곱의 곱셈 횟수는 약 ___ n번이다."
-      },
-      "answer_key": {
-        "accepted": [
-          "log",
-          "로그"
-        ]
-      },
-      "explanation": "지수를 매번 절반으로 줄이므로 약 log n단계, 곱셈도 약 log n번이면 된다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u13-fastpow-003",
       "type": "single",
       "difficulty": 1,
       "tags": [
@@ -68,7 +48,7 @@
       "refs": []
     },
     {
-      "id": "ct-u13-fastpow-004",
+      "id": "ct-u13-fastpow-003",
       "type": "ox",
       "difficulty": 1,
       "tags": [
@@ -85,7 +65,7 @@
       "refs": []
     },
     {
-      "id": "ct-u13-fastpow-005",
+      "id": "ct-u13-fastpow-004",
       "type": "single",
       "difficulty": 1,
       "tags": [
@@ -93,56 +73,37 @@
         "fast-power"
       ],
       "content": {
-        "prompt": "n이 홀수일 때 한 번 더 곱하도록 빈칸에 알맞은 것은?",
+        "prompt": "2¹⁰을 빠른 거듭제곱으로 구할 때 지수의 변화는?",
         "options": [
-          "half",
-          "n",
-          "a"
-        ],
-        "variants": {
-          "python": {
-            "code": {
-              "language": "python",
-              "source": "def power(a, n, m):\n    if n == 0:\n        return 1\n    half = power(a, n // 2, m)\n    r = half * half % m\n    if n % 2 == 1:\n        r = r * ___ % m\n    return r"
-            }
-          },
-          "java": {
-            "code": {
-              "language": "java",
-              "source": "long power(long a, long n, long m) {\n    if (n == 0) return 1;\n    long half = power(a, n / 2, m);\n    long r = half * half % m;\n    if (n % 2 == 1) r = r * ___ % m;\n    return r;\n}"
-            }
-          },
-          "javascript": {
-            "code": {
-              "language": "javascript",
-              "source": "function power(a, n, m) {  // BigInt\n  if (n === 0n) return 1n;\n  const half = power(a, n / 2n, m);\n  let r = half * half % m;\n  if (n % 2n === 1n) r = r * ___ % m;\n  return r;\n}"
-            }
-          },
-          "cpp": {
-            "code": {
-              "language": "cpp",
-              "source": "long long power(long long a, long long n,\n                long long m) {\n    if (n == 0) return 1;\n    long long half = power(a, n / 2, m);\n    long long r = half * half % m;\n    if (n % 2 == 1) r = r * ___ % m;\n    return r;\n}"
-            }
-          }
-        }
+          "10→9→8→…→0",
+          "10→5→2→1→0",
+          "10→20→40"
+        ]
       },
       "answer_key": {
-        "variants": {
-          "python": {
-            "index": 2
-          },
-          "java": {
-            "index": 2
-          },
-          "javascript": {
-            "index": 2
-          },
-          "cpp": {
-            "index": 2
-          }
-        }
+        "index": 1
       },
-      "explanation": "n이 홀수면 (a^(n/2))²에 a를 한 번 더 곱해야 aⁿ이 된다.",
+      "explanation": "지수를 2로 나눈 몫으로 줄여 10, 5, 2, 1, 0 순서로 내려간다. 4단계 정도면 끝난다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-fastpow-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "math",
+        "fast-power"
+      ],
+      "content": {
+        "prompt": "빠른 거듭제곱의 곱셈 횟수는 약 ___ n번이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "log",
+          "로그"
+        ]
+      },
+      "explanation": "지수를 매번 절반으로 줄이므로 약 log n단계, 곱셈도 약 log n번이면 된다.",
       "refs": []
     },
     {
@@ -218,17 +179,56 @@
         "fast-power"
       ],
       "content": {
-        "prompt": "2¹⁰을 빠른 거듭제곱으로 구할 때 지수의 변화는?",
+        "prompt": "n이 홀수일 때 한 번 더 곱하도록 빈칸에 알맞은 것은?",
         "options": [
-          "10→9→8→…→0",
-          "10→5→2→1→0",
-          "10→20→40"
-        ]
+          "half",
+          "n",
+          "a"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def power(a, n, m):\n    if n == 0:\n        return 1\n    half = power(a, n // 2, m)\n    r = half * half % m\n    if n % 2 == 1:\n        r = r * ___ % m\n    return r"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "long power(long a, long n, long m) {\n    if (n == 0) return 1;\n    long half = power(a, n / 2, m);\n    long r = half * half % m;\n    if (n % 2 == 1) r = r * ___ % m;\n    return r;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function power(a, n, m) {  // BigInt\n  if (n === 0n) return 1n;\n  const half = power(a, n / 2n, m);\n  let r = half * half % m;\n  if (n % 2n === 1n) r = r * ___ % m;\n  return r;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "long long power(long long a, long long n,\n                long long m) {\n    if (n == 0) return 1;\n    long long half = power(a, n / 2, m);\n    long long r = half * half % m;\n    if (n % 2 == 1) r = r * ___ % m;\n    return r;\n}"
+            }
+          }
+        }
       },
       "answer_key": {
-        "index": 1
+        "variants": {
+          "python": {
+            "index": 2
+          },
+          "java": {
+            "index": 2
+          },
+          "javascript": {
+            "index": 2
+          },
+          "cpp": {
+            "index": 2
+          }
+        }
       },
-      "explanation": "지수를 2로 나눈 몫으로 줄여 10, 5, 2, 1, 0 순서로 내려간다. 4단계 정도면 끝난다.",
+      "explanation": "n이 홀수면 (a^(n/2))²에 a를 한 번 더 곱해야 aⁿ이 된다.",
       "refs": []
     },
     {

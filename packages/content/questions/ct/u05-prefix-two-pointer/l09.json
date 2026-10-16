@@ -109,6 +109,28 @@
     },
     {
       "id": "ct-u05-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "구간-문제",
+        "음수"
+      ],
+      "content": {
+        "prompt": "음수가 섞인 배열의 합 조건 구간에는 ___ 포인터가 맞지 않는다."
+      },
+      "answer_key": {
+        "accepted": [
+          "투",
+          "two",
+          "2",
+          "두"
+        ]
+      },
+      "explanation": "음수가 섞여 구간을 늘려도 합이 줄 수 있으므로 합 조건 투 포인터가 깨진다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-review-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -169,7 +191,7 @@
       "refs": []
     },
     {
-      "id": "ct-u05-review-007",
+      "id": "ct-u05-review-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -227,28 +249,6 @@
         }
       },
       "explanation": "P = [0, 3, 4, 8, 9, 14]이고 P[5] − P[2] = 10(4 + 1 + 5), P[3] − P[0] = 8(3 + 1 + 4)이다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u05-review-008",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "구간-문제",
-        "음수"
-      ],
-      "content": {
-        "prompt": "음수가 섞인 배열의 합 조건 구간에는 ___ 포인터가 맞지 않는다."
-      },
-      "answer_key": {
-        "accepted": [
-          "투",
-          "two",
-          "2",
-          "두"
-        ]
-      },
-      "explanation": "음수가 섞여 구간을 늘려도 합이 줄 수 있으므로 합 조건 투 포인터가 깨진다.",
       "refs": []
     },
     {

@@ -88,8 +88,49 @@
     },
     {
       "id": "ct-u04-perm-005",
-      "type": "single",
+      "type": "fill",
       "difficulty": 1,
+      "tags": [
+        "순열",
+        "정의"
+      ],
+      "content": {
+        "prompt": "N개를 순서를 고려해 나열한 것을 ___ 이라 한다.",
+        "hint": "놓는 순서가 다르면 다른 경우로 센다"
+      },
+      "answer_key": {
+        "accepted": [
+          "순열",
+          "permutation",
+          "퍼뮤테이션"
+        ]
+      },
+      "explanation": "순서를 고려한 나열은 순열이고, 서로 다른 N개의 순열은 N!가지다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-perm-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "순열",
+        "적용"
+      ],
+      "content": {
+        "prompt": "도시 5곳의 방문 순서를 모두 시도하면 ___ 가지다."
+      },
+      "answer_key": {
+        "accepted": [
+          "120"
+        ]
+      },
+      "explanation": "방문 순서가 다르면 다른 경우이므로 순열이고, 5! = 120가지다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-perm-007",
+      "type": "single",
+      "difficulty": 2,
       "tags": [
         "순열",
         "팩토리얼"
@@ -148,29 +189,7 @@
       "refs": []
     },
     {
-      "id": "ct-u04-perm-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "순열",
-        "정의"
-      ],
-      "content": {
-        "prompt": "N개를 순서를 고려해 나열한 것을 ___ 이라 한다.",
-        "hint": "놓는 순서가 다르면 다른 경우로 센다"
-      },
-      "answer_key": {
-        "accepted": [
-          "순열",
-          "permutation",
-          "퍼뮤테이션"
-        ]
-      },
-      "explanation": "순서를 고려한 나열은 순열이고, 서로 다른 N개의 순열은 N!가지다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u04-perm-007",
+      "id": "ct-u04-perm-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -228,25 +247,6 @@
         }
       },
       "explanation": "1부터 5까지 곱하므로 5! = 120이다. 5개를 순서대로 나열하는 순열의 수와 같다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u04-perm-008",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "순열",
-        "적용"
-      ],
-      "content": {
-        "prompt": "도시 5곳의 방문 순서를 모두 시도하면 ___ 가지다."
-      },
-      "answer_key": {
-        "accepted": [
-          "120"
-        ]
-      },
-      "explanation": "방문 순서가 다르면 다른 경우이므로 순열이고, 5! = 120가지다.",
       "refs": []
     },
     {

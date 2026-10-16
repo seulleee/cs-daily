@@ -88,8 +88,52 @@
     },
     {
       "id": "ct-u05-diff-005",
-      "type": "single",
+      "type": "fill",
       "difficulty": 1,
+      "tags": [
+        "차분-배열",
+        "복원"
+      ],
+      "content": {
+        "prompt": "차분 배열 D를 앞에서부터 ___ 하면 각 칸의 최종 값이 된다.",
+        "hint": "구간 합 질의에 쓰던 P 배열을 만드는 방법"
+      },
+      "answer_key": {
+        "accepted": [
+          "누적 합",
+          "누적합",
+          "누적",
+          "prefix sum"
+        ]
+      },
+      "explanation": "D[l]에 더한 값은 누적 합을 따라 r까지 전해지고 D[r + 1]에서 상쇄되어 최종 값이 된다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-diff-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "차분-배열",
+        "적용"
+      ],
+      "content": {
+        "prompt": "구간 더하기가 많고 결과는 마지막에 한 번 볼 때 ___ 배열을 쓴다."
+      },
+      "answer_key": {
+        "accepted": [
+          "차분",
+          "차분 배열",
+          "difference"
+        ]
+      },
+      "explanation": "차분 배열은 구간 더하기마다 두 칸만 바꾸고, 마지막에 누적 합 한 번으로 모든 값을 복원한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-diff-007",
+      "type": "single",
+      "difficulty": 2,
       "tags": [
         "차분-배열",
         "갱신"
@@ -148,30 +192,7 @@
       "refs": []
     },
     {
-      "id": "ct-u05-diff-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "차분-배열",
-        "복원"
-      ],
-      "content": {
-        "prompt": "차분 배열 D를 앞에서부터 ___ 하면 각 칸의 최종 값이 된다.",
-        "hint": "구간 합 질의에 쓰던 P 배열을 만드는 방법"
-      },
-      "answer_key": {
-        "accepted": [
-          "누적 합",
-          "누적합",
-          "누적",
-          "prefix sum"
-        ]
-      },
-      "explanation": "D[l]에 더한 값은 누적 합을 따라 r까지 전해지고 D[r + 1]에서 상쇄되어 최종 값이 된다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u05-diff-007",
+      "id": "ct-u05-diff-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -193,7 +214,7 @@
       "refs": []
     },
     {
-      "id": "ct-u05-diff-008",
+      "id": "ct-u05-diff-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -251,27 +272,6 @@
         }
       },
       "explanation": "[0, 2]에 1, [1, 4]에 2를 더했으므로 0번 1, 1~2번 3, 3~4번 2가 되어 1 3 3 2 2다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u05-diff-009",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "차분-배열",
-        "적용"
-      ],
-      "content": {
-        "prompt": "구간 더하기가 많고 결과는 마지막에 한 번 볼 때 ___ 배열을 쓴다."
-      },
-      "answer_key": {
-        "accepted": [
-          "차분",
-          "차분 배열",
-          "difference"
-        ]
-      },
-      "explanation": "차분 배열은 구간 더하기마다 두 칸만 바꾸고, 마지막에 누적 합 한 번으로 모든 값을 복원한다.",
       "refs": []
     },
     {

@@ -88,69 +88,8 @@
     },
     {
       "id": "ct-u13-palin-005",
-      "type": "single",
-      "difficulty": 1,
-      "tags": [
-        "string",
-        "palindrome"
-      ],
-      "content": {
-        "prompt": "양 끝 문자를 비교하도록 빈칸에 알맞은 것은?",
-        "options": [
-          "i + 1",
-          "j",
-          "j - 1"
-        ],
-        "variants": {
-          "python": {
-            "code": {
-              "language": "python",
-              "source": "def is_pal(s):\n    i, j = 0, len(s) - 1\n    while i < j:\n        if s[i] != s[___]:\n            return False\n        i += 1\n        j -= 1\n    return True"
-            }
-          },
-          "java": {
-            "code": {
-              "language": "java",
-              "source": "boolean isPal(String s) {\n    int i = 0, j = s.length() - 1;\n    while (i < j) {\n        if (s.charAt(i) != s.charAt(___))\n            return false;\n        i++;\n        j--;\n    }\n    return true;\n}"
-            }
-          },
-          "javascript": {
-            "code": {
-              "language": "javascript",
-              "source": "function isPal(s) {\n  let i = 0, j = s.length - 1;\n  while (i < j) {\n    if (s[i] !== s[___]) return false;\n    i++;\n    j--;\n  }\n  return true;\n}"
-            }
-          },
-          "cpp": {
-            "code": {
-              "language": "cpp",
-              "source": "bool isPal(const string& s) {\n    int i = 0, j = (int)s.size() - 1;\n    while (i < j) {\n        if (s[i] != s[___]) return false;\n        i++;\n        j--;\n    }\n    return true;\n}"
-            }
-          }
-        }
-      },
-      "answer_key": {
-        "variants": {
-          "python": {
-            "index": 1
-          },
-          "java": {
-            "index": 1
-          },
-          "javascript": {
-            "index": 1
-          },
-          "cpp": {
-            "index": 1
-          }
-        }
-      },
-      "explanation": "왼쪽 인덱스 i의 문자와 오른쪽 인덱스 j의 문자를 비교해 다르면 회문이 아니다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u13-palin-006",
       "type": "fill",
-      "difficulty": 2,
+      "difficulty": 1,
       "tags": [
         "string",
         "palindrome"
@@ -212,7 +151,88 @@
       "refs": []
     },
     {
+      "id": "ct-u13-palin-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "string",
+        "palindrome"
+      ],
+      "content": {
+        "prompt": "길이 20인 문자열을 양 끝 비교로 판별하면 비교는 최대 ___ 번이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "10",
+          "열"
+        ]
+      },
+      "explanation": "양쪽 인덱스가 한 칸씩 가운데로 오므로 길이의 절반인 10번 비교하면 만난다.",
+      "refs": []
+    },
+    {
       "id": "ct-u13-palin-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "string",
+        "palindrome"
+      ],
+      "content": {
+        "prompt": "양 끝 문자를 비교하도록 빈칸에 알맞은 것은?",
+        "options": [
+          "i + 1",
+          "j",
+          "j - 1"
+        ],
+        "variants": {
+          "python": {
+            "code": {
+              "language": "python",
+              "source": "def is_pal(s):\n    i, j = 0, len(s) - 1\n    while i < j:\n        if s[i] != s[___]:\n            return False\n        i += 1\n        j -= 1\n    return True"
+            }
+          },
+          "java": {
+            "code": {
+              "language": "java",
+              "source": "boolean isPal(String s) {\n    int i = 0, j = s.length() - 1;\n    while (i < j) {\n        if (s.charAt(i) != s.charAt(___))\n            return false;\n        i++;\n        j--;\n    }\n    return true;\n}"
+            }
+          },
+          "javascript": {
+            "code": {
+              "language": "javascript",
+              "source": "function isPal(s) {\n  let i = 0, j = s.length - 1;\n  while (i < j) {\n    if (s[i] !== s[___]) return false;\n    i++;\n    j--;\n  }\n  return true;\n}"
+            }
+          },
+          "cpp": {
+            "code": {
+              "language": "cpp",
+              "source": "bool isPal(const string& s) {\n    int i = 0, j = (int)s.size() - 1;\n    while (i < j) {\n        if (s[i] != s[___]) return false;\n        i++;\n        j--;\n    }\n    return true;\n}"
+            }
+          }
+        }
+      },
+      "answer_key": {
+        "variants": {
+          "python": {
+            "index": 1
+          },
+          "java": {
+            "index": 1
+          },
+          "javascript": {
+            "index": 1
+          },
+          "cpp": {
+            "index": 1
+          }
+        }
+      },
+      "explanation": "왼쪽 인덱스 i의 문자와 오른쪽 인덱스 j의 문자를 비교해 다르면 회문이 아니다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-palin-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -273,7 +293,7 @@
       "refs": []
     },
     {
-      "id": "ct-u13-palin-008",
+      "id": "ct-u13-palin-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -335,26 +355,6 @@
         }
       },
       "explanation": "호출마다 양 끝을 뺀 부분 문자열을 새로 만들어, 길이만큼 복사가 생길 수 있다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u13-palin-009",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "string",
-        "palindrome"
-      ],
-      "content": {
-        "prompt": "길이 20인 문자열을 양 끝 비교로 판별하면 비교는 최대 ___ 번이다."
-      },
-      "answer_key": {
-        "accepted": [
-          "10",
-          "열"
-        ]
-      },
-      "explanation": "양쪽 인덱스가 한 칸씩 가운데로 오므로 길이의 절반인 10번 비교하면 만난다.",
       "refs": []
     },
     {

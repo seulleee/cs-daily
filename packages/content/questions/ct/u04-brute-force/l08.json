@@ -87,8 +87,50 @@
     },
     {
       "id": "ct-u04-review-005",
-      "type": "single",
+      "type": "fill",
       "difficulty": 1,
+      "tags": [
+        "완전-탐색",
+        "전체-비용"
+      ],
+      "content": {
+        "prompt": "경우의 수 × 경우마다 확인 비용은 전체 ___ 이다.",
+        "hint": "시간 안에 끝나는지 판단할 때 계산하는 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "비용",
+          "연산 수",
+          "연산수",
+          "연산 횟수"
+        ]
+      },
+      "explanation": "완전 탐색의 전체 비용은 경우의 수 × 경우마다 확인 비용이며, 이를 허용 연산 수와 비교한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "조합",
+        "경우의-수"
+      ],
+      "content": {
+        "prompt": "30개 중 2개를 고르는 경우의 수는 ___ 가지다."
+      },
+      "answer_key": {
+        "accepted": [
+          "435"
+        ]
+      },
+      "explanation": "C(30, 2) = 30 × 29 / 2 = 435다. 870은 순서를 고려한 수다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-review-007",
+      "type": "single",
+      "difficulty": 2,
       "tags": [
         "비트마스크",
         "부분집합"
@@ -147,30 +189,7 @@
       "refs": []
     },
     {
-      "id": "ct-u04-review-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "완전-탐색",
-        "전체-비용"
-      ],
-      "content": {
-        "prompt": "경우의 수 × 경우마다 확인 비용은 전체 ___ 이다.",
-        "hint": "시간 안에 끝나는지 판단할 때 계산하는 값"
-      },
-      "answer_key": {
-        "accepted": [
-          "비용",
-          "연산 수",
-          "연산수",
-          "연산 횟수"
-        ]
-      },
-      "explanation": "완전 탐색의 전체 비용은 경우의 수 × 경우마다 확인 비용이며, 이를 허용 연산 수와 비교한다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u04-review-007",
+      "id": "ct-u04-review-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -228,25 +247,6 @@
         }
       },
       "explanation": "부분집합 2⁴ = 16개마다 4번씩 확인하므로 16 × 4 = 64번이다. 경우의 수 × 확인 비용이다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u04-review-008",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "조합",
-        "경우의-수"
-      ],
-      "content": {
-        "prompt": "30개 중 2개를 고르는 경우의 수는 ___ 가지다."
-      },
-      "answer_key": {
-        "accepted": [
-          "435"
-        ]
-      },
-      "explanation": "C(30, 2) = 30 × 29 / 2 = 435다. 870은 순서를 고려한 수다.",
       "refs": []
     },
     {

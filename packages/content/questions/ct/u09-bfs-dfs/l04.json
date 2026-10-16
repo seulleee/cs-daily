@@ -101,6 +101,27 @@
     },
     {
       "id": "ct-u09-bfsdist-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "최단-거리",
+        "bfs"
+      ],
+      "content": {
+        "prompt": "가중치 없는 그래프의 최단 거리는 ___ 로 구한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "BFS",
+          "너비 우선 탐색",
+          "너비우선탐색"
+        ]
+      },
+      "explanation": "가중치가 없으면 모든 간선 비용이 같으므로 BFS 거리 배열로 최단 거리를 구한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u09-bfsdist-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -161,7 +182,7 @@
       "refs": []
     },
     {
-      "id": "ct-u09-bfsdist-007",
+      "id": "ct-u09-bfsdist-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -222,7 +243,7 @@
       "refs": []
     },
     {
-      "id": "ct-u09-bfsdist-008",
+      "id": "ct-u09-bfsdist-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -243,7 +264,7 @@
       "refs": []
     },
     {
-      "id": "ct-u09-bfsdist-009",
+      "id": "ct-u09-bfsdist-010",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -261,27 +282,6 @@
         "index": 1
       },
       "explanation": "간선 비용이 모두 같아야 간선 개수가 곧 거리라서 BFS가 처음 닿은 거리가 최소다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u09-bfsdist-010",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "최단-거리",
-        "bfs"
-      ],
-      "content": {
-        "prompt": "가중치 없는 그래프의 최단 거리는 ___ 로 구한다."
-      },
-      "answer_key": {
-        "accepted": [
-          "BFS",
-          "너비 우선 탐색",
-          "너비우선탐색"
-        ]
-      },
-      "explanation": "가중치가 없으면 모든 간선 비용이 같으므로 BFS 거리 배열로 최단 거리를 구한다.",
       "refs": []
     }
   ]

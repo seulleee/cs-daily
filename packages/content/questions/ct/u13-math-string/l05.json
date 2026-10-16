@@ -134,8 +134,51 @@
     },
     {
       "id": "ct-u13-negmod-005",
-      "type": "single",
+      "type": "fill",
       "difficulty": 1,
+      "tags": [
+        "math",
+        "modular"
+      ],
+      "content": {
+        "prompt": "모듈러 연산에서 ___ 은 나머지끼리 그대로 계산할 수 없다.",
+        "hint": "사칙연산 중 하나다."
+      },
+      "answer_key": {
+        "accepted": [
+          "나눗셈",
+          "나누기",
+          "나눗셈 연산",
+          "division"
+        ]
+      },
+      "explanation": "(a / b) % M은 (a % M) / (b % M)과 다를 수 있다. 덧셈·곱셈과 달리 나눗셈은 그대로 옮길 수 없다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-negmod-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "math",
+        "modular",
+        "negative"
+      ],
+      "content": {
+        "prompt": "(20 − 31 + 37) % 37의 값은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "26"
+        ]
+      },
+      "explanation": "20 − 31 + 37 = 26이고 26 % 37 = 26이다. M을 더해 음수를 없앤 뒤 나머지를 취했다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u13-negmod-007",
+      "type": "single",
+      "difficulty": 2,
       "tags": [
         "math",
         "modular",
@@ -195,30 +238,7 @@
       "refs": []
     },
     {
-      "id": "ct-u13-negmod-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "math",
-        "modular"
-      ],
-      "content": {
-        "prompt": "모듈러 연산에서 ___ 은 나머지끼리 그대로 계산할 수 없다.",
-        "hint": "사칙연산 중 하나다."
-      },
-      "answer_key": {
-        "accepted": [
-          "나눗셈",
-          "나누기",
-          "나눗셈 연산",
-          "division"
-        ]
-      },
-      "explanation": "(a / b) % M은 (a % M) / (b % M)과 다를 수 있다. 덧셈·곱셈과 달리 나눗셈은 그대로 옮길 수 없다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u13-negmod-007",
+      "id": "ct-u13-negmod-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -281,26 +301,6 @@
         }
       },
       "explanation": "a − b가 음수면 언어에 따라 % 결과가 음수일 수 있다. (a − b + M) % M으로 쓰면 어디서나 4다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u13-negmod-008",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "math",
-        "modular",
-        "negative"
-      ],
-      "content": {
-        "prompt": "(20 − 31 + 37) % 37의 값은 ___ 이다."
-      },
-      "answer_key": {
-        "accepted": [
-          "26"
-        ]
-      },
-      "explanation": "20 − 31 + 37 = 26이고 26 % 37 = 26이다. M을 더해 음수를 없앤 뒤 나머지를 취했다.",
       "refs": []
     },
     {

@@ -88,8 +88,49 @@
     },
     {
       "id": "ct-u04-subset-005",
-      "type": "single",
+      "type": "fill",
       "difficulty": 1,
+      "tags": [
+        "부분집합",
+        "개수"
+      ],
+      "content": {
+        "prompt": "원소 N개의 부분집합 수는 2의 ___ 제곱이다.",
+        "hint": "원소마다 넣거나 빼는 선택을 몇 번 하는지 생각한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "N",
+          "엔"
+        ]
+      },
+      "explanation": "원소마다 넣거나 빼는 선택이 N번이라 부분집합은 2ᴺ가지다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-subset-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "부분집합",
+        "개수"
+      ],
+      "content": {
+        "prompt": "N = 20이면 부분집합은 약 ___만 개다."
+      },
+      "answer_key": {
+        "accepted": [
+          "100",
+          "백"
+        ]
+      },
+      "explanation": "2²⁰ = 1,048,576이므로 약 100만 개다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u04-subset-007",
+      "type": "single",
+      "difficulty": 2,
       "tags": [
         "비트마스크",
         "전체-순회"
@@ -155,47 +196,6 @@
         }
       },
       "explanation": "원소 n개의 부분집합은 2ⁿ개라 mask를 0부터 2ⁿ − 1까지 돌린다. n * n이나 n이면 일부만 본다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u04-subset-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "부분집합",
-        "개수"
-      ],
-      "content": {
-        "prompt": "원소 N개의 부분집합 수는 2의 ___ 제곱이다.",
-        "hint": "원소마다 넣거나 빼는 선택을 몇 번 하는지 생각한다"
-      },
-      "answer_key": {
-        "accepted": [
-          "N",
-          "엔"
-        ]
-      },
-      "explanation": "원소마다 넣거나 빼는 선택이 N번이라 부분집합은 2ᴺ가지다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u04-subset-007",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "부분집합",
-        "개수"
-      ],
-      "content": {
-        "prompt": "N = 20이면 부분집합은 약 ___만 개다."
-      },
-      "answer_key": {
-        "accepted": [
-          "100",
-          "백"
-        ]
-      },
-      "explanation": "2²⁰ = 1,048,576이므로 약 100만 개다.",
       "refs": []
     },
     {

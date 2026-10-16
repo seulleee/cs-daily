@@ -151,6 +151,25 @@
     },
     {
       "id": "ct-u12-uf-opt-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "union-find",
+        "union-by-size"
+      ],
+      "content": {
+        "prompt": "크기 12인 트리와 크기 5인 트리를 합치면 새 루트의 크기는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "17"
+        ]
+      },
+      "explanation": "작은 트리를 큰 트리의 루트 아래에 붙이고 크기를 더하므로 12 + 5 = 17이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u12-uf-opt-007",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -211,7 +230,7 @@
       "refs": []
     },
     {
-      "id": "ct-u12-uf-opt-007",
+      "id": "ct-u12-uf-opt-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -271,7 +290,7 @@
       "refs": []
     },
     {
-      "id": "ct-u12-uf-opt-008",
+      "id": "ct-u12-uf-opt-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -290,25 +309,6 @@
         "index": 1
       },
       "explanation": "경로 압축은 지나간 노드의 부모를 루트로 바꾸므로 parent[1]이 3이 된다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u12-uf-opt-009",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "union-find",
-        "union-by-size"
-      ],
-      "content": {
-        "prompt": "크기 12인 트리와 크기 5인 트리를 합치면 새 루트의 크기는 ___ 이다."
-      },
-      "answer_key": {
-        "accepted": [
-          "17"
-        ]
-      },
-      "explanation": "작은 트리를 큰 트리의 루트 아래에 붙이고 크기를 더하므로 12 + 5 = 17이다.",
       "refs": []
     },
     {

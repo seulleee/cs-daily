@@ -87,8 +87,50 @@
     },
     {
       "id": "ct-u05-twoptr-005",
-      "type": "single",
+      "type": "fill",
       "difficulty": 1,
+      "tags": [
+        "투-포인터",
+        "정의"
+      ],
+      "content": {
+        "prompt": "두 인덱스를 한 방향으로만 움직여 쌍을 찾는 기법은 ___ 포인터다."
+      },
+      "answer_key": {
+        "accepted": [
+          "투",
+          "two",
+          "2",
+          "두"
+        ]
+      },
+      "explanation": "두 개의 인덱스(포인터)를 움직인다고 해서 투 포인터라 부른다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-twoptr-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "투-포인터",
+        "이동-횟수"
+      ],
+      "content": {
+        "prompt": "N = 10⁵이면 두 포인터의 이동 횟수는 합쳐 최대 약 ___만 번이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "20",
+          "이십"
+        ]
+      },
+      "explanation": "두 포인터가 각각 최대 N번 움직이므로 합쳐 약 2N = 20만 번, 전체 O(N)이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-twoptr-007",
+      "type": "single",
+      "difficulty": 2,
       "tags": [
         "투-포인터",
         "두-수의-합"
@@ -152,29 +194,7 @@
       "refs": []
     },
     {
-      "id": "ct-u05-twoptr-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "투-포인터",
-        "정의"
-      ],
-      "content": {
-        "prompt": "두 인덱스를 한 방향으로만 움직여 쌍을 찾는 기법은 ___ 포인터다."
-      },
-      "answer_key": {
-        "accepted": [
-          "투",
-          "two",
-          "2",
-          "두"
-        ]
-      },
-      "explanation": "두 개의 인덱스(포인터)를 움직인다고 해서 투 포인터라 부른다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u05-twoptr-007",
+      "id": "ct-u05-twoptr-008",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -196,7 +216,7 @@
       "refs": []
     },
     {
-      "id": "ct-u05-twoptr-008",
+      "id": "ct-u05-twoptr-009",
       "type": "single",
       "difficulty": 2,
       "tags": [
@@ -254,26 +274,6 @@
         }
       },
       "explanation": "1 + 9 = 10 > 7이라 r을 줄이고, 1 + 6 = 7에서 멈춘다. 3 + 4도 7이지만 먼저 만나는 쌍은 1 6이다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u05-twoptr-009",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "투-포인터",
-        "이동-횟수"
-      ],
-      "content": {
-        "prompt": "N = 10⁵이면 두 포인터의 이동 횟수는 합쳐 최대 약 ___만 번이다."
-      },
-      "answer_key": {
-        "accepted": [
-          "20",
-          "이십"
-        ]
-      },
-      "explanation": "두 포인터가 각각 최대 N번 움직이므로 합쳐 약 2N = 20만 번, 전체 O(N)이다.",
       "refs": []
     },
     {

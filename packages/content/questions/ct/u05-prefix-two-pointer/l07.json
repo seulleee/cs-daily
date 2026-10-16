@@ -88,8 +88,48 @@
     },
     {
       "id": "ct-u05-window-005",
-      "type": "single",
+      "type": "fill",
       "difficulty": 1,
+      "tags": [
+        "슬라이딩-윈도우",
+        "정의"
+      ],
+      "content": {
+        "prompt": "길이 K 구간을 밀며 합을 갱신하는 기법은 슬라이딩 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "윈도우",
+          "window",
+          "윈도"
+        ]
+      },
+      "explanation": "고정 길이 구간(윈도우)을 한 칸씩 미는 기법이라 슬라이딩 윈도우라 한다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-window-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "슬라이딩-윈도우",
+        "계산"
+      ],
+      "content": {
+        "prompt": "a = [2, 5, 6, 4], K = 2이면 윈도우 합의 최댓값은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "11"
+        ]
+      },
+      "explanation": "윈도우 합은 2 + 5 = 7, 5 + 6 = 11, 6 + 4 = 10이므로 최댓값은 11이다.",
+      "refs": []
+    },
+    {
+      "id": "ct-u05-window-007",
+      "type": "single",
+      "difficulty": 2,
       "tags": [
         "슬라이딩-윈도우",
         "갱신"
@@ -145,46 +185,6 @@
         }
       },
       "explanation": "i번 값이 들어오면 k칸 앞인 i − k번 값이 빠져나가므로 a[i − k]를 뺀다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u05-window-006",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "슬라이딩-윈도우",
-        "정의"
-      ],
-      "content": {
-        "prompt": "길이 K 구간을 밀며 합을 갱신하는 기법은 슬라이딩 ___ 이다."
-      },
-      "answer_key": {
-        "accepted": [
-          "윈도우",
-          "window",
-          "윈도"
-        ]
-      },
-      "explanation": "고정 길이 구간(윈도우)을 한 칸씩 미는 기법이라 슬라이딩 윈도우라 한다.",
-      "refs": []
-    },
-    {
-      "id": "ct-u05-window-007",
-      "type": "fill",
-      "difficulty": 2,
-      "tags": [
-        "슬라이딩-윈도우",
-        "계산"
-      ],
-      "content": {
-        "prompt": "a = [2, 5, 6, 4], K = 2이면 윈도우 합의 최댓값은 ___ 이다."
-      },
-      "answer_key": {
-        "accepted": [
-          "11"
-        ]
-      },
-      "explanation": "윈도우 합은 2 + 5 = 7, 5 + 6 = 11, 6 + 4 = 10이므로 최댓값은 11이다.",
       "refs": []
     },
     {
