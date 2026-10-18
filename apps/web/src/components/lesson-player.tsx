@@ -35,7 +35,11 @@ function splitKeyPoint(kp: string): { term: string | null; definition: string } 
 export function LessonPlayer({ sessionId }: { sessionId: string }) {
   const router = useRouter();
   const qc = useQueryClient();
-  const session = useQuery({ queryKey: ['session', sessionId], queryFn: () => api<SessionResponse>(`/sessions/${sessionId}`) });
+  // 세션은 서버가 진실이다. 캐시는 레슨 도중 제출한 답을 모르는 채로 남을 수 있어 마운트마다 새로 받고,
+  // 이어 풀기 위치는 그 새 응답으로만 정한다(아래 effect의 isFetchedAfterMount)
+  const sessionKey = ['session', sessionId] as const;
+  const fetchSession = () => api<SessionResponse>(`/sessions/${sessionId}`);
+  const session = useQuery({ queryKey: sessionKey, queryFn: fetchSession, staleTime: 0, refetchOnMount: 'always', refetchOnWindowFocus: false });
 
   const answeredIds = useMemo(() => new Set(session.data?.answered.map((a) => a.questionId) ?? []), [session.data]);
   const [phase, setPhase] = useState<Phase | null>(null);
@@ -49,7 +53,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
 
   // 이어 풀기: 아직 답하지 않은 첫 문제부터. 답한 게 없고 레슨이면 시작 카드부터
   useEffect(() => {
-    if (!session.data || phase !== null) return;
+    if (!session.data || phase !== null || !session.isFetchedAfterMount) return;
     const first = session.data.questions.findIndex((q) => !answeredIds.has(q.id));
     const resumedWrong = session.data.answered.filter((a) => !a.isCorrect).map((a) => a.questionId);
     setWrongIds(resumedWrong);
@@ -62,7 +66,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
       setIndex(first);
       setPhase('main');
     }
-  }, [session.data, answeredIds, phase]);
+  }, [session.data, session.isFetchedAfterMount, answeredIds, phase]);
 
   const [draft, setDraft] = useState<UserAnswer | null>(null);
   const [result, setResult] = useState<Graded | null>(null);
@@ -73,8 +77,39 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
       api<SubmitAnswerResponse>(`/sessions/${sessionId}/answers`, { json: { ...p, timeMs: Math.min(600_000, Date.now() - startedAt.current) } }),
     onSuccess: (r, p) => {
       setResult(r);
+      // 캐시가 서버와 어긋나지 않게 이 답을 세션 캐시의 answered에도 반영한다
+      qc.setQueryData<SessionResponse>(sessionKey, (old) =>
+        old
+          ? {
+              ...old,
+              answered: [
+                ...old.answered.filter((a) => a.questionId !== p.questionId),
+                { questionId: p.questionId, isCorrect: r.isCorrect, correctAnswer: r.correctAnswer, explanation: r.explanation },
+              ],
+            }
+          : old,
+      );
       setSubmittedIds((prev) => new Set(prev).add(p.questionId));
       if (!r.isCorrect) setWrongIds((prev) => (prev.includes(p.questionId) ? prev : [...prev, p.questionId]));
+    },
+    // 이미 답한 문제(409): 오류를 보이지 않고 서버 기록을 다시 받아 그 문제를 "답한 문제"로 두고 다음 미답 문제로 넘어간다
+    onError: async (err) => {
+      if (!(err instanceof ApiError) || err.code !== 'ANSWER_ALREADY_SUBMITTED') return;
+      try {
+        const fresh = await qc.fetchQuery({ queryKey: sessionKey, queryFn: fetchSession, staleTime: 0 });
+        const done = new Set(fresh.answered.map((a) => a.questionId));
+        setSubmittedIds((prev) => new Set([...prev, ...done]));
+        setWrongIds(fresh.answered.filter((a) => !a.isCorrect).map((a) => a.questionId));
+        const first = fresh.questions.findIndex((x) => !done.has(x.id));
+        setDraft(null);
+        setResult(null);
+        startedAt.current = Date.now();
+        setIndex(first === -1 ? fresh.questions.length : first);
+        inFlight.current = false; // reset()하면 mutate 단위 onSettled가 불리지 않는다
+        submit.reset();
+      } catch {
+        // 다시 불러오지 못하면 기존 오류 문구를 그대로 보인다
+      }
     },
   });
   const retry = useMutation({
