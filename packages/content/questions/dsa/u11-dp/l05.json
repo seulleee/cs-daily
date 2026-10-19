@@ -1,0 +1,234 @@
+{
+  "track": "dsa",
+  "unit": "u11-dp",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "dsa-dp-state-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp-state",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "dp[i]가 무엇을 뜻하는지 먼저 정하는 단계는?",
+        "options": [
+          "기저 사례",
+          "상태 정의",
+          "완화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "상태 정의는 dp[i]가 나타내는 값을 정하는 단계로, 이것이 있어야 점화식을 세울 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-dp-state-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp-state",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "1과 2를 더해 n을 만드는 방법 수의 점화식은?",
+        "options": [
+          "dp[n−1]×2",
+          "dp[n−1]+1",
+          "dp[n−1]+dp[n−2]"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "마지막에 1을 더한 경우 dp[n−1]가지, 2를 더한 경우 dp[n−2]가지라 둘을 더합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-dp-state-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dp-state",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "1과 2로 3을 만들 때 1+2와 2+1은?",
+        "options": [
+          "다른 방법",
+          "같은 방법"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "이 상태는 순서 있는 방법 수를 세므로 더하는 순서가 다르면 다른 방법입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-dp-state-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dp-state",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "1과 2를 더해 2를 만드는 방법은 1가지이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "1+1과 2의 두 가지라 dp[2] = 2입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-dp-state-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dp-state",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "dp[i]의 뜻을 먼저 정하는 것을 ___ 정의라 한다.",
+        "hint": "DP 표의 한 칸이 나타내는 것을 부르는 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "상태",
+          "state"
+        ]
+      },
+      "explanation": "상태를 정의해야 어떤 칸을 조합할지 알 수 있어 점화식을 세울 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-dp-state-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dp-state",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "dp[3] = 3, dp[4] = 5이면 dp[5]는 ___ 이다.",
+        "hint": "바로 앞 두 값을 더합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "8",
+          "여덟"
+        ]
+      },
+      "explanation": "점화식 dp[n] = dp[n−1] + dp[n−2]에 따라 dp[5] = 5 + 3 = 8입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-dp-state-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp-state",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "1과 2를 더해 4를 만드는 순서 있는 방법 수는?",
+        "options": [
+          "5",
+          "4",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "1+1+1+1, 1+1+2, 1+2+1, 2+1+1, 2+2의 5가지로 dp[4] = 5입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-dp-state-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp-state",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "마지막에 2를 더해 n이 되는 방법의 수는?",
+        "options": [
+          "dp[n−1]",
+          "dp[n]",
+          "dp[n−2]"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "마지막 2를 빼면 n−2를 만드는 방법이 남으므로 dp[n−2]가지입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-dp-state-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dp-state",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "dp[5] = 8, dp[6] = 13이면 dp[7]은?",
+        "options": [
+          "21",
+          "19",
+          "26"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "dp[7] = dp[6] + dp[5] = 13 + 8 = 21입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-dp-state-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dp-state",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "dp[i]의 뜻(상태)을 먼저 정해야 점화식을 세울 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "상태가 정해져야 그 칸을 어떤 더 작은 칸들로 나타낼지 정할 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    }
+  ]
+}

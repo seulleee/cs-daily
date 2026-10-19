@@ -1,0 +1,248 @@
+{
+  "track": "dsa",
+  "unit": "u11-dp",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "dsa-dp-recurrence-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "optimal-substructure",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "전체 최적해가 부분 문제의 최적해로 구성되는 성질은?",
+        "options": [
+          "중복 부분 문제",
+          "최적 부분 구조",
+          "결정성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "최적 부분 구조는 전체 최적해 안에 부분 문제의 최적해가 들어 있다는 성질입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Optimal_substructure"
+      ]
+    },
+    {
+      "id": "dsa-dp-recurrence-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "optimal-substructure",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "큰 문제의 답을 작은 문제의 답으로 나타낸 식은?",
+        "options": [
+          "점화식",
+          "해시 함수",
+          "불변식"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "점화식은 fib(n) = fib(n−1) + fib(n−2)처럼 큰 문제의 답을 작은 문제의 답으로 나타냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Optimal_substructure"
+      ]
+    },
+    {
+      "id": "dsa-dp-recurrence-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "optimal-substructure",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "DP 적용에 필요한 성질은?",
+        "options": [
+          "중복 부분 문제만",
+          "최적 부분 구조만",
+          "두 성질 모두"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DP는 중복 부분 문제와 최적 부분 구조를 모두 가질 때 적용합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Optimal_substructure"
+      ]
+    },
+    {
+      "id": "dsa-dp-recurrence-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "optimal-substructure",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "DP는 최적 부분 구조 없이 중복 부분 문제만 있으면 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "부분 문제의 최적해로 전체 최적해를 만들 수 있어야 하므로 최적 부분 구조도 필요합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Optimal_substructure"
+      ]
+    },
+    {
+      "id": "dsa-dp-recurrence-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "optimal-substructure",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "큰 문제의 답을 작은 문제의 답으로 나타낸 식은 ___ 이다.",
+        "hint": "피보나치에서 fib(n−1)과 fib(n−2)로 fib(n)을 나타낸 식입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "점화식",
+          "recurrence",
+          "재귀식",
+          "점화 관계",
+          "recurrence relation"
+        ]
+      },
+      "explanation": "점화식이 있으면 작은 부분 문제의 답부터 차례로 조합해 큰 문제의 답을 구할 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Optimal_substructure"
+      ]
+    },
+    {
+      "id": "dsa-dp-recurrence-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "optimal-substructure",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "전체 최적해가 부분 문제의 최적해로 이루어지는 성질은 최적 ___ 구조이다.",
+        "hint": "문제 전체가 아니라 그 일부를 가리키는 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "부분",
+          "sub",
+          "부분 구조"
+        ]
+      },
+      "explanation": "최적 부분 구조가 있으면 부분 문제의 최적해를 조합해 전체 최적해를 만들 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Optimal_substructure"
+      ]
+    },
+    {
+      "id": "dsa-dp-recurrence-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "optimal-substructure",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "fib(5) = 5, fib(6) = 8이면 fib(7)은?",
+        "options": [
+          "11",
+          "14",
+          "13"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "점화식 fib(7) = fib(6) + fib(5) = 8 + 5 = 13입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Optimal_substructure"
+      ]
+    },
+    {
+      "id": "dsa-dp-recurrence-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "optimal-substructure",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "fib(0) = 0, fib(1) = 1일 때 fib(4)는?",
+        "options": [
+          "3",
+          "2",
+          "5"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "fib(2) = 1, fib(3) = 2, fib(4) = fib(3) + fib(2) = 3입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Optimal_substructure"
+      ]
+    },
+    {
+      "id": "dsa-dp-recurrence-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "optimal-substructure",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "A→B→C가 최단 경로면 그 일부인 A→B는?",
+        "options": [
+          "A→B의 최단 경로",
+          "최단이 아닐 수 있음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "A→B보다 짧은 길이 있으면 그 길로 바꿔 A→C도 짧아지므로 모순입니다. 최적 부분 구조의 예입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Optimal_substructure"
+      ]
+    },
+    {
+      "id": "dsa-dp-recurrence-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "optimal-substructure",
+        "recurrence"
+      ],
+      "content": {
+        "prompt": "최적 부분 구조는 전체 최적해가 부분 최적해로 구성되는 성질이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "최적 부분 구조가 있으면 부분 문제의 최적해를 조합해 전체 최적해를 얻을 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Optimal_substructure"
+      ]
+    }
+  ]
+}

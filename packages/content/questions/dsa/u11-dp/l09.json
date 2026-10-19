@@ -1,0 +1,247 @@
+{
+  "track": "dsa",
+  "unit": "u11-dp",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "dsa-edit-distance-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "edit-distance",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "한 문자열을 다른 문자열로 바꾸는 최소 수정 횟수는?",
+        "options": [
+          "LCS 길이",
+          "편집 거리",
+          "해시 값"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "편집 거리는 삽입·삭제·교체를 최소 몇 번 해야 한 문자열이 다른 문자열이 되는지를 셉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Edit_distance",
+        "https://en.wikipedia.org/wiki/Levenshtein_distance"
+      ]
+    },
+    {
+      "id": "dsa-edit-distance-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "edit-distance",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "편집 거리에서 쓰는 세 연산이 아닌 것은?",
+        "options": [
+          "삽입",
+          "교체",
+          "정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "편집 거리는 삽입·삭제·교체 세 연산만 셉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Edit_distance",
+        "https://en.wikipedia.org/wiki/Levenshtein_distance"
+      ]
+    },
+    {
+      "id": "dsa-edit-distance-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "edit-distance",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "끝 글자가 다를 때 편집 거리 점화식이 고르는 것은?",
+        "options": [
+          "세 값의 최솟값",
+          "세 값의 최댓값"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "삽입·삭제·교체 세 경우 중 가장 적은 횟수에 1을 더합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Edit_distance",
+        "https://en.wikipedia.org/wiki/Levenshtein_distance"
+      ]
+    },
+    {
+      "id": "dsa-edit-distance-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "edit-distance",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "kitten을 sitting으로 바꾸는 편집 거리는 3이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "k→s 교체, e→i 교체, 끝에 g 삽입으로 3번이며 더 적게는 안 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Edit_distance",
+        "https://en.wikipedia.org/wiki/Levenshtein_distance"
+      ]
+    },
+    {
+      "id": "dsa-edit-distance-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "edit-distance",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "편집 거리에서 글자 하나를 다른 글자로 바꾸는 연산은 ___ 이다.",
+        "hint": "삽입·삭제와 함께 쓰는 세 번째 연산입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "교체",
+          "치환",
+          "대체",
+          "substitution",
+          "replace"
+        ]
+      },
+      "explanation": "교체는 글자 하나를 다른 글자로 바꾸는 연산으로, 삽입·삭제와 함께 편집 거리를 셉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Edit_distance",
+        "https://en.wikipedia.org/wiki/Levenshtein_distance"
+      ]
+    },
+    {
+      "id": "dsa-edit-distance-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "edit-distance",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "dp[i][0]은 길이 i 문자열을 빈 문자열로 바꾸는 거리로 ___ 이다.",
+        "hint": "글자를 하나씩 모두 지워야 합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "i",
+          "I"
+        ]
+      },
+      "explanation": "빈 문자열이 되려면 i글자를 모두 삭제해야 하므로 dp[i][0] = i입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Edit_distance",
+        "https://en.wikipedia.org/wiki/Levenshtein_distance"
+      ]
+    },
+    {
+      "id": "dsa-edit-distance-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "edit-distance",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "cat을 cut으로 바꾸는 편집 거리는?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "a를 u로 한 번 교체하면 되므로 1입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Edit_distance",
+        "https://en.wikipedia.org/wiki/Levenshtein_distance"
+      ]
+    },
+    {
+      "id": "dsa-edit-distance-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "edit-distance",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "abc를 빈 문자열로 바꾸는 편집 거리는?",
+        "options": [
+          "0",
+          "1",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "세 글자를 모두 삭제해야 하므로 3입니다. 기저 dp[i][0] = i와 같습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Edit_distance",
+        "https://en.wikipedia.org/wiki/Levenshtein_distance"
+      ]
+    },
+    {
+      "id": "dsa-edit-distance-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "edit-distance",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "끝 글자가 다르고 삽입·삭제·교체 값이 2, 3, 1이면 dp[i][j]는?",
+        "options": [
+          "2",
+          "1",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "1 + min(2, 3, 1) = 2입니다. 마지막 수정 한 번을 더합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Edit_distance",
+        "https://en.wikipedia.org/wiki/Levenshtein_distance"
+      ]
+    },
+    {
+      "id": "dsa-edit-distance-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "edit-distance",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "편집 거리는 끝 글자가 같으면 dp[i−1][j−1] + 1이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "끝 글자가 같으면 수정이 필요 없어 dp[i−1][j−1] 그대로입니다. +1은 LCS 점화식입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Edit_distance",
+        "https://en.wikipedia.org/wiki/Levenshtein_distance"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "track": "dsa",
+  "unit": "u11-dp",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "dsa-memoization-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "memoization",
+        "top-down"
+      ],
+      "content": {
+        "prompt": "계산한 부분 문제 답을 저장해 다시 계산하지 않는 기법은?",
+        "options": [
+          "해싱",
+          "재귀",
+          "메모이제이션"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "메모이제이션은 계산한 부분 문제의 답을 저장해 두고, 같은 부분 문제가 오면 저장한 값을 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Memoization",
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-memoization-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "memoization",
+        "top-down"
+      ],
+      "content": {
+        "prompt": "큰 문제에서 재귀로 내려가며 필요한 부분 문제만 푸는 방향은?",
+        "options": [
+          "하향식",
+          "선형",
+          "분할 정복"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "하향식(Top-down)은 큰 문제에서 출발해 재귀로 내려가며 필요한 부분 문제만 풉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Memoization",
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-memoization-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "memoization",
+        "top-down"
+      ],
+      "content": {
+        "prompt": "메모이제이션을 쓴 피보나치의 시간 복잡도는?",
+        "options": [
+          "O(2ⁿ)",
+          "O(n)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "fib(0)부터 fib(n)까지 각 값을 한 번씩만 계산하므로 O(n)입니다. 단순 재귀는 지수 시간입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Memoization",
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-memoization-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "memoization",
+        "top-down"
+      ],
+      "content": {
+        "prompt": "메모이제이션은 재귀가 깊어도 스택 오버플로가 없다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "메모이제이션도 재귀 호출을 쓰므로, 재귀가 깊으면 호출 스택이 한도를 넘어 스택 오버플로가 날 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Memoization",
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-memoization-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "memoization",
+        "top-down"
+      ],
+      "content": {
+        "prompt": "계산한 답을 저장해 다시 계산하지 않는 하향식 기법은 ___ 이다.",
+        "hint": "계산 결과를 메모해 둔다는 뜻의 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "메모이제이션",
+          "memoization",
+          "메모이세이션",
+          "메모화"
+        ]
+      },
+      "explanation": "메모이제이션은 재귀로 내려가며 계산한 답을 저장하고, 같은 부분 문제가 오면 저장한 값을 돌려줍니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Memoization",
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-memoization-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "memoization",
+        "top-down"
+      ],
+      "content": {
+        "prompt": "큰 문제에서 재귀로 내려가며 푸는 방식을 ___ 방식이라 한다.",
+        "hint": "위에서 아래로 내려간다는 뜻의 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "하향식",
+          "top down",
+          "topdown",
+          "top-down",
+          "탑다운"
+        ]
+      },
+      "explanation": "하향식은 큰 문제에서 시작해 필요한 부분 문제만 재귀로 풀어 내려갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Memoization",
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-memoization-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "memoization",
+        "top-down"
+      ],
+      "content": {
+        "prompt": "메모이제이션으로 fib(10)을 구할 때 계산하는 값의 수는?",
+        "options": [
+          "177",
+          "11",
+          "1024"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "fib(0)부터 fib(10)까지 11개를 한 번씩 계산합니다. 단순 재귀는 fib 호출이 177번 일어납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Memoization",
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-memoization-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "memoization",
+        "top-down"
+      ],
+      "content": {
+        "prompt": "memo에 fib(3) = 2가 있을 때 fib(3)을 다시 부르면?",
+        "options": [
+          "재귀로 다시 계산",
+          "저장값 2 반환"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "메모이제이션은 저장한 값이 있으면 재귀로 내려가지 않고 그 값을 바로 돌려줍니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Memoization",
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-memoization-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "memoization",
+        "top-down"
+      ],
+      "content": {
+        "prompt": "메모이제이션 재귀가 너무 깊으면 생길 수 있는 오류는?",
+        "options": [
+          "해시 충돌",
+          "underflow",
+          "스택 오버플로"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "재귀 호출마다 스택 프레임이 쌓이므로, 깊이가 한도를 넘으면 스택 오버플로가 납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Memoization",
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-memoization-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "memoization",
+        "top-down"
+      ],
+      "content": {
+        "prompt": "메모이제이션은 필요한 부분 문제만 재귀로 내려가며 푼다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "메모이제이션은 하향식이라 큰 문제에서 재귀로 내려가며 실제로 필요한 부분 문제만 풉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Memoization",
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    }
+  ]
+}

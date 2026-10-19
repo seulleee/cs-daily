@@ -1,0 +1,246 @@
+{
+  "track": "dsa",
+  "unit": "u11-dp",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "dsa-dp-space-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "space-optimization",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "점화식이 직전 행만 쓰면 그만큼만 저장하는 기법은?",
+        "options": [
+          "메모이제이션",
+          "경로 압축",
+          "공간 최적화"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "공간 최적화는 점화식이 참조하는 직전 행이나 몇 칸만 남겨 저장 공간을 줄입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-dp-space-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "space-optimization",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "공간 최적화한 피보나치의 공간 복잡도는?",
+        "options": [
+          "O(1)",
+          "O(n)",
+          "O(n²)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "직전 두 값만 변수에 유지하면 되므로 O(1)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-dp-space-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "space-optimization",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "dp[i][*]가 dp[i−1][*]만 쓰면 저장할 것은?",
+        "options": [
+          "표 전체",
+          "한 행 배열"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "직전 행만 참조하므로 한 행 배열을 두고 덮어쓰며 갱신하면 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-dp-space-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "space-optimization",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "0/1 배낭을 1차원 배열로 풀 때 w는 0에서 W로 올라가며 갱신한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "w를 작은 값부터 갱신하면 이번 물건이 반영된 값을 다시 써 같은 물건을 여러 번 넣게 됩니다. 큰 값부터 갱신합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-dp-space-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "space-optimization",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "피보나치 공간 최적화는 변수 ___ 개만 유지한다.",
+        "hint": "fib(n)을 구할 때 바로 앞 몇 항이 필요한지 떠올려 보세요."
+      },
+      "answer_key": {
+        "accepted": [
+          "2",
+          "두",
+          "둘"
+        ]
+      },
+      "explanation": "fib(n)은 직전 두 값만 쓰므로 변수 2개를 갱신하며 계산하면 공간이 O(1)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-dp-space-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "space-optimization",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "직전 행만 쓰는 2차원 표는 ___ 차원 배열로 줄일 수 있다.",
+        "hint": "행 하나만 남깁니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "1",
+          "일",
+          "한"
+        ]
+      },
+      "explanation": "dp[i][*]가 dp[i−1][*]만 쓰면 한 행짜리 1차원 배열을 덮어쓰며 갱신할 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-dp-space-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "space-optimization",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "(무게 2, 가치 3) 하나, 한도 4를 w 오름차순 1차원 갱신하면 dp[4]는?",
+        "options": [
+          "3",
+          "6",
+          "0"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "dp[2]=3이 먼저 바뀐 뒤 dp[4]=dp[2]+3=6이 되어 한 물건을 두 번 넣은 틀린 값이 나옵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-dp-space-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "space-optimization",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "(무게 2, 가치 3) 하나, 한도 4를 w 내림차순 1차원 갱신하면 dp[4]는?",
+        "options": [
+          "6",
+          "3",
+          "0"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "dp[4]를 먼저 dp[2](아직 0) + 3 = 3으로 갱신해 물건을 한 번만 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-dp-space-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "space-optimization",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "m×n 표가 직전 행만 참조할 때 줄인 공간은?",
+        "options": [
+          "O(mn)",
+          "O(n)",
+          "O(1)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "길이 n인 한 행만 남기면 되므로 공간이 O(mn)에서 O(n)으로 줄어듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-dp-space-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "space-optimization",
+        "dynamic-programming"
+      ],
+      "content": {
+        "prompt": "공간 최적화는 점화식이 참조하는 칸만 남겨 메모리를 줄인다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "더 이상 참조하지 않는 칸을 버리고 필요한 칸만 유지해도 같은 답을 얻습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    }
+  ]
+}

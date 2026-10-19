@@ -1,0 +1,246 @@
+{
+  "track": "dsa",
+  "unit": "u11-dp",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "dsa-dp-intro-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dynamic-programming",
+        "overlapping-subproblems"
+      ],
+      "content": {
+        "prompt": "한 번 푼 부분 문제의 답을 기록해 큰 문제에 다시 쓰는 기법은?",
+        "options": [
+          "분할 정복",
+          "동적 계획법",
+          "이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "동적 계획법(DP)은 부분 문제의 답을 저장해 두고 다시 쓰면서 큰 문제의 답을 만듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Overlapping_subproblems"
+      ]
+    },
+    {
+      "id": "dsa-dp-intro-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dynamic-programming",
+        "overlapping-subproblems"
+      ],
+      "content": {
+        "prompt": "같은 부분 문제가 여러 번 반복해 등장하는 성질은?",
+        "options": [
+          "안정성",
+          "단조성",
+          "중복 부분 문제"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "중복 부분 문제는 같은 부분 문제가 여러 번 등장하는 성질로, 이때 답을 저장해 두면 효과가 큽니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Overlapping_subproblems"
+      ]
+    },
+    {
+      "id": "dsa-dp-intro-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dynamic-programming",
+        "overlapping-subproblems"
+      ],
+      "content": {
+        "prompt": "부분 문제가 서로 겹치지 않는 방식은?",
+        "options": [
+          "분할 정복",
+          "동적 계획법"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "분할 정복은 겹치지 않는 부분 문제로 나눕니다. 병합 정렬의 두 절반이 그 예입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Overlapping_subproblems"
+      ]
+    },
+    {
+      "id": "dsa-dp-intro-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dynamic-programming",
+        "overlapping-subproblems"
+      ],
+      "content": {
+        "prompt": "단순 재귀 fib(5)는 fib(3)을 한 번만 계산한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "fib(5)는 fib(4)와 fib(3)을 부르고, fib(4)가 다시 fib(3)을 불러 fib(3)을 2번 계산합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Overlapping_subproblems"
+      ]
+    },
+    {
+      "id": "dsa-dp-intro-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dynamic-programming",
+        "overlapping-subproblems"
+      ],
+      "content": {
+        "prompt": "동적 ___ 은 부분 문제의 답을 기록해 큰 문제에 다시 쓴다.",
+        "hint": "영문 약자로는 DP라고 씁니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "계획법",
+          "계획",
+          "프로그래밍",
+          "programming"
+        ]
+      },
+      "explanation": "동적 계획법은 Dynamic Programming을 옮긴 말이며, 부분 문제의 답을 저장해 재사용합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Overlapping_subproblems"
+      ]
+    },
+    {
+      "id": "dsa-dp-intro-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dynamic-programming",
+        "overlapping-subproblems"
+      ],
+      "content": {
+        "prompt": "같은 부분 문제가 여러 번 나오는 성질은 ___ 부분 문제이다.",
+        "hint": "부분 문제끼리 겹친다는 뜻의 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "중복",
+          "overlapping",
+          "중복되는"
+        ]
+      },
+      "explanation": "중복 부분 문제가 있으면 한 번 구한 답을 저장해 다시 계산하지 않을 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Overlapping_subproblems"
+      ]
+    },
+    {
+      "id": "dsa-dp-intro-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dynamic-programming",
+        "overlapping-subproblems"
+      ],
+      "content": {
+        "prompt": "단순 재귀 fib(5)에서 fib(2)는 몇 번 계산되나?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "fib(4) 안에서 2번, fib(3) 안에서 1번 불려 모두 3번 계산합니다. 같은 일이 반복됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Overlapping_subproblems"
+      ]
+    },
+    {
+      "id": "dsa-dp-intro-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dynamic-programming",
+        "overlapping-subproblems"
+      ],
+      "content": {
+        "prompt": "병합 정렬에서 두 절반을 정렬하는 부분 문제는?",
+        "options": [
+          "서로 겹치지 않음",
+          "같은 문제 반복"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "두 절반은 서로 다른 원소를 다뤄 겹치지 않으므로, 답을 저장해 재사용할 일이 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Overlapping_subproblems"
+      ]
+    },
+    {
+      "id": "dsa-dp-intro-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dynamic-programming",
+        "overlapping-subproblems"
+      ],
+      "content": {
+        "prompt": "DP로 fib(5)를 구할 때 fib(3)은 몇 번 계산하나?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DP는 fib(3)의 답을 한 번 저장해 두고 다시 필요할 때 저장한 값을 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Overlapping_subproblems"
+      ]
+    },
+    {
+      "id": "dsa-dp-intro-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dynamic-programming",
+        "overlapping-subproblems"
+      ],
+      "content": {
+        "prompt": "동적 계획법은 부분 문제의 답을 저장해 두고 재사용한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "동적 계획법은 부분 문제의 답을 저장해 같은 부분 문제를 다시 계산하지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming",
+        "https://en.wikipedia.org/wiki/Overlapping_subproblems"
+      ]
+    }
+  ]
+}
