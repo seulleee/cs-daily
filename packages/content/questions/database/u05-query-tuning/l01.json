@@ -1,0 +1,239 @@
+{
+  "track": "database",
+  "unit": "u05-query-tuning",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "database-optimizer-plan-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "execution-plan",
+        "optimizer"
+      ],
+      "content": {
+        "prompt": "쿼리를 어떤 순서·방법으로 실행할지 정한 것은?",
+        "options": [
+          "실행 계획",
+          "스키마",
+          "인덱스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "실행 계획은 쿼리를 어떤 순서와 방법(스캔·조인)으로 실행할지 정한 계획입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-optimizer-plan-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "optimizer",
+        "basics"
+      ],
+      "content": {
+        "prompt": "가능한 계획의 비용을 추정해 가장 싼 것을 고르는 것은?",
+        "options": [
+          "인덱스",
+          "스키마",
+          "옵티마이저"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "옵티마이저(플래너)는 가능한 실행 계획들의 비용을 추정해 가장 싼 계획을 고릅니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-optimizer-plan-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "optimizer",
+        "cost"
+      ],
+      "content": {
+        "prompt": "예상 페이지 읽기·행 수로 비용을 계산해 고르는 방식은?",
+        "options": [
+          "규칙 기반 최적화",
+          "비용 기반 최적화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "예상 페이지 읽기와 행 수로 비용을 계산해 계획을 고르는 방식을 비용 기반 최적화라고 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-optimizer-plan-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "execution-plan",
+        "optimizer"
+      ],
+      "content": {
+        "prompt": "데이터 양이 바뀌어도 같은 SQL의 실행 계획은 바뀌지 않는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "옵티마이저는 데이터 양과 통계로 비용을 계산하므로, 같은 SQL이라도 데이터가 바뀌면 계획이 바뀔 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-optimizer-plan-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "execution-plan",
+        "basics"
+      ],
+      "content": {
+        "prompt": "옵티마이저가 고른 실행 순서·방법을 ___ (이)라고 한다.",
+        "hint": "스캔 방식과 조인 순서를 담는다"
+      },
+      "answer_key": {
+        "accepted": [
+          "실행 계획",
+          "실행계획",
+          "execution plan",
+          "query plan",
+          "쿼리 플랜",
+          "쿼리 계획",
+          "plan"
+        ]
+      },
+      "explanation": "쿼리를 어떤 순서와 방법으로 실행할지 정한 것을 실행 계획이라고 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-optimizer-plan-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "optimizer",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "PostgreSQL에서는 옵티마이저를 ___ (이)라고도 부른다.",
+        "hint": "계획을 세우는 쪽이라는 뜻"
+      },
+      "answer_key": {
+        "accepted": [
+          "플래너",
+          "planner",
+          "쿼리 플래너",
+          "query planner"
+        ]
+      },
+      "explanation": "PostgreSQL 문서는 옵티마이저를 플래너(planner)라고도 부르며, 같은 역할을 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-optimizer-plan-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "optimizer",
+        "cost"
+      ],
+      "content": {
+        "prompt": "계획 A의 예상 비용은 120, B는 80이다. 옵티마이저가 고르는 것은?",
+        "options": [
+          "A",
+          "B"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "옵티마이저는 추정 비용이 가장 낮은 계획을 고르므로 비용 80인 B를 선택합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-optimizer-plan-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "execution-plan",
+        "statistics"
+      ],
+      "content": {
+        "prompt": "테이블이 100행에서 1천만 행이 됐다. 같은 SQL의 계획은?",
+        "options": [
+          "바뀔 수 있다",
+          "반드시 같다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "행 수가 바뀌면 각 계획의 추정 비용도 바뀌므로, 옵티마이저가 다른 계획을 고를 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-optimizer-plan-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "optimizer",
+        "cost"
+      ],
+      "content": {
+        "prompt": "비용 기반 최적화가 비용 계산에 쓰는 값은?",
+        "options": [
+          "SQL 길이",
+          "작성 시각",
+          "예상 페이지 읽기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "비용 기반 최적화는 예상 페이지 읽기와 예상 행 수로 계획마다 비용을 계산합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-optimizer-plan-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "execution-plan",
+        "basics"
+      ],
+      "content": {
+        "prompt": "실행 계획에는 스캔 방법과 조인 순서가 담긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "실행 계획은 테이블을 어떻게 읽고(스캔) 어떤 순서·방법으로 조인할지를 정한 계획입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    }
+  ]
+}

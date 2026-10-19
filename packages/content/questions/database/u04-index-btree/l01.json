@@ -1,0 +1,240 @@
+{
+  "track": "database",
+  "unit": "u04-index-btree",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "database-index-basics-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "index",
+        "basics"
+      ],
+      "content": {
+        "prompt": "테이블과 따로 두어 열 값으로 행 위치를 찾게 하는 구조는?",
+        "options": [
+          "스키마",
+          "외래키",
+          "인덱스"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "인덱스는 열 값과 그 값을 가진 행의 위치를 테이블과 따로 정리해 둔 자료구조입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-basics-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "index",
+        "full-scan"
+      ],
+      "content": {
+        "prompt": "인덱스 없이 테이블 전체를 읽는 것은?",
+        "options": [
+          "풀 스캔",
+          "인덱스 탐색",
+          "정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인덱스를 쓰지 않으면 테이블의 모든 행을 처음부터 끝까지 읽는데, 이를 풀 스캔이라고 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-basics-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "full-scan",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "행 수에 비례해 O(n)으로 비용이 느는 쪽은?",
+        "options": [
+          "풀 스캔",
+          "인덱스 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "풀 스캔은 모든 행을 읽으므로 행 수에 비례하는 O(n)입니다. B+Tree 인덱스 탐색은 O(log n)입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-basics-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "index",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "B+Tree 인덱스 탐색은 행 수에 비례하는 O(n)이 걸린다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "B+Tree 인덱스 탐색은 O(log n)에 위치를 찾습니다. 행 수에 비례하는 O(n)은 풀 스캔입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-basics-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "index",
+        "basics"
+      ],
+      "content": {
+        "prompt": "자주 찾는 열 값과 행 위치를 정렬해 따로 둔 자료구조는 ___ 이다.",
+        "hint": "테이블과 따로 저장되는 구조"
+      },
+      "answer_key": {
+        "accepted": [
+          "인덱스",
+          "index",
+          "색인",
+          "인덱스 구조"
+        ]
+      },
+      "explanation": "테이블과 따로 저장되어 열 값으로 행 위치를 찾게 해 주는 자료구조를 인덱스라고 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-basics-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "full-scan",
+        "basics"
+      ],
+      "content": {
+        "prompt": "인덱스 없이 테이블 전체를 읽는 것을 ___ 이라고 한다.",
+        "hint": "비용이 행 수에 비례한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "풀 스캔",
+          "풀스캔",
+          "full scan",
+          "fullscan",
+          "full table scan",
+          "전체 스캔",
+          "테이블 풀 스캔"
+        ]
+      },
+      "explanation": "테이블 전체를 처음부터 끝까지 읽는 것을 풀 스캔이라고 하며, 비용이 행 수에 비례합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-basics-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "index",
+        "where"
+      ],
+      "content": {
+        "prompt": "WHERE email = ? 조회가 잦다. 인덱스를 둘 열은?",
+        "options": [
+          "이름",
+          "가입일",
+          "email"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "WHERE 조건에 자주 쓰이는 열이 인덱스 대상입니다. email에 인덱스가 있으면 풀 스캔 없이 위치를 찾습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-basics-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "complexity",
+        "index"
+      ],
+      "content": {
+        "prompt": "행이 1천에서 100만으로 늘 때 비용이 덜 느는 쪽은?",
+        "options": [
+          "풀 스캔",
+          "인덱스 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "풀 스캔은 행 수만큼 1,000배 늘지만, log₂n은 약 10에서 약 20으로 두 배 정도만 늘어납니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-basics-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "index",
+        "join"
+      ],
+      "content": {
+        "prompt": "주문과 회원을 회원번호로 자주 JOIN한다. 주문의 인덱스 후보 열은?",
+        "options": [
+          "메모",
+          "배송 요청",
+          "회원번호"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "JOIN 조건에 자주 쓰이는 열이 인덱스 대상입니다. 주문.회원번호에 인덱스가 있으면 짝을 빨리 찾습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-basics-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "index",
+        "basics"
+      ],
+      "content": {
+        "prompt": "인덱스는 테이블과 별도로 저장되는 자료구조다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "인덱스는 테이블과 따로 저장되며, 열 값으로 행 위치를 빠르게 찾게 해 줍니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    }
+  ]
+}

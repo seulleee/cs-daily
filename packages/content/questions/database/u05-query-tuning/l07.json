@@ -1,0 +1,245 @@
+{
+  "track": "database",
+  "unit": "u05-query-tuning",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "database-statistics-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "statistics",
+        "optimizer"
+      ],
+      "content": {
+        "prompt": "옵티마이저가 쓰는 행 수·고유값 수·값 분포 정보는?",
+        "options": [
+          "인덱스",
+          "실행 계획",
+          "통계"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "통계는 행 수, 열의 고유값 수, 자주 나오는 값, 값 분포 등 옵티마이저가 비용을 추정하는 정보입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-stats.html",
+        "https://www.postgresql.org/docs/current/sql-analyze.html"
+      ]
+    },
+    {
+      "id": "database-statistics-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "analyze",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "PostgreSQL에서 통계를 수집하는 명령은?",
+        "options": [
+          "ANALYZE",
+          "EXPLAIN",
+          "CREATE INDEX"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ANALYZE는 테이블 표본을 읽어 통계를 수집합니다. 보통은 autovacuum이 자동으로 실행합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-stats.html",
+        "https://www.postgresql.org/docs/current/sql-analyze.html"
+      ]
+    },
+    {
+      "id": "database-statistics-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "statistics",
+        "mcv"
+      ],
+      "content": {
+        "prompt": "열에서 자주 나오는 값과 그 빈도를 모은 목록은?",
+        "options": [
+          "히스토그램",
+          "MCV"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "MCV(Most Common Values)는 자주 나오는 값 목록이고, 히스토그램은 값 분포를 구간으로 나눈 것입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-stats.html",
+        "https://www.postgresql.org/docs/current/sql-analyze.html"
+      ]
+    },
+    {
+      "id": "database-statistics-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "analyze",
+        "autovacuum"
+      ],
+      "content": {
+        "prompt": "PostgreSQL 통계는 ANALYZE를 직접 실행해야만 갱신된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "autovacuum이 변경이 많은 테이블에 ANALYZE를 자동으로 실행하므로 직접 실행하지 않아도 갱신됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-stats.html",
+        "https://www.postgresql.org/docs/current/sql-analyze.html"
+      ]
+    },
+    {
+      "id": "database-statistics-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "analyze",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "대량 적재 뒤 통계를 새로 모으려면 ___ 명령을 실행한다.",
+        "hint": "autovacuum이 자동으로 실행해 주는 명령"
+      },
+      "answer_key": {
+        "accepted": [
+          "ANALYZE",
+          "analyze",
+          "ANALYSE",
+          "analyse"
+        ]
+      },
+      "explanation": "ANALYZE는 테이블의 통계를 수집하는 명령이며, autovacuum이 자동으로 실행하기도 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-stats.html",
+        "https://www.postgresql.org/docs/current/sql-analyze.html"
+      ]
+    },
+    {
+      "id": "database-statistics-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "statistics",
+        "histogram"
+      ],
+      "content": {
+        "prompt": "열 값의 분포를 여러 구간으로 나눠 나타낸 통계는 ___ 이다.",
+        "hint": "구간 경계값 목록으로 저장된다"
+      },
+      "answer_key": {
+        "accepted": [
+          "히스토그램",
+          "histogram"
+        ]
+      },
+      "explanation": "히스토그램은 열 값의 분포를 구간으로 나눈 통계로, pg_stats 뷰에서 구간 경계값을 볼 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-stats.html",
+        "https://www.postgresql.org/docs/current/sql-analyze.html"
+      ]
+    },
+    {
+      "id": "database-statistics-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "analyze",
+        "stale-statistics"
+      ],
+      "content": {
+        "prompt": "100만 행을 대량 적재한 직후 계획이 나빠졌다. 먼저 할 일은?",
+        "options": [
+          "인덱스 삭제",
+          "테이블 재생성",
+          "ANALYZE 실행"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "대량 적재 직후엔 통계가 실제와 달라 나쁜 계획을 고르기 쉽습니다. ANALYZE로 통계를 먼저 갱신합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-stats.html",
+        "https://www.postgresql.org/docs/current/sql-analyze.html"
+      ]
+    },
+    {
+      "id": "database-statistics-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "statistics",
+        "stale-statistics"
+      ],
+      "content": {
+        "prompt": "통계상 1천 행인데 실제는 100만 행이다. 생길 수 있는 일은?",
+        "options": [
+          "결과 행 누락",
+          "나쁜 계획 선택"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "통계는 계획을 고르는 데만 쓰여 결과는 같지만, 행 수를 잘못 알아 느린 계획을 고를 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-stats.html",
+        "https://www.postgresql.org/docs/current/sql-analyze.html"
+      ]
+    },
+    {
+      "id": "database-statistics-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "statistics",
+        "pg-stats"
+      ],
+      "content": {
+        "prompt": "PostgreSQL에서 열의 MCV와 히스토그램을 볼 수 있는 뷰는?",
+        "options": [
+          "pg_stats",
+          "EXPLAIN",
+          "실행 계획"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "pg_stats 뷰는 열마다 자주 나오는 값(MCV)과 히스토그램 구간 등 수집된 통계를 보여 줍니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-stats.html",
+        "https://www.postgresql.org/docs/current/sql-analyze.html"
+      ]
+    },
+    {
+      "id": "database-statistics-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "statistics",
+        "optimizer"
+      ],
+      "content": {
+        "prompt": "옵티마이저 통계에는 행 수와 열의 고유값 수가 포함된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "통계에는 행 수, 열의 고유값 수, 자주 나오는 값, 값 분포 등이 들어 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-stats.html",
+        "https://www.postgresql.org/docs/current/sql-analyze.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "track": "database",
+  "unit": "u04-index-btree",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "database-covering-index-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "covering-index",
+        "basics"
+      ],
+      "content": {
+        "prompt": "쿼리가 쓰는 열이 모두 인덱스에 있어 테이블을 안 읽는 경우는?",
+        "options": [
+          "복합 인덱스",
+          "식 인덱스",
+          "커버링 인덱스"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "쿼리에 필요한 열이 모두 인덱스에 있으면 테이블을 읽지 않아도 되며, 이를 커버링 인덱스라고 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-index-only-scans.html"
+      ]
+    },
+    {
+      "id": "database-covering-index-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "index-only-scan",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "PostgreSQL에서 인덱스만 읽는 실행 방식은?",
+        "options": [
+          "Index Only Scan",
+          "풀 스캔",
+          "범위 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "PostgreSQL은 필요한 열이 모두 인덱스에 있으면 Index Only Scan으로 인덱스만 읽어 답합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-index-only-scans.html"
+      ]
+    },
+    {
+      "id": "database-covering-index-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "visibility-map",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "PostgreSQL이 힙 방문을 건너뛰는 페이지 상태는?",
+        "options": [
+          "가득 참",
+          "all-visible"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "가시성 맵에 all-visible로 표시된 페이지만 힙을 확인하지 않고 건너뜁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-index-only-scans.html"
+      ]
+    },
+    {
+      "id": "database-covering-index-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "include",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "INCLUDE로 덧붙인 열은 인덱스의 검색 키가 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "INCLUDE 열은 리프에 덧붙여 저장만 될 뿐 검색 키가 아니므로, 그 열 조건으로 범위를 좁히지 못합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-index-only-scans.html"
+      ]
+    },
+    {
+      "id": "database-covering-index-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "covering-index",
+        "basics"
+      ],
+      "content": {
+        "prompt": "쿼리가 쓰는 열이 모두 인덱스에 있으면 ___ 인덱스라고 한다.",
+        "hint": "테이블을 읽지 않아도 된다"
+      },
+      "answer_key": {
+        "accepted": [
+          "커버링",
+          "covering",
+          "커버",
+          "포괄"
+        ]
+      },
+      "explanation": "필요한 열이 모두 인덱스에 있어 테이블을 읽지 않는 경우를 커버링 인덱스라고 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-index-only-scans.html"
+      ]
+    },
+    {
+      "id": "database-covering-index-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "include",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "PostgreSQL 11+에서 검색 키가 아닌 열을 리프에 덧붙이는 절은 ___ 이다.",
+        "hint": "CREATE INDEX ... ON t (a) ___ (b)"
+      },
+      "answer_key": {
+        "accepted": [
+          "INCLUDE",
+          "include"
+        ]
+      },
+      "explanation": "CREATE INDEX ... ON t (a) INCLUDE (b)로 만들면 b가 검색 키가 아닌 열로 리프에 저장됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-index-only-scans.html"
+      ]
+    },
+    {
+      "id": "database-covering-index-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "covering-index",
+        "composite-index"
+      ],
+      "content": {
+        "prompt": "인덱스 (a, b)에서 SELECT b FROM t WHERE a = 1은?",
+        "options": [
+          "커버링이다",
+          "테이블도 읽는다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "쿼리가 쓰는 열 a와 b가 모두 인덱스에 있으므로 테이블을 읽지 않고 답할 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-index-only-scans.html"
+      ]
+    },
+    {
+      "id": "database-covering-index-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "include",
+        "covering-index"
+      ],
+      "content": {
+        "prompt": "인덱스 (a), SELECT c FROM t WHERE a = 1을 커버링하려면?",
+        "options": [
+          "a 열 빼기",
+          "INCLUDE (c) 추가"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "c가 인덱스에 없어 테이블을 읽어야 합니다. INCLUDE (c)로 c를 리프에 덧붙이면 인덱스만으로 답합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-index-only-scans.html"
+      ]
+    },
+    {
+      "id": "database-covering-index-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "index-only-scan",
+        "visibility-map"
+      ],
+      "content": {
+        "prompt": "Index Only Scan 중 all-visible이 아닌 페이지의 행은?",
+        "options": [
+          "힙에서 확인한다",
+          "건너뛴다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "all-visible로 표시되지 않은 페이지는 행을 보여도 되는지 알 수 없어 힙을 방문해 확인합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-index-only-scans.html"
+      ]
+    },
+    {
+      "id": "database-covering-index-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "covering-index",
+        "basics"
+      ],
+      "content": {
+        "prompt": "커버링 인덱스는 쿼리에 필요한 열이 모두 인덱스에 있는 경우다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "쿼리에 쓰인 열이 모두 인덱스에 있으면 커버링 인덱스이며, 테이블을 읽지 않고 답할 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-index-only-scans.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "track": "database",
+  "unit": "u05-query-tuning",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "database-hash-merge-join-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "hash-join",
+        "join"
+      ],
+      "content": {
+        "prompt": "작은 쪽으로 해시 테이블을 만들고 큰 쪽을 훑는 조인은?",
+        "options": [
+          "Hash Join",
+          "Merge Join",
+          "Nested Loop"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Hash Join은 작은 쪽 테이블로 해시 테이블을 만든 뒤 큰 쪽을 한 번 훑으며 짝을 찾습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-hash-merge-join-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "merge-join",
+        "join"
+      ],
+      "content": {
+        "prompt": "양쪽을 조인 키로 정렬한 뒤 나란히 병합하는 조인은?",
+        "options": [
+          "Hash Join",
+          "Merge Join"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Merge Join은 양쪽을 조인 키 순서로 정렬한 뒤 앞에서부터 나란히 비교하며 병합합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-hash-merge-join-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "hash-join",
+        "join-condition"
+      ],
+      "content": {
+        "prompt": "등호(=) 조인 조건에만 쓰는 방식은?",
+        "options": [
+          "Nested Loop",
+          "Hash Join"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Hash Join은 같은 키를 해시 값으로 찾으므로 등호 조인에만 씁니다. Nested Loop는 부등호도 처리합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-hash-merge-join-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "hash-join",
+        "join"
+      ],
+      "content": {
+        "prompt": "Hash Join은 큰 쪽 테이블로 해시 테이블을 만든다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Hash Join은 작은 쪽 테이블로 해시 테이블을 만들고, 큰 쪽을 훑으며 짝을 찾습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-hash-merge-join-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "hash-join",
+        "join"
+      ],
+      "content": {
+        "prompt": "작은 쪽으로 해시 테이블을 만드는 조인은 ___ Join이다.",
+        "hint": "키를 계산한 값으로 위치를 정하는 자료구조"
+      },
+      "answer_key": {
+        "accepted": [
+          "Hash",
+          "hash",
+          "해시"
+        ]
+      },
+      "explanation": "Hash Join은 작은 쪽 테이블로 해시 테이블을 만든 뒤 큰 쪽을 훑으며 짝을 찾습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-hash-merge-join-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "merge-join",
+        "join"
+      ],
+      "content": {
+        "prompt": "양쪽이 조인 키 순서로 정렬돼 있으면 유리한 조인은 ___ Join이다.",
+        "hint": "정렬된 두 입력을 나란히 합친다"
+      },
+      "answer_key": {
+        "accepted": [
+          "Merge",
+          "merge",
+          "머지",
+          "병합"
+        ]
+      },
+      "explanation": "Merge Join은 양쪽이 이미 조인 키 순서(인덱스)로 정렬되어 있으면 정렬 없이 바로 병합합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-hash-merge-join-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "hash-join",
+        "join"
+      ],
+      "content": {
+        "prompt": "인덱스 없는 100만 행 두 테이블을 a.id = b.id로 조인한다. 알맞은 방식은?",
+        "options": [
+          "Hash Join",
+          "Nested Loop"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "등호 조인이고 인덱스 없는 큰 테이블끼리라 각 테이블을 한 번씩만 읽는 Hash Join이 효율적입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-hash-merge-join-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "merge-join",
+        "index"
+      ],
+      "content": {
+        "prompt": "두 테이블 모두 조인 키 인덱스 순서로 읽을 수 있다. 유리한 방식은?",
+        "options": [
+          "Merge Join",
+          "Hash Join"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "양쪽이 이미 조인 키 순서로 정렬되어 있으면 정렬 비용 없이 바로 병합하는 Merge Join이 유리합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-hash-merge-join-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "hash-join",
+        "join-condition"
+      ],
+      "content": {
+        "prompt": "ON a.price > b.price 조인에 쓸 수 없는 방식은?",
+        "options": [
+          "Nested Loop",
+          "Hash Join"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Hash Join은 등호 조인에만 쓸 수 있습니다. 부등호 조건은 Nested Loop가 처리합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    },
+    {
+      "id": "database-hash-merge-join-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "hash-join",
+        "join"
+      ],
+      "content": {
+        "prompt": "Hash Join은 해시 테이블을 만든 뒤 다른 쪽을 훑으며 짝을 찾는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "Hash Join은 작은 쪽으로 해시 테이블을 만들고, 큰 쪽 행마다 해시 테이블에서 같은 키를 찾습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/planner-optimizer.html"
+      ]
+    }
+  ]
+}

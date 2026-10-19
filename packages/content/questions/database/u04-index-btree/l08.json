@@ -1,0 +1,248 @@
+{
+  "track": "database",
+  "unit": "u04-index-btree",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "database-clustered-index-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "clustered-index",
+        "basics"
+      ],
+      "content": {
+        "prompt": "행 자체를 키 순서로 리프에 저장하는 인덱스는?",
+        "options": [
+          "세컨더리 인덱스",
+          "클러스터드 인덱스",
+          "복합 인덱스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "클러스터드 인덱스는 리프에 행 자체를 키 순서로 저장하므로 테이블당 하나만 둘 수 있습니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-clustered-index-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "secondary-index",
+        "mysql"
+      ],
+      "content": {
+        "prompt": "InnoDB에서 리프에 기본키 값을 두는 인덱스는?",
+        "options": [
+          "세컨더리 인덱스",
+          "클러스터드 인덱스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "InnoDB의 세컨더리 인덱스는 리프에 기본키 값을 두고, 그 값으로 클러스터드 인덱스를 다시 탐색합니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-clustered-index-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "clustered-index",
+        "mysql"
+      ],
+      "content": {
+        "prompt": "MySQL InnoDB에서 클러스터드 인덱스가 되는 것은?",
+        "options": [
+          "외래키",
+          "마지막 인덱스",
+          "기본키"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "InnoDB는 기본키를 클러스터드 인덱스로 써서 테이블 행 자체를 기본키 순서로 저장합니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-clustered-index-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "postgresql",
+        "heap"
+      ],
+      "content": {
+        "prompt": "PostgreSQL은 기본키 순서로 행을 인덱스 리프에 저장한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "PostgreSQL은 행을 힙 파일에 두고, 기본키를 포함한 모든 인덱스가 행 위치(TID)를 가리킵니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-clustered-index-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "clustered-index",
+        "mysql"
+      ],
+      "content": {
+        "prompt": "InnoDB는 기본키를 ___ 인덱스로 써서 행을 기본키 순서로 저장한다.",
+        "hint": "리프에 행 자체를 담는 인덱스"
+      },
+      "answer_key": {
+        "accepted": [
+          "클러스터드",
+          "clustered",
+          "클러스터",
+          "클러스터링"
+        ]
+      },
+      "explanation": "클러스터드 인덱스는 테이블 행 자체를 키 순서로 리프에 저장하며, 테이블당 하나만 만들 수 있습니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-clustered-index-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "postgresql",
+        "heap"
+      ],
+      "content": {
+        "prompt": "PostgreSQL 인덱스는 힙 파일의 행 위치인 ___ 를 가리킨다.",
+        "hint": "페이지 번호와 그 안의 순번"
+      },
+      "answer_key": {
+        "accepted": [
+          "TID",
+          "tid",
+          "ctid",
+          "튜플 ID",
+          "tuple id"
+        ]
+      },
+      "explanation": "PostgreSQL 인덱스의 리프는 힙 파일에서 행의 물리 위치인 TID를 가리킵니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-clustered-index-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "clustered-index",
+        "basics"
+      ],
+      "content": {
+        "prompt": "한 테이블에 둘 수 있는 클러스터드 인덱스 수는?",
+        "options": [
+          "1개",
+          "2개",
+          "제한 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "행 자체를 한 가지 키 순서로만 저장할 수 있으므로 클러스터드 인덱스는 테이블당 1개입니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-clustered-index-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "secondary-index",
+        "mysql"
+      ],
+      "content": {
+        "prompt": "InnoDB 세컨더리 인덱스로 키를 찾은 뒤 행을 얻는 방법은?",
+        "options": [
+          "TID로 바로 읽기",
+          "기본키로 다시 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "InnoDB 세컨더리 인덱스의 리프에는 기본키 값이 있어, 그 값으로 클러스터드 인덱스를 다시 탐색합니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-clustered-index-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "postgresql",
+        "heap"
+      ],
+      "content": {
+        "prompt": "PostgreSQL에서 email 인덱스의 리프가 가리키는 것은?",
+        "options": [
+          "기본키 값",
+          "다른 인덱스",
+          "행 위치(TID)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "PostgreSQL은 행을 힙 파일에 두므로 모든 인덱스의 리프가 힙의 행 위치(TID)를 가리킵니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-clustered-index-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "clustered-index",
+        "mysql"
+      ],
+      "content": {
+        "prompt": "MySQL InnoDB의 기본키는 클러스터드 인덱스다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "InnoDB에서는 기본키가 클러스터드 인덱스이며, 리프에 테이블 행 자체가 기본키 순서로 저장됩니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    }
+  ]
+}

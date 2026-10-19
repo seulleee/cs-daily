@@ -1,0 +1,241 @@
+{
+  "track": "database",
+  "unit": "u05-query-tuning",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "database-explain-read-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "explain",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "쿼리를 실행하지 않고 예상 실행 계획만 보여 주는 명령은?",
+        "options": [
+          "EXPLAIN ANALYZE",
+          "EXPLAIN",
+          "DESCRIBE"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "EXPLAIN은 쿼리를 실행하지 않고 옵티마이저가 고른 예상 실행 계획만 보여 줍니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html",
+        "https://www.postgresql.org/docs/current/sql-explain.html"
+      ]
+    },
+    {
+      "id": "database-explain-read-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "explain-analyze",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "쿼리를 실제로 실행해 실제 시간·행 수까지 보여 주는 명령은?",
+        "options": [
+          "EXPLAIN ANALYZE",
+          "EXPLAIN"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "PostgreSQL의 EXPLAIN ANALYZE는 쿼리를 실제로 실행하고 노드마다 실제 시간과 행 수를 함께 보여 줍니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html",
+        "https://www.postgresql.org/docs/current/sql-explain.html"
+      ]
+    },
+    {
+      "id": "database-explain-read-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "explain",
+        "plan-node"
+      ],
+      "content": {
+        "prompt": "PostgreSQL 실행 계획에서 가장 먼저 실행되는 노드는?",
+        "options": [
+          "맨 위 노드",
+          "가장 안쪽 노드"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "가장 안쪽(아래) 노드가 먼저 실행되어 결과를 위의 부모 노드로 올립니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html",
+        "https://www.postgresql.org/docs/current/sql-explain.html"
+      ]
+    },
+    {
+      "id": "database-explain-read-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "explain-analyze",
+        "explain"
+      ],
+      "content": {
+        "prompt": "EXPLAIN ANALYZE는 쿼리를 실행하지 않는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "EXPLAIN ANALYZE는 쿼리를 실제로 실행합니다. 실행하지 않고 예상 계획만 보는 것은 EXPLAIN입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html",
+        "https://www.postgresql.org/docs/current/sql-explain.html"
+      ]
+    },
+    {
+      "id": "database-explain-read-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "explain",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "실행하지 않고 예상 계획만 보는 PostgreSQL 명령은 ___ 이다.",
+        "hint": "뒤에 ANALYZE를 붙이면 실제로 실행한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "EXPLAIN",
+          "explain"
+        ]
+      },
+      "explanation": "EXPLAIN은 쿼리를 실행하지 않고 예상 실행 계획과 추정 cost·rows를 보여 줍니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html",
+        "https://www.postgresql.org/docs/current/sql-explain.html"
+      ]
+    },
+    {
+      "id": "database-explain-read-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "explain-analyze",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "EXPLAIN ANALYZE 출력에서 실제 측정값은 ___ 뒤에 나온다.",
+        "hint": "실제라는 뜻의 영어 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "actual",
+          "ACTUAL",
+          "액추얼"
+        ]
+      },
+      "explanation": "EXPLAIN ANALYZE는 추정 cost·rows 옆의 actual 뒤에 실제 시간과 행 수를 보여 줍니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html",
+        "https://www.postgresql.org/docs/current/sql-explain.html"
+      ]
+    },
+    {
+      "id": "database-explain-read-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "explain-analyze",
+        "rows"
+      ],
+      "content": {
+        "prompt": "EXPLAIN ANALYZE의 rows=100, actual rows=50000. 추정은?",
+        "options": [
+          "정확하다",
+          "크게 틀렸다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "추정 rows와 actual rows가 500배 차이 나므로 추정이 크게 틀렸고, 계획이 나쁠 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html",
+        "https://www.postgresql.org/docs/current/sql-explain.html"
+      ]
+    },
+    {
+      "id": "database-explain-read-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "explain",
+        "plan-node"
+      ],
+      "content": {
+        "prompt": "노드 A 아래에 들여쓴 자식 노드 B가 있다. 먼저 실행되는 것은?",
+        "options": [
+          "B",
+          "A"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "들여쓴 자식 노드 B가 먼저 실행되어 결과를 부모 노드 A로 올립니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html",
+        "https://www.postgresql.org/docs/current/sql-explain.html"
+      ]
+    },
+    {
+      "id": "database-explain-read-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "explain",
+        "explain-analyze"
+      ],
+      "content": {
+        "prompt": "운영 DB에서 DELETE의 계획만 확인하려면 쓸 명령은?",
+        "options": [
+          "EXPLAIN",
+          "EXPLAIN ANALYZE"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "EXPLAIN ANALYZE는 DELETE를 실제로 실행해 행이 지워집니다. 계획만 볼 때는 EXPLAIN을 씁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html",
+        "https://www.postgresql.org/docs/current/sql-explain.html"
+      ]
+    },
+    {
+      "id": "database-explain-read-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "explain",
+        "cost"
+      ],
+      "content": {
+        "prompt": "EXPLAIN이 보여 주는 cost와 rows는 실행 전 추정값이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "EXPLAIN은 쿼리를 실행하지 않으므로 cost와 rows는 옵티마이저의 추정값입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html",
+        "https://www.postgresql.org/docs/current/sql-explain.html"
+      ]
+    }
+  ]
+}
