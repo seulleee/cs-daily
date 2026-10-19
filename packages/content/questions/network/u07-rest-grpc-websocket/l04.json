@@ -1,0 +1,258 @@
+{
+  "track": "network",
+  "unit": "u07-rest-grpc-websocket",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "network-api-versioning-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "api-design",
+        "versioning",
+        "idempotency"
+      ],
+      "content": {
+        "prompt": "/v1/처럼 호환되지 않는 변경을 구분하는 것은?",
+        "options": [
+          "멱등 키",
+          "버전 관리",
+          "콘텐츠 협상"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "버전 관리는 /v1/, /v2/처럼 경로나 헤더에 버전을 넣어 호환되지 않는 변경을 구분합니다.",
+      "refs": [
+        "https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-versioning-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "api-design",
+        "versioning",
+        "idempotency"
+      ],
+      "content": {
+        "prompt": "POST 재시도 중복을 막으려 보내는 헤더는?",
+        "options": [
+          "Idempotency-Key",
+          "Accept",
+          "Host"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Idempotency-Key(IETF 표준 초안) 헤더에 요청마다 고유한 값을 넣으면 서버가 같은 요청의 재시도를 알아봅니다.",
+      "refs": [
+        "https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-versioning-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "api-design",
+        "versioning",
+        "idempotency"
+      ],
+      "content": {
+        "prompt": "옛 클라이언트를 깨지 않는 변경은?",
+        "options": [
+          "필드 삭제",
+          "필드 이름 변경",
+          "선택 필드 추가"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "선택 필드 추가는 하위 호환 변경입니다. 필드 삭제나 이름 변경은 그 필드를 쓰는 옛 클라이언트를 깨뜨립니다.",
+      "refs": [
+        "https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-versioning-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "api-design",
+        "versioning",
+        "idempotency"
+      ],
+      "content": {
+        "prompt": "응답 필드의 이름을 바꾸는 것은 하위 호환 변경이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "필드 이름을 바꾸면 옛 이름을 읽는 클라이언트가 값을 찾지 못해 깨집니다. 하위 호환 변경이 아닙니다.",
+      "refs": [
+        "https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-versioning-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "api-design",
+        "versioning",
+        "idempotency"
+      ],
+      "content": {
+        "prompt": "/v1/처럼 경로에 넣어 변경을 구분하는 것은 API ___ 이다.",
+        "hint": "v 뒤의 숫자가 나타내는 것입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "버전",
+          "버전 관리",
+          "version",
+          "versioning",
+          "버저닝"
+        ]
+      },
+      "explanation": "API 버전을 경로에 넣으면 옛 클라이언트는 /v1/을, 새 클라이언트는 /v2/를 쓰며 함께 운영할 수 있습니다.",
+      "refs": [
+        "https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-versioning-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "api-design",
+        "versioning",
+        "idempotency"
+      ],
+      "content": {
+        "prompt": "같은 요청임을 식별해 중복 처리를 막는 값은 ___ 키다.",
+        "hint": "여러 번 보내도 결과가 한 번과 같다는 성질의 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "멱등",
+          "멱등성",
+          "멱등 키",
+          "idempotency",
+          "idempotency key"
+        ]
+      },
+      "explanation": "멱등 키를 보내면 서버가 이미 처리한 요청을 알아보고 다시 처리하지 않습니다.",
+      "refs": [
+        "https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-versioning-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "api-design",
+        "versioning",
+        "idempotency"
+      ],
+      "content": {
+        "prompt": "status 필드 값의 의미를 바꿔야 한다. 알맞은 방법은?",
+        "options": [
+          "그대로 배포",
+          "새 버전 /v2/"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "필드 의미 변경은 옛 클라이언트를 깨뜨리므로 새 버전으로 구분하고 옛 버전을 한동안 유지합니다.",
+      "refs": [
+        "https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-versioning-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "api-design",
+        "versioning",
+        "idempotency"
+      ],
+      "content": {
+        "prompt": "같은 Idempotency-Key로 결제 POST가 두 번 오면?",
+        "options": [
+          "처음 결과 반환",
+          "두 번 결제"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "서버는 키로 이미 처리한 요청임을 알아보고, 다시 결제하지 않고 처음 결과를 돌려줍니다.",
+      "refs": [
+        "https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-versioning-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "api-design",
+        "versioning",
+        "idempotency"
+      ],
+      "content": {
+        "prompt": "응답에 선택 필드 nickname을 추가했다. 옛 앱은?",
+        "options": [
+          "오류 발생",
+          "정상 동작"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "선택 필드 추가는 하위 호환 변경이라, 모르는 필드를 무시하는 옛 앱은 그대로 동작합니다.",
+      "refs": [
+        "https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-versioning-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "api-design",
+        "versioning",
+        "idempotency"
+      ],
+      "content": {
+        "prompt": "버전 관리는 호환되지 않는 변경을 구분하는 방법이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "호환되지 않는 변경은 /v2/처럼 새 버전으로 내보내 옛 버전 클라이언트가 깨지지 않게 합니다.",
+      "refs": [
+        "https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    }
+  ]
+}

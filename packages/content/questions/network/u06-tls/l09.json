@@ -1,0 +1,247 @@
+{
+  "track": "network",
+  "unit": "u06-tls",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "network-tls-cert-chain-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "certificate-chain"
+      ],
+      "content": {
+        "prompt": "신뢰 저장소에 미리 들어 있는 자체 서명 CA 인증서는?",
+        "options": [
+          "루트 인증서",
+          "중간 인증서",
+          "서버 인증서"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "루트 인증서는 OS·브라우저 신뢰 저장소에 미리 들어 있고, 스스로 서명한 CA 인증서입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8446"
+      ]
+    },
+    {
+      "id": "network-tls-cert-chain-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "certificate-chain"
+      ],
+      "content": {
+        "prompt": "루트가 서명하고, 서버 인증서를 직접 서명하는 인증서는?",
+        "options": [
+          "서버 인증서",
+          "루트 인증서",
+          "중간 인증서"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "중간 인증서는 루트가 서명한 CA 인증서이며, 서버 인증서에 직접 서명합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8446"
+      ]
+    },
+    {
+      "id": "network-tls-cert-chain-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "certificate-chain"
+      ],
+      "content": {
+        "prompt": "체인 검증에서 서명을 따라가는 순서는?",
+        "options": [
+          "루트→중간→서버",
+          "서버→중간→루트",
+          "중간→서버→루트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "서버 인증서에서 시작해 중간 인증서, 신뢰 저장소의 루트 순으로 서명을 따라 올라갑니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8446"
+      ]
+    },
+    {
+      "id": "network-tls-cert-chain-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "certificate-chain"
+      ],
+      "content": {
+        "prompt": "루트 인증서는 중간 인증서가 서명해 준다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "서명 방향은 반대입니다. 루트는 자체 서명이고, 중간 인증서를 루트가 서명합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8446"
+      ]
+    },
+    {
+      "id": "network-tls-cert-chain-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "certificate-chain"
+      ],
+      "content": {
+        "prompt": "신뢰 저장소에 미리 들어 있는 CA 인증서는 ___ 인증서다.",
+        "hint": "체인의 맨 위에 있는 자체 서명 인증서입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "루트",
+          "root",
+          "루트 CA",
+          "root CA"
+        ]
+      },
+      "explanation": "루트 인증서는 OS·브라우저에 미리 들어 있어 체인 검증의 출발 기준이 됩니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8446"
+      ]
+    },
+    {
+      "id": "network-tls-cert-chain-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "certificate-chain"
+      ],
+      "content": {
+        "prompt": "루트와 서버 인증서 사이에 있는 인증서는 ___ 인증서다.",
+        "hint": "루트가 서명하고 서버 인증서를 서명합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "중간",
+          "중간 CA",
+          "intermediate",
+          "intermediate CA"
+        ]
+      },
+      "explanation": "중간 인증서는 루트와 서버 인증서를 잇는 CA 인증서로, 서버가 체인에 담아 보내야 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8446"
+      ]
+    },
+    {
+      "id": "network-tls-cert-chain-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "certificate-chain"
+      ],
+      "content": {
+        "prompt": "서버→중간→루트 체인에서 서버 인증서를 서명한 것은?",
+        "options": [
+          "루트 CA",
+          "중간 CA",
+          "서버 자신"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "서버 인증서는 중간 CA가 서명하고, 중간 인증서는 루트 CA가 서명합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8446"
+      ]
+    },
+    {
+      "id": "network-tls-cert-chain-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "certificate-chain"
+      ],
+      "content": {
+        "prompt": "서버가 중간 인증서를 빠뜨리고 보냈다. 결과는?",
+        "options": [
+          "일부 클라이언트 실패",
+          "모두 항상 정상"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "체인을 끝까지 잇지 못한 클라이언트는 검증에 실패합니다. 중간 인증서를 따로 보충하는 일부 브라우저만 성공합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8446"
+      ]
+    },
+    {
+      "id": "network-tls-cert-chain-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "certificate-chain"
+      ],
+      "content": {
+        "prompt": "체인이 신뢰 저장소에 없는 루트에서 끝나면?",
+        "options": [
+          "검증 성공",
+          "검증 실패"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "체인 검증은 신뢰 저장소의 루트에 닿아야 성공합니다. 모르는 루트로 끝나면 믿을 근거가 없어 실패합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8446"
+      ]
+    },
+    {
+      "id": "network-tls-cert-chain-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "certificate-chain"
+      ],
+      "content": {
+        "prompt": "루트 인증서는 자기 개인키로 자기 인증서에 서명한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "루트 인증서는 자체 서명 인증서이며, 서명이 아니라 신뢰 저장소에 들어 있다는 사실로 신뢰받습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8446"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "track": "network",
+  "unit": "u06-tls",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "network-tls-key-exchange-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "key-exchange",
+        "forward-secrecy"
+      ],
+      "content": {
+        "prompt": "공개된 통신 위에서 둘만 아는 대칭키를 만드는 과정은?",
+        "options": [
+          "키 교환",
+          "전자서명",
+          "해시"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "키 교환은 누구나 볼 수 있는 통신 위에서 양쪽만 아는 대칭키를 만드는 과정입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc5246",
+        "https://www.rfc-editor.org/rfc/rfc7748"
+      ]
+    },
+    {
+      "id": "network-tls-key-exchange-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "key-exchange",
+        "forward-secrecy"
+      ],
+      "content": {
+        "prompt": "연결마다 임시 키로 디피-헬만 교환을 하는 방식은?",
+        "options": [
+          "RSA 키 전송",
+          "(EC)DHE",
+          "AES-GCM"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "(EC)DHE는 연결마다 새 임시 키를 만들어 디피-헬만 교환을 합니다. 끝의 E가 임시(Ephemeral)를 뜻합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc5246",
+        "https://www.rfc-editor.org/rfc/rfc7748"
+      ]
+    },
+    {
+      "id": "network-tls-key-exchange-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "key-exchange",
+        "forward-secrecy"
+      ],
+      "content": {
+        "prompt": "서버 개인키가 나중에 유출돼도 과거 통신을 지키는 성질은?",
+        "options": [
+          "무결성",
+          "인증",
+          "전방 비밀성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "전방 비밀성은 서버 개인키가 나중에 유출돼도 이미 끝난 통신을 복호화할 수 없게 하는 성질입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc5246",
+        "https://www.rfc-editor.org/rfc/rfc7748"
+      ]
+    },
+    {
+      "id": "network-tls-key-exchange-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "key-exchange",
+        "forward-secrecy"
+      ],
+      "content": {
+        "prompt": "TLS 1.3은 RSA 키 전송 방식의 키 교환을 지원한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "TLS 1.3은 RSA 키 전송을 없애고 (EC)DHE만 씁니다. RSA 키 전송은 TLS 1.2까지 허용됐습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc5246",
+        "https://www.rfc-editor.org/rfc/rfc7748"
+      ]
+    },
+    {
+      "id": "network-tls-key-exchange-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "key-exchange",
+        "forward-secrecy"
+      ],
+      "content": {
+        "prompt": "둘만 아는 대칭키를 공개 통신 위에서 만드는 것은 키 ___ 이다.",
+        "hint": "양쪽이 값을 주고받아 같은 키를 얻습니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "교환",
+          "키 교환",
+          "exchange",
+          "key exchange"
+        ]
+      },
+      "explanation": "키 교환으로 만든 대칭키로 이후 응용 데이터를 암호화합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc5246",
+        "https://www.rfc-editor.org/rfc/rfc7748"
+      ]
+    },
+    {
+      "id": "network-tls-key-exchange-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "key-exchange",
+        "forward-secrecy"
+      ],
+      "content": {
+        "prompt": "서버 개인키 유출에도 과거 통신이 안전한 성질은 ___ 이다.",
+        "hint": "이미 끝난 앞선 통신을 보호한다는 뜻의 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "전방 비밀성",
+          "전방향 안전성",
+          "전방 비밀",
+          "순방향 비밀성",
+          "forward secrecy",
+          "perfect forward secrecy",
+          "PFS"
+        ]
+      },
+      "explanation": "연결마다 임시 키를 쓰고 버리면 서버 개인키가 유출돼도 과거 세션 키를 되살릴 수 없어 전방 비밀성이 생깁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc5246",
+        "https://www.rfc-editor.org/rfc/rfc7748"
+      ]
+    },
+    {
+      "id": "network-tls-key-exchange-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "key-exchange",
+        "forward-secrecy"
+      ],
+      "content": {
+        "prompt": "TLS 1.2 RSA 키 전송 서버의 개인키가 유출되면?",
+        "options": [
+          "과거 통신 안전",
+          "녹화된 과거 통신 해독"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "RSA 키 전송은 키 재료를 서버 공개키로 암호화해 보내므로, 개인키가 있으면 녹화해 둔 과거 통신의 키를 풀 수 있습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc5246",
+        "https://www.rfc-editor.org/rfc/rfc7748"
+      ]
+    },
+    {
+      "id": "network-tls-key-exchange-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "key-exchange",
+        "forward-secrecy"
+      ],
+      "content": {
+        "prompt": "(EC)DHE 연결 뒤 서버 개인키가 유출되면 과거 통신은?",
+        "options": [
+          "복호화 불가",
+          "복호화 가능"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "(EC)DHE의 임시 키는 연결이 끝나면 버리고 서버 개인키는 서명에만 쓰므로, 과거 통신은 복호화할 수 없습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc5246",
+        "https://www.rfc-editor.org/rfc/rfc7748"
+      ]
+    },
+    {
+      "id": "network-tls-key-exchange-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "key-exchange",
+        "forward-secrecy"
+      ],
+      "content": {
+        "prompt": "TLS 1.3에서 인증서로 접속할 때 쓰는 키 교환은?",
+        "options": [
+          "RSA 키 전송",
+          "평문 키 전송",
+          "(EC)DHE"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "TLS 1.3은 RSA 키 전송을 없앴고, 인증서를 쓰는 핸드셰이크의 키 교환은 (EC)DHE로 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc5246",
+        "https://www.rfc-editor.org/rfc/rfc7748"
+      ]
+    },
+    {
+      "id": "network-tls-key-exchange-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "key-exchange",
+        "forward-secrecy"
+      ],
+      "content": {
+        "prompt": "키 교환은 공개된 통신 위에서 둘만 아는 대칭키를 만든다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "키 교환은 주고받는 값을 남이 보더라도 양쪽만 같은 대칭키를 얻도록 설계된 과정입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc5246",
+        "https://www.rfc-editor.org/rfc/rfc7748"
+      ]
+    }
+  ]
+}

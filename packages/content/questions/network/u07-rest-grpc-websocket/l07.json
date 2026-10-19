@@ -1,0 +1,246 @@
+{
+  "track": "network",
+  "unit": "u07-rest-grpc-websocket",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "network-api-grpc-streaming-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "grpc",
+        "streaming"
+      ],
+      "content": {
+        "prompt": "요청 하나에 응답 하나인 gRPC 호출은?",
+        "options": [
+          "서버 스트리밍",
+          "단항",
+          "양방향 스트리밍"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "단항(unary) 호출은 요청 하나를 보내고 응답 하나를 받는 가장 기본 형태입니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://github.com/grpc/grpc-web"
+      ]
+    },
+    {
+      "id": "network-api-grpc-streaming-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "grpc",
+        "streaming"
+      ],
+      "content": {
+        "prompt": "양쪽이 동시에 여러 메시지를 주고받는 호출은?",
+        "options": [
+          "단항",
+          "서버 스트리밍",
+          "양방향 스트리밍"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "양방향 스트리밍은 클라이언트와 서버가 동시에 메시지를 여러 개씩 주고받습니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://github.com/grpc/grpc-web"
+      ]
+    },
+    {
+      "id": "network-api-grpc-streaming-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "grpc",
+        "streaming"
+      ],
+      "content": {
+        "prompt": "요청 하나에 응답 메시지가 여러 개 오는 호출은?",
+        "options": [
+          "서버 스트리밍",
+          "클라이언트 스트리밍"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "서버 스트리밍은 서버 쪽이 응답 메시지를 여러 개 연속으로 보냅니다. 클라이언트 스트리밍은 그 반대입니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://github.com/grpc/grpc-web"
+      ]
+    },
+    {
+      "id": "network-api-grpc-streaming-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "grpc",
+        "streaming"
+      ],
+      "content": {
+        "prompt": "브라우저는 별도 도구 없이 gRPC를 직접 호출할 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "브라우저는 HTTP/2 프레임을 직접 다룰 수 없어, gRPC-Web 클라이언트와 이를 변환하는 프록시가 필요합니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://github.com/grpc/grpc-web"
+      ]
+    },
+    {
+      "id": "network-api-grpc-streaming-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "grpc",
+        "streaming"
+      ],
+      "content": {
+        "prompt": "요청 하나, 응답 하나인 gRPC 호출은 ___ 호출이다.",
+        "hint": "스트리밍이 없는 가장 기본 형태입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "단항",
+          "unary",
+          "유너리",
+          "단일"
+        ]
+      },
+      "explanation": "단항 호출은 일반 함수 호출처럼 요청 하나에 응답 하나를 받습니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://github.com/grpc/grpc-web"
+      ]
+    },
+    {
+      "id": "network-api-grpc-streaming-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "grpc",
+        "streaming"
+      ],
+      "content": {
+        "prompt": "브라우저에서 쓰는 gRPC 변형은 gRPC-___ 이다.",
+        "hint": "브라우저가 동작하는 플랫폼 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Web",
+          "web",
+          "웹"
+        ]
+      },
+      "explanation": "gRPC-Web은 브라우저용 gRPC이며, 프록시가 이를 일반 gRPC로 바꿔 서버에 전달합니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://github.com/grpc/grpc-web"
+      ]
+    },
+    {
+      "id": "network-api-grpc-streaming-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "grpc",
+        "streaming"
+      ],
+      "content": {
+        "prompt": "파일을 조각 여러 개로 올리고 응답 하나를 받는 호출은?",
+        "options": [
+          "단항",
+          "서버 스트리밍",
+          "클라이언트 스트리밍"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "클라이언트가 메시지를 여러 개 연속으로 보내고 서버가 한 번 응답하므로 클라이언트 스트리밍입니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://github.com/grpc/grpc-web"
+      ]
+    },
+    {
+      "id": "network-api-grpc-streaming-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "grpc",
+        "streaming"
+      ],
+      "content": {
+        "prompt": "채팅처럼 양쪽이 수시로 메시지를 보내면 알맞은 호출은?",
+        "options": [
+          "단항",
+          "양방향 스트리밍"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "양쪽이 동시에 여러 메시지를 주고받아야 하므로 양방향 스트리밍이 맞습니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://github.com/grpc/grpc-web"
+      ]
+    },
+    {
+      "id": "network-api-grpc-streaming-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "grpc",
+        "streaming"
+      ],
+      "content": {
+        "prompt": "주문 ID로 주문 하나를 조회하는 호출은?",
+        "options": [
+          "단항",
+          "양방향 스트리밍",
+          "서버 스트리밍"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "요청 하나(주문 ID)에 응답 하나(주문)이므로 단항 호출로 충분합니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://github.com/grpc/grpc-web"
+      ]
+    },
+    {
+      "id": "network-api-grpc-streaming-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "grpc",
+        "streaming"
+      ],
+      "content": {
+        "prompt": "단항 호출은 요청 하나에 응답 하나를 주고받는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "단항 호출은 스트리밍 없이 요청 하나와 응답 하나로 끝나는 gRPC의 기본 호출입니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://github.com/grpc/grpc-web"
+      ]
+    }
+  ]
+}

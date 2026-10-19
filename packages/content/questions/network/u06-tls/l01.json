@@ -1,0 +1,246 @@
+{
+  "track": "network",
+  "unit": "u06-tls",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "network-tls-goals-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "https"
+      ],
+      "content": {
+        "prompt": "가로챈 내용을 읽을 수 없게 하는 TLS의 성질은?",
+        "options": [
+          "무결성",
+          "기밀성",
+          "인증"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "기밀성은 데이터를 암호화해 중간에서 가로챈 쪽이 내용을 읽지 못하게 하는 성질입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-tls-goals-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "https"
+      ],
+      "content": {
+        "prompt": "전송 중 변조되면 받는 쪽이 알아채게 하는 성질은?",
+        "options": [
+          "인증",
+          "기밀성",
+          "무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "무결성은 데이터가 전송 도중 바뀌었을 때 받는 쪽이 이를 알아채게 하는 성질입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-tls-goals-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "https"
+      ],
+      "content": {
+        "prompt": "접속한 서버가 그 도메인의 진짜 서버인지 확인하는 성질은?",
+        "options": [
+          "인증",
+          "무결성",
+          "기밀성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인증은 인증서로 상대 서버가 그 도메인의 진짜 서버인지 확인하는 성질입니다. 기밀성·무결성은 데이터 자체를 지킵니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-tls-goals-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "https"
+      ],
+      "content": {
+        "prompt": "HTTPS의 기본 포트는 80이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "HTTPS의 기본 포트는 443입니다. 80은 암호화하지 않는 HTTP의 기본 포트입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-tls-goals-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "https"
+      ],
+      "content": {
+        "prompt": "HTTP를 TLS 위에서 보내는 것을 ___ 라 한다.",
+        "hint": "HTTP 뒤에 보안(Secure)을 뜻하는 글자 하나가 붙습니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "HTTPS",
+          "https",
+          "HTTP over TLS",
+          "http over tls"
+        ]
+      },
+      "explanation": "HTTPS는 HTTP 메시지를 TLS로 보호해 보내는 것이며, 주소는 https://로 시작합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-tls-goals-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "https"
+      ],
+      "content": {
+        "prompt": "HTTPS의 기본 포트 번호는 ___ 이다.",
+        "hint": "암호화하지 않는 HTTP의 80과는 다른 번호입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "443"
+        ]
+      },
+      "explanation": "HTTPS는 기본 포트 443을 쓰므로 https:// 주소에 포트를 적지 않으면 443으로 접속합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-tls-goals-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "https"
+      ],
+      "content": {
+        "prompt": "중간에서 응답 본문을 바꾸자 받는 쪽이 거부했다. 지켜진 성질은?",
+        "options": [
+          "무결성",
+          "기밀성",
+          "인증"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "변조를 알아채고 거부한 것은 무결성 덕분입니다. 기밀성은 읽지 못하게, 인증은 상대를 확인하는 성질입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-tls-goals-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "https"
+      ],
+      "content": {
+        "prompt": "가짜 서버가 은행 도메인을 사칭했다가 들켰다. 지켜진 성질은?",
+        "options": [
+          "기밀성",
+          "인증",
+          "무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "접속한 서버가 그 도메인의 진짜 서버인지 확인하는 인증 덕분에 사칭한 서버를 걸러 냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-tls-goals-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "https"
+      ],
+      "content": {
+        "prompt": "https://shop.example.com 에 접속하면 쓰는 포트는?",
+        "options": [
+          "80",
+          "8080",
+          "443"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "포트를 따로 적지 않은 https:// 주소는 HTTPS 기본 포트 443으로 접속합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-tls-goals-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "https"
+      ],
+      "content": {
+        "prompt": "기밀성은 가로챈 데이터를 읽을 수 없게 하는 성질이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "기밀성은 암호화로 보장하며, 패킷을 가로채도 키가 없으면 내용을 읽을 수 없습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    }
+  ]
+}

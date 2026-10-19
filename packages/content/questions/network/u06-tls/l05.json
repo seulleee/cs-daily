@@ -1,0 +1,252 @@
+{
+  "track": "network",
+  "unit": "u06-tls",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "network-tls-signature-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "digital-signature"
+      ],
+      "content": {
+        "prompt": "개인키로 만들고 공개키로 검증하는 것은?",
+        "options": [
+          "해시",
+          "전자서명",
+          "AEAD"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "전자서명은 서명자의 개인키로 만들고, 누구나 가진 짝인 공개키로 검증합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/186-5/final"
+      ]
+    },
+    {
+      "id": "network-tls-signature-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "digital-signature"
+      ],
+      "content": {
+        "prompt": "전자서명을 만들 때 쓰는 키는?",
+        "options": [
+          "상대 공개키",
+          "내 공개키",
+          "내 개인키"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "서명은 서명하는 사람의 개인키로 만듭니다. 개인키는 본인만 가지므로 본인이 서명했음이 증명됩니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/186-5/final"
+      ]
+    },
+    {
+      "id": "network-tls-signature-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "digital-signature"
+      ],
+      "content": {
+        "prompt": "서명은 보통 데이터의 무엇에 하는가?",
+        "options": [
+          "해시 값",
+          "암호문",
+          "공개키"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "느린 공개키 연산을 줄이려고 데이터 전체가 아니라 고정 길이 해시 값에 서명합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/186-5/final"
+      ]
+    },
+    {
+      "id": "network-tls-signature-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "digital-signature"
+      ],
+      "content": {
+        "prompt": "전자서명은 서명한 사람의 공개키로 검증한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "서명은 서명자의 개인키로 만들고, 짝인 서명자의 공개키로 누구나 검증할 수 있습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/186-5/final"
+      ]
+    },
+    {
+      "id": "network-tls-signature-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "digital-signature"
+      ],
+      "content": {
+        "prompt": "개인키로 만들어 공개키로 검증하는 값은 ___ 이다.",
+        "hint": "인증과 무결성을 함께 보장합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "전자서명",
+          "전자 서명",
+          "서명",
+          "디지털 서명",
+          "digital signature",
+          "signature"
+        ]
+      },
+      "explanation": "전자서명은 서명한 주체가 맞는지와 내용이 바뀌지 않았는지를 함께 보장합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/186-5/final"
+      ]
+    },
+    {
+      "id": "network-tls-signature-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "digital-signature"
+      ],
+      "content": {
+        "prompt": "서명 전에 데이터를 고정 길이로 줄이는 데 쓰는 것은 ___ 이다.",
+        "hint": "SHA-256이 그 예입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "해시",
+          "해시 함수",
+          "암호학적 해시",
+          "hash",
+          "hash function",
+          "해쉬"
+        ]
+      },
+      "explanation": "데이터를 해시 함수로 고정 길이 값으로 줄인 뒤, 그 해시 값에 개인키로 서명합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/186-5/final"
+      ]
+    },
+    {
+      "id": "network-tls-signature-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "digital-signature"
+      ],
+      "content": {
+        "prompt": "A가 서명해 B에게 보냈다. B가 검증에 쓰는 키는?",
+        "options": [
+          "A의 개인키",
+          "A의 공개키",
+          "B의 개인키"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "A의 개인키로 만든 서명은 짝인 A의 공개키로 검증합니다. A의 개인키는 A만 가집니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/186-5/final"
+      ]
+    },
+    {
+      "id": "network-tls-signature-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "digital-signature"
+      ],
+      "content": {
+        "prompt": "서명한 뒤 문서 한 글자가 바뀌었다. 검증 결과는?",
+        "options": [
+          "검증 실패",
+          "검증 성공"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "문서가 바뀌면 해시 값이 달라져 서명과 맞지 않으므로 검증에 실패합니다. 서명이 무결성을 보장하는 방식입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/186-5/final"
+      ]
+    },
+    {
+      "id": "network-tls-signature-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "digital-signature"
+      ],
+      "content": {
+        "prompt": "암호화할 때와 서명할 때 쓰는 키를 차례로 고르면?",
+        "options": [
+          "상대 공개키, 내 개인키",
+          "내 개인키, 상대 공개키",
+          "내 공개키, 상대 개인키"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "암호화는 받는 상대의 공개키로, 서명은 내 개인키로 합니다. 두 작업은 키 방향이 반대입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/186-5/final"
+      ]
+    },
+    {
+      "id": "network-tls-signature-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "digital-signature"
+      ],
+      "content": {
+        "prompt": "전자서명은 상대의 공개키로 만든다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "서명은 서명하는 사람의 개인키로 만듭니다. 상대 공개키를 쓰는 것은 암호화입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/186-5/final"
+      ]
+    }
+  ]
+}

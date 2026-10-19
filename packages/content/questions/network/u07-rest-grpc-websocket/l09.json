@@ -1,0 +1,245 @@
+{
+  "track": "network",
+  "unit": "u07-rest-grpc-websocket",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "network-api-sse-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sse",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "서버→클라이언트 단방향 이벤트 스트림 방식은?",
+        "options": [
+          "폴링",
+          "SSE",
+          "롱 폴링"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SSE(Server-Sent Events)는 서버가 클라이언트로 이벤트를 한 방향으로 계속 보내는 방식입니다.",
+      "refs": [
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+        "https://developer.mozilla.org/en-US/docs/Web/API/EventSource"
+      ]
+    },
+    {
+      "id": "network-api-sse-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sse",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "SSE를 받고 끊기면 자동으로 다시 잇는 브라우저 API는?",
+        "options": [
+          "fetch",
+          "XMLHttpRequest",
+          "EventSource"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "EventSource는 SSE 스트림을 받아 이벤트로 넘겨 주고, 연결이 끊기면 자동으로 다시 연결합니다.",
+      "refs": [
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+        "https://developer.mozilla.org/en-US/docs/Web/API/EventSource"
+      ]
+    },
+    {
+      "id": "network-api-sse-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sse",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "SSE로 메시지가 오가는 방향은?",
+        "options": [
+          "양방향",
+          "서버→클라이언트만"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SSE는 서버에서 클라이언트로만 보내는 단방향 스트림입니다.",
+      "refs": [
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+        "https://developer.mozilla.org/en-US/docs/Web/API/EventSource"
+      ]
+    },
+    {
+      "id": "network-api-sse-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sse",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "SSE는 일반 HTTP 응답을 열어 두고 계속 보낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "SSE는 Content-Type이 text/event-stream인 일반 HTTP 응답을 끝내지 않고 이벤트를 이어서 보냅니다.",
+      "refs": [
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+        "https://developer.mozilla.org/en-US/docs/Web/API/EventSource"
+      ]
+    },
+    {
+      "id": "network-api-sse-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sse",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "응답을 열어 두고 서버가 이벤트를 계속 보내는 방식은 ___ 이다.",
+        "hint": "세 글자 영문 약자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "SSE",
+          "sse",
+          "Server-Sent Events",
+          "서버 전송 이벤트"
+        ]
+      },
+      "explanation": "SSE는 특별한 프로토콜 없이 일반 HTTP 응답 위에서 서버→클라이언트 이벤트를 보냅니다.",
+      "refs": [
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+        "https://developer.mozilla.org/en-US/docs/Web/API/EventSource"
+      ]
+    },
+    {
+      "id": "network-api-sse-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sse",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "SSE 재연결 때 마지막 이벤트를 알리는 헤더는 Last-Event-___ 이다.",
+        "hint": "식별자를 뜻하는 두 글자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "ID",
+          "id",
+          "Id"
+        ]
+      },
+      "explanation": "EventSource는 다시 연결할 때 Last-Event-ID 헤더로 마지막에 받은 이벤트 ID를 보내 이어 받습니다.",
+      "refs": [
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+        "https://developer.mozilla.org/en-US/docs/Web/API/EventSource"
+      ]
+    },
+    {
+      "id": "network-api-sse-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sse",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "생성 중인 답변 텍스트를 이어서 보여 줄 때 알맞은 것은?",
+        "options": [
+          "1분 간격 폴링",
+          "SSE"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "서버가 생성되는 대로 계속 보내는 단방향 흐름이므로 SSE가 맞습니다. 1분 간격 폴링은 너무 늦습니다.",
+      "refs": [
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+        "https://developer.mozilla.org/en-US/docs/Web/API/EventSource"
+      ]
+    },
+    {
+      "id": "network-api-sse-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sse",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "SSE를 쓰는 중 클라이언트가 서버에 데이터를 보내려면?",
+        "options": [
+          "별도 HTTP 요청",
+          "같은 SSE 스트림"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SSE는 서버→클라이언트 단방향이라, 클라이언트가 보낼 것은 POST 같은 별도 HTTP 요청으로 보냅니다.",
+      "refs": [
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+        "https://developer.mozilla.org/en-US/docs/Web/API/EventSource"
+      ]
+    },
+    {
+      "id": "network-api-sse-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sse",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "SSE 연결이 끊겼다. EventSource의 동작은?",
+        "options": [
+          "영구 종료",
+          "페이지 새로고침",
+          "자동 재연결"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "EventSource는 끊기면 스스로 다시 연결하고, Last-Event-ID로 놓친 이벤트부터 받을 수 있게 합니다.",
+      "refs": [
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+        "https://developer.mozilla.org/en-US/docs/Web/API/EventSource"
+      ]
+    },
+    {
+      "id": "network-api-sse-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sse",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "SSE는 클라이언트와 서버가 양방향으로 메시지를 주고받는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "SSE는 서버에서 클라이언트로만 보내는 단방향 스트림입니다.",
+      "refs": [
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+        "https://developer.mozilla.org/en-US/docs/Web/API/EventSource"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "track": "network",
+  "unit": "u07-rest-grpc-websocket",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "network-api-rest-resource-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rest",
+        "api"
+      ],
+      "content": {
+        "prompt": "리소스를 URI로 식별하고 메서드로 조작하는 설계 스타일은?",
+        "options": [
+          "REST",
+          "HTML",
+          "DNS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "REST는 리소스를 URI로 식별하고 GET·POST·DELETE 같은 HTTP 메서드로 조작하는 아키텍처 스타일입니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-resource-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rest",
+        "api"
+      ],
+      "content": {
+        "prompt": "/users/42처럼 이름 붙일 수 있는 대상은?",
+        "options": [
+          "메서드",
+          "리소스",
+          "헤더"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "리소스는 이름을 붙여 가리킬 수 있는 대상이며, REST에서는 /users/42 같은 URI로 식별합니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-resource-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rest",
+        "api"
+      ],
+      "content": {
+        "prompt": "REST답게 사용자 42를 조회하는 요청은?",
+        "options": [
+          "GET /getUser/42",
+          "GET /users/42"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "REST에서 URI는 명사인 리소스를 가리키고 동작은 메서드로 표현하므로 GET /users/42가 맞습니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-resource-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "rest",
+        "api"
+      ],
+      "content": {
+        "prompt": "REST에서 URI에는 동작을 나타내는 동사를 넣는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "REST에서 URI는 리소스를 가리키는 명사로 쓰고, 조회·삭제 같은 동작은 HTTP 메서드로 표현합니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-resource-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "rest",
+        "api"
+      ],
+      "content": {
+        "prompt": "/orders처럼 목록을 가리키는 리소스는 ___ 이다.",
+        "hint": "항목 여러 개를 모아 둔 리소스를 부르는 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "컬렉션",
+          "collection",
+          "콜렉션",
+          "목록"
+        ]
+      },
+      "explanation": "/orders는 주문 컬렉션이고, /orders/7은 그 컬렉션 안의 항목 하나입니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-resource-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "rest",
+        "api"
+      ],
+      "content": {
+        "prompt": "REST에서 리소스를 식별하는 문자열은 ___ 이다.",
+        "hint": "리소스마다 붙는 식별자로, /users/42 같은 형태입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "URI",
+          "uri",
+          "URL",
+          "url"
+        ]
+      },
+      "explanation": "URI는 리소스를 식별하는 문자열이며, REST는 리소스마다 고유한 URI를 붙입니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-resource-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rest",
+        "api"
+      ],
+      "content": {
+        "prompt": "주문 7번 하나를 가리키는 URI는?",
+        "options": [
+          "/orders",
+          "/getOrder/7",
+          "/orders/7"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "컬렉션 /orders 뒤에 식별자 7을 붙인 /orders/7이 주문 하나를 가리킵니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-resource-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rest",
+        "api"
+      ],
+      "content": {
+        "prompt": "새 주문을 만드는 POST 요청의 URI로 알맞은 것은?",
+        "options": [
+          "/orders",
+          "/createOrder",
+          "/orders/new"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "새 항목은 컬렉션에 POST로 추가하므로 POST /orders가 맞습니다. 동작 이름은 URI에 넣지 않습니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-resource-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rest",
+        "api"
+      ],
+      "content": {
+        "prompt": "/orders/7에서 /orders는 무엇인가?",
+        "options": [
+          "항목",
+          "메서드",
+          "컬렉션"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "/orders는 주문 목록인 컬렉션이고, 뒤에 7을 붙인 /orders/7이 항목 하나입니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-resource-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "rest",
+        "api"
+      ],
+      "content": {
+        "prompt": "REST는 리소스를 URI로 식별하고 HTTP 메서드로 조작한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "REST에서는 무엇을(리소스)은 URI로, 어떻게(동작)는 HTTP 메서드로 나눠 표현합니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    }
+  ]
+}

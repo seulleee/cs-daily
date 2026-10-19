@@ -1,0 +1,248 @@
+{
+  "track": "network",
+  "unit": "u07-rest-grpc-websocket",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "network-api-grpc-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "grpc",
+        "rpc"
+      ],
+      "content": {
+        "prompt": "원격 서버의 함수를 로컬 함수처럼 호출하는 방식은?",
+        "options": [
+          "REST",
+          "RPC",
+          "DNS"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "RPC(Remote Procedure Call)는 원격 서버의 함수를 로컬 함수 호출처럼 부르는 방식입니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://grpc.io/docs/what-is-grpc/introduction/"
+      ]
+    },
+    {
+      "id": "network-api-grpc-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "grpc",
+        "rpc"
+      ],
+      "content": {
+        "prompt": "HTTP/2 위에서 Protobuf를 주고받는 RPC 프레임워크는?",
+        "options": [
+          "REST",
+          "HTTP/3",
+          "gRPC"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "gRPC는 HTTP/2 위에서 Protobuf 메시지를 주고받는 RPC 프레임워크입니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://grpc.io/docs/what-is-grpc/introduction/"
+      ]
+    },
+    {
+      "id": "network-api-grpc-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "grpc",
+        "rpc"
+      ],
+      "content": {
+        "prompt": "gRPC가 전송에 쓰는 HTTP 버전은?",
+        "options": [
+          "HTTP/2",
+          "HTTP/1.1"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "gRPC는 HTTP/2 위에서 동작하며, 한 연결에 여러 호출을 스트림으로 섞어 보냅니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://grpc.io/docs/what-is-grpc/introduction/"
+      ]
+    },
+    {
+      "id": "network-api-grpc-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "grpc",
+        "rpc"
+      ],
+      "content": {
+        "prompt": "gRPC는 메서드와 메시지를 .proto 파일에 정의한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": ".proto 파일에 서비스의 메서드와 메시지를 적으면 그것으로 클라이언트·서버 코드를 생성합니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://grpc.io/docs/what-is-grpc/introduction/"
+      ]
+    },
+    {
+      "id": "network-api-grpc-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "grpc",
+        "rpc"
+      ],
+      "content": {
+        "prompt": "gRPC 서비스는 확장자가 .___ 인 파일에 정의한다.",
+        "hint": "점 뒤에 오는 다섯 글자 확장자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "proto",
+          "PROTO",
+          "프로토"
+        ]
+      },
+      "explanation": ".proto 파일이 서비스 정의이며, 여기서 여러 언어의 클라이언트·서버 코드를 생성합니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://grpc.io/docs/what-is-grpc/introduction/"
+      ]
+    },
+    {
+      "id": "network-api-grpc-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "grpc",
+        "rpc"
+      ],
+      "content": {
+        "prompt": "gRPC는 메시지를 ___ 형식으로 직렬화한다.",
+        "hint": "구글이 만든 바이너리 직렬화 형식입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Protobuf",
+          "protobuf",
+          "Protocol Buffers",
+          "protocol buffers",
+          "프로토버프",
+          "프로토콜 버퍼"
+        ]
+      },
+      "explanation": "gRPC는 기본으로 Protobuf를 써서 메시지를 작은 바이너리로 직렬화합니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://grpc.io/docs/what-is-grpc/introduction/"
+      ]
+    },
+    {
+      "id": "network-api-grpc-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "grpc",
+        "rpc"
+      ],
+      "content": {
+        "prompt": "같은 데이터를 담을 때 보통 더 작은 형식은?",
+        "options": [
+          "JSON",
+          "Protobuf"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Protobuf는 바이너리라 텍스트인 JSON보다 크기가 작고 처리도 빠릅니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://grpc.io/docs/what-is-grpc/introduction/"
+      ]
+    },
+    {
+      "id": "network-api-grpc-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "grpc",
+        "rpc"
+      ],
+      "content": {
+        "prompt": "gRPC 클라이언트 코드는 보통 어떻게 얻는가?",
+        "options": [
+          ".proto에서 생성",
+          "서버가 내려줌",
+          "JSON으로 대체"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": ".proto 파일의 서비스 정의로 언어별 클라이언트·서버 코드를 생성해 씁니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://grpc.io/docs/what-is-grpc/introduction/"
+      ]
+    },
+    {
+      "id": "network-api-grpc-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "grpc",
+        "rpc"
+      ],
+      "content": {
+        "prompt": "정수 필드에 문자열을 넣어 호출하면 gRPC에서는?",
+        "options": [
+          "그대로 전송",
+          "서버가 추측",
+          "타입 오류"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": ".proto 스키마로 필드 타입이 강제되어, 생성된 코드가 다른 타입의 값을 받지 않습니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://grpc.io/docs/what-is-grpc/introduction/"
+      ]
+    },
+    {
+      "id": "network-api-grpc-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "grpc",
+        "rpc"
+      ],
+      "content": {
+        "prompt": "RPC는 리소스를 URI로 식별해 메서드로 조작하는 방식이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "그것은 REST입니다. RPC는 원격 서버의 함수를 로컬 함수처럼 이름과 인자로 호출합니다.",
+      "refs": [
+        "https://grpc.io/docs/what-is-grpc/core-concepts/",
+        "https://grpc.io/docs/what-is-grpc/introduction/"
+      ]
+    }
+  ]
+}
