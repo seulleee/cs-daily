@@ -1,0 +1,236 @@
+{
+  "track": "dsa",
+  "unit": "u10-binary-search",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "dsa-bsearch-trace-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "lo-hi-mid"
+      ],
+      "content": {
+        "prompt": "탐색 범위의 양 끝을 나타내는 두 인덱스는?",
+        "options": [
+          "mid와 n",
+          "lo와 hi",
+          "front와 rear"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "lo는 탐색 범위의 왼쪽 끝, hi는 오른쪽 끝 인덱스입니다. 처음엔 0과 n−1입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-trace-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "lo-hi-mid"
+      ],
+      "content": {
+        "prompt": "이진 탐색에서 mid를 구하는 식은?",
+        "options": [
+          "hi−lo",
+          "(lo+hi)×2",
+          "(lo+hi)/2 내림"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "mid는 lo와 hi의 평균을 내림한 인덱스로, 탐색 범위의 가운데입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-trace-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "lo-hi-mid"
+      ],
+      "content": {
+        "prompt": "target > a[mid]일 때 바꾸는 값은?",
+        "options": [
+          "lo",
+          "hi"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "target이 더 크면 mid 왼쪽에는 답이 없으므로 lo = mid + 1로 바꿉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-trace-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "lo-hi-mid"
+      ],
+      "content": {
+        "prompt": "target < a[mid]이면 lo = mid + 1로 바꾼다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "target이 더 작으면 오른쪽 절반을 버려야 하므로 hi = mid − 1로 바꿉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-trace-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "lo-hi-mid"
+      ],
+      "content": {
+        "prompt": "길이 n인 배열에서 hi의 처음 값은 n − ___이다.",
+        "hint": "인덱스는 0부터 시작합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "1",
+          "일"
+        ]
+      },
+      "explanation": "인덱스가 0부터 시작하므로 마지막 인덱스는 n−1이고, hi는 이 값에서 시작합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-trace-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "lo-hi-mid"
+      ],
+      "content": {
+        "prompt": "탐색 범위의 가운데 인덱스를 ___라고 한다.",
+        "hint": "(lo + hi) / 2를 내림한 값입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "mid",
+          "미드",
+          "중간",
+          "middle"
+        ]
+      },
+      "explanation": "mid는 (lo + hi) / 2를 내림한 인덱스로, a[mid]와 target을 비교합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-trace-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "lo-hi-mid"
+      ],
+      "content": {
+        "prompt": "lo = 0, hi = 7일 때 mid는?",
+        "options": [
+          "3.5",
+          "4",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "(0 + 7) / 2 = 3.5를 내림하면 3입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-trace-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "lo-hi-mid"
+      ],
+      "content": {
+        "prompt": "[2, 4, 6, 8, 10]에서 8 찾기. 첫 비교 후 lo는?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "mid = 2이고 a[2] = 6 < 8이므로 lo = mid + 1 = 3이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-trace-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "lo-hi-mid"
+      ],
+      "content": {
+        "prompt": "[1, 3, 5, 7]에서 4를 찾을 때 a[mid] 비교 횟수는?",
+        "options": [
+          "2번",
+          "1번",
+          "3번"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "mid 1(값 3) → lo = 2, mid 2(값 5) → hi = 1이 되어 lo > hi로 끝납니다. 2번 비교합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-trace-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "lo-hi-mid"
+      ],
+      "content": {
+        "prompt": "처음 lo와 hi는 0과 n−1이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "처음 탐색 범위는 배열 전체이므로 lo는 첫 인덱스 0, hi는 마지막 인덱스 n−1입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    }
+  ]
+}

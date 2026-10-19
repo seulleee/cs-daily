@@ -1,0 +1,235 @@
+{
+  "track": "dsa",
+  "unit": "u09-sorting",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "dsa-sort-quick-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "quick-sort"
+      ],
+      "content": {
+        "prompt": "퀵 정렬이 값을 양쪽으로 나눌 때 쓰는 기준 원소는?",
+        "options": [
+          "키",
+          "피벗",
+          "인덱스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "피벗은 분할의 기준 원소로, 피벗보다 작은 값과 큰 값을 양쪽으로 나눕니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "quick-sort"
+      ],
+      "content": {
+        "prompt": "피벗 기준으로 분할한 뒤 재귀하는 정렬은?",
+        "options": [
+          "병합 정렬",
+          "삽입 정렬",
+          "퀵 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "퀵 정렬은 피벗보다 작은 값을 왼쪽, 큰 값을 오른쪽으로 분할한 뒤 양쪽을 재귀로 정렬합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "quick-sort"
+      ],
+      "content": {
+        "prompt": "피벗보다 작은 값은 분할 후 어느 쪽에 오나?",
+        "options": [
+          "왼쪽",
+          "오른쪽"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "퀵 정렬은 피벗보다 작은 값을 왼쪽, 큰 값을 오른쪽에 모읍니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "quick-sort"
+      ],
+      "content": {
+        "prompt": "퀵 정렬은 안정 정렬이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "분할 중 멀리 떨어진 원소끼리 교환해 같은 값의 순서가 바뀔 수 있어 불안정 정렬입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "quick-sort"
+      ],
+      "content": {
+        "prompt": "퀵 정렬에서 분할의 기준 원소는 ___이다.",
+        "hint": "영어로 회전의 중심축을 뜻하는 단어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "피벗",
+          "pivot",
+          "피봇",
+          "기준 원소"
+        ]
+      },
+      "explanation": "피벗은 퀵 정렬의 분할 기준으로, 피벗을 중심으로 작은 값과 큰 값이 나뉩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "quick-sort"
+      ],
+      "content": {
+        "prompt": "퀵 정렬의 평균 시간 복잡도는 O(n ___ n)이다.",
+        "hint": "병합 정렬의 최악 복잡도와 같은 꼴입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "log",
+          "로그",
+          "lg"
+        ]
+      },
+      "explanation": "피벗이 대체로 고르게 나누면 평균 O(n log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "quick-sort"
+      ],
+      "content": {
+        "prompt": "[3, 5, 1, 4, 2]를 피벗 3으로 분할하면 왼쪽 값은?",
+        "options": [
+          "1과 2",
+          "5와 4",
+          "1, 2, 4"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "3보다 작은 1과 2가 왼쪽, 큰 5와 4가 오른쪽으로 갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "quick-sort"
+      ],
+      "content": {
+        "prompt": "퀵 정렬과 병합 정렬 중 추가 공간이 작은 쪽은?",
+        "options": [
+          "병합 정렬",
+          "퀵 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "퀵 정렬은 배열 안에서 교환으로 분할하지만, 병합 정렬은 병합에 O(n) 공간이 듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "quick-sort"
+      ],
+      "content": {
+        "prompt": "같은 값의 원래 순서를 지켜야 할 때 알맞은 정렬은?",
+        "options": [
+          "병합 정렬",
+          "퀵 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "병합 정렬은 안정 정렬이고 퀵 정렬은 불안정 정렬이라 같은 값의 순서가 바뀔 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "quick-sort"
+      ],
+      "content": {
+        "prompt": "퀵 정렬은 피벗보다 작은 값을 왼쪽, 큰 값을 오른쪽에 모은다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "퀵 정렬은 피벗을 기준으로 분할한 뒤 양쪽 부분을 재귀로 정렬합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    }
+  ]
+}

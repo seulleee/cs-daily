@@ -1,0 +1,237 @@
+{
+  "track": "dsa",
+  "unit": "u10-binary-search",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "dsa-bsearch-param-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "parametric-search"
+      ],
+      "content": {
+        "prompt": "조건을 만족하는 최솟값을 답의 범위에서 이진 탐색하는 기법은?",
+        "options": [
+          "매개변수 탐색",
+          "분할 정복",
+          "선형 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "매개변수 탐색은 배열이 아니라 답이 될 수 있는 값의 범위를 이진 탐색합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "parametric-search"
+      ],
+      "content": {
+        "prompt": "\"x로 가능한가?\"에 예/아니오로 답하는 것은?",
+        "options": [
+          "불변식",
+          "피벗",
+          "결정 문제"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "결정 문제는 x로 가능한지에 예/아니오로 답하는 함수로, 매개변수 탐색에서 판정에 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "parametric-search"
+      ],
+      "content": {
+        "prompt": "x가 가능하면 더 큰 값도 모두 가능한 성질은?",
+        "options": [
+          "단조성",
+          "안정성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "단조성은 가능 여부가 한 방향으로만 바뀌는 성질로, 이래야 경계를 이진 탐색할 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "parametric-search"
+      ],
+      "content": {
+        "prompt": "결정 문제에 단조성이 없어도 매개변수 탐색을 쓸 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "단조성이 없으면 가운데 값의 판정만으로 버릴 절반을 정할 수 없어 매개변수 탐색을 쓸 수 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "parametric-search"
+      ],
+      "content": {
+        "prompt": "\"x로 가능한가?\"에 예/아니오로 답하는 문제는 ___ 문제다.",
+        "hint": "최적값을 바로 구하지 않고 가능 여부만 판단합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "결정",
+          "decision",
+          "판정"
+        ]
+      },
+      "explanation": "매개변수 탐색은 최적값 문제를 \"x로 가능한가?\"라는 결정 문제로 바꿔 풉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "parametric-search"
+      ],
+      "content": {
+        "prompt": "판정 결과가 한 방향으로만 바뀌는 성질은 ___이다.",
+        "hint": "x가 가능하면 더 큰 x도 가능하다는 뜻입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "단조성",
+          "단조",
+          "monotonicity",
+          "monotonic",
+          "단조 증가"
+        ]
+      },
+      "explanation": "단조성이 있으면 가능과 불가능의 경계가 하나뿐이라 이진 탐색으로 찾을 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "parametric-search"
+      ],
+      "content": {
+        "prompt": "x = 1~4는 불가능, 5~9는 가능이면 최솟값 답은?",
+        "options": [
+          "4",
+          "5",
+          "9"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "답은 불가능에서 가능으로 바뀌는 경계 값이므로 가능한 첫 값 5입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "parametric-search"
+      ],
+      "content": {
+        "prompt": "x분에 끝나면 x+1분에도 끝난다. 이 성질은?",
+        "options": [
+          "불변식",
+          "안정성",
+          "단조성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "x가 가능하면 더 큰 값도 모두 가능하므로 단조성이 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "parametric-search"
+      ],
+      "content": {
+        "prompt": "x = 1, 2, 3, 4의 판정이 예, 아니오, 예, 아니오면?",
+        "options": [
+          "매개변수 탐색 불가",
+          "매개변수 탐색 가능"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "판정이 두 방향으로 오가 단조성이 없으므로 경계를 하나로 정할 수 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "parametric-search"
+      ],
+      "content": {
+        "prompt": "매개변수 탐색의 답은 가능과 불가능이 바뀌는 경계 값이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "단조성 덕분에 가능과 불가능은 한 번만 바뀌고, 그 경계 값이 찾는 최솟값·최댓값입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    }
+  ]
+}

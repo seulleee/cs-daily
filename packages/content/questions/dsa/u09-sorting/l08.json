@@ -1,0 +1,239 @@
+{
+  "track": "dsa",
+  "unit": "u09-sorting",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "dsa-sort-lowerbound-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "비교 기반 정렬의 최악 시간 하한은?",
+        "options": [
+          "Ω(n)",
+          "Ω(n log n)",
+          "Ω(n²)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "어떤 비교 기반 정렬도 최악에 Ω(n log n)보다 빠를 수 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Comparison_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-lowerbound-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "최악 O(n log n)이라 하한과 같은 정렬을 뭐라 하나?",
+        "options": [
+          "제자리 정렬",
+          "안정 정렬",
+          "점근적 최적"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "최악 복잡도가 하한 Ω(n log n)과 같으면 더 줄일 수 없으므로 점근적 최적이라 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Comparison_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-lowerbound-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "Big-O와 Ω 중 하한을 나타내는 표기는?",
+        "options": [
+          "Ω",
+          "Big-O"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Ω는 적어도 이만큼은 걸린다는 하한을, Big-O는 이보다 늘지 않는다는 상한을 나타냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Comparison_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-lowerbound-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "비교 기반 정렬도 잘 만들면 최악 O(n)이 가능하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "n! 가지 순서를 구분하려면 최악에 약 n log n번 비교가 필요해 O(n)은 불가능합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Comparison_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-lowerbound-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "정렬이 최악에 적어도 걸리는 시간의 한계를 ___이라 한다.",
+        "hint": "Big-O가 나타내는 상한과 반대쪽 한계입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "하한",
+          "lower bound",
+          "하계",
+          "하한선"
+        ]
+      },
+      "explanation": "하한은 어떤 방법을 써도 이보다 빠를 수 없는 한계로, 비교 기반 정렬은 Ω(n log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Comparison_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-lowerbound-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "비교 한 번의 결과는 ___가지뿐이다.",
+        "hint": "a < b인지 아닌지를 알려 줍니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "2",
+          "두",
+          "둘",
+          "2가지",
+          "두 가지"
+        ]
+      },
+      "explanation": "비교 결과는 둘 중 하나라서 한 번의 비교로 남은 경우를 둘로만 나눌 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Comparison_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-lowerbound-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "서로 다른 4개 원소를 늘어놓는 순서는 몇 가지?",
+        "options": [
+          "16가지",
+          "24가지",
+          "12가지"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "4! = 4×3×2×1 = 24가지입니다. 정렬은 이 중 하나를 골라내야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Comparison_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-lowerbound-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "가능한 순서가 8가지면 최악에 적어도 몇 번 비교하나?",
+        "options": [
+          "3번",
+          "4번",
+          "8번"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "비교 한 번에 경우를 둘로 나누므로 8 → 4 → 2 → 1, log₂ 8 = 3번이 필요합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Comparison_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-lowerbound-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "다음 중 점근적 최적인 비교 기반 정렬은?",
+        "options": [
+          "삽입 정렬",
+          "병합 정렬",
+          "선택 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "병합 정렬은 최악 O(n log n)으로 하한과 같습니다. 삽입·선택 정렬은 최악 O(n²)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Comparison_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-lowerbound-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "lower-bound"
+      ],
+      "content": {
+        "prompt": "모든 비교 기반 정렬은 최악에 Ω(n log n)만큼 걸린다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "비교 한 번은 경우를 둘로만 나누므로 n! 가지를 구분하려면 log₂(n!) ≈ n log n번이 필요합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Comparison_sort"
+      ]
+    }
+  ]
+}

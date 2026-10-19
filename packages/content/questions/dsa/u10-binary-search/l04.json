@@ -1,0 +1,237 @@
+{
+  "track": "dsa",
+  "unit": "u10-binary-search",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "dsa-bsearch-pitfall-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "bug"
+      ],
+      "content": {
+        "prompt": "lo + hi가 정수 범위를 넘는 문제는?",
+        "options": [
+          "오버플로",
+          "언더플로",
+          "무한 루프"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "두 인덱스가 크면 lo + hi가 정수 최댓값을 넘는 오버플로가 생깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-pitfall-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "bug"
+      ],
+      "content": {
+        "prompt": "lo = mid처럼 구간이 줄지 않으면 생기는 문제는?",
+        "options": [
+          "오버플로",
+          "스택 오버플로",
+          "무한 루프"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "구간 크기가 그대로면 같은 lo·hi로 계속 반복해 반복이 끝나지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-pitfall-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "bug"
+      ],
+      "content": {
+        "prompt": "오버플로를 피하는 mid 계산은?",
+        "options": [
+          "(lo+hi)/2",
+          "lo+(hi−lo)/2"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "hi − lo는 범위를 넘지 않으므로 lo + (hi − lo) / 2로 계산하면 같은 mid를 안전하게 구합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-pitfall-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "bug"
+      ],
+      "content": {
+        "prompt": "기본 이진 탐색은 중복 값 중 첫 위치를 찾아 준다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "기본 이진 탐색은 a[mid]가 target과 같으면 바로 끝나므로 같은 값 중 아무 위치나 찾을 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-pitfall-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "bug"
+      ],
+      "content": {
+        "prompt": "mid를 그대로 lo에 넣어 구간이 안 줄면 ___ 루프가 생긴다.",
+        "hint": "반복이 끝없이 이어진다는 뜻입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "무한",
+          "infinite",
+          "무한 루프",
+          "무한루프"
+        ]
+      },
+      "explanation": "lo = mid처럼 구간이 줄지 않으면 같은 상태가 되풀이되어 무한 루프가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-pitfall-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "bug"
+      ],
+      "content": {
+        "prompt": "lo + hi가 정수 범위를 넘는 오류는 ___이다.",
+        "hint": "최댓값을 넘으면 음수로 바뀌기도 합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "오버플로",
+          "오버플로우",
+          "overflow",
+          "정수 오버플로"
+        ]
+      },
+      "explanation": "정수 오버플로를 피하려면 mid를 lo + (hi − lo) / 2로 계산합니다. Python 정수는 범위 제한이 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-pitfall-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "bug"
+      ],
+      "content": {
+        "prompt": "lo = 2, hi = 3, mid = 2에서 lo = mid로 바꾸면?",
+        "options": [
+          "무한 루프",
+          "정상 종료",
+          "오버플로"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "lo가 다시 2가 되어 구간 [2, 3]이 그대로이므로 같은 mid를 끝없이 반복합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-pitfall-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "bug"
+      ],
+      "content": {
+        "prompt": "[1, 2, 2, 2, 3]에서 2를 기본 이진 탐색하면 반환 인덱스는?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "첫 mid가 (0 + 4) / 2 = 2이고 a[2] = 2라 바로 2를 반환합니다. 첫 위치 1이 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-pitfall-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "bug"
+      ],
+      "content": {
+        "prompt": "정렬 안 된 [5, 1, 3]에서 5를 이진 탐색하면?",
+        "options": [
+          "찾지 못함",
+          "인덱스 0 반환"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "a[1] = 1 < 5라 lo = 2, a[2] = 3 < 5라 lo = 3이 되어 끝납니다. 5가 있는데도 못 찾습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-pitfall-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "bug"
+      ],
+      "content": {
+        "prompt": "lo + (hi − lo) / 2는 lo + hi의 오버플로를 피한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "lo + hi를 직접 더하지 않으므로 중간값이 정수 범위를 넘지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    }
+  ]
+}

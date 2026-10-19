@@ -1,0 +1,237 @@
+{
+  "track": "dsa",
+  "unit": "u09-sorting",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "dsa-sort-insertion-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "insertion-sort"
+      ],
+      "content": {
+        "prompt": "앞쪽 정렬된 부분에 원소를 하나씩 끼워 가는 정렬은?",
+        "options": [
+          "선택 정렬",
+          "버블 정렬",
+          "삽입 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "삽입 정렬은 원소를 하나씩 꺼내 앞쪽의 이미 정렬된 부분에서 알맞은 자리에 끼워 넣습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Insertion_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-insertion-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "insertion-sort"
+      ],
+      "content": {
+        "prompt": "삽입 정렬이 가장 빠른 입력은?",
+        "options": [
+          "역순 입력",
+          "이미 정렬된 입력",
+          "무작위 입력"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이미 정렬된 입력은 원소마다 바로 앞 원소와 한 번만 비교하면 되어 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Insertion_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-insertion-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "insertion-sort"
+      ],
+      "content": {
+        "prompt": "삽입 정렬이 최악인 입력은?",
+        "options": [
+          "역순 입력",
+          "정렬된 입력"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "역순 입력은 원소마다 정렬된 부분 전체를 지나 맨 앞까지 가야 해서 O(n²)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Insertion_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-insertion-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "insertion-sort"
+      ],
+      "content": {
+        "prompt": "삽입 정렬은 거의 정렬된 데이터에서 느리다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "거의 정렬된 데이터는 원소마다 조금만 이동하면 되어 삽입 정렬이 빠릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Insertion_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-insertion-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "insertion-sort"
+      ],
+      "content": {
+        "prompt": "이미 정렬된 입력에서 삽입 정렬은 O(___)이다.",
+        "hint": "원소마다 비교를 한 번만 합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "n",
+          "N",
+          "엔"
+        ]
+      },
+      "explanation": "정렬된 입력은 원소마다 바로 앞 원소와 한 번만 비교하므로 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Insertion_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-insertion-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "insertion-sort"
+      ],
+      "content": {
+        "prompt": "삽입 정렬이 최악인 입력은 ___으로 정렬된 입력이다.",
+        "hint": "큰 값부터 작은 값 순서로 놓인 입력입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "역순",
+          "거꾸로",
+          "내림차순",
+          "반대 순서",
+          "역순서"
+        ]
+      },
+      "explanation": "역순 입력은 새 원소가 매번 정렬된 부분의 맨 앞까지 가야 해서 O(n²)이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Insertion_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-insertion-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "insertion-sort"
+      ],
+      "content": {
+        "prompt": "앞부분 [2, 5]에 3을 삽입하면?",
+        "options": [
+          "[3, 2, 5]",
+          "[2, 3, 5]",
+          "[2, 5, 3]"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "3은 5보다 작고 2보다 크므로 2와 5 사이에 들어가 [2, 3, 5]가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Insertion_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-insertion-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "insertion-sort"
+      ],
+      "content": {
+        "prompt": "정렬된 [1, 2, 3, 4]를 삽입 정렬할 때 비교 횟수는?",
+        "options": [
+          "6번",
+          "4번",
+          "3번"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "두 번째 원소부터 바로 앞 원소와 한 번씩만 비교하므로 3번입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Insertion_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-insertion-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "insertion-sort"
+      ],
+      "content": {
+        "prompt": "거의 정렬된 배열에 알맞은 정렬은?",
+        "options": [
+          "삽입 정렬",
+          "선택 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "삽입 정렬은 거의 정렬된 입력에서 O(n)에 가깝지만, 선택 정렬은 항상 n(n−1)/2번 비교합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Insertion_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-insertion-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "insertion-sort"
+      ],
+      "content": {
+        "prompt": "삽입 정렬은 원소를 앞쪽 정렬된 부분에 하나씩 끼워 넣는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "삽입 정렬은 앞쪽을 정렬된 상태로 유지하며 다음 원소를 알맞은 자리에 넣습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Insertion_sort"
+      ]
+    }
+  ]
+}

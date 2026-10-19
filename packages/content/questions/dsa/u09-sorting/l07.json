@@ -1,0 +1,238 @@
+{
+  "track": "dsa",
+  "unit": "u09-sorting",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "dsa-sort-quick-worst-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "quick-sort",
+        "pivot"
+      ],
+      "content": {
+        "prompt": "퀵 정렬의 최악 시간 복잡도는?",
+        "options": [
+          "O(n log n)",
+          "O(n)",
+          "O(n²)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "피벗이 매번 최솟값이나 최댓값이면 n−1 : 0으로 분할되어 O(n²)이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-worst-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "quick-sort",
+        "pivot"
+      ],
+      "content": {
+        "prompt": "처음·가운데·끝 값의 중앙값을 피벗으로 쓰는 방법은?",
+        "options": [
+          "세 값의 중앙값",
+          "무작위 피벗",
+          "첫 원소 피벗"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "세 값의 중앙값은 처음·가운데·끝 값 중 가운데 크기의 값을 피벗으로 고릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-worst-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "quick-sort",
+        "pivot"
+      ],
+      "content": {
+        "prompt": "정렬된 배열에서 첫 원소 피벗은 어떤 분할을 만드나?",
+        "options": [
+          "n−1 : 0 분할",
+          "절반씩 분할"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "첫 원소가 최솟값이라 나머지가 모두 한쪽으로 가서 n−1 : 0 분할이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-worst-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "quick-sort",
+        "pivot"
+      ],
+      "content": {
+        "prompt": "첫 원소를 피벗으로 쓰면 정렬된 입력이 가장 빠르다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "정렬된 입력에서 첫 원소는 최솟값이라 매번 n−1 : 0으로 분할되어 최악 O(n²)이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-worst-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "quick-sort",
+        "pivot"
+      ],
+      "content": {
+        "prompt": "피벗을 매번 아무 위치에서나 고르는 방법은 ___ 피벗이다.",
+        "hint": "어떤 입력이 와도 최악 분할이 반복될 확률을 낮춥니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "무작위",
+          "랜덤",
+          "random",
+          "임의"
+        ]
+      },
+      "explanation": "무작위 피벗은 최악 분할이 계속 나올 확률을 낮춰 평균 O(n log n)에 가깝게 만듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-worst-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "quick-sort",
+        "pivot"
+      ],
+      "content": {
+        "prompt": "처음·가운데·끝 세 값의 ___을 피벗으로 쓴다.",
+        "hint": "세 값을 크기순으로 놓았을 때 가운데 오는 값입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "중앙값",
+          "중간값",
+          "median",
+          "가운데 값",
+          "중앙 값"
+        ]
+      },
+      "explanation": "세 값의 중앙값을 피벗으로 쓰면 정렬된 입력에서도 최솟값·최댓값을 피벗으로 고르지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-worst-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "quick-sort",
+        "pivot"
+      ],
+      "content": {
+        "prompt": "처음·가운데·끝 값이 9, 2, 5면 중앙값 피벗은?",
+        "options": [
+          "9",
+          "2",
+          "5"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "세 값을 크기순으로 놓으면 2, 5, 9이므로 가운데 값 5가 피벗입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-worst-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "quick-sort",
+        "pivot"
+      ],
+      "content": {
+        "prompt": "[1, 2, 3, 4]에서 첫 원소 피벗의 첫 분할은?",
+        "options": [
+          "왼쪽 0 · 오른쪽 3",
+          "왼쪽 1 · 오른쪽 2",
+          "왼쪽 2 · 오른쪽 1"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "피벗 1보다 작은 값이 없어 나머지 3개가 모두 오른쪽으로 갑니다. n−1 : 0 분할입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-worst-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "quick-sort",
+        "pivot"
+      ],
+      "content": {
+        "prompt": "정렬된 데이터가 자주 들어올 때 알맞은 피벗은?",
+        "options": [
+          "첫 원소",
+          "세 값의 중앙값"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "정렬된 입력에서 첫 원소 피벗은 최악이 되지만, 세 값의 중앙값은 가운데에 가까운 값을 고릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    },
+    {
+      "id": "dsa-sort-quick-worst-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "quick-sort",
+        "pivot"
+      ],
+      "content": {
+        "prompt": "피벗이 매번 최솟값이면 퀵 정렬은 O(n²)이 된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "매번 n−1 : 0으로 분할되어 분할 단계가 n번 가까이 생기므로 O(n²)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Quicksort"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "track": "dsa",
+  "unit": "u10-binary-search",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "dsa-bsearch-stdlib-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "standard-library"
+      ],
+      "content": {
+        "prompt": "Python에서 lower bound를 구하는 함수는?",
+        "options": [
+          "bisect_left",
+          "bisect_right",
+          "sorted"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "bisect_left는 target 이상인 첫 위치, 즉 lower bound를 반환합니다.",
+      "refs": [
+        "https://docs.python.org/3/library/bisect.html",
+        "https://en.cppreference.com/w/cpp/algorithm/lower_bound",
+        "https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-stdlib-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "standard-library"
+      ],
+      "content": {
+        "prompt": "정렬을 유지하며 target을 넣을 자리를 뭐라 하나?",
+        "options": [
+          "삽입 위치",
+          "피벗",
+          "mid"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "삽입 위치는 정렬 순서를 깨지 않고 target을 넣을 자리로, lower bound와 같습니다.",
+      "refs": [
+        "https://docs.python.org/3/library/bisect.html",
+        "https://en.cppreference.com/w/cpp/algorithm/lower_bound",
+        "https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-stdlib-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "standard-library"
+      ],
+      "content": {
+        "prompt": "Python bisect_right가 반환하는 위치는?",
+        "options": [
+          "lower bound",
+          "upper bound"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "bisect_right는 target보다 큰 첫 위치, 즉 upper bound를 반환합니다.",
+      "refs": [
+        "https://docs.python.org/3/library/bisect.html",
+        "https://en.cppreference.com/w/cpp/algorithm/lower_bound",
+        "https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-stdlib-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "standard-library"
+      ],
+      "content": {
+        "prompt": "C++ std::upper_bound는 target 이상인 첫 위치를 가리킨다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "std::upper_bound는 target보다 큰 첫 위치를 가리킵니다. target 이상인 첫 위치는 std::lower_bound입니다.",
+      "refs": [
+        "https://docs.python.org/3/library/bisect.html",
+        "https://en.cppreference.com/w/cpp/algorithm/lower_bound",
+        "https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-stdlib-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "standard-library"
+      ],
+      "content": {
+        "prompt": "정렬을 유지하며 target을 넣을 자리를 ___ 위치라 한다.",
+        "hint": "lower bound와 같은 자리입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "삽입",
+          "insertion",
+          "삽입 위치",
+          "끼울"
+        ]
+      },
+      "explanation": "삽입 위치는 정렬 순서를 지키며 target을 넣을 자리로, lower bound와 같습니다.",
+      "refs": [
+        "https://docs.python.org/3/library/bisect.html",
+        "https://en.cppreference.com/w/cpp/algorithm/lower_bound",
+        "https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-stdlib-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "standard-library"
+      ],
+      "content": {
+        "prompt": "Java binarySearch가 −3을 반환하면 삽입 위치는 ___이다.",
+        "hint": "값이 없으면 −(삽입 위치) − 1을 돌려줍니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "2",
+          "둘",
+          "이"
+        ]
+      },
+      "explanation": "−(p) − 1 = −3에서 p = 2입니다. 음수 반환은 값이 없다는 뜻입니다.",
+      "refs": [
+        "https://docs.python.org/3/library/bisect.html",
+        "https://en.cppreference.com/w/cpp/algorithm/lower_bound",
+        "https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-stdlib-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "standard-library"
+      ],
+      "content": {
+        "prompt": "[1, 3, 5]에서 bisect_left로 4를 찾으면 반환값은?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "4 이상인 첫 값 5가 인덱스 2에 있으므로 2를 반환합니다.",
+      "refs": [
+        "https://docs.python.org/3/library/bisect.html",
+        "https://en.cppreference.com/w/cpp/algorithm/lower_bound",
+        "https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-stdlib-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "standard-library"
+      ],
+      "content": {
+        "prompt": "[2, 2, 4]에서 bisect_right로 2를 찾으면 반환값은?",
+        "options": [
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "2보다 큰 첫 값 4가 인덱스 2에 있으므로 2를 반환합니다.",
+      "refs": [
+        "https://docs.python.org/3/library/bisect.html",
+        "https://en.cppreference.com/w/cpp/algorithm/lower_bound",
+        "https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-stdlib-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "standard-library"
+      ],
+      "content": {
+        "prompt": "Java Arrays.binarySearch로 [1, 3, 5]에서 4를 찾으면?",
+        "options": [
+          "−3",
+          "−2",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "4가 없고 삽입 위치는 2이므로 −(2) − 1 = −3을 반환합니다.",
+      "refs": [
+        "https://docs.python.org/3/library/bisect.html",
+        "https://en.cppreference.com/w/cpp/algorithm/lower_bound",
+        "https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-stdlib-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "standard-library"
+      ],
+      "content": {
+        "prompt": "Python bisect_left는 lower bound와 같은 위치를 반환한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "bisect_left는 target 이상인 첫 위치, 즉 삽입 위치이자 lower bound를 반환합니다.",
+      "refs": [
+        "https://docs.python.org/3/library/bisect.html",
+        "https://en.cppreference.com/w/cpp/algorithm/lower_bound",
+        "https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html"
+      ]
+    }
+  ]
+}

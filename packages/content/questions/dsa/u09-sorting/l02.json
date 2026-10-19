@@ -1,0 +1,241 @@
+{
+  "track": "dsa",
+  "unit": "u09-sorting",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "dsa-sort-bubble-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "bubble-sort"
+      ],
+      "content": {
+        "prompt": "인접한 원소 쌍을 차례로 비교·교환하는 정렬은?",
+        "options": [
+          "안정 정렬",
+          "버블 정렬",
+          "선형 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "버블 정렬은 이웃한 두 원소를 비교해 순서가 틀리면 교환하는 일을 반복합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bubble_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-bubble-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "bubble-sort"
+      ],
+      "content": {
+        "prompt": "버블 정렬 한 회차 후 맨 끝에 오는 값은?",
+        "options": [
+          "가장 작은 값",
+          "첫 원소",
+          "가장 큰 값"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "한 회차 동안 큰 값이 교환을 거듭하며 뒤로 밀려나, 가장 큰 값이 맨 끝에 놓입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bubble_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-bubble-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "bubble-sort"
+      ],
+      "content": {
+        "prompt": "버블 정렬이 한 번에 비교하는 두 원소는?",
+        "options": [
+          "이웃한 두 원소",
+          "양 끝 두 원소",
+          "임의의 두 원소"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "버블 정렬은 인덱스 i와 i+1처럼 바로 붙어 있는 두 원소만 비교합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bubble_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-bubble-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "bubble-sort"
+      ],
+      "content": {
+        "prompt": "버블 정렬 한 회차가 끝나면 최솟값이 맨 앞에 온다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "한 회차에 맨 끝으로 확정되는 것은 최댓값입니다. 최솟값은 한 회차에 한 칸씩만 앞으로 옵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bubble_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-bubble-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "bubble-sort"
+      ],
+      "content": {
+        "prompt": "버블 정렬은 순서가 틀린 이웃 원소를 ___ 한다.",
+        "hint": "두 원소의 자리를 맞바꾸는 일입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "교환",
+          "swap",
+          "스왑",
+          "맞교환",
+          "자리 바꿈"
+        ]
+      },
+      "explanation": "버블 정렬은 이웃한 두 원소의 순서가 틀리면 둘을 교환합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bubble_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-bubble-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "bubble-sort"
+      ],
+      "content": {
+        "prompt": "버블 정렬은 추가 메모리가 O(1)인 ___ 정렬이다.",
+        "hint": "입력 배열 안에서만 원소를 옮깁니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "제자리",
+          "제자리 정렬",
+          "in place",
+          "inplace",
+          "in-place"
+        ]
+      },
+      "explanation": "버블 정렬은 배열 안에서 이웃 원소만 교환하므로 제자리 정렬입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bubble_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-bubble-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "bubble-sort"
+      ],
+      "content": {
+        "prompt": "[4, 2, 5, 1]의 버블 정렬 한 회차 결과는?",
+        "options": [
+          "[2, 4, 1, 5]",
+          "[1, 2, 4, 5]",
+          "[2, 1, 4, 5]"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "4와 2를 교환, 4와 5는 그대로, 5와 1을 교환해 [2, 4, 1, 5]가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bubble_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-bubble-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "bubble-sort"
+      ],
+      "content": {
+        "prompt": "[2, 3, 1]의 첫 회차에서 교환은 몇 번?",
+        "options": [
+          "0번",
+          "1번",
+          "2번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "2와 3은 순서가 맞아 그대로 두고, 3과 1만 교환해 [2, 1, 3]이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bubble_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-bubble-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "bubble-sort"
+      ],
+      "content": {
+        "prompt": "버블 정렬의 시간 복잡도는?",
+        "options": [
+          "O(n)",
+          "O(log n)",
+          "O(n²)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "회차마다 이웃 원소를 비교하는 일을 약 n번 반복하므로 O(n²)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bubble_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-bubble-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "bubble-sort"
+      ],
+      "content": {
+        "prompt": "버블 정렬은 인덱스 i와 i+1의 원소를 비교한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "버블 정렬은 바로 붙어 있는 두 원소를 비교해 순서가 틀릴 때만 교환합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bubble_sort"
+      ]
+    }
+  ]
+}

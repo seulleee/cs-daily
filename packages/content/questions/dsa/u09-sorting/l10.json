@@ -1,0 +1,240 @@
+{
+  "track": "dsa",
+  "unit": "u09-sorting",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "dsa-sort-radix-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "radix-sort"
+      ],
+      "content": {
+        "prompt": "자릿수별 안정 정렬을 반복하는 정렬은?",
+        "options": [
+          "기수 정렬",
+          "계수 정렬",
+          "병합 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "기수 정렬은 자릿수 하나씩을 키로 안정 정렬하는 일을 반복해 전체를 정렬합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Radix_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-radix-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "radix-sort"
+      ],
+      "content": {
+        "prompt": "가장 낮은 자리부터 정렬하는 기수 정렬 방식은?",
+        "options": [
+          "LSD",
+          "MSD",
+          "LIFO"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "LSD는 Least Significant Digit의 약자로 가장 낮은 자리부터 높은 자리 순으로 정렬합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Radix_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-radix-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "radix-sort"
+      ],
+      "content": {
+        "prompt": "기수 정렬의 자릿수별 정렬은 어떤 정렬이어야 하나?",
+        "options": [
+          "불안정 정렬",
+          "안정 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "앞서 맞춘 낮은 자리 순서를 다음 정렬이 보존해야 하므로 안정 정렬이어야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Radix_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-radix-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "radix-sort"
+      ],
+      "content": {
+        "prompt": "LSD 방식은 가장 높은 자리부터 정렬한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "LSD는 가장 낮은 자리(10진수면 일의 자리)부터 높은 자리 순으로 정렬합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Radix_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-radix-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "radix-sort"
+      ],
+      "content": {
+        "prompt": "LSD 기수 정렬은 가장 ___ 자리부터 정렬한다.",
+        "hint": "LSD가 무엇의 약자인지 떠올려 봅니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "낮은",
+          "아래",
+          "하위",
+          "작은",
+          "일의"
+        ]
+      },
+      "explanation": "LSD 방식은 가장 낮은 자리부터 높은 자리 순으로 자릿수별 안정 정렬을 반복합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Radix_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-radix-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "radix-sort"
+      ],
+      "content": {
+        "prompt": "기수 정렬 O(d·(n + k))에서 d는 ___이다.",
+        "hint": "정렬을 몇 번 반복하는지 정하는 값입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "자릿수",
+          "자리수",
+          "자릿 수",
+          "자리 수",
+          "digit"
+        ]
+      },
+      "explanation": "d는 자릿수로, 자릿수마다 O(n + k) 정렬을 한 번씩 하므로 전체는 O(d·(n + k))입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Radix_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-radix-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "radix-sort"
+      ],
+      "content": {
+        "prompt": "[21, 13, 12]를 일의 자리로 안정 정렬하면?",
+        "options": [
+          "[12, 13, 21]",
+          "[13, 12, 21]",
+          "[21, 12, 13]"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "일의 자리가 1, 3, 2이므로 21, 12, 13 순서가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Radix_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-radix-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "radix-sort"
+      ],
+      "content": {
+        "prompt": "[21, 12, 13]을 십의 자리로 안정 정렬하면?",
+        "options": [
+          "[12, 13, 21]",
+          "[13, 12, 21]",
+          "[21, 12, 13]"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "십의 자리가 1인 12와 13은 앞 순서를 유지하고, 2인 21이 뒤로 가 [12, 13, 21]입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Radix_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-radix-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "radix-sort"
+      ],
+      "content": {
+        "prompt": "0~999 정수를 10진 LSD로 정렬할 때 정렬 반복 횟수는?",
+        "options": [
+          "10번",
+          "3번",
+          "999번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "0~999는 최대 세 자리이므로 일의 자리·십의 자리·백의 자리로 d = 3번 정렬합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Radix_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-radix-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "radix-sort"
+      ],
+      "content": {
+        "prompt": "기수 정렬은 자릿수별 안정 정렬을 반복해 전체를 정렬한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "기수 정렬은 자릿수 하나씩 안정 정렬을 반복하며, 낮은 자리부터 하는 방식이 LSD입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Radix_sort"
+      ]
+    }
+  ]
+}
