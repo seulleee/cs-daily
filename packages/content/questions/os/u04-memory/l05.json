@@ -1,0 +1,235 @@
+{
+  "track": "os",
+  "unit": "u04-memory",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "os-page-table-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "page-table",
+        "definition"
+      ],
+      "content": {
+        "prompt": "페이지 번호를 프레임 번호로 대응시키는 표는?",
+        "options": [
+          "PCB",
+          "MMU",
+          "페이지 테이블"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "페이지 테이블은 페이지 번호 → 프레임 번호 매핑을 담은 표로, 프로세스마다 하나씩 있습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-page-table-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "offset",
+        "definition"
+      ],
+      "content": {
+        "prompt": "가상 주소에서 페이지 안의 위치를 뜻하는 부분은?",
+        "options": [
+          "오프셋",
+          "페이지 번호",
+          "프레임 번호"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가상 주소는 페이지 번호와 오프셋으로 나뉘며, 오프셋은 페이지 시작점에서 떨어진 위치입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-page-table-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "page-table",
+        "process"
+      ],
+      "content": {
+        "prompt": "페이지 테이블의 개수로 맞는 것은?",
+        "options": [
+          "시스템 전체에 하나",
+          "프로세스마다 하나"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "프로세스마다 주소 공간이 따로이므로 페이지 테이블도 프로세스마다 하나씩 있습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-page-table-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "offset",
+        "address-translation"
+      ],
+      "content": {
+        "prompt": "주소 변환에서 오프셋은 바뀌지 않고 그대로 쓰인다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 바뀌는 것은 페이지 번호 → 프레임 번호뿐이고, 오프셋은 물리 주소에 그대로 더해집니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-page-table-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "offset",
+        "term"
+      ],
+      "content": {
+        "prompt": "가상 주소는 페이지 번호와 ___으로 나뉜다.",
+        "hint": "페이지 시작점에서 떨어진 거리"
+      },
+      "answer_key": {
+        "accepted": [
+          "오프셋",
+          "offset",
+          "변위"
+        ]
+      },
+      "explanation": "가상 주소는 몇 번째 페이지인지(페이지 번호)와 그 안의 위치(오프셋)로 나뉩니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-page-table-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "address-translation",
+        "calc"
+      ],
+      "content": {
+        "prompt": "4096B 페이지에서 주소 8200의 페이지 번호는 ___ 이다.",
+        "hint": "주소를 페이지 크기로 나눈 몫"
+      },
+      "answer_key": {
+        "accepted": [
+          "2",
+          "2번"
+        ]
+      },
+      "explanation": "8200 ÷ 4096의 몫이 2이므로 페이지 2입니다. 나머지 8이 오프셋입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-page-table-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "offset",
+        "calc"
+      ],
+      "content": {
+        "prompt": "4096B 페이지에서 주소 8200의 오프셋은?",
+        "options": [
+          "2",
+          "8",
+          "104"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "8200 = 4096 × 2 + 8이므로 오프셋은 나머지인 8입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-page-table-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "address-translation",
+        "calc"
+      ],
+      "content": {
+        "prompt": "4096B 페이지에서 주소 5000의 (페이지, 오프셋)은?",
+        "options": [
+          "0, 5000",
+          "1, 904",
+          "2, 808"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "5000 ÷ 4096은 몫 1, 나머지 904이므로 페이지 1, 오프셋 904입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-page-table-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "physical-address",
+        "calc"
+      ],
+      "content": {
+        "prompt": "페이지 2→프레임 5, 페이지 4096B, 오프셋 8. 물리 주소는?",
+        "options": [
+          "8200",
+          "20480",
+          "20488"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "물리 주소 = 프레임 번호 × 페이지 크기 + 오프셋 = 5 × 4096 + 8 = 20488입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-page-table-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "page-table",
+        "definition"
+      ],
+      "content": {
+        "prompt": "페이지 테이블은 프레임 번호를 페이지 번호로 바꾼다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "방향이 반대입니다. 페이지 테이블은 가상 쪽 페이지 번호를 물리 쪽 프레임 번호로 바꿉니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    }
+  ]
+}

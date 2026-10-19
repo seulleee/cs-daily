@@ -1,0 +1,246 @@
+{
+  "track": "os",
+  "unit": "u04-memory",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "os-fragmentation-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "external-fragmentation",
+        "definition"
+      ],
+      "content": {
+        "prompt": "빈 공간 합은 충분해도 흩어져 있어 할당 못 하는 것은?",
+        "options": [
+          "내부 단편화",
+          "교착 상태",
+          "외부 단편화"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "외부 단편화는 빈 공간의 합은 충분하지만 여러 조각으로 흩어져 있어 한 덩어리로 줄 수 없는 상태입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf"
+      ]
+    },
+    {
+      "id": "os-fragmentation-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "internal-fragmentation",
+        "definition"
+      ],
+      "content": {
+        "prompt": "할당 단위가 요청보다 커서 블록 안에 남는 공간은?",
+        "options": [
+          "내부 단편화",
+          "외부 단편화",
+          "연속 할당"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "내부 단편화는 할당 단위가 요청보다 커서 할당된 블록 안에 쓰이지 않고 남는 공간입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf"
+      ]
+    },
+    {
+      "id": "os-fragmentation-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "contiguous-allocation",
+        "definition"
+      ],
+      "content": {
+        "prompt": "프로세스에 물리 메모리를 한 덩어리로 주는 방식은?",
+        "options": [
+          "가상 메모리",
+          "연속 할당"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "연속 할당은 프로세스에 물리 메모리를 한 덩어리(연속 구간)로 주는 방식입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf"
+      ]
+    },
+    {
+      "id": "os-fragmentation-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "external-fragmentation",
+        "internal-fragmentation"
+      ],
+      "content": {
+        "prompt": "외부 단편화는 할당된 블록 안에 남는 공간이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "블록 안에 남는 공간은 내부 단편화입니다. 외부 단편화는 블록 바깥의 빈 공간이 흩어져 못 쓰는 것입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf"
+      ]
+    },
+    {
+      "id": "os-fragmentation-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "external-fragmentation",
+        "term"
+      ],
+      "content": {
+        "prompt": "빈 공간이 흩어져 할당하지 못하는 것은 ___ 단편화다.",
+        "hint": "할당된 블록들 바깥에서 생긴다"
+      },
+      "answer_key": {
+        "accepted": [
+          "외부",
+          "external",
+          "외부 단편화",
+          "external fragmentation"
+        ]
+      },
+      "explanation": "빈 공간의 합은 충분해도 흩어져 있어 할당하지 못하는 것을 외부 단편화라 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf"
+      ]
+    },
+    {
+      "id": "os-fragmentation-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "internal-fragmentation",
+        "calc"
+      ],
+      "content": {
+        "prompt": "4KB 단위로 13KB를 요청하면 ___KB가 할당된다.",
+        "hint": "4KB의 배수 중 13KB 이상인 가장 작은 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "16",
+          "16KB",
+          "16 KB"
+        ]
+      },
+      "explanation": "4KB 단위로만 줄 수 있으므로 13KB 이상인 가장 작은 배수 16KB(4KB × 4)를 할당합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf"
+      ]
+    },
+    {
+      "id": "os-fragmentation-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "internal-fragmentation",
+        "calc"
+      ],
+      "content": {
+        "prompt": "4KB 단위로 13KB를 요청했다. 내부 단편화는?",
+        "options": [
+          "1KB",
+          "3KB",
+          "4KB"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "16KB가 할당되고 13KB만 쓰므로 블록 안에 16 − 13 = 3KB가 남습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf"
+      ]
+    },
+    {
+      "id": "os-fragmentation-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "internal-fragmentation",
+        "calc"
+      ],
+      "content": {
+        "prompt": "8KB 단위로 20KB를 요청했다. 내부 단편화는?",
+        "options": [
+          "4KB",
+          "8KB",
+          "12KB"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "8KB 단위로 20KB 이상인 가장 작은 크기는 24KB이므로 24 − 20 = 4KB가 남습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf"
+      ]
+    },
+    {
+      "id": "os-fragmentation-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "external-fragmentation",
+        "apply"
+      ],
+      "content": {
+        "prompt": "빈 공간 3KB·5KB·4KB가 흩어져 있다. 10KB 연속 할당은?",
+        "options": [
+          "성공",
+          "외부 단편화로 실패"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "빈 공간 합은 12KB지만 가장 큰 조각이 5KB라 10KB 연속 구간을 줄 수 없습니다. 외부 단편화입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf"
+      ]
+    },
+    {
+      "id": "os-fragmentation-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "external-fragmentation",
+        "definition"
+      ],
+      "content": {
+        "prompt": "외부 단편화는 빈 공간 합이 충분해도 생길 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 빈 공간이 여러 조각으로 흩어져 있으면 합이 충분해도 한 덩어리로 할당하지 못합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf"
+      ]
+    }
+  ]
+}

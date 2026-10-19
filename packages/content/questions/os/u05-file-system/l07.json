@@ -1,0 +1,232 @@
+{
+  "track": "os",
+  "unit": "u05-file-system",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "os-journaling-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "journaling",
+        "definition"
+      ],
+      "content": {
+        "prompt": "변경을 먼저 로그에 기록하고 커밋한 뒤 반영하는 기법은?",
+        "options": [
+          "페이징",
+          "익스텐트",
+          "저널링"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "저널링은 변경 내용을 저널(로그)에 먼저 기록하고 커밋한 뒤에 제자리에 반영합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-journaling-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "fsck",
+        "definition"
+      ],
+      "content": {
+        "prompt": "저널 없이 디스크 전체를 검사해 일관성을 맞추는 도구는?",
+        "options": [
+          "ls",
+          "fsck",
+          "ln"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "fsck는 파일 시스템 전체를 검사해 어긋난 메타데이터를 찾아 고치는 도구입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-journaling-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "crash-consistency",
+        "definition"
+      ],
+      "content": {
+        "prompt": "쓰기 도중 전원이 꺼져 메타데이터끼리 어긋나는 문제는?",
+        "options": [
+          "외부 단편화",
+          "충돌 일관성 문제"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "여러 블록을 고치는 도중 장애가 나 일부만 반영되면 메타데이터끼리 어긋납니다. 충돌 일관성 문제입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-journaling-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "recovery",
+        "commit"
+      ],
+      "content": {
+        "prompt": "복구 때 커밋되지 않은 저널 기록도 재생한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "재부팅 시에는 커밋된 저널만 재생하고, 커밋되지 않은 기록은 버립니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-journaling-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "journaling",
+        "term"
+      ],
+      "content": {
+        "prompt": "변경을 먼저 로그에 쓰고 커밋한 뒤 반영하는 기법은 ___ 이다.",
+        "hint": "로그 영역을 부르는 이름에 '-ing'를 붙인 말"
+      },
+      "answer_key": {
+        "accepted": [
+          "저널링",
+          "journaling",
+          "저널링 파일 시스템"
+        ]
+      },
+      "explanation": "변경 내용을 먼저 저널에 기록하고 커밋한 뒤 제자리에 반영하는 기법을 저널링이라 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-journaling-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "fsck",
+        "term"
+      ],
+      "content": {
+        "prompt": "저널 없이 일관성을 검사하는 도구는 ___ 이다.",
+        "hint": "file system check를 줄인 네 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "fsck",
+          "에프에스씨케이"
+        ]
+      },
+      "explanation": "저널이 없으면 장애 후 fsck가 디스크 전체를 검사해야 해 오래 걸립니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-journaling-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "recovery",
+        "apply"
+      ],
+      "content": {
+        "prompt": "저널에 커밋 기록까지 쓴 뒤 전원이 꺼졌다. 재부팅 후 그 변경은?",
+        "options": [
+          "재생해 반영",
+          "버린다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "커밋된 저널은 완전한 기록이므로 재부팅 때 재생해 제자리에 반영합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-journaling-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "recovery",
+        "apply"
+      ],
+      "content": {
+        "prompt": "저널에 쓰는 도중(커밋 전) 전원이 꺼졌다. 그 변경은?",
+        "options": [
+          "재생된다",
+          "버려진다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "커밋되지 않은 기록은 불완전할 수 있어 버립니다. 제자리는 아직 고치지 않았으니 이전 상태로 일관됩니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-journaling-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "fsck",
+        "apply"
+      ],
+      "content": {
+        "prompt": "저널 없는 파일 시스템이 장애 후 복구가 오래 걸리는 이유는?",
+        "options": [
+          "디스크 전체 검사",
+          "커밋만 재생"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "어디가 어긋났는지 모르니 fsck가 디스크 전체를 검사해야 합니다. 저널이 있으면 커밋된 저널만 재생합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-journaling-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "journaling",
+        "definition"
+      ],
+      "content": {
+        "prompt": "저널링은 제자리에 쓰기 전에 저널에 먼저 기록한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 저널에 먼저 기록하고 커밋한 뒤 제자리에 반영해, 중간에 장애가 나도 복구할 수 있습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    }
+  ]
+}

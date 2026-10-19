@@ -1,0 +1,246 @@
+{
+  "track": "os",
+  "unit": "u05-file-system",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "os-contig-linked-alloc-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "contiguous-allocation",
+        "definition"
+      ],
+      "content": {
+        "prompt": "파일을 연속된 블록에 저장하는 방식은?",
+        "options": [
+          "연결 할당",
+          "FAT",
+          "연속 할당"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "연속 할당은 파일을 디스크의 연속된 블록에 저장합니다. 순차·임의 접근이 모두 빠릅니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://en.wikipedia.org/wiki/File_Allocation_Table"
+      ]
+    },
+    {
+      "id": "os-contig-linked-alloc-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "linked-allocation",
+        "definition"
+      ],
+      "content": {
+        "prompt": "블록마다 다음 블록 번호를 저장하는 방식은?",
+        "options": [
+          "연결 할당",
+          "연속 할당",
+          "버디 시스템"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "연결 할당은 각 블록에 다음 블록 번호를 저장해 블록들을 이어 갑니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://en.wikipedia.org/wiki/File_Allocation_Table"
+      ]
+    },
+    {
+      "id": "os-contig-linked-alloc-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "random-access",
+        "contiguous-allocation"
+      ],
+      "content": {
+        "prompt": "임의 접근이 빠른 쪽은?",
+        "options": [
+          "연결 할당",
+          "연속 할당"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "연속 할당은 시작 블록에 위치만 더하면 바로 가지만, 연결 할당은 앞 블록부터 따라가야 해 느립니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://en.wikipedia.org/wiki/File_Allocation_Table"
+      ]
+    },
+    {
+      "id": "os-contig-linked-alloc-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "linked-allocation",
+        "external-fragmentation"
+      ],
+      "content": {
+        "prompt": "연결 할당은 외부 단편화가 생긴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "연결 할당은 아무 빈 블록이나 이어 쓰므로 외부 단편화가 없습니다. 외부 단편화는 연속 할당의 문제입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://en.wikipedia.org/wiki/File_Allocation_Table"
+      ]
+    },
+    {
+      "id": "os-contig-linked-alloc-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "fat",
+        "term"
+      ],
+      "content": {
+        "prompt": "다음 블록 정보를 별도 테이블에 모은 연결 할당은 ___ 이다.",
+        "hint": "USB 메모리에서 흔히 쓰는 형식, 영문 세 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "FAT",
+          "팻",
+          "File Allocation Table",
+          "파일 할당 테이블"
+        ]
+      },
+      "explanation": "FAT는 각 블록의 다음 블록 번호를 블록 안이 아닌 별도 테이블에 모아 둔 연결 할당 방식입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://en.wikipedia.org/wiki/File_Allocation_Table"
+      ]
+    },
+    {
+      "id": "os-contig-linked-alloc-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "linked-allocation",
+        "term"
+      ],
+      "content": {
+        "prompt": "연결 할당은 블록마다 ___ 블록 번호를 저장한다.",
+        "hint": "이어서 읽을 블록"
+      },
+      "answer_key": {
+        "accepted": [
+          "다음",
+          "next",
+          "다음 블록"
+        ]
+      },
+      "explanation": "연결 할당은 블록마다 다음 블록 번호를 저장해 파일의 블록들을 차례로 잇습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://en.wikipedia.org/wiki/File_Allocation_Table"
+      ]
+    },
+    {
+      "id": "os-contig-linked-alloc-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linked-allocation",
+        "calc"
+      ],
+      "content": {
+        "prompt": "연결 할당에서 10번째 블록에 가려면 앞 블록 몇 개를 따라가나?",
+        "options": [
+          "9",
+          "1",
+          "10"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "각 블록이 다음 번호만 알고 있어, 10번째에 가려면 앞의 블록 9개를 차례로 읽어야 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://en.wikipedia.org/wiki/File_Allocation_Table"
+      ]
+    },
+    {
+      "id": "os-contig-linked-alloc-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "contiguous-allocation",
+        "calc"
+      ],
+      "content": {
+        "prompt": "연속 할당, 시작 블록 100. 파일의 5번째 블록 번호는?",
+        "options": [
+          "104",
+          "105",
+          "500"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "첫 블록이 100이므로 5번째 블록은 100 + 4 = 104입니다. 계산 한 번으로 바로 갈 수 있습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://en.wikipedia.org/wiki/File_Allocation_Table"
+      ]
+    },
+    {
+      "id": "os-contig-linked-alloc-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linked-allocation",
+        "apply"
+      ],
+      "content": {
+        "prompt": "빈 블록이 여기저기 흩어져 있다. 큰 파일 저장에 유리한 방식은?",
+        "options": [
+          "연속 할당",
+          "연결 할당"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "연결 할당은 흩어진 빈 블록을 이어 쓸 수 있지만, 연속 할당은 충분히 긴 연속 구간이 있어야 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://en.wikipedia.org/wiki/File_Allocation_Table"
+      ]
+    },
+    {
+      "id": "os-contig-linked-alloc-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "contiguous-allocation",
+        "external-fragmentation"
+      ],
+      "content": {
+        "prompt": "연속 할당에서는 외부 단편화가 생길 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 파일을 연속 구간에 두어야 해 빈 블록이 흩어지면 합이 충분해도 저장하지 못할 수 있습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://en.wikipedia.org/wiki/File_Allocation_Table"
+      ]
+    }
+  ]
+}

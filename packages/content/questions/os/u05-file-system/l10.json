@@ -1,0 +1,245 @@
+{
+  "track": "os",
+  "unit": "u05-file-system",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "os-fsync-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "fsync",
+        "definition"
+      ],
+      "content": {
+        "prompt": "파일 데이터와 메타데이터를 저장 장치까지 내려보낸 뒤 반환하는 호출은?",
+        "options": [
+          "write()",
+          "read()",
+          "fsync()"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "fsync()는 그 파일의 데이터와 메타데이터를 저장 장치까지 내려보낸 뒤에 반환합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fsync.2.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-fsync-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "fdatasync",
+        "definition"
+      ],
+      "content": {
+        "prompt": "데이터와 읽기에 필요한 메타데이터만 내려보내는 호출은?",
+        "options": [
+          "fdatasync()",
+          "fsync()",
+          "open()"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "fdatasync()는 데이터와 읽기에 필요한 메타데이터(예: 크기)만 내려보내고 수정 시각 등은 생략할 수 있습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fsync.2.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-fsync-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "fdatasync",
+        "fsync"
+      ],
+      "content": {
+        "prompt": "수정 시각 기록을 생략할 수 있는 쪽은?",
+        "options": [
+          "fsync()",
+          "fdatasync()"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "fdatasync()는 읽기에 필요 없는 수정 시각 같은 메타데이터는 내려보내지 않아도 됩니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fsync.2.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-fsync-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "write",
+        "durability"
+      ],
+      "content": {
+        "prompt": "write()가 성공하면 데이터가 저장 장치에 기록된 것이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "write() 성공은 페이지 캐시까지 썼다는 뜻입니다. 저장 장치 기록을 보장하려면 fsync()가 필요합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fsync.2.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-fsync-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "fsync",
+        "term"
+      ],
+      "content": {
+        "prompt": "저장 장치까지 내려보낸 뒤 반환하는 시스템 콜은 ___ 이다.",
+        "hint": "write() 뒤에 불러 내구성을 확보하는 호출"
+      },
+      "answer_key": {
+        "accepted": [
+          "fsync",
+          "fsync()",
+          "에프싱크"
+        ]
+      },
+      "explanation": "fsync()는 파일의 데이터와 메타데이터를 저장 장치까지 내려보낸 뒤 반환합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fsync.2.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-fsync-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "wal",
+        "db-commit"
+      ],
+      "content": {
+        "prompt": "DB는 커밋 전에 ___ 로그를 쓰고 fsync한다.",
+        "hint": "변경을 먼저 남기는 로그의 영문 세 글자 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "WAL",
+          "Write Ahead Log",
+          "Write Ahead Logging",
+          "write-ahead log",
+          "선행 기록 로그"
+        ]
+      },
+      "explanation": "DB는 WAL에 변경을 쓰고 fsync까지 끝낸 뒤에 커밋을 확정해 지속성을 보장합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fsync.2.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-fsync-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "write",
+        "durability"
+      ],
+      "content": {
+        "prompt": "write() 성공 직후 정전되면 그 데이터는?",
+        "options": [
+          "사라질 수 있음",
+          "보존이 보장됨"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "write()는 페이지 캐시까지만 썼으므로 디스크에 기록되기 전에 정전되면 사라질 수 있습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fsync.2.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-fsync-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "fsync",
+        "durability"
+      ],
+      "content": {
+        "prompt": "write()와 fsync()가 모두 끝난 뒤 정전되면 그 데이터는?",
+        "options": [
+          "사라질 수 있음",
+          "남아 있음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "fsync()가 반환했다면 데이터가 저장 장치까지 기록된 뒤이므로 정전 후에도 남아 있습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fsync.2.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-fsync-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "wal",
+        "db-commit"
+      ],
+      "content": {
+        "prompt": "DB가 커밋 성공을 응답해도 되는 시점은?",
+        "options": [
+          "WAL write() 직후",
+          "WAL fsync() 뒤"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "write() 직후는 페이지 캐시에만 있어 정전에 잃을 수 있습니다. WAL을 fsync까지 끝내야 지속성이 보장됩니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fsync.2.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-fsync-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "fsync",
+        "definition"
+      ],
+      "content": {
+        "prompt": "fsync()는 저장 장치까지 내려보낸 뒤 반환한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. fsync()는 파일의 데이터와 메타데이터가 저장 장치에 기록될 때까지 기다렸다가 반환합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fsync.2.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    }
+  ]
+}

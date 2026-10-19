@@ -1,0 +1,247 @@
+{
+  "track": "os",
+  "unit": "u05-file-system",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "os-ext4-journal-mode-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "journal-mode",
+        "definition"
+      ],
+      "content": {
+        "prompt": "데이터와 메타데이터를 모두 저널에 쓰는 ext4 모드는?",
+        "options": [
+          "journal",
+          "ordered",
+          "writeback"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "journal 모드는 데이터와 메타데이터를 모두 저널에 기록합니다. 가장 안전하지만 두 번 쓰므로 느립니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/ext4.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-ext4-journal-mode-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ordered-mode",
+        "definition"
+      ],
+      "content": {
+        "prompt": "ext4의 기본 저널 모드는?",
+        "options": [
+          "journal",
+          "ordered",
+          "writeback"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ext4의 기본값은 data=ordered입니다. 메타데이터만 저널에 쓰되 데이터 블록을 먼저 씁니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/ext4.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-ext4-journal-mode-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ordered-mode",
+        "writeback-mode"
+      ],
+      "content": {
+        "prompt": "ordered와 writeback이 저널에 쓰는 것은?",
+        "options": [
+          "데이터만",
+          "메타데이터만"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "두 모드 모두 메타데이터만 저널에 씁니다. 차이는 데이터 쓰기 순서를 보장하느냐입니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/ext4.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-ext4-journal-mode-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ordered-mode",
+        "journal-mode"
+      ],
+      "content": {
+        "prompt": "ordered 모드는 데이터까지 저널에 기록한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "ordered 모드는 메타데이터만 저널에 씁니다. 데이터까지 저널에 쓰는 것은 journal 모드입니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/ext4.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-ext4-journal-mode-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "journal-mode",
+        "term"
+      ],
+      "content": {
+        "prompt": "ext4에서 가장 안전하고 느린 모드는 ___ 모드다.",
+        "hint": "데이터까지 모두 기록하는 모드"
+      },
+      "answer_key": {
+        "accepted": [
+          "journal",
+          "저널",
+          "data journal",
+          "data=journal"
+        ]
+      },
+      "explanation": "데이터와 메타데이터를 모두 저널에 쓰는 journal 모드가 가장 안전하고 가장 느립니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/ext4.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-ext4-journal-mode-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "writeback-mode",
+        "term"
+      ],
+      "content": {
+        "prompt": "데이터 쓰기 순서를 보장하지 않는 ext4 모드는 ___ 이다.",
+        "hint": "'나중에 써 둔다'는 뜻의 영어"
+      },
+      "answer_key": {
+        "accepted": [
+          "writeback",
+          "라이트백",
+          "write back",
+          "data=writeback"
+        ]
+      },
+      "explanation": "writeback 모드는 메타데이터만 저널에 쓰고 데이터 쓰기 순서는 보장하지 않습니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/ext4.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-ext4-journal-mode-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "writeback-mode",
+        "apply"
+      ],
+      "content": {
+        "prompt": "장애 후 파일에 옛 데이터가 보일 수 있는 모드는?",
+        "options": [
+          "writeback",
+          "journal",
+          "ordered"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "writeback은 메타데이터가 데이터보다 먼저 커밋될 수 있어, 장애 후 그 블록의 옛 내용이 보일 수 있습니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/ext4.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-ext4-journal-mode-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ordered-mode",
+        "apply"
+      ],
+      "content": {
+        "prompt": "ordered 모드에서 먼저 디스크에 쓰는 것은?",
+        "options": [
+          "메타데이터 커밋",
+          "데이터 블록"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ordered 모드는 데이터 블록을 먼저 쓴 뒤 메타데이터를 저널에 커밋해, 옛 데이터가 보이는 일을 막습니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/ext4.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-ext4-journal-mode-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "journal-mode",
+        "apply"
+      ],
+      "content": {
+        "prompt": "데이터 안전이 최우선이고 속도는 덜 중요하다. 고를 모드는?",
+        "options": [
+          "writeback",
+          "ordered",
+          "journal"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "journal 모드는 데이터까지 저널에 남겨 가장 안전합니다. 대신 같은 데이터를 두 번 써서 느립니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/ext4.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    },
+    {
+      "id": "os-ext4-journal-mode-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "journal-mode",
+        "definition"
+      ],
+      "content": {
+        "prompt": "journal 모드는 데이터와 메타데이터를 모두 저널에 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. journal 모드는 데이터와 메타데이터를 모두 저널에 기록한 뒤 제자리에 반영합니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/ext4.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf"
+      ]
+    }
+  ]
+}
