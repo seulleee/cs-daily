@@ -1,0 +1,248 @@
+{
+  "track": "dsa",
+  "unit": "u04-hash-table",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "dsa-hash-collision-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "collision",
+        "hash-table"
+      ],
+      "content": {
+        "prompt": "서로 다른 키가 같은 버킷 인덱스를 받는 것은?",
+        "options": [
+          "충돌",
+          "오버플로",
+          "순환"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "두 키가 서로 다른데 같은 버킷 인덱스에 배정되는 상황을 충돌이라 부릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Pigeonhole_principle"
+      ]
+    },
+    {
+      "id": "dsa-hash-collision-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "pigeonhole",
+        "collision"
+      ],
+      "content": {
+        "prompt": "키 종류가 버킷 수보다 많으면 충돌이 생긴다는 원리는?",
+        "options": [
+          "결정성",
+          "비둘기집 원리",
+          "균등 분포"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "비둘기집 원리에 따라 키 종류가 버킷 수보다 많으면 어떤 버킷에는 키가 둘 이상 배정됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Pigeonhole_principle"
+      ]
+    },
+    {
+      "id": "dsa-hash-collision-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "collision-resolution",
+        "collision"
+      ],
+      "content": {
+        "prompt": "충돌 해결 방식에 해당하는 것은?",
+        "options": [
+          "정렬",
+          "이진 탐색",
+          "체이닝"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "충돌 해결 방식은 체이닝과 오픈 어드레싱 두 가지입니다. 정렬과 이진 탐색은 충돌과 관계없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Pigeonhole_principle"
+      ]
+    },
+    {
+      "id": "dsa-hash-collision-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "pigeonhole",
+        "collision"
+      ],
+      "content": {
+        "prompt": "좋은 해시 함수를 쓰면 충돌이 생기지 않는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "키 종류가 버킷 수보다 많으면 비둘기집 원리로 충돌은 반드시 생깁니다. 좋은 해시 함수는 충돌을 줄일 뿐입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Pigeonhole_principle"
+      ]
+    },
+    {
+      "id": "dsa-hash-collision-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "collision",
+        "hash-table"
+      ],
+      "content": {
+        "prompt": "다른 두 키에 같은 버킷이 배정되는 상황은 ___ 이다.",
+        "hint": "해결 방식으로 체이닝과 오픈 어드레싱이 있습니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "충돌",
+          "collision",
+          "해시 충돌",
+          "hash collision"
+        ]
+      },
+      "explanation": "충돌은 서로 다른 키가 같은 버킷 인덱스를 받는 것으로, 해결 방식이 따로 필요합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Pigeonhole_principle"
+      ]
+    },
+    {
+      "id": "dsa-hash-collision-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "pigeonhole",
+        "collision"
+      ],
+      "content": {
+        "prompt": "키 종류가 버킷 수보다 많으면 충돌이 반드시 생기는 것은 ___ 원리이다.",
+        "hint": "칸보다 넣을 것이 많으면 어떤 칸에는 둘 이상 들어간다는 수학 원리입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "비둘기집",
+          "비둘기 집",
+          "pigeonhole",
+          "비둘기집 원리"
+        ]
+      },
+      "explanation": "비둘기집 원리 때문에 키 종류가 버킷 수보다 많은 한 충돌을 완전히 없앨 수 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Pigeonhole_principle"
+      ]
+    },
+    {
+      "id": "dsa-hash-collision-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "collision",
+        "index-calc"
+      ],
+      "content": {
+        "prompt": "버킷 10개에서 해시 값 13과 같은 버킷을 받는 값은?",
+        "options": [
+          "14",
+          "23",
+          "31"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "13 % 10과 23 % 10이 모두 3이라 같은 버킷 3을 받습니다. 14는 4, 31은 1입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Pigeonhole_principle"
+      ]
+    },
+    {
+      "id": "dsa-hash-collision-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "collision",
+        "index-calc"
+      ],
+      "content": {
+        "prompt": "버킷 8개에서 해시 값 5와 13의 버킷 인덱스는?",
+        "options": [
+          "둘 다 5",
+          "5와 13",
+          "둘 다 0"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "5 % 8 = 5, 13 % 8 = 5라서 둘 다 버킷 5를 받아 충돌합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Pigeonhole_principle"
+      ]
+    },
+    {
+      "id": "dsa-hash-collision-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pigeonhole",
+        "collision"
+      ],
+      "content": {
+        "prompt": "버킷 5개에 서로 다른 키 6개를 넣으면?",
+        "options": [
+          "충돌 없을 수 있음",
+          "충돌 반드시 생김"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "키 6개를 버킷 5개에 나누면 비둘기집 원리로 적어도 한 버킷에 키가 2개 이상 들어갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Pigeonhole_principle"
+      ]
+    },
+    {
+      "id": "dsa-hash-collision-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "collision",
+        "index-calc"
+      ],
+      "content": {
+        "prompt": "버킷 10개에서 해시 값 12와 22는 충돌한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "12 % 10과 22 % 10이 모두 2라 두 키가 같은 버킷 2를 받으므로 충돌입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Pigeonhole_principle"
+      ]
+    }
+  ]
+}

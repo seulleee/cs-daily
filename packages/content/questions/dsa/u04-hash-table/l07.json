@@ -1,0 +1,240 @@
+{
+  "track": "dsa",
+  "unit": "u04-hash-table",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "dsa-hash-load-factor-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "load-factor",
+        "hash-table"
+      ],
+      "content": {
+        "prompt": "저장된 원소 수 ÷ 버킷 수로 구하는 값은?",
+        "options": [
+          "해시 값",
+          "로드 팩터",
+          "버킷 인덱스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "로드 팩터 α는 저장된 원소 수를 버킷 수로 나눈 값으로, 테이블이 얼마나 찼는지 나타냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Load_factor"
+      ]
+    },
+    {
+      "id": "dsa-hash-load-factor-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "load-factor",
+        "collision"
+      ],
+      "content": {
+        "prompt": "로드 팩터가 커지면 생기는 일은?",
+        "options": [
+          "충돌이 늘어남",
+          "충돌이 줄어듦",
+          "버킷이 줄어듦"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "버킷 수에 비해 원소가 많아지므로 충돌이 늘고 탐색이 느려집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Load_factor"
+      ]
+    },
+    {
+      "id": "dsa-hash-load-factor-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "load-factor",
+        "open-addressing"
+      ],
+      "content": {
+        "prompt": "오픈 어드레싱에서 로드 팩터는 1을 넘을 수 없다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "오픈 어드레싱은 칸마다 원소 하나만 저장하므로 원소 수가 버킷 수를 넘지 못해 α ≤ 1입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Load_factor"
+      ]
+    },
+    {
+      "id": "dsa-hash-load-factor-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "load-factor",
+        "search"
+      ],
+      "content": {
+        "prompt": "로드 팩터가 커질수록 탐색이 빨라진다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "α가 커지면 충돌이 늘어 버킷 리스트나 탐사가 길어지므로 탐색이 느려집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Load_factor"
+      ]
+    },
+    {
+      "id": "dsa-hash-load-factor-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "load-factor",
+        "hash-table"
+      ],
+      "content": {
+        "prompt": "저장된 원소 수를 버킷 수로 나눈 값은 ___ 이다.",
+        "hint": "기호 α로 나타냅니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "로드 팩터",
+          "로드팩터",
+          "load factor",
+          "적재율",
+          "부하율"
+        ]
+      },
+      "explanation": "로드 팩터 α는 원소 수 ÷ 버킷 수로, 테이블을 언제 키울지 정하는 기준이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Load_factor"
+      ]
+    },
+    {
+      "id": "dsa-hash-load-factor-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "load-factor",
+        "java-hashmap"
+      ],
+      "content": {
+        "prompt": "Java HashMap은 α가 0.75를 넘으면 버킷 수를 ___ 배로 늘린다.",
+        "hint": "현재 버킷 수에 곱하는 수입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "2",
+          "두",
+          "2배",
+          "두 배"
+        ]
+      },
+      "explanation": "Java HashMap은 로드 팩터가 0.75를 넘으면 버킷 수를 2배로 늘리고 원소를 다시 배치합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Load_factor"
+      ]
+    },
+    {
+      "id": "dsa-hash-load-factor-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "load-factor",
+        "calc"
+      ],
+      "content": {
+        "prompt": "원소 9개, 버킷 12개일 때 로드 팩터는?",
+        "options": [
+          "0.5",
+          "0.75",
+          "1.33"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "로드 팩터는 원소 수 ÷ 버킷 수이므로 9 ÷ 12 = 0.75입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Load_factor"
+      ]
+    },
+    {
+      "id": "dsa-hash-load-factor-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "load-factor",
+        "java-hashmap"
+      ],
+      "content": {
+        "prompt": "버킷 16개 Java HashMap이 버킷을 늘리는 시점은?",
+        "options": [
+          "13번째 삽입",
+          "12번째 삽입",
+          "16번째 삽입"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "16 × 0.75 = 12라 12개까지는 그대로이고, 13번째 원소로 α가 0.75를 넘을 때 32개로 늘립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Load_factor"
+      ]
+    },
+    {
+      "id": "dsa-hash-load-factor-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "load-factor",
+        "chaining"
+      ],
+      "content": {
+        "prompt": "체이닝, 원소 20개·버킷 10개일 때 로드 팩터는?",
+        "options": [
+          "0.5",
+          "1",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "20 ÷ 10 = 2입니다. 체이닝은 버킷마다 리스트를 두므로 α가 1을 넘어도 동작합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Load_factor"
+      ]
+    },
+    {
+      "id": "dsa-hash-load-factor-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "load-factor",
+        "calc"
+      ],
+      "content": {
+        "prompt": "로드 팩터 α를 구하는 식은?",
+        "options": [
+          "버킷 수 ÷ 원소 수",
+          "원소 수 ÷ 버킷 수",
+          "원소 수 × 버킷 수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "로드 팩터는 저장된 원소 수를 버킷 수로 나눈 값입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Load_factor"
+      ]
+    }
+  ]
+}

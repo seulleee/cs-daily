@@ -1,0 +1,238 @@
+{
+  "track": "dsa",
+  "unit": "u05-tree-bst",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "dsa-rb-tree-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "red-black-tree",
+        "balanced-bst"
+      ],
+      "content": {
+        "prompt": "노드를 빨강·검정으로 칠해 균형을 유지하는 BST는?",
+        "options": [
+          "AVL 트리",
+          "레드블랙 트리",
+          "편향 트리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "레드블랙 트리는 노드에 빨강·검정 색을 두고 색 규칙으로 균형을 유지하는 BST입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Red%E2%80%93black_tree"
+      ]
+    },
+    {
+      "id": "dsa-rb-tree-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "black-height",
+        "red-black-tree"
+      ],
+      "content": {
+        "prompt": "한 노드에서 리프까지 경로의 검정 노드 수는?",
+        "options": [
+          "검정 높이",
+          "균형 인수",
+          "깊이"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "검정 높이는 한 노드에서 리프까지 경로에 있는 검정 노드 수로, 모든 경로에서 같아야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Red%E2%80%93black_tree"
+      ]
+    },
+    {
+      "id": "dsa-rb-tree-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "avl-tree",
+        "red-black-tree"
+      ],
+      "content": {
+        "prompt": "높이 차이를 더 엄격히 제한하는 트리는?",
+        "options": [
+          "AVL 트리",
+          "레드블랙 트리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "AVL 트리는 균형 인수를 −1~1로 제한해 더 엄격히 균형을 잡습니다. 레드블랙 트리는 조금 느슨합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Red%E2%80%93black_tree"
+      ]
+    },
+    {
+      "id": "dsa-rb-tree-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "red-black-tree",
+        "color-rule"
+      ],
+      "content": {
+        "prompt": "레드블랙 트리에서 빨강 노드의 자식은 빨강일 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "빨강 노드의 자식은 검정이어야 하므로 빨강 노드가 연달아 올 수 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Red%E2%80%93black_tree"
+      ]
+    },
+    {
+      "id": "dsa-rb-tree-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "color-rule",
+        "red-black-tree"
+      ],
+      "content": {
+        "prompt": "레드블랙 트리의 루트 색은 ___ 이다.",
+        "hint": "NIL 리프와 같은 색입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "검정",
+          "검은색",
+          "black",
+          "검정색",
+          "흑"
+        ]
+      },
+      "explanation": "레드블랙 트리의 규칙에 따라 루트와 NIL 리프는 검정입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Red%E2%80%93black_tree"
+      ]
+    },
+    {
+      "id": "dsa-rb-tree-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "black-height",
+        "red-black-tree"
+      ],
+      "content": {
+        "prompt": "모든 리프까지 경로의 검정 노드 수가 같아야 하는 그 수는 검정 ___ 이다.",
+        "hint": "균형 인수를 구할 때도 쓰던, 아래쪽으로 세는 길이의 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "높이",
+          "height",
+          "black height",
+          "블랙 높이"
+        ]
+      },
+      "explanation": "검정 높이가 모든 경로에서 같아 가장 긴 경로가 가장 짧은 경로의 2배를 넘지 못합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Red%E2%80%93black_tree"
+      ]
+    },
+    {
+      "id": "dsa-rb-tree-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "color-rule",
+        "red-black-tree"
+      ],
+      "content": {
+        "prompt": "빨강 노드 R의 두 자식의 색은?",
+        "options": [
+          "둘 다 검정",
+          "둘 다 빨강",
+          "하나씩"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "빨강 노드의 자식은 검정이어야 하므로 두 자식 모두 검정입니다(빈 자식은 검정 NIL 리프).",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Red%E2%80%93black_tree"
+      ]
+    },
+    {
+      "id": "dsa-rb-tree-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "red-black-tree",
+        "avl-tree"
+      ],
+      "content": {
+        "prompt": "삽입·삭제가 잦아 회전을 줄이고 싶을 때 알맞은 트리는?",
+        "options": [
+          "AVL 트리",
+          "레드블랙 트리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "레드블랙 트리는 균형 조건이 느슨해 삽입·삭제 때 회전이 AVL 트리보다 적습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Red%E2%80%93black_tree"
+      ]
+    },
+    {
+      "id": "dsa-rb-tree-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "black-height",
+        "color-rule"
+      ],
+      "content": {
+        "prompt": "루트에서 두 리프까지의 검정 노드 수가 2와 3이다. 상태는?",
+        "options": [
+          "규칙 만족",
+          "검정 높이 위반",
+          "빨강 규칙 위반"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "모든 리프까지 경로의 검정 노드 수가 같아야 하는데 2와 3으로 달라 검정 높이 규칙을 어깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Red%E2%80%93black_tree"
+      ]
+    },
+    {
+      "id": "dsa-rb-tree-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "red-black-tree",
+        "balanced-bst"
+      ],
+      "content": {
+        "prompt": "레드블랙 트리는 색 규칙으로 균형을 유지하는 BST이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "레드블랙 트리는 노드 색과 규칙(빨강 연속 금지, 같은 검정 높이)으로 높이를 O(log n)으로 지킵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Red%E2%80%93black_tree"
+      ]
+    }
+  ]
+}

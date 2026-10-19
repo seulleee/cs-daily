@@ -1,0 +1,236 @@
+{
+  "track": "dsa",
+  "unit": "u05-tree-bst",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "dsa-binary-tree-kinds-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-tree",
+        "tree-terms"
+      ],
+      "content": {
+        "prompt": "모든 노드의 자식이 최대 2개인 트리는?",
+        "options": [
+          "이진 트리",
+          "연결 리스트",
+          "스택"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "이진 트리는 모든 노드가 왼쪽·오른쪽 자식을 최대 하나씩, 모두 2개까지 가집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_tree"
+      ]
+    },
+    {
+      "id": "dsa-binary-tree-kinds-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "perfect-binary-tree",
+        "binary-tree"
+      ],
+      "content": {
+        "prompt": "모든 레벨이 꽉 찬 이진 트리는?",
+        "options": [
+          "완전 이진 트리",
+          "포화 이진 트리",
+          "연결 리스트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "포화 이진 트리는 모든 레벨이 꽉 찬 트리로 높이 h면 노드가 2^(h+1)−1개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_tree"
+      ]
+    },
+    {
+      "id": "dsa-binary-tree-kinds-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "complete-binary-tree",
+        "binary-tree"
+      ],
+      "content": {
+        "prompt": "마지막 레벨만 덜 차고 왼쪽부터 채운 트리는?",
+        "options": [
+          "포화 이진 트리",
+          "완전 이진 트리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "완전 이진 트리는 마지막 레벨 외에는 꽉 차고 마지막 레벨은 왼쪽부터 채웁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_tree"
+      ]
+    },
+    {
+      "id": "dsa-binary-tree-kinds-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "complete-binary-tree",
+        "perfect-binary-tree"
+      ],
+      "content": {
+        "prompt": "완전 이진 트리는 마지막 레벨까지 모두 꽉 차야 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "완전 이진 트리의 마지막 레벨은 왼쪽부터 채우기만 하면 됩니다. 모든 레벨이 꽉 찬 것은 포화 이진 트리입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_tree"
+      ]
+    },
+    {
+      "id": "dsa-binary-tree-kinds-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "perfect-binary-tree",
+        "binary-tree"
+      ],
+      "content": {
+        "prompt": "모든 레벨이 꽉 찬 이진 트리는 ___ 이진 트리이다.",
+        "hint": "높이 h면 노드가 2^(h+1)−1개인 트리입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "포화",
+          "perfect",
+          "포화 이진 트리",
+          "perfect binary tree"
+        ]
+      },
+      "explanation": "포화 이진 트리는 모든 레벨이 꽉 차서 레벨 k마다 노드가 2^k개씩 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_tree"
+      ]
+    },
+    {
+      "id": "dsa-binary-tree-kinds-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "level",
+        "binary-tree"
+      ],
+      "content": {
+        "prompt": "루트가 레벨 0일 때 레벨 3에 올 수 있는 최대 노드 수는 ___ 개이다.",
+        "hint": "레벨이 하나 내려갈 때마다 최대 노드 수가 2배가 됩니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "8",
+          "여덟"
+        ]
+      },
+      "explanation": "레벨 k의 최대 노드 수는 2^k이므로 레벨 3은 2^3 = 8개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_tree"
+      ]
+    },
+    {
+      "id": "dsa-binary-tree-kinds-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "perfect-binary-tree",
+        "node-count"
+      ],
+      "content": {
+        "prompt": "높이 2인 포화 이진 트리의 노드 수는?",
+        "options": [
+          "7",
+          "3",
+          "8"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "높이 h인 포화 이진 트리의 노드 수는 2^(h+1)−1이므로 2^3 − 1 = 7개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_tree"
+      ]
+    },
+    {
+      "id": "dsa-binary-tree-kinds-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "perfect-binary-tree",
+        "level"
+      ],
+      "content": {
+        "prompt": "높이 3인 포화 이진 트리의 리프 수는?",
+        "options": [
+          "7",
+          "8",
+          "15"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "포화 이진 트리의 리프는 모두 마지막 레벨 3에 있고, 레벨 3의 노드 수는 2^3 = 8개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_tree"
+      ]
+    },
+    {
+      "id": "dsa-binary-tree-kinds-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "complete-binary-tree",
+        "level"
+      ],
+      "content": {
+        "prompt": "레벨 0·1이 꽉 차고 레벨 2에 왼쪽부터 노드 2개. 어떤 트리?",
+        "options": [
+          "포화 이진 트리",
+          "완전 이진 트리",
+          "이진 트리 아님"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "마지막 레벨 2만 덜 찼고 왼쪽부터 채웠으므로 완전 이진 트리입니다. 레벨 2가 꽉 차지 않아 포화는 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_tree"
+      ]
+    },
+    {
+      "id": "dsa-binary-tree-kinds-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "binary-tree",
+        "tree-terms"
+      ],
+      "content": {
+        "prompt": "이진 트리의 노드는 자식을 최대 2개 가진다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "이진 트리는 모든 노드의 자식이 왼쪽·오른쪽 최대 2개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_tree"
+      ]
+    }
+  ]
+}

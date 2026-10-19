@@ -1,0 +1,249 @@
+{
+  "track": "dsa",
+  "unit": "u05-tree-bst",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "dsa-bst-height-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "skewed-tree",
+        "bst"
+      ],
+      "content": {
+        "prompt": "정렬된 순서로 삽입해 한쪽으로만 늘어진 트리는?",
+        "options": [
+          "편향 트리",
+          "포화 이진 트리",
+          "완전 이진 트리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "편향 트리는 정렬된 순서로 삽입해 노드가 한쪽 자식으로만 이어진 트리입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree",
+        "https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-height-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "balanced-bst",
+        "bst-cost"
+      ],
+      "content": {
+        "prompt": "균형 잡힌 BST의 연산 비용은?",
+        "options": [
+          "O(1)",
+          "O(log n)",
+          "O(n)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "균형 잡힌 BST는 높이가 약 log₂ n이라 탐색·삽입·삭제가 O(log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree",
+        "https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-height-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "skewed-tree",
+        "bst-cost"
+      ],
+      "content": {
+        "prompt": "한쪽으로 편향된 BST의 탐색 비용은?",
+        "options": [
+          "O(log n)",
+          "O(n)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "편향되면 높이가 n−1이 되어 연결 리스트를 따라가는 것과 같은 O(n)이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree",
+        "https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-height-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "skewed-tree",
+        "height"
+      ],
+      "content": {
+        "prompt": "BST는 삽입 순서와 관계없이 높이가 약 log₂ n이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "삽입 순서에 따라 높이가 달라집니다. 정렬된 순서로 넣으면 편향되어 높이가 n−1이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree",
+        "https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-height-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "skewed-tree",
+        "bst"
+      ],
+      "content": {
+        "prompt": "정렬된 순서로 넣어 한쪽으로 늘어진 트리는 ___ 트리이다.",
+        "hint": "한쪽으로 치우쳤다는 뜻의 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "편향",
+          "skewed",
+          "편향 트리",
+          "사향",
+          "경사"
+        ]
+      },
+      "explanation": "편향 트리는 노드가 한쪽 자식으로만 이어져 높이가 노드 수 − 1까지 커집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree",
+        "https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-height-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "skewed-tree",
+        "linked-list"
+      ],
+      "content": {
+        "prompt": "편향된 BST는 노드가 일렬로 이어져 ___ 와 같아진다.",
+        "hint": "노드가 next 하나로 다음 노드를 가리키는 구조입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "연결 리스트",
+          "연결리스트",
+          "linked list",
+          "리스트"
+        ]
+      },
+      "explanation": "편향된 BST는 노드마다 자식이 하나뿐이라 연결 리스트와 같아져 연산이 O(n)이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree",
+        "https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-height-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "skewed-tree",
+        "height"
+      ],
+      "content": {
+        "prompt": "1, 2, 3, 4 순서로 BST에 넣으면 높이는?",
+        "options": [
+          "4",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "값이 커지는 순서라 오른쪽으로만 일렬로 붙어, 루트 1에서 리프 4까지 간선 3개라 높이 3입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree",
+        "https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-height-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "balanced-bst",
+        "height"
+      ],
+      "content": {
+        "prompt": "4, 2, 6, 1, 3, 5, 7 순서로 BST에 넣으면 높이는?",
+        "options": [
+          "2",
+          "3",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "루트 4 아래 2·6, 그 아래 1·3·5·7이 붙어 양쪽이 고르게 찬 트리라 높이가 2입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree",
+        "https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-height-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "balanced-bst",
+        "bst-cost"
+      ],
+      "content": {
+        "prompt": "노드 1023개인 균형 BST에서 탐색 비교 횟수는 약?",
+        "options": [
+          "약 1023번",
+          "약 10번",
+          "약 100번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "균형 잡힌 BST의 높이는 약 log₂ 1023, 즉 약 10이라 비교도 약 10번입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree",
+        "https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-height-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "skewed-tree",
+        "bst"
+      ],
+      "content": {
+        "prompt": "정렬된 순서로 삽입하면 BST가 한쪽으로 늘어진다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "값이 커지는 순서로 넣으면 새 노드가 매번 오른쪽 자식으로만 붙어 편향 트리가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree",
+        "https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree"
+      ]
+    }
+  ]
+}

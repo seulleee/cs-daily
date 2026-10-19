@@ -1,0 +1,250 @@
+{
+  "track": "dsa",
+  "unit": "u04-hash-table",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "dsa-hash-linear-probe-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "open-addressing",
+        "collision-resolution"
+      ],
+      "content": {
+        "prompt": "충돌 시 테이블 안의 다른 빈 칸에 저장하는 방식은?",
+        "options": [
+          "체이닝",
+          "오픈 어드레싱",
+          "이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "오픈 어드레싱은 충돌하면 연결 리스트 없이 테이블 안의 다른 빈 칸을 찾아 저장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Linear_probing"
+      ]
+    },
+    {
+      "id": "dsa-hash-linear-probe-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "linear-probing",
+        "open-addressing"
+      ],
+      "content": {
+        "prompt": "칸 i가 차 있으면 i+1, i+2 순으로 보는 방법은?",
+        "options": [
+          "선형 탐사",
+          "체이닝",
+          "이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "선형 탐사는 칸 i가 차 있으면 i+1, i+2 순으로 한 칸씩 다음 칸을 확인합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Linear_probing"
+      ]
+    },
+    {
+      "id": "dsa-hash-linear-probe-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tombstone",
+        "linear-probing"
+      ],
+      "content": {
+        "prompt": "선형 탐사에서 키를 지운 칸에 남기는 것은?",
+        "options": [
+          "삭제됨 표시",
+          "빈 칸"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "지운 칸을 빈 칸으로 두면 그 뒤로 이어진 탐사가 끊기므로 '삭제됨'으로 표시해 둡니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Linear_probing"
+      ]
+    },
+    {
+      "id": "dsa-hash-linear-probe-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "linear-probing",
+        "search"
+      ],
+      "content": {
+        "prompt": "선형 탐사로 키를 찾다 빈 칸을 만나면 계속 찾는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "탐사 중 빈 칸을 만나면 그 키는 테이블에 없다고 판단하고 멈춥니다. 넣을 때도 그 칸에 들어갔을 것이기 때문입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Linear_probing"
+      ]
+    },
+    {
+      "id": "dsa-hash-linear-probe-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "linear-probing",
+        "open-addressing"
+      ],
+      "content": {
+        "prompt": "칸 i가 차 있으면 i+1, i+2 칸을 차례로 보는 것은 ___ 탐사이다.",
+        "hint": "간격이 1로 일정하게 나아간다는 뜻의 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "선형",
+          "linear",
+          "선형 탐사",
+          "linear probing",
+          "리니어"
+        ]
+      },
+      "explanation": "선형 탐사는 한 칸씩 다음 칸을 확인해 첫 빈 칸에 키를 저장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Linear_probing"
+      ]
+    },
+    {
+      "id": "dsa-hash-linear-probe-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "tombstone",
+        "linear-probing"
+      ],
+      "content": {
+        "prompt": "선형 탐사에서 지운 칸은 탐사가 끊기지 않게 ___ 으로 표시한다.",
+        "hint": "그 칸에 원소가 있었다가 지워졌다는 표시입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "삭제됨",
+          "삭제",
+          "deleted",
+          "tombstone",
+          "툼스톤"
+        ]
+      },
+      "explanation": "'삭제됨' 칸은 탐색 때 비어 있지 않은 칸으로 보고 지나가므로 뒤쪽 키를 계속 찾을 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Linear_probing"
+      ]
+    },
+    {
+      "id": "dsa-hash-linear-probe-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linear-probing",
+        "insert"
+      ],
+      "content": {
+        "prompt": "크기 7, 칸 3·4가 찼다. 인덱스 3인 키가 들어갈 칸은?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "칸 3과 4가 차 있어 선형 탐사로 다음 칸인 5에 저장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Linear_probing"
+      ]
+    },
+    {
+      "id": "dsa-hash-linear-probe-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linear-probing",
+        "insert"
+      ],
+      "content": {
+        "prompt": "크기 5, 칸 4·0이 찼다. 인덱스 4인 키가 들어갈 칸은?",
+        "options": [
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "칸 4가 차 있어 다음 칸 (4 + 1) % 5 = 0으로 넘어가고, 0도 차 있어 1에 저장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Linear_probing"
+      ]
+    },
+    {
+      "id": "dsa-hash-linear-probe-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tombstone",
+        "search"
+      ],
+      "content": {
+        "prompt": "칸 2·3·4에 인덱스 2인 키 A·B·C. 칸 3을 그냥 비우면 C 탐색은?",
+        "options": [
+          "칸 4에서 찾음",
+          "없다고 판단"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "칸 2 다음 빈 칸 3을 만나 탐사가 멈추므로 C가 칸 4에 있어도 없다고 판단합니다. 그래서 '삭제됨'으로 표시합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Linear_probing"
+      ]
+    },
+    {
+      "id": "dsa-hash-linear-probe-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "open-addressing",
+        "collision-resolution"
+      ],
+      "content": {
+        "prompt": "오픈 어드레싱은 충돌한 키를 테이블 안의 다른 빈 칸에 저장한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "오픈 어드레싱은 버킷 밖에 리스트를 두지 않고 테이블 안에서 다른 빈 칸을 찾아 저장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Linear_probing"
+      ]
+    }
+  ]
+}

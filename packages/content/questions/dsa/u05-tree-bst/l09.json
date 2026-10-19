@@ -1,0 +1,240 @@
+{
+  "track": "dsa",
+  "unit": "u05-tree-bst",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "dsa-avl-tree-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "avl-tree",
+        "balance-factor"
+      ],
+      "content": {
+        "prompt": "모든 노드의 균형 인수가 −1, 0, 1인 BST는?",
+        "options": [
+          "AVL 트리",
+          "편향 트리",
+          "완전 이진 트리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "AVL 트리는 모든 노드의 균형 인수가 −1, 0, 1 중 하나가 되도록 유지하는 BST입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/AVL_tree"
+      ]
+    },
+    {
+      "id": "dsa-avl-tree-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "balance-factor",
+        "avl-tree"
+      ],
+      "content": {
+        "prompt": "왼쪽 서브트리 높이 − 오른쪽 서브트리 높이는?",
+        "options": [
+          "깊이",
+          "균형 인수",
+          "레벨"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "균형 인수는 왼쪽 서브트리 높이에서 오른쪽 서브트리 높이를 뺀 값입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/AVL_tree"
+      ]
+    },
+    {
+      "id": "dsa-avl-tree-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "rotation",
+        "avl-tree"
+      ],
+      "content": {
+        "prompt": "AVL 트리는 균형이 깨지면 회전으로 다시 맞춘다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "AVL 트리는 균형 인수가 범위를 벗어나면 LL·RR·LR·RL 회전으로 균형을 되돌립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/AVL_tree"
+      ]
+    },
+    {
+      "id": "dsa-avl-tree-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "balance-factor",
+        "avl-tree"
+      ],
+      "content": {
+        "prompt": "AVL 트리는 균형 인수가 2인 노드를 허용한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "AVL 조건은 모든 노드의 균형 인수가 −1, 0, 1 중 하나입니다. 2가 되면 회전으로 고칩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/AVL_tree"
+      ]
+    },
+    {
+      "id": "dsa-avl-tree-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "rotation",
+        "avl-tree"
+      ],
+      "content": {
+        "prompt": "AVL 트리가 균형을 다시 맞추는 연산은 ___ 이다.",
+        "hint": "LL·RR·LR·RL 네 종류가 있습니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "회전",
+          "rotation",
+          "로테이션",
+          "트리 회전"
+        ]
+      },
+      "explanation": "회전은 BST 규칙을 지키면서 부모와 자식의 위치를 바꿔 균형 인수를 범위 안으로 되돌립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/AVL_tree"
+      ]
+    },
+    {
+      "id": "dsa-avl-tree-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "balance-factor",
+        "avl-tree"
+      ],
+      "content": {
+        "prompt": "왼쪽 서브트리 높이에서 오른쪽 높이를 뺀 값은 균형 ___ 이다.",
+        "hint": "AVL 조건은 이 값이 −1, 0, 1 중 하나인 것입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "인수",
+          "factor",
+          "인자",
+          "균형 인수",
+          "balance factor"
+        ]
+      },
+      "explanation": "균형 인수는 왼쪽 서브트리 높이 − 오른쪽 서브트리 높이로, 두 서브트리의 높이 차를 나타냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/AVL_tree"
+      ]
+    },
+    {
+      "id": "dsa-avl-tree-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "balance-factor",
+        "calc"
+      ],
+      "content": {
+        "prompt": "왼쪽 서브트리 높이 2, 오른쪽 0일 때 균형 인수는?",
+        "options": [
+          "0",
+          "2",
+          "−2"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "균형 인수는 왼쪽 높이 − 오른쪽 높이이므로 2 − 0 = 2이고, AVL 조건을 어깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/AVL_tree"
+      ]
+    },
+    {
+      "id": "dsa-avl-tree-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "balance-factor",
+        "rotation"
+      ],
+      "content": {
+        "prompt": "균형 인수가 1, 0, −2인 노드 중 회전이 필요한 것은?",
+        "options": [
+          "1",
+          "0",
+          "−2"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "AVL 조건은 −1, 0, 1이므로 범위를 벗어난 −2인 노드에서 회전이 필요합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/AVL_tree"
+      ]
+    },
+    {
+      "id": "dsa-avl-tree-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rotation",
+        "avl-tree"
+      ],
+      "content": {
+        "prompt": "빈 AVL 트리에 1, 2, 3 순서로 넣은 뒤 루트는?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "3을 넣으면 1의 균형 인수가 −2가 되어 RR 회전이 일어나고 2가 루트, 1·3이 자식이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/AVL_tree"
+      ]
+    },
+    {
+      "id": "dsa-avl-tree-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "balanced-bst",
+        "avl-tree"
+      ],
+      "content": {
+        "prompt": "삽입·삭제 후에도 높이를 O(log n)으로 지키는 BST는?",
+        "options": [
+          "균형 탐색 트리",
+          "편향 트리",
+          "포화 이진 트리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "균형 탐색 트리는 삽입·삭제 뒤에도 높이를 O(log n)으로 유지하는 BST이며, AVL 트리가 그 예입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/AVL_tree"
+      ]
+    }
+  ]
+}

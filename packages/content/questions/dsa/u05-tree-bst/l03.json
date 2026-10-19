@@ -1,0 +1,237 @@
+{
+  "track": "dsa",
+  "unit": "u05-tree-bst",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "dsa-tree-traversal-order-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "preorder",
+        "traversal"
+      ],
+      "content": {
+        "prompt": "루트를 두 서브트리보다 먼저 방문하는 순회는?",
+        "options": [
+          "전위 순회",
+          "중위 순회",
+          "후위 순회"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "전위 순회는 루트를 방문한 다음 왼쪽 서브트리, 오른쪽 서브트리 순으로 내려갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_traversal"
+      ]
+    },
+    {
+      "id": "dsa-tree-traversal-order-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "postorder",
+        "traversal"
+      ],
+      "content": {
+        "prompt": "두 서브트리를 다 본 뒤 루트를 방문하는 순회는?",
+        "options": [
+          "전위 순회",
+          "중위 순회",
+          "후위 순회"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "후위 순회는 왼쪽, 오른쪽 서브트리를 모두 방문한 뒤 루트를 마지막에 방문합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_traversal"
+      ]
+    },
+    {
+      "id": "dsa-tree-traversal-order-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "inorder",
+        "traversal"
+      ],
+      "content": {
+        "prompt": "방문 순서가 왼쪽, 루트, 오른쪽인 순회의 이름은?",
+        "options": [
+          "전위 순회",
+          "중위 순회"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "중위 순회는 루트를 왼쪽과 오른쪽 서브트리 사이에 방문합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_traversal"
+      ]
+    },
+    {
+      "id": "dsa-tree-traversal-order-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "postorder",
+        "preorder"
+      ],
+      "content": {
+        "prompt": "후위 순회에서 루트는 첫 번째로 방문된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "후위 순회는 루트를 마지막에 방문합니다. 루트를 가장 먼저 방문하는 것은 전위 순회입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_traversal"
+      ]
+    },
+    {
+      "id": "dsa-tree-traversal-order-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "inorder",
+        "traversal"
+      ],
+      "content": {
+        "prompt": "루트를 왼쪽과 오른쪽 서브트리 사이에 방문하는 순회는 ___ 순회이다.",
+        "hint": "왼쪽 → 루트 → 오른쪽 순서입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "중위",
+          "inorder",
+          "in order",
+          "중순위"
+        ]
+      },
+      "explanation": "중위 순회는 왼쪽 서브트리를 모두 본 뒤 루트, 그다음 오른쪽 서브트리를 방문합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_traversal"
+      ]
+    },
+    {
+      "id": "dsa-tree-traversal-order-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "postorder",
+        "traversal"
+      ],
+      "content": {
+        "prompt": "루트 X, 왼쪽 Y, 오른쪽 Z의 후위 순회 결과는 ___ 이다.",
+        "hint": "루트를 마지막에 방문합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "YZX",
+          "Y Z X",
+          "yzx"
+        ]
+      },
+      "explanation": "후위 순회는 왼쪽 → 오른쪽 → 루트 순서이므로 Y, Z, X 순으로 방문합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_traversal"
+      ]
+    },
+    {
+      "id": "dsa-tree-traversal-order-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "preorder",
+        "traversal"
+      ],
+      "content": {
+        "prompt": "루트 A, A의 자식 B·C, B의 자식 D·E. 전위 순회는?",
+        "options": [
+          "DBEAC",
+          "DEBCA",
+          "ABDEC"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "A를 먼저 방문하고 왼쪽 서브트리 B, D, E를 방문한 뒤 오른쪽 C를 방문해 ABDEC입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_traversal"
+      ]
+    },
+    {
+      "id": "dsa-tree-traversal-order-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "inorder",
+        "traversal"
+      ],
+      "content": {
+        "prompt": "루트 A, A의 자식 B·C, B의 자식 D·E. 중위 순회는?",
+        "options": [
+          "DEBCA",
+          "DBEAC",
+          "ABDEC"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "왼쪽 서브트리를 D, B, E 순으로 방문한 뒤 A, 그다음 C를 방문해 DBEAC입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_traversal"
+      ]
+    },
+    {
+      "id": "dsa-tree-traversal-order-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "postorder",
+        "traversal"
+      ],
+      "content": {
+        "prompt": "루트 A, A의 자식 B·C, B의 자식 D·E. 후위 순회의 마지막 노드는?",
+        "options": [
+          "A",
+          "C",
+          "E"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "후위 순회는 DEBCA 순서로, 루트 A를 가장 마지막에 방문합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_traversal"
+      ]
+    },
+    {
+      "id": "dsa-tree-traversal-order-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "preorder",
+        "traversal"
+      ],
+      "content": {
+        "prompt": "전위 순회의 첫 방문 노드는 루트이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "전위 순회는 루트 → 왼쪽 → 오른쪽 순서라 루트가 가장 먼저 나옵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_traversal"
+      ]
+    }
+  ]
+}

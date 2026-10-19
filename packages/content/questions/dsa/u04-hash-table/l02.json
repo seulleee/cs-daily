@@ -1,0 +1,249 @@
+{
+  "track": "dsa",
+  "unit": "u04-hash-table",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "dsa-hash-function-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "hash-function",
+        "hash-value"
+      ],
+      "content": {
+        "prompt": "키를 정수 해시 값으로 바꾸는 함수는?",
+        "options": [
+          "해시 함수",
+          "정렬 함수",
+          "재귀 함수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "해시 함수는 키를 받아 정수 해시 값을 돌려주고, 이 값으로 버킷 인덱스를 구합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_function",
+        "https://en.wikipedia.org/wiki/Hash_table"
+      ]
+    },
+    {
+      "id": "dsa-hash-function-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "determinism",
+        "hash-function"
+      ],
+      "content": {
+        "prompt": "같은 키가 언제나 같은 해시 값을 내는 성질은?",
+        "options": [
+          "균등 분포",
+          "결정성",
+          "안정성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "결정성은 같은 키에 언제나 같은 해시 값을 내는 성질로, 넣은 키를 다시 찾으려면 꼭 필요합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_function",
+        "https://en.wikipedia.org/wiki/Hash_table"
+      ]
+    },
+    {
+      "id": "dsa-hash-function-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "uniform-distribution",
+        "hash-function"
+      ],
+      "content": {
+        "prompt": "좋은 해시 함수는 키를 버킷 전체에 고르게 퍼뜨린다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "균등 분포를 갖춘 해시 함수는 키를 버킷 전체에 고르게 퍼뜨려 한 버킷에 몰리지 않게 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_function",
+        "https://en.wikipedia.org/wiki/Hash_table"
+      ]
+    },
+    {
+      "id": "dsa-hash-function-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "determinism",
+        "hash-value"
+      ],
+      "content": {
+        "prompt": "같은 키를 두 번 넣으면 해시 값이 달라질 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "해시 함수는 결정성이 있어 같은 키는 언제나 같은 해시 값을 냅니다. 그래야 넣은 키를 다시 찾습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_function",
+        "https://en.wikipedia.org/wiki/Hash_table"
+      ]
+    },
+    {
+      "id": "dsa-hash-function-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "index-calc",
+        "hash-value"
+      ],
+      "content": {
+        "prompt": "버킷 인덱스는 해시 값을 버킷 수로 나눈 ___ 이다.",
+        "hint": "a % b가 구하는 값입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "나머지",
+          "remainder",
+          "모듈로",
+          "modulo",
+          "mod"
+        ]
+      },
+      "explanation": "해시 값 % 버킷 수로 나머지를 구하면 0부터 버킷 수−1 사이의 인덱스가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_function",
+        "https://en.wikipedia.org/wiki/Hash_table"
+      ]
+    },
+    {
+      "id": "dsa-hash-function-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "determinism",
+        "hash-function"
+      ],
+      "content": {
+        "prompt": "같은 키는 언제나 같은 해시 값을 낸다는 성질은 ___ 이다.",
+        "hint": "입력이 같으면 출력이 하나로 정해진다는 뜻입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "결정성",
+          "deterministic",
+          "결정적",
+          "determinism"
+        ]
+      },
+      "explanation": "결정성 덕분에 넣을 때와 찾을 때 같은 키가 같은 버킷을 가리킵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_function",
+        "https://en.wikipedia.org/wiki/Hash_table"
+      ]
+    },
+    {
+      "id": "dsa-hash-function-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "index-calc",
+        "hash-value"
+      ],
+      "content": {
+        "prompt": "해시 값 23, 버킷 8개일 때 버킷 인덱스는?",
+        "options": [
+          "2",
+          "7",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "23 % 8은 23을 8로 나눈 나머지라 7입니다(23 = 8 × 2 + 7).",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_function",
+        "https://en.wikipedia.org/wiki/Hash_table"
+      ]
+    },
+    {
+      "id": "dsa-hash-function-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "index-calc",
+        "hash-value"
+      ],
+      "content": {
+        "prompt": "해시 값 40, 버킷 7개일 때 버킷 인덱스는?",
+        "options": [
+          "4",
+          "6",
+          "5"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "40 % 7은 40을 7로 나눈 나머지라 5입니다(40 = 7 × 5 + 5).",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_function",
+        "https://en.wikipedia.org/wiki/Hash_table"
+      ]
+    },
+    {
+      "id": "dsa-hash-function-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "uniform-distribution",
+        "hash-function"
+      ],
+      "content": {
+        "prompt": "모든 키에 해시 값 0을 내는 함수가 어긴 성질은?",
+        "options": [
+          "결정성",
+          "균등 분포"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "모든 키가 버킷 0에 몰려 고르게 퍼지지 않습니다. 같은 키에 같은 값을 내므로 결정성은 지킵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_function",
+        "https://en.wikipedia.org/wiki/Hash_table"
+      ]
+    },
+    {
+      "id": "dsa-hash-function-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "hash-function",
+        "hash-value"
+      ],
+      "content": {
+        "prompt": "해시 함수가 키를 바꿔 내놓는 결과는?",
+        "options": [
+          "정수 해시 값",
+          "버킷 수",
+          "키-값 쌍"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "해시 함수의 결과는 정수 해시 값이고, 이를 버킷 수로 나눈 나머지가 인덱스가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_function",
+        "https://en.wikipedia.org/wiki/Hash_table"
+      ]
+    }
+  ]
+}

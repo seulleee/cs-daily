@@ -1,0 +1,239 @@
+{
+  "track": "dsa",
+  "unit": "u04-hash-table",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "dsa-hash-rehash-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rehashing",
+        "hash-table"
+      ],
+      "content": {
+        "prompt": "버킷 배열을 키우고 모든 원소를 다시 배치하는 것은?",
+        "options": [
+          "체이닝",
+          "리해싱",
+          "선형 탐사"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "리해싱은 더 큰 버킷 배열을 만들고 모든 원소의 인덱스를 다시 계산해 옮기는 작업입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Dynamic_resizing"
+      ]
+    },
+    {
+      "id": "dsa-hash-rehash-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rehashing",
+        "cost"
+      ],
+      "content": {
+        "prompt": "원소 n개 테이블을 리해싱하는 한 번의 비용은?",
+        "options": [
+          "O(n)",
+          "O(1)",
+          "O(log n)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "리해싱은 원소를 모두 다시 계산해 옮기므로 한 번에 원소 수만큼 O(n)이 듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Dynamic_resizing"
+      ]
+    },
+    {
+      "id": "dsa-hash-rehash-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rehashing",
+        "index-calc"
+      ],
+      "content": {
+        "prompt": "리해싱 후 원소의 인덱스가 바뀌는 이유는?",
+        "options": [
+          "버킷 수가 바뀜",
+          "해시 값이 바뀜"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "해시 값은 그대로지만 해시 값 % 버킷 수에서 버킷 수가 달라져 인덱스가 바뀝니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Dynamic_resizing"
+      ]
+    },
+    {
+      "id": "dsa-hash-rehash-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "rehashing",
+        "index-calc"
+      ],
+      "content": {
+        "prompt": "리해싱은 새 칸만 덧붙이고 원소는 원래 인덱스에 둔다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "버킷 수가 바뀌면 인덱스 계산 결과가 달라지므로 모든 원소의 인덱스를 다시 계산해 옮깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Dynamic_resizing"
+      ]
+    },
+    {
+      "id": "dsa-hash-rehash-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "rehashing",
+        "hash-table"
+      ],
+      "content": {
+        "prompt": "버킷 배열을 키우고 원소를 다시 배치하는 것은 ___ 이다.",
+        "hint": "해시 인덱스를 다시 계산한다는 뜻의 영어 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "리해싱",
+          "rehashing",
+          "재해싱",
+          "rehash",
+          "리해시"
+        ]
+      },
+      "explanation": "리해싱은 버킷 수를 늘린 뒤 모든 원소의 인덱스를 새 버킷 수로 다시 계산해 옮깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Dynamic_resizing"
+      ]
+    },
+    {
+      "id": "dsa-hash-rehash-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "amortized",
+        "rehashing"
+      ],
+      "content": {
+        "prompt": "버킷 수를 2배씩 늘리면 삽입의 ___ 비용은 O(1)이다.",
+        "hint": "여러 번의 총비용을 연산 횟수로 나눈 비용입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "상각",
+          "amortized",
+          "분할상환",
+          "분할 상환"
+        ]
+      },
+      "explanation": "리해싱은 점점 드물게 일어나므로 총비용을 삽입 횟수로 나누면 삽입 한 번은 상각 O(1)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Dynamic_resizing"
+      ]
+    },
+    {
+      "id": "dsa-hash-rehash-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rehashing",
+        "index-calc"
+      ],
+      "content": {
+        "prompt": "해시 값 13, 버킷 8개를 16개로 늘리면 인덱스는?",
+        "options": [
+          "5 그대로",
+          "5 → 13",
+          "5 → 10"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "13 % 8 = 5였지만 13 % 16 = 13이 되어 인덱스가 13으로 바뀝니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Dynamic_resizing"
+      ]
+    },
+    {
+      "id": "dsa-hash-rehash-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rehashing",
+        "index-calc"
+      ],
+      "content": {
+        "prompt": "해시 값 20, 버킷 8개를 16개로 늘리면 인덱스는?",
+        "options": [
+          "4 → 12",
+          "4 → 8",
+          "4 그대로"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "20 % 8 = 4이고 20 % 16도 4라서 인덱스가 그대로입니다. 그래도 계산은 다시 해야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Dynamic_resizing"
+      ]
+    },
+    {
+      "id": "dsa-hash-rehash-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rehashing",
+        "cost"
+      ],
+      "content": {
+        "prompt": "원소 1000개 테이블을 리해싱하면 옮기는 원소 수는?",
+        "options": [
+          "1000개",
+          "1개",
+          "2000개"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "리해싱은 모든 원소의 인덱스를 다시 계산해 새 배열로 옮기므로 1000개를 모두 옮깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Dynamic_resizing"
+      ]
+    },
+    {
+      "id": "dsa-hash-rehash-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "rehashing",
+        "index-calc"
+      ],
+      "content": {
+        "prompt": "리해싱은 모든 원소의 인덱스를 다시 계산한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "리해싱은 버킷 수가 바뀐 테이블에 맞춰 모든 원소의 해시 값 % 버킷 수를 다시 계산합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Dynamic_resizing"
+      ]
+    }
+  ]
+}

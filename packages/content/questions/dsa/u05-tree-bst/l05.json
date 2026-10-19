@@ -1,0 +1,236 @@
+{
+  "track": "dsa",
+  "unit": "u05-tree-bst",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "dsa-bst-property-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bst",
+        "binary-tree"
+      ],
+      "content": {
+        "prompt": "왼쪽 서브트리 < 노드 < 오른쪽 서브트리인 트리는?",
+        "options": [
+          "이진 탐색 트리",
+          "완전 이진 트리",
+          "포화 이진 트리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "이진 탐색 트리(BST)는 모든 노드에서 왼쪽 서브트리 값 < 노드 값 < 오른쪽 서브트리 값입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-property-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bst",
+        "inorder"
+      ],
+      "content": {
+        "prompt": "BST를 중위 순회하면 값은 어떤 순서로 나오나?",
+        "options": [
+          "내림차순",
+          "오름차순",
+          "삽입 순서"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "중위 순회는 왼쪽 → 루트 → 오른쪽 순서라 BST에서는 작은 값부터 오름차순으로 나옵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-property-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "bst",
+        "min-max"
+      ],
+      "content": {
+        "prompt": "BST의 최솟값은 가장 왼쪽 노드에 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "더 작은 값은 언제나 왼쪽에 있으므로 왼쪽 자식을 끝까지 따라간 노드가 최솟값입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-property-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "bst",
+        "min-max"
+      ],
+      "content": {
+        "prompt": "BST에서 최댓값은 루트에 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "루트보다 큰 값은 오른쪽 서브트리에 있으므로 최댓값은 가장 오른쪽 노드에 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-property-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "inorder",
+        "bst"
+      ],
+      "content": {
+        "prompt": "BST를 ___ 순회하면 값이 오름차순으로 나온다.",
+        "hint": "왼쪽 → 루트 → 오른쪽 순서의 순회입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "중위",
+          "inorder",
+          "in order",
+          "중순위"
+        ]
+      },
+      "explanation": "BST는 왼쪽이 작고 오른쪽이 크므로 중위 순회하면 오름차순으로 나옵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-property-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "min-max",
+        "bst"
+      ],
+      "content": {
+        "prompt": "BST의 최댓값은 가장 ___ 노드에 있다.",
+        "hint": "최솟값이 있는 방향의 반대쪽입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "오른쪽",
+          "오른",
+          "right"
+        ]
+      },
+      "explanation": "큰 값은 오른쪽에 있으므로 오른쪽 자식을 끝까지 따라간 노드가 최댓값입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-property-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bst",
+        "property-check"
+      ],
+      "content": {
+        "prompt": "루트 8, 왼쪽 자식 3, 오른쪽 자식 5. BST인가?",
+        "options": [
+          "BST이다",
+          "BST가 아니다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "오른쪽 자식 5가 루트 8보다 작아 오른쪽 서브트리 값 > 노드 값 조건을 어깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-property-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "inorder",
+        "bst"
+      ],
+      "content": {
+        "prompt": "값 2, 5, 7, 9가 든 BST의 중위 순회 결과는?",
+        "options": [
+          "9 7 5 2",
+          "2 5 7 9",
+          "5 2 7 9"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "BST의 중위 순회는 모양과 관계없이 오름차순이므로 2 5 7 9입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-property-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bst",
+        "property-check"
+      ],
+      "content": {
+        "prompt": "루트가 10인 BST의 왼쪽 서브트리에 올 수 있는 값은?",
+        "options": [
+          "12",
+          "15",
+          "7"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "왼쪽 서브트리의 값은 모두 루트 10보다 작아야 하므로 7만 가능합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree"
+      ]
+    },
+    {
+      "id": "dsa-bst-property-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bst",
+        "binary-tree"
+      ],
+      "content": {
+        "prompt": "BST에서 노드의 왼쪽 서브트리 값은 노드 값보다?",
+        "options": [
+          "작다",
+          "크다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "BST는 왼쪽 서브트리 값 < 노드 값 < 오른쪽 서브트리 값을 모든 노드에서 지킵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "track": "dsa",
+  "unit": "u05-tree-bst",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "dsa-tree-terms-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "root",
+        "tree-terms"
+      ],
+      "content": {
+        "prompt": "부모 노드를 갖지 않는 노드의 이름은?",
+        "options": [
+          "리프",
+          "루트",
+          "간선"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "루트는 부모가 없는 맨 위 노드로, 트리의 모든 노드는 루트에서 내려갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_(data_structure)"
+      ]
+    },
+    {
+      "id": "dsa-tree-terms-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "leaf",
+        "tree-terms"
+      ],
+      "content": {
+        "prompt": "자식 노드를 하나도 갖지 않는 노드의 이름은?",
+        "options": [
+          "리프",
+          "루트",
+          "부모"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "리프는 자식이 없는 노드로 트리의 가장 아래쪽 끝에 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_(data_structure)"
+      ]
+    },
+    {
+      "id": "dsa-tree-terms-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "height",
+        "depth"
+      ],
+      "content": {
+        "prompt": "높이는 그 노드에서 가장 먼 리프까지의 간선 수이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "높이는 아래로 가장 먼 리프까지의 간선 수입니다. 루트에서 그 노드까지 세는 것은 깊이입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_(data_structure)"
+      ]
+    },
+    {
+      "id": "dsa-tree-terms-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "depth",
+        "root"
+      ],
+      "content": {
+        "prompt": "루트의 깊이는 1이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "깊이는 루트에서 그 노드까지의 간선 수이므로 루트의 깊이는 0입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_(data_structure)"
+      ]
+    },
+    {
+      "id": "dsa-tree-terms-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "leaf",
+        "tree-terms"
+      ],
+      "content": {
+        "prompt": "자식이 없는 노드를 ___ 라 한다.",
+        "hint": "트리의 가장 아래쪽 끝에 있는 노드입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "리프",
+          "leaf",
+          "리프 노드",
+          "잎",
+          "단말 노드"
+        ]
+      },
+      "explanation": "리프는 자식이 없는 노드이며, 높이는 그 노드에서 가장 먼 리프까지의 간선 수로 셉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_(data_structure)"
+      ]
+    },
+    {
+      "id": "dsa-tree-terms-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "edge-count",
+        "tree-terms"
+      ],
+      "content": {
+        "prompt": "노드가 7개인 트리의 간선은 ___ 개이다.",
+        "hint": "노드 수에서 하나를 뺍니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "6",
+          "여섯"
+        ]
+      },
+      "explanation": "트리는 사이클 없이 연결되어 노드 n개면 간선이 n−1개이므로 7 − 1 = 6개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_(data_structure)"
+      ]
+    },
+    {
+      "id": "dsa-tree-terms-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "depth",
+        "tree-terms"
+      ],
+      "content": {
+        "prompt": "루트 A, 간선 A-B, A-C, B-D, D-E. E의 깊이는?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "루트 A에서 E까지 A-B, B-D, D-E 세 간선을 지나므로 깊이는 3입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_(data_structure)"
+      ]
+    },
+    {
+      "id": "dsa-tree-terms-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "height",
+        "tree-terms"
+      ],
+      "content": {
+        "prompt": "루트 A, 간선 A-B, A-C, B-D, D-E. B의 높이는?",
+        "options": [
+          "2",
+          "1",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "B에서 가장 먼 리프 E까지 B-D, D-E 두 간선이므로 높이는 2입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_(data_structure)"
+      ]
+    },
+    {
+      "id": "dsa-tree-terms-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "leaf",
+        "tree-terms"
+      ],
+      "content": {
+        "prompt": "루트 A, 간선 A-B, A-C, C-D. 리프를 모두 고르면?",
+        "options": [
+          "A와 C",
+          "C와 D",
+          "B와 D"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "B와 D는 자식이 없어 리프입니다. A와 C는 자식이 있는 노드입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_(data_structure)"
+      ]
+    },
+    {
+      "id": "dsa-tree-terms-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "root",
+        "tree-terms"
+      ],
+      "content": {
+        "prompt": "트리에서 루트의 특징은?",
+        "options": [
+          "부모가 없다",
+          "자식이 없다",
+          "깊이가 가장 크다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "루트는 부모가 없는 맨 위 노드이고 깊이가 0입니다. 자식이 없는 노드는 리프입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Tree_(data_structure)"
+      ]
+    }
+  ]
+}

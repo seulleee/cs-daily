@@ -1,0 +1,247 @@
+{
+  "track": "dsa",
+  "unit": "u04-hash-table",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "dsa-hash-worst-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "worst-case",
+        "collision"
+      ],
+      "content": {
+        "prompt": "모든 키가 한 버킷에 몰리면 탐색 비용은?",
+        "options": [
+          "O(1)",
+          "O(log n)",
+          "O(n)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "한 버킷의 원소를 하나씩 비교해야 하므로 원소 수에 비례하는 최악 O(n)이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Collision_attack"
+      ]
+    },
+    {
+      "id": "dsa-hash-worst-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "hash-flooding",
+        "worst-case"
+      ],
+      "content": {
+        "prompt": "한 버킷에 몰리는 키를 일부러 보내는 공격은?",
+        "options": [
+          "해시 플러딩",
+          "리해싱",
+          "체이닝"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "해시 플러딩은 충돌을 노린 키를 대량으로 보내 해시 테이블을 O(n)으로 느리게 만드는 공격입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Collision_attack"
+      ]
+    },
+    {
+      "id": "dsa-hash-worst-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ordering",
+        "hash-table"
+      ],
+      "content": {
+        "prompt": "키를 크기 순으로 순회하기에 해시 테이블은?",
+        "options": [
+          "적합",
+          "부적합"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "해시 값은 키의 크기 순서와 관계없이 흩어지므로 정렬 순서 순회에 맞지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Collision_attack"
+      ]
+    },
+    {
+      "id": "dsa-hash-worst-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "worst-case",
+        "average-o1"
+      ],
+      "content": {
+        "prompt": "해시 테이블의 탐색은 어떤 입력에서도 O(1)이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "O(1)은 평균입니다. 모든 키가 한 버킷이나 한 군집에 몰리면 최악 O(n)이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Collision_attack"
+      ]
+    },
+    {
+      "id": "dsa-hash-worst-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "hash-flooding",
+        "worst-case"
+      ],
+      "content": {
+        "prompt": "충돌을 노린 키를 대량으로 보내는 공격은 해시 ___ 이다.",
+        "hint": "넘치도록 쏟아붓는다는 뜻의 영어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "플러딩",
+          "flooding",
+          "플러드",
+          "flood"
+        ]
+      },
+      "explanation": "해시 플러딩은 같은 버킷으로 가는 키를 몰아 보내 탐색을 최악 O(n)으로 만듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Collision_attack"
+      ]
+    },
+    {
+      "id": "dsa-hash-worst-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ordering",
+        "range-query"
+      ],
+      "content": {
+        "prompt": "해시 테이블은 키 사이의 ___ 를 기억하지 않아 범위 탐색에 약하다.",
+        "hint": "작은 키에서 큰 키로 이어지는 관계입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "순서",
+          "order",
+          "정렬 순서",
+          "크기 순서"
+        ]
+      },
+      "explanation": "해시 테이블은 키를 순서 없이 흩어 두므로 일정 범위의 키를 찾으려면 모든 키를 봐야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Collision_attack"
+      ]
+    },
+    {
+      "id": "dsa-hash-worst-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "worst-case",
+        "hash-function"
+      ],
+      "content": {
+        "prompt": "해시 함수가 모든 키를 버킷 0에 넣는다. 키 n개 탐색 비용은?",
+        "options": [
+          "O(1)",
+          "O(n)",
+          "O(log n)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "나쁜 해시 함수로 모든 키가 한 버킷에 몰려 그 버킷의 n개를 차례로 비교해야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Collision_attack"
+      ]
+    },
+    {
+      "id": "dsa-hash-worst-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "range-query",
+        "ordering"
+      ],
+      "content": {
+        "prompt": "점수 60~80인 학생을 모두 찾기에 알맞은 것은?",
+        "options": [
+          "해시 테이블",
+          "정렬된 배열"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "정렬된 배열은 이진 탐색으로 60의 위치를 찾고 80까지 이어 읽습니다. 해시 테이블은 키에 순서가 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Collision_attack"
+      ]
+    },
+    {
+      "id": "dsa-hash-worst-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tree-bucket",
+        "java-hashmap"
+      ],
+      "content": {
+        "prompt": "Java 8+ HashMap에서 트리로 바뀐 긴 버킷의 탐색 비용은?",
+        "options": [
+          "O(log n)",
+          "O(n)",
+          "O(1)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Java 8부터는 긴 버킷을 트리 버킷으로 바꿔 그 버킷 안 탐색을 O(n)에서 O(log n)으로 줄입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Collision_attack"
+      ]
+    },
+    {
+      "id": "dsa-hash-worst-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "worst-case",
+        "collision"
+      ],
+      "content": {
+        "prompt": "해시 테이블은 모든 키가 한 버킷에 몰리면 O(n)이 된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "한 버킷에 n개가 몰리면 그 버킷의 원소를 하나씩 비교해야 하므로 최악 O(n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table",
+        "https://en.wikipedia.org/wiki/Collision_attack"
+      ]
+    }
+  ]
+}
