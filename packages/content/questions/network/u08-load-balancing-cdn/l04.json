@@ -1,0 +1,245 @@
+{
+  "track": "network",
+  "unit": "u08-load-balancing-cdn",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "network-lb-health-check-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "health-check",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "서버 상태를 주기적으로 확인해 정상 서버에만 보내는 기능은?",
+        "options": [
+          "라운드 로빈",
+          "수평 확장",
+          "헬스체크"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "헬스체크는 서버 상태를 주기적으로 확인해, 정상인 서버에만 요청이 가게 합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html",
+        "https://nginx.org/en/docs/http/load_balancing.html"
+      ]
+    },
+    {
+      "id": "network-lb-health-check-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "health-check",
+        "active-check"
+      ],
+      "content": {
+        "prompt": "LB가 직접 /health 같은 요청을 보내 확인하는 방식은?",
+        "options": [
+          "패시브 체크",
+          "액티브 체크",
+          "최소 연결"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "액티브 체크는 로드밸런서가 별도 확인 요청을 직접 보내 응답으로 상태를 판단합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html",
+        "https://nginx.org/en/docs/http/load_balancing.html"
+      ]
+    },
+    {
+      "id": "network-lb-health-check-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "health-check",
+        "passive-check"
+      ],
+      "content": {
+        "prompt": "실제 요청의 실패·타임아웃을 보고 판단하는 방식은?",
+        "options": [
+          "패시브 체크",
+          "액티브 체크"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "패시브 체크는 따로 요청을 보내지 않고, 실제 요청이 실패하거나 시간 초과되는 것을 보고 판단합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html",
+        "https://nginx.org/en/docs/http/load_balancing.html"
+      ]
+    },
+    {
+      "id": "network-lb-health-check-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "health-check",
+        "passive-check"
+      ],
+      "content": {
+        "prompt": "패시브 체크는 LB가 별도의 확인 요청을 보낸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "별도 확인 요청을 보내는 것은 액티브 체크입니다. 패시브 체크는 실제 요청의 결과만 봅니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html",
+        "https://nginx.org/en/docs/http/load_balancing.html"
+      ]
+    },
+    {
+      "id": "network-lb-health-check-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "health-check",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "로드밸런서가 서버 상태를 주기적으로 확인하는 기능은 ___ 이다.",
+        "hint": "서버가 정상인지 묻는 기능의 영어식 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "헬스체크",
+          "헬스 체크",
+          "health check",
+          "healthcheck"
+        ]
+      },
+      "explanation": "헬스체크로 비정상 서버를 찾아 분산 대상에서 빼고, 회복하면 다시 넣습니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html",
+        "https://nginx.org/en/docs/http/load_balancing.html"
+      ]
+    },
+    {
+      "id": "network-lb-health-check-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "health-check",
+        "threshold"
+      ],
+      "content": {
+        "prompt": "연속 몇 번 실패하면 제외할지 정한 기준 숫자를 ___ 이라 한다.",
+        "hint": "넘어서면 서버 상태 판정이 바뀌는 경계 숫자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "임계값",
+          "임곗값",
+          "임계치",
+          "threshold"
+        ]
+      },
+      "explanation": "헬스체크는 한 번의 실패로 바로 빼지 않고, 연속 실패가 임계값에 이르면 제외합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html",
+        "https://nginx.org/en/docs/http/load_balancing.html"
+      ]
+    },
+    {
+      "id": "network-lb-health-check-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "health-check",
+        "threshold"
+      ],
+      "content": {
+        "prompt": "실패 임계값이 3일 때 연속 2번 실패한 서버는?",
+        "options": [
+          "아직 요청을 받음",
+          "바로 제외됨"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "연속 실패가 3번에 이르러야 제외되므로, 2번 실패한 서버는 아직 분산 대상에 남아 있습니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html",
+        "https://nginx.org/en/docs/http/load_balancing.html"
+      ]
+    },
+    {
+      "id": "network-lb-health-check-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "health-check",
+        "threshold"
+      ],
+      "content": {
+        "prompt": "복귀 임계값이 2일 때 제외된 서버가 1번 성공하면?",
+        "options": [
+          "바로 복귀",
+          "아직 제외 상태"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "연속 2번 성공해야 복귀하므로 1번 성공한 서버는 아직 제외 상태입니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html",
+        "https://nginx.org/en/docs/http/load_balancing.html"
+      ]
+    },
+    {
+      "id": "network-lb-health-check-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "health-check",
+        "threshold"
+      ],
+      "content": {
+        "prompt": "결과가 실패·실패·성공·실패, 실패 임계값 3이면?",
+        "options": [
+          "계속 요청을 받음",
+          "제외됨"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "중간의 성공으로 연속 실패가 끊겨 마지막 연속 실패는 1번입니다. 임계값 3에 이르지 않아 제외되지 않습니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html",
+        "https://nginx.org/en/docs/http/load_balancing.html"
+      ]
+    },
+    {
+      "id": "network-lb-health-check-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "health-check",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "헬스체크는 비정상 서버를 분산 대상에서 뺀다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "헬스체크에 실패한 서버로는 요청을 보내지 않고, 다시 정상으로 판정되면 분산 대상에 넣습니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html",
+        "https://nginx.org/en/docs/http/load_balancing.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "track": "network",
+  "unit": "u08-load-balancing-cdn",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "network-sticky-session-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sticky-session",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "같은 클라이언트를 계속 같은 서버로 보내는 방식은?",
+        "options": [
+          "세션 고정",
+          "라운드 로빈",
+          "최소 연결"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "세션 고정은 쿠키나 IP를 기준으로 한 클라이언트의 요청을 계속 같은 서버로 보냅니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/sticky-sessions.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-sticky-session-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sticky-session",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "세션 고정의 다른 이름은?",
+        "options": [
+          "헬스체크",
+          "스티키 세션",
+          "단일 진입점"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "세션 고정은 클라이언트가 한 서버에 붙어 있다는 뜻으로 스티키 세션이라고도 부릅니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/sticky-sessions.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-sticky-session-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sticky-session",
+        "stateless"
+      ],
+      "content": {
+        "prompt": "세션을 Redis 같은 외부 저장소에 두면 세션 고정이 꼭 필요하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "세션이 외부 저장소에 있으면 어느 서버든 세션을 읽을 수 있어 세션 고정이 필요 없습니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/sticky-sessions.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-sticky-session-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sticky-session",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "세션 고정이 필요한 상황은?",
+        "options": [
+          "세션이 외부 저장소에",
+          "세션이 서버 메모리에"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "세션이 특정 서버 메모리에만 있으면 다른 서버는 그 세션을 모르므로, 같은 서버로 보내야 합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/sticky-sessions.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-sticky-session-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sticky-session",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "세션 고정은 쿠키나 클라이언트 ___ 를 기준으로 서버를 정한다.",
+        "hint": "네트워크 계층에서 호스트를 식별하는 값입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "IP",
+          "ip",
+          "IP 주소",
+          "아이피"
+        ]
+      },
+      "explanation": "로드밸런서는 쿠키에 담은 서버 정보나 클라이언트 IP를 보고 같은 서버를 고릅니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/sticky-sessions.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-sticky-session-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sticky-session",
+        "stateless"
+      ],
+      "content": {
+        "prompt": "세션을 외부 저장소에 두면 서버는 ___ 로 만들 수 있다.",
+        "hint": "서버가 요청 사이의 상태를 자기 메모리에 들고 있지 않다는 뜻입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "무상태",
+          "stateless",
+          "스테이트리스"
+        ]
+      },
+      "explanation": "세션을 Redis 같은 외부 저장소에 두면 서버는 무상태가 되어 어느 서버든 요청을 처리할 수 있습니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/sticky-sessions.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-sticky-session-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sticky-session",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "세션 고정 중 그 서버가 죽으면 그 서버에 있던 세션은?",
+        "options": [
+          "사라진다",
+          "다른 서버로 옮겨진다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "세션이 그 서버 메모리에만 있었으므로 서버가 죽으면 세션도 사라지고, 사용자는 다시 로그인해야 합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/sticky-sessions.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-sticky-session-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sticky-session",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "세션 고정으로 일부 서버에 사용자가 몰리면 생기는 문제는?",
+        "options": [
+          "응답 압축",
+          "주소 변환",
+          "부하 불균형"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "한번 고정된 클라이언트는 다른 서버로 옮겨지지 않으므로 서버 간 부하가 고르지 않게 됩니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/sticky-sessions.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-sticky-session-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sticky-session",
+        "stateless"
+      ],
+      "content": {
+        "prompt": "서버를 무상태로 만들려면 세션을 어디에 두나?",
+        "options": [
+          "각 서버 메모리",
+          "로드밸런서",
+          "Redis 같은 저장소"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "세션을 Redis 같은 외부 저장소에 두면 모든 서버가 같은 세션을 읽을 수 있습니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/sticky-sessions.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-sticky-session-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sticky-session",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "세션 고정은 같은 클라이언트의 요청을 같은 서버로 보낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "세션 고정은 세션 상태가 있는 서버로 요청이 계속 가게 하려고 클라이언트를 한 서버에 묶습니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/sticky-sessions.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    }
+  ]
+}
