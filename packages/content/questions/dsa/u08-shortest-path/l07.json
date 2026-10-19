@@ -1,0 +1,247 @@
+{
+  "track": "dsa",
+  "unit": "u08-shortest-path",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "dsa-mst-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mst",
+        "spanning-tree"
+      ],
+      "content": {
+        "prompt": "모든 정점을 잇는 사이클 없는 부분 그래프는?",
+        "options": [
+          "경로",
+          "신장 트리",
+          "완전 그래프"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "신장 트리는 그래프의 모든 정점을 포함하면서 사이클이 없는 부분 그래프이며 간선이 V−1개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree",
+        "https://en.wikipedia.org/wiki/Spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-mst-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mst",
+        "spanning-tree"
+      ],
+      "content": {
+        "prompt": "간선 가중치 합이 최소인 신장 트리는?",
+        "options": [
+          "MST",
+          "최단 경로",
+          "인접 행렬"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "최소 신장 트리(MST)는 여러 신장 트리 가운데 간선 가중치 합이 가장 작은 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree",
+        "https://en.wikipedia.org/wiki/Spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-mst-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mst",
+        "spanning-tree"
+      ],
+      "content": {
+        "prompt": "MST를 구하는 대상 그래프는?",
+        "options": [
+          "연결 무방향 가중치",
+          "방향 그래프"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "MST는 연결된 무방향 가중치 그래프에서 정의합니다. 끊긴 그래프는 모든 정점을 잇는 트리가 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree",
+        "https://en.wikipedia.org/wiki/Spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-mst-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "mst",
+        "spanning-tree"
+      ],
+      "content": {
+        "prompt": "MST는 두 정점 사이의 최단 경로를 항상 포함한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "MST는 전체 연결 비용을 최소로 할 뿐, 두 정점 사이 경로가 최단이라는 보장은 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree",
+        "https://en.wikipedia.org/wiki/Spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-mst-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "mst",
+        "spanning-tree"
+      ],
+      "content": {
+        "prompt": "모든 정점을 잇는 사이클 없는 부분 그래프는 ___ 트리이다.",
+        "hint": "그래프 전체에 걸쳐 펼쳐진 트리라는 뜻의 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "신장",
+          "spanning",
+          "스패닝",
+          "신장 트리",
+          "spanning tree"
+        ]
+      },
+      "explanation": "신장 트리는 모든 정점을 포함하고 사이클이 없어 간선이 정확히 V−1개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree",
+        "https://en.wikipedia.org/wiki/Spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-mst-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "mst",
+        "spanning-tree"
+      ],
+      "content": {
+        "prompt": "최소 신장 트리를 영문 약자로 ___ 라 한다.",
+        "hint": "세 글자 영문 약자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "MST",
+          "mst"
+        ]
+      },
+      "explanation": "MST는 Minimum Spanning Tree의 약자로, 간선 가중치 합이 최소인 신장 트리입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree",
+        "https://en.wikipedia.org/wiki/Spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-mst-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "mst",
+        "spanning-tree"
+      ],
+      "content": {
+        "prompt": "정점 7개인 연결 그래프의 신장 트리 간선 수는?",
+        "options": [
+          "7",
+          "6",
+          "21"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "신장 트리는 트리이므로 간선이 V−1 = 6개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree",
+        "https://en.wikipedia.org/wiki/Spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-mst-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "mst",
+        "spanning-tree"
+      ],
+      "content": {
+        "prompt": "A-B 1, B-C 2, A-C 3. MST의 가중치 합은?",
+        "options": [
+          "6",
+          "4",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "정점 3개를 잇는 간선 2개 중 합이 가장 작은 A-B와 B-C를 골라 1 + 2 = 3입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree",
+        "https://en.wikipedia.org/wiki/Spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-mst-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "mst",
+        "spanning-tree"
+      ],
+      "content": {
+        "prompt": "A-B 2, B-C 2, A-C 3. MST 안에서 A~C 경로 길이는?",
+        "options": [
+          "3",
+          "7",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "MST는 A-B, B-C(합 4)라 그 안의 A~C 경로는 4입니다. 실제 A~C 최단 거리는 간선 A-C의 3입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree",
+        "https://en.wikipedia.org/wiki/Spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-mst-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "mst",
+        "spanning-tree"
+      ],
+      "content": {
+        "prompt": "MST는 간선 가중치 합이 최소인 신장 트리이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "최소 신장 트리는 모든 정점을 잇는 사이클 없는 부분 그래프 중 간선 가중치 합이 가장 작은 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree",
+        "https://en.wikipedia.org/wiki/Spanning_tree"
+      ]
+    }
+  ]
+}

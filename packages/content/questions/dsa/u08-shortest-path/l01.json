@@ -1,0 +1,250 @@
+{
+  "track": "dsa",
+  "unit": "u08-shortest-path",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "dsa-relaxation-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "shortest-path",
+        "relaxation"
+      ],
+      "content": {
+        "prompt": "간선 가중치 합이 가장 작은 경로는?",
+        "options": [
+          "최단 경로",
+          "사이클",
+          "연결 요소"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "최단 경로는 지나는 간선 가중치의 합이 가장 작은 경로입니다. 가중치가 없으면 간선 수가 가장 적은 경로가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-relaxation-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "shortest-path",
+        "relaxation"
+      ],
+      "content": {
+        "prompt": "dist[u] + w(u,v) < dist[v]일 때 dist[v]를 줄이는 연산은?",
+        "options": [
+          "탐색",
+          "확정",
+          "완화"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "완화는 u를 거쳐 v로 가는 길이 지금 아는 dist[v]보다 짧으면 dist[v]를 그 값으로 줄이는 연산입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-relaxation-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "shortest-path",
+        "relaxation"
+      ],
+      "content": {
+        "prompt": "최단 경로 계산을 시작할 때 출발점의 dist는?",
+        "options": [
+          "1",
+          "0",
+          "∞"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "출발점에서 자기 자신까지는 간선을 하나도 지나지 않으므로 거리가 0입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-relaxation-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "shortest-path",
+        "relaxation"
+      ],
+      "content": {
+        "prompt": "처음에 출발점이 아닌 정점의 dist는 0으로 둔다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "출발점 외의 정점은 아직 경로를 모르므로 ∞로 둡니다. 0은 출발점만의 초기값입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-relaxation-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "shortest-path",
+        "relaxation"
+      ],
+      "content": {
+        "prompt": "간선 가중치 합이 가장 작은 경로를 ___ 경로라 한다.",
+        "hint": "거리 합이 가장 짧다는 뜻의 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "최단",
+          "shortest",
+          "최단 경로",
+          "shortest path"
+        ]
+      },
+      "explanation": "최단 경로는 간선 가중치 합이 가장 작은 경로이고, 그 합을 최단 거리라고 부릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-relaxation-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "shortest-path",
+        "relaxation"
+      ],
+      "content": {
+        "prompt": "dist[v]를 더 짧은 경로의 값으로 줄이는 연산은 ___ 이다.",
+        "hint": "간선 하나를 보고 거리 값을 고치는 연산입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "완화",
+          "relaxation",
+          "relax",
+          "간선 완화",
+          "릴랙세이션"
+        ]
+      },
+      "explanation": "완화는 dist[u] + w(u,v)가 dist[v]보다 작으면 dist[v]를 그 값으로 바꾸는 연산입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-relaxation-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "shortest-path",
+        "relaxation"
+      ],
+      "content": {
+        "prompt": "dist[u]=4, w(u,v)=3, dist[v]=9. 완화 후 dist[v]는?",
+        "options": [
+          "9",
+          "12",
+          "7"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "4 + 3 = 7이 9보다 작으므로 dist[v]는 7로 줄어듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-relaxation-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "shortest-path",
+        "relaxation"
+      ],
+      "content": {
+        "prompt": "dist[u]=5, w(u,v)=4, dist[v]=8. 완화 후 dist[v]는?",
+        "options": [
+          "9",
+          "4",
+          "8"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "5 + 4 = 9는 8보다 작지 않으므로 dist[v]는 8 그대로입니다. 완화는 값을 줄일 때만 바꿉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-relaxation-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "shortest-path",
+        "relaxation"
+      ],
+      "content": {
+        "prompt": "dist[u]=2, w(u,v)=6, dist[v]=∞. 완화 후 dist[v]는?",
+        "options": [
+          "8",
+          "6",
+          "∞"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "2 + 6 = 8은 ∞보다 작으므로 dist[v]가 8이 됩니다. 처음 경로를 찾은 정점은 이렇게 값이 정해집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-relaxation-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "shortest-path",
+        "relaxation"
+      ],
+      "content": {
+        "prompt": "최단 경로는 지나는 간선 가중치의 합이 가장 작은 경로이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "최단 경로의 길이는 간선 수가 아니라 간선 가중치의 합으로 재며, 그 합이 가장 작은 경로입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "track": "dsa",
+  "unit": "u08-shortest-path",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "dsa-sp-choice-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "shortest-path",
+        "algorithm-choice"
+      ],
+      "content": {
+        "prompt": "간선에 가중치가 없을 때 최단 거리 계산에 알맞은 것은?",
+        "options": [
+          "벨만-포드",
+          "BFS",
+          "플로이드-워셜"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "가중치가 없으면 BFS가 O(V + E)로 최단 거리를 구해 가장 단순하고 빠릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-sp-choice-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "shortest-path",
+        "algorithm-choice"
+      ],
+      "content": {
+        "prompt": "음수 사이클 탐지가 필요할 때 알맞은 것은?",
+        "options": [
+          "다익스트라",
+          "BFS",
+          "벨만-포드"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "벨만-포드는 V−1번 반복 뒤에도 완화되는 간선이 있는지로 음수 사이클을 탐지합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-sp-choice-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "shortest-path",
+        "algorithm-choice"
+      ],
+      "content": {
+        "prompt": "음수 없는 가중치, 출발점 하나라면?",
+        "options": [
+          "다익스트라",
+          "플로이드-워셜"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "한 출발점이고 가중치가 0 이상이면 다익스트라가 알맞습니다. 플로이드-워셜은 모든 쌍용이라 비용이 큽니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-sp-choice-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "shortest-path",
+        "algorithm-choice"
+      ],
+      "content": {
+        "prompt": "정점이 수만 개여도 모든 쌍 거리는 플로이드-워셜이 알맞다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "플로이드-워셜은 O(V³)이라 정점이 수만 개면 너무 느립니다. 정점 수가 작을 때 알맞습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-sp-choice-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "shortest-path",
+        "algorithm-choice"
+      ],
+      "content": {
+        "prompt": "음수 가중치가 있는 한 출발점 최단 거리는 ___ 알고리즘으로 구한다.",
+        "hint": "모든 간선 완화를 V−1번 반복하는 알고리즘입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "벨만 포드",
+          "벨만-포드",
+          "벨만포드",
+          "Bellman-Ford",
+          "Bellman Ford"
+        ]
+      },
+      "explanation": "음수 가중치가 있으면 다익스트라는 틀릴 수 있어 벨만-포드를 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-sp-choice-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "shortest-path",
+        "algorithm-choice"
+      ],
+      "content": {
+        "prompt": "음수 간선이 없고 출발점이 하나일 때 쓰는 알고리즘은 ___ 이다.",
+        "hint": "dist가 최소인 정점부터 확정해 나가는 알고리즘입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "다익스트라",
+          "Dijkstra",
+          "데이크스트라"
+        ]
+      },
+      "explanation": "음수가 없는 가중치에서 한 출발점의 최단 거리는 다익스트라로 O((V + E) log V)에 구합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-sp-choice-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "shortest-path",
+        "algorithm-choice"
+      ],
+      "content": {
+        "prompt": "정점 100개, 모든 쌍의 거리가 필요하다. 알맞은 것은?",
+        "options": [
+          "BFS",
+          "플로이드-워셜",
+          "DFS"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "모든 정점 쌍이 필요하고 정점이 100개로 작으므로 V³ = 100만 번 정도인 플로이드-워셜이 알맞습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-sp-choice-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "shortest-path",
+        "algorithm-choice"
+      ],
+      "content": {
+        "prompt": "간선 가중치가 모두 1이다. 가장 단순한 선택은?",
+        "options": [
+          "BFS",
+          "벨만-포드",
+          "플로이드-워셜"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가중치가 모두 같으면 간선 수가 곧 거리라 가중치 없는 그래프처럼 BFS로 구할 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-sp-choice-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "shortest-path",
+        "algorithm-choice"
+      ],
+      "content": {
+        "prompt": "가중치에 −3이 있고 출발점은 하나다. 알맞은 것은?",
+        "options": [
+          "다익스트라",
+          "BFS",
+          "벨만-포드"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "음수 가중치가 있으면 다익스트라는 틀릴 수 있고 BFS는 가중치를 보지 않으므로 벨만-포드를 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-sp-choice-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "shortest-path",
+        "algorithm-choice"
+      ],
+      "content": {
+        "prompt": "BFS는 가중치 없는 그래프에서 O(V + E)에 최단 거리를 낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "BFS는 가까운 정점부터 레벨 순으로 방문해, 처음 도달한 거리가 최소 간선 수입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    }
+  ]
+}

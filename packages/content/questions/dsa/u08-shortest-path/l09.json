@@ -1,0 +1,236 @@
+{
+  "track": "dsa",
+  "unit": "u08-shortest-path",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "dsa-kruskal-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "kruskal",
+        "mst"
+      ],
+      "content": {
+        "prompt": "간선을 가중치 오름차순으로 보며 MST를 만드는 알고리즘은?",
+        "options": [
+          "다익스트라",
+          "벨만-포드",
+          "크루스칼"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "크루스칼은 간선을 가벼운 순으로 보며 사이클이 생기지 않는 간선만 MST에 추가합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Kruskal%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-kruskal-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "kruskal",
+        "mst"
+      ],
+      "content": {
+        "prompt": "크루스칼이 간선을 건너뛰는 경우는?",
+        "options": [
+          "두 끝 find가 같음",
+          "가중치가 큼",
+          "끝점 차수가 큼"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "두 끝점의 find 결과가 같으면 이미 연결되어 있어, 그 간선을 넣으면 사이클이 생기므로 건너뜁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Kruskal%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-kruskal-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "kruskal",
+        "mst"
+      ],
+      "content": {
+        "prompt": "크루스칼이 간선을 살펴보는 순서는?",
+        "options": [
+          "가중치 오름차순",
+          "가중치 내림차순"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가벼운 간선부터 보아야 합이 최소인 신장 트리를 얻습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Kruskal%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-kruskal-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "kruskal",
+        "mst"
+      ],
+      "content": {
+        "prompt": "크루스칼은 간선을 V개 고르면 끝난다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "신장 트리의 간선은 V−1개이므로 V−1개를 고르면 끝납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Kruskal%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-kruskal-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "kruskal",
+        "mst"
+      ],
+      "content": {
+        "prompt": "간선을 가벼운 순으로 골라 MST를 만드는 알고리즘은 ___ 이다.",
+        "hint": "간선 중심으로 MST를 만드는 알고리즘입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "크루스칼",
+          "Kruskal",
+          "크러스컬",
+          "크루스컬"
+        ]
+      },
+      "explanation": "크루스칼은 간선을 정렬한 뒤 사이클을 만들지 않는 것만 골라 MST를 만듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Kruskal%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-kruskal-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "kruskal",
+        "mst"
+      ],
+      "content": {
+        "prompt": "크루스칼은 간선 정렬 때문에 O(E log ___)이다.",
+        "hint": "정렬하는 대상의 개수를 뜻하는 문자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "E",
+          "e"
+        ]
+      },
+      "explanation": "간선 E개를 정렬하는 데 O(E log E)가 들고, 유니온-파인드 처리는 이보다 작아 전체가 O(E log E)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Kruskal%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-kruskal-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "kruskal",
+        "mst"
+      ],
+      "content": {
+        "prompt": "A-B 1, B-C 2, A-C 3. 크루스칼 MST에 들어가지 않는 간선은?",
+        "options": [
+          "A-B",
+          "B-C",
+          "A-C"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "A-B, B-C를 고르면 간선이 V−1개라 끝납니다. A-C는 이미 연결된 A와 C를 이어 사이클을 만듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Kruskal%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-kruskal-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "kruskal",
+        "mst"
+      ],
+      "content": {
+        "prompt": "A-B 1, B-C 2, A-C 3, C-D 4. 크루스칼 MST의 합은?",
+        "options": [
+          "7",
+          "10",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "A-B(1), B-C(2)를 고르고 A-C(3)는 건너뛴 뒤 C-D(4)를 골라 1 + 2 + 4 = 7입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Kruskal%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-kruskal-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "kruskal",
+        "mst"
+      ],
+      "content": {
+        "prompt": "정점 6개 연결 그래프에서 크루스칼이 고르는 간선 수는?",
+        "options": [
+          "6",
+          "15",
+          "5"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "신장 트리의 간선은 V−1 = 5개이므로 5개를 고르면 끝납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Kruskal%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-kruskal-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "kruskal",
+        "mst"
+      ],
+      "content": {
+        "prompt": "크루스칼은 사이클이 안 생기는 가장 가벼운 간선을 차례로 추가한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "크루스칼은 간선을 가중치 오름차순으로 보며, 두 끝점의 find가 다를 때만 추가합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Kruskal%27s_algorithm"
+      ]
+    }
+  ]
+}

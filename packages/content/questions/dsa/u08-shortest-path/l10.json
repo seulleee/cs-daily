@@ -1,0 +1,235 @@
+{
+  "track": "dsa",
+  "unit": "u08-shortest-path",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "dsa-prim-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "prim",
+        "mst"
+      ],
+      "content": {
+        "prompt": "한 정점에서 시작해 트리를 정점 단위로 키우는 MST 알고리즘은?",
+        "options": [
+          "크루스칼",
+          "프림",
+          "BFS"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "프림은 한 정점에서 출발해 트리와 바깥을 잇는 최소 간선을 하나씩 추가하며 트리를 키웁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Prim%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-prim-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "prim",
+        "mst"
+      ],
+      "content": {
+        "prompt": "이진 힙 우선순위 큐를 쓴 프림의 복잡도는?",
+        "options": [
+          "O(E log V)",
+          "O(V³)",
+          "O(VE)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "간선마다 힙 연산 O(log V)가 들어 O(E log V)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Prim%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-prim-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "prim",
+        "mst"
+      ],
+      "content": {
+        "prompt": "간선 중심으로 MST를 만드는 쪽은?",
+        "options": [
+          "프림",
+          "크루스칼"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "크루스칼은 전체 간선을 정렬해 고르는 간선 중심, 프림은 트리를 정점 단위로 키우는 방식입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Prim%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-prim-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "prim",
+        "mst"
+      ],
+      "content": {
+        "prompt": "밀집 그래프에서는 흔히 크루스칼이 프림보다 유리하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "간선이 많은 밀집 그래프는 간선 정렬 비용이 커서 흔히 프림이 유리하고, 희소 그래프는 크루스칼이 유리합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Prim%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-prim-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "prim",
+        "mst"
+      ],
+      "content": {
+        "prompt": "트리를 정점 단위로 확장하는 MST 알고리즘은 ___ 이다.",
+        "hint": "한 정점에서 출발해 트리를 키우는 알고리즘입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "프림",
+          "Prim",
+          "프림 알고리즘"
+        ]
+      },
+      "explanation": "프림은 매번 트리와 바깥을 잇는 가장 가벼운 간선을 골라 정점 하나씩 트리에 넣습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Prim%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-prim-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "prim",
+        "mst"
+      ],
+      "content": {
+        "prompt": "프림은 최소 간선을 꺼내는 데 우선순위 ___ 를 쓴다.",
+        "hint": "우선순위가 가장 높은 원소부터 꺼내는 추상 자료형입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "큐",
+          "queue",
+          "우선순위 큐",
+          "priority queue"
+        ]
+      },
+      "explanation": "우선순위 큐에 후보 간선을 넣어 두면 트리와 바깥을 잇는 최소 간선을 O(log V)에 꺼냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Prim%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-prim-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "prim",
+        "mst"
+      ],
+      "content": {
+        "prompt": "A-B 2, A-C 3, B-C 1. A에서 시작한 프림의 첫 간선은?",
+        "options": [
+          "A-B",
+          "A-C",
+          "B-C"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "트리가 {A}일 때 바깥과 잇는 간선은 A-B(2), A-C(3)뿐이라 A-B를 고릅니다. B-C는 아직 트리에 닿지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Prim%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-prim-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "prim",
+        "mst"
+      ],
+      "content": {
+        "prompt": "A-B 2, A-C 3, B-C 1. A에서 시작한 프림의 두 번째 간선은?",
+        "options": [
+          "A-C",
+          "B-C"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "트리 {A, B}에서 C로 가는 간선은 A-C(3), B-C(1)이라 더 가벼운 B-C를 고릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Prim%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-prim-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "prim",
+        "mst"
+      ],
+      "content": {
+        "prompt": "간선이 적은 희소 그래프에서 흔히 유리한 것은?",
+        "options": [
+          "프림",
+          "크루스칼"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "간선이 적으면 정렬 비용 O(E log E)가 작아 크루스칼이 흔히 유리합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Prim%27s_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-prim-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "prim",
+        "mst"
+      ],
+      "content": {
+        "prompt": "프림은 트리와 바깥을 잇는 최소 간선을 하나씩 추가한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "프림은 한 정점에서 시작해 매번 트리에 닿는 가장 가벼운 간선을 골라 트리를 넓힙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Prim%27s_algorithm"
+      ]
+    }
+  ]
+}
