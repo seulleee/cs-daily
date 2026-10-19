@@ -1,0 +1,244 @@
+{
+  "track": "network",
+  "unit": "u08-load-balancing-cdn",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "network-reverse-proxy-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "reverse-proxy",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "서버 앞에서 서버 대신 요청을 받아 뒤로 전달하는 것은?",
+        "options": [
+          "포워드 프록시",
+          "라우터",
+          "리버스 프록시"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "리버스 프록시는 서버 앞에 서서 클라이언트 요청을 받아 뒤 서버로 넘깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Reverse_proxy",
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html"
+      ]
+    },
+    {
+      "id": "network-reverse-proxy-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "forward-proxy",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "클라이언트 쪽에서 클라이언트 대신 외부로 요청하는 것은?",
+        "options": [
+          "포워드 프록시",
+          "리버스 프록시",
+          "스위치"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "포워드 프록시는 클라이언트 쪽에 있으면서 클라이언트를 대신해 외부 서버에 요청합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Reverse_proxy",
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html"
+      ]
+    },
+    {
+      "id": "network-reverse-proxy-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "forward-proxy",
+        "reverse-proxy"
+      ],
+      "content": {
+        "prompt": "회사 PC가 인터넷에 나갈 때 거치는 프록시는?",
+        "options": [
+          "리버스 프록시",
+          "포워드 프록시"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "클라이언트 쪽에서 외부로 나가는 요청을 대신하는 것은 포워드 프록시입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Reverse_proxy",
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html"
+      ]
+    },
+    {
+      "id": "network-reverse-proxy-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "reverse-proxy",
+        "forward-proxy"
+      ],
+      "content": {
+        "prompt": "리버스 프록시는 클라이언트 쪽에 위치한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "리버스 프록시는 서버 앞에 있습니다. 클라이언트 쪽에 있는 것은 포워드 프록시입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Reverse_proxy",
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html"
+      ]
+    },
+    {
+      "id": "network-reverse-proxy-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "reverse-proxy",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "서버 앞에서 요청을 받아 뒤로 넘기는 것은 ___ 프록시다.",
+        "hint": "포워드와 반대 방향이라는 뜻의 영어 단어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "리버스",
+          "reverse",
+          "역방향"
+        ]
+      },
+      "explanation": "리버스 프록시는 서버를 대신해 요청을 받으므로 클라이언트는 뒤 서버를 직접 보지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Reverse_proxy",
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html"
+      ]
+    },
+    {
+      "id": "network-reverse-proxy-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "reverse-proxy",
+        "routing"
+      ],
+      "content": {
+        "prompt": "리버스 프록시는 경로별 ___ 으로 요청을 다른 서버에 보낸다.",
+        "hint": "요청을 보낼 목적지 서버를 고르는 일입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "라우팅",
+          "routing"
+        ]
+      },
+      "explanation": "리버스 프록시는 /api, /static 같은 경로를 보고 요청을 알맞은 뒤 서버로 라우팅합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Reverse_proxy",
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html"
+      ]
+    },
+    {
+      "id": "network-reverse-proxy-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "reverse-proxy",
+        "routing"
+      ],
+      "content": {
+        "prompt": "Nginx가 /api 요청을 API 서버로 넘길 때의 역할은?",
+        "options": [
+          "리버스 프록시",
+          "포워드 프록시"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Nginx가 서버 앞에서 요청을 받아 뒤 API 서버로 넘기므로 리버스 프록시로 동작하는 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Reverse_proxy",
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html"
+      ]
+    },
+    {
+      "id": "network-reverse-proxy-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "reverse-proxy",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "리버스 프록시의 역할이 아닌 것은?",
+        "options": [
+          "TLS 종료",
+          "응답 캐시",
+          "경로별 라우팅",
+          "IP 자동 할당"
+        ]
+      },
+      "answer_key": {
+        "index": 3
+      },
+      "explanation": "IP 자동 할당은 DHCP가 합니다. 리버스 프록시는 TLS 종료·압축·캐시·경로별 라우팅을 맡습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Reverse_proxy",
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html"
+      ]
+    },
+    {
+      "id": "network-reverse-proxy-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "reverse-proxy",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "리버스 프록시 구조에서 클라이언트가 접속하는 주소는?",
+        "options": [
+          "뒤 서버 주소",
+          "프록시 주소"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "클라이언트는 리버스 프록시에 접속하고, 프록시가 요청을 뒤 서버로 넘깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Reverse_proxy",
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html"
+      ]
+    },
+    {
+      "id": "network-reverse-proxy-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "reverse-proxy",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "리버스 프록시는 서버를 대신해 요청을 받는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "리버스 프록시는 서버 앞에서 요청을 받아 뒤 서버로 전달하고, 응답도 대신 돌려줍니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Reverse_proxy",
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+{
+  "track": "network",
+  "unit": "u08-load-balancing-cdn",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "network-api-gateway-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "api-gateway",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "인증·레이트 리밋·라우팅을 모아 처리하는 진입점은?",
+        "options": [
+          "API 게이트웨이",
+          "포워드 프록시",
+          "DNS 리졸버"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "API 게이트웨이는 여러 서비스 앞에서 인증·레이트 리밋·라우팅·로깅 같은 공통 일을 한곳에서 처리합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Token_bucket",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-api-gateway-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rate-limit",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "단위 시간당 요청 수를 제한하는 것은?",
+        "options": [
+          "헬스체크",
+          "세션 고정",
+          "레이트 리밋"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "레이트 리밋은 초당·분당 같은 단위 시간마다 받을 수 있는 요청 수를 제한합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Token_bucket",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-api-gateway-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rate-limit",
+        "status-code"
+      ],
+      "content": {
+        "prompt": "레이트 리밋을 넘긴 요청에 주는 상태 코드는?",
+        "options": [
+          "403",
+          "503",
+          "429"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "429 Too Many Requests는 요청 한도를 넘었다는 뜻입니다. 403은 권한 없음, 503은 서버가 처리할 수 없는 상태입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Token_bucket",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-api-gateway-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "rate-limit",
+        "token-bucket"
+      ],
+      "content": {
+        "prompt": "토큰 버킷은 토큰이 쌓여 있어도 버스트를 허용하지 않는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "토큰 버킷은 쌓인 토큰 수만큼 요청이 한꺼번에 몰리는 버스트를 허용합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Token_bucket",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-api-gateway-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "rate-limit",
+        "status-code"
+      ],
+      "content": {
+        "prompt": "한도를 넘은 요청에는 상태 코드 ___ 으로 응답한다.",
+        "hint": "4xx 클라이언트 오류 중 Too Many Requests입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "429"
+        ]
+      },
+      "explanation": "레이트 리밋을 넘긴 요청에는 429 Too Many Requests로 응답해 잠시 뒤 다시 보내게 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Token_bucket",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-api-gateway-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "rate-limit",
+        "token-bucket"
+      ],
+      "content": {
+        "prompt": "일정 속도로 토큰을 채우고 요청마다 하나씩 쓰는 방식은 토큰 ___ 이다.",
+        "hint": "토큰을 정해진 용량까지 담아 두는 저장 공간의 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "버킷",
+          "bucket"
+        ]
+      },
+      "explanation": "토큰 버킷은 토큰이 남아 있으면 요청을 통과시키고, 다 쓰면 다음 토큰이 채워질 때까지 거부합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Token_bucket",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-api-gateway-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rate-limit",
+        "token-bucket"
+      ],
+      "content": {
+        "prompt": "용량 10, 초당 2개 충전. 가득 찬 버킷에 15개가 동시에 오면 통과 수는?",
+        "options": [
+          "2",
+          "10",
+          "15"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "쌓인 토큰 10개만큼 바로 통과하고 나머지 5개는 거부됩니다. 이후에는 초당 2개씩 통과합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Token_bucket",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-api-gateway-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rate-limit",
+        "token-bucket"
+      ],
+      "content": {
+        "prompt": "용량 10인 버킷이 비었다. 초당 2개씩 채우면 3초 뒤 토큰 수는?",
+        "options": [
+          "3",
+          "6",
+          "10"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "초당 2개씩 3초 동안 채우므로 6개가 쌓입니다. 용량 10을 넘지 않았으므로 6개 그대로입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Token_bucket",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-api-gateway-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "api-gateway",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "주문 금액 한도 같은 비즈니스 규칙을 둘 곳은?",
+        "options": [
+          "각 서비스 안",
+          "API 게이트웨이"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "게이트웨이에는 인증·레이트 리밋 같은 공통 정책을 두고, 업무 규칙은 그 데이터를 가진 서비스 안에서 처리합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Token_bucket",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-api-gateway-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "api-gateway",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "API 게이트웨이는 인증·레이트 리밋 같은 공통 정책을 모아 처리한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "API 게이트웨이는 모든 요청이 지나는 진입점이라 서비스마다 반복될 공통 정책을 한곳에 둡니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Token_bucket",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    }
+  ]
+}

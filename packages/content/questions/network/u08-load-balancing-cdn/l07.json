@@ -1,0 +1,253 @@
+{
+  "track": "network",
+  "unit": "u08-load-balancing-cdn",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "network-proxy-tls-offload-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls-termination",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "프록시·LB에서 TLS를 풀고 뒤 서버로 전달하는 것은?",
+        "options": [
+          "TLS 종료",
+          "키 교환",
+          "전자서명"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "TLS 종료는 프록시나 로드밸런서에서 TLS 연결을 끝내고 복호화한 요청을 뒤 서버로 넘기는 것입니다.",
+      "refs": [
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding"
+      ]
+    },
+    {
+      "id": "network-proxy-tls-offload-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "x-forwarded-for",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "원래 클라이언트 IP를 뒤 서버에 알려주는 헤더는?",
+        "options": [
+          "Host",
+          "Content-Type",
+          "X-Forwarded-For"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "X-Forwarded-For는 프록시가 원래 클라이언트 IP를 담아 뒤 서버로 보내는 요청 헤더입니다.",
+      "refs": [
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding"
+      ]
+    },
+    {
+      "id": "network-proxy-tls-offload-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "x-forwarded-for",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "X-Forwarded-For 헤더에는 원래 클라이언트 IP가 담긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "프록시를 거치면 뒤 서버는 프록시 IP만 보므로, 원래 클라이언트 IP를 이 헤더로 알려 줍니다.",
+      "refs": [
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding"
+      ]
+    },
+    {
+      "id": "network-proxy-tls-offload-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "tls-termination",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "TLS 종료를 하면 앱 서버마다 인증서를 따로 관리해야 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "TLS 종료를 하면 인증서는 프록시·LB 한곳에서 관리하고, 앱 서버는 인증서 없이 요청을 받을 수 있습니다.",
+      "refs": [
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding"
+      ]
+    },
+    {
+      "id": "network-proxy-tls-offload-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tls-termination",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "프록시에서 TLS를 풀어 처리하는 것을 TLS ___ 라고 한다.",
+        "hint": "TLS 연결이 프록시에서 끝난다는 뜻입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "종료",
+          "termination",
+          "터미네이션"
+        ]
+      },
+      "explanation": "TLS 종료를 하면 암호 연산이 프록시에 모이고, 뒤 서버에는 평문이나 재암호화한 요청이 갑니다.",
+      "refs": [
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding"
+      ]
+    },
+    {
+      "id": "network-proxy-tls-offload-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "x-forwarded-for",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "원래 클라이언트 IP는 X-___-For 헤더로 전달된다.",
+        "hint": "앞으로 넘겨졌다는 뜻의 영어 과거분사입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Forwarded",
+          "forwarded"
+        ]
+      },
+      "explanation": "X-Forwarded-For 헤더에 원래 클라이언트 IP가 담겨 뒤 서버가 접속자 IP를 알 수 있습니다.",
+      "refs": [
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding"
+      ]
+    },
+    {
+      "id": "network-proxy-tls-offload-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls-termination",
+        "x-forwarded-for"
+      ],
+      "content": {
+        "prompt": "TLS 종료 뒤 앱 서버가 보는 TCP 출발지 IP는?",
+        "options": [
+          "클라이언트 IP",
+          "프록시 IP"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "앱 서버로 가는 연결은 프록시가 새로 맺으므로 출발지는 프록시 IP입니다. 원래 IP는 X-Forwarded-For로 확인합니다.",
+      "refs": [
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding"
+      ]
+    },
+    {
+      "id": "network-proxy-tls-offload-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "compression",
+        "accept-encoding"
+      ],
+      "content": {
+        "prompt": "Accept-Encoding에 gzip만 보낸 클라이언트에 줄 압축은?",
+        "options": [
+          "Brotli",
+          "gzip",
+          "둘 다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "프록시는 Accept-Encoding에 적힌 방식만 쓸 수 있으므로 gzip으로 압축해 응답합니다.",
+      "refs": [
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding"
+      ]
+    },
+    {
+      "id": "network-proxy-tls-offload-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls-termination",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "앱 서버의 암호 연산 부담을 줄이려면 TLS를 어디서 푸나?",
+        "options": [
+          "프록시·LB",
+          "각 앱 서버"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "프록시·LB에서 TLS를 종료하면 앱 서버는 암호화·복호화 연산을 하지 않아도 됩니다.",
+      "refs": [
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding"
+      ]
+    },
+    {
+      "id": "network-proxy-tls-offload-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls-termination",
+        "load-balancing"
+      ],
+      "content": {
+        "prompt": "TLS 종료 뒤 프록시가 뒤 서버로 보내는 방식은?",
+        "options": [
+          "받은 TLS 그대로",
+          "평문 또는 재암호화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "프록시에서 TLS를 이미 풀었으므로 뒤 서버에는 평문으로 보내거나 새 TLS 연결로 다시 암호화해 보냅니다.",
+      "refs": [
+        "https://nginx.org/en/docs/http/ngx_http_proxy_module.html",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding"
+      ]
+    }
+  ]
+}

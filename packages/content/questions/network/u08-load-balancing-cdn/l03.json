@@ -1,0 +1,245 @@
+{
+  "track": "network",
+  "unit": "u08-load-balancing-cdn",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "network-lb-l4-l7-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lb-layer",
+        "l4"
+      ],
+      "content": {
+        "prompt": "IP·포트만 보고 분산하는 로드밸런서는?",
+        "options": [
+          "L7",
+          "L4",
+          "DNS"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "L4 로드밸런서는 전송 계층 정보인 IP와 TCP/UDP 포트만 보고 서버를 고릅니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-lb-l4-l7-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lb-layer",
+        "l7"
+      ],
+      "content": {
+        "prompt": "HTTP 경로·헤더·쿠키를 보고 라우팅하는 로드밸런서는?",
+        "options": [
+          "L4",
+          "NAT",
+          "L7"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "L7 로드밸런서는 응용 계층의 HTTP 내용을 읽어 경로·헤더·쿠키에 따라 서버를 고릅니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-lb-l4-l7-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "lb-layer",
+        "l4"
+      ],
+      "content": {
+        "prompt": "L4 로드밸런서는 URL 경로를 보고 서버를 고를 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "L4는 IP·포트만 보고 HTTP 내용은 보지 않으므로 URL 경로로 나눌 수 없습니다. 경로 라우팅은 L7이 합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-lb-l4-l7-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "lb-layer",
+        "l7"
+      ],
+      "content": {
+        "prompt": "L7은 TLS 복호화와 HTTP 파싱 때문에 L4보다 무겁다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "L7은 HTTP 내용을 보려면 TLS를 풀고 메시지를 해석해야 하므로 L4보다 연산 비용이 큽니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-lb-l4-l7-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "lb-layer",
+        "aws"
+      ],
+      "content": {
+        "prompt": "AWS에서 L4 로드밸런서는 ___ 이다.",
+        "hint": "L7용인 ALB와 짝을 이루는 세 글자 약어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "NLB",
+          "Network Load Balancer",
+          "네트워크 로드밸런서"
+        ]
+      },
+      "explanation": "AWS의 NLB(Network Load Balancer)는 L4, ALB(Application Load Balancer)는 L7 로드밸런서입니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-lb-l4-l7-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "lb-layer",
+        "l7"
+      ],
+      "content": {
+        "prompt": "L7 로드밸런서는 ___ 경로·헤더·쿠키를 보고 라우팅한다.",
+        "hint": "웹에서 요청과 응답을 주고받는 응용 계층 프로토콜입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "HTTP",
+          "http",
+          "HTTPS"
+        ]
+      },
+      "explanation": "L7은 응용 계층인 HTTP 메시지를 읽기 때문에 경로·헤더·쿠키 같은 내용으로 서버를 고를 수 있습니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-lb-l4-l7-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lb-layer",
+        "l7"
+      ],
+      "content": {
+        "prompt": "/api는 API 서버로, /img는 이미지 서버로 보내려면?",
+        "options": [
+          "L4 로드밸런서",
+          "L7 로드밸런서"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "URL 경로는 HTTP 메시지 안에 있으므로 HTTP를 읽는 L7 로드밸런서가 필요합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-lb-l4-l7-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lb-layer",
+        "l4"
+      ],
+      "content": {
+        "prompt": "HTTP 내용은 보지 않고 TCP 연결만 빠르게 나누려면?",
+        "options": [
+          "L4 로드밸런서",
+          "L7 로드밸런서"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "L4는 IP·포트만 보고 분산해 HTTP 파싱 비용이 없으므로 가볍고 빠릅니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-lb-l4-l7-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lb-layer",
+        "l7"
+      ],
+      "content": {
+        "prompt": "쿠키 값에 따라 서버를 나눌 수 있는 것은?",
+        "options": [
+          "L4만 가능",
+          "둘 다 불가",
+          "L7만 가능"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "쿠키는 HTTP 헤더에 담기므로 HTTP를 읽는 L7만 쿠키로 서버를 나눌 수 있습니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    },
+    {
+      "id": "network-lb-l4-l7-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lb-layer",
+        "l4"
+      ],
+      "content": {
+        "prompt": "L4 로드밸런서가 분산 기준으로 보는 것은?",
+        "options": [
+          "URL 경로",
+          "쿠키",
+          "IP·포트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "L4는 IP 주소와 TCP/UDP 포트만 봅니다. URL 경로와 쿠키는 HTTP 안에 있어 L7이 봅니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html",
+        "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+      ]
+    }
+  ]
+}
