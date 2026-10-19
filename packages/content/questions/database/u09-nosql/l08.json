@@ -1,0 +1,246 @@
+{
+  "track": "database",
+  "unit": "u09-nosql",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "database-quorum-consistency-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "consistency",
+        "quorum"
+      ],
+      "content": {
+        "prompt": "쓰기가 끝난 뒤의 모든 읽기가 그 값을 보는 것은?",
+        "options": [
+          "강한 일관성",
+          "최종 일관성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "강한 일관성은 쓰기가 완료된 뒤에는 어떤 읽기든 그 새 값을 보장하는 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Eventual_consistency",
+        "https://en.wikipedia.org/wiki/Quorum_(distributed_computing)"
+      ]
+    },
+    {
+      "id": "database-quorum-consistency-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "consistency",
+        "quorum"
+      ],
+      "content": {
+        "prompt": "쓰기가 멈추면 결국 모든 복제본이 같아지는 것은?",
+        "options": [
+          "강한 일관성",
+          "최종 일관성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "최종 일관성은 새 쓰기가 멈추면 시간이 지나 결국 모든 복제본이 같은 값이 되는 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Eventual_consistency",
+        "https://en.wikipedia.org/wiki/Quorum_(distributed_computing)"
+      ]
+    },
+    {
+      "id": "database-quorum-consistency-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "consistency",
+        "quorum"
+      ],
+      "content": {
+        "prompt": "정족수 조건에서 W가 뜻하는 것은?",
+        "options": [
+          "복제본 수",
+          "쓰기 확인 수",
+          "읽기 수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "N은 복제본 수, W는 쓰기 확인을 받는 복제본 수, R은 읽기에서 묻는 복제본 수입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Eventual_consistency",
+        "https://en.wikipedia.org/wiki/Quorum_(distributed_computing)"
+      ]
+    },
+    {
+      "id": "database-quorum-consistency-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "consistency",
+        "quorum"
+      ],
+      "content": {
+        "prompt": "최종 일관성에서는 쓰기 직후 읽기에 옛 값이 보일 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "최종 일관성은 결국 같아진다는 것만 보장하므로, 반영 전 복제본에서 읽으면 옛 값이 보입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Eventual_consistency",
+        "https://en.wikipedia.org/wiki/Quorum_(distributed_computing)"
+      ]
+    },
+    {
+      "id": "database-quorum-consistency-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "consistency",
+        "quorum"
+      ],
+      "content": {
+        "prompt": "쓰기가 멈추면 결국 복제본이 같아지는 것은 ___ 일관성이다.",
+        "hint": "시간이 지나면 언젠가 맞춰진다는 뜻의 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "최종",
+          "eventual",
+          "최종적",
+          "결과적",
+          "eventual consistency"
+        ]
+      },
+      "explanation": "최종 일관성은 새 쓰기가 멈추면 결국 모든 복제본이 같은 값이 되는 것을 보장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Eventual_consistency",
+        "https://en.wikipedia.org/wiki/Quorum_(distributed_computing)"
+      ]
+    },
+    {
+      "id": "database-quorum-consistency-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "consistency",
+        "quorum"
+      ],
+      "content": {
+        "prompt": "N = 3, W = 2일 때 W + R > N이 되는 최소 R은 ___ 이다.",
+        "hint": "W + R이 N보다 커야 합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "2",
+          "둘",
+          "두 개",
+          "2개"
+        ]
+      },
+      "explanation": "2 + 2 = 4 > 3이므로 R = 2가 최소입니다. R = 1이면 2 + 1 = 3으로 N보다 크지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Eventual_consistency",
+        "https://en.wikipedia.org/wiki/Quorum_(distributed_computing)"
+      ]
+    },
+    {
+      "id": "database-quorum-consistency-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "consistency",
+        "quorum"
+      ],
+      "content": {
+        "prompt": "N = 3, W = 2, R = 2이면 W + R > N인가?",
+        "options": [
+          "만족",
+          "불만족"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "2 + 2 = 4 > 3이므로 만족하며, 읽는 복제본과 쓴 복제본이 최소 하나 겹칩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Eventual_consistency",
+        "https://en.wikipedia.org/wiki/Quorum_(distributed_computing)"
+      ]
+    },
+    {
+      "id": "database-quorum-consistency-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "consistency",
+        "quorum"
+      ],
+      "content": {
+        "prompt": "N = 3, W = 1, R = 1이면 읽기가 최신 쓰기와 겹치나?",
+        "options": [
+          "보장됨",
+          "보장 안 됨"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "1 + 1 = 2는 3보다 크지 않으므로 쓰지 않은 복제본만 읽을 수 있어 겹침이 보장되지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Eventual_consistency",
+        "https://en.wikipedia.org/wiki/Quorum_(distributed_computing)"
+      ]
+    },
+    {
+      "id": "database-quorum-consistency-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "consistency",
+        "quorum"
+      ],
+      "content": {
+        "prompt": "N = 5, W = 3일 때 W + R > N을 만족하는 최소 R은?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "3 + 3 = 6 > 5이므로 R = 3이 최소입니다. R = 2면 3 + 2 = 5로 N보다 크지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Eventual_consistency",
+        "https://en.wikipedia.org/wiki/Quorum_(distributed_computing)"
+      ]
+    },
+    {
+      "id": "database-quorum-consistency-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "consistency",
+        "quorum"
+      ],
+      "content": {
+        "prompt": "강한 일관성에서도 쓰기 직후 읽기에 옛 값이 보일 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "강한 일관성은 쓰기가 끝난 뒤의 모든 읽기가 그 값을 보도록 보장합니다. 옛 값이 보이는 것은 최종 일관성입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Eventual_consistency",
+        "https://en.wikipedia.org/wiki/Quorum_(distributed_computing)"
+      ]
+    }
+  ]
+}

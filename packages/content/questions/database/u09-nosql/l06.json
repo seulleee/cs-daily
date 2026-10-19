@@ -1,0 +1,233 @@
+{
+  "track": "database",
+  "unit": "u09-nosql",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "database-cap-theorem-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cap-theorem",
+        "distributed-system"
+      ],
+      "content": {
+        "prompt": "모든 노드가 가장 최근에 쓴 값을 응답하는 속성은?",
+        "options": [
+          "일관성",
+          "가용성",
+          "분할 내성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "CAP의 일관성(C)은 모든 노드가 가장 최근에 쓴 값을 응답하는 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/CAP_theorem"
+      ]
+    },
+    {
+      "id": "database-cap-theorem-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cap-theorem",
+        "distributed-system"
+      ],
+      "content": {
+        "prompt": "장애 없는 노드는 모든 요청에 응답하는 속성은?",
+        "options": [
+          "일관성",
+          "가용성",
+          "분할 내성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "가용성(A)은 장애가 없는 노드가 모든 요청에 응답하는 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/CAP_theorem"
+      ]
+    },
+    {
+      "id": "database-cap-theorem-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cap-theorem",
+        "distributed-system"
+      ],
+      "content": {
+        "prompt": "노드 간 네트워크가 끊겨도 시스템이 동작하는 속성은?",
+        "options": [
+          "가용성",
+          "분할 내성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "분할 내성(P)은 노드 사이 네트워크가 끊겨도 시스템이 계속 동작하는 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/CAP_theorem"
+      ]
+    },
+    {
+      "id": "database-cap-theorem-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cap-theorem",
+        "distributed-system"
+      ],
+      "content": {
+        "prompt": "CAP의 일관성은 ACID의 일관성과 같은 뜻이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "ACID의 일관성은 DB 규칙을 지키는 것이고, CAP의 일관성은 복제본들이 같은 최신 값을 주는 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/CAP_theorem"
+      ]
+    },
+    {
+      "id": "database-cap-theorem-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cap-theorem",
+        "distributed-system"
+      ],
+      "content": {
+        "prompt": "CAP에서 A는 ___ 을 뜻한다.",
+        "hint": "장애가 없는 노드가 모든 요청에 응답하는 성질입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "가용성",
+          "availability",
+          "어베일러빌리티"
+        ]
+      },
+      "explanation": "CAP의 A는 가용성(Availability)으로, 장애 없는 노드가 모든 요청에 응답하는 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/CAP_theorem"
+      ]
+    },
+    {
+      "id": "database-cap-theorem-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cap-theorem",
+        "distributed-system"
+      ],
+      "content": {
+        "prompt": "네트워크 분할 시 C와 A 중 하나를 포기한다는 것은 ___ 정리다.",
+        "hint": "세 속성의 머리글자를 딴 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "CAP",
+          "cap",
+          "캡"
+        ]
+      },
+      "explanation": "CAP 정리는 네트워크 분할이 생기면 일관성과 가용성을 함께 지킬 수 없다는 정리입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/CAP_theorem"
+      ]
+    },
+    {
+      "id": "database-cap-theorem-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cap-theorem",
+        "distributed-system"
+      ],
+      "content": {
+        "prompt": "분할 중 최신 값을 모르는 노드가 응답을 거부하면 포기한 것은?",
+        "options": [
+          "일관성",
+          "가용성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "응답을 거부하면 모든 요청에 응답하지 못하므로 가용성을 포기하고 일관성을 지킨 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/CAP_theorem"
+      ]
+    },
+    {
+      "id": "database-cap-theorem-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cap-theorem",
+        "distributed-system"
+      ],
+      "content": {
+        "prompt": "분할 중 옛 값이라도 응답하면 포기한 것은?",
+        "options": [
+          "일관성",
+          "가용성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "계속 응답해 가용성은 지켰지만 최신 값이 아닐 수 있으므로 일관성을 포기한 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/CAP_theorem"
+      ]
+    },
+    {
+      "id": "database-cap-theorem-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cap-theorem",
+        "distributed-system"
+      ],
+      "content": {
+        "prompt": "네트워크 분할 중 C와 A를 함께 지킬 수 있나?",
+        "options": [
+          "있다",
+          "없다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "CAP 정리에 따라 분할이 생기면 일관성과 가용성 중 하나를 포기해야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/CAP_theorem"
+      ]
+    },
+    {
+      "id": "database-cap-theorem-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cap-theorem",
+        "distributed-system"
+      ],
+      "content": {
+        "prompt": "CAP의 일관성은 모든 노드가 가장 최근에 쓴 값을 응답하는 것이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "CAP의 C는 어느 노드에 묻든 가장 최근에 쓴 값을 돌려주는 성질입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/CAP_theorem"
+      ]
+    }
+  ]
+}

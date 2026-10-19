@@ -1,0 +1,249 @@
+{
+  "track": "database",
+  "unit": "u09-nosql",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "database-kv-store-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nosql",
+        "key-value"
+      ],
+      "content": {
+        "prompt": "값 내부를 해석하지 않고 키로만 저장·조회하는 모델은?",
+        "options": [
+          "문서 DB",
+          "키-값 저장소",
+          "그래프 DB"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "키-값 저장소는 키로 값을 저장·조회하며 값의 내용은 해석하지 않는 가장 단순한 모델입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Key%E2%80%93value_database",
+        "https://redis.io/docs/latest/develop/data-types/strings/"
+      ]
+    },
+    {
+      "id": "database-kv-store-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nosql",
+        "key-value"
+      ],
+      "content": {
+        "prompt": "키-값 저장소에서 키로 값을 읽는 연산은?",
+        "options": [
+          "PUT",
+          "GET",
+          "DELETE"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "GET은 키로 값을 읽고, PUT은 키에 값을 저장하며, DELETE는 키를 지웁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Key%E2%80%93value_database",
+        "https://redis.io/docs/latest/develop/data-types/strings/"
+      ]
+    },
+    {
+      "id": "database-kv-store-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nosql",
+        "key-value"
+      ],
+      "content": {
+        "prompt": "키-값 저장소가 잘하는 조회는?",
+        "options": [
+          "키로 한 건 조회",
+          "값 내용으로 검색"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "키-값 저장소는 키 단위 연산에 맞춰져 있어, 값의 내용으로 찾는 검색은 어렵습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Key%E2%80%93value_database",
+        "https://redis.io/docs/latest/develop/data-types/strings/"
+      ]
+    },
+    {
+      "id": "database-kv-store-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "nosql",
+        "key-value"
+      ],
+      "content": {
+        "prompt": "키-값 저장소는 값 안의 필드로 쉽게 검색할 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "키-값 저장소는 값 내부를 해석하지 않으므로 값 내용으로 검색하기 어렵고, 키로만 접근합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Key%E2%80%93value_database",
+        "https://redis.io/docs/latest/develop/data-types/strings/"
+      ]
+    },
+    {
+      "id": "database-kv-store-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "nosql",
+        "key-value"
+      ],
+      "content": {
+        "prompt": "키에 값을 저장하는 연산은 ___ 이다.",
+        "hint": "GET과 짝을 이루는 쓰기 연산입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "PUT",
+          "put",
+          "SET",
+          "set",
+          "풋"
+        ]
+      },
+      "explanation": "PUT은 키에 값을 저장하는 연산입니다. Redis에서는 같은 일을 SET 명령으로 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Key%E2%80%93value_database",
+        "https://redis.io/docs/latest/develop/data-types/strings/"
+      ]
+    },
+    {
+      "id": "database-kv-store-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "nosql",
+        "key-value"
+      ],
+      "content": {
+        "prompt": "Redis, DynamoDB 같은 저장소를 ___ 저장소라 한다.",
+        "hint": "가장 단순한 NoSQL 모델입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "키 값",
+          "키-값",
+          "키값",
+          "key value",
+          "key-value",
+          "KV"
+        ]
+      },
+      "explanation": "Redis와 Amazon DynamoDB는 키로 값을 저장·조회하는 키-값 저장소의 대표 제품입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Key%E2%80%93value_database",
+        "https://redis.io/docs/latest/develop/data-types/strings/"
+      ]
+    },
+    {
+      "id": "database-kv-store-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nosql",
+        "key-value"
+      ],
+      "content": {
+        "prompt": "로그인 세션을 세션 ID로 저장·조회하려면?",
+        "options": [
+          "그래프 DB",
+          "키-값 저장소"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "세션은 항상 세션 ID라는 키로만 접근하므로 키-값 저장소에 잘 맞습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Key%E2%80%93value_database",
+        "https://redis.io/docs/latest/develop/data-types/strings/"
+      ]
+    },
+    {
+      "id": "database-kv-store-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nosql",
+        "key-value"
+      ],
+      "content": {
+        "prompt": "가격 1만 원 이하 상품 찾기에 키-값 저장소는?",
+        "options": [
+          "잘 맞는다",
+          "잘 맞지 않는다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "가격은 값 안의 내용이라 키-값 저장소로는 검색하기 어렵습니다. 키로만 찾는 데이터에 맞습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Key%E2%80%93value_database",
+        "https://redis.io/docs/latest/develop/data-types/strings/"
+      ]
+    },
+    {
+      "id": "database-kv-store-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nosql",
+        "key-value"
+      ],
+      "content": {
+        "prompt": "PUT user:1 A → PUT user:1 B → GET user:1의 결과는?",
+        "options": [
+          "A",
+          "B",
+          "A와 B"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "키 하나에는 값 하나가 대응하므로, 같은 키에 다시 PUT하면 값이 B로 바뀝니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Key%E2%80%93value_database",
+        "https://redis.io/docs/latest/develop/data-types/strings/"
+      ]
+    },
+    {
+      "id": "database-kv-store-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "nosql",
+        "key-value"
+      ],
+      "content": {
+        "prompt": "키-값 저장소는 키 단위로 GET·PUT·DELETE를 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "키-값 저장소의 연산은 키를 주고 값을 읽거나(GET), 저장하거나(PUT), 지우는(DELETE) 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Key%E2%80%93value_database",
+        "https://redis.io/docs/latest/develop/data-types/strings/"
+      ]
+    }
+  ]
+}

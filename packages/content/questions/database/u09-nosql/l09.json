@@ -1,0 +1,245 @@
+{
+  "track": "database",
+  "unit": "u09-nosql",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "database-embed-reference-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "document-db",
+        "data-modeling"
+      ],
+      "content": {
+        "prompt": "관련 데이터를 한 문서 안에 넣는 방식은?",
+        "options": [
+          "임베딩",
+          "참조"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "임베딩은 주문 문서 안에 주문 항목을 넣듯, 관련 데이터를 한 문서 안에 함께 저장합니다.",
+      "refs": [
+        "https://www.mongodb.com/docs/manual/data-modeling/",
+        "https://en.wikipedia.org/wiki/Document-oriented_database"
+      ]
+    },
+    {
+      "id": "database-embed-reference-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "document-db",
+        "data-modeling"
+      ],
+      "content": {
+        "prompt": "다른 문서의 ID만 저장하고 따로 조회하는 방식은?",
+        "options": [
+          "임베딩",
+          "참조",
+          "샤딩"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "참조는 다른 문서의 ID만 저장해 두고, 필요하면 그 ID로 따로 조회하는 방식입니다.",
+      "refs": [
+        "https://www.mongodb.com/docs/manual/data-modeling/",
+        "https://en.wikipedia.org/wiki/Document-oriented_database"
+      ]
+    },
+    {
+      "id": "database-embed-reference-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "document-db",
+        "data-modeling"
+      ],
+      "content": {
+        "prompt": "항상 함께 읽고 개수가 적은 데이터에 맞는 방식은?",
+        "options": [
+          "임베딩",
+          "참조"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "항상 함께 읽고 개수가 적으며 계속 늘지 않으면, 한 문서에 넣는 임베딩이 한 번에 읽혀 유리합니다.",
+      "refs": [
+        "https://www.mongodb.com/docs/manual/data-modeling/",
+        "https://en.wikipedia.org/wiki/Document-oriented_database"
+      ]
+    },
+    {
+      "id": "database-embed-reference-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "document-db",
+        "data-modeling"
+      ],
+      "content": {
+        "prompt": "계속 늘어나는 댓글 수천 개는 게시글 문서에 임베딩하는 것이 좋다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "계속 늘어나는 관계는 문서 크기 제한에 걸릴 수 있으므로 참조로 따로 저장하는 편이 맞습니다.",
+      "refs": [
+        "https://www.mongodb.com/docs/manual/data-modeling/",
+        "https://en.wikipedia.org/wiki/Document-oriented_database"
+      ]
+    },
+    {
+      "id": "database-embed-reference-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "document-db",
+        "data-modeling"
+      ],
+      "content": {
+        "prompt": "관련 데이터를 한 문서 안에 넣는 것을 ___ 이라 한다.",
+        "hint": "영어로 끼워 넣기라는 뜻입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "임베딩",
+          "embedding",
+          "embed",
+          "임베드",
+          "내장"
+        ]
+      },
+      "explanation": "임베딩은 관련 데이터를 한 문서 안에 넣어 한 번의 조회로 함께 읽게 하는 방식입니다.",
+      "refs": [
+        "https://www.mongodb.com/docs/manual/data-modeling/",
+        "https://en.wikipedia.org/wiki/Document-oriented_database"
+      ]
+    },
+    {
+      "id": "database-embed-reference-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "document-db",
+        "data-modeling"
+      ],
+      "content": {
+        "prompt": "다른 문서의 ID만 저장하는 방식은 ___ 다.",
+        "hint": "ID로 다른 문서를 가리킵니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "참조",
+          "reference",
+          "referencing",
+          "레퍼런스"
+        ]
+      },
+      "explanation": "참조는 다른 문서의 ID만 저장하므로, 따로 자주 갱신되거나 계속 늘어나는 데이터에 맞습니다.",
+      "refs": [
+        "https://www.mongodb.com/docs/manual/data-modeling/",
+        "https://en.wikipedia.org/wiki/Document-oriented_database"
+      ]
+    },
+    {
+      "id": "database-embed-reference-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "document-db",
+        "data-modeling"
+      ],
+      "content": {
+        "prompt": "주문 문서와 그 주문의 항목 3개는?",
+        "options": [
+          "참조",
+          "임베딩"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "주문 항목은 주문과 항상 함께 읽고 개수가 적으며 계속 늘지 않으므로 임베딩이 맞습니다.",
+      "refs": [
+        "https://www.mongodb.com/docs/manual/data-modeling/",
+        "https://en.wikipedia.org/wiki/Document-oriented_database"
+      ]
+    },
+    {
+      "id": "database-embed-reference-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "document-db",
+        "data-modeling"
+      ],
+      "content": {
+        "prompt": "여러 상품이 공유하고 따로 자주 바뀌는 판매자 정보는?",
+        "options": [
+          "임베딩",
+          "참조"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "따로 자주 갱신되는 데이터를 임베딩하면 여러 문서를 고쳐야 하므로 참조가 맞습니다.",
+      "refs": [
+        "https://www.mongodb.com/docs/manual/data-modeling/",
+        "https://en.wikipedia.org/wiki/Document-oriented_database"
+      ]
+    },
+    {
+      "id": "database-embed-reference-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "document-db",
+        "data-modeling"
+      ],
+      "content": {
+        "prompt": "계정 하나에 로그가 끝없이 쌓인다. 문서 크기 제한을 고려하면?",
+        "options": [
+          "참조",
+          "임베딩"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "개수가 계속 늘어나는 데이터를 임베딩하면 문서 크기 제한(MongoDB 16MB)에 걸리므로 참조로 둡니다.",
+      "refs": [
+        "https://www.mongodb.com/docs/manual/data-modeling/",
+        "https://en.wikipedia.org/wiki/Document-oriented_database"
+      ]
+    },
+    {
+      "id": "database-embed-reference-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "document-db",
+        "data-modeling"
+      ],
+      "content": {
+        "prompt": "임베딩은 관련 데이터를 한 문서 안에 함께 저장한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "임베딩은 관련 데이터를 별도 문서로 나누지 않고 한 문서 안에 넣는 방식입니다.",
+      "refs": [
+        "https://www.mongodb.com/docs/manual/data-modeling/",
+        "https://en.wikipedia.org/wiki/Document-oriented_database"
+      ]
+    }
+  ]
+}
