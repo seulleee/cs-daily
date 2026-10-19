@@ -1,0 +1,247 @@
+{
+  "track": "os",
+  "unit": "u04-memory",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "os-buddy-system-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "buddy-system",
+        "definition"
+      ],
+      "content": {
+        "prompt": "메모리를 2의 거듭제곱 크기 블록으로 나눠 할당하는 방식은?",
+        "options": [
+          "연속 할당",
+          "버디 시스템",
+          "가상 메모리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "버디 시스템은 메모리를 2의 거듭제곱 크기 블록으로 나눠 할당하는 방식으로, Linux 페이지 할당자가 씁니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://en.wikipedia.org/wiki/Buddy_memory_allocation"
+      ]
+    },
+    {
+      "id": "os-buddy-system-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "buddy-system",
+        "merge"
+      ],
+      "content": {
+        "prompt": "해제된 블록과 짝(버디)이 모두 비면 다시 합치는 것은?",
+        "options": [
+          "병합",
+          "분할",
+          "할당"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "병합은 해제된 블록과 그 짝(버디)이 모두 비었을 때 두 블록을 다시 하나로 합치는 것입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://en.wikipedia.org/wiki/Buddy_memory_allocation"
+      ]
+    },
+    {
+      "id": "os-buddy-system-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "buddy-system",
+        "internal-fragmentation"
+      ],
+      "content": {
+        "prompt": "버디 시스템에서는 내부 단편화가 생기지 않는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "블록 크기가 2의 거듭제곱으로만 정해져 요청보다 큰 블록을 줄 때가 많아, 내부 단편화가 생깁니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://en.wikipedia.org/wiki/Buddy_memory_allocation"
+      ]
+    },
+    {
+      "id": "os-buddy-system-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "buddy-system",
+        "definition"
+      ],
+      "content": {
+        "prompt": "버디 시스템의 블록 크기는 2의 거듭제곱이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 버디 시스템은 블록을 2의 거듭제곱 크기로만 두어 반으로 나누고 다시 합치기 쉽게 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://en.wikipedia.org/wiki/Buddy_memory_allocation"
+      ]
+    },
+    {
+      "id": "os-buddy-system-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "buddy-system",
+        "term"
+      ],
+      "content": {
+        "prompt": "2의 거듭제곱 블록으로 나눠 할당하는 방식은 ___ 시스템이다.",
+        "hint": "짝을 뜻하는 영어 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "버디",
+          "buddy",
+          "버디 시스템",
+          "buddy system"
+        ]
+      },
+      "explanation": "메모리를 2의 거듭제곱 크기 블록으로 나누고 짝끼리 합치는 방식을 버디 시스템이라 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://en.wikipedia.org/wiki/Buddy_memory_allocation"
+      ]
+    },
+    {
+      "id": "os-buddy-system-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "buddy-system",
+        "calc"
+      ],
+      "content": {
+        "prompt": "버디 시스템에 70KB를 요청하면 ___KB 블록을 받는다.",
+        "hint": "70 이상인 가장 작은 2의 거듭제곱"
+      },
+      "answer_key": {
+        "accepted": [
+          "128",
+          "128KB",
+          "128 KB"
+        ]
+      },
+      "explanation": "70KB 이상인 가장 작은 2의 거듭제곱은 128KB(2⁷)라 128KB 블록을 할당합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://en.wikipedia.org/wiki/Buddy_memory_allocation"
+      ]
+    },
+    {
+      "id": "os-buddy-system-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "internal-fragmentation",
+        "calc"
+      ],
+      "content": {
+        "prompt": "70KB 요청에 128KB 블록을 받았다. 내부 단편화는?",
+        "options": [
+          "38KB",
+          "70KB",
+          "58KB"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "128KB 블록에서 70KB만 쓰므로 128 − 70 = 58KB가 블록 안에 남습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://en.wikipedia.org/wiki/Buddy_memory_allocation"
+      ]
+    },
+    {
+      "id": "os-buddy-system-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "split",
+        "calc"
+      ],
+      "content": {
+        "prompt": "256KB 블록에서 60KB를 요청했다. 최종 할당 블록은?",
+        "options": [
+          "64KB",
+          "128KB",
+          "256KB"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "256→128→64로 반씩 나눕니다. 64KB는 60KB의 2배보다 작아 더 나누지 않고 그대로 할당합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://en.wikipedia.org/wiki/Buddy_memory_allocation"
+      ]
+    },
+    {
+      "id": "os-buddy-system-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "merge",
+        "apply"
+      ],
+      "content": {
+        "prompt": "짝인 64KB 블록 둘 중 하나만 해제됐다. 결과는?",
+        "options": [
+          "128KB로 병합",
+          "병합하지 않음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "병합은 짝 블록이 모두 비어야 일어납니다. 한쪽이 아직 쓰이고 있으니 합치지 않습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://en.wikipedia.org/wiki/Buddy_memory_allocation"
+      ]
+    },
+    {
+      "id": "os-buddy-system-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "buddy-system",
+        "apply"
+      ],
+      "content": {
+        "prompt": "버디 시스템이 줄 수 있는 블록 크기는?",
+        "options": [
+          "48KB",
+          "64KB",
+          "96KB"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "버디 시스템의 블록은 2의 거듭제곱 크기입니다. 64KB는 2⁶KB이고, 48KB·96KB는 2의 거듭제곱이 아닙니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+        "https://en.wikipedia.org/wiki/Buddy_memory_allocation"
+      ]
+    }
+  ]
+}

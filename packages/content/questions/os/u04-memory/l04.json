@@ -1,0 +1,237 @@
+{
+  "track": "os",
+  "unit": "u04-memory",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "os-paging-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "page",
+        "definition"
+      ],
+      "content": {
+        "prompt": "가상 주소 공간을 나눈 고정 크기 블록은?",
+        "options": [
+          "페이지",
+          "프레임",
+          "버디"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "페이지는 가상 주소 공간을 고정 크기(예: 4KB)로 나눈 블록입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-paging-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "frame",
+        "definition"
+      ],
+      "content": {
+        "prompt": "물리 메모리를 페이지와 같은 크기로 나눈 블록은?",
+        "options": [
+          "페이지",
+          "힙",
+          "프레임"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "프레임은 물리 메모리를 페이지와 같은 크기로 나눈 블록입니다. 페이지 하나가 프레임 하나에 들어갑니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-paging-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "page",
+        "frame"
+      ],
+      "content": {
+        "prompt": "페이지는 무엇을 나눈 블록인가?",
+        "options": [
+          "가상 주소 공간",
+          "물리 메모리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "페이지는 가상 주소 공간을, 프레임은 물리 메모리를 같은 크기로 나눈 블록입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-paging-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "paging",
+        "frame"
+      ],
+      "content": {
+        "prompt": "페이징에서는 페이지를 연속된 프레임에만 놓을 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "페이징은 페이지를 아무 빈 프레임에나 놓을 수 있습니다. 그래서 외부 단편화가 생기지 않습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-paging-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "frame",
+        "term"
+      ],
+      "content": {
+        "prompt": "물리 메모리를 페이지 크기로 나눈 블록은 ___ 이다.",
+        "hint": "가상 쪽 블록은 페이지라 부른다"
+      },
+      "answer_key": {
+        "accepted": [
+          "프레임",
+          "frame",
+          "페이지 프레임",
+          "page frame"
+        ]
+      },
+      "explanation": "물리 메모리를 페이지와 같은 크기로 나눈 블록을 프레임이라 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-paging-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "paging",
+        "external-fragmentation"
+      ],
+      "content": {
+        "prompt": "페이징으로 없어지는 단편화는 ___ 단편화다.",
+        "hint": "빈 공간이 여러 조각으로 흩어지는 쪽"
+      },
+      "answer_key": {
+        "accepted": [
+          "외부",
+          "external",
+          "외부 단편화",
+          "external fragmentation"
+        ]
+      },
+      "explanation": "페이지를 아무 빈 프레임에나 놓을 수 있어, 빈 공간이 흩어져 못 쓰는 외부 단편화가 없습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-paging-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "page",
+        "calc"
+      ],
+      "content": {
+        "prompt": "4KB 페이지에서 10KB 프로세스에 필요한 페이지 수는?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "4KB 페이지 2개는 8KB라 부족하고, 3개(12KB)가 있어야 10KB를 담을 수 있습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-paging-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "internal-fragmentation",
+        "calc"
+      ],
+      "content": {
+        "prompt": "4KB 페이지에 10KB 프로세스를 올렸다. 마지막 페이지에 남는 공간은?",
+        "options": [
+          "2KB",
+          "4KB",
+          "6KB"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "페이지 3개(12KB) 중 10KB만 쓰므로 마지막 페이지에 12 − 10 = 2KB가 남습니다. 내부 단편화입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-paging-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "paging",
+        "apply"
+      ],
+      "content": {
+        "prompt": "빈 프레임이 3·8·15번에 흩어져 있다. 3페이지 프로세스는?",
+        "options": [
+          "연속이 아니라 실패",
+          "세 프레임에 배치"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "페이징은 페이지를 아무 빈 프레임에나 놓으므로 흩어진 프레임 3개에 나눠 올릴 수 있습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    },
+    {
+      "id": "os-paging-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "page",
+        "definition"
+      ],
+      "content": {
+        "prompt": "페이지는 가상 주소 공간을 나눈 고정 크기 블록이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 페이지는 가상 주소 공간을, 프레임은 물리 메모리를 같은 고정 크기로 나눈 블록입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf"
+      ]
+    }
+  ]
+}

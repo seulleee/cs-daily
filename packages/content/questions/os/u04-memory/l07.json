@@ -1,0 +1,239 @@
+{
+  "track": "os",
+  "unit": "u04-memory",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "os-demand-paging-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "demand-paging",
+        "definition"
+      ],
+      "content": {
+        "prompt": "페이지를 실제로 접근할 때 비로소 메모리에 올리는 방식은?",
+        "options": [
+          "요구 페이징",
+          "연속 할당",
+          "버디 시스템"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "요구 페이징은 페이지를 미리 올리지 않고 실제로 접근할 때 비로소 메모리에 올리는 방식입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf"
+      ]
+    },
+    {
+      "id": "os-demand-paging-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "valid-bit",
+        "definition"
+      ],
+      "content": {
+        "prompt": "페이지가 메모리에 있는지 표시하는 페이지 테이블 항목의 비트는?",
+        "options": [
+          "모드 비트",
+          "오프셋",
+          "유효 비트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "유효 비트는 페이지 테이블 항목에서 그 페이지가 지금 메모리(프레임)에 있는지 표시합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf"
+      ]
+    },
+    {
+      "id": "os-demand-paging-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "page-fault",
+        "valid-bit"
+      ],
+      "content": {
+        "prompt": "유효 비트가 꺼진 페이지에 접근하면?",
+        "options": [
+          "TLB 히트",
+          "페이지 폴트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "유효 비트가 꺼져 있으면 페이지가 메모리에 없다는 뜻이라 페이지 폴트가 발생합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf"
+      ]
+    },
+    {
+      "id": "os-demand-paging-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "page-fault",
+        "exception"
+      ],
+      "content": {
+        "prompt": "페이지 폴트는 명령 실행의 결과로 생기는 예외다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 페이지 폴트는 메모리 접근 명령이 일으키는 동기적 예외(폴트)로, 장치가 보내는 인터럽트가 아닙니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf"
+      ]
+    },
+    {
+      "id": "os-demand-paging-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "page-fault",
+        "term"
+      ],
+      "content": {
+        "prompt": "메모리에 없는 페이지에 접근하면 ___ 폴트가 난다.",
+        "hint": "가상 주소 공간을 나눈 고정 크기 블록"
+      },
+      "answer_key": {
+        "accepted": [
+          "페이지",
+          "page",
+          "페이지 폴트",
+          "page fault"
+        ]
+      },
+      "explanation": "메모리에 없는 페이지에 접근하면 발생하는 예외를 페이지 폴트라 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf"
+      ]
+    },
+    {
+      "id": "os-demand-paging-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "demand-paging",
+        "term"
+      ],
+      "content": {
+        "prompt": "접근할 때 비로소 페이지를 올리는 방식은 ___ 페이징이다.",
+        "hint": "필요가 생겨 요청될 때 올린다는 뜻"
+      },
+      "answer_key": {
+        "accepted": [
+          "요구",
+          "demand",
+          "요구 페이징",
+          "demand paging",
+          "디맨드"
+        ]
+      },
+      "explanation": "페이지를 실제로 접근할 때 비로소 메모리에 올리는 방식을 요구 페이징이라 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf"
+      ]
+    },
+    {
+      "id": "os-demand-paging-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "page-fault",
+        "apply"
+      ],
+      "content": {
+        "prompt": "페이지 폴트 처리 중 OS가 디스크에서 읽은 페이지를 놓는 곳은?",
+        "options": [
+          "TLB",
+          "프레임",
+          "PCB"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "OS는 디스크에서 페이지를 읽어 프레임에 올리고, 페이지 테이블의 유효 비트를 켭니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf"
+      ]
+    },
+    {
+      "id": "os-demand-paging-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "page-fault",
+        "apply"
+      ],
+      "content": {
+        "prompt": "페이지 폴트 처리가 끝나면 CPU는 무엇을 하나?",
+        "options": [
+          "다음 명령 실행",
+          "프로세스 종료",
+          "폴트 낸 명령 재실행"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "페이지가 올라왔으니 폴트를 일으킨 그 명령어를 다시 실행하고, 이번에는 정상적으로 접근합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf"
+      ]
+    },
+    {
+      "id": "os-demand-paging-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "demand-paging",
+        "apply"
+      ],
+      "content": {
+        "prompt": "요구 페이징에서 페이지 100개 중 1개만 접근했다. 올라간 페이지는?",
+        "options": [
+          "1개",
+          "50개",
+          "100개"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "요구 페이징은 접근한 페이지만 올리므로 원리상 1개입니다. 실제 커널은 주변 페이지를 미리 읽기도 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf"
+      ]
+    },
+    {
+      "id": "os-demand-paging-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "demand-paging",
+        "definition"
+      ],
+      "content": {
+        "prompt": "요구 페이징은 프로그램 시작 때 모든 페이지를 올린다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "요구 페이징은 페이지를 실제로 접근할 때 비로소 올립니다. 시작 때 전부 올리지 않습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+{
+  "track": "os",
+  "unit": "u04-memory",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "os-virtual-memory-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "virtual-memory",
+        "definition"
+      ],
+      "content": {
+        "prompt": "프로세스마다 독립된 주소 공간을 주는 기법은?",
+        "options": [
+          "공유 메모리",
+          "가상 메모리",
+          "PCB"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "가상 메모리는 프로세스마다 독립된 주소 공간을 주고 그 주소를 물리 메모리에 대응시키는 기법입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf"
+      ]
+    },
+    {
+      "id": "os-virtual-memory-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mmu",
+        "definition"
+      ],
+      "content": {
+        "prompt": "가상 주소를 물리 주소로 바꾸는 CPU 안의 하드웨어는?",
+        "options": [
+          "MMU",
+          "PCB",
+          "디스패처"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "MMU(Memory Management Unit)는 CPU 안에서 가상 주소를 물리 주소로 바꾸는 하드웨어입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf"
+      ]
+    },
+    {
+      "id": "os-virtual-memory-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "physical-address",
+        "virtual-address"
+      ],
+      "content": {
+        "prompt": "실제 RAM의 위치를 나타내는 주소는?",
+        "options": [
+          "가상 주소",
+          "물리 주소"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "물리 주소는 실제 RAM의 주소입니다. 가상 주소는 프로세스가 보는 주소로, 변환을 거쳐야 RAM 위치가 됩니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf"
+      ]
+    },
+    {
+      "id": "os-virtual-memory-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "virtual-address",
+        "physical-address"
+      ],
+      "content": {
+        "prompt": "가상 주소는 실제 RAM의 위치를 그대로 가리킨다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "가상 주소는 프로세스가 보는 주소입니다. MMU가 물리 주소로 바꿔야 실제 RAM의 위치가 됩니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf"
+      ]
+    },
+    {
+      "id": "os-virtual-memory-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "mmu",
+        "term"
+      ],
+      "content": {
+        "prompt": "가상 주소를 물리 주소로 바꾸는 하드웨어는 ___ 이다.",
+        "hint": "CPU 안에 있는 주소 변환 장치, 영문 세 글자 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "MMU",
+          "엠엠유",
+          "메모리 관리 장치",
+          "Memory Management Unit"
+        ]
+      },
+      "explanation": "CPU 안에서 가상 주소를 물리 주소로 바꾸는 하드웨어를 MMU라 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf"
+      ]
+    },
+    {
+      "id": "os-virtual-memory-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "virtual-address",
+        "term"
+      ],
+      "content": {
+        "prompt": "프로세스가 보는 주소는 ___ 주소다.",
+        "hint": "실제 RAM 주소와 대비되는 이름"
+      },
+      "answer_key": {
+        "accepted": [
+          "가상",
+          "virtual",
+          "가상 주소",
+          "virtual address",
+          "논리",
+          "논리 주소"
+        ]
+      },
+      "explanation": "프로세스가 보는 주소는 가상 주소, 실제 RAM의 주소는 물리 주소입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf"
+      ]
+    },
+    {
+      "id": "os-virtual-memory-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "virtual-memory",
+        "apply"
+      ],
+      "content": {
+        "prompt": "프로세스 A·B가 각자 가상 주소 1000에 값을 쓴다. 실제 위치는?",
+        "options": [
+          "같은 물리 주소",
+          "서로 다른 물리 주소"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "프로세스마다 독립된 주소 공간이 있어, 같은 가상 주소라도 MMU가 서로 다른 물리 주소로 대응시킵니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf"
+      ]
+    },
+    {
+      "id": "os-virtual-memory-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "isolation",
+        "apply"
+      ],
+      "content": {
+        "prompt": "A가 B의 메모리를 주소로 직접 읽을 수 없는 것은 어떤 효과인가?",
+        "options": [
+          "병렬성",
+          "큰 주소 공간",
+          "프로세스 격리"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "주소 공간이 프로세스마다 따로라 다른 프로세스의 메모리를 가리킬 방법이 없습니다. 이것이 프로세스 격리입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf"
+      ]
+    },
+    {
+      "id": "os-virtual-memory-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "virtual-memory",
+        "apply"
+      ],
+      "content": {
+        "prompt": "RAM보다 큰 주소 공간을 프로세스에 줄 수 있게 하는 것은?",
+        "options": [
+          "가상 메모리",
+          "멀티스레딩",
+          "공유 메모리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가상 메모리는 프로세스가 보는 주소 공간을 물리 메모리와 분리하므로, 물리 메모리보다 큰 주소 공간을 줄 수 있습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf"
+      ]
+    },
+    {
+      "id": "os-virtual-memory-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "virtual-memory",
+        "definition"
+      ],
+      "content": {
+        "prompt": "가상 메모리는 프로세스마다 독립된 주소 공간을 준다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 가상 메모리는 프로세스마다 독립된 주소 공간을 주고 MMU가 이를 물리 메모리에 대응시킵니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf"
+      ]
+    }
+  ]
+}

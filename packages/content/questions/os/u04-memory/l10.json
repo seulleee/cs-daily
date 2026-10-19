@@ -1,0 +1,237 @@
+{
+  "track": "os",
+  "unit": "u04-memory",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "os-thrashing-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "thrashing",
+        "definition"
+      ],
+      "content": {
+        "prompt": "폴트가 너무 잦아 CPU가 대부분 교체를 기다리는 상태는?",
+        "options": [
+          "스래싱",
+          "교착 상태",
+          "기아"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스래싱은 페이지 폴트가 너무 잦아 CPU가 대부분의 시간을 페이지 교체를 기다리며 보내는 상태입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-thrashing-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "working-set",
+        "definition"
+      ],
+      "content": {
+        "prompt": "최근 일정 시간 동안 프로세스가 참조한 페이지 집합은?",
+        "options": [
+          "페이지 테이블",
+          "워킹 셋",
+          "TLB"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "워킹 셋은 최근 일정 시간 동안 프로세스가 참조한 페이지 집합으로, 지금 필요한 페이지를 나타냅니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-thrashing-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "thrashing",
+        "working-set"
+      ],
+      "content": {
+        "prompt": "스래싱은 워킹 셋 합과 물리 메모리 중 무엇이 클 때 생기나?",
+        "options": [
+          "워킹 셋 합",
+          "물리 메모리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "실행 중 프로세스들의 워킹 셋 합이 물리 메모리보다 크면 필요한 페이지를 다 담지 못해 스래싱이 생깁니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-thrashing-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "thrashing",
+        "cpu-utilization"
+      ],
+      "content": {
+        "prompt": "스래싱 중에는 CPU가 유용한 일을 대부분의 시간 동안 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "스래싱 중에는 프로세스들이 페이지 교체를 기다리느라 CPU가 유용한 일을 거의 하지 못합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-thrashing-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "thrashing",
+        "term"
+      ],
+      "content": {
+        "prompt": "폴트가 너무 잦아 실행이 거의 진행되지 않는 상태는 ___ 이다.",
+        "hint": "영어로 '마구 두들기다'라는 뜻의 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "스래싱",
+          "thrashing",
+          "쓰래싱",
+          "트래싱"
+        ]
+      },
+      "explanation": "페이지 폴트가 너무 잦아 CPU가 대부분 페이지 교체를 기다리는 상태를 스래싱이라 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-thrashing-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "working-set",
+        "term"
+      ],
+      "content": {
+        "prompt": "최근 일정 시간 동안 참조한 페이지 집합은 ___ 셋이다.",
+        "hint": "영어로 '일하는 중인'이라는 뜻"
+      },
+      "answer_key": {
+        "accepted": [
+          "워킹",
+          "working",
+          "워킹 셋",
+          "working set",
+          "워킹셋"
+        ]
+      },
+      "explanation": "최근 일정 시간 동안 프로세스가 참조한 페이지 집합을 워킹 셋이라 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-thrashing-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "thrashing",
+        "apply"
+      ],
+      "content": {
+        "prompt": "스래싱 중인 시스템에 프로세스를 더 띄우면?",
+        "options": [
+          "폴트가 더 늘어남",
+          "폴트가 줄어듦"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "프로세스가 늘면 워킹 셋 합이 더 커져 프레임이 더 모자라므로 페이지 폴트가 더 늘어납니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-thrashing-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "working-set",
+        "calc"
+      ],
+      "content": {
+        "prompt": "RAM 8GB에 워킹 셋 3GB인 프로세스 4개를 띄웠다. 스래싱 위험은?",
+        "options": [
+          "낮다",
+          "높다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "워킹 셋 합이 3 × 4 = 12GB로 물리 메모리 8GB보다 커서 스래싱 위험이 높습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-thrashing-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "thrashing",
+        "apply"
+      ],
+      "content": {
+        "prompt": "스래싱을 줄이는 방법은?",
+        "options": [
+          "프로세스 더 띄우기",
+          "프레임 수 줄이기",
+          "동시 실행 수 줄이기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "동시에 실행하는 프로세스 수를 줄이면 워킹 셋 합이 물리 메모리 안에 들어와 스래싱이 줄어듭니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-thrashing-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "thrashing",
+        "definition"
+      ],
+      "content": {
+        "prompt": "스래싱 중 CPU는 대부분 페이지 교체를 기다린다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 폴트가 너무 잦아 프로세스들이 디스크에서 페이지가 오기를 기다리느라 CPU가 거의 놀게 됩니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    }
+  ]
+}

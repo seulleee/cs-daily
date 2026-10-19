@@ -1,0 +1,247 @@
+{
+  "track": "os",
+  "unit": "u05-file-system",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "os-indexed-alloc-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "indexed-allocation",
+        "definition"
+      ],
+      "content": {
+        "prompt": "블록 번호 목록을 한 블록에 모아 두는 할당 방식은?",
+        "options": [
+          "연결 할당",
+          "인덱스 할당",
+          "연속 할당"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인덱스 할당은 파일의 블록 번호 목록을 인덱스 블록에 모아 두어 몇 번째 블록이든 바로 찾습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://www.kernel.org/doc/html/latest/filesystems/ext4/dynamic.html"
+      ]
+    },
+    {
+      "id": "os-indexed-alloc-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "extent",
+        "definition"
+      ],
+      "content": {
+        "prompt": "(시작 블록, 길이)로 연속 구간을 표현하는 것은?",
+        "options": [
+          "익스텐트",
+          "간접 포인터",
+          "FAT"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "익스텐트는 연속된 블록 구간을 (시작 블록, 길이) 한 쌍으로 표현하며, ext4가 씁니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://www.kernel.org/doc/html/latest/filesystems/ext4/dynamic.html"
+      ]
+    },
+    {
+      "id": "os-indexed-alloc-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "direct-pointer",
+        "indirect-pointer"
+      ],
+      "content": {
+        "prompt": "직접 포인터는 블록 번호 목록이 담긴 블록을 가리킨다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "그것은 간접 포인터입니다. 직접 포인터는 데이터 블록을 바로 가리킵니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://www.kernel.org/doc/html/latest/filesystems/ext4/dynamic.html"
+      ]
+    },
+    {
+      "id": "os-indexed-alloc-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "indexed-allocation",
+        "random-access"
+      ],
+      "content": {
+        "prompt": "인덱스 할당은 연결 할당보다 임의 접근이 빠르다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 인덱스 블록에서 n번째 번호를 바로 읽으면 되므로 앞 블록들을 따라갈 필요가 없습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://www.kernel.org/doc/html/latest/filesystems/ext4/dynamic.html"
+      ]
+    },
+    {
+      "id": "os-indexed-alloc-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "extent",
+        "term"
+      ],
+      "content": {
+        "prompt": "ext4에서 (시작, 길이)로 표현한 연속 구간은 ___ 이다.",
+        "hint": "범위를 뜻하는 영어 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "익스텐트",
+          "extent",
+          "extents",
+          "익스턴트"
+        ]
+      },
+      "explanation": "ext4는 연속된 블록 구간을 (시작 블록, 길이)로 표현하는 익스텐트를 씁니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://www.kernel.org/doc/html/latest/filesystems/ext4/dynamic.html"
+      ]
+    },
+    {
+      "id": "os-indexed-alloc-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "direct-pointer",
+        "ext2"
+      ],
+      "content": {
+        "prompt": "ext2 inode의 직접 포인터는 ___개다.",
+        "hint": "10보다 크고 15보다 작다"
+      },
+      "answer_key": {
+        "accepted": [
+          "12",
+          "12개",
+          "열두"
+        ]
+      },
+      "explanation": "ext2/ext3 inode는 직접 포인터 12개와 단일·이중·삼중 간접 포인터 각 1개를 가집니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://www.kernel.org/doc/html/latest/filesystems/ext4/dynamic.html"
+      ]
+    },
+    {
+      "id": "os-indexed-alloc-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "direct-pointer",
+        "calc"
+      ],
+      "content": {
+        "prompt": "블록 4KB일 때 직접 포인터 12개로 표현하는 최대 크기는?",
+        "options": [
+          "4KB",
+          "12KB",
+          "48KB"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "직접 포인터 하나가 블록 하나(4KB)를 가리키므로 12 × 4KB = 48KB입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://www.kernel.org/doc/html/latest/filesystems/ext4/dynamic.html"
+      ]
+    },
+    {
+      "id": "os-indexed-alloc-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "indirect-pointer",
+        "calc"
+      ],
+      "content": {
+        "prompt": "블록 4KB, 블록 번호 4바이트. 단일 간접 블록에 담기는 번호 수는?",
+        "options": [
+          "256",
+          "1024",
+          "4096"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "4KB(4096바이트) 블록에 4바이트 번호를 채우면 4096 ÷ 4 = 1024개가 들어갑니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://www.kernel.org/doc/html/latest/filesystems/ext4/dynamic.html"
+      ]
+    },
+    {
+      "id": "os-indexed-alloc-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "extent",
+        "apply"
+      ],
+      "content": {
+        "prompt": "블록 200~299(100개) 연속 구간을 익스텐트로 쓰면?",
+        "options": [
+          "(200, 100)",
+          "(200, 299)",
+          "(100, 200)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "익스텐트는 (시작 블록, 길이)이므로 시작 200, 길이 100인 (200, 100)입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://www.kernel.org/doc/html/latest/filesystems/ext4/dynamic.html"
+      ]
+    },
+    {
+      "id": "os-indexed-alloc-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "indexed-allocation",
+        "apply"
+      ],
+      "content": {
+        "prompt": "인덱스 할당에서 파일의 블록 번호 목록이 있는 곳은?",
+        "options": [
+          "각 데이터 블록 끝",
+          "인덱스 블록"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인덱스 할당은 블록 번호 목록을 인덱스 블록에 모읍니다. 블록마다 다음 번호를 두는 것은 연결 할당입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+        "https://www.kernel.org/doc/html/latest/filesystems/ext4/dynamic.html"
+      ]
+    }
+  ]
+}

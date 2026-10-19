@@ -1,0 +1,235 @@
+{
+  "track": "os",
+  "unit": "u04-memory",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "os-tlb-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tlb",
+        "definition"
+      ],
+      "content": {
+        "prompt": "최근 주소 변환 결과를 담는 MMU 안의 작은 캐시는?",
+        "options": [
+          "TLB",
+          "PCB",
+          "페이지 테이블"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "TLB(Translation Lookaside Buffer)는 최근 주소 변환 결과를 담는 MMU 안의 작은 캐시입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf"
+      ]
+    },
+    {
+      "id": "os-tlb-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tlb-hit",
+        "definition"
+      ],
+      "content": {
+        "prompt": "TLB에서 변환 결과를 바로 찾은 경우는?",
+        "options": [
+          "TLB 미스",
+          "TLB 히트",
+          "컨텍스트 스위칭"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "TLB 히트는 TLB에 변환 결과가 있어 페이지 테이블을 읽지 않고 바로 물리 주소를 얻는 경우입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf"
+      ]
+    },
+    {
+      "id": "os-tlb-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tlb-miss",
+        "page-table"
+      ],
+      "content": {
+        "prompt": "TLB 미스 때 변환하려고 읽는 것은?",
+        "options": [
+          "페이지 테이블",
+          "디스크"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "TLB 미스가 나면 메모리에 있는 페이지 테이블을 읽어 변환하고, 그 결과를 TLB에 채웁니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf"
+      ]
+    },
+    {
+      "id": "os-tlb-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "tlb-hit",
+        "page-table"
+      ],
+      "content": {
+        "prompt": "TLB 히트면 메모리의 페이지 테이블을 읽지 않는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. TLB에 변환 결과가 있으면 페이지 테이블을 읽지 않고 바로 물리 주소를 얻습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf"
+      ]
+    },
+    {
+      "id": "os-tlb-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tlb",
+        "term"
+      ],
+      "content": {
+        "prompt": "주소 변환 결과를 캐시하는 MMU 안의 장치는 ___ 이다.",
+        "hint": "영문 세 글자 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "TLB",
+          "티엘비",
+          "Translation Lookaside Buffer"
+        ]
+      },
+      "explanation": "최근 주소 변환 결과를 담는 MMU 안의 작은 캐시를 TLB라 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf"
+      ]
+    },
+    {
+      "id": "os-tlb-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "asid",
+        "context-switch"
+      ],
+      "content": {
+        "prompt": "TLB 항목이 어느 주소 공간 것인지 구분하는 번호는 ___ 이다.",
+        "hint": "주소 공간마다 붙는 식별 번호의 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "ASID",
+          "에이에스아이디",
+          "Address Space Identifier",
+          "Address Space ID"
+        ]
+      },
+      "explanation": "ASID로 항목마다 주소 공간을 구분하면 컨텍스트 스위칭 때 TLB를 비우지 않아도 됩니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf"
+      ]
+    },
+    {
+      "id": "os-tlb-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tlb-hit",
+        "apply"
+      ],
+      "content": {
+        "prompt": "방금 변환한 페이지에 곧바로 다시 접근하면 보통?",
+        "options": [
+          "TLB 미스",
+          "TLB 히트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "첫 접근에서 변환 결과가 TLB에 채워졌으므로 곧바로 다시 접근하면 보통 TLB 히트가 납니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf"
+      ]
+    },
+    {
+      "id": "os-tlb-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tlb-miss",
+        "apply"
+      ],
+      "content": {
+        "prompt": "TLB 미스로 페이지 테이블에서 얻은 변환 결과는?",
+        "options": [
+          "버린다",
+          "디스크에 쓴다",
+          "TLB에 채운다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "TLB 미스 때 페이지 테이블에서 얻은 변환 결과는 TLB에 채워 다음 접근이 히트가 되게 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf"
+      ]
+    },
+    {
+      "id": "os-tlb-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "context-switch",
+        "apply"
+      ],
+      "content": {
+        "prompt": "ASID가 없는 CPU에서 다른 프로세스로 전환하면 TLB는?",
+        "options": [
+          "비운다",
+          "그대로 쓴다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "주소 공간이 바뀌면 이전 프로세스의 변환 결과가 틀리게 되므로, ASID가 없으면 TLB를 비웁니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf"
+      ]
+    },
+    {
+      "id": "os-tlb-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "tlb-miss",
+        "definition"
+      ],
+      "content": {
+        "prompt": "TLB 미스가 나면 프로세스가 오류로 종료된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "TLB 미스는 정상 동작입니다. 메모리의 페이지 테이블을 읽어 변환하고 TLB에 채운 뒤 계속 실행합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf"
+      ]
+    }
+  ]
+}

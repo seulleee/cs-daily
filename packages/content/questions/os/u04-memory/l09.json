@@ -1,0 +1,239 @@
+{
+  "track": "os",
+  "unit": "u04-memory",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "os-lru-clock-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lru",
+        "definition"
+      ],
+      "content": {
+        "prompt": "마지막 사용이 가장 오래전인 페이지를 내보내는 것은?",
+        "options": [
+          "FIFO",
+          "LRU",
+          "OPT"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "LRU(Least Recently Used)는 가장 오랫동안 사용되지 않은 페이지를 내보냅니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-lru-clock-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "clock",
+        "definition"
+      ],
+      "content": {
+        "prompt": "참조 비트로 LRU를 흉내 내는 교체 알고리즘은?",
+        "options": [
+          "Clock",
+          "OPT",
+          "FIFO"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Clock(2차 기회)은 참조 비트를 보고 최근에 쓴 페이지를 한 번 봐주는 방식으로 LRU를 근사합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-lru-clock-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lru",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "LRU가 교체 대상을 고를 때 보는 것은?",
+        "options": [
+          "처음 들어온 시각",
+          "마지막으로 쓴 시각"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "LRU는 마지막으로 사용한 시각이 가장 오래된 페이지를 고릅니다. 들어온 시각을 보는 것은 FIFO입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-lru-clock-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "clock",
+        "reference-bit"
+      ],
+      "content": {
+        "prompt": "Clock은 참조 비트가 1인 페이지를 바로 내보낸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Clock은 참조 비트가 1이면 0으로 바꾸고 넘어갑니다. 내보내는 것은 참조 비트가 0인 페이지입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-lru-clock-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "lru",
+        "term"
+      ],
+      "content": {
+        "prompt": "가장 오래 안 쓴 페이지를 내보내는 방식은 ___ 이다.",
+        "hint": "영문 세 글자 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "LRU",
+          "엘알유",
+          "Least Recently Used"
+        ]
+      },
+      "explanation": "가장 오랫동안 사용되지 않은 페이지를 내보내는 방식을 LRU라 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-lru-clock-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "reference-bit",
+        "clock"
+      ],
+      "content": {
+        "prompt": "Clock이 페이지마다 확인하는 비트는 ___ 비트다.",
+        "hint": "최근에 접근됐으면 1이 된다"
+      },
+      "answer_key": {
+        "accepted": [
+          "참조",
+          "reference",
+          "참조 비트",
+          "reference bit",
+          "use",
+          "사용"
+        ]
+      },
+      "explanation": "Clock은 참조 비트를 확인해 1이면 0으로 바꾸고 넘어가고, 0인 페이지를 내보냅니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-lru-clock-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lru",
+        "calc"
+      ],
+      "content": {
+        "prompt": "프레임 3, 참조 1 2 3 1 4. LRU가 내보내는 것은?",
+        "options": [
+          "2",
+          "1",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "4를 넣을 때 마지막 사용 순서는 2(가장 오래) → 3 → 1입니다. 1은 방금 다시 썼으니 2를 내보냅니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-lru-clock-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lru",
+        "calc"
+      ],
+      "content": {
+        "prompt": "프레임 3, 참조 1 2 3 2 1 4. LRU가 내보내는 것은?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "4를 넣을 때 마지막 사용 순서는 3 → 2 → 1이라 가장 오래 안 쓴 3을 내보냅니다. FIFO라면 1을 내보냅니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-lru-clock-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "clock",
+        "calc"
+      ],
+      "content": {
+        "prompt": "바늘이 A, 참조 비트 A=1·B=0·C=1. Clock이 내보내는 것은?",
+        "options": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "A는 참조 비트가 1이라 0으로 바꾸고 넘어갑니다. 다음 B는 0이므로 B를 내보냅니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    },
+    {
+      "id": "os-lru-clock-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "lru",
+        "definition"
+      ],
+      "content": {
+        "prompt": "LRU는 가장 오랫동안 사용되지 않은 페이지를 내보낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. LRU는 가장 오래전에 마지막으로 사용된 페이지를 교체 대상으로 고릅니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    }
+  ]
+}

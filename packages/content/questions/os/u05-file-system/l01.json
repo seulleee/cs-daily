@@ -1,0 +1,246 @@
+{
+  "track": "os",
+  "unit": "u05-file-system",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "os-file-system-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "file",
+        "definition"
+      ],
+      "content": {
+        "prompt": "이름이 붙은 바이트의 나열은?",
+        "options": [
+          "파일",
+          "블록",
+          "프로세스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "파일은 이름이 붙은 바이트의 나열입니다. 바이트가 무엇을 뜻하는지는 파일을 쓰는 프로그램이 정합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf"
+      ]
+    },
+    {
+      "id": "os-file-system-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "file-system",
+        "definition"
+      ],
+      "content": {
+        "prompt": "디스크 블록 위에 파일과 디렉터리를 조직하는 OS 구성 요소는?",
+        "options": [
+          "파일 시스템",
+          "스케줄러",
+          "MMU"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "파일 시스템은 디스크 블록 위에 파일과 디렉터리를 조직하고 관리하는 운영체제 구성 요소입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf"
+      ]
+    },
+    {
+      "id": "os-file-system-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "metadata",
+        "file"
+      ],
+      "content": {
+        "prompt": "파일 크기·소유자·수정 시각 같은 정보는?",
+        "options": [
+          "파일 내용",
+          "메타데이터"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "크기·소유자·권한·수정 시각 같은, 파일 내용이 아닌 정보를 메타데이터라 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf"
+      ]
+    },
+    {
+      "id": "os-file-system-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "metadata",
+        "file"
+      ],
+      "content": {
+        "prompt": "파일의 수정 시각은 파일 내용의 일부다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "수정 시각은 파일 내용이 아니라 파일 시스템이 따로 기록하는 메타데이터입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf"
+      ]
+    },
+    {
+      "id": "os-file-system-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "block",
+        "term"
+      ],
+      "content": {
+        "prompt": "파일 시스템이 디스크를 읽고 쓰는 단위는 ___ 이다.",
+        "hint": "흔히 4KB 크기로 정한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "블록",
+          "block",
+          "디스크 블록"
+        ]
+      },
+      "explanation": "파일 시스템은 디스크를 블록(예: 4KB) 단위로 읽고 씁니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf"
+      ]
+    },
+    {
+      "id": "os-file-system-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "metadata",
+        "term"
+      ],
+      "content": {
+        "prompt": "파일 내용이 아닌 크기·권한 같은 정보는 ___ 이다.",
+        "hint": "데이터에 관한 데이터"
+      },
+      "answer_key": {
+        "accepted": [
+          "메타데이터",
+          "metadata",
+          "메타 데이터"
+        ]
+      },
+      "explanation": "크기·소유자·권한·수정 시각 같은, 파일 내용이 아닌 정보를 메타데이터라 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf"
+      ]
+    },
+    {
+      "id": "os-file-system-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "block",
+        "calc"
+      ],
+      "content": {
+        "prompt": "블록이 4KB일 때 10KB 파일이 쓰는 블록 수는?",
+        "options": [
+          "2",
+          "3",
+          "10"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "블록 2개(8KB)로는 부족하므로 3개(12KB)가 필요합니다. 마지막 블록에는 2KB가 남습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf"
+      ]
+    },
+    {
+      "id": "os-file-system-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "block",
+        "apply"
+      ],
+      "content": {
+        "prompt": "블록이 4KB일 때 1바이트 파일이 차지하는 데이터 공간은?",
+        "options": [
+          "1바이트",
+          "1KB",
+          "4KB"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "디스크는 블록 단위로 할당하므로 1바이트 파일도 데이터 블록 하나(4KB)를 차지합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf"
+      ]
+    },
+    {
+      "id": "os-file-system-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "metadata",
+        "apply"
+      ],
+      "content": {
+        "prompt": "chmod로 권한만 바꾸면 고쳐지는 것은?",
+        "options": [
+          "파일 내용",
+          "메타데이터",
+          "블록 크기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "권한은 메타데이터라 chmod는 파일 내용은 그대로 두고 메타데이터만 바꿉니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf"
+      ]
+    },
+    {
+      "id": "os-file-system-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "file",
+        "definition"
+      ],
+      "content": {
+        "prompt": "파일은 이름이 붙은 바이트의 나열이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 운영체제가 보기에 파일은 이름이 붙은 바이트의 나열이고, 형식은 프로그램이 해석합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "track": "os",
+  "unit": "u05-file-system",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "os-page-cache-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "page-cache",
+        "definition"
+      ],
+      "content": {
+        "prompt": "커널이 파일 내용을 메모리에 캐시하는 영역은?",
+        "options": [
+          "TLB",
+          "페이지 테이블",
+          "페이지 캐시"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "페이지 캐시는 커널이 파일 내용을 페이지 단위로 메모리에 캐시해 두는 영역입니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/mm/concepts.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-page-cache-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dirty-page",
+        "definition"
+      ],
+      "content": {
+        "prompt": "수정됐지만 아직 디스크에 쓰지 않은 페이지는?",
+        "options": [
+          "더티 페이지",
+          "빈 프레임",
+          "워킹 셋"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "더티 페이지는 페이지 캐시에서 수정됐지만 아직 디스크에 기록되지 않은 페이지입니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/mm/concepts.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-page-cache-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "page-cache",
+        "tlb"
+      ],
+      "content": {
+        "prompt": "파일 내용을 캐시하는 것은?",
+        "options": [
+          "TLB",
+          "페이지 캐시"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "페이지 캐시는 파일 내용을, TLB는 주소 변환 결과를 캐시합니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/mm/concepts.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-page-cache-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "write-buffering",
+        "write"
+      ],
+      "content": {
+        "prompt": "write()는 데이터가 디스크에 기록된 뒤에야 반환된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "write()는 페이지 캐시에 쓰고 바로 반환합니다. 디스크에는 커널이 나중에 기록합니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/mm/concepts.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-page-cache-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "page-cache",
+        "term"
+      ],
+      "content": {
+        "prompt": "커널이 파일 내용을 메모리에 캐시하는 곳은 ___ 캐시다.",
+        "hint": "메모리를 관리하는 고정 크기 단위의 이름"
+      },
+      "answer_key": {
+        "accepted": [
+          "페이지",
+          "page",
+          "페이지 캐시",
+          "page cache"
+        ]
+      },
+      "explanation": "커널이 파일 내용을 메모리에 캐시하는 영역을 페이지 캐시라 합니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/mm/concepts.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-page-cache-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dirty-page",
+        "term"
+      ],
+      "content": {
+        "prompt": "수정됐지만 디스크에 아직 안 쓴 페이지는 ___ 페이지다.",
+        "hint": "영어로 '더러운'"
+      },
+      "answer_key": {
+        "accepted": [
+          "더티",
+          "dirty",
+          "더티 페이지",
+          "dirty page"
+        ]
+      },
+      "explanation": "수정됐지만 아직 디스크에 쓰지 않은 페이지를 더티 페이지라 하며, 커널이 주기적으로 기록합니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/mm/concepts.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-page-cache-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "page-cache",
+        "apply"
+      ],
+      "content": {
+        "prompt": "방금 읽은 파일을 곧바로 다시 읽으면 보통?",
+        "options": [
+          "디스크에서 다시 읽음",
+          "페이지 캐시에서 읽음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "처음 읽을 때 내용이 페이지 캐시에 올라왔으므로, 다시 읽으면 디스크를 읽지 않고 캐시에서 돌려줍니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/mm/concepts.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-page-cache-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dirty-page",
+        "apply"
+      ],
+      "content": {
+        "prompt": "write()로 쓴 직후 그 페이지 캐시의 페이지는?",
+        "options": [
+          "더티 페이지",
+          "깨끗한 페이지"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "write()는 페이지 캐시만 고치고 반환하므로, 디스크에 기록되기 전까지 그 페이지는 더티 페이지입니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/mm/concepts.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-page-cache-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "page-cache",
+        "apply"
+      ],
+      "content": {
+        "prompt": "write() 직후 다른 프로세스가 같은 파일을 read()하면?",
+        "options": [
+          "옛 데이터를 읽음",
+          "새 데이터를 읽음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "읽기도 같은 페이지 캐시를 보므로 디스크에 아직 기록되지 않았어도 새 데이터를 읽습니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/mm/concepts.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    },
+    {
+      "id": "os-page-cache-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "page-cache",
+        "definition"
+      ],
+      "content": {
+        "prompt": "페이지 캐시에 있는 파일 내용은 디스크를 읽지 않고 돌려준다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "맞습니다. 읽으려는 내용이 페이지 캐시에 있으면 커널은 디스크를 읽지 않고 캐시에서 돌려줍니다.",
+      "refs": [
+        "https://www.kernel.org/doc/html/latest/admin-guide/mm/concepts.html",
+        "https://man7.org/linux/man-pages/man2/write.2.html"
+      ]
+    }
+  ]
+}
