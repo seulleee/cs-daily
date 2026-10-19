@@ -1,0 +1,243 @@
+{
+  "track": "database",
+  "unit": "u06-transaction-acid",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "database-tx-wal-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "wal",
+        "durability"
+      ],
+      "content": {
+        "prompt": "데이터 페이지를 바꾸기 전에 로그를 먼저 기록하는 규칙은?",
+        "options": [
+          "SAVEPOINT",
+          "오토커밋",
+          "WAL"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "WAL은 데이터 페이지를 바꾸기 전에 변경 내용을 로그에 먼저 기록하는 규칙입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-intro.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html"
+      ]
+    },
+    {
+      "id": "database-tx-wal-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "wal",
+        "mysql"
+      ],
+      "content": {
+        "prompt": "MySQL InnoDB에서 WAL 역할을 하는 로그는?",
+        "options": [
+          "redo log",
+          "error log",
+          "slow query log"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "InnoDB는 redo log에 변경을 먼저 기록합니다. error log와 slow query log는 진단용 로그입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-intro.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html"
+      ]
+    },
+    {
+      "id": "database-tx-wal-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "wal",
+        "log"
+      ],
+      "content": {
+        "prompt": "WAL에서 먼저 디스크에 기록하는 것은?",
+        "options": [
+          "로그",
+          "데이터 페이지"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "WAL은 로그를 먼저 기록하고 데이터 페이지는 그 뒤에 씁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-intro.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html"
+      ]
+    },
+    {
+      "id": "database-tx-wal-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "wal",
+        "log"
+      ],
+      "content": {
+        "prompt": "WAL에서는 로그를 데이터 페이지보다 나중에 기록한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "WAL은 Write-Ahead, 즉 데이터보다 로그를 먼저 기록하는 규칙입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-intro.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html"
+      ]
+    },
+    {
+      "id": "database-tx-wal-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "wal",
+        "log"
+      ],
+      "content": {
+        "prompt": "로그 선행 기록을 영문 약자로 ___ (이)라 한다.",
+        "hint": "영문 대문자 세 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "WAL"
+        ]
+      },
+      "explanation": "로그 선행 기록은 Write-Ahead Logging이며 줄여서 WAL이라고 부릅니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-intro.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html"
+      ]
+    },
+    {
+      "id": "database-tx-wal-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "wal",
+        "commit"
+      ],
+      "content": {
+        "prompt": "커밋 레코드까지 ___ 가 디스크에 기록되면 커밋 완료다.",
+        "hint": "데이터 파일이 아니라 순차로 덧붙이는 기록"
+      },
+      "answer_key": {
+        "accepted": [
+          "로그",
+          "log",
+          "WAL",
+          "로그 레코드"
+        ]
+      },
+      "explanation": "커밋 레코드까지 로그가 디스크에 기록되면 커밋이 완료되고, 데이터 페이지는 나중에 씁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-intro.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html"
+      ]
+    },
+    {
+      "id": "database-tx-wal-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "wal",
+        "performance"
+      ],
+      "content": {
+        "prompt": "로그만 동기화하는 WAL이 빠른 이유는?",
+        "options": [
+          "순차 쓰기라서",
+          "쓰기를 생략해서",
+          "압축해서"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "흩어진 데이터 페이지 대신 파일 끝에 덧붙이는 순차 쓰기인 로그만 동기화하므로 빠릅니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-intro.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html"
+      ]
+    },
+    {
+      "id": "database-tx-wal-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "wal",
+        "commit"
+      ],
+      "content": {
+        "prompt": "커밋 레코드가 로그에 기록되기 전 장애가 났다. 그 트랜잭션은?",
+        "options": [
+          "커밋됨",
+          "커밋 안 됨"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "커밋 레코드까지 로그가 디스크에 기록돼야 커밋 완료이므로 이 트랜잭션은 커밋되지 않았습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-intro.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html"
+      ]
+    },
+    {
+      "id": "database-tx-wal-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "wal",
+        "commit"
+      ],
+      "content": {
+        "prompt": "트랜잭션이 행 100개를 바꿨다. 커밋 때 꼭 동기화할 것은?",
+        "options": [
+          "바뀐 데이터 페이지",
+          "로그"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "커밋 때는 로그만 디스크에 기록하면 됩니다. 바뀐 데이터 페이지는 나중에 씁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-intro.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html"
+      ]
+    },
+    {
+      "id": "database-tx-wal-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "wal",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "PostgreSQL의 WAL은 로그 선행 기록 규칙을 구현한 것이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "PostgreSQL의 WAL과 MySQL InnoDB의 redo log가 로그 선행 기록 규칙의 구현 예입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-intro.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html"
+      ]
+    }
+  ]
+}

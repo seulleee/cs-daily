@@ -1,0 +1,244 @@
+{
+  "track": "database",
+  "unit": "u07-isolation-lock-mvcc",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "database-lock-gap-nextkey-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lock",
+        "gap-lock"
+      ],
+      "content": {
+        "prompt": "인덱스 레코드 사이의 빈 구간에 거는 락은?",
+        "options": [
+          "레코드 락",
+          "배타 락",
+          "갭 락"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "갭 락은 인덱스 레코드 사이 빈 구간에 걸어 그 구간의 INSERT를 막습니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-next-key-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-gap-nextkey-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lock",
+        "next-key-lock"
+      ],
+      "content": {
+        "prompt": "레코드 락과 그 앞 갭 락을 합친 락은?",
+        "options": [
+          "넥스트 키 락",
+          "비관적 락",
+          "공유 락"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "MySQL InnoDB의 넥스트 키 락은 레코드 락에 그 앞 갭 락을 더한 것입니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-next-key-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-gap-nextkey-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lock",
+        "record-lock"
+      ],
+      "content": {
+        "prompt": "인덱스 레코드 하나에만 거는 락은?",
+        "options": [
+          "레코드 락",
+          "갭 락"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "레코드 락은 인덱스 레코드 하나에 거는 락이고, 갭 락은 레코드 사이 구간에 겁니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-next-key-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-gap-nextkey-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "gap-lock",
+        "mysql"
+      ],
+      "content": {
+        "prompt": "갭 락은 그 구간에 새 행이 INSERT되는 것을 막는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "갭 락은 인덱스 레코드 사이 빈 구간을 잠가 그 구간에 들어갈 INSERT를 막습니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-next-key-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-gap-nextkey-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "gap-lock",
+        "mysql"
+      ],
+      "content": {
+        "prompt": "인덱스 레코드 사이 구간에 거는 락은 ___ 락이다.",
+        "hint": "레코드와 레코드 사이를 가리키는 영어 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "갭",
+          "gap"
+        ]
+      },
+      "explanation": "인덱스 레코드 사이 빈 구간에 거는 락을 갭 락이라고 합니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-next-key-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-gap-nextkey-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "next-key-lock",
+        "mysql"
+      ],
+      "content": {
+        "prompt": "레코드 락에 그 앞 갭 락을 더한 것은 ___ 락이다.",
+        "hint": "MySQL InnoDB가 REPEATABLE READ의 잠금 읽기에 쓴다"
+      },
+      "answer_key": {
+        "accepted": [
+          "넥스트 키",
+          "next key",
+          "next-key",
+          "넥스트키",
+          "nextkey"
+        ]
+      },
+      "explanation": "넥스트 키 락은 레코드 락과 그 앞 갭 락을 합친 InnoDB의 락입니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-next-key-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-gap-nextkey-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "next-key-lock",
+        "mysql"
+      ],
+      "content": {
+        "prompt": "InnoDB, id 10~20 FOR UPDATE 중. 다른 쪽 id 15 INSERT는?",
+        "options": [
+          "바로 성공",
+          "기다린다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "기본 수준 REPEATABLE READ의 넥스트 키 락이 10과 20 사이 구간도 잠가 INSERT는 기다립니다(MySQL 문서 기준).",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-next-key-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-gap-nextkey-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "gap-lock",
+        "phantom-read"
+      ],
+      "content": {
+        "prompt": "갭 락 없이 행 락만 건 잠금 읽기를 다시 하면 생길 수 있는 현상은?",
+        "options": [
+          "Phantom Read",
+          "Dirty Read"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "행 락만으로는 조건에 맞는 새 행의 INSERT를 막지 못해 재조회 때 행이 늘어날 수 있습니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-next-key-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-gap-nextkey-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "gap-lock",
+        "phantom-read"
+      ],
+      "content": {
+        "prompt": "InnoDB가 갭 락을 쓰는 목적은?",
+        "options": [
+          "Dirty Read 방지",
+          "팬텀 방지"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "InnoDB는 REPEATABLE READ의 잠금 읽기에서 팬텀을 막으려고 갭 락과 넥스트 키 락을 씁니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-next-key-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-gap-nextkey-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "next-key-lock",
+        "mysql"
+      ],
+      "content": {
+        "prompt": "넥스트 키 락은 레코드 락만으로 이뤄진다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "넥스트 키 락은 레코드 락에 그 앞 갭 락을 더한 것이라 빈 구간도 잠급니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-next-key-locking.html"
+      ]
+    }
+  ]
+}

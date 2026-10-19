@@ -1,0 +1,256 @@
+{
+  "track": "database",
+  "unit": "u07-isolation-lock-mvcc",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "database-lock-db-deadlock-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lock",
+        "deadlock"
+      ],
+      "content": {
+        "prompt": "T1·T2가 서로 상대가 쥔 행 락을 기다리는 상태는?",
+        "options": [
+          "갱신 손실",
+          "갭 락",
+          "데드락"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "서로 상대가 쥔 락을 기다리는 순환 대기를 데드락이라고 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://www.postgresql.org/docs/current/runtime-config-locks.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-deadlocks.html"
+      ]
+    },
+    {
+      "id": "database-lock-db-deadlock-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "deadlock",
+        "detection"
+      ],
+      "content": {
+        "prompt": "DB가 데드락을 찾으려고 사이클을 검사하는 그래프는?",
+        "options": [
+          "대기 그래프",
+          "실행 계획",
+          "B+Tree"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DB는 누가 누구를 기다리는지 나타낸 대기 그래프에서 사이클을 찾아 데드락을 탐지합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://www.postgresql.org/docs/current/runtime-config-locks.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-deadlocks.html"
+      ]
+    },
+    {
+      "id": "database-lock-db-deadlock-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "deadlock",
+        "detection"
+      ],
+      "content": {
+        "prompt": "데드락을 탐지한 DB가 하는 일은?",
+        "options": [
+          "둘 다 커밋",
+          "한 트랜잭션 롤백"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DB는 사이클에 속한 트랜잭션 하나를 롤백해 순환 대기를 끊습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://www.postgresql.org/docs/current/runtime-config-locks.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-deadlocks.html"
+      ]
+    },
+    {
+      "id": "database-lock-db-deadlock-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "deadlock",
+        "detection"
+      ],
+      "content": {
+        "prompt": "DB에서 데드락이 생기면 두 트랜잭션은 계속 기다리기만 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "DB가 대기 그래프의 사이클을 탐지해 한 트랜잭션을 롤백하므로 나머지는 진행됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://www.postgresql.org/docs/current/runtime-config-locks.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-deadlocks.html"
+      ]
+    },
+    {
+      "id": "database-lock-db-deadlock-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "lock",
+        "deadlock"
+      ],
+      "content": {
+        "prompt": "서로가 쥔 락을 기다리는 순환 대기는 ___ 이다.",
+        "hint": "DB가 탐지하면 한쪽을 롤백한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "데드락",
+          "deadlock",
+          "교착 상태",
+          "교착상태"
+        ]
+      },
+      "explanation": "두 트랜잭션이 서로 상대가 쥔 락을 기다리는 순환 대기를 데드락이라고 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://www.postgresql.org/docs/current/runtime-config-locks.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-deadlocks.html"
+      ]
+    },
+    {
+      "id": "database-lock-db-deadlock-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "deadlock",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "PostgreSQL deadlock_timeout의 기본값은 ___ 초이다.",
+        "hint": "락을 이만큼 기다린 뒤 데드락 검사를 시작한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "1",
+          "1초",
+          "일"
+        ]
+      },
+      "explanation": "PostgreSQL은 락을 deadlock_timeout(기본 1초) 기다린 뒤 데드락 검사를 합니다(PostgreSQL 16에서 확인).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://www.postgresql.org/docs/current/runtime-config-locks.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-deadlocks.html"
+      ]
+    },
+    {
+      "id": "database-lock-db-deadlock-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "deadlock",
+        "lock"
+      ],
+      "content": {
+        "prompt": "T1은 1번, T2는 2번 행을 고친 뒤 T1은 2번, T2는 1번을 고치면?",
+        "options": [
+          "데드락",
+          "갱신 손실",
+          "정상 완료"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "서로 상대가 쥔 행 락을 기다리는 순환 대기라 데드락이 되고 한쪽이 롤백됩니다(PostgreSQL에서 확인).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://www.postgresql.org/docs/current/runtime-config-locks.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-deadlocks.html"
+      ]
+    },
+    {
+      "id": "database-lock-db-deadlock-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "deadlock",
+        "prevention"
+      ],
+      "content": {
+        "prompt": "T1·T2 모두 1번 → 2번 순서로 행을 고치면?",
+        "options": [
+          "데드락 발생",
+          "한쪽 대기 후 진행"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "같은 순서로 잠그면 늦은 쪽이 1번에서 기다릴 뿐 순환 대기가 없어 둘 다 커밋됩니다(PostgreSQL에서 확인).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://www.postgresql.org/docs/current/runtime-config-locks.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-deadlocks.html"
+      ]
+    },
+    {
+      "id": "database-lock-db-deadlock-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "deadlock",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "PostgreSQL이 락을 1초 기다린 뒤 하는 일은?",
+        "options": [
+          "자동 커밋",
+          "체크포인트",
+          "데드락 검사"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "PostgreSQL은 deadlock_timeout만큼 기다린 뒤에야 데드락 검사를 합니다. 검사 비용을 줄이기 위해서입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://www.postgresql.org/docs/current/runtime-config-locks.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-deadlocks.html"
+      ]
+    },
+    {
+      "id": "database-lock-db-deadlock-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "deadlock",
+        "prevention"
+      ],
+      "content": {
+        "prompt": "여러 행을 항상 같은 순서로 잠그면 데드락을 예방할 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "모든 트랜잭션이 id 오름차순처럼 같은 순서로 잠그면 순환 대기가 생기지 않습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://www.postgresql.org/docs/current/runtime-config-locks.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-deadlocks.html"
+      ]
+    }
+  ]
+}

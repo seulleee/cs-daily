@@ -1,0 +1,244 @@
+{
+  "track": "database",
+  "unit": "u06-transaction-acid",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "database-tx-boundary-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "transaction",
+        "outbox"
+      ],
+      "content": {
+        "prompt": "이벤트를 같은 트랜잭션으로 테이블에 저장해 나중에 발행하는 방식은?",
+        "options": [
+          "SAVEPOINT",
+          "오토커밋",
+          "아웃박스 패턴"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "아웃박스 패턴은 보낼 이벤트를 데이터와 같은 트랜잭션으로 테이블에 저장하고 나중에 발행합니다.",
+      "refs": [
+        "https://microservices.io/patterns/data/transactional-outbox.html",
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+      ]
+    },
+    {
+      "id": "database-tx-boundary-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "transaction",
+        "external-call"
+      ],
+      "content": {
+        "prompt": "트랜잭션 안에서 외부 API 응답을 기다리는 동안 점유하는 것은?",
+        "options": [
+          "락과 DB 연결",
+          "인덱스",
+          "체크포인트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "트랜잭션이 끝나지 않았으므로 응답을 기다리는 동안 락과 DB 연결을 계속 점유합니다.",
+      "refs": [
+        "https://microservices.io/patterns/data/transactional-outbox.html",
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+      ]
+    },
+    {
+      "id": "database-tx-boundary-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "transaction",
+        "external-call"
+      ],
+      "content": {
+        "prompt": "DB 트랜잭션이 롤백됐다. 이미 보낸 결제 요청은?",
+        "options": [
+          "함께 취소됨",
+          "취소되지 않음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DB 롤백은 DB 안의 변경만 되돌리므로 이미 보낸 외부 요청은 취소되지 않습니다.",
+      "refs": [
+        "https://microservices.io/patterns/data/transactional-outbox.html",
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+      ]
+    },
+    {
+      "id": "database-tx-boundary-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "transaction",
+        "external-call"
+      ],
+      "content": {
+        "prompt": "DB 트랜잭션을 롤백하면 이미 보낸 메일도 취소된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "롤백은 DB 변경만 되돌립니다. 이미 보낸 메일 같은 외부 요청은 취소되지 않습니다.",
+      "refs": [
+        "https://microservices.io/patterns/data/transactional-outbox.html",
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+      ]
+    },
+    {
+      "id": "database-tx-boundary-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "transaction",
+        "outbox"
+      ],
+      "content": {
+        "prompt": "보낼 이벤트를 같은 트랜잭션으로 저장해 나중에 발행하는 것은 ___ 패턴이다.",
+        "hint": "보낼 메시지를 모아 두는 테이블 이름에서 왔다"
+      },
+      "answer_key": {
+        "accepted": [
+          "아웃박스",
+          "outbox",
+          "아웃 박스"
+        ]
+      },
+      "explanation": "아웃박스 패턴은 이벤트를 데이터와 함께 커밋해, 커밋된 변경의 이벤트만 나중에 발행되게 합니다.",
+      "refs": [
+        "https://microservices.io/patterns/data/transactional-outbox.html",
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+      ]
+    },
+    {
+      "id": "database-tx-boundary-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "transaction",
+        "boundary"
+      ],
+      "content": {
+        "prompt": "외부 호출은 트랜잭션 안이 아니라 ___ 전후로 분리한다.",
+        "hint": "트랜잭션을 확정하는 시점"
+      },
+      "answer_key": {
+        "accepted": [
+          "커밋",
+          "commit"
+        ]
+      },
+      "explanation": "트랜잭션은 DB 작업만 짧게 하고, 외부 호출은 커밋 전후로 분리해 락과 연결 점유를 줄입니다.",
+      "refs": [
+        "https://microservices.io/patterns/data/transactional-outbox.html",
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+      ]
+    },
+    {
+      "id": "database-tx-boundary-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "transaction",
+        "external-call"
+      ],
+      "content": {
+        "prompt": "결제 API를 트랜잭션 안에서 호출할 때의 문제는?",
+        "options": [
+          "응답까지 락 점유",
+          "인덱스 손상",
+          "로그 유실"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "외부 응답을 기다리는 동안 트랜잭션이 끝나지 않아 락과 DB 연결을 계속 점유합니다.",
+      "refs": [
+        "https://microservices.io/patterns/data/transactional-outbox.html",
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+      ]
+    },
+    {
+      "id": "database-tx-boundary-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "outbox",
+        "boundary"
+      ],
+      "content": {
+        "prompt": "아웃박스로 주문을 커밋한 뒤 발행 전에 서버가 죽었다. 이벤트는?",
+        "options": [
+          "유실된다",
+          "나중에 발행된다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이벤트가 주문과 같은 트랜잭션으로 테이블에 저장됐으므로 재시작 후 발행할 수 있습니다.",
+      "refs": [
+        "https://microservices.io/patterns/data/transactional-outbox.html",
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+      ]
+    },
+    {
+      "id": "database-tx-boundary-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "transaction",
+        "boundary"
+      ],
+      "content": {
+        "prompt": "짧은 트랜잭션 경계 안에 넣을 작업은?",
+        "options": [
+          "외부 API 호출",
+          "메일 발송",
+          "DB 작업만"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "트랜잭션은 DB 작업만 짧게 묶고, 외부 API 호출과 메일 발송은 커밋 전후로 분리합니다.",
+      "refs": [
+        "https://microservices.io/patterns/data/transactional-outbox.html",
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+      ]
+    },
+    {
+      "id": "database-tx-boundary-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "outbox",
+        "transaction"
+      ],
+      "content": {
+        "prompt": "아웃박스 패턴은 이벤트를 데이터와 같은 트랜잭션으로 저장한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "데이터와 이벤트를 같은 트랜잭션으로 저장하므로 둘이 함께 커밋되거나 함께 롤백됩니다.",
+      "refs": [
+        "https://microservices.io/patterns/data/transactional-outbox.html",
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+      ]
+    }
+  ]
+}

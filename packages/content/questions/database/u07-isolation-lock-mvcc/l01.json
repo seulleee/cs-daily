@@ -1,0 +1,242 @@
+{
+  "track": "database",
+  "unit": "u07-isolation-lock-mvcc",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "database-iso-dirty-read-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "isolation",
+        "dirty-read"
+      ],
+      "content": {
+        "prompt": "다른 트랜잭션이 커밋하지 않은 변경을 읽는 현상은?",
+        "options": [
+          "Dirty Read",
+          "오토커밋",
+          "체크포인트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "아직 커밋되지 않은 다른 트랜잭션의 변경을 읽는 현상을 Dirty Read라고 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://en.wikipedia.org/wiki/Isolation_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-iso-dirty-read-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "isolation",
+        "dirty-read"
+      ],
+      "content": {
+        "prompt": "Dirty Read를 막는 가장 약한 격리 수준은?",
+        "options": [
+          "SERIALIZABLE",
+          "READ COMMITTED",
+          "REPEATABLE READ"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "READ COMMITTED부터 커밋된 값만 읽으므로 Dirty Read를 막는 가장 약한 수준입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://en.wikipedia.org/wiki/Isolation_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-iso-dirty-read-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dirty-read",
+        "rollback"
+      ],
+      "content": {
+        "prompt": "T2가 읽은 미커밋 값을 T1이 롤백했다. T2가 읽은 값은?",
+        "options": [
+          "존재한 적 없는 값",
+          "커밋된 값"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "롤백된 변경은 확정된 적이 없으므로 T2는 존재한 적 없는 값을 읽은 셈입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://en.wikipedia.org/wiki/Isolation_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-iso-dirty-read-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dirty-read",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "PostgreSQL의 READ UNCOMMITTED에서는 Dirty Read가 생긴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "PostgreSQL은 READ UNCOMMITTED도 READ COMMITTED처럼 동작해 Dirty Read가 없습니다(PostgreSQL 16에서 확인).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://en.wikipedia.org/wiki/Isolation_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-iso-dirty-read-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "isolation",
+        "dirty-read"
+      ],
+      "content": {
+        "prompt": "커밋되지 않은 변경을 읽는 현상은 ___ Read 이다.",
+        "hint": "확정되지 않은 값을 읽는 이상 현상"
+      },
+      "answer_key": {
+        "accepted": [
+          "Dirty",
+          "더티"
+        ]
+      },
+      "explanation": "다른 트랜잭션이 커밋하지 않은 변경을 읽는 현상을 Dirty Read라고 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://en.wikipedia.org/wiki/Isolation_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-iso-dirty-read-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "isolation-level",
+        "dirty-read"
+      ],
+      "content": {
+        "prompt": "Dirty Read를 막는 가장 약한 격리 수준은 READ ___ 이다.",
+        "hint": "커밋된 값만 읽는다는 뜻"
+      },
+      "answer_key": {
+        "accepted": [
+          "COMMITTED",
+          "커미티드"
+        ]
+      },
+      "explanation": "READ COMMITTED 이상의 격리 수준은 커밋된 값만 읽으므로 Dirty Read가 생기지 않습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://en.wikipedia.org/wiki/Isolation_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-iso-dirty-read-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dirty-read",
+        "isolation-level"
+      ],
+      "content": {
+        "prompt": "잔액 100을 T1이 0으로 바꾸고 미커밋. READ COMMITTED의 T2가 읽으면?",
+        "options": [
+          "100",
+          "0"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "READ COMMITTED는 커밋된 값만 읽으므로 T1의 미커밋 값 0이 아니라 100을 읽습니다(PostgreSQL에서 확인).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://en.wikipedia.org/wiki/Isolation_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-iso-dirty-read-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dirty-read",
+        "isolation-level"
+      ],
+      "content": {
+        "prompt": "SQL 표준의 READ UNCOMMITTED에서 미커밋 값을 읽을 수 있나?",
+        "options": [
+          "읽을 수 없다",
+          "읽을 수 있다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "표준은 READ UNCOMMITTED를 Dirty Read까지 허용하는 수준으로 정의합니다. PostgreSQL 구현은 이를 막습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://en.wikipedia.org/wiki/Isolation_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-iso-dirty-read-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dirty-read",
+        "rollback"
+      ],
+      "content": {
+        "prompt": "T2가 Dirty Read로 0을 봤고 T1은 롤백했다. 원래 100이면 실제 잔액은?",
+        "options": [
+          "0",
+          "알 수 없음",
+          "100"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "T1이 롤백했으므로 잔액은 원래 값 100 그대로이고, T2가 본 0은 존재한 적 없는 값입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://en.wikipedia.org/wiki/Isolation_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-iso-dirty-read-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "isolation",
+        "dirty-read"
+      ],
+      "content": {
+        "prompt": "Dirty Read는 커밋되지 않은 값을 읽는 현상이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "Dirty Read는 다른 트랜잭션이 아직 커밋하지 않은 변경을 읽는 현상입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://en.wikipedia.org/wiki/Isolation_(database_systems)"
+      ]
+    }
+  ]
+}
