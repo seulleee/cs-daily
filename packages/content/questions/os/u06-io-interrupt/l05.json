@@ -1,0 +1,247 @@
+{
+  "track": "os",
+  "unit": "u06-io-interrupt",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "os-io-select-poll-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "io-multiplexing",
+        "select",
+        "poll"
+      ],
+      "content": {
+        "prompt": "한 스레드가 여러 fd 중 준비된 것을 기다리는 기법은?",
+        "options": [
+          "DMA",
+          "바쁜 대기",
+          "I/O 멀티플렉싱"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "I/O 멀티플렉싱은 한 스레드가 여러 fd 중 준비된 것을 한 번에 기다리는 기법으로, select·poll이 대표적입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/select.2.html",
+        "https://man7.org/linux/man-pages/man2/poll.2.html"
+      ]
+    },
+    {
+      "id": "os-io-select-poll-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "io-multiplexing",
+        "select",
+        "poll"
+      ],
+      "content": {
+        "prompt": "pollfd 배열을 넘겨 준비된 fd를 받는 호출은?",
+        "options": [
+          "select",
+          "poll",
+          "read"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "poll은 pollfd 구조체 배열을 넘겨 준비된 fd를 받습니다. select는 fd 집합을 넘깁니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/poll.2.html"
+      ]
+    },
+    {
+      "id": "os-io-select-poll-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "io-multiplexing",
+        "select",
+        "poll"
+      ],
+      "content": {
+        "prompt": "fd 번호가 1024 이상이면 다룰 수 없는 것은?",
+        "options": [
+          "select",
+          "poll"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "select는 FD_SETSIZE(1024) 미만 번호의 fd만 다룹니다. poll은 배열을 넘기므로 이 제한이 없습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/select.2.html"
+      ]
+    },
+    {
+      "id": "os-io-select-poll-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "io-multiplexing",
+        "select",
+        "poll"
+      ],
+      "content": {
+        "prompt": "select와 poll은 호출마다 fd 목록 전체를 커널에 넘긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "select·poll은 호출할 때마다 fd 목록 전체를 커널에 넘기고, 커널은 그것을 전부 검사합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/select.2.html",
+        "https://man7.org/linux/man-pages/man2/poll.2.html"
+      ]
+    },
+    {
+      "id": "os-io-select-poll-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "io-multiplexing",
+        "select",
+        "poll"
+      ],
+      "content": {
+        "prompt": "한 스레드가 여러 fd를 한 번에 기다리는 기법은 I/O ___ 이다.",
+        "hint": "한글 5글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "멀티플렉싱",
+          "multiplexing",
+          "다중화"
+        ]
+      },
+      "explanation": "I/O 멀티플렉싱은 여러 fd 중 준비된 것을 한 스레드가 한 번의 호출로 기다리는 기법입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/select.2.html"
+      ]
+    },
+    {
+      "id": "os-io-select-poll-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "io-multiplexing",
+        "select",
+        "poll"
+      ],
+      "content": {
+        "prompt": "select는 fd 번호가 ___ 미만인 것만 다룰 수 있다.",
+        "hint": "2의 거듭제곱"
+      },
+      "answer_key": {
+        "accepted": [
+          "1024"
+        ]
+      },
+      "explanation": "select의 fd 집합은 FD_SETSIZE(리눅스 glibc 기준 1024) 미만 번호만 담을 수 있습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/select.2.html"
+      ]
+    },
+    {
+      "id": "os-io-select-poll-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "io-multiplexing",
+        "select",
+        "poll"
+      ],
+      "content": {
+        "prompt": "fd 번호 2000인 소켓을 기다려야 한다. 쓸 수 있는 것은?",
+        "options": [
+          "select",
+          "poll"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "select는 1024 미만 번호만 다루므로 2000번 fd는 poll로 기다려야 합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/poll.2.html",
+        "https://man7.org/linux/man-pages/man2/select.2.html"
+      ]
+    },
+    {
+      "id": "os-io-select-poll-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "io-multiplexing",
+        "select",
+        "poll"
+      ],
+      "content": {
+        "prompt": "fd 1만 개 중 1개만 준비됐다. poll 호출 한 번에 커널이 검사하는 fd는?",
+        "options": [
+          "1개",
+          "100개",
+          "1만 개"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "poll은 호출마다 넘긴 fd 목록 전체를 검사하므로, 1개만 준비돼도 1만 개를 모두 확인합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/poll.2.html"
+      ]
+    },
+    {
+      "id": "os-io-select-poll-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "io-multiplexing",
+        "select",
+        "poll"
+      ],
+      "content": {
+        "prompt": "소켓 3개를 select 하나로 기다릴 때 필요한 스레드 수는?",
+        "options": [
+          "1개",
+          "3개",
+          "4개"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "I/O 멀티플렉싱은 스레드 하나가 여러 fd를 한 번에 기다리므로 스레드 1개면 됩니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/select.2.html"
+      ]
+    },
+    {
+      "id": "os-io-select-poll-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "io-multiplexing",
+        "select",
+        "poll"
+      ],
+      "content": {
+        "prompt": "I/O 멀티플렉싱은 fd마다 스레드를 하나씩 둔다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "I/O 멀티플렉싱은 한 스레드가 여러 fd를 한꺼번에 기다리는 기법이라 fd마다 스레드를 두지 않습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/select.2.html",
+        "https://man7.org/linux/man-pages/man2/poll.2.html"
+      ]
+    }
+  ]
+}

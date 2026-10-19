@@ -1,0 +1,249 @@
+{
+  "track": "os",
+  "unit": "u07-linux-syscall",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "os-linux-wait-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "wait",
+        "zombie",
+        "process"
+      ],
+      "content": {
+        "prompt": "종료했지만 부모가 회수하지 않아 항목만 남은 프로세스는?",
+        "options": [
+          "고아 프로세스",
+          "좀비 프로세스",
+          "자식 프로세스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "좀비 프로세스는 이미 종료했지만 부모가 wait로 종료 상태를 회수하지 않아 프로세스 항목만 남은 상태입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/wait.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-wait-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "wait",
+        "zombie",
+        "process"
+      ],
+      "content": {
+        "prompt": "부모가 자식 종료를 기다리고 종료 상태를 회수하는 호출은?",
+        "options": [
+          "exec",
+          "fork",
+          "wait"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "wait·waitpid는 자식이 종료할 때까지 기다렸다가 종료 상태를 회수하고, 남아 있던 프로세스 항목을 정리하게 합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/wait.2.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf"
+      ]
+    },
+    {
+      "id": "os-linux-wait-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "wait",
+        "zombie",
+        "process"
+      ],
+      "content": {
+        "prompt": "좀비 프로세스에 남아 있는 것은?",
+        "options": [
+          "프로세스 항목",
+          "주소 공간 전체"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "좀비는 이미 종료해 메모리 등 자원을 돌려줬고, 종료 상태를 담은 프로세스 항목만 남아 있습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/wait.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-wait-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "orphan",
+        "process",
+        "wait"
+      ],
+      "content": {
+        "prompt": "고아 프로세스는 init(PID 1) 등이 입양해 회수한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "부모가 먼저 종료된 자식은 init(PID 1) 등이 새 부모가 되어, 그 자식이 끝나면 종료 상태를 회수합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/wait.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-wait-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sigchld",
+        "signal",
+        "wait"
+      ],
+      "content": {
+        "prompt": "자식이 종료되면 부모에게 오는 시그널은 ___ 이다.",
+        "hint": "영문 대문자 7글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "SIGCHLD",
+          "sigchld",
+          "SIGCHILD",
+          "CHLD"
+        ]
+      },
+      "explanation": "자식 프로세스가 종료하면 커널이 부모에게 SIGCHLD를 보냅니다. 부모는 핸들러에서 waitpid로 회수할 수 있습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/wait.2.html",
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-wait-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "wait",
+        "zombie",
+        "process"
+      ],
+      "content": {
+        "prompt": "종료했지만 부모가 회수하지 않은 프로세스는 ___ 프로세스다.",
+        "hint": "한글 2글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "좀비",
+          "zombie",
+          "좀비프로세스"
+        ]
+      },
+      "explanation": "종료 상태가 회수되지 않으면 프로세스 항목이 남은 좀비 프로세스가 됩니다. ps에서 상태가 Z로 보입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/wait.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-wait-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "wait",
+        "zombie",
+        "process"
+      ],
+      "content": {
+        "prompt": "자식이 종료했는데 부모가 wait를 부르지 않으면?",
+        "options": [
+          "좀비가 된다",
+          "고아가 된다",
+          "바로 사라진다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "부모가 종료 상태를 회수하지 않는 동안 종료한 자식은 프로세스 항목만 남은 좀비로 남습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/wait.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-wait-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "orphan",
+        "process",
+        "wait"
+      ],
+      "content": {
+        "prompt": "부모가 자식보다 먼저 종료하면 그 자식은?",
+        "options": [
+          "좀비가 된다",
+          "고아가 된다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "부모가 먼저 끝난 자식은 고아 프로세스가 되고, init(PID 1) 등이 입양해 나중에 회수합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/wait.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-wait-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sigchld",
+        "wait",
+        "zombie"
+      ],
+      "content": {
+        "prompt": "SIGCHLD 핸들러에서 자식을 회수하려고 부르는 것은?",
+        "options": [
+          "fork",
+          "exec",
+          "waitpid"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "SIGCHLD는 자식이 종료했다는 알림이므로, 핸들러에서 waitpid를 불러 종료 상태를 회수합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/wait.2.html",
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-wait-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "zombie",
+        "orphan",
+        "process"
+      ],
+      "content": {
+        "prompt": "좀비 프로세스는 부모가 먼저 종료된 자식을 말한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "부모가 먼저 종료된 자식은 고아 프로세스입니다. 좀비는 종료했지만 부모가 회수하지 않은 프로세스입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/wait.2.html"
+      ]
+    }
+  ]
+}

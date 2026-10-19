@@ -1,0 +1,245 @@
+{
+  "track": "os",
+  "unit": "u07-linux-syscall",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "os-linux-exec-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "exec",
+        "process"
+      ],
+      "content": {
+        "prompt": "현재 프로세스의 프로그램을 새 프로그램으로 바꾸는 호출은?",
+        "options": [
+          "exec",
+          "fork",
+          "open"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "exec 계열(execve 등)은 현재 프로세스의 프로그램 이미지를 새 프로그램으로 교체합니다. fork는 프로세스를 복제합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/execve.2.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf"
+      ]
+    },
+    {
+      "id": "os-linux-exec-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "exec",
+        "process",
+        "shell"
+      ],
+      "content": {
+        "prompt": "셸이 명령을 실행하는 기본 조합은?",
+        "options": [
+          "fork + exec",
+          "open + read",
+          "exec + exec"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "셸은 fork로 자식을 만들고, 자식에서 exec로 명령 프로그램을 실행합니다. 셸 자신은 그대로 남습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf",
+        "https://man7.org/linux/man-pages/man2/execve.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-exec-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "exec",
+        "process",
+        "pid"
+      ],
+      "content": {
+        "prompt": "exec가 성공한 뒤 그 프로세스의 PID는?",
+        "options": [
+          "새 번호로 바뀜",
+          "그대로 유지"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "exec는 새 프로세스를 만들지 않고 같은 프로세스의 프로그램만 바꾸므로 PID가 그대로입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/execve.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-exec-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "exec",
+        "process",
+        "return-value"
+      ],
+      "content": {
+        "prompt": "exec가 성공하면 호출한 다음 줄로 돌아온다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "exec가 성공하면 프로그램 이미지가 새 프로그램으로 바뀌어 돌아올 곳이 없습니다. 실패할 때만 −1을 돌려줍니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/execve.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-exec-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "exec",
+        "process"
+      ],
+      "content": {
+        "prompt": "프로그램 이미지를 새 프로그램으로 바꾸는 시스템 콜 계열은 ___ 이다.",
+        "hint": "영문 4글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "exec",
+          "execve",
+          "엑섹",
+          "exec()"
+        ]
+      },
+      "explanation": "exec 계열(execve, execlp 등)은 현재 프로세스의 프로그램 이미지를 새 프로그램으로 교체합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/execve.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-exec-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "exec",
+        "process",
+        "pid"
+      ],
+      "content": {
+        "prompt": "exec 후에도 프로세스 번호인 ___ 는 그대로다.",
+        "hint": "영문 약자 3글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "PID",
+          "pid",
+          "프로세스 ID",
+          "프로세스 아이디"
+        ]
+      },
+      "explanation": "exec는 같은 프로세스가 다른 프로그램을 실행하게 할 뿐이라 PID가 바뀌지 않습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/execve.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-exec-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "exec",
+        "process",
+        "return-value"
+      ],
+      "content": {
+        "prompt": "exec 바로 다음 줄이 실행됐다. exec의 결과는?",
+        "options": [
+          "성공",
+          "실패"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "exec가 성공하면 돌아오지 않으므로, 다음 줄이 실행됐다면 exec가 실패해 −1을 돌려준 것입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/execve.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-exec-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "exec",
+        "process",
+        "pid"
+      ],
+      "content": {
+        "prompt": "PID 500인 프로세스가 exec로 ls를 실행했다. ls의 PID는?",
+        "options": [
+          "501",
+          "0",
+          "500"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "exec는 새 프로세스를 만들지 않으므로 ls는 같은 PID 500으로 실행됩니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/execve.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-exec-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "exec",
+        "process",
+        "shell"
+      ],
+      "content": {
+        "prompt": "셸이 ls를 실행할 때 호출 순서는?",
+        "options": [
+          "exec 후 fork",
+          "fork 후 exec"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "셸이 먼저 exec하면 셸 자신이 ls로 바뀌어 사라집니다. 그래서 fork로 자식을 만든 뒤 자식에서 exec합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf"
+      ]
+    },
+    {
+      "id": "os-linux-exec-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "exec",
+        "process"
+      ],
+      "content": {
+        "prompt": "exec 계열은 현재 프로세스의 프로그램 이미지를 새 프로그램으로 바꾼다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "exec는 현재 프로세스의 프로그램 이미지를 새 프로그램으로 교체합니다. 프로세스 복제는 fork의 일입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/execve.2.html"
+      ]
+    }
+  ]
+}

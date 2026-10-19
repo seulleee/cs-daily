@@ -1,0 +1,244 @@
+{
+  "track": "os",
+  "unit": "u07-linux-syscall",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "os-linux-signal-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "signal",
+        "process"
+      ],
+      "content": {
+        "prompt": "커널이 프로세스에 비동기로 전달하는 짧은 알림은?",
+        "options": [
+          "시스템 콜",
+          "트랩",
+          "시그널"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "시그널은 커널이 프로세스에 비동기로 전달하는 짧은 알림입니다. 시스템 콜과 트랩은 프로세스가 커널을 부르는 쪽입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-signal-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "signal",
+        "process",
+        "sigint"
+      ],
+      "content": {
+        "prompt": "터미널에서 Ctrl+C를 누르면 프로세스에 오는 시그널은?",
+        "options": [
+          "SIGSEGV",
+          "SIGINT",
+          "SIGCHLD"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Ctrl+C는 SIGINT(인터럽트 시그널)를 보냅니다. SIGSEGV는 잘못된 메모리 접근, SIGCHLD는 자식 종료입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-signal-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "signal",
+        "process",
+        "interrupt"
+      ],
+      "content": {
+        "prompt": "커널이 프로세스에 보내는 알림은 어느 쪽인가?",
+        "options": [
+          "인터럽트",
+          "시그널"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시그널은 커널이 프로세스에 보내는 알림입니다. 인터럽트는 장치가 CPU에 보내는 신호입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-signal-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "signal",
+        "process",
+        "sigaction"
+      ],
+      "content": {
+        "prompt": "시그널 핸들러는 sigaction으로 등록한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "sigaction으로 시그널마다 실행할 함수(핸들러)를 등록하면, 그 시그널을 받을 때 기본 동작 대신 핸들러가 실행됩니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/sigaction.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-signal-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "signal",
+        "process",
+        "sigaction"
+      ],
+      "content": {
+        "prompt": "시그널을 받으면 실행할 함수를 등록하는 시스템 콜은 ___ 이다.",
+        "hint": "영문 9글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "sigaction",
+          "signal",
+          "sig action"
+        ]
+      },
+      "explanation": "sigaction은 시그널을 받았을 때 실행할 핸들러를 등록하는 시스템 콜입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/sigaction.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-signal-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "signal",
+        "process",
+        "sigsegv"
+      ],
+      "content": {
+        "prompt": "잘못된 메모리 접근을 한 프로세스가 받는 시그널은 ___ 이다.",
+        "hint": "영문 대문자 7글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "SIGSEGV",
+          "sigsegv",
+          "SEGV"
+        ]
+      },
+      "explanation": "접근할 수 없는 메모리 주소를 읽거나 쓰면 커널이 SIGSEGV를 보냅니다. 기본 동작은 종료와 코어 덤프입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-signal-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "signal",
+        "process",
+        "sigint"
+      ],
+      "content": {
+        "prompt": "핸들러를 등록하지 않은 프로세스가 SIGINT를 받으면?",
+        "options": [
+          "종료된다",
+          "무시한다",
+          "정지한다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SIGINT의 기본 동작은 종료입니다. 시그널마다 종료·무시·정지·코어 덤프 같은 기본 동작이 정해져 있습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-signal-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "signal",
+        "process",
+        "sigaction"
+      ],
+      "content": {
+        "prompt": "SIGINT 핸들러를 등록한 뒤 Ctrl+C를 누르면?",
+        "options": [
+          "바로 종료",
+          "핸들러 실행"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "핸들러를 등록하면 기본 동작인 종료 대신 등록한 함수가 실행됩니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/sigaction.2.html",
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-signal-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "signal",
+        "process",
+        "sigsegv"
+      ],
+      "content": {
+        "prompt": "0번지 주소를 읽은 프로그램이 받는 시그널은?",
+        "options": [
+          "SIGINT",
+          "SIGCHLD",
+          "SIGSEGV"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "리눅스에서 0번지는 프로세스가 접근할 수 없는 주소라, 읽으면 잘못된 메모리 접근으로 SIGSEGV를 받습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-signal-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "signal",
+        "process"
+      ],
+      "content": {
+        "prompt": "시그널은 프로세스가 요청할 때만 전달된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "시그널은 비동기로 전달되어 프로세스가 어떤 명령을 실행하던 중이든 도착할 수 있습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    }
+  ]
+}

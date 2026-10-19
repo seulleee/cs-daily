@@ -1,0 +1,240 @@
+{
+  "track": "os",
+  "unit": "u06-io-interrupt",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "os-io-event-loop-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "event-loop",
+        "epoll"
+      ],
+      "content": {
+        "prompt": "준비된 I/O 이벤트를 기다렸다 콜백 실행을 반복하는 구조는?",
+        "options": [
+          "인터럽트 핸들러",
+          "컨텍스트 스위칭",
+          "이벤트 루프"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "이벤트 루프는 준비된 I/O 이벤트를 기다렸다가 해당 콜백을 실행하기를 반복하는 구조입니다.",
+      "refs": [
+        "https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-events.pdf"
+      ]
+    },
+    {
+      "id": "os-io-event-loop-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "event-loop",
+        "epoll",
+        "kqueue"
+      ],
+      "content": {
+        "prompt": "macOS·BSD에서 이벤트 루프의 기반이 되는 것은?",
+        "options": [
+          "epoll",
+          "kqueue",
+          "fork"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이벤트 루프는 리눅스에서는 epoll, macOS·BSD에서는 kqueue 위에 구현됩니다.",
+      "refs": [
+        "https://man.freebsd.org/cgi/man.cgi?query=kqueue&sektion=2"
+      ]
+    },
+    {
+      "id": "os-io-event-loop-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "event-loop",
+        "epoll",
+        "nodejs"
+      ],
+      "content": {
+        "prompt": "Node.js가 JavaScript 콜백을 실행하는 스레드 수는?",
+        "options": [
+          "1개",
+          "연결 수만큼"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Node.js는 단일 스레드 이벤트 루프에서 JavaScript 콜백을 실행합니다. 연결마다 스레드를 만들지 않습니다.",
+      "refs": [
+        "https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick"
+      ]
+    },
+    {
+      "id": "os-io-event-loop-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "event-loop",
+        "epoll"
+      ],
+      "content": {
+        "prompt": "이벤트 루프는 연결마다 스레드를 하나씩 만든다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "이벤트 루프는 한 스레드가 준비된 이벤트를 받아 콜백을 차례로 실행하는 방식이라 연결마다 스레드를 두지 않습니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-events.pdf"
+      ]
+    },
+    {
+      "id": "os-io-event-loop-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "event-loop",
+        "epoll"
+      ],
+      "content": {
+        "prompt": "준비된 이벤트를 기다렸다 콜백 실행을 반복하는 구조는 이벤트 ___ 다.",
+        "hint": "한글 2글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "루프",
+          "loop"
+        ]
+      },
+      "explanation": "이벤트 루프는 이벤트 대기와 콜백 실행을 반복하며 한 스레드로 많은 연결을 처리합니다.",
+      "refs": [
+        "https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick"
+      ]
+    },
+    {
+      "id": "os-io-event-loop-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "event-loop",
+        "epoll"
+      ],
+      "content": {
+        "prompt": "리눅스에서 이벤트 루프의 기반이 되는 API는 ___ 이다.",
+        "hint": "영문 5글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "epoll",
+          "이폴"
+        ]
+      },
+      "explanation": "리눅스의 이벤트 루프(libuv, Redis 등)는 epoll로 준비된 fd를 받아 콜백을 실행합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/epoll.7.html"
+      ]
+    },
+    {
+      "id": "os-io-event-loop-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "event-loop",
+        "epoll",
+        "cpu-bound"
+      ],
+      "content": {
+        "prompt": "콜백 하나가 CPU 계산으로 5초 걸리면 그동안 다른 연결은?",
+        "options": [
+          "함께 멈춘다",
+          "정상 처리된다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "단일 스레드 이벤트 루프는 콜백이 끝나야 다음 이벤트를 처리하므로, 그동안 모든 연결이 함께 멈춥니다.",
+      "refs": [
+        "https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick"
+      ]
+    },
+    {
+      "id": "os-io-event-loop-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "event-loop",
+        "epoll",
+        "cpu-bound"
+      ],
+      "content": {
+        "prompt": "이벤트 루프 서버에서 오래 걸리는 이미지 변환은 어디서?",
+        "options": [
+          "콜백 안에서 바로",
+          "별도 스레드·프로세스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "오래 걸리는 CPU 작업을 콜백에서 하면 모든 연결이 멈추므로, 별도 스레드나 프로세스에 맡깁니다.",
+      "refs": [
+        "https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick"
+      ]
+    },
+    {
+      "id": "os-io-event-loop-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "event-loop",
+        "epoll",
+        "redis"
+      ],
+      "content": {
+        "prompt": "리눅스에서 Redis가 준비된 소켓을 기다릴 때 쓰는 것은?",
+        "options": [
+          "kqueue",
+          "fork",
+          "epoll"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Redis는 단일 스레드 이벤트 루프로 명령을 처리하며, 리눅스에서는 epoll로 준비된 소켓을 기다립니다.",
+      "refs": [
+        "https://redis.io/docs/latest/operate/oss_and_stack/reference/internals/internals-rediseventlib/",
+        "https://man7.org/linux/man-pages/man7/epoll.7.html"
+      ]
+    },
+    {
+      "id": "os-io-event-loop-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "event-loop",
+        "epoll"
+      ],
+      "content": {
+        "prompt": "이벤트 루프는 준비된 이벤트의 콜백을 실행한 뒤 다시 기다린다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "이벤트 루프는 대기 → 준비된 이벤트의 콜백 실행 → 다시 대기를 반복하는 구조입니다.",
+      "refs": [
+        "https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-events.pdf"
+      ]
+    }
+  ]
+}

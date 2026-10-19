@@ -1,0 +1,247 @@
+{
+  "track": "os",
+  "unit": "u06-io-interrupt",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "os-io-blocking-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "blocking-io",
+        "kernel-buffer",
+        "io"
+      ],
+      "content": {
+        "prompt": "장치에서 온 데이터를 커널이 먼저 담아 두는 영역은?",
+        "options": [
+          "사용자 버퍼",
+          "레지스터",
+          "커널 버퍼"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "커널 버퍼는 장치에서 온 데이터를 커널이 먼저 담아 두는 메모리 영역입니다. read가 여기서 사용자 공간으로 복사합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/read.2.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-events.pdf"
+      ]
+    },
+    {
+      "id": "os-io-blocking-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "blocking-io",
+        "kernel-buffer",
+        "io"
+      ],
+      "content": {
+        "prompt": "데이터가 준비될 때까지 호출한 스레드가 멈추는 I/O는?",
+        "options": [
+          "DMA",
+          "블로킹 I/O",
+          "폴링"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "블로킹 I/O는 데이터가 준비될 때까지 호출한 스레드를 대기 상태로 멈춥니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/read.2.html"
+      ]
+    },
+    {
+      "id": "os-io-blocking-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "blocking-io",
+        "kernel-buffer",
+        "io"
+      ],
+      "content": {
+        "prompt": "read()가 데이터를 복사하는 방향은?",
+        "options": [
+          "커널→사용자 공간",
+          "사용자→커널 공간"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "read는 커널 버퍼의 데이터를 사용자 공간의 버퍼로 복사합니다. 반대 방향은 write입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/read.2.html"
+      ]
+    },
+    {
+      "id": "os-io-blocking-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "blocking-io",
+        "kernel-buffer",
+        "io"
+      ],
+      "content": {
+        "prompt": "블로킹 read로 기다리는 스레드는 그동안 CPU를 계속 쓴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "블로킹 I/O로 기다리는 스레드는 대기 상태가 되어 CPU를 쓰지 않습니다. 그동안 다른 스레드가 실행됩니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/read.2.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-events.pdf"
+      ]
+    },
+    {
+      "id": "os-io-blocking-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "blocking-io",
+        "kernel-buffer",
+        "io"
+      ],
+      "content": {
+        "prompt": "데이터 준비까지 호출 스레드가 멈추는 방식은 ___ I/O다.",
+        "hint": "한글 3글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "블로킹",
+          "blocking",
+          "블록킹"
+        ]
+      },
+      "explanation": "블로킹 I/O는 데이터가 준비될 때까지 호출한 스레드가 대기 상태로 멈추는 방식입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/read.2.html"
+      ]
+    },
+    {
+      "id": "os-io-blocking-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "blocking-io",
+        "kernel-buffer",
+        "io"
+      ],
+      "content": {
+        "prompt": "장치에서 온 데이터를 커널이 먼저 담아 두는 곳은 커널 ___ 다.",
+        "hint": "한글 2글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "버퍼",
+          "buffer"
+        ]
+      },
+      "explanation": "커널 버퍼에 데이터가 쌓여 있어야 read가 이를 사용자 공간으로 복사할 수 있습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/read.2.html"
+      ]
+    },
+    {
+      "id": "os-io-blocking-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "blocking-io",
+        "kernel-buffer",
+        "io"
+      ],
+      "content": {
+        "prompt": "아직 데이터가 오지 않은 소켓에 블로킹 read를 부르면?",
+        "options": [
+          "바로 0 반환",
+          "스레드가 대기",
+          "오류 반환"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "블로킹 read는 커널 버퍼에 데이터가 올 때까지 호출한 스레드를 대기 상태로 멈춥니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/read.2.html"
+      ]
+    },
+    {
+      "id": "os-io-blocking-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "blocking-io",
+        "kernel-buffer",
+        "io"
+      ],
+      "content": {
+        "prompt": "블로킹 read의 두 단계 중 먼저 오는 것은?",
+        "options": [
+          "데이터 준비 대기",
+          "사용자 공간 복사"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "먼저 데이터가 커널 버퍼에 준비되기를 기다리고, 준비되면 커널에서 사용자 공간으로 복사합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/read.2.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-events.pdf"
+      ]
+    },
+    {
+      "id": "os-io-blocking-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "blocking-io",
+        "kernel-buffer",
+        "io"
+      ],
+      "content": {
+        "prompt": "블로킹 read로 데이터를 기다리는 스레드의 상태는?",
+        "options": [
+          "실행",
+          "준비",
+          "대기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "I/O 같은 이벤트를 기다리는 스레드는 대기(waiting) 상태가 되고, 데이터가 오면 준비 상태로 돌아갑니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/read.2.html"
+      ]
+    },
+    {
+      "id": "os-io-blocking-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "blocking-io",
+        "kernel-buffer",
+        "io"
+      ],
+      "content": {
+        "prompt": "read()는 커널 버퍼의 데이터를 사용자 공간으로 복사한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "read는 커널 버퍼에 있는 데이터를 호출한 프로세스의 사용자 공간 버퍼로 복사해 줍니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/read.2.html"
+      ]
+    }
+  ]
+}

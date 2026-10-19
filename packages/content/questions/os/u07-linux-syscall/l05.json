@@ -1,0 +1,244 @@
+{
+  "track": "os",
+  "unit": "u07-linux-syscall",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "os-linux-fd-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "file-descriptor",
+        "fd"
+      ],
+      "content": {
+        "prompt": "프로세스가 열린 파일을 가리키는 작은 정수는?",
+        "options": [
+          "PID",
+          "파일 디스크립터",
+          "inode 번호"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "파일 디스크립터(fd)는 프로세스가 열린 파일을 가리키는 작은 정수입니다. open이 돌려주고 read·write에 넘깁니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/open.2.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf"
+      ]
+    },
+    {
+      "id": "os-linux-fd-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "file-descriptor",
+        "fd",
+        "stdio"
+      ],
+      "content": {
+        "prompt": "표준 출력의 fd 번호는?",
+        "options": [
+          "1",
+          "0",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "표준 fd는 0이 표준 입력, 1이 표준 출력, 2가 표준 에러입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man3/stdin.3.html"
+      ]
+    },
+    {
+      "id": "os-linux-fd-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "file-descriptor",
+        "fd",
+        "stdio"
+      ],
+      "content": {
+        "prompt": "fd 2번이 가리키는 것은?",
+        "options": [
+          "표준 에러",
+          "표준 입력"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "fd 2는 표준 에러로, 오류 메시지를 쓰는 통로입니다. 표준 입력은 fd 0입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man3/stdin.3.html"
+      ]
+    },
+    {
+      "id": "os-linux-fd-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "file-descriptor",
+        "fd",
+        "socket"
+      ],
+      "content": {
+        "prompt": "fd는 일반 파일에만 쓰고 소켓에는 쓰지 않는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "리눅스에서는 일반 파일뿐 아니라 소켓·파이프도 fd로 가리키고 read·write로 읽고 씁니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/open.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-fd-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "file-descriptor",
+        "fd"
+      ],
+      "content": {
+        "prompt": "프로세스가 열린 파일을 가리키는 정수를 파일 ___ 라고 한다.",
+        "hint": "한글 5글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "디스크립터",
+          "descriptor",
+          "기술자",
+          "서술자"
+        ]
+      },
+      "explanation": "파일 디스크립터(fd)는 프로세스가 열린 파일을 가리키는 작은 정수로, 커널이 open할 때 돌려줍니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/open.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-fd-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "file-descriptor",
+        "fd",
+        "stdio"
+      ],
+      "content": {
+        "prompt": "표준 입력의 fd 번호는 ___ 이다.",
+        "hint": "숫자 하나"
+      },
+      "answer_key": {
+        "accepted": [
+          "0",
+          "영"
+        ]
+      },
+      "explanation": "표준 입력은 fd 0, 표준 출력은 1, 표준 에러는 2입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man3/stdin.3.html"
+      ]
+    },
+    {
+      "id": "os-linux-fd-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "file-descriptor",
+        "fd",
+        "open"
+      ],
+      "content": {
+        "prompt": "fd 0·1·2만 열린 프로세스가 파일을 open하면 받는 fd는?",
+        "options": [
+          "0",
+          "3",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "open은 비어 있는 가장 작은 번호를 줍니다. 0·1·2가 쓰이고 있으므로 3을 받습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/open.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-fd-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "file-descriptor",
+        "fd",
+        "open"
+      ],
+      "content": {
+        "prompt": "fd 0~4가 열린 상태에서 close(1) 뒤 open하면 받는 fd는?",
+        "options": [
+          "5",
+          "3",
+          "1"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "open은 비어 있는 가장 작은 번호를 줍니다. 1을 닫았으므로 1이 가장 작은 빈 번호입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/open.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-fd-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "file-descriptor",
+        "fd",
+        "socket"
+      ],
+      "content": {
+        "prompt": "소켓으로 데이터를 보낼 때 대상 소켓을 지정하는 것은?",
+        "options": [
+          "PID",
+          "fd",
+          "프레임 번호"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "소켓도 fd로 가리키므로 write나 send에 그 fd를 넘겨 데이터를 보냅니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/open.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-fd-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "file-descriptor",
+        "fd"
+      ],
+      "content": {
+        "prompt": "파일 디스크립터는 프로세스가 열린 파일을 가리키는 작은 정수다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "파일 디스크립터는 프로세스가 열린 파일을 가리키는 작은 정수입니다. 프로세스 고유 번호는 PID입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/open.2.html"
+      ]
+    }
+  ]
+}
