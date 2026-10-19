@@ -1,0 +1,256 @@
+{
+  "track": "network",
+  "unit": "u04-dns",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "network-dns-rr-misc-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "mx-record"
+      ],
+      "content": {
+        "prompt": "메일 받을 서버와 우선순위를 지정하는 레코드는?",
+        "options": [
+          "MX",
+          "TXT",
+          "NS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "MX 레코드는 그 도메인의 메일을 받을 서버와 우선순위를 지정합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc5321",
+        "https://www.rfc-editor.org/rfc/rfc7208"
+      ]
+    },
+    {
+      "id": "network-dns-rr-misc-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "ptr-record"
+      ],
+      "content": {
+        "prompt": "IP 주소로 이름을 찾는 역방향 조회 레코드는?",
+        "options": [
+          "NS",
+          "PTR",
+          "MX"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "PTR 레코드는 IP 주소를 이름에 대응시켜 역방향 조회에 쓰입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc5321",
+        "https://www.rfc-editor.org/rfc/rfc7208"
+      ]
+    },
+    {
+      "id": "network-dns-rr-misc-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "ns-record"
+      ],
+      "content": {
+        "prompt": "도메인의 권한 네임서버를 지정하는 레코드는?",
+        "options": [
+          "TXT",
+          "PTR",
+          "NS"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "NS 레코드는 그 도메인의 레코드를 맡은 권한 네임서버가 어디인지 지정합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc5321",
+        "https://www.rfc-editor.org/rfc/rfc7208"
+      ]
+    },
+    {
+      "id": "network-dns-rr-misc-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "mx-record"
+      ],
+      "content": {
+        "prompt": "MX 우선순위는 숫자가 클수록 먼저 시도한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "MX 우선순위는 숫자가 작을수록 먼저 시도합니다. 그 서버에 전달이 안 되면 다음으로 작은 서버를 시도합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc5321",
+        "https://www.rfc-editor.org/rfc/rfc7208"
+      ]
+    },
+    {
+      "id": "network-dns-rr-misc-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "ptr-record"
+      ],
+      "content": {
+        "prompt": "IP 주소를 이름으로 바꾸는 역방향 조회 레코드는 ___ 이다.",
+        "hint": "영문 대문자 세 글자로 된 타입 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "PTR",
+          "ptr",
+          "PTR 레코드"
+        ]
+      },
+      "explanation": "PTR 레코드는 IP 주소로 이름을 찾는 역방향 조회에 쓰입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc5321",
+        "https://www.rfc-editor.org/rfc/rfc7208"
+      ]
+    },
+    {
+      "id": "network-dns-rr-misc-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "txt-record"
+      ],
+      "content": {
+        "prompt": "도메인 소유 확인 문자열을 넣는 레코드는 ___ 이다.",
+        "hint": "'글자'를 뜻하는 영단어를 세 글자로 줄인 타입 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "TXT",
+          "txt"
+        ]
+      },
+      "explanation": "TXT 레코드는 임의 문자열을 담아 도메인 소유 확인이나 SPF 같은 메일 인증에 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc5321",
+        "https://www.rfc-editor.org/rfc/rfc7208"
+      ]
+    },
+    {
+      "id": "network-dns-rr-misc-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "mx-record"
+      ],
+      "content": {
+        "prompt": "MX 10 mx1, MX 20 mx2일 때 먼저 시도하는 서버는?",
+        "options": [
+          "mx1",
+          "mx2",
+          "무작위"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "MX는 우선순위 숫자가 작을수록 먼저 시도하므로 10인 mx1이 먼저입니다. mx2는 mx1이 안 될 때 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc5321",
+        "https://www.rfc-editor.org/rfc/rfc7208"
+      ]
+    },
+    {
+      "id": "network-dns-rr-misc-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "txt-record"
+      ],
+      "content": {
+        "prompt": "SPF 같은 메일 인증 정보를 넣는 레코드는?",
+        "options": [
+          "MX",
+          "TXT",
+          "PTR"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SPF 정보는 TXT 레코드에 문자열로 넣습니다. MX는 메일 받을 서버를 지정할 뿐입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc5321",
+        "https://www.rfc-editor.org/rfc/rfc7208"
+      ]
+    },
+    {
+      "id": "network-dns-rr-misc-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "ptr-record"
+      ],
+      "content": {
+        "prompt": "203.0.113.5가 어떤 이름인지 알아낼 때 쓰는 레코드는?",
+        "options": [
+          "A",
+          "NS",
+          "PTR"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "IP 주소로 이름을 찾는 것은 역방향 조회이므로 PTR 레코드를 씁니다. A 레코드는 이름으로 IP를 찾습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc5321",
+        "https://www.rfc-editor.org/rfc/rfc7208"
+      ]
+    },
+    {
+      "id": "network-dns-rr-misc-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "mx-record"
+      ],
+      "content": {
+        "prompt": "MX 레코드는 그 도메인의 메일을 받을 서버를 지정한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "MX 레코드는 메일 받을 서버와 우선순위를 지정하며, 보내는 서버는 이를 보고 메일을 전달합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc5321",
+        "https://www.rfc-editor.org/rfc/rfc7208"
+      ]
+    }
+  ]
+}

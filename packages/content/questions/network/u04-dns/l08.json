@@ -1,0 +1,246 @@
+{
+  "track": "network",
+  "unit": "u04-dns",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "network-dns-cache-ttl-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "레코드를 캐시해도 되는 시간(초)을 나타내는 값은?",
+        "options": [
+          "TTL",
+          "MX",
+          "NS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DNS 레코드의 TTL은 그 레코드를 캐시해도 되는 시간을 초 단위로 나타냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc2308"
+      ]
+    },
+    {
+      "id": "network-dns-cache-ttl-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "negative-cache"
+      ],
+      "content": {
+        "prompt": "'이름 없음' 응답도 일정 시간 캐시하는 것은?",
+        "options": [
+          "재귀 질의",
+          "네거티브 캐시",
+          "영역 전송"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "네거티브 캐시는 NXDOMAIN 같은 '없음' 응답을 일정 시간 캐시해 같은 질의를 반복하지 않게 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc2308"
+      ]
+    },
+    {
+      "id": "network-dns-cache-ttl-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "레코드의 TTL을 정하는 쪽은?",
+        "options": [
+          "브라우저",
+          "재귀 리졸버",
+          "권한 네임서버"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "TTL은 권한 네임서버가 레코드마다 정해 응답에 담고, 캐시하는 쪽은 그 값을 따릅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc2308"
+      ]
+    },
+    {
+      "id": "network-dns-cache-ttl-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "DNS 레코드 TTL의 단위는 초이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "DNS TTL은 초 단위입니다. 예를 들어 TTL 3600은 최대 1시간 동안 캐시해도 된다는 뜻입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc2308"
+      ]
+    },
+    {
+      "id": "network-dns-cache-ttl-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "DNS 레코드마다 붙는 캐시 유지 시간 값은 ___ 이다.",
+        "hint": "IP 헤더의 패킷 수명 값과 같은 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "TTL",
+          "ttl",
+          "티티엘"
+        ]
+      },
+      "explanation": "DNS 레코드의 TTL은 그 레코드를 캐시해도 되는 시간(초)이며, 권한 서버가 레코드마다 정합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc2308"
+      ]
+    },
+    {
+      "id": "network-dns-cache-ttl-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "negative-cache"
+      ],
+      "content": {
+        "prompt": "'그런 이름 없음'을 뜻하는 DNS 응답 코드는 ___ 이다.",
+        "hint": "Non-Existent Domain을 줄인 대문자 응답 코드입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "NXDOMAIN",
+          "nxdomain"
+        ]
+      },
+      "explanation": "NXDOMAIN은 질의한 이름이 없다는 응답이며, 이 응답도 네거티브 캐시로 일정 시간 캐시됩니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc2308"
+      ]
+    },
+    {
+      "id": "network-dns-cache-ttl-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "TTL 3600인 답은 최대 얼마 동안 캐시되나?",
+        "options": [
+          "1분",
+          "1시간",
+          "1일"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "TTL 3600은 3600초, 즉 최대 1시간 동안 캐시된 답을 쓸 수 있다는 뜻입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc2308"
+      ]
+    },
+    {
+      "id": "network-dns-cache-ttl-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "TTL 300인 답을 120초 전에 캐시했다. 남은 시간은?",
+        "options": [
+          "300초",
+          "120초",
+          "180초"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "캐시한 지 120초가 지났으므로 300 − 120 = 180초 동안 더 쓸 수 있습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc2308"
+      ]
+    },
+    {
+      "id": "network-dns-cache-ttl-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "negative-cache"
+      ],
+      "content": {
+        "prompt": "방금 NXDOMAIN을 받은 이름을 곧 다시 조회하면?",
+        "options": [
+          "캐시된 없음 응답",
+          "루트부터 질의",
+          "IP 주소 응답"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "NXDOMAIN 응답도 네거티브 캐시로 일정 시간 캐시되므로, 그동안은 다시 묻지 않고 '없음'으로 답합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc2308"
+      ]
+    },
+    {
+      "id": "network-dns-cache-ttl-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "레코드의 TTL은 재귀 리졸버가 정한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "TTL은 권한 네임서버가 레코드마다 정합니다. 재귀 리졸버는 그 TTL 동안 답을 캐시합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc2308"
+      ]
+    }
+  ]
+}

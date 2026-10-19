@@ -1,0 +1,248 @@
+{
+  "track": "network",
+  "unit": "u05-http",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "network-http-stateless-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "stateless"
+      ],
+      "content": {
+        "prompt": "서버가 이전 요청을 기억하지 않는 HTTP의 성질은?",
+        "options": [
+          "연결 지향",
+          "무상태",
+          "순서 보장"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "HTTP는 무상태 프로토콜이라 서버가 이전 요청을 기억하지 않고 요청마다 독립적으로 처리합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6265"
+      ]
+    },
+    {
+      "id": "network-http-stateless-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "서버가 쿠키를 줄 때 쓰는 응답 헤더는?",
+        "options": [
+          "Set-Cookie",
+          "Cookie",
+          "Host"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "서버는 응답의 Set-Cookie 헤더로 쿠키를 주고, 브라우저는 이후 요청의 Cookie 헤더로 돌려보냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6265"
+      ]
+    },
+    {
+      "id": "network-http-stateless-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "브라우저가 쿠키를 다시 보낼 때 쓰는 요청 헤더는?",
+        "options": [
+          "Set-Cookie",
+          "Host",
+          "Cookie"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "브라우저는 저장한 쿠키를 요청의 Cookie 헤더에 담아 보냅니다. Set-Cookie는 서버가 응답에 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6265"
+      ]
+    },
+    {
+      "id": "network-http-stateless-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "session"
+      ],
+      "content": {
+        "prompt": "세션 방식에서는 상태 전체를 쿠키에 담아 보낸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "세션 방식은 쿠키에 세션 ID만 두고, 사용자 상태는 서버 저장소에서 그 ID로 찾습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6265"
+      ]
+    },
+    {
+      "id": "network-http-stateless-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "stateless"
+      ],
+      "content": {
+        "prompt": "서버가 이전 요청을 기억하지 않는 성질을 ___ 이라 한다.",
+        "hint": "상태가 없다는 뜻의 세 글자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "무상태",
+          "stateless",
+          "무상태성",
+          "스테이트리스"
+        ]
+      },
+      "explanation": "HTTP는 무상태라서 각 요청을 독립적으로 처리하며, 상태 유지는 쿠키·세션으로 따로 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6265"
+      ]
+    },
+    {
+      "id": "network-http-stateless-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "스크립트가 쿠키를 읽지 못하게 하는 쿠키 속성은 ___ 이다.",
+        "hint": "HTTP 요청에 실려 갈 때만 쓰인다는 뜻의 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "HttpOnly",
+          "httponly",
+          "Http Only"
+        ]
+      },
+      "explanation": "HttpOnly 속성이 붙은 쿠키는 JavaScript 같은 스크립트가 읽을 수 없고 요청에만 실려 갑니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6265"
+      ]
+    },
+    {
+      "id": "network-http-stateless-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "session"
+      ],
+      "content": {
+        "prompt": "세션 방식에서 쿠키에 담는 값은?",
+        "options": [
+          "세션 ID",
+          "비밀번호",
+          "사용자 전체 정보"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "세션 방식은 쿠키에 세션 ID만 담고, 서버가 그 ID로 저장소에서 사용자 상태를 찾습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6265"
+      ]
+    },
+    {
+      "id": "network-http-stateless-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "HTTPS가 아닌 연결에서는 쿠키를 보내지 않게 하는 속성은?",
+        "options": [
+          "HttpOnly",
+          "Secure",
+          "Set-Cookie"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Secure 속성이 붙은 쿠키는 HTTPS 연결에서만 전송됩니다. HttpOnly는 스크립트 접근을 막는 속성입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6265"
+      ]
+    },
+    {
+      "id": "network-http-stateless-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "session"
+      ],
+      "content": {
+        "prompt": "무상태 서버가 로그인 사용자를 알아보는 근거는?",
+        "options": [
+          "이전 요청 기억",
+          "TCP 포트 번호",
+          "요청의 쿠키"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "서버는 이전 요청을 기억하지 않으므로, 요청마다 Cookie 헤더로 오는 세션 ID를 보고 사용자를 알아봅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6265"
+      ]
+    },
+    {
+      "id": "network-http-stateless-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "stateless"
+      ],
+      "content": {
+        "prompt": "HTTP 서버는 각 요청을 이전 요청과 독립적으로 처리한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "HTTP는 무상태라 서버가 이전 요청을 기억하지 않고 요청 하나하나를 독립적으로 처리합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6265"
+      ]
+    }
+  ]
+}

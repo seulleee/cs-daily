@@ -1,0 +1,245 @@
+{
+  "track": "network",
+  "unit": "u04-dns",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "network-dns-query-mode-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "recursive-query"
+      ],
+      "content": {
+        "prompt": "클라이언트가 리졸버에 최종 답을 달라고 하는 질의는?",
+        "options": [
+          "반복 질의",
+          "재귀 질의",
+          "영역 전송"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "재귀 질의는 받는 서버에게 최종 답까지 찾아 달라고 요청하는 질의입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-query-mode-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "iterative-query"
+      ],
+      "content": {
+        "prompt": "리졸버가 루트→TLD→권한 서버에 차례로 묻는 방식은?",
+        "options": [
+          "반복 질의",
+          "재귀 질의",
+          "브로드캐스트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "반복 질의에서는 각 서버가 아는 만큼 답하거나 다음 서버를 안내하고, 리졸버가 그 안내를 따라 차례로 묻습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-query-mode-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "iterative-query"
+      ],
+      "content": {
+        "prompt": "재귀 리졸버가 루트 서버에 보내는 질의는?",
+        "options": [
+          "재귀 질의",
+          "반복 질의"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "리졸버는 루트·TLD·권한 서버에 반복 질의를 보내고 다음 서버를 안내받습니다. 재귀 질의는 클라이언트가 리졸버에 보냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-query-mode-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "iterative-query"
+      ],
+      "content": {
+        "prompt": "반복 질의를 받은 서버는 최종 답 대신 다음 서버를 안내할 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "반복 질의를 받은 루트·TLD 서버는 최종 답이 없으면 다음에 물을 네임서버를 알려 줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-query-mode-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "recursive-query"
+      ],
+      "content": {
+        "prompt": "클라이언트가 리졸버에 최종 답을 요구하는 질의는 ___ 질의다.",
+        "hint": "답을 끝까지 찾아오는 일을 상대에게 통째로 맡기는 방식입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "재귀",
+          "recursive",
+          "재귀적"
+        ]
+      },
+      "explanation": "클라이언트는 리졸버에 재귀 질의를 한 번 보내고, 리졸버가 최종 답을 찾아 돌려줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-query-mode-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "stub-resolver"
+      ],
+      "content": {
+        "prompt": "OS 안에서 재귀 리졸버로 질의를 보내는 부분은 ___ 리졸버다.",
+        "hint": "영어로 '짧게 남은 토막'을 뜻하는 단어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스텁",
+          "stub"
+        ]
+      },
+      "explanation": "스텁 리졸버는 OS 안의 작은 리졸버로, 직접 찾지 않고 설정된 재귀 리졸버에 질의를 넘깁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-query-mode-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "iterative-query"
+      ],
+      "content": {
+        "prompt": "캐시가 빈 리졸버가 반복 질의를 보내는 첫 서버는?",
+        "options": [
+          "루트 서버",
+          "TLD 서버",
+          "권한 네임서버"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "캐시에 아무 정보가 없으면 리졸버는 계층의 맨 위인 루트 서버부터 묻습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-query-mode-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "iterative-query"
+      ],
+      "content": {
+        "prompt": "캐시 미스로 example.com을 찾을 때 리졸버의 반복 질의 수는?",
+        "options": [
+          "1번",
+          "2번",
+          "3번"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "루트, .com TLD, example.com 권한 서버에 한 번씩 모두 3번 묻습니다(다음 서버 주소가 안내에 함께 온다고 가정).",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-query-mode-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "resolver"
+      ],
+      "content": {
+        "prompt": "다음 서버를 안내받으며 반복 질의를 하는 쪽은?",
+        "options": [
+          "스텁 리졸버",
+          "브라우저",
+          "재귀 리졸버"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "반복 질의는 재귀 리졸버가 수행합니다. 스텁 리졸버는 재귀 리졸버에 재귀 질의를 한 번 보낼 뿐입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-query-mode-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "recursive-query"
+      ],
+      "content": {
+        "prompt": "PC는 루트 서버부터 차례로 직접 묻는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "PC의 스텁 리졸버는 재귀 리졸버에 재귀 질의를 한 번 보내고, 루트부터 차례로 묻는 일은 리졸버가 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "track": "network",
+  "unit": "u05-http",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "network-http-cache-control-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "cache-control"
+      ],
+      "content": {
+        "prompt": "N초 동안 서버에 묻지 않고 재사용하게 하는 지시자는?",
+        "options": [
+          "max-age=N",
+          "no-store",
+          "no-cache"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "max-age=N은 응답이 N초 동안 신선하다는 뜻이라, 그동안 서버에 묻지 않고 캐시를 재사용합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-cache-control-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "cache-control"
+      ],
+      "content": {
+        "prompt": "응답을 어디에도 저장하지 말라는 지시자는?",
+        "options": [
+          "no-cache",
+          "no-store",
+          "public"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "no-store는 브라우저와 공유 캐시 어디에도 저장하지 말라는 뜻입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-cache-control-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "cache-control"
+      ],
+      "content": {
+        "prompt": "저장은 하되 쓰기 전 매번 서버에 검증하라는 지시자는?",
+        "options": [
+          "no-store",
+          "private",
+          "no-cache"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "no-cache는 저장은 허용하지만 재사용 전에 매번 서버에 검증하라는 뜻입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-cache-control-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "cache-control"
+      ],
+      "content": {
+        "prompt": "no-cache는 응답을 아예 저장하지 말라는 뜻이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "no-cache는 저장은 하되 쓰기 전에 매번 검증하라는 뜻입니다. 저장 자체를 막는 것은 no-store입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-cache-control-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "cache-control"
+      ],
+      "content": {
+        "prompt": "브라우저만 저장하고 공유 캐시는 못 저장하게 하는 지시자는 ___ 이다.",
+        "hint": "public과 반대되는 뜻의 영단어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "private",
+          "프라이빗"
+        ]
+      },
+      "explanation": "private는 사용자 브라우저만 저장할 수 있고, public은 공유 캐시도 저장할 수 있습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-cache-control-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "max-age"
+      ],
+      "content": {
+        "prompt": "Cache-Control: max-age=600이면 ___ 분 동안 신선하다.",
+        "hint": "max-age 값의 단위는 초입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "10",
+          "10분"
+        ]
+      },
+      "explanation": "max-age의 단위는 초이므로 600초는 10분입니다. 그동안 서버에 묻지 않고 캐시를 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-cache-control-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "max-age"
+      ],
+      "content": {
+        "prompt": "max-age=300 응답을 받고 200초 뒤 다시 요청하면?",
+        "options": [
+          "캐시 재사용",
+          "서버에 검증",
+          "새로 다운로드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "200초는 300초 안이므로 응답이 아직 신선해 서버에 묻지 않고 캐시를 그대로 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-cache-control-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "cache-control"
+      ],
+      "content": {
+        "prompt": "카드 번호가 담긴 응답에 알맞은 지시자는?",
+        "options": [
+          "public",
+          "no-store",
+          "max-age=3600"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "민감한 정보는 어디에도 남지 않도록 no-store로 저장 자체를 막습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-cache-control-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "cache-control"
+      ],
+      "content": {
+        "prompt": "공유 캐시에 저장되면 안 되는 사용자별 응답에는?",
+        "options": [
+          "public",
+          "no-cache",
+          "private"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "private는 사용자 브라우저에만 저장을 허용하므로 다른 사용자가 공유 캐시에서 받아 가지 않습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-cache-control-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "max-age"
+      ],
+      "content": {
+        "prompt": "max-age 기간 안에는 서버에 묻지 않고 캐시를 재사용한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "max-age=N 동안 응답은 신선하므로 브라우저는 서버에 묻지 않고 캐시된 사본을 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    }
+  ]
+}

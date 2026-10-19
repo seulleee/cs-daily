@@ -1,0 +1,244 @@
+{
+  "track": "network",
+  "unit": "u05-http",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "network-http-etag-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "etag"
+      ],
+      "content": {
+        "prompt": "리소스 특정 버전의 식별자를 담는 응답 헤더는?",
+        "options": [
+          "ETag",
+          "Host",
+          "Cookie"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ETag는 리소스의 특정 버전을 식별하는 값으로, 서버가 응답 헤더로 줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-etag-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "conditional-request"
+      ],
+      "content": {
+        "prompt": "가진 ETag를 보내 바뀌었는지 묻는 요청 헤더는?",
+        "options": [
+          "ETag",
+          "If-None-Match",
+          "Set-Cookie"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "If-None-Match에 가진 ETag를 담아 보내면, 서버는 현재 버전과 비교해 바뀌었는지 알려 줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-etag-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "304"
+      ],
+      "content": {
+        "prompt": "리소스가 바뀌지 않았을 때 재검증 응답 코드는?",
+        "options": [
+          "200",
+          "404",
+          "304"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "바뀌지 않았으면 서버는 304 Not Modified를 본문 없이 보내고, 클라이언트는 캐시 사본을 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-etag-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "304"
+      ],
+      "content": {
+        "prompt": "304 응답에는 리소스 본문 전체가 담긴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "304 Not Modified는 본문 없이 오고, 클라이언트는 가지고 있던 캐시 사본을 재사용합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-etag-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "304"
+      ],
+      "content": {
+        "prompt": "바뀌지 않았으면 본문 없이 오는 응답은 ___ Not Modified다.",
+        "hint": "3xx 리다이렉션 분류에 속하는 코드입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "304"
+        ]
+      },
+      "explanation": "304 Not Modified는 리소스가 바뀌지 않았으니 캐시 사본을 쓰라는 응답입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-etag-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "conditional-request"
+      ],
+      "content": {
+        "prompt": "수정 시각으로 검증하는 요청 헤더는 If-Modified-___ 이다.",
+        "hint": "'그때 이후로'라는 뜻의 영단어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Since",
+          "since"
+        ]
+      },
+      "explanation": "Last-Modified로 받은 수정 시각을 If-Modified-Since에 담아 보내면 그 이후 바뀌었는지 검증합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-etag-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "304"
+      ],
+      "content": {
+        "prompt": "If-None-Match: \"v1\", 현재 ETag가 \"v1\"이면 응답은?",
+        "options": [
+          "304 응답",
+          "200과 본문",
+          "404 응답"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "보낸 ETag와 현재 ETag가 같아 바뀌지 않았으므로 서버는 본문 없이 304를 보냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-etag-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "etag"
+      ],
+      "content": {
+        "prompt": "보낸 ETag는 \"v1\", 서버의 현재 ETag는 \"v2\"다. 응답은?",
+        "options": [
+          "304 응답",
+          "200과 새 본문",
+          "401 응답"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "리소스가 v2로 바뀌었으므로 서버는 200과 새 본문을 보내고, 새 ETag \"v2\"도 함께 줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-etag-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "conditional-request"
+      ],
+      "content": {
+        "prompt": "If-Modified-Since에 넣는 값은 어느 응답 헤더에서 오나?",
+        "options": [
+          "ETag",
+          "Host",
+          "Last-Modified"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Last-Modified로 받은 수정 시각을 If-Modified-Since에 담습니다. ETag 값은 If-None-Match에 담습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    },
+    {
+      "id": "network-http-etag-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "etag"
+      ],
+      "content": {
+        "prompt": "ETag는 리소스의 특정 버전을 가리키는 식별자다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "ETag는 리소스 버전마다 달라지는 식별자라, 같으면 내용이 바뀌지 않았다고 판단할 수 있습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc9111"
+      ]
+    }
+  ]
+}

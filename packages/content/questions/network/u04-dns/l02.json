@@ -1,0 +1,246 @@
+{
+  "track": "network",
+  "unit": "u04-dns",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "network-dns-hierarchy-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "fqdn"
+      ],
+      "content": {
+        "prompt": "루트까지 모두 적은 완전한 도메인 이름은?",
+        "options": [
+          "TLD",
+          "FQDN",
+          "서브도메인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "FQDN(Fully Qualified Domain Name)은 루트까지 모든 단계를 적은 완전한 도메인 이름입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-hierarchy-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "tld"
+      ],
+      "content": {
+        "prompt": "가장 오른쪽 단계인 .com·.org·.kr 같은 도메인은?",
+        "options": [
+          "TLD",
+          "서브도메인",
+          "FQDN"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": ".com, .org, .kr 등 루트 바로 아래에 있는 가장 오른쪽 단계를 최상위 도메인(TLD)이라고 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-hierarchy-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "subdomain"
+      ],
+      "content": {
+        "prompt": "www.example.com에서 서브도메인은?",
+        "options": [
+          "com",
+          "example",
+          "www"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "example.com이 2단계 도메인이고, 그 왼쪽에 붙은 www가 서브도메인입니다. com은 TLD입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-hierarchy-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "hierarchy"
+      ],
+      "content": {
+        "prompt": "도메인 이름은 왼쪽으로 갈수록 상위 단계다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "도메인 이름은 오른쪽이 상위입니다. www.example.com.에서 맨 끝 점이 루트, 그다음 com이 TLD입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-hierarchy-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "hierarchy"
+      ],
+      "content": {
+        "prompt": "www.example.com. 의 맨 끝 점이 가리키는 것은 ___ 이다.",
+        "hint": "모든 도메인 계층의 맨 꼭대기입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "루트",
+          "root",
+          "루트 도메인"
+        ]
+      },
+      "explanation": "도메인 이름의 마지막 점은 계층의 맨 위인 루트를 뜻하며, 보통은 생략해서 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-hierarchy-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "tld"
+      ],
+      "content": {
+        "prompt": ".com·.kr 같은 최상위 도메인의 영문 약자는 ___ 이다.",
+        "hint": "영문 대문자 세 글자로 된 약자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "TLD",
+          "tld"
+        ]
+      },
+      "explanation": "최상위 도메인은 Top-Level Domain, 줄여서 TLD라고 부릅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-hierarchy-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "tld"
+      ],
+      "content": {
+        "prompt": "api.example.org에서 TLD는?",
+        "options": [
+          "api",
+          "example",
+          "org"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "가장 오른쪽 단계인 org가 TLD입니다. example은 2단계 도메인, api는 서브도메인입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-hierarchy-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "hierarchy"
+      ],
+      "content": {
+        "prompt": "mail.example.com의 바로 위 단계 도메인은?",
+        "options": [
+          "example.com",
+          "mail",
+          "com"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "도메인은 오른쪽이 상위이므로 mail.example.com에서 맨 왼쪽 mail을 뗀 example.com이 바로 위 단계입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-hierarchy-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "fqdn"
+      ],
+      "content": {
+        "prompt": "루트까지 표시해 FQDN으로 적은 것은?",
+        "options": [
+          "www",
+          "a.example.com.",
+          "example"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "a.example.com.은 맨 끝 점(루트)까지 모든 단계를 적었으므로 FQDN입니다. www나 example은 한 단계뿐입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-hierarchy-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "fqdn"
+      ],
+      "content": {
+        "prompt": "FQDN은 루트까지 모든 단계를 빠짐없이 적은 이름이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "FQDN은 서브도메인부터 TLD, 루트까지 모두 적은 완전한 도메인 이름입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    }
+  ]
+}

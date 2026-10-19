@@ -1,0 +1,233 @@
+{
+  "track": "network",
+  "unit": "u05-http",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "network-http-status-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "status-code"
+      ],
+      "content": {
+        "prompt": "4xx 상태 코드가 나타내는 것은?",
+        "options": [
+          "클라이언트 오류",
+          "서버 오류",
+          "리다이렉션"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "4xx는 클라이언트 오류, 5xx는 서버 오류, 3xx는 리다이렉션입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-http-status-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "status-code"
+      ],
+      "content": {
+        "prompt": "요청이 성공했음을 나타내는 분류는?",
+        "options": [
+          "3xx",
+          "2xx",
+          "5xx"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "2xx는 성공을 나타내며 200 OK, 201 Created, 204 No Content가 대표적입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-http-status-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "2xx"
+      ],
+      "content": {
+        "prompt": "요청으로 새 리소스가 만들어졌을 때 상태 코드는?",
+        "options": [
+          "200",
+          "204",
+          "201"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "201 Created는 요청이 성공해 새 리소스가 만들어졌음을 뜻합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-http-status-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "status-code"
+      ],
+      "content": {
+        "prompt": "5xx 상태 코드는 클라이언트 요청이 잘못됐다는 뜻이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "5xx는 서버 오류입니다. 클라이언트 요청이 잘못됐을 때는 4xx를 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-http-status-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "4xx"
+      ],
+      "content": {
+        "prompt": "요청한 리소스가 없을 때의 상태 코드는 ___ 이다.",
+        "hint": "Not Found라는 이유 문구가 붙는 4xx 코드입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "404"
+        ]
+      },
+      "explanation": "404 Not Found는 요청한 리소스를 서버에서 찾을 수 없다는 클라이언트 오류입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-http-status-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "3xx"
+      ],
+      "content": {
+        "prompt": "리소스가 영구히 다른 주소로 옮겨졌을 때 상태 코드는 ___ 이다.",
+        "hint": "3xx 중 영구 이동을 뜻하는 코드입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "301"
+        ]
+      },
+      "explanation": "301은 영구 이동, 302는 임시 이동입니다. 301을 받으면 앞으로 새 주소를 쓰면 됩니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-http-status-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "5xx"
+      ],
+      "content": {
+        "prompt": "서버 점검으로 잠시 요청을 처리할 수 없을 때 코드는?",
+        "options": [
+          "500",
+          "503",
+          "404"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "503 Service Unavailable은 서버가 일시적으로 요청을 처리할 수 없다는 뜻입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-http-status-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "2xx"
+      ],
+      "content": {
+        "prompt": "삭제에 성공했고 돌려줄 본문이 없을 때 코드는?",
+        "options": [
+          "200",
+          "201",
+          "204"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "204 No Content는 요청은 성공했지만 응답 본문이 없다는 뜻입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-http-status-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "3xx"
+      ],
+      "content": {
+        "prompt": "로그인 페이지로 잠시 보냈다가 돌아올 때 쓰는 코드는?",
+        "options": [
+          "302",
+          "301",
+          "304"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "잠시 다른 주소로 보내는 것은 임시 이동인 302입니다. 301은 영구 이동입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-http-status-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "4xx"
+      ],
+      "content": {
+        "prompt": "404 Not Found는 클라이언트 오류에 속한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "404는 4xx이므로 클라이언트 오류 분류에 속합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    }
+  ]
+}
