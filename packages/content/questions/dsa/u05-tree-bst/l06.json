@@ -1,0 +1,247 @@
+{
+  "track": "dsa",
+  "unit": "u05-tree-bst",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "dsa-bst-search-insert-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bst-search",
+        "bst"
+      ],
+      "content": {
+        "prompt": "BST 탐색에서 찾는 값이 노드보다 작으면?",
+        "options": [
+          "왼쪽으로",
+          "오른쪽으로",
+          "탐색 종료"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "작은 값은 왼쪽 서브트리에만 있으므로 왼쪽 자식으로 내려갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Searching",
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Insertion"
+      ]
+    },
+    {
+      "id": "dsa-bst-search-insert-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bst-insert",
+        "bst"
+      ],
+      "content": {
+        "prompt": "BST에 새 값을 붙이는 위치는?",
+        "options": [
+          "루트 자리",
+          "탐색 끝의 빈 자리",
+          "가장 왼쪽"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "삽입은 탐색하듯 내려가다 만난 빈 자리에 새 리프로 붙입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Searching",
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Insertion"
+      ]
+    },
+    {
+      "id": "dsa-bst-search-insert-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bst-cost",
+        "height"
+      ],
+      "content": {
+        "prompt": "BST 탐색·삽입의 비교 횟수를 정하는 것은?",
+        "options": [
+          "노드 수의 제곱",
+          "트리 높이"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "한 레벨에 한 번씩 비교하며 내려가므로 비교 횟수는 트리 높이 h 이하, 비용은 O(h)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Searching",
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Insertion"
+      ]
+    },
+    {
+      "id": "dsa-bst-search-insert-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "bst-insert",
+        "bst"
+      ],
+      "content": {
+        "prompt": "BST에 새 값을 넣으면 그 값이 새 루트가 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "새 값은 탐색하다 만난 빈 자리에 리프로 붙습니다. 루트는 바뀌지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Searching",
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Insertion"
+      ]
+    },
+    {
+      "id": "dsa-bst-search-insert-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "bst-search",
+        "bst"
+      ],
+      "content": {
+        "prompt": "BST 탐색에서 찾는 값이 노드보다 크면 ___ 자식으로 내려간다.",
+        "hint": "작을 때 내려가는 방향의 반대쪽입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "오른쪽",
+          "오른",
+          "right"
+        ]
+      },
+      "explanation": "큰 값은 오른쪽 서브트리에만 있으므로 오른쪽 자식으로 내려갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Searching",
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Insertion"
+      ]
+    },
+    {
+      "id": "dsa-bst-search-insert-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "bst-insert",
+        "leaf"
+      ],
+      "content": {
+        "prompt": "BST에 삽입한 새 노드는 자식이 없는 ___ 가 된다.",
+        "hint": "트리 용어 레슨에서 본, 자식이 없는 노드의 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "리프",
+          "leaf",
+          "리프 노드",
+          "잎"
+        ]
+      },
+      "explanation": "삽입은 빈 자리에 새 노드를 붙이므로 새 노드는 자식이 없는 리프가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Searching",
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Insertion"
+      ]
+    },
+    {
+      "id": "dsa-bst-search-insert-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bst-insert",
+        "bst"
+      ],
+      "content": {
+        "prompt": "8, 3, 10, 6 순서로 BST에 넣으면 6의 위치는?",
+        "options": [
+          "3의 오른쪽 자식",
+          "3의 왼쪽 자식",
+          "10의 왼쪽 자식"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "6은 8보다 작아 왼쪽의 3으로, 3보다 커서 3의 오른쪽 빈 자리에 붙습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Searching",
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Insertion"
+      ]
+    },
+    {
+      "id": "dsa-bst-search-insert-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bst-search",
+        "bst-cost"
+      ],
+      "content": {
+        "prompt": "루트 8, 자식 3·10, 3의 오른쪽 자식 6. 6을 찾는 비교 횟수는?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "8과 비교해 왼쪽, 3과 비교해 오른쪽, 6과 비교해 찾으므로 3번 비교합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Searching",
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Insertion"
+      ]
+    },
+    {
+      "id": "dsa-bst-search-insert-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bst-insert",
+        "bst"
+      ],
+      "content": {
+        "prompt": "5, 2, 7, 9, 1 순서로 BST에 넣으면 9의 부모는?",
+        "options": [
+          "5",
+          "2",
+          "7"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "9는 5보다 커서 오른쪽의 7로, 7보다 커서 7의 오른쪽 자식이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Searching",
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Insertion"
+      ]
+    },
+    {
+      "id": "dsa-bst-search-insert-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "bst-search",
+        "bst"
+      ],
+      "content": {
+        "prompt": "BST 탐색은 찾는 값이 작으면 왼쪽 자식으로 내려간다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "BST에서 작은 값은 왼쪽 서브트리에 있으므로 찾는 값이 작으면 왼쪽으로 내려갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Searching",
+        "https://en.wikipedia.org/wiki/Binary_search_tree#Insertion"
+      ]
+    }
+  ]
+}

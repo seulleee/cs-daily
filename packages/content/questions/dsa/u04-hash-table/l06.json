@@ -1,0 +1,259 @@
+{
+  "track": "dsa",
+  "unit": "u04-hash-table",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "dsa-hash-probe-seq-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "primary-clustering",
+        "linear-probing"
+      ],
+      "content": {
+        "prompt": "선형 탐사에서 찬 칸이 연속으로 뭉치는 현상은?",
+        "options": [
+          "1차 군집화",
+          "충돌",
+          "오버플로"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "1차 군집화는 선형 탐사에서 찬 칸이 연속으로 뭉쳐 탐사가 길어지는 현상입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Quadratic_probing",
+        "https://en.wikipedia.org/wiki/Double_hashing"
+      ]
+    },
+    {
+      "id": "dsa-hash-probe-seq-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "quadratic-probing",
+        "open-addressing"
+      ],
+      "content": {
+        "prompt": "i+1², i+2², i+3² 칸을 차례로 보는 방법은?",
+        "options": [
+          "선형 탐사",
+          "이차 탐사",
+          "이중 해싱"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이차 탐사는 시작 칸 i에서 1², 2², 3²만큼 떨어진 칸을 차례로 봅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Quadratic_probing",
+        "https://en.wikipedia.org/wiki/Double_hashing"
+      ]
+    },
+    {
+      "id": "dsa-hash-probe-seq-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "double-hashing",
+        "open-addressing"
+      ],
+      "content": {
+        "prompt": "두 번째 해시 함수 값을 간격으로 쓰는 방법은?",
+        "options": [
+          "이차 탐사",
+          "이중 해싱"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이중 해싱은 두 번째 해시 함수가 낸 값을 간격으로 삼아 건너뛰며 칸을 봅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Quadratic_probing",
+        "https://en.wikipedia.org/wiki/Double_hashing"
+      ]
+    },
+    {
+      "id": "dsa-hash-probe-seq-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "primary-clustering",
+        "quadratic-probing"
+      ],
+      "content": {
+        "prompt": "1차 군집화는 이차 탐사에서 생기는 현상이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "1차 군집화는 한 칸씩 보는 선형 탐사에서 찬 칸이 뭉치는 현상입니다. 이차 탐사는 이를 줄이려고 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Quadratic_probing",
+        "https://en.wikipedia.org/wiki/Double_hashing"
+      ]
+    },
+    {
+      "id": "dsa-hash-probe-seq-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "primary-clustering",
+        "linear-probing"
+      ],
+      "content": {
+        "prompt": "찬 칸이 연속으로 뭉쳐 탐사가 길어지는 현상은 1차 ___ 이다.",
+        "hint": "여러 칸이 한 덩어리로 모인다는 뜻의 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "군집화",
+          "군집",
+          "clustering",
+          "클러스터링"
+        ]
+      },
+      "explanation": "선형 탐사는 찬 구간 끝에 새 키를 붙여 구간을 더 길게 만들므로 1차 군집화가 생깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Quadratic_probing",
+        "https://en.wikipedia.org/wiki/Double_hashing"
+      ]
+    },
+    {
+      "id": "dsa-hash-probe-seq-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "double-hashing",
+        "open-addressing"
+      ],
+      "content": {
+        "prompt": "두 번째 해시 함수 값만큼 건너뛰며 보는 방법은 ___ 해싱이다.",
+        "hint": "해시 함수를 두 개 쓴다는 뜻입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "이중",
+          "double",
+          "이중 해싱",
+          "double hashing",
+          "더블"
+        ]
+      },
+      "explanation": "이중 해싱은 키마다 두 번째 해시 함수로 간격을 정하므로 키마다 다른 순서로 칸을 봅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Quadratic_probing",
+        "https://en.wikipedia.org/wiki/Double_hashing"
+      ]
+    },
+    {
+      "id": "dsa-hash-probe-seq-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "quadratic-probing",
+        "insert"
+      ],
+      "content": {
+        "prompt": "크기 11, 칸 3·4가 찼다. 인덱스 3인 키를 이차 탐사로 넣으면?",
+        "options": [
+          "칸 5",
+          "칸 7",
+          "칸 9"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "3+1² = 4는 차 있어 다음으로 3+2² = 7을 보고, 비어 있으므로 칸 7에 저장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Quadratic_probing",
+        "https://en.wikipedia.org/wiki/Double_hashing"
+      ]
+    },
+    {
+      "id": "dsa-hash-probe-seq-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "double-hashing",
+        "insert"
+      ],
+      "content": {
+        "prompt": "크기 10, 인덱스 2, 두 번째 해시 값 3. 이중 해싱 다음 칸은?",
+        "options": [
+          "5",
+          "3",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "이중 해싱은 두 번째 해시 값 3을 간격으로 쓰므로 칸 2 다음에 2 + 3 = 5를 봅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Quadratic_probing",
+        "https://en.wikipedia.org/wiki/Double_hashing"
+      ]
+    },
+    {
+      "id": "dsa-hash-probe-seq-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "primary-clustering",
+        "linear-probing"
+      ],
+      "content": {
+        "prompt": "선형 탐사, 칸 2~6이 찼다. 인덱스 2인 새 키가 확인하는 칸 수는?",
+        "options": [
+          "1",
+          "5",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "찬 칸 2~6의 5칸을 지나 빈 칸 7까지 모두 6칸을 봅니다. 뭉친 구간이 길수록 탐사가 길어집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Quadratic_probing",
+        "https://en.wikipedia.org/wiki/Double_hashing"
+      ]
+    },
+    {
+      "id": "dsa-hash-probe-seq-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "primary-clustering",
+        "quadratic-probing"
+      ],
+      "content": {
+        "prompt": "이차 탐사는 선형 탐사보다 1차 군집화를 줄인다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "이차 탐사는 1², 2², 3²로 간격을 벌려 보므로 찬 칸이 한 구간으로 이어지는 1차 군집화가 줄어듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Open_addressing",
+        "https://en.wikipedia.org/wiki/Quadratic_probing",
+        "https://en.wikipedia.org/wiki/Double_hashing"
+      ]
+    }
+  ]
+}

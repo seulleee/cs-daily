@@ -1,0 +1,246 @@
+{
+  "track": "dsa",
+  "unit": "u04-hash-table",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "dsa-hash-chaining-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "chaining",
+        "collision-resolution"
+      ],
+      "content": {
+        "prompt": "버킷마다 연결 리스트를 두어 충돌을 해결하는 방식은?",
+        "options": [
+          "오픈 어드레싱",
+          "체이닝",
+          "이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "체이닝은 버킷마다 연결 리스트를 두고 같은 버킷에 배정된 원소를 이어 붙입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Separate_chaining",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-hash-chaining-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "chaining",
+        "java-hashmap"
+      ],
+      "content": {
+        "prompt": "Java HashMap이 쓰는 충돌 해결 방식은?",
+        "options": [
+          "이진 탐색",
+          "오픈 어드레싱",
+          "체이닝"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Java HashMap은 버킷마다 노드를 이어 붙이는 체이닝 방식으로 충돌을 해결합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Separate_chaining",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-hash-chaining-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "chaining",
+        "linked-list"
+      ],
+      "content": {
+        "prompt": "체이닝에서 같은 버킷의 원소를 잇는 구조는?",
+        "options": [
+          "연결 리스트",
+          "스택"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "체이닝은 같은 버킷에 배정된 원소를 연결 리스트의 노드로 이어 붙입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Separate_chaining",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-hash-chaining-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "chaining",
+        "collision-resolution"
+      ],
+      "content": {
+        "prompt": "체이닝은 충돌이 나면 다른 빈 버킷에 저장한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "체이닝은 같은 버킷의 리스트에 이어 붙입니다. 다른 빈 칸을 찾아 저장하는 것은 오픈 어드레싱입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Separate_chaining",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-hash-chaining-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "chaining",
+        "collision-resolution"
+      ],
+      "content": {
+        "prompt": "버킷마다 연결 리스트를 두는 충돌 해결 방식은 ___ 이다.",
+        "hint": "같은 버킷의 원소를 노드로 줄줄이 잇는 방식입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "체이닝",
+          "chaining",
+          "separate chaining",
+          "분리 연결법",
+          "체인"
+        ]
+      },
+      "explanation": "체이닝은 버킷마다 연결 리스트를 두어, 충돌한 원소를 같은 버킷의 리스트에 붙입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Separate_chaining",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-hash-chaining-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "chaining",
+        "linked-list"
+      ],
+      "content": {
+        "prompt": "체이닝에서 원소를 지우려면 버킷 리스트에서 ___ 를 떼어낸다.",
+        "hint": "값과 next 포인터를 담는 단위입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "노드",
+          "node"
+        ]
+      },
+      "explanation": "체이닝의 삭제는 버킷 리스트에서 해당 노드를 떼어내면 끝나므로 다른 원소를 옮기지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Separate_chaining",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-hash-chaining-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "chaining",
+        "search"
+      ],
+      "content": {
+        "prompt": "버킷 리스트가 A→B→C일 때 C를 찾는 비교 횟수는?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "체이닝 탐색은 버킷 리스트를 처음부터 차례로 비교하므로 A, B, C를 거쳐 3번 비교합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Separate_chaining",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-hash-chaining-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "chaining",
+        "index-calc"
+      ],
+      "content": {
+        "prompt": "버킷 10개 체이닝에 해시 값 4, 14, 24를 넣으면?",
+        "options": [
+          "버킷 셋에 하나씩",
+          "버킷 4에 3개"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "세 값 모두 % 10의 결과가 4라서 버킷 4의 리스트에 차례로 이어 붙습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Separate_chaining",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-hash-chaining-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "chaining",
+        "linked-list"
+      ],
+      "content": {
+        "prompt": "버킷 리스트 A→B→C에서 B를 지울 때 바꾸는 것은?",
+        "options": [
+          "A의 next",
+          "모든 원소 위치",
+          "버킷 수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "A의 next가 C를 가리키게 바꾸면 B 노드가 떨어져 삭제가 끝납니다. 다른 원소는 옮기지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Separate_chaining",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    },
+    {
+      "id": "dsa-hash-chaining-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "chaining",
+        "linked-list"
+      ],
+      "content": {
+        "prompt": "체이닝은 같은 버킷의 원소를 연결 리스트로 잇는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "체이닝은 버킷마다 연결 리스트를 두고, 같은 버킷 인덱스를 받은 원소를 그 리스트에 잇습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Separate_chaining",
+        "https://en.wikipedia.org/wiki/Linked_list"
+      ]
+    }
+  ]
+}

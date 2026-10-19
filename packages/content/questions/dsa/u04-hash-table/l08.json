@@ -1,0 +1,246 @@
+{
+  "track": "dsa",
+  "unit": "u04-hash-table",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "dsa-hash-compare-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "chaining",
+        "memory"
+      ],
+      "content": {
+        "prompt": "노드 포인터만큼 메모리를 더 쓰는 방식은?",
+        "options": [
+          "체이닝",
+          "오픈 어드레싱",
+          "이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "체이닝은 원소마다 리스트 노드를 만들어 next 포인터 공간이 더 듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Collision_resolution",
+        "https://en.wikipedia.org/wiki/Open_addressing"
+      ]
+    },
+    {
+      "id": "dsa-hash-compare-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "open-addressing",
+        "cache-locality"
+      ],
+      "content": {
+        "prompt": "연속 배열을 훑어 캐시 지역성이 좋은 방식은?",
+        "options": [
+          "체이닝",
+          "오픈 어드레싱",
+          "연결 리스트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "오픈 어드레싱은 연속된 배열 안에서 다음 칸을 보므로 캐시에 함께 올라온 데이터를 바로 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Collision_resolution",
+        "https://en.wikipedia.org/wiki/Open_addressing"
+      ]
+    },
+    {
+      "id": "dsa-hash-compare-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "chaining",
+        "load-factor"
+      ],
+      "content": {
+        "prompt": "로드 팩터가 1을 넘어도 동작하는 방식은?",
+        "options": [
+          "체이닝",
+          "오픈 어드레싱"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "체이닝은 한 버킷의 리스트에 원소를 여러 개 둘 수 있어 α가 1을 넘어도 동작합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Collision_resolution",
+        "https://en.wikipedia.org/wiki/Open_addressing"
+      ]
+    },
+    {
+      "id": "dsa-hash-compare-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "open-addressing",
+        "implementation"
+      ],
+      "content": {
+        "prompt": "CPython dict는 체이닝 방식이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "CPython dict는 오픈 어드레싱을 씁니다. 체이닝을 쓰는 대표 구현은 Java HashMap입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Collision_resolution",
+        "https://en.wikipedia.org/wiki/Open_addressing"
+      ]
+    },
+    {
+      "id": "dsa-hash-compare-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cache-locality",
+        "memory"
+      ],
+      "content": {
+        "prompt": "가까운 주소를 연달아 읽어 빨라지는 성질은 캐시 ___ 이다.",
+        "hint": "배열 vs 연결 리스트 레슨에서 본 성질입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "지역성",
+          "locality",
+          "국부성"
+        ]
+      },
+      "explanation": "연속 배열은 한 번 캐시에 올린 근처 데이터를 이어서 쓰므로 캐시 지역성이 좋습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Collision_resolution",
+        "https://en.wikipedia.org/wiki/Open_addressing"
+      ]
+    },
+    {
+      "id": "dsa-hash-compare-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "open-addressing",
+        "implementation"
+      ],
+      "content": {
+        "prompt": "CPython dict가 쓰는 충돌 해결 방식은 오픈 ___ 이다.",
+        "hint": "충돌한 키를 테이블 안 다른 칸에 두는 방식입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "어드레싱",
+          "addressing",
+          "오픈 어드레싱",
+          "open addressing",
+          "주소법"
+        ]
+      },
+      "explanation": "CPython dict는 오픈 어드레싱으로 테이블 배열 안에서 빈 칸을 찾아 키를 저장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Collision_resolution",
+        "https://en.wikipedia.org/wiki/Open_addressing"
+      ]
+    },
+    {
+      "id": "dsa-hash-compare-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "chaining",
+        "load-factor"
+      ],
+      "content": {
+        "prompt": "원소 수가 버킷 수의 2배까지 늘 수 있다면?",
+        "options": [
+          "오픈 어드레싱",
+          "체이닝"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "α가 2가 되므로 1을 넘어도 동작하는 체이닝이 맞습니다. 오픈 어드레싱은 α ≤ 1로 제한됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Collision_resolution",
+        "https://en.wikipedia.org/wiki/Open_addressing"
+      ]
+    },
+    {
+      "id": "dsa-hash-compare-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "open-addressing",
+        "memory"
+      ],
+      "content": {
+        "prompt": "포인터 없이 배열만 써서 메모리를 아끼려면?",
+        "options": [
+          "체이닝",
+          "오픈 어드레싱",
+          "연결 리스트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "오픈 어드레싱은 테이블 배열만 쓰고 노드 포인터가 없어 추가 메모리가 적습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Collision_resolution",
+        "https://en.wikipedia.org/wiki/Open_addressing"
+      ]
+    },
+    {
+      "id": "dsa-hash-compare-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "chaining",
+        "cache-locality"
+      ],
+      "content": {
+        "prompt": "버킷의 노드가 메모리에 흩어져 캐시에 불리한 방식은?",
+        "options": [
+          "체이닝",
+          "오픈 어드레싱"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "체이닝의 리스트 노드는 메모리 여기저기에 있어 따라갈 때마다 캐시에 없는 주소를 읽기 쉽습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Collision_resolution",
+        "https://en.wikipedia.org/wiki/Open_addressing"
+      ]
+    },
+    {
+      "id": "dsa-hash-compare-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "chaining",
+        "memory"
+      ],
+      "content": {
+        "prompt": "체이닝은 노드 포인터만큼 메모리를 더 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "체이닝은 원소마다 연결 리스트 노드를 두므로 next 포인터만큼 메모리가 더 듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Hash_table#Collision_resolution",
+        "https://en.wikipedia.org/wiki/Open_addressing"
+      ]
+    }
+  ]
+}
