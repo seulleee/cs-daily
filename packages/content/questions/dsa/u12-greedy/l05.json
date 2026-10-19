@@ -1,0 +1,246 @@
+{
+  "track": "dsa",
+  "unit": "u12-greedy",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "dsa-fractional-knapsack-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "fractional-knapsack",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "물건을 쪼개 일부만 담을 수 있는 배낭 문제는?",
+        "options": [
+          "0/1 배낭",
+          "분할 가능 배낭",
+          "활동 선택"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "분할 가능 배낭은 물건을 쪼개 일부만 담을 수 있는 배낭 문제입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Continuous_knapsack_problem",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-fractional-knapsack-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "fractional-knapsack",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "분할 가능 배낭 그리디가 먼저 담는 물건은?",
+        "options": [
+          "가치가 최대",
+          "무게가 최소",
+          "무게당 가치 최대"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "무게당 가치(v/w)가 높은 물건부터 담아야 같은 용량으로 가장 큰 가치를 얻습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Continuous_knapsack_problem",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-fractional-knapsack-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "fractional-knapsack",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "물건을 쪼갤 수 없는 배낭에 알맞은 방법은?",
+        "options": [
+          "DP",
+          "그리디"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "쪼갤 수 없으면 무게당 가치 순 그리디가 틀릴 수 있어 DP를 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Continuous_knapsack_problem",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-fractional-knapsack-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "fractional-knapsack",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "0/1 배낭도 무게당 가치 순 그리디로 항상 최적이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "쪼갤 수 없으면 용량이 남을 수 있어 같은 규칙이 틀릴 수 있습니다. 0/1 배낭은 DP로 풉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Continuous_knapsack_problem",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-fractional-knapsack-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "fractional-knapsack",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "분할 가능 배낭은 무게당 ___ 가 높은 물건부터 담는다.",
+        "hint": "물건을 담아 얻는 값을 가리킵니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "가치",
+          "value"
+        ]
+      },
+      "explanation": "무게당 가치(v/w)가 높은 순으로 담고, 마지막 물건은 남은 용량만큼 잘라 담습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Continuous_knapsack_problem",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-fractional-knapsack-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "fractional-knapsack",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "물건을 쪼갤 수 없는 배낭 문제는 ___ 로 푼다.",
+        "hint": "부분 문제의 답을 표에 저장하는 방법입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "DP",
+          "동적 계획법",
+          "동적계획법",
+          "동적 프로그래밍"
+        ]
+      },
+      "explanation": "0/1 배낭은 그리디가 틀릴 수 있어 dp[i][w] 표를 채우는 DP로 풉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Continuous_knapsack_problem",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-fractional-knapsack-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "fractional-knapsack",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "무게 4, 가치 12인 물건의 무게당 가치는?",
+        "options": [
+          "3",
+          "4",
+          "48"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가치 ÷ 무게 = 12 ÷ 4 = 3입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Continuous_knapsack_problem",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-fractional-knapsack-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "fractional-knapsack",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "한도 6, (무게,가치) (2,10)(3,9)(4,8)의 분할 가능 최대 가치는?",
+        "options": [
+          "21",
+          "19",
+          "27"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "무게당 가치 5, 3, 2 순으로 (2,10), (3,9)를 넣고 남은 1만큼 (4,8)에서 2를 담아 21입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Continuous_knapsack_problem",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-fractional-knapsack-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "fractional-knapsack",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "무게당 가치가 5, 2, 3인 세 물건을 담는 순서는?",
+        "options": [
+          "5→2→3",
+          "5→3→2",
+          "2→3→5"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "무게당 가치가 높은 순서인 5, 3, 2로 담습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Continuous_knapsack_problem",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    },
+    {
+      "id": "dsa-fractional-knapsack-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "fractional-knapsack",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "분할 가능 배낭은 남는 용량 없이 채울 수 있어 그리디가 최적이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "쪼갤 수 있으니 무게당 가치가 높은 순으로 빈틈없이 채울 수 있어, 그 결과가 최적입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Continuous_knapsack_problem",
+        "https://en.wikipedia.org/wiki/Knapsack_problem"
+      ]
+    }
+  ]
+}

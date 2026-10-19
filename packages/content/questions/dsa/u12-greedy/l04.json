@@ -1,0 +1,250 @@
+{
+  "track": "dsa",
+  "unit": "u12-greedy",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "dsa-activity-selection-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "activity-selection",
+        "interval"
+      ],
+      "content": {
+        "prompt": "시작·끝 시각이 있는 활동을 서로 안 겹치게 최대한 고르는 문제는?",
+        "options": [
+          "0/1 배낭",
+          "활동 선택",
+          "최단 경로"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "활동 선택은 시간이 겹치지 않는 활동(구간)을 최대한 많이 고르는 문제입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activity_selection_problem",
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-activity-selection-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "activity-selection",
+        "interval"
+      ],
+      "content": {
+        "prompt": "활동 선택 그리디가 먼저 고르는 활동은?",
+        "options": [
+          "시작이 가장 이른 것",
+          "가장 짧은 것",
+          "끝이 가장 이른 것"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "끝나는 시간이 가장 이른 활동을 고르면 남은 시간이 가장 많이 남아 최적이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activity_selection_problem",
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-activity-selection-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "activity-selection",
+        "interval"
+      ],
+      "content": {
+        "prompt": "활동 선택에서 최적을 보장하지 않는 기준은?",
+        "options": [
+          "시작이 가장 이른 것",
+          "끝이 가장 이른 것"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "시작이 이른 활동이 길면 다른 활동을 많이 막을 수 있어 최적을 보장하지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activity_selection_problem",
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-activity-selection-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "activity-selection",
+        "interval"
+      ],
+      "content": {
+        "prompt": "활동 선택에서 가장 짧은 활동부터 고르면 항상 최적이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "짧은 활동이 두 활동 사이에 걸치면 둘 다 막을 수 있어 최적을 보장하지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activity_selection_problem",
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-activity-selection-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "activity-selection",
+        "interval"
+      ],
+      "content": {
+        "prompt": "활동 선택 그리디는 ___ 시간이 가장 이른 활동부터 고른다.",
+        "hint": "시작 시간이 아닙니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "끝나는",
+          "종료",
+          "끝",
+          "마치는",
+          "끝나는 시간",
+          "종료 시간",
+          "end",
+          "finish"
+        ]
+      },
+      "explanation": "끝나는 시간이 가장 이른 활동을 고르면 뒤에 남은 시간이 가장 길어집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activity_selection_problem",
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-activity-selection-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "activity-selection",
+        "interval"
+      ],
+      "content": {
+        "prompt": "활동 n개의 활동 선택은 종료 시간 정렬 때문에 O(n log ___)이다.",
+        "hint": "활동 개수를 뜻하는 문자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "n",
+          "N"
+        ]
+      },
+      "explanation": "종료 시간 정렬이 O(n log n), 한 번 훑기가 O(n)이라 전체는 O(n log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activity_selection_problem",
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-activity-selection-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "activity-selection",
+        "interval"
+      ],
+      "content": {
+        "prompt": "(1,2), (2,4), (3,5), (4,6)에서 고를 수 있는 최대 활동 수는?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "끝이 이른 순으로 (1,2), (2,4), (4,6)을 고르면 3개입니다. (3,5)는 (2,4)와 겹칩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activity_selection_problem",
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-activity-selection-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "activity-selection",
+        "interval"
+      ],
+      "content": {
+        "prompt": "(0,10), (1,2), (3,4)에 시작이 이른 순 그리디를 쓰면 몇 개?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "(0,10)을 먼저 골라 나머지가 모두 겹쳐 1개입니다. 최적은 (1,2), (3,4)의 2개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activity_selection_problem",
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-activity-selection-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "activity-selection",
+        "interval"
+      ],
+      "content": {
+        "prompt": "(1,5), (4,7), (6,10)에서 최적의 활동 수는?",
+        "options": [
+          "3",
+          "1",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "(1,5), (6,10)을 고르면 2개입니다. 가장 짧은 (4,7)부터 고르면 둘 다 막혀 1개뿐입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activity_selection_problem",
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-activity-selection-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "activity-selection",
+        "interval"
+      ],
+      "content": {
+        "prompt": "활동 선택은 끝나는 시간이 가장 이른 활동부터 고르면 최적이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "끝이 가장 이른 활동을 포함하는 최적해가 있다는 것이 교환 논증으로 증명됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activity_selection_problem",
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    }
+  ]
+}
