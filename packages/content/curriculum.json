@@ -7196,7 +7196,7 @@
       "slug": "ct",
       "name": "코딩 테스트",
       "description": "입력 크기 읽기부터 BFS·DP 템플릿까지, 코딩 테스트 문제를 푸는 패턴 드릴",
-      "phase": "phase2",
+      "phase": "mvp",
       "units": [
         {
           "slug": "u01-basics",
