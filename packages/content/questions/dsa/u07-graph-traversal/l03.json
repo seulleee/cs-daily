@@ -1,0 +1,243 @@
+{
+  "track": "dsa",
+  "unit": "u07-graph-traversal",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "dsa-graph-matrix-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "graph",
+        "adjacency-matrix"
+      ],
+      "content": {
+        "prompt": "V×V 표에 간선 유무를 기록하는 그래프 표현은?",
+        "options": [
+          "인접 행렬",
+          "힙",
+          "연결 리스트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인접 행렬은 V×V 표의 [i][j] 칸에 i에서 j로 가는 간선 유무(또는 가중치)를 기록합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_matrix",
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)"
+      ]
+    },
+    {
+      "id": "dsa-graph-matrix-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "adjacency-matrix",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "인접 행렬의 공간 복잡도는?",
+        "options": [
+          "O(V)",
+          "O(V²)",
+          "O(E)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "V×V 칸을 모두 만들므로 간선 수와 무관하게 O(V²)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_matrix",
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)"
+      ]
+    },
+    {
+      "id": "dsa-graph-matrix-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "adjacency-matrix",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "인접 행렬에서 i → j 간선 확인 비용은?",
+        "options": [
+          "O(1)",
+          "O(V)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "[i][j] 한 칸만 보면 되므로 O(1)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_matrix",
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)"
+      ]
+    },
+    {
+      "id": "dsa-graph-matrix-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "adjacency-matrix",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "인접 행렬이 차지하는 공간은 간선이 적으면 줄어든다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "인접 행렬은 간선이 없는 칸도 0으로 저장하므로 간선 수와 무관하게 O(V²)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_matrix",
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)"
+      ]
+    },
+    {
+      "id": "dsa-graph-matrix-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "adjacency-matrix",
+        "graph"
+      ],
+      "content": {
+        "prompt": "인접 행렬에서 i → j 간선이 있으면 [i][j]에 ___을 쓴다.",
+        "hint": "간선이 없으면 0을 씁니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "1"
+        ]
+      },
+      "explanation": "간선이 있으면 1(가중치 그래프는 가중치 값), 없으면 0을 기록합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_matrix",
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)"
+      ]
+    },
+    {
+      "id": "dsa-graph-matrix-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "adjacency-matrix",
+        "undirected"
+      ],
+      "content": {
+        "prompt": "무방향 그래프의 인접 행렬은 대각선 기준으로 ___ 이다.",
+        "hint": "[i][j]와 [j][i]가 늘 같습니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "대칭",
+          "symmetric"
+        ]
+      },
+      "explanation": "무방향 간선 i − j는 [i][j]와 [j][i]를 모두 1로 만들어 행렬이 대각선 기준으로 대칭입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_matrix",
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)"
+      ]
+    },
+    {
+      "id": "dsa-graph-matrix-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "adjacency-matrix",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "정점 100개인 그래프의 인접 행렬 칸 수는?",
+        "options": [
+          "100",
+          "200",
+          "10,000"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "인접 행렬은 V×V 표이므로 100 × 100 = 10,000칸입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_matrix",
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)"
+      ]
+    },
+    {
+      "id": "dsa-graph-matrix-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "adjacency-matrix",
+        "undirected"
+      ],
+      "content": {
+        "prompt": "무방향 간선 0 − 2를 넣으면 1이 되는 칸은?",
+        "options": [
+          "[0][2], [2][0]",
+          "[0][2]만",
+          "[2][2]만"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "무방향 간선은 양방향이므로 [0][2]와 [2][0]을 모두 1로 둡니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_matrix",
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)"
+      ]
+    },
+    {
+      "id": "dsa-graph-matrix-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "adjacency-matrix",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "정점 1,000개, 방향 간선 2,000개의 행렬에서 1인 칸 비율은?",
+        "options": [
+          "약 20%",
+          "약 0.2%",
+          "약 50%"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "칸은 1,000 × 1,000 = 100만 개인데 1인 칸은 2,000개라 약 0.2%이고 나머지는 모두 0입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_matrix",
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)"
+      ]
+    },
+    {
+      "id": "dsa-graph-matrix-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "adjacency-matrix",
+        "graph"
+      ],
+      "content": {
+        "prompt": "인접 행렬에서는 [i][j] 한 칸만 보고 간선 유무를 안다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "인접 행렬은 [i][j] 칸이 곧 i → j 간선 유무라 O(1)에 확인합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_matrix",
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)"
+      ]
+    }
+  ]
+}

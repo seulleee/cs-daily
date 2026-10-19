@@ -1,0 +1,247 @@
+{
+  "track": "dsa",
+  "unit": "u06-heap",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "dsa-heap-median-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "median",
+        "max-heap"
+      ],
+      "content": {
+        "prompt": "중앙값 유지에서 작은 절반을 담는 힙은?",
+        "options": [
+          "최소 힙",
+          "최대 힙",
+          "BST"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "작은 절반에서는 가장 큰 값이 경계라 루트에 와야 하므로 최대 힙에 담습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Median",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-median-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "median",
+        "min-heap"
+      ],
+      "content": {
+        "prompt": "중앙값 유지에서 큰 절반을 담는 힙은?",
+        "options": [
+          "최소 힙",
+          "최대 힙",
+          "BST"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "큰 절반에서는 가장 작은 값이 경계라 루트에 와야 하므로 최소 힙에 담습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Median",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-median-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "median",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "두 힙 방식에서 새 값 하나를 넣는 비용은?",
+        "options": [
+          "O(1)",
+          "O(log n)",
+          "O(n)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "힙 삽입과 두 힙 사이 원소 하나를 옮기는 재균형이 모두 O(log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Median",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-median-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "median",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "두 힙 방식에서 중앙값을 구하는 데 O(log n)이 걸린다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "중앙값은 두 힙의 루트만 보면 되므로 O(1)입니다. O(log n)은 새 값을 넣는 비용입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Median",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-median-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "median",
+        "max-heap"
+      ],
+      "content": {
+        "prompt": "중앙값 유지에서 작은 절반은 ___ 힙에 둔다.",
+        "hint": "작은 절반 중 가장 큰 값이 루트에 와야 합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "최대",
+          "max",
+          "최대 힙",
+          "최대힙"
+        ]
+      },
+      "explanation": "작은 절반은 최대 힙, 큰 절반은 최소 힙에 두어 두 루트가 가운데 경계가 되게 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Median",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-median-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "median",
+        "balance"
+      ],
+      "content": {
+        "prompt": "두 힙의 크기 차이는 ___ 이하로 유지한다.",
+        "hint": "개수가 홀수면 두 힙 크기가 같을 수 없습니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "1",
+          "한 개"
+        ]
+      },
+      "explanation": "크기 차이를 1 이하로 맞춰야 두 루트가 가운데 값이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Median",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-median-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "median",
+        "trace"
+      ],
+      "content": {
+        "prompt": "작은 절반 {1, 3}, 큰 절반 {6, 8}일 때 중앙값은?",
+        "options": [
+          "4.5",
+          "3",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "개수가 짝수라 두 루트 3과 6의 평균 (3 + 6) / 2 = 4.5가 중앙값입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Median",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-median-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "median",
+        "trace"
+      ],
+      "content": {
+        "prompt": "최대 힙 루트 5(3개), 최소 힙 루트 9(2개)일 때 중앙값은?",
+        "options": [
+          "7",
+          "5",
+          "9"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "모두 5개로 홀수이고 원소가 하나 더 많은 쪽은 최대 힙이므로 그 루트 5가 가운데 값입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Median",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-median-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "median",
+        "trace"
+      ],
+      "content": {
+        "prompt": "작은 절반 {2, 4}, 큰 절반 {7}에 10이 오면 중앙값은?",
+        "options": [
+          "4",
+          "7",
+          "5.5"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "10은 4보다 커서 큰 절반에 들어가 {7, 10}이 됩니다. 두 힙이 2개씩이라 (4 + 7) / 2 = 5.5입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Median",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-median-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "median",
+        "min-heap"
+      ],
+      "content": {
+        "prompt": "두 힙 방식에서 큰 절반은 최소 힙에 둔다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "큰 절반은 가장 작은 값이 루트에 오도록 최소 힙에, 작은 절반은 최대 힙에 둡니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Median",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    }
+  ]
+}

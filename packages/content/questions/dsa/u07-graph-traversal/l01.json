@@ -1,0 +1,248 @@
+{
+  "track": "dsa",
+  "unit": "u07-graph-traversal",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "dsa-graph-term-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "graph",
+        "vertex",
+        "edge"
+      ],
+      "content": {
+        "prompt": "정점과 정점을 잇는 간선의 집합은?",
+        "options": [
+          "그래프",
+          "힙",
+          "해시 테이블"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "그래프는 정점(V)과 정점을 잇는 간선(E)으로 이루어진 자료구조입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)"
+      ]
+    },
+    {
+      "id": "dsa-graph-term-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "graph",
+        "directed"
+      ],
+      "content": {
+        "prompt": "간선에 방향이 있는 그래프는?",
+        "options": [
+          "무방향 그래프",
+          "방향 그래프",
+          "가중치 그래프"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "방향 그래프는 A → B와 같이 간선에 방향이 있어 표시된 방향으로만 갈 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)"
+      ]
+    },
+    {
+      "id": "dsa-graph-term-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "graph",
+        "weighted"
+      ],
+      "content": {
+        "prompt": "간선마다 비용 값이 붙은 그래프는?",
+        "options": [
+          "방향 그래프",
+          "무방향 그래프",
+          "가중치 그래프"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "가중치 그래프는 간선마다 비용 값이 붙어 있습니다. 방향 유무와는 별개의 구분입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)"
+      ]
+    },
+    {
+      "id": "dsa-graph-term-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "graph",
+        "undirected"
+      ],
+      "content": {
+        "prompt": "무방향 그래프의 간선 A − B로는 A에서 B로만 갈 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "무방향 간선은 양방향이라 A에서 B로도, B에서 A로도 갈 수 있습니다. 한쪽으로만 가는 것은 방향 간선입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)"
+      ]
+    },
+    {
+      "id": "dsa-graph-term-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "graph",
+        "edge"
+      ],
+      "content": {
+        "prompt": "그래프에서 두 정점을 잇는 연결은 ___ 이다.",
+        "hint": "트리에서도 같은 이름을 썼습니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "간선",
+          "edge",
+          "엣지"
+        ]
+      },
+      "explanation": "두 정점을 잇는 연결을 간선(E)이라 하고, 그래프는 정점과 간선의 집합입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)"
+      ]
+    },
+    {
+      "id": "dsa-graph-term-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "graph",
+        "undirected"
+      ],
+      "content": {
+        "prompt": "간선에 방향이 없어 양쪽으로 갈 수 있는 그래프는 ___ 그래프다.",
+        "hint": "방향 그래프와 반대입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "무방향",
+          "undirected",
+          "무향"
+        ]
+      },
+      "explanation": "무방향 그래프는 간선 A − B로 양쪽 모두 갈 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)"
+      ]
+    },
+    {
+      "id": "dsa-graph-term-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "graph",
+        "directed"
+      ],
+      "content": {
+        "prompt": "방향 간선 A → B, B → C만 있을 때 C에서 A로 갈 수 있나?",
+        "options": [
+          "갈 수 있다",
+          "갈 수 없다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "방향 간선은 표시된 방향으로만 갈 수 있어, C에서 나가는 간선이 없으니 A로 갈 수 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)"
+      ]
+    },
+    {
+      "id": "dsa-graph-term-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "graph",
+        "vertex"
+      ],
+      "content": {
+        "prompt": "무방향 간선 A − B, B − C만 있는 그래프의 정점 수는?",
+        "options": [
+          "3",
+          "2",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "간선의 양 끝에 나오는 정점은 A, B, C 세 개입니다. 간선 수는 2개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)"
+      ]
+    },
+    {
+      "id": "dsa-graph-term-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "graph",
+        "weighted"
+      ],
+      "content": {
+        "prompt": "네트워크 링크마다 지연 시간(ms)을 적은 그래프는?",
+        "options": [
+          "방향 그래프",
+          "트리",
+          "가중치 그래프"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "간선마다 지연 시간 같은 비용 값이 붙어 있으므로 가중치 그래프입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)"
+      ]
+    },
+    {
+      "id": "dsa-graph-term-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "graph",
+        "vertex",
+        "edge"
+      ],
+      "content": {
+        "prompt": "그래프는 정점과 간선으로 이루어진다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "그래프는 정점(V)의 집합과 정점을 잇는 간선(E)의 집합으로 이루어집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Graph_(abstract_data_type)",
+        "https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)"
+      ]
+    }
+  ]
+}

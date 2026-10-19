@@ -1,0 +1,248 @@
+{
+  "track": "dsa",
+  "unit": "u06-heap",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "dsa-heap-prop-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "heap",
+        "complete-binary-tree"
+      ],
+      "content": {
+        "prompt": "힙 속성을 만족하는 완전 이진 트리는?",
+        "options": [
+          "BST",
+          "스택",
+          "힙"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "힙은 부모와 자식 사이의 크기 규칙인 힙 속성을 지키는 완전 이진 트리입니다. BST는 왼쪽·오른쪽 서브트리의 값 순서를 지킵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-prop-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "max-heap",
+        "heap"
+      ],
+      "content": {
+        "prompt": "부모 ≥ 자식이라 루트가 최댓값인 힙은?",
+        "options": [
+          "최대 힙",
+          "최소 힙",
+          "BST"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "부모가 자식보다 크거나 같으면 최대 힙이고, 이 규칙이 모든 부모에서 지켜지므로 루트가 최댓값입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-prop-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "min-heap",
+        "heap"
+      ],
+      "content": {
+        "prompt": "부모 ≤ 자식인 힙에서 루트에 있는 값은?",
+        "options": [
+          "최댓값",
+          "최솟값",
+          "중앙값"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "최소 힙은 부모가 자식보다 작거나 같으므로 루트에 전체의 최솟값이 옵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-prop-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "heap",
+        "bst"
+      ],
+      "content": {
+        "prompt": "힙에서는 왼쪽 자식 값이 오른쪽 자식 값보다 작아야 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "힙 속성은 부모와 자식 사이의 규칙이라 형제끼리는 순서가 없습니다. 왼쪽 < 노드 < 오른쪽은 BST의 조건입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-prop-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "min-heap",
+        "heap"
+      ],
+      "content": {
+        "prompt": "부모 ≤ 자식이라 루트가 최솟값인 힙은 ___ 힙이다.",
+        "hint": "최대 힙과 반대 방향의 규칙입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "최소",
+          "min",
+          "최소 힙",
+          "최소힙"
+        ]
+      },
+      "explanation": "부모가 자식보다 작거나 같은 힙을 최소 힙이라 하며 루트에 최솟값이 옵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-prop-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "heap",
+        "complete-binary-tree"
+      ],
+      "content": {
+        "prompt": "힙은 힙 속성을 만족하는 ___ 이진 트리이다.",
+        "hint": "마지막 레벨 외엔 꽉 차고 마지막 레벨은 왼쪽부터 채운 모양입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "완전",
+          "complete",
+          "완전 이진"
+        ]
+      },
+      "explanation": "힙은 모양이 완전 이진 트리이고, 그 위에서 부모와 자식 사이의 힙 속성을 지킵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-prop-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "min-heap",
+        "heap"
+      ],
+      "content": {
+        "prompt": "루트 2, 자식 5와 3인 트리는 어떤 힙인가?",
+        "options": [
+          "최대 힙",
+          "최소 힙",
+          "힙 아님"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "루트 2가 두 자식 5와 3보다 작거나 같으므로 부모 ≤ 자식인 최소 힙입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-prop-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "heap",
+        "bst"
+      ],
+      "content": {
+        "prompt": "루트 8, 왼쪽 자식 3, 오른쪽 자식 10인 트리는?",
+        "options": [
+          "최대 힙",
+          "최소 힙",
+          "힙 아님"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "8 < 10이라 최대 힙이 아니고 8 > 3이라 최소 힙도 아닙니다. 이 트리는 왼쪽 < 루트 < 오른쪽인 BST입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-prop-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "max-heap",
+        "heap"
+      ],
+      "content": {
+        "prompt": "최대 힙에서 루트의 두 자식이 7과 9다. 가능한 루트 값은?",
+        "options": [
+          "6",
+          "8",
+          "10"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "최대 힙은 부모 ≥ 자식이므로 루트는 9 이상이어야 합니다. 6과 8은 자식 9보다 작습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-prop-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "max-heap",
+        "heap"
+      ],
+      "content": {
+        "prompt": "최대 힙의 루트에는 힙 전체의 최댓값이 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "모든 부모가 자식보다 크거나 같으므로 맨 위의 루트가 전체 최댓값입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,244 @@
+{
+  "track": "dsa",
+  "unit": "u07-graph-traversal",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "dsa-graph-cycle-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dfs",
+        "cycle-detection"
+      ],
+      "content": {
+        "prompt": "DFS에서 탐색 중인 정점의 상태 색은?",
+        "options": [
+          "흰색",
+          "검정",
+          "회색"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "미방문은 흰색, 탐색 중(재귀 스택에 있음)은 회색, 탐색 완료는 검정으로 나타냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Depth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-cycle-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dfs",
+        "back-edge"
+      ],
+      "content": {
+        "prompt": "회색 정점으로 향하는 간선은?",
+        "options": [
+          "역방향 간선",
+          "무방향 간선",
+          "가중치 간선"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "탐색 중인 회색 정점으로 되돌아가는 간선을 역방향 간선이라 하며 방향 그래프 사이클의 증거입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Depth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-cycle-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cycle-detection",
+        "undirected"
+      ],
+      "content": {
+        "prompt": "무방향 그래프 DFS에서 직전 부모를 다시 만나면?",
+        "options": [
+          "사이클이다",
+          "사이클이 아니다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "무방향 간선은 양방향이라 방금 지나온 간선으로 부모가 보일 뿐입니다. 부모가 아닌 방문 정점을 만나야 사이클입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Depth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-cycle-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cycle-detection",
+        "directed"
+      ],
+      "content": {
+        "prompt": "방향 그래프 DFS에서 검정 정점을 만나면 사이클이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "검정은 이미 탐색이 끝난 정점이라 다른 경로로 닿았을 뿐입니다. 회색 정점을 다시 만나야 사이클입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Depth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-cycle-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dfs",
+        "cycle-detection"
+      ],
+      "content": {
+        "prompt": "DFS에서 아직 방문하지 않은 정점의 색은 ___ 이다.",
+        "hint": "탐색 중은 회색, 완료는 검정입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "흰색",
+          "white",
+          "하양",
+          "흰"
+        ]
+      },
+      "explanation": "세 가지 상태는 미방문(흰색), 탐색 중(회색), 완료(검정)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Depth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-cycle-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dfs",
+        "back-edge"
+      ],
+      "content": {
+        "prompt": "회색 정점으로 향하는 간선을 ___ 간선이라 한다.",
+        "hint": "방향 그래프 사이클의 증거입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "역방향",
+          "back",
+          "역"
+        ]
+      },
+      "explanation": "지금 탐색 경로에 있는 회색 정점으로 되돌아가는 간선이 역방향 간선이며, 있으면 사이클이 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Depth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-cycle-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cycle-detection",
+        "directed"
+      ],
+      "content": {
+        "prompt": "방향 간선 A→B, B→C, C→A를 A부터 DFS하면 사이클은?",
+        "options": [
+          "있다",
+          "없다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "A, B, C가 회색인 채 C에서 A로 가는 간선을 만나므로 역방향 간선이 있어 사이클입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Depth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-cycle-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cycle-detection",
+        "directed"
+      ],
+      "content": {
+        "prompt": "방향 간선 A→B, A→C, B→C를 A부터 DFS(알파벳순)하면 사이클은?",
+        "options": [
+          "있다",
+          "없다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "A→B→C 탐색이 끝나면 C는 검정이 되고, 이후 A→C는 검정 정점으로 가는 간선이라 사이클이 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Depth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-cycle-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cycle-detection",
+        "undirected"
+      ],
+      "content": {
+        "prompt": "무방향 간선 A−B, B−C, C−A. A부터 DFS 중 C에서 A를 보면?",
+        "options": [
+          "사이클 발견",
+          "사이클 아님"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "C의 직전 부모는 B인데 이미 방문한 A를 만났으므로 사이클입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Depth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-cycle-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cycle-detection",
+        "directed"
+      ],
+      "content": {
+        "prompt": "방향 그래프 DFS에서 재귀 스택에 있는 정점을 다시 만나면 사이클이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "재귀 스택에 있는 회색 정점으로 돌아가는 간선은 지금 경로가 자기 자신으로 돌아오는 것이므로 사이클입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Depth-first_search"
+      ]
+    }
+  ]
+}

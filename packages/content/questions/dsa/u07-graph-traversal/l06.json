@@ -1,0 +1,242 @@
+{
+  "track": "dsa",
+  "unit": "u07-graph-traversal",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "dsa-graph-bfsdist-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bfs",
+        "shortest-distance"
+      ],
+      "content": {
+        "prompt": "간선 비용이 없을 때 최소 간선 수를 구하는 탐색은?",
+        "options": [
+          "이진 탐색",
+          "BFS",
+          "선형 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "가중치 없는 그래프에서는 BFS가 처음 도달한 거리가 최소 간선 수입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search",
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfsdist-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bfs",
+        "shortest-distance"
+      ],
+      "content": {
+        "prompt": "BFS에서 새로 찾은 이웃의 dist를 정하는 식은?",
+        "options": [
+          "dist[현재] + 1",
+          "dist[현재] × 2",
+          "dist[현재] − 1"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "현재 정점에서 간선 하나를 더 지나므로 dist[이웃] = dist[현재] + 1입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search",
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfsdist-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bfs",
+        "weighted"
+      ],
+      "content": {
+        "prompt": "BFS가 최단 거리를 보장하는 그래프는?",
+        "options": [
+          "가중치가 다른 그래프",
+          "가중치 없는 그래프"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "BFS는 간선 수가 적은 순서로 방문하므로, 간선 비용이 모두 같을 때(가중치 없음)만 최단 거리를 보장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search",
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfsdist-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "bfs",
+        "weighted"
+      ],
+      "content": {
+        "prompt": "간선 가중치가 서로 달라도 BFS는 최단 경로를 찾는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "BFS는 간선 수만 세므로 가중치가 다르면 최단 경로를 보장하지 못하고 다익스트라 같은 알고리즘이 필요합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search",
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfsdist-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "bfs",
+        "shortest-distance"
+      ],
+      "content": {
+        "prompt": "BFS로 새로 찾은 정점의 거리는 현재 정점 거리 + ___ 이다.",
+        "hint": "간선 하나를 더 지납니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "1"
+        ]
+      },
+      "explanation": "이웃은 현재 정점에서 간선 하나 더 떨어져 있으므로 거리가 1 늘어납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search",
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfsdist-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "bfs",
+        "shortest-distance"
+      ],
+      "content": {
+        "prompt": "가중치 없는 그래프에서 BFS의 거리는 최소 ___ 수이다.",
+        "hint": "정점과 정점을 잇는 것입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "간선",
+          "edge"
+        ]
+      },
+      "explanation": "가중치가 없으면 거리는 지나는 간선 수이고, BFS가 처음 도달한 거리가 그 최솟값입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search",
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfsdist-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bfs",
+        "trace"
+      ],
+      "content": {
+        "prompt": "간선 A−B, A−C, B−D, C−D, D−E에서 A부터 E까지 최단 거리는?",
+        "options": [
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "A의 이웃 B, C가 거리 1, D가 거리 2, E가 거리 3입니다. 경로는 A, B, D, E입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search",
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfsdist-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bfs",
+        "trace"
+      ],
+      "content": {
+        "prompt": "dist가 2인 정점을 꺼냈다. 새로 찾은 이웃의 dist는?",
+        "options": [
+          "3",
+          "2",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "dist[이웃] = dist[현재] + 1이므로 2 + 1 = 3입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search",
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfsdist-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bfs",
+        "queue"
+      ],
+      "content": {
+        "prompt": "BFS가 거리 2인 정점을 꺼내기 시작했다. 거리 1인 정점은?",
+        "options": [
+          "모두 꺼냈다",
+          "아직 남아 있다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "큐는 FIFO라 거리 1인 정점이 모두 먼저 꺼내진 뒤에야 거리 2인 정점이 나옵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search",
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfsdist-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "bfs",
+        "shortest-distance"
+      ],
+      "content": {
+        "prompt": "가중치 없는 그래프에서 BFS가 처음 도달한 거리는 최소 간선 수이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "거리 d인 정점을 모두 처리한 뒤 d+1로 넘어가므로, 처음 도달한 거리가 최단 거리입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search",
+        "https://en.wikipedia.org/wiki/Shortest_path_problem"
+      ]
+    }
+  ]
+}

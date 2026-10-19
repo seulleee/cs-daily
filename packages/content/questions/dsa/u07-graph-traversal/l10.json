@@ -1,0 +1,247 @@
+{
+  "track": "dsa",
+  "unit": "u07-graph-traversal",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "dsa-graph-topo-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "topological-sort",
+        "dag"
+      ],
+      "content": {
+        "prompt": "모든 간선 u → v에서 u가 v보다 앞에 오게 나열하는 것은?",
+        "options": [
+          "위상 정렬",
+          "힙 정렬",
+          "레벨 순회"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "위상 정렬은 모든 간선 u → v에서 u가 v보다 앞에 오도록 정점을 나열합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Topological_sorting",
+        "https://en.wikipedia.org/wiki/Directed_acyclic_graph"
+      ]
+    },
+    {
+      "id": "dsa-graph-topo-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "topological-sort",
+        "dag"
+      ],
+      "content": {
+        "prompt": "위상 정렬이 가능한 그래프는?",
+        "options": [
+          "DAG",
+          "사이클 있는 그래프",
+          "무방향 그래프"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DAG(사이클 없는 방향 그래프)여야 위상 정렬이 가능합니다. 사이클이 있으면 순서에 모순이 생깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Topological_sorting",
+        "https://en.wikipedia.org/wiki/Directed_acyclic_graph"
+      ]
+    },
+    {
+      "id": "dsa-graph-topo-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "topological-sort",
+        "kahn"
+      ],
+      "content": {
+        "prompt": "칸 알고리즘이 꺼내 나열하는 정점은?",
+        "options": [
+          "진출 차수 0",
+          "진입 차수 0",
+          "차수 최대"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "칸 알고리즘은 진입 차수가 0인, 즉 먼저 와야 할 정점이 남지 않은 정점을 꺼내 나열합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Topological_sorting",
+        "https://en.wikipedia.org/wiki/Directed_acyclic_graph"
+      ]
+    },
+    {
+      "id": "dsa-graph-topo-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "topological-sort",
+        "dag"
+      ],
+      "content": {
+        "prompt": "사이클이 있는 방향 그래프도 위상 정렬할 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "사이클이 있으면 서로가 서로보다 앞에 와야 하는 모순이 생겨 위상 정렬이 불가능합니다. DAG여야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Topological_sorting",
+        "https://en.wikipedia.org/wiki/Directed_acyclic_graph"
+      ]
+    },
+    {
+      "id": "dsa-graph-topo-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dag",
+        "topological-sort"
+      ],
+      "content": {
+        "prompt": "사이클 없는 방향 그래프의 약자는 ___ 이다.",
+        "hint": "위상 정렬이 가능한 그래프의 조건입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "DAG",
+          "대그"
+        ]
+      },
+      "explanation": "DAG는 Directed Acyclic Graph, 사이클 없는 방향 그래프이며 위상 정렬이 가능한 조건입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Topological_sorting",
+        "https://en.wikipedia.org/wiki/Directed_acyclic_graph"
+      ]
+    },
+    {
+      "id": "dsa-graph-topo-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "topological-sort",
+        "dfs"
+      ],
+      "content": {
+        "prompt": "DFS 방식은 탐색이 끝난 순서의 ___ 이 위상 정렬이다.",
+        "hint": "끝난 순서를 뒤집습니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "역순",
+          "거꾸로",
+          "반대 순서",
+          "reverse"
+        ]
+      },
+      "explanation": "DFS에서 늦게 끝난 정점일수록 앞에 와야 하므로, 끝난 순서를 역순으로 뒤집으면 위상 정렬입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Topological_sorting",
+        "https://en.wikipedia.org/wiki/Directed_acyclic_graph"
+      ]
+    },
+    {
+      "id": "dsa-graph-topo-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "topological-sort",
+        "trace"
+      ],
+      "content": {
+        "prompt": "간선 A→B, A→C, B→D, C→D의 위상 정렬로 맞는 것은?",
+        "options": [
+          "B, A, C, D",
+          "A, D, B, C",
+          "A, B, C, D"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "A, B, C, D는 모든 간선에서 앞 정점이 먼저 옵니다. B, A는 A→B를, D, B는 B→D를 어깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Topological_sorting",
+        "https://en.wikipedia.org/wiki/Directed_acyclic_graph"
+      ]
+    },
+    {
+      "id": "dsa-graph-topo-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "topological-sort",
+        "kahn"
+      ],
+      "content": {
+        "prompt": "칸 알고리즘에서 A를 꺼내면 간선 A→B의 B는?",
+        "options": [
+          "진출 차수 1 감소",
+          "진입 차수 1 감소",
+          "바로 제거"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "A를 나열했으니 A→B 조건이 채워져 B의 진입 차수를 1 줄입니다. 0이 되면 B를 꺼낼 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Topological_sorting",
+        "https://en.wikipedia.org/wiki/Directed_acyclic_graph"
+      ]
+    },
+    {
+      "id": "dsa-graph-topo-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "topological-sort",
+        "dfs"
+      ],
+      "content": {
+        "prompt": "DFS가 끝난 순서가 D, B, C, A일 때 위상 정렬은?",
+        "options": [
+          "D, B, C, A",
+          "A, C, B, D",
+          "A, B, C, D"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "끝난 순서 D, B, C, A를 역순으로 뒤집은 A, C, B, D가 DFS 방식의 위상 정렬입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Topological_sorting",
+        "https://en.wikipedia.org/wiki/Directed_acyclic_graph"
+      ]
+    },
+    {
+      "id": "dsa-graph-topo-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "topological-sort",
+        "dag"
+      ],
+      "content": {
+        "prompt": "위상 정렬에서 간선 u → v의 u는 v보다 앞에 온다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "위상 정렬은 모든 간선 u → v에서 u가 v보다 앞에 오도록 정점을 나열한 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Topological_sorting",
+        "https://en.wikipedia.org/wiki/Directed_acyclic_graph"
+      ]
+    }
+  ]
+}

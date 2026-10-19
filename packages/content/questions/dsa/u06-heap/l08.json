@@ -1,0 +1,248 @@
+{
+  "track": "dsa",
+  "unit": "u06-heap",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "dsa-heap-topk-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "top-k",
+        "heap"
+      ],
+      "content": {
+        "prompt": "n개 중 가장 큰 k개를 찾는 문제는?",
+        "options": [
+          "정렬",
+          "Top-K",
+          "중앙값"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "n개 중 가장 큰 k개를 찾는 문제를 Top-K라고 합니다. 크기 k의 최소 힙으로 풀 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Priority_queue",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-topk-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "top-k",
+        "min-heap"
+      ],
+      "content": {
+        "prompt": "가장 큰 k개를 구할 때 쓰는 크기 k의 힙은?",
+        "options": [
+          "최소 힙",
+          "최대 힙",
+          "BST"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "버릴 후보인 가장 작은 값을 루트에서 바로 봐야 하므로 최소 힙을 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Priority_queue",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-topk-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "top-k",
+        "min-heap"
+      ],
+      "content": {
+        "prompt": "새 값이 크기 k 최소 힙의 루트보다 크면?",
+        "options": [
+          "그냥 버림",
+          "힙 크기 늘림",
+          "루트와 교체"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "새 값이 힙 안 최솟값보다 크면 루트를 빼고 새 값을 넣습니다. 작으면 버립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Priority_queue",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-topk-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "top-k",
+        "min-heap"
+      ],
+      "content": {
+        "prompt": "가장 큰 k개를 구하려면 크기 k의 최대 힙을 쓴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "크기 k의 최소 힙을 씁니다. 루트가 힙 안 최솟값이라 새 값과 비교해 바로 교체할 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Priority_queue",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-topk-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "top-k",
+        "min-heap"
+      ],
+      "content": {
+        "prompt": "가장 큰 k개를 구할 때 크기 k의 ___ 힙을 쓴다.",
+        "hint": "버릴 후보인 가장 작은 값이 루트에 와야 합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "최소",
+          "min",
+          "최소 힙",
+          "최소힙"
+        ]
+      },
+      "explanation": "크기 k의 최소 힙은 루트가 k개 중 가장 작은 값이라, 새 값이 더 크면 루트와 교체합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Priority_queue",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-topk-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "top-k",
+        "min-heap"
+      ],
+      "content": {
+        "prompt": "새 값이 최소 힙의 루트보다 크면 루트와 ___ 한다.",
+        "hint": "루트를 빼고 새 값을 넣습니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "교체",
+          "교환",
+          "바꿈",
+          "replace"
+        ]
+      },
+      "explanation": "새 값이 힙 안 최솟값보다 크면 루트를 새 값으로 교체하고 sift-down합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Priority_queue",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-topk-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "top-k",
+        "trace"
+      ],
+      "content": {
+        "prompt": "[4, 9, 1, 7, 3]에서 크기 2 최소 힙으로 Top-2를 구하면 루트는?",
+        "options": [
+          "9",
+          "7",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "4, 9가 들어간 뒤 1은 버리고, 7이 루트 4와 교체되며 3은 버려집니다. 힙에는 7, 9가 남고 루트는 7입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Priority_queue",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-topk-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "top-k",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "크기 k 최소 힙으로 Top-K를 구하는 비용은?",
+        "options": [
+          "O(n log k)",
+          "O(n log n)",
+          "O(k)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "원소 n개마다 크기 k 힙에서 O(log k) 연산을 하므로 O(n log k)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Priority_queue",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-topk-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "top-k",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "n = 100만에서 Top-10을 구할 때 더 빠른 방법은?",
+        "options": [
+          "전체 정렬",
+          "크기 10 최소 힙"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "힙 방법은 O(n log k)로 log 10 정도만 곱해지고, 전체 정렬은 O(n log n)이라 더 느립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Priority_queue",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-topk-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "top-k",
+        "heap"
+      ],
+      "content": {
+        "prompt": "크기 k 최소 힙으로 Top-K를 구하면 힙에 가장 큰 k개가 남는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "작은 값은 계속 교체되어 나가므로 끝나면 가장 큰 k개가 남고, 루트는 k번째로 큰 값입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Priority_queue",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "track": "dsa",
+  "unit": "u06-heap",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "dsa-heap-siftup-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "heap",
+        "insert"
+      ],
+      "content": {
+        "prompt": "힙에 새 원소를 넣을 때 처음 두는 자리는?",
+        "options": [
+          "루트",
+          "배열 끝",
+          "배열 가운데"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "새 원소는 배열 끝, 즉 마지막 리프 자리에 둡니다. 그래야 완전 이진 트리 모양이 유지됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-siftup-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "heap",
+        "sift-up"
+      ],
+      "content": {
+        "prompt": "새 원소를 부모와 교환하며 위로 올리는 과정은?",
+        "options": [
+          "sift-up",
+          "sift-down",
+          "회전"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "sift-up은 새 원소를 부모와 비교해 교환하며 위로 올립니다. 회전은 AVL 트리의 균형 연산입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-siftup-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "heap",
+        "sift-up"
+      ],
+      "content": {
+        "prompt": "최대 힙의 sift-up이 멈추는 때는?",
+        "options": [
+          "리프에 닿을 때",
+          "자식보다 클 때",
+          "부모 이하일 때"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "새 원소가 부모보다 작거나 같아지면(또는 루트에 닿으면) 힙 속성이 맞으므로 멈춥니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-siftup-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "heap",
+        "insert"
+      ],
+      "content": {
+        "prompt": "힙에 원소를 삽입하면 새 원소를 먼저 루트에 둔다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "새 원소는 먼저 배열 끝에 두고 sift-up으로 올립니다. 루트에 먼저 두면 완전 이진 트리 모양이 깨집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-siftup-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "heap",
+        "sift-up"
+      ],
+      "content": {
+        "prompt": "새 원소를 위로 올리며 힙을 고치는 과정은 ___ 이다.",
+        "hint": "삭제 때 쓰는 sift-down과 방향이 반대입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "sift up",
+          "sift-up",
+          "siftup",
+          "시프트 업",
+          "시프트업"
+        ]
+      },
+      "explanation": "배열 끝에 둔 새 원소를 부모와 교환하며 올리는 과정을 sift-up이라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-siftup-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "heap",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "힙 삽입은 최대 트리의 ___ 만큼 올라간다.",
+        "hint": "루트에서 가장 먼 리프까지의 간선 수입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "높이",
+          "height"
+        ]
+      },
+      "explanation": "sift-up은 한 번에 한 레벨씩 올라가므로 최대 트리 높이만큼 교환하고, 이 높이가 log n 정도라 O(log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-siftup-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "heap",
+        "sift-up"
+      ],
+      "content": {
+        "prompt": "최대 힙 [9, 5, 7]에 8을 넣은 결과는?",
+        "options": [
+          "[9, 8, 7, 5]",
+          "[9, 5, 7, 8]",
+          "[8, 9, 7, 5]"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "8은 인덱스 3에 놓이고 부모 5보다 커서 교환됩니다. 다음 부모 9보다는 작아 멈추므로 [9, 8, 7, 5]입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-siftup-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "heap",
+        "sift-up"
+      ],
+      "content": {
+        "prompt": "최대 힙 [9, 6, 8, 2]에 7을 넣을 때 교환 횟수는?",
+        "options": [
+          "0번",
+          "1번",
+          "2번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "7은 인덱스 4에 놓이고 부모 6보다 커서 한 번 교환됩니다. 다음 부모 9보다는 작아 멈춥니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-siftup-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "heap",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "삽입 후 원소가 1023개일 때 sift-up 교환은 최대 몇 번인가?",
+        "options": [
+          "9번",
+          "10번",
+          "512번"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "노드 1023개(2¹⁰ − 1)는 높이 9인 포화 이진 트리라, 새 원소는 깊이 9에서 출발해 최대 9번 교환합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    },
+    {
+      "id": "dsa-heap-siftup-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "heap",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "힙 삽입은 O(log n) 시간이 걸린다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "새 원소는 최대 트리 높이만큼 올라가고, 완전 이진 트리의 높이는 log n 정도라 삽입은 O(log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+        "https://en.wikipedia.org/wiki/Binary_heap"
+      ]
+    }
+  ]
+}
