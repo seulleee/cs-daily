@@ -1,0 +1,233 @@
+{
+  "track": "dsa",
+  "unit": "u12-greedy",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "dsa-exchange-argument-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "exchange-argument",
+        "counterexample"
+      ],
+      "content": {
+        "prompt": "최적해 속 선택을 그리디 선택으로 바꿔도 나빠지지 않음을 보이는 증명은?",
+        "options": [
+          "반례",
+          "교환 논증",
+          "완전 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "교환 논증은 최적해의 한 선택을 그리디 선택으로 바꿔도 결과가 나빠지지 않음을 보여 그리디를 증명합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-exchange-argument-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "exchange-argument",
+        "counterexample"
+      ],
+      "content": {
+        "prompt": "그리디 결과가 최적이 아닌 입력 하나를 가리키는 말은?",
+        "options": [
+          "기저 사례",
+          "교환 논증",
+          "반례"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "반례는 그리디 결과가 최적이 아닌 입력 하나로, 그리디가 틀렸음을 보이는 데 충분합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-exchange-argument-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "exchange-argument",
+        "counterexample"
+      ],
+      "content": {
+        "prompt": "그리디가 틀렸음을 보이는 데 필요한 것은?",
+        "options": [
+          "반례 하나",
+          "모든 입력 검사"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "최적이 아닌 입력이 하나만 있어도 그리디가 항상 최적이라는 주장은 틀립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-exchange-argument-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "exchange-argument",
+        "counterexample"
+      ],
+      "content": {
+        "prompt": "교환 논증은 그리디가 틀렸음을 보이는 방법이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "교환 논증은 그리디가 최적임을 증명하는 방법입니다. 틀렸음은 반례로 보입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-exchange-argument-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "exchange-argument",
+        "counterexample"
+      ],
+      "content": {
+        "prompt": "그리디 결과가 최적이 아닌 입력 하나를 ___ 라 한다.",
+        "hint": "주장에 반대되는 예를 가리킵니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "반례",
+          "counterexample",
+          "반증 사례"
+        ]
+      },
+      "explanation": "반례가 하나라도 있으면 그 그리디 규칙은 최적을 보장하지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-exchange-argument-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "exchange-argument",
+        "counterexample"
+      ],
+      "content": {
+        "prompt": "최적해의 선택을 그리디 선택으로 바꿔 보이는 증명은 ___ 논증이다.",
+        "hint": "두 선택을 맞바꾸는 방식입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "교환",
+          "exchange"
+        ]
+      },
+      "explanation": "교환 논증은 최적해의 선택을 그리디 선택으로 바꿔도 나빠지지 않음을 보여 그리디 선택 속성을 증명합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-exchange-argument-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "exchange-argument",
+        "counterexample"
+      ],
+      "content": {
+        "prompt": "작은 입력에서 반례를 찾을 때 비교 기준은?",
+        "options": [
+          "그리디 결과",
+          "완전 탐색 결과"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "완전 탐색은 항상 정답을 주므로, 그리디 결과와 다르면 그 입력이 반례입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-exchange-argument-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "exchange-argument",
+        "counterexample"
+      ],
+      "content": {
+        "prompt": "최솟값 문제에서 그리디 5, 완전 탐색 4가 나온 입력은?",
+        "options": [
+          "반례",
+          "교환 논증",
+          "기저 사례"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "그리디 결과 5가 최적값 4보다 나쁘므로 이 입력은 그리디의 반례입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-exchange-argument-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "exchange-argument",
+        "counterexample"
+      ],
+      "content": {
+        "prompt": "입력 1,000개를 시험해 모두 맞았다면 그리디는?",
+        "options": [
+          "최적이 증명됨",
+          "증명된 것 아님"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시험은 반례를 못 찾았을 뿐 최적을 증명하지 않습니다. 최적은 교환 논증 같은 증명으로 보입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-exchange-argument-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "exchange-argument",
+        "counterexample"
+      ],
+      "content": {
+        "prompt": "교환 논증은 최적해의 선택을 그리디 선택으로 바꿔도 나빠지지 않음을 보인다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "그렇게 바꾼 해도 최적이므로 그리디 선택을 포함하는 최적해가 있다는 것이 증명됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    }
+  ]
+}

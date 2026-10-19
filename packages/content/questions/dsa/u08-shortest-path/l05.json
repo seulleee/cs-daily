@@ -1,0 +1,240 @@
+{
+  "track": "dsa",
+  "unit": "u08-shortest-path",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "dsa-floyd-warshall-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "floyd-warshall",
+        "all-pairs"
+      ],
+      "content": {
+        "prompt": "V×V 표 하나에 모든 쌍의 거리를 채우는 알고리즘은?",
+        "options": [
+          "다익스트라",
+          "벨만-포드",
+          "플로이드-워셜"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "플로이드-워셜은 d[i][j] 표를 갱신해 모든 정점 쌍의 최단 거리를 한 번에 구합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-floyd-warshall-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "floyd-warshall",
+        "all-pairs"
+      ],
+      "content": {
+        "prompt": "플로이드-워셜의 바깥 반복이 하나씩 늘리는 것은?",
+        "options": [
+          "경유 정점 k",
+          "출발 정점 i",
+          "도착 정점 j"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "바깥 반복에서 경유 정점 k를 하나씩 늘리며, 모든 i, j 쌍에 대해 k를 거치는 경로를 비교합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-floyd-warshall-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "floyd-warshall",
+        "all-pairs"
+      ],
+      "content": {
+        "prompt": "플로이드-워셜의 시간 복잡도는?",
+        "options": [
+          "O(V²)",
+          "O(V³)",
+          "O(VE)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "k, i, j 세 반복이 각각 V번 돌므로 시간 O(V³)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-floyd-warshall-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "floyd-warshall",
+        "all-pairs"
+      ],
+      "content": {
+        "prompt": "플로이드-워셜의 표는 O(V³) 공간을 쓴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "표는 V×V 크기라 공간은 O(V²)입니다. O(V³)은 시간 복잡도입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-floyd-warshall-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "floyd-warshall",
+        "all-pairs"
+      ],
+      "content": {
+        "prompt": "모든 정점 쌍 최단 거리를 구하는 알고리즘은 플로이드-___ 이다.",
+        "hint": "알고리즘을 발표한 연구자 두 사람 중 한 사람의 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "워셜",
+          "Warshall",
+          "워샬",
+          "와샬",
+          "워셸"
+        ]
+      },
+      "explanation": "플로이드-워셜은 경유 정점을 늘려 가며 모든 정점 쌍의 최단 거리를 구합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-floyd-warshall-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "floyd-warshall",
+        "all-pairs"
+      ],
+      "content": {
+        "prompt": "점화식에서 i와 j 사이에 거쳐 가는 정점 k를 ___ 정점이라 한다.",
+        "hint": "바깥 반복에서 하나씩 늘려 허용하는 정점입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "경유",
+          "중간",
+          "intermediate",
+          "거쳐 가는"
+        ]
+      },
+      "explanation": "경유 정점 k를 허용했을 때 i→k→j가 더 짧으면 d[i][j]를 d[i][k] + d[k][j]로 줄입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-floyd-warshall-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "floyd-warshall",
+        "all-pairs"
+      ],
+      "content": {
+        "prompt": "d[i][j]=9, d[i][k]=3, d[k][j]=4이면 갱신 후 d[i][j]는?",
+        "options": [
+          "7",
+          "9",
+          "12"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "min(9, 3 + 4) = 7이라 k를 거치는 경로가 더 짧아 7로 줄어듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-floyd-warshall-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "floyd-warshall",
+        "all-pairs"
+      ],
+      "content": {
+        "prompt": "d[i][j]=5, d[i][k]=2, d[k][j]=6이면 갱신 후 d[i][j]는?",
+        "options": [
+          "8",
+          "5",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "min(5, 2 + 6) = 5라 k를 거치면 더 길어져 그대로 5입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-floyd-warshall-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "floyd-warshall",
+        "all-pairs"
+      ],
+      "content": {
+        "prompt": "실행 후 d[3][3]이 −2이면?",
+        "options": [
+          "정상 결과",
+          "간선 없음",
+          "음수 사이클 존재"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "자기 자신까지 거리는 0이어야 하는데 음수가 되었다면, 3을 지나는 음수 사이클이 있다는 뜻입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-floyd-warshall-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "floyd-warshall",
+        "all-pairs"
+      ],
+      "content": {
+        "prompt": "플로이드-워셜의 결과 표에는 모든 정점 쌍의 거리가 담긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "플로이드-워셜은 출발점 하나가 아니라 모든 정점 쌍 (i, j)의 최단 거리를 V×V 표에 구합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm"
+      ]
+    }
+  ]
+}

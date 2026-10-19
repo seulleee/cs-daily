@@ -1,0 +1,232 @@
+{
+  "track": "dsa",
+  "unit": "u12-greedy",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "dsa-greedy-choice-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "greedy-choice-property",
+        "optimal-substructure"
+      ],
+      "content": {
+        "prompt": "지금의 그리디 선택을 포함하는 최적해가 존재하는 성질은?",
+        "options": [
+          "그리디 선택 속성",
+          "중복 부분 문제",
+          "결정성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "그리디 선택 속성은 지금의 그리디 선택을 포함하는 최적해가 있다는 성질입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-choice-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "greedy-choice-property",
+        "optimal-substructure"
+      ],
+      "content": {
+        "prompt": "선택 뒤 남은 문제의 최적해와 합쳐 전체 최적해가 되는 성질은?",
+        "options": [
+          "최적 부분 구조",
+          "그리디 선택 속성",
+          "단조성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "최적 부분 구조는 선택 뒤 남은 문제를 최적으로 풀어 합치면 전체 최적해가 된다는 성질입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-choice-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "greedy-choice-property",
+        "optimal-substructure"
+      ],
+      "content": {
+        "prompt": "그리디가 최적을 보장하려면 필요한 것은?",
+        "options": [
+          "한 성질만",
+          "두 성질 모두"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "그리디 선택 속성과 최적 부분 구조가 모두 성립해야 그리디가 최적해를 보장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-choice-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "greedy-choice-property",
+        "optimal-substructure"
+      ],
+      "content": {
+        "prompt": "최적 부분 구조만 있으면 그리디는 항상 최적이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "최적 부분 구조는 DP에도 필요한 성질입니다. 그리디 선택 속성까지 있어야 그리디가 최적입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-choice-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "greedy-choice-property",
+        "optimal-substructure"
+      ],
+      "content": {
+        "prompt": "그리디 선택을 포함하는 최적해가 있는 성질은 그리디 ___ 속성이다.",
+        "hint": "매 단계에서 하나를 고르는 행위를 가리킵니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "선택",
+          "choice"
+        ]
+      },
+      "explanation": "그리디 선택 속성이 있으면 첫 그리디 선택을 확정해도 최적해를 놓치지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-choice-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "greedy-choice-property",
+        "optimal-substructure"
+      ],
+      "content": {
+        "prompt": "그리디가 최적이려면 그리디 선택 속성과 최적 ___ 구조가 필요하다.",
+        "hint": "DP 적용 조건에도 나온 구조입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "부분",
+          "sub",
+          "부분 구조"
+        ]
+      },
+      "explanation": "최적 부분 구조가 있어야 선택 뒤 남은 문제의 최적해와 합쳐 전체 최적해가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-choice-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "greedy-choice-property",
+        "optimal-substructure"
+      ],
+      "content": {
+        "prompt": "그리디 선택 속성이 없는 문제에서 그리디 결과는?",
+        "options": [
+          "최적 보장 안 됨",
+          "항상 최적"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "그리디 선택을 포함하는 최적해가 없을 수 있으니, 그리디 결과가 최적이라는 보장이 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-choice-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "greedy-choice-property",
+        "optimal-substructure"
+      ],
+      "content": {
+        "prompt": "첫 그리디 선택을 포함하는 최적해가 없다면?",
+        "options": [
+          "그리디가 틀림",
+          "그리디가 최적"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "첫 선택부터 모든 최적해에서 벗어났으므로 그리디는 최적해를 낼 수 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-choice-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "greedy-choice-property",
+        "optimal-substructure"
+      ],
+      "content": {
+        "prompt": "두 성질이 모두 증명된 문제에서 그리디는?",
+        "options": [
+          "근사값만 낸다",
+          "최적해를 낸다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "그리디 선택 속성과 최적 부분 구조가 모두 성립하면 그리디가 최적해를 냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-choice-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "greedy-choice-property",
+        "optimal-substructure"
+      ],
+      "content": {
+        "prompt": "그리디 선택을 포함하는 최적해가 있으면 그리디 선택 속성이 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "그리디 선택 속성은 바로 지금의 그리디 선택을 포함하는 최적해가 존재한다는 성질입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    }
+  ]
+}

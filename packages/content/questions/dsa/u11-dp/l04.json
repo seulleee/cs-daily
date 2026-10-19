@@ -1,0 +1,238 @@
+{
+  "track": "dsa",
+  "unit": "u11-dp",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "dsa-tabulation-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tabulation",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "작은 부분 문제부터 반복문으로 표를 채우는 기법은?",
+        "options": [
+          "메모이제이션",
+          "타뷸레이션",
+          "백트래킹"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "타뷸레이션은 작은 부분 문제부터 반복문으로 dp 배열을 채워 큰 문제의 답에 이릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-tabulation-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tabulation",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "dp[0], dp[1], dp[2] … 순으로 계산하는 방향은?",
+        "options": [
+          "상향식",
+          "하향식",
+          "무작위"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "상향식(Bottom-up)은 가장 작은 부분 문제부터 큰 쪽으로 차례로 계산합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-tabulation-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tabulation",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "재귀 호출 없이 표를 채우는 방식은?",
+        "options": [
+          "메모이제이션",
+          "타뷸레이션"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "타뷸레이션은 반복문만 쓰고, 메모이제이션은 재귀 호출로 내려갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-tabulation-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "tabulation",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "타뷸레이션은 큰 문제부터 재귀로 내려가며 푼다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "타뷸레이션은 작은 부분 문제부터 반복문으로 올라갑니다. 큰 문제에서 재귀로 내려가는 쪽은 메모이제이션입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-tabulation-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tabulation",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "작은 문제부터 표를 채우는 상향식 기법은 ___ 이다.",
+        "hint": "표(table)를 만든다는 뜻의 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "타뷸레이션",
+          "tabulation",
+          "테뷸레이션",
+          "태뷸레이션",
+          "타불레이션"
+        ]
+      },
+      "explanation": "타뷸레이션은 dp 표를 작은 부분 문제부터 정해진 순서로 채웁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-tabulation-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "tabulation",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "dp[0], dp[1]처럼 표에서 바로 아는 시작값은 ___ 사례이다.",
+        "hint": "재귀가 멈추는 조건과 같은 역할을 합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "기저",
+          "base",
+          "기저 사례",
+          "base case"
+        ]
+      },
+      "explanation": "기저 사례는 다른 칸을 참조하지 않고 바로 정하는 값으로, 표를 채우는 출발점입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-tabulation-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tabulation",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "dp[0]=0, dp[1]=1, dp[i]=dp[i−1]+dp[i−2]이면 dp[5]는?",
+        "options": [
+          "3",
+          "8",
+          "5"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "dp[2]=1, dp[3]=2, dp[4]=3, dp[5]=5로 차례로 채웁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-tabulation-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tabulation",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "dp[i]=dp[i−1]+dp[i−2]에서 dp[4]를 채우기 전에 필요한 칸은?",
+        "options": [
+          "dp[5]와 dp[6]",
+          "dp[3]과 dp[2]"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "dp[4]는 dp[3]과 dp[2]로 계산하므로, 작은 인덱스부터 채우면 항상 먼저 준비되어 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-tabulation-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tabulation",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "dp[0]=1, dp[i]=dp[i−1]×2이면 dp[3]은?",
+        "options": [
+          "8",
+          "6",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "dp[1]=2, dp[2]=4, dp[3]=8로 앞 칸을 2배씩 해 채웁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    },
+    {
+      "id": "dsa-tabulation-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "tabulation",
+        "bottom-up"
+      ],
+      "content": {
+        "prompt": "타뷸레이션은 작은 부분 문제부터 반복문으로 표를 채운다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "타뷸레이션은 상향식으로, 기저 사례에서 시작해 반복문으로 dp 표를 차례로 채웁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Dynamic_programming"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "track": "dsa",
+  "unit": "u12-greedy",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "dsa-huffman-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "huffman",
+        "prefix-code"
+      ],
+      "content": {
+        "prompt": "자주 나오는 문자에 짧은 비트열을 주는 무손실 압축은?",
+        "options": [
+          "허프만 코딩",
+          "해싱",
+          "기수 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "허프만 코딩은 빈도가 높은 문자에 짧은 코드, 낮은 문자에 긴 코드를 주는 무손실 압축입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Huffman_coding",
+        "https://en.wikipedia.org/wiki/Prefix_code"
+      ]
+    },
+    {
+      "id": "dsa-huffman-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "huffman",
+        "prefix-code"
+      ],
+      "content": {
+        "prompt": "어떤 코드도 다른 코드의 앞부분이 아닌 코드는?",
+        "options": [
+          "고정 길이 코드",
+          "해시 코드",
+          "접두어 코드"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "접두어 코드는 어떤 코드도 다른 코드의 앞부분이 아니라서 구분자 없이 해석할 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Huffman_coding",
+        "https://en.wikipedia.org/wiki/Prefix_code"
+      ]
+    },
+    {
+      "id": "dsa-huffman-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "huffman",
+        "prefix-code"
+      ],
+      "content": {
+        "prompt": "허프만이 매번 합치는 두 노드는?",
+        "options": [
+          "빈도 최소 두 개",
+          "빈도 최대 두 개"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "빈도가 가장 작은 두 노드를 합쳐야 드문 문자가 깊이 내려가 긴 코드를 받습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Huffman_coding",
+        "https://en.wikipedia.org/wiki/Prefix_code"
+      ]
+    },
+    {
+      "id": "dsa-huffman-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "huffman",
+        "prefix-code"
+      ],
+      "content": {
+        "prompt": "허프만 코딩에서 자주 나오는 문자는 더 긴 코드를 받는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "자주 나오는 문자일수록 짧은 코드를 받아 전체 비트 수가 줄어듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Huffman_coding",
+        "https://en.wikipedia.org/wiki/Prefix_code"
+      ]
+    },
+    {
+      "id": "dsa-huffman-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "huffman",
+        "prefix-code"
+      ],
+      "content": {
+        "prompt": "허프만 코딩은 압축을 풀면 원래대로 돌아오는 ___ 압축이다.",
+        "hint": "데이터가 하나도 사라지지 않는 압축입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "무손실",
+          "lossless",
+          "비손실"
+        ]
+      },
+      "explanation": "허프만 코딩은 무손실 압축이라 코드를 풀면 원래 문자열이 그대로 돌아옵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Huffman_coding",
+        "https://en.wikipedia.org/wiki/Prefix_code"
+      ]
+    },
+    {
+      "id": "dsa-huffman-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "huffman",
+        "prefix-code"
+      ],
+      "content": {
+        "prompt": "다른 코드의 앞부분이 되지 않는 코드는 ___ 코드이다.",
+        "hint": "구분자 없이 해석할 수 있는 코드입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "접두어",
+          "prefix",
+          "접두사",
+          "프리픽스",
+          "prefix free"
+        ]
+      },
+      "explanation": "접두어 코드는 어떤 코드도 다른 코드로 시작하지 않아 비트열을 앞에서부터 바로 해석할 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Huffman_coding",
+        "https://en.wikipedia.org/wiki/Prefix_code"
+      ]
+    },
+    {
+      "id": "dsa-huffman-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "huffman",
+        "prefix-code"
+      ],
+      "content": {
+        "prompt": "빈도 A5, B2, C1, D1. 허프만이 처음 합치는 두 문자는?",
+        "options": [
+          "A와 B",
+          "C와 D",
+          "B와 C"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "빈도가 가장 작은 두 노드인 C(1)와 D(1)를 먼저 합칩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Huffman_coding",
+        "https://en.wikipedia.org/wiki/Prefix_code"
+      ]
+    },
+    {
+      "id": "dsa-huffman-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "huffman",
+        "prefix-code"
+      ],
+      "content": {
+        "prompt": "코드 {0, 01, 11}은 접두어 코드인가?",
+        "options": [
+          "예",
+          "아니오"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "0이 01의 앞부분이라 접두어 코드가 아닙니다. 01을 읽을 때 0에서 끊을지 알 수 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Huffman_coding",
+        "https://en.wikipedia.org/wiki/Prefix_code"
+      ]
+    },
+    {
+      "id": "dsa-huffman-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "huffman",
+        "prefix-code"
+      ],
+      "content": {
+        "prompt": "빈도 A5, B2, C1, D1의 허프만 코드 총 비트 수는?",
+        "options": [
+          "15",
+          "18",
+          "9"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "코드 길이가 A 1, B 2, C 3, D 3이라 5 + 4 + 3 + 3 = 15입니다. 2비트 고정 길이면 18입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Huffman_coding",
+        "https://en.wikipedia.org/wiki/Prefix_code"
+      ]
+    },
+    {
+      "id": "dsa-huffman-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "huffman",
+        "prefix-code"
+      ],
+      "content": {
+        "prompt": "허프만 코드는 접두어 코드 중 평균 코드 길이가 최소이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "허프만 코딩은 빈도가 주어졌을 때 접두어 코드 가운데 평균 코드 길이를 최소로 만듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Huffman_coding",
+        "https://en.wikipedia.org/wiki/Prefix_code"
+      ]
+    }
+  ]
+}

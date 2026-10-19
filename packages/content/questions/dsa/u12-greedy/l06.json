@@ -1,0 +1,235 @@
+{
+  "track": "dsa",
+  "unit": "u12-greedy",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "dsa-coin-change-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "coin-change",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "금액을 가장 적은 개수의 동전으로 만드는 문제는?",
+        "options": [
+          "활동 선택",
+          "동전 문제",
+          "편집 거리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "동전 문제는 주어진 단위로 금액을 만들 때 동전 개수를 최소로 하는 문제입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Change-making_problem"
+      ]
+    },
+    {
+      "id": "dsa-coin-change-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "coin-change",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "동전 문제의 그리디 규칙은?",
+        "options": [
+          "작은 단위부터",
+          "무작위로",
+          "큰 단위부터"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "그리디는 큰 단위부터 쓸 수 있는 만큼 쓰고 남은 금액에 다음 단위를 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Change-making_problem"
+      ]
+    },
+    {
+      "id": "dsa-coin-change-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "coin-change",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "동전 그리디가 최적인 단위 조합은?",
+        "options": [
+          "1·3·4",
+          "500·100·50·10"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "500·100·50·10원은 큰 단위가 작은 단위의 배수라 그리디가 최적입니다. 1·3·4는 반례가 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Change-making_problem"
+      ]
+    },
+    {
+      "id": "dsa-coin-change-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "coin-change",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "동전 단위가 1·3·4이면 그리디는 6을 동전 2개로 만든다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "그리디는 4 + 1 + 1로 3개를 씁니다. 최적은 3 + 3의 2개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Change-making_problem"
+      ]
+    },
+    {
+      "id": "dsa-coin-change-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "coin-change",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "큰 단위가 작은 단위의 ___ 면 동전 그리디가 최적이다.",
+        "hint": "나누어떨어지는 관계를 가리킵니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "배수",
+          "multiple"
+        ]
+      },
+      "explanation": "500·100·50·10원처럼 큰 단위가 작은 단위의 배수면 큰 단위부터 쓰는 그리디가 최적입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Change-making_problem"
+      ]
+    },
+    {
+      "id": "dsa-coin-change-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "coin-change",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "동전 단위가 1, 3, 4일 때 금액 6에 필요한 최소 개수는 ___ 개다.",
+        "hint": "같은 단위를 여러 번 써도 됩니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "2",
+          "두",
+          "둘"
+        ]
+      },
+      "explanation": "3 + 3으로 2개면 됩니다. 큰 단위부터 쓰는 그리디는 4 + 1 + 1로 3개를 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Change-making_problem"
+      ]
+    },
+    {
+      "id": "dsa-coin-change-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "coin-change",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "500·100·50·10원으로 760원을 그리디로 만들면 동전 수는?",
+        "options": [
+          "4",
+          "5",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "500 1개, 100 2개, 50 1개, 10 1개로 5개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Change-making_problem"
+      ]
+    },
+    {
+      "id": "dsa-coin-change-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "coin-change",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "단위 1·5·6으로 10을 그리디로 만들면 동전 수는?",
+        "options": [
+          "5",
+          "2",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "6을 먼저 쓰고 남은 4를 1 네 개로 채워 5개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Change-making_problem"
+      ]
+    },
+    {
+      "id": "dsa-coin-change-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "coin-change",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "단위 1·5·6으로 10을 만드는 최소 동전 수는?",
+        "options": [
+          "3",
+          "5",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "5 + 5로 2개면 됩니다. 6이 5의 배수가 아니라 그리디가 최적이 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Change-making_problem"
+      ]
+    },
+    {
+      "id": "dsa-coin-change-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "coin-change",
+        "greedy"
+      ],
+      "content": {
+        "prompt": "동전 그리디는 큰 단위부터 쓸 수 있는 만큼 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "큰 단위를 쓸 수 있는 만큼 쓰고, 남은 금액을 다음으로 큰 단위로 채웁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Change-making_problem"
+      ]
+    }
+  ]
+}

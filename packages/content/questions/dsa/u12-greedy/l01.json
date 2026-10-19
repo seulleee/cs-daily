@@ -1,0 +1,239 @@
+{
+  "track": "dsa",
+  "unit": "u12-greedy",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "dsa-greedy-intro-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "greedy",
+        "local-optimum"
+      ],
+      "content": {
+        "prompt": "지역 최적을 골라 확정해 나가는 알고리즘 방식은?",
+        "options": [
+          "동적 계획법",
+          "그리디",
+          "이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "그리디는 매 단계 지금 가장 좋아 보이는 선택을 하고 그 선택을 되돌리지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-intro-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "greedy",
+        "local-optimum"
+      ],
+      "content": {
+        "prompt": "현재 단계만 보았을 때의 최선은?",
+        "options": [
+          "전역 최적",
+          "기저 사례",
+          "지역 최적"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "지역 최적은 지금 단계만 보았을 때의 최선이고, 전역 최적은 문제 전체의 최선입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-intro-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "greedy",
+        "local-optimum"
+      ],
+      "content": {
+        "prompt": "문제 전체의 최선은?",
+        "options": [
+          "지역 최적",
+          "전역 최적"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "전역 최적은 문제 전체에서 가장 좋은 답입니다. 그리디가 노리는 것이지만 항상 얻는 것은 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-intro-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "greedy",
+        "local-optimum"
+      ],
+      "content": {
+        "prompt": "지역 최적을 이어 붙이면 항상 전역 최적이 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "매 단계 최선을 골라도 앞의 선택 때문에 더 좋은 길을 놓칠 수 있어, 전역 최적이 아닐 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-intro-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "greedy",
+        "local-optimum"
+      ],
+      "content": {
+        "prompt": "매 단계 최선을 고르고 되돌리지 않는 알고리즘은 ___ 이다.",
+        "hint": "영어로 욕심이 많다는 뜻의 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "그리디",
+          "greedy",
+          "탐욕",
+          "탐욕법",
+          "탐욕 알고리즘",
+          "그리디 알고리즘"
+        ]
+      },
+      "explanation": "그리디 알고리즘은 매 단계 지금의 최선을 골라 확정하고, 이미 한 선택을 다시 바꾸지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-intro-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "greedy",
+        "local-optimum"
+      ],
+      "content": {
+        "prompt": "문제 전체에서의 최선은 ___ 최적이다.",
+        "hint": "지역 최적과 짝을 이루는 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "전역",
+          "global",
+          "전체",
+          "전역적"
+        ]
+      },
+      "explanation": "전역 최적은 문제 전체의 최선이고, 지역 최적은 현재 단계만 본 최선입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-intro-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "greedy",
+        "local-optimum"
+      ],
+      "content": {
+        "prompt": "첫 선택 5 또는 3, 5 뒤엔 1, 3 뒤엔 10. 큰 값을 고르는 그리디의 합은?",
+        "options": [
+          "6",
+          "13",
+          "15"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "그리디는 첫 단계에서 더 큰 5를 고르고 뒤에 1만 남아 5 + 1 = 6입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-intro-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "greedy",
+        "local-optimum"
+      ],
+      "content": {
+        "prompt": "첫 선택 5 또는 3, 5 뒤엔 1, 3 뒤엔 10. 전역 최적의 합은?",
+        "options": [
+          "6",
+          "15",
+          "13"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "3을 고르면 뒤에 10을 얻어 3 + 10 = 13으로 더 큽니다. 지역 최적 5가 전역 최적을 막았습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-intro-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "greedy",
+        "local-optimum"
+      ],
+      "content": {
+        "prompt": "그리디가 한 번 고른 선택은 이후에?",
+        "options": [
+          "되돌리지 않음",
+          "필요하면 취소"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "그리디는 고른 선택을 확정하고 다시 바꾸지 않습니다. 그래서 빠르지만 틀릴 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    },
+    {
+      "id": "dsa-greedy-intro-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "greedy",
+        "local-optimum"
+      ],
+      "content": {
+        "prompt": "그리디는 매 단계 지금 가장 좋아 보이는 선택을 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "그리디는 현재 단계의 최선, 즉 지역 최적을 골라 확정하며 나아갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm"
+      ]
+    }
+  ]
+}

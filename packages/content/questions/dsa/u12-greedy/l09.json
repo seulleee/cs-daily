@@ -1,0 +1,254 @@
+{
+  "track": "dsa",
+  "unit": "u12-greedy",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "dsa-graph-greedy-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "greedy",
+        "graph"
+      ],
+      "content": {
+        "prompt": "매번 dist가 가장 작은 정점을 확정하는 그리디는?",
+        "options": [
+          "크루스칼",
+          "다익스트라",
+          "플로이드-워셜"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다익스트라는 매번 확정 안 된 정점 중 dist가 가장 작은 것을 최종값으로 확정하는 그리디입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm",
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-graph-greedy-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "greedy",
+        "graph"
+      ],
+      "content": {
+        "prompt": "매번 사이클을 만들지 않는 가장 가벼운 간선을 고르는 그리디는?",
+        "options": [
+          "다익스트라",
+          "BFS",
+          "크루스칼"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "크루스칼은 간선을 가벼운 순으로 보며 사이클을 만들지 않는 간선을 고르는 그리디입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm",
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-graph-greedy-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "greedy",
+        "graph"
+      ],
+      "content": {
+        "prompt": "매번 트리에 닿는 가장 가벼운 간선을 고르는 것은?",
+        "options": [
+          "프림",
+          "크루스칼"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "프림은 현재 트리와 바깥을 잇는 간선 중 가장 가벼운 것을 고릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm",
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-graph-greedy-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "greedy",
+        "graph"
+      ],
+      "content": {
+        "prompt": "플로이드-워셜은 매번 한 정점만 확정하는 그리디이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "플로이드-워셜은 경유 정점을 늘리며 표 전체를 반복 갱신합니다. 정점을 확정하는 그리디는 다익스트라입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm",
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-graph-greedy-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "greedy",
+        "graph"
+      ],
+      "content": {
+        "prompt": "매번 트리에 닿는 가장 가벼운 간선을 고르는 그리디는 ___ 이다.",
+        "hint": "한 정점에서 출발해 트리를 키우는 알고리즘입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "프림",
+          "Prim",
+          "프림 알고리즘"
+        ]
+      },
+      "explanation": "프림은 트리와 바깥을 잇는 가장 가벼운 간선을 고르는 일을 반복해 MST를 만듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm",
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-graph-greedy-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "greedy",
+        "graph"
+      ],
+      "content": {
+        "prompt": "세 그래프 그리디가 최적인 근거는 그리디 ___ 속성의 증명이다.",
+        "hint": "매 단계 하나를 고르는 행위를 가리킵니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "선택",
+          "choice"
+        ]
+      },
+      "explanation": "각 문제에서 그리디 선택 속성이 증명되어 있어 그리디 선택만으로 최적해를 얻습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm",
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-graph-greedy-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "greedy",
+        "graph"
+      ],
+      "content": {
+        "prompt": "다익스트라가 매 단계 고르는 것은?",
+        "options": [
+          "가장 가벼운 간선",
+          "dist 최소 정점"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다익스트라는 정점을 고릅니다. 가장 가벼운 간선을 고르는 것은 크루스칼과 프림입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm",
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-graph-greedy-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "greedy",
+        "graph"
+      ],
+      "content": {
+        "prompt": "A 확정 후 dist가 B=5, C=2, D=7이면 다익스트라가 고르는 정점은?",
+        "options": [
+          "C",
+          "B",
+          "D"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "확정 안 된 정점 중 dist가 가장 작은 C(2)를 확정합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm",
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-graph-greedy-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "greedy",
+        "graph"
+      ],
+      "content": {
+        "prompt": "가중치 3, 1, 4, 2인 간선 중 크루스칼이 처음 고르는 것은?",
+        "options": [
+          "3",
+          "4",
+          "1"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "크루스칼은 가중치 오름차순으로 보므로 가장 가벼운 1을 먼저 고릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm",
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree"
+      ]
+    },
+    {
+      "id": "dsa-graph-greedy-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "greedy",
+        "graph"
+      ],
+      "content": {
+        "prompt": "다익스트라·크루스칼·프림은 그리디 선택 속성이 증명되어 최적이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "세 알고리즘 모두 매 단계 그리디 선택을 하며, 그 선택을 포함하는 최적해가 있음이 증명되어 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Greedy_algorithm",
+        "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm",
+        "https://en.wikipedia.org/wiki/Minimum_spanning_tree"
+      ]
+    }
+  ]
+}
