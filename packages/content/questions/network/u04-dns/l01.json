@@ -1,0 +1,257 @@
+{
+  "track": "network",
+  "unit": "u04-dns",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "network-dns-basics-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "distributed"
+      ],
+      "content": {
+        "prompt": "전 세계 네임서버에 나뉘어 저장된 이름 정보 시스템은?",
+        "options": [
+          "DNS",
+          "DHCP",
+          "NAT"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DNS는 도메인 이름을 IP 주소 등의 정보로 바꿔 주는 분산 데이터베이스 시스템입니다. DHCP는 IP 자동 할당, NAT는 주소 변환입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc7766"
+      ]
+    },
+    {
+      "id": "network-dns-basics-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "name-resolution"
+      ],
+      "content": {
+        "prompt": "이름으로 IP 주소를 알아내는 과정을 부르는 말은?",
+        "options": [
+          "라우팅",
+          "이름 해석",
+          "캡슐화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "도메인 이름으로 IP 주소를 알아내는 과정을 이름 해석이라고 합니다. 라우팅은 네트워크 사이 경로를 고르는 일입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc7766"
+      ]
+    },
+    {
+      "id": "network-dns-basics-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "port"
+      ],
+      "content": {
+        "prompt": "DNS 질의가 주로 쓰는 프로토콜과 포트는?",
+        "options": [
+          "TCP 80",
+          "UDP 443",
+          "UDP 53"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DNS 질의는 주로 UDP 53번 포트로 보냅니다. 응답이 크거나 영역 전송을 할 때는 TCP 53번을 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc7766"
+      ]
+    },
+    {
+      "id": "network-dns-basics-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "port"
+      ],
+      "content": {
+        "prompt": "DNS는 TCP 53번 포트를 쓰는 일이 없다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "DNS는 주로 UDP 53을 쓰지만, 응답이 UDP에 다 담기지 않을 만큼 크거나 영역 전송을 할 때는 TCP 53을 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc7766"
+      ]
+    },
+    {
+      "id": "network-dns-basics-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "name-resolution"
+      ],
+      "content": {
+        "prompt": "도메인 이름으로 IP 주소를 알아내는 과정을 이름 ___ 이라 한다.",
+        "hint": "'풀어서 뜻을 밝힌다'는 뜻의 두 글자 한자어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "해석",
+          "resolution",
+          "리졸루션"
+        ]
+      },
+      "explanation": "이름으로 IP 주소를 알아내는 과정을 이름 해석(name resolution)이라고 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc7766"
+      ]
+    },
+    {
+      "id": "network-dns-basics-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "distributed"
+      ],
+      "content": {
+        "prompt": "DNS는 이름 정보를 여러 네임서버가 나눠 맡는 ___ 시스템이다.",
+        "hint": "한 곳에 모아 두는 중앙 집중 방식과 반대되는 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "분산",
+          "분산형",
+          "distributed"
+        ]
+      },
+      "explanation": "DNS는 전 세계 네임서버가 도메인 영역을 나눠 맡는 분산 데이터베이스 시스템입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc7766"
+      ]
+    },
+    {
+      "id": "network-dns-basics-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "port"
+      ],
+      "content": {
+        "prompt": "DNS 응답이 커서 UDP에 다 담기지 않으면 무엇으로 다시 묻나?",
+        "options": [
+          "TCP 53",
+          "UDP 853",
+          "TCP 80"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "UDP 응답이 잘렸다고 표시되면 클라이언트는 TCP 53으로 같은 질의를 다시 보내 전체 응답을 받습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc7766"
+      ]
+    },
+    {
+      "id": "network-dns-basics-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "zone-transfer"
+      ],
+      "content": {
+        "prompt": "네임서버끼리 영역 데이터를 통째로 복사할 때 쓰는 것은?",
+        "options": [
+          "UDP 53",
+          "TCP 53",
+          "TCP 443"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "영역 전송은 데이터가 크고 빠짐없이 받아야 하므로 신뢰성 있는 TCP 53을 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc7766"
+      ]
+    },
+    {
+      "id": "network-dns-basics-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "distributed"
+      ],
+      "content": {
+        "prompt": "a.com 네임서버가 고장 나도 b.com 조회는 되는 이유는?",
+        "options": [
+          "UDP를 써서",
+          "포트가 달라서",
+          "분산 구조라서"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DNS는 도메인 영역마다 맡은 네임서버가 따로 있는 분산 구조라, 한 영역의 서버 장애가 다른 영역 조회를 막지 않습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc7766"
+      ]
+    },
+    {
+      "id": "network-dns-basics-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "distributed"
+      ],
+      "content": {
+        "prompt": "DNS 정보는 여러 네임서버가 영역을 나눠 맡아 저장한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "DNS는 한 서버에 모든 이름을 모으지 않고, 전 세계 네임서버가 도메인 영역을 나눠 맡는 분산 데이터베이스입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc7766"
+      ]
+    }
+  ]
+}

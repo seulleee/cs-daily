@@ -1,0 +1,255 @@
+{
+  "track": "network",
+  "unit": "u04-dns",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "network-dns-security-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "cache-poisoning"
+      ],
+      "content": {
+        "prompt": "위조한 응답을 리졸버 캐시에 넣는 공격은?",
+        "options": [
+          "캐시 포이즈닝",
+          "전파 지연",
+          "영역 전송"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "캐시 포이즈닝은 위조 응답을 리졸버 캐시에 넣어 사용자를 엉뚱한 IP로 보내는 공격입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc4033",
+        "https://www.rfc-editor.org/rfc/rfc7858",
+        "https://www.rfc-editor.org/rfc/rfc8484"
+      ]
+    },
+    {
+      "id": "network-dns-security-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "dnssec"
+      ],
+      "content": {
+        "prompt": "레코드에 전자서명을 붙여 위조를 검증하는 것은?",
+        "options": [
+          "DoT",
+          "DNSSEC",
+          "DoH"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DNSSEC은 레코드에 전자서명을 붙여 받은 응답이 위조되지 않았는지 검증하게 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc4033",
+        "https://www.rfc-editor.org/rfc/rfc7858",
+        "https://www.rfc-editor.org/rfc/rfc8484"
+      ]
+    },
+    {
+      "id": "network-dns-security-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "dnssec"
+      ],
+      "content": {
+        "prompt": "DNSSEC이 제공하지 않는 것은?",
+        "options": [
+          "위조 검증",
+          "서명 확인",
+          "질의 암호화"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DNSSEC은 서명으로 위조 여부만 검증하고 내용은 암호화하지 않습니다. 암호화는 DoT·DoH가 맡습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc4033",
+        "https://www.rfc-editor.org/rfc/rfc7858",
+        "https://www.rfc-editor.org/rfc/rfc8484"
+      ]
+    },
+    {
+      "id": "network-dns-security-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "dnssec"
+      ],
+      "content": {
+        "prompt": "DNSSEC은 DNS 질의 내용을 암호화한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "DNSSEC은 전자서명으로 위조 여부를 검증할 뿐 내용은 암호화하지 않습니다. 질의 암호화는 DoT나 DoH가 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc4033",
+        "https://www.rfc-editor.org/rfc/rfc7858",
+        "https://www.rfc-editor.org/rfc/rfc8484"
+      ]
+    },
+    {
+      "id": "network-dns-security-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "dot"
+      ],
+      "content": {
+        "prompt": "DNS over TLS(DoT)가 쓰는 포트 번호는 ___ 번이다.",
+        "hint": "DNS 기본 포트 53과 다른 세 자리 숫자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "853"
+        ]
+      },
+      "explanation": "DoT는 TLS로 DNS 질의를 암호화하며 전용 포트 853번을 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc4033",
+        "https://www.rfc-editor.org/rfc/rfc7858",
+        "https://www.rfc-editor.org/rfc/rfc8484"
+      ]
+    },
+    {
+      "id": "network-dns-security-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "doh"
+      ],
+      "content": {
+        "prompt": "HTTPS로 DNS 질의를 암호화하는 방식은 ___ 이다.",
+        "hint": "DNS over ○○○○○를 줄인 세 글자 약자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "DoH",
+          "doh",
+          "DNS over HTTPS"
+        ]
+      },
+      "explanation": "DoH(DNS over HTTPS)는 DNS 질의를 HTTPS 안에 담아 포트 443으로 암호화해 보냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc4033",
+        "https://www.rfc-editor.org/rfc/rfc7858",
+        "https://www.rfc-editor.org/rfc/rfc8484"
+      ]
+    },
+    {
+      "id": "network-dns-security-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "cache-poisoning"
+      ],
+      "content": {
+        "prompt": "캐시 포이즈닝 당한 리졸버의 사용자에게 생기는 일은?",
+        "options": [
+          "조회 속도 향상",
+          "포트 변경",
+          "엉뚱한 IP로 접속"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "리졸버 캐시에 위조된 답이 들어가면 그 리졸버를 쓰는 사용자는 정상 도메인을 입력해도 위조 IP로 접속합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc4033",
+        "https://www.rfc-editor.org/rfc/rfc7858",
+        "https://www.rfc-editor.org/rfc/rfc8484"
+      ]
+    },
+    {
+      "id": "network-dns-security-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "doh"
+      ],
+      "content": {
+        "prompt": "포트 443의 HTTPS로 DNS 질의를 보내는 방식은?",
+        "options": [
+          "DoT",
+          "DoH",
+          "DNSSEC"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DoH는 HTTPS 포트 443을 쓰고, DoT는 853을 씁니다. DNSSEC은 암호화가 아니라 서명 검증입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc4033",
+        "https://www.rfc-editor.org/rfc/rfc7858",
+        "https://www.rfc-editor.org/rfc/rfc8484"
+      ]
+    },
+    {
+      "id": "network-dns-security-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "dot"
+      ],
+      "content": {
+        "prompt": "공용 Wi-Fi에서 DNS 질의 내용을 숨기려면?",
+        "options": [
+          "DoT 사용",
+          "DNSSEC만 사용",
+          "TTL 낮추기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "질의 내용을 숨기려면 암호화가 필요하므로 DoT(또는 DoH)를 씁니다. DNSSEC은 암호화를 하지 않습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc4033",
+        "https://www.rfc-editor.org/rfc/rfc7858",
+        "https://www.rfc-editor.org/rfc/rfc8484"
+      ]
+    },
+    {
+      "id": "network-dns-security-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "cache-poisoning"
+      ],
+      "content": {
+        "prompt": "캐시 포이즈닝을 당하면 정상 도메인도 위조 IP로 연결될 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "캐시 포이즈닝은 리졸버 캐시에 위조 응답을 심으므로, 사용자가 정상 도메인을 입력해도 위조 IP로 갑니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc4033",
+        "https://www.rfc-editor.org/rfc/rfc7858",
+        "https://www.rfc-editor.org/rfc/rfc8484"
+      ]
+    }
+  ]
+}

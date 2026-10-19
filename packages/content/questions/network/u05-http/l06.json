@@ -1,0 +1,243 @@
+{
+  "track": "network",
+  "unit": "u05-http",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "network-http-status-confusing-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "401"
+      ],
+      "content": {
+        "prompt": "인증 정보 없이 보호된 API를 호출했을 때 코드는?",
+        "options": [
+          "401",
+          "403",
+          "404"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인증 정보가 없거나 틀려 누구인지 확인되지 않으면 401 Unauthorized입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-http-status-confusing-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "403"
+      ],
+      "content": {
+        "prompt": "로그인은 했지만 관리자 권한이 없을 때 코드는?",
+        "options": [
+          "401",
+          "403",
+          "500"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "누구인지는 확인됐지만 그 리소스에 권한이 없으면 403 Forbidden입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-http-status-confusing-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "5xx"
+      ],
+      "content": {
+        "prompt": "상위 서버가 제때 응답하지 않을 때 게이트웨이의 코드는?",
+        "options": [
+          "502",
+          "503",
+          "504"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "504 Gateway Timeout은 상위 서버 응답 시간 초과, 502 Bad Gateway는 상위 서버의 잘못된 응답입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-http-status-confusing-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "5xx"
+      ],
+      "content": {
+        "prompt": "502는 상위 서버의 응답 시간 초과를 뜻한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "502는 상위 서버에게서 잘못된 응답을 받은 경우이고, 응답 시간 초과는 504입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-http-status-confusing-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "429"
+      ],
+      "content": {
+        "prompt": "레이트 리밋에 걸린 요청이 받는 상태 코드는 ___ 이다.",
+        "hint": "Too Many Requests라는 이유 문구가 붙는 4xx 코드입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "429"
+        ]
+      },
+      "explanation": "429 Too Many Requests는 정해진 시간 동안 요청 한도를 넘겼다는 뜻으로 레이트 리밋에 쓰입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-http-status-confusing-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "403"
+      ],
+      "content": {
+        "prompt": "인증은 됐지만 권한이 없을 때의 상태 코드는 ___ 이다.",
+        "hint": "Forbidden이라는 이유 문구가 붙는 4xx 코드입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "403"
+        ]
+      },
+      "explanation": "403 Forbidden은 누구인지는 확인됐지만 그 리소스에 접근할 권한이 없다는 뜻입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-http-status-confusing-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "5xx"
+      ],
+      "content": {
+        "prompt": "게이트웨이가 상위 서버에게서 잘못된 응답을 받으면?",
+        "options": [
+          "502",
+          "504",
+          "401"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "상위 서버에게서 잘못된 응답을 받으면 502 Bad Gateway입니다. 시간 초과라면 504입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-http-status-confusing-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "429"
+      ],
+      "content": {
+        "prompt": "1분에 100회 제한인 API에 1분 안에 101번째 요청을 보내면?",
+        "options": [
+          "403",
+          "429",
+          "404"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "101번째 요청은 한도 100회를 넘었으므로 429 Too Many Requests를 받습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-http-status-confusing-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "401"
+      ],
+      "content": {
+        "prompt": "만료된 토큰으로 요청해 신원 확인에 실패하면?",
+        "options": [
+          "403",
+          "404",
+          "401"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "토큰이 만료되면 누구인지 확인할 수 없으므로 인증 실패인 401입니다. 403은 신원 확인 뒤 권한이 없을 때입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    },
+    {
+      "id": "network-http-status-confusing-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "401"
+      ],
+      "content": {
+        "prompt": "401은 인증이 안 돼 누구인지 확인되지 않았다는 뜻이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "401 Unauthorized는 이름과 달리 인증 실패·누락을 뜻합니다. 권한 부족은 403입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc6585"
+      ]
+    }
+  ]
+}

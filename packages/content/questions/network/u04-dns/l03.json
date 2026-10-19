@@ -1,0 +1,258 @@
+{
+  "track": "network",
+  "unit": "u04-dns",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "network-dns-servers-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "resolver"
+      ],
+      "content": {
+        "prompt": "클라이언트 대신 답을 찾아 주는 DNS 서버는?",
+        "options": [
+          "재귀 리졸버",
+          "루트 서버",
+          "TLD 서버"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "재귀 리졸버는 클라이언트의 질의를 받아 다른 네임서버에 차례로 물어 최종 답을 찾아 줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499",
+        "https://www.iana.org/domains/root/servers"
+      ]
+    },
+    {
+      "id": "network-dns-servers-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "authoritative"
+      ],
+      "content": {
+        "prompt": "그 도메인 레코드의 최종 답을 가진 서버는?",
+        "options": [
+          "루트 서버",
+          "권한 네임서버",
+          "재귀 리졸버"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "권한 네임서버는 맡은 도메인의 레코드를 직접 저장하고 있어 최종 답을 줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499",
+        "https://www.iana.org/domains/root/servers"
+      ]
+    },
+    {
+      "id": "network-dns-servers-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "root-server"
+      ],
+      "content": {
+        "prompt": "루트 서버가 알려 주는 것은?",
+        "options": [
+          "TLD 서버 주소",
+          "최종 IP 주소",
+          "MAC 주소"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "루트 서버는 질의한 이름의 TLD(.com 등)를 맡은 네임서버 주소를 알려 줍니다. 최종 답은 권한 네임서버가 줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499",
+        "https://www.iana.org/domains/root/servers"
+      ]
+    },
+    {
+      "id": "network-dns-servers-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "root-server"
+      ],
+      "content": {
+        "prompt": "루트 서버는 www.example.com의 IP를 직접 알려 준다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "루트 서버는 .com TLD 서버의 주소만 알려 줍니다. www.example.com의 IP는 example.com의 권한 네임서버가 줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499",
+        "https://www.iana.org/domains/root/servers"
+      ]
+    },
+    {
+      "id": "network-dns-servers-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "resolver"
+      ],
+      "content": {
+        "prompt": "8.8.8.8 같은, 클라이언트 대신 답을 찾는 서버는 재귀 ___ 다.",
+        "hint": "'해석하다'라는 영어 동사에서 나온 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "리졸버",
+          "resolver",
+          "해석기"
+        ]
+      },
+      "explanation": "8.8.8.8이나 ISP DNS 같은 재귀 리졸버는 클라이언트 대신 다른 서버에 물어 답을 찾아 줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499",
+        "https://www.iana.org/domains/root/servers"
+      ]
+    },
+    {
+      "id": "network-dns-servers-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "authoritative"
+      ],
+      "content": {
+        "prompt": "도메인 레코드의 최종 답을 가진 서버는 ___ 네임서버다.",
+        "hint": "공식 답을 낼 자격이 있다는 뜻의 두 글자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "권한",
+          "권한 있는",
+          "authoritative",
+          "권한있는"
+        ]
+      },
+      "explanation": "권한 네임서버(authoritative name server)는 그 도메인 레코드의 최종 답을 가진 서버입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499",
+        "https://www.iana.org/domains/root/servers"
+      ]
+    },
+    {
+      "id": "network-dns-servers-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "tld-server"
+      ],
+      "content": {
+        "prompt": ".com TLD 서버에 example.com을 물으면 받는 것은?",
+        "options": [
+          "최종 IP 주소",
+          "루트 서버 주소",
+          "권한 서버 주소"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "TLD 서버는 자기 아래 도메인인 example.com을 맡은 권한 네임서버의 주소를 알려 줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499",
+        "https://www.iana.org/domains/root/servers"
+      ]
+    },
+    {
+      "id": "network-dns-servers-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "resolver"
+      ],
+      "content": {
+        "prompt": "PC에 설정된 ISP의 DNS 서버가 맡는 역할은?",
+        "options": [
+          "루트 서버",
+          "재귀 리졸버",
+          "TLD 서버"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ISP DNS 서버는 가입자 PC의 질의를 받아 대신 답을 찾아 주는 재귀 리졸버입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499",
+        "https://www.iana.org/domains/root/servers"
+      ]
+    },
+    {
+      "id": "network-dns-servers-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "authoritative"
+      ],
+      "content": {
+        "prompt": "example.com 관리자가 레코드를 등록해 두는 서버는?",
+        "options": [
+          "루트 서버",
+          "재귀 리졸버",
+          "권한 네임서버"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "도메인의 레코드는 그 도메인을 맡은 권한 네임서버에 저장되고, 이 서버가 최종 답을 줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499",
+        "https://www.iana.org/domains/root/servers"
+      ]
+    },
+    {
+      "id": "network-dns-servers-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "resolver"
+      ],
+      "content": {
+        "prompt": "재귀 리졸버는 클라이언트를 대신해 다른 서버에 물어 답을 찾는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "재귀 리졸버는 루트·TLD·권한 네임서버에 차례로 물어 얻은 답을 클라이언트에 돌려줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499",
+        "https://www.iana.org/domains/root/servers"
+      ]
+    }
+  ]
+}

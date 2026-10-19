@@ -1,0 +1,246 @@
+{
+  "track": "network",
+  "unit": "u04-dns",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "network-dns-lookup-flow-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "cache"
+      ],
+      "content": {
+        "prompt": "www.example.com 조회 때 가장 먼저 확인하는 곳은?",
+        "options": [
+          "브라우저 캐시",
+          "루트 서버",
+          "권한 네임서버"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "자체 DNS 캐시가 있는 브라우저 기준으로, 먼저 브라우저 캐시를 보고 다음에 OS 캐시와 hosts 파일을 봅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-lookup-flow-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "cache"
+      ],
+      "content": {
+        "prompt": "리졸버 캐시에 답이 있을 때 리졸버는?",
+        "options": [
+          "루트부터 질의",
+          "바로 응답",
+          "권한 서버에 질의"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "리졸버 캐시에 유효한 답이 있으면 다른 서버에 묻지 않고 그 답으로 바로 응답합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-lookup-flow-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "iterative-query"
+      ],
+      "content": {
+        "prompt": "캐시 미스 때 리졸버가 묻는 순서는?",
+        "options": [
+          "권한→TLD→루트",
+          "TLD→루트→권한",
+          "루트→TLD→권한"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "캐시에 없으면 루트 서버, .com 같은 TLD 서버, 그 도메인의 권한 서버 순서로 내려가며 묻습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-lookup-flow-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "cache"
+      ],
+      "content": {
+        "prompt": "리졸버 캐시에 답이 있어도 루트 서버에 다시 묻는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "리졸버 캐시에 유효한 답이 있으면 루트까지 가지 않고 바로 응답합니다. 이것이 캐시를 두는 이유입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-lookup-flow-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "hosts-file"
+      ],
+      "content": {
+        "prompt": "브라우저 다음엔 OS 캐시와 ___ 파일을 확인한다.",
+        "hint": "이름과 IP 주소를 직접 적어 두는 OS의 설정 파일입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "hosts",
+          "호스츠"
+        ]
+      },
+      "explanation": "OS는 리졸버에 묻기 전에 자기 캐시와 hosts 파일에 그 이름이 있는지 확인합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-lookup-flow-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "리졸버는 받은 답을 ___ 동안 캐시하고 클라이언트에 전달한다.",
+        "hint": "권한 서버가 레코드마다 정해 주는 시간 값입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "TTL",
+          "ttl",
+          "티티엘"
+        ]
+      },
+      "explanation": "리졸버는 받은 답을 레코드의 TTL 동안 캐시해 두고, 그동안 같은 질의에는 캐시로 답합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-lookup-flow-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "hosts-file"
+      ],
+      "content": {
+        "prompt": "hosts 파일에 그 이름이 적혀 있으면?",
+        "options": [
+          "적힌 IP 사용",
+          "루트에 질의",
+          "TLD에 질의"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "일반적인 OS 설정에서는 hosts 파일이 리졸버 질의보다 먼저 쓰이므로, 적힌 IP를 바로 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-lookup-flow-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "iterative-query"
+      ],
+      "content": {
+        "prompt": "캐시 미스 때 리졸버가 루트 다음으로 묻는 서버는?",
+        "options": [
+          "권한 네임서버",
+          ".com TLD 서버",
+          "브라우저"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "루트 서버가 알려 준 .com TLD 서버에 묻고, 거기서 example.com 권한 서버를 안내받습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-lookup-flow-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "authoritative"
+      ],
+      "content": {
+        "prompt": "모든 캐시가 미스일 때 최종 답을 주는 곳은?",
+        "options": [
+          "루트 서버",
+          "TLD 서버",
+          "권한 네임서버"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "루트와 TLD 서버는 다음 서버를 안내할 뿐이고, 최종 답은 그 도메인의 권한 네임서버가 줍니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    },
+    {
+      "id": "network-dns-lookup-flow-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "cache"
+      ],
+      "content": {
+        "prompt": "브라우저 캐시는 OS 캐시보다 먼저 확인된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "로컬 확인은 브라우저 캐시 → OS 캐시·hosts 파일 순서로 진행되고, 그다음에 리졸버에 묻습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1034",
+        "https://www.rfc-editor.org/rfc/rfc9499"
+      ]
+    }
+  ]
+}

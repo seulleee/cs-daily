@@ -1,0 +1,247 @@
+{
+  "track": "network",
+  "unit": "u04-dns",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "network-dns-propagation-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "propagation"
+      ],
+      "content": {
+        "prompt": "레코드를 바꿔도 옛 값이 한동안 쓰이는 현상은?",
+        "options": [
+          "전파 지연",
+          "네거티브 캐시",
+          "영역 전송"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "레코드를 바꿔도 각 캐시의 옛 TTL이 끝날 때까지 옛 값이 쓰이는 것을 전파 지연이라고 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc1034"
+      ]
+    },
+    {
+      "id": "network-dns-propagation-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "failover"
+      ],
+      "content": {
+        "prompt": "레코드의 IP를 바꿔 트래픽을 다른 서버로 옮기는 것은?",
+        "options": [
+          "반복 질의",
+          "DNS 장애 전환",
+          "역방향 조회"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DNS 장애 전환은 레코드의 IP를 정상 서버로 바꿔 트래픽을 옮기는 방법입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc1034"
+      ]
+    },
+    {
+      "id": "network-dns-propagation-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "TTL을 짧게 둘 때의 장점은?",
+        "options": [
+          "조회 수 감소",
+          "응답 지연 감소",
+          "빠른 전환"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "짧은 TTL은 바뀐 값이 빨리 반영돼 전환이 빠릅니다. 대신 캐시가 자주 만료돼 조회 수와 지연이 늘어납니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc1034"
+      ]
+    },
+    {
+      "id": "network-dns-propagation-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "propagation"
+      ],
+      "content": {
+        "prompt": "레코드를 바꾸면 모든 리졸버에 즉시 반영된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "리졸버들은 옛 레코드를 TTL이 끝날 때까지 캐시하므로, 바꾼 값은 최대 옛 TTL만큼 늦게 반영됩니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc1034"
+      ]
+    },
+    {
+      "id": "network-dns-propagation-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "propagation"
+      ],
+      "content": {
+        "prompt": "바꾼 레코드가 캐시 때문에 늦게 반영되는 것은 전파 ___ 이다.",
+        "hint": "시간이 늦어진다는 뜻의 두 글자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "지연",
+          "delay",
+          "딜레이"
+        ]
+      },
+      "explanation": "전파 지연은 옛 TTL이 끝날 때까지 캐시된 옛 값이 쓰여 변경이 늦게 반영되는 현상입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc1034"
+      ]
+    },
+    {
+      "id": "network-dns-propagation-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "변경 전에 미리 낮춰 두면 반영이 빨라지는 값은 ___ 이다.",
+        "hint": "레코드를 캐시해도 되는 시간입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "TTL",
+          "ttl",
+          "티티엘"
+        ]
+      },
+      "explanation": "변경하기 전에 옛 TTL만큼 미리 TTL을 낮춰 두면, 변경 뒤 캐시가 짧게 유지돼 빨리 반영됩니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc1034"
+      ]
+    },
+    {
+      "id": "network-dns-propagation-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "propagation"
+      ],
+      "content": {
+        "prompt": "TTL 86400인 레코드를 바꾸면 최대 반영 지연은?",
+        "options": [
+          "1시간",
+          "1일",
+          "1주"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "86400초는 24시간, 즉 1일입니다. 옛 값을 캐시한 곳은 최대 하루 동안 옛 IP를 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc1034"
+      ]
+    },
+    {
+      "id": "network-dns-propagation-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "TTL을 3600에서 60으로 낮췄다. 최소 몇 초 뒤 IP를 바꾸나?",
+        "options": [
+          "60초",
+          "즉시",
+          "3600초"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "TTL을 낮추기 전에 캐시된 답은 옛 TTL 3600초 동안 남으므로, 3600초가 지난 뒤 바꿔야 새 TTL이 모든 캐시에 적용됩니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc1034"
+      ]
+    },
+    {
+      "id": "network-dns-propagation-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "failover"
+      ],
+      "content": {
+        "prompt": "TTL 300으로 DNS 장애 전환 시 트래픽이 옮겨지는 때는?",
+        "options": [
+          "최대 5분 뒤",
+          "즉시",
+          "최대 1시간 뒤"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "캐시된 옛 답이 최대 300초 남으므로 트래픽은 최대 5분 늦게 새 서버로 따라옵니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc1034"
+      ]
+    },
+    {
+      "id": "network-dns-propagation-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "propagation"
+      ],
+      "content": {
+        "prompt": "TTL이 남은 캐시는 레코드를 바꾼 뒤에도 옛 값을 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "캐시한 쪽은 TTL이 끝나기 전까지 다시 묻지 않으므로, 레코드를 바꿔도 그동안은 옛 값을 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc1034"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "track": "network",
+  "unit": "u05-http",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "network-http-methods-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "get"
+      ],
+      "content": {
+        "prompt": "리소스를 조회하는 HTTP 메서드는?",
+        "options": [
+          "GET",
+          "POST",
+          "DELETE"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "GET은 리소스를 조회하는 메서드이며 보통 본문 없이 보냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc5789"
+      ]
+    },
+    {
+      "id": "network-http-methods-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "patch"
+      ],
+      "content": {
+        "prompt": "리소스의 일부만 수정하는 메서드는?",
+        "options": [
+          "PUT",
+          "PATCH",
+          "POST"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "PATCH는 리소스의 일부만 수정합니다. PUT은 보낸 내용으로 리소스 전체를 교체합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc5789"
+      ]
+    },
+    {
+      "id": "network-http-methods-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "put"
+      ],
+      "content": {
+        "prompt": "리소스 전체를 보낸 내용으로 교체하는 메서드는?",
+        "options": [
+          "PATCH",
+          "DELETE",
+          "PUT"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "PUT은 리소스 전체를 요청 본문으로 교체합니다. 일부만 바꿀 때는 PATCH를 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc5789"
+      ]
+    },
+    {
+      "id": "network-http-methods-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "patch"
+      ],
+      "content": {
+        "prompt": "PATCH는 리소스 전체를 새 내용으로 교체한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "PATCH는 리소스의 일부만 수정합니다. 전체를 교체하는 메서드는 PUT입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc5789"
+      ]
+    },
+    {
+      "id": "network-http-methods-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "http",
+        "delete"
+      ],
+      "content": {
+        "prompt": "리소스를 삭제하는 메서드는 ___ 이다.",
+        "hint": "영어로 '지우다'라는 뜻의 동사입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "DELETE",
+          "delete",
+          "딜리트"
+        ]
+      },
+      "explanation": "DELETE 메서드는 지정한 리소스를 삭제합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc5789"
+      ]
+    },
+    {
+      "id": "network-http-methods-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "post"
+      ],
+      "content": {
+        "prompt": "데이터를 제출해 새 리소스를 만드는 메서드는 ___ 이다.",
+        "hint": "게시물을 올린다는 뜻의 영단어 네 글자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "POST",
+          "post",
+          "포스트"
+        ]
+      },
+      "explanation": "POST는 요청 본문의 데이터를 제출하며, 주로 새 리소스를 만들 때 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc5789"
+      ]
+    },
+    {
+      "id": "network-http-methods-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "post"
+      ],
+      "content": {
+        "prompt": "회원 가입 폼을 제출해 새 계정을 만들 때 메서드는?",
+        "options": [
+          "GET",
+          "POST",
+          "DELETE"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "데이터를 제출해 새 리소스(계정)를 만드는 것이므로 POST를 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc5789"
+      ]
+    },
+    {
+      "id": "network-http-methods-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "patch"
+      ],
+      "content": {
+        "prompt": "사용자 42의 이메일 필드만 바꿀 때 알맞은 메서드는?",
+        "options": [
+          "PATCH",
+          "PUT",
+          "GET"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "리소스의 일부(이메일)만 수정하므로 PATCH가 맞습니다. PUT은 사용자 정보 전체를 교체합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc5789"
+      ]
+    },
+    {
+      "id": "network-http-methods-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "delete"
+      ],
+      "content": {
+        "prompt": "게시글 7을 지울 때 알맞은 메서드는?",
+        "options": [
+          "POST",
+          "PUT",
+          "DELETE"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "리소스를 삭제하는 메서드는 DELETE입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc5789"
+      ]
+    },
+    {
+      "id": "network-http-methods-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "http",
+        "get"
+      ],
+      "content": {
+        "prompt": "GET 요청은 보통 본문 없이 보낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "GET은 리소스를 조회하는 메서드라 보낼 데이터가 없어 보통 본문 없이 요청합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc5789"
+      ]
+    }
+  ]
+}

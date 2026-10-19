@@ -1,0 +1,258 @@
+{
+  "track": "network",
+  "unit": "u04-dns",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "network-dns-rr-addr-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "a-record"
+      ],
+      "content": {
+        "prompt": "이름을 IPv4 주소에 대응시키는 레코드는?",
+        "options": [
+          "A",
+          "AAAA",
+          "CNAME"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "A 레코드는 이름을 32비트 IPv4 주소에 대응시킵니다. AAAA는 IPv6, CNAME은 다른 이름입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc3596",
+        "https://www.rfc-editor.org/rfc/rfc2181"
+      ]
+    },
+    {
+      "id": "network-dns-rr-addr-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "cname"
+      ],
+      "content": {
+        "prompt": "이름을 다른 이름(별칭)에 대응시키는 레코드는?",
+        "options": [
+          "A",
+          "CNAME",
+          "AAAA"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "CNAME 레코드는 이름을 다른 이름에 대응시키는 별칭이며, 리졸버는 대상 이름을 다시 조회합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc3596",
+        "https://www.rfc-editor.org/rfc/rfc2181"
+      ]
+    },
+    {
+      "id": "network-dns-rr-addr-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "aaaa-record"
+      ],
+      "content": {
+        "prompt": "128비트 IPv6 주소를 담는 레코드 타입은?",
+        "options": [
+          "CNAME",
+          "A",
+          "AAAA"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "AAAA 레코드는 이름을 128비트 IPv6 주소에 대응시킵니다. A 레코드는 IPv4용입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc3596",
+        "https://www.rfc-editor.org/rfc/rfc2181"
+      ]
+    },
+    {
+      "id": "network-dns-rr-addr-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "cname"
+      ],
+      "content": {
+        "prompt": "CNAME은 apex인 example.com 자체에도 둘 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "CNAME이 있는 이름에는 다른 레코드를 둘 수 없는데, apex에는 다른 레코드가 반드시 있어야 하므로 CNAME을 못 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc3596",
+        "https://www.rfc-editor.org/rfc/rfc2181"
+      ]
+    },
+    {
+      "id": "network-dns-rr-addr-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "a-record"
+      ],
+      "content": {
+        "prompt": "이름을 IPv4 주소로 바꾸는 레코드 타입은 ___ 이다.",
+        "hint": "영문 대문자 한 글자로 된 타입 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "A",
+          "a",
+          "A 레코드",
+          "A레코드"
+        ]
+      },
+      "explanation": "A 레코드는 이름을 IPv4 주소에 대응시키는 가장 기본적인 레코드입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc3596",
+        "https://www.rfc-editor.org/rfc/rfc2181"
+      ]
+    },
+    {
+      "id": "network-dns-rr-addr-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "cname"
+      ],
+      "content": {
+        "prompt": "다른 이름을 가리키는 별칭 레코드 타입은 ___ 이다.",
+        "hint": "영문 대문자 다섯 글자로 된 타입 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "CNAME",
+          "cname",
+          "씨네임"
+        ]
+      },
+      "explanation": "CNAME 레코드는 이름을 다른 이름에 대응시키는 별칭 레코드입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc3596",
+        "https://www.rfc-editor.org/rfc/rfc2181"
+      ]
+    },
+    {
+      "id": "network-dns-rr-addr-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "cname"
+      ],
+      "content": {
+        "prompt": "www의 CNAME이 web.example.net이면 리졸버의 다음 일은?",
+        "options": [
+          "대상 이름 조회",
+          "조회 종료",
+          "IPv6로 변환"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "CNAME은 주소가 아니라 다른 이름을 알려 주므로, 리졸버는 web.example.net을 다시 조회해 주소를 얻습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc3596",
+        "https://www.rfc-editor.org/rfc/rfc2181"
+      ]
+    },
+    {
+      "id": "network-dns-rr-addr-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "aaaa-record"
+      ],
+      "content": {
+        "prompt": "IPv6 주소 2001:db8::1을 등록할 레코드는?",
+        "options": [
+          "A",
+          "AAAA",
+          "CNAME"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "2001:db8::1은 콜론으로 적은 128비트 IPv6 주소이므로 AAAA 레코드에 등록합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc3596",
+        "https://www.rfc-editor.org/rfc/rfc2181"
+      ]
+    },
+    {
+      "id": "network-dns-rr-addr-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "cname"
+      ],
+      "content": {
+        "prompt": "apex인 example.com에 둘 수 없는 레코드는?",
+        "options": [
+          "A",
+          "AAAA",
+          "CNAME"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "CNAME은 같은 이름에 다른 레코드를 둘 수 없게 하므로 다른 레코드가 꼭 필요한 apex에는 쓸 수 없습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc3596",
+        "https://www.rfc-editor.org/rfc/rfc2181"
+      ]
+    },
+    {
+      "id": "network-dns-rr-addr-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "a-record"
+      ],
+      "content": {
+        "prompt": "IPv4 주소 203.0.113.10은 A 레코드에 등록한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "203.0.113.10은 점으로 나눈 네 숫자의 IPv4 주소이므로 A 레코드에 등록합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc1035",
+        "https://www.rfc-editor.org/rfc/rfc3596",
+        "https://www.rfc-editor.org/rfc/rfc2181"
+      ]
+    }
+  ]
+}
