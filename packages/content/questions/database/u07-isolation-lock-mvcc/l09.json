@@ -1,0 +1,253 @@
+{
+  "track": "database",
+  "unit": "u07-isolation-lock-mvcc",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "database-mvcc-snapshot-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mvcc",
+        "isolation"
+      ],
+      "content": {
+        "prompt": "행을 고칠 때 새 버전을 만들어 여러 버전을 유지하는 방식은?",
+        "options": [
+          "WAL",
+          "갭 락",
+          "MVCC"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "MVCC는 행을 수정할 때 새 버전을 만들어 여러 버전을 함께 유지하는 방식입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/mvcc-intro.html",
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-snapshot-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mvcc",
+        "snapshot"
+      ],
+      "content": {
+        "prompt": "트랜잭션이 그 시점에 커밋된 버전만 보게 하는 기준은?",
+        "options": [
+          "체크포인트",
+          "스냅샷",
+          "SAVEPOINT"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스냅샷은 트랜잭션이 볼 데이터의 시점으로, 그 시점에 커밋된 버전만 보입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/mvcc-intro.html",
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-snapshot-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mvcc",
+        "lock"
+      ],
+      "content": {
+        "prompt": "MVCC에서 T1이 행을 UPDATE하고 미커밋일 때 T2의 일반 SELECT는?",
+        "options": [
+          "바로 읽는다",
+          "기다린다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "MVCC에서는 쓰기가 읽기를 막지 않아 T2는 기다리지 않고 커밋된 옛 버전을 읽습니다(PostgreSQL에서 확인).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/mvcc-intro.html",
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-snapshot-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "mvcc",
+        "lock"
+      ],
+      "content": {
+        "prompt": "MVCC에서는 쓰기가 끝날 때까지 읽기가 기다린다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "MVCC에서는 읽기가 자기 스냅샷의 버전을 읽으므로 쓰기를 기다리지 않습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/mvcc-intro.html",
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-snapshot-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "mvcc",
+        "isolation"
+      ],
+      "content": {
+        "prompt": "여러 행 버전을 두는 동시성 제어 방식은 ___ 이다.",
+        "hint": "영문 대문자 네 글자 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "MVCC",
+          "다중 버전 동시성 제어"
+        ]
+      },
+      "explanation": "MVCC는 행의 여러 버전을 두어 읽기와 쓰기가 서로 막지 않게 하는 동시성 제어 방식입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/mvcc-intro.html",
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-snapshot-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "mvcc",
+        "snapshot"
+      ],
+      "content": {
+        "prompt": "PostgreSQL REPEATABLE READ 스냅샷은 트랜잭션 ___ 문장 때 잡힌다.",
+        "hint": "READ COMMITTED는 문장마다 새로 잡는다"
+      },
+      "answer_key": {
+        "accepted": [
+          "첫",
+          "첫 번째",
+          "처음",
+          "첫번째"
+        ]
+      },
+      "explanation": "PostgreSQL REPEATABLE READ는 첫 문장 때 잡은 스냅샷을 트랜잭션 끝까지 씁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/mvcc-intro.html",
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-snapshot-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "snapshot",
+        "read-committed"
+      ],
+      "content": {
+        "prompt": "PostgreSQL READ COMMITTED는 스냅샷을 언제 잡나?",
+        "options": [
+          "첫 문장 때",
+          "문장마다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "READ COMMITTED는 문장마다 새 스냅샷을 잡아 그 시점의 최신 커밋을 봅니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/mvcc-intro.html",
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-snapshot-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "snapshot",
+        "repeatable-read"
+      ],
+      "content": {
+        "prompt": "REPEATABLE READ에서 BEGIN 직후 다른 쪽 커밋은 첫 SELECT에?",
+        "options": [
+          "보인다",
+          "안 보인다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스냅샷은 BEGIN이 아니라 첫 문장 때 잡혀서 그 전 커밋은 보입니다(PostgreSQL 16 확인, InnoDB도 첫 읽기 기준).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/mvcc-intro.html",
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-snapshot-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "mvcc",
+        "update"
+      ],
+      "content": {
+        "prompt": "MVCC에서 UPDATE하면 기존 버전은?",
+        "options": [
+          "남고 새 버전 추가",
+          "즉시 삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "MVCC는 기존 버전을 남기고 새 버전을 만들어, 다른 트랜잭션이 옛 버전을 계속 읽을 수 있게 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/mvcc-intro.html",
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-snapshot-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "mvcc",
+        "lock"
+      ],
+      "content": {
+        "prompt": "MVCC에서는 읽기와 쓰기가 서로를 막지 않는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "읽기는 자기 스냅샷의 버전을 읽고 쓰기는 새 버전을 만들므로 서로 기다리지 않습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/mvcc-intro.html",
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html"
+      ]
+    }
+  ]
+}

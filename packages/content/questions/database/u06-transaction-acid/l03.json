@@ -1,0 +1,244 @@
+{
+  "track": "database",
+  "unit": "u06-transaction-acid",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "database-tx-consistency-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "acid",
+        "consistency"
+      ],
+      "content": {
+        "prompt": "트랜잭션 전후로 DB가 정의된 규칙을 만족하는 성질은?",
+        "options": [
+          "일관성",
+          "원자성",
+          "정규형"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "일관성은 트랜잭션 전후로 DB가 제약 조건과 응용 규칙 같은 정의된 규칙을 만족하는 성질입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-constraints.html",
+        "https://en.wikipedia.org/wiki/Consistency_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-tx-consistency-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "consistency",
+        "invariant"
+      ],
+      "content": {
+        "prompt": "잔액 합계 유지처럼 애플리케이션이 지킬 규칙은?",
+        "options": [
+          "응용 불변식",
+          "도메인",
+          "외래키"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "제약 조건으로 적기 어려워 애플리케이션이 지켜야 하는 규칙을 응용 불변식이라고 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-constraints.html",
+        "https://en.wikipedia.org/wiki/Consistency_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-tx-consistency-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "consistency",
+        "constraint"
+      ],
+      "content": {
+        "prompt": "기본키 값의 중복을 막는 것은 어느 쪽인가?",
+        "options": [
+          "응용 불변식",
+          "DB 제약"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "기본키 중복은 PK 제약으로 DBMS가 직접 검사해 막는 DB 제약입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-constraints.html",
+        "https://en.wikipedia.org/wiki/Consistency_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-tx-consistency-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "acid",
+        "consistency"
+      ],
+      "content": {
+        "prompt": "ACID의 일관성과 CAP의 일관성은 같은 뜻이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "ACID의 일관성은 규칙을 만족하는 것이고, CAP의 일관성은 복제본들이 같은 최신 값을 주는 것입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-constraints.html",
+        "https://en.wikipedia.org/wiki/Consistency_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-tx-consistency-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "acid",
+        "consistency"
+      ],
+      "content": {
+        "prompt": "ACID의 C는 ___ 이다.",
+        "hint": "트랜잭션 전후로 정의된 규칙을 만족한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "일관성",
+          "consistency"
+        ]
+      },
+      "explanation": "ACID의 C는 Consistency, 즉 일관성입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-constraints.html",
+        "https://en.wikipedia.org/wiki/Consistency_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-tx-consistency-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "consistency",
+        "invariant"
+      ],
+      "content": {
+        "prompt": "이체 전후 잔액 합계 유지는 응용 ___ 이다.",
+        "hint": "트랜잭션 전후로 항상 참이어야 하는 조건"
+      },
+      "answer_key": {
+        "accepted": [
+          "불변식",
+          "invariant",
+          "불변 조건"
+        ]
+      },
+      "explanation": "애플리케이션이 트랜잭션 전후로 지켜야 하는 규칙을 응용 불변식이라고 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-constraints.html",
+        "https://en.wikipedia.org/wiki/Consistency_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-tx-consistency-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "consistency",
+        "constraint"
+      ],
+      "content": {
+        "prompt": "CHECK (bal >= 0)인 열을 -10으로 UPDATE하면?",
+        "options": [
+          "문장 실패",
+          "-10으로 저장"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "CHECK 제약을 어기는 값은 저장되지 않고 UPDATE 문장이 오류로 실패합니다(PostgreSQL에서 확인).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-constraints.html",
+        "https://en.wikipedia.org/wiki/Consistency_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-tx-consistency-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "consistency",
+        "constraint"
+      ],
+      "content": {
+        "prompt": "FK가 있는데 없는 회원번호로 주문을 INSERT하면?",
+        "options": [
+          "NULL로 저장",
+          "문장 실패",
+          "그대로 저장"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "외래키 제약은 참조 대상이 없는 값을 거부하므로 INSERT 문장이 실패합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-constraints.html",
+        "https://en.wikipedia.org/wiki/Consistency_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-tx-consistency-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "consistency",
+        "invariant"
+      ],
+      "content": {
+        "prompt": "A에서 100을 빼고 B에 더하지 않은 채 커밋했다. 깨진 것은?",
+        "options": [
+          "PK 제약",
+          "CHECK 제약",
+          "응용 불변식"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "잔액 합계 유지라는 응용 불변식이 깨졌습니다. 이런 규칙은 DB가 아니라 애플리케이션이 지켜야 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-constraints.html",
+        "https://en.wikipedia.org/wiki/Consistency_(database_systems)"
+      ]
+    },
+    {
+      "id": "database-tx-consistency-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "consistency",
+        "constraint"
+      ],
+      "content": {
+        "prompt": "DB 제약을 어기는 변경은 문장이나 커밋이 실패한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "PK·UNIQUE·FK·CHECK를 어기면 DBMS가 문장이나 커밋을 실패시켜 일관성을 지킵니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-constraints.html",
+        "https://en.wikipedia.org/wiki/Consistency_(database_systems)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "track": "database",
+  "unit": "u06-transaction-acid",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "database-tx-redo-undo-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "recovery",
+        "redo"
+      ],
+      "content": {
+        "prompt": "커밋됐지만 데이터 파일에 없는 변경을 로그로 다시 적용하는 것은?",
+        "options": [
+          "REDO",
+          "UNDO",
+          "ROLLBACK"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "로그에 남은 커밋된 변경을 데이터 파일에 다시 써 넣는 작업이 REDO입니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-undo-logs.html",
+        "https://www.postgresql.org/docs/current/wal-intro.html"
+      ]
+    },
+    {
+      "id": "database-tx-redo-undo-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "recovery",
+        "undo"
+      ],
+      "content": {
+        "prompt": "미커밋 트랜잭션이 남긴 변경을 복구 때 지우는 작업은?",
+        "options": [
+          "REDO",
+          "UNDO",
+          "SAVEPOINT"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "UNDO는 복구 때 커밋되지 않은 트랜잭션이 남긴 변경을 원래대로 돌려놓습니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-undo-logs.html",
+        "https://www.postgresql.org/docs/current/wal-intro.html"
+      ]
+    },
+    {
+      "id": "database-tx-redo-undo-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "recovery",
+        "redo"
+      ],
+      "content": {
+        "prompt": "장애 전 커밋된 T1의 변경이 데이터 파일에 없다. 필요한 작업은?",
+        "options": [
+          "UNDO",
+          "REDO"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "커밋된 변경이 빠져 있으므로 로그로 다시 적용하는 REDO가 필요합니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-undo-logs.html",
+        "https://www.postgresql.org/docs/current/wal-intro.html"
+      ]
+    },
+    {
+      "id": "database-tx-redo-undo-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "recovery",
+        "undo"
+      ],
+      "content": {
+        "prompt": "UNDO는 데이터 파일에 빠진 커밋 변경을 채워 넣는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "빠진 커밋 변경을 채우는 것은 REDO입니다. UNDO는 미커밋 변경을 원래대로 돌립니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-undo-logs.html",
+        "https://www.postgresql.org/docs/current/wal-intro.html"
+      ]
+    },
+    {
+      "id": "database-tx-redo-undo-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "recovery",
+        "redo"
+      ],
+      "content": {
+        "prompt": "커밋된 변경을 로그로 다시 적용하는 복구 작업은 ___ 이다.",
+        "hint": "다시 한다는 뜻의 영어 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "REDO",
+          "재실행",
+          "리두"
+        ]
+      },
+      "explanation": "REDO는 데이터 파일에 빠진 커밋된 변경을 로그에서 읽어 다시 반영하는 작업입니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-undo-logs.html",
+        "https://www.postgresql.org/docs/current/wal-intro.html"
+      ]
+    },
+    {
+      "id": "database-tx-redo-undo-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "undo",
+        "mysql"
+      ],
+      "content": {
+        "prompt": "InnoDB가 미완료 변경을 롤백할 때 쓰는 로그는 ___ log 이다.",
+        "hint": "redo log와 짝을 이루는 로그"
+      },
+      "answer_key": {
+        "accepted": [
+          "undo",
+          "언두"
+        ]
+      },
+      "explanation": "MySQL InnoDB는 undo log로 커밋되지 않은 변경을 되돌립니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-undo-logs.html",
+        "https://www.postgresql.org/docs/current/wal-intro.html"
+      ]
+    },
+    {
+      "id": "database-tx-redo-undo-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "recovery",
+        "mysql"
+      ],
+      "content": {
+        "prompt": "장애 때 T2는 커밋 전이었다. InnoDB 복구가 끝나면 T2의 변경은?",
+        "options": [
+          "반영된 채 남음",
+          "롤백됨"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "InnoDB는 redo log로 재적용한 뒤 undo log로 커밋되지 않은 T2의 변경을 롤백합니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-undo-logs.html",
+        "https://www.postgresql.org/docs/current/wal-intro.html"
+      ]
+    },
+    {
+      "id": "database-tx-redo-undo-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "recovery",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "PostgreSQL 복구에서 커밋 안 된 행 버전은?",
+        "options": [
+          "가시성 규칙으로 무시",
+          "UNDO로 지움"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "PostgreSQL은 UNDO 없이 REDO만 하고, 커밋되지 않은 행 버전은 MVCC 가시성 규칙으로 보이지 않게 합니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-undo-logs.html",
+        "https://www.postgresql.org/docs/current/wal-intro.html"
+      ]
+    },
+    {
+      "id": "database-tx-redo-undo-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "recovery",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "PostgreSQL의 장애 복구가 하는 작업은?",
+        "options": [
+          "REDO만",
+          "UNDO만",
+          "REDO와 UNDO"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "PostgreSQL은 WAL로 REDO만 하며, 미커밋 변경은 되돌리지 않고 가시성 규칙으로 무시합니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-undo-logs.html",
+        "https://www.postgresql.org/docs/current/wal-intro.html"
+      ]
+    },
+    {
+      "id": "database-tx-redo-undo-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "recovery",
+        "mysql"
+      ],
+      "content": {
+        "prompt": "MySQL InnoDB는 redo log와 undo log를 함께 써서 복구한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "InnoDB는 redo log로 변경을 재적용하고 undo log로 미완료 트랜잭션을 롤백합니다.",
+      "refs": [
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-undo-logs.html",
+        "https://www.postgresql.org/docs/current/wal-intro.html"
+      ]
+    }
+  ]
+}

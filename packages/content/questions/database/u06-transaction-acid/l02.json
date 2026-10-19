@@ -1,0 +1,255 @@
+{
+  "track": "database",
+  "unit": "u06-transaction-acid",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "database-tx-atomicity-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "transaction",
+        "atomicity"
+      ],
+      "content": {
+        "prompt": "트랜잭션 변경이 전부 반영되거나 전혀 안 되는 성질은?",
+        "options": [
+          "정규화",
+          "오토커밋",
+          "원자성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "변경을 일부만 남기지 않고 모두 반영하거나 모두 취소하는 성질이 원자성입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html",
+        "https://www.postgresql.org/docs/current/sql-savepoint.html",
+        "https://www.postgresql.org/docs/current/sql-rollback-to.html"
+      ]
+    },
+    {
+      "id": "database-tx-atomicity-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "savepoint",
+        "atomicity"
+      ],
+      "content": {
+        "prompt": "트랜잭션 안의 중간 지점에 이름을 붙이는 명령은?",
+        "options": [
+          "SAVEPOINT",
+          "COMMIT",
+          "BEGIN"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SAVEPOINT는 트랜잭션 안의 중간 지점에 이름을 붙여 나중에 그 지점으로 되돌아갈 수 있게 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html",
+        "https://www.postgresql.org/docs/current/sql-savepoint.html",
+        "https://www.postgresql.org/docs/current/sql-rollback-to.html"
+      ]
+    },
+    {
+      "id": "database-tx-atomicity-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "savepoint",
+        "rollback"
+      ],
+      "content": {
+        "prompt": "ROLLBACK TO SAVEPOINT 실행 뒤 트랜잭션은?",
+        "options": [
+          "끝난다",
+          "계속된다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ROLLBACK TO SAVEPOINT는 그 지점 이후 변경만 취소하고 트랜잭션은 계속 열어 둡니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html",
+        "https://www.postgresql.org/docs/current/sql-savepoint.html",
+        "https://www.postgresql.org/docs/current/sql-rollback-to.html"
+      ]
+    },
+    {
+      "id": "database-tx-atomicity-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "transaction",
+        "atomicity"
+      ],
+      "content": {
+        "prompt": "원자성이 지켜지면 출금만 반영되고 입금은 빠질 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "원자성은 변경이 전부 반영되거나 전혀 반영되지 않게 하므로 출금만 남는 상태는 생기지 않습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html",
+        "https://www.postgresql.org/docs/current/sql-savepoint.html",
+        "https://www.postgresql.org/docs/current/sql-rollback-to.html"
+      ]
+    },
+    {
+      "id": "database-tx-atomicity-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "acid",
+        "atomicity"
+      ],
+      "content": {
+        "prompt": "출금만 남는 일을 막는 ACID 성질은 ___ 이다.",
+        "hint": "변경이 전부 반영되거나 전혀 반영되지 않는다"
+      },
+      "answer_key": {
+        "accepted": [
+          "원자성",
+          "atomicity",
+          "원자 성"
+        ]
+      },
+      "explanation": "원자성(ACID의 A) 덕분에 출금과 입금 중 하나만 반영되는 일이 없습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html",
+        "https://www.postgresql.org/docs/current/sql-savepoint.html",
+        "https://www.postgresql.org/docs/current/sql-rollback-to.html"
+      ]
+    },
+    {
+      "id": "database-tx-atomicity-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "savepoint",
+        "atomicity"
+      ],
+      "content": {
+        "prompt": "트랜잭션 안의 중간 지점은 ___ 명령으로 만든다.",
+        "hint": "그 지점 이후 변경만 따로 취소할 수 있다"
+      },
+      "answer_key": {
+        "accepted": [
+          "SAVEPOINT",
+          "세이브포인트",
+          "save point"
+        ]
+      },
+      "explanation": "SAVEPOINT 명령으로 중간 지점을 만들고 ROLLBACK TO SAVEPOINT로 그 이후만 취소합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html",
+        "https://www.postgresql.org/docs/current/sql-savepoint.html",
+        "https://www.postgresql.org/docs/current/sql-rollback-to.html"
+      ]
+    },
+    {
+      "id": "database-tx-atomicity-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "atomicity",
+        "recovery"
+      ],
+      "content": {
+        "prompt": "출금 후 입금 전에 서버가 죽었다. 재시작 뒤 출금은?",
+        "options": [
+          "취소됨",
+          "반영됨"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "커밋 전에 장애가 난 트랜잭션은 원자성에 따라 출금까지 모두 취소됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html",
+        "https://www.postgresql.org/docs/current/sql-savepoint.html",
+        "https://www.postgresql.org/docs/current/sql-rollback-to.html"
+      ]
+    },
+    {
+      "id": "database-tx-atomicity-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "savepoint",
+        "rollback"
+      ],
+      "content": {
+        "prompt": "a 삽입→SAVEPOINT s→b 삽입→ROLLBACK TO s→COMMIT. 남는 행은?",
+        "options": [
+          "a만",
+          "b만",
+          "a와 b"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ROLLBACK TO s는 s 이후에 넣은 b만 취소하고, 이어진 COMMIT이 a를 확정합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html",
+        "https://www.postgresql.org/docs/current/sql-savepoint.html",
+        "https://www.postgresql.org/docs/current/sql-rollback-to.html"
+      ]
+    },
+    {
+      "id": "database-tx-atomicity-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "savepoint",
+        "atomicity"
+      ],
+      "content": {
+        "prompt": "a 삽입→SAVEPOINT s→b 삽입→ROLLBACK. 남는 행은?",
+        "options": [
+          "a만",
+          "a와 b",
+          "없음"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "SAVEPOINT 이름 없이 ROLLBACK하면 트랜잭션 전체가 취소되어 a와 b 모두 남지 않습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html",
+        "https://www.postgresql.org/docs/current/sql-savepoint.html",
+        "https://www.postgresql.org/docs/current/sql-rollback-to.html"
+      ]
+    },
+    {
+      "id": "database-tx-atomicity-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "acid",
+        "atomicity"
+      ],
+      "content": {
+        "prompt": "원자성은 트랜잭션 변경의 일부만 남는 일을 막는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "원자성은 전부 반영 또는 전혀 반영 안 됨만 허용하므로 일부만 남는 상태를 막습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html",
+        "https://www.postgresql.org/docs/current/sql-savepoint.html",
+        "https://www.postgresql.org/docs/current/sql-rollback-to.html"
+      ]
+    }
+  ]
+}

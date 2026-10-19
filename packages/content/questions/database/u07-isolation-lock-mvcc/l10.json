@@ -1,0 +1,243 @@
+{
+  "track": "database",
+  "unit": "u07-isolation-lock-mvcc",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "database-mvcc-vacuum-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mvcc",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "PostgreSQL 행 버전을 만든 트랜잭션 ID가 담기는 열은?",
+        "options": [
+          "xmin",
+          "xmax",
+          "ctid"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "xmin은 행 버전을 만든 트랜잭션 ID, xmax는 그 버전을 지운(대체한) 트랜잭션 ID입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-system-columns.html",
+        "https://www.postgresql.org/docs/current/routine-vacuuming.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-vacuum-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mvcc",
+        "dead-tuple"
+      ],
+      "content": {
+        "prompt": "어떤 트랜잭션도 더 이상 볼 수 없는 옛 버전은?",
+        "options": [
+          "dead tuple",
+          "더티 페이지",
+          "스냅샷"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "어떤 트랜잭션의 스냅샷에도 보이지 않는 옛 버전을 dead tuple이라고 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-system-columns.html",
+        "https://www.postgresql.org/docs/current/routine-vacuuming.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-vacuum-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mvcc",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "행 버전을 지운(대체한) 트랜잭션 ID가 담기는 열은?",
+        "options": [
+          "xmin",
+          "xmax"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "xmax에는 그 버전을 지우거나 UPDATE로 대체한 트랜잭션 ID가 기록됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-system-columns.html",
+        "https://www.postgresql.org/docs/current/routine-vacuuming.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-vacuum-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "mvcc",
+        "update"
+      ],
+      "content": {
+        "prompt": "PostgreSQL의 UPDATE는 행을 제자리에서 덮어쓴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "PostgreSQL의 UPDATE는 옛 버전에 xmax를 기록하고 새 버전을 추가로 씁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-system-columns.html",
+        "https://www.postgresql.org/docs/current/routine-vacuuming.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-vacuum-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "vacuum",
+        "dead-tuple"
+      ],
+      "content": {
+        "prompt": "dead tuple 공간을 정리하는 PostgreSQL 명령은 ___ 이다.",
+        "hint": "PostgreSQL이 자동으로도 실행한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "VACUUM",
+          "배큠"
+        ]
+      },
+      "explanation": "VACUUM은 dead tuple 공간을 재사용할 수 있게 정리하며, autovacuum이 자동으로 실행합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-system-columns.html",
+        "https://www.postgresql.org/docs/current/routine-vacuuming.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-vacuum-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "mvcc",
+        "update"
+      ],
+      "content": {
+        "prompt": "UPDATE는 옛 버전의 ___ 열에 자기 트랜잭션 ID를 기록한다.",
+        "hint": "버전을 지운 트랜잭션을 가리키는 열"
+      },
+      "answer_key": {
+        "accepted": [
+          "xmax"
+        ]
+      },
+      "explanation": "UPDATE는 옛 버전의 xmax에 자기 트랜잭션 ID를 기록하고, 새 버전의 xmin에도 같은 ID를 씁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-system-columns.html",
+        "https://www.postgresql.org/docs/current/routine-vacuuming.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-vacuum-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "mvcc",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "ID 100이 INSERT한 행을 ID 105가 UPDATE했다. 옛 버전의 xmax는?",
+        "options": [
+          "100",
+          "105",
+          "0"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "옛 버전을 대체한 트랜잭션이 105이므로 xmax는 105입니다. xmin은 만든 트랜잭션 100입니다(PostgreSQL에서 확인).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-system-columns.html",
+        "https://www.postgresql.org/docs/current/routine-vacuuming.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-vacuum-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "mvcc",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "ID 105가 UPDATE해 만든 새 버전의 xmin은?",
+        "options": [
+          "105",
+          "100",
+          "0"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "새 버전을 만든 트랜잭션이 105이므로 xmin은 105이고, 아직 지워지지 않아 xmax는 0입니다(PostgreSQL에서 확인).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-system-columns.html",
+        "https://www.postgresql.org/docs/current/routine-vacuuming.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-vacuum-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dead-tuple",
+        "vacuum"
+      ],
+      "content": {
+        "prompt": "UPDATE 뒤 어떤 트랜잭션도 옛 버전을 보지 않게 됐다. 그 버전은?",
+        "options": [
+          "새 버전",
+          "더티 페이지",
+          "dead tuple"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "더 이상 어떤 트랜잭션도 볼 수 없는 옛 버전은 dead tuple이 되어 VACUUM 정리 대상이 됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-system-columns.html",
+        "https://www.postgresql.org/docs/current/routine-vacuuming.html"
+      ]
+    },
+    {
+      "id": "database-mvcc-vacuum-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "vacuum",
+        "dead-tuple"
+      ],
+      "content": {
+        "prompt": "VACUUM은 dead tuple 공간을 재사용 가능하게 정리한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "VACUUM은 dead tuple이 차지한 공간을 재사용할 수 있게 정리하고, autovacuum이 이를 자동 실행합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-system-columns.html",
+        "https://www.postgresql.org/docs/current/routine-vacuuming.html"
+      ]
+    }
+  ]
+}

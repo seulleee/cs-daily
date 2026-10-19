@@ -1,0 +1,245 @@
+{
+  "track": "database",
+  "unit": "u07-isolation-lock-mvcc",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "database-lock-shared-exclusive-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lock",
+        "shared-lock"
+      ],
+      "content": {
+        "prompt": "여러 트랜잭션이 동시에 가질 수 있는 읽기용 락은?",
+        "options": [
+          "배타 락",
+          "공유 락"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "공유 락(S)은 읽기용이라 여러 트랜잭션이 같은 행에 동시에 가질 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-shared-exclusive-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lock",
+        "exclusive-lock"
+      ],
+      "content": {
+        "prompt": "한 트랜잭션만 가질 수 있는 쓰기용 락은?",
+        "options": [
+          "배타 락",
+          "공유 락"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "배타 락(X)은 쓰기용이라 한 트랜잭션만 가지며 다른 S·X 요청을 막습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-shared-exclusive-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lock",
+        "shared-lock"
+      ],
+      "content": {
+        "prompt": "S 락이 걸린 행에 다른 트랜잭션이 S 락을 요청하면?",
+        "options": [
+          "함께 가진다",
+          "기다린다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "S와 S는 호환되므로 두 트랜잭션이 함께 공유 락을 가집니다(PostgreSQL FOR SHARE로 확인).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-shared-exclusive-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "lock",
+        "exclusive-lock"
+      ],
+      "content": {
+        "prompt": "X 락이 걸린 행에도 다른 트랜잭션이 S 락을 얻을 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "배타 락은 다른 S·X 요청을 모두 막으므로 S 락 요청은 기다려야 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-shared-exclusive-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "lock",
+        "shared-lock"
+      ],
+      "content": {
+        "prompt": "여러 트랜잭션이 함께 가질 수 있는 읽기용 락은 ___ 락이다.",
+        "hint": "서로 호환되는 락끼리는 동시에 쥘 수 있다"
+      },
+      "answer_key": {
+        "accepted": [
+          "공유",
+          "shared",
+          "S",
+          "공유 락"
+        ]
+      },
+      "explanation": "공유 락(S)은 읽기용 락으로, 공유 락끼리는 서로 막지 않습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-shared-exclusive-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "lock",
+        "exclusive-lock"
+      ],
+      "content": {
+        "prompt": "UPDATE·DELETE는 대상 행에 ___ 락을 건다.",
+        "hint": "한 트랜잭션만 가질 수 있는 락"
+      },
+      "answer_key": {
+        "accepted": [
+          "배타",
+          "exclusive",
+          "X",
+          "배타 락"
+        ]
+      },
+      "explanation": "UPDATE·DELETE는 대상 행에 배타 락(X)을 걸어 다른 트랜잭션의 변경을 막습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-shared-exclusive-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lock",
+        "exclusive-lock"
+      ],
+      "content": {
+        "prompt": "T1이 행을 UPDATE하고 아직 커밋 전. T2가 같은 행을 UPDATE하면?",
+        "options": [
+          "바로 실행",
+          "기다린다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "T1의 UPDATE가 건 배타 락은 커밋까지 유지되므로 T2는 기다립니다(PostgreSQL에서 확인).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-shared-exclusive-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lock",
+        "compatibility"
+      ],
+      "content": {
+        "prompt": "S-S, S-X, X-X 중 함께 걸 수 있는 조합은 몇 개?",
+        "options": [
+          "1개",
+          "2개",
+          "3개"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "함께 걸 수 있는 것은 S-S 하나뿐입니다. S-X와 X-X는 한쪽이 기다립니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-shared-exclusive-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lock",
+        "compatibility"
+      ],
+      "content": {
+        "prompt": "T1이 S 락을 가진 행에 T2가 X 락을 요청하면?",
+        "options": [
+          "바로 얻는다",
+          "기다린다",
+          "T1이 취소된다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "S와 X는 호환되지 않으므로 T2는 T1이 끝날 때까지 기다립니다(PostgreSQL FOR SHARE·FOR UPDATE로 확인).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html"
+      ]
+    },
+    {
+      "id": "database-lock-shared-exclusive-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "lock",
+        "shared-lock"
+      ],
+      "content": {
+        "prompt": "공유 락끼리는 서로 막지 않는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "S와 S는 호환되므로 여러 트랜잭션이 같은 행에 공유 락을 함께 가질 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/explicit-locking.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html"
+      ]
+    }
+  ]
+}

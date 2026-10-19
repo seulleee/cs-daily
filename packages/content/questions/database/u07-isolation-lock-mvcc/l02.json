@@ -1,0 +1,243 @@
+{
+  "track": "database",
+  "unit": "u07-isolation-lock-mvcc",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "database-iso-nonrepeatable-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "isolation",
+        "non-repeatable-read"
+      ],
+      "content": {
+        "prompt": "Non-repeatable Read는 어떤 현상인가?",
+        "options": [
+          "다시 읽은 값이 바뀜",
+          "미커밋 값을 읽음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "같은 행을 두 번 읽는 사이 다른 트랜잭션의 커밋으로 값이 달라지는 현상입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html"
+      ]
+    },
+    {
+      "id": "database-iso-nonrepeatable-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "isolation-level",
+        "non-repeatable-read"
+      ],
+      "content": {
+        "prompt": "Non-repeatable Read를 막는 가장 약한 격리 수준은?",
+        "options": [
+          "READ COMMITTED",
+          "REPEATABLE READ",
+          "SERIALIZABLE"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "REPEATABLE READ부터 한 번 읽은 행을 다시 읽어도 같은 값을 보장합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html"
+      ]
+    },
+    {
+      "id": "database-iso-nonrepeatable-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "isolation-level",
+        "read-committed"
+      ],
+      "content": {
+        "prompt": "문장마다 그 시점에 커밋된 최신 값을 보는 격리 수준은?",
+        "options": [
+          "READ COMMITTED",
+          "REPEATABLE READ"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "READ COMMITTED는 문장마다 커밋된 최신 값을 보므로 Non-repeatable Read가 생길 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html"
+      ]
+    },
+    {
+      "id": "database-iso-nonrepeatable-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "read-committed",
+        "non-repeatable-read"
+      ],
+      "content": {
+        "prompt": "READ COMMITTED에서는 Non-repeatable Read가 생길 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "READ COMMITTED는 문장마다 최신 커밋 값을 보므로 두 읽기 사이 커밋이 있으면 값이 달라집니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html"
+      ]
+    },
+    {
+      "id": "database-iso-nonrepeatable-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "isolation-level",
+        "non-repeatable-read"
+      ],
+      "content": {
+        "prompt": "Non-repeatable Read를 막는 가장 약한 수준은 ___ READ 이다.",
+        "hint": "같은 행을 반복해서 읽어도 같다는 뜻"
+      },
+      "answer_key": {
+        "accepted": [
+          "REPEATABLE",
+          "리피터블"
+        ]
+      },
+      "explanation": "REPEATABLE READ 이상의 격리 수준은 한 번 읽은 행을 다시 읽어도 같은 값을 줍니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html"
+      ]
+    },
+    {
+      "id": "database-iso-nonrepeatable-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "read-committed",
+        "non-repeatable-read"
+      ],
+      "content": {
+        "prompt": "READ COMMITTED는 ___ 마다 커밋된 최신 값을 본다.",
+        "hint": "트랜잭션보다 작은 실행 단위"
+      },
+      "answer_key": {
+        "accepted": [
+          "문장",
+          "statement",
+          "SQL 문장",
+          "쿼리"
+        ]
+      },
+      "explanation": "READ COMMITTED는 SQL 문장마다 그 시점에 커밋된 최신 값을 봅니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html"
+      ]
+    },
+    {
+      "id": "database-iso-nonrepeatable-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "read-committed",
+        "non-repeatable-read"
+      ],
+      "content": {
+        "prompt": "READ COMMITTED에서 100을 읽은 뒤 다른 쪽이 200을 커밋. 재읽기는?",
+        "options": [
+          "100",
+          "200",
+          "300"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "READ COMMITTED는 문장마다 최신 커밋 값을 보므로 다시 읽으면 200입니다(PostgreSQL에서 확인).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html"
+      ]
+    },
+    {
+      "id": "database-iso-nonrepeatable-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "repeatable-read",
+        "non-repeatable-read"
+      ],
+      "content": {
+        "prompt": "REPEATABLE READ에서 100을 읽은 뒤 다른 쪽이 200을 커밋. 재읽기는?",
+        "options": [
+          "200",
+          "100"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "REPEATABLE READ는 한 번 읽은 행을 다시 읽어도 같으므로 100입니다(PostgreSQL·MySQL InnoDB 기준).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html"
+      ]
+    },
+    {
+      "id": "database-iso-nonrepeatable-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "read-committed",
+        "rollback"
+      ],
+      "content": {
+        "prompt": "READ COMMITTED: 100 읽음, 다른 쪽이 200으로 고친 뒤 롤백. 재읽기는?",
+        "options": [
+          "100",
+          "200"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "상대가 롤백해 커밋된 값은 그대로 100이므로 다시 읽어도 100입니다(PostgreSQL에서 확인).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html"
+      ]
+    },
+    {
+      "id": "database-iso-nonrepeatable-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "non-repeatable-read",
+        "dirty-read"
+      ],
+      "content": {
+        "prompt": "Non-repeatable Read에서 두 번째로 읽은 값은 커밋되지 않은 값이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "두 번째로 읽은 값은 다른 트랜잭션이 커밋한 값입니다. 미커밋 값을 읽는 것은 Dirty Read입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html"
+      ]
+    }
+  ]
+}

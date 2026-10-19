@@ -1,0 +1,241 @@
+{
+  "track": "database",
+  "unit": "u06-transaction-acid",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "database-tx-durability-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "acid",
+        "durability"
+      ],
+      "content": {
+        "prompt": "커밋된 결과가 장애 후에도 남는 성질은?",
+        "options": [
+          "고립성",
+          "원자성",
+          "지속성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "커밋 응답을 받은 변경이 서버 장애 뒤에도 남는 것을 지속성이라고 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-reliability.html",
+        "https://www.postgresql.org/docs/current/runtime-config-wal.html"
+      ]
+    },
+    {
+      "id": "database-tx-durability-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "durability",
+        "log"
+      ],
+      "content": {
+        "prompt": "커밋 응답 전에 로그를 기록해야 하는 곳은?",
+        "options": [
+          "메모리",
+          "비휘발성 저장 장치"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "전원이 꺼져도 남도록 로그를 디스크 같은 비휘발성 저장 장치에 기록해야 합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-reliability.html",
+        "https://www.postgresql.org/docs/current/runtime-config-wal.html"
+      ]
+    },
+    {
+      "id": "database-tx-durability-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "durability",
+        "log"
+      ],
+      "content": {
+        "prompt": "지속성을 위해 커밋 전 반드시 디스크에 기록할 것은?",
+        "options": [
+          "로그",
+          "데이터 페이지"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "로그만 디스크에 기록되면 되고, 데이터 페이지는 로그가 있으므로 나중에 써도 됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-reliability.html",
+        "https://www.postgresql.org/docs/current/runtime-config-wal.html"
+      ]
+    },
+    {
+      "id": "database-tx-durability-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "durability",
+        "log"
+      ],
+      "content": {
+        "prompt": "지속성을 지키려면 커밋 전에 데이터 파일까지 모두 디스크에 써야 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "커밋 전에는 로그만 기록하면 됩니다. 데이터 파일은 로그로 복구할 수 있어 나중에 써도 됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-reliability.html",
+        "https://www.postgresql.org/docs/current/runtime-config-wal.html"
+      ]
+    },
+    {
+      "id": "database-tx-durability-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "acid",
+        "durability"
+      ],
+      "content": {
+        "prompt": "ACID의 D는 ___ 이다.",
+        "hint": "COMMIT이 성공한 뒤 장애가 나도 결과가 남는다"
+      },
+      "answer_key": {
+        "accepted": [
+          "지속성",
+          "durability",
+          "영속성"
+        ]
+      },
+      "explanation": "ACID의 D는 Durability, 즉 지속성입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-reliability.html",
+        "https://www.postgresql.org/docs/current/runtime-config-wal.html"
+      ]
+    },
+    {
+      "id": "database-tx-durability-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "durability",
+        "fsync"
+      ],
+      "content": {
+        "prompt": "로그를 저장 장치에 실제로 기록하게 하는 시스템 콜은 ___ 이다.",
+        "hint": "운영체제 버퍼에 있는 파일 내용을 저장 장치로 내보낸다"
+      },
+      "answer_key": {
+        "accepted": [
+          "fsync"
+        ]
+      },
+      "explanation": "fsync는 운영체제가 메모리에 모아 둔 쓰기를 저장 장치에 실제로 기록하게 하는 시스템 콜입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-reliability.html",
+        "https://www.postgresql.org/docs/current/runtime-config-wal.html"
+      ]
+    },
+    {
+      "id": "database-tx-durability-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "durability",
+        "recovery"
+      ],
+      "content": {
+        "prompt": "COMMIT 성공 응답 직후 전원이 꺼졌다. 재시작 후 그 변경은?",
+        "options": [
+          "남아 있다",
+          "사라진다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "커밋 응답 전에 로그가 디스크에 기록됐으므로 재시작 후에도 변경이 남습니다(PostgreSQL 기본 설정 기준).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-reliability.html",
+        "https://www.postgresql.org/docs/current/runtime-config-wal.html"
+      ]
+    },
+    {
+      "id": "database-tx-durability-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "durability",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "synchronous_commit=off에서 커밋 직후 장애가 나면?",
+        "options": [
+          "DB 전체 손상",
+          "아무 영향 없음",
+          "최근 커밋 유실 가능"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "PostgreSQL에서 이 설정은 로그 기록을 기다리지 않고 응답해, DB가 깨지지는 않지만 최근 커밋이 사라질 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-reliability.html",
+        "https://www.postgresql.org/docs/current/runtime-config-wal.html"
+      ]
+    },
+    {
+      "id": "database-tx-durability-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "durability",
+        "log"
+      ],
+      "content": {
+        "prompt": "커밋 응답 시점에 데이터 파일은 아직 옛 내용이다. 문제는?",
+        "options": [
+          "지속성 위반",
+          "문제 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "로그가 디스크에 기록돼 있으면 장애 후 로그로 되살릴 수 있으므로 데이터 파일은 나중에 써도 됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-reliability.html",
+        "https://www.postgresql.org/docs/current/runtime-config-wal.html"
+      ]
+    },
+    {
+      "id": "database-tx-durability-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "acid",
+        "durability"
+      ],
+      "content": {
+        "prompt": "COMMIT이 성공했다면 장애가 나도 그 결과는 남는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "지속성 덕분에 커밋 응답을 받은 결과는 장애 후에도 남습니다(synchronous_commit 기본값 on 기준).",
+      "refs": [
+        "https://www.postgresql.org/docs/current/wal-reliability.html",
+        "https://www.postgresql.org/docs/current/runtime-config-wal.html"
+      ]
+    }
+  ]
+}
