@@ -1,0 +1,244 @@
+{
+  "track": "database",
+  "unit": "u10-caching",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "database-cache-eviction-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "eviction"
+      ],
+      "content": {
+        "prompt": "캐시 메모리가 가득 차면 일부 항목을 내보내는 것은?",
+        "options": [
+          "승격",
+          "프루닝",
+          "제거"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "제거(eviction)는 캐시 메모리가 가득 찼을 때 공간을 만들려고 일부 항목을 내보내는 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_replacement_policies",
+        "https://redis.io/docs/latest/develop/reference/eviction/"
+      ]
+    },
+    {
+      "id": "database-cache-eviction-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "eviction"
+      ],
+      "content": {
+        "prompt": "마지막 사용 시점이 가장 오래된 캐시 키를 먼저 빼는 정책은?",
+        "options": [
+          "LRU",
+          "LFU"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "LRU(Least Recently Used)는 마지막 사용이 가장 오래전인 항목부터 내보냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_replacement_policies",
+        "https://redis.io/docs/latest/develop/reference/eviction/"
+      ]
+    },
+    {
+      "id": "database-cache-eviction-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "eviction"
+      ],
+      "content": {
+        "prompt": "사용 횟수가 가장 적은 항목부터 내보내는 정책은?",
+        "options": [
+          "LRU",
+          "LFU"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "LFU(Least Frequently Used)는 지금까지 사용된 횟수가 가장 적은 항목부터 내보냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_replacement_policies",
+        "https://redis.io/docs/latest/develop/reference/eviction/"
+      ]
+    },
+    {
+      "id": "database-cache-eviction-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "eviction"
+      ],
+      "content": {
+        "prompt": "Redis의 maxmemory-policy 기본값은 allkeys-lru다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Redis의 기본값은 noeviction으로, 메모리가 차면 항목을 내보내지 않고 쓰기를 오류로 거부합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_replacement_policies",
+        "https://redis.io/docs/latest/develop/reference/eviction/"
+      ]
+    },
+    {
+      "id": "database-cache-eviction-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "eviction"
+      ],
+      "content": {
+        "prompt": "Least Recently Used의 약자는 ___ 이다.",
+        "hint": "마지막 사용이 가장 오래된 항목부터 내보내는 정책입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "LRU",
+          "lru",
+          "엘알유"
+        ]
+      },
+      "explanation": "LRU는 가장 오랫동안 사용되지 않은 항목부터 내보내는 제거 정책입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_replacement_policies",
+        "https://redis.io/docs/latest/develop/reference/eviction/"
+      ]
+    },
+    {
+      "id": "database-cache-eviction-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "eviction"
+      ],
+      "content": {
+        "prompt": "사용 횟수가 가장 적은 항목부터 내보내는 정책은 ___ 다.",
+        "hint": "마지막 사용 시점이 아니라 횟수를 기준으로 고릅니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "LFU",
+          "lfu",
+          "Least Frequently Used",
+          "엘에프유"
+        ]
+      },
+      "explanation": "LFU는 Least Frequently Used의 약자로, 사용 빈도가 가장 낮은 항목부터 내보냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_replacement_policies",
+        "https://redis.io/docs/latest/develop/reference/eviction/"
+      ]
+    },
+    {
+      "id": "database-cache-eviction-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "eviction"
+      ],
+      "content": {
+        "prompt": "용량 3, A→B→C→A 접근 후 D를 넣는다. LRU면 내보내는 것은?",
+        "options": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "A는 방금 다시 쓰였으므로, 마지막 사용이 가장 오래된 항목은 B입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_replacement_policies",
+        "https://redis.io/docs/latest/develop/reference/eviction/"
+      ]
+    },
+    {
+      "id": "database-cache-eviction-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "eviction"
+      ],
+      "content": {
+        "prompt": "용량 2, A·A·A·B 접근 후 C를 넣는다. LFU면 내보내는 것은?",
+        "options": [
+          "A",
+          "B"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "A는 3번, B는 1번 쓰였으므로 사용 횟수가 가장 적은 B를 내보냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_replacement_policies",
+        "https://redis.io/docs/latest/develop/reference/eviction/"
+      ]
+    },
+    {
+      "id": "database-cache-eviction-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "eviction"
+      ],
+      "content": {
+        "prompt": "용량 2, A·A·A·B 접근 후 C를 넣는다. LRU면 내보내는 것은?",
+        "options": [
+          "A",
+          "B"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "마지막 사용은 A가 세 번째, B가 네 번째 접근이므로 더 오래전에 쓰인 A를 내보냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_replacement_policies",
+        "https://redis.io/docs/latest/develop/reference/eviction/"
+      ]
+    },
+    {
+      "id": "database-cache-eviction-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "eviction"
+      ],
+      "content": {
+        "prompt": "캐시가 차면 LRU 정책은 마지막 사용이 가장 오래된 키를 뺀다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "LRU는 마지막으로 사용된 시점이 가장 오래된 항목을 먼저 내보내는 정책입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_replacement_policies",
+        "https://redis.io/docs/latest/develop/reference/eviction/"
+      ]
+    }
+  ]
+}

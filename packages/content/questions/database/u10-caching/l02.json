@@ -1,0 +1,244 @@
+{
+  "track": "database",
+  "unit": "u10-caching",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "database-cache-local-remote-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "distributed-cache"
+      ],
+      "content": {
+        "prompt": "애플리케이션 프로세스 메모리에 두는 캐시는?",
+        "options": [
+          "로컬 캐시",
+          "분산 캐시"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "로컬 캐시는 애플리케이션 프로세스의 메모리에 두어 가장 빠르지만 서버마다 따로 가집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Distributed_cache",
+        "https://redis.io/docs/latest/"
+      ]
+    },
+    {
+      "id": "database-cache-local-remote-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "distributed-cache"
+      ],
+      "content": {
+        "prompt": "여러 앱 서버가 공유하는 별도 캐시 서버는?",
+        "options": [
+          "로컬 캐시",
+          "분산 캐시"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "분산 캐시는 Redis·Memcached 같은 별도 서버에 두고 여러 앱 서버가 함께 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Distributed_cache",
+        "https://redis.io/docs/latest/"
+      ]
+    },
+    {
+      "id": "database-cache-local-remote-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "distributed-cache"
+      ],
+      "content": {
+        "prompt": "Memcached는 어느 쪽 캐시인가?",
+        "options": [
+          "로컬 캐시",
+          "분산 캐시"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Memcached는 Redis처럼 별도 서버로 띄워 여러 앱 서버가 공유하는 분산 캐시입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Distributed_cache",
+        "https://redis.io/docs/latest/"
+      ]
+    },
+    {
+      "id": "database-cache-local-remote-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "distributed-cache"
+      ],
+      "content": {
+        "prompt": "로컬 캐시는 모든 앱 서버가 늘 같은 값을 가진다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "로컬 캐시는 서버마다 따로 있으므로 같은 키라도 서버마다 다른 값을 가질 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Distributed_cache",
+        "https://redis.io/docs/latest/"
+      ]
+    },
+    {
+      "id": "database-cache-local-remote-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "distributed-cache"
+      ],
+      "content": {
+        "prompt": "앱 프로세스 메모리에 두는 캐시를 ___ 캐시라 한다.",
+        "hint": "서버 안에 둔다는 뜻의 영어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "로컬",
+          "local",
+          "로컬 캐시",
+          "local cache"
+        ]
+      },
+      "explanation": "로컬 캐시는 네트워크를 거치지 않아 가장 빠르지만, 서버마다 따로 있어 값이 어긋날 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Distributed_cache",
+        "https://redis.io/docs/latest/"
+      ]
+    },
+    {
+      "id": "database-cache-local-remote-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "distributed-cache"
+      ],
+      "content": {
+        "prompt": "Redis처럼 여러 서버가 공유하는 캐시를 ___ 캐시라 한다.",
+        "hint": "여러 서버에 걸쳐 함께 쓴다는 뜻의 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "분산",
+          "distributed",
+          "분산 캐시",
+          "원격",
+          "remote"
+        ]
+      },
+      "explanation": "분산 캐시는 별도 서버에 두고 여러 앱 서버가 공유하므로 모든 서버가 같은 값을 봅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Distributed_cache",
+        "https://redis.io/docs/latest/"
+      ]
+    },
+    {
+      "id": "database-cache-local-remote-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "distributed-cache"
+      ],
+      "content": {
+        "prompt": "서버 3대가 로컬 캐시를 쓴다. 값이 바뀐 뒤 서버마다?",
+        "options": [
+          "늘 같은 값",
+          "다른 값일 수 있음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "로컬 캐시는 서버마다 따로 있어, 한 서버의 캐시만 바뀌면 서버마다 다른 값을 가질 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Distributed_cache",
+        "https://redis.io/docs/latest/"
+      ]
+    },
+    {
+      "id": "database-cache-local-remote-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "distributed-cache"
+      ],
+      "content": {
+        "prompt": "조회마다 네트워크 왕복이 필요한 캐시는?",
+        "options": [
+          "로컬 캐시",
+          "분산 캐시"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "분산 캐시는 별도 서버에 있으므로 조회할 때마다 네트워크를 한 번 오가야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Distributed_cache",
+        "https://redis.io/docs/latest/"
+      ]
+    },
+    {
+      "id": "database-cache-local-remote-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "distributed-cache"
+      ],
+      "content": {
+        "prompt": "앱 서버 10대가 같은 세션 데이터를 봐야 하면?",
+        "options": [
+          "분산 캐시",
+          "로컬 캐시"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "여러 서버가 같은 값을 봐야 하므로 하나의 저장소를 공유하는 분산 캐시가 맞습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Distributed_cache",
+        "https://redis.io/docs/latest/"
+      ]
+    },
+    {
+      "id": "database-cache-local-remote-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "distributed-cache"
+      ],
+      "content": {
+        "prompt": "로컬 캐시는 프로세스 메모리에 있어 가장 빠르지만 서버마다 따로다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "로컬 캐시는 네트워크 왕복이 없어 가장 빠르지만, 앱 서버마다 자기 캐시를 따로 가집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Distributed_cache",
+        "https://redis.io/docs/latest/"
+      ]
+    }
+  ]
+}

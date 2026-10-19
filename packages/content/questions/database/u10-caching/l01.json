@@ -1,0 +1,237 @@
+{
+  "track": "database",
+  "unit": "u10-caching",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "database-cache-hit-rate-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "hit-rate"
+      ],
+      "content": {
+        "prompt": "자주 읽는 데이터를 더 빠른 저장소에 복사해 두는 것은?",
+        "options": [
+          "인덱스",
+          "캐시",
+          "복제"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "캐시는 자주 읽는 데이터를 주로 메모리 같은 더 빠른 저장소에 복사해 두는 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-cache-hit-rate-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "hit-rate"
+      ],
+      "content": {
+        "prompt": "요청한 데이터가 캐시에 있어 바로 응답하는 것은?",
+        "options": [
+          "캐시 히트",
+          "캐시 미스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "캐시 히트는 데이터가 캐시에 있어 원본 DB를 읽지 않고 바로 응답하는 경우입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-cache-hit-rate-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "hit-rate"
+      ],
+      "content": {
+        "prompt": "캐시에 없어서 원본 DB에서 읽는 것은?",
+        "options": [
+          "캐시 히트",
+          "캐시 미스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "캐시 미스는 데이터가 캐시에 없어 원본 DB에서 읽어 와야 하는 경우입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-cache-hit-rate-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "hit-rate"
+      ],
+      "content": {
+        "prompt": "자주 바뀌는 데이터일수록 캐시에 두기 좋다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "캐시에 적합한 데이터는 읽기가 많고 자주 바뀌지 않는 데이터입니다. 자주 바뀌면 캐시가 금방 옛 값이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-cache-hit-rate-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "hit-rate"
+      ],
+      "content": {
+        "prompt": "히트 수를 전체 요청 수로 나눈 값은 ___ 이다.",
+        "hint": "캐시 효과를 퍼센트로 나타내는 지표입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "히트율",
+          "hit rate",
+          "hit ratio",
+          "적중률",
+          "캐시 히트율"
+        ]
+      },
+      "explanation": "히트율은 히트 수 ÷ 전체 요청 수로, 높을수록 원본 DB를 덜 읽습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-cache-hit-rate-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "hit-rate"
+      ],
+      "content": {
+        "prompt": "캐시에 없어 DB에서 읽는 경우를 캐시 ___ 라 한다.",
+        "hint": "히트의 반대말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "미스",
+          "miss",
+          "캐시 미스",
+          "cache miss"
+        ]
+      },
+      "explanation": "캐시 미스가 나면 원본 DB에서 읽어야 하므로 히트보다 응답이 느립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-cache-hit-rate-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "hit-rate"
+      ],
+      "content": {
+        "prompt": "요청 200건 중 히트가 150건이면 히트율은?",
+        "options": [
+          "25%",
+          "50%",
+          "75%"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "히트율은 150 ÷ 200 = 0.75, 즉 75%입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-cache-hit-rate-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "hit-rate"
+      ],
+      "content": {
+        "prompt": "요청 1000건 중 미스가 100건이면 히트율은?",
+        "options": [
+          "10%",
+          "90%",
+          "100%"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "히트는 1000 − 100 = 900건이므로 히트율은 900 ÷ 1000 = 90%입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-cache-hit-rate-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "hit-rate"
+      ],
+      "content": {
+        "prompt": "캐시에 두기 가장 알맞은 데이터는?",
+        "options": [
+          "초마다 바뀌는 재고",
+          "거의 안 바뀌는 공지"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "읽기가 많고 자주 바뀌지 않는 데이터가 캐시에 적합합니다. 초마다 바뀌면 캐시가 금방 옛 값이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-cache-hit-rate-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "hit-rate"
+      ],
+      "content": {
+        "prompt": "캐시 히트는 데이터가 캐시에 있어 원본을 읽지 않고 응답하는 것이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "캐시 히트면 캐시에 있는 복사본으로 바로 응답하므로 원본 DB를 읽지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    }
+  ]
+}

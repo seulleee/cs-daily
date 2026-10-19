@@ -1,0 +1,244 @@
+{
+  "track": "database",
+  "unit": "u10-caching",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "database-cache-consistency-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "consistency"
+      ],
+      "content": {
+        "prompt": "DB와 캐시가 서로 다른 값을 가진 상태는?",
+        "options": [
+          "캐시 히트",
+          "불일치",
+          "스탬피드"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "불일치는 같은 데이터에 대해 DB와 캐시가 서로 다른 값을 가진 상태입니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-consistency-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "consistency"
+      ],
+      "content": {
+        "prompt": "쓰기 때 경쟁 상황에 더 강한 캐시 처리는?",
+        "options": [
+          "키 삭제",
+          "값 덮어쓰기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "키를 삭제하면 다음 읽기가 DB의 최신 값을 다시 채우므로, 덮어쓰기보다 경쟁에 강합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-consistency-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "consistency"
+      ],
+      "content": {
+        "prompt": "완벽한 일치 대신 불일치 시간을 제한하는 수단은?",
+        "options": [
+          "LRU",
+          "TTL"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "어긋난 값도 TTL이 지나면 만료되므로, TTL로 불일치가 남는 시간의 상한을 둡니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-consistency-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "consistency"
+      ],
+      "content": {
+        "prompt": "쓰기 때 캐시 값을 덮어쓰는 편이 키 삭제보다 경쟁에 강하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "덮어쓰기는 도착 순서가 뒤바뀌면 옛 값이 남습니다. 키를 삭제하는 편이 경쟁에 강합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-consistency-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "consistency"
+      ],
+      "content": {
+        "prompt": "DB와 캐시가 서로 다른 값을 가진 상태를 ___ 라 한다.",
+        "hint": "두 저장소의 값이 맞지 않는 상태입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "불일치",
+          "inconsistency",
+          "비일관성",
+          "부정합"
+        ]
+      },
+      "explanation": "불일치는 DB와 캐시가 같은 데이터에 다른 값을 가진 상태로, 경쟁 상황이나 무효화 누락으로 생깁니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-consistency-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "consistency"
+      ],
+      "content": {
+        "prompt": "불일치를 완전히 없애기보다 ___ 로 불일치 시간을 제한한다.",
+        "hint": "캐시 항목의 유효 시간입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "TTL",
+          "ttl",
+          "Time To Live",
+          "만료 시간"
+        ]
+      },
+      "explanation": "완벽한 일치는 어렵기 때문에 TTL을 두어, 어긋난 값도 일정 시간이 지나면 만료되게 합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-consistency-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "consistency"
+      ],
+      "content": {
+        "prompt": "A 옛 값 읽기 → B DB 갱신·키 삭제 → A 캐시 쓰기. 캐시 값은?",
+        "options": [
+          "옛 값",
+          "새 값"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "B가 키를 지운 뒤 A가 앞서 읽은 옛 값을 캐시에 썼으므로, DB는 새 값인데 캐시에는 옛 값이 남습니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-consistency-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "consistency"
+      ],
+      "content": {
+        "prompt": "경쟁으로 캐시에 옛 값이 남았다. TTL이 5분이면?",
+        "options": [
+          "영원히 옛 값",
+          "TTL 만료 후 새 값"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "옛 값도 TTL이 지나면 만료되므로, 최대 5분 뒤에는 미스가 나서 DB의 새 값을 읽습니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-consistency-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "consistency"
+      ],
+      "content": {
+        "prompt": "DB는 1→2로 갱신, 캐시 덮어쓰기는 2→1 순으로 도착. 캐시 값은?",
+        "options": [
+          "1",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "마지막에 도착한 덮어쓰기가 1이라 DB는 2인데 캐시는 1입니다. 키를 삭제했다면 다음 읽기가 2를 채웁니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-consistency-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "consistency"
+      ],
+      "content": {
+        "prompt": "DB와 캐시가 서로 다른 값을 가진 상태를 불일치라 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "DB와 캐시가 같은 데이터에 대해 다른 값을 가지면 불일치이며, TTL로 그 시간을 제한합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    }
+  ]
+}

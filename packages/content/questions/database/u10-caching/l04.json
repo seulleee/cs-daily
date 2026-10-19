@@ -1,0 +1,246 @@
+{
+  "track": "database",
+  "unit": "u10-caching",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "database-write-through-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "write-through"
+      ],
+      "content": {
+        "prompt": "쓰기 때 캐시와 DB에 동기로 함께 쓰는 방식은?",
+        "options": [
+          "Write-Through",
+          "Cache-Aside"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Write-Through는 쓰기 요청 때 캐시와 DB에 모두 쓴 뒤 응답합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-through-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "write-through"
+      ],
+      "content": {
+        "prompt": "Write-Through의 장점은?",
+        "options": [
+          "쓰기 지연 감소",
+          "캐시가 늘 최신"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "쓰기마다 캐시도 함께 갱신하므로 캐시가 항상 DB와 같은 최신 값을 가집니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-through-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "write-through"
+      ],
+      "content": {
+        "prompt": "Write-Through의 단점은?",
+        "options": [
+          "쓰기 지연 증가",
+          "캐시가 옛 값 보유"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "쓰기마다 캐시와 DB 두 곳에 써야 하므로 쓰기 응답이 늦어집니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-through-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "write-through"
+      ],
+      "content": {
+        "prompt": "Write-Through는 캐시에만 먼저 쓰고 DB에는 나중에 쓴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Write-Through는 캐시와 DB에 동기로 함께 씁니다. DB 반영을 미루는 방식은 다음 레슨에서 다룹니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-through-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "write-through"
+      ],
+      "content": {
+        "prompt": "쓰기 때 캐시와 DB에 함께 쓰는 방식은 Write ___ 다.",
+        "hint": "통과해서라는 뜻의 영어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Through",
+          "through",
+          "스루",
+          "Write Through",
+          "라이트 스루"
+        ]
+      },
+      "explanation": "Write-Through는 쓰기가 캐시를 거쳐 DB까지 동기로 반영되는 방식입니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-through-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "write-through"
+      ],
+      "content": {
+        "prompt": "읽히지 않을 데이터가 캐시를 차지하는 낭비는 ___ 로 완화한다.",
+        "hint": "정해진 시간이 지나면 항목이 사라지게 합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "TTL",
+          "ttl",
+          "Time To Live",
+          "만료 시간",
+          "유효 시간"
+        ]
+      },
+      "explanation": "Write-Through는 읽히지 않을 데이터도 캐시에 넣으므로, TTL을 두어 쓰이지 않는 항목이 사라지게 합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-through-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "write-through"
+      ],
+      "content": {
+        "prompt": "쓰기 1건에 캐시 2ms, DB 10ms가 차례로 걸리면 응답까지?",
+        "options": [
+          "10ms",
+          "12ms",
+          "2ms"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Write-Through는 두 곳에 모두 써야 응답하므로 2 + 10 = 12ms가 걸립니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-through-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "write-through"
+      ],
+      "content": {
+        "prompt": "조회된 적 없는 회원 정보가 캐시에 쌓였다. 쓰는 방식은?",
+        "options": [
+          "Write-Through",
+          "Cache-Aside"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Write-Through는 쓰기마다 캐시에 넣으므로 한 번도 읽히지 않은 데이터도 캐시에 들어갑니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-through-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "write-through"
+      ],
+      "content": {
+        "prompt": "수정 직후 첫 읽기도 히트가 나는 방식은?",
+        "options": [
+          "Cache-Aside",
+          "Write-Through"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Write-Through는 쓰기 때 캐시에 새 값을 넣어 두므로 수정 직후 읽기도 히트입니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-through-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "write-through"
+      ],
+      "content": {
+        "prompt": "Write-Through는 쓰기 요청 때 캐시와 DB를 함께 갱신한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "Write-Through는 쓰기 요청을 받으면 캐시와 DB에 동기로 함께 써서 둘을 같게 유지합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    }
+  ]
+}
