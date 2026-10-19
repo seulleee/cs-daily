@@ -1,0 +1,247 @@
+{
+  "track": "dsa",
+  "unit": "u10-binary-search",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "dsa-bsearch-interval-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "invariant"
+      ],
+      "content": {
+        "prompt": "매 반복 참으로 유지되는 조건을 뭐라 하나?",
+        "options": [
+          "불변식",
+          "기저 사례",
+          "피벗"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "불변식은 반복이 도는 내내 참으로 유지되는 조건입니다. 이진 탐색에선 \"답이 있다면 구간 안에 있다\"입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Loop_invariant",
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-interval-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "invariant"
+      ],
+      "content": {
+        "prompt": "반열린 구간 [lo, hi)의 반복 조건은?",
+        "options": [
+          "lo <= hi",
+          "lo > hi",
+          "lo < hi"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "[lo, hi)는 hi를 포함하지 않으므로 lo < hi일 때만 구간에 원소가 남아 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Loop_invariant",
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-interval-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "invariant"
+      ],
+      "content": {
+        "prompt": "닫힌 구간 [lo, hi]에서 hi를 줄이는 식은?",
+        "options": [
+          "hi = mid − 1",
+          "hi = mid"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "닫힌 구간은 hi를 포함하므로 이미 확인한 mid를 빼려면 hi = mid − 1로 줄입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Loop_invariant",
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-interval-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "invariant"
+      ],
+      "content": {
+        "prompt": "반열린 구간 [lo, hi)는 hi 위치를 포함한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "반열린 구간 [lo, hi)는 lo는 포함하고 hi는 포함하지 않습니다. 그래서 hi = mid로 줄입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Loop_invariant",
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-interval-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "binary-search",
+        "invariant"
+      ],
+      "content": {
+        "prompt": "\"답이 있다면 현재 구간 안에 있다\"는 조건은 ___이다.",
+        "hint": "반복 내내 깨지지 않는 조건입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "불변식",
+          "불변 조건",
+          "루프 불변식",
+          "invariant",
+          "loop invariant"
+        ]
+      },
+      "explanation": "불변식이 매 반복 유지되므로 구간이 비면 답이 없다고 판단할 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Loop_invariant",
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-interval-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "invariant"
+      ],
+      "content": {
+        "prompt": "반복이 끝나려면 구간 크기가 매번 최소 ___씩 줄어야 한다.",
+        "hint": "줄지 않으면 같은 구간을 계속 반복합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "1",
+          "일",
+          "하나",
+          "한 칸"
+        ]
+      },
+      "explanation": "구간 크기가 매 반복 1 이상 줄어야 언젠가 구간이 비어 반복이 끝납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Loop_invariant",
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-interval-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "invariant"
+      ],
+      "content": {
+        "prompt": "반열린 구간 [2, 6)에 들어 있는 인덱스 수는?",
+        "options": [
+          "3개",
+          "4개",
+          "5개"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "[2, 6)은 2, 3, 4, 5로 6을 빼므로 6 − 2 = 4개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Loop_invariant",
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-interval-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "invariant"
+      ],
+      "content": {
+        "prompt": "닫힌 구간에서 lo = 3, hi = 3이면 반복은?",
+        "options": [
+          "계속한다",
+          "끝낸다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "닫힌 구간의 조건은 lo <= hi이고 3 <= 3이 참이라, 인덱스 3 하나를 더 확인합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Loop_invariant",
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-interval-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "invariant"
+      ],
+      "content": {
+        "prompt": "반열린 구간에서 lo = 4, hi = 4이면 반복은?",
+        "options": [
+          "계속한다",
+          "끝낸다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "반열린 구간의 조건은 lo < hi이고 4 < 4는 거짓이라 구간이 비어 반복을 끝냅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Loop_invariant",
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-interval-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "binary-search",
+        "invariant"
+      ],
+      "content": {
+        "prompt": "불변식이 유지되면 현재 구간 밖에는 답이 없다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "불변식은 \"답이 있다면 현재 구간 안에 있다\"이므로 구간 밖은 답 후보에서 빠집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Loop_invariant",
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    }
+  ]
+}

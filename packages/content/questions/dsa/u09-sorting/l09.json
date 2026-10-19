@@ -1,0 +1,238 @@
+{
+  "track": "dsa",
+  "unit": "u09-sorting",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "dsa-sort-counting-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "counting-sort"
+      ],
+      "content": {
+        "prompt": "값마다 등장 횟수를 세어 정렬하는 방법은?",
+        "options": [
+          "계수 정렬",
+          "병합 정렬",
+          "퀵 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "계수 정렬은 값마다 몇 번 나왔는지 세고, 그 횟수로 각 값의 위치를 정해 출력합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Counting_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-counting-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "counting-sort"
+      ],
+      "content": {
+        "prompt": "계수 정렬의 시간 복잡도는?",
+        "options": [
+          "O(n log n)",
+          "O(n²)",
+          "O(n + k)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "원소 n개를 한 번 세고 값의 범위 k만큼 횟수를 훑으므로 O(n + k)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Counting_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-counting-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "counting-sort"
+      ],
+      "content": {
+        "prompt": "계수 정렬은 비교 기반 정렬인가?",
+        "options": [
+          "예",
+          "아니요"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "계수 정렬은 원소끼리 비교하지 않고 등장 횟수로 위치를 정하므로 비교 기반 정렬이 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Counting_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-counting-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "counting-sort"
+      ],
+      "content": {
+        "prompt": "계수 정렬은 값의 범위가 매우 넓을 때 알맞다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "계수 정렬은 범위 k만큼 횟수 배열이 필요해 k가 작을 때 알맞습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Counting_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-counting-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "counting-sort"
+      ],
+      "content": {
+        "prompt": "계수 정렬은 키가 ___일 때 쓸 수 있다.",
+        "hint": "소수점 아래가 없는 수입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "정수",
+          "integer",
+          "int",
+          "정수형"
+        ]
+      },
+      "explanation": "계수 정렬은 값을 횟수 배열의 인덱스로 쓰므로 키가 정수이고 범위가 작아야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Counting_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-counting-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "counting-sort"
+      ],
+      "content": {
+        "prompt": "계수 정렬은 값마다 등장 ___를 센다.",
+        "hint": "같은 값이 몇 번 나왔는지입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "횟수",
+          "개수",
+          "빈도",
+          "수",
+          "count"
+        ]
+      },
+      "explanation": "계수 정렬은 값마다 등장 횟수를 세고, 그 횟수로 출력 위치를 정합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Counting_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-counting-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "counting-sort"
+      ],
+      "content": {
+        "prompt": "[3, 1, 3, 0]을 계수 정렬한 결과는?",
+        "options": [
+          "[0, 1, 3]",
+          "[0, 1, 3, 3]",
+          "[3, 3, 1, 0]"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "0이 1번, 1이 1번, 3이 2번 나왔으므로 [0, 1, 3, 3]입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Counting_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-counting-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "counting-sort"
+      ],
+      "content": {
+        "prompt": "값이 0~9인 원소 100개를 계수 정렬하면 비용은?",
+        "options": [
+          "약 110",
+          "약 700",
+          "약 1000"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "n = 100, k = 10이므로 O(n + k)에 따라 약 110번의 처리로 끝납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Counting_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-counting-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "counting-sort"
+      ],
+      "content": {
+        "prompt": "값이 0~10억인 정수 10개를 정렬할 때 알맞은 것은?",
+        "options": [
+          "계수 정렬",
+          "병합 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "범위 k가 10억이라 계수 정렬은 O(n + k)가 매우 커집니다. 비교 기반 병합 정렬이 낫습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Counting_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-counting-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "counting-sort"
+      ],
+      "content": {
+        "prompt": "계수 정렬은 원소끼리 비교하지 않고 등장 횟수로 위치를 정한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "계수 정렬은 비교 기반 정렬이 아니라서 Ω(n log n) 하한이 적용되지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Counting_sort"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "track": "dsa",
+  "unit": "u09-sorting",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "dsa-sort-merge-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "merge-sort"
+      ],
+      "content": {
+        "prompt": "문제를 나눠 각각 풀고 합치는 설계 방식은?",
+        "options": [
+          "분할 정복",
+          "제자리 정렬",
+          "선형 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "분할 정복은 문제를 작게 나누고(분할) 각각 풀고(정복) 결과를 합칩니다(결합).",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Merge_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-merge-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "merge-sort"
+      ],
+      "content": {
+        "prompt": "반으로 나눠 각각 정렬한 뒤 병합하는 정렬은?",
+        "options": [
+          "삽입 정렬",
+          "선택 정렬",
+          "병합 정렬"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "병합 정렬은 배열을 반으로 나눠 각각 정렬하고, 두 정렬된 배열을 병합합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Merge_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-merge-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "merge-sort"
+      ],
+      "content": {
+        "prompt": "병합 정렬의 추가 공간은?",
+        "options": [
+          "O(1)",
+          "O(n)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "병합할 때 결과를 담을 배열이 필요해 추가 공간이 O(n)입니다. 그래서 제자리 정렬이 아닙니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Merge_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-merge-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "merge-sort"
+      ],
+      "content": {
+        "prompt": "병합 정렬은 최악의 경우 O(n²)이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "병합 정렬은 입력과 관계없이 항상 반으로 나누므로 최선·최악 모두 O(n log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Merge_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-merge-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sorting",
+        "merge-sort"
+      ],
+      "content": {
+        "prompt": "나누고 풀고 합치는 방식은 분할 ___이다.",
+        "hint": "나눈 작은 문제를 각각 푸는 단계의 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "정복",
+          "conquer",
+          "정복법"
+        ]
+      },
+      "explanation": "분할 정복은 분할·정복·결합 세 단계로 문제를 풉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Merge_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-merge-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "merge-sort"
+      ],
+      "content": {
+        "prompt": "병합 정렬은 값이 같으면 ___ 것을 먼저 옮긴다.",
+        "hint": "그래야 원래 앞에 있던 원소가 계속 앞에 남습니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "왼쪽",
+          "왼쪽의",
+          "왼편",
+          "left"
+        ]
+      },
+      "explanation": "같은 값일 때 왼쪽 것을 먼저 옮기면 원래 순서가 유지되어 안정 정렬이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Merge_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-merge-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "merge-sort"
+      ],
+      "content": {
+        "prompt": "[2, 6]과 [3, 4]를 병합할 때 세 번째로 옮기는 값은?",
+        "options": [
+          "3",
+          "4",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "2와 3 중 2, 6과 3 중 3, 6과 4 중 4를 옮기므로 세 번째는 4입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Merge_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-merge-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "merge-sort"
+      ],
+      "content": {
+        "prompt": "이미 정렬된 입력에서 병합 정렬의 시간은?",
+        "options": [
+          "O(n)",
+          "O(n log n)",
+          "O(n²)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "병합 정렬은 입력이 정렬되어 있어도 똑같이 나누고 병합하므로 O(n log n)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Merge_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-merge-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "merge-sort"
+      ],
+      "content": {
+        "prompt": "같은 값 5a·5b. 왼쪽 [5a]와 오른쪽 [5b]를 병합하면?",
+        "options": [
+          "[5b, 5a]",
+          "[5a, 5b]"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "값이 같으면 왼쪽 것을 먼저 옮기므로 5a가 앞에 옵니다. 그래서 병합 정렬은 안정 정렬입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Merge_sort"
+      ]
+    },
+    {
+      "id": "dsa-sort-merge-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sorting",
+        "merge-sort"
+      ],
+      "content": {
+        "prompt": "병합 정렬은 반으로 나눠 각각 정렬한 뒤 합친다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "병합 정렬은 분할 정복으로 반씩 나눠 정렬하고 두 정렬된 배열을 병합합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Merge_sort"
+      ]
+    }
+  ]
+}

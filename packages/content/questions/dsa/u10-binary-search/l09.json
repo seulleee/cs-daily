@@ -1,0 +1,235 @@
+{
+  "track": "dsa",
+  "unit": "u10-binary-search",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "dsa-bsearch-param-cost-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "parametric-search",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "범위 크기가 R일 때 매개변수 탐색의 반복 횟수는?",
+        "options": [
+          "약 R번",
+          "약 log₂ R번",
+          "약 R / 2번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "반복마다 범위가 절반이 되므로 약 log₂ R번이면 경계를 찾습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-cost-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "parametric-search",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "매개변수 탐색의 탐색 범위는?",
+        "options": [
+          "배열 인덱스 0~n−1",
+          "답 후보 최솟값~최댓값"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "매개변수 탐색은 배열이 아니라 답이 될 수 있는 최솟값부터 최댓값까지를 탐색합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-cost-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "parametric-search",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "판정이 O(n)일 때 매개변수 탐색 전체 비용은?",
+        "options": [
+          "O(n log R)",
+          "O(n + R)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "판정 O(n)을 약 log R번 하므로 전체는 O(n log R)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-cost-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "parametric-search",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "탐색 범위가 10⁹이면 약 10⁹번 반복한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "범위가 절반씩 줄므로 약 log₂ 10⁹ ≈ 30번이면 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-cost-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "parametric-search",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "범위 크기 R = 1024면 반복은 약 ___번이다.",
+        "hint": "2를 몇 번 곱해야 R이 되는지 셉니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "10",
+          "열",
+          "십"
+        ]
+      },
+      "explanation": "log₂ 1024 = 10이므로 약 10번 반복하면 범위가 1이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-cost-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "parametric-search",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "x² ≤ 30인 가장 큰 정수 x는 ___이다.",
+        "hint": "x를 키우며 x²이 30을 넘기 직전 값을 봅니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "5",
+          "다섯",
+          "오"
+        ]
+      },
+      "explanation": "5² = 25 ≤ 30이고 6² = 36 > 30이므로 가장 큰 x는 5입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-cost-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "parametric-search",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "x² ≤ 80인 가장 큰 정수 x는?",
+        "options": [
+          "8",
+          "9",
+          "40"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "8² = 64 ≤ 80이고 9² = 81 > 80이므로 답은 8입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-cost-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "parametric-search",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "탐색 범위가 1~10⁶이면 반복은 약 몇 번?",
+        "options": [
+          "약 1000번",
+          "약 6번",
+          "약 20번"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "2²⁰ ≈ 10⁶이므로 약 log₂ 10⁶ ≈ 20번입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-cost-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "parametric-search",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "판정이 n번 연산, 범위 R = 10⁹면 전체 연산은?",
+        "options": [
+          "약 n번",
+          "약 30n번",
+          "약 10⁹n번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "반복이 약 log₂ 10⁹ ≈ 30번이고 매번 n번 판정하므로 약 30n번입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    },
+    {
+      "id": "dsa-bsearch-param-cost-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "parametric-search",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "매개변수 탐색 비용은 반복 횟수 × 판정 비용이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "약 log₂ R번 반복하고 매번 판정을 하므로 전체는 O(log R × 판정 비용)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Binary_search"
+      ]
+    }
+  ]
+}
