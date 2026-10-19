@@ -1,0 +1,244 @@
+{
+  "track": "dsa",
+  "unit": "u07-graph-traversal",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "dsa-graph-adjlist-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "adjacency-list",
+        "graph"
+      ],
+      "content": {
+        "prompt": "정점마다 이웃 정점 목록을 저장하는 표현은?",
+        "options": [
+          "인접 행렬",
+          "힙",
+          "인접 리스트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "인접 리스트는 정점마다 이웃 정점 목록을 둡니다. 인접 행렬은 V×V 표를 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_list",
+        "https://en.wikipedia.org/wiki/Adjacency_matrix"
+      ]
+    },
+    {
+      "id": "dsa-graph-adjlist-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "adjacency-list",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "인접 리스트의 공간 복잡도는?",
+        "options": [
+          "O(V + E)",
+          "O(V²)",
+          "O(E²)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "정점마다 목록 하나와 간선 수만큼의 원소를 저장하므로 O(V + E)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_list",
+        "https://en.wikipedia.org/wiki/Adjacency_matrix"
+      ]
+    },
+    {
+      "id": "dsa-graph-adjlist-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "adjacency-list",
+        "sparse-graph"
+      ],
+      "content": {
+        "prompt": "간선이 적은 희소 그래프에 알맞은 표현은?",
+        "options": [
+          "인접 리스트",
+          "인접 행렬"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "희소 그래프는 인접 리스트가 실제 간선만 저장해 O(V + E)로 공간을 아낍니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_list",
+        "https://en.wikipedia.org/wiki/Adjacency_matrix"
+      ]
+    },
+    {
+      "id": "dsa-graph-adjlist-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "adjacency-list",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "인접 리스트에서도 간선 확인은 칸 하나만 보면 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "인접 리스트는 이웃 목록을 훑어야 해 그 정점의 차수만큼 걸립니다. 칸 하나로 끝나는 것은 인접 행렬입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_list",
+        "https://en.wikipedia.org/wiki/Adjacency_matrix"
+      ]
+    },
+    {
+      "id": "dsa-graph-adjlist-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "adjacency-list",
+        "graph"
+      ],
+      "content": {
+        "prompt": "정점마다 이웃 정점들을 따로 저장하는 표현은 인접 ___ 이다.",
+        "hint": "인접 행렬과 짝을 이루는 표현입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "리스트",
+          "list"
+        ]
+      },
+      "explanation": "인접 리스트는 정점마다 이웃 정점 목록을 저장해 공간이 O(V + E)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_list",
+        "https://en.wikipedia.org/wiki/Adjacency_matrix"
+      ]
+    },
+    {
+      "id": "dsa-graph-adjlist-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "adjacency-matrix",
+        "dense-graph"
+      ],
+      "content": {
+        "prompt": "거의 모든 정점 쌍이 이어진 ___ 그래프에는 인접 행렬이 알맞다.",
+        "hint": "희소 그래프의 반대입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "밀집",
+          "dense",
+          "조밀"
+        ]
+      },
+      "explanation": "밀집 그래프는 간선이 V²에 가까워 행렬의 칸이 낭비되지 않고 간선 확인도 O(1)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_list",
+        "https://en.wikipedia.org/wiki/Adjacency_matrix"
+      ]
+    },
+    {
+      "id": "dsa-graph-adjlist-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "adjacency-list",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "A의 이웃이 3개일 때 A − B 간선 확인에 드는 비교는?",
+        "options": [
+          "1번",
+          "최대 3번",
+          "정점 수만큼"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인접 리스트는 A의 이웃 목록을 훑어야 하므로 A의 차수인 최대 3번 비교합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_list",
+        "https://en.wikipedia.org/wiki/Adjacency_matrix"
+      ]
+    },
+    {
+      "id": "dsa-graph-adjlist-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "adjacency-list",
+        "sparse-graph"
+      ],
+      "content": {
+        "prompt": "정점 1만 개, 간선 2만 개인 그래프에 알맞은 표현은?",
+        "options": [
+          "인접 리스트",
+          "인접 행렬"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "간선이 정점 수와 비슷한 희소 그래프라 인접 리스트가 알맞습니다. 행렬은 1억 칸이 필요합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_list",
+        "https://en.wikipedia.org/wiki/Adjacency_matrix"
+      ]
+    },
+    {
+      "id": "dsa-graph-adjlist-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "adjacency-list",
+        "undirected"
+      ],
+      "content": {
+        "prompt": "정점 4개, 무방향 간선 3개인 인접 리스트의 목록 원소 총수는?",
+        "options": [
+          "3",
+          "6",
+          "7"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "무방향 간선 하나는 양 끝 정점의 목록에 한 번씩 들어가므로 3 × 2 = 6개입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_list",
+        "https://en.wikipedia.org/wiki/Adjacency_matrix"
+      ]
+    },
+    {
+      "id": "dsa-graph-adjlist-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "adjacency-list",
+        "graph"
+      ],
+      "content": {
+        "prompt": "인접 리스트는 실제로 있는 간선만 저장한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "인접 리스트는 정점마다 이웃만 기록하므로 없는 간선은 저장하지 않아 O(V + E) 공간을 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Adjacency_list",
+        "https://en.wikipedia.org/wiki/Adjacency_matrix"
+      ]
+    }
+  ]
+}

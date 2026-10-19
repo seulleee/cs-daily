@@ -1,0 +1,244 @@
+{
+  "track": "dsa",
+  "unit": "u07-graph-traversal",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "dsa-graph-dfs-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dfs",
+        "graph-traversal"
+      ],
+      "content": {
+        "prompt": "갈 수 있는 데까지 들어간 뒤 되돌아오는 탐색은?",
+        "options": [
+          "BFS",
+          "DFS",
+          "이진 탐색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DFS(깊이 우선 탐색)는 한 경로를 끝까지 들어간 뒤 되돌아옵니다. BFS는 가까운 정점부터 방문합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Depth-first_search",
+        "https://en.wikipedia.org/wiki/Backtracking"
+      ]
+    },
+    {
+      "id": "dsa-graph-dfs-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dfs",
+        "recursion"
+      ],
+      "content": {
+        "prompt": "DFS는 무엇으로 구현하나?",
+        "options": [
+          "재귀 호출",
+          "큐",
+          "해시 테이블"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DFS는 재귀 호출이나 명시적 스택으로 구현합니다. 큐는 BFS에 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Depth-first_search",
+        "https://en.wikipedia.org/wiki/Backtracking"
+      ]
+    },
+    {
+      "id": "dsa-graph-dfs-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dfs",
+        "stack"
+      ],
+      "content": {
+        "prompt": "BFS는 큐를 쓴다. DFS가 명시적으로 쓰는 자료구조는?",
+        "options": [
+          "큐",
+          "스택"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DFS는 가장 최근에 들어간 정점부터 되돌아가므로 LIFO인 스택을 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Depth-first_search",
+        "https://en.wikipedia.org/wiki/Backtracking"
+      ]
+    },
+    {
+      "id": "dsa-graph-dfs-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dfs",
+        "bfs"
+      ],
+      "content": {
+        "prompt": "DFS는 이웃을 모두 방문한 뒤 다음 레벨로 넘어간다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "이웃을 레벨 단위로 모두 방문하는 것은 BFS입니다. DFS는 한 경로를 끝까지 들어간 뒤 되돌아옵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Depth-first_search",
+        "https://en.wikipedia.org/wiki/Backtracking"
+      ]
+    },
+    {
+      "id": "dsa-graph-dfs-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dfs",
+        "graph-traversal"
+      ],
+      "content": {
+        "prompt": "깊이 우선 탐색의 영문 약자는 ___ 이다.",
+        "hint": "BFS와 첫 글자만 다릅니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "DFS"
+        ]
+      },
+      "explanation": "깊이 우선 탐색은 Depth-First Search, 줄여서 DFS라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Depth-first_search",
+        "https://en.wikipedia.org/wiki/Backtracking"
+      ]
+    },
+    {
+      "id": "dsa-graph-dfs-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dfs",
+        "backtracking"
+      ],
+      "content": {
+        "prompt": "더 갈 이웃이 없을 때 직전 정점으로 돌아가는 것은 ___ 이다.",
+        "hint": "뒤로 되짚어 간다는 뜻의 영어 용어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "백트래킹",
+          "backtracking",
+          "되추적"
+        ]
+      },
+      "explanation": "DFS는 막다른 정점에서 직전 정점으로 돌아가는 백트래킹을 하며 남은 이웃을 찾습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Depth-first_search",
+        "https://en.wikipedia.org/wiki/Backtracking"
+      ]
+    },
+    {
+      "id": "dsa-graph-dfs-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dfs",
+        "trace"
+      ],
+      "content": {
+        "prompt": "간선 A−B, A−C, B−D. A에서 DFS 방문 순서는? (이웃은 알파벳순)",
+        "options": [
+          "A, B, C, D",
+          "A, B, D, C",
+          "A, C, B, D"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "A에서 B로, B에서 D로 끝까지 들어간 뒤 A로 돌아와 C를 방문합니다. A, B, C, D는 BFS 순서입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Depth-first_search",
+        "https://en.wikipedia.org/wiki/Backtracking"
+      ]
+    },
+    {
+      "id": "dsa-graph-dfs-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dfs",
+        "trace"
+      ],
+      "content": {
+        "prompt": "간선 A−B, A−C, B−D, C−E. A에서 DFS 세 번째 방문 정점은? (알파벳순)",
+        "options": [
+          "D",
+          "C",
+          "E"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "방문 순서는 A, B, D, C, E입니다. B에서 D로 먼저 들어가므로 세 번째는 D입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Depth-first_search",
+        "https://en.wikipedia.org/wiki/Backtracking"
+      ]
+    },
+    {
+      "id": "dsa-graph-dfs-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dfs",
+        "backtracking"
+      ],
+      "content": {
+        "prompt": "간선 A−B, B−C, A−D. DFS(알파벳순)가 C 다음 돌아가는 정점은?",
+        "options": [
+          "D",
+          "A",
+          "B"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "A, B, C 순으로 들어간 뒤 C에는 새 이웃이 없어 직전 정점 B로 백트래킹합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Depth-first_search",
+        "https://en.wikipedia.org/wiki/Backtracking"
+      ]
+    },
+    {
+      "id": "dsa-graph-dfs-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dfs",
+        "graph-traversal"
+      ],
+      "content": {
+        "prompt": "DFS는 한 경로를 끝까지 따라간 뒤 되돌아온다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "DFS는 갈 수 있는 데까지 들어간 뒤 더 갈 이웃이 없으면 직전 정점으로 되돌아옵니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Depth-first_search",
+        "https://en.wikipedia.org/wiki/Backtracking"
+      ]
+    }
+  ]
+}

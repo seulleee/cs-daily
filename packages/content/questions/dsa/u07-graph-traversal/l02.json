@@ -1,0 +1,245 @@
+{
+  "track": "dsa",
+  "unit": "u07-graph-traversal",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "dsa-graph-degree-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "graph",
+        "degree"
+      ],
+      "content": {
+        "prompt": "정점에 연결된 간선 수는?",
+        "options": [
+          "경로",
+          "높이",
+          "차수"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "차수는 정점에 연결된 간선 수입니다. 방향 그래프에서는 진입 차수와 진출 차수로 나눕니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Degree_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)"
+      ]
+    },
+    {
+      "id": "dsa-graph-degree-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "graph",
+        "cycle"
+      ],
+      "content": {
+        "prompt": "시작 정점으로 되돌아오는 경로는?",
+        "options": [
+          "트리",
+          "사이클",
+          "차수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "간선을 따라가다 시작 정점으로 돌아오는 경로를 사이클이라고 합니다. 트리에는 사이클이 없습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Degree_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)"
+      ]
+    },
+    {
+      "id": "dsa-graph-degree-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "graph",
+        "degree"
+      ],
+      "content": {
+        "prompt": "방향 그래프에서 정점으로 들어오는 간선 수는?",
+        "options": [
+          "진입 차수",
+          "진출 차수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "들어오는 간선 수는 진입 차수, 나가는 간선 수는 진출 차수입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Degree_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)"
+      ]
+    },
+    {
+      "id": "dsa-graph-degree-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "graph",
+        "degree"
+      ],
+      "content": {
+        "prompt": "무방향 그래프에서 모든 정점의 차수 합은 간선 수와 같다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "간선 하나는 양 끝 정점에서 한 번씩 세어지므로 차수의 합은 간선 수의 2배입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Degree_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)"
+      ]
+    },
+    {
+      "id": "dsa-graph-degree-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "graph",
+        "path"
+      ],
+      "content": {
+        "prompt": "간선으로 이어진 정점의 나열은 ___ 이다.",
+        "hint": "끝 정점이 시작 정점과 같으면 사이클이 됩니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "경로",
+          "path",
+          "패스"
+        ]
+      },
+      "explanation": "간선으로 차례로 이어진 정점의 나열을 경로라 하고, 시작 정점으로 돌아오면 사이클입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Degree_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)"
+      ]
+    },
+    {
+      "id": "dsa-graph-degree-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "graph",
+        "degree"
+      ],
+      "content": {
+        "prompt": "방향 그래프에서 정점에서 나가는 간선 수는 ___ 차수다.",
+        "hint": "진입 차수와 짝을 이룹니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "진출",
+          "outdegree",
+          "out degree"
+        ]
+      },
+      "explanation": "정점에서 나가는 간선 수를 진출 차수, 들어오는 간선 수를 진입 차수라고 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Degree_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)"
+      ]
+    },
+    {
+      "id": "dsa-graph-degree-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "graph",
+        "degree"
+      ],
+      "content": {
+        "prompt": "간선 5개인 무방향 그래프의 차수 합은?",
+        "options": [
+          "5",
+          "10",
+          "25"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "간선마다 양 끝에서 한 번씩 세므로 차수의 합은 5 × 2 = 10입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Degree_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)"
+      ]
+    },
+    {
+      "id": "dsa-graph-degree-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "graph",
+        "degree"
+      ],
+      "content": {
+        "prompt": "방향 간선 A → B, A → C, C → A에서 A의 진출 차수는?",
+        "options": [
+          "2",
+          "1",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "A에서 나가는 간선은 A → B, A → C 두 개입니다. C → A는 A의 진입 차수에 들어갑니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Degree_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)"
+      ]
+    },
+    {
+      "id": "dsa-graph-degree-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "graph",
+        "cycle"
+      ],
+      "content": {
+        "prompt": "간선 A − B, B − C, C − A에서 사이클인 나열은?",
+        "options": [
+          "A, B, C, A",
+          "A, B, C"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "A, B, C, A는 간선을 따라 시작 정점 A로 돌아오므로 사이클입니다. A, B, C는 돌아오지 않는 경로입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Degree_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)"
+      ]
+    },
+    {
+      "id": "dsa-graph-degree-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "graph",
+        "degree"
+      ],
+      "content": {
+        "prompt": "차수는 정점에 연결된 간선의 수이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "차수는 정점에 연결된 간선 수이고, 방향 그래프에서는 진입·진출 차수로 나눠 셉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Degree_(graph_theory)",
+        "https://en.wikipedia.org/wiki/Cycle_(graph_theory)"
+      ]
+    }
+  ]
+}

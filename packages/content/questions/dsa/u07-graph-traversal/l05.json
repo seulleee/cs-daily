@@ -1,0 +1,234 @@
+{
+  "track": "dsa",
+  "unit": "u07-graph-traversal",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "dsa-graph-bfs-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bfs",
+        "graph-traversal"
+      ],
+      "content": {
+        "prompt": "시작점에서 가까운 정점부터 레벨 순으로 방문하는 탐색은?",
+        "options": [
+          "BFS",
+          "이진 탐색",
+          "중위 순회"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "BFS(너비 우선 탐색)는 시작점에서 가까운 정점부터 레벨 순으로 방문합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfs-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bfs",
+        "queue"
+      ],
+      "content": {
+        "prompt": "BFS가 다음에 방문할 정점을 관리하는 자료구조는?",
+        "options": [
+          "스택",
+          "큐",
+          "힙"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "BFS는 먼저 발견한 정점을 먼저 처리해야 하므로 FIFO인 큐를 씁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfs-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bfs",
+        "visited"
+      ],
+      "content": {
+        "prompt": "BFS가 같은 정점을 큐에 두 번 넣지 않게 하는 것은?",
+        "options": [
+          "정렬",
+          "해시 함수",
+          "방문 표시"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "정점을 큐에 넣을 때 방문 표시를 해 두면 이미 표시된 정점은 다시 넣지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfs-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "bfs",
+        "visited"
+      ],
+      "content": {
+        "prompt": "BFS는 정점을 큐에서 꺼낼 때 방문 표시를 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "방문 표시는 큐에 넣을 때 합니다. 꺼낼 때 표시하면 꺼내기 전까지 같은 정점이 여러 번 들어갈 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfs-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "bfs",
+        "queue"
+      ],
+      "content": {
+        "prompt": "BFS는 다음에 방문할 정점을 ___ 에 넣는다.",
+        "hint": "먼저 넣은 것이 먼저 나오는 자료구조입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "큐",
+          "queue"
+        ]
+      },
+      "explanation": "BFS는 정점을 꺼내 방문하고, 방문 안 한 이웃을 큐에 넣는 일을 반복합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfs-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "bfs",
+        "complexity"
+      ],
+      "content": {
+        "prompt": "인접 리스트로 BFS를 하면 O(V + ___)이다.",
+        "hint": "간선 수를 나타내는 기호입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "E"
+        ]
+      },
+      "explanation": "정점마다 한 번 큐에 넣고 꺼내며 간선마다 한 번씩 이웃을 확인하므로 O(V + E)입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfs-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bfs",
+        "trace"
+      ],
+      "content": {
+        "prompt": "간선 A−B, A−C, B−D. A에서 BFS 방문 순서는? (이웃은 알파벳순)",
+        "options": [
+          "A, B, C, D",
+          "A, B, D, C",
+          "A, C, B, D"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "A의 이웃 B, C를 먼저 방문하고, 그다음 B의 이웃 D를 방문합니다. A, B, D, C는 DFS 순서입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfs-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bfs",
+        "trace"
+      ],
+      "content": {
+        "prompt": "간선 A−B, A−C, B−D, C−E. A에서 BFS로 네 번째 방문 정점은?",
+        "options": [
+          "E",
+          "C",
+          "D"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "방문 순서는 A, B, C, D, E입니다. 거리 1인 B, C 다음에 거리 2인 D, E를 방문합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfs-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bfs",
+        "visited"
+      ],
+      "content": {
+        "prompt": "간선 A−B, B−C, C−A를 방문 표시 없이 BFS하면?",
+        "options": [
+          "정상 종료",
+          "끝나지 않는다",
+          "A만 방문"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "사이클 A, B, C를 따라 이미 방문한 정점을 계속 큐에 넣으므로 탐색이 끝나지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search"
+      ]
+    },
+    {
+      "id": "dsa-graph-bfs-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "bfs",
+        "graph-traversal"
+      ],
+      "content": {
+        "prompt": "BFS는 거리 1인 정점을 모두 방문한 뒤 거리 2인 정점으로 간다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "BFS는 거리 1인 정점을 모두 방문한 뒤 거리 2인 정점으로 넘어가는 너비 우선 탐색입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Breadth-first_search"
+      ]
+    }
+  ]
+}
