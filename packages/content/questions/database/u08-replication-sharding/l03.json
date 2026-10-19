@@ -1,0 +1,247 @@
+{
+  "track": "database",
+  "unit": "u08-replication-sharding",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "database-read-replica-lag-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "replication",
+        "replication-lag"
+      ],
+      "content": {
+        "prompt": "읽기는 레플리카로, 쓰기는 프라이머리로 보내는 것은?",
+        "options": [
+          "동기 복제",
+          "읽기 분산",
+          "정규화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "읽기 분산은 조회를 레플리카들에 나누고 쓰기는 프라이머리로 보내는 구성입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/hot-standby.html",
+        "https://en.wikipedia.org/wiki/Replication_(computing)"
+      ]
+    },
+    {
+      "id": "database-read-replica-lag-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "replication",
+        "replication-lag"
+      ],
+      "content": {
+        "prompt": "프라이머리 변경이 레플리카에 반영되기까지의 시간 차는?",
+        "options": [
+          "락 대기",
+          "커밋 지연",
+          "복제 지연"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "복제 지연은 프라이머리에서 커밋된 변경이 레플리카에 반영될 때까지 걸리는 시간 차입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/hot-standby.html",
+        "https://en.wikipedia.org/wiki/Replication_(computing)"
+      ]
+    },
+    {
+      "id": "database-read-replica-lag-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "replication",
+        "replication-lag"
+      ],
+      "content": {
+        "prompt": "레플리카를 늘리면 처리량이 커지는 작업은?",
+        "options": [
+          "읽기",
+          "쓰기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "레플리카는 조회만 나눠 받으므로 읽기 처리량이 늘고, 쓰기는 여전히 프라이머리 한 대가 받습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/hot-standby.html",
+        "https://en.wikipedia.org/wiki/Replication_(computing)"
+      ]
+    },
+    {
+      "id": "database-read-replica-lag-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "replication",
+        "replication-lag"
+      ],
+      "content": {
+        "prompt": "읽기 분산을 하면 쓰기 처리량도 레플리카 수만큼 늘어난다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "모든 쓰기는 프라이머리로 가므로 레플리카를 늘려도 쓰기 처리량은 늘지 않습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/hot-standby.html",
+        "https://en.wikipedia.org/wiki/Replication_(computing)"
+      ]
+    },
+    {
+      "id": "database-read-replica-lag-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "replication",
+        "replication-lag"
+      ],
+      "content": {
+        "prompt": "프라이머리 변경이 레플리카에 늦게 반영되는 시간 차는 복제 ___ 이다.",
+        "hint": "프라이머리와 레플리카 사이의 시간 차를 나타내는 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "지연",
+          "lag",
+          "랙",
+          "복제 지연",
+          "replication lag"
+        ]
+      },
+      "explanation": "복제 지연은 프라이머리 변경이 레플리카에 반영되기까지의 시간 차로, 비동기 복제에서 생깁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/hot-standby.html",
+        "https://en.wikipedia.org/wiki/Replication_(computing)"
+      ]
+    },
+    {
+      "id": "database-read-replica-lag-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "replication",
+        "replication-lag"
+      ],
+      "content": {
+        "prompt": "읽기는 레플리카로, 쓰기는 프라이머리로 보내는 것을 읽기 ___ 이라 한다.",
+        "hint": "요청을 여러 서버에 나눈다는 뜻의 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "분산",
+          "읽기 분산",
+          "부하 분산",
+          "read scaling"
+        ]
+      },
+      "explanation": "읽기 분산은 조회를 여러 레플리카에 나눠 프라이머리 부담을 줄이는 구성입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/hot-standby.html",
+        "https://en.wikipedia.org/wiki/Replication_(computing)"
+      ]
+    },
+    {
+      "id": "database-read-replica-lag-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "replication",
+        "replication-lag"
+      ],
+      "content": {
+        "prompt": "글 수정 직후 레플리카에서 조회하니 옛 글이 보였다. 원인은?",
+        "options": [
+          "데드락",
+          "갱신 손실",
+          "복제 지연"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "수정이 아직 레플리카에 반영되지 않은 복제 지연 때문에 옛 값을 읽은 것입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/hot-standby.html",
+        "https://en.wikipedia.org/wiki/Replication_(computing)"
+      ]
+    },
+    {
+      "id": "database-read-replica-lag-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "replication",
+        "replication-lag"
+      ],
+      "content": {
+        "prompt": "방금 프로필을 고친 사용자의 조회는 어디서 읽나?",
+        "options": [
+          "프라이머리",
+          "레플리카"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "자기 쓰기 읽기를 위해 방금 쓴 사용자의 조회는 프라이머리에서 읽어 복제 지연을 피합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/hot-standby.html",
+        "https://en.wikipedia.org/wiki/Replication_(computing)"
+      ]
+    },
+    {
+      "id": "database-read-replica-lag-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "replication",
+        "replication-lag"
+      ],
+      "content": {
+        "prompt": "게시 직후 작성자 화면에 글이 없다는 문의. 대응은?",
+        "options": [
+          "레플리카 추가",
+          "작성자 조회만 프라이머리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "레플리카를 늘려도 복제 지연은 그대로입니다. 작성자의 조회를 프라이머리에서 읽으면 방금 쓴 글이 보입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/hot-standby.html",
+        "https://en.wikipedia.org/wiki/Replication_(computing)"
+      ]
+    },
+    {
+      "id": "database-read-replica-lag-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "replication",
+        "replication-lag"
+      ],
+      "content": {
+        "prompt": "읽기 분산에서는 SELECT를 레플리카로, INSERT를 프라이머리로 보낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "읽기 분산은 조회(SELECT)를 레플리카에, 쓰기(INSERT·UPDATE·DELETE)를 프라이머리에 보냅니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/hot-standby.html",
+        "https://en.wikipedia.org/wiki/Replication_(computing)"
+      ]
+    }
+  ]
+}

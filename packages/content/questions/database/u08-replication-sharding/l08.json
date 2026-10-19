@@ -1,0 +1,238 @@
+{
+  "track": "database",
+  "unit": "u08-replication-sharding",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "database-shard-key-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "shard-key"
+      ],
+      "content": {
+        "prompt": "행이 어느 샤드로 갈지 정하는 열은?",
+        "options": [
+          "외래키",
+          "샤드 키",
+          "후보키"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "샤드 키는 행이 어느 샤드에 저장될지 정하는 기준 열입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-shard-key-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "shard-key"
+      ],
+      "content": {
+        "prompt": "요청이 특정 샤드에 몰리는 현상은?",
+        "options": [
+          "핫스팟",
+          "복제 지연",
+          "스플릿 브레인"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "핫스팟은 요청이나 데이터가 특정 샤드에 몰려 그 샤드만 바빠지는 현상입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-shard-key-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "shard-key"
+      ],
+      "content": {
+        "prompt": "범위 조회에 유리하지만 쏠리기 쉬운 방식은?",
+        "options": [
+          "해시 방식",
+          "범위 방식"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "범위 방식은 이웃한 값이 한 샤드에 모여 범위 조회에 유리하지만, 새 값이 한쪽에 몰리기 쉽습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-shard-key-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "shard-key"
+      ],
+      "content": {
+        "prompt": "해시 방식은 범위 방식보다 데이터를 샤드에 고르게 퍼뜨린다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "해시 값은 입력이 비슷해도 고르게 흩어지므로, 해시 방식이 범위 방식보다 고르게 분산됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-shard-key-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "shard-key"
+      ],
+      "content": {
+        "prompt": "행이 갈 샤드를 정하는 열을 ___ 라 한다.",
+        "hint": "기준 열을 부르는 두 단어 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "샤드 키",
+          "shard key",
+          "샤드키",
+          "샤딩 키",
+          "shardkey"
+        ]
+      },
+      "explanation": "샤드 키는 행이 저장될 샤드를 정하는 열로, 데이터 분포와 쿼리 비용을 좌우합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-shard-key-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "shard-key"
+      ],
+      "content": {
+        "prompt": "요청이 한 샤드에 몰리는 현상을 ___ 이라 한다.",
+        "hint": "뜨거운 지점이라는 뜻의 영어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "핫스팟",
+          "hotspot",
+          "hot spot",
+          "핫 스팟",
+          "핫스폿"
+        ]
+      },
+      "explanation": "핫스팟이 생기면 샤드를 늘려도 몰린 샤드 하나가 전체 처리량의 한계가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-shard-key-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "shard-key"
+      ],
+      "content": {
+        "prompt": "생성 시각 범위로 샤딩하면 새 글이 몰리는 곳은?",
+        "options": [
+          "가장 최신 샤드",
+          "모든 샤드에 고르게"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "새 글은 모두 최신 시각 구간에 속하므로 최신 샤드 하나에 쓰기가 몰리는 핫스팟이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-shard-key-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "shard-key"
+      ],
+      "content": {
+        "prompt": "대부분 쿼리가 user_id로 조회한다. 알맞은 샤드 키는?",
+        "options": [
+          "created_at",
+          "user_id",
+          "country"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "user_id는 값이 고르게 퍼지고 주요 쿼리 조건에 들어가므로, 조회가 한 샤드에서 끝납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-shard-key-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "shard-key"
+      ],
+      "content": {
+        "prompt": "국가로 샤딩했는데 사용자 90%가 KR이면?",
+        "options": [
+          "고른 분산",
+          "KR 샤드 핫스팟"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "값이 한쪽에 몰린 열을 샤드 키로 쓰면 KR 샤드에 데이터와 요청이 몰리는 핫스팟이 생깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-shard-key-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "shard-key"
+      ],
+      "content": {
+        "prompt": "값이 한쪽에 몰리는 열일수록 좋은 샤드 키다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "좋은 샤드 키는 값이 고르게 퍼지고 주요 쿼리 조건에 들어가는 열입니다. 몰리면 핫스팟이 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    }
+  ]
+}

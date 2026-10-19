@@ -1,0 +1,243 @@
+{
+  "track": "database",
+  "unit": "u08-replication-sharding",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "database-shard-basics-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "horizontal-partitioning"
+      ],
+      "content": {
+        "prompt": "행을 여러 DB 서버에 나눠 저장하는 수평 분할은?",
+        "options": [
+          "복제",
+          "샤딩",
+          "파티셔닝"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "샤딩은 행을 여러 DB 서버(샤드)에 나눠 저장합니다. 파티셔닝은 한 서버 안에서 나눕니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)",
+        "https://en.wikipedia.org/wiki/Partition_(database)"
+      ]
+    },
+    {
+      "id": "database-shard-basics-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "horizontal-partitioning"
+      ],
+      "content": {
+        "prompt": "행 단위로 데이터를 나누는 분할은?",
+        "options": [
+          "수평 분할",
+          "수직 분할"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "행 단위로 나누면 수평 분할, 열이나 테이블 단위로 나누면 수직 분할입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)",
+        "https://en.wikipedia.org/wiki/Partition_(database)"
+      ]
+    },
+    {
+      "id": "database-shard-basics-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "horizontal-partitioning"
+      ],
+      "content": {
+        "prompt": "열이나 테이블 단위로 데이터를 나누는 분할은?",
+        "options": [
+          "수평 분할",
+          "수직 분할"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "수직 분할은 열이나 테이블 단위로 나눕니다. 샤딩은 행 단위로 나누는 수평 분할입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)",
+        "https://en.wikipedia.org/wiki/Partition_(database)"
+      ]
+    },
+    {
+      "id": "database-shard-basics-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "horizontal-partitioning"
+      ],
+      "content": {
+        "prompt": "샤딩은 한 DB 서버 안에서 테이블을 나누는 것이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "한 서버 안에서 나누는 것은 파티셔닝이고, 샤딩은 여러 DB 서버에 나눠 저장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)",
+        "https://en.wikipedia.org/wiki/Partition_(database)"
+      ]
+    },
+    {
+      "id": "database-shard-basics-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "horizontal-partitioning"
+      ],
+      "content": {
+        "prompt": "행을 여러 DB 서버에 나눠 저장하는 것을 ___ 이라 한다.",
+        "hint": "조각을 뜻하는 영어 단어에서 온 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "샤딩",
+          "sharding",
+          "데이터베이스 샤딩"
+        ]
+      },
+      "explanation": "샤딩은 행을 여러 DB 서버에 나눠 저장해 쓰기 처리량과 저장 용량을 늘립니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)",
+        "https://en.wikipedia.org/wiki/Partition_(database)"
+      ]
+    },
+    {
+      "id": "database-shard-basics-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "horizontal-partitioning"
+      ],
+      "content": {
+        "prompt": "행 단위로 데이터를 나누는 것을 ___ 분할이라 한다.",
+        "hint": "열 단위로 나누는 쪽과 반대 방향입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "수평",
+          "horizontal",
+          "수평적"
+        ]
+      },
+      "explanation": "행 단위로 나누면 수평 분할이며, 샤딩이 대표적인 수평 분할입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)",
+        "https://en.wikipedia.org/wiki/Partition_(database)"
+      ]
+    },
+    {
+      "id": "database-shard-basics-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "horizontal-partitioning"
+      ],
+      "content": {
+        "prompt": "쓰기가 프라이머리 한 대의 한계를 넘을 때 맞는 방법은?",
+        "options": [
+          "레플리카 추가",
+          "샤딩"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "레플리카는 읽기만 나눕니다. 샤딩은 쓰기를 여러 서버가 나눠 받으므로 쓰기 처리량이 늘어납니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)",
+        "https://en.wikipedia.org/wiki/Partition_(database)"
+      ]
+    },
+    {
+      "id": "database-shard-basics-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "horizontal-partitioning"
+      ],
+      "content": {
+        "prompt": "데이터를 샤드 4대에 고르게 나누면 서버당 저장량은?",
+        "options": [
+          "전체의 약 1/4",
+          "전체 그대로"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "샤딩은 행을 나눠 담으므로 고르게 나누면 서버마다 전체의 약 1/4만 저장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)",
+        "https://en.wikipedia.org/wiki/Partition_(database)"
+      ]
+    },
+    {
+      "id": "database-shard-basics-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "horizontal-partitioning"
+      ],
+      "content": {
+        "prompt": "회원 1~100만 번은 서버 A, 나머지는 서버 B에 두면?",
+        "options": [
+          "수직 분할",
+          "복제",
+          "샤딩"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "회원 행을 서버 두 대에 나눠 담았으므로 수평 분할인 샤딩입니다. 복제라면 두 서버가 같은 데이터를 가집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)",
+        "https://en.wikipedia.org/wiki/Partition_(database)"
+      ]
+    },
+    {
+      "id": "database-shard-basics-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "horizontal-partitioning"
+      ],
+      "content": {
+        "prompt": "파티셔닝은 한 서버 안에서, 샤딩은 여러 서버에 데이터를 나눈다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "파티셔닝은 한 DB 서버 안에서 테이블을 나누고, 샤딩은 여러 DB 서버에 행을 나눠 저장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)",
+        "https://en.wikipedia.org/wiki/Partition_(database)"
+      ]
+    }
+  ]
+}

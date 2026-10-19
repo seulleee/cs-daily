@@ -1,0 +1,260 @@
+{
+  "track": "database",
+  "unit": "u08-replication-sharding",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "database-failover-promote-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "replication",
+        "failover"
+      ],
+      "content": {
+        "prompt": "프라이머리 장애 시 레플리카를 새 프라이머리로 올리는 것은?",
+        "options": [
+          "체크포인트",
+          "페일오버",
+          "읽기 분산"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "페일오버는 프라이머리 장애 시 레플리카 하나를 새 프라이머리로 승격해 쓰기를 이어 받게 하는 것입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby-failover.html",
+        "https://en.wikipedia.org/wiki/Split-brain_(computing)",
+        "https://en.wikipedia.org/wiki/Fencing_(computing)"
+      ]
+    },
+    {
+      "id": "database-failover-promote-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "replication",
+        "failover"
+      ],
+      "content": {
+        "prompt": "두 서버가 동시에 자신을 프라이머리로 여기는 상태는?",
+        "options": [
+          "복제 지연",
+          "데드락",
+          "스플릿 브레인"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "스플릿 브레인은 두 서버가 모두 프라이머리로 쓰기를 받아 데이터가 서로 갈라지는 상태입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby-failover.html",
+        "https://en.wikipedia.org/wiki/Split-brain_(computing)",
+        "https://en.wikipedia.org/wiki/Fencing_(computing)"
+      ]
+    },
+    {
+      "id": "database-failover-promote-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "replication",
+        "failover"
+      ],
+      "content": {
+        "prompt": "옛 프라이머리가 더 이상 쓰기를 못 하게 차단하는 조치는?",
+        "options": [
+          "승격",
+          "펜싱",
+          "복제"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "펜싱은 옛 프라이머리의 쓰기를 확실히 막아 스플릿 브레인을 예방하는 조치입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby-failover.html",
+        "https://en.wikipedia.org/wiki/Split-brain_(computing)",
+        "https://en.wikipedia.org/wiki/Fencing_(computing)"
+      ]
+    },
+    {
+      "id": "database-failover-promote-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "replication",
+        "failover"
+      ],
+      "content": {
+        "prompt": "비동기 복제여도 페일오버 뒤 커밋된 데이터는 모두 남는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "비동기 복제에서는 레플리카에 아직 오지 않은 최근 커밋이 있을 수 있어, 승격하면 그 커밋이 사라집니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby-failover.html",
+        "https://en.wikipedia.org/wiki/Split-brain_(computing)",
+        "https://en.wikipedia.org/wiki/Fencing_(computing)"
+      ]
+    },
+    {
+      "id": "database-failover-promote-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "replication",
+        "failover"
+      ],
+      "content": {
+        "prompt": "프라이머리 장애 시 레플리카를 승격하는 것을 ___ 라 한다.",
+        "hint": "장애 상황에서 역할을 넘기는 작업의 영어 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "페일오버",
+          "failover",
+          "페일 오버",
+          "장애 조치",
+          "장애조치"
+        ]
+      },
+      "explanation": "페일오버는 프라이머리 장애 시 레플리카를 새 프라이머리로 승격하는 작업입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby-failover.html",
+        "https://en.wikipedia.org/wiki/Split-brain_(computing)",
+        "https://en.wikipedia.org/wiki/Fencing_(computing)"
+      ]
+    },
+    {
+      "id": "database-failover-promote-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "replication",
+        "failover"
+      ],
+      "content": {
+        "prompt": "두 서버가 모두 쓰기를 받는 상태를 스플릿 ___ 이라 한다.",
+        "hint": "영어로 갈라진 뇌라는 뜻의 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "브레인",
+          "brain",
+          "스플릿 브레인",
+          "split brain",
+          "splitbrain"
+        ]
+      },
+      "explanation": "스플릿 브레인은 두 서버가 동시에 자신을 프라이머리로 여겨 쓰기를 받는 상태입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby-failover.html",
+        "https://en.wikipedia.org/wiki/Split-brain_(computing)",
+        "https://en.wikipedia.org/wiki/Fencing_(computing)"
+      ]
+    },
+    {
+      "id": "database-failover-promote-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "replication",
+        "failover"
+      ],
+      "content": {
+        "prompt": "비동기 복제에서 승격된 레플리카에 없던 커밋은?",
+        "options": [
+          "사라진다",
+          "자동 복구된다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "승격된 레플리카가 받지 못한 최근 커밋은 새 프라이머리에 없으므로 유실됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby-failover.html",
+        "https://en.wikipedia.org/wiki/Split-brain_(computing)",
+        "https://en.wikipedia.org/wiki/Fencing_(computing)"
+      ]
+    },
+    {
+      "id": "database-failover-promote-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "replication",
+        "failover"
+      ],
+      "content": {
+        "prompt": "네트워크만 끊긴 옛 프라이머리가 쓰기를 계속 받으면?",
+        "options": [
+          "복제 지연",
+          "스플릿 브레인",
+          "데드락"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "새 프라이머리가 승격됐는데 옛 프라이머리도 쓰기를 받으면 두 서버가 모두 프라이머리인 스플릿 브레인입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby-failover.html",
+        "https://en.wikipedia.org/wiki/Split-brain_(computing)",
+        "https://en.wikipedia.org/wiki/Fencing_(computing)"
+      ]
+    },
+    {
+      "id": "database-failover-promote-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "replication",
+        "failover"
+      ],
+      "content": {
+        "prompt": "스플릿 브레인을 막으려고 승격 전에 하는 일은?",
+        "options": [
+          "옛 프라이머리 펜싱",
+          "레플리카 추가",
+          "읽기 분산"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "승격 전에 옛 프라이머리를 펜싱해 쓰기를 차단하면 두 서버가 동시에 쓰기를 받지 않습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby-failover.html",
+        "https://en.wikipedia.org/wiki/Split-brain_(computing)",
+        "https://en.wikipedia.org/wiki/Fencing_(computing)"
+      ]
+    },
+    {
+      "id": "database-failover-promote-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "replication",
+        "failover"
+      ],
+      "content": {
+        "prompt": "페일오버는 레플리카 하나를 새 프라이머리로 승격하는 것이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "페일오버는 프라이머리 장애 시 레플리카를 새 프라이머리로 올려 서비스를 이어 가는 것입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby-failover.html",
+        "https://en.wikipedia.org/wiki/Split-brain_(computing)",
+        "https://en.wikipedia.org/wiki/Fencing_(computing)"
+      ]
+    }
+  ]
+}

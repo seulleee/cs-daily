@@ -1,0 +1,241 @@
+{
+  "track": "database",
+  "unit": "u08-replication-sharding",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "database-consistent-hash-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "consistent-hashing"
+      ],
+      "content": {
+        "prompt": "샤드 수를 바꾸며 데이터를 다시 배치하는 작업은?",
+        "options": [
+          "페일오버",
+          "리샤딩",
+          "파티션 프루닝"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "리샤딩은 샤드 수가 바뀔 때 키를 새 배치에 맞게 다시 옮기는 작업입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Consistent_hashing"
+      ]
+    },
+    {
+      "id": "database-consistent-hash-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "consistent-hashing"
+      ],
+      "content": {
+        "prompt": "키를 해시 링에서 시계 방향 첫 샤드에 두는 방식은?",
+        "options": [
+          "모듈로 해시",
+          "범위 방식",
+          "일관된 해싱"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "일관된 해싱은 키와 샤드를 해시 링에 놓고, 키 위치에서 시계 방향으로 처음 만나는 샤드에 배정합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Consistent_hashing"
+      ]
+    },
+    {
+      "id": "database-consistent-hash-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "consistent-hashing"
+      ],
+      "content": {
+        "prompt": "샤드를 추가할 때 옮기는 키가 더 적은 방식은?",
+        "options": [
+          "hash % N",
+          "일관된 해싱"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "hash % N은 N이 바뀌면 대부분 키의 샤드가 바뀌지만, 일관된 해싱은 인접 구간의 키만 옮깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Consistent_hashing"
+      ]
+    },
+    {
+      "id": "database-consistent-hash-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "consistent-hashing"
+      ],
+      "content": {
+        "prompt": "hash % N에서 N을 바꾸면 소수의 키만 샤드가 바뀐다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "나누는 수가 바뀌면 대부분 키의 나머지가 달라지므로, 대부분 키를 다른 샤드로 옮겨야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Consistent_hashing"
+      ]
+    },
+    {
+      "id": "database-consistent-hash-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "consistent-hashing"
+      ],
+      "content": {
+        "prompt": "샤드 수를 바꾸며 데이터를 다시 배치하는 것을 ___ 이라 한다.",
+        "hint": "다시를 뜻하는 접두사가 붙은 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "리샤딩",
+          "resharding",
+          "재샤딩",
+          "리 샤딩",
+          "re-sharding"
+        ]
+      },
+      "explanation": "리샤딩은 샤드 수를 늘리거나 줄일 때 데이터를 새 배치로 옮기는 작업입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Consistent_hashing"
+      ]
+    },
+    {
+      "id": "database-consistent-hash-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "consistent-hashing"
+      ],
+      "content": {
+        "prompt": "해시 링에서 시계 방향 첫 샤드에 배정하는 방식은 ___ 해싱이다.",
+        "hint": "샤드 수가 바뀌어도 배치가 크게 흔들리지 않는다는 뜻입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "일관된",
+          "consistent",
+          "일관성",
+          "컨시스턴트",
+          "일관된 해싱",
+          "consistent hashing"
+        ]
+      },
+      "explanation": "일관된 해싱은 샤드를 추가해도 그 샤드와 인접한 구간의 키만 옮기면 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Consistent_hashing"
+      ]
+    },
+    {
+      "id": "database-consistent-hash-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "consistent-hashing"
+      ],
+      "content": {
+        "prompt": "해시 7인 키, 샤드 수 3에서 4로. hash % N 샤드 번호는?",
+        "options": [
+          "1 → 3",
+          "1 → 1",
+          "2 → 3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "7 % 3 = 1이고 7 % 4 = 3이므로 샤드 1에서 샤드 3으로 옮겨야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Consistent_hashing"
+      ]
+    },
+    {
+      "id": "database-consistent-hash-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "consistent-hashing"
+      ],
+      "content": {
+        "prompt": "링(0~99)에 샤드 A=10, B=40, C=70. 해시 55인 키는?",
+        "options": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "55에서 시계 방향(값이 커지는 쪽)으로 처음 만나는 샤드는 70의 C입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Consistent_hashing"
+      ]
+    },
+    {
+      "id": "database-consistent-hash-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "consistent-hashing"
+      ],
+      "content": {
+        "prompt": "같은 링(A=10, B=40, C=70)에서 해시 85인 키는?",
+        "options": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "85 뒤로는 샤드가 없으므로 링을 돌아 0부터 이어 가고, 처음 만나는 샤드는 10의 A입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Consistent_hashing"
+      ]
+    },
+    {
+      "id": "database-consistent-hash-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "consistent-hashing"
+      ],
+      "content": {
+        "prompt": "일관된 해싱에서 샤드를 추가하면 인접 구간의 키만 옮긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "새 샤드는 링의 한 구간만 넘겨받으므로, 그 구간의 키만 옮기고 나머지 키는 그대로 둡니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Consistent_hashing"
+      ]
+    }
+  ]
+}
