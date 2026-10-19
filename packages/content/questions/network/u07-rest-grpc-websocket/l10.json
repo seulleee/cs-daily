@@ -1,0 +1,245 @@
+{
+  "track": "network",
+  "unit": "u07-rest-grpc-websocket",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "network-api-websocket-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "websocket",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "TCP 연결 하나로 양방향 전이중 메시지를 주고받는 것은?",
+        "options": [
+          "SSE",
+          "WebSocket",
+          "폴링"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "WebSocket은 TCP 연결 하나 위에서 양쪽이 동시에 메시지를 주고받는 전이중 프로토콜입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc6455",
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html"
+      ]
+    },
+    {
+      "id": "network-api-websocket-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "websocket",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "WebSocket 업그레이드에 성공한 서버의 상태 코드는?",
+        "options": [
+          "200",
+          "301",
+          "101"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "서버는 101 Switching Protocols로 응답하고, 그 뒤 같은 연결에서 WebSocket 메시지를 주고받습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc6455",
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html"
+      ]
+    },
+    {
+      "id": "network-api-websocket-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "websocket",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "서버→클라이언트 단방향 알림에 더 단순한 선택은?",
+        "options": [
+          "SSE",
+          "WebSocket"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "서버에서 클라이언트로만 보내면 되는 경우는 일반 HTTP 응답을 쓰는 SSE가 더 단순합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc6455",
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html"
+      ]
+    },
+    {
+      "id": "network-api-websocket-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "websocket",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "WebSocket은 HTTP 요청의 Upgrade 헤더로 시작한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "클라이언트가 Upgrade: websocket을 담은 HTTP 요청을 보내고 서버가 101로 동의하면 연결이 바뀝니다(HTTP/1.1 기준).",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc6455",
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html"
+      ]
+    },
+    {
+      "id": "network-api-websocket-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "websocket",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "양쪽이 동시에 보내고 받을 수 있는 통신을 ___ 이라 한다.",
+        "hint": "한쪽씩 번갈아 보내는 방식과 대비되는 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "전이중",
+          "전이중 통신",
+          "full duplex",
+          "full-duplex",
+          "풀 듀플렉스"
+        ]
+      },
+      "explanation": "WebSocket은 전이중이라 서버와 클라이언트가 상대를 기다리지 않고 동시에 메시지를 보냅니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc6455",
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html"
+      ]
+    },
+    {
+      "id": "network-api-websocket-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "websocket",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "WebSocket 업그레이드 응답은 ___ Switching Protocols 이다.",
+        "hint": "1로 시작하는 정보 응답 코드입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "101"
+        ]
+      },
+      "explanation": "101 Switching Protocols는 서버가 요청한 프로토콜로 전환하는 데 동의한다는 응답입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc6455",
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html"
+      ]
+    },
+    {
+      "id": "network-api-websocket-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "websocket",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "채팅 앱처럼 양쪽이 자주 메시지를 보낼 때 알맞은 것은?",
+        "options": [
+          "폴링",
+          "SSE",
+          "WebSocket"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "양방향이고 메시지가 잦으므로 WebSocket이 맞습니다. SSE는 단방향, 폴링은 지연과 낭비가 큽니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc6455",
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html"
+      ]
+    },
+    {
+      "id": "network-api-websocket-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "websocket",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "10분마다 바뀌는 환율을 보여 줄 때 충분한 방식은?",
+        "options": [
+          "폴링",
+          "WebSocket"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "갱신이 드물면 몇 분 간격 폴링으로도 충분하고, 연결을 계속 유지하는 비용이 들지 않습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc6455",
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html"
+      ]
+    },
+    {
+      "id": "network-api-websocket-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "websocket",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "WebSocket 연결을 요청할 때 쓰는 HTTP 헤더는?",
+        "options": [
+          "Accept",
+          "Upgrade",
+          "Set-Cookie"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "클라이언트는 Upgrade: websocket 헤더로 프로토콜 전환을 요청합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc6455",
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html"
+      ]
+    },
+    {
+      "id": "network-api-websocket-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "websocket",
+        "realtime"
+      ],
+      "content": {
+        "prompt": "WebSocket은 서버에서 클라이언트로만 메시지를 보낼 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "WebSocket은 양방향 전이중입니다. 서버→클라이언트 단방향은 SSE입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc6455",
+        "https://html.spec.whatwg.org/multipage/server-sent-events.html"
+      ]
+    }
+  ]
+}

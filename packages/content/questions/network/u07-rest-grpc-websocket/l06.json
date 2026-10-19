@@ -1,0 +1,258 @@
+{
+  "track": "network",
+  "unit": "u07-rest-grpc-websocket",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "network-api-protobuf-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "grpc",
+        "protobuf",
+        "schema-evolution"
+      ],
+      "content": {
+        "prompt": "구조화 데이터를 작은 바이너리로 직렬화하는 형식은?",
+        "options": [
+          "JSON",
+          "Protobuf",
+          "XML"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Protobuf는 구조화 데이터를 작은 바이너리로 직렬화합니다. JSON·XML은 텍스트 형식입니다.",
+      "refs": [
+        "https://protobuf.dev/programming-guides/proto3/",
+        "https://protobuf.dev/programming-guides/encoding/"
+      ]
+    },
+    {
+      "id": "network-api-protobuf-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "grpc",
+        "protobuf",
+        "schema-evolution"
+      ],
+      "content": {
+        "prompt": "삭제한 필드 번호의 재사용을 막는 키워드는?",
+        "options": [
+          "reserved",
+          "deleted",
+          "removed"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "reserved에 삭제한 필드 번호·이름을 적어 두면 나중에 실수로 재사용할 때 컴파일러가 막습니다.",
+      "refs": [
+        "https://protobuf.dev/programming-guides/proto3/",
+        "https://protobuf.dev/programming-guides/encoding/"
+      ]
+    },
+    {
+      "id": "network-api-protobuf-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "grpc",
+        "protobuf",
+        "schema-evolution"
+      ],
+      "content": {
+        "prompt": "Protobuf는 필드를 무엇으로 인코딩하는가?",
+        "options": [
+          "필드 번호",
+          "필드 이름"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Protobuf 바이너리에는 필드 이름이 아니라 필드 번호가 기록됩니다.",
+      "refs": [
+        "https://protobuf.dev/programming-guides/proto3/",
+        "https://protobuf.dev/programming-guides/encoding/"
+      ]
+    },
+    {
+      "id": "network-api-protobuf-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "grpc",
+        "protobuf",
+        "schema-evolution"
+      ],
+      "content": {
+        "prompt": "Protobuf 필드 이름만 바꾸면 옛 코드도 그 필드를 읽는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "바이너리에는 필드 번호만 기록되므로 번호와 타입이 같으면 이름이 달라도 옛 코드가 읽습니다(바이너리 인코딩 기준).",
+      "refs": [
+        "https://protobuf.dev/programming-guides/proto3/",
+        "https://protobuf.dev/programming-guides/encoding/"
+      ]
+    },
+    {
+      "id": "network-api-protobuf-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "grpc",
+        "protobuf",
+        "schema-evolution"
+      ],
+      "content": {
+        "prompt": "Protobuf는 필드를 이름이 아니라 필드 ___ 로 인코딩한다.",
+        "hint": "= 1; 처럼 필드마다 붙인 값입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "번호",
+          "필드 번호",
+          "number",
+          "field number",
+          "태그",
+          "tag"
+        ]
+      },
+      "explanation": "필드 번호가 바이트열에 기록되므로, 한 번 정한 번호는 그 필드의 정체성입니다.",
+      "refs": [
+        "https://protobuf.dev/programming-guides/proto3/",
+        "https://protobuf.dev/programming-guides/encoding/"
+      ]
+    },
+    {
+      "id": "network-api-protobuf-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "grpc",
+        "protobuf",
+        "schema-evolution"
+      ],
+      "content": {
+        "prompt": "삭제한 필드 번호를 예약하는 키워드는 ___ 이다.",
+        "hint": "재사용 금지를 선언하는 영어 키워드입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "reserved",
+          "RESERVED",
+          "리저브드"
+        ]
+      },
+      "explanation": "reserved로 지운 번호와 이름을 막아 두면 옛 데이터를 다른 필드로 잘못 읽는 일을 막습니다.",
+      "refs": [
+        "https://protobuf.dev/programming-guides/proto3/",
+        "https://protobuf.dev/programming-guides/encoding/"
+      ]
+    },
+    {
+      "id": "network-api-protobuf-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "grpc",
+        "protobuf",
+        "schema-evolution"
+      ],
+      "content": {
+        "prompt": "새 필드를 추가할 때 붙일 번호는?",
+        "options": [
+          "삭제된 필드 번호",
+          "쓴 적 없는 새 번호"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "새 필드는 한 번도 쓰지 않은 번호로 추가해야 옛 코드와 옛 데이터가 안전합니다.",
+      "refs": [
+        "https://protobuf.dev/programming-guides/proto3/",
+        "https://protobuf.dev/programming-guides/encoding/"
+      ]
+    },
+    {
+      "id": "network-api-protobuf-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "grpc",
+        "protobuf",
+        "schema-evolution"
+      ],
+      "content": {
+        "prompt": "옛 코드가 모르는 필드 번호 5가 든 메시지를 받으면?",
+        "options": [
+          "그 필드 무시",
+          "오류로 거부",
+          "번호 1로 해석"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "옛 코드는 모르는 필드 번호를 건너뛰고 나머지를 읽습니다. 그래서 새 번호로 필드를 추가해도 안전합니다.",
+      "refs": [
+        "https://protobuf.dev/programming-guides/proto3/",
+        "https://protobuf.dev/programming-guides/encoding/"
+      ]
+    },
+    {
+      "id": "network-api-protobuf-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "grpc",
+        "protobuf",
+        "schema-evolution"
+      ],
+      "content": {
+        "prompt": "필드 3(age)을 지우고 3번을 새 필드 email에 썼다. 결과는?",
+        "options": [
+          "문제 없음",
+          "번호가 자동 변경",
+          "옛 코드가 잘못 읽음"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "옛 코드는 3번을 여전히 age로 알고 email 값을 age로 읽으려 합니다. 그래서 지운 번호는 reserved로 막습니다.",
+      "refs": [
+        "https://protobuf.dev/programming-guides/proto3/",
+        "https://protobuf.dev/programming-guides/encoding/"
+      ]
+    },
+    {
+      "id": "network-api-protobuf-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "grpc",
+        "protobuf",
+        "schema-evolution"
+      ],
+      "content": {
+        "prompt": "Protobuf는 사람이 읽기 쉬운 텍스트 직렬화 형식이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Protobuf는 구조화 데이터를 작은 바이너리로 직렬화합니다. 사람이 읽는 텍스트 형식은 JSON입니다.",
+      "refs": [
+        "https://protobuf.dev/programming-guides/proto3/",
+        "https://protobuf.dev/programming-guides/encoding/"
+      ]
+    }
+  ]
+}

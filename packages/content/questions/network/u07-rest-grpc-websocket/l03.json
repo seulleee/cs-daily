@@ -1,0 +1,248 @@
+{
+  "track": "network",
+  "unit": "u07-rest-grpc-websocket",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "network-api-rest-pitfalls-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rest",
+        "api-design"
+      ],
+      "content": {
+        "prompt": "POST /deleteUser 같은 형태의 문제는?",
+        "options": [
+          "헤더 누락",
+          "URI에 동사 사용",
+          "본문 과다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "URI에 delete 같은 동사를 넣은 것이 문제입니다. 삭제는 DELETE /users/42처럼 메서드로 표현합니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-pitfalls-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rest",
+        "api-design"
+      ],
+      "content": {
+        "prompt": "사용자 7의 주문 목록을 나타내는 URI는?",
+        "options": [
+          "/getOrders/7",
+          "/orders-of-7",
+          "/users/7/orders"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "사용자 7 아래의 주문 컬렉션이므로 계층을 경로로 이은 /users/7/orders가 맞습니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-pitfalls-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rest",
+        "api-design"
+      ],
+      "content": {
+        "prompt": "결제 완료 주문만 고르는 표현으로 알맞은 것은?",
+        "options": [
+          "?status=paid",
+          "/paidOrders",
+          "/getPaid"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "필터 조건은 쿼리 문자열로 표현하므로 /orders?status=paid처럼 씁니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-pitfalls-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "rest",
+        "api-design"
+      ],
+      "content": {
+        "prompt": "오류도 200으로 주고 본문에 코드를 넣는 것은 흔한 위반이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "오류를 200으로 주면 클라이언트와 도구가 상태 코드로 실패를 알 수 없습니다. 404·400 같은 코드를 써야 합니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-pitfalls-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "rest",
+        "api-design"
+      ],
+      "content": {
+        "prompt": "필터·정렬 조건은 URI의 ___ 문자열로 표현한다.",
+        "hint": "URI에서 ? 뒤에 오는 부분입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "쿼리",
+          "query",
+          "쿼리 스트링",
+          "query string",
+          "질의"
+        ]
+      },
+      "explanation": "쿼리 문자열에 status=paid, sort=-createdAt처럼 조건을 넣어 목록을 거르고 정렬합니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-pitfalls-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "rest",
+        "api-design"
+      ],
+      "content": {
+        "prompt": "POST /deleteUser를 고친 요청은 ___ /users/42 이다.",
+        "hint": "리소스를 지우는 HTTP 메서드입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "DELETE",
+          "delete",
+          "딜리트"
+        ]
+      },
+      "explanation": "삭제 동작은 DELETE 메서드로 표현하고, URI에는 대상 리소스 /users/42만 둡니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-pitfalls-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rest",
+        "api-design"
+      ],
+      "content": {
+        "prompt": "없는 사용자를 조회했을 때 알맞은 응답은?",
+        "options": [
+          "404 Not Found",
+          "200 + 오류 본문"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "리소스가 없으면 404로 알려야 합니다. 200에 오류 본문을 넣는 것은 흔한 위반입니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-pitfalls-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rest",
+        "api-design"
+      ],
+      "content": {
+        "prompt": "GET /users/42/orders/3 이 가리키는 것은?",
+        "options": [
+          "주문 42의 사용자 3",
+          "사용자 42의 주문 3",
+          "사용자 3의 주문 42"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "경로를 왼쪽부터 읽으면 사용자 42 아래 주문 컬렉션의 항목 3입니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-pitfalls-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rest",
+        "api-design"
+      ],
+      "content": {
+        "prompt": "POST /updateOrder/7을 REST답게 고치면?",
+        "options": [
+          "GET /orders/7",
+          "POST /orders",
+          "PATCH /orders/7"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "일부 수정은 PATCH로 하고 URI에는 대상 주문 /orders/7만 둡니다. 전체 교체라면 PUT을 씁니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    },
+    {
+      "id": "network-api-rest-pitfalls-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "rest",
+        "api-design"
+      ],
+      "content": {
+        "prompt": "REST에서 삭제는 POST /deleteUser처럼 동사 URI로 표현한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "동사 URI는 흔한 위반입니다. 삭제는 DELETE /users/42처럼 메서드와 명사 URI로 표현합니다.",
+      "refs": [
+        "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ]
+    }
+  ]
+}

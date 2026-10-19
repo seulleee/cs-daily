@@ -1,0 +1,254 @@
+{
+  "track": "network",
+  "unit": "u06-tls",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "network-tls-symmetric-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "symmetric-key"
+      ],
+      "content": {
+        "prompt": "같은 키 하나로 암호화·복호화를 모두 하는 방식은?",
+        "options": [
+          "복호화",
+          "대칭키 암호",
+          "키 배송 문제"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "대칭키 암호는 암호화와 복호화에 같은 키를 씁니다. 그래서 양쪽이 미리 같은 키를 가지고 있어야 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/197/final"
+      ]
+    },
+    {
+      "id": "network-tls-symmetric-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "symmetric-key"
+      ],
+      "content": {
+        "prompt": "TLS가 응용 데이터를 암호화할 때 쓰는 알고리즘은?",
+        "options": [
+          "DNS",
+          "TCP",
+          "ChaCha20"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "ChaCha20은 AES와 함께 TLS가 응용 데이터 암호화에 쓰는 대표 대칭키 암호입니다. DNS·TCP는 프로토콜입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/197/final"
+      ]
+    },
+    {
+      "id": "network-tls-symmetric-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "symmetric-key"
+      ],
+      "content": {
+        "prompt": "대칭키 암호를 실제 데이터 암호화에 쓰는 이유는?",
+        "options": [
+          "빠르다",
+          "키가 필요 없다",
+          "키가 두 개다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "대칭키 암호는 연산이 빨라 많은 양의 응용 데이터를 암호화하는 데 씁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/197/final"
+      ]
+    },
+    {
+      "id": "network-tls-symmetric-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "symmetric-key"
+      ],
+      "content": {
+        "prompt": "대칭키 암호는 암호화 키와 복호화 키가 서로 다르다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "대칭키 암호는 암호화와 복호화에 같은 키를 씁니다. 키가 같다는 점이 이름의 뜻입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/197/final"
+      ]
+    },
+    {
+      "id": "network-tls-symmetric-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "symmetric-key"
+      ],
+      "content": {
+        "prompt": "같은 키로 암호화·복호화하는 방식은 ___ 암호이다.",
+        "hint": "양쪽 키가 서로 같다는 뜻의 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "대칭키",
+          "대칭",
+          "대칭 키",
+          "symmetric",
+          "symmetric key",
+          "symmetric-key",
+          "비밀키",
+          "공유키"
+        ]
+      },
+      "explanation": "대칭키 암호는 같은 키 하나로 암호화와 복호화를 모두 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/197/final"
+      ]
+    },
+    {
+      "id": "network-tls-symmetric-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "symmetric-key"
+      ],
+      "content": {
+        "prompt": "ChaCha20과 함께 쓰이는 대표 대칭키 암호는 ___ 이다.",
+        "hint": "미국 표준으로 정해진 세 글자 약자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "AES",
+          "aes",
+          "에이이에스",
+          "Rijndael",
+          "레인달"
+        ]
+      },
+      "explanation": "AES는 미국 표준 대칭키 암호로, TLS에서 ChaCha20과 함께 대표적으로 쓰입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/197/final"
+      ]
+    },
+    {
+      "id": "network-tls-symmetric-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "symmetric-key"
+      ],
+      "content": {
+        "prompt": "A와 B가 대칭키로 통신하려면 먼저 필요한 것은?",
+        "options": [
+          "서로 다른 키",
+          "같은 키 공유",
+          "키 없이 연결"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "대칭키 암호는 같은 키로 암호화·복호화하므로 두 사람이 먼저 같은 키를 나눠 가져야 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/197/final"
+      ]
+    },
+    {
+      "id": "network-tls-symmetric-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "symmetric-key"
+      ],
+      "content": {
+        "prompt": "대칭키를 평문으로 보냈다가 가로채이면?",
+        "options": [
+          "아무 영향 없음",
+          "키가 자동 교체",
+          "암호문이 해독됨"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "키를 가진 쪽은 누구나 복호화할 수 있어 암호문이 해독됩니다. 이것이 키 배송 문제입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/197/final"
+      ]
+    },
+    {
+      "id": "network-tls-symmetric-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "symmetric-key"
+      ],
+      "content": {
+        "prompt": "AES로 암호화한 데이터를 복호화할 때 쓰는 키는?",
+        "options": [
+          "암호화와 같은 키",
+          "아무 키나",
+          "키 없이"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "AES는 대칭키 암호라 암호화에 쓴 키와 같은 키로 복호화합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/197/final"
+      ]
+    },
+    {
+      "id": "network-tls-symmetric-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "symmetric-key"
+      ],
+      "content": {
+        "prompt": "대칭키 암호는 같은 키를 상대와 안전하게 나눠 갖기 어렵다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "키를 그냥 보내면 가로채일 수 있어, 같은 키를 안전하게 나눠 갖는 것이 대칭키 암호의 약점인 키 배송 문제입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc8446",
+        "https://csrc.nist.gov/pubs/fips/197/final"
+      ]
+    }
+  ]
+}

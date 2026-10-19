@@ -1,0 +1,268 @@
+{
+  "track": "network",
+  "unit": "u06-tls",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "network-tls-cert-lifecycle-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "certificate",
+        "acme"
+      ],
+      "content": {
+        "prompt": "인증서 유효 기간의 끝을 나타내는 필드는?",
+        "options": [
+          "SAN",
+          "notAfter",
+          "CA"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "notAfter는 인증서 유효 기간이 끝나는 시각입니다. 이 시각이 지나면 클라이언트가 인증서를 받아들이지 않습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8555",
+        "https://www.rfc-editor.org/rfc/rfc6960"
+      ]
+    },
+    {
+      "id": "network-tls-cert-lifecycle-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "certificate",
+        "acme"
+      ],
+      "content": {
+        "prompt": "인증서 발급·갱신을 자동화하는 프로토콜은?",
+        "options": [
+          "ACME",
+          "OCSP",
+          "CRL"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ACME는 인증서 발급·갱신을 자동화하는 프로토콜로 Let's Encrypt가 씁니다. OCSP·CRL은 폐기 확인 수단입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8555",
+        "https://www.rfc-editor.org/rfc/rfc6960"
+      ]
+    },
+    {
+      "id": "network-tls-cert-lifecycle-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "certificate",
+        "acme"
+      ],
+      "content": {
+        "prompt": "개인키 유출로 만료 전에 인증서를 무효화하는 것은?",
+        "options": [
+          "만료",
+          "갱신",
+          "폐기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "폐기는 개인키 유출 등으로 만료 전이라도 인증서를 무효로 만드는 것입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8555",
+        "https://www.rfc-editor.org/rfc/rfc6960"
+      ]
+    },
+    {
+      "id": "network-tls-cert-lifecycle-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "certificate",
+        "acme"
+      ],
+      "content": {
+        "prompt": "인증서는 폐기하지 않으면 만료일이 지나도 유효하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "유효 기간(notAfter)이 지나면 폐기 여부와 상관없이 클라이언트가 연결을 거부하거나 경고합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8555",
+        "https://www.rfc-editor.org/rfc/rfc6960"
+      ]
+    },
+    {
+      "id": "network-tls-cert-lifecycle-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tls",
+        "certificate",
+        "acme"
+      ],
+      "content": {
+        "prompt": "인증서를 자동 발급·갱신하는 프로토콜은 ___ 이다.",
+        "hint": "Let's Encrypt가 쓰는 네 글자 프로토콜입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "ACME",
+          "acme",
+          "애크미",
+          "에이크미"
+        ]
+      },
+      "explanation": "ACME 클라이언트를 서버에 두면 도메인 소유 확인부터 발급·갱신까지 사람 손 없이 처리됩니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8555",
+        "https://www.rfc-editor.org/rfc/rfc6960"
+      ]
+    },
+    {
+      "id": "network-tls-cert-lifecycle-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "certificate",
+        "acme"
+      ],
+      "content": {
+        "prompt": "인증서 폐기 목록의 영문 약자는 ___ 이다.",
+        "hint": "세 글자 영문 약자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "CRL",
+          "crl",
+          "Certificate Revocation List",
+          "인증서 폐기 목록"
+        ]
+      },
+      "explanation": "CRL은 CA가 폐기한 인증서를 모아 공개하는 목록이고, OCSP는 인증서 하나의 상태를 조회하는 방식입니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8555",
+        "https://www.rfc-editor.org/rfc/rfc6960"
+      ]
+    },
+    {
+      "id": "network-tls-cert-lifecycle-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "certificate",
+        "acme"
+      ],
+      "content": {
+        "prompt": "notAfter가 2026-10-01이고 오늘이 2026-10-19면?",
+        "options": [
+          "경고 또는 거부",
+          "정상 접속"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "오늘이 notAfter보다 늦어 인증서가 만료됐으므로 클라이언트가 경고하거나 연결을 거부합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8555",
+        "https://www.rfc-editor.org/rfc/rfc6960"
+      ]
+    },
+    {
+      "id": "network-tls-cert-lifecycle-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "certificate",
+        "acme"
+      ],
+      "content": {
+        "prompt": "서버 개인키가 유출됐다. 알맞은 조치는?",
+        "options": [
+          "SAN 추가",
+          "만료일까지 대기",
+          "폐기 후 재발급"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "유출된 키의 인증서는 만료 전이라도 폐기하고, 새 키 쌍으로 인증서를 다시 발급받아야 합니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8555",
+        "https://www.rfc-editor.org/rfc/rfc6960"
+      ]
+    },
+    {
+      "id": "network-tls-cert-lifecycle-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "certificate",
+        "acme"
+      ],
+      "content": {
+        "prompt": "갱신을 잊는 만료 사고를 막으려 서버에 두는 것은?",
+        "options": [
+          "ACME 클라이언트",
+          "OCSP 조회",
+          "CRL 다운로드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ACME 클라이언트가 만료 전에 인증서를 자동으로 갱신해 사람이 잊어도 만료되지 않습니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8555",
+        "https://www.rfc-editor.org/rfc/rfc6960"
+      ]
+    },
+    {
+      "id": "network-tls-cert-lifecycle-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "tls",
+        "certificate",
+        "acme"
+      ],
+      "content": {
+        "prompt": "notAfter가 지난 인증서는 클라이언트가 거부하거나 경고한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "유효 기간이 끝난 인증서는 믿을 수 없으므로 클라이언트가 연결을 거부하거나 경고를 띄웁니다.",
+      "refs": [
+        "https://www.rfc-editor.org/rfc/rfc5280",
+        "https://www.rfc-editor.org/rfc/rfc8555",
+        "https://www.rfc-editor.org/rfc/rfc6960"
+      ]
+    }
+  ]
+}
