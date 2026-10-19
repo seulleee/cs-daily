@@ -1,0 +1,245 @@
+{
+  "track": "database",
+  "unit": "u05-query-tuning",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "database-cardinality-est-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cardinality-estimation",
+        "optimizer"
+      ],
+      "content": {
+        "prompt": "각 단계에서 나올 행 수를 미리 예상하는 것은?",
+        "options": [
+          "통계 수집",
+          "카디널리티 추정",
+          "풀 스캔"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "카디널리티 추정은 실행 계획의 각 단계에서 나올 행 수를 미리 예상하는 것입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/row-estimation-examples.html",
+        "https://www.postgresql.org/docs/current/sql-createstatistics.html"
+      ]
+    },
+    {
+      "id": "database-cardinality-est-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "selectivity",
+        "cardinality-estimation"
+      ],
+      "content": {
+        "prompt": "예상 행 수는 전체 행 수에 무엇을 곱해 구하나?",
+        "options": [
+          "팬아웃",
+          "페이지 수",
+          "선택도"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "선택도는 조건을 통과하는 행의 비율이며, 전체 행 수에 선택도를 곱하면 예상 행 수가 나옵니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/row-estimation-examples.html",
+        "https://www.postgresql.org/docs/current/sql-createstatistics.html"
+      ]
+    },
+    {
+      "id": "database-cardinality-est-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cardinality-estimation",
+        "correlation"
+      ],
+      "content": {
+        "prompt": "관련된 두 열의 조건을 AND로 걸면 PostgreSQL 기본 추정은?",
+        "options": [
+          "과대 추정",
+          "과소 추정"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "옵티마이저는 열들이 독립이라 보고 선택도를 곱하므로, 관련된 열이면 실제보다 적게 추정합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/row-estimation-examples.html",
+        "https://www.postgresql.org/docs/current/sql-createstatistics.html"
+      ]
+    },
+    {
+      "id": "database-cardinality-est-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cardinality-estimation",
+        "join"
+      ],
+      "content": {
+        "prompt": "추정 rows가 실제와 크게 달라도 조인 방식 선택에는 영향이 없다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "옵티마이저는 예상 행 수로 조인 방식을 고르므로, 추정이 크게 틀리면 잘못된 조인 방식을 고를 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/row-estimation-examples.html",
+        "https://www.postgresql.org/docs/current/sql-createstatistics.html"
+      ]
+    },
+    {
+      "id": "database-cardinality-est-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "selectivity",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "1만 행 × 0.01 = 100행에서 0.01은 조건의 ___ 이다.",
+        "hint": "조건을 통과하는 비율"
+      },
+      "answer_key": {
+        "accepted": [
+          "선택도",
+          "selectivity",
+          "선택률",
+          "선택율"
+        ]
+      },
+      "explanation": "0.01은 조건을 통과하는 행의 비율인 선택도이며, 전체 행 수에 곱해 예상 행 수 100을 얻습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/row-estimation-examples.html",
+        "https://www.postgresql.org/docs/current/sql-createstatistics.html"
+      ]
+    },
+    {
+      "id": "database-cardinality-est-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "correlation",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "상관된 열의 추정을 보완하는 PostgreSQL 명령은 CREATE ___ 이다.",
+        "hint": "여러 열의 관계를 함께 수집하게 한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "STATISTICS",
+          "statistics"
+        ]
+      },
+      "explanation": "CREATE STATISTICS로 여러 열의 관계를 함께 수집하게 하면 상관된 열의 과소 추정을 줄일 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/row-estimation-examples.html",
+        "https://www.postgresql.org/docs/current/sql-createstatistics.html"
+      ]
+    },
+    {
+      "id": "database-cardinality-est-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "selectivity",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "10만 행에 선택도 0.05인 조건을 건다. 예상 행 수는?",
+        "options": [
+          "500",
+          "5,000",
+          "50,000"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "예상 행 수 = 전체 행 수 × 선택도이므로 100,000 × 0.05 = 5,000행입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/row-estimation-examples.html",
+        "https://www.postgresql.org/docs/current/sql-createstatistics.html"
+      ]
+    },
+    {
+      "id": "database-cardinality-est-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cardinality-estimation",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "1만 행에 선택도 0.1인 조건 둘을 AND로 건다. 독립 가정 시 예상 행은?",
+        "options": [
+          "100",
+          "1,000",
+          "2,000"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "독립이라 보고 선택도를 곱하면 10,000 × 0.1 × 0.1 = 100행입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/row-estimation-examples.html",
+        "https://www.postgresql.org/docs/current/sql-createstatistics.html"
+      ]
+    },
+    {
+      "id": "database-cardinality-est-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cardinality-estimation",
+        "nested-loop"
+      ],
+      "content": {
+        "prompt": "추정 10행이 실제 100만 행이었는데 Nested Loop를 골랐다. 원인은?",
+        "options": [
+          "인덱스 과다",
+          "추정 오류"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "10행으로 잘못 추정해 Nested Loop를 골랐지만 실제 100만 행이라 매우 느려진 것으로, 카디널리티 추정 오류입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/row-estimation-examples.html",
+        "https://www.postgresql.org/docs/current/sql-createstatistics.html"
+      ]
+    },
+    {
+      "id": "database-cardinality-est-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cardinality-estimation",
+        "optimizer"
+      ],
+      "content": {
+        "prompt": "카디널리티 추정은 각 단계에서 나올 행 수를 미리 예상하는 것이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "옵티마이저는 각 단계의 예상 행 수(카디널리티)를 추정해 조인 방식과 순서를 고릅니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/row-estimation-examples.html",
+        "https://www.postgresql.org/docs/current/sql-createstatistics.html"
+      ]
+    }
+  ]
+}

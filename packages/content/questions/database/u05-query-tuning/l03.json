@@ -1,0 +1,235 @@
+{
+  "track": "database",
+  "unit": "u05-query-tuning",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "database-seq-index-scan-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "seq-scan",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "테이블의 모든 페이지를 처음부터 순서대로 읽는 노드는?",
+        "options": [
+          "Index Scan",
+          "Sort",
+          "Seq Scan"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Seq Scan은 테이블의 모든 페이지를 처음부터 순서대로 읽는 노드로, 풀 스캔에 해당합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html"
+      ]
+    },
+    {
+      "id": "database-seq-index-scan-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "index-scan",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "인덱스로 행 위치를 찾아 그 행의 페이지를 읽는 노드는?",
+        "options": [
+          "Index Scan",
+          "Seq Scan"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Index Scan은 인덱스로 행 위치를 찾은 뒤 그 행이 있는 테이블 페이지를 읽습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html"
+      ]
+    },
+    {
+      "id": "database-seq-index-scan-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "seq-scan",
+        "index-scan"
+      ],
+      "content": {
+        "prompt": "조건에 맞는 행이 테이블의 대부분이다. 더 싼 노드는?",
+        "options": [
+          "Seq Scan",
+          "Index Scan"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "맞는 행이 많으면 Index Scan은 흩어진 페이지를 랜덤 I/O로 많이 읽어, 순서대로 읽는 Seq Scan이 더 쌉니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html"
+      ]
+    },
+    {
+      "id": "database-seq-index-scan-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "seq-scan",
+        "optimizer"
+      ],
+      "content": {
+        "prompt": "인덱스가 있는 열의 조건에는 Seq Scan이 선택되지 않는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "인덱스가 있어도 맞는 행이 많거나 테이블이 작으면 Seq Scan이 더 싸서 선택될 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html"
+      ]
+    },
+    {
+      "id": "database-seq-index-scan-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "seq-scan",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "테이블 페이지를 처음부터 순서대로 모두 읽는 노드는 ___ Scan이다.",
+        "hint": "풀 스캔에 해당하는 노드"
+      },
+      "answer_key": {
+        "accepted": [
+          "Seq",
+          "seq",
+          "Sequential",
+          "sequential",
+          "시퀀셜"
+        ]
+      },
+      "explanation": "Seq Scan은 테이블의 모든 페이지를 처음부터 순서대로 읽는 노드입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html"
+      ]
+    },
+    {
+      "id": "database-seq-index-scan-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "index-scan",
+        "random-io"
+      ],
+      "content": {
+        "prompt": "Index Scan은 읽을 행이 많아지면 ___ I/O가 늘어 불리해진다.",
+        "hint": "흩어진 페이지를 하나씩 읽는 I/O"
+      },
+      "answer_key": {
+        "accepted": [
+          "랜덤",
+          "random",
+          "무작위",
+          "임의"
+        ]
+      },
+      "explanation": "Index Scan은 행마다 흩어진 페이지를 찾아 읽으므로 행이 많아지면 랜덤 I/O가 늘어납니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html"
+      ]
+    },
+    {
+      "id": "database-seq-index-scan-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "index-scan",
+        "optimizer"
+      ],
+      "content": {
+        "prompt": "1천만 행에서 id = 7인 한 행을 찾는다(id 인덱스 있음). 알맞은 노드는?",
+        "options": [
+          "Seq Scan",
+          "Index Scan"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "맞는 행이 하나뿐이므로 인덱스로 위치를 찾아 페이지 몇 개만 읽는 Index Scan이 훨씬 쌉니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html"
+      ]
+    },
+    {
+      "id": "database-seq-index-scan-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "seq-scan",
+        "small-table"
+      ],
+      "content": {
+        "prompt": "행 20개, 1페이지짜리 테이블에 인덱스가 있다. 더 싼 노드는?",
+        "options": [
+          "Seq Scan",
+          "Index Scan"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Seq Scan은 테이블 페이지 1개만 읽지만, Index Scan은 인덱스 페이지까지 읽어야 해서 더 비쌉니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html"
+      ]
+    },
+    {
+      "id": "database-seq-index-scan-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "seq-scan",
+        "selectivity"
+      ],
+      "content": {
+        "prompt": "WHERE status = 'done'에 90% 행이 맞는다. 알맞은 노드는?",
+        "options": [
+          "Index Scan",
+          "Seq Scan"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "90%의 행을 읽어야 하면 인덱스로 하나씩 찾아가는 랜덤 I/O보다 전체를 순서대로 읽는 Seq Scan이 쌉니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html"
+      ]
+    },
+    {
+      "id": "database-seq-index-scan-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "seq-scan",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "Seq Scan은 테이블의 모든 페이지를 순서대로 읽는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "Seq Scan은 조건과 관계없이 테이블의 모든 페이지를 처음부터 순서대로 읽고 행마다 조건을 검사합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/using-explain.html"
+      ]
+    }
+  ]
+}

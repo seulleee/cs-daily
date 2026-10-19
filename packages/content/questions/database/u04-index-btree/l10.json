@@ -1,0 +1,238 @@
+{
+  "track": "database",
+  "unit": "u04-index-btree",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "database-index-cost-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "selectivity",
+        "index"
+      ],
+      "content": {
+        "prompt": "조건에 맞는 행의 비율을 뜻하는 말은?",
+        "options": [
+          "팬아웃",
+          "카디널리티",
+          "선택도"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "선택도는 조건에 맞는 행의 비율입니다. 비율이 낮을수록 인덱스로 적은 행만 찾아 읽어 효과적입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-cost-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cardinality",
+        "index"
+      ],
+      "content": {
+        "prompt": "값 종류가 적은 열(예: 상태값 3종)을 가리키는 말은?",
+        "options": [
+          "낮은 카디널리티",
+          "높은 카디널리티"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "값 종류가 적은 열은 카디널리티가 낮다고 하며, 단독 인덱스의 효과가 작습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-cost-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "index",
+        "write-cost"
+      ],
+      "content": {
+        "prompt": "인덱스 갱신이 필요 없는 작업은?",
+        "options": [
+          "INSERT",
+          "SELECT",
+          "DELETE"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "INSERT·DELETE와 인덱스 열 UPDATE는 인덱스도 고쳐야 하지만, SELECT는 데이터를 바꾸지 않습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-cost-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "index",
+        "write-cost"
+      ],
+      "content": {
+        "prompt": "인덱스를 늘리면 INSERT도 빨라진다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "INSERT마다 모든 인덱스에 키를 넣어야 하므로, 인덱스가 늘면 INSERT는 오히려 느려집니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-cost-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "selectivity",
+        "index"
+      ],
+      "content": {
+        "prompt": "조건에 맞는 행의 비율을 ___ (이)라고 한다.",
+        "hint": "낮을수록 인덱스가 효과적"
+      },
+      "answer_key": {
+        "accepted": [
+          "선택도",
+          "selectivity",
+          "선택율",
+          "선택률"
+        ]
+      },
+      "explanation": "조건에 맞는 행의 비율을 선택도라고 하며, 낮을수록 인덱스가 효과적입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-cost-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "index",
+        "write-cost"
+      ],
+      "content": {
+        "prompt": "INSERT마다 인덱스도 갱신해야 해서 늘어나는 것은 ___ 비용이다.",
+        "hint": "INSERT·DELETE·UPDATE의 공통점"
+      },
+      "answer_key": {
+        "accepted": [
+          "쓰기",
+          "write",
+          "갱신",
+          "쓰기 작업"
+        ]
+      },
+      "explanation": "INSERT·DELETE와 인덱스 열 UPDATE마다 인덱스도 함께 고쳐야 하므로 쓰기 비용이 늘어납니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-cost-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "selectivity",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "100만 행 중 조건에 맞는 행이 1천 행이다. 선택도는?",
+        "options": [
+          "0.1%",
+          "1%",
+          "10%"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "1천 ÷ 100만 = 0.001, 즉 0.1%입니다. 선택도가 이렇게 낮으면 인덱스가 효과적입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-cost-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cardinality",
+        "selectivity"
+      ],
+      "content": {
+        "prompt": "회원 100만 명. 단독 인덱스 효과가 가장 큰 열은?",
+        "options": [
+          "성별",
+          "가입 상태",
+          "이메일"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "이메일은 값이 거의 모두 달라 조건에 맞는 행이 적습니다. 성별·상태는 값 종류가 적어 효과가 작습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-cost-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "index",
+        "write-cost"
+      ],
+      "content": {
+        "prompt": "인덱스가 5개인 테이블에 행 1개를 INSERT하면 갱신할 인덱스 수는?",
+        "options": [
+          "0개",
+          "1개",
+          "5개"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "새 행의 키를 모든 인덱스에 넣어야 하므로 5개 인덱스를 모두 갱신합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    },
+    {
+      "id": "database-index-cost-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "selectivity",
+        "index"
+      ],
+      "content": {
+        "prompt": "선택도가 낮을수록 인덱스가 효과적이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "선택도가 낮으면 조건에 맞는 행이 적어, 인덱스로 위치를 찾아 소수의 페이지만 읽으면 됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-intro.html"
+      ]
+    }
+  ]
+}

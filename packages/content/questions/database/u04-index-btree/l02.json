@@ -1,0 +1,247 @@
+{
+  "track": "database",
+  "unit": "u04-index-btree",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "database-page-io-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "page",
+        "disk-io"
+      ],
+      "content": {
+        "prompt": "DB가 디스크를 읽고 쓰는 고정 크기 단위는?",
+        "options": [
+          "튜플",
+          "속성",
+          "페이지"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DB는 행 하나씩이 아니라 페이지(블록)라는 고정 크기 단위로 디스크를 읽고 씁니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/storage-page-layout.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-physical-structure.html"
+      ]
+    },
+    {
+      "id": "database-page-io-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "disk-io",
+        "random-io"
+      ],
+      "content": {
+        "prompt": "흩어진 페이지를 하나씩 찾아 읽는 I/O는?",
+        "options": [
+          "랜덤 I/O",
+          "순차 I/O"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "여기저기 흩어진 페이지를 읽는 것을 랜덤 I/O라고 합니다. 이어진 페이지를 차례로 읽으면 순차 I/O입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/storage-page-layout.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-physical-structure.html"
+      ]
+    },
+    {
+      "id": "database-page-io-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "page",
+        "postgresql"
+      ],
+      "content": {
+        "prompt": "PostgreSQL의 기본 페이지 크기는?",
+        "options": [
+          "16KB",
+          "1MB",
+          "8KB"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "PostgreSQL의 기본 페이지 크기는 8KB입니다. MySQL InnoDB의 기본값은 16KB입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/storage-page-layout.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-physical-structure.html"
+      ]
+    },
+    {
+      "id": "database-page-io-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "disk-io",
+        "random-io"
+      ],
+      "content": {
+        "prompt": "흩어진 페이지를 읽는 랜덤 I/O가 순차 I/O보다 싸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "랜덤 I/O는 읽을 위치를 매번 새로 찾아야 해서 이어진 페이지를 차례로 읽는 순차 I/O보다 비쌉니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/storage-page-layout.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-physical-structure.html"
+      ]
+    },
+    {
+      "id": "database-page-io-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "page",
+        "basics"
+      ],
+      "content": {
+        "prompt": "DB가 디스크를 읽고 쓰는 고정 크기 단위를 ___ (이)라고 한다.",
+        "hint": "PostgreSQL 기본값은 8KB"
+      },
+      "answer_key": {
+        "accepted": [
+          "페이지",
+          "page",
+          "블록",
+          "block"
+        ]
+      },
+      "explanation": "DB가 디스크와 주고받는 고정 크기 단위를 페이지라고 하며, 블록이라고도 부릅니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/storage-page-layout.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-physical-structure.html"
+      ]
+    },
+    {
+      "id": "database-page-io-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "page",
+        "mysql"
+      ],
+      "content": {
+        "prompt": "MySQL InnoDB의 기본 페이지 크기는 ___ KB이다.",
+        "hint": "PostgreSQL 기본값의 두 배"
+      },
+      "answer_key": {
+        "accepted": [
+          "16",
+          "16KB",
+          "16 KB",
+          "16kb"
+        ]
+      },
+      "explanation": "InnoDB의 기본 페이지 크기는 16KB로, PostgreSQL 기본값 8KB의 두 배입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/storage-page-layout.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-physical-structure.html"
+      ]
+    },
+    {
+      "id": "database-page-io-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "page",
+        "cost"
+      ],
+      "content": {
+        "prompt": "같은 결과를 내는 두 쿼리의 비용을 비교할 주된 기준은?",
+        "options": [
+          "SQL 글자 수",
+          "열 개수",
+          "읽은 페이지 수"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "쿼리 비용은 주로 디스크에서 읽은 페이지 수로 결정됩니다. SQL 문장의 길이와는 관계가 없습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/storage-page-layout.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-physical-structure.html"
+      ]
+    },
+    {
+      "id": "database-page-io-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "page",
+        "full-scan"
+      ],
+      "content": {
+        "prompt": "한 페이지에 행 100개가 든다. 1만 행 풀 스캔이 읽는 페이지 수는?",
+        "options": [
+          "10",
+          "100",
+          "1,000"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "1만 행 ÷ 페이지당 100행 = 100페이지입니다. 풀 스캔은 테이블의 페이지를 모두 읽습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/storage-page-layout.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-physical-structure.html"
+      ]
+    },
+    {
+      "id": "database-page-io-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "page",
+        "random-io"
+      ],
+      "content": {
+        "prompt": "같은 100행이 한 페이지에 모인 경우와 100페이지에 흩어진 경우, 더 비싼 쪽은?",
+        "options": [
+          "모인 경우",
+          "흩어진 경우"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "흩어져 있으면 페이지 100개를 랜덤 I/O로 읽어야 하고, 모여 있으면 페이지 1개만 읽으면 됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/storage-page-layout.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-physical-structure.html"
+      ]
+    },
+    {
+      "id": "database-page-io-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "page",
+        "basics"
+      ],
+      "content": {
+        "prompt": "페이지는 DB가 디스크를 읽고 쓰는 단위다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "DB는 페이지라는 고정 크기 단위로 디스크를 읽고 쓰며, 비용도 읽은 페이지 수로 셉니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/storage-page-layout.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/innodb-physical-structure.html"
+      ]
+    }
+  ]
+}

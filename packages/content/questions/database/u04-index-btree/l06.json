@@ -1,0 +1,237 @@
+{
+  "track": "database",
+  "unit": "u04-index-btree",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "database-composite-index-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "composite-index",
+        "basics"
+      ],
+      "content": {
+        "prompt": "여러 열을 묶어 만든 인덱스는?",
+        "options": [
+          "단일 인덱스",
+          "외래키",
+          "복합 인덱스"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "여러 열을 묶은 인덱스를 복합 인덱스라고 합니다. (a, b)는 a로 정렬한 뒤 같은 a 안에서 b로 정렬합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-multicolumn.html"
+      ]
+    },
+    {
+      "id": "database-composite-index-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "composite-index",
+        "leading-column"
+      ],
+      "content": {
+        "prompt": "복합 인덱스 (a, b)의 선두 컬럼은?",
+        "options": [
+          "a",
+          "b",
+          "a와 b 모두"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "선두 컬럼은 복합 인덱스의 첫 번째 열입니다. (a, b)에서는 a가 선두 컬럼입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-multicolumn.html"
+      ]
+    },
+    {
+      "id": "database-composite-index-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "composite-index",
+        "sort-order"
+      ],
+      "content": {
+        "prompt": "(a, b) 인덱스에서 a가 같은 키들의 정렬 기준은?",
+        "options": [
+          "입력 순서",
+          "b"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "(a, b) 인덱스는 a로 먼저 정렬하고, a가 같은 키들 안에서는 b로 정렬합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-multicolumn.html"
+      ]
+    },
+    {
+      "id": "database-composite-index-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "composite-index",
+        "sort-order"
+      ],
+      "content": {
+        "prompt": "(a, b) 인덱스는 b로 먼저 정렬한 뒤 a로 정렬한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "(a, b) 인덱스는 선두 컬럼 a로 먼저 정렬하고, 같은 a 안에서 b로 정렬합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-multicolumn.html"
+      ]
+    },
+    {
+      "id": "database-composite-index-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "composite-index",
+        "leading-column"
+      ],
+      "content": {
+        "prompt": "복합 인덱스의 첫 번째 열을 ___ 컬럼이라고 한다.",
+        "hint": "키 정렬의 가장 바깥 기준"
+      },
+      "answer_key": {
+        "accepted": [
+          "선두",
+          "leading",
+          "리딩",
+          "첫 번째",
+          "첫번째"
+        ]
+      },
+      "explanation": "복합 인덱스의 첫 번째 열을 선두 컬럼이라고 하며, 키 정렬의 가장 바깥 기준이 됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-multicolumn.html"
+      ]
+    },
+    {
+      "id": "database-composite-index-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "composite-index",
+        "column-order"
+      ],
+      "content": {
+        "prompt": "복합 인덱스는 등호 조건 열을 앞에, ___ 조건 열을 뒤에 두는 것이 유리하다.",
+        "hint": "BETWEEN이나 > 같은 조건"
+      },
+      "answer_key": {
+        "accepted": [
+          "범위",
+          "range",
+          "구간"
+        ]
+      },
+      "explanation": "등호 조건 열을 앞에 두면 그 값 안에서 뒤 열이 정렬되어 있어, 범위 조건을 한 구간으로 읽을 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-multicolumn.html"
+      ]
+    },
+    {
+      "id": "database-composite-index-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "composite-index",
+        "leading-column"
+      ],
+      "content": {
+        "prompt": "(a, b) 인덱스로 범위를 좁히기 어려운 WHERE 조건은?",
+        "options": [
+          "a = 1",
+          "b = 1",
+          "a = 1 AND b = 2"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "선두 컬럼 a 조건 없이 b만 있으면, b = 1인 키가 a 값마다 흩어져 있어 범위를 좁히기 어렵습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-multicolumn.html"
+      ]
+    },
+    {
+      "id": "database-composite-index-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "composite-index",
+        "column-order"
+      ],
+      "content": {
+        "prompt": "WHERE 상태 = 'A' AND 일자 > '2024-01-01'에 맞는 인덱스는?",
+        "options": [
+          "(상태, 일자)",
+          "(일자, 상태)"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "등호 조건 열(상태)을 앞에, 범위 조건 열(일자)을 뒤에 두면 상태 = 'A' 안에서 일자 구간을 이어 읽습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-multicolumn.html"
+      ]
+    },
+    {
+      "id": "database-composite-index-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "composite-index",
+        "sort-order"
+      ],
+      "content": {
+        "prompt": "(a, b) 키 (1,3), (2,1), (1,1)이 인덱스에 놓이는 순서는?",
+        "options": [
+          "(2,1)(1,1)(1,3)",
+          "(1,1)(2,1)(1,3)",
+          "(1,1)(1,3)(2,1)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "a로 먼저 정렬해 a=1인 두 키가 앞에 오고, 그 안에서 b로 정렬해 (1,1), (1,3), (2,1) 순서가 됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-multicolumn.html"
+      ]
+    },
+    {
+      "id": "database-composite-index-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "composite-index",
+        "leading-column"
+      ],
+      "content": {
+        "prompt": "WHERE a = 1은 (a, b) 인덱스로 범위를 좁힐 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "a는 (a, b) 인덱스의 선두 컬럼이므로 a = 1인 키들이 한곳에 모여 있어 범위를 좁힐 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/indexes-multicolumn.html"
+      ]
+    }
+  ]
+}
