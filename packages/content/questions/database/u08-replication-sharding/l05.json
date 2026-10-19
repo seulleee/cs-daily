@@ -1,0 +1,236 @@
+{
+  "track": "database",
+  "unit": "u08-replication-sharding",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "database-partition-prune-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "partitioning",
+        "partition-pruning"
+      ],
+      "content": {
+        "prompt": "큰 테이블 하나를 같은 서버 안에서 여러 조각으로 쪼개는 것은?",
+        "options": [
+          "정규화",
+          "파티셔닝",
+          "복제"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "파티셔닝은 한 테이블을 기준 열 값에 따라 여러 파티션으로 나눠 저장하는 것입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html"
+      ]
+    },
+    {
+      "id": "database-partition-prune-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "partitioning",
+        "partition-pruning"
+      ],
+      "content": {
+        "prompt": "조건에 해당하지 않는 파티션을 아예 읽지 않는 것은?",
+        "options": [
+          "풀 스캔",
+          "페일오버",
+          "파티션 프루닝"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "파티션 프루닝은 WHERE 조건과 관계없는 파티션을 건너뛰고 필요한 파티션만 읽는 최적화입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html"
+      ]
+    },
+    {
+      "id": "database-partition-prune-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "partitioning",
+        "partition-pruning"
+      ],
+      "content": {
+        "prompt": "파티셔닝은 데이터를 어디에서 나누나?",
+        "options": [
+          "한 DB 서버 안",
+          "여러 DB 서버"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "파티셔닝은 한 DB 서버 안에서 테이블을 여러 파티션으로 나누는 것입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html"
+      ]
+    },
+    {
+      "id": "database-partition-prune-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "partitioning",
+        "partition-pruning"
+      ],
+      "content": {
+        "prompt": "오래된 파티션은 DELETE보다 DROP으로 지우는 편이 빠르다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "DROP은 파티션을 통째로 없애므로, 행을 하나씩 찾아 지우는 DELETE보다 훨씬 빠릅니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html"
+      ]
+    },
+    {
+      "id": "database-partition-prune-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "partitioning",
+        "partition-pruning"
+      ],
+      "content": {
+        "prompt": "한 테이블을 여러 조각으로 나눠 저장하는 것을 ___ 이라 한다.",
+        "hint": "한 서버 안에서 테이블을 나누는 기법의 영어 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "파티셔닝",
+          "partitioning",
+          "테이블 파티셔닝",
+          "분할"
+        ]
+      },
+      "explanation": "파티셔닝은 한 테이블을 기준 열 값에 따라 여러 파티션으로 나눠 저장하는 기법입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html"
+      ]
+    },
+    {
+      "id": "database-partition-prune-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "partitioning",
+        "partition-pruning"
+      ],
+      "content": {
+        "prompt": "조건 밖의 파티션을 읽지 않는 최적화는 파티션 ___ 이다.",
+        "hint": "필요 없는 부분을 쳐 낸다는 뜻의 영어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "프루닝",
+          "pruning",
+          "가지치기",
+          "파티션 프루닝",
+          "partition pruning"
+        ]
+      },
+      "explanation": "파티션 프루닝은 조건에 해당하지 않는 파티션을 아예 읽지 않아 조회 비용을 줄입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html"
+      ]
+    },
+    {
+      "id": "database-partition-prune-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "partitioning",
+        "partition-pruning"
+      ],
+      "content": {
+        "prompt": "주문일로 월별 분할한 테이블에서 3월 주문만 조회하면?",
+        "options": [
+          "3월 파티션만 읽음",
+          "모든 파티션 읽음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "조건이 파티션 기준 열(주문일)에 걸려 있으므로 파티션 프루닝으로 3월 파티션만 읽습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html"
+      ]
+    },
+    {
+      "id": "database-partition-prune-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "partitioning",
+        "partition-pruning"
+      ],
+      "content": {
+        "prompt": "주문일로 나눈 테이블을 회원번호 조건만으로 조회하면?",
+        "options": [
+          "한 파티션만 읽음",
+          "모든 파티션 확인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "조건이 기준 열인 주문일에 없으므로 어느 파티션을 빼도 되는지 알 수 없어 모든 파티션을 확인합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html"
+      ]
+    },
+    {
+      "id": "database-partition-prune-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "partitioning",
+        "partition-pruning"
+      ],
+      "content": {
+        "prompt": "월별 파티션에서 3년 지난 주문을 지우는 빠른 방법은?",
+        "options": [
+          "DELETE 문 실행",
+          "해당 파티션 DROP"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "해당 월 파티션을 DROP하면 통째로 사라지므로 행마다 지우는 DELETE보다 빠릅니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html"
+      ]
+    },
+    {
+      "id": "database-partition-prune-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "partitioning",
+        "partition-pruning"
+      ],
+      "content": {
+        "prompt": "파티셔닝은 테이블을 여러 DB 서버에 나눠 저장한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "파티셔닝은 한 DB 서버 안에서 테이블을 나눕니다. 여러 서버에 나누는 방식은 뒤 레슨에서 다룹니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html"
+      ]
+    }
+  ]
+}

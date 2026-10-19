@@ -1,0 +1,249 @@
+{
+  "track": "database",
+  "unit": "u08-replication-sharding",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "database-partition-kinds-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "partitioning",
+        "range-partition"
+      ],
+      "content": {
+        "prompt": "값의 범위로 나누는 파티션 방식은?",
+        "options": [
+          "LIST",
+          "RANGE",
+          "HASH"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "RANGE 파티션은 월별 주문 날짜처럼 값의 범위(구간)를 기준으로 행을 나눕니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/partitioning-types.html"
+      ]
+    },
+    {
+      "id": "database-partition-kinds-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "partitioning",
+        "range-partition"
+      ],
+      "content": {
+        "prompt": "정해진 값 목록으로 나누는 파티션 방식은?",
+        "options": [
+          "RANGE",
+          "HASH",
+          "LIST"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "LIST 파티션은 국가 코드 KR, JP, US처럼 정해진 값 목록을 기준으로 행을 나눕니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/partitioning-types.html"
+      ]
+    },
+    {
+      "id": "database-partition-kinds-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "partitioning",
+        "range-partition"
+      ],
+      "content": {
+        "prompt": "행을 파티션마다 고르게 퍼뜨리는 데 맞는 방식은?",
+        "options": [
+          "RANGE",
+          "HASH"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "HASH 파티션은 해시 값으로 나누므로 행이 파티션마다 고르게 퍼집니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/partitioning-types.html"
+      ]
+    },
+    {
+      "id": "database-partition-kinds-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "partitioning",
+        "range-partition"
+      ],
+      "content": {
+        "prompt": "국가 코드 KR·JP·US로 나누는 것은 RANGE 파티션이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "정해진 값 목록으로 나누는 것은 LIST 파티션입니다. RANGE는 값의 범위로 나눕니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/partitioning-types.html"
+      ]
+    },
+    {
+      "id": "database-partition-kinds-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "partitioning",
+        "range-partition"
+      ],
+      "content": {
+        "prompt": "해시 값으로 고르게 나누는 파티션 방식은 ___ 이다.",
+        "hint": "입력을 정해진 범위의 숫자로 바꾸는 함수의 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "HASH",
+          "해시",
+          "hash",
+          "해시 파티션"
+        ]
+      },
+      "explanation": "HASH 파티션은 파티션 키의 해시 값으로 행을 고르게 나눕니다. PostgreSQL은 11부터 지원합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/partitioning-types.html"
+      ]
+    },
+    {
+      "id": "database-partition-kinds-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "partitioning",
+        "range-partition"
+      ],
+      "content": {
+        "prompt": "월별 주문 날짜로 나누는 파티션 방식은 ___ 이다.",
+        "hint": "시작값과 끝값으로 구간을 정합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "RANGE",
+          "range",
+          "범위",
+          "레인지",
+          "범위 파티션"
+        ]
+      },
+      "explanation": "RANGE 파티션은 값의 범위로 나누며, 날짜처럼 시간순으로 쌓이는 데이터에 잘 맞습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/partitioning-types.html"
+      ]
+    },
+    {
+      "id": "database-partition-kinds-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "partitioning",
+        "range-partition"
+      ],
+      "content": {
+        "prompt": "로그를 날짜별로 나누고 90일 지난 것을 지우려면?",
+        "options": [
+          "HASH",
+          "RANGE",
+          "LIST"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시간순 조회와 보관 기간 관리에는 RANGE가 맞습니다. 기간이 지난 파티션을 통째로 지울 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/partitioning-types.html"
+      ]
+    },
+    {
+      "id": "database-partition-kinds-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "partitioning",
+        "range-partition"
+      ],
+      "content": {
+        "prompt": "지역 값이 KR·JP·US 셋뿐일 때 지역별로 나누려면?",
+        "options": [
+          "LIST",
+          "RANGE",
+          "HASH"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "값이 정해진 몇 개로 나뉘므로 값 목록을 기준으로 하는 LIST 파티션이 맞습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/partitioning-types.html"
+      ]
+    },
+    {
+      "id": "database-partition-kinds-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "partitioning",
+        "range-partition"
+      ],
+      "content": {
+        "prompt": "해시 값 % 4로 나누는 HASH 파티션에서 해시 값 10이 가는 곳은?",
+        "options": [
+          "나머지 0",
+          "나머지 1",
+          "나머지 2"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "10 % 4 = 2이므로 나머지가 2인 파티션에 저장됩니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/partitioning-types.html"
+      ]
+    },
+    {
+      "id": "database-partition-kinds-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "partitioning",
+        "range-partition"
+      ],
+      "content": {
+        "prompt": "RANGE 파티션은 값의 범위를 기준으로 행을 나눈다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "RANGE 파티션은 1월·2월처럼 값의 구간마다 파티션을 두고 행을 나눕니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/ddl-partitioning.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/partitioning-types.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,244 @@
+{
+  "track": "database",
+  "unit": "u09-nosql",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "database-document-db-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nosql",
+        "document-db"
+      ],
+      "content": {
+        "prompt": "JSON 같은 문서 단위로 저장하고 필드로도 조회하는 DB는?",
+        "options": [
+          "문서 DB",
+          "키-값 저장소",
+          "그래프 DB"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "문서 DB는 JSON 같은 문서를 저장 단위로 삼고, 문서 안의 필드로도 조회하고 인덱스를 만듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Document-oriented_database",
+        "https://www.mongodb.com/docs/manual/core/document/"
+      ]
+    },
+    {
+      "id": "database-document-db-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nosql",
+        "document-db"
+      ],
+      "content": {
+        "prompt": "MongoDB에서 문서들의 묶음은?",
+        "options": [
+          "테이블",
+          "파티션",
+          "컬렉션"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "MongoDB는 문서들을 컬렉션에 저장하며, 컬렉션은 관계형의 테이블에 해당합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Document-oriented_database",
+        "https://www.mongodb.com/docs/manual/core/document/"
+      ]
+    },
+    {
+      "id": "database-document-db-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nosql",
+        "document-db"
+      ],
+      "content": {
+        "prompt": "문서 안 필드 값으로 조회할 수 있는 것은?",
+        "options": [
+          "문서 DB",
+          "키-값 저장소"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "문서 DB는 문서 내부 필드를 해석해 조회·인덱싱하지만, 키-값 저장소는 값 내부를 해석하지 않습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Document-oriented_database",
+        "https://www.mongodb.com/docs/manual/core/document/"
+      ]
+    },
+    {
+      "id": "database-document-db-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "nosql",
+        "document-db"
+      ],
+      "content": {
+        "prompt": "MongoDB의 문서 하나는 크기 제한 없이 커질 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "MongoDB의 BSON 문서 하나는 최대 16MB까지입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Document-oriented_database",
+        "https://www.mongodb.com/docs/manual/core/document/"
+      ]
+    },
+    {
+      "id": "database-document-db-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "nosql",
+        "document-db"
+      ],
+      "content": {
+        "prompt": "MongoDB에서 문서들의 묶음을 ___ 이라 한다.",
+        "hint": "관계형의 테이블에 해당하는 단위입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "컬렉션",
+          "collection",
+          "콜렉션"
+        ]
+      },
+      "explanation": "컬렉션은 MongoDB에서 문서들을 모아 두는 단위로, 관계형의 테이블에 해당합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Document-oriented_database",
+        "https://www.mongodb.com/docs/manual/core/document/"
+      ]
+    },
+    {
+      "id": "database-document-db-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "nosql",
+        "document-db"
+      ],
+      "content": {
+        "prompt": "MongoDB는 JSON을 이진화한 ___ 형식으로 문서를 저장한다.",
+        "hint": "JSON 앞에 이진을 뜻하는 글자를 붙인 이름입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "BSON",
+          "bson",
+          "비손"
+        ]
+      },
+      "explanation": "BSON은 Binary JSON으로, MongoDB가 문서를 저장할 때 쓰는 이진 형식입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Document-oriented_database",
+        "https://www.mongodb.com/docs/manual/core/document/"
+      ]
+    },
+    {
+      "id": "database-document-db-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nosql",
+        "document-db"
+      ],
+      "content": {
+        "prompt": "상품마다 속성이 다른 카탈로그에 맞는 DB는?",
+        "options": [
+          "키-값 저장소",
+          "문서 DB"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "문서 DB는 문서마다 필드 구성이 달라도 되고 필드로 조회할 수 있어 상품 카탈로그에 잘 맞습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Document-oriented_database",
+        "https://www.mongodb.com/docs/manual/core/document/"
+      ]
+    },
+    {
+      "id": "database-document-db-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nosql",
+        "document-db"
+      ],
+      "content": {
+        "prompt": "MongoDB 문서 하나의 최대 크기는?",
+        "options": [
+          "4KB",
+          "1GB",
+          "16MB"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "MongoDB는 BSON 문서 하나의 크기를 최대 16MB로 제한합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Document-oriented_database",
+        "https://www.mongodb.com/docs/manual/core/document/"
+      ]
+    },
+    {
+      "id": "database-document-db-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nosql",
+        "document-db"
+      ],
+      "content": {
+        "prompt": "문서 DB에서 status 필드가 paid인 주문 찾기는?",
+        "options": [
+          "필드로 조회 가능",
+          "키로만 조회 가능"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "문서 DB는 문서 안 필드로도 조회할 수 있으므로 status 값으로 주문을 찾을 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Document-oriented_database",
+        "https://www.mongodb.com/docs/manual/core/document/"
+      ]
+    },
+    {
+      "id": "database-document-db-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "nosql",
+        "document-db"
+      ],
+      "content": {
+        "prompt": "문서 DB는 문서 안 필드로도 조회하고 인덱스를 만들 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "문서 DB는 JSON 같은 문서 단위로 저장하면서 문서 내부 필드로도 조회·인덱싱합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Document-oriented_database",
+        "https://www.mongodb.com/docs/manual/core/document/"
+      ]
+    }
+  ]
+}

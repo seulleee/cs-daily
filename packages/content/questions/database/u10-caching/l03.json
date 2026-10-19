@@ -1,0 +1,247 @@
+{
+  "track": "database",
+  "unit": "u10-caching",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "database-cache-aside-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "cache-aside"
+      ],
+      "content": {
+        "prompt": "앱이 캐시를 먼저 보고 미스면 DB에서 읽어 캐시에 넣는 방식은?",
+        "options": [
+          "Cache-Aside",
+          "읽기 분산",
+          "페일오버"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Cache-Aside는 애플리케이션이 캐시를 먼저 확인하고, 미스면 DB에서 읽어 캐시를 채우는 방식입니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-aside-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "cache-aside"
+      ],
+      "content": {
+        "prompt": "Cache-Aside에서 데이터를 수정할 때 캐시는?",
+        "options": [
+          "키를 삭제",
+          "그대로 둠"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Cache-Aside의 쓰기는 DB를 갱신하고 해당 캐시 키를 삭제해, 다음 읽기가 새 값을 채우게 합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-aside-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "cache-aside"
+      ],
+      "content": {
+        "prompt": "Cache-Aside에서 미스가 나면 앱이 하는 일은?",
+        "options": [
+          "오류 반환",
+          "DB 읽고 캐시 저장"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "미스가 나면 앱이 DB에서 값을 읽어 응답하고, 그 값을 캐시에 넣어 다음 요청이 히트가 되게 합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-aside-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "cache-aside"
+      ],
+      "content": {
+        "prompt": "Cache-Aside는 캐시 서버가 멈추면 서비스도 멈춘다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Cache-Aside는 캐시가 죽어도 앱이 DB에서 직접 읽으며 동작합니다. 다만 DB 부담은 커집니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-aside-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "cache-aside"
+      ],
+      "content": {
+        "prompt": "앱이 캐시를 먼저 보고 미스면 DB에서 채우는 방식은 Cache ___ 다.",
+        "hint": "옆에 둔다는 뜻의 영어 단어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Aside",
+          "aside",
+          "어사이드",
+          "Cache Aside",
+          "캐시 어사이드"
+        ]
+      },
+      "explanation": "Cache-Aside는 앱이 캐시를 옆에 두고 직접 채우고 지우는 방식으로, Lazy Loading이라고도 합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-aside-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "cache-aside"
+      ],
+      "content": {
+        "prompt": "Cache-Aside에서 DB 갱신 뒤 해당 캐시 키를 ___ 한다.",
+        "hint": "다음 읽기에서 새로 채우도록 합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "삭제",
+          "delete",
+          "제거",
+          "del",
+          "지움"
+        ]
+      },
+      "explanation": "DB를 갱신한 뒤 캐시 키를 삭제하면 다음 읽기가 미스가 되어 DB의 새 값으로 다시 채워집니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-aside-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "cache-aside"
+      ],
+      "content": {
+        "prompt": "캐시에 없는 상품을 처음 조회하면 응답은?",
+        "options": [
+          "빠르다",
+          "느리다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "첫 요청은 미스라 DB를 읽고 캐시에 넣는 과정을 거치므로 히트보다 느립니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-aside-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "cache-aside"
+      ],
+      "content": {
+        "prompt": "상품 가격 수정 시 Cache-Aside의 처리 순서는?",
+        "options": [
+          "DB 갱신 후 키 삭제",
+          "캐시만 갱신"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Cache-Aside는 DB를 먼저 갱신하고 해당 캐시 키를 삭제합니다. 캐시만 바꾸면 DB에 반영되지 않습니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-aside-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "cache-aside"
+      ],
+      "content": {
+        "prompt": "캐시가 빈 상태에서 같은 상품을 3번 조회하면 DB 읽기는?",
+        "options": [
+          "1번",
+          "2번",
+          "3번"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "첫 조회만 미스라 DB를 읽고 캐시를 채웁니다. 나머지 두 번은 히트이므로 DB를 1번 읽습니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    },
+    {
+      "id": "database-cache-aside-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "cache-aside"
+      ],
+      "content": {
+        "prompt": "Cache-Aside에서는 실제 요청된 데이터만 캐시에 들어간다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "미스가 난 데이터만 DB에서 읽어 캐시에 넣으므로, 요청된 적 있는 데이터만 캐시됩니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html",
+        "https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside"
+      ]
+    }
+  ]
+}

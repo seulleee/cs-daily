@@ -1,0 +1,257 @@
+{
+  "track": "database",
+  "unit": "u08-replication-sharding",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "database-repl-sync-async-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "replication",
+        "synchronous-replication"
+      ],
+      "content": {
+        "prompt": "레플리카 수신 확인 뒤에 커밋 완료를 알리는 방식은?",
+        "options": [
+          "동기 복제",
+          "비동기 복제",
+          "반동기 복제"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "동기 복제는 레플리카가 받았다고 확인한 뒤에 커밋을 완료하므로 유실이 없지만 응답이 느려집니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby.html",
+        "https://www.postgresql.org/docs/current/runtime-config-replication.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/replication-semisync.html"
+      ]
+    },
+    {
+      "id": "database-repl-sync-async-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "replication",
+        "synchronous-replication"
+      ],
+      "content": {
+        "prompt": "프라이머리 기록만으로 커밋을 완료하는 방식은?",
+        "options": [
+          "반동기 복제",
+          "동기 복제",
+          "비동기 복제"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "비동기 복제는 레플리카를 기다리지 않고 프라이머리에 기록되면 바로 커밋을 완료합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby.html",
+        "https://www.postgresql.org/docs/current/runtime-config-replication.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/replication-semisync.html"
+      ]
+    },
+    {
+      "id": "database-repl-sync-async-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "replication",
+        "synchronous-replication"
+      ],
+      "content": {
+        "prompt": "레플리카 일부의 수신 확인만 기다리는 방식은?",
+        "options": [
+          "동기 복제",
+          "반동기 복제",
+          "비동기 복제"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "반동기 복제는 레플리카 중 일부(예: 1대)의 수신 확인만 받으면 커밋을 완료합니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby.html",
+        "https://www.postgresql.org/docs/current/runtime-config-replication.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/replication-semisync.html"
+      ]
+    },
+    {
+      "id": "database-repl-sync-async-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "replication",
+        "synchronous-replication"
+      ],
+      "content": {
+        "prompt": "비동기 복제는 프라이머리 장애 시에도 최근 커밋이 유실되지 않는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "비동기 복제는 레플리카에 전달되기 전에 커밋을 완료하므로, 그 직후 장애가 나면 최근 커밋이 유실될 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby.html",
+        "https://www.postgresql.org/docs/current/runtime-config-replication.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/replication-semisync.html"
+      ]
+    },
+    {
+      "id": "database-repl-sync-async-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "replication",
+        "synchronous-replication"
+      ],
+      "content": {
+        "prompt": "레플리카 확인 없이 커밋을 완료하는 방식은 ___ 복제다.",
+        "hint": "확인을 기다리지 않는다는 뜻의 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "비동기",
+          "asynchronous",
+          "async",
+          "비동기식"
+        ]
+      },
+      "explanation": "비동기 복제는 프라이머리 기록만으로 커밋을 완료해 빠르지만, 장애 시 최근 커밋을 잃을 수 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby.html",
+        "https://www.postgresql.org/docs/current/runtime-config-replication.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/replication-semisync.html"
+      ]
+    },
+    {
+      "id": "database-repl-sync-async-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "replication",
+        "synchronous-replication"
+      ],
+      "content": {
+        "prompt": "레플리카 수신 확인을 기다려 커밋하는 방식은 ___ 복제다.",
+        "hint": "프라이머리와 레플리카가 보조를 맞춘다는 뜻의 말입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "동기",
+          "synchronous",
+          "sync",
+          "동기식"
+        ]
+      },
+      "explanation": "동기 복제는 레플리카의 수신 확인 뒤에 커밋을 완료하므로 커밋된 데이터가 유실되지 않습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby.html",
+        "https://www.postgresql.org/docs/current/runtime-config-replication.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/replication-semisync.html"
+      ]
+    },
+    {
+      "id": "database-repl-sync-async-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "replication",
+        "synchronous-replication"
+      ],
+      "content": {
+        "prompt": "커밋 직후 프라이머리가 죽어도 유실이 없는 방식은?",
+        "options": [
+          "비동기 복제",
+          "동기 복제"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "동기 복제는 레플리카가 받은 것을 확인한 뒤 커밋하므로 프라이머리가 죽어도 레플리카에 남아 있습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby.html",
+        "https://www.postgresql.org/docs/current/runtime-config-replication.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/replication-semisync.html"
+      ]
+    },
+    {
+      "id": "database-repl-sync-async-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "replication",
+        "synchronous-replication"
+      ],
+      "content": {
+        "prompt": "세 방식 중 커밋 응답이 가장 빠른 것은?",
+        "options": [
+          "동기 복제",
+          "반동기 복제",
+          "비동기 복제"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "비동기 복제는 레플리카의 확인을 전혀 기다리지 않아 네트워크 왕복이 커밋 응답에 더해지지 않습니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby.html",
+        "https://www.postgresql.org/docs/current/runtime-config-replication.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/replication-semisync.html"
+      ]
+    },
+    {
+      "id": "database-repl-sync-async-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "replication",
+        "synchronous-replication"
+      ],
+      "content": {
+        "prompt": "PostgreSQL에서 synchronous_standby_names가 비어 있으면?",
+        "options": [
+          "비동기 복제",
+          "동기 복제"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "PostgreSQL은 synchronous_standby_names가 비어 있으면 비동기로 복제하며, 이것이 기본값입니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby.html",
+        "https://www.postgresql.org/docs/current/runtime-config-replication.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/replication-semisync.html"
+      ]
+    },
+    {
+      "id": "database-repl-sync-async-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "replication",
+        "synchronous-replication"
+      ],
+      "content": {
+        "prompt": "동기 복제는 유실이 없는 대신 커밋 응답이 느려진다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "동기 복제는 레플리카의 수신 확인을 기다리므로 안전하지만 그 왕복 시간만큼 커밋이 늦어집니다.",
+      "refs": [
+        "https://www.postgresql.org/docs/current/warm-standby.html",
+        "https://www.postgresql.org/docs/current/runtime-config-replication.html",
+        "https://dev.mysql.com/doc/refman/8.0/en/replication-semisync.html"
+      ]
+    }
+  ]
+}

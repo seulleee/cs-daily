@@ -1,0 +1,248 @@
+{
+  "track": "database",
+  "unit": "u08-replication-sharding",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "database-cross-shard-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "distributed-transaction"
+      ],
+      "content": {
+        "prompt": "샤드 키 없는 조회를 모든 샤드에 보내 모으는 것은?",
+        "options": [
+          "파티션 프루닝",
+          "스캐터-개더",
+          "페일오버"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스캐터-개더는 조회를 모든 샤드에 보내고 각 샤드의 결과를 모아 합치는 방식입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Two-phase_commit_protocol",
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-cross-shard-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "distributed-transaction"
+      ],
+      "content": {
+        "prompt": "여러 샤드의 변경을 원자적으로 커밋하는 데 필요한 것은?",
+        "options": [
+          "2PC",
+          "읽기 분산",
+          "해시 링"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "여러 샤드를 함께 커밋하거나 함께 취소하려면 2PC 같은 분산 트랜잭션이 필요합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Two-phase_commit_protocol",
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-cross-shard-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "distributed-transaction"
+      ],
+      "content": {
+        "prompt": "서로 다른 샤드에 있는 데이터의 조인은 누가 하나?",
+        "options": [
+          "DB가 직접",
+          "애플리케이션"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "한 샤드의 DB는 다른 샤드의 행을 모르므로, 각 샤드에서 읽은 결과를 애플리케이션이 합칩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Two-phase_commit_protocol",
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-cross-shard-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "distributed-transaction"
+      ],
+      "content": {
+        "prompt": "서로 다른 샤드에 있는 테이블끼리도 DB가 JOIN으로 합친다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "DB는 자기 샤드의 데이터만 조인할 수 있습니다. 샤드를 넘는 조인은 애플리케이션에서 합칩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Two-phase_commit_protocol",
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-cross-shard-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sharding",
+        "distributed-transaction"
+      ],
+      "content": {
+        "prompt": "모든 샤드에 조회를 보내 결과를 모으는 방식은 ___ 다.",
+        "hint": "흩뿌리고 다시 모은다는 뜻의 영어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스캐터 개더",
+          "스캐터-개더",
+          "스캐터개더",
+          "scatter gather",
+          "scatter-gather"
+        ]
+      },
+      "explanation": "스캐터-개더는 샤드 키 없는 조회를 모든 샤드에 보내므로 샤드가 많을수록 비쌉니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Two-phase_commit_protocol",
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-cross-shard-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "distributed-transaction"
+      ],
+      "content": {
+        "prompt": "여러 샤드를 원자적으로 커밋하는 프로토콜은 ___ 다.",
+        "hint": "준비와 커밋, 두 단계로 나뉜 프로토콜의 약자입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "2PC",
+          "2단계 커밋",
+          "이단계 커밋",
+          "two phase commit",
+          "2 phase commit"
+        ]
+      },
+      "explanation": "2PC는 모든 참여자의 준비를 확인한 뒤 커밋하므로 원자성을 지키지만 느리고 복잡합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Two-phase_commit_protocol",
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-cross-shard-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "distributed-transaction"
+      ],
+      "content": {
+        "prompt": "user_id로 샤딩한 주문을 상품 ID로만 조회하면?",
+        "options": [
+          "한 샤드만 조회",
+          "모든 샤드 조회"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "조건에 샤드 키(user_id)가 없어 어느 샤드인지 모르므로, 모든 샤드에 묻는 스캐터-개더가 됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Two-phase_commit_protocol",
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-cross-shard-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "distributed-transaction"
+      ],
+      "content": {
+        "prompt": "회원은 user_id로 샤딩. 주문도 같은 샤드에 두려면 샤드 키는?",
+        "options": [
+          "order_id",
+          "created_at",
+          "user_id"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "주문도 user_id로 샤딩하면 회원과 그 주문이 같은 샤드에 모여 한 샤드 안에서 조회·갱신됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Two-phase_commit_protocol",
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-cross-shard-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "distributed-transaction"
+      ],
+      "content": {
+        "prompt": "샤드 A·B의 잔액을 함께 바꾸는 이체를 2PC로 하면?",
+        "options": [
+          "느리고 복잡해짐",
+          "단일 샤드만큼 빠름"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "2PC는 준비·커밋 두 번의 왕복 동안 참여 샤드가 락을 쥐고 기다리므로 느리고 장애 처리도 복잡합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Two-phase_commit_protocol",
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    },
+    {
+      "id": "database-cross-shard-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sharding",
+        "distributed-transaction"
+      ],
+      "content": {
+        "prompt": "샤드 키가 없는 조회는 모든 샤드에 보내 결과를 모아야 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "샤드 키가 없으면 데이터가 어느 샤드에 있는지 모르므로, 모든 샤드에 묻는 스캐터-개더가 필요합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Two-phase_commit_protocol",
+        "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+      ]
+    }
+  ]
+}

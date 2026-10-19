@@ -1,0 +1,246 @@
+{
+  "track": "database",
+  "unit": "u09-nosql",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "database-query-first-design-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nosql",
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "필요한 쿼리를 먼저 정하고 데이터를 배치하는 설계는?",
+        "options": [
+          "정규화",
+          "조회 중심 설계",
+          "샤딩"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "조회 중심 설계는 필요한 쿼리를 먼저 정하고, 그 쿼리가 한 번에 읽히도록 데이터를 배치합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization",
+        "https://cassandra.apache.org/doc/latest/cassandra/developing/data-modeling/index.html"
+      ]
+    },
+    {
+      "id": "database-query-first-design-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nosql",
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "조회 성능을 위해 같은 데이터를 여러 곳에 중복 저장하는 것은?",
+        "options": [
+          "정규화",
+          "비정규화",
+          "파티셔닝"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "비정규화는 JOIN 없이 한 번에 읽도록 같은 데이터를 여러 곳에 중복 저장하는 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization",
+        "https://cassandra.apache.org/doc/latest/cassandra/developing/data-modeling/index.html"
+      ]
+    },
+    {
+      "id": "database-query-first-design-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "nosql",
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "정규화 후 JOIN과 미리 합쳐 저장 중 NoSQL 방식은?",
+        "options": [
+          "정규화 후 JOIN",
+          "미리 합쳐 저장"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "관계형은 정규화한 뒤 조회 때 JOIN하고, NoSQL은 조회에 맞게 미리 합쳐 저장합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization",
+        "https://cassandra.apache.org/doc/latest/cassandra/developing/data-modeling/index.html"
+      ]
+    },
+    {
+      "id": "database-query-first-design-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "nosql",
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "비정규화하면 중복된 값이 바뀌어도 한 곳만 고치면 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "같은 값을 여러 곳에 저장했으므로 값이 바뀌면 모든 곳을 갱신해야 하고, 빠뜨리면 불일치가 생깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization",
+        "https://cassandra.apache.org/doc/latest/cassandra/developing/data-modeling/index.html"
+      ]
+    },
+    {
+      "id": "database-query-first-design-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "nosql",
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "조회 성능을 위해 데이터를 중복 저장하는 것을 ___ 라 한다.",
+        "hint": "중복을 없애는 설계 절차와 반대 방향입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "비정규화",
+          "denormalization",
+          "반정규화",
+          "역정규화"
+        ]
+      },
+      "explanation": "비정규화는 조회 성능을 위해 같은 데이터를 여러 곳에 중복 저장하는 것입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization",
+        "https://cassandra.apache.org/doc/latest/cassandra/developing/data-modeling/index.html"
+      ]
+    },
+    {
+      "id": "database-query-first-design-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "nosql",
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "필요한 쿼리부터 정하고 데이터를 배치하는 것을 ___ 중심 설계라 한다.",
+        "hint": "읽기 요청을 기준으로 삼는다는 뜻입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "조회",
+          "쿼리",
+          "query",
+          "질의"
+        ]
+      },
+      "explanation": "조회 중심 설계는 쿼리를 먼저 정하고 그 쿼리가 한 번에 끝나도록 데이터를 배치합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization",
+        "https://cassandra.apache.org/doc/latest/cassandra/developing/data-modeling/index.html"
+      ]
+    },
+    {
+      "id": "database-query-first-design-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nosql",
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "게시글마다 복사해 둔 작성자 이름이 바뀌면?",
+        "options": [
+          "한 곳만 갱신",
+          "모든 게시글 갱신"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "작성자 이름을 게시글마다 중복 저장했으므로, 이름이 바뀌면 그 작성자의 모든 게시글을 고쳐야 합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization",
+        "https://cassandra.apache.org/doc/latest/cassandra/developing/data-modeling/index.html"
+      ]
+    },
+    {
+      "id": "database-query-first-design-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nosql",
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "중복 저장한 값 중 일부만 고쳐지면 생기는 위험은?",
+        "options": [
+          "불일치",
+          "데드락",
+          "스플릿 브레인"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "같은 값이 여러 곳에 있는데 일부만 바뀌면 곳마다 값이 달라지는 불일치가 생깁니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization",
+        "https://cassandra.apache.org/doc/latest/cassandra/developing/data-modeling/index.html"
+      ]
+    },
+    {
+      "id": "database-query-first-design-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nosql",
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "사용자별 최근 주문 화면이 핵심이다. 먼저 할 일은?",
+        "options": [
+          "정규화",
+          "조회 패턴 정의"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "조회 중심 설계에서는 어떤 조회를 할지 먼저 정하고, 그 조회가 한 번에 끝나도록 데이터를 배치합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization",
+        "https://cassandra.apache.org/doc/latest/cassandra/developing/data-modeling/index.html"
+      ]
+    },
+    {
+      "id": "database-query-first-design-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "nosql",
+        "denormalization"
+      ],
+      "content": {
+        "prompt": "조회 중심 설계는 필요한 쿼리를 먼저 정하고 데이터를 배치한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "조회 중심 설계는 쿼리를 출발점으로 삼아 한 번의 조회로 읽히도록 데이터를 배치합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Denormalization",
+        "https://cassandra.apache.org/doc/latest/cassandra/developing/data-modeling/index.html"
+      ]
+    }
+  ]
+}

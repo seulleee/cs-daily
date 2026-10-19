@@ -1,0 +1,239 @@
+{
+  "track": "database",
+  "unit": "u10-caching",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "database-write-back-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "write-back"
+      ],
+      "content": {
+        "prompt": "캐시에만 먼저 쓰고 DB에는 나중에 모아 반영하는 방식은?",
+        "options": [
+          "Write-Through",
+          "Write-Back",
+          "Cache-Aside"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Write-Back은 쓰기를 캐시에만 먼저 하고, DB에는 나중에 모아서 반영합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-back-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "write-back"
+      ],
+      "content": {
+        "prompt": "Write-Back의 다른 이름은?",
+        "options": [
+          "Write-Behind",
+          "Cache-Aside",
+          "Write-Through"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Write-Back은 DB 쓰기가 뒤로 미뤄진다는 뜻에서 Write-Behind라고도 부릅니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-back-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "write-back"
+      ],
+      "content": {
+        "prompt": "쓰기를 DB에 즉시 반영하는 방식은?",
+        "options": [
+          "Write-Through",
+          "Write-Back"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Write-Through는 DB에 즉시 반영하고, Write-Back은 나중에 반영합니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-back-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "write-back"
+      ],
+      "content": {
+        "prompt": "Write-Back은 DB 반영 전에 캐시가 죽으면 데이터를 잃을 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "아직 DB에 쓰지 않은 값은 캐시 메모리에만 있으므로, 그때 캐시가 죽으면 그 값이 사라집니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-back-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cache",
+        "write-back"
+      ],
+      "content": {
+        "prompt": "캐시에 먼저 쓰고 DB에 나중에 반영하는 방식은 Write ___ 다.",
+        "hint": "뒤로라는 뜻의 영어입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Back",
+          "back",
+          "Behind",
+          "behind",
+          "백",
+          "Write Back",
+          "Write Behind"
+        ]
+      },
+      "explanation": "Write-Back(Write-Behind)은 쓰기 응답이 빠르지만 DB 반영 전 장애 시 유실 위험이 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-back-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "write-back"
+      ],
+      "content": {
+        "prompt": "Write-Back에서 DB 반영 전에 캐시가 죽으면 데이터가 ___ 된다.",
+        "hint": "영구 저장소에 아직 기록되지 않았기 때문입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "유실",
+          "손실",
+          "소실",
+          "lost",
+          "loss"
+        ]
+      },
+      "explanation": "DB에 반영되지 않은 값은 휘발성 메모리에만 있어 캐시가 죽으면 유실됩니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-back-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "write-back"
+      ],
+      "content": {
+        "prompt": "1분간 좋아요 1000건을 모아 한 번 반영하면 DB 쓰기 수는?",
+        "options": [
+          "1000번",
+          "1번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "캐시에 모은 뒤 1분에 한 번 합계를 쓰므로 DB 쓰기는 1번입니다. 이것이 DB 쓰기를 줄이는 이점입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-back-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "write-back"
+      ],
+      "content": {
+        "prompt": "계좌 잔액 변경에 Write-Back이 맞지 않는 이유는?",
+        "options": [
+          "쓰기 지연 증가",
+          "유실 위험"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "잔액은 잃으면 안 되는데, Write-Back은 DB 반영 전에 캐시가 죽으면 변경이 사라질 수 있습니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-back-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "write-back"
+      ],
+      "content": {
+        "prompt": "Write-Back이 Write-Through보다 나은 점은?",
+        "options": [
+          "쓰기 응답이 빠름",
+          "유실 위험 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Write-Back은 캐시에만 쓰고 바로 응답하므로 쓰기 응답이 빠르고 DB 쓰기 횟수도 줄어듭니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    },
+    {
+      "id": "database-write-back-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cache",
+        "write-back"
+      ],
+      "content": {
+        "prompt": "Write-Back은 쓰기 요청 때 DB에 즉시 반영한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Write-Back은 캐시에만 먼저 쓰고 DB에는 나중에 모아 반영합니다. 즉시 반영은 Write-Through입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Cache_(computing)"
+      ]
+    }
+  ]
+}
