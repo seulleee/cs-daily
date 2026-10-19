@@ -1,0 +1,243 @@
+{
+  "track": "os",
+  "unit": "u07-linux-syscall",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "os-linux-dup2-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dup2",
+        "redirection",
+        "shell"
+      ],
+      "content": {
+        "prompt": "new fd가 old와 같은 열린 파일을 가리키게 하는 호출은?",
+        "options": [
+          "exec",
+          "open",
+          "dup2"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "dup2(old, new)는 new를 먼저 닫은 뒤, old와 같은 열린 파일 항목을 가리키게 합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/dup.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-dup2-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dup2",
+        "redirection",
+        "shell"
+      ],
+      "content": {
+        "prompt": "셸이 cmd > out.txt를 처리할 때 dup2로 바꾸는 fd는?",
+        "options": [
+          "1",
+          "0",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "> 는 표준 출력 리다이렉션이므로 out.txt를 연 fd를 dup2(fd, 1)로 fd 1에 연결합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/dup.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-dup2-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dup2",
+        "redirection",
+        "shell"
+      ],
+      "content": {
+        "prompt": "cmd < in.txt에서 in.txt로 바뀌는 것은?",
+        "options": [
+          "표준 출력",
+          "표준 입력"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "< 는 표준 입력 리다이렉션으로, in.txt를 연 fd를 dup2(fd, 0)으로 fd 0에 연결합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/dup.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-dup2-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dup2",
+        "redirection",
+        "shell"
+      ],
+      "content": {
+        "prompt": "2>&1은 표준 에러를 표준 출력과 같은 곳으로 보낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "2>&1은 dup2(1, 2)로 구현되어 fd 2가 fd 1과 같은 열린 파일을 가리키게 됩니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/dup.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-dup2-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dup2",
+        "redirection",
+        "shell"
+      ],
+      "content": {
+        "prompt": "fd를 지정한 번호로 복제해 리다이렉션을 구현하는 시스템 콜은 ___ 이다.",
+        "hint": "영문+숫자 4글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "dup2",
+          "dup 2"
+        ]
+      },
+      "explanation": "dup2(old, new)는 new fd가 old와 같은 열린 파일을 가리키게 해, 셸이 표준 입출력을 바꾸는 데 씁니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/dup.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-dup2-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dup2",
+        "redirection",
+        "shell"
+      ],
+      "content": {
+        "prompt": "cmd < in.txt는 in.txt를 열고 dup2(fd, ___)를 부른다.",
+        "hint": "숫자 하나"
+      },
+      "answer_key": {
+        "accepted": [
+          "0",
+          "영"
+        ]
+      },
+      "explanation": "표준 입력은 fd 0이므로 dup2(fd, 0)으로 in.txt를 표준 입력에 연결합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/dup.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-dup2-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dup2",
+        "redirection",
+        "shell"
+      ],
+      "content": {
+        "prompt": "2>&1을 구현하는 호출은?",
+        "options": [
+          "dup2(2, 1)",
+          "dup2(1, 2)"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "dup2(old, new)는 new가 old를 따라가게 합니다. fd 2가 fd 1을 따라가야 하므로 dup2(1, 2)입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/dup.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-dup2-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dup2",
+        "redirection",
+        "shell"
+      ],
+      "content": {
+        "prompt": "dup2(fd, 1) 뒤 printf 출력이 가는 곳은?",
+        "options": [
+          "터미널",
+          "fd가 연 파일"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "printf는 fd 1에 씁니다. dup2(fd, 1) 뒤에는 fd 1이 fd가 연 파일을 가리키므로 출력이 그 파일로 갑니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/dup.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-dup2-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dup2",
+        "redirection",
+        "shell"
+      ],
+      "content": {
+        "prompt": "셸이 cmd > out.txt를 처리하는 자식 쪽 순서는?",
+        "options": [
+          "open→dup2→exec",
+          "exec→open→dup2",
+          "dup2→exec→open"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "파일을 열고, dup2로 fd 1에 연결한 뒤 exec합니다. exec가 성공하면 돌아오지 않으므로 그 전에 준비해야 합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/dup.2.html",
+        "https://man7.org/linux/man-pages/man2/execve.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-dup2-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dup2",
+        "redirection",
+        "shell"
+      ],
+      "content": {
+        "prompt": "dup2(old, new)는 old를 닫고 new를 남긴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "dup2는 new를 먼저 닫은 뒤 old와 같은 열린 파일을 가리키게 합니다. old는 그대로 열려 있습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/dup.2.html"
+      ]
+    }
+  ]
+}

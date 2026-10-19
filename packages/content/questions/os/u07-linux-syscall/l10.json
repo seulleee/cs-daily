@@ -1,0 +1,249 @@
+{
+  "track": "os",
+  "unit": "u07-linux-syscall",
+  "lesson": "l10",
+  "questions": [
+    {
+      "id": "os-linux-sigterm-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sigterm",
+        "sigkill",
+        "signal"
+      ],
+      "content": {
+        "prompt": "잡거나 무시할 수 없는 강제 종료 시그널은?",
+        "options": [
+          "SIGTERM",
+          "SIGKILL",
+          "SIGINT"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SIGKILL(9)은 핸들러로 잡거나 무시할 수 없어 프로세스를 즉시 강제 종료합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-sigterm-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sigterm",
+        "sigkill",
+        "signal"
+      ],
+      "content": {
+        "prompt": "옵션 없이 kill PID를 실행하면 보내는 시그널은?",
+        "options": [
+          "SIGKILL",
+          "SIGINT",
+          "SIGTERM"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "kill 명령의 기본 시그널은 SIGTERM(15)입니다. 강제 종료가 필요할 때만 -9로 SIGKILL을 지정합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man1/kill.1.html"
+      ]
+    },
+    {
+      "id": "os-linux-sigterm-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sigterm",
+        "sigkill",
+        "signal"
+      ],
+      "content": {
+        "prompt": "핸들러로 잡아 정리 작업을 할 수 있는 시그널은?",
+        "options": [
+          "SIGTERM",
+          "SIGKILL"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SIGTERM은 종료 요청이라 잡아서 정리 작업을 할 수 있습니다. SIGKILL은 잡을 수 없습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/signal.7.html",
+        "https://man7.org/linux/man-pages/man2/sigaction.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-sigterm-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sigterm",
+        "sigkill",
+        "signal"
+      ],
+      "content": {
+        "prompt": "SIGKILL은 핸들러로 잡아 무시할 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "SIGKILL은 잡거나 무시할 수 없는 시그널이라 sigaction으로 핸들러를 등록하려 해도 실패합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/sigaction.2.html",
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-sigterm-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sigterm",
+        "sigkill",
+        "signal"
+      ],
+      "content": {
+        "prompt": "SIGKILL의 시그널 번호는 ___ 이다.",
+        "hint": "한 자리 숫자"
+      },
+      "answer_key": {
+        "accepted": [
+          "9",
+          "구"
+        ]
+      },
+      "explanation": "SIGKILL은 9번, SIGTERM은 15번입니다. kill -9 PID가 SIGKILL을 보냅니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-sigterm-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sigterm",
+        "sigkill",
+        "signal"
+      ],
+      "content": {
+        "prompt": "새 요청을 거절하고 진행 중 작업을 마친 뒤 끝내는 것은 ___ shutdown이다.",
+        "hint": "영문 8글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "graceful",
+          "그레이스풀",
+          "그레이스플"
+        ]
+      },
+      "explanation": "graceful shutdown은 SIGTERM을 받으면 새 요청을 거절하고 진행 중인 작업을 마친 뒤 종료하는 절차입니다.",
+      "refs": [
+        "https://docs.docker.com/reference/cli/docker/container/stop/",
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-sigterm-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sigterm",
+        "sigkill",
+        "signal"
+      ],
+      "content": {
+        "prompt": "docker stop 후 기본 10초 안에 안 끝나면 보내는 시그널은?",
+        "options": [
+          "SIGKILL",
+          "SIGTERM",
+          "SIGINT"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "docker stop은 먼저 SIGTERM을 보내고, 기본 10초 안에 끝나지 않으면 SIGKILL로 강제 종료합니다.",
+      "refs": [
+        "https://docs.docker.com/reference/cli/docker/container/stop/"
+      ]
+    },
+    {
+      "id": "os-linux-sigterm-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sigterm",
+        "sigkill",
+        "signal"
+      ],
+      "content": {
+        "prompt": "SIGTERM을 받은 서버가 graceful shutdown에서 먼저 하는 일은?",
+        "options": [
+          "즉시 종료",
+          "새 요청 거절",
+          "요청 계속 수신"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "graceful shutdown은 새 요청부터 거절하고, 진행 중인 작업을 마친 뒤 종료합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-sigterm-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sigterm",
+        "sigkill",
+        "signal"
+      ],
+      "content": {
+        "prompt": "kill -9 PID가 보내는 시그널은?",
+        "options": [
+          "SIGTERM",
+          "SIGINT",
+          "SIGKILL"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "-9는 시그널 번호 9, 즉 SIGKILL을 뜻합니다. 프로세스가 정리 작업 없이 즉시 종료됩니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man1/kill.1.html",
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-sigterm-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sigterm",
+        "sigkill",
+        "signal"
+      ],
+      "content": {
+        "prompt": "SIGKILL을 받으면 프로세스는 정리 작업 없이 종료된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "SIGKILL은 잡을 수 없어 핸들러가 실행되지 않으므로, 정리 작업을 할 기회 없이 바로 종료됩니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/signal.7.html"
+      ]
+    }
+  ]
+}

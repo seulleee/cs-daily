@@ -1,0 +1,250 @@
+{
+  "track": "os",
+  "unit": "u07-linux-syscall",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "os-linux-cow-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "copy-on-write",
+        "fork",
+        "paging"
+      ],
+      "content": {
+        "prompt": "fork 후 페이지를 공유하다 쓸 때만 복사하는 기법은?",
+        "options": [
+          "요구 페이징",
+          "버디 시스템",
+          "COW"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "COW(Copy-on-Write)는 fork 직후 부모와 자식이 물리 페이지를 공유하다가, 어느 쪽이 쓸 때만 그 페이지를 복사합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf"
+      ]
+    },
+    {
+      "id": "os-linux-cow-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "copy-on-write",
+        "fork",
+        "paging"
+      ],
+      "content": {
+        "prompt": "COW로 공유 중인 페이지에 쓰면 발생하는 것은?",
+        "options": [
+          "타이머 인터럽트",
+          "페이지 폴트",
+          "시스템 콜"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "공유 페이지는 읽기 전용으로 표시돼 있어 쓰기를 하면 페이지 폴트가 나고, 커널이 그때 복사본을 만듭니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-cow-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "copy-on-write",
+        "fork",
+        "paging"
+      ],
+      "content": {
+        "prompt": "fork 직후 COW로 공유하는 페이지는 어떻게 표시되나?",
+        "options": [
+          "읽기 전용",
+          "읽기·쓰기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "공유 페이지를 읽기 전용으로 표시해 두어야 쓰기 시도를 페이지 폴트로 잡아 그때 복사할 수 있습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-cow-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "copy-on-write",
+        "fork",
+        "paging"
+      ],
+      "content": {
+        "prompt": "COW에서는 fork하는 순간 모든 페이지를 복사한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "COW는 fork 순간에는 복사하지 않고 페이지를 공유합니다. 쓰기가 일어난 페이지만 그때 복사합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf"
+      ]
+    },
+    {
+      "id": "os-linux-cow-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "copy-on-write",
+        "fork",
+        "paging"
+      ],
+      "content": {
+        "prompt": "쓸 때만 페이지를 복사하는 기법은 Copy-on-___ 이다.",
+        "hint": "영문 5글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "Write",
+          "write",
+          "라이트"
+        ]
+      },
+      "explanation": "Copy-on-Write(COW)는 쓰기가 일어날 때 비로소 복사한다는 뜻으로, fork 비용을 줄입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-cow-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "copy-on-write",
+        "fork",
+        "paging"
+      ],
+      "content": {
+        "prompt": "COW로 공유 중인 페이지에 쓰면 페이지 ___ 가 발생한다.",
+        "hint": "한글 2글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "폴트",
+          "fault",
+          "부재"
+        ]
+      },
+      "explanation": "공유 페이지는 읽기 전용이라 쓰기를 하면 페이지 폴트가 나고, 커널이 새 프레임에 복사본을 만들어 줍니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-cow-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "copy-on-write",
+        "fork",
+        "paging"
+      ],
+      "content": {
+        "prompt": "fork 직후 자식이 변수 하나를 바꾸면 복사되는 것은?",
+        "options": [
+          "그 페이지 하나",
+          "주소 공간 전체",
+          "없음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "COW에서는 쓰기가 일어난 페이지만 복사합니다. 변수 하나를 바꾸면 그 변수가 있는 페이지 하나가 복사됩니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-cow-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "copy-on-write",
+        "fork",
+        "paging"
+      ],
+      "content": {
+        "prompt": "fork 후 자식이 메모리를 읽기만 한다. 복사되는 페이지는?",
+        "options": [
+          "전부",
+          "절반",
+          "없음"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "읽기만 하면 공유 페이지를 그대로 쓰므로 페이지 폴트도, 복사도 일어나지 않습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-cow-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "copy-on-write",
+        "fork",
+        "paging"
+      ],
+      "content": {
+        "prompt": "COW 덕분에 비용이 줄어드는 시스템 콜은?",
+        "options": [
+          "open",
+          "fork",
+          "write"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "COW는 fork 순간의 페이지 복사를 미뤄 fork를 빠르게 만듭니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf"
+      ]
+    },
+    {
+      "id": "os-linux-cow-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "copy-on-write",
+        "fork",
+        "paging"
+      ],
+      "content": {
+        "prompt": "fork 직후 바로 exec하면 COW로 복사가 거의 일어나지 않는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "exec가 주소 공간을 새 프로그램으로 바꾸므로 공유 페이지에 쓸 일이 거의 없어 복사도 거의 생기지 않습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html",
+        "https://man7.org/linux/man-pages/man2/execve.2.html"
+      ]
+    }
+  ]
+}

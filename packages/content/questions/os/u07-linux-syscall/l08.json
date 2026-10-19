@@ -1,0 +1,247 @@
+{
+  "track": "os",
+  "unit": "u07-linux-syscall",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "os-linux-pipe-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "pipe",
+        "ipc",
+        "shell"
+      ],
+      "content": {
+        "prompt": "pipe(fd)로 만든 두 fd 중 읽기 끝은?",
+        "options": [
+          "fd[0]",
+          "fd[1]",
+          "fd[2]"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "pipe(fd)는 읽기 끝 fd[0]과 쓰기 끝 fd[1]을 만듭니다. fd[1]에 쓴 바이트를 fd[0]에서 읽습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/pipe.2.html",
+        "https://man7.org/linux/man-pages/man7/pipe.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-pipe-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "pipe",
+        "ipc",
+        "shell"
+      ],
+      "content": {
+        "prompt": "a | b에서 a의 표준 출력이 연결되는 곳은?",
+        "options": [
+          "읽기 끝",
+          "쓰기 끝",
+          "표준 에러"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "a가 쓴 출력이 b로 가야 하므로 a의 표준 출력을 파이프의 쓰기 끝에 dup2합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/pipe.2.html",
+        "https://man7.org/linux/man-pages/man2/dup.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-pipe-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "pipe",
+        "ipc",
+        "shell"
+      ],
+      "content": {
+        "prompt": "pipe(fd)에서 fd[0]은 쓰기 끝이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "fd[0]은 읽기 끝, fd[1]은 쓰기 끝입니다. 데이터는 fd[1]에서 fd[0]으로 한 방향으로만 흐릅니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/pipe.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-pipe-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "pipe",
+        "ipc",
+        "shell"
+      ],
+      "content": {
+        "prompt": "파이프가 비어 있으면 read는 데이터가 올 때까지 기다린다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "쓰기 끝이 열려 있는 동안 파이프가 비면 read는 데이터가 올 때까지 기다립니다. 리눅스 기본 동작입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/pipe.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-pipe-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "pipe",
+        "ipc",
+        "shell"
+      ],
+      "content": {
+        "prompt": "pipe(fd)에서 쓰기 끝은 fd[___] 이다.",
+        "hint": "숫자 하나"
+      },
+      "answer_key": {
+        "accepted": [
+          "1",
+          "일"
+        ]
+      },
+      "explanation": "pipe(fd)는 fd[0]을 읽기 끝, fd[1]을 쓰기 끝으로 만듭니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/pipe.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-pipe-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "pipe",
+        "ipc",
+        "shell"
+      ],
+      "content": {
+        "prompt": "쓰기 끝이 모두 닫히면 읽는 쪽 read는 ___ 를 받는다.",
+        "hint": "영문 약자 3글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "EOF",
+          "eof",
+          "파일 끝"
+        ]
+      },
+      "explanation": "쓰기 끝을 가리키는 fd가 모두 닫혀야 읽는 쪽 read가 0을 돌려줘 EOF를 알립니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/pipe.7.html",
+        "https://man7.org/linux/man-pages/man2/read.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-pipe-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pipe",
+        "ipc",
+        "shell"
+      ],
+      "content": {
+        "prompt": "a | b에서 b의 표준 입력에 dup2하는 파이프 끝은?",
+        "options": [
+          "fd[1]",
+          "fd[0]"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "b는 파이프에서 읽어야 하므로 읽기 끝 fd[0]을 b의 표준 입력(fd 0)에 dup2합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/pipe.2.html",
+        "https://man7.org/linux/man-pages/man2/dup.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-pipe-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pipe",
+        "ipc",
+        "shell"
+      ],
+      "content": {
+        "prompt": "a는 끝났는데 b가 끝나지 않는다. 흔한 원인은?",
+        "options": [
+          "쓰기 끝을 안 닫음",
+          "읽기 끝을 안 닫음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "다른 프로세스가 쓰기 끝을 열어 둔 채면 b의 read가 EOF를 받지 못하고 계속 기다립니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/pipe.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-pipe-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pipe",
+        "ipc",
+        "shell"
+      ],
+      "content": {
+        "prompt": "파이프가 가득 찼을 때 write는?",
+        "options": [
+          "데이터를 버림",
+          "빈자리를 기다림",
+          "0을 반환"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "파이프가 가득 차면 읽는 쪽이 데이터를 꺼내 빈자리가 날 때까지 write가 기다립니다(리눅스 기본 동작).",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/pipe.7.html"
+      ]
+    },
+    {
+      "id": "os-linux-pipe-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pipe",
+        "ipc",
+        "shell"
+      ],
+      "content": {
+        "prompt": "파이프에서 데이터가 흐르는 방향은?",
+        "options": [
+          "단방향",
+          "양방향"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "파이프는 쓰기 끝에서 읽기 끝으로만 흐르는 단방향 바이트 흐름입니다. 양방향이 필요하면 파이프를 두 개 씁니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/pipe.7.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,244 @@
+{
+  "track": "os",
+  "unit": "u06-io-interrupt",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "os-io-dma-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dma",
+        "io"
+      ],
+      "content": {
+        "prompt": "CPU 개입 없이 장치와 메모리 사이 블록을 옮기는 방식은?",
+        "options": [
+          "프로그램 I/O",
+          "폴링",
+          "DMA"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DMA(Direct Memory Access)는 DMA 컨트롤러가 CPU 개입 없이 장치와 메모리 사이에서 블록을 전송하는 방식입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Direct_memory_access",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    },
+    {
+      "id": "os-io-dma-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dma",
+        "io",
+        "programmed-io"
+      ],
+      "content": {
+        "prompt": "CPU가 장치와 메모리 사이 데이터를 직접 하나씩 옮기는 방식은?",
+        "options": [
+          "DMA",
+          "프로그램 I/O",
+          "페이징"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "프로그램 I/O는 CPU가 장치와 메모리 사이 데이터를 직접 하나씩 옮기는 방식이라, 그동안 CPU가 묶입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    },
+    {
+      "id": "os-io-dma-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dma",
+        "io",
+        "programmed-io"
+      ],
+      "content": {
+        "prompt": "대용량 전송 중에도 CPU가 다른 작업을 할 수 있는 방식은?",
+        "options": [
+          "프로그램 I/O",
+          "DMA"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DMA는 전송을 DMA 컨트롤러가 맡으므로 그동안 CPU가 다른 작업을 합니다. 프로그램 I/O는 CPU가 직접 옮깁니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf",
+        "https://en.wikipedia.org/wiki/Direct_memory_access"
+      ]
+    },
+    {
+      "id": "os-io-dma-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dma",
+        "io",
+        "interrupt"
+      ],
+      "content": {
+        "prompt": "DMA 전송이 끝나면 인터럽트로 CPU에 알린다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "DMA 컨트롤러는 블록 전송을 끝내면 인터럽트를 한 번 보내 CPU에 완료를 알립니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    },
+    {
+      "id": "os-io-dma-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dma",
+        "io"
+      ],
+      "content": {
+        "prompt": "CPU 대신 장치와 메모리 사이 전송을 맡는 방식은 ___ 이다.",
+        "hint": "영문 약자 3글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "DMA",
+          "dma",
+          "Direct Memory Access",
+          "직접 메모리 접근"
+        ]
+      },
+      "explanation": "DMA는 DMA 컨트롤러가 CPU 개입 없이 장치와 메모리 사이에서 블록을 옮기는 방식입니다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Direct_memory_access"
+      ]
+    },
+    {
+      "id": "os-io-dma-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dma",
+        "io",
+        "interrupt"
+      ],
+      "content": {
+        "prompt": "DMA 전송이 끝나면 CPU에 ___ 이 한 번 발생한다.",
+        "hint": "한글 4글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "인터럽트",
+          "interrupt"
+        ]
+      },
+      "explanation": "DMA는 전송 완료 시 인터럽트를 한 번 보내므로, CPU는 바이트마다가 아니라 블록마다 한 번만 처리합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    },
+    {
+      "id": "os-io-dma-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dma",
+        "io"
+      ],
+      "content": {
+        "prompt": "DMA로 블록을 읽을 때 CPU가 맨 처음 하는 일은?",
+        "options": [
+          "전송 지시",
+          "바이트 복사",
+          "완료 처리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "흐름은 CPU의 전송 지시 → DMA 컨트롤러의 전송 → 완료 인터럽트 순서입니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    },
+    {
+      "id": "os-io-dma-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dma",
+        "io",
+        "interrupt"
+      ],
+      "content": {
+        "prompt": "블록 하나를 DMA로 읽을 때 완료 인터럽트는 몇 번?",
+        "options": [
+          "바이트 수만큼",
+          "1번"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DMA는 블록 전송을 모두 마친 뒤 완료 인터럽트를 한 번만 보냅니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    },
+    {
+      "id": "os-io-dma-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dma",
+        "io"
+      ],
+      "content": {
+        "prompt": "DMA 전송이 진행되는 동안 CPU는?",
+        "options": [
+          "다른 작업 실행",
+          "바이트 복사",
+          "전송 감시"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "전송은 DMA 컨트롤러가 맡으므로 CPU는 그동안 다른 프로세스를 실행하는 등 다른 작업을 합니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf",
+        "https://en.wikipedia.org/wiki/Direct_memory_access"
+      ]
+    },
+    {
+      "id": "os-io-dma-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dma",
+        "io",
+        "programmed-io"
+      ],
+      "content": {
+        "prompt": "DMA에서는 CPU가 데이터를 한 바이트씩 직접 옮긴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "CPU가 데이터를 직접 옮기는 것은 프로그램 I/O입니다. DMA에서는 DMA 컨트롤러가 블록을 옮깁니다.",
+      "refs": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf"
+      ]
+    }
+  ]
+}

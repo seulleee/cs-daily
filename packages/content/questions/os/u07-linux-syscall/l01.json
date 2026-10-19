@@ -1,0 +1,245 @@
+{
+  "track": "os",
+  "unit": "u07-linux-syscall",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "os-linux-fork-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "fork",
+        "process"
+      ],
+      "content": {
+        "prompt": "호출한 프로세스를 복제해 자식을 만드는 시스템 콜은?",
+        "options": [
+          "exec",
+          "fork",
+          "open"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "fork는 호출한 프로세스를 복제해 자식 프로세스를 만드는 시스템 콜입니다. exec는 실행 중인 프로그램을 바꾸고, open은 파일을 엽니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf"
+      ]
+    },
+    {
+      "id": "os-linux-fork-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "fork",
+        "process"
+      ],
+      "content": {
+        "prompt": "fork가 새로 만든 프로세스를 부르는 말은?",
+        "options": [
+          "부모 프로세스",
+          "스레드",
+          "자식 프로세스"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "fork를 호출한 쪽이 부모 프로세스, fork로 새로 생긴 쪽이 자식 프로세스입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-fork-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "fork",
+        "process",
+        "return-value"
+      ],
+      "content": {
+        "prompt": "fork가 성공하면 부모 프로세스가 받는 반환값은?",
+        "options": [
+          "0",
+          "자식 PID"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "fork가 성공하면 부모에는 자식의 PID를, 자식에는 0을 돌려줍니다. 그래서 반환값으로 두 쪽을 구분합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-fork-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "fork",
+        "process",
+        "fd"
+      ],
+      "content": {
+        "prompt": "fork로 만든 자식은 부모의 열린 fd를 물려받지 못한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "fork는 주소 공간 내용과 함께 열린 fd도 자식에게 복사합니다. 그래서 자식도 부모가 연 파일을 그대로 쓸 수 있습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-fork-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "fork",
+        "process"
+      ],
+      "content": {
+        "prompt": "프로세스를 복제해 자식 프로세스를 만드는 시스템 콜은 ___ 이다.",
+        "hint": "영문 4글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "fork",
+          "포크",
+          "fork()"
+        ]
+      },
+      "explanation": "fork는 호출한 프로세스를 복제해 자식 프로세스를 만드는 유닉스 계열의 시스템 콜입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-fork-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "fork",
+        "process",
+        "return-value"
+      ],
+      "content": {
+        "prompt": "fork가 성공하면 자식 프로세스에 돌려주는 값은 ___ 이다.",
+        "hint": "숫자 하나"
+      },
+      "answer_key": {
+        "accepted": [
+          "0",
+          "영",
+          "zero"
+        ]
+      },
+      "explanation": "fork는 자식에는 0을, 부모에는 자식 PID를 돌려줍니다. 실패하면 자식이 생기지 않고 부모가 −1을 받습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-fork-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "fork",
+        "process",
+        "fork-count"
+      ],
+      "content": {
+        "prompt": "fork()를 연달아 2번 호출하면 프로세스는 모두 몇 개?",
+        "options": [
+          "2개",
+          "3개",
+          "4개"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "첫 fork로 1개가 2개가 되고, 두 프로세스가 각각 두 번째 fork를 실행해 4개가 됩니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf"
+      ]
+    },
+    {
+      "id": "os-linux-fork-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "fork",
+        "process",
+        "fork-count"
+      ],
+      "content": {
+        "prompt": "fork()를 연달아 3번 호출하면 프로세스는 모두 몇 개?",
+        "options": [
+          "4개",
+          "6개",
+          "8개"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "fork를 한 번 지날 때마다 모든 프로세스가 둘이 되므로 1 → 2 → 4 → 8, 모두 8개입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf"
+      ]
+    },
+    {
+      "id": "os-linux-fork-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "fork",
+        "process",
+        "return-value"
+      ],
+      "content": {
+        "prompt": "fork의 반환값이 1234였다. 이 값을 받은 쪽은?",
+        "options": [
+          "부모 프로세스",
+          "자식 프로세스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "0보다 큰 반환값은 자식의 PID이고, 이것을 받는 쪽은 부모입니다. 자식은 0을 받습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html"
+      ]
+    },
+    {
+      "id": "os-linux-fork-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "fork",
+        "process"
+      ],
+      "content": {
+        "prompt": "fork는 호출한 프로세스를 복제해 자식 프로세스를 만든다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "fork는 호출한 프로세스를 복제해 자식을 만들고, 두 프로세스는 fork 다음부터 함께 실행됩니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man2/fork.2.html",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf"
+      ]
+    }
+  ]
+}

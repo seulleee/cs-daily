@@ -1,0 +1,239 @@
+{
+  "track": "os",
+  "unit": "u06-io-interrupt",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "os-io-epoll-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "epoll",
+        "io-multiplexing"
+      ],
+      "content": {
+        "prompt": "관심 fd를 한 번 등록하고 준비된 것만 받는 리눅스 API는?",
+        "options": [
+          "select",
+          "poll",
+          "epoll"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "epoll은 관심 fd를 커널에 한 번 등록해 두고, 준비된 것만 돌려받는 리눅스 API입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/epoll.7.html"
+      ]
+    },
+    {
+      "id": "os-io-epoll-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "epoll",
+        "io-multiplexing"
+      ],
+      "content": {
+        "prompt": "epoll에 fd를 등록·변경·삭제하는 호출은?",
+        "options": [
+          "epoll_ctl",
+          "epoll_wait",
+          "poll"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "epoll_ctl로 관심 fd를 등록·변경·삭제하고, epoll_wait로 준비된 이벤트를 기다립니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/epoll.7.html"
+      ]
+    },
+    {
+      "id": "os-io-epoll-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "epoll",
+        "io-multiplexing",
+        "level-trigger"
+      ],
+      "content": {
+        "prompt": "레벨 트리거는 fd가 준비 상태인 동안 계속 알린다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "레벨 트리거(epoll 기본)는 읽을 데이터가 남아 있는 등 준비 상태인 동안 epoll_wait마다 계속 알립니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/epoll.7.html"
+      ]
+    },
+    {
+      "id": "os-io-epoll-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "epoll",
+        "io-multiplexing",
+        "edge-trigger"
+      ],
+      "content": {
+        "prompt": "epoll의 기본 동작은 엣지 트리거다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "epoll의 기본은 레벨 트리거입니다. 엣지 트리거는 EPOLLET를 지정해야 하며, 상태가 바뀔 때 한 번만 알립니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/epoll.7.html"
+      ]
+    },
+    {
+      "id": "os-io-epoll-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "epoll",
+        "io-multiplexing"
+      ],
+      "content": {
+        "prompt": "관심 fd를 커널에 등록해 두는 리눅스 API는 ___ 이다.",
+        "hint": "영문 5글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "epoll",
+          "이폴"
+        ]
+      },
+      "explanation": "epoll은 관심 fd를 커널에 등록해 두고 준비된 것만 돌려받아, 연결이 많아도 효율적인 리눅스 API입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/epoll.7.html"
+      ]
+    },
+    {
+      "id": "os-io-epoll-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "epoll",
+        "io-multiplexing",
+        "edge-trigger"
+      ],
+      "content": {
+        "prompt": "준비 상태가 바뀔 때 한 번만 알리는 방식은 ___ 트리거다.",
+        "hint": "한글 2글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "엣지",
+          "edge",
+          "에지"
+        ]
+      },
+      "explanation": "엣지 트리거는 상태가 바뀔 때 한 번만 알립니다. 준비 상태인 동안 계속 알리는 것은 레벨 트리거입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/epoll.7.html"
+      ]
+    },
+    {
+      "id": "os-io-epoll-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "epoll",
+        "io-multiplexing"
+      ],
+      "content": {
+        "prompt": "연결 1만 개 중 5개가 준비됐다. epoll_wait가 돌려주는 이벤트 수는?",
+        "options": [
+          "5개",
+          "1만 개",
+          "0개"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "epoll_wait는 준비된 fd만 돌려주므로 5개입니다. 비용도 준비된 fd 수에 비례합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/epoll.7.html"
+      ]
+    },
+    {
+      "id": "os-io-epoll-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "epoll",
+        "io-multiplexing"
+      ],
+      "content": {
+        "prompt": "준비된 이벤트를 기다리는 epoll 호출은?",
+        "options": [
+          "epoll_ctl",
+          "epoll_wait"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "epoll_wait는 등록된 fd 중 준비된 것의 이벤트를 기다려 돌려받습니다. epoll_ctl은 등록·변경·삭제용입니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/epoll.7.html"
+      ]
+    },
+    {
+      "id": "os-io-epoll-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "epoll",
+        "io-multiplexing",
+        "edge-trigger"
+      ],
+      "content": {
+        "prompt": "엣지 트리거에서 데이터를 일부만 읽었다. 새 데이터 없이 다시 알림이 오나?",
+        "options": [
+          "다시 알린다",
+          "알리지 않는다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "엣지 트리거는 상태가 바뀔 때만 알리므로, 새 데이터가 오기 전에는 남은 데이터가 있어도 다시 알리지 않습니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/epoll.7.html"
+      ]
+    },
+    {
+      "id": "os-io-epoll-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "epoll",
+        "io-multiplexing"
+      ],
+      "content": {
+        "prompt": "연결이 많을 때 epoll이 select·poll보다 유리한 이유는?",
+        "options": [
+          "준비된 fd만 처리",
+          "스레드를 더 씀",
+          "바쁜 대기 사용"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "epoll은 등록을 한 번만 하고 준비된 fd만 돌려받으므로, 비용이 전체 연결 수가 아니라 준비된 fd 수에 비례합니다.",
+      "refs": [
+        "https://man7.org/linux/man-pages/man7/epoll.7.html",
+        "https://man7.org/linux/man-pages/man2/select.2.html"
+      ]
+    }
+  ]
+}
