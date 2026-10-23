@@ -18,6 +18,7 @@
 | 콘텐츠 | 6트랙 67유닛 **597레슨 5,970문제 전부 작성**(2026-10-19). 자료구조 112·데이터베이스 103·운영체제 69·네트워크 75·정보처리기사 130·코딩 테스트 108레슨. 레슨당 10문제, 핵심 정리(keyPoints) 2~4줄, **모든 레슨에 도입 설명(intro)**. 2026-10-13 순서 재배치: 자료구조 배열→스택·큐→복잡도→정렬→이진 탐색→…, 데이터베이스 테이블과 키→SQL→서브쿼리→정규화(`u11`)→인덱스…, 운영체제 프로세스→커널·인터럽트·시스템 콜(`u08`)→스케줄링→…→I/O 모델(`u06`, 맨 뒤). slug 번호 ≠ 순서 |
 | 정보처리기사 | `eip` 트랙(2026-10-14 공개). 필기 5과목 15유닛 130레슨 1,300문제(코드 빈칸 82). 유닛마다 마지막 레슨은 4지선다 "모의 문제". 2020 개편 5과목 구조 기준 — 현행 출제기준 문서로 대조 필요. 기출은 개념 빈도 참고용으로만 쓰고 문장은 옮기지 않는다 |
 | 코딩 테스트 | `ct` 트랙(2026-10-19 공개). 13유닛 108레슨 1,080문제(코드 253, Python·Java·JavaScript·C++ variants 모두 실행 검증). 사용자가 언어를 고르고 그 언어로 채점. 외부 문제(백준 등) 번호·지문은 넣지 않는다 |
+| 수요 검증 | 결제 없음, 내부 사용 지표(`/internal/stats`, [docs/ops-stats.md](docs/ops-stats.md))로 먼저 확인(2026-10-23) |
 | 온보딩 | 트랙 선택 → 하루 목표 → **시작 지점**(처음 / 조금 알아요=앞 3유닛 배치 테스트 체인 / 잘 알아요=유닛 골라 테스트 1회). 체인 상태는 `apps/web/src/lib/placement-chain.ts`(sessionStorage), API는 기존 `POST /units/:id/skip-test` 재사용 |
 
 ## 작업 흐름
@@ -46,6 +47,7 @@
 - **정답 키(`answerKey`)는 `CurriculumAdapter.forGrading()` 한 곳에서만 읽는다.** 다른 어떤 쿼리도 select하지 않는다.
 - **코드 문제 언어 variants(`ct` 트랙)**: 코드가 있는 문제는 `content.variants[lang]`(코드·보기)와 `answer_key.variants[lang]`(정답·선택 해설)으로 python·java·javascript·cpp 4개를 모두 갖는다(validate 강제). 사용자 언어는 `User.codeLanguage`(기본 python, `/me`·`PATCH /me`). 세션 응답은 사용자 언어 variant만 `content.code`(+options)와 `lang`으로 펼치고 다른 언어·정답은 내려가지 않는다(`learning/domain/services/code-variants.ts`). 답안 제출·재도전은 받은 `lang`을 함께 보내고, 서버는 그 언어 variant가 있는지 검증해(없으면 422 `CODE_LANGUAGE_UNAVAILABLE`) 그 정답·해설로 채점하며 `lang`을 답안 기록에 남긴다 — 세션 도중 설정을 바꿔도 받은 문제는 받은 언어로 채점되고 이어 풀기에서도 답한 언어를 보여 준다.
 - 레슨 `intro`(도입 설명, 선택 `string[]` 1~3문단·문단 40~220자·합계 450자 이하)는 `curriculum.json` → `lessons.intro`(`String[] @default([])`) → `LessonOutline.intro` → 세션 응답 `lessonIntro`(선택 필드, 옛 API 호환)로 `lessonKeyPoints`와 같은 경로를 탄다. seed-diff의 트랙 구조 비교에 포함돼 바뀐 트랙만 갱신된다. 작성 규칙은 content-guide "도입 설명".
+- **수요 검증(결제 없음)**: 운영자 지표 `GET /internal/stats`(jobs 컨텍스트, `JOBS_SECRET` Bearer — tick과 같은 `assertInternalAuth`)는 가입·활성·주간 코호트 D1/D7/D30·트랙별·스트릭을 **집계 SQL만**으로 돌려주고 이메일·닉네임·user id는 내지 않는다(날짜 계산 순수 함수 `jobs/domain/usage-stats.ts`). 결제·가격 부과·유료 잠금은 넣지 않는다.
 - 세션 종류 `kind`: `lesson`(레슨) · `review`(복습, XP ×1.5) · `placement`(유닛 건너뛰기 테스트, XP 0). `findOpen`은 kind를 구분해서 서로 이어지지 않게 한다.
 - 레슨 흐름: 시작 카드 → 본 문제 → **틀린 문제 다시 풀기**(`POST /sessions/:id/retry`, 채점만 하고 답안·XP·SM-2에 영향 없음, 최대 2회) → 완료. 재도전 허용 여부는 애그리거트 `canRetry/retry`가 판단한다.
 - 유닛 건너뛰기: `POST /units/:unitId/skip-test` → 8문제, 80% 이상이면 트랙 처음부터 그 유닛까지 완료 처리(`UserLessonProgress.completedAt`만 찍고 점수 0). 정책은 `learning/domain/services/unit-skip-test.ts`.
