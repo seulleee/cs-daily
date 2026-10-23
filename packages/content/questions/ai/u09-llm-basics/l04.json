@@ -1,0 +1,214 @@
+{
+  "track": "ai",
+  "unit": "u09-llm-basics",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ai-llm-context-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "context-window",
+        "token"
+      ],
+      "content": {
+        "prompt": "모델이 한 번에 처리할 수 있는 입출력 토큰의 최대 길이는?",
+        "options": [
+          "컨텍스트 윈도",
+          "배치 크기",
+          "어휘 크기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "컨텍스트 윈도는 모델이 한 번에 처리할 수 있는 입력과 출력 토큰의 최대 길이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-context-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "stateless",
+        "context-window"
+      ],
+      "content": {
+        "prompt": "모델이 요청 사이에 대화를 기억하지 않는 성질은?",
+        "options": [
+          "상태 없는 호출",
+          "자기회귀 생성",
+          "서브워드 분할"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "모델은 요청 사이에 대화를 기억하지 않는 상태 없는 호출로 동작한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-context-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "stateless",
+        "chat-history"
+      ],
+      "content": {
+        "prompt": "모델은 이전 요청의 대화 내용을 스스로 기억한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "모델 호출은 상태가 없어 요청 사이에 대화를 기억하지 않는다. 그래서 이력을 매번 다시 넣는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-context-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "context-window",
+        "token"
+      ],
+      "content": {
+        "prompt": "컨텍스트 윈도의 길이를 세는 단위는?",
+        "options": [
+          "글자",
+          "토큰",
+          "문장"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "컨텍스트 윈도는 입력과 출력 토큰의 최대 길이이므로 토큰 수로 센다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-context-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "context-window",
+        "token"
+      ],
+      "content": {
+        "prompt": "모델이 한 번에 처리할 수 있는 최대 토큰 길이는 컨텍스트 ___다."
+      },
+      "answer_key": {
+        "accepted": [
+          "윈도",
+          "윈도우",
+          "window"
+        ]
+      },
+      "explanation": "컨텍스트 윈도는 모델이 한 번에 처리할 수 있는 입력과 출력 토큰의 최대 길이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-context-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "stateless",
+        "chat-history"
+      ],
+      "content": {
+        "prompt": "모델은 대화를 기억하지 않아 대화 ___을 매번 다시 넣는다.",
+        "hint": "지난 질문과 답"
+      },
+      "answer_key": {
+        "accepted": [
+          "이력",
+          "기록",
+          "히스토리"
+        ]
+      },
+      "explanation": "상태 없는 호출이므로 대화를 이어 가려면 지난 대화 이력을 매 요청 입력에 다시 넣어야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-context-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "context-window",
+        "limit"
+      ],
+      "content": {
+        "prompt": "한도 4,000토큰 모델에 입력 3,800·출력 500토큰을 요청하면?",
+        "options": [
+          "거절 또는 입력 축소",
+          "그대로 처리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "입력과 출력을 합친 4,300토큰이 한도를 넘으므로 요청이 거절되거나 입력 일부를 잘라야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-context-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "stateless",
+        "chat-history"
+      ],
+      "content": {
+        "prompt": "챗봇이 세 번째 질문에 답하려면 입력에 넣을 것은?",
+        "options": [
+          "앞 대화와 새 질문",
+          "세 번째 질문만"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "모델은 앞 대화를 기억하지 않으므로 앞 대화 이력과 새 질문을 함께 넣어야 맥락을 안다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-context-009",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "chat-history",
+        "context-window"
+      ],
+      "content": {
+        "prompt": "대화가 길어질수록 매 요청의 입력 토큰이 늘어난다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "이력을 매번 다시 넣으므로 대화가 길어질수록 입력이 커지고 결국 컨텍스트 윈도 한도에 닿는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-context-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "context-window",
+        "limit"
+      ],
+      "content": {
+        "prompt": "컨텍스트 윈도가 정하는 것은?",
+        "options": [
+          "학습 데이터 양",
+          "처리 가능한 최대 토큰",
+          "어휘 수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "컨텍스트 윈도는 한 번에 처리할 수 있는 입력과 출력 토큰의 최대 길이를 정한다.",
+      "refs": []
+    }
+  ]
+}

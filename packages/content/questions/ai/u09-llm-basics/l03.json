@@ -1,0 +1,214 @@
+{
+  "track": "ai",
+  "unit": "u09-llm-basics",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ai-llm-tokencost-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "token",
+        "cost"
+      ],
+      "content": {
+        "prompt": "LLM API 사용량과 비용은 보통 무엇으로 계산하나?",
+        "options": [
+          "글자 수",
+          "입출력 토큰 수",
+          "요청 횟수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "LLM API 사용량과 비용은 보통 입력 토큰 수와 출력 토큰 수로 계산된다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokencost-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "token-count",
+        "tokenizer"
+      ],
+      "content": {
+        "prompt": "요청 길이를 확인할 때 토큰 수는 무엇으로 세나?",
+        "options": [
+          "공백 기준 단어 수",
+          "글자 수",
+          "해당 모델 토크나이저"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "토크나이저가 모델마다 다르므로 길이와 비용은 해당 모델의 토크나이저로 센 토큰 수로 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokencost-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "token-count",
+        "tokenizer"
+      ],
+      "content": {
+        "prompt": "같은 문장은 어느 모델에서나 토큰 수가 같다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "같은 내용도 언어와 토크나이저에 따라 토큰 수가 다르다. 그래서 해당 모델의 토크나이저로 센다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokencost-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "token",
+        "cost"
+      ],
+      "content": {
+        "prompt": "API 비용 계산에 보통 들어가는 토큰은?",
+        "options": [
+          "입력 토큰만",
+          "출력 토큰만",
+          "입력과 출력 토큰"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "사용량과 비용은 보통 입력 토큰과 출력 토큰 수를 함께 계산한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokencost-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "token",
+        "cost"
+      ],
+      "content": {
+        "prompt": "LLM API 사용량은 보통 입력과 ___ 토큰 수로 계산된다.",
+        "hint": "모델이 생성한 쪽"
+      },
+      "answer_key": {
+        "accepted": [
+          "출력",
+          "output",
+          "아웃풋"
+        ]
+      },
+      "explanation": "LLM API 사용량과 비용은 보통 입력 토큰과 출력 토큰 수로 계산된다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokencost-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "token-count",
+        "tokenizer"
+      ],
+      "content": {
+        "prompt": "토큰 수는 해당 모델의 ___로 세어 확인한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "토크나이저",
+          "tokenizer"
+        ]
+      },
+      "explanation": "토크나이저가 모델마다 달라 같은 문장도 토큰 수가 다르므로, 해당 모델의 토크나이저로 센다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokencost-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "token",
+        "cost"
+      ],
+      "content": {
+        "prompt": "입력 300토큰, 출력 200토큰인 요청의 전체 토큰 수는?",
+        "options": [
+          "200",
+          "300",
+          "500"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "사용량은 입력과 출력 토큰을 함께 세므로 300 + 200 = 500토큰이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokencost-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "token",
+        "cost"
+      ],
+      "content": {
+        "prompt": "토큰당 입력 1원·출력 3원일 때 입력 100·출력 50토큰의 비용은?",
+        "options": [
+          "150원",
+          "250원",
+          "400원"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "입력 100 × 1원 = 100원, 출력 50 × 3원 = 150원이므로 합계 250원이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokencost-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "token",
+        "cost"
+      ],
+      "content": {
+        "prompt": "매 요청에 긴 문서를 함께 보낼 때 비용을 크게 키우는 쪽은?",
+        "options": [
+          "입력 토큰",
+          "출력 토큰"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "함께 보낸 문서는 모두 입력 토큰으로 세어지므로 입력 토큰이 비용을 키운다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokencost-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "token",
+        "cost"
+      ],
+      "content": {
+        "prompt": "응답의 출력 토큰이 늘면 API 비용도 늘어난다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "LLM API 비용은 보통 입력과 출력 토큰 수로 계산되므로 출력 토큰이 늘면 비용도 늘어난다.",
+      "refs": []
+    }
+  ]
+}

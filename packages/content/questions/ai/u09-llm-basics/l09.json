@@ -1,0 +1,213 @@
+{
+  "track": "ai",
+  "unit": "u09-llm-basics",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "ai-llm-basics-review-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "generation",
+        "llm"
+      ],
+      "content": {
+        "prompt": "다음 토큰 확률을 계산해 하나씩 이어 붙이는 생성 방식은?",
+        "options": [
+          "자기회귀 생성",
+          "사전학습",
+          "파인튜닝"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "LLM은 다음 토큰 확률을 계산해 토큰을 하나씩 이어 붙이는 자기회귀 생성으로 텍스트를 만든다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-basics-review-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "stateless",
+        "llm"
+      ],
+      "content": {
+        "prompt": "LLM이 이전 요청을 스스로 기억하지 않는 성질은?",
+        "options": [
+          "그리디 디코딩",
+          "상태 없는 호출",
+          "서브워드 분할"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "LLM 호출은 상태가 없어 이전 요청을 기억하지 않으므로 필요한 이력을 매번 입력에 넣는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-basics-review-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "top-p",
+        "generation-settings"
+      ],
+      "content": {
+        "prompt": "샘플링 후보를 누적 확률로 제한하는 설정은?",
+        "options": [
+          "top-k",
+          "top-p",
+          "temperature"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "top-p는 누적 확률이 p에 닿을 때까지의 토큰만 남긴다. top-k는 개수, temperature는 분포 모양을 조절한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-basics-review-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "temperature",
+        "generation-settings"
+      ],
+      "content": {
+        "prompt": "temperature를 높이면 출력이 더 일정해진다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "temperature를 높이면 분포가 평평해져 출력이 다양해진다. 일정한 출력에는 낮은 temperature를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-basics-review-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "token",
+        "cost"
+      ],
+      "content": {
+        "prompt": "LLM의 길이 한도와 사용 비용은 ___ 수로 센다."
+      },
+      "answer_key": {
+        "accepted": [
+          "토큰",
+          "token"
+        ]
+      },
+      "explanation": "컨텍스트 윈도와 API 사용량은 모두 토큰 수를 기준으로 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-basics-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "temperature",
+        "generation-settings"
+      ],
+      "content": {
+        "prompt": "분류처럼 일관된 답이 필요하면 temperature를 ___ 설정한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "낮게",
+          "작게"
+        ]
+      },
+      "explanation": "낮은 temperature는 높은 확률 토큰에 몰려 출력이 일정하므로 분류처럼 일관성이 중요한 작업에 맞다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-basics-review-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "temperature",
+        "generation-settings"
+      ],
+      "content": {
+        "prompt": "같은 FAQ 질문에 매번 같은 답을 원할 때 알맞은 설정은?",
+        "options": [
+          "높은 temperature",
+          "낮은 temperature",
+          "높은 top-p"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "낮은 temperature는 출력을 일정하게 만든다. 높은 temperature와 높은 top-p는 다양성을 키운다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-basics-review-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "context-window",
+        "chat-history"
+      ],
+      "content": {
+        "prompt": "대화가 길어져 컨텍스트 윈도를 넘게 됐다. 필요한 조치는?",
+        "options": [
+          "temperature 올리기",
+          "출력 길이 늘리기",
+          "오래된 대화 자르기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "컨텍스트 윈도를 넘는 요청은 거절되므로 입력 일부, 예를 들어 오래된 대화를 잘라야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-basics-review-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "token",
+        "cost"
+      ],
+      "content": {
+        "prompt": "입력 1,000·출력 200토큰 요청을 10번 보내면 총 토큰 수는?",
+        "options": [
+          "1,200",
+          "10,200",
+          "12,000"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "요청 한 번에 1,000 + 200 = 1,200토큰이고, 10번이면 12,000토큰이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-basics-review-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "generation",
+        "llm"
+      ],
+      "content": {
+        "prompt": "LLM은 토큰을 하나씩 골라 이어 붙여 텍스트를 만든다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "LLM은 다음 토큰 확률을 계산해 하나를 고르고 입력에 붙이기를 반복해 텍스트를 만든다.",
+      "refs": []
+    }
+  ]
+}

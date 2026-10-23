@@ -1,0 +1,211 @@
+{
+  "track": "ai",
+  "unit": "u10-llm-usage",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ai-llmuse-reasoning-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "step-by-step",
+        "reasoning"
+      ],
+      "content": {
+        "prompt": "답 전에 풀이 과정을 쓰게 하는 방법은?",
+        "options": [
+          "단계적 추론",
+          "작업 분할",
+          "퓨샷"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "단계적 추론은 답 전에 풀이 과정을 쓰게 해 다단계 문제의 정확도를 높이는 방법이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-reasoning-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "task-decomposition",
+        "reasoning"
+      ],
+      "content": {
+        "prompt": "큰 작업을 여러 번의 호출로 나누는 방법은?",
+        "options": [
+          "단계적 추론",
+          "작업 분할",
+          "샘플링"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "작업 분할은 큰 작업을 여러 번의 호출로 나누고 각 단계 결과를 다음 입력에 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-reasoning-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "reasoning-cost",
+        "token"
+      ],
+      "content": {
+        "prompt": "풀이 과정을 쓰게 하면 늘어나는 것은?",
+        "options": [
+          "입력 토큰",
+          "어휘 수",
+          "출력 토큰"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "풀이 과정도 모델이 생성하는 텍스트이므로 출력 토큰이 늘어 비용과 지연이 커진다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-reasoning-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "reasoning-cost",
+        "token"
+      ],
+      "content": {
+        "prompt": "풀이 과정을 쓰게 하면 출력 토큰이 줄어 비용이 준다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "풀이 과정을 쓰게 하면 출력 토큰이 늘어나 비용과 지연이 커진다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-reasoning-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "step-by-step",
+        "reasoning"
+      ],
+      "content": {
+        "prompt": "답 전에 풀이 과정을 쓰게 하는 것은 ___ 추론이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "단계적",
+          "단계별"
+        ]
+      },
+      "explanation": "단계적 추론은 답 전에 풀이 과정을 쓰게 해 다단계 문제의 정확도를 높인다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-reasoning-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "task-decomposition",
+        "reasoning"
+      ],
+      "content": {
+        "prompt": "큰 작업을 여러 호출로 나누는 것을 작업 ___이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "분할",
+          "분해"
+        ]
+      },
+      "explanation": "작업 분할은 큰 작업을 여러 번의 호출로 나누고 각 단계 결과를 다음 입력으로 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-reasoning-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "step-by-step",
+        "reasoning"
+      ],
+      "content": {
+        "prompt": "조건이 많은 계산 문제의 정확도를 높이려면?",
+        "options": [
+          "답만 바로 쓰게 하기",
+          "풀이 먼저 쓰게 하기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "답 전에 풀이 과정을 쓰게 하면 다단계 문제의 정확도가 오르는 경우가 많다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-reasoning-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "task-decomposition",
+        "reasoning"
+      ],
+      "content": {
+        "prompt": "'번역→용어 점검→요약'을 호출 3번으로 나눴다. 이것은?",
+        "options": [
+          "퓨샷",
+          "지시 튜닝",
+          "작업 분할"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "큰 작업을 여러 번의 호출로 나누고 앞 단계 결과를 다음 입력에 쓰는 것은 작업 분할이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-reasoning-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "reasoning-cost",
+        "latency"
+      ],
+      "content": {
+        "prompt": "응답 지연을 줄여야 하는 단순 분류에 알맞은 것은?",
+        "options": [
+          "풀이 없이 답만",
+          "긴 풀이 먼저"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "풀이 과정을 쓰게 하면 출력 토큰이 늘어 지연이 커진다. 단순 작업은 답만 받는 편이 낫다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-reasoning-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "step-by-step",
+        "reasoning"
+      ],
+      "content": {
+        "prompt": "단계적 추론은 다단계 문제의 정확도를 높이는 경우가 많다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "답 전에 풀이 과정을 쓰게 하면 다단계 문제의 정확도가 오르는 경우가 많다.",
+      "refs": []
+    }
+  ]
+}

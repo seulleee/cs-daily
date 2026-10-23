@@ -1,0 +1,220 @@
+{
+  "track": "ai",
+  "unit": "u09-llm-basics",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ai-llm-tokenizer-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "token",
+        "tokenizer"
+      ],
+      "content": {
+        "prompt": "모델이 텍스트를 처리하는 단위는?",
+        "options": [
+          "토큰",
+          "픽셀",
+          "배치"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "토큰은 모델이 텍스트를 처리하는 단위로, 단어 전체·단어 조각·문자 등이 될 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokenizer-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tokenizer",
+        "token-id"
+      ],
+      "content": {
+        "prompt": "텍스트를 토큰으로 나누고 정수 ID로 바꾸는 도구는?",
+        "options": [
+          "토크나이저",
+          "옵티마이저",
+          "활성화 함수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "토크나이저는 텍스트를 토큰으로 나누고 각 토큰을 정수 ID로 바꾼다. 옵티마이저는 가중치를 갱신하는 도구다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokenizer-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "subword",
+        "tokenizer"
+      ],
+      "content": {
+        "prompt": "자주 나오는 문자열은 한 토큰, 드문 단어는 조각으로 나누는 방식은?",
+        "options": [
+          "단어 단위 분할",
+          "서브워드 분할",
+          "문장 단위 분할"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "서브워드 분할은 자주 나오는 문자열을 한 토큰으로, 드문 단어를 여러 조각으로 나눈다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokenizer-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "token",
+        "subword"
+      ],
+      "content": {
+        "prompt": "토큰은 단어 하나와 같은 단위로 정해져 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "토큰은 단어 전체일 수도 있지만 단어 조각이나 문자 하나일 수도 있다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokenizer-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tokenizer",
+        "token-id"
+      ],
+      "content": {
+        "prompt": "토크나이저는 각 토큰을 정수 ___로 바꾼다.",
+        "hint": "토큰마다 붙는 고유 번호"
+      },
+      "answer_key": {
+        "accepted": [
+          "ID",
+          "아이디",
+          "id"
+        ]
+      },
+      "explanation": "토크나이저는 텍스트를 토큰으로 나눈 뒤 각 토큰을 정수 ID로 바꿔 모델 입력을 만든다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokenizer-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "subword",
+        "tokenizer"
+      ],
+      "content": {
+        "prompt": "드문 단어를 여러 조각으로 나누는 방식은 ___ 분할이다.",
+        "hint": "단어보다 작은 단위"
+      },
+      "answer_key": {
+        "accepted": [
+          "서브워드",
+          "subword",
+          "서브 워드"
+        ]
+      },
+      "explanation": "서브워드 분할은 드문 단어를 여러 조각으로, 자주 나오는 문자열은 한 토큰으로 나눈다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokenizer-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tokenizer",
+        "token-id"
+      ],
+      "content": {
+        "prompt": "모델에 실제로 입력되는 것은?",
+        "options": [
+          "원문 문자열",
+          "글자 이미지",
+          "토큰 ID 배열"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "토크나이저가 텍스트를 토큰으로 나누고 정수 ID로 바꾸므로 모델은 토큰 ID 배열을 입력으로 받는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokenizer-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "subword",
+        "token"
+      ],
+      "content": {
+        "prompt": "자주 쓰는 단어와 처음 보는 신조어 중 여러 토큰으로 나뉘기 쉬운 쪽은?",
+        "options": [
+          "자주 쓰는 단어",
+          "처음 보는 신조어"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "서브워드 분할은 드문 단어를 여러 조각으로 나눈다. 자주 쓰는 단어는 한 토큰이 되기 쉽다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokenizer-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "tokenizer",
+        "token-id"
+      ],
+      "content": {
+        "prompt": "토큰을 정수 ID로 바꾸는 코드다. 출력값은?",
+        "code": {
+          "language": "python",
+          "source": "vocab = {\"!\": 1, \"happy\": 3, \"un\": 7}\ntokens = [\"un\", \"happy\", \"!\"]\nids = [vocab[t] for t in tokens]\nprint(ids)"
+        },
+        "options": [
+          "[3, 7, 1]",
+          "[1, 3, 7]",
+          "[7, 3, 1]"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "각 토큰을 vocab에서 찾아 순서대로 ID로 바꾸므로 un→7, happy→3, !→1이 된다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-tokenizer-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "token",
+        "subword"
+      ],
+      "content": {
+        "prompt": "단어 조각이나 문자 하나도 토큰이 될 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "토큰은 모델이 텍스트를 처리하는 단위로, 단어 전체·단어 조각·문자 모두 될 수 있다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "track": "ai",
+  "unit": "u10-llm-usage",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ai-llmuse-funccall-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "function-calling",
+        "tool"
+      ],
+      "content": {
+        "prompt": "모델이 실행할 함수 이름과 인자를 JSON으로 돌려주는 기능은?",
+        "options": [
+          "퓨샷",
+          "함수 호출",
+          "구분자"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "함수 호출은 모델이 실행할 함수 이름과 인자를 JSON으로 돌려주고, 실행은 애플리케이션이 하는 방식이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-funccall-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tool-definition",
+        "function-calling"
+      ],
+      "content": {
+        "prompt": "함수 이름·설명·인자 스키마를 모델 입력에 함께 보내는 것은?",
+        "options": [
+          "툴 정의",
+          "결과 전달",
+          "작업 분할"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "툴 정의는 함수 이름·설명·인자 스키마를 모델 입력에 함께 보내 쓸 수 있는 함수를 알려 준다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-funccall-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "function-calling",
+        "tool"
+      ],
+      "content": {
+        "prompt": "함수 호출에서 함수 실행은 모델이 직접 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "모델은 함수 이름과 인자를 JSON으로 돌려줄 뿐이고, 실제 실행은 애플리케이션이 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-funccall-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tool-result",
+        "function-calling"
+      ],
+      "content": {
+        "prompt": "함수를 실행한 뒤 최종 답을 생성하게 하려면?",
+        "options": [
+          "모델 재학습",
+          "툴 정의 삭제",
+          "결과를 입력에 넣기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "실행 결과를 다시 모델 입력에 넣으면 모델이 그 결과를 바탕으로 최종 답을 생성한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-funccall-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tool-result",
+        "function-calling"
+      ],
+      "content": {
+        "prompt": "실행 결과를 다시 모델 입력에 넣는 단계는 결과 ___이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "전달"
+        ]
+      },
+      "explanation": "결과 전달은 함수 실행 결과를 다시 모델 입력에 넣어 최종 답을 생성하게 하는 단계다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-funccall-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "tool-definition",
+        "function-calling"
+      ],
+      "content": {
+        "prompt": "함수 이름·설명·인자 스키마를 모델에 보내는 것을 툴 ___라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "정의",
+          "definition"
+        ]
+      },
+      "explanation": "툴 정의는 함수 이름·설명·인자 스키마를 모델 입력에 함께 보내는 것이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-funccall-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "function-calling",
+        "tool-result"
+      ],
+      "content": {
+        "prompt": "A 모델 호출 요청, B 앱 실행, C 결과 전달. 올바른 순서는?",
+        "options": [
+          "A→B→C",
+          "B→A→C",
+          "A→C→B"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "모델이 호출을 요청하면 애플리케이션이 실행하고, 그 결과를 모델 입력에 넣어 최종 답을 받는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-funccall-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "function-calling",
+        "tool"
+      ],
+      "content": {
+        "prompt": "앱이 모델의 호출 요청을 실행하는 코드다. 출력값은?",
+        "code": {
+          "language": "python",
+          "source": "def get_order(order_id):\n    return {\"id\": order_id, \"status\": \"배송중\"}\n\ncall = {\"name\": \"get_order\",\n        \"args\": {\"order_id\": 42}}\ntools = {\"get_order\": get_order}\nfn = tools[call[\"name\"]]\nresult = fn(**call[\"args\"])\nprint(result[\"status\"])"
+        },
+        "options": [
+          "get_order",
+          "42",
+          "배송중"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "call의 name으로 함수를 찾고 args를 인자로 넣어 실행하므로 status인 배송중이 출력된다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-funccall-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "function-calling",
+        "tool"
+      ],
+      "content": {
+        "prompt": "'42번 주문 배송 상태는?'에 모델이 먼저 돌려주는 것은?",
+        "options": [
+          "함수 이름과 인자",
+          "DB 조회 결과"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "모델은 DB에 접근하지 못하고 실행할 함수 이름과 인자를 돌려준다. 조회는 애플리케이션이 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-funccall-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "function-calling",
+        "json"
+      ],
+      "content": {
+        "prompt": "함수 호출 응답에는 부를 함수의 이름과 인자가 담긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "함수 호출에서 모델은 함수 이름과 인자를 JSON으로 돌려주고, 실행은 애플리케이션이 맡는다.",
+      "refs": []
+    }
+  ]
+}

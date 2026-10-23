@@ -1,0 +1,218 @@
+{
+  "track": "ai",
+  "unit": "u09-llm-basics",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "ai-llm-decoding-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "greedy-decoding",
+        "decoding"
+      ],
+      "content": {
+        "prompt": "매번 확률이 가장 높은 토큰을 고르는 방식은?",
+        "options": [
+          "샘플링",
+          "그리디 디코딩",
+          "역전파"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "그리디 디코딩은 매 단계 확률이 가장 높은 토큰을 고른다. 샘플링은 확률에 따라 무작위로 뽑는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-decoding-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sampling",
+        "decoding"
+      ],
+      "content": {
+        "prompt": "확률 분포에 따라 무작위로 토큰을 뽑는 방식은?",
+        "options": [
+          "샘플링",
+          "그리디 디코딩",
+          "드롭아웃"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "샘플링은 확률 분포에 따라 무작위로 토큰을 뽑으므로 매번 다른 출력이 나올 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-decoding-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "softmax",
+        "token-probability"
+      ],
+      "content": {
+        "prompt": "모델이 토큰 점수를 확률로 바꿀 때 쓰는 함수는?",
+        "options": [
+          "ReLU",
+          "MSE",
+          "소프트맥스"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "모델은 어휘의 모든 토큰에 점수를 내고 소프트맥스로 확률을 만든다. ReLU는 활성화 함수, MSE는 손실 함수다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-decoding-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "greedy-decoding",
+        "sampling"
+      ],
+      "content": {
+        "prompt": "그리디 디코딩은 같은 입력에도 매번 다른 출력을 낸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "그리디 디코딩은 항상 확률이 가장 높은 토큰을 고르므로 같은 입력이면 같은 출력이 나온다. 매번 다른 출력은 샘플링의 특징이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-decoding-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "greedy-decoding",
+        "decoding"
+      ],
+      "content": {
+        "prompt": "___ 디코딩은 후보 중 확률 1위 토큰을 고른다."
+      },
+      "answer_key": {
+        "accepted": [
+          "그리디",
+          "greedy",
+          "탐욕"
+        ]
+      },
+      "explanation": "그리디 디코딩은 매 단계 확률이 가장 높은 토큰 하나를 고른다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-decoding-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sampling",
+        "decoding"
+      ],
+      "content": {
+        "prompt": "호출마다 다른 출력이 나올 수 있는 선택 방식은 ___이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "샘플링",
+          "sampling",
+          "표집"
+        ]
+      },
+      "explanation": "샘플링은 확률이 높은 토큰일수록 자주 뽑히지만 무작위라 출력이 매번 달라질 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-decoding-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "greedy-decoding",
+        "token-probability"
+      ],
+      "content": {
+        "prompt": "후보 확률이 A 0.5, B 0.3, C 0.2일 때 그리디가 고르는 토큰은?",
+        "options": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "그리디 디코딩은 확률이 가장 높은 토큰을 고르므로 0.5인 A를 고른다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-decoding-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "greedy-decoding",
+        "numpy"
+      ],
+      "content": {
+        "prompt": "그리디 디코딩 한 단계를 흉내 낸 코드다. 출력값은?",
+        "code": {
+          "language": "python",
+          "source": "import numpy as np\ntokens = [\"cat\", \"dog\", \"fox\"]\nprobs = np.array([0.2, 0.7, 0.1])\nprint(tokens[np.argmax(probs)])"
+        },
+        "options": [
+          "cat",
+          "dog",
+          "fox"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "np.argmax는 가장 큰 값의 위치를 돌려준다. 확률 0.7이 가장 크므로 dog가 출력된다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-decoding-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sampling",
+        "decoding"
+      ],
+      "content": {
+        "prompt": "같은 질문에 호출마다 다른 답이 나온다. 쓰인 방식은?",
+        "options": [
+          "그리디 디코딩",
+          "샘플링"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "샘플링은 확률 분포에 따라 무작위로 뽑아 매번 다른 출력이 나올 수 있다. 그리디는 같은 출력을 낸다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-decoding-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "greedy-decoding",
+        "decoding"
+      ],
+      "content": {
+        "prompt": "그리디 디코딩은 후보 중 확률이 가장 높은 토큰을 고른다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "그리디 디코딩은 매 단계 확률이 가장 높은 토큰을 고른다.",
+      "refs": []
+    }
+  ]
+}
