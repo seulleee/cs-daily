@@ -1,0 +1,238 @@
+{
+  "track": "ai",
+  "unit": "u05-trees-ensembles",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ai-ensemble-basics-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ensemble"
+      ],
+      "content": {
+        "prompt": "여러 모델의 예측을 합쳐 하나의 예측을 만드는 방법은?",
+        "options": [
+          "가지치기",
+          "교차 검증",
+          "앙상블"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "앙상블은 여러 모델의 예측을 합쳐 하나의 예측을 만드는 방법이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Ensemble_learning",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-basics-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ensemble",
+        "voting"
+      ],
+      "content": {
+        "prompt": "분류 앙상블이 예측을 합치는 기본 방식은?",
+        "options": [
+          "다수결 투표",
+          "곱셈",
+          "최댓값"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "분류는 모델들이 낸 클래스 중 가장 많이 나온 것을 고르는 다수결로 합친다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Ensemble_learning",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-basics-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ensemble",
+        "averaging"
+      ],
+      "content": {
+        "prompt": "회귀 앙상블이 예측을 합치는 기본 방식은?",
+        "options": [
+          "다수결 투표",
+          "평균"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "회귀는 숫자를 예측하므로 모델들의 예측값을 평균 내어 합친다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Ensemble_learning",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-basics-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ensemble",
+        "diversity"
+      ],
+      "content": {
+        "prompt": "모델들이 모두 같은 실수를 할수록 앙상블 효과가 크다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "같은 실수를 하면 합쳐도 그 실수가 남는다. 서로 다른 실수를 할수록 효과가 크다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Ensemble_learning",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-basics-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ensemble"
+      ],
+      "content": {
+        "prompt": "여러 모델의 예측을 합치는 방법을 ___ 이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "앙상블",
+          "ensemble",
+          "앙상블 학습"
+        ]
+      },
+      "explanation": "앙상블은 여러 모델의 예측을 투표나 평균으로 합쳐 하나의 예측을 만든다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Ensemble_learning",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-basics-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ensemble",
+        "diversity"
+      ],
+      "content": {
+        "prompt": "모델들이 서로 다른 실수를 하는 성질을 ___ 이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "다양성",
+          "diversity"
+        ]
+      },
+      "explanation": "모델들이 서로 다른 실수를 할수록, 즉 다양성이 클수록 합친 효과가 커진다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Ensemble_learning",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-basics-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "voting",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "세 분류 모델이 A, B, A로 예측했다. 투표 결과는?",
+        "options": [
+          "A",
+          "B",
+          "판정 불가"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "다수결이므로 두 표를 받은 A가 앙상블의 예측이 된다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Ensemble_learning",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-basics-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "averaging",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "세 회귀 모델 예측이 10, 14, 24다. 평균 앙상블 결과는?",
+        "options": [
+          "14",
+          "16",
+          "24"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "(10 + 14 + 24) / 3 = 16이다. 회귀 앙상블은 예측을 평균 낸다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Ensemble_learning",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-basics-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "diversity"
+      ],
+      "content": {
+        "prompt": "앙상블 효과가 더 큰 모델 묶음은?",
+        "options": [
+          "다른 샘플을 틀림",
+          "같은 샘플을 틀림"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "서로 다른 샘플을 틀리면 한 모델의 실수를 다른 모델들이 투표·평균으로 메워 준다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Ensemble_learning",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-basics-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ensemble"
+      ],
+      "content": {
+        "prompt": "앙상블은 여러 모델의 예측을 합쳐 하나의 예측을 만든다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "앙상블은 여러 모델의 예측을 분류는 투표, 회귀는 평균으로 합친다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Ensemble_learning",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    }
+  ]
+}

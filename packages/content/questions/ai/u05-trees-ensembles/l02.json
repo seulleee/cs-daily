@@ -1,0 +1,242 @@
+{
+  "track": "ai",
+  "unit": "u05-trees-ensembles",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ai-dtree-impurity-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "impurity",
+        "decision-tree"
+      ],
+      "content": {
+        "prompt": "한 노드 안에 여러 클래스가 섞여 있는 정도는?",
+        "options": [
+          "정확도",
+          "불순도",
+          "깊이"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "불순도는 한 노드 안에 여러 클래스가 얼마나 섞여 있는지를 나타낸다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-impurity-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "impurity",
+        "gini"
+      ],
+      "content": {
+        "prompt": "노드에서 두 번 뽑은 샘플의 클래스가 다를 확률은?",
+        "options": [
+          "교차 엔트로피",
+          "재현율",
+          "지니 불순도"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "지니 불순도는 노드에서 무작위로 두 번 뽑은 샘플의 클래스가 서로 다를 확률이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-impurity-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "impurity"
+      ],
+      "content": {
+        "prompt": "다음 중 불순도가 가장 낮은 노드는?",
+        "options": [
+          "A 10개·B 0개",
+          "A 5개·B 5개",
+          "A 7개·B 3개"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "한 클래스만 있는 노드는 섞인 정도가 없어 불순도가 가장 낮다. 5:5처럼 고르게 섞일수록 높다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-impurity-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "impurity",
+        "split"
+      ],
+      "content": {
+        "prompt": "좋은 분할은 나눈 뒤 불순도가 커지는 분할이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "분할은 나눈 뒤 불순도가 가장 많이 줄어드는 특징과 기준값을 고른다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-impurity-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "impurity"
+      ],
+      "content": {
+        "prompt": "노드에 여러 클래스가 섞인 정도를 ___ 라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "불순도",
+          "impurity",
+          "불순"
+        ]
+      },
+      "explanation": "불순도는 노드 안의 클래스가 섞인 정도이며, 한 클래스만 있으면 가장 낮다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-impurity-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "impurity",
+        "gini"
+      ],
+      "content": {
+        "prompt": "두 번 뽑은 샘플의 클래스가 다를 확률은 ___ 불순도다."
+      },
+      "answer_key": {
+        "accepted": [
+          "지니",
+          "gini",
+          "Gini"
+        ]
+      },
+      "explanation": "지니 불순도는 무작위로 두 번 뽑은 샘플의 클래스가 서로 다를 확률로 불순도를 잰다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-impurity-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "gini",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "A 5개·B 5개인 노드의 지니 불순도는?",
+        "options": [
+          "0",
+          "0.25",
+          "0.5"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "1 - (0.5² + 0.5²) = 0.5다. 두 클래스가 반반이면 두 번 뽑아 다를 확률이 가장 크다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-impurity-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "gini",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "A 8개·B 2개인 노드의 지니 불순도는?",
+        "options": [
+          "0.16",
+          "0.32",
+          "0.5"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "1 - (0.8² + 0.2²) = 1 - 0.68 = 0.32다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-impurity-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "impurity",
+        "split"
+      ],
+      "content": {
+        "prompt": "분할 X는 불순도를 0.1, Y는 0.3 줄인다. 고를 분할은?",
+        "options": [
+          "X",
+          "Y",
+          "둘 다 안 고름"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "분할은 불순도가 가장 많이 줄어드는 것을 고르므로 0.3을 줄이는 Y를 택한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-impurity-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "impurity"
+      ],
+      "content": {
+        "prompt": "모든 샘플이 한 클래스인 노드는 불순도가 0이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "클래스가 하나뿐이면 섞인 정도가 없으므로 불순도는 0이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    }
+  ]
+}

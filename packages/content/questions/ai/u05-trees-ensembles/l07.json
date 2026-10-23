@@ -1,0 +1,239 @@
+{
+  "track": "ai",
+  "unit": "u05-trees-ensembles",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ai-ensemble-compare-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "feature-importance"
+      ],
+      "content": {
+        "prompt": "트리 앙상블이 각 특징을 분할에 얼마나 유용하게 썼는지 나타낸 값은?",
+        "options": [
+          "불순도",
+          "특징 중요도",
+          "잔차"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "특징 중요도는 앙상블이 각 특징을 분할에 얼마나 유용하게 썼는지 보여 주는 값이다.",
+      "refs": [
+        "https://scikit-learn.org/stable/modules/ensemble.html",
+        "https://en.wikipedia.org/wiki/Random_forest"
+      ]
+    },
+    {
+      "id": "ai-ensemble-compare-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bagging",
+        "variance"
+      ],
+      "content": {
+        "prompt": "독립 트리를 평균 내 예측의 분산을 줄이는 계열은?",
+        "options": [
+          "결정 트리 하나",
+          "부스팅 계열",
+          "배깅 계열"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "배깅 계열은 서로 독립적인 트리를 평균 내 예측이 흔들리는 정도(분산)를 줄인다.",
+      "refs": [
+        "https://scikit-learn.org/stable/modules/ensemble.html",
+        "https://en.wikipedia.org/wiki/Random_forest"
+      ]
+    },
+    {
+      "id": "ai-ensemble-compare-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "boosting",
+        "overfitting"
+      ],
+      "content": {
+        "prompt": "부스팅 계열은 반복이 많으면 과적합할 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "부스팅은 오차를 계속 줄여 가므로 반복이 많으면 학습 데이터의 잡음까지 맞춰 과적합한다.",
+      "refs": [
+        "https://scikit-learn.org/stable/modules/ensemble.html",
+        "https://en.wikipedia.org/wiki/Random_forest"
+      ]
+    },
+    {
+      "id": "ai-ensemble-compare-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "bagging",
+        "boosting"
+      ],
+      "content": {
+        "prompt": "배깅 계열은 순차적으로 오차를 줄여 정확도를 높인다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "순차적으로 오차를 줄이는 것은 부스팅 계열이다. 배깅 계열은 독립 트리를 평균 내 분산을 줄인다.",
+      "refs": [
+        "https://scikit-learn.org/stable/modules/ensemble.html",
+        "https://en.wikipedia.org/wiki/Random_forest"
+      ]
+    },
+    {
+      "id": "ai-ensemble-compare-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "bagging",
+        "variance"
+      ],
+      "content": {
+        "prompt": "배깅 계열은 예측이 흔들리는 정도인 ___ 을 줄인다."
+      },
+      "answer_key": {
+        "accepted": [
+          "분산",
+          "variance",
+          "베리언스"
+        ]
+      },
+      "explanation": "배깅 계열은 독립 트리들의 예측을 평균 내 예측의 분산을 줄인다.",
+      "refs": [
+        "https://scikit-learn.org/stable/modules/ensemble.html",
+        "https://en.wikipedia.org/wiki/Random_forest"
+      ]
+    },
+    {
+      "id": "ai-ensemble-compare-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "feature-importance"
+      ],
+      "content": {
+        "prompt": "특징을 분할에 얼마나 유용하게 썼는지 나타낸 값은 특징 ___ 다."
+      },
+      "answer_key": {
+        "accepted": [
+          "중요도",
+          "importance",
+          "feature importance"
+        ]
+      },
+      "explanation": "특징 중요도가 클수록 그 특징이 분할에 많이, 유용하게 쓰였다는 뜻이다.",
+      "refs": [
+        "https://scikit-learn.org/stable/modules/ensemble.html",
+        "https://en.wikipedia.org/wiki/Random_forest"
+      ]
+    },
+    {
+      "id": "ai-ensemble-compare-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "feature-importance"
+      ],
+      "content": {
+        "prompt": "특징 중요도가 A 0.6, B 0.3, C 0.1이다. 분할에 가장 유용했던 특징은?",
+        "options": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "중요도가 가장 큰 A가 분할에 가장 유용하게 쓰인 특징이다.",
+      "refs": [
+        "https://scikit-learn.org/stable/modules/ensemble.html",
+        "https://en.wikipedia.org/wiki/Random_forest"
+      ]
+    },
+    {
+      "id": "ai-ensemble-compare-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "boosting",
+        "overfitting"
+      ],
+      "content": {
+        "prompt": "부스팅 반복을 늘리자 학습 손실은 줄고 검증 손실이 오른다. 상태는?",
+        "options": [
+          "과소적합",
+          "과적합"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "부스팅은 반복이 많으면 과적합한다. 검증 손실이 오르기 시작하면 반복 수를 줄인다.",
+      "refs": [
+        "https://scikit-learn.org/stable/modules/ensemble.html",
+        "https://en.wikipedia.org/wiki/Random_forest"
+      ]
+    },
+    {
+      "id": "ai-ensemble-compare-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bagging",
+        "variance"
+      ],
+      "content": {
+        "prompt": "예측이 학습 데이터에 따라 크게 흔들린다. 고를 계열은?",
+        "options": [
+          "배깅 계열",
+          "부스팅 계열"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "예측이 흔들리는 정도가 분산이며, 독립 트리를 평균 내는 배깅 계열이 분산을 줄인다.",
+      "refs": [
+        "https://scikit-learn.org/stable/modules/ensemble.html",
+        "https://en.wikipedia.org/wiki/Random_forest"
+      ]
+    },
+    {
+      "id": "ai-ensemble-compare-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "feature-importance"
+      ],
+      "content": {
+        "prompt": "특징 중요도가 0에 가까운 특징의 뜻은?",
+        "options": [
+          "분할에 거의 안 쓰임",
+          "레이블과 같음",
+          "결측값이 많음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "특징 중요도는 분할에 얼마나 유용하게 쓰였는지이므로 0에 가까우면 거의 쓰이지 않았다는 뜻이다.",
+      "refs": [
+        "https://scikit-learn.org/stable/modules/ensemble.html",
+        "https://en.wikipedia.org/wiki/Random_forest"
+      ]
+    }
+  ]
+}

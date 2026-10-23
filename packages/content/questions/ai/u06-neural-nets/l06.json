@@ -1,0 +1,240 @@
+{
+  "track": "ai",
+  "unit": "u06-neural-nets",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ai-nn-optimizer-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "optimizer"
+      ],
+      "content": {
+        "prompt": "기울기로 가중치를 어떻게 갱신할지 정하는 알고리즘은?",
+        "options": [
+          "활성화 함수",
+          "손실 함수",
+          "옵티마이저"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "옵티마이저는 계산된 기울기로 가중치를 어떻게 갱신할지 정하는 알고리즘이다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/optim.html",
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-optimizer-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "adam",
+        "optimizer"
+      ],
+      "content": {
+        "prompt": "모멘텀과 파라미터별 학습률 조정을 함께 쓰는 옵티마이저는?",
+        "options": [
+          "Adam",
+          "SGD",
+          "ReLU"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Adam은 모멘텀과 파라미터별 학습률 조정을 함께 쓴다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/optim.html",
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-optimizer-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sgd",
+        "optimizer"
+      ],
+      "content": {
+        "prompt": "기울기에 학습률을 곱한 만큼 그대로 갱신하는 기본 방식은?",
+        "options": [
+          "Adam",
+          "SGD",
+          "모멘텀"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SGD는 기울기에 학습률을 곱한 만큼 가중치에서 빼는 기본 방식이다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/optim.html",
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-optimizer-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sgd",
+        "momentum"
+      ],
+      "content": {
+        "prompt": "SGD는 이전 갱신 방향을 누적해 진동을 줄인다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "이전 갱신 방향을 누적하는 것은 모멘텀이다. SGD는 지금 기울기에 학습률을 곱한 만큼만 갱신한다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/optim.html",
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-optimizer-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "momentum"
+      ],
+      "content": {
+        "prompt": "이전 갱신 방향을 누적해 진동을 줄이는 기법은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "모멘텀",
+          "momentum",
+          "Momentum"
+        ]
+      },
+      "explanation": "모멘텀은 이전 갱신 방향을 누적해 방향이 오락가락하는 진동을 줄이고 학습을 빠르게 한다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/optim.html",
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-optimizer-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "adam"
+      ],
+      "content": {
+        "prompt": "파라미터별 학습률 조정과 모멘텀을 함께 쓰는 옵티마이저는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Adam",
+          "adam",
+          "ADAM",
+          "아담"
+        ]
+      },
+      "explanation": "Adam은 모멘텀에 더해 가중치마다 갱신 크기를 자동으로 조절한다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/optim.html",
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-optimizer-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sgd",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "SGD로 가중치 2.0, 기울기 4, 학습률 0.1이면 갱신 후 가중치는?",
+        "options": [
+          "1.6",
+          "2.4",
+          "1.0"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SGD는 기울기 × 학습률만큼 빼므로 2.0 - 4 × 0.1 = 1.6이다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/optim.html",
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-optimizer-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "momentum"
+      ],
+      "content": {
+        "prompt": "갱신 방향이 매번 반대로 바뀌며 진동한다. 도움이 될 것은?",
+        "options": [
+          "가지치기",
+          "원-핫 인코딩",
+          "모멘텀"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "모멘텀은 이전 갱신 방향을 누적해 반대 방향으로 오가는 진동을 줄인다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/optim.html",
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-optimizer-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "adam",
+        "optimizer"
+      ],
+      "content": {
+        "prompt": "가중치마다 기울기 크기가 크게 다르다. 알맞은 옵티마이저는?",
+        "options": [
+          "SGD",
+          "Adam"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Adam은 파라미터별로 학습률을 조정하므로 기울기 크기가 제각각이어도 갱신 크기를 맞춰 준다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/optim.html",
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-optimizer-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "optimizer"
+      ],
+      "content": {
+        "prompt": "옵티마이저는 기울기로 가중치를 어떻게 갱신할지 정한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "옵티마이저는 SGD·모멘텀·Adam처럼 기울기로 가중치를 갱신하는 규칙을 정한다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/optim.html",
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    }
+  ]
+}

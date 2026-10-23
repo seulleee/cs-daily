@@ -1,0 +1,230 @@
+{
+  "track": "ai",
+  "unit": "u06-neural-nets",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "ai-nn-batch-epoch-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "epoch"
+      ],
+      "content": {
+        "prompt": "학습 데이터 전체를 한 번 다 사용한 학습 단위는?",
+        "options": [
+          "반복",
+          "배치",
+          "에폭"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "에폭은 학습 데이터 전체를 한 번 다 사용한 학습 단위다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-batch-epoch-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "batch-size"
+      ],
+      "content": {
+        "prompt": "가중치를 한 번 갱신할 때 쓰는 샘플 수는?",
+        "options": [
+          "배치 크기",
+          "에폭 수",
+          "학습률"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "배치 크기는 가중치를 한 번 갱신할 때 기울기 계산에 쓰는 샘플 수다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-batch-epoch-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "iteration",
+        "epoch"
+      ],
+      "content": {
+        "prompt": "'갱신 한 번'을 세는 단위는?",
+        "options": [
+          "반복",
+          "에폭"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "반복(iteration)은 갱신 한 번이고, 에폭은 전체 데이터를 한 번 다 쓰는 단위다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-batch-epoch-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "batch-size",
+        "iteration"
+      ],
+      "content": {
+        "prompt": "배치 크기는 한 에폭 동안 가중치를 갱신하는 횟수다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "배치 크기는 갱신 한 번에 쓰는 샘플 수다. 한 에폭의 갱신 횟수는 반복 수다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-batch-epoch-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "epoch"
+      ],
+      "content": {
+        "prompt": "학습 데이터 전체를 한 번 다 사용한 단위는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "에폭",
+          "epoch",
+          "에포크",
+          "Epoch"
+        ]
+      },
+      "explanation": "에폭 하나가 끝나면 모든 학습 샘플이 한 번씩 갱신에 쓰인 것이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-batch-epoch-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "iteration"
+      ],
+      "content": {
+        "prompt": "한 에폭의 갱신 횟수(샘플 수 ÷ 배치 크기)는 ___ 수다."
+      },
+      "answer_key": {
+        "accepted": [
+          "반복",
+          "iteration",
+          "이터레이션"
+        ]
+      },
+      "explanation": "반복 수는 한 에폭 동안의 갱신 횟수로, 샘플 수를 배치 크기로 나눠 구한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-batch-epoch-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "iteration",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "샘플 1,000개, 배치 크기 100이면 한 에폭의 반복 수는?",
+        "options": [
+          "10",
+          "100",
+          "1000"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "반복 수 = 샘플 수 ÷ 배치 크기 = 1,000 ÷ 100 = 10이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-batch-epoch-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "iteration",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "샘플 600개, 배치 크기 50으로 3에폭 학습하면 총 갱신 횟수는?",
+        "options": [
+          "12",
+          "36",
+          "150"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "한 에폭에 600 ÷ 50 = 12번 갱신하고 3에폭이므로 12 × 3 = 36번이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-batch-epoch-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "batch-size",
+        "iteration"
+      ],
+      "content": {
+        "prompt": "같은 데이터에서 배치 크기를 2배로 키우면 에폭당 반복 수는?",
+        "options": [
+          "2배가 된다",
+          "절반이 된다",
+          "그대로다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "반복 수 = 샘플 수 ÷ 배치 크기이므로 배치 크기가 2배면 반복 수는 절반이 된다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    },
+    {
+      "id": "ai-nn-batch-epoch-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "epoch"
+      ],
+      "content": {
+        "prompt": "에폭 5는 학습 데이터 전체를 5번 사용했다는 뜻이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "에폭은 학습 데이터 전체를 한 번 다 쓰는 단위이므로 에폭 5는 전체 데이터를 5번 사용한 것이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Stochastic_gradient_descent"
+      ]
+    }
+  ]
+}

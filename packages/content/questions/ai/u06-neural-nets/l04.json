@@ -1,0 +1,241 @@
+{
+  "track": "ai",
+  "unit": "u06-neural-nets",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ai-nn-backprop-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "backpropagation"
+      ],
+      "content": {
+        "prompt": "손실에서 시작해 층을 거꾸로 지나며 기울기를 구하는 것은?",
+        "options": [
+          "순전파",
+          "가지치기",
+          "역전파"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "역전파는 출력의 손실에서 시작해 층을 거꾸로 지나며 각 가중치의 기울기를 계산한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Backpropagation",
+        "https://en.wikipedia.org/wiki/Chain_rule"
+      ]
+    },
+    {
+      "id": "ai-nn-backprop-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "chain-rule"
+      ],
+      "content": {
+        "prompt": "합성 함수의 미분을 각 단계 미분의 곱으로 구하는 규칙은?",
+        "options": [
+          "연쇄 법칙",
+          "소프트맥스",
+          "경사 하강법"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "연쇄 법칙은 합성 함수의 미분을 각 단계 미분의 곱으로 구하는 규칙이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Backpropagation",
+        "https://en.wikipedia.org/wiki/Chain_rule"
+      ]
+    },
+    {
+      "id": "ai-nn-backprop-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "backpropagation"
+      ],
+      "content": {
+        "prompt": "역전파는 출력 쪽 손실에서 시작해 입력 쪽으로 거꾸로 계산한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "역전파는 손실에서 출발해 출력층에서 입력층 방향으로 층을 거꾸로 지나며 기울기를 구한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Backpropagation",
+        "https://en.wikipedia.org/wiki/Chain_rule"
+      ]
+    },
+    {
+      "id": "ai-nn-backprop-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "backpropagation",
+        "weight-update"
+      ],
+      "content": {
+        "prompt": "역전파는 기울기를 구하면서 가중치 갱신까지 직접 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "역전파는 기울기를 계산하는 과정이다. 가중치는 그 기울기로 경사 하강법을 적용해 따로 고친다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Backpropagation",
+        "https://en.wikipedia.org/wiki/Chain_rule"
+      ]
+    },
+    {
+      "id": "ai-nn-backprop-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "chain-rule"
+      ],
+      "content": {
+        "prompt": "합성 함수 미분을 단계별 미분의 곱으로 구하는 규칙은 ___ 법칙이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "연쇄",
+          "chain",
+          "체인",
+          "연쇄 법칙",
+          "chain rule"
+        ]
+      },
+      "explanation": "연쇄 법칙으로 뒤 층에서 구한 미분을 앞 층으로 넘겨 곱하며 기울기를 구한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Backpropagation",
+        "https://en.wikipedia.org/wiki/Chain_rule"
+      ]
+    },
+    {
+      "id": "ai-nn-backprop-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "weight-update"
+      ],
+      "content": {
+        "prompt": "역전파로 구한 기울기로 가중치를 고치는 방법은 경사 ___ 법이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "하강",
+          "descent",
+          "디센트"
+        ]
+      },
+      "explanation": "역전파는 기울기만 구하고, 가중치는 경사 하강법으로 기울기의 반대 방향으로 고친다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Backpropagation",
+        "https://en.wikipedia.org/wiki/Chain_rule"
+      ]
+    },
+    {
+      "id": "ai-nn-backprop-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "chain-rule",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "y = 3u, u = 2x일 때 dy/dx는?",
+        "options": [
+          "5",
+          "6",
+          "9"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "연쇄 법칙으로 dy/du × du/dx = 3 × 2 = 6이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Backpropagation",
+        "https://en.wikipedia.org/wiki/Chain_rule"
+      ]
+    },
+    {
+      "id": "ai-nn-backprop-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "chain-rule",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "dL/dz = 2, dz/dw = 4일 때 dL/dw는?",
+        "options": [
+          "2",
+          "6",
+          "8"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "연쇄 법칙으로 두 단계 미분을 곱해 2 × 4 = 8이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Backpropagation",
+        "https://en.wikipedia.org/wiki/Chain_rule"
+      ]
+    },
+    {
+      "id": "ai-nn-backprop-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "weight-update",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "가중치 1.0, 기울기 0.5, 학습률 0.1이다. 갱신 후 가중치는?",
+        "options": [
+          "0.95",
+          "1.05",
+          "0.5"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "경사 하강법은 기울기 반대 방향으로 고치므로 1.0 - 0.1 × 0.5 = 0.95다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Backpropagation",
+        "https://en.wikipedia.org/wiki/Chain_rule"
+      ]
+    },
+    {
+      "id": "ai-nn-backprop-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "backpropagation"
+      ],
+      "content": {
+        "prompt": "역전파가 계산해 내는 것은?",
+        "options": [
+          "예측값",
+          "가중치별 기울기",
+          "새 특징"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "역전파는 손실에서 거꾸로 계산해 각 가중치에 대한 손실의 기울기를 구한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Backpropagation",
+        "https://en.wikipedia.org/wiki/Chain_rule"
+      ]
+    }
+  ]
+}

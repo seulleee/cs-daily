@@ -1,0 +1,247 @@
+{
+  "track": "ai",
+  "unit": "u05-trees-ensembles",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "ai-ensemble-bagging-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "bagging",
+        "ensemble"
+      ],
+      "content": {
+        "prompt": "중복 허용으로 다시 뽑은 표본마다 모델을 학습해 합치는 것은?",
+        "options": [
+          "가지치기",
+          "배깅",
+          "노드 분할"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "배깅은 중복을 허용해 다시 뽑은 표본마다 모델을 따로 학습시켜 예측을 합친다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bootstrap_aggregating",
+        "https://en.wikipedia.org/wiki/Random_forest",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-bagging-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "random-forest"
+      ],
+      "content": {
+        "prompt": "배깅에 더해 분할마다 특징 일부만 후보로 쓰는 트리 앙상블은?",
+        "options": [
+          "결정 트리",
+          "로지스틱 회귀",
+          "랜덤 포레스트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "랜덤 포레스트는 배깅에 더해 분할마다 특징 일부만 후보로 써서 트리들을 서로 다르게 만든다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bootstrap_aggregating",
+        "https://en.wikipedia.org/wiki/Random_forest",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-bagging-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "random-forest"
+      ],
+      "content": {
+        "prompt": "랜덤 포레스트는 분할마다 특징 일부만 후보로 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "분할마다 특징 일부만 보게 하면 트리마다 다른 특징으로 나뉘어 서로 다른 트리가 된다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bootstrap_aggregating",
+        "https://en.wikipedia.org/wiki/Random_forest",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-bagging-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "bagging",
+        "parallel"
+      ],
+      "content": {
+        "prompt": "배깅의 트리들은 앞 트리 결과가 필요해 차례로 학습한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "배깅의 트리들은 서로 독립이라 동시에 병렬로 학습할 수 있다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bootstrap_aggregating",
+        "https://en.wikipedia.org/wiki/Random_forest",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-bagging-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "bagging"
+      ],
+      "content": {
+        "prompt": "중복 허용 재표본마다 모델을 학습해 합치는 방법은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "배깅",
+          "bagging",
+          "Bagging"
+        ]
+      },
+      "explanation": "배깅은 다시 뽑은 표본마다 모델을 따로 학습시키고 그 예측을 합친다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bootstrap_aggregating",
+        "https://en.wikipedia.org/wiki/Random_forest",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-bagging-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "parallel"
+      ],
+      "content": {
+        "prompt": "트리들이 서로 독립이라 동시에 하는 학습을 ___ 학습이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "병렬",
+          "parallel"
+        ]
+      },
+      "explanation": "배깅·랜덤 포레스트의 트리는 서로의 결과가 필요 없어 동시에 병렬로 학습할 수 있다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bootstrap_aggregating",
+        "https://en.wikipedia.org/wiki/Random_forest",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-bagging-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bagging"
+      ],
+      "content": {
+        "prompt": "샘플 1~5에서 중복 허용으로 다시 뽑은 표본으로 가능한 것은?",
+        "options": [
+          "1, 2, 6, 7, 8",
+          "1, 1, 3, 4, 4",
+          "0, 1, 2, 3, 4"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "중복을 허용하므로 같은 샘플이 여러 번 나올 수 있지만 원래 없던 샘플(0, 6 등)은 나올 수 없다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bootstrap_aggregating",
+        "https://en.wikipedia.org/wiki/Random_forest",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-bagging-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "random-forest",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "특징 10개 중 분할마다 3개만 후보로 쓴다. 한 분할의 후보 수는?",
+        "options": [
+          "3",
+          "7",
+          "10"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "랜덤 포레스트는 분할마다 특징 일부만 후보로 쓰므로 한 분할에서 비교하는 특징은 3개다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bootstrap_aggregating",
+        "https://en.wikipedia.org/wiki/Random_forest",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-bagging-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "random-forest",
+        "parallel"
+      ],
+      "content": {
+        "prompt": "트리 100개 랜덤 포레스트를 여러 코어로 빨리 학습하는 근거는?",
+        "options": [
+          "앞 트리 결과 필요",
+          "트리들이 서로 독립"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "트리마다 따로 뽑은 표본으로 독립적으로 학습하므로 여러 코어에서 동시에 만들 수 있다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bootstrap_aggregating",
+        "https://en.wikipedia.org/wiki/Random_forest",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-bagging-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "bagging"
+      ],
+      "content": {
+        "prompt": "배깅이 트리마다 다른 데이터를 주는 방법은?",
+        "options": [
+          "중복 허용 재표본",
+          "특징 스케일링",
+          "결측값 대치"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "배깅은 학습 데이터에서 중복을 허용해 다시 뽑은 표본을 트리마다 따로 준다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Bootstrap_aggregating",
+        "https://en.wikipedia.org/wiki/Random_forest",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    }
+  ]
+}
