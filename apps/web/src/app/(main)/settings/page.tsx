@@ -6,7 +6,6 @@ import type { MeResponse, TrackSummary, UpdateMeRequest } from '@cs-daily/contra
 import { api, ApiError } from '@/lib/api';
 import { AppShell } from '@/components/app-shell';
 import { CodeLanguagePicker } from '@/components/code-language-picker';
-import { PremiumInterestCard } from '@/components/premium-interest-card';
 import { SelectMark } from '@/components/select-mark';
 import { useToast } from '@/components/toast';
 import { ThemePicker } from '@/components/theme-picker';
@@ -116,8 +115,6 @@ export default function SettingsPage() {
           <button type="submit" disabled={save.isPending || selected.length === 0} className="btn-3d w-full">저장</button>
         </Window>
       </form>
-
-      <PremiumInterestCard email={me.data.user.email} current={me.data.premiumInterest ?? null} />
 
       <Window title="테마" className="mt-6" bodyClassName="p-5">
         <ThemePicker />

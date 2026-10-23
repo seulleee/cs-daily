@@ -1,5 +1,4 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { PREMIUM_INTERESTS, PREMIUM_PRICE_BANDS } from '@cs-daily/contracts';
 import { addDaysToLocalDate, localDateOf } from '../../../shared/domain/local-date';
 import { UnitOfWork } from '../../../shared/infrastructure/unit-of-work';
 import { COHORT_WEEKS, foldCohorts, recentCohortWeeks, type CohortRetention, type SignupDayRow } from '../domain/usage-stats';
@@ -15,12 +14,6 @@ export interface UsageStats {
   retention: { cohortWeeks: CohortRetention[] };
   tracks: { slug: string; name: string; startedUsers: number; completedLessons: number; completedLessonsLast7d: number }[];
   streaks: { atLeast3: number; atLeast7: number };
-  premiumInterest: {
-    total: number;
-    notifyConsent: number;
-    interests: Record<string, number>;
-    priceBands: Record<string, number>;
-  };
 }
 
 /** 코호트·리텐션 날짜 계산의 기본 타임존 (User.timezone이 비정상이면 이쪽으로) */
@@ -50,7 +43,7 @@ export class GetUsageStatsHandler implements IQueryHandler<GetUsageStatsQuery, U
     const cohortFrom = new Date(`${addDaysToLocalDate(weeks[0]!, -1)}T00:00:00Z`);
     const finishedLearning = `s.finished_at IS NOT NULL AND s.kind IN ('lesson','review')`;
 
-    const [users, retentionRows, tracks, streaks, premiumTotals, premiumInterests, premiumBands] = await Promise.all([
+    const [users, retentionRows, tracks, streaks] = await Promise.all([
       db.$queryRawUnsafe<{ total: number; a1: number; a7: number; a30: number }[]>(
         `SELECT (SELECT count(*) FROM users)::int AS total,
                 count(DISTINCT s.user_id) FILTER (WHERE s.finished_at >= $1::timestamptz - interval '1 day')::int AS a1,
@@ -102,11 +95,6 @@ export class GetUsageStatsHandler implements IQueryHandler<GetUsageStatsQuery, U
       db.$queryRawUnsafe<{ s3: number; s7: number }[]>(
         `SELECT count(*) FILTER (WHERE current_streak >= 3)::int AS s3, count(*) FILTER (WHERE current_streak >= 7)::int AS s7 FROM user_stats`,
       ),
-      db.$queryRawUnsafe<{ total: number; consent: number }[]>(
-        `SELECT count(*)::int AS total, count(*) FILTER (WHERE notify_consent)::int AS consent FROM premium_interests`,
-      ),
-      db.$queryRawUnsafe<{ k: string; n: number }[]>(`SELECT k, count(*)::int AS n FROM premium_interests, unnest(interests) AS k GROUP BY k`),
-      db.$queryRawUnsafe<{ k: string; n: number }[]>(`SELECT price_band::text AS k, count(*)::int AS n FROM premium_interests GROUP BY price_band`),
     ]);
 
     const rows: SignupDayRow[] = retentionRows.map((r) => ({
@@ -115,7 +103,6 @@ export class GetUsageStatsHandler implements IQueryHandler<GetUsageStatsQuery, U
       eligible: { 1: r.e1, 7: r.e7, 30: r.e30 },
       retained: { 1: r.r1, 7: r.r7, 30: r.r30 },
     }));
-    const dist = (keys: readonly string[], found: { k: string; n: number }[]) => Object.fromEntries(keys.map((k) => [k, found.find((f) => f.k === k)?.n ?? 0]));
 
     return {
       at: now.toISOString(),
@@ -124,12 +111,6 @@ export class GetUsageStatsHandler implements IQueryHandler<GetUsageStatsQuery, U
       retention: { cohortWeeks: foldCohorts(rows, weeks) },
       tracks: tracks.map((t) => ({ slug: t.slug, name: t.name, startedUsers: t.started, completedLessons: t.completed, completedLessonsLast7d: t.completed7 })),
       streaks: { atLeast3: streaks[0]?.s3 ?? 0, atLeast7: streaks[0]?.s7 ?? 0 },
-      premiumInterest: {
-        total: premiumTotals[0]?.total ?? 0,
-        notifyConsent: premiumTotals[0]?.consent ?? 0,
-        interests: dist(PREMIUM_INTERESTS, premiumInterests),
-        priceBands: dist(PREMIUM_PRICE_BANDS, premiumBands),
-      },
     };
   }
 }

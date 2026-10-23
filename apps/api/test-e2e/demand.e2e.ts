@@ -1,9 +1,8 @@
 /**
- * E2E: 수요 검증 (CI 전용 — 실제 Postgres + 빌드된 서버에 HTTP로 요청)
- *  1. 프리미엄 사전 신청: PUT upsert → GET /me 반영 → PUT 수정 → 잘못된 본문 400 → DELETE(204, 멱등) → GET /me null
- *  2. GET /internal/stats: 인증 없음·틀린 시크릿은 401, 응답에 이메일·닉네임·user id가 없다(집계만)
- *  3. 시드한 사용자들로 집계가 맞다 — CI DB엔 다른 e2e 사용자도 있으니 시드 전후 차이(delta)로 단언
- *     활성 1/7/30일(placement·미완료 세션 제외), 코호트 D1·D7, 트랙별 시작·완료, 스트릭 3/7, 사전 신청 분포
+ * E2E: 운영자 지표 GET /internal/stats (CI 전용 — 실제 Postgres + 빌드된 서버에 HTTP로 요청)
+ *  1. 인증 없음·틀린 시크릿·사용자 JWT는 401, 응답에 이메일·닉네임·user id가 없다(집계만)
+ *  2. 시드한 사용자들로 집계가 맞다 — CI DB엔 다른 e2e 사용자도 있으니 시드 전후 차이(delta)로 단언
+ *     활성 1/7/30일(placement·미완료 세션 제외), 코호트 D1·D7, 트랙별 시작·완료, 스트릭 3/7
  */
 import { PrismaClient } from '@prisma/client';
 import { JwtService } from '@nestjs/jwt';
@@ -23,7 +22,6 @@ interface Stats {
   retention: { cohortWeeks: { weekStart: string; signups: number; d1: Cell; d7: Cell; d30: Cell }[] };
   tracks: { slug: string; startedUsers: number; completedLessons: number; completedLessonsLast7d: number }[];
   streaks: { atLeast3: number; atLeast7: number };
-  premiumInterest: { total: number; notifyConsent: number; interests: Record<string, number>; priceBands: Record<string, number> };
 }
 
 const asUser = (id: string) => {
@@ -53,40 +51,7 @@ async function main() {
   const ids = [a.id, b.id, c.id];
 
   try {
-    // ---- 1. 사전 신청 CRUD
-    const callA = asUser(a.id);
-    const callC = asUser(c.id);
-    let me = await callA('GET', '/me');
-    assert.equal(me.status, 200);
-    assert.equal(me.json.premiumInterest, null, '신청 전 null');
-
-    const put1 = await callA('PUT', '/me/premium-interest', { interests: ['aws'], priceBand: 'free_only', notifyConsent: false });
-    assert.equal(put1.status, 200, put1.text);
-    assert.deepEqual([put1.json.interests, put1.json.priceBand, put1.json.notifyConsent], [['aws'], 'free_only', false]);
-    me = await callA('GET', '/me');
-    assert.deepEqual(me.json.premiumInterest.interests, ['aws']);
-
-    const bad = await callA('PUT', '/me/premium-interest', { interests: [], priceBand: 'free_only', notifyConsent: false });
-    assert.equal(bad.status, 400, '관심 항목 비면 400');
-    const bad2 = await callA('PUT', '/me/premium-interest', { interests: ['aws'], priceBand: 'nope', notifyConsent: false });
-    assert.equal(bad2.status, 400, '알 수 없는 가격 구간은 400');
-    const bad3 = await callA('PUT', '/me/premium-interest', { interests: ['aws', 'aws'], priceBand: 'free_only', notifyConsent: false });
-    assert.equal(bad3.status, 400, '중복 항목은 400');
-
-    const put2 = await callA('PUT', '/me/premium-interest', { interests: ['aws', 'security'], priceBand: 'lte_3000', notifyConsent: true });
-    assert.equal(put2.status, 200);
-    assert.equal(await prisma.premiumInterest.count({ where: { userId: a.id } }), 1, 'upsert는 사용자당 1건');
-    me = await callA('GET', '/me');
-    assert.deepEqual([me.json.premiumInterest.priceBand, me.json.premiumInterest.notifyConsent], ['lte_3000', true]);
-
-    const del1 = await callA('DELETE', '/me/premium-interest');
-    assert.equal(del1.status, 204);
-    assert.equal((await callA('DELETE', '/me/premium-interest')).status, 204, '취소는 멱등');
-    me = await callA('GET', '/me');
-    assert.equal(me.json.premiumInterest, null, '취소 후 null');
-    assert.equal(await prisma.premiumInterest.count({ where: { userId: a.id } }), 0);
-
-    // ---- 2. 인증
+    // ---- 1. 인증
     for (const headers of [{}, { authorization: 'Bearer wrong' }, { authorization: JOBS_SECRET }] as Record<string, string>[]) {
       const res = await fetch(`${API}/internal/stats`, { headers });
       assert.equal(res.status, 401, `인증 실패는 401 (${JSON.stringify(Object.keys(headers))})`);
@@ -94,7 +59,7 @@ async function main() {
     const jwtOnly = await fetch(`${API}/internal/stats`, { headers: { authorization: `Bearer ${jwt.sign({ sub: a.id, role: 'admin' })}` } });
     assert.equal(jwtOnly.status, 401, '사용자 JWT(admin 포함)로는 접근 불가');
 
-    // ---- 3. 집계
+    // ---- 2. 집계
     const dsa = await prisma.track.findUniqueOrThrow({ where: { slug: 'dsa' }, select: { id: true, units: { where: { sortOrder: { gt: 0 } }, orderBy: { sortOrder: 'asc' }, take: 1, select: { lessons: { where: { sortOrder: { gt: 0 } }, orderBy: { sortOrder: 'asc' }, take: 3, select: { id: true } } } } } });
     const lessons = dsa.units[0]!.lessons;
     assert.ok(lessons.length >= 3, 'dsa 첫 유닛에 레슨 3개');
@@ -118,8 +83,6 @@ async function main() {
       ],
     });
     await prisma.userStats.createMany({ data: [{ userId: a.id, currentStreak: 7 }, { userId: c.id, currentStreak: 3 }, { userId: b.id, currentStreak: 2 }] });
-    assert.equal((await callA('PUT', '/me/premium-interest', { interests: ['aws'], priceBand: 'free_only', notifyConsent: false })).status, 200);
-    assert.equal((await callC('PUT', '/me/premium-interest', { interests: ['aws', 'security'], priceBand: 'lte_3000', notifyConsent: true })).status, 200);
 
     const after = await getStats();
     const d = (x: number, y: number) => x - y;
@@ -146,16 +109,6 @@ async function main() {
 
     assert.equal(d(after.streaks.atLeast3, before.streaks.atLeast3), 2, '스트릭 3+: A(7)·C(3)');
     assert.equal(d(after.streaks.atLeast7, before.streaks.atLeast7), 1, '스트릭 7+: A');
-
-    const p = (s: Stats) => s.premiumInterest;
-    assert.equal(d(p(after).total, p(before).total), 2);
-    assert.equal(d(p(after).notifyConsent, p(before).notifyConsent), 1);
-    assert.equal(d(p(after).interests.aws!, p(before).interests.aws!), 2);
-    assert.equal(d(p(after).interests.security!, p(before).interests.security!), 1);
-    assert.equal(d(p(after).interests.eip!, p(before).interests.eip!), 0);
-    assert.equal(d(p(after).priceBands.free_only!, p(before).priceBands.free_only!), 1);
-    assert.equal(d(p(after).priceBands.lte_3000!, p(before).priceBands.lte_3000!), 1);
-    assert.deepEqual(Object.keys(p(after).priceBands), ['free_only', 'lte_3000', 'from_3000_to_6000', 'from_6000_to_10000', 'gt_10000'], '구간은 0이어도 모두 나온다');
 
     // 개인 식별 정보 없음
     const raw = JSON.stringify(after);

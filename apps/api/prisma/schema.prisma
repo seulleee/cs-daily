@@ -50,7 +50,6 @@ model User {
   lessonProgress  UserLessonProgress[]
   reviewItems     ReviewItem[]
   notificationLog NotificationLog[]
-  premiumInterest PremiumInterest?
 
   @@map("users")
 }
@@ -336,33 +335,6 @@ model NotificationLog {
 
   @@unique([userId, kind, slot])
   @@map("notification_log")
-}
-
-// ========== Demand (수요 검증: 결제 없이 사전 신청만) ==========
-
-/// 월 가격 의향 구간 (결제·가격 부과 없음, 수요 파악용)
-enum PremiumPriceBand {
-  free_only
-  lte_3000
-  from_3000_to_6000
-  from_6000_to_10000
-  gt_10000
-}
-
-/// 프리미엄 사전 신청. 사용자당 1건(upsert), 신청 취소 시 삭제
-model PremiumInterest {
-  userId        String           @id @map("user_id") @db.Uuid
-  /// aws · security · coding_test · eip · review_tools
-  interests     String[]         @default([])
-  priceBand     PremiumPriceBand @map("price_band")
-  /// 출시 알림 이메일 수신 동의 (명시적, 기본 꺼짐)
-  notifyConsent Boolean          @default(false) @map("notify_consent")
-  createdAt     DateTime         @default(now()) @map("created_at") @db.Timestamptz
-  updatedAt     DateTime         @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@map("premium_interests")
 }
 
 // ========== Jobs (배치 멱등성) ==========
