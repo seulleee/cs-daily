@@ -1,0 +1,219 @@
+{
+  "track": "ai",
+  "unit": "u04-evaluation",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "ai-eval-confusion-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "confusion-matrix",
+        "classification"
+      ],
+      "content": {
+        "prompt": "실제 클래스와 예측 클래스의 조합별 개수를 센 표는?",
+        "options": [
+          "원-핫 인코딩",
+          "데이터셋",
+          "혼동 행렬"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "혼동 행렬은 실제·예측 클래스 조합(TP·TN·FP·FN)별로 개수를 센 표입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-confusion-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "confusion-matrix",
+        "classification"
+      ],
+      "content": {
+        "prompt": "실제 음성을 양성으로 잘못 예측한 경우는?",
+        "options": [
+          "FP",
+          "FN",
+          "TN"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "FP(거짓 양성)는 실제 음성을 양성으로 잘못 예측한 경우입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-confusion-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "confusion-matrix",
+        "classification"
+      ],
+      "content": {
+        "prompt": "FN은 모델이 양성이라고 잘못 판정한 경우를 가리킨다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "양성으로 잘못 판정한 것은 FP입니다. FN(거짓 음성)은 실제 양성을 음성으로 놓친 경우입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-confusion-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "confusion-matrix",
+        "classification"
+      ],
+      "content": {
+        "prompt": "TN은 실제 음성을 음성으로 맞힌 경우다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "TN은 실제 음성을 음성으로 맞힌 경우, TP는 실제 양성을 양성으로 맞힌 경우입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-confusion-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "confusion-matrix",
+        "classification"
+      ],
+      "content": {
+        "prompt": "실제 양성을 음성으로 놓친 경우의 약자는 ___ 이다.",
+        "hint": "영문 대문자 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "FN",
+          "거짓 음성",
+          "거짓음성",
+          "false negative"
+        ]
+      },
+      "explanation": "FN(거짓 음성)은 실제 양성을 음성으로 잘못 예측한 경우입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-confusion-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "confusion-matrix",
+        "classification"
+      ],
+      "content": {
+        "prompt": "양성을 양성으로 올바르게 맞힌 칸의 이름은 ___ 이다.",
+        "hint": "영문 대문자 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "TP",
+          "참 양성",
+          "참양성",
+          "true positive"
+        ]
+      },
+      "explanation": "TP는 실제 양성을 양성으로 맞힌 경우입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-confusion-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "confusion-matrix",
+        "classification"
+      ],
+      "content": {
+        "prompt": "양성이 사기일 때, 정상 거래를 사기로 판정했다면?",
+        "options": [
+          "FP",
+          "FN",
+          "TN"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "실제 음성(정상)을 양성(사기)으로 잘못 예측했으므로 FP입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-confusion-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "confusion-matrix",
+        "classification"
+      ],
+      "content": {
+        "prompt": "양성이 고장일 때, 고장 난 장비를 정상으로 판정했다면?",
+        "options": [
+          "TP",
+          "FP",
+          "FN"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "실제 양성(고장)을 음성(정상)으로 놓쳤으므로 FN입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-confusion-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "confusion-matrix",
+        "classification"
+      ],
+      "content": {
+        "prompt": "실제 양성 10개 중 7개를 양성으로 맞혔다. FN은?",
+        "options": [
+          "7",
+          "3",
+          "10"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "맞힌 7개는 TP이고, 음성으로 놓친 나머지 3개가 FN입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-confusion-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "confusion-matrix",
+        "classification"
+      ],
+      "content": {
+        "prompt": "혼동 행렬이 개수를 세는 기준은?",
+        "options": [
+          "특징 값 범위",
+          "실제·예측 조합",
+          "학습·검증 세트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "혼동 행렬은 실제 클래스와 예측 클래스의 조합별로 개수를 셉니다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "track": "ai",
+  "unit": "u04-evaluation",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ai-eval-fitting-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "overfitting",
+        "generalization"
+      ],
+      "content": {
+        "prompt": "학습 데이터엔 잘 맞지만 새 데이터에서 성능이 떨어지는 상태는?",
+        "options": [
+          "과적합",
+          "과소적합",
+          "일반화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "과적합은 학습 데이터의 잡음까지 맞춰 새 데이터에서 성능이 떨어지는 상태입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-fitting-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "overfitting",
+        "generalization"
+      ],
+      "content": {
+        "prompt": "처음 보는 데이터에서도 성능을 유지하는 능력은?",
+        "options": [
+          "과적합",
+          "정규화",
+          "일반화"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "일반화는 처음 보는 데이터에서도 성능을 유지하는 능력입니다. 정규화는 값 범위를 맞추는 전처리입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-fitting-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "overfitting",
+        "generalization"
+      ],
+      "content": {
+        "prompt": "과소적합은 학습 점수는 높고 검증 점수만 낮은 상태다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "그것은 과적합입니다. 과소적합은 모델이 너무 단순해 학습 데이터에서도 점수가 낮은 상태입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-fitting-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "overfitting",
+        "generalization"
+      ],
+      "content": {
+        "prompt": "과소적합된 모델은 학습 데이터에서도 성능이 낮다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "과소적합은 모델이 너무 단순해 학습 데이터의 패턴조차 담지 못한 상태입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-fitting-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "overfitting",
+        "generalization"
+      ],
+      "content": {
+        "prompt": "새 데이터에서 성능이 유지되는 정도를 ___ 성능이라 한다.",
+        "hint": "학습 데이터 밖으로 성능이 이어지는 정도"
+      },
+      "answer_key": {
+        "accepted": [
+          "일반화",
+          "generalization"
+        ]
+      },
+      "explanation": "일반화는 학습에 쓰지 않은 새 데이터에서도 성능을 유지하는 능력입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-fitting-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "overfitting",
+        "generalization"
+      ],
+      "content": {
+        "prompt": "너무 단순해 학습 데이터에서도 성능이 낮은 상태는 ___ 이다.",
+        "hint": "과적합과 반대쪽 실패"
+      },
+      "answer_key": {
+        "accepted": [
+          "과소적합",
+          "underfitting",
+          "언더피팅"
+        ]
+      },
+      "explanation": "과소적합은 모델이 너무 단순해 학습 데이터에서도 성능이 낮은 상태입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-fitting-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "overfitting",
+        "generalization"
+      ],
+      "content": {
+        "prompt": "학습 점수 0.99, 검증 점수 0.70. 모델 상태는?",
+        "options": [
+          "과적합",
+          "과소적합",
+          "정상"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "학습 점수는 높은데 검증 점수가 크게 낮으므로 학습 데이터에만 맞춘 과적합입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-fitting-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "overfitting",
+        "generalization"
+      ],
+      "content": {
+        "prompt": "학습 0.55, 검증 0.53이면 어떤 상태인가?",
+        "options": [
+          "과적합",
+          "과소적합"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "학습 점수부터 낮으므로 모델이 너무 단순한 과소적합입니다. 두 점수 차이는 작습니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-fitting-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "overfitting",
+        "generalization"
+      ],
+      "content": {
+        "prompt": "학습 0.92, 검증 0.90. 가장 알맞은 판단은?",
+        "options": [
+          "과적합",
+          "과소적합",
+          "일반화가 잘 됨"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "두 점수가 모두 높고 차이가 작아 새 데이터에서도 성능이 유지되는, 일반화가 잘 된 상태입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-fitting-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "overfitting",
+        "generalization"
+      ],
+      "content": {
+        "prompt": "과적합의 대표 징후는?",
+        "options": [
+          "둘 다 낮은 점수",
+          "학습·검증 차가 큼"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "과적합은 학습 점수만 높고 검증 점수가 낮아 둘의 차이가 큽니다. 둘 다 낮으면 과소적합입니다.",
+      "refs": []
+    }
+  ]
+}

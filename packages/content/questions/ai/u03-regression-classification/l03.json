@@ -1,0 +1,216 @@
+{
+  "track": "ai",
+  "unit": "u03-regression-classification",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ai-regcls-gd-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "gradient-descent",
+        "gradient"
+      ],
+      "content": {
+        "prompt": "기울기의 반대 방향으로 파라미터를 고쳐 손실을 줄이는 방법은?",
+        "options": [
+          "대치",
+          "원-핫 인코딩",
+          "경사 하강법"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "경사 하강법은 기울기의 반대 방향으로 파라미터를 조금씩 고쳐 손실을 줄입니다. 나머지는 전처리 방법입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-gd-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "gradient-descent",
+        "gradient"
+      ],
+      "content": {
+        "prompt": "파라미터를 조금 바꿀 때 손실이 늘어나는 방향과 크기는?",
+        "options": [
+          "기울기",
+          "편향",
+          "레이블"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "기울기(gradient)는 파라미터를 조금 바꿀 때 손실이 어느 방향으로 얼마나 늘어나는지 알려 줍니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-gd-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "gradient-descent",
+        "gradient"
+      ],
+      "content": {
+        "prompt": "경사 하강법은 기울기와 같은 방향으로 파라미터를 옮긴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "기울기는 손실이 늘어나는 방향이므로, 경사 하강법은 그 반대 방향으로 파라미터를 옮깁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-gd-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "gradient-descent",
+        "gradient"
+      ],
+      "content": {
+        "prompt": "경사 하강법은 손실이 충분히 줄 때까지 갱신을 반복한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "경사 하강법은 한 번에 끝나지 않고, 손실이 충분히 줄어들 때까지 갱신을 되풀이합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-gd-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "gradient-descent",
+        "gradient"
+      ],
+      "content": {
+        "prompt": "파라미터를 바꿀 때 손실이 늘어나는 방향과 크기를 ___ 라고 한다.",
+        "hint": "손실이 기운 정도를 나타내는 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "기울기",
+          "gradient",
+          "그래디언트",
+          "경사"
+        ]
+      },
+      "explanation": "기울기는 손실이 늘어나는 방향과 크기를 나타내며, 경사 하강법은 그 반대로 움직입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-gd-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "gradient-descent",
+        "gradient"
+      ],
+      "content": {
+        "prompt": "기울기 반대 방향으로 파라미터를 반복해 고치는 방법은 ___ 하강법이다.",
+        "hint": "기울기를 다른 말로 부르는 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "경사",
+          "gradient"
+        ]
+      },
+      "explanation": "경사 하강법은 기울기의 반대 방향으로 파라미터를 조금씩 반복해 고쳐 손실을 줄입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-gd-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "gradient-descent",
+        "gradient"
+      ],
+      "content": {
+        "prompt": "기울기가 -3일 때 손실을 줄이려면 w를?",
+        "options": [
+          "늘린다",
+          "줄인다",
+          "그대로 둔다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "기울기가 음수면 w를 늘릴 때 손실이 줄어듭니다. 경사 하강법은 기울기의 반대 방향으로 움직입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-gd-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "gradient-descent",
+        "gradient"
+      ],
+      "content": {
+        "prompt": "w=2, 기울기 10. w - 0.1 × 기울기로 갱신하면?",
+        "options": [
+          "1",
+          "3",
+          "1.9"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "0.1 × 10 = 1을 빼므로 새 w는 2 - 1 = 1입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-gd-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "gradient-descent",
+        "gradient"
+      ],
+      "content": {
+        "prompt": "한 번 갱신했는데 손실이 아직 크다. 다음 할 일은?",
+        "options": [
+          "다시 갱신한다",
+          "학습을 끝낸다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "경사 하강법은 손실이 충분히 줄 때까지 기울기를 다시 계산해 갱신을 반복합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-gd-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "gradient-descent",
+        "gradient"
+      ],
+      "content": {
+        "prompt": "기울기를 거슬러 반복 갱신해 손실을 줄이는 방법은?",
+        "options": [
+          "표준화",
+          "경사 하강법",
+          "대치"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "경사 하강법은 기울기의 반대 방향으로 반복 갱신해 손실을 줄입니다. 표준화와 대치는 전처리입니다.",
+      "refs": []
+    }
+  ]
+}

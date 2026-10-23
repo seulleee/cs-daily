@@ -1,0 +1,221 @@
+{
+  "track": "ai",
+  "unit": "u03-regression-classification",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ai-regcls-linear-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "linear-regression",
+        "weight"
+      ],
+      "content": {
+        "prompt": "특징에 가중치를 곱해 더한 값으로 숫자를 예측하는 모델은?",
+        "options": [
+          "군집화",
+          "차원 축소",
+          "선형 회귀"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "선형 회귀는 특징의 가중합으로 연속된 숫자를 예측합니다. 군집화와 차원 축소는 비지도 학습 과제입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-linear-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "linear-regression",
+        "weight"
+      ],
+      "content": {
+        "prompt": "모든 특징이 0일 때의 기본 예측값은?",
+        "options": [
+          "편향",
+          "가중치",
+          "레이블"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "편향(bias)은 모든 특징이 0일 때 모델이 내는 기본 예측값입니다. 가중치는 특징마다 곱하는 값입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-linear-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "linear-regression",
+        "weight"
+      ],
+      "content": {
+        "prompt": "각 특징이 예측에 주는 영향의 크기를 나타내는 값은?",
+        "options": [
+          "편향",
+          "가중치"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "가중치는 특징마다 곱해지는 값으로, 그 특징이 예측을 얼마나 움직이는지 나타냅니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-linear-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "linear-regression",
+        "weight"
+      ],
+      "content": {
+        "prompt": "선형 회귀는 정해진 범주 중 하나를 고르는 모델이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "선형 회귀는 연속된 숫자를 예측하는 회귀 모델입니다. 범주 중 하나를 고르는 것은 분류 과제입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-linear-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "linear-regression",
+        "weight"
+      ],
+      "content": {
+        "prompt": "모든 특징이 0일 때의 기본 예측값을 ___ 이라 한다.",
+        "hint": "가중합에 마지막으로 더해지는 상수"
+      },
+      "answer_key": {
+        "accepted": [
+          "편향",
+          "bias",
+          "바이어스"
+        ]
+      },
+      "explanation": "편향은 특징이 모두 0일 때 남는 기본 예측값으로, 가중치와 함께 학습으로 정해집니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-linear-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "linear-regression",
+        "weight"
+      ],
+      "content": {
+        "prompt": "특징의 가중합으로 숫자를 예측하는 모델은 ___ 회귀이다.",
+        "hint": "특징과 예측이 직선(일차식) 관계"
+      },
+      "answer_key": {
+        "accepted": [
+          "선형",
+          "linear",
+          "리니어"
+        ]
+      },
+      "explanation": "선형 회귀는 각 특징에 가중치를 곱해 더하고 편향을 더한 값으로 숫자를 예측합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-linear-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linear-regression",
+        "weight"
+      ],
+      "content": {
+        "prompt": "가격 = 3 × 면적 + 10. 면적이 5면 예측 가격은?",
+        "options": [
+          "15",
+          "25",
+          "35"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "3 × 5 = 15에 편향 10을 더해 25입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-linear-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linear-regression",
+        "weight"
+      ],
+      "content": {
+        "prompt": "y = 2x + 4에서 편향은?",
+        "options": [
+          "4",
+          "2",
+          "x"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "특징 x에 곱해지는 2는 가중치이고, 특징이 0일 때 남는 4가 편향입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-linear-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "linear-regression",
+        "numpy",
+        "python"
+      ],
+      "content": {
+        "prompt": "가중치 w, 편향 b인 선형 회귀의 출력값은?",
+        "code": {
+          "language": "python",
+          "source": "import numpy as np\nw = np.array([2, 3])\nx = np.array([1, 4])\nb = 1\nprint(x @ w + b)"
+        },
+        "options": [
+          "14",
+          "15",
+          "9"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "x @ w는 1×2 + 4×3 = 14이고, 여기에 편향 1을 더해 15가 출력됩니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-linear-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "linear-regression",
+        "weight"
+      ],
+      "content": {
+        "prompt": "선형 회귀의 예측값은 특징의 가중합에 편향을 더한 값이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "선형 회귀는 특징마다 가중치를 곱해 더한 뒤 편향을 더해 예측값을 냅니다.",
+      "refs": []
+    }
+  ]
+}
