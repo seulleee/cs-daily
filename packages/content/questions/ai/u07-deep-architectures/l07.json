@@ -1,0 +1,208 @@
+{
+  "track": "ai",
+  "unit": "u07-deep-architectures",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ai-dlarch-transformer-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "transformer"
+      ],
+      "content": {
+        "prompt": "순환 구조 없이 셀프 어텐션 층과 완전 연결 층을 쌓은 구조는?",
+        "options": [
+          "트랜스포머",
+          "LSTM",
+          "CNN"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "트랜스포머는 순환 구조 없이 셀프 어텐션 층과 완전 연결 층을 쌓은 신경망 구조다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-transformer-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "transformer",
+        "positional-encoding"
+      ],
+      "content": {
+        "prompt": "어텐션이 순서를 모르므로 각 위치 정보를 입력에 더하는 것은?",
+        "options": [
+          "위치 인코딩",
+          "원-핫 인코딩",
+          "풀링"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "위치 인코딩은 순서를 모르는 어텐션을 위해 각 위치 정보를 입력에 더해 준다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-transformer-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "transformer"
+      ],
+      "content": {
+        "prompt": "트랜스포머와 RNN 중 순환 구조가 없는 것은?",
+        "options": [
+          "RNN",
+          "트랜스포머"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "트랜스포머는 순환 구조 없이 셀프 어텐션으로 위치를 연결한다. RNN은 은닉 상태를 순환시킨다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-transformer-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "transformer"
+      ],
+      "content": {
+        "prompt": "트랜스포머는 은닉 상태를 순서대로 넘기는 순환 구조다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "트랜스포머는 순환 구조 없이 셀프 어텐션 층과 완전 연결 층을 쌓은 구조다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-transformer-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "transformer",
+        "encoder-decoder"
+      ],
+      "content": {
+        "prompt": "입력을 표현으로 바꾸는 트랜스포머의 부분은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "인코더",
+          "encoder"
+        ]
+      },
+      "explanation": "인코더는 입력을 표현으로 바꾸고, 디코더는 그 표현으로 출력을 하나씩 만든다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-transformer-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "transformer",
+        "positional-encoding"
+      ],
+      "content": {
+        "prompt": "각 위치의 순서 정보를 입력에 더하는 것을 위치 ___ 이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "인코딩",
+          "encoding",
+          "위치 인코딩"
+        ]
+      },
+      "explanation": "어텐션은 순서를 모르므로 위치 인코딩으로 각 위치 정보를 입력에 더해 준다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-transformer-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "transformer",
+        "positional-encoding"
+      ],
+      "content": {
+        "prompt": "트랜스포머에서 위치 인코딩을 빼면 생기는 문제는?",
+        "options": [
+          "단어 순서 구분 불가",
+          "파라미터 급증",
+          "병렬 계산 불가"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "어텐션 자체는 순서를 모르므로 위치 인코딩이 없으면 단어 순서를 바꿔도 구분하지 못한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-transformer-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "transformer",
+        "encoder-decoder"
+      ],
+      "content": {
+        "prompt": "번역 결과 문장을 단어 하나씩 만들어 내는 부분은?",
+        "options": [
+          "인코더",
+          "디코더",
+          "위치 인코딩"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "디코더는 인코더가 만든 표현으로 출력을 하나씩 만든다. 인코더는 입력을 표현으로 바꾼다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-transformer-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "transformer"
+      ],
+      "content": {
+        "prompt": "트랜스포머의 한 블록을 이루는 층의 조합은?",
+        "options": [
+          "합성곱·풀링",
+          "게이트·은닉 상태",
+          "셀프 어텐션·완전 연결"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "트랜스포머는 셀프 어텐션 층과 완전 연결 층을 번갈아 쌓는다. 합성곱·풀링은 CNN, 게이트는 LSTM이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-transformer-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "transformer"
+      ],
+      "content": {
+        "prompt": "트랜스포머는 셀프 어텐션 층과 완전 연결 층을 쌓은 구조다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "트랜스포머는 순환 구조 없이 셀프 어텐션 층과 완전 연결 층을 쌓아 만든다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "track": "ai",
+  "unit": "u08-embeddings-vector-search",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ai-vecsearch-index-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "hnsw",
+        "ann-index"
+      ],
+      "content": {
+        "prompt": "여러 층의 근접 그래프에서 이웃을 따라가며 찾는 인덱스는?",
+        "options": [
+          "IVF",
+          "B-트리",
+          "HNSW"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "HNSW는 벡터를 여러 층의 근접 그래프로 연결하고 가까운 이웃을 따라가며 찾는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-index-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ivf",
+        "ann-index"
+      ],
+      "content": {
+        "prompt": "벡터를 군집으로 나눠 가까운 군집 몇 개만 검색하는 인덱스는?",
+        "options": [
+          "IVF",
+          "HNSW",
+          "B-트리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "IVF는 벡터를 군집으로 나눠 두고 질의와 가까운 군집 몇 개만 검색한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-index-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "hnsw",
+        "ann-index"
+      ],
+      "content": {
+        "prompt": "그래프의 이웃을 따라가며 찾는 인덱스는?",
+        "options": [
+          "IVF",
+          "HNSW"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "HNSW는 근접 그래프를 따라가며 찾는다. IVF는 군집으로 나눠 가까운 군집만 검색한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-index-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ivf",
+        "ann-index"
+      ],
+      "content": {
+        "prompt": "IVF는 질의마다 모든 군집을 검색한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "IVF는 질의와 가까운 군집 몇 개만 검색해서 빠르다. 모든 군집을 보면 전수 검색과 같아진다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-index-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ivf",
+        "ann-index"
+      ],
+      "content": {
+        "prompt": "군집으로 나눠 두고 가까운 군집만 검색하는 인덱스는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "IVF",
+          "ivf"
+        ]
+      },
+      "explanation": "IVF는 벡터를 군집으로 나눠 두고 질의와 가까운 군집 몇 개만 검색하는 인덱스다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-index-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "hnsw",
+        "ann-index"
+      ],
+      "content": {
+        "prompt": "여러 층의 근접 그래프로 벡터를 연결한 인덱스는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "HNSW",
+          "hnsw"
+        ]
+      },
+      "explanation": "HNSW는 여러 층의 근접 그래프로 벡터를 연결하고 가까운 이웃을 따라가며 찾는 인덱스다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-index-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ivf",
+        "trade-off"
+      ],
+      "content": {
+        "prompt": "IVF에서 검색할 군집 수를 늘리면?",
+        "options": [
+          "재현율↓ 속도↑",
+          "재현율↑ 속도↓",
+          "둘 다 오름"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "살펴볼 군집 수를 늘리면 정답을 포함할 가능성이 커져 재현율은 오르고 비교가 늘어 속도는 떨어진다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-index-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ivf",
+        "ann-index"
+      ],
+      "content": {
+        "prompt": "벡터가 고르게 나뉜 IVF 군집 100개 중 5개를 보면 비교 비율은?",
+        "options": [
+          "50%",
+          "95%",
+          "5%"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "벡터가 군집에 고르게 나뉘었다면 5개 군집에는 전체의 5 ÷ 100 = 5%가 들어 있다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-index-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "hnsw",
+        "trade-off"
+      ],
+      "content": {
+        "prompt": "HNSW의 재현율이 부족할 때 할 조정은?",
+        "options": [
+          "살펴볼 후보 늘리기",
+          "살펴볼 후보 줄이기",
+          "인덱스 삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인덱스 파라미터로 살펴볼 후보 수를 늘리면 재현율은 오르고 속도는 떨어진다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-index-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "hnsw",
+        "ann-index"
+      ],
+      "content": {
+        "prompt": "HNSW는 근접 그래프에서 가까운 이웃을 따라가며 벡터를 찾는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "HNSW는 여러 층의 근접 그래프로 벡터를 연결하고 가까운 이웃을 따라가며 검색한다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "track": "ai",
+  "unit": "u07-deep-architectures",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "ai-dlarch-review-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cnn",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "합성곱 필터를 공유해 이미지의 지역 패턴을 뽑는 구조는?",
+        "options": [
+          "RNN",
+          "CNN",
+          "트랜스포머"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "CNN은 이미지처럼 위치 관계가 있는 데이터에 합성곱 필터를 공유해 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-review-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "transformer",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "셀프 어텐션으로 모든 위치를 병렬로 연결하는 구조는?",
+        "options": [
+          "LSTM",
+          "CNN",
+          "트랜스포머"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "트랜스포머는 셀프 어텐션으로 모든 위치를 병렬로 연결해 긴 문맥을 다룬다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-review-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rnn",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "시퀀스를 한 시점씩 순서대로 처리하는 것은?",
+        "options": [
+          "RNN",
+          "트랜스포머"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "RNN·LSTM은 시퀀스를 순서대로 처리한다. 트랜스포머는 모든 위치를 병렬로 계산한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-review-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "lstm",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "LSTM은 시퀀스의 모든 위치를 동시에 계산한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "LSTM은 RNN 변형이라 시퀀스를 순서대로 처리한다. 모든 위치를 병렬로 계산하는 것은 트랜스포머다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-review-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cnn",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "이미지에 주로 쓰는, 합성곱 층을 쌓은 신경망은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "CNN",
+          "cnn",
+          "합성곱 신경망"
+        ]
+      },
+      "explanation": "CNN은 합성곱 필터를 공유해 이미지처럼 위치 관계가 있는 데이터의 지역 패턴을 뽑는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "rnn",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "RNN은 시퀀스가 길어지면 앞 ___ 를 잃기 쉽다."
+      },
+      "answer_key": {
+        "accepted": [
+          "정보",
+          "information",
+          "앞 정보"
+        ]
+      },
+      "explanation": "RNN·LSTM은 시퀀스를 순서대로 처리하지만, 길어지면 느리고 앞 정보를 잃기 쉽다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-review-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cnn",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "설비 사진으로 불량을 판정할 때 알맞은 구조는?",
+        "options": [
+          "RNN",
+          "LSTM",
+          "CNN"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "사진은 위치 관계가 있는 이미지 데이터라 합성곱 필터를 공유하는 CNN이 알맞다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-review-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "transformer",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "긴 문서를 빠르게 학습하며 먼 문맥까지 써야 할 때 알맞은 구조는?",
+        "options": [
+          "기본 RNN",
+          "트랜스포머",
+          "CNN"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "트랜스포머는 셀프 어텐션으로 모든 위치를 병렬로 연결해 긴 문맥을 빠르게 다룬다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-review-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lstm",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "순서대로 처리해 긴 시퀀스에서 느린 구조는?",
+        "options": [
+          "LSTM",
+          "트랜스포머",
+          "CNN"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "LSTM은 RNN 변형이라 앞 시점이 끝나야 다음을 계산해 시퀀스가 길면 느리다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-review-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cnn",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "CNN은 같은 합성곱 필터를 이미지의 여러 위치에 공유해 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "CNN은 이미지처럼 위치 관계가 있는 데이터에 합성곱 필터를 공유해 쓴다.",
+      "refs": []
+    }
+  ]
+}

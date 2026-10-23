@@ -1,0 +1,212 @@
+{
+  "track": "ai",
+  "unit": "u07-deep-architectures",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ai-dlarch-rnn-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rnn",
+        "sequence"
+      ],
+      "content": {
+        "prompt": "문장·로그처럼 순서가 의미를 갖는 데이터는?",
+        "options": [
+          "이미지 텐서",
+          "시퀀스 데이터",
+          "범주형 데이터"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시퀀스 데이터는 문장·로그·센서 값처럼 순서가 의미를 갖는 데이터다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-rnn-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rnn"
+      ],
+      "content": {
+        "prompt": "이전 시점의 은닉 상태를 다음 입력과 함께 받는 신경망은?",
+        "options": [
+          "CNN",
+          "퍼셉트론",
+          "RNN"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "RNN은 이전 시점의 은닉 상태를 다음 입력과 함께 받아 순서대로 처리한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-rnn-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rnn",
+        "hidden-state"
+      ],
+      "content": {
+        "prompt": "지금까지 본 입력 정보를 담아 다음 시점으로 넘기는 값은?",
+        "options": [
+          "은닉 상태",
+          "필터"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "은닉 상태는 지금까지 본 입력의 정보를 담아 다음 시점으로 넘긴다. 필터는 합성곱의 가중치다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-rnn-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "rnn",
+        "hidden-state"
+      ],
+      "content": {
+        "prompt": "RNN은 시퀀스의 각 시점을 서로 독립적으로 처리한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "RNN은 이전 시점의 은닉 상태를 다음 시점으로 넘기므로 각 시점이 앞 입력의 영향을 받는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-rnn-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "rnn",
+        "hidden-state"
+      ],
+      "content": {
+        "prompt": "RNN이 다음 시점으로 넘기는 값은 ___ 상태이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "은닉",
+          "hidden",
+          "은닉 상태"
+        ]
+      },
+      "explanation": "은닉 상태는 지금까지 본 입력의 정보를 담아 다음 시점으로 넘기는 값이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-rnn-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "rnn",
+        "sequence"
+      ],
+      "content": {
+        "prompt": "순서가 의미를 갖는 데이터를 ___ 데이터라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "시퀀스",
+          "sequence",
+          "순차"
+        ]
+      },
+      "explanation": "문장·로그·센서 값처럼 순서가 의미를 갖는 데이터를 시퀀스 데이터라 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-rnn-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rnn",
+        "sequence"
+      ],
+      "content": {
+        "prompt": "다음 중 시퀀스 데이터는?",
+        "options": [
+          "사진 한 장",
+          "키·몸무게 표",
+          "분 단위 센서 값"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "분 단위 센서 값은 시간 순서가 의미를 가지므로 시퀀스 데이터다. 나머지는 순서가 의미를 갖지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-rnn-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rnn",
+        "hidden-state"
+      ],
+      "content": {
+        "prompt": "RNN이 3번째 단어를 처리할 때 함께 받는 것은?",
+        "options": [
+          "1번째 입력만",
+          "2번째 은닉 상태",
+          "문장 전체"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "RNN은 직전 시점의 은닉 상태를 현재 입력과 함께 받는다. 그 은닉 상태에 1·2번째 정보가 담겨 있다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-rnn-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rnn",
+        "sequence"
+      ],
+      "content": {
+        "prompt": "RNN에 같은 단어들을 다른 순서로 넣으면 결과는?",
+        "options": [
+          "순서에 따라 다름",
+          "순서와 무관"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "은닉 상태가 앞 입력을 차례로 누적하므로 입력 순서가 바뀌면 결과도 달라질 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-rnn-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "rnn",
+        "sequence"
+      ],
+      "content": {
+        "prompt": "로그·센서 값처럼 순서가 의미를 갖는 데이터를 시퀀스 데이터라 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "시퀀스 데이터는 순서가 의미를 갖는 데이터이며, RNN은 이를 순서대로 처리한다.",
+      "refs": []
+    }
+  ]
+}
