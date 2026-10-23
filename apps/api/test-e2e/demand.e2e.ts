@@ -42,6 +42,8 @@ const getStats = async (): Promise<Stats> => {
 };
 
 async function main() {
+  // 사용자·활동을 만들기 전 스냅샷 — 이후 값은 전후 차이로 단언한다 (CI DB엔 다른 e2e 사용자가 있다)
+  const before = await getStats();
   const stamp = Date.now();
   const mk = (tag: string, createdAt?: Date) =>
     prisma.user.create({ data: { email: `e2e-demand-${tag}-${stamp}@example.test`, nickname: `e2ed${tag}${stamp % 1e8}`, ...(createdAt ? { createdAt } : {}) } });
@@ -93,8 +95,6 @@ async function main() {
     assert.equal(jwtOnly.status, 401, '사용자 JWT(admin 포함)로는 접근 불가');
 
     // ---- 3. 집계
-    const before = await getStats();
-
     const dsa = await prisma.track.findUniqueOrThrow({ where: { slug: 'dsa' }, select: { id: true, units: { where: { sortOrder: { gt: 0 } }, orderBy: { sortOrder: 'asc' }, take: 1, select: { lessons: { where: { sortOrder: { gt: 0 } }, orderBy: { sortOrder: 'asc' }, take: 3, select: { id: true } } } } } });
     const lessons = dsa.units[0]!.lessons;
     assert.ok(lessons.length >= 3, 'dsa 첫 유닛에 레슨 3개');
@@ -124,7 +124,7 @@ async function main() {
     const after = await getStats();
     const d = (x: number, y: number) => x - y;
 
-    assert.ok(after.users.total >= 3, '가입자 수에 시드 사용자 포함');
+    assert.equal(d(after.users.total, before.users.total), 3, '가입자 수: A·B·C');
     assert.equal(d(after.users.active1d, before.users.active1d), 1, '활성 1일: C');
     assert.equal(d(after.users.active7d, before.users.active7d), 2, '활성 7일: A(3일 전)·C. B는 placement·미완료라 제외');
     assert.equal(d(after.users.active30d, before.users.active30d), 2, '활성 30일');
