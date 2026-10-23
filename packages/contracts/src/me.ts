@@ -32,6 +32,49 @@ export const TodayActivity = z.object({
   goalAchieved: z.boolean(),
 });
 
+/** 프리미엄 사전 신청 — 관심 항목 (결제 없음, 수요 검증용) */
+export const PREMIUM_INTERESTS = ['aws', 'security', 'coding_test', 'eip', 'review_tools'] as const;
+export const PremiumInterestKey = z.enum(PREMIUM_INTERESTS);
+export type PremiumInterestKey = z.infer<typeof PremiumInterestKey>;
+export const PREMIUM_INTEREST_LABEL: Record<PremiumInterestKey, string> = {
+  aws: 'AWS 트랙',
+  security: '보안 트랙',
+  coding_test: '코딩 테스트',
+  eip: '정보처리기사',
+  review_tools: '오답 노트·복습 기능',
+};
+
+/** 월 가격 의향 구간 */
+export const PREMIUM_PRICE_BANDS = ['free_only', 'lte_3000', 'from_3000_to_6000', 'from_6000_to_10000', 'gt_10000'] as const;
+export const PremiumPriceBand = z.enum(PREMIUM_PRICE_BANDS);
+export type PremiumPriceBand = z.infer<typeof PremiumPriceBand>;
+export const PREMIUM_PRICE_BAND_LABEL: Record<PremiumPriceBand, string> = {
+  free_only: '무료일 때만',
+  lte_3000: '3,000원 이하',
+  from_3000_to_6000: '3,000~6,000원',
+  from_6000_to_10000: '6,000~10,000원',
+  gt_10000: '10,000원 이상',
+};
+
+/** PUT /me/premium-interest */
+export const PremiumInterestRequest = z.object({
+  interests: z
+    .array(PremiumInterestKey)
+    .min(1)
+    .max(PREMIUM_INTERESTS.length)
+    .refine((a) => new Set(a).size === a.length, '중복된 항목이 있어요'),
+  priceBand: PremiumPriceBand,
+  /** 출시 알림 이메일 수신 동의. 명시적으로 켠 경우에만 true */
+  notifyConsent: z.boolean(),
+});
+export type PremiumInterestRequest = z.infer<typeof PremiumInterestRequest>;
+
+/** 저장된 사전 신청 상태 (GET /me, PUT /me/premium-interest 응답) */
+export const PremiumInterestState = PremiumInterestRequest.extend({
+  updatedAt: z.string(),
+});
+export type PremiumInterestState = z.infer<typeof PremiumInterestState>;
+
 /** GET /me */
 export const MeResponse = z.object({
   user: UserProfile,
@@ -39,6 +82,8 @@ export const MeResponse = z.object({
   today: TodayActivity,
   tracks: z.array(TrackSummary),
   dueReviewCount: z.number().int(),
+  /** 프리미엄 사전 신청 상태. 신청 전이면 null (옛 API 호환을 위해 생략될 수 있음) */
+  premiumInterest: PremiumInterestState.nullable().optional(),
 });
 export type MeResponse = z.infer<typeof MeResponse>;
 

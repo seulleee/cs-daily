@@ -1,8 +1,8 @@
-import { Body, Controller, Get, Patch, Put, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Patch, Put, Query, UseGuards } from '@nestjs/common';
 import { QueryBus } from '@nestjs/cqrs';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { z } from 'zod';
-import { ErrorCode, SetTracksRequest, UpdateMeRequest, type MeResponse } from '@cs-daily/contracts';
+import { ErrorCode, PremiumInterestRequest, SetTracksRequest, UpdateMeRequest, type MeResponse, type PremiumInterestState } from '@cs-daily/contracts';
 import { ConflictError } from '../../../shared/domain/domain-error';
 import { localDateOf } from '../../../shared/domain/local-date';
 import { UnitOfWork } from '../../../shared/infrastructure/unit-of-work';
@@ -34,6 +34,7 @@ export class MeController {
       where: { id: auth.id },
       include: {
         stats: true,
+        premiumInterest: true,
         userTracks: {
           include: {
             track: { include: { units: { where: { sortOrder: { gt: 0 } }, select: { _count: { select: { lessons: { where: { sortOrder: { gt: 0 } } } } } } } } },
@@ -82,7 +83,26 @@ export class MeController {
         lessonCount: t.units.reduce((n, u) => n + u._count.lessons, 0),
       })),
       dueReviewCount,
+      premiumInterest: user.premiumInterest ? toPremiumState(user.premiumInterest) : null,
     };
+  }
+
+  /**
+   * 프리미엄 사전 신청(수요 검증, 결제 없음) — 사용자당 1건 upsert.
+   * 알림 동의는 요청이 명시적으로 true일 때만 저장된다(기본 꺼짐).
+   */
+  @Put('premium-interest')
+  async putPremiumInterest(@CurrentUser() auth: AuthUser, @Body(new ZodBody(PremiumInterestRequest)) body: PremiumInterestRequest): Promise<PremiumInterestState> {
+    const data = { interests: body.interests, priceBand: body.priceBand, notifyConsent: body.notifyConsent === true };
+    const row = await this.uow.client.premiumInterest.upsert({ where: { userId: auth.id }, create: { userId: auth.id, ...data }, update: data });
+    return toPremiumState(row);
+  }
+
+  /** 신청 취소 — 행을 삭제한다(없어도 204) */
+  @Delete('premium-interest')
+  @HttpCode(204)
+  async deletePremiumInterest(@CurrentUser() auth: AuthUser): Promise<void> {
+    await this.uow.client.premiumInterest.deleteMany({ where: { userId: auth.id } });
   }
 
   @Patch()
@@ -113,4 +133,8 @@ export class MeController {
   calendar(@CurrentUser() auth: AuthUser, @Query('month') month: string) {
     return this.queryBus.execute(new GetCalendarQuery(auth.id, z.string().regex(/^\d{4}-\d{2}$/).parse(month)));
   }
+}
+
+function toPremiumState(row: { interests: string[]; priceBand: PremiumInterestState['priceBand']; notifyConsent: boolean; updatedAt: Date }): PremiumInterestState {
+  return { interests: row.interests as PremiumInterestState['interests'], priceBand: row.priceBand, notifyConsent: row.notifyConsent, updatedAt: row.updatedAt.toISOString() };
 }

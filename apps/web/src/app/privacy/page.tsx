@@ -7,7 +7,7 @@ const CONTACT = 'gkstmvdl@gmail.com';
 
 export default function PrivacyPage() {
   return (
-    <LegalPage current="/privacy" title="개인정보처리방침" effectiveDate="2026-10-08">
+    <LegalPage current="/privacy" title="개인정보처리방침" effectiveDate="2026-10-23">
       <p className="mt-6 text-body leading-7">
         CS 데일리(https://cs-daily-iota.vercel.app, 이하 &ldquo;서비스&rdquo;)는 어떤 정보를 왜 모으고 어떻게 보관하는지 아래와 같이 안내합니다.
         운영자 연락처는 <a href={`mailto:${CONTACT}`} className="underline underline-offset-4">{CONTACT}</a>입니다.
@@ -26,6 +26,10 @@ export default function PrivacyPage() {
           <li>학습 기록: 푼 문제, 정오답, 소요 시간, XP, 스트릭, 복습 일정</li>
           <li>설정값: 하루 목표, 리마인더 시각, 타임존, 학습 트랙</li>
         </LegalList>
+        <p>
+          프리미엄 사전 신청을 하면 프리미엄 사전 신청 정보(관심 항목·가격 의향·알림 동의)가 저장됩니다. 이 정보는 출시 안내와 수요 파악에만 쓰고, 설정 화면에서 신청을 취소하면 삭제합니다.
+          지금은 결제 기능이 없으며 결제 정보는 수집하지 않습니다.
+        </p>
       </LegalSection>
 
       <LegalSection heading="2. 이용 목적">

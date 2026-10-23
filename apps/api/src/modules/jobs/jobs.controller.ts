@@ -1,10 +1,11 @@
-import { Controller, Headers, Logger, Post, UnauthorizedException } from '@nestjs/common';
+import { Controller, Headers, Logger, Post } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { CommandBus } from '@nestjs/cqrs';
 import { ApiTags } from '@nestjs/swagger';
 import { UnitOfWork } from '../../shared/infrastructure/unit-of-work';
 import { SendRemindersCommand } from '../notification/application/send-reminders.handler';
 import { ApplyMissedDaysCommand, RefillFreezesCommand } from '../progression/application/commands/commands';
+import { assertInternalAuth } from './presentation/internal-auth';
 
 /**
  * 배치 tick (기획서 11절). Cloud Scheduler가 매시 정각에 POST /internal/jobs/tick 호출.
@@ -45,8 +46,7 @@ export class JobsController {
   }
 
   private authorize(authorization?: string) {
-    const secret = this.config.get<string>('JOBS_SECRET');
-    if (!secret || authorization !== `Bearer ${secret}`) throw new UnauthorizedException('jobs: invalid credential');
+    assertInternalAuth(this.config.get<string>('JOBS_SECRET'), authorization, 'jobs');
   }
 
   /** job_runs에 (job, slot)을 먼저 INSERT — 이미 있으면 skip. 실패하면 error를 남기고 다음 tick에서 재시도 가능하게 행을 지운다 */
