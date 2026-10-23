@@ -1,0 +1,226 @@
+{
+  "track": "ai",
+  "unit": "u01-ml-basics",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "ai-mlb-reinforce-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "reinforcement-learning",
+        "reward",
+        "policy"
+      ],
+      "content": {
+        "prompt": "보상을 최대화하도록 행동 방식을 배우는 방식은?",
+        "options": [
+          "지도 학습",
+          "비지도 학습",
+          "강화 학습"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "강화 학습은 행동의 결과로 받는 보상을 최대화하도록 행동 방식을 학습합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-reinforce-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "reinforcement-learning",
+        "reward",
+        "policy"
+      ],
+      "content": {
+        "prompt": "행동이 얼마나 좋았는지 환경이 돌려주는 숫자 신호는?",
+        "options": [
+          "보상",
+          "정책",
+          "레이블"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "보상은 행동이 얼마나 좋았는지 환경이 돌려주는 숫자 신호입니다. 정책은 행동을 정하는 규칙입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-reinforce-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "reinforcement-learning",
+        "reward",
+        "policy"
+      ],
+      "content": {
+        "prompt": "현재 상태에서 어떤 행동을 할지 정하는 규칙은?",
+        "options": [
+          "보상",
+          "정책"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "정책은 현재 상태에서 어떤 행동을 할지 정하는 규칙입니다. 보상은 행동 결과로 받는 숫자 신호입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-reinforce-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "reinforcement-learning",
+        "reward",
+        "policy"
+      ],
+      "content": {
+        "prompt": "강화 학습에서 보상을 돌려주는 쪽은?",
+        "options": [
+          "환경",
+          "레이블",
+          "테스트 세트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "행동에 반응하는 시스템인 환경이 행동의 결과로 보상을 돌려줍니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-reinforce-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "reinforcement-learning",
+        "reward",
+        "policy"
+      ],
+      "content": {
+        "prompt": "행동의 결과로 환경이 돌려주는 숫자 신호는 ___ 이다.",
+        "hint": "강화 학습은 이 값을 최대화하려 합니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "보상",
+          "reward",
+          "리워드"
+        ]
+      },
+      "explanation": "보상은 행동이 얼마나 좋았는지 환경이 돌려주는 숫자 신호입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-reinforce-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "reinforcement-learning",
+        "reward",
+        "policy"
+      ],
+      "content": {
+        "prompt": "현재 상태에 따라 할 행동을 정하는 규칙은 ___ 이다.",
+        "hint": "강화 학습이 결국 개선해 나가는 대상입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "정책",
+          "policy",
+          "폴리시"
+        ]
+      },
+      "explanation": "정책은 현재 상태에서 어떤 행동을 할지 정하는 규칙이며, 보상을 많이 받도록 고쳐 나갑니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-reinforce-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "reinforcement-learning",
+        "reward",
+        "policy"
+      ],
+      "content": {
+        "prompt": "게임 점수를 보상으로 받으며 조작을 익힌다. 방식은?",
+        "options": [
+          "강화 학습",
+          "지도 학습",
+          "군집화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "행동 결과로 점수라는 보상을 받고 이를 최대화하도록 배우므로 강화 학습입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-reinforce-008",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "reinforcement-learning",
+        "reward",
+        "policy"
+      ],
+      "content": {
+        "prompt": "강화 학습은 매 순간의 정답 레이블로 배운다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "강화 학습은 매 순간의 정답 대신 행동 결과로 받는 보상으로 배웁니다. 정답 레이블로 배우는 것은 지도 학습입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-reinforce-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "reinforcement-learning",
+        "reward",
+        "policy"
+      ],
+      "content": {
+        "prompt": "로봇이 넘어질 때마다 -1을 받았다. 이 -1은?",
+        "options": [
+          "정책",
+          "보상",
+          "레이블"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "행동 결과가 나빴다는 것을 환경이 숫자로 돌려준 것이므로 보상입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-reinforce-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "reinforcement-learning",
+        "reward",
+        "policy"
+      ],
+      "content": {
+        "prompt": "강화 학습은 보상을 최대화하도록 행동 방식을 배운다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "강화 학습은 환경 안에서 행동하고 받은 보상을 보며, 보상이 커지도록 행동 방식을 학습합니다.",
+      "refs": []
+    }
+  ]
+}

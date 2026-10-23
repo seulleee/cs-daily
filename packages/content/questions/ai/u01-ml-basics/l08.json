@@ -1,0 +1,240 @@
+{
+  "track": "ai",
+  "unit": "u01-ml-basics",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "ai-mlb-splitmethod-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "data-split",
+        "time-series",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "샘플을 섞은 뒤 나눠 세트별 분포를 맞추는 방식은?",
+        "options": [
+          "시간순 분할",
+          "차원 축소",
+          "무작위 분할"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "무작위 분할은 샘플을 섞은 뒤 나눠 세트마다 분포를 비슷하게 맞춥니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-splitmethod-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "data-split",
+        "time-series",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "과거 데이터로 학습하고 미래 데이터로 평가하는 분할은?",
+        "options": [
+          "무작위 분할",
+          "시간순 분할",
+          "차원 축소"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시간순 분할은 시간에 따라 바뀌는 데이터를 과거로 학습하고 미래로 평가합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-splitmethod-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "data-split",
+        "time-series",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "날짜에 따라 추세가 바뀌는 매출 데이터에 맞는 분할은?",
+        "options": [
+          "시간순 분할",
+          "무작위 분할"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "시간에 따라 바뀌는 데이터는 과거로 학습하고 미래로 평가하는 시간순 분할이 맞습니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-splitmethod-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "data-split",
+        "time-series",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "시간순 데이터를 섞어 나누면 미래 정보로 과거를 맞힐 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "섞어 나누면 학습 세트에 평가 기간보다 뒤의 샘플이 들어가, 미래 정보를 보고 과거를 맞히게 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-splitmethod-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "data-split",
+        "time-series",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "샘플을 섞은 뒤 세트를 나누는 방식은 ___ 분할이다.",
+        "hint": "세트마다 분포를 비슷하게 맞추려는 방식입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "무작위",
+          "랜덤",
+          "random",
+          "임의"
+        ]
+      },
+      "explanation": "무작위 분할은 샘플을 섞은 뒤 나눠, 정렬된 파일이라도 세트마다 분포를 비슷하게 맞춥니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-splitmethod-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "data-split",
+        "time-series",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "과거로 학습하고 미래로 평가하는 방식은 ___ 분할이다.",
+        "hint": "매출처럼 시간이 흐르며 바뀌는 데이터에 씁니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "시간순",
+          "시간 순",
+          "시간순서",
+          "시계열"
+        ]
+      },
+      "explanation": "시간순 분할은 시간에 따라 바뀌는 데이터를 과거로 학습하고 미래로 평가합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-splitmethod-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "data-split",
+        "time-series",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "코드의 train_test_split이 하는 일은?",
+        "code": {
+          "language": "python",
+          "source": "from sklearn import model_selection as ms\nX_tr, X_te, y_tr, y_te = ms.train_test_split(\n    X, y, test_size=0.2, random_state=0)"
+        },
+        "options": [
+          "모델 학습",
+          "학습·테스트 분할",
+          "결과 추론"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "train_test_split은 데이터를 학습용과 테스트용으로 나누는 scikit-learn 함수입니다. 학습·추론은 fit·predict가 맡습니다.",
+      "refs": [
+        "https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html"
+      ]
+    },
+    {
+      "id": "ai-mlb-splitmethod-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "data-split",
+        "time-series",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "샘플 100개를 나눈 뒤 출력되는 값은?",
+        "code": {
+          "language": "python",
+          "source": "import numpy as np\nfrom sklearn import model_selection as ms\nX = np.arange(200).reshape(100, 2)\ny = np.arange(100)\nX_tr, X_te, y_tr, y_te = ms.train_test_split(\n    X, y, test_size=0.2, random_state=0)\nprint(len(X_te))"
+        },
+        "options": [
+          "20",
+          "80",
+          "100"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "test_size=0.2이므로 100개 중 20%인 20개가 테스트용 X_te로 갑니다.",
+      "refs": [
+        "https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html"
+      ]
+    },
+    {
+      "id": "ai-mlb-splitmethod-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "data-split",
+        "time-series",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "1~12월 주문 데이터를 시간순 분할할 때 테스트 세트는?",
+        "options": [
+          "1~2월",
+          "11~12월",
+          "무작위 2개월"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시간순 분할은 과거로 학습하고 미래로 평가하므로 가장 뒤 기간인 11~12월이 테스트 세트가 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-splitmethod-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "data-split",
+        "time-series",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "매출처럼 시간에 따라 바뀌는 데이터는 섞어서 나눈다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "시간에 따라 바뀌는 데이터는 시간순으로 나눕니다. 섞어서 나누는 무작위 분할은 시간 흐름이 없는 데이터에 맞습니다.",
+      "refs": []
+    }
+  ]
+}

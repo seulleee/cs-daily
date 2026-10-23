@@ -1,0 +1,227 @@
+{
+  "track": "ai",
+  "unit": "u01-ml-basics",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ai-mlb-unsupervised-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "unsupervised-learning",
+        "clustering",
+        "dimensionality-reduction"
+      ],
+      "content": {
+        "prompt": "레이블 없이 데이터의 구조나 패턴을 찾는 방식은?",
+        "options": [
+          "지도 학습",
+          "비지도 학습",
+          "회귀"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "비지도 학습은 레이블 없이 데이터 자체의 구조나 패턴을 찾습니다. 지도 학습과 회귀는 레이블이 필요합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-unsupervised-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "unsupervised-learning",
+        "clustering",
+        "dimensionality-reduction"
+      ],
+      "content": {
+        "prompt": "비슷한 샘플끼리 묶는 비지도 학습 과제는?",
+        "options": [
+          "군집화",
+          "분류",
+          "차원 축소"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "군집화는 레이블 없이 비슷한 샘플끼리 묶습니다. 분류는 레이블로 배운 범주 중 하나를 고르는 지도 학습 과제입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-unsupervised-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "unsupervised-learning",
+        "clustering",
+        "dimensionality-reduction"
+      ],
+      "content": {
+        "prompt": "특징 수를 줄이면서 주요 정보를 남기는 과제는?",
+        "options": [
+          "군집화",
+          "차원 축소"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "차원 축소는 특징 수를 줄이면서 데이터의 주요 정보를 남깁니다. 군집화는 샘플을 묶는 과제입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-unsupervised-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "unsupervised-learning",
+        "clustering",
+        "dimensionality-reduction"
+      ],
+      "content": {
+        "prompt": "군집화는 레이블이 있어야 할 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "군집화는 비지도 학습 과제라 레이블 없이 비슷한 샘플끼리 묶습니다. 레이블이 필요한 것은 분류입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-unsupervised-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "unsupervised-learning",
+        "clustering",
+        "dimensionality-reduction"
+      ],
+      "content": {
+        "prompt": "레이블 없이 비슷한 샘플끼리 묶는 과제는 ___ 이다.",
+        "hint": "비지도 학습의 대표 과제입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "군집화",
+          "클러스터링",
+          "clustering",
+          "군집 분석",
+          "군집"
+        ]
+      },
+      "explanation": "군집화는 레이블 없이 비슷한 샘플끼리 묶는 비지도 학습 과제입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-unsupervised-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "unsupervised-learning",
+        "clustering",
+        "dimensionality-reduction"
+      ],
+      "content": {
+        "prompt": "특징 300개를 20개로 줄이며 주요 정보를 남기는 과제는 ___ 이다.",
+        "hint": "줄어드는 것은 샘플 수가 아니라 열의 수입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "차원 축소",
+          "차원축소",
+          "dimensionality reduction"
+        ]
+      },
+      "explanation": "차원 축소는 특징 수를 줄이면서 데이터의 주요 정보를 남기는 비지도 학습 과제입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-unsupervised-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "unsupervised-learning",
+        "clustering",
+        "dimensionality-reduction"
+      ],
+      "content": {
+        "prompt": "레이블 없는 구매 로그로 비슷한 고객끼리 묶었다. 과제는?",
+        "options": [
+          "분류",
+          "군집화",
+          "회귀"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "정답 없이 비슷한 샘플끼리 묶었으므로 군집화입니다. 분류와 회귀는 레이블이 있어야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-unsupervised-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "unsupervised-learning",
+        "clustering",
+        "dimensionality-reduction"
+      ],
+      "content": {
+        "prompt": "정답이 붙지 않은 로그 데이터에 맞는 학습 방식은?",
+        "options": [
+          "비지도 학습",
+          "지도 학습"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "레이블이 없으므로 데이터 자체의 구조를 찾는 비지도 학습이 맞습니다. 지도 학습은 레이블이 필요합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-unsupervised-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "unsupervised-learning",
+        "clustering",
+        "dimensionality-reduction"
+      ],
+      "content": {
+        "prompt": "특징 500개를 그래프로 보려고 2개로 줄였다. 과제는?",
+        "options": [
+          "군집화",
+          "분류",
+          "차원 축소"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "특징 수를 줄이면서 주요 정보를 남겼으므로 차원 축소입니다. 샘플 수는 그대로입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-unsupervised-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "unsupervised-learning",
+        "clustering",
+        "dimensionality-reduction"
+      ],
+      "content": {
+        "prompt": "비지도 학습은 레이블 없이 데이터의 구조를 찾는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "비지도 학습은 정답 레이블 없이 샘플 사이의 거리나 분포를 보고 데이터의 구조나 패턴을 찾습니다.",
+      "refs": []
+    }
+  ]
+}

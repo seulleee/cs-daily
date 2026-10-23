@@ -1,0 +1,217 @@
+{
+  "track": "ai",
+  "unit": "u01-ml-basics",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "ai-mlb-review-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ml-basics",
+        "review"
+      ],
+      "content": {
+        "prompt": "지도·비지도·강화 학습 중 레이블로 배우는 방식은?",
+        "options": [
+          "지도 학습",
+          "비지도 학습",
+          "강화 학습"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "지도 학습은 레이블로, 비지도 학습은 데이터 구조로, 강화 학습은 보상으로 배웁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-review-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ml-basics",
+        "review"
+      ],
+      "content": {
+        "prompt": "모델을 만들고 쓰는 두 단계의 순서는?",
+        "options": [
+          "추론 → 학습",
+          "학습 → 추론"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "학습으로 파라미터를 먼저 정하고, 그 모델로 추론해 새 입력에 답합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-review-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ml-basics",
+        "review"
+      ],
+      "content": {
+        "prompt": "합격 여부 레이블이 있는 지원서로 합격을 예측한다. 과제는?",
+        "options": [
+          "회귀",
+          "분류",
+          "군집화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "레이블이 있고 합격·불합격 중 하나를 고르므로 지도 학습의 분류 과제입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-review-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ml-basics",
+        "review"
+      ],
+      "content": {
+        "prompt": "강화 학습은 보상으로, 지도 학습은 레이블로 배운다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "강화 학습은 행동 결과로 받는 보상을, 지도 학습은 정답 레이블을 기준으로 배웁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-review-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ml-basics",
+        "review"
+      ],
+      "content": {
+        "prompt": "학습을 마친 모델로 새 입력에 답하는 단계는 ___ 이다.",
+        "hint": "학습 다음에 오는 단계입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "추론",
+          "inference",
+          "인퍼런스"
+        ]
+      },
+      "explanation": "학습으로 파라미터를 정한 뒤, 추론 단계에서 새 입력에 답합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ml-basics",
+        "review"
+      ],
+      "content": {
+        "prompt": "fit 호출로 값이 정해지는 모델 내부의 값은 ___ 이다.",
+        "hint": "추론 단계에서는 바뀌지 않고 그대로 쓰입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "파라미터",
+          "parameter",
+          "매개변수",
+          "모수"
+        ]
+      },
+      "explanation": "파라미터는 학습 단계에서 정해지는 모델 내부의 값이고, 추론 단계에서는 그대로 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-review-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ml-basics",
+        "review"
+      ],
+      "content": {
+        "prompt": "창고 로봇이 보상을 받으며 이동 경로를 익힌다. 방식은?",
+        "options": [
+          "지도 학습",
+          "강화 학습",
+          "비지도 학습"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "행동의 결과로 받는 보상을 최대화하도록 배우므로 강화 학습입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-review-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ml-basics",
+        "review"
+      ],
+      "content": {
+        "prompt": "최종 모델 성능을 보고서에 적을 때 쓰는 세트는?",
+        "options": [
+          "학습 세트",
+          "검증 세트",
+          "테스트 세트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "처음 보는 데이터의 성능은 마지막에 한 번 테스트 세트로 잽니다. 검증 세트는 설정 선택에 이미 썼습니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-review-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ml-basics",
+        "review"
+      ],
+      "content": {
+        "prompt": "정답 없는 센서 로그에서 비슷한 패턴끼리 묶는다. 방식은?",
+        "options": [
+          "비지도 학습",
+          "지도 학습",
+          "강화 학습"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "레이블 없이 데이터의 구조를 찾으므로 비지도 학습입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-review-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ml-basics",
+        "review"
+      ],
+      "content": {
+        "prompt": "지도 학습은 정답 없이 데이터의 분포만 보고 배운다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "레이블 없이 데이터 구조를 보고 배우는 것은 비지도 학습입니다. 지도 학습은 레이블로 배웁니다.",
+      "refs": []
+    }
+  ]
+}

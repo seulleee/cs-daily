@@ -1,0 +1,228 @@
+{
+  "track": "ai",
+  "unit": "u01-ml-basics",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ai-mlb-sample-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dataset",
+        "feature",
+        "label"
+      ],
+      "content": {
+        "prompt": "데이터셋의 한 행, 예시 하나를 부르는 말은?",
+        "options": [
+          "샘플",
+          "특징",
+          "레이블"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "샘플은 데이터셋의 한 행, 즉 예시 하나입니다. 특징과 레이블은 열에 해당합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-sample-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dataset",
+        "feature",
+        "label"
+      ],
+      "content": {
+        "prompt": "모델이 맞혀야 하는 정답 값은?",
+        "options": [
+          "특징",
+          "샘플",
+          "레이블"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "레이블은 모델이 맞혀야 하는 정답 값입니다. 특징은 모델에 들어가는 입력 값입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-sample-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dataset",
+        "feature",
+        "label"
+      ],
+      "content": {
+        "prompt": "집값을 예측하는 표에서 '면적' 열은?",
+        "options": [
+          "레이블",
+          "특징"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "면적은 집을 설명하는 입력 값이므로 특징입니다. 맞혀야 하는 값인 가격이 레이블입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-sample-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dataset",
+        "feature",
+        "label"
+      ],
+      "content": {
+        "prompt": "집값 예측에서 실제 거래 가격 열은 특징이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "거래 가격은 모델이 맞혀야 하는 정답이므로 레이블입니다. 면적·방 수처럼 입력이 되는 값이 특징입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-sample-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dataset",
+        "feature",
+        "label"
+      ],
+      "content": {
+        "prompt": "샘플을 설명하는 입력 값 하나하나를 ___ 이라 한다.",
+        "hint": "모델의 입력으로 들어가는 값입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "특징",
+          "feature",
+          "피처",
+          "특성"
+        ]
+      },
+      "explanation": "특징(feature)은 샘플을 설명하는 입력 값 하나하나로, 표에서는 열 하나에 해당합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-sample-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dataset",
+        "feature",
+        "label"
+      ],
+      "content": {
+        "prompt": "특징과 함께 주어지며 모델이 맞혀야 하는 값은 ___ 이다.",
+        "hint": "모델의 출력과 비교하는 기준 값입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "레이블",
+          "label",
+          "라벨",
+          "정답"
+        ]
+      },
+      "explanation": "레이블은 모델이 맞혀야 하는 정답 값입니다. 특징을 입력으로 받아 레이블을 맞히도록 학습합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-sample-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dataset",
+        "feature",
+        "label"
+      ],
+      "content": {
+        "prompt": "고객 1,000명을 고객당 한 행으로 적은 표의 샘플 수는?",
+        "options": [
+          "1개",
+          "1,000개",
+          "열 개수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "샘플은 데이터셋의 한 행이므로 행이 1,000개면 샘플도 1,000개입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-sample-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dataset",
+        "feature",
+        "label"
+      ],
+      "content": {
+        "prompt": "스팸 판별 데이터에서 레이블에 해당하는 것은?",
+        "options": [
+          "스팸 여부",
+          "메일 제목",
+          "발신 시각"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "모델이 맞혀야 하는 값은 스팸 여부이므로 레이블입니다. 제목과 발신 시각은 입력이 되는 특징입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-sample-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dataset",
+        "feature",
+        "label"
+      ],
+      "content": {
+        "prompt": "열이 방 수·면적·가격이고 가격을 예측한다. 특징 수는?",
+        "options": [
+          "3개",
+          "1개",
+          "2개"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "가격은 맞혀야 하는 레이블이므로 특징은 방 수와 면적 2개입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-sample-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dataset",
+        "feature",
+        "label"
+      ],
+      "content": {
+        "prompt": "샘플 하나는 여러 특징 값으로 이루어질 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "샘플은 데이터셋의 한 행이고, 그 행에는 면적·방 수처럼 여러 특징 값이 함께 들어 있습니다.",
+      "refs": []
+    }
+  ]
+}

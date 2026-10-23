@@ -1,0 +1,228 @@
+{
+  "track": "ai",
+  "unit": "u01-ml-basics",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ai-mlb-datasplit-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "data-split",
+        "validation",
+        "test-set"
+      ],
+      "content": {
+        "prompt": "모델의 파라미터를 학습시키는 데이터는?",
+        "options": [
+          "학습 세트",
+          "검증 세트",
+          "테스트 세트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "학습 세트는 모델의 파라미터를 학습시키는 데 씁니다. 검증·테스트 세트는 성능을 재는 데 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-datasplit-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "data-split",
+        "validation",
+        "test-set"
+      ],
+      "content": {
+        "prompt": "마지막에 한 번, 처음 보는 데이터의 성능을 재는 세트는?",
+        "options": [
+          "학습 세트",
+          "검증 세트",
+          "테스트 세트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "테스트 세트는 모든 선택이 끝난 뒤 한 번, 처음 보는 데이터에서의 성능을 잽니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-datasplit-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "data-split",
+        "validation",
+        "test-set"
+      ],
+      "content": {
+        "prompt": "학습 중 설정을 고르고 모델끼리 비교하는 세트는?",
+        "options": [
+          "검증 세트",
+          "테스트 세트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "검증 세트는 학습 중 설정을 고르고 모델을 비교하는 데 씁니다. 테스트 세트는 마지막에 한 번만 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-datasplit-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "data-split",
+        "validation",
+        "test-set"
+      ],
+      "content": {
+        "prompt": "테스트 세트로 여러 설정을 반복 비교해 고른다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "설정을 고르고 비교하는 데는 검증 세트를 씁니다. 테스트 세트는 마지막에 한 번만 성능을 재는 데 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-datasplit-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "data-split",
+        "validation",
+        "test-set"
+      ],
+      "content": {
+        "prompt": "모델끼리 비교하고 설정을 고르는 데이터는 ___ 세트이다.",
+        "hint": "마지막에 한 번만 쓰는 세트와는 다릅니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "검증",
+          "validation",
+          "밸리데이션",
+          "검증용"
+        ]
+      },
+      "explanation": "검증 세트는 학습 중 설정을 고르고 모델끼리 비교하는 데 쓰는 데이터입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-datasplit-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "data-split",
+        "validation",
+        "test-set"
+      ],
+      "content": {
+        "prompt": "처음 보는 데이터의 성능을 마지막에 한 번 재는 데이터는 ___ 세트이다.",
+        "hint": "설정 선택이 모두 끝난 뒤에 씁니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "테스트",
+          "test",
+          "시험",
+          "테스트용"
+        ]
+      },
+      "explanation": "테스트 세트는 마지막에 한 번, 처음 보는 데이터에서의 성능을 재는 데이터입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-datasplit-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "data-split",
+        "validation",
+        "test-set"
+      ],
+      "content": {
+        "prompt": "후보 모델 두 개 중 하나를 고를 때 쓰는 세트는?",
+        "options": [
+          "학습 세트",
+          "검증 세트",
+          "테스트 세트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "모델끼리 비교해 고르는 일은 검증 세트로 합니다. 테스트 세트는 고른 뒤 마지막에 한 번 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-datasplit-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "data-split",
+        "validation",
+        "test-set"
+      ],
+      "content": {
+        "prompt": "학습에 쓴 데이터로 성능을 재면 점수는 대개?",
+        "options": [
+          "실제보다 높다",
+          "실제보다 낮다",
+          "정확하다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "이미 학습한 샘플을 맞히는 것이라 처음 보는 데이터보다 점수가 높게 나옵니다. 그래서 테스트 세트를 따로 둡니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-datasplit-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "data-split",
+        "validation",
+        "test-set"
+      ],
+      "content": {
+        "prompt": "1,000개를 학습·검증·테스트 7:2:1로 나눴다. 검증 세트는?",
+        "options": [
+          "700개",
+          "100개",
+          "200개"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "검증 세트는 전체의 2/10이므로 1,000 × 0.2 = 200개입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-datasplit-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "data-split",
+        "validation",
+        "test-set"
+      ],
+      "content": {
+        "prompt": "학습 세트는 모델의 파라미터를 학습시키는 데 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "학습 세트로 모델의 파라미터를 조정하고, 검증·테스트 세트는 성능을 재는 데 씁니다.",
+      "refs": []
+    }
+  ]
+}
