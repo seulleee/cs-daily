@@ -1,0 +1,209 @@
+{
+  "track": "ai",
+  "unit": "u07-deep-architectures",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ai-dlarch-lstm-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rnn",
+        "vanishing-gradient"
+      ],
+      "content": {
+        "prompt": "역전파가 긴 시퀀스를 거슬러 가며 기울기가 0에 가까워지는 현상은?",
+        "options": [
+          "과적합",
+          "데이터 누수",
+          "기울기 소실"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "기울기 소실은 역전파가 긴 시퀀스를 거슬러 가며 기울기가 0에 가깝게 작아지는 현상이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-lstm-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lstm"
+      ],
+      "content": {
+        "prompt": "게이트로 기억할 정보와 버릴 정보를 조절하는 RNN 변형은?",
+        "options": [
+          "LSTM",
+          "CNN",
+          "풀링"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "LSTM은 게이트로 기억할 정보와 버릴 정보를 조절해 긴 시퀀스를 다루는 RNN 변형이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-lstm-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rnn",
+        "long-term-dependency"
+      ],
+      "content": {
+        "prompt": "멀리 떨어진 앞부분 정보가 뒤에서 필요한 관계는?",
+        "options": [
+          "가중치 공유",
+          "장기 의존성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "장기 의존성은 멀리 떨어진 앞부분 정보가 뒤에서 필요한 관계로, 기본 RNN이 학습하기 어렵다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-lstm-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "rnn",
+        "vanishing-gradient"
+      ],
+      "content": {
+        "prompt": "기울기 소실은 기울기가 매우 커지는 현상이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "기울기 소실은 기울기가 0에 가깝게 작아지는 현상이다. 그래서 앞쪽 시점이 거의 학습되지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-lstm-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "lstm"
+      ],
+      "content": {
+        "prompt": "게이트로 정보를 기억하거나 버리는 RNN 변형은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "LSTM",
+          "lstm"
+        ]
+      },
+      "explanation": "LSTM은 게이트로 기억할 정보와 버릴 정보를 조절해 긴 시퀀스를 다룬다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-lstm-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "rnn",
+        "vanishing-gradient"
+      ],
+      "content": {
+        "prompt": "기울기가 0에 가깝게 작아지는 현상을 기울기 ___ 이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "소실",
+          "vanishing",
+          "기울기 소실"
+        ]
+      },
+      "explanation": "기울기 소실은 역전파가 긴 시퀀스를 거슬러 가며 기울기가 0에 가깝게 작아지는 현상이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-lstm-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rnn",
+        "long-term-dependency"
+      ],
+      "content": {
+        "prompt": "200단어 문장 끝에서 첫 단어를 참조해야 할 때 RNN의 어려움은?",
+        "options": [
+          "클래스 불균형",
+          "데이터 누수",
+          "장기 의존성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "멀리 떨어진 앞 정보가 뒤에서 필요한 장기 의존성은 기본 RNN이 학습하기 어렵다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-lstm-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rnn",
+        "vanishing-gradient"
+      ],
+      "content": {
+        "prompt": "기울기 소실이 생기면 앞쪽 시점과 관련된 가중치는?",
+        "options": [
+          "거의 갱신되지 않음",
+          "크게 갱신됨"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "앞쪽 시점까지 거슬러 간 기울기가 0에 가까워져 그 부분의 가중치가 거의 갱신되지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-lstm-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lstm"
+      ],
+      "content": {
+        "prompt": "긴 시퀀스에서 앞 정보를 잃는 기본 RNN 대신 쓸 구조는?",
+        "options": [
+          "풀링 층",
+          "LSTM",
+          "선형 회귀"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "LSTM은 게이트로 기억할 정보를 조절해 기본 RNN보다 긴 시퀀스의 앞 정보를 잘 유지한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-lstm-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "rnn",
+        "vanishing-gradient"
+      ],
+      "content": {
+        "prompt": "기울기 소실은 긴 시퀀스를 학습하는 RNN에서 잘 생긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "역전파가 긴 시퀀스를 여러 시점 거슬러 가면서 기울기가 점점 작아지기 때문이다.",
+      "refs": []
+    }
+  ]
+}

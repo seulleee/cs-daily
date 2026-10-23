@@ -1,0 +1,213 @@
+{
+  "track": "ai",
+  "unit": "u07-deep-architectures",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ai-dlarch-cnn-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cnn"
+      ],
+      "content": {
+        "prompt": "합성곱 층으로 지역 패턴을 뽑는, 이미지에 주로 쓰는 신경망은?",
+        "options": [
+          "퍼셉트론",
+          "선형 회귀",
+          "CNN"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "CNN은 합성곱 층으로 지역 패턴을 뽑는 신경망이며 이미지 처리에 주로 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-cnn-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cnn",
+        "pooling"
+      ],
+      "content": {
+        "prompt": "영역마다 최댓값이나 평균만 남겨 특징 맵을 줄이는 연산은?",
+        "options": [
+          "합성곱",
+          "드롭아웃",
+          "풀링"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "풀링은 영역마다 최댓값이나 평균만 남겨 특징 맵 크기를 줄인다. 합성곱은 가중합을 계산한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-cnn-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cnn",
+        "pooling"
+      ],
+      "content": {
+        "prompt": "특징 맵의 크기를 줄이는 것은?",
+        "options": [
+          "풀링",
+          "가중치 공유"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "특징 맵 크기를 줄이는 것은 풀링이다. 가중치 공유는 같은 필터를 모든 위치에 쓰는 성질이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-cnn-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cnn",
+        "weight-sharing"
+      ],
+      "content": {
+        "prompt": "CNN은 위치마다 다른 필터를 써서 파라미터 수가 많다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "CNN은 같은 필터를 모든 위치에 쓰는 가중치 공유 덕분에 파라미터 수가 적다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-cnn-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cnn",
+        "weight-sharing"
+      ],
+      "content": {
+        "prompt": "같은 필터를 모든 위치에 쓰는 것을 가중치 ___ 라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "공유",
+          "가중치 공유",
+          "sharing",
+          "weight sharing"
+        ]
+      },
+      "explanation": "가중치 공유는 같은 필터를 이미지의 모든 위치에 써서 파라미터 수를 줄인다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-cnn-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cnn",
+        "pooling"
+      ],
+      "content": {
+        "prompt": "영역마다 최댓값이나 평균만 남기는 연산은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "풀링",
+          "pooling",
+          "풀링 층"
+        ]
+      },
+      "explanation": "풀링은 영역마다 최댓값이나 평균 하나만 남겨 특징 맵 크기를 줄인다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-cnn-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cnn",
+        "pooling"
+      ],
+      "content": {
+        "prompt": "4×4 특징 맵에 겹치지 않는 2×2 최대 풀링을 하면 크기는?",
+        "options": [
+          "2×2",
+          "4×4",
+          "3×3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "2×2 영역마다 값 하나만 남기므로 가로·세로가 각각 절반이 되어 2×2가 된다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-cnn-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cnn",
+        "pooling"
+      ],
+      "content": {
+        "prompt": "영역 [1, 5, 3, 2]에 최대 풀링을 하면 남는 값은?",
+        "options": [
+          "2.75",
+          "5",
+          "1"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "최대 풀링은 영역의 최댓값만 남기므로 5다. 2.75는 평균 풀링의 결과다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-cnn-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cnn",
+        "weight-sharing"
+      ],
+      "content": {
+        "prompt": "사진 속 물체가 어느 위치에 있든 같은 필터로 찾게 해 주는 성질은?",
+        "options": [
+          "학습률",
+          "드롭아웃",
+          "가중치 공유"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "가중치 공유로 같은 필터가 모든 위치에 적용되므로 패턴이 어디에 있어도 같은 방식으로 찾는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-cnn-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cnn"
+      ],
+      "content": {
+        "prompt": "CNN은 합성곱 층으로 이미지의 지역 패턴을 뽑는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "CNN은 합성곱 층으로 모서리·색 변화 같은 지역 패턴을 뽑는 신경망이다.",
+      "refs": []
+    }
+  ]
+}

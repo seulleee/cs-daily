@@ -1,0 +1,210 @@
+{
+  "track": "ai",
+  "unit": "u07-deep-architectures",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ai-dlarch-selfattn-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "self-attention"
+      ],
+      "content": {
+        "prompt": "시퀀스의 각 위치가 같은 시퀀스의 모든 위치를 참고하는 방식은?",
+        "options": [
+          "풀링",
+          "LSTM",
+          "셀프 어텐션"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "셀프 어텐션은 각 위치가 같은 시퀀스의 모든 위치를 참고해 자기 표현을 갱신한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-selfattn-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "self-attention",
+        "multi-head"
+      ],
+      "content": {
+        "prompt": "여러 어텐션을 나란히 계산해 서로 다른 관계를 잡는 방식은?",
+        "options": [
+          "가중치 공유",
+          "배깅",
+          "멀티 헤드 어텐션"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "멀티 헤드 어텐션은 여러 어텐션을 나란히 계산해 서로 다른 관계를 함께 잡는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-selfattn-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "self-attention",
+        "parallel"
+      ],
+      "content": {
+        "prompt": "모든 위치를 동시에 계산할 수 있는 것은?",
+        "options": [
+          "RNN",
+          "셀프 어텐션"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "셀프 어텐션은 순서대로 넘기지 않아 병렬 계산이 된다. RNN은 앞 시점이 끝나야 다음을 계산한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-selfattn-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "self-attention",
+        "parallel"
+      ],
+      "content": {
+        "prompt": "셀프 어텐션은 앞 시점 계산이 끝나야 다음 시점을 계산한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "셀프 어텐션은 은닉 상태를 순서대로 넘기지 않아 모든 위치를 동시에 계산할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-selfattn-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "self-attention"
+      ],
+      "content": {
+        "prompt": "같은 시퀀스 안 위치끼리 참고하는 어텐션은 ___ 어텐션이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "셀프",
+          "self",
+          "자기"
+        ]
+      },
+      "explanation": "셀프 어텐션은 한 시퀀스의 각 위치가 같은 시퀀스의 모든 위치를 참고해 표현을 갱신한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-selfattn-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "self-attention",
+        "multi-head"
+      ],
+      "content": {
+        "prompt": "어텐션 여러 개를 나란히 계산하는 방식은 ___ 헤드 어텐션이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "멀티",
+          "multi",
+          "다중"
+        ]
+      },
+      "explanation": "멀티 헤드 어텐션은 여러 어텐션을 나란히 계산해 서로 다른 관계를 함께 잡는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-selfattn-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "self-attention"
+      ],
+      "content": {
+        "prompt": "단어 4개 문장에 셀프 어텐션을 쓰면 한 단어가 참고하는 위치 수는?",
+        "options": [
+          "1",
+          "3",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "셀프 어텐션은 각 위치가 자기 자신을 포함해 같은 시퀀스의 모든 위치를 참고하므로 4개다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-selfattn-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "self-attention",
+        "parallel"
+      ],
+      "content": {
+        "prompt": "셀프 어텐션이 RNN보다 학습이 빠른 이유는?",
+        "options": [
+          "병렬 계산",
+          "가중치 공유",
+          "풀링"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "셀프 어텐션은 순서대로 넘기지 않아 모든 위치를 동시에 계산할 수 있어 RNN보다 빠르다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-selfattn-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "self-attention",
+        "multi-head"
+      ],
+      "content": {
+        "prompt": "한 헤드는 주어 관계, 다른 헤드는 수식 관계를 잡는 구조는?",
+        "options": [
+          "단일 RNN",
+          "멀티 헤드 어텐션",
+          "풀링 층"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "멀티 헤드 어텐션은 여러 어텐션을 나란히 계산해 헤드마다 서로 다른 관계를 잡는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-selfattn-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "self-attention"
+      ],
+      "content": {
+        "prompt": "셀프 어텐션에서 각 위치는 같은 시퀀스의 모든 위치를 참고한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "셀프 어텐션은 시퀀스 안 모든 위치를 참고해 각 위치의 표현을 갱신한다.",
+      "refs": []
+    }
+  ]
+}

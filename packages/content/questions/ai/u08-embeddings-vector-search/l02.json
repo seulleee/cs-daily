@@ -1,0 +1,207 @@
+{
+  "track": "ai",
+  "unit": "u08-embeddings-vector-search",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ai-vecsearch-model-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "embedding-model"
+      ],
+      "content": {
+        "prompt": "입력을 임베딩 벡터로 바꾸도록 학습된 모델은?",
+        "options": [
+          "결정 트리",
+          "분류 모델",
+          "임베딩 모델"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "임베딩 모델은 입력을 임베딩 벡터로 바꾸도록 학습된 모델이며 보통 추론만 호출해 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-model-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "embedding-model"
+      ],
+      "content": {
+        "prompt": "서로 비교할 벡터는 반드시 같은 모델로 만든다는 규칙은?",
+        "options": [
+          "같은 모델 원칙",
+          "고정 차원",
+          "가중치 공유"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "같은 모델 원칙은 서로 비교할 벡터를 반드시 같은 임베딩 모델로 만든다는 규칙이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-model-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "embedding-model",
+        "dimension"
+      ],
+      "content": {
+        "prompt": "한 모델이 입력 길이와 상관없이 같은 차원을 내는 성질은?",
+        "options": [
+          "같은 모델 원칙",
+          "고정 차원"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "고정 차원은 한 임베딩 모델이 입력 길이와 상관없이 항상 같은 차원의 벡터를 낸다는 성질이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-model-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "embedding-model"
+      ],
+      "content": {
+        "prompt": "서로 다른 임베딩 모델로 만든 벡터끼리도 유사도를 비교할 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "모델마다 학습한 벡터 공간이 달라서, 비교할 벡터는 반드시 같은 임베딩 모델로 만들어야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-model-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "embedding-model"
+      ],
+      "content": {
+        "prompt": "임베딩 모델은 보통 학습 없이 ___ 만 호출해 쓴다."
+      },
+      "answer_key": {
+        "accepted": [
+          "추론",
+          "inference",
+          "예측"
+        ]
+      },
+      "explanation": "임베딩 모델은 미리 학습된 상태로 받아 추론만 호출해 벡터를 얻는 방식으로 주로 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-model-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "embedding-model",
+        "dimension"
+      ],
+      "content": {
+        "prompt": "한 임베딩 모델은 입력 길이와 상관없이 같은 ___ 의 벡터를 낸다."
+      },
+      "answer_key": {
+        "accepted": [
+          "차원",
+          "dimension",
+          "차원 수"
+        ]
+      },
+      "explanation": "고정 차원 성질 때문에 짧은 단어와 긴 문단도 같은 모델이면 같은 차원의 벡터가 된다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-model-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "embedding-model",
+        "dimension"
+      ],
+      "content": {
+        "prompt": "768차원 모델에 한 단어와 긴 문단을 넣으면 벡터 차원은?",
+        "options": [
+          "단어가 더 작음",
+          "둘 다 768",
+          "문단이 더 큼"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "한 임베딩 모델은 입력 길이와 상관없이 항상 같은 차원의 벡터를 내므로 둘 다 768차원이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-model-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "embedding-model"
+      ],
+      "content": {
+        "prompt": "임베딩 모델을 교체한 뒤 저장된 문서 벡터는?",
+        "options": [
+          "그대로 사용",
+          "차원만 맞춤",
+          "새 모델로 재생성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "비교할 벡터는 같은 모델로 만들어야 하므로 문서 벡터도 새 모델로 다시 만들어야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-model-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "embedding-model"
+      ],
+      "content": {
+        "prompt": "문서는 A 모델, 질의는 B 모델로 임베딩하면?",
+        "options": [
+          "유사도를 믿을 수 없음",
+          "정확도 상승",
+          "속도만 느려짐"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "두 모델은 벡터 공간이 달라 숫자가 비슷해 보여도 의미 비교가 성립하지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-model-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "embedding-model"
+      ],
+      "content": {
+        "prompt": "임베딩 모델은 입력을 임베딩 벡터로 바꾸도록 학습된 모델이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "임베딩 모델은 입력을 임베딩 벡터로 바꾸도록 학습된 모델이며, 서비스에서는 보통 추론만 호출한다.",
+      "refs": []
+    }
+  ]
+}

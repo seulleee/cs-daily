@@ -1,0 +1,205 @@
+{
+  "track": "ai",
+  "unit": "u08-embeddings-vector-search",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ai-vecsearch-embed-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "embedding"
+      ],
+      "content": {
+        "prompt": "데이터를 의미를 담은 고정 길이 실수 벡터로 바꾼 것은?",
+        "options": [
+          "임베딩",
+          "원-핫 인코딩",
+          "풀링"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "임베딩은 단어·문장·이미지 같은 데이터를 의미를 담은 고정 길이 실수 벡터로 바꾼 것이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-embed-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vector"
+      ],
+      "content": {
+        "prompt": "숫자를 정해진 개수만큼 순서대로 늘어놓은 배열은?",
+        "options": [
+          "벡터",
+          "레이블",
+          "필터"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "벡터는 숫자를 정해진 개수만큼 순서대로 늘어놓은 배열이고, 그 개수를 차원이라 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-embed-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "embedding",
+        "semantic-space"
+      ],
+      "content": {
+        "prompt": "의미가 비슷한 데이터의 임베딩이 가까이 놓이는 공간은?",
+        "options": [
+          "특징 맵",
+          "의미 공간"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "의미 공간은 의미가 비슷한 데이터의 임베딩이 서로 가까이 놓이는 벡터 공간이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-embed-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "embedding"
+      ],
+      "content": {
+        "prompt": "임베딩 벡터의 길이는 입력 문장이 길수록 늘어난다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "임베딩은 데이터를 고정 길이 실수 벡터로 바꾼 것이라 입력 길이와 상관없이 차원이 같다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-embed-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "vector"
+      ],
+      "content": {
+        "prompt": "벡터에 담긴 숫자의 개수를 ___ 이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "차원",
+          "dimension",
+          "차원 수"
+        ]
+      },
+      "explanation": "벡터는 숫자를 정해진 개수만큼 늘어놓은 배열이고, 그 개수를 차원이라 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-embed-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "embedding"
+      ],
+      "content": {
+        "prompt": "데이터를 의미를 담은 실수 벡터로 바꾼 것을 ___ 이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "임베딩",
+          "embedding"
+        ]
+      },
+      "explanation": "임베딩은 데이터를 의미를 담은 고정 길이 실수 벡터로 바꾼 것이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-embed-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vector"
+      ],
+      "content": {
+        "prompt": "벡터 [0.2, -1.0, 0.5, 3.1]의 차원은?",
+        "options": [
+          "3",
+          "5",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "차원은 벡터에 담긴 숫자의 개수다. 숫자가 4개이므로 4차원이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-embed-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "embedding",
+        "semantic-space"
+      ],
+      "content": {
+        "prompt": "의미 공간에서 '고양이' 임베딩과 더 가까울 것은?",
+        "options": [
+          "자동차",
+          "강아지"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "의미 공간에서는 의미가 비슷한 데이터의 임베딩이 가까이 놓인다. 고양이는 자동차보다 강아지와 의미가 가깝다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-embed-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "embedding",
+        "semantic-space"
+      ],
+      "content": {
+        "prompt": "임베딩이 원-핫 인코딩보다 나은 점은?",
+        "options": [
+          "값이 0·1뿐임",
+          "열 수가 범주 수",
+          "의미 유사도 반영"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "임베딩은 의미가 비슷한 데이터가 가까이 놓이도록 만든 벡터라 유사도를 잴 수 있다. 원-핫은 모든 범주가 똑같이 떨어진다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-embed-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "embedding"
+      ],
+      "content": {
+        "prompt": "임베딩은 데이터를 의미를 담은 실수 벡터로 바꾼 것이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "임베딩은 단어·문장·이미지 등을 의미를 담은 고정 길이 실수 벡터로 바꾼 것이다.",
+      "refs": []
+    }
+  ]
+}

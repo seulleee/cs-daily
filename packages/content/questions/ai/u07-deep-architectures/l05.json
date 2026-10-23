@@ -1,0 +1,217 @@
+{
+  "track": "ai",
+  "unit": "u07-deep-architectures",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "ai-dlarch-attn-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "attention"
+      ],
+      "content": {
+        "prompt": "입력의 각 위치를 얼마나 참고할지 가중치를 계산해 섞는 방식은?",
+        "options": [
+          "어텐션",
+          "풀링",
+          "드롭아웃"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "어텐션은 출력을 만들 때 입력의 각 위치를 얼마나 참고할지 가중치를 계산해 섞는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-attn-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "attention",
+        "query-key-value"
+      ],
+      "content": {
+        "prompt": "어텐션에서 쿼리와 비교해 점수를 내는 대상은?",
+        "options": [
+          "값",
+          "키",
+          "은닉 상태"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "쿼리와 각 키를 비교해 점수를 내고, 그 점수로 구한 가중치로 값들을 더한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-attn-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "attention",
+        "query-key-value"
+      ],
+      "content": {
+        "prompt": "어텐션 가중치를 곱해 더하는 대상은?",
+        "options": [
+          "키",
+          "값"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "쿼리와 키를 비교해 가중치를 구한 뒤, 그 가중치로 값들을 더한다. 키는 점수 계산에 쓰인다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-attn-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "attention",
+        "softmax"
+      ],
+      "content": {
+        "prompt": "어텐션 가중치를 모두 더하면 입력 위치의 수와 같다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "어텐션 가중치는 위치별 점수를 소프트맥스로 바꾼 값이라 모두 더하면 1이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-attn-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "attention",
+        "softmax"
+      ],
+      "content": {
+        "prompt": "위치별 관련도 점수를 합이 1인 가중치로 바꾸는 함수는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "소프트맥스",
+          "softmax",
+          "소프트 맥스"
+        ]
+      },
+      "explanation": "어텐션은 위치별 관련도 점수에 소프트맥스를 적용해 합이 1인 어텐션 가중치를 만든다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-attn-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "attention",
+        "query-key-value"
+      ],
+      "content": {
+        "prompt": "어텐션에서 쿼리와 비교되어 관련도 점수를 만드는 것은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "키",
+          "key",
+          "Key"
+        ]
+      },
+      "explanation": "쿼리와 각 키를 비교한 점수로 가중치를 구하고, 그 가중치로 값들을 더한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-attn-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "attention",
+        "softmax"
+      ],
+      "content": {
+        "prompt": "세 위치의 어텐션 가중치가 0.5, 0.3, x일 때 x는?",
+        "options": [
+          "0.2",
+          "0.5",
+          "1"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "어텐션 가중치는 소프트맥스 결과라 합이 1이다. 1 − 0.5 − 0.3 = 0.2이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-attn-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "attention",
+        "query-key-value"
+      ],
+      "content": {
+        "prompt": "가중치 0.8, 0.2로 값 10, 20을 섞은 결과는?",
+        "options": [
+          "15",
+          "12",
+          "30"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "가중치로 값들을 더하므로 0.8 × 10 + 0.2 × 20 = 8 + 4 = 12다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-attn-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "attention",
+        "softmax",
+        "numpy"
+      ],
+      "content": {
+        "prompt": "점수가 같은 두 위치의 가중치를 구한다. 출력되는 값은?",
+        "code": {
+          "language": "python",
+          "source": "import numpy as np\ns = np.array([2.0, 2.0])\nw = np.exp(s) / np.exp(s).sum()\nprint(w[0])"
+        },
+        "options": [
+          "0.5",
+          "1.0",
+          "2.0"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "소프트맥스는 점수가 같으면 가중치를 똑같이 나눈다. 두 위치이고 합이 1이므로 각각 0.5다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dlarch-attn-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "attention"
+      ],
+      "content": {
+        "prompt": "어텐션은 입력의 위치마다 다른 비중을 두고 정보를 섞는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "어텐션은 위치별 가중치를 계산해, 관련이 큰 위치를 더 많이 참고하도록 정보를 섞는다.",
+      "refs": []
+    }
+  ]
+}

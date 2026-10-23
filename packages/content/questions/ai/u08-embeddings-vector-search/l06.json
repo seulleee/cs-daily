@@ -1,0 +1,211 @@
+{
+  "track": "ai",
+  "unit": "u08-embeddings-vector-search",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ai-vecsearch-ann-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ann",
+        "vector-search"
+      ],
+      "content": {
+        "prompt": "정확도를 조금 양보하고 빠르게 가까운 벡터를 찾는 검색은?",
+        "options": [
+          "전수 검색",
+          "이진 탐색",
+          "ANN"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "ANN(근사 최근접 이웃)은 정확도를 조금 양보하고 훨씬 빠르게 가까운 벡터를 찾는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-ann-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ann",
+        "recall"
+      ],
+      "content": {
+        "prompt": "ANN 결과가 정확한 최근접 k개를 얼마나 포함하는지의 비율은?",
+        "options": [
+          "recall@k",
+          "정확도",
+          "AUC"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "recall@k는 ANN 결과가 정확한 최근접 k개를 얼마나 포함하는지의 비율이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-ann-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ann",
+        "trade-off"
+      ],
+      "content": {
+        "prompt": "ANN에서 후보를 더 많이 살펴보면?",
+        "options": [
+          "더 빠르고 정확함",
+          "더 정확하고 느림"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "속도·정확도 트레이드오프 때문에 후보를 많이 살펴볼수록 정확해지지만 느려진다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-ann-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ann",
+        "vector-search"
+      ],
+      "content": {
+        "prompt": "ANN은 정확한 최근접 이웃을 놓치는 일이 없다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "ANN은 정확도를 조금 양보한 근사 검색이라 정확한 최근접 이웃 일부를 놓칠 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-ann-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ann",
+        "vector-search"
+      ],
+      "content": {
+        "prompt": "근사 최근접 이웃 검색의 영문 약자는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "ANN",
+          "ann"
+        ]
+      },
+      "explanation": "ANN은 Approximate Nearest Neighbor의 약자로, 정확도를 조금 양보하고 빠르게 찾는 검색이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-ann-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ann",
+        "recall"
+      ],
+      "content": {
+        "prompt": "ANN 결과가 정답 k개를 포함하는 비율은 ___@k 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "recall",
+          "Recall",
+          "재현율"
+        ]
+      },
+      "explanation": "recall@k는 ANN 결과가 정확한 최근접 k개를 얼마나 포함하는지의 비율이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-ann-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ann",
+        "recall"
+      ],
+      "content": {
+        "prompt": "정확한 최근접 10개 중 ANN 결과에 8개가 있으면 recall@10은?",
+        "options": [
+          "8",
+          "0.2",
+          "0.8"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "recall@k는 정확한 최근접 k개 중 포함된 비율이므로 8 ÷ 10 = 0.8이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-ann-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ann",
+        "trade-off"
+      ],
+      "content": {
+        "prompt": "ANN의 recall@k가 낮아 결과 품질이 나쁠 때 할 조정은?",
+        "options": [
+          "살펴볼 후보 늘리기",
+          "살펴볼 후보 줄이기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "후보를 많이 살펴볼수록 정확해지므로 후보를 늘리면 recall@k가 오른다. 대신 검색은 느려진다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-ann-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ann",
+        "vector-search"
+      ],
+      "content": {
+        "prompt": "벡터 5천만 개에서 수십 ms 안에 응답해야 할 때 고를 검색은?",
+        "options": [
+          "전수 검색",
+          "ANN"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "전수 검색은 벡터 수에 비례해 느려지므로 대규모에서 빠른 응답이 필요하면 ANN을 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "ai-vecsearch-ann-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ann",
+        "vector-search"
+      ],
+      "content": {
+        "prompt": "ANN은 정확도를 조금 양보해 검색 속도를 크게 높인다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "ANN은 일부 후보만 비교해 정확도를 조금 양보하는 대신 전수 검색보다 훨씬 빠르다.",
+      "refs": []
+    }
+  ]
+}
