@@ -1,0 +1,225 @@
+{
+  "track": "ai",
+  "unit": "u02-data-features",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "ai-dat-featureeng-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "feature-engineering",
+        "log-transform",
+        "datetime"
+      ],
+      "content": {
+        "prompt": "원본 값을 조합·변환해 새 특징을 만드는 작업은?",
+        "options": [
+          "결측값 대치",
+          "특징 공학",
+          "표준화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "특징 공학은 원본 값을 조합·변환해 예측에 도움이 되는 새 특징을 만드는 작업입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-featureeng-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "feature-engineering",
+        "log-transform",
+        "datetime"
+      ],
+      "content": {
+        "prompt": "타임스탬프에서 요일·시간대를 뽑는 변환은?",
+        "options": [
+          "로그 변환",
+          "원-핫 인코딩",
+          "날짜 분해"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "날짜 분해는 타임스탬프에서 요일·시간대 같은 특징을 뽑습니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-featureeng-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "feature-engineering",
+        "log-transform",
+        "datetime"
+      ],
+      "content": {
+        "prompt": "한쪽으로 길게 치우친 값의 범위를 줄이는 변환은?",
+        "options": [
+          "로그 변환",
+          "날짜 분해"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "로그 변환은 한쪽으로 길게 치우친 값에 로그를 씌워 범위를 줄입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-featureeng-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "feature-engineering",
+        "log-transform",
+        "datetime"
+      ],
+      "content": {
+        "prompt": "로그 변환은 타임스탬프에서 요일을 뽑는 변환이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "타임스탬프에서 요일을 뽑는 것은 날짜 분해입니다. 로그 변환은 치우친 값의 범위를 줄입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-featureeng-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "feature-engineering",
+        "log-transform",
+        "datetime"
+      ],
+      "content": {
+        "prompt": "도메인 지식으로 값을 바꾸거나 합치는 일은 특징 ___ 이다.",
+        "hint": "도메인 지식이 많이 쓰이는 작업입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "공학",
+          "engineering",
+          "엔지니어링"
+        ]
+      },
+      "explanation": "특징 공학은 원본 값을 조합·변환해 예측에 도움이 되는 새 특징을 만드는 작업입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-featureeng-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "feature-engineering",
+        "log-transform",
+        "datetime"
+      ],
+      "content": {
+        "prompt": "치우친 값에 ___ 를 씌우면 값의 범위가 줄어든다.",
+        "hint": "밑이 10이면 10, 100, 1000이 1, 2, 3이 됩니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "로그",
+          "log"
+        ]
+      },
+      "explanation": "로그 변환은 한쪽으로 길게 치우친 값에 로그를 씌워 큰 값의 범위를 줄입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-featureeng-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "feature-engineering",
+        "log-transform",
+        "datetime"
+      ],
+      "content": {
+        "prompt": "주문 시각 '21:15'에서 날짜 분해로 뽑을 특징은?",
+        "options": [
+          "시간대",
+          "주문 금액",
+          "고객 등급"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "시각에서 저녁·오전 같은 시간대를 뽑는 것이 날짜 분해입니다. 금액과 등급은 시각에서 나오지 않습니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-featureeng-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "feature-engineering",
+        "log-transform",
+        "datetime"
+      ],
+      "content": {
+        "prompt": "값 1000에 밑이 10인 로그를 씌우면?",
+        "options": [
+          "30",
+          "100",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "1000은 10의 3제곱이므로 밑이 10인 로그를 씌우면 3입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-featureeng-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "feature-engineering",
+        "log-transform",
+        "datetime"
+      ],
+      "content": {
+        "prompt": "'총 결제액'과 '주문 수'로 만들 수 있는 새 특징은?",
+        "options": [
+          "고객 이름",
+          "평균 주문액",
+          "가입 요일"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "총 결제액을 주문 수로 나누면 평균 주문액이라는 새 특징이 됩니다. 원본 값을 조합한 특징 공학입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-featureeng-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "feature-engineering",
+        "log-transform",
+        "datetime"
+      ],
+      "content": {
+        "prompt": "특징 공학은 원본 값을 변환·조합해 새 특징을 만든다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "특징 공학은 원본 값을 바꾸거나 합쳐 예측에 도움이 되는 새 특징을 만드는 작업입니다.",
+      "refs": []
+    }
+  ]
+}

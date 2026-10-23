@@ -1,0 +1,218 @@
+{
+  "track": "ai",
+  "unit": "u02-data-features",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ai-dat-missing-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "missing-value",
+        "imputation"
+      ],
+      "content": {
+        "prompt": "수집되지 않아 비어 있는 값을 부르는 말은?",
+        "options": [
+          "이상값",
+          "결측값",
+          "레이블"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "결측값은 수집되지 않아 비어 있는 값으로, NaN이나 null로 표시됩니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-missing-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "missing-value",
+        "imputation"
+      ],
+      "content": {
+        "prompt": "평균·중앙값·최빈값 등으로 빈 값을 채우는 방법은?",
+        "options": [
+          "삭제",
+          "인코딩",
+          "대치"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "대치(imputation)는 평균·중앙값·최빈값 등으로 빈 값을 채웁니다. 삭제는 행이나 열을 버립니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-missing-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "missing-value",
+        "imputation"
+      ],
+      "content": {
+        "prompt": "결측값이 있는 행을 버리는 방법은?",
+        "options": [
+          "삭제",
+          "대치"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "삭제는 결측값이 있는 행이나 열을 버립니다. 대치는 빈 값을 채워 행을 유지합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-missing-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "missing-value",
+        "imputation"
+      ],
+      "content": {
+        "prompt": "대치는 결측값이 있는 행을 지우는 방법이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "대치는 평균 등으로 빈 값을 채우는 방법입니다. 행을 지우는 것은 삭제입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-missing-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "missing-value",
+        "imputation"
+      ],
+      "content": {
+        "prompt": "빈 값을 평균·중앙값 등으로 채우는 방법은 ___ 이다.",
+        "hint": "행을 지우지 않아 데이터 수가 유지됩니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "대치",
+          "imputation",
+          "대체",
+          "채우기"
+        ]
+      },
+      "explanation": "대치(imputation)는 평균·중앙값·최빈값 등으로 빈 값을 채우는 방법입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-missing-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "missing-value",
+        "imputation"
+      ],
+      "content": {
+        "prompt": "수집되지 않아 비어 있는 값은 ___ 이다.",
+        "hint": "센서가 꺼져 있었거나 입력을 빠뜨리면 생깁니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "결측값",
+          "결측치",
+          "결측",
+          "missing value"
+        ]
+      },
+      "explanation": "결측값은 수집되지 않아 비어 있는 값이며, 표에서는 NaN이나 null로 보입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-missing-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "missing-value",
+        "imputation"
+      ],
+      "content": {
+        "prompt": "값 [2, 4, 빈칸, 6]을 평균으로 대치하면 빈칸은?",
+        "options": [
+          "3",
+          "4",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "빈칸을 뺀 2, 4, 6의 평균은 (2 + 4 + 6) / 3 = 4이므로 빈칸을 4로 채웁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-missing-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "missing-value",
+        "imputation"
+      ],
+      "content": {
+        "prompt": "값 [1, 2, 빈칸, 9]를 중앙값으로 대치하면 빈칸은?",
+        "options": [
+          "2",
+          "4",
+          "9"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "빈칸을 뺀 1, 2, 9를 정렬하면 가운데 값은 2입니다. 4는 평균입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-missing-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "missing-value",
+        "imputation"
+      ],
+      "content": {
+        "prompt": "범주형 '지역' 열의 빈칸을 대치할 때 쓸 수 있는 값은?",
+        "options": [
+          "평균",
+          "최빈값",
+          "합계"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "범주형 값은 평균이나 합계를 계산할 수 없으므로, 가장 많이 나온 값인 최빈값으로 채웁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-missing-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "missing-value",
+        "imputation"
+      ],
+      "content": {
+        "prompt": "NaN이나 null로 표시된 값은 결측값이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "결측값은 수집되지 않아 비어 있는 값으로, 데이터에서는 보통 NaN이나 null로 표시됩니다.",
+      "refs": []
+    }
+  ]
+}

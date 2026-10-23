@@ -1,0 +1,230 @@
+{
+  "track": "ai",
+  "unit": "u02-data-features",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ai-dat-scaling-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scaling",
+        "normalization",
+        "standardization"
+      ],
+      "content": {
+        "prompt": "특징들의 값 범위를 비슷하게 맞추는 전처리는?",
+        "options": [
+          "스케일링",
+          "인코딩",
+          "대치"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스케일링은 특징들의 값 범위를 비슷하게 맞추는 전처리입니다. 대치는 빈 값을 채우는 방법입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-scaling-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scaling",
+        "normalization",
+        "standardization"
+      ],
+      "content": {
+        "prompt": "평균 0, 표준편차 1로 만드는 변환은?",
+        "options": [
+          "최소-최대 정규화",
+          "표준화",
+          "대치"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "표준화는 평균을 빼고 표준편차로 나눠 평균 0, 표준편차 1로 만듭니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-scaling-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scaling",
+        "normalization",
+        "standardization"
+      ],
+      "content": {
+        "prompt": "값을 0~1 범위로 바꾸는 변환은?",
+        "options": [
+          "최소-최대 정규화",
+          "표준화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "최소-최대 정규화는 (x - 최솟값) / (최댓값 - 최솟값)으로 값을 0~1 범위로 바꿉니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-scaling-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "scaling",
+        "normalization",
+        "standardization"
+      ],
+      "content": {
+        "prompt": "표준화를 하면 모든 값이 0~1 범위에 들어간다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "0~1 범위로 바꾸는 것은 최소-최대 정규화입니다. 표준화 결과는 평균 0, 표준편차 1이며 음수도 나옵니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-scaling-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "scaling",
+        "normalization",
+        "standardization"
+      ],
+      "content": {
+        "prompt": "평균을 빼고 표준편차로 나누는 변환은 ___ 이다.",
+        "hint": "결과의 평균이 0이 됩니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "표준화",
+          "standardization",
+          "스탠다드화"
+        ]
+      },
+      "explanation": "표준화는 평균을 빼고 표준편차로 나눠 평균 0, 표준편차 1로 만드는 스케일링입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-scaling-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "scaling",
+        "normalization",
+        "standardization"
+      ],
+      "content": {
+        "prompt": "(x - 최솟값) / (최댓값 - 최솟값)은 최소-최대 ___ 이다.",
+        "hint": "결과가 0~1 범위가 됩니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "정규화",
+          "normalization",
+          "노멀라이제이션"
+        ]
+      },
+      "explanation": "최소-최대 정규화는 최솟값을 0, 최댓값을 1로 두고 나머지 값을 그 사이로 바꿉니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-scaling-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scaling",
+        "normalization",
+        "standardization"
+      ],
+      "content": {
+        "prompt": "최솟값 10, 최댓값 50일 때 30의 최소-최대 정규화 값은?",
+        "options": [
+          "0.25",
+          "0.5",
+          "0.75"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "(30 - 10) / (50 - 10) = 20 / 40 = 0.5입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-scaling-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scaling",
+        "normalization",
+        "standardization"
+      ],
+      "content": {
+        "prompt": "평균 50, 표준편차 10일 때 70을 표준화한 값은?",
+        "options": [
+          "2",
+          "7",
+          "20"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "평균을 빼고 표준편차로 나누면 (70 - 50) / 10 = 2입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-scaling-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scaling",
+        "normalization",
+        "standardization"
+      ],
+      "content": {
+        "prompt": "print(s[1])로 출력되는 값은?",
+        "code": {
+          "language": "python",
+          "source": "import numpy as np\nx = np.array([10, 20, 50])\ns = (x - x.min()) / (x.max() - x.min())\nprint(s[1])"
+        },
+        "options": [
+          "0.4",
+          "0.5",
+          "0.25"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "최솟값 10, 최댓값 50이므로 20은 (20 - 10) / (50 - 10) = 0.25가 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-scaling-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "scaling",
+        "normalization",
+        "standardization"
+      ],
+      "content": {
+        "prompt": "나이와 연봉의 범위를 비슷하게 맞추는 것은 스케일링이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "스케일링은 범위가 큰 특징에 결과가 끌려가지 않도록 특징들의 값 범위를 비슷하게 맞춥니다.",
+      "refs": []
+    }
+  ]
+}

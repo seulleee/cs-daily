@@ -1,0 +1,235 @@
+{
+  "track": "ai",
+  "unit": "u01-ml-basics",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ai-mlb-traininfer-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "training",
+        "inference",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "데이터로 모델 내부의 값을 조정하는 단계는?",
+        "options": [
+          "학습",
+          "추론",
+          "배포"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "학습(training)은 데이터로 모델 내부의 값을 조정하는 단계입니다. 추론은 학습을 마친 모델을 쓰는 단계입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-traininfer-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "training",
+        "inference",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "학습을 마친 모델로 새 입력의 결과를 내는 단계는?",
+        "options": [
+          "학습",
+          "추론",
+          "분할"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "추론(inference)은 학습을 마친 모델로 새 입력의 결과를 내는 단계입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-traininfer-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "training",
+        "inference",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "학습으로 정해지는 모델 내부의 값은?",
+        "options": [
+          "레이블",
+          "특징",
+          "파라미터"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "파라미터는 학습으로 정해지는 모델 내부의 값입니다. 특징과 레이블은 데이터에 들어 있는 값입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-traininfer-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "training",
+        "inference",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "추론 단계에서 모델의 파라미터를 새로 학습한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "추론은 학습을 마친 모델로 결과만 냅니다. 파라미터를 조정하는 것은 학습 단계입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-traininfer-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "training",
+        "inference",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "scikit-learn 모델을 학습시키는 메서드는?",
+        "code": {
+          "language": "python",
+          "source": "model.___(X_train, y_train)\npred = model.predict(X_new)"
+        },
+        "hint": "학습 데이터와 레이블을 함께 넘깁니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "fit",
+          "fit()"
+        ]
+      },
+      "explanation": "scikit-learn에서는 fit으로 학습하고 predict로 추론합니다.",
+      "refs": [
+        "https://scikit-learn.org/stable/getting_started.html"
+      ]
+    },
+    {
+      "id": "ai-mlb-traininfer-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "training",
+        "inference",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "추론 단계에서 부르는 scikit-learn 메서드는?",
+        "code": {
+          "language": "python",
+          "source": "model.fit(X_train, y_train)\npred = model.___(X_new)"
+        },
+        "hint": "학습을 마친 모델에 새 입력을 넣습니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "predict",
+          "predict()"
+        ]
+      },
+      "explanation": "fit으로 학습을 마친 뒤 predict에 새 입력을 넣으면 추론 결과가 나옵니다.",
+      "refs": [
+        "https://scikit-learn.org/stable/getting_started.html"
+      ]
+    },
+    {
+      "id": "ai-mlb-traininfer-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "training",
+        "inference",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "서비스 API가 요청마다 모델로 결과를 낸다. 이 단계는?",
+        "options": [
+          "학습",
+          "추론"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "학습을 마친 모델로 새 입력의 결과를 내는 것이므로 추론입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-traininfer-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "training",
+        "inference",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "밤마다 새 데이터로 모델 내부 값을 다시 조정한다. 단계는?",
+        "options": [
+          "학습",
+          "추론"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "데이터로 모델 내부의 값, 즉 파라미터를 조정하는 것은 학습 단계입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-traininfer-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "training",
+        "inference",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "fit을 호출하면 값이 정해지는 것은?",
+        "options": [
+          "입력 특징",
+          "모델 파라미터",
+          "정답 레이블"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "fit은 학습을 부르는 메서드라 모델 파라미터가 정해집니다. 특징과 레이블은 fit에 넘기는 데이터입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-traininfer-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "training",
+        "inference",
+        "scikit-learn"
+      ],
+      "content": {
+        "prompt": "학습은 데이터로 모델의 파라미터를 조정하는 단계이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "학습 단계에서 데이터를 보고 모델 내부의 값인 파라미터를 조정합니다. 그 뒤 추론 단계에서 모델을 씁니다.",
+      "refs": []
+    }
+  ]
+}

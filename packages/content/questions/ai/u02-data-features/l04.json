@@ -1,0 +1,227 @@
+{
+  "track": "ai",
+  "unit": "u02-data-features",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ai-dat-encoding-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "encoding",
+        "one-hot",
+        "categorical"
+      ],
+      "content": {
+        "prompt": "범주마다 열을 만들고 해당 열만 1로 표시하는 방식은?",
+        "options": [
+          "원-핫 인코딩",
+          "레이블 인코딩",
+          "표준화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "원-핫 인코딩은 범주마다 열을 만들고 해당 열만 1, 나머지는 0으로 표시합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-encoding-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "encoding",
+        "one-hot",
+        "categorical"
+      ],
+      "content": {
+        "prompt": "범주를 0, 1, 2 같은 정수 하나로 바꾸는 방식은?",
+        "options": [
+          "원-핫 인코딩",
+          "레이블 인코딩",
+          "스케일링"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "레이블 인코딩은 범주를 정수 하나로 바꿉니다. 원-핫 인코딩은 범주마다 열을 만듭니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-encoding-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "encoding",
+        "one-hot",
+        "categorical"
+      ],
+      "content": {
+        "prompt": "범주 수만큼 열이 늘어나는 방식은?",
+        "options": [
+          "원-핫 인코딩",
+          "레이블 인코딩"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "원-핫 인코딩은 범주마다 열을 하나씩 만들어 범주 수만큼 열이 늘어납니다. 레이블 인코딩은 열 하나를 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-encoding-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "encoding",
+        "one-hot",
+        "categorical"
+      ],
+      "content": {
+        "prompt": "레이블 인코딩은 범주 사이에 없던 순서를 만들 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "정수 번호를 붙이면 모델이 2가 0보다 크다는 식의 순서를 읽을 수 있어, 범주 사이에 없던 크기 순서가 생깁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-encoding-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "encoding",
+        "one-hot",
+        "categorical"
+      ],
+      "content": {
+        "prompt": "범주마다 열을 만들어 해당 열만 1로 두는 방식은 ___ 인코딩이다.",
+        "hint": "해당 범주 열 하나만 1이고 나머지는 0입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "원핫",
+          "원-핫",
+          "원 핫",
+          "one hot",
+          "one-hot",
+          "onehot"
+        ]
+      },
+      "explanation": "원-핫 인코딩은 범주마다 열을 만들고 해당 열만 1, 나머지는 0으로 표시합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-encoding-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "encoding",
+        "one-hot",
+        "categorical"
+      ],
+      "content": {
+        "prompt": "범주를 정수 번호 하나로 바꾸는 방식은 ___ 인코딩이다.",
+        "hint": "열은 하나만 쓰입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "레이블",
+          "label",
+          "라벨"
+        ]
+      },
+      "explanation": "레이블 인코딩은 범주를 0, 1, 2 같은 정수 하나로 바꿉니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-encoding-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "encoding",
+        "one-hot",
+        "categorical"
+      ],
+      "content": {
+        "prompt": "색상 [빨강, 파랑, 초록]을 원-핫 인코딩하면 열 수는?",
+        "options": [
+          "1개",
+          "6개",
+          "3개"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "원-핫 인코딩은 범주마다 열을 하나씩 만들므로 범주 3개면 열도 3개입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-encoding-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "encoding",
+        "one-hot",
+        "categorical"
+      ],
+      "content": {
+        "prompt": "지역을 서울=0, 부산=2로 바꿨다. 생길 수 있는 문제는?",
+        "options": [
+          "없던 순서가 생김",
+          "열이 크게 늘어남"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "레이블 인코딩의 정수 번호 때문에 부산이 서울보다 크다는 없던 순서가 생길 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-encoding-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "encoding",
+        "one-hot",
+        "categorical"
+      ],
+      "content": {
+        "prompt": "범주가 1만 개인 열을 원-핫 인코딩하면?",
+        "options": [
+          "열이 하나로 줄어듦",
+          "열이 1만 개가 됨"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "원-핫 인코딩은 범주 수만큼 열이 생기므로 열 하나가 1만 개로 늘어납니다. 이것이 원-핫의 대가입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-encoding-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "encoding",
+        "one-hot",
+        "categorical"
+      ],
+      "content": {
+        "prompt": "원-핫 인코딩은 범주를 정수 하나로 바꾼다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "범주를 정수 하나로 바꾸는 것은 레이블 인코딩입니다. 원-핫 인코딩은 범주마다 0과 1로 된 열을 만듭니다.",
+      "refs": []
+    }
+  ]
+}

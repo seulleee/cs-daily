@@ -1,0 +1,217 @@
+{
+  "track": "ai",
+  "unit": "u02-data-features",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ai-dat-leakage-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "data-leakage",
+        "target-leakage"
+      ],
+      "content": {
+        "prompt": "예측 시점에 알 수 없는 정보가 학습 데이터에 섞이는 것은?",
+        "options": [
+          "데이터 누수",
+          "결측값",
+          "스케일링"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "데이터 누수는 예측 시점에는 알 수 없는 정보가 학습 데이터에 섞이는 것입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-leakage-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "data-leakage",
+        "target-leakage"
+      ],
+      "content": {
+        "prompt": "레이블을 거의 그대로 담은 특징이 입력에 들어간 경우는?",
+        "options": [
+          "날짜 분해",
+          "타깃 누수",
+          "대치"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "타깃 누수는 레이블을 거의 그대로 담은 특징이 입력에 들어간 경우입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-leakage-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "data-leakage",
+        "target-leakage"
+      ],
+      "content": {
+        "prompt": "데이터 누수가 있을 때 흔한 증상은?",
+        "options": [
+          "평가는 높고 실제는 낮음",
+          "평가는 낮고 실제는 높음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "누수가 있으면 평가 점수는 매우 높은데 실제 서비스 성능은 낮게 나옵니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-leakage-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "data-leakage",
+        "target-leakage"
+      ],
+      "content": {
+        "prompt": "데이터 누수가 있으면 평가 점수가 대개 낮게 나온다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "누수가 있으면 모델이 정답에 가까운 정보를 보므로 평가 점수가 매우 높게 나오고, 실제 서비스 성능만 낮습니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-leakage-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "data-leakage",
+        "target-leakage"
+      ],
+      "content": {
+        "prompt": "예측 시점에 없는 정보가 학습에 섞이는 것을 데이터 ___ 라 한다.",
+        "hint": "평가 점수를 실제보다 좋게 보이게 만듭니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "누수",
+          "leakage",
+          "리키지",
+          "유출"
+        ]
+      },
+      "explanation": "데이터 누수는 예측 시점에는 알 수 없는 정보가 학습 데이터에 섞이는 것입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-leakage-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "data-leakage",
+        "target-leakage"
+      ],
+      "content": {
+        "prompt": "레이블을 거의 그대로 담은 특징이 섞인 누수는 ___ 누수다.",
+        "hint": "모델이 맞혀야 하는 값을 다른 이름으로 부른 것입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "타깃",
+          "target",
+          "타겟"
+        ]
+      },
+      "explanation": "타깃 누수는 레이블을 거의 그대로 담은 특징이 입력에 들어간 경우입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-leakage-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "data-leakage",
+        "target-leakage"
+      ],
+      "content": {
+        "prompt": "연체 예측에 '연체 독촉 횟수' 열을 넣었다. 문제는?",
+        "options": [
+          "결측값",
+          "타깃 누수",
+          "범주형 특징"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "독촉 횟수는 연체가 일어난 뒤에 생기는 값이라 레이블을 거의 그대로 담고 있습니다. 타깃 누수입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-leakage-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "data-leakage",
+        "target-leakage"
+      ],
+      "content": {
+        "prompt": "퇴사 예측 모델에 넣으면 누수가 되는 특징은?",
+        "options": [
+          "입사 연차",
+          "부서",
+          "퇴사 면담 기록"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "퇴사 면담 기록은 퇴사가 정해진 뒤에야 생기므로 예측 시점에는 알 수 없는 정보입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-leakage-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "data-leakage",
+        "target-leakage"
+      ],
+      "content": {
+        "prompt": "검증 정확도 99%, 서비스 정확도 60%다. 먼저 의심할 것은?",
+        "options": [
+          "데이터 누수",
+          "로그 변환",
+          "날짜 분해"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "평가 점수는 매우 높은데 실제 서비스 성능이 낮은 것은 데이터 누수의 대표 증상입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-dat-leakage-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "data-leakage",
+        "target-leakage"
+      ],
+      "content": {
+        "prompt": "데이터 누수는 예측 시점에 알 수 없는 정보가 학습에 섞이는 것이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "예측 시점에는 없는 값이 학습 데이터에 들어가면 평가 때만 도움이 되고 실제 서비스에서는 쓸 수 없습니다.",
+      "refs": []
+    }
+  ]
+}

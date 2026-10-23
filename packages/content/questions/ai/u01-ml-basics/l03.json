@@ -1,0 +1,223 @@
+{
+  "track": "ai",
+  "unit": "u01-ml-basics",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ai-mlb-supervised-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "supervised-learning",
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "특징과 레이블이 함께 있는 데이터로 배우는 방식은?",
+        "options": [
+          "비지도 학습",
+          "지도 학습",
+          "강화 학습"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "지도 학습은 특징과 레이블이 함께 있는 데이터로 입력에서 정답으로 가는 관계를 학습합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-supervised-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "supervised-learning",
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "가격·온도처럼 연속된 숫자를 예측하는 과제는?",
+        "options": [
+          "분류",
+          "군집화",
+          "회귀"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "회귀는 연속된 숫자를 예측하는 지도 학습 과제입니다. 분류는 정해진 범주 중 하나를 고릅니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-supervised-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "supervised-learning",
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "메일이 스팸인지 아닌지 고르는 과제는?",
+        "options": [
+          "분류",
+          "회귀"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스팸·정상이라는 정해진 범주 중 하나를 고르므로 분류입니다. 회귀는 연속된 숫자를 예측합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-supervised-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "supervised-learning",
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "내일 기온처럼 숫자를 맞히는 과제는 분류이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "기온은 연속된 숫자이므로 회귀 과제입니다. 분류는 정해진 범주 중 하나를 고르는 과제입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-supervised-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "supervised-learning",
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "정해진 범주 중 하나를 고르는 지도 학습 과제는 ___ 이다.",
+        "hint": "스팸 여부 판별이 대표 예입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "분류",
+          "classification",
+          "클래시피케이션"
+        ]
+      },
+      "explanation": "분류는 스팸·정상처럼 정해진 범주 중 하나를 고르는 지도 학습 과제입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-supervised-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "supervised-learning",
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "연속된 숫자를 예측하는 지도 학습 과제는 ___ 이다.",
+        "hint": "집값이나 온도 예측이 대표 예입니다."
+      },
+      "answer_key": {
+        "accepted": [
+          "회귀",
+          "regression",
+          "리그레션"
+        ]
+      },
+      "explanation": "회귀는 가격·온도처럼 연속된 숫자를 예측하는 지도 학습 과제입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-supervised-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "supervised-learning",
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "문의를 '배송·환불·기타'로 나누는 과제는?",
+        "options": [
+          "회귀",
+          "분류"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "정해진 세 범주 중 하나를 고르므로 분류입니다. 회귀는 연속된 숫자를 예측할 때 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-supervised-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "supervised-learning",
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "다음 달 매출액 예측 모델이 내는 값은?",
+        "options": [
+          "범주 하나",
+          "연속된 숫자"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "매출액은 연속된 숫자이므로 회귀 과제이고, 모델은 숫자를 출력합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-supervised-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "supervised-learning",
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "지도 학습에 꼭 필요한 데이터는?",
+        "options": [
+          "레이블이 있는 데이터",
+          "레이블이 없는 데이터"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "지도 학습은 정답인 레이블과 비교하며 배우므로, 특징과 레이블이 함께 있는 데이터가 필요합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-mlb-supervised-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "supervised-learning",
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "지도 학습은 정답 레이블이 있는 데이터로 배운다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "지도 학습은 특징과 레이블이 함께 있는 데이터로 입력에서 정답으로 가는 관계를 학습합니다.",
+      "refs": []
+    }
+  ]
+}
