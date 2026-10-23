@@ -1,0 +1,240 @@
+{
+  "track": "ai",
+  "unit": "u05-trees-ensembles",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ai-ensemble-boosting-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "boosting",
+        "ensemble"
+      ],
+      "content": {
+        "prompt": "앞 모델이 틀린 부분을 다음 모델이 보완하게 차례로 학습하는 것은?",
+        "options": [
+          "배깅",
+          "부스팅",
+          "가지치기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "부스팅은 앞 모델이 틀린 부분을 다음 모델이 보완하도록 순서대로 학습한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Gradient_boosting",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-boosting-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "gradient-boosting"
+      ],
+      "content": {
+        "prompt": "다음 트리가 지금까지 예측의 잔차를 맞히게 하는 방법은?",
+        "options": [
+          "결정 트리 하나",
+          "랜덤 포레스트",
+          "그래디언트 부스팅"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "그래디언트 부스팅은 다음 트리가 정답에서 지금까지의 예측을 뺀 잔차를 맞히도록 학습한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Gradient_boosting",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-boosting-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "boosting",
+        "sequential"
+      ],
+      "content": {
+        "prompt": "부스팅의 트리들이 만들어지는 방식은?",
+        "options": [
+          "하나씩 차례로",
+          "동시에 병렬로"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "부스팅은 앞 모델의 결과가 있어야 다음 트리를 만들 수 있어 하나씩 차례로 학습한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Gradient_boosting",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-boosting-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "gradient-boosting",
+        "residual"
+      ],
+      "content": {
+        "prompt": "그래디언트 부스팅의 다음 트리는 원래 정답을 그대로 맞힌다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "다음 트리는 원래 정답이 아니라 지금까지 예측의 잔차(정답 - 예측)를 맞히도록 학습한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Gradient_boosting",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-boosting-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "boosting"
+      ],
+      "content": {
+        "prompt": "앞 모델의 오차를 다음 모델이 보완하게 쌓는 방법은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "부스팅",
+          "boosting",
+          "Boosting"
+        ]
+      },
+      "explanation": "부스팅은 앞 모델이 틀린 부분에 집중해 다음 모델을 순서대로 학습시킨다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Gradient_boosting",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-boosting-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "residual"
+      ],
+      "content": {
+        "prompt": "정답에서 예측을 뺀 값을 ___ 라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "잔차",
+          "residual",
+          "잔차값"
+        ]
+      },
+      "explanation": "잔차는 정답 - 예측이며, 그래디언트 부스팅의 다음 트리가 맞히려는 값이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Gradient_boosting",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-boosting-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "residual",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "정답 10, 지금까지 예측 7이다. 다음 트리가 맞힐 잔차는?",
+        "options": [
+          "-3",
+          "3",
+          "17"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "잔차는 정답 - 예측이므로 10 - 7 = 3이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Gradient_boosting",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-boosting-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "residual",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "정답 10, 지금까지 예측 12다. 잔차는?",
+        "options": [
+          "-2",
+          "2",
+          "22"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "10 - 12 = -2다. 예측이 정답보다 크면 잔차는 음수가 된다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Gradient_boosting",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-boosting-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "boosting",
+        "sequential"
+      ],
+      "content": {
+        "prompt": "부스팅이 트리를 동시에 만들 수 없는 이유는?",
+        "options": [
+          "앞 트리 결과 필요",
+          "표본 재추출",
+          "특징 일부만 사용"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "다음 트리는 앞 트리까지의 오차를 보고 학습하므로 앞 트리가 끝나야 만들 수 있다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Gradient_boosting",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    },
+    {
+      "id": "ai-ensemble-boosting-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "boosting"
+      ],
+      "content": {
+        "prompt": "부스팅은 앞 모델이 틀린 부분을 다음 모델이 보완하도록 학습한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "부스팅은 앞 모델의 오차를 다음 모델이 줄이도록 트리를 순서대로 쌓는다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Gradient_boosting",
+        "https://scikit-learn.org/stable/modules/ensemble.html"
+      ]
+    }
+  ]
+}

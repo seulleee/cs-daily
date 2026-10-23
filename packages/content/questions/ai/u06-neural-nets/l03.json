@@ -1,0 +1,244 @@
+{
+  "track": "ai",
+  "unit": "u06-neural-nets",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ai-nn-activation-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "activation"
+      ],
+      "content": {
+        "prompt": "뉴런의 가중합에 적용하는 비선형 함수는?",
+        "options": [
+          "손실 함수",
+          "활성화 함수",
+          "분할 기준"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "활성화 함수는 뉴런의 가중합에 적용하는 비선형 함수다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activation_function",
+        "https://en.wikipedia.org/wiki/Rectifier_(neural_networks)"
+      ]
+    },
+    {
+      "id": "ai-nn-activation-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "relu",
+        "activation"
+      ],
+      "content": {
+        "prompt": "음수는 0, 양수는 그대로 내보내는 함수는?",
+        "options": [
+          "시그모이드",
+          "소프트맥스",
+          "ReLU"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "ReLU는 max(0, x)로 계산해 음수는 0, 양수는 그대로 내보낸다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activation_function",
+        "https://en.wikipedia.org/wiki/Rectifier_(neural_networks)"
+      ]
+    },
+    {
+      "id": "ai-nn-activation-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "activation",
+        "nonlinearity"
+      ],
+      "content": {
+        "prompt": "활성화 함수 없이 층을 쌓아도 비선형 관계를 표현할 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "활성화 함수 없이 쌓은 층들의 곱셈과 덧셈은 하나로 정리되어 선형 모델 하나와 같아진다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activation_function",
+        "https://en.wikipedia.org/wiki/Rectifier_(neural_networks)"
+      ]
+    },
+    {
+      "id": "ai-nn-activation-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "relu"
+      ],
+      "content": {
+        "prompt": "ReLU를 식으로 나타낸 것은?",
+        "options": [
+          "max(0, x)",
+          "min(0, x)",
+          "x × x"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ReLU는 max(0, x)로 0과 x 중 큰 값을 내보낸다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activation_function",
+        "https://en.wikipedia.org/wiki/Rectifier_(neural_networks)"
+      ]
+    },
+    {
+      "id": "ai-nn-activation-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "activation"
+      ],
+      "content": {
+        "prompt": "뉴런의 가중합에 적용하는 비선형 함수는 ___ 함수다."
+      },
+      "answer_key": {
+        "accepted": [
+          "활성화",
+          "activation",
+          "활성"
+        ]
+      },
+      "explanation": "활성화 함수는 가중합에 비선형 함수를 씌워 층을 쌓는 의미를 살린다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activation_function",
+        "https://en.wikipedia.org/wiki/Rectifier_(neural_networks)"
+      ]
+    },
+    {
+      "id": "ai-nn-activation-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "relu"
+      ],
+      "content": {
+        "prompt": "max(0, x)로 계산하는 활성화 함수는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "ReLU",
+          "relu",
+          "Relu",
+          "렐루"
+        ]
+      },
+      "explanation": "ReLU는 음수 입력을 0으로, 양수 입력은 그대로 내보내는 활성화 함수다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activation_function",
+        "https://en.wikipedia.org/wiki/Rectifier_(neural_networks)"
+      ]
+    },
+    {
+      "id": "ai-nn-activation-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "relu",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "ReLU(-3)의 값은?",
+        "options": [
+          "-3",
+          "0",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "max(0, -3) = 0이다. ReLU는 음수를 0으로 바꾼다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activation_function",
+        "https://en.wikipedia.org/wiki/Rectifier_(neural_networks)"
+      ]
+    },
+    {
+      "id": "ai-nn-activation-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "relu",
+        "numpy"
+      ],
+      "content": {
+        "prompt": "ReLU를 적용한 뒤 합한 출력값은?",
+        "code": {
+          "language": "python",
+          "source": "import numpy as np\n\nx = np.array([-4, 1, 2])\nprint(np.maximum(0, x).sum())"
+        },
+        "options": [
+          "-1",
+          "3",
+          "7"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ReLU를 적용하면 [0, 1, 2]가 되어 합은 3이다. -1은 원래 값의 합이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activation_function",
+        "https://en.wikipedia.org/wiki/Rectifier_(neural_networks)"
+      ]
+    },
+    {
+      "id": "ai-nn-activation-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "nonlinearity"
+      ],
+      "content": {
+        "prompt": "활성화 함수 없이 층 3개를 쌓은 모델은 무엇과 같아지나?",
+        "options": [
+          "결정 트리",
+          "선형 모델 하나",
+          "랜덤 포레스트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "가중합만 거듭하면 한 번의 가중합으로 정리되므로 층을 쌓아도 선형 모델 하나와 같다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activation_function",
+        "https://en.wikipedia.org/wiki/Rectifier_(neural_networks)"
+      ]
+    },
+    {
+      "id": "ai-nn-activation-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "activation"
+      ],
+      "content": {
+        "prompt": "활성화 함수는 뉴런의 가중합에 적용된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "활성화 함수는 뉴런이 계산한 가중합에 적용되어 비선형 출력을 만든다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Activation_function",
+        "https://en.wikipedia.org/wiki/Rectifier_(neural_networks)"
+      ]
+    }
+  ]
+}

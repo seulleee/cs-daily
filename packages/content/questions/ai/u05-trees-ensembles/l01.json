@@ -1,0 +1,249 @@
+{
+  "track": "ai",
+  "unit": "u05-trees-ensembles",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ai-dtree-basics-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "decision-tree"
+      ],
+      "content": {
+        "prompt": "특징에 대한 예/아니오 질문을 이어 붙여 예측하는 모델은?",
+        "options": [
+          "결정 트리",
+          "선형 회귀",
+          "로지스틱 회귀"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "결정 트리는 특징에 대한 예/아니오 질문을 차례로 이어 붙여 예측값을 정한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-basics-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "decision-tree",
+        "leaf"
+      ],
+      "content": {
+        "prompt": "더 나누지 않는 끝 노드로, 예측값을 담는 것은?",
+        "options": [
+          "분할 노드",
+          "리프",
+          "특징"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "리프는 더 이상 분할하지 않는 끝 노드이며, 그 노드에 도착한 샘플의 예측값을 담는다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-basics-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "decision-tree",
+        "leaf"
+      ],
+      "content": {
+        "prompt": "결정 트리의 리프는 샘플을 다시 두 갈래로 나눈다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "샘플을 두 갈래로 나누는 것은 분할 노드다. 리프는 더 나누지 않고 예측값을 담는다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-basics-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "decision-tree",
+        "split"
+      ],
+      "content": {
+        "prompt": "'나이 < 30' 같은 분할 질문 하나를 이루는 것은?",
+        "options": [
+          "레이블과 예측값",
+          "가중치와 편향",
+          "특징과 기준값"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "노드 분할은 특징 하나(나이)와 기준값(30)으로 샘플을 예/아니오 두 갈래로 나눈다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-basics-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "decision-tree",
+        "leaf"
+      ],
+      "content": {
+        "prompt": "더 나누지 않고 예측값을 담는 끝 노드는 ___ 이다.",
+        "hint": "트리 그림에서 가장 아래 끝에 있는 노드"
+      },
+      "answer_key": {
+        "accepted": [
+          "리프",
+          "leaf",
+          "리프 노드",
+          "leaf node",
+          "잎",
+          "잎 노드"
+        ]
+      },
+      "explanation": "트리의 끝에서 더 분할하지 않는 노드를 리프라 하며, 예측값이 여기에 담긴다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-basics-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "decision-tree",
+        "split"
+      ],
+      "content": {
+        "prompt": "특징과 기준값으로 샘플을 두 갈래로 나누는 것을 노드 ___ 이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "분할",
+          "split",
+          "스플릿"
+        ]
+      },
+      "explanation": "노드 분할은 특징 하나와 기준값으로 샘플을 예/아니오 두 갈래로 나누는 일이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-basics-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "decision-tree",
+        "split"
+      ],
+      "content": {
+        "prompt": "분할 '나이 < 30'에서 예→A, 아니오→B다. 나이 25의 예측은?",
+        "options": [
+          "A",
+          "B"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "25는 30보다 작으므로 질문의 답이 예이고, 예 쪽 리프의 예측값 A가 나온다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-basics-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "decision-tree",
+        "python"
+      ],
+      "content": {
+        "prompt": "tree(20, 7)의 출력값은?",
+        "code": {
+          "language": "python",
+          "source": "def tree(age, buys):\n    if age < 30:\n        if buys >= 5:\n            return 1\n        return 0\n    return 0\n\nprint(tree(20, 7))"
+        },
+        "options": [
+          "0",
+          "1"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "나이 20은 30 미만이라 안쪽 질문으로 가고, 구매 7은 5 이상이라 1을 담은 리프에 도착한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-basics-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "decision-tree",
+        "leaf"
+      ],
+      "content": {
+        "prompt": "결정 트리가 샘플 하나를 예측하는 방식은?",
+        "options": [
+          "질문 따라 리프 도착",
+          "모든 리프 평균",
+          "가중합 계산"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "샘플은 맨 위 노드부터 분할 질문의 답을 따라 내려가 도착한 리프의 예측값을 받는다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    },
+    {
+      "id": "ai-dtree-basics-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "decision-tree"
+      ],
+      "content": {
+        "prompt": "결정 트리는 특징에 대한 예/아니오 질문을 이어 붙여 예측한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "결정 트리는 가중합이 아니라 특징에 대한 예/아니오 질문의 연결로 예측하는 모델이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Decision_tree_learning",
+        "https://scikit-learn.org/stable/modules/tree.html"
+      ]
+    }
+  ]
+}

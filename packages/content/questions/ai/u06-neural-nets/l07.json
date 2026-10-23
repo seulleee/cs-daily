@@ -1,0 +1,231 @@
+{
+  "track": "ai",
+  "unit": "u06-neural-nets",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ai-nn-dropout-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dropout"
+      ],
+      "content": {
+        "prompt": "학습 중 뉴런 일부의 출력을 무작위로 0으로 만드는 기법은?",
+        "options": [
+          "드롭아웃",
+          "모멘텀",
+          "가지치기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "드롭아웃은 학습 중 뉴런 일부의 출력을 무작위로 0으로 만들어 과적합을 줄인다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html"
+      ]
+    },
+    {
+      "id": "ai-nn-dropout-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "train-eval-mode"
+      ],
+      "content": {
+        "prompt": "학습과 추론에서 동작이 다른 층을 전환하는 상태는?",
+        "options": [
+          "에폭",
+          "학습·평가 모드",
+          "배치 크기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "학습·평가 모드는 드롭아웃처럼 학습과 추론에서 동작이 다른 층을 전환하는 상태다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html"
+      ]
+    },
+    {
+      "id": "ai-nn-dropout-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dropout",
+        "inference"
+      ],
+      "content": {
+        "prompt": "추론할 때도 드롭아웃으로 뉴런 일부를 끈다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "드롭아웃은 학습 중에만 뉴런을 끈다. 추론할 때는 모든 뉴런을 사용한다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html"
+      ]
+    },
+    {
+      "id": "ai-nn-dropout-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dropout"
+      ],
+      "content": {
+        "prompt": "드롭아웃이 뉴런을 끄는 때는?",
+        "options": [
+          "추론할 때만",
+          "항상",
+          "학습할 때만"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "드롭아웃은 학습 중에만 무작위로 뉴런 출력을 0으로 만들고, 추론에서는 모두 사용한다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html"
+      ]
+    },
+    {
+      "id": "ai-nn-dropout-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dropout"
+      ],
+      "content": {
+        "prompt": "학습 중 뉴런 일부의 출력을 무작위로 0으로 만드는 기법은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "드롭아웃",
+          "dropout",
+          "Dropout",
+          "드랍아웃"
+        ]
+      },
+      "explanation": "드롭아웃은 매번 다른 뉴런을 꺼 특정 뉴런 몇 개에만 의존하지 않게 한다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html"
+      ]
+    },
+    {
+      "id": "ai-nn-dropout-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dropout"
+      ],
+      "content": {
+        "prompt": "드롭아웃은 학습 중 뉴런 일부의 출력을 무작위로 ___ 으로 만든다."
+      },
+      "answer_key": {
+        "accepted": [
+          "0",
+          "영",
+          "zero"
+        ]
+      },
+      "explanation": "드롭아웃은 꺼 둘 뉴런의 출력을 0으로 만들어 다음 층에 전달되지 않게 한다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html"
+      ]
+    },
+    {
+      "id": "ai-nn-dropout-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dropout",
+        "overfitting"
+      ],
+      "content": {
+        "prompt": "학습 손실은 계속 주는데 검증 손실이 오른다. 시도할 것은?",
+        "options": [
+          "드롭아웃 추가",
+          "은닉층 추가",
+          "에폭 늘리기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "학습에만 잘 맞는 과적합 상태이므로 드롭아웃으로 과적합을 줄인다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html"
+      ]
+    },
+    {
+      "id": "ai-nn-dropout-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dropout",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "뉴런 10개 층에 드롭아웃 비율 0.5를 쓴다. 꺼지는 뉴런 수 평균은?",
+        "options": [
+          "0",
+          "5",
+          "10"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "각 뉴런이 0.5 확률로 꺼지므로 학습 중 한 번에 평균 10 × 0.5 = 5개가 꺼진다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html"
+      ]
+    },
+    {
+      "id": "ai-nn-dropout-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "train-eval-mode",
+        "inference"
+      ],
+      "content": {
+        "prompt": "같은 입력의 추론 결과가 매번 다르다. 의심할 원인은?",
+        "options": [
+          "학습률이 큼",
+          "평가 모드 미전환",
+          "배치가 작음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "평가 모드로 바꾸지 않으면 추론에서도 드롭아웃이 뉴런을 무작위로 꺼 결과가 매번 달라진다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html"
+      ]
+    },
+    {
+      "id": "ai-nn-dropout-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dropout",
+        "overfitting"
+      ],
+      "content": {
+        "prompt": "드롭아웃은 과적합을 줄이려고 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "드롭아웃은 학습 중 뉴런 일부를 무작위로 꺼 과적합을 줄인다.",
+      "refs": [
+        "https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html"
+      ]
+    }
+  ]
+}

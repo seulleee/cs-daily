@@ -1,0 +1,236 @@
+{
+  "track": "ai",
+  "unit": "u06-neural-nets",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ai-nn-perceptron-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "perceptron"
+      ],
+      "content": {
+        "prompt": "가중합에 편향을 더해 기준을 넘으면 1, 아니면 0을 내는 단위는?",
+        "options": [
+          "시그모이드",
+          "리프",
+          "퍼셉트론"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "퍼셉트론은 입력의 가중합에 편향을 더해 기준을 넘으면 1, 아니면 0을 낸다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-perceptron-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "neuron"
+      ],
+      "content": {
+        "prompt": "가중합을 계산하고 함수를 적용해 값 하나를 내보내는 단위는?",
+        "options": [
+          "뉴런",
+          "특징",
+          "레이블"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "뉴런(유닛)은 가중합을 계산하고 함수를 적용해 값 하나를 내보내는 기본 단위다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-perceptron-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "perceptron",
+        "xor"
+      ],
+      "content": {
+        "prompt": "퍼셉트론 하나로 XOR을 분류할 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "XOR은 직선 하나로 나눌 수 없어서 퍼셉트론 하나로는 분류하지 못한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-perceptron-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "perceptron"
+      ],
+      "content": {
+        "prompt": "퍼셉트론의 출력으로 나올 수 있는 값은?",
+        "options": [
+          "0~1 사이 확률",
+          "0 또는 1",
+          "모든 실수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "퍼셉트론은 기준을 넘는지만 보고 1 또는 0을 낸다. 0~1 사이 확률은 시그모이드의 출력이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-perceptron-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "perceptron",
+        "xor"
+      ],
+      "content": {
+        "prompt": "퍼셉트론 하나로 분류하지 못하는 대표 논리 연산은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "XOR",
+          "xor",
+          "배타적 논리합",
+          "exclusive or"
+        ]
+      },
+      "explanation": "XOR은 직선 하나로 두 클래스를 나눌 수 없어 퍼셉트론 하나로는 분류하지 못한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-perceptron-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "neuron"
+      ],
+      "content": {
+        "prompt": "가중합을 계산하고 함수를 적용해 값 하나를 내는 단위는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "뉴런",
+          "neuron",
+          "유닛",
+          "unit"
+        ]
+      },
+      "explanation": "뉴런(유닛)은 가중합에 함수를 적용해 값 하나를 내보내며, 신경망은 이를 많이 연결한 모델이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-perceptron-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "perceptron",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "입력 (1, 2), 가중치 (0.5, 0.5), 편향 -1, 기준 0. 출력은?",
+        "options": [
+          "0",
+          "0.5",
+          "1"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "1×0.5 + 2×0.5 - 1 = 0.5로 기준 0을 넘으므로 퍼셉트론은 1을 낸다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-perceptron-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "perceptron",
+        "numpy"
+      ],
+      "content": {
+        "prompt": "이 퍼셉트론 코드의 출력값은?",
+        "code": {
+          "language": "python",
+          "source": "import numpy as np\n\nx = np.array([1, 0])\nw = np.array([0.4, 0.9])\nb = -0.5\nz = x @ w + b\nprint(1 if z > 0 else 0)"
+        },
+        "options": [
+          "-0.1",
+          "0",
+          "1"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "가중합 1×0.4 + 0×0.9에 편향 -0.5를 더하면 -0.1이라 기준 0을 넘지 못해 0을 낸다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-perceptron-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "xor",
+        "linear-separability"
+      ],
+      "content": {
+        "prompt": "XOR을 퍼셉트론 하나로 풀지 못하는 이유는?",
+        "options": [
+          "입력이 두 개라서",
+          "편향이 없어서",
+          "직선 하나로 분리 불가"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "퍼셉트론 하나는 직선 하나로만 나눌 수 있는데, XOR의 두 클래스는 직선 하나로 나눌 수 없다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-perceptron-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "perceptron"
+      ],
+      "content": {
+        "prompt": "퍼셉트론은 가중합에 편향을 더한 값이 기준을 넘으면 1을 낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "퍼셉트론은 입력의 가중합에 편향을 더한 값이 기준을 넘을 때 1, 아니면 0을 낸다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Perceptron"
+      ]
+    }
+  ]
+}

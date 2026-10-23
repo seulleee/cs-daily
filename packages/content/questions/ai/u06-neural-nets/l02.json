@@ -1,0 +1,229 @@
+{
+  "track": "ai",
+  "unit": "u06-neural-nets",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ai-nn-mlp-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "layers"
+      ],
+      "content": {
+        "prompt": "입력층과 출력층 사이에서 중간 계산을 하는 층은?",
+        "options": [
+          "은닉층",
+          "입력층",
+          "출력층"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "은닉층은 입력층과 출력층 사이에서 중간 계산을 하는 층이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Multilayer_perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-mlp-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "mlp"
+      ],
+      "content": {
+        "prompt": "은닉층이 하나 이상 있는 완전 연결 신경망은?",
+        "options": [
+          "퍼셉트론",
+          "MLP",
+          "결정 트리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다층 퍼셉트론(MLP)은 은닉층이 하나 이상 있고 층끼리 완전 연결된 신경망이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Multilayer_perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-mlp-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "layers"
+      ],
+      "content": {
+        "prompt": "예측 결과를 내보내는 층은?",
+        "options": [
+          "입력층",
+          "은닉층",
+          "출력층"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "출력층은 신경망의 마지막 층으로 예측 결과를 낸다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Multilayer_perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-mlp-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "forward-pass"
+      ],
+      "content": {
+        "prompt": "순전파는 출력에서 입력 방향으로 계산한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "순전파는 입력에서 출력 방향으로 층마다 계산해 예측을 낸다. 거꾸로 계산하는 과정은 뒤 레슨에서 다룬다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Multilayer_perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-mlp-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "layers"
+      ],
+      "content": {
+        "prompt": "입력층과 출력층 사이의 중간 계산 층은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "은닉층",
+          "은닉 층",
+          "hidden layer",
+          "히든 레이어"
+        ]
+      },
+      "explanation": "은닉층은 입력도 결과도 아닌 중간 계산을 맡으며, MLP는 이 층이 하나 이상 있다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Multilayer_perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-mlp-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "forward-pass"
+      ],
+      "content": {
+        "prompt": "입력에서 출력 방향으로 층마다 계산해 예측을 내는 과정은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "순전파",
+          "forward propagation",
+          "forward pass",
+          "순방향 전파"
+        ]
+      },
+      "explanation": "순전파는 앞 층의 출력을 다음 층의 입력으로 넘기며 출력층까지 계산하는 과정이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Multilayer_perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-mlp-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "layers",
+        "mlp"
+      ],
+      "content": {
+        "prompt": "입력층 4 → 은닉층 8 → 은닉층 8 → 출력층 1. 은닉층 수는?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "입력층과 출력층 사이의 층이 은닉층이므로 8뉴런 층 2개가 은닉층이다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Multilayer_perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-mlp-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "mlp",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "3뉴런 층과 2뉴런 층이 완전 연결됐다. 가중치 수는?",
+        "options": [
+          "5",
+          "6",
+          "9"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "완전 연결이면 앞 층 뉴런마다 다음 층 모든 뉴런과 연결되므로 3 × 2 = 6개다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Multilayer_perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-mlp-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "forward-pass"
+      ],
+      "content": {
+        "prompt": "순전파에서 한 층의 출력은 어디로 가나?",
+        "options": [
+          "다음 층의 입력",
+          "앞 층의 입력",
+          "학습 세트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "순전파는 앞 층의 출력을 다음 층의 입력으로 넘기며 출력층까지 계산한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Multilayer_perceptron"
+      ]
+    },
+    {
+      "id": "ai-nn-mlp-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "layers"
+      ],
+      "content": {
+        "prompt": "은닉층은 입력층과 출력층 사이에서 중간 계산을 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "은닉층은 입력층과 출력층 사이의 층으로, 입력을 새로운 표현으로 바꾸는 중간 계산을 한다.",
+      "refs": [
+        "https://en.wikipedia.org/wiki/Multilayer_perceptron"
+      ]
+    }
+  ]
+}
