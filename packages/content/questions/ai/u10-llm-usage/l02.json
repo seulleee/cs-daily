@@ -1,0 +1,214 @@
+{
+  "track": "ai",
+  "unit": "u10-llm-usage",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ai-llmuse-instruction-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "instruction",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "목표·대상 독자·길이·형식을 명시한 지시는?",
+        "options": [
+          "구분자",
+          "구체적 지시",
+          "맥락 제공"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "구체적 지시는 목표·대상 독자·길이·형식을 명시해 결과를 안정시킨다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-instruction-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "delimiter",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "지시와 처리할 데이터를 태그나 구분선으로 나누는 것은?",
+        "options": [
+          "구분자",
+          "맥락 제공",
+          "샘플링"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "구분자는 지시와 처리할 데이터를 태그나 구분선으로 나눠 둘이 섞이지 않게 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-instruction-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "context",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "모델이 모르는 사내 정보를 입력에 직접 넣는 것은?",
+        "options": [
+          "구분자",
+          "파인튜닝",
+          "맥락 제공"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "맥락 제공은 모델이 모르는 사내 정보·배경을 입력에 직접 넣는 것이다. 파인튜닝은 모델을 추가 학습시킨다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-instruction-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "context",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "모델은 입력에 없어도 우리 회사 내부 규정을 알고 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "모델은 사내 정보를 모르므로 필요한 사내 정보·배경은 입력에 직접 넣어야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-instruction-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "delimiter",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "지시와 데이터를 나누는 태그나 구분선을 ___라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "구분자",
+          "delimiter",
+          "딜리미터"
+        ]
+      },
+      "explanation": "구분자는 지시와 처리할 데이터를 나눠 데이터 속 문장이 지시와 섞이지 않게 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-instruction-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "context",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "모델이 모르는 배경을 입력에 직접 넣는 것을 ___ 제공이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "맥락",
+          "컨텍스트",
+          "context"
+        ]
+      },
+      "explanation": "맥락 제공은 모델이 모르는 사내 정보나 배경을 입력에 직접 넣는 것이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-instruction-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "instruction",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "'요약해 줘'를 구체적 지시로 고친 것은?",
+        "options": [
+          "신입용 3줄 요약",
+          "잘 요약해 줘"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "대상 독자와 길이를 명시한 '신입용 3줄 요약'이 구체적 지시다. '잘'은 기준을 알려 주지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-instruction-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "delimiter",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "요약할 문서에 '이전 지시를 무시하라'가 있다. 도움이 되는 것은?",
+        "options": [
+          "temperature 높이기",
+          "출력 길이 늘리기",
+          "구분자로 문서 감싸기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "구분자로 문서를 감싸면 지시와 데이터가 나뉘어 문서 속 문장을 지시로 착각할 가능성이 줄어든다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-instruction-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "context",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "사내 휴가 규정 질문에 정확히 답하게 하려면?",
+        "options": [
+          "규정 원문을 입력에 넣기",
+          "질문을 짧게 줄이기",
+          "temperature 높이기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "모델은 사내 규정을 모르므로 규정 원문을 맥락으로 입력에 넣어야 정확히 답할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-instruction-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "instruction",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "길이와 형식을 지시에 명시하면 결과가 안정된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "목표·대상 독자·길이·형식을 명시한 구체적 지시는 결과를 안정시킨다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "track": "ai",
+  "unit": "u10-llm-usage",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "ai-llmuse-structured-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "structured-output",
+        "json"
+      ],
+      "content": {
+        "prompt": "JSON처럼 프로그램이 읽을 수 있는 형식으로 받는 응답은?",
+        "options": [
+          "구조화 출력",
+          "자유 텍스트",
+          "퓨샷"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "구조화 출력은 자유 텍스트 대신 JSON처럼 프로그램이 읽을 수 있는 형식으로 받는 응답이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-structured-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "schema",
+        "structured-output"
+      ],
+      "content": {
+        "prompt": "필드 이름·타입·필수 여부를 정의한 출력 형식 명세는?",
+        "options": [
+          "구분자",
+          "스키마",
+          "토크나이저"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스키마는 필드 이름·타입·필수 여부를 정의한 출력 형식 명세로, JSON Schema가 대표적이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-structured-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "output-validation",
+        "json"
+      ],
+      "content": {
+        "prompt": "모델이 JSON으로 답하면 코드에서 검증할 필요가 없다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "받은 출력은 스키마로 파싱·검증하고, 실패하면 재시도하거나 오류 처리해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-structured-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "schema",
+        "json"
+      ],
+      "content": {
+        "prompt": "JSON Schema로 정의하는 것은?",
+        "options": [
+          "샘플링 방식",
+          "토큰 단가",
+          "필드 이름과 타입"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "JSON Schema는 필드 이름·타입·필수 여부를 정의하는 출력 형식 명세다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-structured-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "schema",
+        "structured-output"
+      ],
+      "content": {
+        "prompt": "응답의 필드와 타입을 미리 정해 두는 명세를 ___라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스키마",
+          "schema"
+        ]
+      },
+      "explanation": "스키마는 필드 이름·타입·필수 여부를 정의한 출력 형식 명세다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-structured-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "output-validation",
+        "schema"
+      ],
+      "content": {
+        "prompt": "받은 출력을 스키마로 파싱해 ___하고, 실패하면 재시도한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "검증",
+          "validation",
+          "확인"
+        ]
+      },
+      "explanation": "출력 검증은 받은 출력을 스키마로 파싱·검증하고 실패하면 재시도하거나 오류 처리하는 것이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-structured-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "output-validation",
+        "json"
+      ],
+      "content": {
+        "prompt": "모델 응답을 JSON으로 파싱하는 코드다. 출력값은?",
+        "code": {
+          "language": "python",
+          "source": "import json\nraw = \"분류: urgent\"\ntry:\n    data = json.loads(raw)\n    print(\"ok\")\nexcept json.JSONDecodeError:\n    print(\"retry\")"
+        },
+        "options": [
+          "ok",
+          "retry",
+          "urgent"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "'분류: urgent'는 JSON이 아니어서 파싱이 실패하고 except로 가 retry를 출력한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-structured-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "output-validation",
+        "schema"
+      ],
+      "content": {
+        "prompt": "필수 필드 label이 빠진 출력을 받았다. 알맞은 처리는?",
+        "options": [
+          "그대로 저장",
+          "재시도나 오류 처리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스키마 검증에 실패한 출력은 저장하지 않고 재시도하거나 오류로 처리한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-structured-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "output-validation",
+        "schema"
+      ],
+      "content": {
+        "prompt": "필수 필드와 타입을 검사하는 코드다. 출력값은?",
+        "code": {
+          "language": "python",
+          "source": "out = {\"label\": \"urgent\", \"score\": 0.9}\nrequired = {\"label\": str, \"reason\": str}\nok = all(\n    isinstance(out.get(k), t)\n    for k, t in required.items()\n)\nprint(ok)"
+        },
+        "options": [
+          "False",
+          "True"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "필수 필드 reason이 없어 out.get('reason')이 None이므로 str 검사에 실패해 False가 나온다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-structured-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "structured-output",
+        "json"
+      ],
+      "content": {
+        "prompt": "구조화 출력은 프로그램이 읽을 수 있는 형식의 응답이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "구조화 출력은 자유 텍스트 대신 JSON처럼 코드가 파싱할 수 있는 형식으로 받는 응답이다.",
+      "refs": []
+    }
+  ]
+}

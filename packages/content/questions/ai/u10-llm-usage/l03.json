@@ -1,0 +1,214 @@
+{
+  "track": "ai",
+  "unit": "u10-llm-usage",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ai-llmuse-fewshot-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "zero-shot",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "예시 없이 지시만으로 작업을 요청하는 방식은?",
+        "options": [
+          "제로샷",
+          "퓨샷",
+          "파인튜닝"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "제로샷은 예시 없이 지시만으로 작업을 요청한다. 퓨샷은 입력·출력 예시를 함께 준다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-fewshot-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "few-shot",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "입력·출력 예시 몇 개를 함께 주는 방식은?",
+        "options": [
+          "제로샷",
+          "퓨샷",
+          "사전학습"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "퓨샷은 입력·출력 예시 몇 개를 함께 주어 원하는 형식과 기준을 보여 준다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-fewshot-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "few-shot",
+        "fine-tuning"
+      ],
+      "content": {
+        "prompt": "퓨샷은 예시로 모델의 가중치를 다시 학습시킨다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "퓨샷은 입력에 예시를 넣을 뿐 모델을 다시 학습시키지 않는다. 가중치를 바꾸는 것은 파인튜닝이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-fewshot-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "few-shot",
+        "example-selection"
+      ],
+      "content": {
+        "prompt": "퓨샷 예시로 고르기 좋은 것은?",
+        "options": [
+          "한 유형만 반복한 예시",
+          "실제와 비슷한 다양한 예시"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "예시는 실제 입력과 비슷하고 다양해야 한다. 한 유형만 반복하면 판단이 그쪽으로 쏠린다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-fewshot-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "zero-shot",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "예시 없이 지시만 주는 방식은 ___샷이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "제로",
+          "zero",
+          "제로샷"
+        ]
+      },
+      "explanation": "제로샷은 예시 없이 지시만으로 작업을 요청하는 방식이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-fewshot-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "few-shot",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "원하는 형식을 예시 몇 개로 보여 주는 방식은 ___이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "퓨샷",
+          "퓨 샷",
+          "few shot",
+          "fewshot",
+          "few-shot"
+        ]
+      },
+      "explanation": "퓨샷은 입력·출력 예시 몇 개를 보여 주어 원하는 형식과 기준을 전달한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-fewshot-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "few-shot",
+        "example-selection"
+      ],
+      "content": {
+        "prompt": "예시 3개의 출력이 모두 '등급: X' 형식이다. 응답 형식은?",
+        "options": [
+          "자유 형식",
+          "'등급: X' 형식"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "모델은 예시의 형식을 따르므로 응답도 '등급: X' 형식으로 나오기 쉽다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-fewshot-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "few-shot",
+        "example-selection"
+      ],
+      "content": {
+        "prompt": "긴급 문의 예시만 5개 넣었다. 생길 수 있는 문제는?",
+        "options": [
+          "긴급 쪽으로 쏠림",
+          "입력 토큰 감소",
+          "형식 무시"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "예시가 한 유형에 치우치면 모델 판단도 그쪽으로 쏠린다. 예시는 다양해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-fewshot-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "few-shot",
+        "zero-shot"
+      ],
+      "content": {
+        "prompt": "분류 기준을 말로 설명하기 어려울 때 알맞은 방식은?",
+        "options": [
+          "제로샷",
+          "퓨샷"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "퓨샷은 입력·출력 예시로 기준을 보여 주므로 말로 설명하기 어려운 기준을 전달할 때 알맞다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-fewshot-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "zero-shot",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "제로샷 프롬프트에는 입출력 예시가 들어가지 않는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "제로샷은 예시 없이 지시만으로 작업을 요청한다.",
+      "refs": []
+    }
+  ]
+}

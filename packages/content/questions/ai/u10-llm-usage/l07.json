@@ -1,0 +1,215 @@
+{
+  "track": "ai",
+  "unit": "u10-llm-usage",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ai-llmuse-toolsafety-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "argument-validation",
+        "tool-safety"
+      ],
+      "content": {
+        "prompt": "모델이 만든 인자의 타입·범위·권한을 코드에서 검사하는 것은?",
+        "options": [
+          "인자 검증",
+          "툴 설명",
+          "결과 전달"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인자 검증은 모델이 만든 인자를 믿지 않고 타입·범위·권한을 코드에서 검사하는 것이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-toolsafety-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "least-privilege",
+        "tool-safety"
+      ],
+      "content": {
+        "prompt": "모델에 주는 툴을 필요한 기능으로만 제한하는 원칙은?",
+        "options": [
+          "퓨샷",
+          "최소 권한",
+          "작업 분할"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "최소 권한은 모델에 필요한 기능의 툴만 주고, 위험한 작업은 사람 확인을 거치게 하는 원칙이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-toolsafety-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "argument-validation",
+        "tool-safety"
+      ],
+      "content": {
+        "prompt": "모델이 만든 인자는 검사 없이 그대로 실행해도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "모델이 만든 인자는 형식이 틀리거나 권한 밖 데이터를 가리킬 수 있어 코드에서 검사해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-toolsafety-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tool-description",
+        "function-calling"
+      ],
+      "content": {
+        "prompt": "모델이 어떤 툴을 언제 쓸지 고르는 근거는?",
+        "options": [
+          "툴 실행 속도",
+          "서버 로그",
+          "툴 이름과 설명"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "모델은 함께 보낸 툴 이름과 설명만 보고 툴을 고르므로 이름과 설명이 명확해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-toolsafety-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "least-privilege",
+        "tool-safety"
+      ],
+      "content": {
+        "prompt": "모델에 필요한 기능의 툴만 주는 원칙은 최소 ___이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "권한",
+          "privilege"
+        ]
+      },
+      "explanation": "최소 권한은 모델에 주는 툴을 필요한 기능으로 제한하고 위험한 작업은 사람 확인을 거치게 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-toolsafety-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "argument-validation",
+        "tool-safety"
+      ],
+      "content": {
+        "prompt": "모델이 만든 인자를 코드에서 검사하는 것은 인자 ___이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "검증",
+          "검사",
+          "validation"
+        ]
+      },
+      "explanation": "인자 검증은 모델이 만든 인자의 타입·범위·권한을 코드에서 검사하는 것이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-toolsafety-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "argument-validation",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "사용자 A의 요청에 모델이 B의 주문 ID를 인자로 넣었다. 할 일은?",
+        "options": [
+          "그대로 조회",
+          "권한 확인 후 거부"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인자 검증으로 요청한 사용자에게 그 주문을 볼 권한이 있는지 코드에서 확인하고 없으면 거부한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-toolsafety-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "least-privilege",
+        "human-review"
+      ],
+      "content": {
+        "prompt": "'환불 실행' 툴을 연결할 때 알맞은 방식은?",
+        "options": [
+          "사람 확인 후 실행",
+          "모델 판단대로 즉시"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "최소 권한 원칙에 따라 환불처럼 위험한 작업은 사람 확인을 거친 뒤 실행한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-toolsafety-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "argument-validation",
+        "tool-safety"
+      ],
+      "content": {
+        "prompt": "모델이 만든 인자로 호출했다. 출력값은?",
+        "code": {
+          "language": "python",
+          "source": "def refund(amount, price):\n    if not 0 < amount <= price:\n        return \"거부\"\n    return \"실행\"\n\nprint(refund(9000, 5000))"
+        },
+        "options": [
+          "거부",
+          "실행"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "금액 9000이 주문 금액 5000보다 커서 범위 검사에 걸리므로 거부가 출력된다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-toolsafety-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "argument-validation",
+        "tool-safety"
+      ],
+      "content": {
+        "prompt": "모델이 만든 인자는 코드에서 타입·범위·권한을 검사한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "모델이 만든 인자는 믿지 말고 타입·범위·권한을 코드에서 검사해야 한다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "track": "ai",
+  "unit": "u09-llm-basics",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "ai-llm-finetune-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "pretraining",
+        "llm-training"
+      ],
+      "content": {
+        "prompt": "방대한 텍스트로 다음 토큰 예측을 학습해 기반 모델을 만드는 단계는?",
+        "options": [
+          "사전학습",
+          "파인튜닝",
+          "지시 튜닝"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "사전학습은 방대한 텍스트로 다음 토큰 예측을 학습해 기반 모델을 만드는 단계다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-finetune-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "fine-tuning",
+        "llm-training"
+      ],
+      "content": {
+        "prompt": "사전학습된 모델을 특정 작업 데이터로 추가 학습시키는 것은?",
+        "options": [
+          "사전학습",
+          "파인튜닝",
+          "샘플링"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "파인튜닝은 사전학습된 모델을 특정 작업·형식의 데이터로 추가 학습시키는 것이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-finetune-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "instruction-tuning",
+        "fine-tuning"
+      ],
+      "content": {
+        "prompt": "지시와 바람직한 응답 쌍으로 파인튜닝하는 것은?",
+        "options": [
+          "사전학습",
+          "그리디 디코딩",
+          "지시 튜닝"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "지시 튜닝은 지시와 바람직한 응답 쌍으로 파인튜닝해 요청을 따르는 모델로 만든다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-finetune-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "fine-tuning",
+        "pretraining"
+      ],
+      "content": {
+        "prompt": "파인튜닝은 모델을 처음부터 새로 학습시키는 것이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "파인튜닝은 이미 사전학습된 모델을 추가 학습시키는 것이다. 처음부터 학습하는 단계는 사전학습이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-finetune-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "pretraining",
+        "base-model"
+      ],
+      "content": {
+        "prompt": "사전학습으로 만들어진 모델을 ___ 모델이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "기반",
+          "베이스",
+          "base",
+          "파운데이션",
+          "foundation"
+        ]
+      },
+      "explanation": "사전학습은 방대한 텍스트로 다음 토큰 예측을 학습해 기반 모델을 만든다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-finetune-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "instruction-tuning",
+        "fine-tuning"
+      ],
+      "content": {
+        "prompt": "지시와 응답 쌍으로 파인튜닝하는 것을 지시 ___이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "튜닝",
+          "tuning"
+        ]
+      },
+      "explanation": "지시 튜닝은 지시와 바람직한 응답 쌍으로 파인튜닝해 요청을 따르는 모델로 만든다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-finetune-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "fine-tuning",
+        "llm-training"
+      ],
+      "content": {
+        "prompt": "답변 형식을 맞추려고 기존 모델을 사내 데이터로 추가 학습했다. 이것은?",
+        "options": [
+          "파인튜닝",
+          "사전학습"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "사전학습된 모델을 특정 형식의 데이터로 추가 학습시키는 것은 파인튜닝이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-finetune-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "instruction-tuning",
+        "llm-training"
+      ],
+      "content": {
+        "prompt": "텍스트를 이어 쓰기만 하던 모델이 요청을 따르게 되는 단계는?",
+        "options": [
+          "사전학습",
+          "지시 튜닝",
+          "토큰화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "지시 튜닝은 지시와 바람직한 응답 쌍으로 학습해 기반 모델을 요청을 따르는 모델로 만든다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-finetune-009",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "pretraining",
+        "llm-training"
+      ],
+      "content": {
+        "prompt": "사전학습의 학습 목표는 다음 토큰 예측이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "사전학습은 방대한 텍스트에서 다음 토큰을 예측하도록 학습해 기반 모델을 만든다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-finetune-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "pretraining",
+        "llm-training"
+      ],
+      "content": {
+        "prompt": "사전학습에 쓰는 데이터는?",
+        "options": [
+          "지시·응답 쌍",
+          "방대한 텍스트",
+          "소량의 작업 데이터"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "사전학습은 방대한 텍스트를 쓴다. 지시·응답 쌍은 지시 튜닝, 소량의 작업 데이터는 파인튜닝에 쓴다.",
+      "refs": []
+    }
+  ]
+}

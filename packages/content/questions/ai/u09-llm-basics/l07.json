@@ -1,0 +1,214 @@
+{
+  "track": "ai",
+  "unit": "u09-llm-basics",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ai-llm-topkp-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "top-k",
+        "sampling"
+      ],
+      "content": {
+        "prompt": "확률이 높은 토큰 k개만 후보로 남기고 뽑는 방식은?",
+        "options": [
+          "top-k",
+          "top-p",
+          "그리디 디코딩"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "top-k는 확률이 높은 토큰 k개만 후보로 남기고 그 안에서 뽑는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-topkp-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "top-p",
+        "sampling"
+      ],
+      "content": {
+        "prompt": "누적 확률이 p에 처음 닿을 때까지의 토큰만 남기는 방식은?",
+        "options": [
+          "top-k",
+          "top-p",
+          "temperature"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "top-p는 확률 높은 순으로 더해 p에 처음 닿을 때까지의 토큰만 후보로 남긴다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-topkp-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "top-p",
+        "top-k"
+      ],
+      "content": {
+        "prompt": "top-p는 후보 토큰 수를 k개로 고정한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "개수를 k개로 고정하는 것은 top-k다. top-p는 누적 확률 기준이라 분포에 따라 후보 수가 달라진다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-topkp-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tail-truncation",
+        "sampling"
+      ],
+      "content": {
+        "prompt": "샘플링 후보를 줄였을 때 생기는 효과는?",
+        "options": [
+          "모델 크기 감소",
+          "입력 토큰 증가",
+          "저확률 토큰 제외"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "후보를 줄이면 확률이 매우 낮은 토큰이 아예 뽑히지 않는다. 이를 꼬리 자르기라 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-topkp-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tail-truncation",
+        "sampling"
+      ],
+      "content": {
+        "prompt": "확률이 매우 낮은 토큰을 후보에서 빼는 것을 ___ 자르기라 한다.",
+        "hint": "분포에서 확률이 낮은 끝부분"
+      },
+      "answer_key": {
+        "accepted": [
+          "꼬리",
+          "tail"
+        ]
+      },
+      "explanation": "꼬리 자르기는 후보를 줄여 확률이 매우 낮은 토큰이 아예 뽑히지 않게 하는 것이다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-topkp-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "top-p",
+        "sampling"
+      ],
+      "content": {
+        "prompt": "누적 확률 기준으로 후보를 남기는 방식은 top-___다."
+      },
+      "answer_key": {
+        "accepted": [
+          "p",
+          "P"
+        ]
+      },
+      "explanation": "top-p는 확률 높은 순으로 더해 p에 처음 닿을 때까지의 토큰만 남긴다. 개수 기준은 top-k다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-topkp-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "top-k",
+        "sampling"
+      ],
+      "content": {
+        "prompt": "A 0.5, B 0.3, C 0.15, D 0.05일 때 top-k(k=3) 후보는?",
+        "options": [
+          "A",
+          "A·B",
+          "A·B·C"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "top-k는 확률이 높은 순서로 k개를 남기므로 k=3이면 A·B·C가 후보다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-topkp-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "top-p",
+        "sampling"
+      ],
+      "content": {
+        "prompt": "A 0.5, B 0.3, C 0.15, D 0.05일 때 top-p(p=0.7) 후보는?",
+        "options": [
+          "A",
+          "A·B",
+          "A·B·C"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "누적 확률이 A 0.5, A·B 0.8이므로 0.7에 처음 닿는 B까지 남는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-topkp-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "top-p",
+        "sampling"
+      ],
+      "content": {
+        "prompt": "1등 토큰 확률이 0.95일 때 top-p(p=0.9) 후보 수는?",
+        "options": [
+          "1개",
+          "2개",
+          "3개"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "첫 토큰만으로 누적 확률 0.95가 0.9에 닿으므로 후보는 1개다. top-p는 분포에 따라 후보 수가 바뀐다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llm-topkp-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "top-k",
+        "sampling"
+      ],
+      "content": {
+        "prompt": "top-k는 확률 높은 k개 토큰 안에서만 토큰을 뽑는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "top-k는 확률이 높은 토큰 k개만 후보로 남기고 그 안에서 뽑는다.",
+      "refs": []
+    }
+  ]
+}

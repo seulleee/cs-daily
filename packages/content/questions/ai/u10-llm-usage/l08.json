@@ -1,0 +1,212 @@
+{
+  "track": "ai",
+  "unit": "u10-llm-usage",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "ai-llmuse-review-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "system-prompt",
+        "prompt-design"
+      ],
+      "content": {
+        "prompt": "대화 전체의 역할·규칙을 정하는 입력 부분은?",
+        "options": [
+          "시스템 프롬프트",
+          "퓨샷 예시",
+          "사용자 메시지"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "입력 설계에서 대화 전체의 역할·규칙은 시스템 프롬프트에 둔다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-review-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "output-validation",
+        "schema"
+      ],
+      "content": {
+        "prompt": "받은 JSON 출력을 스키마로 확인하는 단계는?",
+        "options": [
+          "결과 전달",
+          "출력 검증",
+          "작업 분할"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "구조화 출력은 받은 뒤 코드에서 스키마로 검증한다. 결과 전달은 함수 실행 결과를 모델에 넣는 단계다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-review-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "function-calling",
+        "tool-safety"
+      ],
+      "content": {
+        "prompt": "함수 호출에서 권한 확인은 모델이 맡는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "모델은 호출을 요청만 하고 실행·검증·권한 확인은 애플리케이션이 맡는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-review-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "few-shot",
+        "prompt-design"
+      ],
+      "content": {
+        "prompt": "원하는 출력 형식을 입출력 예시로 보여 주는 방식은?",
+        "options": [
+          "제로샷",
+          "구조화 출력",
+          "퓨샷"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "퓨샷은 입력·출력 예시를 함께 주어 원하는 형식과 기준을 보여 준다. 제로샷은 예시 없이 지시만 준다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-review-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "schema",
+        "structured-output"
+      ],
+      "content": {
+        "prompt": "필드 이름과 타입을 정해 출력을 받으려면 ___를 정의한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스키마",
+          "schema"
+        ]
+      },
+      "explanation": "출력 연결에서는 스키마로 필드 이름과 타입을 정해 구조화 출력을 받고 코드에서 검증한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "function-calling",
+        "tool"
+      ],
+      "content": {
+        "prompt": "모델은 호출을 요청만 하고, 함수 ___은 애플리케이션이 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "실행",
+          "execution"
+        ]
+      },
+      "explanation": "툴 연결에서 모델은 호출을 요청할 뿐이고 실행·검증·권한 확인은 애플리케이션이 맡는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-review-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "structured-output",
+        "schema"
+      ],
+      "content": {
+        "prompt": "리뷰를 긍정·부정으로 분류해 DB에 저장한다. 알맞은 출력은?",
+        "options": [
+          "자유 서술 문단",
+          "스키마를 정한 JSON"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "코드가 DB에 저장하려면 스키마로 정한 구조화 출력을 받아 검증해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-review-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "argument-validation",
+        "tool-safety"
+      ],
+      "content": {
+        "prompt": "'툴 정의→모델 호출 요청→바로 DB 삭제'에서 빠진 단계는?",
+        "options": [
+          "인자·권한 검증",
+          "퓨샷 예시",
+          "temperature 조정"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "모델이 만든 인자는 실행 전에 애플리케이션이 검증하고 권한을 확인해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-review-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "delimiter",
+        "prompt-design"
+      ],
+      "content": {
+        "prompt": "번역할 문서에 지시문이 섞여 있다. 알맞은 입력 설계는?",
+        "options": [
+          "예시 빼기",
+          "문서를 맨 앞에 두기",
+          "구분자로 문서 감싸기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "구분자로 지시와 데이터를 나누면 문서 속 문장이 지시로 섞이지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "ai-llmuse-review-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "prompt-design",
+        "prompt"
+      ],
+      "content": {
+        "prompt": "입력은 역할·지시·맥락·예시·형식으로 나눠 쓰면 명확해진다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "입력 설계는 역할·지시·맥락·예시·형식을 나눠 명확하게 쓰는 것이다.",
+      "refs": []
+    }
+  ]
+}
