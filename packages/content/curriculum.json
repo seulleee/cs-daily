@@ -9564,7 +9564,7 @@
       "slug": "ai",
       "name": "AI·ML",
       "description": "머신러닝 기초부터 임베딩·LLM 활용·RAG까지, 원리와 실무를 함께 익히는 드릴",
-      "phase": "phase2",
+      "phase": "mvp",
       "units": [
         {
           "slug": "u01-ml-basics",
