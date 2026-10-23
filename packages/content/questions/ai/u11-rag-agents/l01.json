@@ -1,0 +1,207 @@
+{
+  "track": "ai",
+  "unit": "u11-rag-agents",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ai-rag-basics-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rag",
+        "retrieval"
+      ],
+      "content": {
+        "prompt": "관련 문서를 검색해 입력에 넣고 그 내용을 근거로 답하게 하는 방식은?",
+        "options": [
+          "파인튜닝",
+          "임베딩",
+          "RAG"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "RAG(검색 증강 생성)는 질문과 관련된 문서를 검색해 입력에 넣고, 그 내용을 근거로 답하게 하는 방식이다."
+    },
+    {
+      "id": "ai-rag-basics-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rag",
+        "pipeline"
+      ],
+      "content": {
+        "prompt": "RAG 기본 흐름의 마지막 단계는?",
+        "options": [
+          "문서 검색",
+          "질문 임베딩",
+          "생성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "RAG는 질문 임베딩 → 관련 문서 검색 → 입력에 문서 삽입 → 생성 순서로 진행되며, 생성이 마지막이다."
+    },
+    {
+      "id": "ai-rag-basics-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "rag",
+        "retraining"
+      ],
+      "content": {
+        "prompt": "RAG로 새 문서를 답에 반영하려면 모델을 다시 학습해야 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "RAG는 문서를 검색해 입력에 넣을 뿐 모델 가중치는 바꾸지 않으므로, 재학습 없이 새 문서를 반영한다."
+    },
+    {
+      "id": "ai-rag-basics-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "rag",
+        "retrieval"
+      ],
+      "content": {
+        "prompt": "RAG는 검색한 문서를 모델 입력에 넣어 답하게 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "RAG는 검색한 문서를 입력에 삽입하고, 모델이 그 내용을 근거로 답을 생성한다."
+    },
+    {
+      "id": "ai-rag-basics-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "rag",
+        "pipeline"
+      ],
+      "content": {
+        "prompt": "RAG 흐름: 질문 임베딩 → 관련 문서 ___ → 입력에 삽입 → 생성",
+        "hint": "질문 벡터와 가까운 문서를 찾아오는 단계"
+      },
+      "answer_key": {
+        "accepted": [
+          "검색",
+          "retrieval",
+          "search",
+          "리트리벌"
+        ]
+      },
+      "explanation": "질문 임베딩과 비슷한 문서를 찾는 검색 단계가 생성 앞에 온다."
+    },
+    {
+      "id": "ai-rag-basics-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "rag",
+        "term"
+      ],
+      "content": {
+        "prompt": "RAG는 검색 증강 ___의 줄임말이다.",
+        "hint": "모델이 답 문장을 만들어 내는 일"
+      },
+      "answer_key": {
+        "accepted": [
+          "생성",
+          "generation"
+        ]
+      },
+      "explanation": "RAG는 Retrieval-Augmented Generation, 곧 검색 증강 생성의 줄임말이다."
+    },
+    {
+      "id": "ai-rag-basics-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rag",
+        "pipeline"
+      ],
+      "content": {
+        "prompt": "사용자가 사내 휴가 규정을 물었다. RAG가 먼저 하는 일은?",
+        "options": [
+          "바로 답 생성",
+          "질문 임베딩",
+          "모델 재학습"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "RAG는 먼저 질문을 임베딩해 그 벡터로 관련 문서를 검색한다. 재학습은 하지 않는다."
+    },
+    {
+      "id": "ai-rag-basics-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rag",
+        "context"
+      ],
+      "content": {
+        "prompt": "RAG에서 검색된 문서가 들어가는 곳은?",
+        "options": [
+          "모델 가중치",
+          "학습 데이터",
+          "모델 입력"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "검색된 문서는 모델 입력에 삽입되고, 모델은 그 내용을 읽고 답한다. 가중치나 학습 데이터는 바뀌지 않는다."
+    },
+    {
+      "id": "ai-rag-basics-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rag",
+        "use-case"
+      ],
+      "content": {
+        "prompt": "다음 중 RAG가 가장 알맞은 기능은?",
+        "options": [
+          "문장 번역",
+          "사내 위키 질의응답",
+          "이미지 분류"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "사내 위키처럼 학습에 없던 문서를 근거로 답해야 하는 질의응답이 RAG가 필요한 대표적인 경우다."
+    },
+    {
+      "id": "ai-rag-basics-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rag",
+        "pipeline"
+      ],
+      "content": {
+        "prompt": "RAG의 기본 흐름으로 맞는 순서는?",
+        "options": [
+          "검색→생성→임베딩",
+          "생성→검색→임베딩",
+          "임베딩→검색→생성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "질문을 임베딩한 뒤 관련 문서를 검색하고, 그 문서를 입력에 넣어 생성한다."
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "track": "ai",
+  "unit": "u12-eval-ops",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "ai-evalops-eval-set-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "eval-set",
+        "evaluation"
+      ],
+      "content": {
+        "prompt": "대표 입력과 기대 결과를 모아 둔 고정 데이터는?",
+        "options": [
+          "학습 데이터",
+          "청크",
+          "평가 세트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "평가 세트는 대표 입력과 기대 결과(또는 채점 기준)를 모아 둔 고정 데이터다."
+    },
+    {
+      "id": "ai-evalops-eval-set-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "regression-test",
+        "evaluation"
+      ],
+      "content": {
+        "prompt": "프롬프트를 바꿀 때마다 같은 평가 세트로 성능 저하를 잡는 것은?",
+        "options": [
+          "회귀 테스트",
+          "부하 테스트",
+          "재학습"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "회귀 테스트는 프롬프트나 모델을 바꿀 때마다 같은 평가 세트로 돌려 성능 저하를 잡는다."
+    },
+    {
+      "id": "ai-evalops-eval-set-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "exact-match",
+        "evaluation"
+      ],
+      "content": {
+        "prompt": "자유 텍스트 답을 정확 일치로 채점하기 어려운 이유는?",
+        "options": [
+          "답이 너무 짧음",
+          "맞는 답이 여럿"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "자유 텍스트 출력은 표현이 다른 맞는 답이 여럿이라 문자열이 같은지만 보면 맞는 답도 틀리게 된다."
+    },
+    {
+      "id": "ai-evalops-eval-set-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "eval-set",
+        "evaluation"
+      ],
+      "content": {
+        "prompt": "평가 세트는 평가할 때마다 새 입력으로 바꿔 만든다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "평가 세트는 고정 데이터라서 변경 전후를 같은 기준으로 비교할 수 있다."
+    },
+    {
+      "id": "ai-evalops-eval-set-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "eval-set",
+        "term"
+      ],
+      "content": {
+        "prompt": "대표 입력과 기대 결과를 모은 고정 데이터는 평가 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "세트",
+          "셋",
+          "set",
+          "데이터셋"
+        ]
+      },
+      "explanation": "평가 세트를 고정해 두고 변경할 때마다 같은 입력으로 점수를 낸다."
+    },
+    {
+      "id": "ai-evalops-eval-set-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "regression-test",
+        "term"
+      ],
+      "content": {
+        "prompt": "변경할 때마다 같은 평가 세트로 성능 저하를 잡는 테스트는 ___ 테스트다."
+      },
+      "answer_key": {
+        "accepted": [
+          "회귀",
+          "regression"
+        ]
+      },
+      "explanation": "회귀 테스트는 프롬프트나 모델을 바꾼 뒤 예전에 되던 입력이 나빠졌는지 잡는다."
+    },
+    {
+      "id": "ai-evalops-eval-set-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "exact-match",
+        "python"
+      ],
+      "content": {
+        "prompt": "정확 일치로 채점했을 때 출력되는 값은?",
+        "code": {
+          "language": "python",
+          "source": "preds = [\"서울\", \"부산\", \"대구\", \"광주\"]\ngolds = [\"서울\", \"부산시\", \"대구\", \"광주\"]\nhits = 0\nfor p, g in zip(preds, golds):\n    if p == g:\n        hits += 1\nprint(hits / len(golds))"
+        },
+        "options": [
+          "0.5",
+          "0.75",
+          "1.0"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "4개 중 3개만 문자열이 같아 0.75다. 부산과 부산시는 뜻이 같아도 정확 일치에서는 틀린다."
+    },
+    {
+      "id": "ai-evalops-eval-set-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "regression-test",
+        "evaluation"
+      ],
+      "content": {
+        "prompt": "프롬프트 한 줄을 고친 뒤 할 일은?",
+        "options": [
+          "바로 배포",
+          "평가 세트 삭제",
+          "평가 세트 재실행"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "한 줄만 바꿔도 어떤 입력은 나빠질 수 있으므로 같은 평가 세트로 회귀 테스트를 돌린다."
+    },
+    {
+      "id": "ai-evalops-eval-set-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "eval-set",
+        "rubric"
+      ],
+      "content": {
+        "prompt": "요약 기능 평가 세트에 기대 결과 대신 둘 수 있는 것은?",
+        "options": [
+          "채점 기준",
+          "학습률",
+          "청크 크기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "정답 문장이 하나로 정해지지 않는 출력은 기대 결과 대신 채점 기준을 평가 세트에 둔다."
+    },
+    {
+      "id": "ai-evalops-eval-set-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "eval-set",
+        "evaluation"
+      ],
+      "content": {
+        "prompt": "같은 평가 세트로 돌려야 변경 전후 점수를 비교할 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "평가 세트를 고정해 두면 프롬프트나 모델을 바꿀 때마다 같은 기준으로 점수를 비교할 수 있다."
+    }
+  ]
+}

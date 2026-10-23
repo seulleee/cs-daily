@@ -1,0 +1,207 @@
+{
+  "track": "ai",
+  "unit": "u11-rag-agents",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ai-rag-rerank-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "reranking",
+        "retrieval"
+      ],
+      "content": {
+        "prompt": "1차 검색 후보를 더 정밀한 모델로 다시 점수 매기는 것은?",
+        "options": [
+          "청킹",
+          "재순위화",
+          "임베딩"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "재순위화(reranking)는 1차 검색 후보를 더 정밀한 모델로 다시 점수 매겨 순서를 바꾼다."
+    },
+    {
+      "id": "ai-rag-rerank-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "reranking",
+        "model"
+      ],
+      "content": {
+        "prompt": "질문과 문서를 함께 입력받아 관련도를 계산하는 모델은?",
+        "options": [
+          "재순위 모델",
+          "임베딩 모델",
+          "생성 모델"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "재순위 모델은 질문과 문서를 함께 읽어 관련도를 계산한다. 임베딩 검색은 둘을 따로 벡터로 만든다."
+    },
+    {
+      "id": "ai-rag-rerank-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "reranking",
+        "latency"
+      ],
+      "content": {
+        "prompt": "재순위 모델과 임베딩 검색 중 정확하지만 느린 쪽은?",
+        "options": [
+          "임베딩 검색",
+          "재순위 모델"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "재순위 모델은 질문과 문서를 함께 계산하므로 정확하지만 느리다. 임베딩 검색은 빠르지만 덜 정밀하다."
+    },
+    {
+      "id": "ai-rag-rerank-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "reranking",
+        "two-stage"
+      ],
+      "content": {
+        "prompt": "재순위화는 전체 문서를 처음부터 정밀 모델로 비교하는 방식이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "재순위화는 1차 검색으로 뽑은 후보만 다시 점수 매긴다. 전체 문서에 쓰기에는 너무 느리다."
+    },
+    {
+      "id": "ai-rag-rerank-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "reranking",
+        "term"
+      ],
+      "content": {
+        "prompt": "1차 검색 후보의 순서를 정밀한 모델로 다시 정하는 것은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "재순위화",
+          "reranking",
+          "rerank",
+          "리랭킹",
+          "재정렬"
+        ]
+      },
+      "explanation": "재순위화는 후보를 더 정밀한 모델로 다시 점수 매겨 순서를 바꾼다."
+    },
+    {
+      "id": "ai-rag-rerank-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "reranking",
+        "two-stage"
+      ],
+      "content": {
+        "prompt": "빠른 검색으로 후보를 뽑고 재순위화하는 구조는 ___단계 검색이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "2",
+          "두",
+          "이",
+          "둘"
+        ]
+      },
+      "explanation": "빠른 1차 검색과 재순위화를 거치는 구조를 2단계 검색이라 한다."
+    },
+    {
+      "id": "ai-rag-rerank-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "reranking",
+        "two-stage"
+      ],
+      "content": {
+        "prompt": "2단계 검색에서 재순위 모델이 점수 매기는 대상은?",
+        "options": [
+          "전체 문서",
+          "생성된 답",
+          "1차 검색 후보"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "재순위 모델은 빠른 검색이 뽑은 후보 수십 개만 다시 점수 매긴다."
+    },
+    {
+      "id": "ai-rag-rerank-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "reranking",
+        "two-stage"
+      ],
+      "content": {
+        "prompt": "후보 50개를 재순위화했다. 입력에 넣는 것은?",
+        "options": [
+          "상위 몇 개",
+          "50개 전부",
+          "하위 몇 개"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "2단계 검색은 재순위화한 결과 중 상위 몇 개만 입력에 넣는다."
+    },
+    {
+      "id": "ai-rag-rerank-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "reranking",
+        "latency"
+      ],
+      "content": {
+        "prompt": "재순위 모델을 전체 문서에 바로 쓰지 않는 이유는?",
+        "options": [
+          "정확도가 낮아서",
+          "입력이 없어서",
+          "너무 느려서"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "재순위 모델은 질문과 문서를 함께 계산해 정확하지만 느리므로 후보에만 쓴다."
+    },
+    {
+      "id": "ai-rag-rerank-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "reranking",
+        "retrieval"
+      ],
+      "content": {
+        "prompt": "재순위화는 1차 검색 후보의 순서를 바꾼다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "재순위화는 후보를 더 정밀하게 다시 점수 매겨 관련도가 높은 순서로 바꾼다."
+    }
+  ]
+}

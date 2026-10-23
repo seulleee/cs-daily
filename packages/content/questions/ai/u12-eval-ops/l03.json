@@ -1,0 +1,202 @@
+{
+  "track": "ai",
+  "unit": "u12-eval-ops",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ai-evalops-online-eval-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "offline-eval",
+        "evaluation"
+      ],
+      "content": {
+        "prompt": "배포 전에 평가 세트로 성능을 재는 평가는?",
+        "options": [
+          "오프라인 평가",
+          "온라인 평가",
+          "A/B 테스트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "오프라인 평가는 배포 전에 평가 세트로 성능을 잰다. 온라인 평가는 배포 후 실제 트래픽에서 잰다."
+    },
+    {
+      "id": "ai-evalops-online-eval-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ab-test",
+        "online-eval"
+      ],
+      "content": {
+        "prompt": "사용자를 나눠 두 버전을 동시에 제공하고 지표를 비교하는 것은?",
+        "options": [
+          "회귀 테스트",
+          "오프라인 평가",
+          "A/B 테스트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "A/B 테스트는 사용자를 나눠 두 버전을 동시에 제공하고 지표를 비교한다."
+    },
+    {
+      "id": "ai-evalops-online-eval-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "online-eval",
+        "evaluation"
+      ],
+      "content": {
+        "prompt": "배포 후 실제 사용자 트래픽에서 성능을 재는 평가는?",
+        "options": [
+          "오프라인 평가",
+          "온라인 평가"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "온라인 평가는 배포 후 실제 사용자 트래픽에서 성능을 잰다."
+    },
+    {
+      "id": "ai-evalops-online-eval-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "offline-eval",
+        "online-eval"
+      ],
+      "content": {
+        "prompt": "오프라인 평가는 배포 후 실제 사용자 요청으로 성능을 잰다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "실제 사용자 요청으로 재는 것은 온라인 평가다. 오프라인 평가는 배포 전에 평가 세트로 잰다."
+    },
+    {
+      "id": "ai-evalops-online-eval-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "offline-eval",
+        "term"
+      ],
+      "content": {
+        "prompt": "배포 전에 평가 세트로 재는 평가는 ___ 평가다."
+      },
+      "answer_key": {
+        "accepted": [
+          "오프라인",
+          "offline"
+        ]
+      },
+      "explanation": "오프라인 평가는 품질이 떨어진 버전이 사용자에게 나가기 전에 걸러 낸다."
+    },
+    {
+      "id": "ai-evalops-online-eval-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "user-feedback",
+        "online-eval"
+      ],
+      "content": {
+        "prompt": "좋아요·재질문 같은 사용자 ___을 온라인 지표로 쓴다."
+      },
+      "answer_key": {
+        "accepted": [
+          "피드백",
+          "feedback",
+          "반응"
+        ]
+      },
+      "explanation": "좋아요·재질문·수정 여부 같은 사용자 피드백은 배포 후 품질을 보여 주는 신호다."
+    },
+    {
+      "id": "ai-evalops-online-eval-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ab-test",
+        "online-eval"
+      ],
+      "content": {
+        "prompt": "A안 1천 명 중 120명, B안 1천 명 중 150명 만족. 나은 쪽은?",
+        "options": [
+          "A안",
+          "B안"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "같은 기간 같은 수의 사용자에게 나눠 제공했으므로 만족 비율이 15%인 B안이 12%인 A안보다 낫다."
+    },
+    {
+      "id": "ai-evalops-online-eval-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "user-feedback",
+        "online-eval"
+      ],
+      "content": {
+        "prompt": "답을 본 사용자가 같은 질문을 다시 했다. 이 신호의 쓰임은?",
+        "options": [
+          "학습률",
+          "청크 크기",
+          "온라인 지표"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "재질문은 답이 부족했다는 사용자 피드백 신호라서 온라인 지표로 쓴다."
+    },
+    {
+      "id": "ai-evalops-online-eval-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "offline-eval",
+        "evaluation"
+      ],
+      "content": {
+        "prompt": "새 프롬프트를 사용자에게 내보내기 전 먼저 할 평가는?",
+        "options": [
+          "온라인 평가",
+          "A/B 테스트",
+          "오프라인 평가"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "배포 전에는 평가 세트로 재는 오프라인 평가를 먼저 한다. 온라인 평가와 A/B 테스트는 배포 후다."
+    },
+    {
+      "id": "ai-evalops-online-eval-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "offline-eval",
+        "evaluation"
+      ],
+      "content": {
+        "prompt": "오프라인 평가는 배포 전에 평가 세트로 성능을 잰다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "오프라인 평가는 배포 전 평가 세트로, 온라인 평가는 배포 후 실제 트래픽으로 성능을 잰다."
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "track": "ai",
+  "unit": "u12-eval-ops",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "ai-evalops-guardrails-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "prompt-injection",
+        "security"
+      ],
+      "content": {
+        "prompt": "문서에 숨긴 지시로 모델이 원래 규칙을 어기게 만드는 공격은?",
+        "options": [
+          "드리프트",
+          "환각",
+          "프롬프트 인젝션"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "프롬프트 인젝션은 입력이나 문서에 숨긴 지시로 모델이 원래 규칙을 어기게 만드는 공격이다."
+    },
+    {
+      "id": "ai-evalops-guardrails-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "human-approval",
+        "guardrail"
+      ],
+      "content": {
+        "prompt": "결제·삭제처럼 되돌리기 어려운 동작 전에 두는 장치는?",
+        "options": [
+          "사람 확인",
+          "출력 검사",
+          "캐싱"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "사람 확인은 결제·삭제처럼 되돌리기 어려운 동작을 실행 전에 사람이 승인하게 한다."
+    },
+    {
+      "id": "ai-evalops-guardrails-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "input-check",
+        "guardrail"
+      ],
+      "content": {
+        "prompt": "모델 호출 전에 개인정보를 거르는 검사는?",
+        "options": [
+          "입력 검사",
+          "출력 검사"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "입력 검사는 금지 주제·개인정보·인젝션 시도를 모델 호출 전에 거른다."
+    },
+    {
+      "id": "ai-evalops-guardrails-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "output-check",
+        "guardrail"
+      ],
+      "content": {
+        "prompt": "출력 검사는 모델 호출 전에 사용자 입력을 거르는 단계다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "출력 검사는 응답을 내보내기 전에 한다. 모델 호출 전에 입력을 거르는 것은 입력 검사다."
+    },
+    {
+      "id": "ai-evalops-guardrails-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "prompt-injection",
+        "term"
+      ],
+      "content": {
+        "prompt": "입력이나 문서에 숨긴 지시로 규칙을 어기게 하는 공격은 프롬프트 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "인젝션",
+          "injection",
+          "주입"
+        ]
+      },
+      "explanation": "프롬프트 인젝션은 모델이 입력 속 문장을 지시로 따를 수 있다는 점을 노린다."
+    },
+    {
+      "id": "ai-evalops-guardrails-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "output-check",
+        "term"
+      ],
+      "content": {
+        "prompt": "응답을 내보내기 전에 민감정보·정책 위반을 보는 검사는 ___ 검사다."
+      },
+      "answer_key": {
+        "accepted": [
+          "출력",
+          "output"
+        ]
+      },
+      "explanation": "출력 검사는 응답의 형식·민감정보·정책 위반을 사용자에게 나가기 전에 확인한다."
+    },
+    {
+      "id": "ai-evalops-guardrails-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "prompt-injection",
+        "security"
+      ],
+      "content": {
+        "prompt": "검색된 웹 문서에 이전 지시를 무시하라는 문장이 있었다. 이 공격은?",
+        "options": [
+          "환각",
+          "드리프트",
+          "프롬프트 인젝션"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "문서에 숨긴 지시로 원래 규칙을 어기게 하려는 것이므로 프롬프트 인젝션이다."
+    },
+    {
+      "id": "ai-evalops-guardrails-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "human-approval",
+        "agent"
+      ],
+      "content": {
+        "prompt": "에이전트가 고객 계정 삭제 툴을 부르려 한다. 실행 전 둘 것은?",
+        "options": [
+          "스트리밍",
+          "사람 확인",
+          "캐싱"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "삭제는 되돌리기 어려운 동작이므로 실행 전에 사람이 승인하게 한다."
+    },
+    {
+      "id": "ai-evalops-guardrails-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "output-check",
+        "privacy"
+      ],
+      "content": {
+        "prompt": "응답에 다른 고객의 전화번호가 섞일 위험이 있다. 둘 검사는?",
+        "options": [
+          "출력 검사",
+          "입력 검사",
+          "회귀 테스트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "응답을 내보내기 전에 민감정보를 확인하는 출력 검사가 알맞다."
+    },
+    {
+      "id": "ai-evalops-guardrails-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "prompt-injection",
+        "security"
+      ],
+      "content": {
+        "prompt": "프롬프트 인젝션은 숨긴 지시로 모델이 원래 규칙을 어기게 만든다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "프롬프트 인젝션은 입력이나 문서에 지시를 숨겨 모델이 원래 규칙을 어기게 만드는 공격이다."
+    }
+  ]
+}

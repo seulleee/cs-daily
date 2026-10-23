@@ -1,0 +1,204 @@
+{
+  "track": "ai",
+  "unit": "u11-rag-agents",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "ai-rag-agent-review-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rag",
+        "pipeline"
+      ],
+      "content": {
+        "prompt": "RAG 파이프라인에서 검색 다음, 생성 전에 오는 단계는?",
+        "options": [
+          "청킹",
+          "임베딩 저장",
+          "재순위화"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "RAG 파이프라인은 청킹 → 임베딩 저장 → 검색 → 재순위화 → 근거 기반 생성 순서다."
+    },
+    {
+      "id": "ai-rag-agent-review-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rag",
+        "pipeline"
+      ],
+      "content": {
+        "prompt": "RAG 파이프라인의 첫 단계는?",
+        "options": [
+          "청킹",
+          "검색",
+          "생성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "문서를 먼저 청크로 나눠야 임베딩해 저장하고 검색할 수 있으므로 청킹이 첫 단계다."
+    },
+    {
+      "id": "ai-rag-agent-review-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "workflow",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "단계가 고정된 문서 요약 기능에 맞는 구조는?",
+        "options": [
+          "에이전트",
+          "워크플로"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "순서가 정해진 일은 워크플로로 만든다. 에이전트는 경로가 입력마다 달라질 때 쓴다."
+    },
+    {
+      "id": "ai-rag-agent-review-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "rag",
+        "debugging"
+      ],
+      "content": {
+        "prompt": "관련 문서를 못 찾은 RAG는 근거 지시만 강화하면 정답을 낸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "관련 문서가 입력에 없으면 생성 단계를 고쳐도 답이 틀린다. 검색부터 점검해야 한다."
+    },
+    {
+      "id": "ai-rag-agent-review-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "agent",
+        "stop-condition"
+      ],
+      "content": {
+        "prompt": "툴 호출 루프의 무한 반복을 막으려면 ___ 조건을 둔다."
+      },
+      "answer_key": {
+        "accepted": [
+          "종료",
+          "stop",
+          "중단",
+          "정지"
+        ]
+      },
+      "explanation": "에이전트 루프에는 최대 반복 횟수·시간·비용 한도 같은 종료 조건을 둔다."
+    },
+    {
+      "id": "ai-rag-agent-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "hybrid-search",
+        "retrieval"
+      ],
+      "content": {
+        "prompt": "정확한 용어 일치와 의미 검색을 함께 얻는 검색은 ___ 검색이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "하이브리드",
+          "hybrid"
+        ]
+      },
+      "explanation": "하이브리드 검색은 벡터 검색과 키워드 검색 결과를 합친다."
+    },
+    {
+      "id": "ai-rag-agent-review-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "chunking",
+        "overlap"
+      ],
+      "content": {
+        "prompt": "청크 경계에서 문맥이 끊겨 검색이 빗나간다. 조치는?",
+        "options": [
+          "재순위화 제거",
+          "오버랩 추가",
+          "종료 조건 추가"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "오버랩으로 이웃 청크와 일부 내용을 겹치면 경계에서 문맥이 끊기지 않는다."
+    },
+    {
+      "id": "ai-rag-agent-review-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "reranking",
+        "retrieval"
+      ],
+      "content": {
+        "prompt": "검색 상위 결과에 무관한 청크가 섞인다. 추가할 단계는?",
+        "options": [
+          "요약 압축",
+          "출처 표시",
+          "재순위화"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "재순위화로 후보를 정밀하게 다시 점수 매기면 관련도가 높은 청크가 위로 온다."
+    },
+    {
+      "id": "ai-rag-agent-review-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "context",
+        "cost"
+      ],
+      "content": {
+        "prompt": "에이전트 대화가 길어져 비용이 급증한다. 조치는?",
+        "options": [
+          "툴 출력 선별",
+          "청크 크기 늘리기",
+          "키워드 검색 추가"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "긴 툴 출력과 무관한 내용을 선별해 잘라 내면 입력 토큰이 줄어 비용이 감소한다."
+    },
+    {
+      "id": "ai-rag-agent-review-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "rag",
+        "pipeline"
+      ],
+      "content": {
+        "prompt": "RAG 파이프라인은 청킹으로 시작해 근거 기반 생성으로 끝난다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "청킹 → 임베딩 저장 → 검색 → 재순위화를 거쳐 마지막에 근거 기반 생성을 한다."
+    }
+  ]
+}

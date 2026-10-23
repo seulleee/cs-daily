@@ -1,0 +1,204 @@
+{
+  "track": "ai",
+  "unit": "u12-eval-ops",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "ai-evalops-review-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ab-test",
+        "evaluation"
+      ],
+      "content": {
+        "prompt": "배포 후 사용자를 나눠 두 버전을 비교하는 것은?",
+        "options": [
+          "A/B 테스트",
+          "회귀 테스트",
+          "인용 검증"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "A/B 테스트는 배포 후 사용자를 나눠 두 버전을 동시에 제공하고 지표를 비교한다."
+    },
+    {
+      "id": "ai-evalops-review-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "eval-set",
+        "evaluation"
+      ],
+      "content": {
+        "prompt": "배포 전 품질 점검에 쓰는 것은?",
+        "options": [
+          "사용자 피드백",
+          "평가 세트",
+          "A/B 테스트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "배포 전에는 평가 세트와 채점으로 점검하고, 사용자 피드백과 A/B 테스트는 배포 후에 쓴다."
+    },
+    {
+      "id": "ai-evalops-review-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "citation-check",
+        "hallucination"
+      ],
+      "content": {
+        "prompt": "출처에 없는 인용을 찾아내 환각을 줄이는 방법은?",
+        "options": [
+          "모델 라우팅",
+          "인용 검증"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인용 검증은 답이 인용한 내용이 실제 출처에 있는지 확인해 환각을 걸러 낸다."
+    },
+    {
+      "id": "ai-evalops-review-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "regression-test",
+        "evaluation"
+      ],
+      "content": {
+        "prompt": "모델을 바꾼 뒤에는 평가 세트를 다시 돌릴 필요가 없다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "모델이나 프롬프트를 바꾸면 같은 평가 세트로 회귀 테스트를 돌려 성능 저하를 잡는다."
+    },
+    {
+      "id": "ai-evalops-review-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "online-eval",
+        "term"
+      ],
+      "content": {
+        "prompt": "배포 후 실제 사용자 트래픽에서 재는 평가는 ___ 평가다."
+      },
+      "answer_key": {
+        "accepted": [
+          "온라인",
+          "online"
+        ]
+      },
+      "explanation": "온라인 평가는 실제 사용자 트래픽에서 A/B 테스트와 사용자 피드백으로 성능을 잰다."
+    },
+    {
+      "id": "ai-evalops-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "human-approval",
+        "guardrail"
+      ],
+      "content": {
+        "prompt": "되돌리기 어려운 동작은 실행 전에 ___이 승인하게 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "사람",
+          "인간",
+          "human",
+          "운영자"
+        ]
+      },
+      "explanation": "결제·삭제처럼 되돌리기 어려운 동작은 사람 확인을 거친 뒤에만 실행한다."
+    },
+    {
+      "id": "ai-evalops-review-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "routing",
+        "cost"
+      ],
+      "content": {
+        "prompt": "월 비용이 급증했는데 대부분 단순 질문이다. 우선 조치는?",
+        "options": [
+          "A/B 테스트",
+          "인용 검증",
+          "모델 라우팅"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "단순 질문을 작고 빠른 모델로 보내는 모델 라우팅으로 비용을 줄인다."
+    },
+    {
+      "id": "ai-evalops-review-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "trace",
+        "monitoring"
+      ],
+      "content": {
+        "prompt": "특정 날부터 오답이 늘었다. 원인을 찾으려 먼저 볼 것은?",
+        "options": [
+          "스트리밍 설정",
+          "첫 토큰 시간",
+          "트레이스 로그"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "트레이스 로그로 문제 요청의 입력·출력·툴 호출을 확인해야 원인을 재현할 수 있다."
+    },
+    {
+      "id": "ai-evalops-review-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "input-check",
+        "prompt-injection"
+      ],
+      "content": {
+        "prompt": "사용자 입력에 숨긴 지시로 툴이 오작동할 위험이 있다. 둘 장치는?",
+        "options": [
+          "입력 검사",
+          "캐싱",
+          "스트리밍"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "모델 호출 전에 인젝션 시도를 거르는 입력 검사를 둔다."
+    },
+    {
+      "id": "ai-evalops-review-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ab-test",
+        "eval-set"
+      ],
+      "content": {
+        "prompt": "배포 전엔 평가 세트로, 배포 후엔 A/B 테스트로 평가할 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "배포 전에는 평가 세트와 채점으로, 배포 후에는 A/B 테스트와 사용자 피드백으로 평가한다."
+    }
+  ]
+}

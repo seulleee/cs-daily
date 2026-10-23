@@ -1,0 +1,212 @@
+{
+  "track": "ai",
+  "unit": "u11-rag-agents",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ai-rag-chunking-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "chunking",
+        "rag"
+      ],
+      "content": {
+        "prompt": "긴 문서를 검색하기 좋은 작은 조각으로 나누는 작업은?",
+        "options": [
+          "청킹",
+          "임베딩",
+          "토큰화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "청킹은 긴 문서를 검색과 입력에 쓰기 좋은 작은 조각으로 나누는 작업이다."
+    },
+    {
+      "id": "ai-rag-chunking-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "chunking",
+        "term"
+      ],
+      "content": {
+        "prompt": "청킹으로 나뉜 각 조각을 부르는 말은?",
+        "options": [
+          "토큰",
+          "벡터",
+          "청크"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "청킹으로 나뉜 조각을 청크라 하며, 청크마다 따로 임베딩해 저장한다."
+    },
+    {
+      "id": "ai-rag-chunking-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "chunking",
+        "overlap"
+      ],
+      "content": {
+        "prompt": "경계에서 문맥이 끊기지 않게 이웃 청크와 내용을 겹치는 것은?",
+        "options": [
+          "오버랩",
+          "청크 크기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "오버랩은 이웃 청크와 일부 내용을 겹쳐 경계에서 문맥이 끊기지 않게 한다."
+    },
+    {
+      "id": "ai-rag-chunking-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "chunking",
+        "chunk-size"
+      ],
+      "content": {
+        "prompt": "청크를 크게 자를수록 관련 없는 내용이 적게 섞인다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "청크가 너무 크면 한 청크에 관련 없는 내용이 함께 섞인다. 너무 작으면 반대로 문맥이 끊긴다."
+    },
+    {
+      "id": "ai-rag-chunking-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "chunking",
+        "term"
+      ],
+      "content": {
+        "prompt": "검색과 입력에 쓰려고 문서를 잘게 나누는 작업은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "청킹",
+          "chunking",
+          "청크 분할"
+        ]
+      },
+      "explanation": "청킹은 문서를 검색과 입력에 쓰기 좋은 크기의 청크로 나누는 작업이다."
+    },
+    {
+      "id": "ai-rag-chunking-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "chunking",
+        "overlap",
+        "python"
+      ],
+      "content": {
+        "prompt": "이웃 청크와 겹치게 나누려 한다. 빈칸에 들어갈 변수 이름은?",
+        "code": {
+          "language": "python",
+          "source": "def split(text, size, overlap):\n    step = size - ___\n    return [text[i:i + size]\n            for i in range(0, len(text), step)]"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "overlap"
+        ]
+      },
+      "explanation": "시작 위치 간격을 size - overlap으로 두면 이웃 청크가 overlap 길이만큼 겹친다."
+    },
+    {
+      "id": "ai-rag-chunking-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "chunking",
+        "overlap",
+        "python"
+      ],
+      "content": {
+        "prompt": "출력되는 청크 수는?",
+        "code": {
+          "language": "python",
+          "source": "text = \"a\" * 1000\nsize, overlap = 300, 100\nstep = size - overlap\nchunks = [text[i:i + size]\n          for i in range(0, len(text), step)]\nprint(len(chunks))"
+        },
+        "options": [
+          "4",
+          "5",
+          "6"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "간격이 300 - 100 = 200이라 시작 위치는 0, 200, 400, 600, 800이고 청크는 5개다."
+    },
+    {
+      "id": "ai-rag-chunking-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "chunking",
+        "chunk-size"
+      ],
+      "content": {
+        "prompt": "청크를 너무 작게 자르면 생기는 문제는?",
+        "options": [
+          "무관한 내용 섞임",
+          "문맥이 끊김",
+          "저장 불가"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "청크가 너무 작으면 한 내용이 여러 청크로 갈라져 문맥이 끊긴다. 무관한 내용이 섞이는 것은 너무 클 때다."
+    },
+    {
+      "id": "ai-rag-chunking-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "chunking",
+        "chunk-size"
+      ],
+      "content": {
+        "prompt": "한 청크에 여러 주제가 섞여 검색이 부정확하다. 조치는?",
+        "options": [
+          "청크 크기 줄이기",
+          "청크 크기 늘리기",
+          "오버랩 없애기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "청크가 너무 크면 관련 없는 내용이 섞이므로 청크 크기를 줄여 주제가 하나씩 담기게 한다."
+    },
+    {
+      "id": "ai-rag-chunking-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "chunking",
+        "rag"
+      ],
+      "content": {
+        "prompt": "청킹은 문서를 검색과 입력에 쓰기 좋은 조각으로 나누는 작업이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "청킹은 긴 문서를 작은 청크로 나눠 각 청크를 따로 검색하고 입력에 넣을 수 있게 한다."
+    }
+  ]
+}

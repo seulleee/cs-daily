@@ -1,0 +1,204 @@
+{
+  "track": "ai",
+  "unit": "u12-eval-ops",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ai-evalops-cost-reduce-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "routing",
+        "cost"
+      ],
+      "content": {
+        "prompt": "쉬운 요청은 작은 모델로, 어려운 요청만 큰 모델로 보내는 것은?",
+        "options": [
+          "모델 라우팅",
+          "캐싱",
+          "스트리밍"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "모델 라우팅은 쉬운 요청을 작고 빠른 모델로, 어려운 요청만 큰 모델로 보낸다."
+    },
+    {
+      "id": "ai-evalops-cost-reduce-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "streaming",
+        "latency"
+      ],
+      "content": {
+        "prompt": "생성되는 토큰을 바로바로 보내 대기 체감을 줄이는 것은?",
+        "options": [
+          "캐싱",
+          "스트리밍",
+          "모델 라우팅"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스트리밍은 생성되는 토큰을 바로 보내 사용자가 느끼는 대기 시간을 줄인다."
+    },
+    {
+      "id": "ai-evalops-cost-reduce-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "caching",
+        "cost"
+      ],
+      "content": {
+        "prompt": "같은 요청의 응답을 저장해 재사용하는 방법은?",
+        "options": [
+          "스트리밍",
+          "캐싱"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "캐싱은 같은 요청의 응답이나 반복되는 입력 앞부분의 처리 결과를 재사용한다."
+    },
+    {
+      "id": "ai-evalops-cost-reduce-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "streaming",
+        "latency"
+      ],
+      "content": {
+        "prompt": "스트리밍은 전체 응답 생성 시간을 줄여 비용을 낮춘다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "스트리밍은 생성 중인 토큰을 바로 보내 체감 대기 시간만 줄인다. 생성량과 비용은 그대로다."
+    },
+    {
+      "id": "ai-evalops-cost-reduce-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "routing",
+        "term"
+      ],
+      "content": {
+        "prompt": "쉬운 요청을 작은 모델로 보내는 방법은 모델 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "라우팅",
+          "routing"
+        ]
+      },
+      "explanation": "모델 라우팅은 요청 난이도에 따라 보낼 모델을 골라 비용과 지연을 줄인다."
+    },
+    {
+      "id": "ai-evalops-cost-reduce-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "caching",
+        "term"
+      ],
+      "content": {
+        "prompt": "같은 요청의 응답이나 반복 입력의 처리 결과를 재사용하는 것은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "캐싱",
+          "caching",
+          "캐시",
+          "cache"
+        ]
+      },
+      "explanation": "캐싱은 이미 처리한 결과를 재사용해 같은 계산을 반복하지 않게 한다."
+    },
+    {
+      "id": "ai-evalops-cost-reduce-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "routing",
+        "cost"
+      ],
+      "content": {
+        "prompt": "요청의 대부분이 단순 분류다. 비용을 줄일 방법은?",
+        "options": [
+          "스트리밍",
+          "출력 늘리기",
+          "모델 라우팅"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "단순 요청은 작고 빠른 모델로 보내는 모델 라우팅으로 비용을 줄인다. 스트리밍은 비용을 줄이지 않는다."
+    },
+    {
+      "id": "ai-evalops-cost-reduce-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "streaming",
+        "latency"
+      ],
+      "content": {
+        "prompt": "긴 답을 기다리는 사용자의 체감 지연을 줄이려면?",
+        "options": [
+          "캐싱",
+          "모델 라우팅",
+          "스트리밍"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "스트리밍으로 생성되는 토큰을 바로 보여 주면 첫 내용이 빨리 보여 체감 대기 시간이 준다."
+    },
+    {
+      "id": "ai-evalops-cost-reduce-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "caching",
+        "cost"
+      ],
+      "content": {
+        "prompt": "모든 요청 앞에 같은 긴 시스템 프롬프트가 붙는다. 알맞은 방법은?",
+        "options": [
+          "캐싱",
+          "스트리밍",
+          "출력 늘리기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "반복되는 입력 앞부분의 처리 결과를 캐싱해 재사용하면 비용과 지연이 준다."
+    },
+    {
+      "id": "ai-evalops-cost-reduce-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "routing",
+        "cost"
+      ],
+      "content": {
+        "prompt": "모델 라우팅은 어려운 요청만 큰 모델로 보낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "모델 라우팅은 쉬운 요청을 작은 모델로 처리하고 어려운 요청만 큰 모델로 보낸다."
+    }
+  ]
+}

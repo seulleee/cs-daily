@@ -1,0 +1,202 @@
+{
+  "track": "ai",
+  "unit": "u12-eval-ops",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "ai-evalops-cost-latency-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ttft",
+        "latency"
+      ],
+      "content": {
+        "prompt": "요청부터 첫 출력 토큰이 나오기까지 걸린 시간은?",
+        "options": [
+          "전체 지연",
+          "처리량",
+          "TTFT"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "TTFT(첫 토큰 시간)는 요청부터 첫 출력 토큰이 나오기까지 걸린 시간이다."
+    },
+    {
+      "id": "ai-evalops-cost-latency-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cost",
+        "token"
+      ],
+      "content": {
+        "prompt": "LLM 요청 비용을 정하는 두 토큰 수는?",
+        "options": [
+          "학습·평가 토큰",
+          "입력·출력 토큰",
+          "청크·벡터 수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "요청 비용은 입력 토큰 수와 출력 토큰 수에 각각의 단가를 곱해 더한다."
+    },
+    {
+      "id": "ai-evalops-cost-latency-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "latency",
+        "generation"
+      ],
+      "content": {
+        "prompt": "출력이 길수록 응답이 늦어지는 이유는?",
+        "options": [
+          "토큰을 하나씩 생성",
+          "입력을 다시 학습"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "출력 토큰은 하나씩 순서대로 생성되므로 출력이 길수록 응답이 늦어진다."
+    },
+    {
+      "id": "ai-evalops-cost-latency-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "latency",
+        "generation"
+      ],
+      "content": {
+        "prompt": "출력 토큰 수는 응답 지연에 영향을 주지 않는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "출력 토큰은 하나씩 생성되므로 출력 토큰 수가 많을수록 응답이 늦어진다."
+    },
+    {
+      "id": "ai-evalops-cost-latency-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ttft",
+        "term"
+      ],
+      "content": {
+        "prompt": "요청부터 첫 출력 토큰까지의 시간을 첫 ___ 시간이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "토큰",
+          "token"
+        ]
+      },
+      "explanation": "첫 토큰 시간(TTFT)은 사용자가 응답이 시작되기까지 기다리는 시간이다."
+    },
+    {
+      "id": "ai-evalops-cost-latency-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cost",
+        "token"
+      ],
+      "content": {
+        "prompt": "LLM 비용은 입력 토큰 수와 ___ 토큰 수에 각각 단가를 곱해 쌓인다."
+      },
+      "answer_key": {
+        "accepted": [
+          "출력",
+          "output"
+        ]
+      },
+      "explanation": "요청마다 입력 토큰과 출력 토큰에 각각의 단가를 곱해 비용이 쌓인다."
+    },
+    {
+      "id": "ai-evalops-cost-latency-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cost",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "입력 100토큰×1원, 출력 50토큰×4원이다. 요청 비용은?",
+        "options": [
+          "150원",
+          "500원",
+          "300원"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "입력 100 × 1 = 100원, 출력 50 × 4 = 200원을 더해 300원이다."
+    },
+    {
+      "id": "ai-evalops-cost-latency-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ttft",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "요청 0초, 첫 토큰 0.8초, 마지막 토큰 3초다. TTFT는?",
+        "options": [
+          "0.8초",
+          "2.2초",
+          "3초"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "TTFT는 요청부터 첫 출력 토큰까지의 시간이므로 0.8초다. 3초는 전체 응답 시간이다."
+    },
+    {
+      "id": "ai-evalops-cost-latency-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "latency",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "초당 50토큰을 생성한다. 출력 200토큰의 생성 시간은?",
+        "options": [
+          "2초",
+          "4초",
+          "10초"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "출력 토큰은 하나씩 생성되므로 200 ÷ 50 = 4초가 걸린다."
+    },
+    {
+      "id": "ai-evalops-cost-latency-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ttft",
+        "latency"
+      ],
+      "content": {
+        "prompt": "TTFT는 요청부터 첫 출력 토큰이 나올 때까지의 시간이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "TTFT(첫 토큰 시간)는 응답 전체가 아니라 첫 출력 토큰이 나오기까지의 시간이다."
+    }
+  ]
+}

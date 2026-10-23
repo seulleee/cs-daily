@@ -1,0 +1,209 @@
+{
+  "track": "ai",
+  "unit": "u12-eval-ops",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ai-evalops-grading-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "grading",
+        "rule-based"
+      ],
+      "content": {
+        "prompt": "형식 검증·정확 일치처럼 코드로 판정하는 채점은?",
+        "options": [
+          "규칙 기반 채점",
+          "LLM 채점",
+          "사람 평가"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "규칙 기반 채점은 형식 검증·정확 일치·키워드 포함처럼 코드로 판정하는 방식이다."
+    },
+    {
+      "id": "ai-evalops-grading-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "grading",
+        "llm-judge"
+      ],
+      "content": {
+        "prompt": "채점 기준을 준 별도 LLM 호출로 품질을 평가하는 방식은?",
+        "options": [
+          "사람 평가",
+          "정확 일치",
+          "LLM 채점"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "LLM 채점(LLM-as-a-judge)은 채점 기준을 준 별도 LLM 호출로 출력 품질을 평가한다."
+    },
+    {
+      "id": "ai-evalops-grading-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "grading",
+        "rule-based"
+      ],
+      "content": {
+        "prompt": "답이 JSON 형식인지 확인하는 데 알맞은 채점은?",
+        "options": [
+          "사람 평가",
+          "규칙 기반 채점"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "JSON 형식이 맞는지는 코드로 판정할 수 있으므로 규칙 기반 채점이 알맞다."
+    },
+    {
+      "id": "ai-evalops-grading-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "grading",
+        "human-eval"
+      ],
+      "content": {
+        "prompt": "사람 평가는 비용이 작아 모든 출력 채점에 주로 쓴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "사람 평가는 비용이 커서 기준을 정하고 자동 채점이 맞는지 확인하는 데 쓴다."
+    },
+    {
+      "id": "ai-evalops-grading-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "grading",
+        "llm-judge"
+      ],
+      "content": {
+        "prompt": "채점 기준을 준 별도 LLM 호출로 출력을 평가하는 방식은 LLM ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "채점",
+          "judge",
+          "저지",
+          "평가"
+        ]
+      },
+      "explanation": "LLM 채점은 판단이 필요한 품질 항목을 대량으로 평가할 때 쓴다."
+    },
+    {
+      "id": "ai-evalops-grading-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "grading",
+        "human-eval"
+      ],
+      "content": {
+        "prompt": "비용이 크지만 자동 채점이 맞는지 확인하는 데 쓰는 평가는 ___ 평가다."
+      },
+      "answer_key": {
+        "accepted": [
+          "사람",
+          "인간",
+          "human"
+        ]
+      },
+      "explanation": "사람 평가는 비싸서 일부 출력에만 쓰고, 채점 기준을 정하거나 자동 채점을 검증하는 데 쓴다."
+    },
+    {
+      "id": "ai-evalops-grading-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rule-based",
+        "python"
+      ],
+      "content": {
+        "prompt": "형식 검증으로 통과한 출력 수로 출력되는 값은?",
+        "code": {
+          "language": "python",
+          "source": "import json\nouts = ['{\"a\": 1}', \"a: 1\", '{\"b\": 2}']\nok = 0\nfor o in outs:\n    try:\n        json.loads(o)\n        ok += 1\n    except ValueError:\n        pass\nprint(ok)"
+        },
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "\"a: 1\"만 JSON으로 읽히지 않아 예외가 나고, 나머지 2개가 통과한다. 코드로 판정하는 규칙 기반 채점이다."
+    },
+    {
+      "id": "ai-evalops-grading-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "grading",
+        "llm-judge"
+      ],
+      "content": {
+        "prompt": "답이 질문 의도에 맞는지 수천 건을 채점하려면?",
+        "options": [
+          "LLM 채점",
+          "정확 일치",
+          "형식 검증"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "의도에 맞는지는 판단이 필요해 코드로 판정하기 어렵고, 수천 건은 사람이 보기 비싸므로 LLM 채점이 알맞다."
+    },
+    {
+      "id": "ai-evalops-grading-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "grading",
+        "human-eval"
+      ],
+      "content": {
+        "prompt": "LLM 채점의 기준을 처음 정할 때 알맞은 것은?",
+        "options": [
+          "정확 일치",
+          "형식 검증",
+          "사람 평가"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "사람 평가는 비용이 크지만 채점 기준을 정하고 자동 채점이 맞는지 확인하는 데 쓴다."
+    },
+    {
+      "id": "ai-evalops-grading-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "grading",
+        "rule-based"
+      ],
+      "content": {
+        "prompt": "규칙 기반 채점은 키워드 포함 여부를 코드로 판정할 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "규칙 기반 채점은 형식 검증·정확 일치·키워드 포함처럼 코드로 판정할 수 있는 항목에 쓴다."
+    }
+  ]
+}

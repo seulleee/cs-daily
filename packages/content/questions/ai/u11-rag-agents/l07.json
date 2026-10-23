@@ -1,0 +1,200 @@
+{
+  "track": "ai",
+  "unit": "u11-rag-agents",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ai-rag-workflow-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "workflow",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "단계와 순서를 코드로 정해 두고 각 단계에서 LLM을 호출하는 구조는?",
+        "options": [
+          "워크플로",
+          "에이전트",
+          "RAG"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "워크플로는 단계와 순서를 코드로 정해 두고, 각 단계에서 LLM을 호출하는 구조다."
+    },
+    {
+      "id": "ai-rag-workflow-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "agent",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "처리 경로가 입력마다 달라지는 작업에 맞는 구조는?",
+        "options": [
+          "워크플로",
+          "에이전트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "경로가 입력마다 달라지면 모델이 다음 단계를 정하는 에이전트가 맞다. 단계가 예측 가능하면 워크플로다."
+    },
+    {
+      "id": "ai-rag-workflow-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "workflow",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "분류 → 문서 검색 → 답 작성 순서가 고정된 일에 맞는 구조는?",
+        "options": [
+          "에이전트",
+          "워크플로"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "단계가 예측 가능하고 순서가 정해져 있으므로 코드로 순서를 정하는 워크플로가 맞다."
+    },
+    {
+      "id": "ai-rag-workflow-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "agent",
+        "tradeoff"
+      ],
+      "content": {
+        "prompt": "에이전트는 워크플로보다 결과 변동이 작고 디버깅이 쉽다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "에이전트는 유연하지만 비용·지연·결과 변동이 크고 디버깅이 어렵다. 반대로 말한 문장이다."
+    },
+    {
+      "id": "ai-rag-workflow-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "workflow",
+        "term"
+      ],
+      "content": {
+        "prompt": "단계 순서를 코드로 정해 두고 LLM을 부르는 구조는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "워크플로",
+          "workflow",
+          "워크플로우"
+        ]
+      },
+      "explanation": "워크플로는 순서를 코드가 정하고 각 단계에서만 LLM을 호출하는 구조다."
+    },
+    {
+      "id": "ai-rag-workflow-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "agent",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "경로가 입력마다 달라지는 작업에는 워크플로보다 ___를 고른다."
+      },
+      "answer_key": {
+        "accepted": [
+          "에이전트",
+          "agent"
+        ]
+      },
+      "explanation": "단계가 예측 가능하면 워크플로, 경로가 입력마다 달라지면 에이전트를 고른다."
+    },
+    {
+      "id": "ai-rag-workflow-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "agent",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "요청마다 조사할 시스템과 순서가 다른 장애 분석에 맞는 구조는?",
+        "options": [
+          "워크플로",
+          "에이전트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "어떤 시스템을 어떤 순서로 볼지가 요청마다 달라지므로 경로를 스스로 정하는 에이전트가 맞다."
+    },
+    {
+      "id": "ai-rag-workflow-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "agent",
+        "tradeoff"
+      ],
+      "content": {
+        "prompt": "에이전트를 고를 때 감수해야 하는 것은?",
+        "options": [
+          "유연성 감소",
+          "경로 고정",
+          "비용·지연 증가"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "에이전트는 유연한 대신 호출이 늘어 비용·지연이 크고 결과 변동도 크다."
+    },
+    {
+      "id": "ai-rag-workflow-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "workflow",
+        "tradeoff"
+      ],
+      "content": {
+        "prompt": "같은 입력이면 매번 같은 경로를 타야 하는 기능에 맞는 구조는?",
+        "options": [
+          "워크플로",
+          "에이전트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "워크플로는 순서를 코드로 정해 같은 입력에 같은 경로를 탄다. 에이전트는 결과 변동이 크다."
+    },
+    {
+      "id": "ai-rag-workflow-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "workflow",
+        "architecture"
+      ],
+      "content": {
+        "prompt": "워크플로는 단계의 순서를 코드가 정한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "워크플로는 단계와 순서를 코드로 정해 두고, 각 단계에서 LLM을 호출한다."
+    }
+  ]
+}
