@@ -1,0 +1,216 @@
+{
+  "track": "ai",
+  "unit": "u04-evaluation",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ai-eval-kfold-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cross-validation",
+        "k-fold"
+      ],
+      "content": {
+        "prompt": "여러 번 다르게 나눠 학습·검증한 점수를 평균 내는 방법은?",
+        "options": [
+          "교차 검증",
+          "조기 종료",
+          "대치"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "교차 검증은 데이터를 여러 번 다르게 나눠 학습·검증하고 그 점수를 평균 냅니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-kfold-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cross-validation",
+        "k-fold"
+      ],
+      "content": {
+        "prompt": "데이터를 K개로 나눠 한 조각씩 돌아가며 검증하는 방법은?",
+        "options": [
+          "시간순 분할",
+          "무작위 분할",
+          "K-겹 교차 검증"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "K-겹 교차 검증은 K개 조각 중 하나씩 돌아가며 검증에 쓰고 나머지로 학습합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-kfold-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cross-validation",
+        "k-fold"
+      ],
+      "content": {
+        "prompt": "교차 검증은 한 번 나눈 결과에 덜 흔들리는 성능 추정을 준다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "여러 번 나눠 얻은 점수를 평균 내므로 한 번의 분할 운에 덜 흔들립니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-kfold-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cross-validation",
+        "k-fold"
+      ],
+      "content": {
+        "prompt": "5-겹 교차 검증은 모델을 한 번만 학습한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "5-겹 교차 검증은 조각마다 한 번씩, 모두 5번 학습하고 검증합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-kfold-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cross-validation",
+        "k-fold"
+      ],
+      "content": {
+        "prompt": "데이터를 K개로 나눠 돌아가며 검증하는 방법은 K-겹 ___ 이다.",
+        "hint": "검증 조각을 바꿔 가며 여러 번 한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "교차 검증",
+          "교차검증",
+          "cross validation"
+        ]
+      },
+      "explanation": "K-겹 교차 검증은 데이터를 K개로 나누고 한 조각씩 돌아가며 검증에 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-kfold-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cross-validation",
+        "k-fold"
+      ],
+      "content": {
+        "prompt": "5-겹 교차 검증에서 모델을 학습하는 횟수는 ___ 번이다.",
+        "hint": "검증 조각 수와 같다"
+      },
+      "answer_key": {
+        "accepted": [
+          "5",
+          "다섯"
+        ]
+      },
+      "explanation": "5개 조각이 한 번씩 검증에 쓰이므로 학습과 검증을 5번 합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-kfold-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cross-validation",
+        "k-fold"
+      ],
+      "content": {
+        "prompt": "샘플 100개로 5-겹 교차 검증을 한다. 검증 조각 하나의 크기는?",
+        "options": [
+          "5개",
+          "20개",
+          "80개"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "100개를 5개 조각으로 나누면 조각마다 20개입니다. 나머지 80개로 학습합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-kfold-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cross-validation",
+        "k-fold"
+      ],
+      "content": {
+        "prompt": "3-겹 검증 점수가 0.7, 0.8, 0.9. 교차 검증 점수는?",
+        "options": [
+          "0.8",
+          "0.9",
+          "2.4"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "교차 검증은 점수를 평균 내므로 (0.7 + 0.8 + 0.9) / 3 = 0.8입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-kfold-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cross-validation",
+        "k-fold"
+      ],
+      "content": {
+        "prompt": "4-겹 교차 검증에서 한 조각이 검증에 쓰이는 횟수는?",
+        "options": [
+          "1번",
+          "3번",
+          "4번"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "조각이 한 번씩 돌아가며 검증에 쓰이므로 각 조각은 검증에 1번, 학습에 3번 쓰입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-kfold-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cross-validation",
+        "k-fold"
+      ],
+      "content": {
+        "prompt": "교차 검증의 최종 점수는 어떻게 얻는가?",
+        "options": [
+          "가장 높은 점수",
+          "여러 점수의 평균",
+          "첫 분할 점수"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "교차 검증은 여러 번 학습·검증한 점수를 평균 내 성능을 추정합니다.",
+      "refs": []
+    }
+  ]
+}

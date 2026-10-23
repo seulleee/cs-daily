@@ -1,0 +1,212 @@
+{
+  "track": "ai",
+  "unit": "u03-regression-classification",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ai-regcls-xent-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cross-entropy",
+        "loss-function"
+      ],
+      "content": {
+        "prompt": "정답 클래스에 준 확률이 낮을수록 커지는 분류용 손실은?",
+        "options": [
+          "MSE",
+          "시그모이드",
+          "교차 엔트로피"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "교차 엔트로피는 정답 클래스에 준 확률이 낮을수록 커지는 분류용 손실입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-xent-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cross-entropy",
+        "loss-function"
+      ],
+      "content": {
+        "prompt": "이진 분류의 교차 엔트로피를 부르는 다른 이름은?",
+        "options": [
+          "로그 손실",
+          "MSE",
+          "임계값"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "이진 분류의 교차 엔트로피는 로그 손실이라고도 부릅니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-xent-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cross-entropy",
+        "loss-function"
+      ],
+      "content": {
+        "prompt": "틀린 클래스에 높은 확률을 줄수록 손실이 크게 커진다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "확신한 오답은 정답 클래스 확률이 0에 가까워 교차 엔트로피가 크게 커집니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-xent-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cross-entropy",
+        "loss-function"
+      ],
+      "content": {
+        "prompt": "정답 클래스에 준 확률이 높을수록 교차 엔트로피도 커진다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "반대입니다. 정답 클래스 확률이 높을수록 손실은 작아지고, 낮을수록 커집니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-xent-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cross-entropy",
+        "loss-function"
+      ],
+      "content": {
+        "prompt": "정답 클래스 확률이 낮을수록 커지는 분류 손실은 교차 ___ 이다.",
+        "hint": "네 글자 외래어"
+      },
+      "answer_key": {
+        "accepted": [
+          "엔트로피",
+          "entropy"
+        ]
+      },
+      "explanation": "교차 엔트로피는 정답 클래스에 준 확률이 낮을수록 커지는 분류용 손실입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-xent-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cross-entropy",
+        "loss-function"
+      ],
+      "content": {
+        "prompt": "이진 분류의 교차 엔트로피는 ___ 손실이라고도 부른다.",
+        "hint": "계산에 쓰이는 함수 이름"
+      },
+      "answer_key": {
+        "accepted": [
+          "로그",
+          "log"
+        ]
+      },
+      "explanation": "이진 분류의 교차 엔트로피는 로그 손실(log loss)이라고도 부릅니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-xent-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cross-entropy",
+        "loss-function"
+      ],
+      "content": {
+        "prompt": "정답 확률이 0.9인 샘플과 0.1인 샘플. 손실이 큰 쪽은?",
+        "options": [
+          "0.9인 샘플",
+          "0.1인 샘플"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "정답 클래스에 준 확률이 낮을수록 교차 엔트로피가 커지므로 0.1인 샘플의 손실이 큽니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-xent-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cross-entropy",
+        "loss-function"
+      ],
+      "content": {
+        "prompt": "실제 음성인데 양성 확률 0.99를 줬다. 손실은?",
+        "options": [
+          "매우 크다",
+          "0에 가깝다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "정답(음성)에 준 확률이 0.01뿐인 확신한 오답이라 손실이 크게 커집니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-xent-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cross-entropy",
+        "loss-function"
+      ],
+      "content": {
+        "prompt": "정답 확률이 0.5, 0.7, 0.95일 때 손실이 가장 작은 것은?",
+        "options": [
+          "0.5",
+          "0.7",
+          "0.95"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "정답 클래스 확률이 높을수록 교차 엔트로피가 작으므로 0.95일 때 손실이 가장 작습니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-xent-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cross-entropy",
+        "loss-function"
+      ],
+      "content": {
+        "prompt": "교차 엔트로피가 커지는 경우는?",
+        "options": [
+          "정답 확률이 높을 때",
+          "정답 확률이 낮을 때"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "교차 엔트로피는 정답 클래스에 준 확률이 낮을수록 커집니다.",
+      "refs": []
+    }
+  ]
+}

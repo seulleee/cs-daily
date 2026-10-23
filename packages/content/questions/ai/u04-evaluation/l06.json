@@ -1,0 +1,219 @@
+{
+  "track": "ai",
+  "unit": "u04-evaluation",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ai-eval-accuracy-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "accuracy",
+        "class-imbalance"
+      ],
+      "content": {
+        "prompt": "전체 샘플 중 맞힌 비율인 지표는?",
+        "options": [
+          "정확도",
+          "MAE",
+          "결정계수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "정확도는 (TP + TN) / 전체로, 전체 중 맞힌 비율입니다. MAE와 결정계수는 회귀 지표입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-accuracy-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "accuracy",
+        "class-imbalance"
+      ],
+      "content": {
+        "prompt": "한 클래스가 데이터 대부분을 차지하는 상태는?",
+        "options": [
+          "과적합",
+          "데이터 누수",
+          "클래스 불균형"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "클래스 불균형은 한 클래스가 데이터 대부분을 차지하는 상태입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-accuracy-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "accuracy",
+        "class-imbalance"
+      ],
+      "content": {
+        "prompt": "양성이 1%인 데이터에서 정확도 99%면 좋은 모델이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "모두 음성이라고만 해도 정확도는 99%입니다. 불균형 데이터에서는 정확도만으로 판단할 수 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-accuracy-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "accuracy",
+        "class-imbalance"
+      ],
+      "content": {
+        "prompt": "정확도는 (TP + TN)을 전체 샘플 수로 나눈 값이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "정확도는 맞힌 경우인 TP와 TN을 더해 전체 샘플 수로 나눕니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-accuracy-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "accuracy",
+        "class-imbalance"
+      ],
+      "content": {
+        "prompt": "(TP + TN) / 전체로 구하는 지표는 ___ 이다.",
+        "hint": "가장 익숙한 분류 지표"
+      },
+      "answer_key": {
+        "accepted": [
+          "정확도",
+          "accuracy"
+        ]
+      },
+      "explanation": "정확도는 (TP + TN) / 전체로 계산하는, 전체 중 맞힌 비율입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-accuracy-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "accuracy",
+        "class-imbalance"
+      ],
+      "content": {
+        "prompt": "한 클래스가 대부분을 차지하는 상태를 클래스 ___ 이라 한다.",
+        "hint": "클래스 비율이 고르지 않다는 뜻"
+      },
+      "answer_key": {
+        "accepted": [
+          "불균형",
+          "imbalance"
+        ]
+      },
+      "explanation": "클래스 불균형 데이터에서는 정확도가 높아도 드문 클래스를 못 찾을 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-accuracy-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "accuracy",
+        "class-imbalance"
+      ],
+      "content": {
+        "prompt": "TP 40, TN 50, 전체 100. 정확도는?",
+        "options": [
+          "0.4",
+          "0.5",
+          "0.9"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "(40 + 50) / 100 = 0.9입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-accuracy-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "accuracy",
+        "class-imbalance"
+      ],
+      "content": {
+        "prompt": "양성이 2%인 데이터에서 모두 음성으로 예측하면 정확도는?",
+        "options": [
+          "98%",
+          "2%",
+          "50%"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "음성 98%를 모두 맞히므로 정확도는 98%지만 양성은 하나도 찾지 못합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-accuracy-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "accuracy",
+        "numpy",
+        "python"
+      ],
+      "content": {
+        "prompt": "출력되는 정확도는?",
+        "code": {
+          "language": "python",
+          "source": "import numpy as np\ny = np.array([1, 0, 0, 1, 0])\np = np.array([1, 0, 1, 0, 0])\nprint(np.mean(p == y))"
+        },
+        "options": [
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "5개 중 첫째·둘째·다섯째 3개가 일치하므로 3 / 5 = 0.6입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-accuracy-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "accuracy",
+        "class-imbalance"
+      ],
+      "content": {
+        "prompt": "정확도만 믿으면 위험한 데이터는?",
+        "options": [
+          "클래스가 고른 데이터",
+          "클래스 불균형 데이터"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "드문 클래스가 있는 불균형 데이터에서는 아무것도 못 찾아도 정확도가 높게 나옵니다.",
+      "refs": []
+    }
+  ]
+}

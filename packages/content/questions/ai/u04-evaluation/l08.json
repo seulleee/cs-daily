@@ -1,0 +1,213 @@
+{
+  "track": "ai",
+  "unit": "u04-evaluation",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "ai-eval-rocauc-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "roc-curve",
+        "auc"
+      ],
+      "content": {
+        "prompt": "임계값을 바꿔 가며 FPR과 TPR을 그린 곡선은?",
+        "options": [
+          "ROC 곡선",
+          "시그모이드",
+          "혼동 행렬"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ROC 곡선은 임계값을 바꿔 가며 FPR(가로축)과 TPR(세로축)을 그린 곡선입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-rocauc-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "roc-curve",
+        "auc"
+      ],
+      "content": {
+        "prompt": "ROC 곡선 아래 넓이는?",
+        "options": [
+          "F1 점수",
+          "RMSE",
+          "AUC"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "AUC는 ROC 곡선 아래 넓이로, 1에 가까울수록 양성과 음성을 잘 가르는 모델입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-rocauc-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "roc-curve",
+        "auc"
+      ],
+      "content": {
+        "prompt": "ROC 곡선의 세로축은 FPR, 가로축은 TPR이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "반대입니다. ROC 곡선은 가로축이 FPR, 세로축이 TPR입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-rocauc-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "roc-curve",
+        "auc"
+      ],
+      "content": {
+        "prompt": "TPR은 재현율과 같은 값이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "TPR은 실제 양성 중 양성으로 맞힌 비율로, 재현율과 같습니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-rocauc-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "roc-curve",
+        "auc"
+      ],
+      "content": {
+        "prompt": "ROC 곡선 아래 넓이를 뜻하는 약자는 ___ 이다.",
+        "hint": "영문 대문자 세 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "AUC"
+        ]
+      },
+      "explanation": "AUC는 ROC 곡선 아래 넓이로, 1에 가까울수록 좋고 0.5는 무작위 수준입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-rocauc-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "roc-curve",
+        "auc"
+      ],
+      "content": {
+        "prompt": "실제 음성 중 양성으로 잘못 예측한 비율의 약자는 ___ 이다.",
+        "hint": "영문 대문자 세 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "FPR",
+          "거짓 양성 비율",
+          "위양성률"
+        ]
+      },
+      "explanation": "FPR은 실제 음성 중 양성으로 잘못 예측한 비율로, ROC 곡선의 가로축입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-rocauc-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "roc-curve",
+        "auc"
+      ],
+      "content": {
+        "prompt": "AUC가 0.5인 모델에 대한 판단은?",
+        "options": [
+          "거의 완벽",
+          "무작위 수준"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "AUC 0.5는 양성과 음성을 무작위로 고르는 것과 같은 수준입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-rocauc-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "roc-curve",
+        "auc"
+      ],
+      "content": {
+        "prompt": "AUC 0.92인 A와 0.71인 B. 더 잘 가르는 모델은?",
+        "options": [
+          "A",
+          "B"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "AUC는 1에 가까울수록 양성과 음성을 잘 가르므로 0.92인 A가 낫습니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-rocauc-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "roc-curve",
+        "auc"
+      ],
+      "content": {
+        "prompt": "FP 10, TN 90일 때 FPR은?",
+        "options": [
+          "0.9",
+          "0.11",
+          "0.1"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "FPR은 실제 음성(FP + TN = 100) 중 FP의 비율이므로 10 / 100 = 0.1입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-eval-rocauc-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "roc-curve",
+        "auc"
+      ],
+      "content": {
+        "prompt": "ROC 곡선을 그릴 때 바꿔 가며 보는 값은?",
+        "options": [
+          "임계값",
+          "학습률",
+          "샘플 수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ROC 곡선은 임계값을 바꿔 가며 얻은 FPR과 TPR을 이어 그립니다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "track": "ai",
+  "unit": "u03-regression-classification",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "ai-regcls-mse-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "loss-function",
+        "mse"
+      ],
+      "content": {
+        "prompt": "예측이 정답과 얼마나 다른지 숫자 하나로 나타내는 함수는?",
+        "options": [
+          "모델",
+          "특징",
+          "손실 함수"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "손실 함수는 예측값과 정답의 차이를 하나의 숫자로 나타냅니다. 값이 작을수록 잘 맞는 예측입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-mse-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "loss-function",
+        "mse"
+      ],
+      "content": {
+        "prompt": "오차를 제곱해 평균 낸 회귀의 대표 손실은?",
+        "options": [
+          "편향",
+          "가중치",
+          "MSE"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "MSE는 오차(예측 - 정답)를 제곱해 평균 낸 값으로, 회귀에서 가장 많이 쓰는 손실입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-mse-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "loss-function",
+        "mse"
+      ],
+      "content": {
+        "prompt": "학습은 손실을 가장 작게 만드는 파라미터를 찾는 일이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "학습의 목표는 학습 데이터 전체의 손실이 가장 작아지는 파라미터를 찾는 것입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-mse-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "loss-function",
+        "mse"
+      ],
+      "content": {
+        "prompt": "MSE는 오차를 그대로 더해 평균 낸 값이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "MSE는 오차를 제곱한 뒤 평균 냅니다. 그대로 더하면 양수 오차와 음수 오차가 서로 상쇄됩니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-mse-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "loss-function",
+        "mse"
+      ],
+      "content": {
+        "prompt": "오차를 제곱해 평균 낸 손실의 약자는 ___ 이다.",
+        "hint": "영문 대문자 세 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "MSE",
+          "평균제곱오차",
+          "평균 제곱 오차"
+        ]
+      },
+      "explanation": "MSE(평균 제곱 오차)는 오차를 제곱해 평균 낸 값으로 회귀의 대표 손실입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-mse-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "loss-function",
+        "mse"
+      ],
+      "content": {
+        "prompt": "예측과 정답의 차이를 숫자 하나로 나타내는 함수는 ___ 함수이다.",
+        "hint": "학습이 가장 작게 만들려는 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "손실",
+          "loss",
+          "비용",
+          "cost"
+        ]
+      },
+      "explanation": "손실 함수는 예측이 틀린 정도를 숫자 하나로 나타내며, 학습은 이 값을 줄이는 과정입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-mse-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "loss-function",
+        "mse"
+      ],
+      "content": {
+        "prompt": "두 샘플의 오차가 2, -2일 때 MSE는?",
+        "options": [
+          "0",
+          "2",
+          "4"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "제곱하면 4와 4이고 평균은 4입니다. 제곱하기 때문에 부호가 달라도 상쇄되지 않습니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-mse-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "loss-function",
+        "mse"
+      ],
+      "content": {
+        "prompt": "예측 [3, 5], 정답 [1, 5]일 때 MSE는?",
+        "options": [
+          "1",
+          "4",
+          "2"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "오차는 2와 0, 제곱하면 4와 0이므로 평균은 2입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-mse-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "mse",
+        "numpy",
+        "python"
+      ],
+      "content": {
+        "prompt": "예측 p와 정답 y로 계산한 MSE의 출력값은?",
+        "code": {
+          "language": "python",
+          "source": "import numpy as np\ny = np.array([1, 2, 3, 4])\np = np.array([2, 2, 3, 6])\nprint(np.mean((p - y) ** 2))"
+        },
+        "options": [
+          "1.25",
+          "0.75",
+          "2.5"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "오차는 1, 0, 0, 2이고 제곱하면 1, 0, 0, 4입니다. 합 5를 4로 나눠 1.25입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-mse-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "loss-function",
+        "mse"
+      ],
+      "content": {
+        "prompt": "손실 함수 값이 작을수록 예측은?",
+        "options": [
+          "정답과 멀다",
+          "정답에 가깝다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "손실 함수는 예측과 정답의 차이를 재므로, 값이 작을수록 예측이 정답에 가깝습니다.",
+      "refs": []
+    }
+  ]
+}

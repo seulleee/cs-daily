@@ -1,0 +1,215 @@
+{
+  "track": "ai",
+  "unit": "u03-regression-classification",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "ai-regcls-logistic-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "logistic-regression",
+        "sigmoid"
+      ],
+      "content": {
+        "prompt": "가중합을 시그모이드에 넣어 클래스일 확률을 내는 모델은?",
+        "options": [
+          "선형 회귀",
+          "군집화",
+          "로지스틱 회귀"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "로지스틱 회귀는 가중합을 시그모이드에 넣어 확률을 내는 분류 모델입니다. 선형 회귀는 숫자를 예측합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-logistic-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "logistic-regression",
+        "sigmoid"
+      ],
+      "content": {
+        "prompt": "어떤 실수든 0과 1 사이 값으로 바꾸는 S자 함수는?",
+        "options": [
+          "시그모이드",
+          "MSE",
+          "편향"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "시그모이드는 어떤 실수든 0과 1 사이로 바꾸는 S자 함수라 확률로 쓸 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-logistic-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "logistic-regression",
+        "sigmoid"
+      ],
+      "content": {
+        "prompt": "로지스틱 회귀는 이름처럼 연속된 숫자를 예측하는 모델이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "이름에 회귀가 붙어 있지만 로지스틱 회귀는 클래스일 확률을 내는 분류 모델입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-logistic-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "logistic-regression",
+        "sigmoid"
+      ],
+      "content": {
+        "prompt": "임계값이 0.5면 확률 0.7인 샘플은 양성으로 판정한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "확률 0.7이 임계값 0.5 이상이므로 양성(찾으려는 클래스)으로 판정합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-logistic-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "logistic-regression",
+        "sigmoid"
+      ],
+      "content": {
+        "prompt": "확률이 이 값 이상이면 양성으로 판정하는 기준은 ___ 이다.",
+        "hint": "보통 0.5로 둔다"
+      },
+      "answer_key": {
+        "accepted": [
+          "임계값",
+          "임곗값",
+          "threshold",
+          "문턱값"
+        ]
+      },
+      "explanation": "임계값은 확률을 최종 판정으로 바꾸는 기준으로, 보통 0.5를 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-logistic-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "logistic-regression",
+        "sigmoid"
+      ],
+      "content": {
+        "prompt": "가중합을 확률로 바꿔 분류하는 모델은 ___ 회귀이다.",
+        "hint": "시그모이드를 쓰는 분류 모델"
+      },
+      "answer_key": {
+        "accepted": [
+          "로지스틱",
+          "logistic"
+        ]
+      },
+      "explanation": "로지스틱 회귀는 가중합을 시그모이드로 0~1 확률로 바꿔 분류합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-logistic-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "logistic-regression",
+        "sigmoid"
+      ],
+      "content": {
+        "prompt": "임계값 0.5, 예측 확률 0.3. 판정은?",
+        "options": [
+          "양성",
+          "음성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "0.3은 임계값 0.5보다 작으므로 양성이 아니라 음성으로 판정합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-logistic-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "logistic-regression",
+        "sigmoid"
+      ],
+      "content": {
+        "prompt": "시그모이드의 출력으로 나올 수 없는 값은?",
+        "options": [
+          "0.01",
+          "0.5",
+          "1.7"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "시그모이드는 어떤 입력이든 0과 1 사이 값으로 바꾸므로 1.7은 나올 수 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-logistic-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "logistic-regression",
+        "sigmoid"
+      ],
+      "content": {
+        "prompt": "확률 0.2, 0.6, 0.9에 임계값 0.5. 양성 판정 수는?",
+        "options": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "0.5 이상인 0.6과 0.9 두 개가 양성으로 판정됩니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-logistic-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "logistic-regression",
+        "sigmoid"
+      ],
+      "content": {
+        "prompt": "로지스틱 회귀가 내는 값은?",
+        "options": [
+          "연속된 숫자",
+          "클래스일 확률"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "로지스틱 회귀는 가중합을 시그모이드에 넣어 클래스일 확률을 냅니다.",
+      "refs": []
+    }
+  ]
+}

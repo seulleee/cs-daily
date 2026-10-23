@@ -1,0 +1,221 @@
+{
+  "track": "ai",
+  "unit": "u03-regression-classification",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "ai-regcls-review-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "집값처럼 연속된 숫자를 예측할 때 고를 모델은?",
+        "options": [
+          "선형 회귀",
+          "로지스틱 회귀",
+          "소프트맥스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "숫자 예측은 선형 회귀입니다. 로지스틱 회귀와 소프트맥스는 범주를 판정하는 분류에 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-review-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "분류 모델에 쓰는 대표 손실은?",
+        "options": [
+          "MSE",
+          "편향",
+          "교차 엔트로피"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "분류는 확률을 직접 평가하는 교차 엔트로피를, 회귀는 MSE를 손실로 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-review-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "회귀 모델의 손실로는 교차 엔트로피를 주로 쓴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "회귀의 대표 손실은 MSE입니다. 교차 엔트로피는 분류에 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-review-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "파라미터는 기울기의 반대 방향으로 학습률만큼 갱신된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "학습은 손실의 기울기 반대 방향으로 학습률만큼 파라미터를 고치는 일을 반복합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-review-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "회귀의 대표 손실은 ___ 이다.",
+        "hint": "오차를 제곱해 평균 낸 값의 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "MSE",
+          "평균제곱오차",
+          "평균 제곱 오차"
+        ]
+      },
+      "explanation": "회귀에서는 오차를 제곱해 평균 낸 MSE를 대표 손실로 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-review-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "손실이 줄지 않고 튀며 커지면 ___ 을 줄여 본다.",
+        "hint": "한 번 갱신하는 크기를 정하는 하이퍼파라미터"
+      },
+      "answer_key": {
+        "accepted": [
+          "학습률",
+          "learning rate",
+          "러닝레이트",
+          "lr"
+        ]
+      },
+      "explanation": "손실이 튀거나 커지는 발산은 학습률이 너무 클 때 생기므로 학습률을 줄여 봅니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-review-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "메일을 스팸·정상으로 가를 때 맞는 조합은?",
+        "options": [
+          "선형 회귀+MSE",
+          "로지스틱+교차 엔트로피",
+          "소프트맥스+MSE"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "두 범주를 판정하는 분류이므로 확률을 내는 로지스틱 회귀와 교차 엔트로피 손실을 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-review-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "문의를 결제·배송·환불·기타로 나눌 때 출력 함수는?",
+        "options": [
+          "시그모이드",
+          "MSE",
+          "소프트맥스"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "셋 이상 클래스 중 하나를 고르므로 점수를 합이 1인 확률로 바꾸는 소프트맥스를 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-review-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "gradient-descent",
+        "python"
+      ],
+      "content": {
+        "prompt": "경사 하강법 한 단계 뒤 출력되는 w는?",
+        "code": {
+          "language": "python",
+          "source": "w = 3.0\nlr = 0.25\ngrad = 2 * w\nw = w - lr * grad\nprint(w)"
+        },
+        "options": [
+          "1.5",
+          "2.5",
+          "4.5"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "기울기는 2 × 3 = 6이고, 학습률 0.25를 곱한 1.5를 빼서 w = 3 - 1.5 = 1.5입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-review-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "regression",
+        "classification"
+      ],
+      "content": {
+        "prompt": "숫자를 예측하는 과제에 맞는 손실은?",
+        "options": [
+          "교차 엔트로피",
+          "MSE"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "숫자 예측(회귀)은 MSE를, 범주 판정(분류)은 교차 엔트로피를 손실로 씁니다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "track": "ai",
+  "unit": "u03-regression-classification",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "ai-regcls-sklearn-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scikit-learn",
+        "python"
+      ],
+      "content": {
+        "prompt": "분류 모델이 클래스별 확률을 돌려주는 메서드는?",
+        "options": [
+          "predict_proba",
+          "coef_",
+          "intercept_"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "predict_proba는 분류 모델이 클래스별 확률을 돌려주는 메서드입니다. coef_와 intercept_는 속성입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-sklearn-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "scikit-learn",
+        "python"
+      ],
+      "content": {
+        "prompt": "학습된 가중치가 담기는 속성은?",
+        "options": [
+          "intercept_",
+          "predict_proba",
+          "coef_"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "coef_에는 학습된 가중치가, intercept_에는 편향이 담깁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-sklearn-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "scikit-learn",
+        "python"
+      ],
+      "content": {
+        "prompt": "LogisticRegression은 숫자를 예측하는 회귀 모델 클래스이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "LogisticRegression은 로지스틱 회귀, 즉 분류 모델 클래스입니다. 숫자 예측은 LinearRegression입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-sklearn-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "scikit-learn",
+        "python"
+      ],
+      "content": {
+        "prompt": "intercept_에는 학습된 편향이 담긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "intercept_는 학습된 편향, coef_는 학습된 가중치가 담기는 속성입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-sklearn-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "scikit-learn",
+        "python"
+      ],
+      "content": {
+        "prompt": "숫자를 예측하는 선형 회귀 클래스 이름은?",
+        "code": {
+          "language": "python",
+          "source": "import sklearn.linear_model as lm\nX = [[1], [2], [3]]\ny = [3, 5, 7]\nmodel = lm.___()\nmodel.fit(X, y)\nprint(model.predict([[4]]))"
+        },
+        "hint": "선형 회귀를 뜻하는 영문 두 단어를 붙여 쓴다"
+      },
+      "answer_key": {
+        "accepted": [
+          "LinearRegression"
+        ]
+      },
+      "explanation": "LinearRegression은 scikit-learn의 선형 회귀 클래스로, y = 2x + 1을 학습해 4에서 9를 예측합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-sklearn-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "scikit-learn",
+        "python"
+      ],
+      "content": {
+        "prompt": "분류에 쓰는 로지스틱 회귀 클래스 이름은?",
+        "code": {
+          "language": "python",
+          "source": "import sklearn.linear_model as lm\nX = [[0], [1], [2], [3]]\ny = [0, 0, 1, 1]\nclf = lm.___()\nclf.fit(X, y)\nprint(clf.predict([[3]]))"
+        },
+        "hint": "로지스틱 회귀를 뜻하는 영문 두 단어를 붙여 쓴다"
+      },
+      "answer_key": {
+        "accepted": [
+          "LogisticRegression"
+        ]
+      },
+      "explanation": "LogisticRegression은 scikit-learn의 로지스틱 회귀 클래스로, 레이블 0·1을 분류합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-sklearn-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scikit-learn",
+        "python"
+      ],
+      "content": {
+        "prompt": "클래스별 확률을 받으려면 빈칸에 넣을 것은?",
+        "code": {
+          "language": "python",
+          "source": "import sklearn.linear_model as lm\nX = [[0], [1], [2], [3]]\ny = [0, 0, 1, 1]\nclf = lm.LogisticRegression()\nclf.fit(X, y)\np = clf.___([[3]])"
+        },
+        "options": [
+          "predict",
+          "predict_proba",
+          "coef_"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "predict는 예측 클래스를, predict_proba는 클래스별 확률을 돌려줍니다. coef_는 가중치 속성입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-sklearn-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scikit-learn",
+        "python"
+      ],
+      "content": {
+        "prompt": "학습된 가중치를 꺼내려면 빈칸에 넣을 것은?",
+        "code": {
+          "language": "python",
+          "source": "import sklearn.linear_model as lm\nX = [[1], [2], [3]]\ny = [5, 7, 9]\nmodel = lm.LinearRegression()\nmodel.fit(X, y)\nw = model.___\nb = model.intercept_"
+        },
+        "options": [
+          "fit",
+          "predict",
+          "coef_"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "coef_는 학습된 가중치가 담기는 속성입니다. fit은 학습, predict는 추론 메서드입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-sklearn-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scikit-learn",
+        "python"
+      ],
+      "content": {
+        "prompt": "y = 2x + 3을 그대로 학습했다. intercept_ 값은?",
+        "options": [
+          "2",
+          "3",
+          "5"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "intercept_에는 편향이 담기므로 3입니다. 가중치 2는 coef_에 담깁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-sklearn-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "scikit-learn",
+        "python"
+      ],
+      "content": {
+        "prompt": "predict_proba가 돌려주는 것은?",
+        "options": [
+          "예측 클래스 하나",
+          "클래스별 확률",
+          "학습된 가중치"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "predict_proba는 샘플마다 클래스별 확률을 돌려줍니다. 예측 클래스 하나는 predict가 돌려줍니다.",
+      "refs": []
+    }
+  ]
+}

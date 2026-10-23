@@ -1,0 +1,217 @@
+{
+  "track": "ai",
+  "unit": "u03-regression-classification",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "ai-regcls-lrate-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "learning-rate",
+        "hyperparameter"
+      ],
+      "content": {
+        "prompt": "경사 하강법에서 한 번 갱신할 때 움직이는 크기를 정하는 값은?",
+        "options": [
+          "기울기",
+          "편향",
+          "학습률"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "학습률은 한 번 갱신할 때 기울기에 곱해 움직이는 크기를 정합니다. 기울기는 방향을 알려 줍니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-lrate-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "learning-rate",
+        "hyperparameter"
+      ],
+      "content": {
+        "prompt": "학습 전에 사람이 정하는 설정 값은?",
+        "options": [
+          "파라미터",
+          "레이블",
+          "하이퍼파라미터"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "하이퍼파라미터는 학습 전에 사람이 정하는 값입니다. 파라미터는 학습으로 정해지는 모델 내부 값입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-lrate-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "learning-rate",
+        "hyperparameter"
+      ],
+      "content": {
+        "prompt": "학습률은 학습 전에 정하는 하이퍼파라미터이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "학습률은 학습으로 정해지지 않고 학습 전에 사람이 정하므로 하이퍼파라미터입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-lrate-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "learning-rate",
+        "hyperparameter"
+      ],
+      "content": {
+        "prompt": "학습률이 너무 작으면 손실이 튀며 오히려 커진다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "손실이 튀거나 커지는 발산은 학습률이 너무 클 때입니다. 너무 작으면 손실은 줄지만 매우 느립니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-lrate-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "learning-rate",
+        "hyperparameter"
+      ],
+      "content": {
+        "prompt": "한 번 갱신할 때 움직이는 크기를 정하는 값은 ___ 이다.",
+        "hint": "경사 하강법 식에서 기울기에 곱하는 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "학습률",
+          "learning rate",
+          "러닝레이트",
+          "러닝 레이트",
+          "lr"
+        ]
+      },
+      "explanation": "학습률은 경사 하강법에서 기울기에 곱해 한 번에 움직이는 크기를 정합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-lrate-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "learning-rate",
+        "hyperparameter"
+      ],
+      "content": {
+        "prompt": "학습률처럼 학습 전에 사람이 정하는 값은 ___ 이다.",
+        "hint": "파라미터와 구분되는 설정 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "하이퍼파라미터",
+          "하이퍼 파라미터",
+          "hyperparameter"
+        ]
+      },
+      "explanation": "하이퍼파라미터는 학습 전에 정하는 설정 값으로, 학습으로 정해지는 파라미터와 구분합니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-lrate-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "learning-rate",
+        "hyperparameter"
+      ],
+      "content": {
+        "prompt": "갱신할수록 손실이 줄지 않고 오히려 커진다. 원인은?",
+        "options": [
+          "학습률이 너무 큼",
+          "학습률이 너무 작음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "학습률이 너무 크면 최솟값을 지나쳐 손실이 튀거나 커지는 발산이 생깁니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-lrate-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "learning-rate",
+        "hyperparameter"
+      ],
+      "content": {
+        "prompt": "손실이 줄긴 하지만 매우 느리다. 조정할 방향은?",
+        "options": [
+          "학습률을 줄인다",
+          "학습률을 키운다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "너무 작은 학습률은 수렴이 매우 느립니다. 학습률을 키우면 한 번에 더 많이 움직입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-lrate-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "learning-rate",
+        "hyperparameter"
+      ],
+      "content": {
+        "prompt": "w=4, 기울기 2, 학습률 0.5. 갱신 후 w는?",
+        "options": [
+          "5",
+          "2",
+          "3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "학습률 0.5 × 기울기 2 = 1을 빼므로 새 w는 4 - 1 = 3입니다.",
+      "refs": []
+    },
+    {
+      "id": "ai-regcls-lrate-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "learning-rate",
+        "hyperparameter"
+      ],
+      "content": {
+        "prompt": "학습률이 정하는 것은?",
+        "options": [
+          "갱신 크기",
+          "갱신 방향",
+          "손실 계산식"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "학습률은 한 번에 움직이는 크기를 정합니다. 움직이는 방향은 기울기가 정합니다.",
+      "refs": []
+    }
+  ]
+}
