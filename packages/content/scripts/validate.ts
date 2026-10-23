@@ -14,8 +14,8 @@ import { CODING_LANGUAGES, CurriculumFile, LessonFile } from '@cs-daily/contract
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors: string[] = [];
 
-/** 코드 문제는 정보처리기사(eip)·코딩 테스트(ct) 트랙에서만, 짧은 코드의 빈칸 형태로만 허용한다. */
-const CODE_TRACKS: readonly string[] = ['eip', 'ct'];
+/** 코드 문제는 정보처리기사(eip)·코딩 테스트(ct)·AI·ML(ai) 트랙에서만, 짧은 코드의 빈칸 형태로만 허용한다. */
+const CODE_TRACKS: readonly string[] = ['eip', 'ct', 'ai'];
 /** 언어별 variants(Python·Java·JavaScript·C++)로만 코드 문제를 내는 트랙 */
 const VARIANT_TRACK = 'ct';
 const CODE_MAX_LINES = 12;
