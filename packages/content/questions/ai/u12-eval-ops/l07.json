@@ -1,0 +1,203 @@
+{
+  "track": "ai",
+  "unit": "u12-eval-ops",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "ai-evalops-monitoring-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "drift",
+        "monitoring"
+      ],
+      "content": {
+        "prompt": "입력 분포가 학습·평가 때와 달라져 성능이 떨어지는 현상은?",
+        "options": [
+          "환각",
+          "드리프트",
+          "과적합"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "드리프트는 입력 데이터 분포가 학습·평가 때와 달라져 성능이 떨어지는 현상이다."
+    },
+    {
+      "id": "ai-evalops-monitoring-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "trace",
+        "logging"
+      ],
+      "content": {
+        "prompt": "요청마다 입력·출력·툴 호출·소요 시간을 남긴 기록은?",
+        "options": [
+          "트레이스 로그",
+          "평가 세트",
+          "청크"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "트레이스 로그는 요청마다 입력·출력·툴 호출·소요 시간을 남겨 문제를 재현하게 한다."
+    },
+    {
+      "id": "ai-evalops-monitoring-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "metrics",
+        "monitoring"
+      ],
+      "content": {
+        "prompt": "오류율과 토큰 사용량을 시간별로 추적하는 것은?",
+        "options": [
+          "트레이스 로그",
+          "모니터링 지표"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "모니터링 지표는 요청 수·오류율·지연·토큰 사용량·비용을 시간별로 추적한다. 트레이스 로그는 요청 단위 기록이다."
+    },
+    {
+      "id": "ai-evalops-monitoring-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "drift",
+        "hallucination"
+      ],
+      "content": {
+        "prompt": "드리프트는 모델이 근거 없는 내용을 지어내는 현상이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "근거 없는 내용을 지어내는 것은 환각이다. 드리프트는 입력 분포가 평가 때와 달라지는 현상이다."
+    },
+    {
+      "id": "ai-evalops-monitoring-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "trace",
+        "term"
+      ],
+      "content": {
+        "prompt": "요청마다 입력·출력·툴 호출을 남겨 문제를 재현하는 기록은 ___ 로그다."
+      },
+      "answer_key": {
+        "accepted": [
+          "트레이스",
+          "trace"
+        ]
+      },
+      "explanation": "트레이스 로그가 있으면 문제가 된 요청에 무엇이 들어가고 나왔는지 재현할 수 있다."
+    },
+    {
+      "id": "ai-evalops-monitoring-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "drift",
+        "term"
+      ],
+      "content": {
+        "prompt": "운영 중 입력 분포가 바뀌어 성능이 떨어지는 ___를 감시한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "드리프트",
+          "drift",
+          "데이터 드리프트"
+        ]
+      },
+      "explanation": "드리프트가 생기면 코드가 그대로여도 성능이 떨어지므로 운영 중 지표로 감시한다."
+    },
+    {
+      "id": "ai-evalops-monitoring-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "metrics",
+        "calculation"
+      ],
+      "content": {
+        "prompt": "요청 2,000건 중 40건이 실패했다. 오류율은?",
+        "options": [
+          "0.5%",
+          "4%",
+          "2%"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "40 ÷ 2,000 = 0.02이므로 오류율은 2%다."
+    },
+    {
+      "id": "ai-evalops-monitoring-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "trace",
+        "debugging"
+      ],
+      "content": {
+        "prompt": "특정 요청의 오답 원인을 재현하려면 필요한 것은?",
+        "options": [
+          "일별 요청 수",
+          "평균 지연",
+          "트레이스 로그"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "요청마다 입력·출력·툴 호출을 남긴 트레이스 로그가 있어야 그 요청을 재현할 수 있다. 집계 지표로는 부족하다."
+    },
+    {
+      "id": "ai-evalops-monitoring-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "drift",
+        "monitoring"
+      ],
+      "content": {
+        "prompt": "신규 서비스 출시 뒤 질문 유형이 바뀌어 정확도가 떨어졌다. 이 현상은?",
+        "options": [
+          "드리프트",
+          "환각",
+          "캐싱"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "입력 데이터 분포가 평가 때와 달라져 성능이 떨어졌으므로 드리프트다."
+    },
+    {
+      "id": "ai-evalops-monitoring-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "drift",
+        "monitoring"
+      ],
+      "content": {
+        "prompt": "드리프트는 입력 데이터 분포가 평가 때와 달라지는 현상이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "드리프트는 입력 분포가 학습·평가 때와 달라져 성능이 떨어지는 현상이다."
+    }
+  ]
+}

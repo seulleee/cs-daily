@@ -1,0 +1,202 @@
+{
+  "track": "ai",
+  "unit": "u11-rag-agents",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "ai-rag-context-mgmt-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "context",
+        "agent"
+      ],
+      "content": {
+        "prompt": "컨텍스트 윈도 안에 무엇을 넣고 뺄지 정하는 설계는?",
+        "options": [
+          "컨텍스트 관리",
+          "청킹",
+          "재순위화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "컨텍스트 관리는 컨텍스트 윈도에 넣을 정보와 뺄 정보를 정하는 설계다."
+    },
+    {
+      "id": "ai-rag-context-mgmt-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "context",
+        "summarization"
+      ],
+      "content": {
+        "prompt": "오래된 대화를 요약으로 바꿔 토큰을 줄이는 방법은?",
+        "options": [
+          "선별",
+          "오버랩",
+          "요약 압축"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "요약 압축은 오래된 대화나 툴 결과를 요약으로 바꿔 토큰 수를 줄인다."
+    },
+    {
+      "id": "ai-rag-context-mgmt-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "context",
+        "selection"
+      ],
+      "content": {
+        "prompt": "관련 없는 문서와 긴 툴 출력을 잘라 내는 방법은?",
+        "options": [
+          "요약 압축",
+          "선별"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "선별은 관련 없는 문서와 긴 툴 출력을 잘라 내 필요한 정보만 남긴다."
+    },
+    {
+      "id": "ai-rag-context-mgmt-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "context",
+        "cost"
+      ],
+      "content": {
+        "prompt": "입력에 정보를 많이 넣을수록 비용은 그대로이고 정확도만 오른다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "입력이 길어지면 비용과 지연이 늘고, 중요한 정보가 묻혀 정확도가 떨어질 수 있다."
+    },
+    {
+      "id": "ai-rag-context-mgmt-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "context",
+        "summarization"
+      ],
+      "content": {
+        "prompt": "오래된 대화를 짧은 요약으로 바꾸는 방법은 요약 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "압축",
+          "compression"
+        ]
+      },
+      "explanation": "요약 압축은 오래된 대화나 툴 결과를 요약으로 바꿔 토큰을 줄이는 방법이다."
+    },
+    {
+      "id": "ai-rag-context-mgmt-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "context",
+        "term"
+      ],
+      "content": {
+        "prompt": "컨텍스트 윈도에 넣을 정보를 고르고 빼는 설계는 컨텍스트 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "관리",
+          "management"
+        ]
+      },
+      "explanation": "컨텍스트 관리는 윈도 안에 무엇을 넣고 뺄지 정해 비용과 정확도를 함께 맞춘다."
+    },
+    {
+      "id": "ai-rag-context-mgmt-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "context",
+        "selection"
+      ],
+      "content": {
+        "prompt": "로그 조회 툴이 수천 줄을 돌려준다. 알맞은 조치는?",
+        "options": [
+          "필요한 줄만 남기기",
+          "전부 입력에 넣기",
+          "모델 재학습"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "긴 툴 출력은 선별해 필요한 부분만 남겨야 비용이 줄고 정확도도 유지된다."
+    },
+    {
+      "id": "ai-rag-context-mgmt-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "context",
+        "summarization"
+      ],
+      "content": {
+        "prompt": "긴 대화의 초반 내용이 계속 필요하다. 알맞은 방법은?",
+        "options": [
+          "전부 삭제",
+          "요약해 남기기",
+          "모델 재학습"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "요약 압축으로 초반 대화를 요약해 남기면 필요한 내용은 유지하면서 토큰을 줄일 수 있다."
+    },
+    {
+      "id": "ai-rag-context-mgmt-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "context",
+        "cost"
+      ],
+      "content": {
+        "prompt": "불필요한 툴 출력을 잘라 낼 때 얻는 효과는?",
+        "options": [
+          "지연 증가",
+          "비용 증가",
+          "비용 감소"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "입력 토큰이 줄어 비용이 감소하고, 중요한 정보가 묻히지 않아 정확도도 유지된다."
+    },
+    {
+      "id": "ai-rag-context-mgmt-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "context",
+        "agent"
+      ],
+      "content": {
+        "prompt": "컨텍스트 관리는 컨텍스트 윈도에 넣을 정보를 정하는 설계다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "컨텍스트 관리는 컨텍스트 윈도 안에 무엇을 넣고 뺄지 정하는 설계다."
+    }
+  ]
+}

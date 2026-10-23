@@ -1,0 +1,202 @@
+{
+  "track": "ai",
+  "unit": "u11-rag-agents",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "ai-rag-hybrid-search-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vector-search",
+        "retrieval"
+      ],
+      "content": {
+        "prompt": "임베딩 유사도로 의미가 비슷한 청크를 찾는 검색은?",
+        "options": [
+          "키워드 검색",
+          "전체 탐색",
+          "벡터 검색"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "벡터 검색은 질문과 청크의 임베딩 유사도를 비교해 의미가 비슷한 청크를 찾는다."
+    },
+    {
+      "id": "ai-rag-hybrid-search-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "keyword-search",
+        "bm25"
+      ],
+      "content": {
+        "prompt": "키워드 검색의 대표적인 점수 방식은?",
+        "options": [
+          "BM25",
+          "HNSW",
+          "소프트맥스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "BM25는 질문 단어가 청크에 나오는 정도로 점수를 매기는 키워드 검색 방식이다. HNSW는 벡터 인덱스다."
+    },
+    {
+      "id": "ai-rag-hybrid-search-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "keyword-search",
+        "retrieval"
+      ],
+      "content": {
+        "prompt": "에러 코드 E1042가 그대로 들어간 청크를 찾는 데 강한 검색은?",
+        "options": [
+          "벡터 검색",
+          "키워드 검색"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "키워드 검색은 질문의 단어가 들어간 청크를 찾으므로 에러 코드처럼 정확히 일치해야 하는 문자열에 강하다."
+    },
+    {
+      "id": "ai-rag-hybrid-search-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "hybrid-search",
+        "retrieval"
+      ],
+      "content": {
+        "prompt": "하이브리드 검색은 벡터 검색과 키워드 검색 결과를 합친다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "하이브리드 검색은 두 결과를 합쳐 의미 검색과 정확한 용어 일치를 함께 얻는다."
+    },
+    {
+      "id": "ai-rag-hybrid-search-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "keyword-search",
+        "term"
+      ],
+      "content": {
+        "prompt": "질문의 단어가 들어간 청크를 찾는 검색은 ___ 검색이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "키워드",
+          "keyword",
+          "bm25"
+        ]
+      },
+      "explanation": "키워드 검색은 단어 일치로 청크를 찾으며, BM25가 대표적인 점수 방식이다."
+    },
+    {
+      "id": "ai-rag-hybrid-search-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "hybrid-search",
+        "term"
+      ],
+      "content": {
+        "prompt": "벡터 검색과 키워드 검색 결과를 합치는 검색은 ___ 검색이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "하이브리드",
+          "hybrid"
+        ]
+      },
+      "explanation": "하이브리드 검색은 두 검색을 합쳐 의미가 비슷한 청크와 용어가 정확히 일치하는 청크를 함께 찾는다."
+    },
+    {
+      "id": "ai-rag-hybrid-search-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vector-search",
+        "retrieval"
+      ],
+      "content": {
+        "prompt": "계정 잠김을 물었는데 로그인 차단 문서를 찾아야 한다. 알맞은 검색은?",
+        "options": [
+          "벡터 검색",
+          "키워드 검색"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "표현은 달라도 의미가 비슷한 문서를 찾아야 하므로 임베딩 유사도를 쓰는 벡터 검색이 알맞다."
+    },
+    {
+      "id": "ai-rag-hybrid-search-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "hybrid-search",
+        "retrieval"
+      ],
+      "content": {
+        "prompt": "제품 번호 질문과 의미 질문이 섞여 들어온다. 알맞은 검색은?",
+        "options": [
+          "벡터 검색만",
+          "키워드 검색만",
+          "하이브리드 검색"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "정확한 번호 일치와 의미 검색이 모두 필요하므로 두 결과를 합치는 하이브리드 검색이 알맞다."
+    },
+    {
+      "id": "ai-rag-hybrid-search-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "keyword-search",
+        "bm25"
+      ],
+      "content": {
+        "prompt": "BM25 점수가 높은 청크의 특징은?",
+        "options": [
+          "벡터 거리가 가까움",
+          "질문 단어가 많이 나옴",
+          "길이가 김"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "BM25는 키워드 검색 점수라서 질문의 단어가 청크에 많이 나올수록 점수가 높다."
+    },
+    {
+      "id": "ai-rag-hybrid-search-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "vector-search",
+        "keyword-search"
+      ],
+      "content": {
+        "prompt": "벡터 검색은 질문 단어가 그대로 들어간 청크만 찾는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "벡터 검색은 임베딩 유사도로 의미가 비슷한 청크를 찾으므로 단어가 달라도 찾을 수 있다. 단어 일치는 키워드 검색이다."
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "track": "ai",
+  "unit": "u11-rag-agents",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "ai-rag-agent-loop-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "agent",
+        "tool-use"
+      ],
+      "content": {
+        "prompt": "LLM이 목표를 위해 툴 호출을 스스로 반복 결정하는 시스템은?",
+        "options": [
+          "RAG",
+          "에이전트",
+          "청킹"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "에이전트는 LLM이 목표를 위해 툴 호출을 스스로 반복 결정하며 작업을 진행하는 시스템이다."
+    },
+    {
+      "id": "ai-rag-agent-loop-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "agent",
+        "stop-condition"
+      ],
+      "content": {
+        "prompt": "에이전트의 무한 반복을 막으려 최대 반복 횟수를 두는 것은?",
+        "options": [
+          "종료 조건",
+          "출처 표시",
+          "재순위화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "종료 조건은 최대 반복 횟수·시간·비용 한도를 둬 에이전트 루프가 끝없이 돌지 않게 한다."
+    },
+    {
+      "id": "ai-rag-agent-loop-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "agent",
+        "agent-loop"
+      ],
+      "content": {
+        "prompt": "에이전트 루프에서 모델 응답이 툴 요청이면 다음은?",
+        "options": [
+          "즉시 종료",
+          "툴 실행 후 재호출"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "툴 요청이면 툴을 실행하고 그 결과를 붙여 모델을 다시 호출한다. 종료는 최종 답일 때다."
+    },
+    {
+      "id": "ai-rag-agent-loop-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "agent",
+        "agent-loop"
+      ],
+      "content": {
+        "prompt": "에이전트 루프는 툴 결과를 받으면 바로 사용자에게 답을 돌려준다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "툴 결과는 입력에 붙여 모델을 다시 호출하는 데 쓴다. 모델이 최종 답을 내야 루프가 끝난다."
+    },
+    {
+      "id": "ai-rag-agent-loop-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "agent",
+        "term"
+      ],
+      "content": {
+        "prompt": "툴 호출을 스스로 반복 결정하며 작업하는 LLM 시스템은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "에이전트",
+          "agent",
+          "llm 에이전트",
+          "ai 에이전트"
+        ]
+      },
+      "explanation": "에이전트는 툴 결과를 보고 다음 툴 호출을 스스로 정하며 목표까지 작업을 이어 간다."
+    },
+    {
+      "id": "ai-rag-agent-loop-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "agent",
+        "agent-loop"
+      ],
+      "content": {
+        "prompt": "에이전트 루프는 모델이 최종 ___을 내면 종료한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "답",
+          "답변",
+          "응답",
+          "answer"
+        ]
+      },
+      "explanation": "모델 응답이 툴 요청이 아니라 최종 답이면 루프를 끝내고 사용자에게 돌려준다."
+    },
+    {
+      "id": "ai-rag-agent-loop-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "agent",
+        "agent-loop"
+      ],
+      "content": {
+        "prompt": "모델이 툴 요청 없이 최종 답을 냈다. 루프의 다음 동작은?",
+        "options": [
+          "툴 실행",
+          "재호출",
+          "종료"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "에이전트 루프는 모델 응답이 최종 답이면 종료한다. 툴 실행과 재호출은 툴 요청일 때 한다."
+    },
+    {
+      "id": "ai-rag-agent-loop-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "agent",
+        "agent-loop"
+      ],
+      "content": {
+        "prompt": "툴 실행 결과는 다음 모델 호출에서 어떻게 쓰이나?",
+        "options": [
+          "버린다",
+          "가중치로 쓴다",
+          "입력에 붙인다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "툴 결과를 입력에 붙여 모델을 다시 호출하면, 모델이 그 결과를 보고 다음 행동을 정한다."
+    },
+    {
+      "id": "ai-rag-agent-loop-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "agent",
+        "stop-condition"
+      ],
+      "content": {
+        "prompt": "에이전트가 같은 툴을 계속 부르며 멈추지 않는다. 필요한 것은?",
+        "options": [
+          "출처 표시",
+          "청크 오버랩",
+          "종료 조건"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "최대 반복 횟수·시간·비용 한도 같은 종료 조건을 두면 무한 반복을 막을 수 있다."
+    },
+    {
+      "id": "ai-rag-agent-loop-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "agent",
+        "tool-use"
+      ],
+      "content": {
+        "prompt": "에이전트는 툴 결과를 보고 다음 행동을 스스로 정한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "에이전트는 정해진 순서 없이 툴 결과를 보고 다음 툴 호출이나 최종 답을 스스로 결정한다."
+    }
+  ]
+}
