@@ -1,0 +1,231 @@
+{
+  "track": "aws",
+  "unit": "u06-databases",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "aws-db-ddbindex-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dynamodb",
+        "capacity-mode",
+        "secondary-index"
+      ],
+      "content": {
+        "prompt": "처리한 요청만큼 과금하는 DynamoDB 용량 모드는?",
+        "options": [
+          "프로비저닝",
+          "예약",
+          "온디맨드"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "온디맨드 모드는 처리한 요청만큼 과금하며, 트래픽을 예측하기 어려울 때 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-ddbindex-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dynamodb",
+        "capacity-mode",
+        "secondary-index"
+      ],
+      "content": {
+        "prompt": "파티션 키는 같고 정렬 키만 다른 보조 인덱스는?",
+        "options": [
+          "LSI",
+          "GSI",
+          "기본 키"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "LSI는 테이블과 파티션 키는 같고 정렬 키만 다른 인덱스입니다. GSI는 다른 파티션·정렬 키를 씁니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SecondaryIndexes.html"
+      ]
+    },
+    {
+      "id": "aws-db-ddbindex-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dynamodb",
+        "capacity-mode",
+        "secondary-index"
+      ],
+      "content": {
+        "prompt": "이미 있는 테이블에 나중에 추가할 수 있는 인덱스는?",
+        "options": [
+          "LSI",
+          "GSI"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "GSI는 테이블을 만든 뒤에도 추가할 수 있습니다. LSI는 테이블을 만들 때만 정의합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SecondaryIndexes.html"
+      ]
+    },
+    {
+      "id": "aws-db-ddbindex-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dynamodb",
+        "capacity-mode",
+        "secondary-index"
+      ],
+      "content": {
+        "prompt": "LSI는 테이블을 만든 뒤에도 언제든 추가할 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "LSI는 테이블을 만들 때만 정의할 수 있습니다. 나중에 추가할 수 있는 것은 GSI입니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SecondaryIndexes.html"
+      ]
+    },
+    {
+      "id": "aws-db-ddbindex-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dynamodb",
+        "capacity-mode",
+        "secondary-index"
+      ],
+      "content": {
+        "prompt": "읽기·쓰기 용량을 미리 정하는 것은 ___ 모드다."
+      },
+      "answer_key": {
+        "accepted": [
+          "프로비저닝",
+          "provisioned",
+          "프로비전드"
+        ]
+      },
+      "explanation": "프로비저닝 모드는 읽기·쓰기 용량을 미리 정하고, 그 용량을 넘는 요청은 스로틀링됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-ddbindex-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dynamodb",
+        "capacity-mode",
+        "secondary-index"
+      ],
+      "content": {
+        "prompt": "허용된 처리량을 넘는 요청이 거부되는 것은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스로틀링",
+          "throttling",
+          "쓰로틀링"
+        ]
+      },
+      "explanation": "스로틀링은 허용된 처리량을 넘는 요청을 서비스가 거부하는 것이며, 앱은 재시도해야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-ddbindex-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dynamodb",
+        "capacity-mode",
+        "secondary-index"
+      ],
+      "content": {
+        "prompt": "트래픽을 예측하기 어려운 새 서비스에 맞는 모드는?",
+        "options": [
+          "온디맨드",
+          "프로비저닝"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "온디맨드 모드는 용량을 미리 정하지 않고 처리한 요청만큼 과금해, 트래픽을 예측하기 어려울 때 맞습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-ddbindex-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dynamodb",
+        "capacity-mode",
+        "secondary-index"
+      ],
+      "content": {
+        "prompt": "운영 중인 테이블을 email 속성으로 조회해야 한다. 만들 것은?",
+        "options": [
+          "LSI",
+          "새 기본 키",
+          "GSI"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "이미 있는 테이블에는 GSI를 추가해 email을 파티션 키로 Query할 수 있습니다. LSI는 생성 때만 정의합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SecondaryIndexes.html"
+      ]
+    },
+    {
+      "id": "aws-db-ddbindex-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dynamodb",
+        "capacity-mode",
+        "secondary-index"
+      ],
+      "content": {
+        "prompt": "프로비저닝 모드에서 정한 용량을 넘는 요청은?",
+        "options": [
+          "자동 과금",
+          "스로틀링",
+          "Scan으로 전환"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "프로비저닝 모드에서 미리 정한 용량을 넘는 요청은 스로틀링되므로, 앱이 재시도해야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-ddbindex-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dynamodb",
+        "capacity-mode",
+        "secondary-index"
+      ],
+      "content": {
+        "prompt": "온디맨드 모드는 처리한 요청만큼 과금한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "온디맨드 모드는 미리 용량을 정하지 않고, 실제로 처리한 요청만큼 과금합니다.",
+      "refs": []
+    }
+  ]
+}

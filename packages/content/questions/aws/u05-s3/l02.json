@@ -1,0 +1,215 @@
+{
+  "track": "aws",
+  "unit": "u05-s3",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "aws-s3-class-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "storage-class"
+      ],
+      "content": {
+        "prompt": "자주 읽는 데이터용 S3 기본 스토리지 클래스는?",
+        "options": [
+          "Standard-IA",
+          "Standard",
+          "Deep Archive"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "S3 Standard는 자주 읽는 데이터용 기본 클래스입니다. Standard-IA와 Deep Archive는 드물게 읽는 데이터용입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-class-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "storage-class"
+      ],
+      "content": {
+        "prompt": "Intelligent-Tiering 클래스가 하는 일은?",
+        "options": [
+          "영구 삭제",
+          "복제본 생성",
+          "계층 자동 이동"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Intelligent-Tiering은 객체의 접근 패턴을 보고 계층을 자동으로 옮깁니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-class-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "storage-class"
+      ],
+      "content": {
+        "prompt": "Standard-IA는 읽을 때 검색 요금이 붙는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "Standard-IA는 저장 요금이 낮은 대신, 데이터를 읽을 때 검색 요금이 붙습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-class-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "storage-class"
+      ],
+      "content": {
+        "prompt": "Deep Archive 객체는 복원 없이 바로 읽을 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Glacier Flexible Retrieval과 Deep Archive 객체는 읽기 전에 복원해야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-class-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "storage-class"
+      ],
+      "content": {
+        "prompt": "장기 보관용 클래스는 S3 ___ 계열이다.",
+        "hint": "Flexible Retrieval과 Deep Archive가 속한 계열"
+      },
+      "answer_key": {
+        "accepted": [
+          "Glacier",
+          "글래시어",
+          "글레이셔"
+        ]
+      },
+      "explanation": "S3 Glacier 계열은 장기 보관용이며, Flexible Retrieval·Deep Archive는 읽기 전에 복원이 필요합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-class-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "storage-class"
+      ],
+      "content": {
+        "prompt": "Flexible Retrieval 객체는 읽기 전에 ___ 해야 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "복원",
+          "restore",
+          "리스토어"
+        ]
+      },
+      "explanation": "Glacier Flexible Retrieval과 Deep Archive 객체는 먼저 복원 요청을 해야 읽을 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-class-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "storage-class"
+      ],
+      "content": {
+        "prompt": "매 요청마다 읽는 상품 이미지에 맞는 클래스는?",
+        "options": [
+          "Deep Archive",
+          "Standard-IA",
+          "Standard"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "자주 읽는 데이터는 S3 Standard가 맞습니다. Standard-IA는 읽을 때마다 검색 요금이 붙습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-class-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "storage-class"
+      ],
+      "content": {
+        "prompt": "수년간 보관만 하는 감사 로그에 맞는 클래스는?",
+        "options": [
+          "Standard",
+          "Glacier 계열"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "거의 읽지 않고 오래 보관하는 데이터는 장기 보관용인 Glacier 계열이 맞습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-class-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "storage-class"
+      ],
+      "content": {
+        "prompt": "Standard-IA 객체를 자주 읽으면 늘어나는 비용은?",
+        "options": [
+          "검색 요금",
+          "복원 대기",
+          "AZ 수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Standard-IA는 읽을 때 검색 요금이 붙어, 자주 읽으면 오히려 비용이 늘어납니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-class-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "storage-class"
+      ],
+      "content": {
+        "prompt": "S3 Standard에 대한 설명으로 맞는 것은?",
+        "options": [
+          "읽기 전 복원 필요",
+          "여러 AZ에 저장",
+          "검색 요금 부과"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "S3 Standard는 자주 읽는 데이터용 기본 클래스로, 데이터를 여러 AZ에 나눠 저장합니다.",
+      "refs": []
+    }
+  ]
+}

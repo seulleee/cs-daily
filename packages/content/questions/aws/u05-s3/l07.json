@@ -1,0 +1,224 @@
+{
+  "track": "aws",
+  "unit": "u05-s3",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "aws-s3-encrypt-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "encryption",
+        "kms"
+      ],
+      "content": {
+        "prompt": "S3가 관리하는 키로 하는 서버 측 암호화는?",
+        "options": [
+          "SSE-KMS",
+          "HTTPS",
+          "SSE-S3"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "SSE-S3는 S3가 관리하는 키로 하는 서버 측 암호화입니다. SSE-KMS는 AWS KMS 키를 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-encrypt-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "encryption",
+        "kms"
+      ],
+      "content": {
+        "prompt": "AWS KMS 키로 하는 서버 측 암호화는?",
+        "options": [
+          "SSE-S3",
+          "HTTPS",
+          "SSE-KMS"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "SSE-KMS는 AWS KMS 키로 암호화하며, 읽으려면 S3 권한과 함께 키 사용 권한이 필요합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-encrypt-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "encryption",
+        "kms"
+      ],
+      "content": {
+        "prompt": "새로 올린 객체에 기본으로 적용되는 암호화는?",
+        "options": [
+          "SSE-S3",
+          "SSE-KMS",
+          "적용 안 됨"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "지금은 새 객체에 SSE-S3 서버 측 암호화가 기본으로 적용됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-encrypt-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "encryption",
+        "kms"
+      ],
+      "content": {
+        "prompt": "SSE-KMS 객체는 S3 읽기 권한만 있으면 읽을 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "SSE-KMS 객체를 읽으려면 S3 권한과 함께 그 KMS 키의 사용 권한도 있어야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-encrypt-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "encryption",
+        "kms"
+      ],
+      "content": {
+        "prompt": "HTTPS로 주고받는 것은 ___ 중 암호화다."
+      },
+      "answer_key": {
+        "accepted": [
+          "전송"
+        ]
+      },
+      "explanation": "HTTPS로 데이터를 주고받는 것은 네트워크 구간을 보호하는 전송 중 암호화입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-encrypt-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "encryption",
+        "kms"
+      ],
+      "content": {
+        "prompt": "HTTP 요청을 거부하려면 빈칸에 들어갈 값은?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"Effect\": \"Deny\",\n  \"Principal\": \"*\",\n  \"Action\": \"s3:*\",\n  \"Resource\": \"arn:aws:s3:::my-bucket/*\",\n  \"Condition\": {\n    \"Bool\": {\n      \"aws:SecureTransport\": \"___\"\n    }\n  }\n}"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "false"
+        ]
+      },
+      "explanation": "aws:SecureTransport가 false인 요청은 HTTPS가 아닌 요청이므로, 이를 Deny하면 전송 중 암호화가 강제됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-encrypt-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "encryption",
+        "kms"
+      ],
+      "content": {
+        "prompt": "SSE-KMS 객체 읽기가 거부된다. 더 필요한 권한은?",
+        "options": [
+          "버전 관리 권한",
+          "KMS 키 사용 권한",
+          "수명 주기 권한"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SSE-KMS 객체는 S3 권한에 더해 KMS 키 사용 권한이 있어야 복호화해서 읽을 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-encrypt-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "encryption",
+        "kms"
+      ],
+      "content": {
+        "prompt": "디스크가 유출돼도 데이터를 못 읽게 하는 것은?",
+        "options": [
+          "서버 측 암호화",
+          "전송 중 암호화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "서버 측 암호화는 S3가 저장할 때 암호화합니다. 전송 중 암호화는 네트워크 구간을 보호합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-encrypt-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "encryption",
+        "kms"
+      ],
+      "content": {
+        "prompt": "Deny에 aws:SecureTransport false 조건을 건 효과는?",
+        "options": [
+          "HTTPS 요청 거부",
+          "익명 요청 허용",
+          "HTTP 요청 거부"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "aws:SecureTransport가 false인 요청은 HTTPS가 아닌 요청이므로, 이 조건의 Deny는 HTTP 요청을 거부합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-encrypt-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "encryption",
+        "kms"
+      ],
+      "content": {
+        "prompt": "SSE-S3는 S3가 관리하는 키로 객체를 암호화한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "SSE-S3는 키 관리를 S3가 맡는 서버 측 암호화이며, 새 객체에 기본으로 적용됩니다.",
+      "refs": []
+    }
+  ]
+}

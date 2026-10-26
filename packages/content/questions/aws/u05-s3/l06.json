@@ -1,0 +1,230 @@
+{
+  "track": "aws",
+  "unit": "u05-s3",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "aws-s3-presign-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "presigned-url",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "서명과 만료 시각이 담긴, 객체 하나 공유용 URL은?",
+        "options": [
+          "버킷 정책",
+          "미리 서명된 URL",
+          "버킷 ARN"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "미리 서명된 URL은 서명과 만료 시각을 담고 있어 자격 증명 없이 객체 하나에 접근하게 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-presign-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "presigned-url",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "aws s3 presign이 만드는 URL의 용도는?",
+        "options": [
+          "업로드(PUT)",
+          "버킷 삭제",
+          "다운로드(GET)"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "aws s3 presign은 다운로드용 URL을 만듭니다. 업로드용 URL은 SDK로 PUT 요청용을 만듭니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-presign-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "presigned-url",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "브라우저가 S3에 바로 올릴 URL은 무엇으로 만드나?",
+        "options": [
+          "SDK(PUT용)",
+          "aws s3 presign"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "업로드용 URL은 SDK로 PUT 요청용을 만들어 클라이언트에 줍니다. aws s3 presign은 다운로드용입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-presign-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "presigned-url",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "미리 서명된 URL로는 만든 주체에게 없는 권한도 쓸 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "URL로 할 수 있는 일은 URL을 만든 주체의 권한을 넘지 않습니다. 만든 주체가 못 하는 일은 URL로도 못 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-presign-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "presigned-url",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "미리 서명된 URL에는 서명과 ___ 시각이 담긴다."
+      },
+      "answer_key": {
+        "accepted": [
+          "만료",
+          "expiration",
+          "expiry"
+        ]
+      },
+      "explanation": "미리 서명된 URL에는 서명과 만료 시각이 들어 있어, 만료 시각이 지나면 더는 쓸 수 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-presign-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "presigned-url",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "다운로드용 URL을 만드는 명령은?",
+        "code": {
+          "language": "bash",
+          "source": "aws s3 ___ s3://my-bucket/v.mp4"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "presign"
+        ]
+      },
+      "explanation": "aws s3 presign은 객체 하나에 대한 다운로드용 미리 서명된 URL을 만듭니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-presign-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "presigned-url",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "URL의 유효 시간을 정하는 옵션은?",
+        "code": {
+          "language": "bash",
+          "source": "aws s3 presign s3://my-bucket/v.mp4 \\\n  ___ 600"
+        },
+        "options": [
+          "--ttl",
+          "--timeout",
+          "--expires-in"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "aws s3 presign은 --expires-in 옵션으로 URL이 유효한 시간(초)을 정합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-presign-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "presigned-url",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "만료 시각이 지난 URL로 요청하면?",
+        "options": [
+          "자동 연장",
+          "요청 거부",
+          "공개로 전환"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "미리 서명된 URL은 만료 시각이 지나면 거부됩니다. 다시 공유하려면 새 URL을 만들어야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-presign-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "presigned-url",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "비공개 버킷의 영상 하나를 회원에게 잠시 보여 주려면?",
+        "options": [
+          "미리 서명된 URL",
+          "버킷 공개",
+          "공개 차단 해제"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "버킷은 비공개로 두고, 객체 하나에 대한 미리 서명된 URL을 만들어 주면 정해진 시간 동안만 접근할 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-presign-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "presigned-url",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "미리 서명된 URL은 자격 증명 없이 객체 하나에 접근하게 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "서명이 URL에 들어 있어서, 받은 사람은 자신의 자격 증명 없이 그 객체 하나에 접근할 수 있습니다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "track": "aws",
+  "unit": "u05-s3",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "aws-s3-forbidden-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "troubleshooting",
+        "403"
+      ],
+      "content": {
+        "prompt": "S3의 403 Forbidden 응답이 뜻하는 것은?",
+        "options": [
+          "객체 없음",
+          "권한이 없어 거부",
+          "서버 장애"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "403 Forbidden은 요청은 S3에 도착했지만 권한이 없어 거부됐다는 뜻입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-forbidden-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "troubleshooting",
+        "403"
+      ],
+      "content": {
+        "prompt": "S3 403을 볼 때 가장 먼저 확인할 것은?",
+        "options": [
+          "호출 주체 IAM 정책",
+          "KMS 키 권한",
+          "URL 만료"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "먼저 호출 주체의 IAM 정책에 해당 Action과 맞는 Resource ARN이 허용되어 있는지 봅니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-forbidden-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "troubleshooting",
+        "403"
+      ],
+      "content": {
+        "prompt": "IAM 정책엔 허용이 있는데 403이다. 다음 확인은?",
+        "options": [
+          "버전 관리",
+          "스토리지 클래스",
+          "버킷 정책 Deny"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "IAM 정책에 Allow가 있어도 버킷 정책에 일치하는 명시적 Deny가 있으면 거부됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-forbidden-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "troubleshooting",
+        "403"
+      ],
+      "content": {
+        "prompt": "버킷 정책의 명시적 Deny는 IAM 정책의 Allow보다 우선한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "일치하는 명시적 Deny가 하나라도 있으면 다른 정책에 Allow가 있어도 요청은 거부됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-forbidden-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "troubleshooting",
+        "403"
+      ],
+      "content": {
+        "prompt": "SSE-KMS 객체라면 ___ 키 사용 권한도 확인한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "KMS"
+        ]
+      },
+      "explanation": "SSE-KMS로 암호화된 객체는 S3 권한과 함께 KMS 키 사용 권한이 있어야 읽을 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-forbidden-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "troubleshooting",
+        "403"
+      ],
+      "content": {
+        "prompt": "Allow가 있어도 요청을 막는 것은 명시적 ___ 다."
+      },
+      "answer_key": {
+        "accepted": [
+          "거부",
+          "Deny"
+        ]
+      },
+      "explanation": "명시적 거부(Deny)는 명시적 허용보다 우선하므로, 일치하는 Deny가 있으면 Allow가 있어도 거부됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-forbidden-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "troubleshooting",
+        "403"
+      ],
+      "content": {
+        "prompt": "공개 읽기 정책을 넣었는데 익명 요청이 403이다. 원인은?",
+        "options": [
+          "SSE-S3 암호화",
+          "퍼블릭 액세스 차단",
+          "버전 관리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "공개가 목적인데 막힌다면 퍼블릭 액세스 차단 설정이 공개 정책을 막고 있는지 봅니다. SSE-S3는 접근을 막지 않습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-forbidden-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "troubleshooting",
+        "403"
+      ],
+      "content": {
+        "prompt": "어제 받은 미리 서명된 URL이 403이다. 먼저 볼 것은?",
+        "options": [
+          "URL 만료 여부",
+          "버킷 리전",
+          "스토리지 클래스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "미리 서명된 URL은 만료 시각이 지나면 거부되므로 만료 여부부터 확인합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-forbidden-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "troubleshooting",
+        "403"
+      ],
+      "content": {
+        "prompt": "Resource가 버킷 ARN뿐이라 GetObject가 403이다. 조치는?",
+        "options": [
+          "버킷 공개",
+          "버전 관리 켜기",
+          "ARN 뒤에 /* 추가"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "객체 작업의 Resource는 arn:aws:s3:::버킷/* 형태여야 하므로, 버킷 ARN 뒤에 /*를 붙인 ARN을 허용합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-forbidden-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "troubleshooting",
+        "403"
+      ],
+      "content": {
+        "prompt": "403 응답은 요청이 S3에 도착하지 못했다는 뜻이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "403은 요청이 S3에 도착했지만 권한이 없어 거부됐다는 뜻이므로 정책과 설정을 점검합니다.",
+      "refs": []
+    }
+  ]
+}
