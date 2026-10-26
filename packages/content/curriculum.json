@@ -11100,7 +11100,7 @@
       "slug": "aws",
       "name": "AWS",
       "description": "계정 설정부터 IAM·VPC·EC2·S3·서버리스·IaC까지, 실무에서 바로 쓰는 AWS 기초 드릴",
-      "phase": "phase2",
+      "phase": "mvp",
       "units": [
         {
           "slug": "u01-cloud-basics",
