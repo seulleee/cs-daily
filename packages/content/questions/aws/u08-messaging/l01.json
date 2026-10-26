@@ -1,0 +1,217 @@
+{
+  "track": "aws",
+  "unit": "u08-messaging",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "aws-msg-sqs-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "queue"
+      ],
+      "content": {
+        "prompt": "메시지를 소비자가 꺼낼 때까지 보관하는 관리형 큐는?",
+        "options": [
+          "Amazon ECR",
+          "Amazon SQS",
+          "AWS Lambda"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Amazon SQS는 보낸 메시지를 소비자가 꺼내 처리할 때까지 보관하는 관리형 큐다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sqs-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "queue"
+      ],
+      "content": {
+        "prompt": "큐에 메시지를 보내는 쪽을 뭐라 하나?",
+        "options": [
+          "핸들러",
+          "소비자",
+          "생산자"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "생산자는 메시지를 보내는 쪽, 소비자는 메시지를 꺼내 처리하는 쪽이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sqs-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "queue"
+      ],
+      "content": {
+        "prompt": "큐에서 메시지를 꺼내 처리하는 쪽은?",
+        "options": [
+          "생산자",
+          "소비자"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "소비자가 큐에서 메시지를 꺼내 처리한다. 생산자와 소비자는 서로 직접 호출하지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sqs-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "queue"
+      ],
+      "content": {
+        "prompt": "소비자가 메시지를 꺼내면 큐에서 바로 삭제된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "꺼낸 메시지는 저절로 사라지지 않는다. 처리를 마친 소비자가 직접 삭제해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sqs-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "queue"
+      ],
+      "content": {
+        "prompt": "꺼낸 메시지는 처리 후 소비자가 직접 ___ 해야 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "삭제",
+          "delete",
+          "지우기"
+        ]
+      },
+      "explanation": "SQS는 꺼낸 메시지를 자동으로 지우지 않으므로 소비자가 처리 후 삭제한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sqs-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "queue"
+      ],
+      "content": {
+        "prompt": "SQS에서 생산자와 소비자는 서로 직접 ___ 하지 않는다."
+      },
+      "answer_key": {
+        "accepted": [
+          "호출",
+          "call"
+        ]
+      },
+      "explanation": "생산자는 큐에 메시지만 넣고, 소비자는 큐에서 꺼낸다. 둘은 서로를 직접 호출하지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sqs-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "queue"
+      ],
+      "content": {
+        "prompt": "메시지 내용을 지정하는 옵션으로 빈칸에 맞는 것은?",
+        "code": {
+          "language": "bash",
+          "source": "aws sqs send-message \\\n  --queue-url \"$QUEUE_URL\" \\\n  ___ '{\"orderId\": 1}'"
+        },
+        "options": [
+          "--message-body",
+          "--queue-name",
+          "--payload"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "aws sqs send-message는 --queue-url로 큐를, --message-body로 메시지 내용을 지정한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sqs-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "queue"
+      ],
+      "content": {
+        "prompt": "소비자가 처리 후 삭제를 빼먹으면 메시지는?",
+        "options": [
+          "즉시 사라짐",
+          "큐에 계속 남음",
+          "생산자에게 반환"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SQS는 꺼낸 메시지를 저절로 지우지 않으므로 삭제하지 않으면 큐에 남는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sqs-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "queue"
+      ],
+      "content": {
+        "prompt": "메일 서버가 멈춰도 주문 API가 응답하게 하려면?",
+        "options": [
+          "메일 서버 직접 호출",
+          "타임아웃 늘리기",
+          "메일 작업을 큐에 넣음"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "주문 API가 큐에 메시지만 넣으면 메일 서버 상태와 관계없이 바로 응답할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sqs-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "queue"
+      ],
+      "content": {
+        "prompt": "SQS에서 생산자는 소비자를 호출하지 않고 큐에 메시지를 넣는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "SQS는 메시지를 보관해 두는 큐라서 생산자는 소비자를 모른 채 큐에 메시지를 넣기만 한다.",
+      "refs": []
+    }
+  ]
+}

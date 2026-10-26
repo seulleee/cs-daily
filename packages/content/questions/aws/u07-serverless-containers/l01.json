@@ -1,0 +1,222 @@
+{
+  "track": "aws",
+  "unit": "u07-serverless-containers",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "aws-sls-lambda-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lambda",
+        "serverless"
+      ],
+      "content": {
+        "prompt": "서버 관리 없이 함수 코드를 이벤트마다 실행하는 서비스는?",
+        "options": [
+          "Amazon EC2",
+          "AWS Lambda",
+          "Amazon RDS"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "AWS Lambda는 서버를 관리하지 않고 이벤트가 올 때마다 함수 코드를 실행한다. EC2는 직접 관리하는 가상 서버다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-lambda-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lambda",
+        "serverless"
+      ],
+      "content": {
+        "prompt": "이벤트와 컨텍스트를 받아 실행되는 함수의 진입점은?",
+        "options": [
+          "실행 역할",
+          "AMI",
+          "핸들러"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "핸들러는 이벤트와 컨텍스트를 받아 실행되는 Lambda 함수의 진입점이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-lambda-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "lambda",
+        "serverless"
+      ],
+      "content": {
+        "prompt": "Lambda 함수는 실행 역할의 권한으로 다른 AWS 서비스를 호출한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "실행 역할은 함수가 다른 AWS 서비스를 호출할 때 맡는 IAM 역할이다. 코드에 액세스 키를 넣을 필요가 없다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-lambda-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "lambda",
+        "serverless"
+      ],
+      "content": {
+        "prompt": "Lambda는 요청이 없는 시간에도 실행 시간 요금이 붙는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Lambda는 요청 수와 실행 시간으로 과금하므로 함수가 실행되지 않는 동안에는 실행 요금이 붙지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-lambda-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "lambda",
+        "serverless"
+      ],
+      "content": {
+        "prompt": "CLI로 함수를 직접 호출하는 명령을 완성하면?",
+        "code": {
+          "language": "bash",
+          "source": "aws lambda ___ \\\n  --function-name my-function \\\n  response.json"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "invoke"
+        ]
+      },
+      "explanation": "aws lambda invoke는 함수를 직접 호출하고 응답을 마지막 인자로 준 파일(response.json)에 저장한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-lambda-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "lambda",
+        "serverless"
+      ],
+      "content": {
+        "prompt": "함수가 다른 AWS 서비스를 부를 때 맡는 IAM 역할은 ___ 역할이다.",
+        "hint": "함수 설정에서 지정하는 IAM 역할"
+      },
+      "answer_key": {
+        "accepted": [
+          "실행",
+          "실행 역할",
+          "execution",
+          "execution role"
+        ]
+      },
+      "explanation": "함수에 연결한 실행 역할의 권한으로 다른 AWS 서비스를 호출한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-lambda-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lambda",
+        "serverless"
+      ],
+      "content": {
+        "prompt": "함수가 DynamoDB에 쓸 때 AccessDenied가 난다. 고칠 곳은?",
+        "options": [
+          "실행 역할 정책",
+          "핸들러 이름",
+          "함수 메모리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "함수의 AWS 호출 권한은 실행 역할에서 온다. 실행 역할 정책에 해당 DynamoDB 쓰기 Action을 허용한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-lambda-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lambda",
+        "serverless"
+      ],
+      "content": {
+        "prompt": "이 명령을 실행하면 함수의 응답은 어디에 저장되나?",
+        "code": {
+          "language": "bash",
+          "source": "aws lambda invoke \\\n  --function-name my-function \\\n  out.json"
+        },
+        "options": [
+          "터미널 화면만",
+          "out.json 파일",
+          "함수 코드 안"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "aws lambda invoke는 마지막 인자로 준 파일에 함수 응답을 쓴다. 터미널에는 상태 코드 같은 호출 정보만 나온다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-lambda-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lambda",
+        "serverless"
+      ],
+      "content": {
+        "prompt": "하루 몇 번만 도는 짧은 작업에 비용 면에서 맞는 것은?",
+        "options": [
+          "Lambda 함수",
+          "상시 실행 EC2"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Lambda는 요청 수와 실행 시간만 과금하므로 드물게 도는 작업에 유리하다. EC2는 켜 둔 동안 계속 과금된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-lambda-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lambda",
+        "serverless"
+      ],
+      "content": {
+        "prompt": "AWS Lambda의 과금 기준은?",
+        "options": [
+          "켜 둔 시간",
+          "인스턴스 유형",
+          "요청 수·실행 시간"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Lambda는 함수가 처리한 요청 수와 실행 시간으로 과금한다. 켜 둔 시간으로 과금하는 것은 EC2다.",
+      "refs": []
+    }
+  ]
+}

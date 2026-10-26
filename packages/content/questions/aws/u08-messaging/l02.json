@@ -1,0 +1,227 @@
+{
+  "track": "aws",
+  "unit": "u08-messaging",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "aws-msg-dlq-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "dlq",
+        "visibility-timeout"
+      ],
+      "content": {
+        "prompt": "꺼낸 메시지를 다른 소비자에게 숨기는 시간은?",
+        "options": [
+          "가시성 타임아웃",
+          "TTL",
+          "함수 타임아웃"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가시성 타임아웃은 꺼낸 메시지를 다른 소비자에게 숨기는 시간이다. 그 안에 삭제하지 않으면 다시 보인다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dlq-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "dlq",
+        "visibility-timeout"
+      ],
+      "content": {
+        "prompt": "처리에 계속 실패한 메시지를 옮겨 두는 큐는?",
+        "options": [
+          "원본 큐",
+          "DLQ",
+          "ECR 저장소"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DLQ는 처리에 계속 실패한 메시지를 옮겨 두는 별도 큐(배달 못 한 메시지 큐)다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dlq-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "dlq",
+        "visibility-timeout"
+      ],
+      "content": {
+        "prompt": "가시성 타임아웃 안에 삭제하지 않은 메시지는?",
+        "options": [
+          "다시 꺼낼 수 있음",
+          "영구 삭제됨"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가시성 타임아웃이 끝날 때까지 삭제하지 않으면 메시지가 다시 보여 다른 소비자가 꺼낼 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dlq-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "dlq",
+        "visibility-timeout"
+      ],
+      "content": {
+        "prompt": "처리 실패가 반복되면 메시지의 수신 횟수가 늘어난다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "수신 횟수는 메시지가 꺼내진 횟수라서, 실패해 다시 꺼내질 때마다 늘어난다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dlq-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "dlq",
+        "visibility-timeout"
+      ],
+      "content": {
+        "prompt": "DLQ로 옮길 기준 수신 횟수를 정하는 키를 완성하면?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"deadLetterTargetArn\":\n    \"arn:aws:sqs:us-east-1:123456789012:dlq\",\n  \"___\": 3\n}"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "maxReceiveCount",
+          "maxreceivecount"
+        ]
+      },
+      "explanation": "재드라이브 정책의 maxReceiveCount를 넘게 수신된 메시지는 deadLetterTargetArn의 DLQ로 옮겨진다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dlq-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "dlq",
+        "visibility-timeout"
+      ],
+      "content": {
+        "prompt": "꺼낸 메시지를 잠시 숨기는 시간은 ___ 타임아웃이다.",
+        "hint": "다른 소비자에게 보이지 않게 하는 시간"
+      },
+      "answer_key": {
+        "accepted": [
+          "가시성",
+          "visibility"
+        ]
+      },
+      "explanation": "가시성 타임아웃 동안 메시지는 다른 소비자에게 보이지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dlq-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "dlq",
+        "visibility-timeout"
+      ],
+      "content": {
+        "prompt": "maxReceiveCount가 3이면 메시지가 DLQ로 가는 때는?",
+        "options": [
+          "첫 실패 즉시",
+          "생산자가 보낼 때",
+          "수신 횟수가 3을 넘을 때"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "수신 횟수가 maxReceiveCount를 넘으면 SQS가 메시지를 DLQ로 옮긴다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dlq-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "dlq",
+        "visibility-timeout"
+      ],
+      "content": {
+        "prompt": "처리 시간보다 가시성 타임아웃이 짧으면?",
+        "options": [
+          "다른 소비자가 또 꺼냄",
+          "문제없음",
+          "DLQ로 즉시 이동"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "처리 중에 가시성 타임아웃이 끝나면 메시지가 다시 보여 다른 소비자가 같은 메시지를 또 꺼낸다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dlq-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "dlq",
+        "visibility-timeout"
+      ],
+      "content": {
+        "prompt": "재드라이브 정책이 있는 큐에서 계속 실패한 메시지는?",
+        "options": [
+          "원본 큐에 영구히 남음",
+          "DLQ로 옮겨짐",
+          "자동으로 수정됨"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "수신 횟수가 maxReceiveCount를 넘으면 DLQ로 옮겨져 원본 큐의 처리를 막지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dlq-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "dlq",
+        "visibility-timeout"
+      ],
+      "content": {
+        "prompt": "가시성 타임아웃 동안 메시지는 큐에서 삭제된 상태다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "가시성 타임아웃 동안 메시지는 큐에 남아 있고 다른 소비자에게 숨겨질 뿐이다.",
+      "refs": []
+    }
+  ]
+}

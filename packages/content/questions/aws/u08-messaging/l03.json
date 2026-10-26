@@ -1,0 +1,218 @@
+{
+  "track": "aws",
+  "unit": "u08-messaging",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "aws-msg-fifo-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "그룹 안 순서를 지키고 중복 전송을 걸러 내는 큐는?",
+        "options": [
+          "표준 큐",
+          "DLQ",
+          "FIFO 큐"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "FIFO 큐는 메시지 그룹 안의 순서를 지키고 중복 전송을 걸러 낸다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-fifo-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "최소 한 번 전달하고 순서는 최선 노력인 큐는?",
+        "options": [
+          "표준 큐",
+          "FIFO 큐",
+          "DLQ"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "표준 큐는 최소 한 번 전달하고 순서는 최선 노력이라 중복·순서 뒤바뀜이 생길 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-fifo-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "FIFO 큐의 이름은 무엇으로 끝나나?",
+        "options": [
+          ".queue",
+          ".fifo",
+          "-fifo"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "FIFO 큐는 이름이 .fifo로 끝나야 한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-fifo-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "표준 큐는 같은 메시지를 두 번 전달하는 일이 없다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "표준 큐는 최소 한 번 전달이라 같은 메시지가 두 번 전달될 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-fifo-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "FIFO 큐에서 순서를 지킬 단위는 메시지 ___ ID다."
+      },
+      "answer_key": {
+        "accepted": [
+          "그룹",
+          "group"
+        ]
+      },
+      "explanation": "메시지 그룹 ID가 같은 메시지끼리 순서가 지켜지고, 그룹이 다르면 병렬로 처리된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-fifo-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "같은 ID로 다시 보낸 메시지를 거르는 ID는 ___ ID다."
+      },
+      "answer_key": {
+        "accepted": [
+          "중복 제거",
+          "중복제거",
+          "deduplication",
+          "dedup"
+        ]
+      },
+      "explanation": "FIFO 큐는 같은 중복 제거 ID로 다시 보낸 메시지를 받아들이지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-fifo-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "account-42 그룹 메시지끼리 보장되는 것은?",
+        "code": {
+          "language": "bash",
+          "source": "aws sqs send-message \\\n  --queue-url \"$QUEUE_URL\" \\\n  --message-body '{\"amount\": 100}' \\\n  --message-group-id account-42"
+        },
+        "options": [
+          "다른 그룹보다 우선",
+          "수신 횟수 제한",
+          "보낸 순서 유지"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "같은 메시지 그룹 ID를 가진 메시지끼리는 보낸 순서대로 처리된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-fifo-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "FIFO 큐의 그룹 A와 그룹 B 메시지는?",
+        "options": [
+          "서로 병렬로 처리",
+          "한 번에 하나만",
+          "항상 A 먼저"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "순서는 같은 그룹 안에서만 지켜지고, 그룹이 다르면 서로 병렬로 처리된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-fifo-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "입출금 순서가 바뀌면 안 되는 처리에 맞는 큐는?",
+        "options": [
+          "표준 큐",
+          "FIFO 큐"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "FIFO 큐는 같은 그룹 안의 순서를 지키므로 계좌별로 그룹 ID를 주면 입출금 순서가 유지된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-fifo-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "fifo"
+      ],
+      "content": {
+        "prompt": "FIFO 큐는 메시지 그룹 안에서 보낸 순서를 지킨다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "FIFO 큐는 같은 메시지 그룹 ID 안에서 보낸 순서대로 메시지를 전달한다.",
+      "refs": []
+    }
+  ]
+}

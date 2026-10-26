@@ -1,0 +1,214 @@
+{
+  "track": "aws",
+  "unit": "u08-messaging",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "aws-msg-sns-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sns",
+        "fanout"
+      ],
+      "content": {
+        "prompt": "주제에 발행한 메시지를 모든 구독자에게 보내는 서비스는?",
+        "options": [
+          "Amazon SQS",
+          "Amazon SNS",
+          "Amazon ECR"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Amazon SNS는 주제에 발행한 메시지를 모든 구독자에게 보내는 관리형 pub/sub 서비스다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sns-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sns",
+        "fanout"
+      ],
+      "content": {
+        "prompt": "SNS 주제에 연결한 수신처를 뭐라 하나?",
+        "options": [
+          "대상 그룹",
+          "라우트",
+          "구독"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "구독은 주제에 연결한 수신처로, SQS 큐·Lambda·HTTPS 엔드포인트·이메일 등이 될 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sns-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sns",
+        "fanout"
+      ],
+      "content": {
+        "prompt": "소비자가 메시지를 꺼내 가는(pull) 서비스는?",
+        "options": [
+          "SQS",
+          "SNS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SQS는 소비자가 꺼내 가고(pull), SNS는 구독자에게 밀어 준다(push).",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sns-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sns",
+        "fanout"
+      ],
+      "content": {
+        "prompt": "SNS는 구독자에게 메시지를 밀어 준다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "SNS는 주제에 발행된 메시지를 구독자에게 밀어 주는(push) 방식이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sns-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sns",
+        "fanout"
+      ],
+      "content": {
+        "prompt": "한 주제에 여러 SQS 큐를 구독시켜 나눠 보내는 구성은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "팬아웃",
+          "fanout",
+          "fan-out",
+          "팬 아웃"
+        ]
+      },
+      "explanation": "팬아웃은 한 주제에 여러 SQS 큐를 구독시켜 같은 메시지를 서비스마다 따로 처리하게 한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sns-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sns",
+        "fanout"
+      ],
+      "content": {
+        "prompt": "SNS에서 메시지를 발행하는 이름 붙은 통로는 ___ 다."
+      },
+      "answer_key": {
+        "accepted": [
+          "주제",
+          "topic",
+          "토픽"
+        ]
+      },
+      "explanation": "생산자는 SNS 주제에 메시지를 발행하고, 그 주제의 구독자가 모두 메시지를 받는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sns-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sns",
+        "fanout"
+      ],
+      "content": {
+        "prompt": "주문 사실을 결제·재고·알림 서비스가 모두 받으려면?",
+        "options": [
+          "서비스별 큐를 구독",
+          "큐 하나를 함께 읽음",
+          "서비스끼리 직접 호출"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SNS 주제에 서비스별 SQS 큐를 구독시키는 팬아웃으로 같은 메시지를 각 서비스가 따로 처리한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sns-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sns",
+        "fanout"
+      ],
+      "content": {
+        "prompt": "SQS 큐 하나를 세 서비스가 함께 읽으면?",
+        "options": [
+          "셋 모두 같은 메시지 처리",
+          "메시지마다 한 곳만 처리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "큐의 메시지는 꺼낸 소비자 하나만 처리하므로 모두에게 알리려면 SNS 팬아웃이 필요하다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sns-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sns",
+        "fanout"
+      ],
+      "content": {
+        "prompt": "SNS 구독의 수신처로 쓸 수 있는 것은?",
+        "options": [
+          "AMI",
+          "SQS 큐",
+          "IAM 그룹"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SNS 구독 수신처는 SQS 큐·Lambda 함수·HTTPS 엔드포인트·이메일 등이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-sns-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sns",
+        "fanout"
+      ],
+      "content": {
+        "prompt": "SNS 구독자는 주제에서 메시지를 직접 꺼내 간다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "SNS는 구독자에게 메시지를 밀어 준다(push). 소비자가 꺼내 가는(pull) 것은 SQS다.",
+      "refs": []
+    }
+  ]
+}
