@@ -191,7 +191,7 @@
         "prompt": "주문 이벤트 중 조건에 맞는 것만 골라 보내려면?",
         "options": [
           "SQS",
-          "SNS",
+          "DLQ",
           "EventBridge"
         ]
       },
