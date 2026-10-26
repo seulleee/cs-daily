@@ -1,0 +1,258 @@
+{
+  "track": "aws",
+  "unit": "u02-iam",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "aws-iam-least-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam-policy",
+        "least-privilege"
+      ],
+      "content": {
+        "prompt": "작업에 필요한 Action·Resource만 허용하는 원칙은?",
+        "options": [
+          "최소 권한",
+          "기본 거부",
+          "공동 책임"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "최소 권한은 작업에 필요한 Action·Resource만 허용하고 *처럼 넓은 범위는 피하는 원칙이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html"
+      ]
+    },
+    {
+      "id": "aws-iam-least-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam-policy",
+        "least-privilege"
+      ],
+      "content": {
+        "prompt": "요청 속성이 조건을 만족할 때만 규칙을 적용하는 요소는?",
+        "options": [
+          "Effect",
+          "Principal",
+          "Condition"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Condition은 요청 속성이 조건을 만족할 때만 그 규칙이 적용되게 한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html"
+      ]
+    },
+    {
+      "id": "aws-iam-least-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam-policy",
+        "least-privilege"
+      ],
+      "content": {
+        "prompt": "aws:SourceIp는 정책에서 무엇인가?",
+        "options": [
+          "조건 연산자",
+          "조건 키",
+          "Action"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "aws:SourceIp는 요청을 보낸 IP 주소를 가리키는 조건 키다. IpAddress 같은 것이 조건 연산자다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html"
+      ]
+    },
+    {
+      "id": "aws-iam-least-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam-policy",
+        "least-privilege"
+      ],
+      "content": {
+        "prompt": "StringEquals는 요청 정보를 가리키는 조건 키이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "StringEquals는 조건 키와 값을 비교하는 조건 연산자다. 조건 키는 aws:SourceIp 같은 것이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html"
+      ]
+    },
+    {
+      "id": "aws-iam-least-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam-policy",
+        "least-privilege"
+      ],
+      "content": {
+        "prompt": "사내 IP에서 온 요청만 허용하려면 빈칸의 키는?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"Effect\": \"Allow\",\n  \"Action\": \"s3:GetObject\",\n  \"Resource\": \"*\",\n  \"___\": {\n    \"IpAddress\": {\n      \"aws:SourceIp\": \"203.0.113.10\"\n    }\n  }\n}"
+        },
+        "hint": "요청 속성을 검사하는 정책 요소다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Condition",
+          "condition"
+        ]
+      },
+      "explanation": "Condition 안에 IpAddress 연산자와 aws:SourceIp 조건 키를 두면 그 IP에서 온 요청에만 규칙이 적용된다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html"
+      ]
+    },
+    {
+      "id": "aws-iam-least-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam-policy",
+        "least-privilege"
+      ],
+      "content": {
+        "prompt": "필요한 Action·Resource만 허용하는 원칙을 최소 ___ 원칙이라 한다.",
+        "hint": "Action·Resource를 좁히는 원칙이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "권한",
+          "privilege",
+          "Privilege"
+        ]
+      },
+      "explanation": "최소 권한 원칙을 따르면 키가 유출돼도 피해가 허용한 범위로 한정된다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html"
+      ]
+    },
+    {
+      "id": "aws-iam-least-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam-policy",
+        "least-privilege"
+      ],
+      "content": {
+        "prompt": "aws:SourceIp를 비교할 조건 연산자는?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"Effect\": \"Allow\",\n  \"Action\": \"ec2:StartInstances\",\n  \"Resource\": \"*\",\n  \"Condition\": {\n    \"___\": {\n      \"aws:SourceIp\": \"203.0.113.10\"\n    }\n  }\n}"
+        },
+        "options": [
+          "Bool",
+          "IpAddress",
+          "StringEquals"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "IP 주소인 aws:SourceIp는 IpAddress 연산자로 비교한다. Bool은 참·거짓 값을 비교한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html"
+      ]
+    },
+    {
+      "id": "aws-iam-least-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam-policy",
+        "least-privilege"
+      ],
+      "content": {
+        "prompt": "이 조건을 만족하는 요청은?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"Effect\": \"Allow\",\n  \"Action\": \"ec2:StartInstances\",\n  \"Resource\": \"*\",\n  \"Condition\": {\n    \"Bool\": {\n      \"aws:MultiFactorAuthPresent\": \"true\"\n    }\n  }\n}"
+        },
+        "options": [
+          "모든 요청",
+          "사내 IP 요청",
+          "MFA 인증한 요청"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "aws:MultiFactorAuthPresent가 true인 요청, 즉 MFA로 인증한 요청에만 이 Allow가 적용된다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html"
+      ]
+    },
+    {
+      "id": "aws-iam-least-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam-policy",
+        "least-privilege"
+      ],
+      "content": {
+        "prompt": "조회만 하는 작업에 Action을 *로 준 정책의 문제는?",
+        "options": [
+          "최소 권한 위반",
+          "명시적 거부 발생",
+          "문제 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "필요한 조회 동작만 허용해야 하는데 *는 모든 동작을 허용해 최소 권한을 어긴다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html"
+      ]
+    },
+    {
+      "id": "aws-iam-least-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam-policy",
+        "least-privilege"
+      ],
+      "content": {
+        "prompt": "Action에 *를 피하고 필요한 동작만 주는 것이 최소 권한이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "최소 권한은 필요한 Action·Resource만 허용해 키 유출 같은 사고의 피해 범위를 줄인다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html"
+      ]
+    }
+  ]
+}

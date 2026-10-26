@@ -1,0 +1,259 @@
+{
+  "track": "aws",
+  "unit": "u02-iam",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "aws-iam-field-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "AccessDenied가 나면 가장 먼저 확인할 것은?",
+        "options": [
+          "예산 알림",
+          "요청 중인 주체",
+          "요금 모델"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "먼저 get-caller-identity로 예상한 사용자·역할로 요청하고 있는지 본다. 주체가 다르면 정책을 볼 필요가 없다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_access-denied.html"
+      ]
+    },
+    {
+      "id": "aws-iam-field-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "AccessDenied 직후 이 명령을 실행하는 이유는?",
+        "code": {
+          "language": "bash",
+          "source": "aws sts get-caller-identity"
+        },
+        "options": [
+          "요청 주체 확인",
+          "정책 삭제",
+          "예산 확인"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "get-caller-identity는 지금 요청하는 주체의 ARN을 보여 줘, 예상한 사용자·역할인지 확인하게 한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_access-denied.html"
+      ]
+    },
+    {
+      "id": "aws-iam-field-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "일치하는 Allow도 Deny도 없어 막혔다. 이 거부는?",
+        "options": [
+          "명시적 거부",
+          "기본 거부"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "허용하는 규칙이 없으면 기본 거부다. 이때는 그 Action과 Resource ARN을 허용하는 Allow를 더한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_access-denied.html"
+      ]
+    },
+    {
+      "id": "aws-iam-field-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "일치하는 Allow가 있으면 Condition이 맞지 않아도 허용된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Condition이 맞지 않으면 그 Allow는 적용되지 않아 결국 거부된다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_access-denied.html"
+      ]
+    },
+    {
+      "id": "aws-iam-field-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "역할을 맡지 못하면 신뢰 정책 ___ 에 호출한 사용자·역할이 있는지 본다.",
+        "hint": "누가 역할을 맡을 수 있는지 적는 요소다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Principal",
+          "principal",
+          "주체"
+        ]
+      },
+      "explanation": "AssumeRole이 거부되면 신뢰 정책 Principal에 호출한 사용자·역할이 들어 있는지 확인한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_access-denied.html"
+      ]
+    },
+    {
+      "id": "aws-iam-field-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "허용하는 규칙이 없어 거부되는 것을 ___ 거부라 한다.",
+        "hint": "명시적 거부와 구분되는 말이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "기본",
+          "암묵적",
+          "implicit",
+          "default"
+        ]
+      },
+      "explanation": "기본 거부는 일치하는 Allow가 없을 때의 결과라, 필요한 Action·Resource만 허용해 고친다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_access-denied.html"
+      ]
+    },
+    {
+      "id": "aws-iam-field-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "my-bucket/logs/a.txt 읽기가 거부됐다. 원인은?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [{\n    \"Effect\": \"Allow\",\n    \"Action\": \"s3:GetObject\",\n    \"Resource\":\n      \"arn:aws:s3:::my-bucket/reports/*\"\n  }]\n}"
+        },
+        "options": [
+          "Effect 값",
+          "Resource 불일치",
+          "Version 값"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Resource가 reports/ 아래 객체만 가리켜 logs/a.txt는 일치하는 Allow가 없어 기본 거부된다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_access-denied.html"
+      ]
+    },
+    {
+      "id": "aws-iam-field-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "MFA 없이 액세스 키로만 호출해 거부됐다. 원인은?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"Effect\": \"Allow\",\n  \"Action\": \"ec2:StartInstances\",\n  \"Resource\": \"*\",\n  \"Condition\": {\n    \"Bool\": {\n      \"aws:MultiFactorAuthPresent\": \"true\"\n    }\n  }\n}"
+        },
+        "options": [
+          "Condition 불충족",
+          "Action 불일치",
+          "Resource 불일치"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Condition이 MFA 인증을 요구하는데 키로만 보낸 요청은 이를 만족하지 못해 Allow가 적용되지 않는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_access-denied.html"
+      ]
+    },
+    {
+      "id": "aws-iam-field-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "역할 맡기(AssumeRole)가 AccessDenied로 실패했다. 볼 곳은?",
+        "options": [
+          "기본 리전",
+          "예산 설정",
+          "역할의 신뢰 정책"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "역할을 맡지 못하면 신뢰 정책 Principal에 호출한 주체가 있는지 확인한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_access-denied.html"
+      ]
+    },
+    {
+      "id": "aws-iam-field-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "AccessDenied 점검은 요청 중인 주체 확인부터 시작한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "주체가 예상과 다르면 정책을 고쳐도 소용없으므로 get-caller-identity로 주체부터 확인한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_access-denied.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "track": "aws",
+  "unit": "u01-cloud-basics",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "aws-cloud-field-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "account-setup",
+        "cost"
+      ],
+      "content": {
+        "prompt": "새 계정을 만든 직후 루트 사용자에 먼저 할 일은?",
+        "options": [
+          "MFA 등록",
+          "서버 생성",
+          "리전 변경"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "첫 보안 설정은 루트 사용자에 MFA를 등록하고 일상 작업에는 루트를 쓰지 않는 것이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html",
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-field-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "account-setup",
+        "cost"
+      ],
+      "content": {
+        "prompt": "자원을 만들기 전에 먼저 만들 비용 설정은?",
+        "options": [
+          "스팟 요청",
+          "예산과 알림",
+          "예약 인스턴스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "자원을 만들기 전에 AWS Budgets로 예산과 알림부터 만들어 두어야 비용 사고를 일찍 안다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html",
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-field-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "account-setup",
+        "cost"
+      ],
+      "content": {
+        "prompt": "어제 만든 서버가 콘솔에 안 보일 때 먼저 볼 것은?",
+        "options": [
+          "요금 모델",
+          "MFA 설정",
+          "선택한 리전"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "콘솔은 선택한 리전의 자원만 보여 준다. 자원을 만든 리전과 지금 선택한 리전이 같은지 먼저 본다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html",
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-field-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "account-setup",
+        "cost"
+      ],
+      "content": {
+        "prompt": "MFA를 등록했다면 루트 사용자로 일상 작업을 해도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "MFA를 등록해도 루트는 모든 권한을 가지므로 일상 작업에 쓰지 않고 루트만 할 수 있는 일에만 쓴다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html",
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-field-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "account-setup",
+        "cost"
+      ],
+      "content": {
+        "prompt": "자원이 안 보이면 콘솔에서 선택한 ___ 부터 확인한다.",
+        "hint": "ap-northeast-2 같은 코드로 표시된다."
+      },
+      "answer_key": {
+        "accepted": [
+          "리전",
+          "region",
+          "Region"
+        ]
+      },
+      "explanation": "콘솔은 선택한 리전의 자원만 보여 주므로, 자원을 만든 리전과 같은지 먼저 확인한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html",
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-field-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "account-setup",
+        "cost"
+      ],
+      "content": {
+        "prompt": "예상 밖 청구의 원인 자원을 서비스별로 찾는 도구는 Cost ___ 이다.",
+        "hint": "비용을 나눠 탐색하는 도구다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Explorer",
+          "explorer"
+        ]
+      },
+      "explanation": "Cost Explorer로 서비스·리전별 비용을 나눠 보면 요금을 쌓는 자원을 찾을 수 있다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html",
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-field-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "account-setup",
+        "cost"
+      ],
+      "content": {
+        "prompt": "예상보다 큰 청구서가 왔다. 먼저 할 일은?",
+        "options": [
+          "계정 해지",
+          "리전 변경",
+          "서비스별 비용 확인"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "먼저 Cost Explorer로 서비스·리전별 비용을 나눠 원인 자원을 찾는다. 계정 해지는 원인을 찾는 일이 아니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html",
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-field-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "account-setup",
+        "cost"
+      ],
+      "content": {
+        "prompt": "도쿄 리전에서 만든 서버가 서울 리전 화면에 없다. 원인은?",
+        "options": [
+          "리전이 달라서",
+          "서버가 삭제됨",
+          "요금 미납"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "콘솔은 선택한 리전의 자원만 보여 준다. 도쿄 리전을 고르면 서버가 보인다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html",
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-field-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "account-setup",
+        "cost"
+      ],
+      "content": {
+        "prompt": "Cost Explorer에서 쓰지 않는 리전의 비용이 보인다. 조치는?",
+        "options": [
+          "예산 금액 올리기",
+          "그 리전 자원 정리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "쓰지 않는 리전에 비용이 있으면 잊고 둔 자원이 있다는 뜻이므로 그 리전 자원을 찾아 정리한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html",
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-field-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "account-setup",
+        "cost"
+      ],
+      "content": {
+        "prompt": "새 계정에서는 루트 MFA 등록과 예산 알림을 자원 생성보다 먼저 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "첫 사고는 보안 설정과 비용 알림을 미룬 사이에 생기므로 루트 MFA와 예산 알림을 먼저 만든다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html",
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "track": "aws",
+  "unit": "u02-iam",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "aws-iam-policy-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-policy"
+      ],
+      "content": {
+        "prompt": "권한을 JSON으로 적은 문서는?",
+        "options": [
+          "정책",
+          "그룹",
+          "사용자"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "정책은 권한을 JSON으로 적은 문서로, Version과 Statement 배열로 이뤄진다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html"
+      ]
+    },
+    {
+      "id": "aws-iam-policy-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-policy"
+      ],
+      "content": {
+        "prompt": "규칙이 허용인지 거부인지 정하는 요소는?",
+        "options": [
+          "Action",
+          "Resource",
+          "Effect"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Effect는 규칙이 Allow인지 Deny인지 정한다. Action은 동작, Resource는 대상 자원이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html"
+      ]
+    },
+    {
+      "id": "aws-iam-policy-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-policy"
+      ],
+      "content": {
+        "prompt": "s3:GetObject는 정책의 어느 요소에 들어가나?",
+        "options": [
+          "Resource",
+          "Effect",
+          "Action"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "s3:GetObject는 서비스:동작 형식의 API 동작이라 Action에 들어간다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html"
+      ]
+    },
+    {
+      "id": "aws-iam-policy-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-policy"
+      ],
+      "content": {
+        "prompt": "Resource에 *를 쓰면 모든 자원에 규칙이 적용된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "Resource에는 자원의 ARN을 적고, *는 모든 자원을 뜻한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html"
+      ]
+    },
+    {
+      "id": "aws-iam-policy-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-policy"
+      ],
+      "content": {
+        "prompt": "객체 읽기를 허용하려면 빈칸에 들어갈 값은?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [{\n    \"Effect\": \"___\",\n    \"Action\": \"s3:GetObject\",\n    \"Resource\": \"arn:aws:s3:::my-bucket/*\"\n  }]\n}"
+        },
+        "hint": "Deny의 반대다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Allow",
+          "allow"
+        ]
+      },
+      "explanation": "Effect가 Allow이면 Action과 Resource가 일치하는 요청을 허용한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html"
+      ]
+    },
+    {
+      "id": "aws-iam-policy-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-policy"
+      ],
+      "content": {
+        "prompt": "규칙 배열을 담는 키는?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"Version\": \"2012-10-17\",\n  \"___\": [{\n    \"Effect\": \"Allow\",\n    \"Action\": \"ec2:StartInstances\",\n    \"Resource\": \"*\"\n  }]\n}"
+        },
+        "hint": "Version과 함께 정책의 최상위 키다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Statement",
+          "statement"
+        ]
+      },
+      "explanation": "정책은 Version과 Statement 배열로 이뤄지고, 각 규칙은 Statement 안에 들어간다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html"
+      ]
+    },
+    {
+      "id": "aws-iam-policy-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-policy"
+      ],
+      "content": {
+        "prompt": "이 정책이 허용하는 것은?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [{\n    \"Effect\": \"Allow\",\n    \"Action\": \"ec2:StartInstances\",\n    \"Resource\": \"*\"\n  }]\n}"
+        },
+        "options": [
+          "인스턴스 시작",
+          "인스턴스 삭제",
+          "객체 읽기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Action이 ec2:StartInstances이고 Effect가 Allow이므로 모든 자원에 대해 인스턴스 시작을 허용한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html"
+      ]
+    },
+    {
+      "id": "aws-iam-policy-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-policy"
+      ],
+      "content": {
+        "prompt": "Action 값 ec2:StartInstances에서 ec2가 뜻하는 것은?",
+        "options": [
+          "동작",
+          "서비스",
+          "자원"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Action은 서비스:동작 형식이라 ec2는 서비스, StartInstances는 동작이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html"
+      ]
+    },
+    {
+      "id": "aws-iam-policy-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-policy"
+      ],
+      "content": {
+        "prompt": "규칙을 특정 객체 하나에만 적용하려면 바꿀 요소는?",
+        "options": [
+          "Effect",
+          "Action",
+          "Resource"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Resource에 그 객체의 ARN을 적으면 규칙이 그 자원에만 적용된다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html"
+      ]
+    },
+    {
+      "id": "aws-iam-policy-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-policy"
+      ],
+      "content": {
+        "prompt": "Effect에는 s3:GetObject 같은 동작 이름을 적는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "동작 이름은 Action에 적는다. Effect에는 Allow 또는 Deny만 적는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html"
+      ]
+    }
+  ]
+}
