@@ -1,0 +1,222 @@
+{
+  "track": "aws",
+  "unit": "u04-ec2-elb-asg",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "aws-ec2-ssm-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ec2",
+        "session-manager"
+      ],
+      "content": {
+        "prompt": "SSH 포트를 열지 않고 인스턴스 셸에 접속하는 기능은?",
+        "options": [
+          "Cost Explorer",
+          "AWS STS",
+          "Session Manager"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Session Manager는 SSH 포트를 열지 않고 콘솔·CLI로 인스턴스 셸에 접속하는 Systems Manager 기능입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ssm-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ec2",
+        "session-manager"
+      ],
+      "content": {
+        "prompt": "인스턴스 안에서 Systems Manager와 통신하는 프로그램은?",
+        "options": [
+          "AWS CLI",
+          "SSM Agent",
+          "SDK"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SSM Agent가 인스턴스 안에서 돌며 Systems Manager 엔드포인트로 연결을 엽니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ssm-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ec2",
+        "session-manager"
+      ],
+      "content": {
+        "prompt": "SSM Agent가 Systems Manager로 연결을 여는 방향은?",
+        "options": [
+          "아웃바운드",
+          "인바운드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "에이전트가 인스턴스에서 밖으로 HTTPS 연결을 열기 때문에 인바운드 포트를 열 필요가 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ssm-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ec2",
+        "session-manager"
+      ],
+      "content": {
+        "prompt": "Session Manager를 쓰려면 22번 포트를 인바운드로 열어야 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Session Manager는 SSH 포트 없이 에이전트의 아웃바운드 HTTPS 연결로 셸을 엽니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ssm-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ec2",
+        "session-manager"
+      ],
+      "content": {
+        "prompt": "세션을 여는 CLI 명령의 빈칸에 들어갈 서비스 이름은?",
+        "code": {
+          "language": "bash",
+          "source": "aws ___ start-session \\\n  --target i-1234567890abcdef0"
+        },
+        "hint": "Systems Manager의 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "ssm",
+          "SSM"
+        ]
+      },
+      "explanation": "aws ssm start-session --target 인스턴스 ID로 Session Manager 세션을 엽니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ssm-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ec2",
+        "session-manager"
+      ],
+      "content": {
+        "prompt": "에이전트가 엔드포인트로 나갈 때 쓰는 프로토콜은 ___ 다.",
+        "hint": "암호화된 웹 프로토콜"
+      },
+      "answer_key": {
+        "accepted": [
+          "HTTPS",
+          "https"
+        ]
+      },
+      "explanation": "SSM Agent는 아웃바운드 HTTPS로 Systems Manager 엔드포인트에 연결하므로 이 연결이 허용돼야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ssm-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ec2",
+        "session-manager"
+      ],
+      "content": {
+        "prompt": "세션을 열 인스턴스를 지정하는 옵션은?",
+        "code": {
+          "language": "bash",
+          "source": "aws ssm start-session \\\n  ___ i-1234567890abcdef0"
+        },
+        "options": [
+          "--instance",
+          "--host",
+          "--target"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "aws ssm start-session은 --target에 인스턴스 ID를 받아 세션을 엽니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ssm-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ec2",
+        "session-manager"
+      ],
+      "content": {
+        "prompt": "NAT가 없는 프라이빗 인스턴스에 세션을 열려면?",
+        "options": [
+          "22번 포트 개방",
+          "탄력적 IP 부착",
+          "VPC 엔드포인트 사용"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "에이전트가 Systems Manager로 나갈 길이 필요하므로, NAT가 없으면 VPC 엔드포인트로 연결합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ssm-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ec2",
+        "session-manager"
+      ],
+      "content": {
+        "prompt": "SSM Agent는 있는데 세션을 열 수 없다. 먼저 볼 것은?",
+        "options": [
+          "인스턴스 역할 권한",
+          "인스턴스 유형",
+          "AMI 리전"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인스턴스 역할에 AmazonSSMManagedInstanceCore 권한이 없으면 Systems Manager에 등록되지 않습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ssm-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ec2",
+        "session-manager"
+      ],
+      "content": {
+        "prompt": "Session Manager는 SSH 키 없이 인스턴스 셸에 접속하게 해 준다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "Session Manager는 IAM 권한으로 접속을 제어하므로 SSH 키 파일을 나눠 줄 필요가 없습니다.",
+      "refs": []
+    }
+  ]
+}

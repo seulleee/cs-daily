@@ -1,0 +1,218 @@
+{
+  "track": "aws",
+  "unit": "u03-vpc",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "aws-vpc-cidr-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "cidr"
+      ],
+      "content": {
+        "prompt": "AWS 안에 만드는 논리적으로 격리된 가상 네트워크는?",
+        "options": [
+          "가용 영역",
+          "AWS 계정",
+          "VPC"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "VPC는 AWS 안에 만드는 논리적으로 격리된 가상 네트워크입니다. 가용 영역은 데이터 센터 묶음입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-cidr-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "cidr"
+      ],
+      "content": {
+        "prompt": "10.0.0.0/16처럼 IP 범위를 적는 표기법은?",
+        "options": [
+          "CIDR",
+          "ARN",
+          "DNS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "CIDR는 시작 주소와 접두사 길이로 IP 범위를 적는 표기입니다. ARN은 AWS 자원의 고유 이름입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-cidr-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "cidr"
+      ],
+      "content": {
+        "prompt": "VPC 하나가 속하는 범위는?",
+        "options": [
+          "한 가용 영역",
+          "한 리전",
+          "모든 리전"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "VPC는 한 리전에 속하며 그 리전의 여러 가용 영역에 걸칠 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-cidr-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "cidr"
+      ],
+      "content": {
+        "prompt": "/24 범위는 /16 범위보다 주소가 많다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "/ 뒤 숫자가 클수록 범위가 좁으므로 /24는 /16보다 주소가 적습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-cidr-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "cidr"
+      ],
+      "content": {
+        "prompt": "10.0.0.0/16 같은 IP 범위 표기법은 ___ 이다.",
+        "hint": "시작 주소 뒤에 슬래시와 숫자를 붙인다"
+      },
+      "answer_key": {
+        "accepted": [
+          "CIDR",
+          "cidr",
+          "사이더"
+        ]
+      },
+      "explanation": "CIDR 표기는 시작 주소 뒤에 / 와 접두사 길이를 붙여 IP 범위를 나타냅니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-cidr-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "cidr"
+      ],
+      "content": {
+        "prompt": "CIDR에서 / 뒤의 숫자를 ___ 길이라 한다.",
+        "hint": "숫자가 클수록 범위가 좁아진다"
+      },
+      "answer_key": {
+        "accepted": [
+          "접두사",
+          "프리픽스",
+          "prefix",
+          "접두"
+        ]
+      },
+      "explanation": "/ 뒤 숫자는 접두사 길이로, 클수록 주소 범위가 좁아집니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-cidr-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "cidr"
+      ],
+      "content": {
+        "prompt": "다음 중 주소가 가장 많은 범위는?",
+        "options": [
+          "10.0.0.0/24",
+          "10.0.0.0/20",
+          "10.0.0.0/16"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "접두사 길이가 가장 짧은 /16이 가장 넓은 범위입니다. /24가 가장 좁습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-cidr-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "cidr"
+      ],
+      "content": {
+        "prompt": "사내망이 10.0.0.0/16일 때 연결할 VPC 범위로 알맞은 것은?",
+        "options": [
+          "10.0.0.0/16",
+          "10.0.1.0/24",
+          "10.1.0.0/16"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "10.1.0.0/16은 사내망과 겹치지 않습니다. 10.0.1.0/24는 사내망 범위 안에 들어 있어 겹칩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-cidr-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "cidr"
+      ],
+      "content": {
+        "prompt": "/24 범위 하나에 들어 있는 IP 주소 수는?",
+        "options": [
+          "128",
+          "256",
+          "512"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "IPv4 주소는 32비트이므로 /24는 남은 8비트로 2의 8제곱, 256개 주소를 가집니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-cidr-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "cidr"
+      ],
+      "content": {
+        "prompt": "VPC는 다른 고객과 논리적으로 격리된 가상 네트워크다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "VPC는 AWS 안에 만드는 논리적으로 격리된 가상 네트워크라 다른 고객의 네트워크와 섞이지 않습니다.",
+      "refs": []
+    }
+  ]
+}

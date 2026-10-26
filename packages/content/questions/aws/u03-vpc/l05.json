@@ -1,0 +1,218 @@
+{
+  "track": "aws",
+  "unit": "u03-vpc",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "aws-vpc-nat-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "nat-gateway"
+      ],
+      "content": {
+        "prompt": "프라이빗 자원의 나가는 연결만 허용하는 게이트웨이는?",
+        "options": [
+          "NAT 게이트웨이",
+          "인터넷 게이트웨이",
+          "탄력적 IP"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "NAT 게이트웨이는 프라이빗 자원이 인터넷으로 나가는 연결만 허용하고 밖에서 먼저 오는 연결은 막습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nat-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "nat-gateway"
+      ],
+      "content": {
+        "prompt": "퍼블릭 서브넷 없이 만들고 AZ로 자동 확장되는 NAT는?",
+        "options": [
+          "영역 NAT",
+          "리전 NAT"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "리전 NAT는 퍼블릭 서브넷 없이 만들며 자원이 있는 AZ로 자동으로 넓혀집니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nat-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "nat-gateway"
+      ],
+      "content": {
+        "prompt": "한 AZ의 퍼블릭 서브넷에 두는 NAT는?",
+        "options": [
+          "영역 NAT",
+          "리전 NAT"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "영역 NAT는 한 AZ의 퍼블릭 서브넷에 만들며, AZ마다 두어야 한 AZ 장애에 견딥니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nat-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "nat-gateway"
+      ],
+      "content": {
+        "prompt": "NAT 게이트웨이는 밖에서 먼저 들어오는 연결도 받아 준다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "NAT 게이트웨이는 안에서 나가는 연결과 그 응답만 통과시키고 밖에서 먼저 시작한 연결은 막습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nat-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "nat-gateway"
+      ],
+      "content": {
+        "prompt": "프라이빗 서브넷의 0.0.0.0/0 경로 대상은 ___ 게이트웨이다.",
+        "hint": "사설 주소를 바꿔 대신 내보낸다"
+      },
+      "answer_key": {
+        "accepted": [
+          "NAT",
+          "nat",
+          "NAT 게이트웨이"
+        ]
+      },
+      "explanation": "프라이빗 서브넷 라우팅 테이블에 0.0.0.0/0 → NAT 게이트웨이를 넣어 외부로 나갑니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nat-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "nat-gateway"
+      ],
+      "content": {
+        "prompt": "AZ마다 따로 두어야 장애에 견디는 NAT는 ___ NAT다.",
+        "hint": "한 AZ의 퍼블릭 서브넷에 만든다"
+      },
+      "answer_key": {
+        "accepted": [
+          "영역",
+          "zonal",
+          "존"
+        ]
+      },
+      "explanation": "영역 NAT는 한 AZ에만 있으므로 AZ마다 하나씩 두어야 한 AZ 장애에 견딥니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nat-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "nat-gateway"
+      ],
+      "content": {
+        "prompt": "프라이빗 서브넷 테이블에 넣을 때 빈칸의 목적지는?",
+        "code": {
+          "language": "bash",
+          "source": "aws ec2 create-route \\\n  --route-table-id rtb-0123456789abcdef0 \\\n  --destination-cidr-block ___ \\\n  --nat-gateway-id nat-0123456789abcdef0"
+        },
+        "options": [
+          "0.0.0.0/0",
+          "10.0.0.0/16"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "모든 외부 목적지를 뜻하는 0.0.0.0/0을 NAT 게이트웨이로 보냅니다. VPC CIDR은 local 경로가 맡습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nat-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "nat-gateway"
+      ],
+      "content": {
+        "prompt": "영역 NAT가 AZ-a에만 있다. AZ-a 장애 때 AZ-b 서버는?",
+        "options": [
+          "외부로 못 나간다",
+          "영향 없다",
+          "리전 NAT로 전환"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "AZ-b 서버도 AZ-a의 NAT를 거쳐 나가므로 AZ-a 장애 때 함께 외부 통신이 끊깁니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nat-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "nat-gateway"
+      ],
+      "content": {
+        "prompt": "AZ마다 NAT와 경로를 따로 관리하기 싫다면?",
+        "options": [
+          "영역 NAT 1개",
+          "리전 NAT",
+          "인터넷 게이트웨이"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "리전 NAT는 자원이 있는 AZ로 자동으로 넓혀져 AZ마다 따로 만들 필요가 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nat-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "nat-gateway"
+      ],
+      "content": {
+        "prompt": "프라이빗 서버는 NAT 게이트웨이를 거쳐 인터넷으로 나갈 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "NAT 게이트웨이는 프라이빗 자원의 나가는 연결을 허용해 업데이트·외부 API 호출을 가능하게 합니다.",
+      "refs": []
+    }
+  ]
+}

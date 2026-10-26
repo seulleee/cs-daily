@@ -1,0 +1,228 @@
+{
+  "track": "aws",
+  "unit": "u04-ec2-elb-asg",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "aws-ec2-userdata-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ec2",
+        "user-data",
+        "launch-template"
+      ],
+      "content": {
+        "prompt": "인스턴스 시작 때 실행할 스크립트는?",
+        "options": [
+          "시작 템플릿",
+          "사용자 데이터",
+          "AMI"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "사용자 데이터는 인스턴스 시작 때 실행할 스크립트로, 패키지 설치·앱 시작에 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-userdata-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ec2",
+        "user-data",
+        "launch-template"
+      ],
+      "content": {
+        "prompt": "AMI·유형·보안 그룹 같은 시작 설정을 저장한 것은?",
+        "options": [
+          "시작 템플릿",
+          "사용자 데이터",
+          "스냅샷"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "시작 템플릿은 AMI·인스턴스 유형·보안 그룹·사용자 데이터 같은 시작 설정을 저장한 것입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-userdata-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ec2",
+        "user-data",
+        "launch-template"
+      ],
+      "content": {
+        "prompt": "사용자 데이터 스크립트가 기본으로 실행되는 때는?",
+        "options": [
+          "매 부팅마다",
+          "접속할 때마다",
+          "첫 부팅에 한 번"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "사용자 데이터는 기본적으로 첫 부팅에 한 번 실행됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-userdata-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ec2",
+        "user-data",
+        "launch-template"
+      ],
+      "content": {
+        "prompt": "사용자 데이터 스크립트는 기본적으로 root 권한으로 실행된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "사용자 데이터는 root 권한으로 실행되므로 패키지 설치에 sudo가 필요 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-userdata-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ec2",
+        "user-data",
+        "launch-template"
+      ],
+      "content": {
+        "prompt": "시작 템플릿을 고칠 때마다 새 ___ 이 만들어진다.",
+        "hint": "번호가 하나씩 늘어난다"
+      },
+      "answer_key": {
+        "accepted": [
+          "버전",
+          "version"
+        ]
+      },
+      "explanation": "시작 템플릿은 고칠 때 새 버전을 만들고, 그중 기본 버전을 지정해 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-userdata-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ec2",
+        "user-data",
+        "launch-template"
+      ],
+      "content": {
+        "prompt": "부팅 때 실행할 스크립트는 사용자 ___ 에 넣는다.",
+        "hint": "영어로 user ___"
+      },
+      "answer_key": {
+        "accepted": [
+          "데이터",
+          "data"
+        ]
+      },
+      "explanation": "사용자 데이터에 넣은 스크립트는 인스턴스 첫 부팅 때 실행됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-userdata-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ec2",
+        "user-data",
+        "launch-template"
+      ],
+      "content": {
+        "prompt": "기본 버전 2인 템플릿에 버전 3을 만들었다. 기본으로 쓰이는 것은?",
+        "options": [
+          "버전 2",
+          "버전 3"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "새 버전을 만들어도 기본 버전은 바뀌지 않습니다. 버전 3을 쓰려면 기본 버전을 바꿉니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-userdata-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ec2",
+        "user-data",
+        "launch-template"
+      ],
+      "content": {
+        "prompt": "시작 템플릿을 고치면 생기는 것은?",
+        "options": [
+          "새 AMI",
+          "기존 버전 덮어쓰기",
+          "새 버전"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "시작 템플릿은 기존 버전을 덮어쓰지 않고 새 버전을 만듭니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-userdata-009",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ec2",
+        "user-data",
+        "launch-template"
+      ],
+      "content": {
+        "prompt": "실행 중인 인스턴스를 재부팅하면 사용자 데이터가 다시 실행된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "사용자 데이터는 기본적으로 첫 부팅에만 실행되고 재부팅 때는 다시 실행되지 않습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-userdata-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ec2",
+        "user-data",
+        "launch-template"
+      ],
+      "content": {
+        "prompt": "이 스크립트를 시작 때 실행되게 하려면 넣을 곳은?",
+        "code": {
+          "language": "bash",
+          "source": "#!/bin/bash\ndnf install -y nginx\nsystemctl enable --now nginx"
+        },
+        "options": [
+          "보안 그룹",
+          "라우팅 테이블",
+          "사용자 데이터"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "부팅 때 실행할 셸 스크립트는 사용자 데이터에 넣습니다. 첫 부팅에 root 권한으로 실행됩니다.",
+      "refs": []
+    }
+  ]
+}

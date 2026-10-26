@@ -1,0 +1,219 @@
+{
+  "track": "aws",
+  "unit": "u03-vpc",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "aws-vpc-sg-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "인스턴스에 붙고 허용 규칙만 두는 가상 방화벽은?",
+        "options": [
+          "라우팅 테이블",
+          "인터넷 게이트웨이",
+          "보안 그룹"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "보안 그룹은 인스턴스(네트워크 인터페이스)에 붙는 가상 방화벽으로 허용 규칙만 둘 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-sg-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "허용된 요청의 응답이 자동 허용되는 성질은?",
+        "options": [
+          "상태 저장",
+          "상태 비저장"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "보안 그룹은 상태 저장이라 허용된 요청의 응답은 반대 방향 규칙과 관계없이 통과합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-sg-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "보안 그룹에 거부 규칙을 넣어 특정 IP를 막을 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "보안 그룹에는 허용 규칙만 둘 수 있습니다. 허용하지 않은 트래픽은 모두 거부됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-sg-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "새 보안 그룹의 아웃바운드는 모든 트래픽을 허용한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "새 보안 그룹은 인바운드 규칙이 없고, 아웃바운드는 전체 허용 규칙이 기본으로 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-sg-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "보안 그룹은 응답을 자동 허용하는 상태 ___ 방화벽이다.",
+        "hint": "반대 방향 규칙이 필요 없다"
+      },
+      "answer_key": {
+        "accepted": [
+          "저장",
+          "stateful"
+        ]
+      },
+      "explanation": "상태 저장 방화벽은 허용된 요청의 응답 트래픽을 자동으로 통과시킵니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-sg-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "보안 그룹 규칙에 없는 인바운드는 모두 ___ 된다.",
+        "hint": "허용의 반대"
+      },
+      "answer_key": {
+        "accepted": [
+          "거부",
+          "deny",
+          "차단"
+        ]
+      },
+      "explanation": "보안 그룹 인바운드는 허용 규칙에 없으면 모두 막힙니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-sg-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "이 규칙이 5432 포트로 허용하는 출발지는?",
+        "code": {
+          "language": "bash",
+          "source": "aws ec2 authorize-security-group-ingress \\\n  --group-id sg-0123456789abcdef0 \\\n  --protocol tcp --port 5432 \\\n  --source-group sg-0fedcba9876543210"
+        },
+        "options": [
+          "모든 IP",
+          "그 그룹의 자원",
+          "같은 서브넷 전체"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "소스에 보안 그룹 ID를 넣으면 그 보안 그룹이 붙은 자원에서 오는 트래픽만 허용됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-sg-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "인바운드 443만 허용했다. 그 응답 전송에 필요한 규칙은?",
+        "options": [
+          "아웃바운드 443",
+          "아웃바운드 전체",
+          "추가 규칙 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "보안 그룹은 상태 저장이라 허용된 요청의 응답은 아웃바운드 규칙 없이도 나갑니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-sg-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "DB가 웹 서버의 연결만 받게 할 때 인바운드 소스는?",
+        "options": [
+          "0.0.0.0/0",
+          "DB 보안 그룹",
+          "웹 서버 보안 그룹"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "소스에 웹 서버 보안 그룹 ID를 넣으면 그 그룹이 붙은 웹 서버에서 오는 연결만 허용됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-sg-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "보안 그룹이 붙는 대상은?",
+        "options": [
+          "서브넷",
+          "네트워크 인터페이스",
+          "VPC"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "보안 그룹은 인스턴스의 네트워크 인터페이스에 붙습니다. 서브넷 단위 방화벽은 따로 있습니다.",
+      "refs": []
+    }
+  ]
+}

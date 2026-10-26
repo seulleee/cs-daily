@@ -1,0 +1,214 @@
+{
+  "track": "aws",
+  "unit": "u04-ec2-elb-asg",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "aws-ec2-ebs-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ec2",
+        "ebs"
+      ],
+      "content": {
+        "prompt": "인스턴스에 연결해 쓰는 네트워크 블록 스토리지는?",
+        "options": [
+          "EBS 볼륨",
+          "AMI",
+          "인스턴스 유형"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "EBS 볼륨은 인스턴스에 연결해 쓰는 네트워크 블록 스토리지이며 한 AZ에 속합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ebs-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ec2",
+        "ebs"
+      ],
+      "content": {
+        "prompt": "볼륨의 특정 시점 백업은?",
+        "options": [
+          "스냅샷",
+          "AMI",
+          "사설 IP"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스냅샷은 EBS 볼륨의 특정 시점 백업으로, 이것으로 새 볼륨을 만들 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ebs-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ec2",
+        "ebs"
+      ],
+      "content": {
+        "prompt": "인스턴스를 중지하면 데이터가 사라지는 것은?",
+        "options": [
+          "EBS 볼륨",
+          "인스턴스 스토어"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인스턴스 스토어는 중지하면 데이터가 사라집니다. EBS 데이터는 중지해도 남습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ebs-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ec2",
+        "ebs"
+      ],
+      "content": {
+        "prompt": "EBS 볼륨은 하나의 가용 영역에 속한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "EBS 볼륨은 한 AZ에 속해 같은 AZ의 인스턴스에 연결합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ebs-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ec2",
+        "ebs"
+      ],
+      "content": {
+        "prompt": "EBS 볼륨의 특정 시점 백업을 ___ 이라 한다.",
+        "hint": "특정 순간을 찍어 둔 사본"
+      },
+      "answer_key": {
+        "accepted": [
+          "스냅샷",
+          "snapshot"
+        ]
+      },
+      "explanation": "스냅샷으로 볼륨을 백업해 두면 나중에 그 시점의 새 볼륨을 만들 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ebs-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ec2",
+        "ebs"
+      ],
+      "content": {
+        "prompt": "인스턴스를 중지해도 데이터가 남는 블록 스토리지는 ___ 다.",
+        "hint": "세 글자 약자의 볼륨"
+      },
+      "answer_key": {
+        "accepted": [
+          "EBS",
+          "ebs",
+          "EBS 볼륨"
+        ]
+      },
+      "explanation": "EBS는 인스턴스와 별개인 네트워크 스토리지라 중지해도 데이터가 남습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ebs-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ec2",
+        "ebs"
+      ],
+      "content": {
+        "prompt": "AZ-a 볼륨의 데이터를 AZ-b 인스턴스에서 쓰려면?",
+        "options": [
+          "볼륨 그대로 연결",
+          "스냅샷→새 볼륨",
+          "유형 변경"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "볼륨은 한 AZ에 속하므로 스냅샷을 만든 뒤 AZ-b에 새 볼륨으로 만들어 연결합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ebs-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ec2",
+        "ebs"
+      ],
+      "content": {
+        "prompt": "DeleteOnTermination이 켜진 루트 볼륨은 종료 때?",
+        "options": [
+          "함께 삭제",
+          "남는다",
+          "스냅샷으로 변환"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "루트 볼륨은 기본적으로 DeleteOnTermination이 켜져 있어 인스턴스 종료 때 함께 삭제됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ebs-009",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ec2",
+        "ebs"
+      ],
+      "content": {
+        "prompt": "EBS 볼륨은 다른 AZ의 인스턴스에 바로 연결할 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "EBS 볼륨은 한 AZ에 속해 같은 AZ의 인스턴스에만 연결됩니다. 다른 AZ는 스냅샷을 거칩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-ec2-ebs-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ec2",
+        "ebs"
+      ],
+      "content": {
+        "prompt": "EBS 볼륨의 저장 방식은?",
+        "options": [
+          "블록 스토리지",
+          "객체 저장소"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "EBS는 OS가 디스크처럼 파일 시스템을 올려 쓰는 네트워크 블록 스토리지입니다.",
+      "refs": []
+    }
+  ]
+}

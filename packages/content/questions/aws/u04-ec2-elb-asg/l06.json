@@ -1,0 +1,223 @@
+{
+  "track": "aws",
+  "unit": "u04-ec2-elb-asg",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "aws-elb-lb-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "elb",
+        "alb",
+        "nlb"
+      ],
+      "content": {
+        "prompt": "요청을 여러 대상에 나눠 보내는 ELB 자원은?",
+        "options": [
+          "보안 그룹",
+          "시작 템플릿",
+          "로드 밸런서"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "로드 밸런서는 들어온 요청을 여러 대상에 나눠 보내는 Elastic Load Balancing 자원입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-lb-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "elb",
+        "alb",
+        "nlb"
+      ],
+      "content": {
+        "prompt": "경로·호스트 이름 규칙으로 HTTP를 라우팅하는 것은?",
+        "options": [
+          "ALB",
+          "NLB"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ALB는 HTTP·HTTPS(7계층) 요청을 경로·호스트 이름 규칙으로 라우팅합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-lb-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "elb",
+        "alb",
+        "nlb"
+      ],
+      "content": {
+        "prompt": "TCP·UDP 연결을 낮은 지연으로 전달하는 것은?",
+        "options": [
+          "NLB",
+          "ALB"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "NLB는 TCP·UDP(4계층) 연결을 낮은 지연으로 전달합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-lb-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "elb",
+        "alb",
+        "nlb"
+      ],
+      "content": {
+        "prompt": "NLB는 AZ별 고정 IP를 쓸 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "NLB는 AZ마다 고정 IP를 쓸 수 있어 IP로 접속 대상을 고정해야 할 때 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-lb-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "elb",
+        "alb",
+        "nlb"
+      ],
+      "content": {
+        "prompt": "포트로 요청을 받아 규칙대로 넘기는 구성 요소는 ___ 다.",
+        "hint": "로드 밸런서에서 포트를 듣고 있는 것"
+      },
+      "answer_key": {
+        "accepted": [
+          "리스너",
+          "listener"
+        ]
+      },
+      "explanation": "리스너는 포트로 요청을 받아 규칙에 따라 대상 그룹으로 보냅니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-lb-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "elb",
+        "alb",
+        "nlb"
+      ],
+      "content": {
+        "prompt": "리스너가 요청을 보내는 인스턴스 묶음은 대상 ___ 이다.",
+        "hint": "여러 대상을 묶은 단위"
+      },
+      "answer_key": {
+        "accepted": [
+          "그룹",
+          "group"
+        ]
+      },
+      "explanation": "대상 그룹은 요청을 받을 인스턴스 등을 묶은 것으로 리스너 규칙이 가리킵니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-lb-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "elb",
+        "alb",
+        "nlb"
+      ],
+      "content": {
+        "prompt": "/api 경로 요청만 API 서버 대상 그룹으로 보내려면?",
+        "options": [
+          "NLB",
+          "탄력적 IP",
+          "ALB 경로 규칙"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "ALB는 경로 기준 규칙으로 요청마다 다른 대상 그룹을 고를 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-lb-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "elb",
+        "alb",
+        "nlb"
+      ],
+      "content": {
+        "prompt": "AZ별 고정 IP로 TCP 연결을 받아야 한다면?",
+        "options": [
+          "ALB",
+          "NLB",
+          "보안 그룹"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "NLB는 TCP 연결을 전달하고 AZ별 고정 IP를 쓸 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-lb-009",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "elb",
+        "alb",
+        "nlb"
+      ],
+      "content": {
+        "prompt": "ALB는 TCP·UDP 4계층 연결만 전달한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "ALB는 HTTP·HTTPS 7계층 요청을 다룹니다. TCP·UDP 4계층 전달은 NLB입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-lb-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "elb",
+        "alb",
+        "nlb"
+      ],
+      "content": {
+        "prompt": "로드 밸런서가 하는 일은?",
+        "options": [
+          "요청을 여러 대상에 분산",
+          "OS 이미지 저장",
+          "IP 범위 예약"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "로드 밸런서는 하나의 주소로 받은 요청을 여러 대상에 나눠 보냅니다.",
+      "refs": []
+    }
+  ]
+}
