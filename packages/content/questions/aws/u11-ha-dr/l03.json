@@ -1,0 +1,205 @@
+{
+  "track": "aws",
+  "unit": "u11-ha-dr",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "aws-dr-backup-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "backup",
+        "aws-backup"
+      ],
+      "content": {
+        "prompt": "여러 서비스의 백업을 백업 계획으로 한곳에서 관리하는 서비스는?",
+        "options": [
+          "CloudTrail",
+          "AWS Backup",
+          "Cost Explorer"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "AWS Backup은 여러 서비스의 백업을 주기·보존 기간을 정한 백업 계획으로 한곳에서 관리한다."
+    },
+    {
+      "id": "aws-dr-backup-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "backup",
+        "cross-region"
+      ],
+      "content": {
+        "prompt": "리전 전체 장애에 대비해 백업 사본을 다른 리전에 두는 것은?",
+        "options": [
+          "교차 리전 복사",
+          "교차 계정 복사",
+          "복원 테스트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "교차 리전 복사는 백업 사본을 다른 리전에 두어 원본 리전 전체가 멈춰도 복원할 수 있게 한다."
+    },
+    {
+      "id": "aws-dr-backup-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "backup",
+        "cross-account"
+      ],
+      "content": {
+        "prompt": "계정이 침해돼 백업까지 지워지는 경우에 대비하는 것은?",
+        "options": [
+          "교차 계정 복사",
+          "교차 리전 복사"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "교차 계정 복사는 백업 사본을 다른 계정에 두어 원본 계정이 탈취돼도 사본이 남게 한다."
+    },
+    {
+      "id": "aws-dr-backup-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "backup",
+        "restore-test"
+      ],
+      "content": {
+        "prompt": "백업을 만들어 두면 복원 가능 여부는 확인하지 않아도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "실제로 복원해 봐야 백업을 쓸 수 있는지 안다. 복원 테스트를 주기적으로 한다."
+    },
+    {
+      "id": "aws-dr-backup-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "backup",
+        "aws-backup"
+      ],
+      "content": {
+        "prompt": "AWS Backup의 백업 계획에는 백업 주기와 보존 ___을 정한다.",
+        "hint": "백업을 얼마나 오래 남길지"
+      },
+      "answer_key": {
+        "accepted": [
+          "기간",
+          "기한"
+        ]
+      },
+      "explanation": "백업 계획은 백업 주기와 보존 기간을 정해 여러 서비스의 백업을 한곳에서 관리한다."
+    },
+    {
+      "id": "aws-dr-backup-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "backup",
+        "restore-test"
+      ],
+      "content": {
+        "prompt": "백업을 실제로 쓸 수 있는지 확인하려면 복원 ___를 한다.",
+        "hint": "실제로 해 보며 확인하는 것"
+      },
+      "answer_key": {
+        "accepted": [
+          "테스트",
+          "test",
+          "시험"
+        ]
+      },
+      "explanation": "복원 테스트로 실제 복원해 봐야 백업이 손상되지 않았고 절차가 동작하는지 안다."
+    },
+    {
+      "id": "aws-dr-backup-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "backup",
+        "cross-region"
+      ],
+      "content": {
+        "prompt": "서울 리전 전체 장애 때도 백업을 쓰려면?",
+        "options": [
+          "같은 리전에 2벌",
+          "보존 기간 연장",
+          "다른 리전에 복사"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "같은 리전에만 있는 백업은 리전 장애 때 함께 못 쓴다. 교차 리전 복사로 다른 리전에 사본을 둔다."
+    },
+    {
+      "id": "aws-dr-backup-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "backup",
+        "cross-account"
+      ],
+      "content": {
+        "prompt": "탈취된 관리자 키로 백업이 지워질까 걱정된다. 대책은?",
+        "options": [
+          "백업 주기 단축",
+          "교차 리전 복사",
+          "교차 계정 복사"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "같은 계정 안이면 다른 리전 사본도 탈취된 권한으로 지울 수 있다. 다른 계정에 사본을 둔다."
+    },
+    {
+      "id": "aws-dr-backup-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "backup",
+        "restore-test"
+      ],
+      "content": {
+        "prompt": "백업이 정말 쓸 수 있는지 아는 방법은?",
+        "options": [
+          "백업 목록 확인",
+          "보존 기간 확인",
+          "실제로 복원해 보기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "목록에 백업이 있어도 복원되지 않을 수 있다. 실제로 복원해 봐야 쓸 수 있는지 안다."
+    },
+    {
+      "id": "aws-dr-backup-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "backup",
+        "aws-backup"
+      ],
+      "content": {
+        "prompt": "AWS Backup은 여러 서비스의 백업을 백업 계획으로 한곳에서 관리한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "AWS Backup은 RDS·EBS 등 여러 서비스의 백업 주기와 보존 기간을 백업 계획 하나로 관리한다."
+    }
+  ]
+}

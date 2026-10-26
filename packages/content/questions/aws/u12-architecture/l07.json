@@ -1,0 +1,238 @@
+{
+  "track": "aws",
+  "unit": "u12-architecture",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "aws-app-deploy-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cicd",
+        "oidc"
+      ],
+      "content": {
+        "prompt": "GitHub Actions가 액세스 키 없이 IAM 역할을 맡는 방식은?",
+        "options": [
+          "액세스 키 저장",
+          "OIDC",
+          "루트 사용자"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "OIDC 역할을 쓰면 GitHub Actions가 토큰으로 역할을 맡아 임시 자격 증명을 받는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-circuit-breaker.html"
+      ]
+    },
+    {
+      "id": "aws-app-deploy-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ecs",
+        "circuit-breaker"
+      ],
+      "content": {
+        "prompt": "새 태스크가 안정되지 않으면 이전 배포로 되돌리는 기능은?",
+        "options": [
+          "배포 서킷 브레이커",
+          "지수 백오프",
+          "변경 세트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "배포 서킷 브레이커는 새 태스크가 안정되지 않으면 배포를 실패 처리하고 이전 배포로 롤백한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-circuit-breaker.html"
+      ]
+    },
+    {
+      "id": "aws-app-deploy-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cicd",
+        "ecr"
+      ],
+      "content": {
+        "prompt": "ECR 이미지 태그로 알맞은 것은?",
+        "options": [
+          "커밋 SHA",
+          "latest만"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "커밋 SHA로 태그를 붙이면 어떤 코드가 배포됐는지 알 수 있다. latest는 가리키는 이미지가 계속 바뀐다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-circuit-breaker.html"
+      ]
+    },
+    {
+      "id": "aws-app-deploy-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ecs",
+        "circuit-breaker"
+      ],
+      "content": {
+        "prompt": "배포 서킷 브레이커는 실패한 배포를 이전 배포로 롤백할 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "롤백을 켜 두면 배포가 실패했을 때 마지막으로 완료된 배포로 되돌린다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-circuit-breaker.html"
+      ]
+    },
+    {
+      "id": "aws-app-deploy-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ecs",
+        "task-definition"
+      ],
+      "content": {
+        "prompt": "새 태스크 정의 ___을 등록한 뒤 서비스를 갱신한다.",
+        "hint": "고칠 때마다 번호가 하나씩 늘어나는 판"
+      },
+      "answer_key": {
+        "accepted": [
+          "리비전",
+          "revision"
+        ]
+      },
+      "explanation": "태스크 정의는 바꿀 때마다 새 리비전이 생기고, 서비스가 그 리비전을 쓰도록 갱신한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-circuit-breaker.html"
+      ]
+    },
+    {
+      "id": "aws-app-deploy-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cicd",
+        "oidc"
+      ],
+      "content": {
+        "prompt": "CI가 액세스 키 없이 IAM 역할을 맡게 하는 신원 증명 표준은 ___다.",
+        "hint": "영문 약어 네 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "OIDC",
+          "OpenID Connect"
+        ]
+      },
+      "explanation": "OIDC는 GitHub가 발급한 토큰으로 신원을 증명하고, AWS는 그 토큰을 믿는 역할을 맡긴다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-circuit-breaker.html"
+      ]
+    },
+    {
+      "id": "aws-app-deploy-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ecs",
+        "cli"
+      ],
+      "content": {
+        "prompt": "새 리비전으로 서비스를 배포하는 명령이다. 빈칸은?",
+        "code": {
+          "language": "bash",
+          "source": "aws ecs ___ \\\n  --cluster prod \\\n  --service api \\\n  --task-definition api:42"
+        },
+        "options": [
+          "run-task",
+          "create-cluster",
+          "update-service"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "aws ecs update-service에 새 태스크 정의 리비전을 주면 서비스가 새 태스크로 교체된다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-circuit-breaker.html"
+      ]
+    },
+    {
+      "id": "aws-app-deploy-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cicd",
+        "ecr"
+      ],
+      "content": {
+        "prompt": "latest 태그에만 기대면 생기는 문제는?",
+        "options": [
+          "배포 버전 추적 어려움",
+          "이미지 크기 증가",
+          "빌드 속도 저하"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "latest는 새 이미지를 올릴 때마다 다른 이미지를 가리켜 어떤 코드가 돌고 있는지 알기 어렵다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-circuit-breaker.html"
+      ]
+    },
+    {
+      "id": "aws-app-deploy-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ecs",
+        "circuit-breaker"
+      ],
+      "content": {
+        "prompt": "새 태스크가 상태 검사에 계속 실패한다. 서킷 브레이커는?",
+        "options": [
+          "태스크 수 증가",
+          "그대로 완료 처리",
+          "이전 배포로 롤백"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "롤백을 켠 배포 서킷 브레이커는 새 태스크가 안정되지 않으면 배포를 실패 처리하고 이전 배포로 되돌린다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-circuit-breaker.html"
+      ]
+    },
+    {
+      "id": "aws-app-deploy-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cicd",
+        "oidc"
+      ],
+      "content": {
+        "prompt": "OIDC 역할은 CI에 장기 액세스 키를 저장해 쓰는 방식이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "OIDC 역할은 장기 키 없이 실행마다 토큰으로 역할을 맡아 임시 자격 증명을 받는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-circuit-breaker.html"
+      ]
+    }
+  ]
+}

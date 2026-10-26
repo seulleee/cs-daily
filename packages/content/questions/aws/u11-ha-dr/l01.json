@@ -1,0 +1,205 @@
+{
+  "track": "aws",
+  "unit": "u11-ha-dr",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "aws-ha-multiaz-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ha",
+        "availability"
+      ],
+      "content": {
+        "prompt": "구성 요소 일부가 고장 나도 서비스가 계속 응답하는 성질은?",
+        "options": [
+          "확장성",
+          "고가용성",
+          "내구성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "고가용성은 구성 요소 일부가 고장 나도 서비스가 계속 응답하는 성질이다."
+    },
+    {
+      "id": "aws-ha-multiaz-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ha",
+        "spof"
+      ],
+      "content": {
+        "prompt": "그것 하나가 멈추면 전체가 멈추는 구성 요소는?",
+        "options": [
+          "대상 그룹",
+          "가용 영역",
+          "단일 장애 지점"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "단일 장애 지점은 그것 하나가 멈추면 서비스 전체가 멈추는 구성 요소다."
+    },
+    {
+      "id": "aws-ha-multiaz-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ha",
+        "multi-az"
+      ],
+      "content": {
+        "prompt": "AZ 하나의 장애를 견디려면 서버를 어떻게 두나?",
+        "options": [
+          "둘 이상의 AZ에 분산",
+          "한 AZ에 여러 대"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "서버를 둘 이상의 AZ에 나눠 두어야 한 AZ가 멈춰도 남은 AZ가 응답한다. 같은 AZ에 여러 대 두면 함께 멈춘다."
+    },
+    {
+      "id": "aws-ha-multiaz-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ha",
+        "multi-az"
+      ],
+      "content": {
+        "prompt": "같은 AZ에 서버를 여러 대 두면 AZ 장애를 견딘다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "같은 AZ의 서버는 그 AZ 장애 때 함께 멈춘다. AZ 장애를 견디려면 둘 이상의 AZ에 나눠 둔다."
+    },
+    {
+      "id": "aws-ha-multiaz-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ha",
+        "spof"
+      ],
+      "content": {
+        "prompt": "그것 하나가 멈추면 전체가 멈추는 구성 요소는 단일 ___ 지점이다.",
+        "hint": "서비스를 멈추게 하는 사고를 뜻하는 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "장애",
+          "고장"
+        ]
+      },
+      "explanation": "하나뿐이라 멈추면 전체가 멈추는 구성 요소를 단일 장애 지점이라 한다."
+    },
+    {
+      "id": "aws-ha-multiaz-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ha",
+        "multi-az"
+      ],
+      "content": {
+        "prompt": "AZ 장애를 견디려면 로드 밸런서·서버·DB를 둘 이상의 ___에 나눠 둔다.",
+        "hint": "한 리전 안에서 물리적으로 분리된 데이터 센터 묶음"
+      },
+      "answer_key": {
+        "accepted": [
+          "AZ",
+          "가용 영역",
+          "가용영역",
+          "availability zone"
+        ]
+      },
+      "explanation": "다중 AZ 배치는 로드 밸런서·서버·DB를 둘 이상의 가용 영역에 나눠 한 AZ 장애를 견딘다."
+    },
+    {
+      "id": "aws-ha-multiaz-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ha",
+        "nat"
+      ],
+      "content": {
+        "prompt": "NAT 게이트웨이(영역 NAT)가 AZ-a에만 있다. AZ-a 장애 때 AZ-b 서버는?",
+        "options": [
+          "정상적으로 나감",
+          "인터넷으로 못 나감"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "AZ-b 서브넷의 경로도 AZ-a의 NAT를 가리키므로 함께 못 나간다. AZ마다 NAT 게이트웨이를 두어야 한다."
+    },
+    {
+      "id": "aws-ha-multiaz-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ha",
+        "spof"
+      ],
+      "content": {
+        "prompt": "다음 중 단일 장애 지점은?",
+        "options": [
+          "두 AZ에 둔 ALB",
+          "단일 AZ RDS",
+          "다중 AZ RDS"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "단일 AZ RDS는 그 AZ가 멈추면 DB 전체가 멈춘다. 다중 AZ RDS는 다른 AZ의 대기 인스턴스로 장애 조치된다."
+    },
+    {
+      "id": "aws-ha-multiaz-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ha",
+        "multi-az"
+      ],
+      "content": {
+        "prompt": "ECS 태스크 2개가 모두 AZ-a 서브넷에 있다. 고칠 점은?",
+        "options": [
+          "태스크 수 늘리기",
+          "CPU 늘리기",
+          "서브넷 AZ 나누기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "태스크가 한 AZ에만 있으면 그 AZ 장애 때 모두 멈춘다. 서비스 서브넷을 여러 AZ에 걸쳐 둔다."
+    },
+    {
+      "id": "aws-ha-multiaz-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ha",
+        "availability"
+      ],
+      "content": {
+        "prompt": "고가용성은 일부 구성 요소가 고장 나도 서비스가 계속 응답하는 성질이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "고가용성의 정의다. 단일 장애 지점을 없애고 여러 AZ에 나눠 두는 것이 기본 방법이다."
+    }
+  ]
+}

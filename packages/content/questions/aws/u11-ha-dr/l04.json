@@ -1,0 +1,201 @@
+{
+  "track": "aws",
+  "unit": "u11-ha-dr",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "aws-dr-rpo-rto-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dr",
+        "rpo"
+      ],
+      "content": {
+        "prompt": "장애 때 잃어도 되는 데이터의 최대 기간은?",
+        "options": [
+          "RTO",
+          "RPO",
+          "TTL"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "RPO는 잃어도 되는 데이터의 최대 기간으로, 마지막 복구 지점까지 거슬러 잰다."
+    },
+    {
+      "id": "aws-dr-rpo-rto-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dr",
+        "rto"
+      ],
+      "content": {
+        "prompt": "장애부터 서비스를 다시 열기까지 허용되는 최대 시간은?",
+        "options": [
+          "RTO",
+          "RPO",
+          "TTL"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "RTO는 장애 발생부터 서비스를 다시 열기까지 허용되는 최대 시간이다."
+    },
+    {
+      "id": "aws-dr-rpo-rto-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dr",
+        "rpo"
+      ],
+      "content": {
+        "prompt": "\"데이터를 최대 1시간치까지 잃어도 된다\"는 어느 목표?",
+        "options": [
+          "RPO",
+          "RTO"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "잃어도 되는 데이터의 기간은 RPO다. RTO는 서비스가 멈춰 있어도 되는 시간이다."
+    },
+    {
+      "id": "aws-dr-rpo-rto-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dr",
+        "rto"
+      ],
+      "content": {
+        "prompt": "RTO는 잃어도 되는 데이터의 최대 기간이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "잃어도 되는 데이터의 기간은 RPO다. RTO는 서비스를 다시 열기까지 허용되는 시간이다."
+    },
+    {
+      "id": "aws-dr-rpo-rto-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dr",
+        "rpo"
+      ],
+      "content": {
+        "prompt": "잃어도 되는 데이터의 최대 기간을 뜻하는 약어는 ___이다.",
+        "hint": "복구 시점 목표의 영문 약어 세 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "RPO"
+        ]
+      },
+      "explanation": "RPO(복구 시점 목표)는 장애 때 잃어도 되는 데이터의 최대 기간이다."
+    },
+    {
+      "id": "aws-dr-rpo-rto-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dr",
+        "rto"
+      ],
+      "content": {
+        "prompt": "장애부터 서비스 재개까지 허용되는 최대 시간의 약어는 ___이다.",
+        "hint": "복구 시간 목표의 영문 약어 세 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "RTO"
+        ]
+      },
+      "explanation": "RTO(복구 시간 목표)는 장애 발생부터 서비스를 다시 열기까지 허용되는 최대 시간이다."
+    },
+    {
+      "id": "aws-dr-rpo-rto-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dr",
+        "rpo"
+      ],
+      "content": {
+        "prompt": "하루 한 번 백업한다. 최악의 경우 잃는 데이터는?",
+        "options": [
+          "최대 1시간치",
+          "최대 하루치",
+          "잃지 않음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "마지막 백업 직전에 장애가 나면 그 사이 하루치 데이터를 잃는다. 백업 주기가 RPO를 정한다."
+    },
+    {
+      "id": "aws-dr-rpo-rto-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dr",
+        "rto"
+      ],
+      "content": {
+        "prompt": "복구에 4시간이 걸리는데 RTO는 1시간이다. 판단은?",
+        "options": [
+          "목표 충족",
+          "목표 미달"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "서비스 재개까지 4시간은 허용 시간 1시간을 넘으므로 RTO를 지키지 못한다."
+    },
+    {
+      "id": "aws-dr-rpo-rto-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dr",
+        "rpo"
+      ],
+      "content": {
+        "prompt": "RPO를 줄이려면 바꿀 것은?",
+        "options": [
+          "서버 유형 키우기",
+          "로그 보존 연장",
+          "백업을 더 자주"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "백업 주기가 짧을수록 마지막 복구 지점이 장애 시점에 가까워져 잃는 데이터가 줄어든다."
+    },
+    {
+      "id": "aws-dr-rpo-rto-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dr",
+        "rpo"
+      ],
+      "content": {
+        "prompt": "RPO는 장애 시점에서 마지막 복구 지점까지 거슬러 잰다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "RPO는 마지막 복구 지점 이후 잃는 데이터의 기간이므로 장애 시점에서 거슬러 잰다."
+    }
+  ]
+}

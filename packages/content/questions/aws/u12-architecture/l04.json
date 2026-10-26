@@ -1,0 +1,209 @@
+{
+  "track": "aws",
+  "unit": "u12-architecture",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "aws-app-network-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "architecture",
+        "subnet"
+      ],
+      "content": {
+        "prompt": "웹앱 구성에서 ALB를 두는 서브넷 계층은?",
+        "options": [
+          "퍼블릭",
+          "프라이빗 앱",
+          "프라이빗 DB"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ALB는 인터넷에서 요청을 받아야 하므로 퍼블릭 서브넷에 둔다."
+    },
+    {
+      "id": "aws-app-network-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "architecture",
+        "subnet"
+      ],
+      "content": {
+        "prompt": "ECS 태스크를 두는 서브넷 계층은?",
+        "options": [
+          "퍼블릭",
+          "프라이빗 앱",
+          "프라이빗 DB"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "태스크는 ALB를 거쳐서만 요청을 받으므로 프라이빗 앱 서브넷에 둔다."
+    },
+    {
+      "id": "aws-app-network-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "architecture",
+        "subnet"
+      ],
+      "content": {
+        "prompt": "RDS를 두는 서브넷 계층은?",
+        "options": [
+          "프라이빗 DB",
+          "퍼블릭"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "RDS는 바깥에서 보이지 않게 프라이빗 DB 서브넷에 둔다."
+    },
+    {
+      "id": "aws-app-network-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "architecture",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "보안 그룹 체인에서 DB는 ALB 보안 그룹을 소스로 허용한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "DB는 바로 앞 단계인 태스크 보안 그룹만 소스로 허용한다. ALB는 태스크 보안 그룹이 허용한다."
+    },
+    {
+      "id": "aws-app-network-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "architecture",
+        "endpoint"
+      ],
+      "content": {
+        "prompt": "프라이빗 태스크가 ECR에 닿으려면 NAT 또는 VPC ___가 필요하다.",
+        "hint": "인터넷을 거치지 않고 AWS 서비스에 사설로 붙는 연결"
+      },
+      "answer_key": {
+        "accepted": [
+          "엔드포인트",
+          "endpoint"
+        ]
+      },
+      "explanation": "프라이빗 태스크는 NAT 게이트웨이나 VPC 엔드포인트를 거쳐 ECR·S3에 닿는다."
+    },
+    {
+      "id": "aws-app-network-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "architecture",
+        "multi-az"
+      ],
+      "content": {
+        "prompt": "서브넷은 계층마다 두 ___에 하나씩 만든다.",
+        "hint": "한 리전 안에서 물리적으로 분리된 데이터 센터 묶음"
+      },
+      "answer_key": {
+        "accepted": [
+          "AZ",
+          "가용 영역",
+          "가용영역"
+        ]
+      },
+      "explanation": "계층마다 두 가용 영역에 서브넷을 하나씩 두어야 ALB·태스크·DB를 다중 AZ로 배치할 수 있다."
+    },
+    {
+      "id": "aws-app-network-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "architecture",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "DB 보안 그룹 규칙의 빈칸에 들어갈 소스는?",
+        "code": {
+          "language": "bash",
+          "source": "aws ec2 authorize-security-group-ingress \\\n  --group-id sg-db \\\n  --protocol tcp \\\n  --port 5432 \\\n  --source-group ___"
+        },
+        "options": [
+          "sg-alb",
+          "0.0.0.0/0",
+          "sg-app"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "보안 그룹 체인에서 DB는 바로 앞 단계인 앱(태스크) 보안 그룹만 소스로 허용한다."
+    },
+    {
+      "id": "aws-app-network-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "architecture",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "태스크 보안 그룹의 인바운드 소스로 알맞은 것은?",
+        "options": [
+          "DB 보안 그룹",
+          "ALB 보안 그룹",
+          "0.0.0.0/0"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "태스크는 ALB를 거친 요청만 받아야 하므로 ALB 보안 그룹을 소스로 허용한다."
+    },
+    {
+      "id": "aws-app-network-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "architecture",
+        "subnet"
+      ],
+      "content": {
+        "prompt": "3계층 서브넷을 두 AZ에 하나씩 만들면 서브넷은 몇 개?",
+        "options": [
+          "3개",
+          "4개",
+          "6개"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "퍼블릭·앱·DB 세 계층마다 AZ 두 곳에 하나씩이므로 3 × 2 = 6개다."
+    },
+    {
+      "id": "aws-app-network-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "architecture",
+        "subnet"
+      ],
+      "content": {
+        "prompt": "이 구성에서 ALB만 퍼블릭 서브넷에 두고 앱과 DB는 프라이빗에 둔다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "인터넷에 직접 닿는 것은 ALB뿐이고 태스크와 RDS는 프라이빗 서브넷에 둔다."
+    }
+  ]
+}
