@@ -193,6 +193,14 @@ single 예시 (같은 코드 모양이라도 결과가 언어마다 다른 경�
 - **벤더 숫자·이름 금지**: 특정 회사의 모델명·API 이름·가격·컨텍스트 길이·벤치마크 점수는 쓰지 않는다. "모델이 함수 이름과 인자를 JSON으로 돌려준다"처럼 일반 개념으로 쓴다. 알고리즘·표준 이름(HNSW, IVF, BM25, JSON Schema)과 오픈소스 라이브러리 이름은 허용한다.
 - 각 유닛 마지막 레슨은 "종합: {유닛 이름}"이며, 그 유닛 다른 레슨의 keyPoints만 정답으로 요구한다.
 
+## AWS(aws) 트랙 (2026-10-26, 커리큘럼만 — 비공개 phase2)
+실무 기초 + 끝내면 실제로 써먹을 수 있는 수준(자격증 대비 아님). 12유닛 99레슨, 구체(계정·IAM·VPC·EC2) → 설계(고가용성·Well-Architected) 순.
+- **각 유닛 마지막 레슨 "현장: …"**은 증상 → 확인 순서 → 원인 → 조치를 고르는 판단 레슨이다. 그 유닛과 앞 유닛 keyPoints만 정답으로 쓴다. 12유닛은 ALB+ECS(Fargate)+RDS+S3(+CloudFront) 웹앱 하나를 "웹앱 배포 1~4"로 쌓고 "종합 시나리오"로 끝난다.
+- **코드 빈칸**: `bash`(AWS CLI), `json`(IAM·버킷 정책, validate가 정답을 채워 `JSON.parse` 검사), `hcl`(Terraform). 정답이 될 명령·JSON 키·Terraform 명령은 그 레슨 keyPoints에 있어야 한다. `aws:SourceIp`·`s3:GetObject`처럼 콜론·따옴표가 든 답은 fill 대표 정답이 될 수 없으니 single로 낸다. 실제 계정 ID·액세스 키처럼 보이는 값은 쓰지 않는다(`123456789012`, `my-bucket` 같은 문서 예시 값만).
+- **자주 바뀌는 숫자 금지**: 서비스 한도·가격·무료 사용량·최대 크기·기본 타임아웃은 정답·보기로 쓰지 않는다. 고정 규칙(서브넷 예약 IP 처음 4개·마지막 1개, 보안 그룹 상태 저장, NACL 규칙 번호 순 평가, 명시적 거부 우선, 새 보안 그룹 아웃바운드 전체 허용, 기본 NACL 전체 허용·사용자 지정 NACL 전체 거부)은 써도 된다.
+- **최근 바뀐 동작은 현재 기준으로**: 새 S3 버킷은 퍼블릭 액세스 차단 켜짐·ACL 꺼짐, 새 객체 SSE-S3 기본 적용, CloudFront→S3는 OAI가 아니라 OAC, Terraform S3 백엔드 잠금은 `use_lockfile`(DynamoDB 잠금은 deprecated), NAT 게이트웨이는 영역 NAT·리전 NAT 두 방식, 루트 사용자 MFA는 모든 계정 유형에 요구. 문제를 쓸 때 다시 AWS 공식 문서로 확인한다.
+- 시험 문제·덤프는 쓰지 않는다. 서비스 이름은 AWS 공식 표기(IAM Identity Center, Session Manager 등).
+
 ## 완성 예시 (dsa/u03-stack-queue/l01, 개념: 스택·push/pop·LIFO)
 001 single "나중에 넣은 것을 먼저 꺼내는 자료구조는?" [큐, 스택, 배열] → 1
 002 single "스택에 원소를 넣는 연산은?" [push, pop, peek] → 0
