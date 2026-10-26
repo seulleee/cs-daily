@@ -1,0 +1,234 @@
+{
+  "track": "aws",
+  "unit": "u11-ha-dr",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "aws-dr-strategy-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dr",
+        "backup-restore"
+      ],
+      "content": {
+        "prompt": "다른 리전에 백업만 두고 장애 때 새로 만드는 전략은?",
+        "options": [
+          "백업·복원",
+          "파일럿 라이트",
+          "웜 스탠바이"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "백업·복원은 다른 리전에 백업만 두고 장애 때 환경을 새로 만든다. 가장 싸고 느리다.",
+      "refs": [
+        "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+      ]
+    },
+    {
+      "id": "aws-dr-strategy-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dr",
+        "multi-site"
+      ],
+      "content": {
+        "prompt": "여러 리전이 동시에 트래픽을 받는 DR 전략은?",
+        "options": [
+          "웜 스탠바이",
+          "파일럿 라이트",
+          "다중 사이트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "다중 사이트 액티브-액티브는 여러 리전이 동시에 트래픽을 받는다. 가장 빠르고 비싸다.",
+      "refs": [
+        "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+      ]
+    },
+    {
+      "id": "aws-dr-strategy-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dr",
+        "pilot-light"
+      ],
+      "content": {
+        "prompt": "데이터 복제는 켜 두고 서버는 꺼 두는 전략은?",
+        "options": [
+          "웜 스탠바이",
+          "파일럿 라이트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "파일럿 라이트는 DB 복제 같은 데이터 계층만 켜 두고 앱 서버는 장애 때 띄운다.",
+      "refs": [
+        "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+      ]
+    },
+    {
+      "id": "aws-dr-strategy-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dr",
+        "pilot-light"
+      ],
+      "content": {
+        "prompt": "파일럿 라이트는 작게 줄인 전체 환경을 계속 돌려 둔다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "작게 줄인 전체 환경을 계속 돌리는 것은 웜 스탠바이다. 파일럿 라이트는 서버를 꺼 둔다.",
+      "refs": [
+        "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+      ]
+    },
+    {
+      "id": "aws-dr-strategy-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dr",
+        "warm-standby"
+      ],
+      "content": {
+        "prompt": "작게 줄인 전체 환경을 계속 돌리다 장애 때 키우는 전략은 웜 ___이다.",
+        "hint": "대기한다는 뜻의 영어 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "스탠바이",
+          "standby"
+        ]
+      },
+      "explanation": "웜 스탠바이는 줄인 규모의 전체 환경이 늘 돌고 있어 장애 때 용량만 키우면 된다.",
+      "refs": [
+        "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+      ]
+    },
+    {
+      "id": "aws-dr-strategy-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dr",
+        "pilot-light"
+      ],
+      "content": {
+        "prompt": "데이터 복제만 켜 두고 서버는 장애 때 띄우는 전략은 파일럿 ___이다.",
+        "hint": "빛을 뜻하는 영어 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "라이트",
+          "light"
+        ]
+      },
+      "explanation": "파일럿 라이트는 데이터 복제만 상시로 두고 앱 서버는 꺼 두었다가 장애 때 띄운다.",
+      "refs": [
+        "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+      ]
+    },
+    {
+      "id": "aws-dr-strategy-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dr",
+        "backup-restore"
+      ],
+      "content": {
+        "prompt": "네 전략 중 평소 비용이 가장 낮은 것은?",
+        "options": [
+          "웜 스탠바이",
+          "백업·복원",
+          "다중 사이트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "백업·복원은 다른 리전에 백업만 두므로 평소 비용이 가장 낮지만 복구는 가장 느리다.",
+      "refs": [
+        "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+      ]
+    },
+    {
+      "id": "aws-dr-strategy-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dr",
+        "multi-site"
+      ],
+      "content": {
+        "prompt": "RTO가 거의 0이어야 한다. 알맞은 전략은?",
+        "options": [
+          "백업·복원",
+          "파일럿 라이트",
+          "다중 사이트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "다중 사이트 액티브-액티브는 여러 리전이 이미 트래픽을 받고 있어 복구 시간이 가장 짧다.",
+      "refs": [
+        "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+      ]
+    },
+    {
+      "id": "aws-dr-strategy-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dr",
+        "pilot-light"
+      ],
+      "content": {
+        "prompt": "DB 복제는 돌고 앱 서버는 장애 때 띄운다. 어느 전략?",
+        "options": [
+          "웜 스탠바이",
+          "백업·복원",
+          "파일럿 라이트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "데이터 복제만 켜 두고 서버를 꺼 두는 방식은 파일럿 라이트다. 웜 스탠바이는 서버도 작게 돌린다.",
+      "refs": [
+        "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+      ]
+    },
+    {
+      "id": "aws-dr-strategy-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "dr",
+        "backup-restore"
+      ],
+      "content": {
+        "prompt": "백업·복원은 가장 싸지만 복구가 가장 느린 DR 전략이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "백업·복원은 장애 때 환경을 새로 만들고 데이터를 복원해야 해서 가장 싸고 가장 느리다.",
+      "refs": [
+        "https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html"
+      ]
+    }
+  ]
+}

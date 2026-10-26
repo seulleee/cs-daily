@@ -1,0 +1,235 @@
+{
+  "track": "aws",
+  "unit": "u12-architecture",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "aws-app-triage-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "troubleshooting",
+        "alb"
+      ],
+      "content": {
+        "prompt": "ALB가 503을 돌려준다. 뜻은?",
+        "options": [
+          "대상 응답 지연",
+          "등록된 대상 없음",
+          "인증서 만료"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ALB 503은 대상 그룹에 등록된 대상이 없다는 뜻이다. ECS 서비스 이벤트에서 태스크가 왜 없는지 본다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-troubleshooting.html"
+      ]
+    },
+    {
+      "id": "aws-app-triage-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "troubleshooting",
+        "order"
+      ],
+      "content": {
+        "prompt": "사이트 오류의 원인 계층을 좁히는 순서는?",
+        "options": [
+          "DB에서 DNS 쪽으로",
+          "DNS에서 DB 쪽으로"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "바깥에서 안으로, DNS·CloudFront → ALB → 대상 그룹 → 태스크 → DB 순으로 좁힌다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-troubleshooting.html"
+      ]
+    },
+    {
+      "id": "aws-app-triage-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "troubleshooting",
+        "alb"
+      ],
+      "content": {
+        "prompt": "대상 그룹에 등록된 대상이 없을 때 ALB 응답 코드는?",
+        "options": [
+          "502",
+          "503"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "등록된 대상이 없으면 503이다. 502·504는 대상이 있는데 잘못 응답했거나 제때 응답하지 않은 경우다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-troubleshooting.html"
+      ]
+    },
+    {
+      "id": "aws-app-triage-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "troubleshooting",
+        "alb"
+      ],
+      "content": {
+        "prompt": "ALB 503이면 먼저 태스크 로그에서 DB 오류를 찾는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "503은 등록된 대상이 없다는 뜻이므로 ECS 서비스 이벤트부터 본다. 태스크 로그는 502·504일 때 먼저 본다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-troubleshooting.html"
+      ]
+    },
+    {
+      "id": "aws-app-triage-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "troubleshooting",
+        "alb"
+      ],
+      "content": {
+        "prompt": "ALB 503이면 대상 그룹에 등록된 ___이 없다.",
+        "hint": "로드 밸런서가 요청을 나눠 보내는 곳"
+      },
+      "answer_key": {
+        "accepted": [
+          "대상",
+          "target",
+          "타깃"
+        ]
+      },
+      "explanation": "ALB 503은 대상 그룹에 등록된 대상이 없다는 뜻이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-troubleshooting.html"
+      ]
+    },
+    {
+      "id": "aws-app-triage-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "troubleshooting",
+        "ecs"
+      ],
+      "content": {
+        "prompt": "태스크가 반복 종료되면 태스크 ___에서 DB 연결 오류를 찾는다.",
+        "hint": "실행 중 남긴 기록"
+      },
+      "answer_key": {
+        "accepted": [
+          "로그",
+          "log",
+          "logs"
+        ]
+      },
+      "explanation": "태스크 로그에 DB 연결 오류가 있으면 보안 그룹·비밀값·서브넷을 확인한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-troubleshooting.html"
+      ]
+    },
+    {
+      "id": "aws-app-triage-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "troubleshooting",
+        "ecs"
+      ],
+      "content": {
+        "prompt": "ALB가 503을 돌려준다. 가장 먼저 볼 곳은?",
+        "options": [
+          "RDS 스냅샷",
+          "Route 53 레코드",
+          "ECS 서비스 이벤트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "503은 대상이 없다는 뜻이므로 ECS 서비스 이벤트에서 태스크가 왜 등록되지 않았는지 본다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-troubleshooting.html"
+      ]
+    },
+    {
+      "id": "aws-app-triage-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "troubleshooting",
+        "database"
+      ],
+      "content": {
+        "prompt": "태스크 로그에 DB 연결 시간 초과가 찍힌다. 확인할 것은?",
+        "options": [
+          "DB 보안 그룹",
+          "ACM 인증서",
+          "CloudFront TTL"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "연결 시간 초과는 네트워크 경로 문제이므로 DB 보안 그룹이 태스크 보안 그룹과 포트를 허용하는지 본다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-troubleshooting.html"
+      ]
+    },
+    {
+      "id": "aws-app-triage-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "troubleshooting",
+        "ecs"
+      ],
+      "content": {
+        "prompt": "ALB가 502를 돌려주고 태스크는 실행 중이다. 다음에 볼 것은?",
+        "options": [
+          "예산 알림",
+          "Route 53 TTL",
+          "태스크 로그"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "502·504는 대상이 잘못 응답했거나 제때 응답하지 않은 것이므로 태스크 로그에서 앱 오류를 찾는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-troubleshooting.html"
+      ]
+    },
+    {
+      "id": "aws-app-triage-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "troubleshooting",
+        "order"
+      ],
+      "content": {
+        "prompt": "사이트 오류는 DNS·CloudFront부터 DB 쪽으로 바깥에서 안으로 좁힌다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "DNS·CloudFront → ALB → 대상 그룹 → 태스크 → DB 순으로 바깥에서 안으로 원인 계층을 좁힌다.",
+      "refs": [
+        "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-troubleshooting.html"
+      ]
+    }
+  ]
+}

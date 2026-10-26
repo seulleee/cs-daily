@@ -1,0 +1,204 @@
+{
+  "track": "aws",
+  "unit": "u12-architecture",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "aws-app-opscheck-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ops",
+        "alarm"
+      ],
+      "content": {
+        "prompt": "ALB 5xx 증가를 바로 알려면 무엇을 두나?",
+        "options": [
+          "비용 할당 태그",
+          "경보와 SNS 알림",
+          "수명 주기 규칙"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ALB 5xx 응답 수에 CloudWatch 경보를 걸고 SNS로 알림을 보낸다."
+    },
+    {
+      "id": "aws-app-opscheck-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ops",
+        "logs"
+      ],
+      "content": {
+        "prompt": "로그 그룹마다 정해야 하는 것은?",
+        "options": [
+          "보존 기간",
+          "스토리지 클래스",
+          "대상 유형"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "로그 그룹마다 보존 기간을 정하지 않으면 로그가 만료되지 않아 저장 비용이 계속 쌓인다."
+    },
+    {
+      "id": "aws-app-opscheck-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ops",
+        "cloudtrail"
+      ],
+      "content": {
+        "prompt": "API 호출 기록을 S3에 계속 남기려면 켜는 것은?",
+        "options": [
+          "CloudTrail 추적",
+          "Logs Insights"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "CloudTrail 추적을 켜면 API 호출 이벤트를 S3에 계속 저장해 장기 보관할 수 있다."
+    },
+    {
+      "id": "aws-app-opscheck-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ops",
+        "backup"
+      ],
+      "content": {
+        "prompt": "RDS 자동 백업만 켜 두면 복원 테스트는 필요 없다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "자동 백업과 보존 기간을 확인하고, 실제로 복원되는지 주기적으로 복원 테스트를 한다."
+    },
+    {
+      "id": "aws-app-opscheck-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ops",
+        "logs"
+      ],
+      "content": {
+        "prompt": "로그 그룹마다 ___ 기간을 정해 저장 비용이 계속 쌓이지 않게 한다.",
+        "hint": "얼마나 오래 남겨 둘지를 뜻하는 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "보존",
+          "retention"
+        ]
+      },
+      "explanation": "로그 그룹의 보존 기간 기본값은 만료 없음이라 정해 두지 않으면 비용이 계속 쌓인다."
+    },
+    {
+      "id": "aws-app-opscheck-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ops",
+        "cost"
+      ],
+      "content": {
+        "prompt": "환경별 비용을 보려면 비용 할당 ___를 활성화한다.",
+        "hint": "리소스에 붙이는 키와 값의 쌍"
+      },
+      "answer_key": {
+        "accepted": [
+          "태그",
+          "tag"
+        ]
+      },
+      "explanation": "비용 할당 태그를 결제 콘솔에서 활성화하면 Env=prod처럼 환경별로 비용을 나눠 본다."
+    },
+    {
+      "id": "aws-app-opscheck-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ops",
+        "alarm"
+      ],
+      "content": {
+        "prompt": "DLQ 메시지 수가 늘 때 알림을 받으려면?",
+        "options": [
+          "큐를 삭제",
+          "보존 기간 연장",
+          "경보에 SNS 연결"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DLQ 메시지 수 지표에 경보를 걸고 SNS로 알리면 처리 실패가 쌓이는 것을 바로 안다."
+    },
+    {
+      "id": "aws-app-opscheck-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ops",
+        "backup"
+      ],
+      "content": {
+        "prompt": "출시 전 백업 점검으로 알맞은 것은?",
+        "options": [
+          "인스턴스 크기 확대",
+          "캐시 무효화",
+          "복원 테스트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "RDS 자동 백업과 보존 기간을 확인하고 실제로 복원해 봐야 데이터를 되살릴 수 있는지 안다."
+    },
+    {
+      "id": "aws-app-opscheck-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ops",
+        "alarm"
+      ],
+      "content": {
+        "prompt": "대상 하나가 unhealthy가 된 것을 바로 알려면?",
+        "options": [
+          "unhealthy 대상 경보",
+          "로그 보존 연장",
+          "예산 알림"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "unhealthy 대상 수에 경보를 걸고 SNS로 알리면 대상이 빠지는 순간을 안다."
+    },
+    {
+      "id": "aws-app-opscheck-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ops",
+        "alarm"
+      ],
+      "content": {
+        "prompt": "ALB 5xx 응답 수에 경보를 걸어 SNS로 알림을 받는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "ALB 5xx, unhealthy 대상, RDS CPU, DLQ 메시지 수 같은 지표에 경보를 걸어 SNS로 알린다."
+    }
+  ]
+}

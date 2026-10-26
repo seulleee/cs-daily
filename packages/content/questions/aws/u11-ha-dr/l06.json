@@ -1,0 +1,206 @@
+{
+  "track": "aws",
+  "unit": "u11-ha-dr",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "aws-ha-retry-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "retry",
+        "backoff"
+      ],
+      "content": {
+        "prompt": "재시도할 때마다 대기 간격을 배수로 늘리는 방식은?",
+        "options": [
+          "지터",
+          "지수 백오프",
+          "타임아웃"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "지수 백오프는 재시도마다 대기 간격을 2배처럼 배수로 늘린다."
+    },
+    {
+      "id": "aws-ha-retry-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "resilience",
+        "circuit-breaker"
+      ],
+      "content": {
+        "prompt": "실패가 이어지는 의존 서비스 호출을 잠시 끊는 장치는?",
+        "options": [
+          "서킷 브레이커",
+          "지터",
+          "타임아웃"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "서킷 브레이커는 실패가 계속되는 호출을 잠시 끊어 장애가 호출하는 쪽으로 번지지 않게 한다."
+    },
+    {
+      "id": "aws-ha-retry-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "retry",
+        "jitter"
+      ],
+      "content": {
+        "prompt": "재시도 대기 간격에 무작위 값을 더하는 것은?",
+        "options": [
+          "지터",
+          "지수 백오프"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "지터는 대기 간격에 무작위 값을 더해 여러 클라이언트가 같은 순간에 몰리지 않게 한다."
+    },
+    {
+      "id": "aws-ha-retry-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "retry",
+        "jitter"
+      ],
+      "content": {
+        "prompt": "지터는 재시도 간격을 배수로 늘리는 기법이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "간격을 배수로 늘리는 것은 지수 백오프다. 지터는 간격에 무작위 값을 더한다."
+    },
+    {
+      "id": "aws-ha-retry-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "resilience",
+        "timeout"
+      ],
+      "content": {
+        "prompt": "응답 없는 호출을 무한정 기다리지 않게 두는 대기 시간 상한은 ___이다.",
+        "hint": "시간 초과를 뜻하는 영어 외래어"
+      },
+      "answer_key": {
+        "accepted": [
+          "타임아웃",
+          "timeout",
+          "time out"
+        ]
+      },
+      "explanation": "타임아웃은 대기 시간 상한으로, 느린 호출 때문에 스레드·연결이 묶이는 것을 막는다."
+    },
+    {
+      "id": "aws-ha-retry-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "retry",
+        "backoff"
+      ],
+      "content": {
+        "prompt": "재시도 간격을 배수로 늘리는 방식은 지수 ___이다.",
+        "hint": "뒤로 물러선다는 뜻의 영어 외래어"
+      },
+      "answer_key": {
+        "accepted": [
+          "백오프",
+          "backoff",
+          "back off"
+        ]
+      },
+      "explanation": "지수 백오프는 재시도할 때마다 대기 간격을 배수로 늘려 회복 중인 서비스의 부담을 줄인다."
+    },
+    {
+      "id": "aws-ha-retry-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "retry",
+        "backoff"
+      ],
+      "content": {
+        "prompt": "첫 대기 1초, 지수 백오프(배수 2)면 세 번째 재시도 전 대기는?",
+        "options": [
+          "3초",
+          "4초",
+          "6초"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "대기 간격이 1초, 2초, 4초로 배수만큼 늘어나므로 세 번째 재시도 전에는 4초를 기다린다."
+    },
+    {
+      "id": "aws-ha-retry-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "retry",
+        "jitter"
+      ],
+      "content": {
+        "prompt": "클라이언트들이 같은 간격으로 재시도해 한꺼번에 몰린다. 더할 것은?",
+        "options": [
+          "지터",
+          "더 짧은 간격",
+          "무한 재시도"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "지터로 대기 간격에 무작위 값을 더하면 재시도 시각이 흩어져 한꺼번에 몰리지 않는다."
+    },
+    {
+      "id": "aws-ha-retry-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "resilience",
+        "timeout"
+      ],
+      "content": {
+        "prompt": "느린 의존 서비스를 기다리다 스레드가 바닥난다. 먼저 둘 것은?",
+        "options": [
+          "즉시 재시도",
+          "대기 상한(타임아웃)",
+          "스레드 수 고정"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "타임아웃으로 대기 시간 상한을 두면 느린 호출이 스레드를 계속 붙잡지 못한다."
+    },
+    {
+      "id": "aws-ha-retry-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "resilience",
+        "circuit-breaker"
+      ],
+      "content": {
+        "prompt": "서킷 브레이커는 실패가 이어지는 호출을 잠시 끊어 장애 전파를 막는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "서킷 브레이커는 의존 서비스 실패가 이어지면 호출을 잠시 멈춰 호출하는 쪽까지 멈추지 않게 한다."
+    }
+  ]
+}

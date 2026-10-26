@@ -1,0 +1,203 @@
+{
+  "track": "aws",
+  "unit": "u12-architecture",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "aws-wa-costopt-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cost",
+        "rightsizing"
+      ],
+      "content": {
+        "prompt": "사용률이 계속 낮은 인스턴스를 더 작게 줄이는 것은?",
+        "options": [
+          "적정 크기 조정",
+          "수평 확장",
+          "스팟 활용"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "적정 크기 조정은 사용률이 계속 낮은 인스턴스·태스크를 더 작은 크기로 줄인다."
+    },
+    {
+      "id": "aws-wa-costopt-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cost",
+        "commitment"
+      ],
+      "content": {
+        "prompt": "꾸준히 쓰는 양을 Savings Plans로 할인받는 방법은?",
+        "options": [
+          "스팟 활용",
+          "약정 할인",
+          "유휴 리소스 정리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "약정 할인은 꾸준히 쓰는 양을 Savings Plans나 예약 인스턴스로 약정해 할인받는다."
+    },
+    {
+      "id": "aws-wa-costopt-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cost",
+        "spot"
+      ],
+      "content": {
+        "prompt": "중단돼도 다시 돌리면 되는 배치 작업에 알맞은 것은?",
+        "options": [
+          "예약 인스턴스",
+          "스팟 인스턴스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스팟은 AWS가 회수해 중단될 수 있지만 크게 할인되므로 다시 돌리면 되는 작업에 맞다."
+    },
+    {
+      "id": "aws-wa-costopt-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cost",
+        "spot"
+      ],
+      "content": {
+        "prompt": "스팟 인스턴스는 중단되면 안 되는 DB 서버에 알맞다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "스팟은 AWS가 회수하면 중단되므로 중단돼도 되는 배치·개발 작업에 쓴다."
+    },
+    {
+      "id": "aws-wa-costopt-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cost",
+        "idle"
+      ],
+      "content": {
+        "prompt": "연결 안 된 EBS 볼륨을 지우는 것은 ___ 리소스 정리다.",
+        "hint": "쓰이지 않고 놀고 있다는 뜻의 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "유휴",
+          "idle"
+        ]
+      },
+      "explanation": "쓰이지 않는데 비용이 나가는 유휴 리소스를 지우면 비용이 바로 준다."
+    },
+    {
+      "id": "aws-wa-costopt-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cost",
+        "rightsizing"
+      ],
+      "content": {
+        "prompt": "사용률이 낮은 인스턴스를 작은 크기로 바꾸는 것은 적정 크기 ___이다.",
+        "hint": "알맞게 바꾼다는 뜻의 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "조정",
+          "조절"
+        ]
+      },
+      "explanation": "적정 크기 조정은 실제 사용률에 맞춰 인스턴스·태스크 크기를 줄인다."
+    },
+    {
+      "id": "aws-wa-costopt-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cost",
+        "rightsizing"
+      ],
+      "content": {
+        "prompt": "CPU 사용률이 몇 주째 매우 낮다. 알맞은 조치는?",
+        "options": [
+          "약정 할인",
+          "수평 확장",
+          "적정 크기 조정"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "사용률이 계속 낮으면 더 작은 크기로 줄인다. 약정은 크기를 맞춘 뒤에 해야 낭비가 없다."
+    },
+    {
+      "id": "aws-wa-costopt-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cost",
+        "commitment"
+      ],
+      "content": {
+        "prompt": "밤낮 없이 꾸준히 도는 API 서버 비용을 줄이려면?",
+        "options": [
+          "약정 할인",
+          "스팟 활용"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "꾸준히 쓰는 양은 약정 할인이 맞다. 스팟은 중단될 수 있어 상시 API 서버에 맞지 않는다."
+    },
+    {
+      "id": "aws-wa-costopt-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cost",
+        "idle"
+      ],
+      "content": {
+        "prompt": "다음 중 유휴 리소스 정리 대상은?",
+        "options": [
+          "실행 중인 RDS",
+          "트래픽 받는 ALB",
+          "연결 안 된 EBS"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "어떤 인스턴스에도 연결 안 된 EBS 볼륨은 쓰이지 않는데 저장 요금이 나가는 유휴 리소스다."
+    },
+    {
+      "id": "aws-wa-costopt-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cost",
+        "rightsizing"
+      ],
+      "content": {
+        "prompt": "적정 크기 조정은 사용률이 낮은 자원을 더 작은 크기로 줄인다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "적정 크기 조정은 사용률이 계속 낮은 인스턴스·태스크를 실제 사용량에 맞는 크기로 줄인다."
+    }
+  ]
+}

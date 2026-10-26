@@ -1,0 +1,237 @@
+{
+  "track": "aws",
+  "unit": "u12-architecture",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "aws-app-dataconn-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ecs",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "DB 비밀번호를 보관하고 태스크에 넣어 주는 서비스는?",
+        "options": [
+          "ECR",
+          "Secrets Manager",
+          "CloudTrail"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Secrets Manager가 DB 비밀번호를 보관하고, 태스크 정의 secrets로 환경 변수에 넣는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/secrets-envvar-secrets-manager.html"
+      ]
+    },
+    {
+      "id": "aws-app-dataconn-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ecs",
+        "iam-role"
+      ],
+      "content": {
+        "prompt": "앱 코드가 S3 API를 호출할 때 쓰는 역할은?",
+        "options": [
+          "태스크 역할",
+          "태스크 실행 역할",
+          "루트 사용자"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "태스크 역할은 앱 코드가 S3 같은 AWS API를 부를 때 쓴다. 실행 역할은 ECS가 쓰는 역할이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/secrets-envvar-secrets-manager.html"
+      ]
+    },
+    {
+      "id": "aws-app-dataconn-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ecs",
+        "iam-role"
+      ],
+      "content": {
+        "prompt": "ECS가 이미지를 받고 비밀값을 읽을 때 쓰는 역할은?",
+        "options": [
+          "태스크 역할",
+          "태스크 실행 역할"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "태스크 실행 역할은 ECS가 이미지를 받고 비밀값·로그를 다룰 때 쓴다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/secrets-envvar-secrets-manager.html"
+      ]
+    },
+    {
+      "id": "aws-app-dataconn-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ecs",
+        "iam-role"
+      ],
+      "content": {
+        "prompt": "앱이 S3에 파일을 올리는 권한은 태스크 실행 역할에 준다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "앱 코드가 부르는 S3 권한은 태스크 역할에 준다. 실행 역할은 ECS가 태스크를 띄울 때 쓴다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/secrets-envvar-secrets-manager.html"
+      ]
+    },
+    {
+      "id": "aws-app-dataconn-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ecs",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "DB 비밀번호를 환경 변수로 넣는 태스크 정의 키는?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"containerDefinitions\": [{\n    \"name\": \"api\",\n    \"image\": \"api:abc123\",\n    \"___\": [{\n      \"name\": \"DB_PASSWORD\",\n      \"valueFrom\": \"arn:aws:secretsmanager:...\"\n    }]\n  }]\n}"
+        },
+        "hint": "비밀값을 뜻하는 영어 복수형"
+      },
+      "answer_key": {
+        "accepted": [
+          "secrets"
+        ]
+      },
+      "explanation": "컨테이너 정의의 secrets에 이름과 valueFrom(비밀값 ARN)을 적으면 ECS가 환경 변수로 넣는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/secrets-envvar-secrets-manager.html"
+      ]
+    },
+    {
+      "id": "aws-app-dataconn-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ecs",
+        "iam-role"
+      ],
+      "content": {
+        "prompt": "앱 코드가 S3를 호출할 때 쓰는 역할은 ___ 역할이다.",
+        "hint": "ECS에서 실행되는 컨테이너 묶음 하나"
+      },
+      "answer_key": {
+        "accepted": [
+          "태스크",
+          "task"
+        ]
+      },
+      "explanation": "태스크 역할은 실행 중인 앱 코드가 AWS API를 부를 때 쓰는 역할이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/secrets-envvar-secrets-manager.html"
+      ]
+    },
+    {
+      "id": "aws-app-dataconn-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ecs",
+        "iam-role"
+      ],
+      "content": {
+        "prompt": "태스크가 시작 때 비밀값을 못 읽어 실패한다. 권한을 볼 역할은?",
+        "options": [
+          "태스크 역할",
+          "서비스 연결 역할",
+          "태스크 실행 역할"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "시작 때 비밀값을 읽는 것은 ECS의 일이므로 태스크 실행 역할의 권한을 본다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/secrets-envvar-secrets-manager.html"
+      ]
+    },
+    {
+      "id": "aws-app-dataconn-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "presigned-url"
+      ],
+      "content": {
+        "prompt": "사용자 사진 업로드 방식으로 알맞은 것은?",
+        "options": [
+          "태스크 디스크 저장",
+          "DB에 파일 저장",
+          "미리 서명된 URL"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "미리 서명된 URL로 클라이언트가 S3에 바로 올리고, 앱은 객체 키만 저장한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/secrets-envvar-secrets-manager.html"
+      ]
+    },
+    {
+      "id": "aws-app-dataconn-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "cloudfront"
+      ],
+      "content": {
+        "prompt": "S3의 정적 파일을 CloudFront로 제공할 때 접근 방식은?",
+        "options": [
+          "OAC",
+          "퍼블릭 버킷",
+          "OAI"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "CloudFront는 OAC로 S3에 접근하고 버킷은 공개하지 않는다. OAI는 레거시 방식이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/secrets-envvar-secrets-manager.html"
+      ]
+    },
+    {
+      "id": "aws-app-dataconn-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ecs",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "Secrets Manager 값은 태스크 정의 secrets로 환경 변수에 넣는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "태스크 정의의 secrets에 비밀값을 지정하면 ECS가 컨테이너 시작 때 환경 변수로 넣는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/secrets-envvar-secrets-manager.html"
+      ]
+    }
+  ]
+}

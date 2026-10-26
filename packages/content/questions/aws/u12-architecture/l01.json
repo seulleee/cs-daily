@@ -1,0 +1,235 @@
+{
+  "track": "aws",
+  "unit": "u12-architecture",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "aws-wa-pillars-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "well-architected",
+        "pillars"
+      ],
+      "content": {
+        "prompt": "Well-Architected 프레임워크의 기둥은 몇 개인가?",
+        "options": [
+          "4개",
+          "5개",
+          "6개"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Well-Architected 프레임워크는 운영 우수성·보안·안정성·성능 효율성·비용 최적화·지속 가능성 여섯 기둥이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html"
+      ]
+    },
+    {
+      "id": "aws-wa-pillars-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "well-architected",
+        "reliability"
+      ],
+      "content": {
+        "prompt": "장애를 견디고 복구하는 능력을 다루는 기둥은?",
+        "options": [
+          "보안",
+          "안정성",
+          "성능 효율성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "안정성 기둥은 장애를 견디고 복구하는 능력을 다룬다. 보안은 권한과 데이터 보호를 다룬다.",
+      "refs": [
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html"
+      ]
+    },
+    {
+      "id": "aws-wa-pillars-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "well-architected",
+        "cost"
+      ],
+      "content": {
+        "prompt": "불필요한 지출 제거는 어느 기둥인가?",
+        "options": [
+          "비용 최적화",
+          "지속 가능성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "불필요한 지출 제거는 비용 최적화 기둥이다. 지속 가능성은 자원 사용과 환경 영향 줄이기를 다룬다.",
+      "refs": [
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html"
+      ]
+    },
+    {
+      "id": "aws-wa-pillars-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "well-architected",
+        "security"
+      ],
+      "content": {
+        "prompt": "권한과 데이터 보호는 안정성 기둥이 다룬다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "권한과 데이터 보호는 보안 기둥이다. 안정성은 장애를 견디고 복구하는 능력을 다룬다.",
+      "refs": [
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html"
+      ]
+    },
+    {
+      "id": "aws-wa-pillars-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "well-architected",
+        "performance"
+      ],
+      "content": {
+        "prompt": "자원을 알맞게 골라 쓰는 능력은 성능 ___ 기둥이다.",
+        "hint": "들인 자원에 비해 얻는 성과의 정도"
+      },
+      "answer_key": {
+        "accepted": [
+          "효율성",
+          "효율",
+          "efficiency"
+        ]
+      },
+      "explanation": "성능 효율성 기둥은 요구에 맞게 자원을 알맞게 골라 쓰는 능력을 다룬다.",
+      "refs": [
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html"
+      ]
+    },
+    {
+      "id": "aws-wa-pillars-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "well-architected",
+        "operations"
+      ],
+      "content": {
+        "prompt": "변경·관찰·개선 절차를 다루는 기둥은 운영 ___이다.",
+        "hint": "뛰어나다는 뜻의 세 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "우수성",
+          "excellence"
+        ]
+      },
+      "explanation": "운영 우수성 기둥은 변경을 적용하고 관찰하며 절차를 개선하는 방법을 다룬다.",
+      "refs": [
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html"
+      ]
+    },
+    {
+      "id": "aws-wa-pillars-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "well-architected",
+        "reliability"
+      ],
+      "content": {
+        "prompt": "DB가 한 AZ에만 있어 AZ 장애 때 서비스가 멈춘다. 어느 기둥?",
+        "options": [
+          "안정성",
+          "비용 최적화",
+          "지속 가능성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "장애를 견디고 복구하는 능력의 문제이므로 안정성 기둥에 해당한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html"
+      ]
+    },
+    {
+      "id": "aws-wa-pillars-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "well-architected",
+        "security"
+      ],
+      "content": {
+        "prompt": "0.0.0.0/0에 DB 포트가 열려 있다. 어느 기둥 문제인가?",
+        "options": [
+          "성능 효율성",
+          "보안",
+          "운영 우수성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "누구나 DB에 접근할 수 있게 둔 것은 권한과 데이터 보호의 문제이므로 보안 기둥이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html"
+      ]
+    },
+    {
+      "id": "aws-wa-pillars-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "well-architected",
+        "operations"
+      ],
+      "content": {
+        "prompt": "배포 절차를 기록하고 회고로 고쳐 나간다. 어느 기둥?",
+        "options": [
+          "보안",
+          "비용 최적화",
+          "운영 우수성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "변경 절차를 정하고 결과를 관찰해 개선하는 일은 운영 우수성 기둥이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html"
+      ]
+    },
+    {
+      "id": "aws-wa-pillars-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "well-architected",
+        "pillars"
+      ],
+      "content": {
+        "prompt": "Well-Architected 프레임워크는 여섯 기둥으로 설계를 점검한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "AWS가 정리한 설계 점검 기준이며 운영 우수성·보안·안정성·성능 효율성·비용 최적화·지속 가능성으로 나뉜다.",
+      "refs": [
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html"
+      ]
+    }
+  ]
+}

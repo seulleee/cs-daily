@@ -1,0 +1,236 @@
+{
+  "track": "aws",
+  "unit": "u12-architecture",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "aws-wa-seccheck-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-analyzer"
+      ],
+      "content": {
+        "prompt": "외부 계정이나 공개로 공유된 리소스를 찾아 주는 도구는?",
+        "options": [
+          "CloudTrail",
+          "Access Analyzer",
+          "Cost Explorer"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "IAM Access Analyzer는 리소스 정책을 분석해 외부 계정이나 공개로 공유된 리소스를 찾아 준다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html"
+      ]
+    },
+    {
+      "id": "aws-wa-seccheck-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "account"
+      ],
+      "content": {
+        "prompt": "루트 사용자 MFA 확인은 어느 점검 영역인가?",
+        "options": [
+          "계정",
+          "네트워크",
+          "데이터"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "루트 MFA, 안 쓰는 액세스 키, 사람 사용자 로그인 방식은 계정 점검에 속한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html"
+      ]
+    },
+    {
+      "id": "aws-wa-seccheck-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "network"
+      ],
+      "content": {
+        "prompt": "0.0.0.0/0에 22번 포트를 연 보안 그룹은 어느 점검 대상?",
+        "options": [
+          "네트워크 점검",
+          "계정 점검"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "전체 인터넷에 SSH·DB 포트를 연 보안 그룹을 찾는 것은 네트워크 점검이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html"
+      ]
+    },
+    {
+      "id": "aws-wa-seccheck-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "account"
+      ],
+      "content": {
+        "prompt": "사람 사용자는 장기 액세스 키 대신 IAM Identity Center로 로그인한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "사람 사용자는 IAM Identity Center로 로그인해 임시 자격 증명을 쓰는 것이 권장된다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html"
+      ]
+    },
+    {
+      "id": "aws-wa-seccheck-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-analyzer"
+      ],
+      "content": {
+        "prompt": "외부·공개로 공유된 리소스를 찾는 도구는 IAM Access ___이다.",
+        "hint": "분석기를 뜻하는 영어 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "Analyzer",
+          "analyzer",
+          "애널라이저",
+          "어낼라이저"
+        ]
+      },
+      "explanation": "IAM Access Analyzer는 신뢰 영역 밖의 주체에 공유된 리소스를 찾아 결과로 보여 준다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html"
+      ]
+    },
+    {
+      "id": "aws-wa-seccheck-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "data"
+      ],
+      "content": {
+        "prompt": "S3 버킷이 공개되지 않게 하려면 퍼블릭 액세스 ___ 설정을 켠다.",
+        "hint": "막는다는 뜻의 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "차단",
+          "block"
+        ]
+      },
+      "explanation": "퍼블릭 액세스 차단은 버킷이 공개되는 것을 막으며 데이터 점검 항목이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html"
+      ]
+    },
+    {
+      "id": "aws-wa-seccheck-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-key"
+      ],
+      "content": {
+        "prompt": "오래 안 쓴 IAM 사용자 액세스 키가 있다. 조치는?",
+        "options": [
+          "그대로 둔다",
+          "권한을 넓힌다",
+          "비활성화 후 삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "안 쓰는 액세스 키는 유출 위험만 남기므로 비활성화한 뒤 삭제한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html"
+      ]
+    },
+    {
+      "id": "aws-wa-seccheck-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "data"
+      ],
+      "content": {
+        "prompt": "DB 비밀번호가 코드 저장소에 들어 있다. 어느 점검 위반?",
+        "options": [
+          "계정 점검",
+          "네트워크 점검",
+          "데이터 점검"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "비밀값은 코드 밖에 두는 것이 데이터 점검 항목이다. 비밀번호는 비밀값 저장소로 옮긴다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html"
+      ]
+    },
+    {
+      "id": "aws-wa-seccheck-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "network"
+      ],
+      "content": {
+        "prompt": "보안 그룹 점검에서 문제인 인바운드 규칙은?",
+        "options": [
+          "앱 SG에서 5432",
+          "0.0.0.0/0에서 22",
+          "0.0.0.0/0에서 443"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SSH 22번을 전체 인터넷에 연 규칙이 문제다. 앱 보안 그룹만 DB 포트 허용, 공개 웹의 443은 정상이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html"
+      ]
+    },
+    {
+      "id": "aws-wa-seccheck-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-analyzer"
+      ],
+      "content": {
+        "prompt": "IAM Access Analyzer는 계정의 API 호출 기록을 남기는 서비스다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "API 호출 기록은 CloudTrail이 남긴다. IAM Access Analyzer는 외부·공개로 공유된 리소스를 찾는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html"
+      ]
+    }
+  ]
+}

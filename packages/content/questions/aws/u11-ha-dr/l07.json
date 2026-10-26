@@ -1,0 +1,206 @@
+{
+  "track": "aws",
+  "unit": "u11-ha-dr",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "aws-ha-azdown-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "incident",
+        "az-failure"
+      ],
+      "content": {
+        "prompt": "AZ 장애 때 가장 먼저 확인할 계층은?",
+        "options": [
+          "트래픽",
+          "용량",
+          "데이터"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "1단계는 트래픽이다. 대상 그룹에서 장애 AZ의 대상이 unhealthy로 빠졌는지 본다."
+    },
+    {
+      "id": "aws-ha-azdown-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "incident",
+        "rds"
+      ],
+      "content": {
+        "prompt": "다중 AZ RDS가 장애 조치됐는지는 어느 단계에서 보나?",
+        "options": [
+          "트래픽",
+          "용량",
+          "데이터"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "3단계 데이터에서 다중 AZ RDS가 대기 인스턴스로 장애 조치됐는지 확인한다."
+    },
+    {
+      "id": "aws-ha-azdown-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "incident",
+        "target-group"
+      ],
+      "content": {
+        "prompt": "장애 AZ의 대상이 요청에서 빠졌는지 볼 곳은?",
+        "options": [
+          "로그 그룹",
+          "대상 그룹"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "대상 그룹의 대상 상태에서 장애 AZ 대상이 unhealthy로 바뀌어 요청에서 빠졌는지 본다."
+    },
+    {
+      "id": "aws-ha-azdown-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "incident",
+        "capacity"
+      ],
+      "content": {
+        "prompt": "남은 AZ의 태스크 수가 원하는 수를 채우는지는 용량 단계에서 본다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "2단계 용량에서 오토 스케일링·ECS 서비스가 남은 AZ에서 원하는 수를 채우는지 확인한다."
+    },
+    {
+      "id": "aws-ha-azdown-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "incident",
+        "health-check"
+      ],
+      "content": {
+        "prompt": "장애 AZ의 대상은 대상 그룹에서 ___ 상태로 바뀌어 빠진다.",
+        "hint": "상태 검사에 실패한 대상의 상태 이름"
+      },
+      "answer_key": {
+        "accepted": [
+          "unhealthy",
+          "언헬시",
+          "비정상"
+        ]
+      },
+      "explanation": "상태 검사에 연속 실패한 대상은 unhealthy가 되고 로드 밸런서가 요청을 보내지 않는다."
+    },
+    {
+      "id": "aws-ha-azdown-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "incident",
+        "rds"
+      ],
+      "content": {
+        "prompt": "AZ 장애 뒤 RDS가 대기 인스턴스로 넘어가는 것을 장애 ___라 한다.",
+        "hint": "장애가 났을 때 취하는 대응을 뜻하는 말"
+      },
+      "answer_key": {
+        "accepted": [
+          "조치",
+          "failover",
+          "페일오버"
+        ]
+      },
+      "explanation": "다중 AZ RDS는 장애 조치로 엔드포인트가 대기 인스턴스를 가리키게 바뀐다."
+    },
+    {
+      "id": "aws-ha-azdown-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "incident",
+        "nat"
+      ],
+      "content": {
+        "prompt": "AZ-a 장애 뒤 AZ-b 태스크가 외부 API를 못 부른다. 원인 후보는?",
+        "options": [
+          "AZ-a에만 둔 NAT",
+          "AZ-b의 대상 그룹",
+          "RDS 대기 인스턴스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "AZ-b의 프라이빗 경로가 AZ-a의 영역 NAT를 가리키면 함께 못 나간다. AZ마다 NAT를 둔다."
+    },
+    {
+      "id": "aws-ha-azdown-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "incident",
+        "capacity"
+      ],
+      "content": {
+        "prompt": "남은 AZ에서 태스크가 원하는 수만큼 안 뜬다. 먼저 볼 것은?",
+        "options": [
+          "Route 53 TTL",
+          "서비스 서브넷의 AZ",
+          "RDS 엔드포인트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ECS 서비스가 장애 AZ 서브넷만 쓰면 남은 AZ에 태스크를 띄울 수 없다. 서브넷이 여러 AZ에 걸쳐 있는지 본다."
+    },
+    {
+      "id": "aws-ha-azdown-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "incident",
+        "spof"
+      ],
+      "content": {
+        "prompt": "장애가 끝난 뒤 사후 조치로 알맞은 것은?",
+        "options": [
+          "서버 유형 키우기",
+          "백업 주기 단축",
+          "한 AZ뿐인 것 분산"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "한 AZ에만 있던 구성 요소가 숨은 단일 장애 지점이다. AZ마다 하나씩 두게 바꾼다."
+    },
+    {
+      "id": "aws-ha-azdown-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "incident",
+        "az-failure"
+      ],
+      "content": {
+        "prompt": "AZ 장애 확인은 데이터 계층부터 시작한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "바깥 트래픽부터 본다. 대상 그룹 → 용량 → 다중 AZ RDS 장애 조치 순으로 확인한다."
+    }
+  ]
+}
