@@ -1,0 +1,244 @@
+{
+  "track": "aws",
+  "unit": "u01-cloud-basics",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "aws-cloud-shared-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "shared-responsibility",
+        "security"
+      ],
+      "content": {
+        "prompt": "클라우드 보안 책임을 AWS와 고객이 나누는 모델은?",
+        "options": [
+          "공동 책임 모델",
+          "종량제",
+          "다중 AZ 배치"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "공동 책임 모델은 클라우드 보안 책임을 AWS와 고객이 나누어 지는 모델이다.",
+      "refs": [
+        "https://aws.amazon.com/compliance/shared-responsibility-model/"
+      ]
+    },
+    {
+      "id": "aws-cloud-shared-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "shared-responsibility",
+        "security"
+      ],
+      "content": {
+        "prompt": "데이터 센터·하드웨어의 보안은 누구 책임인가?",
+        "options": [
+          "고객",
+          "AWS"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "데이터 센터·하드웨어·네트워크·가상화 계층은 클라우드의 보안으로 AWS 책임이다.",
+      "refs": [
+        "https://aws.amazon.com/compliance/shared-responsibility-model/"
+      ]
+    },
+    {
+      "id": "aws-cloud-shared-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "shared-responsibility",
+        "security"
+      ],
+      "content": {
+        "prompt": "EC2 가상 서버의 게스트 OS 패치는 누구 책임인가?",
+        "options": [
+          "고객",
+          "AWS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "EC2 안의 게스트 OS 패치는 클라우드 안의 보안으로 고객 책임이다. AWS는 그 아래 가상화 계층까지 맡는다.",
+      "refs": [
+        "https://aws.amazon.com/compliance/shared-responsibility-model/"
+      ]
+    },
+    {
+      "id": "aws-cloud-shared-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "shared-responsibility",
+        "security"
+      ],
+      "content": {
+        "prompt": "고객 데이터의 보호는 AWS만의 책임이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "데이터는 클라우드 안의 보안에 속해 고객 책임이다. AWS는 데이터 센터·하드웨어 같은 클라우드의 보안을 맡는다.",
+      "refs": [
+        "https://aws.amazon.com/compliance/shared-responsibility-model/"
+      ]
+    },
+    {
+      "id": "aws-cloud-shared-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "shared-responsibility",
+        "security"
+      ],
+      "content": {
+        "prompt": "보안 책임을 AWS와 고객이 나누는 것을 ___ 책임 모델이라 한다.",
+        "hint": "두 쪽이 함께 진다는 뜻이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "공동",
+          "shared",
+          "Shared"
+        ]
+      },
+      "explanation": "공동 책임 모델에서 AWS는 클라우드의 보안을, 고객은 클라우드 안의 보안을 맡는다.",
+      "refs": [
+        "https://aws.amazon.com/compliance/shared-responsibility-model/"
+      ]
+    },
+    {
+      "id": "aws-cloud-shared-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "shared-responsibility",
+        "security"
+      ],
+      "content": {
+        "prompt": "AWS가 OS 패치 등을 대신 맡아 주는 서비스를 ___ 서비스라 한다.",
+        "hint": "고객이 관리할 범위가 줄어드는 서비스다."
+      },
+      "answer_key": {
+        "accepted": [
+          "관리형",
+          "managed",
+          "Managed",
+          "매니지드"
+        ]
+      },
+      "explanation": "관리형 서비스는 AWS가 OS 패치 등을 대신 맡아 고객 책임 범위가 줄어든다.",
+      "refs": [
+        "https://aws.amazon.com/compliance/shared-responsibility-model/"
+      ]
+    },
+    {
+      "id": "aws-cloud-shared-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "shared-responsibility",
+        "security"
+      ],
+      "content": {
+        "prompt": "EC2 서버의 방화벽 설정이 잘못돼 포트가 열렸다. 책임은?",
+        "options": [
+          "AWS",
+          "고객"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "방화벽 설정은 클라우드 안의 보안으로 고객 책임이다. AWS는 설정 기능을 제공할 뿐 값은 고객이 정한다.",
+      "refs": [
+        "https://aws.amazon.com/compliance/shared-responsibility-model/"
+      ]
+    },
+    {
+      "id": "aws-cloud-shared-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "shared-responsibility",
+        "security"
+      ],
+      "content": {
+        "prompt": "직접 운영하던 OS를 관리형 서비스로 바꾸면 고객 책임은?",
+        "options": [
+          "늘어난다",
+          "같다",
+          "줄어든다"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "관리형 서비스는 AWS가 OS 패치 등을 대신 맡으므로 고객 책임 범위가 줄어든다.",
+      "refs": [
+        "https://aws.amazon.com/compliance/shared-responsibility-model/"
+      ]
+    },
+    {
+      "id": "aws-cloud-shared-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "shared-responsibility",
+        "security"
+      ],
+      "content": {
+        "prompt": "가상화 계층의 보안 취약점 패치는 누구 책임인가?",
+        "options": [
+          "AWS",
+          "고객"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가상화 계층은 데이터 센터·하드웨어·네트워크와 함께 클라우드의 보안으로 AWS 책임이다.",
+      "refs": [
+        "https://aws.amazon.com/compliance/shared-responsibility-model/"
+      ]
+    },
+    {
+      "id": "aws-cloud-shared-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "shared-responsibility",
+        "security"
+      ],
+      "content": {
+        "prompt": "공동 책임 모델에서 계정·권한 설정은 고객이 맡는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "계정·권한 설정은 데이터·게스트 OS·방화벽 설정과 함께 클라우드 안의 보안으로 고객 책임이다.",
+      "refs": [
+        "https://aws.amazon.com/compliance/shared-responsibility-model/"
+      ]
+    }
+  ]
+}

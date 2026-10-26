@@ -1,0 +1,246 @@
+{
+  "track": "aws",
+  "unit": "u02-iam",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "aws-iam-users-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "AWS에서 인증과 인가를 관리하는 서비스는?",
+        "options": [
+          "IAM",
+          "Cost Explorer",
+          "AWS Budgets"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "IAM은 누가 요청하는지(인증)와 무엇을 할 수 있는지(인가)를 관리하는 서비스다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html"
+      ]
+    },
+    {
+      "id": "aws-iam-users-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "사용자를 묶어 권한을 한 번에 붙이는 단위는?",
+        "options": [
+          "IAM 사용자",
+          "루트 사용자",
+          "IAM 그룹"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "IAM 그룹은 사용자를 묶어 권한을 한 번에 붙이는 단위다. 그룹 자체로는 로그인하지 않는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html"
+      ]
+    },
+    {
+      "id": "aws-iam-users-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "요청한 쪽이 누구인지 확인하는 일은?",
+        "options": [
+          "인증",
+          "인가"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인증은 누가 요청하는지 확인하는 일이고, 인가는 그 주체가 무엇을 할 수 있는지 정하는 일이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html"
+      ]
+    },
+    {
+      "id": "aws-iam-users-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "IAM 그룹 이름과 비밀번호로 콘솔에 로그인할 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "그룹은 권한을 붙이는 묶음일 뿐 자격 증명이 없어 로그인하지 않는다. 로그인은 IAM 사용자로 한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html"
+      ]
+    },
+    {
+      "id": "aws-iam-users-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "주체가 요청한 동작을 허락할지 정하는 일은 ___ 이다.",
+        "hint": "인증 다음에 이뤄지는 단계다."
+      },
+      "answer_key": {
+        "accepted": [
+          "인가",
+          "권한 부여",
+          "authorization",
+          "Authorization"
+        ]
+      },
+      "explanation": "인가는 인증된 주체가 무엇을 할 수 있는지 정하는 일로, IAM이 인증과 함께 관리한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html"
+      ]
+    },
+    {
+      "id": "aws-iam-users-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "한 사람이나 프로그램에 대응하는 IAM 정체성은 IAM ___ 이다.",
+        "hint": "비밀번호·액세스 키 같은 장기 자격 증명을 가진다."
+      },
+      "answer_key": {
+        "accepted": [
+          "사용자",
+          "user",
+          "User",
+          "유저"
+        ]
+      },
+      "explanation": "IAM 사용자는 한 사람이나 프로그램에 대응하며 비밀번호·액세스 키 같은 장기 자격 증명을 가진다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html"
+      ]
+    },
+    {
+      "id": "aws-iam-users-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "개발자 다섯 명에게 같은 권한을 주는 알맞은 방법은?",
+        "options": [
+          "각자 따로 붙이기",
+          "그룹에 권한 붙이기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "같은 권한이 필요한 사용자는 그룹에 묶고 그룹에 권한을 붙인다. 사용자마다 붙이면 관리가 어렵다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html"
+      ]
+    },
+    {
+      "id": "aws-iam-users-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "IAM 사용자가 가지는 장기 자격 증명은?",
+        "options": [
+          "그룹 이름",
+          "리전 코드",
+          "비밀번호·액세스 키"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "IAM 사용자는 비밀번호·액세스 키 같은 장기 자격 증명을 가진다. 그룹에는 자격 증명이 없다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html"
+      ]
+    },
+    {
+      "id": "aws-iam-users-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "팀원이 백엔드 그룹에서 운영 그룹으로 옮기면?",
+        "options": [
+          "그룹 소속만 바꿈",
+          "사용자를 새로 만듦"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "권한은 그룹에 붙어 있으므로 사용자의 그룹 소속만 바꾸면 권한도 바뀐다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html"
+      ]
+    },
+    {
+      "id": "aws-iam-users-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "IAM은 누가 요청하는지와 무엇을 할 수 있는지를 관리한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "IAM은 인증(누가 요청하는지)과 인가(무엇을 할 수 있는지)를 관리하는 서비스다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html"
+      ]
+    }
+  ]
+}

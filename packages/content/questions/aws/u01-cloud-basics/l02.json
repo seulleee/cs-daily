@@ -1,0 +1,224 @@
+{
+  "track": "aws",
+  "unit": "u01-cloud-basics",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "aws-cloud-region-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "region",
+        "availability-zone"
+      ],
+      "content": {
+        "prompt": "지리적 위치마다 따로 운영되는 AWS 인프라 묶음은?",
+        "options": [
+          "가용 영역",
+          "AWS 계정",
+          "리전"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "리전은 지리적 위치마다 따로 운영되는 AWS 인프라 묶음이다. 가용 영역은 리전 안의 데이터 센터 묶음이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-region-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "region",
+        "availability-zone"
+      ],
+      "content": {
+        "prompt": "한 리전 안에서 물리적으로 분리된 데이터 센터 묶음은?",
+        "options": [
+          "리전",
+          "AWS 계정",
+          "가용 영역"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "가용 영역(AZ)은 한 리전 안에서 물리적으로 분리된 하나 이상의 데이터 센터 묶음이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-region-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "region",
+        "availability-zone"
+      ],
+      "content": {
+        "prompt": "ap-northeast-2는 무엇을 가리키는 이름인가?",
+        "options": [
+          "리전",
+          "가용 영역",
+          "AWS 서비스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ap-northeast-2는 서울 리전의 코드다. 가용 영역은 리전 안에 있는 더 작은 단위다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-region-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "region",
+        "availability-zone"
+      ],
+      "content": {
+        "prompt": "가용 영역 하나는 여러 리전을 포함한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "포함 관계가 반대다. 리전 하나가 여러 가용 영역을 포함하고, 가용 영역은 한 리전에 속한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-region-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "region",
+        "availability-zone"
+      ],
+      "content": {
+        "prompt": "가용 영역을 줄여 부르는 영문 약자는 ___ 이다.",
+        "hint": "Availability Zone의 머리글자다."
+      },
+      "answer_key": {
+        "accepted": [
+          "AZ",
+          "az"
+        ]
+      },
+      "explanation": "가용 영역은 Availability Zone의 약자인 AZ로 부른다. 한 리전 안의 분리된 데이터 센터 묶음이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-region-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "region",
+        "availability-zone"
+      ],
+      "content": {
+        "prompt": "서울 ap-northeast-2처럼 지리적 위치마다 운영되는 단위는 ___ 이다.",
+        "hint": "가용 영역보다 큰 단위다."
+      },
+      "answer_key": {
+        "accepted": [
+          "리전",
+          "region",
+          "Region"
+        ]
+      },
+      "explanation": "리전은 지리적 위치마다 따로 운영되는 AWS 인프라 묶음이고, 그 안에 여러 가용 영역이 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-region-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "region",
+        "availability-zone"
+      ],
+      "content": {
+        "prompt": "서버를 한 AZ에만 두었는데 그 AZ에 장애가 나면?",
+        "options": [
+          "다른 AZ로 유지",
+          "리전이 바뀜",
+          "서비스가 멈춤"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "자원이 한 AZ에만 있으면 그 AZ 장애가 곧 서비스 중단이다. 다른 AZ로 이어 가려면 미리 여러 AZ에 나눠 둬야 한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-region-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "region",
+        "availability-zone"
+      ],
+      "content": {
+        "prompt": "한 AZ에 장애가 나도 서비스를 유지하려면?",
+        "options": [
+          "한 AZ에 증설",
+          "여러 AZ에 배치"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다중 AZ 배치는 자원을 여러 AZ에 나눠 두어 한 AZ 장애에도 다른 AZ에서 서비스를 이어 간다. 한 AZ 안에서 늘리면 함께 멈춘다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-region-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "region",
+        "availability-zone"
+      ],
+      "content": {
+        "prompt": "한국 사용자 대상 서비스에서 지연 시간이 짧은 리전은?",
+        "options": [
+          "미국 동부 리전",
+          "서울 리전"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "리전 선택 기준 중 지연 시간은 사용자와 가까운 리전일수록 짧다. 한국 사용자에게는 서울 리전이 가깝다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-region-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "region",
+        "availability-zone"
+      ],
+      "content": {
+        "prompt": "ap-northeast-2 같은 리전은 여러 가용 영역을 포함한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "리전은 서울 ap-northeast-2처럼 지리적 위치마다 따로 운영되는 인프라 묶음이며 여러 가용 영역을 포함한다.",
+      "refs": []
+    }
+  ]
+}

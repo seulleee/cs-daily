@@ -1,0 +1,217 @@
+{
+  "track": "aws",
+  "unit": "u01-cloud-basics",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "aws-cloud-intro-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "cloud-basics"
+      ],
+      "content": {
+        "prompt": "IT 자원을 인터넷으로 필요할 때 빌려 쓰는 방식은?",
+        "options": [
+          "온프레미스",
+          "가상 머신",
+          "클라우드 컴퓨팅"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "클라우드 컴퓨팅은 서버·저장소·DB 같은 IT 자원을 인터넷으로 필요할 때 빌려 쓰는 방식이다. 온프레미스는 장비를 직접 사서 운영한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-intro-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "cloud-basics"
+      ],
+      "content": {
+        "prompt": "미리 장비를 사지 않고 쓴 만큼만 내는 과금 방식은?",
+        "options": [
+          "종량제",
+          "선불 구매",
+          "정액제"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "종량제는 장비를 미리 사지 않고 실제로 쓴 만큼만 요금을 내는 방식이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-intro-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "cloud-basics"
+      ],
+      "content": {
+        "prompt": "AWS에서 가상 서버를 제공하는 서비스는?",
+        "options": [
+          "Amazon S3",
+          "AWS 계정",
+          "EC2"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "EC2는 가상 서버 서비스이고, Amazon S3는 객체 저장소 서비스다. AWS 계정은 서비스가 아니라 자원과 요금의 단위다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-intro-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "cloud-basics"
+      ],
+      "content": {
+        "prompt": "Amazon S3는 가상 서버를 만드는 서비스이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Amazon S3는 파일을 객체로 저장하는 객체 저장소 서비스다. 가상 서버는 EC2가 제공한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-intro-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "cloud-basics"
+      ],
+      "content": {
+        "prompt": "AWS 자원을 만들고 요금이 청구되는 기본 단위는 AWS ___ 이다.",
+        "hint": "가입할 때 만드는 것을 떠올린다."
+      },
+      "answer_key": {
+        "accepted": [
+          "계정",
+          "account",
+          "Account",
+          "어카운트"
+        ]
+      },
+      "explanation": "AWS 계정은 자원을 만들고 그 요금이 청구되는 기본 단위다. 자원은 모두 어떤 계정 안에 만들어진다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-intro-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "cloud-basics"
+      ],
+      "content": {
+        "prompt": "클라우드에서 사용한 시간·양만큼 요금을 내는 방식을 ___ 라 한다.",
+        "hint": "미리 정한 금액을 내는 정액제와 반대다."
+      },
+      "answer_key": {
+        "accepted": [
+          "종량제",
+          "종량 과금",
+          "pay as you go",
+          "pay-as-you-go"
+        ]
+      },
+      "explanation": "종량제는 사용한 만큼만 요금을 내는 과금 방식이라, 쓰지 않는 자원은 지우면 요금도 멈춘다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-intro-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "cloud-basics"
+      ],
+      "content": {
+        "prompt": "한 달만 트래픽이 몰리는 행사 서버에 알맞은 방식은?",
+        "options": [
+          "서버 장비 구매",
+          "클라우드에서 빌림"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "잠깐 필요한 자원은 클라우드에서 빌려 쓰고 끝나면 지우면 된다. 장비를 사면 행사 뒤에도 비용이 남는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-intro-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "cloud-basics"
+      ],
+      "content": {
+        "prompt": "파일을 객체로 저장할 때 고르는 AWS 서비스는?",
+        "options": [
+          "Amazon S3",
+          "EC2"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Amazon S3는 파일을 객체로 저장하는 객체 저장소다. EC2는 가상 서버를 만드는 서비스다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-intro-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "cloud-basics"
+      ],
+      "content": {
+        "prompt": "EC2 서버를 만들면 그 요금이 청구되는 곳은?",
+        "options": [
+          "EC2 서비스",
+          "Amazon S3",
+          "만든 AWS 계정"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "요금은 자원을 만든 AWS 계정에 청구된다. EC2와 S3는 기능별로 나뉜 서비스일 뿐 청구 단위가 아니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cloud-intro-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "cloud-basics"
+      ],
+      "content": {
+        "prompt": "클라우드 컴퓨팅은 IT 자원을 인터넷으로 필요할 때 빌려 쓰는 방식이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "클라우드 컴퓨팅은 서버·저장소·DB 같은 자원을 필요할 때 인터넷으로 빌려 쓰고 쓴 만큼 낸다.",
+      "refs": []
+    }
+  ]
+}

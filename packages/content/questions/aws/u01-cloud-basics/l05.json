@@ -1,0 +1,244 @@
+{
+  "track": "aws",
+  "unit": "u01-cloud-basics",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "aws-cloud-budget-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "budgets",
+        "cost"
+      ],
+      "content": {
+        "prompt": "예산을 정하고 임계값을 넘으면 알림을 보내는 서비스는?",
+        "options": [
+          "AWS Budgets",
+          "Cost Explorer",
+          "EC2"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "AWS Budgets는 비용·사용량 예산을 정하고 임계값을 넘으면 알림을 보낸다. Cost Explorer는 비용을 나눠 보는 도구다.",
+      "refs": [
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-budget-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "budgets",
+        "cost"
+      ],
+      "content": {
+        "prompt": "서비스별·리전별·기간별로 비용을 나눠 보는 도구는?",
+        "options": [
+          "AWS Budgets",
+          "온디맨드",
+          "Cost Explorer"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Cost Explorer는 비용을 서비스·리전·기간별로 나눠 보여 준다. AWS Budgets는 예산과 알림을 맡는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-budget-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "budgets",
+        "cost"
+      ],
+      "content": {
+        "prompt": "기간 말 예상 금액이 임계값을 넘으면 보내는 알림은?",
+        "options": [
+          "예측 알림",
+          "실제 알림"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "예측 알림은 기간 말 예상 금액 기준이고, 실제 알림은 이미 쓴 금액 기준이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-budget-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "budgets",
+        "cost"
+      ],
+      "content": {
+        "prompt": "예산 알림만 설정해도 금액을 넘으면 자원이 자동으로 멈춘다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "알림은 알려 줄 뿐이고, 알림만 설정하면 자원이 자동으로 멈추거나 삭제되지 않는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-budget-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "budgets",
+        "cost"
+      ],
+      "content": {
+        "prompt": "이미 쓴 금액이 임계값을 넘을 때 보내는 알림은 ___ 알림이다.",
+        "hint": "예측 알림과 짝을 이루는 말이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "실제",
+          "actual",
+          "Actual"
+        ]
+      },
+      "explanation": "실제 알림은 이미 쓴 금액이 임계값을 넘으면 보내고, 예측 알림은 기간 말 예상 금액을 기준으로 보낸다.",
+      "refs": [
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-budget-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "budgets",
+        "cost"
+      ],
+      "content": {
+        "prompt": "예산 알림을 보내는 기준 금액이나 비율을 ___ 이라 한다.",
+        "hint": "넘으면 알림이 가는 경계 값이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "임계값",
+          "임계치",
+          "threshold"
+        ]
+      },
+      "explanation": "AWS Budgets는 실제 또는 예측 금액이 임계값을 넘으면 알림을 보낸다.",
+      "refs": [
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-budget-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "budgets",
+        "cost"
+      ],
+      "content": {
+        "prompt": "예산 알림을 받았는데 비용이 계속 늘었다. 이유는?",
+        "options": [
+          "리전이 달라서",
+          "알림은 자원을 안 멈춤",
+          "예산이 삭제돼서"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "알림은 자원을 멈추거나 삭제하지 않는다. 알림을 받으면 원인 자원을 직접 찾아 정리해야 한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-budget-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "budgets",
+        "cost"
+      ],
+      "content": {
+        "prompt": "청구액이 갑자기 늘었다. 어느 서비스 때문인지 볼 도구는?",
+        "options": [
+          "Cost Explorer",
+          "AWS Budgets"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Cost Explorer로 서비스별·리전별 비용을 나눠 보면 원인 자원을 찾을 수 있다. AWS Budgets는 알림을 보내는 쪽이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-budget-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "budgets",
+        "cost"
+      ],
+      "content": {
+        "prompt": "예산 알림 이메일을 받은 뒤 할 일은?",
+        "options": [
+          "자동 정지를 기다림",
+          "원인 자원 확인·정리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "알림은 자원을 멈추지 않으므로 Cost Explorer 등으로 원인 자원을 찾아 직접 정리한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-budget-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "budgets",
+        "cost"
+      ],
+      "content": {
+        "prompt": "AWS Budgets는 비용이 임계값을 넘으면 알림을 보낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "AWS Budgets는 비용·사용량 예산을 정하고 실제·예측 금액이 임계값을 넘으면 알림을 보낸다.",
+      "refs": [
+        "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html"
+      ]
+    }
+  ]
+}

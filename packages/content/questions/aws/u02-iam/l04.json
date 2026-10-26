@@ -1,0 +1,256 @@
+{
+  "track": "aws",
+  "unit": "u02-iam",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "aws-iam-role-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam-role",
+        "sts"
+      ],
+      "content": {
+        "prompt": "허락된 주체가 맡아 권한을 얻는 IAM 정체성은?",
+        "options": [
+          "IAM 그룹",
+          "IAM 사용자",
+          "IAM 역할"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "IAM 역할은 장기 자격 증명 없이, 허락된 주체가 맡아(assume) 권한을 얻는 정체성이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-role-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam-role",
+        "sts"
+      ],
+      "content": {
+        "prompt": "만료 시간이 있는 임시 자격 증명을 발급하는 서비스는?",
+        "options": [
+          "AWS STS",
+          "Cost Explorer",
+          "IAM 그룹"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "AWS STS는 역할을 맡은 주체에게 만료 시간이 있는 임시 자격 증명을 발급한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-role-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam-role",
+        "sts"
+      ],
+      "content": {
+        "prompt": "누가 이 역할을 맡을 수 있는지 정하는 정책은?",
+        "options": [
+          "신뢰 정책",
+          "권한 정책"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "신뢰 정책은 Principal로 역할을 맡을 수 있는 주체를 정한다. 권한 정책은 역할이 할 수 있는 일을 정한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-role-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam-role",
+        "sts"
+      ],
+      "content": {
+        "prompt": "IAM 역할은 비밀번호 같은 장기 자격 증명을 가진다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "역할은 장기 자격 증명이 없고, 맡을 때마다 STS가 만료 시간이 있는 임시 자격 증명을 발급한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-role-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam-role",
+        "sts"
+      ],
+      "content": {
+        "prompt": "역할을 맡을 수 있는 주체를 적는 키는?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [{\n    \"Effect\": \"Allow\",\n    \"___\": {\"AWS\":\n      \"arn:aws:iam::123456789012:user/dev\"},\n    \"Action\": \"sts:AssumeRole\"\n  }]\n}"
+        },
+        "hint": "신뢰 정책에서 누가 맡을지 지정하는 요소다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Principal",
+          "principal"
+        ]
+      },
+      "explanation": "신뢰 정책의 Principal에 역할을 맡을 수 있는 주체를 적는다. 여기서는 dev 사용자다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-role-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam-role",
+        "sts"
+      ],
+      "content": {
+        "prompt": "역할을 맡을 때 STS에 보내는 요청 이름은 ___ 이다.",
+        "hint": "맡다(assume)와 역할(role)을 합친 이름이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "AssumeRole",
+          "assumerole",
+          "Assume Role"
+        ]
+      },
+      "explanation": "AssumeRole 요청이 성공하면 STS가 그 역할의 임시 자격 증명을 발급한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-role-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam-role",
+        "sts"
+      ],
+      "content": {
+        "prompt": "이 명령으로 확인하는 것은?",
+        "code": {
+          "language": "bash",
+          "source": "aws sts get-caller-identity"
+        },
+        "options": [
+          "기본 리전",
+          "지금 요청하는 주체",
+          "남은 예산"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "aws sts get-caller-identity는 지금 요청하는 주체(사용자·역할)의 ARN을 보여 준다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-role-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam-role",
+        "sts"
+      ],
+      "content": {
+        "prompt": "역할로 받은 자격 증명이 만료되면?",
+        "options": [
+          "영구히 계속 쓴다",
+          "역할을 다시 맡는다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "STS가 준 자격 증명은 만료 시간이 있어, 만료되면 역할을 다시 맡아 새 임시 자격 증명을 받는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-role-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam-role",
+        "sts"
+      ],
+      "content": {
+        "prompt": "역할의 임시 자격 증명을 받는 명령의 빈칸은?",
+        "code": {
+          "language": "bash",
+          "source": "aws sts ___ \\\n  --role-arn \"$ROLE_ARN\" \\\n  --role-session-name dev"
+        },
+        "options": [
+          "configure",
+          "login",
+          "assume-role"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "aws sts assume-role은 STS의 AssumeRole을 호출해 역할의 임시 자격 증명을 받는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-role-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam-role",
+        "sts"
+      ],
+      "content": {
+        "prompt": "IAM 역할은 허락된 주체가 맡아서 권한을 얻는 정체성이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "역할은 신뢰 정책에서 허락한 주체가 맡아 임시 자격 증명으로 권한을 얻는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html"
+      ]
+    }
+  ]
+}

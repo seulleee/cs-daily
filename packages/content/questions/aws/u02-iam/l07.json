@@ -1,0 +1,248 @@
+{
+  "track": "aws",
+  "unit": "u02-iam",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "aws-iam-keys-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "access-key",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "CLI·SDK가 요청에 서명할 때 쓰는 키 한 쌍은?",
+        "options": [
+          "패스키",
+          "신뢰 정책",
+          "액세스 키"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "액세스 키는 액세스 키 ID와 비밀 액세스 키 한 쌍으로, CLI·SDK가 요청에 서명할 때 쓴다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+      ]
+    },
+    {
+      "id": "aws-iam-keys-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "access-key",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "만들 때 한 번만 볼 수 있는 값은?",
+        "options": [
+          "비밀 액세스 키",
+          "액세스 키 ID"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "비밀 액세스 키는 만들 때 한 번만 볼 수 있다. 잃어버리면 새 키를 만들어야 한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+      ]
+    },
+    {
+      "id": "aws-iam-keys-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "access-key",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "액세스 키 한 쌍을 이루는 두 값은?",
+        "options": [
+          "사용자 이름·비밀번호",
+          "키 ID·비밀 키"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "액세스 키는 액세스 키 ID와 비밀 액세스 키 한 쌍이다. 사용자 이름·비밀번호는 콘솔 로그인용이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+      ]
+    },
+    {
+      "id": "aws-iam-keys-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "access-key",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "비밀 액세스 키는 콘솔에서 언제든 다시 볼 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "비밀 액세스 키는 만들 때 한 번만 볼 수 있다. 잃어버리면 새 키를 만들고 옛 키를 지운다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+      ]
+    },
+    {
+      "id": "aws-iam-keys-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "access-key",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "옛 키를 비활성화하려면 빈칸의 값은?",
+        "code": {
+          "language": "bash",
+          "source": "aws iam update-access-key \\\n  --user-name dev \\\n  --access-key-id \"$OLD_KEY_ID\" \\\n  --status ___"
+        },
+        "hint": "Active의 반대 상태다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Inactive",
+          "inactive"
+        ]
+      },
+      "explanation": "update-access-key의 --status를 Inactive로 바꾸면 그 키로 보낸 요청이 거부된다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+      ]
+    },
+    {
+      "id": "aws-iam-keys-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "access-key",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "키 교체 순서는 새 키 생성 → 앱 적용 → 옛 키 ___ → 삭제다.",
+        "hint": "삭제 전에 먼저 멈춰 보는 단계다."
+      },
+      "answer_key": {
+        "accepted": [
+          "비활성화",
+          "비활성",
+          "inactive",
+          "Inactive"
+        ]
+      },
+      "explanation": "옛 키를 바로 지우지 않고 먼저 비활성화해 문제가 없는지 본 뒤 삭제한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+      ]
+    },
+    {
+      "id": "aws-iam-keys-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "access-key",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "공개 Git 저장소에 키가 올라갔다. 첫 조치는?",
+        "options": [
+          "저장소 비공개 전환",
+          "키 즉시 비활성화",
+          "리전 변경"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "노출된 키는 즉시 비활성화한다. 저장소를 비공개로 돌려도 이미 복사된 키는 쓸 수 있다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+      ]
+    },
+    {
+      "id": "aws-iam-keys-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "access-key",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "키 교체 중 새 키를 앱에 적용한 다음 할 일은?",
+        "options": [
+          "옛 키 비활성화",
+          "새 키 삭제",
+          "사용자 삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "새 키 생성 → 앱 적용 → 옛 키 비활성화 → 삭제 순서다. 새 키를 지우면 앱이 멈춘다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+      ]
+    },
+    {
+      "id": "aws-iam-keys-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "access-key",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "유출된 키를 새 키로 바꾼 뒤 남은 할 일은?",
+        "options": [
+          "예산 금액 올리기",
+          "그 키로 한 일 확인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "유출 대응은 비활성화·교체 뒤 그 키로 어떤 요청이 있었는지 확인해 만들어진 자원 등을 정리하는 것까지다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+      ]
+    },
+    {
+      "id": "aws-iam-keys-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "access-key",
+        "iam-user"
+      ],
+      "content": {
+        "prompt": "액세스 키는 액세스 키 ID와 비밀 액세스 키 한 쌍이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "액세스 키는 키 ID와 비밀 액세스 키 한 쌍이며 CLI·SDK가 요청에 서명할 때 쓴다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+      ]
+    }
+  ]
+}

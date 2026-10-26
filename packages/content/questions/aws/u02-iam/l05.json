@@ -1,0 +1,248 @@
+{
+  "track": "aws",
+  "unit": "u02-iam",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "aws-iam-svcrole-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam-role",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "AWS 서비스가 사용자를 대신해 다른 자원을 다룰 때 맡는 역할은?",
+        "options": [
+          "IAM 그룹",
+          "루트 사용자",
+          "서비스 역할"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "서비스 역할은 AWS 서비스가 사용자를 대신해 다른 AWS 자원을 다룰 때 맡는 역할이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-svcrole-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam-role",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "역할을 EC2 인스턴스에 연결하는 IAM 자원은?",
+        "options": [
+          "신뢰 정책",
+          "인스턴스 프로파일",
+          "액세스 키"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인스턴스 프로파일은 역할을 EC2 인스턴스에 연결하는 IAM 자원이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-svcrole-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam-role",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "신뢰 정책 Principal의 ec2.amazonaws.com은 무엇인가?",
+        "options": [
+          "서비스 주체",
+          "IAM 사용자"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ec2.amazonaws.com은 EC2 서비스를 가리키는 서비스 주체다. 이 역할을 EC2가 맡을 수 있다는 뜻이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-svcrole-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam-role",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "인스턴스 프로파일을 쓰면 서버 설정 파일에 액세스 키를 적어야 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "인스턴스 프로파일을 쓰면 SDK가 임시 자격 증명을 자동으로 받아 써서 서버에 키를 둘 필요가 없다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-svcrole-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "iam-role",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "EC2에 역할을 붙일 때 쓰는 IAM 자원은 인스턴스 ___ 이다.",
+        "hint": "인스턴스와 역할을 잇는 자원이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "프로파일",
+          "profile",
+          "Profile",
+          "프로필"
+        ]
+      },
+      "explanation": "인스턴스 프로파일이 역할을 EC2 인스턴스에 연결해, 인스턴스 안의 앱이 그 역할의 권한을 쓴다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-svcrole-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam-role",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "가상 서버 서비스가 이 역할을 맡게 하려면 빈칸은?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [{\n    \"Effect\": \"Allow\",\n    \"Principal\": {\n      \"Service\": \"___.amazonaws.com\"\n    },\n    \"Action\": \"sts:AssumeRole\"\n  }]\n}"
+        },
+        "hint": "가상 서버 서비스의 이름이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "ec2",
+          "EC2"
+        ]
+      },
+      "explanation": "서비스 주체는 ec2.amazonaws.com처럼 서비스 이름으로 적는다. 그러면 EC2가 이 역할을 맡을 수 있다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-svcrole-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam-role",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "EC2의 앱이 S3에 접근해야 한다. 안전한 방법은?",
+        "options": [
+          "코드에 액세스 키",
+          "인스턴스 프로파일"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인스턴스 프로파일로 역할을 붙이면 키 없이 임시 자격 증명을 쓴다. 코드에 둔 키는 노출되면 유출된다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-svcrole-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam-role",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "인스턴스 프로파일을 쓰는 앱의 SDK는 자격 증명을 어떻게 얻나?",
+        "options": [
+          "임시 자격 증명 자동 수신",
+          "설정 파일의 장기 키"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인스턴스 프로파일이 있으면 SDK가 역할의 임시 자격 증명을 자동으로 받아 쓴다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-svcrole-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam-role",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "EC2가 역할을 맡지 못한다. 신뢰 정책에서 볼 요소는?",
+        "options": [
+          "Resource",
+          "Version",
+          "Principal"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "누가 역할을 맡을 수 있는지는 신뢰 정책의 Principal이 정한다. 여기에 ec2.amazonaws.com이 있어야 한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html"
+      ]
+    },
+    {
+      "id": "aws-iam-svcrole-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "iam-role",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "서비스 역할은 AWS 서비스가 사용자를 대신해 자원을 다룰 때 맡는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "서비스 역할은 EC2 같은 AWS 서비스가 사용자를 대신해 다른 자원을 다룰 때 맡는 역할이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html"
+      ]
+    }
+  ]
+}

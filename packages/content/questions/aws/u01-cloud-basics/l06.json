@@ -1,0 +1,244 @@
+{
+  "track": "aws",
+  "unit": "u01-cloud-basics",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "aws-cloud-root-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "root-user",
+        "mfa"
+      ],
+      "content": {
+        "prompt": "계정을 만든 이메일로 로그인하며 모든 권한을 가진 사용자는?",
+        "options": [
+          "게스트 사용자",
+          "일반 사용자",
+          "루트 사용자"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "루트 사용자는 계정을 만들 때 쓴 이메일로 로그인하며 계정의 모든 권한을 가진다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-root-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "root-user",
+        "mfa"
+      ],
+      "content": {
+        "prompt": "비밀번호에 더해 한 번 더 확인하는 인증은?",
+        "options": [
+          "비밀번호 변경",
+          "계정 해지",
+          "MFA"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "MFA는 비밀번호에 더해 인증 앱 코드나 보안 키로 한 번 더 확인하는 인증이다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-root-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "root-user",
+        "mfa"
+      ],
+      "content": {
+        "prompt": "피싱에 강해 AWS가 권장하는 MFA 방식은?",
+        "options": [
+          "패스키·보안 키",
+          "인증 앱 코드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "패스키·보안 키는 피싱에 강해 AWS가 권장한다. 인증 앱 코드는 가짜 사이트에 입력하면 탈취될 수 있다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-root-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "root-user",
+        "mfa"
+      ],
+      "content": {
+        "prompt": "루트 사용자는 일상 작업에 쓰는 것이 권장된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "루트 사용자는 모든 권한을 가져 위험하므로 일상 작업에 쓰지 않고 루트만 할 수 있는 일에만 쓴다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-root-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "root-user",
+        "mfa"
+      ],
+      "content": {
+        "prompt": "계정의 모든 권한을 가진 사용자를 ___ 사용자라 한다.",
+        "hint": "계정을 만들 때 쓴 이메일로 로그인한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "루트",
+          "root",
+          "Root"
+        ]
+      },
+      "explanation": "루트 사용자는 계정의 모든 권한을 가지며 권한을 줄일 수 없어 특히 잘 보호해야 한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-root-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "root-user",
+        "mfa"
+      ],
+      "content": {
+        "prompt": "비밀번호에 더해 한 번 더 확인하는 다중 인증의 약자는 ___ 이다.",
+        "hint": "Multi-Factor Authentication의 머리글자다."
+      },
+      "answer_key": {
+        "accepted": [
+          "MFA",
+          "mfa"
+        ]
+      },
+      "explanation": "MFA는 비밀번호 외에 인증 앱 코드나 보안 키로 한 번 더 확인해, 비밀번호가 새도 로그인을 막는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-root-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "root-user",
+        "mfa"
+      ],
+      "content": {
+        "prompt": "루트 사용자로 해야 하는 작업은?",
+        "options": [
+          "서버 만들기",
+          "비용 확인",
+          "계정 해지"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "계정 해지처럼 루트만 할 수 있는 일에만 루트를 쓴다. 서버 생성 같은 일상 작업에는 쓰지 않는다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-root-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "root-user",
+        "mfa"
+      ],
+      "content": {
+        "prompt": "루트 비밀번호가 유출됐을 때 피해를 줄이는 설정은?",
+        "options": [
+          "MFA 등록",
+          "리전 변경",
+          "요금 모델 변경"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "MFA가 있으면 비밀번호만으로는 로그인할 수 없어 유출 피해를 줄인다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-root-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "root-user",
+        "mfa"
+      ],
+      "content": {
+        "prompt": "가짜 로그인 사이트에 속아도 덜 위험한 MFA는?",
+        "options": [
+          "인증 앱 코드",
+          "보안 키"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "보안 키·패스키는 피싱에 강한 방식이다. 인증 앱 코드는 가짜 사이트에 입력하면 그대로 쓰일 수 있다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html"
+      ]
+    },
+    {
+      "id": "aws-cloud-root-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "root-user",
+        "mfa"
+      ],
+      "content": {
+        "prompt": "루트 사용자는 계정의 모든 권한을 가진다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "루트 사용자는 계정을 만들 때 쓴 이메일로 로그인하며 모든 권한을 가지므로 MFA로 보호한다.",
+      "refs": [
+        "https://docs.aws.amazon.com/IAM/latest/UserGuide/enable-mfa-for-root.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "track": "aws",
+  "unit": "u01-cloud-basics",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "aws-cloud-pricing-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "pricing",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "약정 없이 쓴 만큼 내는 기본 요금 방식은?",
+        "options": [
+          "온디맨드",
+          "스팟 인스턴스",
+          "예약 인스턴스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "온디맨드는 약정 없이 쓴 만큼 내는 기본 요금이며 언제든 시작·중지할 수 있다.",
+      "refs": [
+        "https://aws.amazon.com/ec2/pricing/"
+      ]
+    },
+    {
+      "id": "aws-cloud-pricing-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "pricing",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "남는 용량을 할인해 쓰지만 중단될 수 있는 방식은?",
+        "options": [
+          "온디맨드",
+          "Savings Plans",
+          "스팟 인스턴스"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "스팟 인스턴스는 남는 용량을 크게 할인해 쓰는 대신 AWS가 용량을 회수하면 중단될 수 있다.",
+      "refs": [
+        "https://aws.amazon.com/ec2/pricing/"
+      ]
+    },
+    {
+      "id": "aws-cloud-pricing-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "pricing",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "시간당 사용 금액을 약정하고 할인받는 방식은?",
+        "options": [
+          "예약 인스턴스",
+          "Savings Plans"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Savings Plans는 시간당 사용 금액을 약정한다. 예약 인스턴스는 특정 인스턴스 구성을 약정한다.",
+      "refs": [
+        "https://aws.amazon.com/ec2/pricing/"
+      ]
+    },
+    {
+      "id": "aws-cloud-pricing-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "pricing",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "특정 인스턴스 구성을 약정해 할인받는 것은 Savings Plans이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "특정 구성을 약정하는 것은 예약 인스턴스다. Savings Plans는 시간당 사용 금액을 약정해 구성 변경에 유연하다.",
+      "refs": [
+        "https://aws.amazon.com/ec2/pricing/"
+      ]
+    },
+    {
+      "id": "aws-cloud-pricing-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "aws",
+        "pricing",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "AWS가 회수해 중단될 수 있는 할인 방식은 ___ 인스턴스이다.",
+        "hint": "남는 용량을 쓰는 방식이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스팟",
+          "spot",
+          "Spot"
+        ]
+      },
+      "explanation": "스팟 인스턴스는 남는 용량을 크게 할인해 쓰지만 AWS가 회수하면 중단될 수 있다.",
+      "refs": [
+        "https://aws.amazon.com/ec2/pricing/"
+      ]
+    },
+    {
+      "id": "aws-cloud-pricing-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "pricing",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "약정 없이 쓴 만큼 내는 기본 요금을 ___ 라 한다.",
+        "hint": "요청하는 즉시 쓴다는 뜻의 영어 표현이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "온디맨드",
+          "on demand",
+          "on-demand",
+          "온 디맨드",
+          "On-Demand"
+        ]
+      },
+      "explanation": "온디맨드는 약정이 없어 언제든 시작·중지할 수 있고 쓴 만큼만 낸다.",
+      "refs": [
+        "https://aws.amazon.com/ec2/pricing/"
+      ]
+    },
+    {
+      "id": "aws-cloud-pricing-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "pricing",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "중단돼도 다시 돌리면 되는 일괄 처리 작업에 맞는 것은?",
+        "options": [
+          "온디맨드",
+          "스팟 인스턴스",
+          "예약 인스턴스"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "중단돼도 다시 실행하면 되는 작업은 회수 위험이 있는 대신 크게 할인되는 스팟 인스턴스가 맞다.",
+      "refs": [
+        "https://aws.amazon.com/ec2/pricing/"
+      ]
+    },
+    {
+      "id": "aws-cloud-pricing-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "pricing",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "며칠만 쓰고 중단되면 안 되는 테스트 서버에 맞는 것은?",
+        "options": [
+          "예약 인스턴스",
+          "스팟 인스턴스",
+          "온디맨드"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "짧게 쓰는 서버는 약정이 필요 없는 온디맨드가 맞다. 스팟은 중단될 수 있고 예약 인스턴스는 기간 약정이 필요하다.",
+      "refs": [
+        "https://aws.amazon.com/ec2/pricing/"
+      ]
+    },
+    {
+      "id": "aws-cloud-pricing-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "pricing",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "늘 켜 두되 인스턴스 구성을 자주 바꿀 서버의 약정은?",
+        "options": [
+          "Savings Plans",
+          "예약 인스턴스",
+          "스팟 인스턴스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Savings Plans는 시간당 사용 금액을 약정하므로 구성을 바꿔도 할인이 이어진다. 예약 인스턴스는 특정 구성에 묶인다.",
+      "refs": [
+        "https://aws.amazon.com/ec2/pricing/"
+      ]
+    },
+    {
+      "id": "aws-cloud-pricing-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "aws",
+        "pricing",
+        "ec2"
+      ],
+      "content": {
+        "prompt": "온디맨드는 약정 없이 언제든 시작·중지할 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "온디맨드는 약정이 없는 기본 요금이라 필요할 때 시작하고 언제든 멈출 수 있다.",
+      "refs": [
+        "https://aws.amazon.com/ec2/pricing/"
+      ]
+    }
+  ]
+}
