@@ -1,0 +1,212 @@
+{
+  "track": "aws",
+  "unit": "u07-serverless-containers",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "aws-sls-apigw-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "api-gateway",
+        "lambda"
+      ],
+      "content": {
+        "prompt": "HTTP 요청을 받아 Lambda로 넘기는 관리형 API 진입점은?",
+        "options": [
+          "API Gateway",
+          "AWS STS",
+          "Amazon EBS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Amazon API Gateway는 HTTP 요청을 받아 Lambda 같은 백엔드로 넘기는 관리형 API 진입점이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-apigw-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "api-gateway",
+        "lambda"
+      ],
+      "content": {
+        "prompt": "GET /items처럼 메서드와 경로를 대상에 연결한 것은?",
+        "options": [
+          "리스너",
+          "라우트",
+          "대상 그룹"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "라우트는 메서드와 경로의 조합을 통합 대상에 연결한 것이다. 리스너·대상 그룹은 로드 밸런서 구성 요소다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-apigw-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "api-gateway",
+        "lambda"
+      ],
+      "content": {
+        "prompt": "API 키 같은 기능이 더 많은 API 유형은?",
+        "options": [
+          "HTTP API",
+          "REST API"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "REST API는 API 키 등 기능이 많고, HTTP API는 기능이 단순한 대신 저렴하다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-apigw-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "api-gateway",
+        "lambda"
+      ],
+      "content": {
+        "prompt": "프록시 통합은 요청 전체를 이벤트로 함수에 넘긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "프록시 통합은 요청 전체를 이벤트로 Lambda에 넘기고, 함수 응답을 그대로 클라이언트에 돌려준다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-apigw-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "api-gateway",
+        "lambda"
+      ],
+      "content": {
+        "prompt": "메서드와 경로를 통합 대상에 연결한 것을 ___ 라 한다.",
+        "hint": "GET /items 같은 조합"
+      },
+      "answer_key": {
+        "accepted": [
+          "라우트",
+          "route"
+        ]
+      },
+      "explanation": "라우트는 GET /items처럼 메서드와 경로의 조합을 함수 같은 통합 대상에 연결한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-apigw-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "api-gateway",
+        "lambda"
+      ],
+      "content": {
+        "prompt": "단순하고 저렴한 API Gateway 유형은 ___ API다."
+      },
+      "answer_key": {
+        "accepted": [
+          "HTTP",
+          "http"
+        ]
+      },
+      "explanation": "HTTP API는 기능이 단순하고 저렴하다. API 키 같은 기능이 필요하면 REST API를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-apigw-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "api-gateway",
+        "lambda"
+      ],
+      "content": {
+        "prompt": "API 키로 호출자를 구분해야 한다. 고를 API 유형은?",
+        "options": [
+          "REST API",
+          "HTTP API"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "API 키는 REST API가 제공하는 기능이다. HTTP API는 단순하고 저렴하지만 API 키를 지원하지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-apigw-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "api-gateway",
+        "lambda"
+      ],
+      "content": {
+        "prompt": "POST /orders가 GET /orders 함수로 가지 않는 이유는?",
+        "options": [
+          "타임아웃 부족",
+          "실행 역할 없음",
+          "메서드가 다른 라우트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "라우트는 메서드와 경로의 조합이므로 경로가 같아도 메서드가 다르면 다른 라우트다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-apigw-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "api-gateway",
+        "lambda"
+      ],
+      "content": {
+        "prompt": "프록시 통합에서 클라이언트가 받는 응답은?",
+        "options": [
+          "함수 응답 그대로",
+          "빈 응답",
+          "이벤트 객체"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "프록시 통합은 함수가 돌려준 응답을 그대로 클라이언트에 돌려준다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-apigw-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "api-gateway",
+        "lambda"
+      ],
+      "content": {
+        "prompt": "API Gateway는 사용자가 직접 관리하는 EC2 위에서 실행된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "API Gateway는 AWS가 운영하는 관리형 서비스라 사용자가 서버를 준비하거나 관리하지 않는다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "track": "aws",
+  "unit": "u08-messaging",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "aws-msg-evb-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "eventbridge",
+        "event-pattern"
+      ],
+      "content": {
+        "prompt": "이벤트를 받아 규칙대로 대상에 보내는 이벤트 버스는?",
+        "options": [
+          "Amazon SQS",
+          "AWS STS",
+          "EventBridge"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Amazon EventBridge는 AWS 서비스·앱의 이벤트를 받아 규칙대로 대상에 보내는 이벤트 버스다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-evb-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "eventbridge",
+        "event-pattern"
+      ],
+      "content": {
+        "prompt": "규칙에 맞는 이벤트를 받는 Lambda 함수·SQS 큐는?",
+        "options": [
+          "대상",
+          "구독",
+          "이벤트 패턴"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "대상은 규칙에 맞는 이벤트를 받는 곳이다. 구독은 SNS 주제에 연결한 수신처를 부르는 말이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-evb-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "eventbridge",
+        "event-pattern"
+      ],
+      "content": {
+        "prompt": "이벤트 패턴은 source·detail-type 같은 필드 값으로 이벤트를 고른다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "이벤트 패턴은 이벤트 JSON의 source·detail-type 같은 필드 값으로 규칙이 고를 이벤트를 정한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-evb-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "eventbridge",
+        "event-pattern"
+      ],
+      "content": {
+        "prompt": "EventBridge로는 정해진 시각마다 대상을 실행할 수 없다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "EventBridge는 cron·rate 식으로 일정을 정해 정해진 시각이나 간격마다 대상을 실행할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-evb-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "eventbridge",
+        "event-pattern"
+      ],
+      "content": {
+        "prompt": "이벤트를 보낸 서비스를 고르는 패턴 필드를 완성하면?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"___\": [\"aws.ec2\"],\n  \"detail-type\": [\n    \"EC2 Instance State-change Notification\"\n  ]\n}"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "source"
+        ]
+      },
+      "explanation": "source 필드는 이벤트를 보낸 곳(aws.ec2 등)을, detail-type은 무슨 일인지를 나타낸다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-evb-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "eventbridge",
+        "event-pattern"
+      ],
+      "content": {
+        "prompt": "정해진 시각마다 실행하는 일정은 rate 식이나 ___ 식으로 쓴다."
+      },
+      "answer_key": {
+        "accepted": [
+          "cron",
+          "크론"
+        ]
+      },
+      "explanation": "EventBridge 일정은 cron 식(정해진 시각)이나 rate 식(일정 간격)으로 정한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-evb-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "eventbridge",
+        "event-pattern"
+      ],
+      "content": {
+        "prompt": "이 이벤트 패턴에 맞는 이벤트는?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"source\": [\"aws.ec2\"],\n  \"detail-type\": [\n    \"EC2 Instance State-change Notification\"\n  ],\n  \"detail\": {\n    \"state\": [\"stopped\"]\n  }\n}"
+        },
+        "options": [
+          "EC2 인스턴스 시작",
+          "EC2 인스턴스 중지",
+          "S3 객체 생성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "source가 aws.ec2이고 detail의 state가 stopped인 인스턴스 상태 변경 이벤트만 고른다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-evb-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "eventbridge",
+        "event-pattern"
+      ],
+      "content": {
+        "prompt": "매일 새벽 정리 함수를 실행하려면 규칙에 쓸 것은?",
+        "options": [
+          "이벤트 패턴",
+          "SNS 구독",
+          "cron 식 일정"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "정해진 시각마다 실행하려면 cron 식 일정을 가진 규칙에 함수를 대상으로 둔다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-evb-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "eventbridge",
+        "event-pattern"
+      ],
+      "content": {
+        "prompt": "주문 이벤트 중 결제 실패만 함수로 보내려면?",
+        "options": [
+          "이벤트 패턴 설정",
+          "SNS 주제 추가",
+          "함수 메모리 증가"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "규칙의 이벤트 패턴에 필드 값을 지정하면 맞는 이벤트만 골라 대상에 보낸다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-evb-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "eventbridge",
+        "event-pattern"
+      ],
+      "content": {
+        "prompt": "EC2 상태 변경 이벤트를 받아 함수로 넘기는 서비스는?",
+        "options": [
+          "Amazon SQS",
+          "EventBridge",
+          "Amazon ECR"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "EventBridge는 AWS 서비스 이벤트를 받아 규칙에 맞으면 Lambda 같은 대상에 보낸다.",
+      "refs": []
+    }
+  ]
+}

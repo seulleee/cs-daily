@@ -1,0 +1,223 @@
+{
+  "track": "aws",
+  "unit": "u08-messaging",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "aws-msg-async-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "async",
+        "idempotency",
+        "decoupling"
+      ],
+      "content": {
+        "prompt": "같은 메시지를 여러 번 처리해도 결과가 같은 성질은?",
+        "options": [
+          "가용성",
+          "원자성",
+          "멱등성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "멱등성은 같은 메시지를 여러 번 처리해도 한 번 처리한 것과 결과가 같은 성질이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-async-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "async",
+        "idempotency",
+        "decoupling"
+      ],
+      "content": {
+        "prompt": "큐를 사이에 두어 받는 쪽 상태와 무관하게 보내는 설계는?",
+        "options": [
+          "느슨한 결합",
+          "강한 결합",
+          "동기 호출"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "느슨한 결합은 큐·주제를 사이에 두어 보내는 쪽이 받는 쪽 상태와 관계없이 동작하게 한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-async-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "async",
+        "idempotency",
+        "decoupling"
+      ],
+      "content": {
+        "prompt": "여러 서비스에 같은 알림을 보낼 때 고를 도구는?",
+        "options": [
+          "SNS",
+          "SQS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "여러 곳에 알릴 때는 SNS, 한 소비자가 꺼내 처리할 작업 대기열은 SQS를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-async-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "async",
+        "idempotency",
+        "decoupling"
+      ],
+      "content": {
+        "prompt": "비동기 설계에서는 메시지가 다시 전달될 일을 고려하지 않아도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "비동기 설계에서는 메시지가 다시 전달될 수 있으므로 소비자를 멱등하게 만들어야 한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-async-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "async",
+        "idempotency",
+        "decoupling"
+      ],
+      "content": {
+        "prompt": "요청이 몰릴 때 큐에 쌓아 두고 감당할 속도로 처리하는 것은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "버퍼링",
+          "buffering"
+        ]
+      },
+      "explanation": "버퍼링은 몰린 요청을 큐에 쌓아 두고 소비자가 감당할 수 있는 속도로 처리하는 것이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-async-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "async",
+        "idempotency",
+        "decoupling"
+      ],
+      "content": {
+        "prompt": "여러 번 처리해도 결과가 같은 성질은 ___ 이다.",
+        "hint": "재전달에 대비해 소비자가 갖춰야 할 성질"
+      },
+      "answer_key": {
+        "accepted": [
+          "멱등성",
+          "멱등",
+          "idempotency"
+        ]
+      },
+      "explanation": "멱등한 소비자는 같은 메시지를 다시 받아도 결과가 달라지지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-async-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "async",
+        "idempotency",
+        "decoupling"
+      ],
+      "content": {
+        "prompt": "다음 중 멱등한 처리는?",
+        "options": [
+          "잔액에 100 더하기",
+          "잔액을 100으로 설정"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "값을 정해진 값으로 설정하면 여러 번 해도 결과가 같다. 더하기는 처리할 때마다 결과가 달라진다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-async-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "async",
+        "idempotency",
+        "decoupling"
+      ],
+      "content": {
+        "prompt": "세일 때 주문이 몰려 처리 서버가 넘친다. 맞는 설계는?",
+        "options": [
+          "서버 직접 호출",
+          "큐에 쌓아 처리",
+          "타임아웃 줄이기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "큐에 쌓아 두면 소비자가 감당할 수 있는 속도로 처리하는 버퍼링이 된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-async-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "async",
+        "idempotency",
+        "decoupling"
+      ],
+      "content": {
+        "prompt": "주문 이벤트 중 조건에 맞는 것만 골라 보내려면?",
+        "options": [
+          "SQS",
+          "SNS",
+          "EventBridge"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "조건별 이벤트 전달은 이벤트 패턴으로 이벤트를 고르는 EventBridge가 맞다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-async-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "async",
+        "idempotency",
+        "decoupling"
+      ],
+      "content": {
+        "prompt": "큐를 사이에 두면 받는 쪽이 멈춰도 보내는 쪽은 계속 동작한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "느슨한 결합에서는 보내는 쪽이 큐에 메시지만 넣으므로 받는 쪽 상태와 관계없이 동작한다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "track": "aws",
+  "unit": "u07-serverless-containers",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "aws-sls-limit-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lambda",
+        "timeout",
+        "concurrency"
+      ],
+      "content": {
+        "prompt": "함수 한 번의 최대 실행 시간을 정하는 설정은?",
+        "options": [
+          "타임아웃",
+          "메모리",
+          "동시성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "타임아웃은 함수 한 번의 최대 실행 시간이다. 넘으면 실행이 강제로 끝나고 오류가 된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-limit-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lambda",
+        "timeout",
+        "concurrency"
+      ],
+      "content": {
+        "prompt": "같은 순간 처리 중인 요청 수를 뭐라 하나?",
+        "options": [
+          "타임아웃",
+          "동시성",
+          "핸들러"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "동시성은 같은 순간 처리 중인 요청 수다. 한도를 넘으면 요청이 스로틀링된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-limit-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "lambda",
+        "timeout",
+        "concurrency"
+      ],
+      "content": {
+        "prompt": "Lambda에서 메모리를 늘리면 함께 늘어나는 것은?",
+        "options": [
+          "타임아웃",
+          "동시성 한도",
+          "CPU"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Lambda는 설정한 메모리에 비례해 CPU를 할당하므로 메모리를 늘리면 CPU도 늘어난다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-limit-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "lambda",
+        "timeout",
+        "concurrency"
+      ],
+      "content": {
+        "prompt": "타임아웃을 넘긴 함수는 끝까지 실행된 뒤 결과를 돌려준다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "타임아웃을 넘기면 Lambda가 실행을 강제로 끝내고 오류로 처리한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-limit-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "lambda",
+        "timeout",
+        "concurrency"
+      ],
+      "content": {
+        "prompt": "동시성 한도를 넘은 요청이 거절되는 것을 ___ 이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스로틀링",
+          "throttling",
+          "쓰로틀링",
+          "스로틀"
+        ]
+      },
+      "explanation": "계정·함수의 동시성 한도를 넘으면 추가 요청은 스로틀링되어 바로 처리되지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-limit-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "lambda",
+        "timeout",
+        "concurrency"
+      ],
+      "content": {
+        "prompt": "함수 몫의 동시성을 떼어 두는 설정은 ___ 동시성이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "예약된",
+          "예약",
+          "reserved"
+        ]
+      },
+      "explanation": "예약된 동시성은 함수 몫을 떼어 두어 보장하며, 그 값이 함수 동시 실행의 상한이 된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-limit-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lambda",
+        "timeout",
+        "concurrency"
+      ],
+      "content": {
+        "prompt": "예약된 동시성이 10인 함수에 동시에 15건이 오면?",
+        "options": [
+          "초과 5건 스로틀링",
+          "15건 모두 처리",
+          "전부 스로틀링"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "예약된 동시성 값이 상한이므로 동시에 10건까지만 처리되고 넘는 5건은 스로틀링된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-limit-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lambda",
+        "timeout",
+        "concurrency"
+      ],
+      "content": {
+        "prompt": "계산이 많아 느린 함수에 먼저 시도할 설정은?",
+        "options": [
+          "타임아웃 줄이기",
+          "메모리 늘리기",
+          "동시성 줄이기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "메모리를 늘리면 CPU도 비례해 늘어 계산이 많은 함수가 빨라질 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-limit-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "lambda",
+        "timeout",
+        "concurrency"
+      ],
+      "content": {
+        "prompt": "함수가 늘어나 DB 연결이 넘친다. 함수 쪽 조치는?",
+        "options": [
+          "메모리 늘리기",
+          "타임아웃 늘리기",
+          "예약된 동시성 설정"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "예약된 동시성 값이 함수 동시 실행의 상한이 되므로 DB로 가는 동시 연결 수를 제한할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-limit-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "lambda",
+        "timeout",
+        "concurrency"
+      ],
+      "content": {
+        "prompt": "타임아웃을 넘긴 실행은 오류로 끝난다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "타임아웃은 한 번의 최대 실행 시간이며, 넘으면 강제로 끝나고 오류가 된다.",
+      "refs": []
+    }
+  ]
+}

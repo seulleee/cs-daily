@@ -1,0 +1,211 @@
+{
+  "track": "aws",
+  "unit": "u07-serverless-containers",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "aws-sls-fargate-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ecs",
+        "fargate"
+      ],
+      "content": {
+        "prompt": "EC2 인스턴스 없이 ECS 태스크를 실행하는 방식은?",
+        "options": [
+          "Amazon ECR",
+          "시작 템플릿",
+          "AWS Fargate"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "AWS Fargate는 EC2 인스턴스 없이 태스크를 실행하고, 태스크의 CPU·메모리로 과금한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-fargate-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ecs",
+        "fargate"
+      ],
+      "content": {
+        "prompt": "원하는 태스크 수를 계속 유지하는 ECS 구성 요소는?",
+        "options": [
+          "ECS 서비스",
+          "클러스터",
+          "태스크 정의"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ECS 서비스는 원하는 태스크 수를 유지하고 멈춘 태스크를 새로 띄운다. 클러스터는 묶음 단위다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-fargate-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "ecs",
+        "fargate"
+      ],
+      "content": {
+        "prompt": "태스크 정의를 바탕으로 실제 실행된 컨테이너 묶음은?",
+        "options": [
+          "태스크 정의",
+          "태스크"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "태스크 정의는 실행 명세이고, 그 명세로 실제 실행된 컨테이너 묶음 하나가 태스크다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-fargate-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "ecs",
+        "fargate"
+      ],
+      "content": {
+        "prompt": "ECS 서비스는 멈춘 태스크 대신 새 태스크를 띄운다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "ECS 서비스는 원하는 태스크 수를 유지하므로 태스크가 멈추면 새로 띄운다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-fargate-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "ecs",
+        "fargate"
+      ],
+      "content": {
+        "prompt": "서비스와 태스크를 묶어 관리하는 논리적 단위는 ___ 다."
+      },
+      "answer_key": {
+        "accepted": [
+          "클러스터",
+          "cluster"
+        ]
+      },
+      "explanation": "클러스터는 ECS 서비스와 태스크를 묶어 관리하는 논리적 단위다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-fargate-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "ecs",
+        "fargate"
+      ],
+      "content": {
+        "prompt": "Fargate는 태스크의 CPU와 ___ 로 과금한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "메모리",
+          "memory"
+        ]
+      },
+      "explanation": "Fargate는 EC2 인스턴스 대신 태스크에 지정한 CPU·메모리를 기준으로 과금한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-fargate-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ecs",
+        "fargate"
+      ],
+      "content": {
+        "prompt": "원하는 수가 3인 서비스에서 태스크 하나가 멈추면?",
+        "options": [
+          "둘만 유지",
+          "새 태스크 시작",
+          "서비스 중지"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ECS 서비스는 원하는 태스크 수를 유지하므로 멈춘 태스크를 대신할 새 태스크를 띄운다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-fargate-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ecs",
+        "fargate"
+      ],
+      "content": {
+        "prompt": "서비스 태스크가 ALB 요청을 받으려면 등록될 곳은?",
+        "options": [
+          "DB 서브넷 그룹",
+          "IAM 그룹",
+          "대상 그룹"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "ECS 서비스는 새로 띄운 태스크를 대상 그룹에 등록해 ALB가 요청을 보내게 한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-fargate-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "ecs",
+        "fargate"
+      ],
+      "content": {
+        "prompt": "컨테이너를 돌릴 EC2의 패치를 맡기 싫다. 고를 것은?",
+        "options": [
+          "AWS Fargate",
+          "EC2에서 ECS 실행"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Fargate는 EC2 인스턴스 없이 태스크를 실행하므로 그 아래 서버 패치와 용량을 AWS가 맡는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-sls-fargate-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "ecs",
+        "fargate"
+      ],
+      "content": {
+        "prompt": "Fargate를 쓰려면 클러스터에 EC2 인스턴스를 먼저 등록해야 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Fargate는 EC2 인스턴스 없이 태스크를 실행하는 방식이라 인스턴스를 등록하지 않는다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "track": "aws",
+  "unit": "u08-messaging",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "aws-msg-dup-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "idempotency",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "중복 처리를 볼 때 처리 시간과 비교할 설정은?",
+        "options": [
+          "가시성 타임아웃",
+          "maxReceiveCount",
+          "메시지 그룹 ID"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "1단계는 처리 시간이 가시성 타임아웃보다 길어 메시지가 다시 보이는지 확인하는 것이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dup-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "idempotency",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "처리를 마친 메시지를 큐에서 지우는 명령은?",
+        "options": [
+          "send-message",
+          "delete-message",
+          "receive-message"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "소비자는 처리 후 delete-message로 메시지를 지워야 한다. 지우지 않으면 다시 꺼내진다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dup-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "idempotency",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "표준 큐에서 같은 메시지가 두 번 왔다. 이것은?",
+        "options": [
+          "정상 동작",
+          "SQS 장애"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "표준 큐는 최소 한 번 전달이라 중복 전달이 정상 동작이다. 소비자가 멱등해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dup-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "idempotency",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "처리 시간이 가시성 타임아웃보다 길면 메시지가 다시 꺼내질 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "처리 중에 가시성 타임아웃이 끝나면 메시지가 다시 보여 다른 소비자가 또 처리한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dup-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "sqs",
+        "idempotency",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "중복 전달에 대비해 소비자를 ___ 하게 만든다."
+      },
+      "answer_key": {
+        "accepted": [
+          "멱등",
+          "멱등성",
+          "idempotent"
+        ]
+      },
+      "explanation": "같은 메시지를 다시 처리해도 결과가 같도록 소비자를 멱등하게 만들면 중복 전달에도 안전하다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dup-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "idempotency",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "가시성 ___ 을 처리 시간보다 길게 잡는다."
+      },
+      "answer_key": {
+        "accepted": [
+          "타임아웃",
+          "timeout"
+        ]
+      },
+      "explanation": "가시성 타임아웃이 처리 시간보다 길어야 처리 중에 메시지가 다시 보이지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dup-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "idempotency",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "처리 후 빈칸에 와야 할 명령은?",
+        "code": {
+          "language": "bash",
+          "source": "aws sqs receive-message \\\n  --queue-url \"$QUEUE_URL\"\n# 메시지 처리 후\naws sqs ___ \\\n  --queue-url \"$QUEUE_URL\" \\\n  --receipt-handle \"$HANDLE\""
+        },
+        "options": [
+          "send-message",
+          "receive-message",
+          "delete-message"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "받은 receipt handle로 delete-message를 호출해야 처리한 메시지가 큐에서 사라진다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dup-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "idempotency",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "처리 시간이 가시성 타임아웃보다 길다. 조치는?",
+        "options": [
+          "타임아웃 늘리기",
+          "DLQ 비우기",
+          "소비자 수 늘리기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가시성 타임아웃을 처리 시간보다 길게 늘리면 처리 중 메시지가 다시 보이지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dup-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "idempotency",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "삭제 직전 예외로 삭제가 빠지면 메시지는?",
+        "options": [
+          "사라짐",
+          "다시 처리됨",
+          "생산자가 재전송"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "삭제되지 않은 메시지는 가시성 타임아웃 뒤 다시 보여 또 처리된다. 2단계가 이를 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-msg-dup-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "sqs",
+        "idempotency",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "중복 처리는 생산자가 두 번 보낸 경우에만 생긴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "생산자가 한 번 보내도 가시성 타임아웃, 삭제 누락, 표준 큐의 중복 전달로 중복 처리가 생긴다.",
+      "refs": []
+    }
+  ]
+}
