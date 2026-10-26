@@ -1,0 +1,219 @@
+{
+  "track": "aws",
+  "unit": "u10-observability-iac",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "aws-iac-tags-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tagging",
+        "cost"
+      ],
+      "content": {
+        "prompt": "리소스에 붙이는 키와 값의 쌍은?",
+        "options": [
+          "태그",
+          "차원",
+          "네임스페이스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "태그는 Project=cs-daily처럼 리소스에 붙이는 키와 값의 쌍이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tags-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cost-explorer",
+        "cost"
+      ],
+      "content": {
+        "prompt": "서비스·태그별 비용을 기간에 따라 조회하는 도구는?",
+        "options": [
+          "CloudTrail",
+          "Cost Explorer",
+          "Logs Insights"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Cost Explorer는 서비스·태그별 비용을 기간에 따라 조회한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tags-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "tagging",
+        "cost-allocation"
+      ],
+      "content": {
+        "prompt": "비용 보고서를 태그별로 나누려면 결제 콘솔에서 할 일은?",
+        "options": [
+          "태그 이름 변경",
+          "비용 할당 태그 활성화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "태그는 결제 콘솔에서 비용 할당 태그로 활성화해야 비용 보고서에서 태그별로 나뉜다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tags-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "tagging",
+        "cost-allocation"
+      ],
+      "content": {
+        "prompt": "리소스에 태그만 붙이면 비용 보고서가 바로 태그별로 나뉜다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "결제 콘솔에서 비용 할당 태그로 활성화해야 비용 보고서에서 태그별로 나뉜다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tags-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "tagging",
+        "cost"
+      ],
+      "content": {
+        "prompt": "리소스에 붙이는 키와 값의 쌍을 ___라 한다.",
+        "hint": "Project=cs-daily 같은 형태"
+      },
+      "answer_key": {
+        "accepted": [
+          "태그",
+          "tag"
+        ]
+      },
+      "explanation": "태그는 Env=prod처럼 리소스에 붙이는 키·값 쌍으로 비용 구분과 소유자 확인에 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tags-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cost-explorer",
+        "cost"
+      ],
+      "content": {
+        "prompt": "서비스·태그별 비용을 조회하는 도구는 Cost ___다.",
+        "hint": "탐색기를 뜻하는 영어 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "Explorer",
+          "explorer",
+          "익스플로러"
+        ]
+      },
+      "explanation": "Cost Explorer는 서비스·태그별 비용을 기간에 따라 조회하는 도구다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tags-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "terraform",
+        "default-tags"
+      ],
+      "content": {
+        "prompt": "모든 리소스에 공통 태그를 붙인다. 빈칸은?",
+        "code": {
+          "language": "hcl",
+          "source": "provider \"aws\" {\n  region = \"ap-northeast-2\"\n  ___ {\n    tags = {\n      Project = \"cs-daily\"\n      Env     = \"prod\"\n    }\n  }\n}"
+        },
+        "options": [
+          "tags_all",
+          "common_tags",
+          "default_tags"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "aws 프로바이더의 default_tags 블록에 적은 태그는 그 프로바이더로 만드는 리소스에 공통으로 붙는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tags-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cost-explorer",
+        "tagging"
+      ],
+      "content": {
+        "prompt": "Env=prod 리소스의 지난달 비용만 보려면 쓸 도구는?",
+        "options": [
+          "Cost Explorer",
+          "CloudTrail",
+          "Logs Insights"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Cost Explorer에서 기간과 Env 태그로 필터하면 운영 환경 비용만 볼 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tags-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "terraform",
+        "default-tags"
+      ],
+      "content": {
+        "prompt": "새 리소스에 태그가 자꾸 빠진다. 알맞은 대책은?",
+        "options": [
+          "태그 수동 확인",
+          "default_tags 사용",
+          "태그 전부 삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Terraform default_tags로 공통 태그를 붙이면 리소스마다 적지 않아도 빠지지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tags-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "tagging",
+        "cost"
+      ],
+      "content": {
+        "prompt": "태그는 리소스에 붙이는 키와 값의 쌍이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "태그는 Project·Env 같은 키와 값의 쌍으로, 비용을 나누고 소유자를 찾는 데 쓴다.",
+      "refs": []
+    }
+  ]
+}

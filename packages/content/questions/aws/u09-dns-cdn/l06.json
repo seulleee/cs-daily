@@ -1,0 +1,221 @@
+{
+  "track": "aws",
+  "unit": "u09-dns-cdn",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "aws-cdn-cache-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudfront",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "엣지가 캐시한 객체를 오리진에 다시 묻지 않고 쓰는 기간은?",
+        "options": [
+          "TTL",
+          "캐시 키",
+          "무효화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "TTL은 엣지가 캐시한 사본을 오리진에 다시 묻지 않고 쓰는 기간이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-cache-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudfront",
+        "cache-key"
+      ],
+      "content": {
+        "prompt": "요청을 같은 객체로 볼지 정하는 기준은?",
+        "options": [
+          "TTL",
+          "캐시 키",
+          "오리진"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "캐시 키는 경로에 고른 쿼리 문자열·헤더·쿠키를 더해 같은 객체로 볼 기준을 정한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-cache-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudfront",
+        "invalidation"
+      ],
+      "content": {
+        "prompt": "엣지 캐시를 지워 오리진에서 새로 받게 하는 것은?",
+        "options": [
+          "TTL 연장",
+          "캐시 키",
+          "무효화"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "무효화는 엣지에 남은 캐시를 지워 다음 요청에 오리진에서 새로 받게 한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-cache-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cloudfront",
+        "cache-key"
+      ],
+      "content": {
+        "prompt": "캐시 키에 쿼리 문자열을 넣으면 값이 다른 요청은 따로 캐시된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "캐시 키에 고른 쿼리 문자열이 들어가면 그 값이 다른 요청은 서로 다른 객체로 캐시된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-cache-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cloudfront",
+        "invalidation"
+      ],
+      "content": {
+        "prompt": "엣지 캐시를 지우는 명령이다. 빈칸의 서비스 이름은?",
+        "code": {
+          "language": "bash",
+          "source": "aws ___ create-invalidation \\\n  --distribution-id E1EXAMPLE \\\n  --paths \"/index.html\""
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "cloudfront",
+          "CloudFront"
+        ]
+      },
+      "explanation": "무효화는 aws cloudfront create-invalidation 명령에 지울 경로를 넘겨 요청한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-cache-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cloudfront",
+        "versioned-file"
+      ],
+      "content": {
+        "prompt": "내용이 바뀌면 app.3f2a.js처럼 ___ 붙은 이름으로 바꾼다.",
+        "hint": "파일 내용을 구별하는 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "버전",
+          "version",
+          "해시"
+        ]
+      },
+      "explanation": "버전 붙은 파일 이름은 내용이 바뀌면 이름도 바뀌어 엣지에 없는 새 객체로 받게 된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-cache-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cloudfront",
+        "invalidation"
+      ],
+      "content": {
+        "prompt": "지울 경로를 넘기는 옵션이다. 빈칸은?",
+        "code": {
+          "language": "bash",
+          "source": "aws cloudfront create-invalidation \\\n  --distribution-id E1EXAMPLE \\\n  ___ \"/index.html\""
+        },
+        "options": [
+          "--paths",
+          "--keys",
+          "--files"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "create-invalidation은 --paths에 지울 경로를 받는다. 나머지는 이 명령에 없는 옵션이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-cache-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cloudfront",
+        "versioned-file"
+      ],
+      "content": {
+        "prompt": "app.js 내용을 바꿔 app.9c1d.js로 올렸다. 이 파일은?",
+        "options": [
+          "무효화 필요 없음",
+          "무효화 필요"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "새 이름은 엣지에 캐시된 적이 없어 바로 오리진에서 받는다. 그래서 무효화가 필요 없다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-cache-009",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cloudfront",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "TTL을 길게 잡아도 오리진 파일이 바뀌면 엣지에 즉시 반영된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "TTL 동안 엣지는 오리진에 다시 묻지 않고 옛 사본을 쓴다. 즉시 바꾸려면 무효화한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-cache-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cloudfront",
+        "ttl"
+      ],
+      "content": {
+        "prompt": "TTL의 뜻은?",
+        "options": [
+          "캐시를 지우는 명령",
+          "캐시 사본을 쓰는 기간"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "TTL은 엣지가 사본을 오리진에 다시 묻지 않고 쓰는 기간이다. 캐시를 지우는 것은 무효화다.",
+      "refs": []
+    }
+  ]
+}

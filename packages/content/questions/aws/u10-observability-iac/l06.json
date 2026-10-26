@@ -1,0 +1,215 @@
+{
+  "track": "aws",
+  "unit": "u10-observability-iac",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "aws-iac-cfn-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudformation",
+        "template"
+      ],
+      "content": {
+        "prompt": "만들 리소스를 YAML·JSON으로 선언한 CloudFormation 파일은?",
+        "options": [
+          "템플릿",
+          "스택",
+          "변경 세트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "템플릿은 만들 리소스를 YAML·JSON으로 선언한 CloudFormation 파일이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-cfn-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudformation",
+        "stack"
+      ],
+      "content": {
+        "prompt": "한 템플릿으로 만든 리소스 묶음은?",
+        "options": [
+          "템플릿",
+          "스택",
+          "배포"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스택은 한 템플릿으로 만든 리소스 묶음이며 함께 생성·수정·삭제된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-cfn-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudformation",
+        "change-set"
+      ],
+      "content": {
+        "prompt": "스택 업데이트 전에 바뀔 리소스를 미리 보여 주는 것은?",
+        "options": [
+          "롤백",
+          "드리프트",
+          "변경 세트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "변경 세트는 스택을 업데이트하기 전에 어떤 리소스가 바뀌는지 미리 보여 준다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-cfn-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cloudformation",
+        "rollback"
+      ],
+      "content": {
+        "prompt": "스택 생성 중 실패하면 이미 만든 리소스가 그대로 남는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "생성·업데이트 중 실패하면 CloudFormation이 롤백해 리소스를 이전 상태로 되돌린다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-cfn-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cloudformation",
+        "rollback"
+      ],
+      "content": {
+        "prompt": "실패 시 리소스를 이전 상태로 되돌리는 것을 ___이라 한다.",
+        "hint": "업데이트가 실패했을 때 일어난다"
+      },
+      "answer_key": {
+        "accepted": [
+          "롤백",
+          "rollback"
+        ]
+      },
+      "explanation": "롤백은 스택 생성·업데이트가 실패했을 때 리소스를 이전 상태로 되돌리는 동작이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-cfn-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cloudformation",
+        "change-set"
+      ],
+      "content": {
+        "prompt": "스택 업데이트 전에 바뀔 내용을 보는 것은 변경 ___다.",
+        "hint": "업데이트 전에 검토용으로 만든다"
+      },
+      "answer_key": {
+        "accepted": [
+          "세트",
+          "set",
+          "셋"
+        ]
+      },
+      "explanation": "변경 세트를 만들면 업데이트로 바뀔 리소스를 미리 검토한 뒤 실행할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-cfn-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cloudformation",
+        "stack"
+      ],
+      "content": {
+        "prompt": "스택을 삭제하면 그 스택의 리소스는?",
+        "options": [
+          "함께 삭제됨",
+          "그대로 남음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스택은 리소스 묶음이라 스택을 삭제하면 그 안의 리소스도 함께 삭제된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-cfn-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cloudformation",
+        "change-set"
+      ],
+      "content": {
+        "prompt": "운영 DB가 교체되는지 업데이트 전에 확인하려면?",
+        "options": [
+          "롤백",
+          "변경 세트",
+          "템플릿 삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "변경 세트로 업데이트 전에 어떤 리소스가 바뀌거나 교체되는지 미리 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-cfn-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cloudformation",
+        "rollback"
+      ],
+      "content": {
+        "prompt": "업데이트 도중 리소스 하나가 실패했다. 스택은?",
+        "options": [
+          "절반만 적용",
+          "스택 삭제",
+          "이전 상태로 롤백"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "업데이트 중 실패하면 롤백으로 이전 상태로 돌아가 절반만 바뀐 채 남지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-cfn-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cloudformation",
+        "template"
+      ],
+      "content": {
+        "prompt": "CloudFormation 템플릿은 YAML이나 JSON으로 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "템플릿은 만들 리소스를 YAML 또는 JSON으로 선언한 파일이다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "track": "aws",
+  "unit": "u10-observability-iac",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "aws-obs-field-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudtrail",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "AuthorizeSecurityGroupIngress 이벤트가 뜻하는 것은?",
+        "options": [
+          "인바운드 규칙 추가",
+          "보안 그룹 삭제",
+          "아웃바운드 규칙 추가"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "AuthorizeSecurityGroupIngress는 보안 그룹에 인바운드 규칙을 추가한 API 호출이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-field-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudtrail",
+        "user-identity"
+      ],
+      "content": {
+        "prompt": "이 이벤트에서 변경한 주체를 알려 주는 필드는?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"eventTime\": \"2026-10-20T02:14:09Z\",\n  \"eventName\": \"AuthorizeSecurityGroupIngress\",\n  \"sourceIPAddress\": \"203.0.113.10\",\n  \"userIdentity\": {\n    \"type\": \"IAMUser\",\n    \"userName\": \"dev-kim\"\n  }\n}"
+        },
+        "options": [
+          "eventTime",
+          "userIdentity",
+          "sourceIPAddress"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "userIdentity는 누가 호출했는지, eventTime은 언제, sourceIPAddress는 어디서인지 알려 준다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-field-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudtrail",
+        "source-ip"
+      ],
+      "content": {
+        "prompt": "이 이벤트에서 요청을 보낸 IP를 알려 주는 필드는?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"eventTime\": \"2026-10-20T02:14:09Z\",\n  \"eventName\": \"AuthorizeSecurityGroupIngress\",\n  \"sourceIPAddress\": \"203.0.113.10\",\n  \"userIdentity\": {\n    \"type\": \"IAMUser\",\n    \"userName\": \"dev-kim\"\n  }\n}"
+        },
+        "options": [
+          "eventTime",
+          "userIdentity",
+          "sourceIPAddress"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "sourceIPAddress는 요청이 어디서 왔는지 알려 준다. 누가는 userIdentity, 언제는 eventTime이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-field-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cloudtrail",
+        "user-identity"
+      ],
+      "content": {
+        "prompt": "CloudTrail 이벤트의 eventTime은 요청을 보낸 주체를 알려 준다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "eventTime은 호출 시각이다. 요청을 보낸 주체는 userIdentity 필드에서 본다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-field-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cloudtrail",
+        "user-identity"
+      ],
+      "content": {
+        "prompt": "변경 주체는 CloudTrail 이벤트의 ___ 필드로 확인한다.",
+        "hint": "누가 호출했는지 담는 필드"
+      },
+      "answer_key": {
+        "accepted": [
+          "userIdentity",
+          "useridentity",
+          "UserIdentity"
+        ]
+      },
+      "explanation": "userIdentity 필드에 호출한 IAM 사용자·역할 같은 주체 정보가 담긴다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-field-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "iam",
+        "least-privilege"
+      ],
+      "content": {
+        "prompt": "규칙을 되돌린 뒤 그 주체에게는 최소 ___만 남긴다.",
+        "hint": "필요한 것만 허용하는 원칙"
+      },
+      "answer_key": {
+        "accepted": [
+          "권한",
+          "privilege",
+          "최소 권한"
+        ]
+      },
+      "explanation": "변경 주체의 권한을 최소 권한으로 줄여 보안 그룹을 다시 바꾸지 못하게 한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-field-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "troubleshooting",
+        "cloudtrail"
+      ],
+      "content": {
+        "prompt": "DB 보안 그룹에 0.0.0.0/0 규칙이 있다. 누가 넣었는지 찾는 첫 단계는?",
+        "options": [
+          "인스턴스 재시작",
+          "CloudTrail 검색",
+          "로그 보존 변경"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "1단계로 CloudTrail에서 AuthorizeSecurityGroupIngress 이벤트를 찾아 변경 주체를 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-field-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "troubleshooting",
+        "least-privilege"
+      ],
+      "content": {
+        "prompt": "주체가 개발자 IAM 사용자로 확인됐다. 알맞은 조치는?",
+        "options": [
+          "경보만 추가",
+          "루트로 작업 전환",
+          "규칙 복구와 권한 축소"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "열린 규칙을 되돌리고 그 사용자의 권한을 최소 권한으로 줄인다. 루트 사용은 오히려 위험하다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-field-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "troubleshooting",
+        "iac"
+      ],
+      "content": {
+        "prompt": "같은 일이 반복되지 않게 하는 재발 방지책은?",
+        "options": [
+          "콘솔 수정 허용",
+          "IaC로만 변경",
+          "추적 끄기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "보안 그룹은 IaC로만 바꾸고 plan으로 드리프트를 확인하면 몰래 바뀐 규칙을 찾을 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-field-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cloudtrail",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "인바운드 규칙 추가는 AuthorizeSecurityGroupIngress로 남는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "인바운드 규칙 추가는 AuthorizeSecurityGroupIngress API 호출이므로 이 이벤트 이름으로 찾는다.",
+      "refs": []
+    }
+  ]
+}

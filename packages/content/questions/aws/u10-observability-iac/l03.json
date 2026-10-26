@@ -1,0 +1,212 @@
+{
+  "track": "aws",
+  "unit": "u10-observability-iac",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "aws-obs-alarm-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudwatch",
+        "alarm"
+      ],
+      "content": {
+        "prompt": "지표가 임계값을 정한 횟수의 기간 동안 넘으면 상태를 바꾸는 것은?",
+        "options": [
+          "경보",
+          "지표",
+          "로그 그룹"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "경보는 지표가 임계값을 정한 횟수의 기간 동안 넘으면 상태를 ALARM으로 바꾼다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-alarm-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudwatch",
+        "alarm-state"
+      ],
+      "content": {
+        "prompt": "INSUFFICIENT_DATA 상태의 뜻은?",
+        "options": [
+          "임계값 초과",
+          "판단할 데이터 부족",
+          "정상 범위"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "INSUFFICIENT_DATA는 판단할 데이터가 부족한 상태다. 초과는 ALARM, 정상은 OK다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-alarm-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudwatch",
+        "alarm-state"
+      ],
+      "content": {
+        "prompt": "지표가 임계값을 넘어 경보가 울린 상태는?",
+        "options": [
+          "ALARM",
+          "OK"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "임계값 조건을 만족하면 ALARM, 정상 범위면 OK 상태다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-alarm-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cloudwatch",
+        "alarm-state"
+      ],
+      "content": {
+        "prompt": "INSUFFICIENT_DATA는 지표가 임계값을 넘었다는 뜻이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "INSUFFICIENT_DATA는 판단할 데이터가 부족하다는 뜻이다. 임계값을 넘은 상태는 ALARM이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-alarm-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cloudwatch",
+        "alarm-action"
+      ],
+      "content": {
+        "prompt": "경보가 ALARM이 되면 ___ 알림으로 담당자에게 알린다.",
+        "hint": "게시·구독 방식의 알림 서비스"
+      },
+      "answer_key": {
+        "accepted": [
+          "SNS",
+          "sns"
+        ]
+      },
+      "explanation": "경보 작업으로 SNS 주제에 알림을 보내면 구독한 담당자에게 전달된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-alarm-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cloudwatch",
+        "alarm-state"
+      ],
+      "content": {
+        "prompt": "지표가 정상 범위 안이면 경보 상태는 ___이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "OK",
+          "ok"
+        ]
+      },
+      "explanation": "경보 상태는 OK, ALARM, INSUFFICIENT_DATA 세 가지이고 정상 범위면 OK다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-alarm-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cloudwatch",
+        "alarm-action"
+      ],
+      "content": {
+        "prompt": "CPU가 오르면 서버를 늘리게 하려면 연결할 경보 작업은?",
+        "options": [
+          "SNS 알림",
+          "오토 스케일링 정책",
+          "EC2 중지"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ALARM이 되면 오토 스케일링 정책을 실행해 인스턴스를 늘리게 할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-alarm-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cloudwatch",
+        "alarm"
+      ],
+      "content": {
+        "prompt": "조건은 3기간 연속 초과다. 2기간만 넘었다면 상태는?",
+        "options": [
+          "ALARM",
+          "그대로 OK"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "경보는 정한 횟수의 기간 동안 넘어야 바뀐다. 2기간만 넘으면 ALARM이 되지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-alarm-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cloudwatch",
+        "alarm-action"
+      ],
+      "content": {
+        "prompt": "새벽 오류 급증을 담당자가 바로 알게 하려면?",
+        "options": [
+          "로그 보존 늘리기",
+          "그래프 추가",
+          "경보와 SNS 알림"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "경보를 만들고 ALARM 작업으로 SNS 알림을 보내면 아무도 그래프를 보지 않아도 알 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-alarm-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cloudwatch",
+        "alarm"
+      ],
+      "content": {
+        "prompt": "ALARM이 되려면 지표가 정한 횟수의 기간 동안 임계값을 넘어야 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "경보는 순간 튐에 울리지 않도록 정한 횟수의 기간 동안 넘을 때 ALARM으로 바뀐다.",
+      "refs": []
+    }
+  ]
+}

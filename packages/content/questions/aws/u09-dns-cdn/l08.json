@@ -1,0 +1,217 @@
+{
+  "track": "aws",
+  "unit": "u09-dns-cdn",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "aws-cdn-field-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudfront",
+        "x-cache"
+      ],
+      "content": {
+        "prompt": "응답 헤더 X-Cache가 Hit from cloudfront다. 응답한 곳은?",
+        "options": [
+          "엣지 캐시",
+          "S3 오리진",
+          "브라우저 캐시"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "X-Cache가 Hit from cloudfront면 엣지에 캐시된 사본으로 CloudFront가 응답한 것이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-field-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "troubleshooting",
+        "x-cache"
+      ],
+      "content": {
+        "prompt": "옛 화면 원인을 좁힐 때 가장 먼저 볼 것은?",
+        "options": [
+          "DNS 레코드",
+          "응답 헤더",
+          "버킷 정책"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "1단계는 응답 헤더다. X-Cache로 엣지 캐시가 응답했는지부터 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-field-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudfront",
+        "invalidation"
+      ],
+      "content": {
+        "prompt": "이름이 고정된 index.html이 옛 버전이다. 알맞은 조치는?",
+        "options": [
+          "DNS 변경",
+          "버전 붙은 이름",
+          "무효화"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "index.html처럼 이름이 고정된 파일은 무효화로 엣지 캐시를 지운다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-field-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cloudfront",
+        "x-cache"
+      ],
+      "content": {
+        "prompt": "X-Cache가 Hit from cloudfront면 S3 오리진이 직접 응답한 것이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Hit는 엣지 캐시가 응답했다는 뜻이다. 오리진에서 새로 가져왔다면 Miss로 표시된다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-field-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cloudfront",
+        "invalidation"
+      ],
+      "content": {
+        "prompt": "고정 이름 파일은 엣지 캐시를 ___해 새로 받게 한다.",
+        "hint": "엣지에 남은 사본을 지운다"
+      },
+      "answer_key": {
+        "accepted": [
+          "무효화",
+          "invalidation",
+          "인밸리데이션"
+        ]
+      },
+      "explanation": "이름이 바뀌지 않는 파일은 무효화로 엣지 캐시를 지워야 다음 요청에 새 파일을 받는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-field-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cloudfront",
+        "x-cache"
+      ],
+      "content": {
+        "prompt": "X-Cache 값이 ___ from cloudfront면 엣지 캐시가 응답했다.",
+        "hint": "캐시에 있었다는 뜻"
+      },
+      "answer_key": {
+        "accepted": [
+          "Hit",
+          "hit",
+          "히트"
+        ]
+      },
+      "explanation": "Hit from cloudfront는 엣지에 있던 사본으로 응답했다는 뜻이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-field-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "troubleshooting",
+        "origin"
+      ],
+      "content": {
+        "prompt": "X-Cache가 Miss from cloudfront인데 옛 화면이다. 다음 확인은?",
+        "options": [
+          "ACM 인증서",
+          "S3 새 파일 여부",
+          "보안 그룹"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Miss면 오리진에서 가져온 것이므로 2단계로 S3에 새 파일이 올라갔는지 본다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-field-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "troubleshooting",
+        "cache-behavior"
+      ],
+      "content": {
+        "prompt": "S3엔 새 파일이 있는데 /app/* 동작이 옛 버킷을 가리킨다. 원인은?",
+        "options": [
+          "캐시 동작의 오리진",
+          "DNS TTL",
+          "인증서 리전"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "그 경로의 캐시 동작이 옛 버킷 오리진을 가리켜 옛 파일을 가져온 것이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-field-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "troubleshooting",
+        "dns-ttl"
+      ],
+      "content": {
+        "prompt": "레코드를 새 배포로 바꿨는데 일부 사용자만 옛 화면이다. 이유는?",
+        "options": [
+          "캐시 키",
+          "OAC",
+          "DNS TTL"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DNS 레코드를 바꿔도 TTL이 지나기 전까지 일부 사용자에게 옛 값이 응답될 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-field-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cloudfront",
+        "x-cache"
+      ],
+      "content": {
+        "prompt": "응답 헤더 X-Cache로 엣지 캐시가 응답했는지 알 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "X-Cache가 Hit from cloudfront면 엣지 캐시, Miss면 오리진에서 가져온 응답이다.",
+      "refs": []
+    }
+  ]
+}
