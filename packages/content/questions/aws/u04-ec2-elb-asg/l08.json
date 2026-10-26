@@ -1,0 +1,215 @@
+{
+  "track": "aws",
+  "unit": "u04-ec2-elb-asg",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "aws-asg-group-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "auto-scaling",
+        "asg"
+      ],
+      "content": {
+        "prompt": "시작 템플릿으로 인스턴스 수를 자동 조정하는 묶음은?",
+        "options": [
+          "대상 그룹",
+          "보안 그룹",
+          "오토 스케일링 그룹"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "오토 스케일링 그룹(ASG)은 시작 템플릿으로 인스턴스를 만들어 수를 자동으로 늘리고 줄입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-asg-group-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "auto-scaling",
+        "asg"
+      ],
+      "content": {
+        "prompt": "지표가 목표값에 머물도록 수를 조정하는 정책은?",
+        "options": [
+          "신뢰 정책",
+          "IAM 정책",
+          "대상 추적 정책"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "대상 추적 정책은 평균 CPU 사용률 같은 지표가 목표값에 머물도록 인스턴스 수를 조정합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-asg-group-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "auto-scaling",
+        "asg"
+      ],
+      "content": {
+        "prompt": "ASG가 평소에 유지하려는 인스턴스 수는?",
+        "options": [
+          "최소 용량",
+          "원하는 용량",
+          "최대 용량"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ASG는 최소·최대 용량 범위 안에서 원하는 용량만큼 인스턴스를 유지합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-asg-group-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "auto-scaling",
+        "asg"
+      ],
+      "content": {
+        "prompt": "원하는 용량은 최소·최대 용량 범위 안에 있어야 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "ASG는 최소·최대 용량 범위 안에서 원하는 용량을 유지하므로 범위를 벗어날 수 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-asg-group-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "auto-scaling",
+        "asg"
+      ],
+      "content": {
+        "prompt": "ASG가 유지할 인스턴스 수를 원하는 ___ 이라 한다.",
+        "hint": "최소·최대와 같은 단위"
+      },
+      "answer_key": {
+        "accepted": [
+          "용량",
+          "capacity"
+        ]
+      },
+      "explanation": "원하는 용량은 ASG가 지금 유지하려는 인스턴스 수입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-asg-group-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "auto-scaling",
+        "asg"
+      ],
+      "content": {
+        "prompt": "대상 그룹 unhealthy도 교체하려면 검사 유형을 ___ 로 둔다.",
+        "hint": "로드 밸런싱 서비스의 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "ELB",
+          "elb"
+        ]
+      },
+      "explanation": "상태 검사 유형을 ELB로 두면 대상 그룹에서 unhealthy인 인스턴스도 ASG가 교체합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-asg-group-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "auto-scaling",
+        "asg"
+      ],
+      "content": {
+        "prompt": "최소 2, 원하는 4, 최대 6이다. 늘어날 수 있는 최대 수는?",
+        "options": [
+          "4",
+          "6",
+          "8"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ASG는 최대 용량을 넘겨 인스턴스를 만들지 않으므로 최대 6대까지 늘어납니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-asg-group-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "auto-scaling",
+        "asg"
+      ],
+      "content": {
+        "prompt": "목표 평균 CPU가 50%인데 지금 80%다. ASG는?",
+        "options": [
+          "인스턴스 감소",
+          "변화 없음",
+          "인스턴스 증가"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "대상 추적 정책은 지표가 목표보다 높으면 인스턴스를 늘려 목표값으로 내립니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-asg-group-009",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "auto-scaling",
+        "asg"
+      ],
+      "content": {
+        "prompt": "검사 유형이 EC2면 대상 그룹 unhealthy 인스턴스도 교체된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "대상 그룹의 상태까지 보고 교체하려면 상태 검사 유형을 ELB로 두어야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-asg-group-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "auto-scaling",
+        "asg"
+      ],
+      "content": {
+        "prompt": "ASG가 새 인스턴스를 만들 때 쓰는 설정은?",
+        "options": [
+          "시작 템플릿",
+          "스냅샷",
+          "라우팅 테이블"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ASG는 시작 템플릿의 AMI·유형·보안 그룹 설정으로 인스턴스를 만들어 수를 맞춥니다.",
+      "refs": []
+    }
+  ]
+}

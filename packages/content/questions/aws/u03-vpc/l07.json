@@ -1,0 +1,215 @@
+{
+  "track": "aws",
+  "unit": "u03-vpc",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "aws-vpc-nacl-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "network-acl"
+      ],
+      "content": {
+        "prompt": "서브넷 경계에서 허용·거부 규칙으로 거르는 방화벽은?",
+        "options": [
+          "보안 그룹",
+          "인터넷 게이트웨이",
+          "네트워크 ACL"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "네트워크 ACL은 서브넷 경계의 방화벽으로 허용과 거부 규칙을 모두 둘 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nacl-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "network-acl"
+      ],
+      "content": {
+        "prompt": "응답 트래픽도 반대 방향 규칙으로 허용해야 하는 성질은?",
+        "options": [
+          "상태 비저장",
+          "상태 저장"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "네트워크 ACL은 상태 비저장이라 응답 트래픽도 반대 방향 규칙에서 따로 허용해야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nacl-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "network-acl"
+      ],
+      "content": {
+        "prompt": "새로 만든 사용자 지정 NACL의 기본 동작은?",
+        "options": [
+          "모두 거부",
+          "모두 허용"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "사용자 지정 NACL은 처음에 모든 트래픽을 거부합니다. 모두 허용은 VPC의 기본 NACL입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nacl-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "network-acl"
+      ],
+      "content": {
+        "prompt": "VPC의 기본 NACL은 모든 트래픽을 허용한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "VPC를 만들 때 생기는 기본 NACL은 인바운드·아웃바운드 모두 허용합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nacl-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "network-acl"
+      ],
+      "content": {
+        "prompt": "NACL은 규칙 ___ 가 작은 것부터 평가한다.",
+        "hint": "규칙마다 붙은 순서 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "번호",
+          "rule number",
+          "number",
+          "숫자"
+        ]
+      },
+      "explanation": "NACL은 규칙 번호가 작은 것부터 보고 처음 일치한 규칙 하나만 적용합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nacl-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "network-acl"
+      ],
+      "content": {
+        "prompt": "응답은 클라이언트 쪽 ___ 포트로 돌아간다.",
+        "hint": "연결마다 OS가 고르는 높은 번호"
+      },
+      "answer_key": {
+        "accepted": [
+          "임시",
+          "ephemeral",
+          "에페메랄"
+        ]
+      },
+      "explanation": "응답은 연결마다 OS가 고르는 임시 포트로 돌아가므로 NACL에서 그 범위를 허용해야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nacl-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "network-acl"
+      ],
+      "content": {
+        "prompt": "규칙 100은 443 허용, 200은 443 거부다. 443 요청은?",
+        "options": [
+          "거부",
+          "허용"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "작은 번호인 100이 먼저 일치하므로 허용되고, 뒤 규칙 200은 보지 않습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nacl-008",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "network-acl"
+      ],
+      "content": {
+        "prompt": "NACL은 규칙을 모두 평가한 뒤 거부 규칙을 우선한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "NACL은 번호 순으로 보고 처음 일치한 규칙 하나만 적용합니다. 모든 규칙을 보고 거부를 우선하지 않습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nacl-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "network-acl"
+      ],
+      "content": {
+        "prompt": "인바운드 443만 연 NACL에서 웹 응답이 안 나간다. 추가할 것은?",
+        "options": [
+          "인바운드 22",
+          "아웃바운드 443",
+          "아웃바운드 임시 포트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "응답은 클라이언트의 임시 포트로 나가므로 아웃바운드에 임시 포트 범위를 허용해야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-nacl-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "network-acl"
+      ],
+      "content": {
+        "prompt": "네트워크 ACL이 적용되는 단위는?",
+        "options": [
+          "네트워크 인터페이스",
+          "리전",
+          "서브넷"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "네트워크 ACL은 서브넷 경계에서 트래픽을 거릅니다. 인터페이스 단위는 보안 그룹입니다.",
+      "refs": []
+    }
+  ]
+}

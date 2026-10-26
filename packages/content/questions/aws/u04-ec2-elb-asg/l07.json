@@ -1,0 +1,215 @@
+{
+  "track": "aws",
+  "unit": "u04-ec2-elb-asg",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "aws-elb-health-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "elb",
+        "health-check"
+      ],
+      "content": {
+        "prompt": "로드 밸런서가 대상의 정상 여부를 주기적으로 보는 것은?",
+        "options": [
+          "대상 추적",
+          "스냅샷",
+          "상태 검사"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "상태 검사는 로드 밸런서가 대상에 주기적으로 요청을 보내 정상 여부를 판단하는 것입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-health-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "elb",
+        "health-check"
+      ],
+      "content": {
+        "prompt": "상태 검사를 계속 통과하지 못한 대상의 상태는?",
+        "options": [
+          "healthy",
+          "unhealthy"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "연속 실패가 임계값에 이르면 대상은 unhealthy가 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-health-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "elb",
+        "health-check"
+      ],
+      "content": {
+        "prompt": "unhealthy 대상에 로드 밸런서는?",
+        "options": [
+          "요청을 안 보낸다",
+          "요청을 더 보낸다",
+          "즉시 종료한다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "로드 밸런서는 unhealthy 대상에는 요청을 보내지 않고 healthy 대상에만 보냅니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-health-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "elb",
+        "health-check"
+      ],
+      "content": {
+        "prompt": "상태 검사가 한 번만 실패해도 대상은 바로 unhealthy가 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "상태는 연속 성공·실패 횟수가 임계값에 이를 때 바뀝니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-health-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "elb",
+        "health-check"
+      ],
+      "content": {
+        "prompt": "연속 성공·실패 횟수가 ___ 에 이르면 상태가 바뀐다.",
+        "hint": "상태를 바꾸는 기준 횟수"
+      },
+      "answer_key": {
+        "accepted": [
+          "임계값",
+          "임곗값",
+          "threshold"
+        ]
+      },
+      "explanation": "healthy·unhealthy는 연속 성공·실패가 정해 둔 임계값에 이를 때 바뀝니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-health-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "elb",
+        "health-check"
+      ],
+      "content": {
+        "prompt": "검사 응답이 정상인지 가르는 기준은 성공 ___ 다.",
+        "hint": "HTTP 응답에 붙는 세 자리 숫자"
+      },
+      "answer_key": {
+        "accepted": [
+          "코드",
+          "code",
+          "상태 코드"
+        ]
+      },
+      "explanation": "상태 검사 설정의 성공 코드(예: 200)와 응답의 HTTP 상태 코드가 맞아야 정상입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-health-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "elb",
+        "health-check"
+      ],
+      "content": {
+        "prompt": "앱이 /health에만 200을 준다. 검사 경로는?",
+        "options": [
+          "/",
+          "/health",
+          "/login"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "검사 경로는 앱이 성공 코드로 응답하는 상태 확인 전용 경로로 정합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-health-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "elb",
+        "health-check"
+      ],
+      "content": {
+        "prompt": "대상 보안 그룹이 허용할 검사 트래픽 출발지는?",
+        "options": [
+          "대상 그룹",
+          "0.0.0.0/0",
+          "로드 밸런서 보안 그룹"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "대상 보안 그룹은 로드 밸런서 보안 그룹에서 오는 검사 포트 트래픽을 허용해야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-health-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "elb",
+        "health-check"
+      ],
+      "content": {
+        "prompt": "성공 코드가 200인데 /health가 302를 준다. 결과는?",
+        "options": [
+          "unhealthy",
+          "healthy"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "응답 코드가 성공 코드와 다르면 실패로 세어 결국 unhealthy가 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-health-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "elb",
+        "health-check"
+      ],
+      "content": {
+        "prompt": "상태 검사는 대상에 주기적으로 요청을 보내 정상 여부를 판단한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "로드 밸런서는 정해 둔 프로토콜·포트·경로로 주기적으로 요청해 대상의 정상 여부를 봅니다.",
+      "refs": []
+    }
+  ]
+}

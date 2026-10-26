@@ -1,0 +1,216 @@
+{
+  "track": "aws",
+  "unit": "u04-ec2-elb-asg",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "aws-elb-field-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "elb",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "앱 응답을 직접 보려고 인스턴스에 접속할 방법은?",
+        "options": [
+          "Session Manager",
+          "22번 포트 개방",
+          "루트 사용자"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Session Manager로 접속하면 SSH 포트를 열지 않고 앱이 검사 경로에 응답하는지 확인할 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-field-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "elb",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "대상 보안 그룹 인바운드 소스로 알맞은 것은?",
+        "options": [
+          "0.0.0.0/0",
+          "같은 서브넷",
+          "로드 밸런서 보안 그룹"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "대상 보안 그룹은 로드 밸런서 보안 그룹에서 오는 검사 포트 트래픽을 허용해야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-field-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "elb",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "앱은 8080에서 도는데 검사 포트가 80이다. 결과는?",
+        "options": [
+          "unhealthy",
+          "healthy"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "검사가 앱이 듣지 않는 포트로 가므로 실패하고 대상은 unhealthy가 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-field-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "elb",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "막 시작된 인스턴스는 상태 검사를 통과하기 전까지 요청을 받지 못한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "새 대상은 검사를 통과해 healthy가 되어야 요청을 받으므로, 막 뜬 인스턴스인지 먼저 봅니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-field-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "elb",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "SSH 없이 인스턴스에 접속하는 기능은 ___ Manager다.",
+        "hint": "Systems Manager의 접속 기능"
+      },
+      "answer_key": {
+        "accepted": [
+          "Session",
+          "session",
+          "세션"
+        ]
+      },
+      "explanation": "Session Manager로 접속해 앱이 검사 포트·경로에 성공 코드로 응답하는지 확인합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-field-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "elb",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "검사 경로가 성공 코드로 응답하지 않으면 대상은 ___ 가 된다.",
+        "hint": "요청을 받지 못하는 상태"
+      },
+      "answer_key": {
+        "accepted": [
+          "unhealthy",
+          "언헬시",
+          "Unhealthy"
+        ]
+      },
+      "explanation": "검사 실패가 임계값만큼 이어지면 대상은 요청을 받지 못하는 상태가 됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-field-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "elb",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "앱은 200을 주는데 검사 요청이 대상에 닿지 않는다. 원인은?",
+        "options": [
+          "검사 경로 오류",
+          "방화벽 차단",
+          "AMI 리전"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "검사 요청이 닿지 않으면 대상 보안 그룹이 로드 밸런서 보안 그룹의 검사 포트를 허용하는지 봅니다. 경로 오류라면 요청은 닿고 응답 코드가 틀립니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-field-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "elb",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "앱의 /health는 200인데 검사 경로가 /status다. 조치는?",
+        "options": [
+          "검사 경로 수정",
+          "22번 포트 개방",
+          "유형 변경"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "상태 검사의 경로를 앱이 실제로 성공 코드로 응답하는 /health로 맞춥니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-field-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "elb",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "접속해 보니 앱 프로세스가 없다. 먼저 볼 것은?",
+        "options": [
+          "보안 그룹 규칙",
+          "검사 성공 코드",
+          "사용자 데이터 실행"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "앱이 떠 있지 않으면 사용자 데이터 스크립트가 앱을 제대로 시작했는지부터 확인합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-elb-field-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "elb",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "대상 보안 그룹이 검사 포트를 막아도 상태 검사는 통과한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "검사 요청도 대상 보안 그룹을 거치므로, 검사 포트가 막히면 실패해 unhealthy가 됩니다.",
+      "refs": []
+    }
+  ]
+}

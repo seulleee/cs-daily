@@ -1,0 +1,215 @@
+{
+  "track": "aws",
+  "unit": "u03-vpc",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "aws-vpc-route-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "route-table"
+      ],
+      "content": {
+        "prompt": "목적지 CIDR별로 트래픽 대상을 적은 규칙 목록은?",
+        "options": [
+          "보안 그룹",
+          "서브넷",
+          "라우팅 테이블"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "라우팅 테이블은 목적지 CIDR마다 트래픽을 보낼 대상(타깃)을 적은 규칙 목록입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-route-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "route-table"
+      ],
+      "content": {
+        "prompt": "VPC CIDR 안의 통신을 위한 기본 경로는?",
+        "options": [
+          "인터넷 경로",
+          "local 경로",
+          "피어링 경로"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "local 경로는 VPC CIDR 안의 통신을 위해 자동으로 있는 경로이며 지울 수 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-route-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "route-table"
+      ],
+      "content": {
+        "prompt": "서브넷에 라우팅 테이블을 지정하지 않으면?",
+        "options": [
+          "기본 테이블을 쓴다",
+          "통신이 막힌다",
+          "테이블이 새로 생긴다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "명시적으로 연결하지 않은 서브넷은 VPC의 기본 라우팅 테이블을 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-route-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "route-table"
+      ],
+      "content": {
+        "prompt": "local 경로는 필요하면 지울 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "local 경로는 VPC 안 통신을 위한 기본 경로로 지울 수 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-route-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "vpc",
+        "route-table"
+      ],
+      "content": {
+        "prompt": "VPC 안 통신을 위한 지울 수 없는 경로는 ___ 경로다.",
+        "hint": "목적지가 VPC CIDR 자체인 경로"
+      },
+      "answer_key": {
+        "accepted": [
+          "local",
+          "로컬",
+          "local route"
+        ]
+      },
+      "explanation": "local 경로는 목적지가 VPC CIDR인 기본 경로로 삭제할 수 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-route-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "route-table"
+      ],
+      "content": {
+        "prompt": "여러 경로가 맞으면 가장 ___ 접두사의 경로를 고른다.",
+        "hint": "범위가 가장 좁은 경로가 선택된다"
+      },
+      "answer_key": {
+        "accepted": [
+          "긴",
+          "long",
+          "longest"
+        ]
+      },
+      "explanation": "가장 긴 접두사 우선 규칙에 따라 범위가 가장 좁은 경로가 선택됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-route-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "route-table"
+      ],
+      "content": {
+        "prompt": "10.0.0.0/16과 10.0.1.0/24 경로 중 10.0.1.5가 쓰는 것은?",
+        "options": [
+          "10.0.0.0/16",
+          "10.0.1.0/24"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "두 경로 모두 맞지만 접두사가 더 긴 /24가 범위가 좁아 선택됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-route-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "route-table"
+      ],
+      "content": {
+        "prompt": "0.0.0.0/0과 10.0.0.0/16 경로 중 10.0.2.9가 쓰는 것은?",
+        "options": [
+          "10.0.0.0/16",
+          "0.0.0.0/0"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "두 경로 모두 맞지만 /16이 /0보다 접두사가 길어 선택됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-route-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "route-table"
+      ],
+      "content": {
+        "prompt": "서브넷 하나에 연결되는 라우팅 테이블 수는?",
+        "options": [
+          "1개",
+          "2개",
+          "제한 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "서브넷은 한 번에 라우팅 테이블 하나와 연결됩니다. 한 테이블은 여러 서브넷에 연결될 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-vpc-route-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "vpc",
+        "route-table"
+      ],
+      "content": {
+        "prompt": "라우팅 테이블은 목적지별로 트래픽을 보낼 대상을 정한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "라우팅 테이블은 목적지 CIDR마다 트래픽을 보낼 타깃을 적은 규칙 목록입니다.",
+      "refs": []
+    }
+  ]
+}
