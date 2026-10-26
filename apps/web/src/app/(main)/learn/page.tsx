@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -36,6 +36,18 @@ function LearnInner() {
   useEffect(() => {
     if (trackSlug) writeLastTrack(trackSlug);
   }, [trackSlug]);
+  // 가로 스크롤 줄에서 선택된 칩이 화면 밖이면 줄의 scrollLeft만 조정해 보이게 한다 (세로 페이지 스크롤은 건드리지 않는다)
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const tabsReady = !!me.data && me.data.tracks.length > 0;
+  useEffect(() => {
+    const row = tabsRef.current;
+    const chip = row?.querySelector<HTMLElement>('[aria-selected="true"]');
+    if (!row || !chip || row.scrollWidth <= row.clientWidth) return;
+    const r = row.getBoundingClientRect();
+    const c = chip.getBoundingClientRect();
+    if (c.left < r.left) row.scrollLeft += c.left - r.left;
+    else if (c.right > r.right) row.scrollLeft += c.right - r.right;
+  }, [trackSlug, tabsReady]);
   const path = useQuery({
     queryKey: ['path', trackSlug],
     queryFn: () => api<PathResponse>(`/me/path?track=${trackSlug}`),
@@ -64,7 +76,7 @@ function LearnInner() {
 
         {path.data ? <NextLessonCard path={path.data} me={me.data} /> : <HeroSkeleton />}
 
-        <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 md:mx-0 md:px-0" role="tablist" aria-label="트랙">
+        <div ref={tabsRef} className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 md:mx-0 md:px-0 mouse:flex-wrap mouse:overflow-x-visible" role="tablist" aria-label="트랙">
           {me.data.tracks.map((t) => (
             <Link key={t.slug} href={`/learn?track=${t.slug}`} role="tab" aria-selected={t.slug === trackSlug} className="chip">
               {t.name}
