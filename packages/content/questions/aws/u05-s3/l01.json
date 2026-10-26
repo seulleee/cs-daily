@@ -1,0 +1,233 @@
+{
+  "track": "aws",
+  "unit": "u05-s3",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "aws-s3-bucket-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "bucket",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "객체를 담는 S3의 최상위 저장 단위는?",
+        "options": [
+          "객체",
+          "키",
+          "버킷"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "버킷은 객체를 담는 최상위 저장 단위입니다. 객체는 버킷 안에 저장되는 데이터이고, 키는 객체의 이름입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-bucket-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "bucket",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "버킷 안에서 객체를 찾는 데 쓰는 전체 이름은?",
+        "options": [
+          "키",
+          "태그",
+          "리전"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "키는 객체의 전체 이름이며, 버킷 안에서 객체를 키로 찾습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-bucket-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "bucket",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "파일 데이터와 메타데이터의 묶음은?",
+        "options": [
+          "버킷",
+          "키",
+          "객체"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "객체는 파일 데이터와 메타데이터를 묶은 단위입니다. 버킷은 객체를 담는 곳, 키는 객체의 이름입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-bucket-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "bucket",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "버킷 이름은 내 계정 안에서만 유일하면 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "버킷 이름은 전역에서 유일해야 하므로, 다른 계정이 이미 쓰는 이름으로는 버킷을 만들 수 없습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-bucket-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "bucket",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "로컬 파일을 버킷으로 복사하는 명령은?",
+        "code": {
+          "language": "bash",
+          "source": "aws s3 ___ a.png s3://my-bucket/img/a.png"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "cp"
+        ]
+      },
+      "explanation": "aws s3 cp는 로컬과 버킷 사이에서 파일을 복사합니다. 첫 인자가 원본, 둘째 인자가 대상입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-bucket-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "bucket",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "버킷의 객체 목록을 보는 명령은?",
+        "code": {
+          "language": "bash",
+          "source": "aws s3 ___ s3://my-bucket/img/"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "ls"
+        ]
+      },
+      "explanation": "aws s3 ls는 버킷이나 지정한 접두사 아래의 객체 목록을 보여 줍니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-bucket-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "bucket",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "s3://my-bucket/img/a.png 객체의 키는?",
+        "options": [
+          "my-bucket",
+          "img/a.png",
+          "a.png"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "키는 버킷 이름을 뺀 객체의 전체 이름이므로 img/a.png입니다. /는 키 안의 문자로 폴더처럼 나눠 보이게 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-bucket-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "bucket",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "다른 계정이 이미 쓰는 이름으로 버킷을 만들면?",
+        "options": [
+          "생성 실패",
+          "이름 공유",
+          "기존 버킷 덮어씀"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "버킷 이름은 전역에서 유일해야 하므로 이미 쓰이는 이름으로는 생성이 실패합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-bucket-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "bucket",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "다음 명령이 하는 일은?",
+        "code": {
+          "language": "bash",
+          "source": "aws s3 cp s3://my-bucket/r.csv ./"
+        },
+        "options": [
+          "버킷→로컬 복사",
+          "로컬→버킷 복사",
+          "객체 목록 조회"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "원본이 s3:// 경로이고 대상이 로컬 경로(./)이므로, 버킷의 객체를 로컬로 내려받습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-bucket-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "bucket",
+        "aws-cli"
+      ],
+      "content": {
+        "prompt": "버킷은 S3에서 객체를 담는 최상위 단위다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "버킷은 S3의 최상위 저장 단위이고, 객체는 그 안에 키로 구분되어 저장됩니다.",
+      "refs": []
+    }
+  ]
+}

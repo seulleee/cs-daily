@@ -1,0 +1,236 @@
+{
+  "track": "aws",
+  "unit": "u06-databases",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "aws-db-multiaz-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rds",
+        "multi-az",
+        "read-replica"
+      ],
+      "content": {
+        "prompt": "다른 AZ에 대기 인스턴스를 두고 동기 복제하는 구성은?",
+        "options": [
+          "읽기 복제본",
+          "다중 AZ",
+          "스냅샷"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다중 AZ는 다른 AZ에 대기 인스턴스를 두고 동기 복제하며, 장애 시 자동으로 장애 조치합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html"
+      ]
+    },
+    {
+      "id": "aws-db-multiaz-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rds",
+        "multi-az",
+        "read-replica"
+      ],
+      "content": {
+        "prompt": "비동기 복제로 만든 읽기 전용 사본은?",
+        "options": [
+          "대기 인스턴스",
+          "스냅샷",
+          "읽기 복제본"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "읽기 복제본은 비동기 복제로 만든 읽기 전용 사본이며, 별도 엔드포인트로 읽기를 나눕니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonRDS/latest/DeveloperGuide/USER_ReadRepl.html"
+      ]
+    },
+    {
+      "id": "aws-db-multiaz-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rds",
+        "multi-az",
+        "read-replica"
+      ],
+      "content": {
+        "prompt": "읽기 성능 확장이 목적인 것은?",
+        "options": [
+          "다중 AZ",
+          "읽기 복제본"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "읽기 복제본은 읽기 성능 확장이 목적이고, 다중 AZ는 가용성이 목적입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-multiaz-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "rds",
+        "multi-az",
+        "read-replica"
+      ],
+      "content": {
+        "prompt": "다중 AZ의 대기 인스턴스로 읽기 요청을 나눌 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "다중 AZ 인스턴스 배포의 대기 인스턴스는 읽기 요청을 받지 않습니다. 읽기를 나누려면 읽기 복제본을 씁니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html"
+      ]
+    },
+    {
+      "id": "aws-db-multiaz-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "rds",
+        "multi-az",
+        "read-replica"
+      ],
+      "content": {
+        "prompt": "다중 AZ는 대기 인스턴스에 ___ 복제한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "동기",
+          "synchronous",
+          "sync"
+        ]
+      },
+      "explanation": "다중 AZ는 대기 인스턴스에 동기 복제하므로, 쓰기가 대기 인스턴스에도 반영된 뒤 완료됩니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html"
+      ]
+    },
+    {
+      "id": "aws-db-multiaz-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "rds",
+        "multi-az",
+        "read-replica"
+      ],
+      "content": {
+        "prompt": "읽기 복제본은 ___ 복제로 만든다."
+      },
+      "answer_key": {
+        "accepted": [
+          "비동기",
+          "asynchronous",
+          "async"
+        ]
+      },
+      "explanation": "읽기 복제본은 원본에 쓴 뒤 사본에 나중에 반영하는 비동기 복제를 씁니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/AmazonRDS/latest/DeveloperGuide/USER_ReadRepl.html"
+      ]
+    },
+    {
+      "id": "aws-db-multiaz-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rds",
+        "multi-az",
+        "read-replica"
+      ],
+      "content": {
+        "prompt": "주 인스턴스의 AZ에 장애가 나면 다중 AZ는?",
+        "options": [
+          "대기로 자동 전환",
+          "읽기 전용 전환",
+          "수동 복원 필요"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "다중 AZ는 장애가 나면 대기 인스턴스로 자동 장애 조치합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-multiaz-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rds",
+        "multi-az",
+        "read-replica"
+      ],
+      "content": {
+        "prompt": "장애 조치 후 앱이 다시 접속할 주소는?",
+        "options": [
+          "대기의 IP",
+          "새 엔드포인트",
+          "같은 엔드포인트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "장애 조치 때 엔드포인트가 대기 인스턴스를 가리키도록 바뀌므로, 앱은 같은 이름으로 재접속합니다.",
+      "refs": [
+        "https://docs.aws.amazon.com/en_en/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.Failover.html"
+      ]
+    },
+    {
+      "id": "aws-db-multiaz-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rds",
+        "multi-az",
+        "read-replica"
+      ],
+      "content": {
+        "prompt": "조회 요청이 몰려 주 DB가 느리다. 알맞은 조치는?",
+        "options": [
+          "다중 AZ 켜기",
+          "읽기 복제본 추가",
+          "스냅샷 생성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "읽기 복제본을 추가해 별도 엔드포인트로 조회를 나누면 주 DB의 부담이 줄어듭니다. 다중 AZ는 가용성용입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-multiaz-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "rds",
+        "multi-az",
+        "read-replica"
+      ],
+      "content": {
+        "prompt": "다중 AZ의 목적은 읽기 성능이 아니라 가용성이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "다중 AZ는 장애 시 대기 인스턴스로 넘어가 서비스를 유지하는 가용성 기능입니다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "track": "aws",
+  "unit": "u06-databases",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "aws-db-connfail-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rds",
+        "troubleshooting",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "DB 연결 시간 초과가 가리키는 문제 영역은?",
+        "options": [
+          "비밀번호",
+          "네트워크 경로",
+          "쿼리 문법"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "연결 시간 초과는 요청이 DB까지 닿지 못한 것이므로 네트워크 경로 문제입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-connfail-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rds",
+        "troubleshooting",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "DB 인증 실패 오류일 때 볼 것은?",
+        "options": [
+          "보안 그룹",
+          "라우팅 테이블",
+          "사용자·비밀번호"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "인증 실패는 DB까지는 닿았지만 사용자·비밀번호가 맞지 않은 경우입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-connfail-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rds",
+        "troubleshooting",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "시간 초과일 때 가장 먼저 확인할 것은?",
+        "options": [
+          "DB 보안 그룹 인바운드",
+          "DB 비밀번호",
+          "인덱스"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "시간 초과라면 먼저 DB 보안 그룹 인바운드에 앱의 보안 그룹과 DB 포트가 허용되어 있는지 봅니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-connfail-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "rds",
+        "troubleshooting",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "DB 보안 그룹 소스에 앱 보안 그룹을 넣으면 그 그룹 자원만 허용된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "보안 그룹 규칙 소스에 다른 보안 그룹 ID를 넣으면 그 그룹에 속한 자원의 트래픽만 허용됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-connfail-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "rds",
+        "troubleshooting",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "DB 보안 그룹 인바운드에는 앱 보안 그룹과 DB ___ 를 허용한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "포트",
+          "port"
+        ]
+      },
+      "explanation": "DB 보안 그룹 인바운드 규칙은 앱의 보안 그룹을 소스로, DB 포트를 허용 범위로 둡니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-connfail-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "rds",
+        "troubleshooting",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "앱은 IP가 아닌 RDS ___ 이름으로 접속한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "엔드포인트",
+          "endpoint"
+        ]
+      },
+      "explanation": "RDS 엔드포인트 이름으로 접속해야 장애 조치 뒤에도 같은 이름으로 새 주 인스턴스에 재연결됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-connfail-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rds",
+        "troubleshooting",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "새 EC2만 DB 연결이 시간 초과다. 의심할 것은?",
+        "options": [
+          "DB 비밀번호",
+          "새 EC2의 보안 그룹",
+          "DB 엔진 버전"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "같은 설정 파일인데 새 인스턴스만 시간 초과라면, 그 인스턴스의 보안 그룹이 DB 인바운드에 허용되지 않았을 수 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-connfail-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rds",
+        "troubleshooting",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "장애 조치 후 앱이 옛 주 인스턴스로만 붙는다. 원인은?",
+        "options": [
+          "DB IP로 직접 접속",
+          "보안 그룹 누락",
+          "비밀번호 만료"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "장애 조치는 엔드포인트가 대기 인스턴스를 가리키게 바꾸므로, IP로 접속하면 옛 인스턴스에 머뭅니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-connfail-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rds",
+        "troubleshooting",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "로그에 사용자 인증 실패가 찍힌다. 알맞은 조치는?",
+        "options": [
+          "보안 그룹 수정",
+          "NAT 추가",
+          "자격 정보 확인"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "인증 실패는 네트워크가 아니라 사용자·비밀번호 문제이므로 앱이 쓰는 DB 자격 정보를 확인합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-connfail-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "rds",
+        "troubleshooting",
+        "security-group"
+      ],
+      "content": {
+        "prompt": "연결 시간 초과는 대개 비밀번호가 틀렸다는 뜻이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "비밀번호가 틀리면 인증 실패가 납니다. 시간 초과는 보안 그룹·라우팅 같은 네트워크 경로 문제입니다.",
+      "refs": []
+    }
+  ]
+}

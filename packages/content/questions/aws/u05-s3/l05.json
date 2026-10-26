@@ -1,0 +1,237 @@
+{
+  "track": "aws",
+  "unit": "u05-s3",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "aws-s3-policy-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "bucket-policy",
+        "block-public-access"
+      ],
+      "content": {
+        "prompt": "버킷이 공개되는 것을 막는 S3 설정은?",
+        "options": [
+          "버전 관리",
+          "퍼블릭 액세스 차단",
+          "수명 주기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "퍼블릭 액세스 차단은 정책이나 설정 실수로 버킷이 공개되는 것을 막습니다.",
+      "refs": [
+        "https://aws.amazon.com/about-aws/whats-new/2023/04/amazon-s3-security-best-practices-buckets-default"
+      ]
+    },
+    {
+      "id": "aws-s3-policy-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "bucket-policy",
+        "block-public-access"
+      ],
+      "content": {
+        "prompt": "버킷 정책에서 접근할 주체를 정하는 요소는?",
+        "options": [
+          "Resource",
+          "Condition",
+          "Principal"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Principal은 이 버킷에 접근할 주체를 정합니다. Resource는 대상 자원, Condition은 요청 조건입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-policy-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "bucket-policy",
+        "block-public-access"
+      ],
+      "content": {
+        "prompt": "버킷 정책의 Principal은 접근할 자원을 정한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Principal은 접근하는 주체를 정하고, 접근 대상 자원은 Resource가 정합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-policy-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "bucket-policy",
+        "block-public-access"
+      ],
+      "content": {
+        "prompt": "s3:ListBucket 같은 버킷 작업의 Resource는?",
+        "options": [
+          "버킷 ARN",
+          "버킷 ARN/*"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "버킷 작업은 arn:aws:s3:::버킷, 객체 작업은 뒤에 /*를 붙인 arn:aws:s3:::버킷/*를 씁니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-policy-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "bucket-policy",
+        "block-public-access"
+      ],
+      "content": {
+        "prompt": "접근할 주체를 지정하는 키는?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"Effect\": \"Allow\",\n  \"___\": {\n    \"AWS\": \"arn:aws:iam::123456789012:root\"\n  },\n  \"Action\": \"s3:GetObject\",\n  \"Resource\": \"arn:aws:s3:::my-bucket/*\"\n}"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "Principal",
+          "프린시펄"
+        ]
+      },
+      "explanation": "버킷 정책은 Principal로 접근할 주체를 지정합니다. 여기서는 계정 123456789012를 허용합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-policy-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "bucket-policy",
+        "block-public-access"
+      ],
+      "content": {
+        "prompt": "정책에서 요청 조건을 거는 요소는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Condition",
+          "컨디션",
+          "조건"
+        ]
+      },
+      "explanation": "Condition은 aws:SecureTransport 같은 조건 키로 요청 조건을 걸어 그 조건일 때만 규칙이 적용되게 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-policy-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "bucket-policy",
+        "block-public-access"
+      ],
+      "content": {
+        "prompt": "모든 객체에 GetObject를 허용하려면 빈칸은?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"Effect\": \"Allow\",\n  \"Principal\": {\n    \"AWS\": \"arn:aws:iam::123456789012:root\"\n  },\n  \"Action\": \"s3:GetObject\",\n  \"Resource\": \"arn:aws:s3:::my-bucket___\"\n}"
+        },
+        "options": [
+          ":*",
+          "/*",
+          "/"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "객체 작업의 Resource는 버킷 ARN 뒤에 /*를 붙인 arn:aws:s3:::my-bucket/* 형태입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-policy-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "bucket-policy",
+        "block-public-access"
+      ],
+      "content": {
+        "prompt": "공개 읽기 정책을 넣었는데 익명 요청이 막힌다. 원인은?",
+        "options": [
+          "버전 관리",
+          "수명 주기",
+          "퍼블릭 액세스 차단"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "퍼블릭 액세스 차단이 켜져 있으면 공개를 허용하는 버킷 정책이 막힙니다. 새 버킷은 기본으로 켜져 있습니다.",
+      "refs": [
+        "https://aws.amazon.com/about-aws/whats-new/2023/04/amazon-s3-security-best-practices-buckets-default"
+      ]
+    },
+    {
+      "id": "aws-s3-policy-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "bucket-policy",
+        "block-public-access"
+      ],
+      "content": {
+        "prompt": "다른 계정 역할에 버킷 읽기를 허용하려면 어디에 적나?",
+        "options": [
+          "수명 주기 규칙",
+          "버전 관리",
+          "버킷 정책"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "다른 계정의 주체는 버킷 정책의 Principal에 적어 허용합니다. 버킷 정책은 버킷에 붙는 리소스 쪽 정책입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-policy-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "bucket-policy",
+        "block-public-access"
+      ],
+      "content": {
+        "prompt": "새 S3 버킷은 퍼블릭 액세스 차단이 기본으로 켜져 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "공개 사고를 막기 위해 새 버킷은 퍼블릭 액세스 차단이 켜진 채로 만들어집니다.",
+      "refs": [
+        "https://aws.amazon.com/about-aws/whats-new/2023/04/amazon-s3-security-best-practices-buckets-default"
+      ]
+    }
+  ]
+}

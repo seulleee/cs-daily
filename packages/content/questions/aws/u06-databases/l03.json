@@ -1,0 +1,220 @@
+{
+  "track": "aws",
+  "unit": "u06-databases",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "aws-db-backup-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rds",
+        "backup",
+        "snapshot"
+      ],
+      "content": {
+        "prompt": "매일 백업과 트랜잭션 로그를 보관하는 RDS 기능은?",
+        "options": [
+          "수동 스냅샷",
+          "자동 백업",
+          "읽기 복제본"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "자동 백업은 매일 백업과 트랜잭션 로그를 보관해 보존 기간 안의 시점으로 복원하게 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-backup-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rds",
+        "backup",
+        "snapshot"
+      ],
+      "content": {
+        "prompt": "사용자가 만들고 직접 지울 때까지 남는 백업은?",
+        "options": [
+          "트랜잭션 로그",
+          "자동 백업",
+          "수동 스냅샷"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "수동 스냅샷은 사용자가 직접 만들고, 직접 지울 때까지 남아 있습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-backup-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "rds",
+        "backup",
+        "snapshot"
+      ],
+      "content": {
+        "prompt": "스냅샷으로 복원하면 기존 인스턴스를 덮어쓴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "RDS 복원은 기존 인스턴스를 덮어쓰지 않고 새 인스턴스와 새 엔드포인트를 만듭니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-backup-004",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "rds",
+        "backup",
+        "snapshot"
+      ],
+      "content": {
+        "prompt": "보존 기간이 지나면 사라지는 백업은?",
+        "options": [
+          "자동 백업",
+          "수동 스냅샷"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "자동 백업은 보존 기간 안에서만 보관됩니다. 수동 스냅샷은 직접 지울 때까지 남습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-backup-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "rds",
+        "backup",
+        "snapshot"
+      ],
+      "content": {
+        "prompt": "원하는 시각의 상태로 되살리는 방식은 특정 ___ 복구다."
+      },
+      "answer_key": {
+        "accepted": [
+          "시점"
+        ]
+      },
+      "explanation": "특정 시점 복구는 원하는 시각의 상태로 새 DB 인스턴스를 만드는 복원 방식입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-backup-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "rds",
+        "backup",
+        "snapshot"
+      ],
+      "content": {
+        "prompt": "RDS를 복원하면 새 인스턴스와 새 ___ 가 생긴다."
+      },
+      "answer_key": {
+        "accepted": [
+          "엔드포인트",
+          "endpoint"
+        ]
+      },
+      "explanation": "복원은 기존 인스턴스를 덮어쓰지 않으므로, 새 인스턴스와 함께 새 엔드포인트가 생깁니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-backup-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rds",
+        "backup",
+        "snapshot"
+      ],
+      "content": {
+        "prompt": "어제 오후 실수로 테이블을 지웠다. 알맞은 복원은?",
+        "options": [
+          "대기로 장애 조치",
+          "특정 시점 복구",
+          "인스턴스 재부팅"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "특정 시점 복구로 삭제 직전 시각의 상태를 새 인스턴스로 만듭니다. 삭제는 대기 인스턴스에도 복제됩니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-backup-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rds",
+        "backup",
+        "snapshot"
+      ],
+      "content": {
+        "prompt": "복원 후 앱이 복원된 데이터를 보게 하려면?",
+        "options": [
+          "그대로 두기",
+          "IP 고정",
+          "새 엔드포인트로 변경"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "복원 결과는 새 엔드포인트를 가진 새 인스턴스이므로, 앱의 접속 주소를 새 엔드포인트로 바꿔야 합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-backup-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "rds",
+        "backup",
+        "snapshot"
+      ],
+      "content": {
+        "prompt": "규정상 오래 남겨야 하는 배포 직전 백업은?",
+        "options": [
+          "자동 백업",
+          "수동 스냅샷"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "수동 스냅샷은 직접 지울 때까지 남으므로 오래 보관할 백업에 맞습니다. 자동 백업은 보존 기간이 지나면 사라집니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-db-backup-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "rds",
+        "backup",
+        "snapshot"
+      ],
+      "content": {
+        "prompt": "자동 백업으로 보존 기간 안의 원하는 시점으로 복원할 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "자동 백업은 매일 백업과 트랜잭션 로그를 보관하므로, 보존 기간 안의 시점으로 복원할 수 있습니다.",
+      "refs": []
+    }
+  ]
+}

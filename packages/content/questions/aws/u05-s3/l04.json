@@ -1,0 +1,216 @@
+{
+  "track": "aws",
+  "unit": "u05-s3",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "aws-s3-version-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "versioning"
+      ],
+      "content": {
+        "prompt": "같은 키로 올려도 이전 내용을 버전 ID로 남기는 기능은?",
+        "options": [
+          "수명 주기",
+          "복제",
+          "버전 관리"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "버전 관리를 켜면 같은 키에 다시 올려도 덮어쓰지 않고 각 버전을 버전 ID로 보관합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-version-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "versioning"
+      ],
+      "content": {
+        "prompt": "버전 관리 버킷에서 객체를 삭제하면 생기는 표시는?",
+        "options": [
+          "삭제 마커",
+          "버전 ID",
+          "태그"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "버전 관리 버킷에서 삭제하면 이전 버전은 남고 삭제 마커가 생겨 객체가 지워진 것처럼 보입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-version-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "versioning"
+      ],
+      "content": {
+        "prompt": "버전 관리는 끄는 대신 일시 중지만 할 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "한 번 켠 버전 관리는 끌 수 없고 일시 중지만 할 수 있습니다. 이미 만든 버전은 그대로 남습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-version-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "versioning"
+      ],
+      "content": {
+        "prompt": "버전 관리 버킷에서 객체를 지우면 모든 버전이 사라진다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "버전 관리 버킷에서 삭제하면 삭제 마커만 생기고 이전 버전은 그대로 남습니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-version-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "s3",
+        "versioning"
+      ],
+      "content": {
+        "prompt": "버전 관리를 켜는 Status 값은?",
+        "code": {
+          "language": "bash",
+          "source": "aws s3api put-bucket-versioning \\\n  --bucket my-bucket \\\n  --versioning-configuration Status=___"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "Enabled"
+        ]
+      },
+      "explanation": "aws s3api put-bucket-versioning에 Status=Enabled를 주면 버킷의 버전 관리가 켜집니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-version-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "versioning"
+      ],
+      "content": {
+        "prompt": "버전 관리 버킷은 각 버전을 버전 ___ 로 구분한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "ID",
+          "아이디"
+        ]
+      },
+      "explanation": "버전 관리를 켜면 객체가 바뀔 때마다 새 버전 ID가 붙고, 이 값으로 특정 버전을 가리킵니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-version-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "versioning"
+      ],
+      "content": {
+        "prompt": "버전 관리 버킷에 같은 키로 두 번 올리면?",
+        "options": [
+          "첫 버전 덮어씀",
+          "두 버전 모두 보관",
+          "업로드 거부"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "버전 관리 버킷은 덮어쓰지 않고 두 번째 업로드를 새 버전 ID로 저장해 두 버전을 모두 보관합니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-version-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "versioning"
+      ],
+      "content": {
+        "prompt": "삭제 마커를 지우면 어떻게 되나?",
+        "options": [
+          "모든 버전 삭제",
+          "버킷이 비워짐",
+          "이전 버전이 보임"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "삭제 마커는 삭제를 나타내는 표시일 뿐이라, 이를 지우면 바로 이전 버전이 다시 현재 객체로 보입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-version-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "versioning"
+      ],
+      "content": {
+        "prompt": "버전 관리 버킷에서 실수로 지운 객체를 되살리려면?",
+        "options": [
+          "삭제 마커 삭제",
+          "버킷 재생성",
+          "일시 중지"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "삭제는 삭제 마커만 만든 것이므로, 삭제 마커를 지우면 이전 버전이 다시 보입니다.",
+      "refs": []
+    },
+    {
+      "id": "aws-s3-version-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "s3",
+        "versioning"
+      ],
+      "content": {
+        "prompt": "버전 관리를 켠 효과로 맞는 것은?",
+        "options": [
+          "자동 삭제",
+          "이전 버전 보관",
+          "클래스 자동 이동"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "버전 관리는 덮어쓰거나 지워도 이전 버전을 보관합니다. 자동 삭제와 클래스 이동은 수명 주기 규칙의 일입니다.",
+      "refs": []
+    }
+  ]
+}
