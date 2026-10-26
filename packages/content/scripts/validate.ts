@@ -9,13 +9,14 @@
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { checkJsonCode } from './json-code.js';
 import { CODING_LANGUAGES, CurriculumFile, LessonFile } from '@cs-daily/contracts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors: string[] = [];
 
-/** 코드 문제는 정보처리기사(eip)·코딩 테스트(ct)·AI·ML(ai) 트랙에서만, 짧은 코드의 빈칸 형태로만 허용한다. */
-const CODE_TRACKS: readonly string[] = ['eip', 'ct', 'ai'];
+/** 코드 문제는 정보처리기사(eip)·코딩 테스트(ct)·AI·ML(ai)·AWS(aws) 트랙에서만(aws는 bash·json·hcl), 짧은 코드의 빈칸 형태로만 허용한다. */
+const CODE_TRACKS: readonly string[] = ['eip', 'ct', 'ai', 'aws'];
 /** 언어별 variants(Python·Java·JavaScript·C++)로만 코드 문제를 내는 트랙 */
 const VARIANT_TRACK = 'ct';
 const CODE_MAX_LINES = 12;
@@ -102,7 +103,7 @@ function checkLessonFile(path: string) {
     if (seenIds.has(q.id)) errors.push(`${rel}#${i}: 중복 id ${q.id} (이미 ${seenIds.get(q.id)})`);
     seenIds.set(q.id, rel);
     if (!q.id.startsWith(`${track}-`)) errors.push(`${rel}#${i}: id는 '${track}-'로 시작해야 합니다 (${q.id})`);
-    const content = q.content as { code?: { source: string } | null; options?: string[]; variants?: Record<string, { code: { source: string }; options?: string[] }> };
+    const content = q.content as { code?: { source: string; language: string } | null; options?: string[]; variants?: Record<string, { code: { source: string }; options?: string[] }> };
     if (content.variants) {
       // 언어별 variants는 ct 트랙에서만 허용되고, 4개 언어를 모두 제공해야 한다
       if (track !== VARIANT_TRACK) {
@@ -122,6 +123,10 @@ function checkLessonFile(path: string) {
         errors.push(`${rel}#${i}: '${VARIANT_TRACK}' 트랙의 코드 문제는 content.code가 아니라 variants로 4개 언어를 모두 제공해야 합니다 (${q.id})`);
       } else {
         checkCode(`${rel}#${i}`, content.code.source, q.type);
+        if ((content.code as { language: string }).language === 'json') {
+          const err = checkJsonCode(content.code.source, q.type, content.options, q.answer_key);
+          if (err) errors.push(`${rel}#${i}: ${err} (${q.id})`);
+        }
       }
     }
     checkDupOptions(`${rel}#${i}`, content.options);

@@ -63,9 +63,10 @@ curriculum.json 레슨의 선택 필드 `intro`(문단 배열)다. 레슨 시작
 - 기존 트랙과 겹치는 용어(DB·OS·네트워크·자료구조)는 그 트랙 keyPoints의 정의와 같은 문장을 쓴다. 시험에서만 쓰는 뜻이 따로 있으면(카디널리티 = 튜플 수, DCL에 COMMIT·ROLLBACK 포함 등) 시험 정의를 쓰되, 해설에서 실무 뜻과 구분해 준다.
 - 코드 블록은 이 트랙에서만, 아래 "코드 빈칸 문제" 형태로만 쓴다. 다른 트랙은 코드 금지 그대로다.
 
-### 코드 빈칸 문제 (eip·ct·ai 전용, validate가 강제)
+### 코드 빈칸 문제 (eip·ct·ai·aws 전용, validate가 강제)
 - **짧은 코드(5~10줄) 안의 빈칸을 채우거나 고르는 문제만** 낸다. 전체 코드 작성 문제와 실행 결과를 장문으로 서술하는 문제는 내지 않는다.
-- `content.code = { "language", "source" }`. language는 `c` · `java` · `python` · `sql` · `pseudo` 중 하나. 탭 대신 공백을 쓴다.
+- `content.code = { "language", "source" }`. language는 `c` · `java` · `python` · `sql` · `pseudo` 중 하나. `bash`·`json`·`hcl`은 aws 트랙 전용(AWS CLI·IAM/S3 정책·Terraform). 탭 대신 공백을 쓴다.
+- `json` 코드는 validate가 빈칸(`___`)을 정답(fill은 `accepted[0]`, single은 정답 보기)으로 채운 뒤 `JSON.parse`로 검사한다. 파싱이 안 되면 실패하므로 따옴표·쉼표·중괄호까지 정답에 맞게 쓴다.
 - 코드는 **12줄 이하, 한 줄 48자 이하**(모바일 폭에서 가로 스크롤을 줄이기 위해). 빈칸은 코드 안에 `___`로 **정확히 1개**(fill). single은 0~1개.
 - fill: 빈칸 자리에 쓸 답이 한글·영문·숫자·공백뿐일 때만(`extends`, `static`, `SELECT`). `prompt`에는 `___`가 없어도 된다(질문만 쓴다).
 - 기호가 필요한 답(`i++`, `->`, `==`, `%`)은 **single**로 내고 코드 안 `___`에 들어갈 것을 보기에서 고르게 한다.

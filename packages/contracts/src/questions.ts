@@ -11,8 +11,8 @@ import { z } from 'zod';
 export const QuestionType = z.enum(['single', 'multi', 'ox', 'fill']);
 export type QuestionType = z.infer<typeof QuestionType>;
 
-/** 코드 문제는 정보처리기사(eip)·코딩 테스트(ct) 트랙에서만 허용된다(validate가 강제). */
-export const CodeLanguage = z.enum(['c', 'java', 'python', 'sql', 'pseudo', 'javascript', 'cpp']);
+/** 코드 문제는 정보처리기사(eip)·코딩 테스트(ct)·AI·ML(ai)·AWS(aws, bash·json·hcl) 트랙에서만 허용된다(validate가 강제). */
+export const CodeLanguage = z.enum(['c', 'java', 'python', 'sql', 'pseudo', 'javascript', 'cpp', 'bash', 'json', 'hcl']);
 export type CodeLanguage = z.infer<typeof CodeLanguage>;
 
 /**
