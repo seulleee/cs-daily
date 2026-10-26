@@ -552,6 +552,9 @@ html, body { background: var(--color-surface-2); color: var(--color-ink); }
 }
 
 /* 가로 스크롤 영역의 스크롤바를 숨긴다(칩 행) */
+/* 마우스 같은 정밀 포인터 + hover 가능 환경. 터치 기기는 제외 */
+@custom-variant mouse (@media (hover: hover) and (pointer: fine));
+
 @utility no-scrollbar {
   scrollbar-width: none;
   &::-webkit-scrollbar { display: none; }
