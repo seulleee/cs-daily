@@ -1,0 +1,219 @@
+{
+  "track": "aws",
+  "unit": "u09-dns-cdn",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "aws-dns-record-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "route53",
+        "hosted-zone"
+      ],
+      "content": {
+        "prompt": "한 도메인의 DNS 레코드를 모아 관리하는 Route 53 단위는?",
+        "options": [
+          "호스팅 영역",
+          "레코드",
+          "네임 서버"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "호스팅 영역은 한 도메인의 DNS 레코드를 모아 관리하는 Route 53 단위다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-record-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "a-record"
+      ],
+      "content": {
+        "prompt": "도메인 이름을 IPv4 주소로 연결하는 레코드는?",
+        "options": [
+          "CNAME 레코드",
+          "NS 레코드",
+          "A 레코드"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "A 레코드는 도메인 이름을 IPv4 주소로 연결한다. CNAME은 다른 이름으로, NS는 네임 서버 목록을 담는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-record-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "cname"
+      ],
+      "content": {
+        "prompt": "도메인 이름을 다른 도메인 이름으로 연결하는 레코드는?",
+        "options": [
+          "A 레코드",
+          "AAAA 레코드",
+          "CNAME 레코드"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "CNAME 레코드는 이름을 IP가 아니라 다른 도메인 이름으로 연결한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-record-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "a-record"
+      ],
+      "content": {
+        "prompt": "IPv6 주소를 연결할 때도 A 레코드를 쓴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "A 레코드는 IPv4 주소용이고, IPv6 주소는 AAAA 레코드로 연결한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-record-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "dns",
+        "a-record"
+      ],
+      "content": {
+        "prompt": "www.example.com을 IPv4 주소에 연결하는 레코드다. 빈칸의 유형은?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"Name\": \"www.example.com\",\n  \"Type\": \"___\",\n  \"TTL\": 300,\n  \"ResourceRecords\": [\n    {\"Value\": \"192.0.2.10\"}\n  ]\n}"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "A",
+          "A 레코드"
+        ]
+      },
+      "explanation": "IPv4 주소를 값으로 담는 레코드 유형은 A다. IPv6라면 AAAA를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-record-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "ns-record"
+      ],
+      "content": {
+        "prompt": "영역에 응답하는 네임 서버 목록은 ___ 레코드에 담긴다.",
+        "hint": "도메인 등록 기관에 넣는 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "NS",
+          "ns",
+          "네임 서버"
+        ]
+      },
+      "explanation": "NS 레코드는 영역에 응답하는 네임 서버 목록이며, 이 값을 도메인 등록 기관에 등록한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-record-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "cname"
+      ],
+      "content": {
+        "prompt": "blog.example.com이 shop.example.net을 가리키게 하려면?",
+        "options": [
+          "A 레코드",
+          "CNAME 레코드",
+          "NS 레코드"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이름을 다른 도메인 이름으로 연결하는 것은 CNAME 레코드다. A 레코드의 값은 IPv4 주소다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-record-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "route53",
+        "ns-record"
+      ],
+      "content": {
+        "prompt": "도메인 등록 기관에 넣어야 하는 Route 53 값은?",
+        "options": [
+          "NS 레코드 값",
+          "A 레코드 값",
+          "CNAME 값"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "등록 기관이 Route 53 네임 서버를 가리키게 하려면 호스팅 영역의 NS 레코드 값을 등록한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-record-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "dns",
+        "a-record"
+      ],
+      "content": {
+        "prompt": "api.example.com을 IPv4 주소 192.0.2.10에 연결할 레코드는?",
+        "options": [
+          "AAAA 레코드",
+          "CNAME 레코드",
+          "A 레코드"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "값이 IPv4 주소이므로 A 레코드를 둔다. AAAA는 IPv6, CNAME은 다른 이름을 값으로 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-record-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "route53",
+        "hosted-zone"
+      ],
+      "content": {
+        "prompt": "호스팅 영역은 한 도메인의 DNS 레코드를 모아 관리한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "Route 53은 도메인마다 호스팅 영역을 두고 그 안에 A·CNAME·NS 같은 레코드를 담는다.",
+      "refs": []
+    }
+  ]
+}

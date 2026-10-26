@@ -1,0 +1,220 @@
+{
+  "track": "aws",
+  "unit": "u10-observability-iac",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "aws-obs-metric-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudwatch",
+        "metric"
+      ],
+      "content": {
+        "prompt": "CPUUtilization처럼 시간 순서로 기록되는 숫자 데이터는?",
+        "options": [
+          "지표",
+          "로그",
+          "이벤트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "지표(metric)는 CPUUtilization처럼 시간 순서로 기록되는 숫자 데이터다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-metric-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudwatch",
+        "namespace"
+      ],
+      "content": {
+        "prompt": "AWS/EC2처럼 지표를 서비스 단위로 나누는 이름은?",
+        "options": [
+          "차원",
+          "네임스페이스",
+          "통계"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "네임스페이스는 AWS/EC2처럼 지표를 서비스 단위로 나눈다. 대상을 나누는 것은 차원이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-metric-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudwatch",
+        "dimension"
+      ],
+      "content": {
+        "prompt": "InstanceId처럼 지표의 대상을 나누는 이름은?",
+        "options": [
+          "네임스페이스",
+          "통계",
+          "차원"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "차원은 InstanceId처럼 같은 지표를 대상별로 나누는 이름이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-metric-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cloudwatch",
+        "agent"
+      ],
+      "content": {
+        "prompt": "EC2 메모리 사용률은 기본 지표로 CloudWatch에 들어온다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "메모리·디스크 사용률은 기본 지표에 없어 CloudWatch 에이전트를 설치해 보낸다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-metric-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cloudwatch",
+        "statistic"
+      ],
+      "content": {
+        "prompt": "기간마다 평균·최대·합계로 묶어 본 값을 ___라 한다.",
+        "hint": "Average, Maximum, Sum 같은 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "통계",
+          "statistic",
+          "statistics"
+        ]
+      },
+      "explanation": "통계는 정한 기간마다 데이터 포인트를 평균·최대·합계 등으로 묶은 값이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-metric-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cloudwatch",
+        "agent"
+      ],
+      "content": {
+        "prompt": "EC2 메모리 사용률은 CloudWatch ___로 보낸다.",
+        "hint": "인스턴스에 설치해 지표를 보내는 프로그램"
+      },
+      "answer_key": {
+        "accepted": [
+          "에이전트",
+          "agent"
+        ]
+      },
+      "explanation": "EC2 기본 지표에 없는 메모리·디스크 사용률은 CloudWatch 에이전트가 보낸다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-metric-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cloudwatch",
+        "namespace"
+      ],
+      "content": {
+        "prompt": "이 명령에서 AWS/EC2는 무엇인가?",
+        "code": {
+          "language": "bash",
+          "source": "aws cloudwatch get-metric-statistics \\\n  --namespace AWS/EC2 \\\n  --metric-name CPUUtilization \\\n  --dimensions Name=InstanceId,Value=i-0abc \\\n  --statistics Average \\\n  --period 300 \\\n  --start-time 2026-10-20T00:00:00Z \\\n  --end-time 2026-10-20T01:00:00Z"
+        },
+        "options": [
+          "차원",
+          "통계",
+          "네임스페이스"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "--namespace에 넘긴 AWS/EC2는 서비스 단위 네임스페이스다. 대상은 --dimensions로 정한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-metric-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cloudwatch",
+        "statistic"
+      ],
+      "content": {
+        "prompt": "순간적인 CPU 튐을 놓치지 않으려면 고를 통계는?",
+        "options": [
+          "평균",
+          "합계",
+          "최대"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "평균은 기간 안의 짧은 튐을 묻어 버린다. 가장 높았던 값을 보려면 최대를 고른다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-metric-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cloudwatch",
+        "agent"
+      ],
+      "content": {
+        "prompt": "EC2 디스크 사용률 그래프가 없다. 필요한 것은?",
+        "options": [
+          "통계 변경",
+          "네임스페이스 변경",
+          "에이전트 설치"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "디스크 사용률은 기본 지표에 없으므로 CloudWatch 에이전트를 설치해 보낸다.",
+      "refs": []
+    },
+    {
+      "id": "aws-obs-metric-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cloudwatch",
+        "metric"
+      ],
+      "content": {
+        "prompt": "지표는 시간 순서로 기록되는 숫자 데이터다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "CloudWatch 지표는 CPUUtilization처럼 시간에 따라 기록되는 숫자 값의 연속이다.",
+      "refs": []
+    }
+  ]
+}

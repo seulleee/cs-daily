@@ -1,0 +1,222 @@
+{
+  "track": "aws",
+  "unit": "u09-dns-cdn",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "aws-dns-policy-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "route53",
+        "failover"
+      ],
+      "content": {
+        "prompt": "기본 리소스 상태 검사가 실패하면 보조로 응답하는 정책은?",
+        "options": [
+          "가중치",
+          "장애 조치",
+          "단순"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "장애 조치 정책은 기본 리소스의 상태 검사가 실패하면 보조 리소스로 응답한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-policy-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "route53",
+        "weighted"
+      ],
+      "content": {
+        "prompt": "정해 둔 비율대로 여러 리소스에 나눠 보내는 정책은?",
+        "options": [
+          "가중치",
+          "지연 시간",
+          "단순"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가중치 정책은 레코드마다 정한 비율대로 응답을 나눠 새 버전 시험 등에 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-policy-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "route53",
+        "latency"
+      ],
+      "content": {
+        "prompt": "사용자에게 지연이 가장 짧은 리전으로 보내는 정책은?",
+        "options": [
+          "장애 조치",
+          "단순",
+          "지연 시간"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "지연 시간 정책은 사용자에게 지연이 가장 짧은 리전의 리소스로 응답한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-policy-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "route53",
+        "simple"
+      ],
+      "content": {
+        "prompt": "단순 정책은 상태 검사가 실패하면 보조 리소스로 바꾼다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "단순 정책은 값을 그대로 응답한다. 상태 검사 결과로 보조로 바꾸는 것은 장애 조치 정책이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-policy-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "route53",
+        "weighted"
+      ],
+      "content": {
+        "prompt": "트래픽을 정한 비율대로 나누는 정책은 ___ 라우팅이다.",
+        "hint": "레코드마다 Weight 값을 준다"
+      },
+      "answer_key": {
+        "accepted": [
+          "가중치",
+          "weighted",
+          "가중치 기반"
+        ]
+      },
+      "explanation": "가중치 라우팅은 레코드마다 비율을 정해 응답을 나눈다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-policy-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "route53",
+        "failover"
+      ],
+      "content": {
+        "prompt": "기본·보조 리소스를 두고 상태 검사로 고르는 정책은 ___ 라우팅이다.",
+        "hint": "기본이 실패할 때 대비하는 정책"
+      },
+      "answer_key": {
+        "accepted": [
+          "장애 조치",
+          "장애조치",
+          "failover",
+          "페일오버"
+        ]
+      },
+      "explanation": "장애 조치 라우팅은 기본 리소스가 상태 검사에 실패하면 보조 리소스로 응답한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-policy-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "route53",
+        "weighted"
+      ],
+      "content": {
+        "prompt": "이 레코드가 쓰는 라우팅 정책은?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"Name\": \"app.example.com\",\n  \"Type\": \"A\",\n  \"SetIdentifier\": \"v2\",\n  \"Weight\": 10,\n  \"TTL\": 60,\n  \"ResourceRecords\": [\n    {\"Value\": \"192.0.2.20\"}\n  ]\n}"
+        },
+        "options": [
+          "단순",
+          "가중치",
+          "지연 시간"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Weight 값으로 같은 이름의 레코드끼리 비율을 나누므로 가중치 정책이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-policy-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "route53",
+        "weighted"
+      ],
+      "content": {
+        "prompt": "새 버전을 일부 사용자에게만 먼저 보이려면 쓸 정책은?",
+        "options": [
+          "가중치",
+          "장애 조치",
+          "단순"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가중치 정책으로 새 버전 레코드에 작은 비율을 주면 일부 사용자만 새 버전을 받는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-policy-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "route53",
+        "latency"
+      ],
+      "content": {
+        "prompt": "두 리전에 같은 앱이 있다. 응답이 빠른 쪽으로 보내려면?",
+        "options": [
+          "가중치",
+          "단순",
+          "지연 시간"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "지연 시간 정책은 사용자마다 지연이 가장 짧은 리전의 리소스를 골라 응답한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-policy-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "route53",
+        "failover"
+      ],
+      "content": {
+        "prompt": "장애 조치 정책은 기본 리소스가 상태 검사에 실패하면 보조로 응답한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "장애 조치 정책은 평소엔 기본 리소스로, 상태 검사가 실패하면 보조 리소스로 응답한다.",
+      "refs": []
+    }
+  ]
+}

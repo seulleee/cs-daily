@@ -1,0 +1,215 @@
+{
+  "track": "aws",
+  "unit": "u10-observability-iac",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "aws-iac-concept-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "iac",
+        "concept"
+      ],
+      "content": {
+        "prompt": "인프라 구성을 코드 파일로 정의하고 도구가 만들게 하는 방식은?",
+        "options": [
+          "IaC",
+          "CDN",
+          "DNS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "IaC는 인프라 구성을 코드 파일로 정의하고 도구가 그대로 만들게 하는 방식이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-concept-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "iac",
+        "declarative"
+      ],
+      "content": {
+        "prompt": "원하는 최종 상태를 적으면 도구가 변경을 계산하는 방식은?",
+        "options": [
+          "명령형",
+          "선언형"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "선언형은 최종 상태만 적고 필요한 변경은 도구가 계산한다. 명령형은 실행 순서를 직접 적는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-concept-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "iac",
+        "drift"
+      ],
+      "content": {
+        "prompt": "콘솔 수동 변경으로 실제 리소스가 코드와 달라진 상태는?",
+        "options": [
+          "캐시 미스",
+          "무효화",
+          "드리프트"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "드리프트는 콘솔 수동 변경 등으로 실제 리소스가 코드와 달라진 상태다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-concept-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "iac",
+        "declarative"
+      ],
+      "content": {
+        "prompt": "선언형 IaC에서는 리소스를 만드는 명령 순서를 직접 적는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "선언형은 원하는 최종 상태만 적는다. 순서와 필요한 변경은 도구가 계산한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-concept-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "iac",
+        "concept"
+      ],
+      "content": {
+        "prompt": "인프라를 코드로 관리하는 방식의 약자는 ___이다.",
+        "hint": "세 글자 영문 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "IaC",
+          "iac",
+          "IAC"
+        ]
+      },
+      "explanation": "IaC(Infrastructure as Code)는 인프라 구성을 코드 파일로 정의해 관리하는 방식이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-concept-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "iac",
+        "drift"
+      ],
+      "content": {
+        "prompt": "실제 리소스가 코드와 달라진 상태를 ___라 한다.",
+        "hint": "콘솔에서 손으로 바꾸면 생긴다"
+      },
+      "answer_key": {
+        "accepted": [
+          "드리프트",
+          "drift"
+        ]
+      },
+      "explanation": "드리프트는 콘솔 수동 변경 등으로 실제 리소스가 코드 정의와 달라진 상태다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-concept-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "iac",
+        "declarative"
+      ],
+      "content": {
+        "prompt": "인스턴스 수를 2에서 3으로 바꾼다. 선언형으로 적는 것은?",
+        "options": [
+          "최종 값 3",
+          "1대 추가 명령",
+          "콘솔에서 추가"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "선언형은 원하는 최종 상태(3대)를 적고, 1대를 더 만드는 변경은 도구가 계산한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-concept-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "iac",
+        "drift"
+      ],
+      "content": {
+        "prompt": "누군가 콘솔에서 보안 그룹을 고쳤다. 코드와의 관계는?",
+        "options": [
+          "코드가 자동 수정",
+          "드리프트 발생",
+          "변화 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "코드는 그대로인데 실제 리소스만 바뀌었으므로 드리프트가 생긴 것이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-concept-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "iac",
+        "concept"
+      ],
+      "content": {
+        "prompt": "개발·운영 환경을 똑같이 만들려 한다. 알맞은 방법은?",
+        "options": [
+          "콘솔 클릭 반복",
+          "수동 체크리스트",
+          "IaC 코드 재사용"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "같은 코드로 만들면 환경마다 같은 구성이 나오고, 변경도 PR로 검토할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-concept-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "iac",
+        "concept"
+      ],
+      "content": {
+        "prompt": "IaC는 인프라 구성을 코드 파일로 정의하는 방식이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "IaC는 인프라를 코드 파일로 정의하고 도구가 그대로 만들게 해 버전 관리와 검토를 할 수 있게 한다.",
+      "refs": []
+    }
+  ]
+}

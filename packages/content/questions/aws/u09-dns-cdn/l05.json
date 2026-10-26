@@ -1,0 +1,216 @@
+{
+  "track": "aws",
+  "unit": "u09-dns-cdn",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "aws-cdn-origin-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudfront",
+        "cdn"
+      ],
+      "content": {
+        "prompt": "엣지 로케이션에서 콘텐츠를 캐시해 전달하는 AWS의 CDN은?",
+        "options": [
+          "Route 53",
+          "CloudFront",
+          "ACM"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "CloudFront는 전 세계 엣지 로케이션에서 콘텐츠를 캐시해 전달하는 AWS의 CDN이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-origin-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudfront",
+        "distribution"
+      ],
+      "content": {
+        "prompt": "도메인·오리진·동작 설정을 묶은 CloudFront 단위는?",
+        "options": [
+          "배포",
+          "오리진",
+          "호스팅 영역"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "배포(distribution)는 도메인·오리진·캐시 동작 설정을 묶은 CloudFront 단위다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-origin-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "cloudfront",
+        "origin"
+      ],
+      "content": {
+        "prompt": "CloudFront가 원본 콘텐츠를 가져오는 곳은?",
+        "options": [
+          "엣지 로케이션",
+          "캐시 동작",
+          "오리진"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "오리진은 CloudFront가 원본을 가져오는 S3 버킷·ALB 같은 곳이다. 엣지는 사본을 두는 곳이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-origin-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "cloudfront",
+        "origin"
+      ],
+      "content": {
+        "prompt": "오리진은 사용자에게 가장 가까운 엣지 서버를 말한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "사용자 가까이서 사본으로 응답하는 곳은 엣지 로케이션이다. 오리진은 원본이 있는 S3·ALB 등이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-origin-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "cloudfront",
+        "cache-behavior"
+      ],
+      "content": {
+        "prompt": "/api/* 같은 경로 패턴별로 오리진을 정한 규칙은 캐시 ___이다.",
+        "hint": "경로마다 따로 정하는 규칙"
+      },
+      "answer_key": {
+        "accepted": [
+          "동작",
+          "behavior",
+          "캐시 동작"
+        ]
+      },
+      "explanation": "캐시 동작은 경로 패턴마다 어느 오리진으로 보낼지와 캐시 정책을 정한 규칙이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-origin-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "cloudfront",
+        "origin"
+      ],
+      "content": {
+        "prompt": "CloudFront가 원본 파일을 가져오는 곳을 ___이라 한다.",
+        "hint": "S3 버킷이나 ALB가 될 수 있다"
+      },
+      "answer_key": {
+        "accepted": [
+          "오리진",
+          "origin"
+        ]
+      },
+      "explanation": "오리진은 CloudFront가 원본을 가져오는 곳으로 S3 버킷이나 ALB가 될 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-origin-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cloudfront",
+        "cache-behavior"
+      ],
+      "content": {
+        "prompt": "/api/*는 ALB로, 나머지는 S3로 보내려면 무엇을 나누나?",
+        "options": [
+          "배포",
+          "캐시 동작",
+          "호스팅 영역"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "한 배포 안에서 경로 패턴별 캐시 동작을 두어 /api/*는 ALB, 나머지는 S3 오리진으로 보낸다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-origin-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cloudfront",
+        "origin"
+      ],
+      "content": {
+        "prompt": "정적 파일을 담은 S3 버킷은 CloudFront에서 무엇인가?",
+        "options": [
+          "오리진",
+          "엣지 로케이션",
+          "캐시 동작"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "CloudFront가 원본 파일을 가져오는 S3 버킷은 오리진이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-origin-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "cloudfront",
+        "cdn"
+      ],
+      "content": {
+        "prompt": "서버가 서울에만 있다. 해외 사용자 응답을 빠르게 하려면?",
+        "options": [
+          "ACM 인증서",
+          "가중치 라우팅",
+          "CloudFront 배포"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "CloudFront 배포를 두면 사용자 가까운 엣지 로케이션이 캐시한 사본으로 응답한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-cdn-origin-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "cloudfront",
+        "cdn"
+      ],
+      "content": {
+        "prompt": "CloudFront는 엣지 로케이션에서 콘텐츠를 캐시해 전달하는 CDN이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "CloudFront는 엣지 로케이션에 콘텐츠 사본을 캐시해 사용자 가까이서 응답한다.",
+      "refs": []
+    }
+  ]
+}

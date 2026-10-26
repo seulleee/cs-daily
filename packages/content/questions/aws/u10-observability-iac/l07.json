@@ -1,0 +1,220 @@
+{
+  "track": "aws",
+  "unit": "u10-observability-iac",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "aws-iac-tf-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "terraform",
+        "init"
+      ],
+      "content": {
+        "prompt": "프로바이더를 받고 백엔드를 준비하는 명령은?",
+        "options": [
+          "terraform init",
+          "terraform plan",
+          "terraform apply"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "terraform init은 프로바이더를 내려받고 백엔드를 준비한다. 새 작업 디렉터리에서 먼저 실행한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tf-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "terraform",
+        "plan"
+      ],
+      "content": {
+        "prompt": "코드와 state를 비교해 바뀔 내용을 보여 주는 명령은?",
+        "options": [
+          "terraform apply",
+          "terraform plan",
+          "terraform init"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "terraform plan은 코드와 state·실제 리소스를 비교해 바뀔 내용을 보여 준다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tf-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "terraform",
+        "apply"
+      ],
+      "content": {
+        "prompt": "변경을 실제로 적용하고 state를 갱신하는 명령은?",
+        "options": [
+          "terraform plan",
+          "terraform init",
+          "terraform apply"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "terraform apply는 변경을 실제 리소스에 적용하고 state를 갱신한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tf-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "terraform",
+        "plan"
+      ],
+      "content": {
+        "prompt": "terraform plan을 실행하면 리소스가 실제로 바뀐다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "plan은 바뀔 내용을 보여 주기만 한다. 실제 변경과 state 갱신은 apply가 한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tf-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "terraform",
+        "plan"
+      ],
+      "content": {
+        "prompt": "적용 전에 바뀔 내용을 확인하는 단계다. 빈칸은?",
+        "code": {
+          "language": "bash",
+          "source": "cd infra\nterraform init\nterraform ___\nterraform apply"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "plan"
+        ]
+      },
+      "explanation": "init으로 준비한 뒤 plan으로 바뀔 내용을 확인하고 apply로 적용한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tf-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "terraform",
+        "backend"
+      ],
+      "content": {
+        "prompt": "팀이 state를 함께 쓰도록 원격 백엔드를 정한다. 빈칸은?",
+        "code": {
+          "language": "hcl",
+          "source": "terraform {\n  backend \"___\" {\n    bucket       = \"my-bucket\"\n    key          = \"prod/terraform.tfstate\"\n    region       = \"ap-northeast-2\"\n    use_lockfile = true\n  }\n}"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "s3",
+          "S3"
+        ]
+      },
+      "explanation": "원격 백엔드는 state를 S3에 두고 잠금을 켜 동시 apply를 막는다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tf-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "terraform",
+        "init"
+      ],
+      "content": {
+        "prompt": "새로 clone한 디렉터리에서 가장 먼저 실행할 명령은?",
+        "options": [
+          "terraform apply",
+          "terraform plan",
+          "terraform init"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "새 작업 디렉터리에는 프로바이더와 백엔드가 준비되지 않았으므로 init을 먼저 실행한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tf-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "terraform",
+        "backend"
+      ],
+      "content": {
+        "prompt": "두 사람이 동시에 apply하는 것을 막으려면?",
+        "options": [
+          "원격 백엔드 잠금",
+          "로컬 state 복사",
+          "plan 생략"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "state를 S3 원격 백엔드에 두고 잠금을 켜면 한 번에 한 apply만 state를 바꾼다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tf-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "terraform",
+        "state"
+      ],
+      "content": {
+        "prompt": "state를 각자 노트북에만 두면 생기는 문제는?",
+        "options": [
+          "프로바이더 설치 실패",
+          "서로 다른 state",
+          "코드 문법 오류"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "state가 사람마다 따로 있으면 서로 다른 기록으로 비교·적용하게 된다. 그래서 원격 백엔드에 둔다.",
+      "refs": []
+    },
+    {
+      "id": "aws-iac-tf-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "terraform",
+        "init"
+      ],
+      "content": {
+        "prompt": "terraform init은 프로바이더를 받고 백엔드를 준비한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "init은 프로바이더 플러그인을 내려받고 백엔드를 준비하는 첫 명령이다.",
+      "refs": []
+    }
+  ]
+}

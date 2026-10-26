@@ -1,0 +1,215 @@
+{
+  "track": "aws",
+  "unit": "u09-dns-cdn",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "aws-dns-alias-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "route53",
+        "alias"
+      ],
+      "content": {
+        "prompt": "이름을 ALB·CloudFront 같은 AWS 리소스에 바로 연결하는 레코드는?",
+        "options": [
+          "별칭 레코드",
+          "NS 레코드",
+          "AAAA 레코드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "별칭(Alias) 레코드는 Route 53 확장 기능으로 이름을 ALB·CloudFront 같은 AWS 리소스에 바로 연결한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-alias-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "route53",
+        "zone-apex"
+      ],
+      "content": {
+        "prompt": "example.com처럼 앞에 하위 이름이 없는 도메인 자체는?",
+        "options": [
+          "하위 도메인",
+          "영역 apex",
+          "호스팅 영역"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "영역 apex는 example.com처럼 앞에 하위 이름이 붙지 않은 도메인 자체를 말한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-alias-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "route53",
+        "zone-apex"
+      ],
+      "content": {
+        "prompt": "www.example.com과 example.com 중 영역 apex는?",
+        "options": [
+          "www.example.com",
+          "example.com"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "앞에 하위 이름이 없는 example.com이 apex다. www.example.com은 그 아래 하위 이름이다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-alias-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "route53",
+        "zone-apex"
+      ],
+      "content": {
+        "prompt": "영역 apex에도 CNAME 레코드를 둘 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "apex에는 CNAME을 둘 수 없다. 그래서 AWS 리소스에 연결할 때는 별칭 A 레코드를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-alias-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "route53",
+        "alias"
+      ],
+      "content": {
+        "prompt": "apex를 ALB에 연결할 때는 ___ A 레코드를 쓴다.",
+        "hint": "Route 53 전용 확장 레코드"
+      },
+      "answer_key": {
+        "accepted": [
+          "별칭",
+          "alias",
+          "별칭 레코드"
+        ]
+      },
+      "explanation": "apex에는 CNAME을 둘 수 없으므로 ALB를 가리키는 별칭 A 레코드로 연결한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-alias-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "route53",
+        "zone-apex"
+      ],
+      "content": {
+        "prompt": "앞에 하위 이름이 없는 도메인 자체를 영역 ___라 한다.",
+        "hint": "영역 맨 꼭대기를 뜻하는 영어 단어"
+      },
+      "answer_key": {
+        "accepted": [
+          "apex",
+          "에이펙스"
+        ]
+      },
+      "explanation": "example.com처럼 하위 이름 없이 도메인 자체를 가리키는 이름을 영역 apex라 한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-alias-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "route53",
+        "alias"
+      ],
+      "content": {
+        "prompt": "example.com을 ALB에 연결하려 한다. 알맞은 레코드는?",
+        "options": [
+          "CNAME 레코드",
+          "별칭 A 레코드",
+          "NS 레코드"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "example.com은 apex라 CNAME을 둘 수 없다. ALB에는 별칭 A 레코드로 연결한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-alias-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "route53",
+        "alias"
+      ],
+      "content": {
+        "prompt": "A 레코드 값에 ALB의 현재 IP를 적었다. 생길 문제는?",
+        "options": [
+          "IP가 바뀌면 끊김",
+          "응답이 느려짐",
+          "NS 레코드 변경"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ALB의 IP는 수시로 바뀌므로 고정 IP를 적어 두면 언젠가 연결이 끊긴다. 별칭 레코드는 IP를 따라간다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-alias-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "route53",
+        "alias"
+      ],
+      "content": {
+        "prompt": "별칭 레코드가 가리키는 ALB의 IP가 바뀌면?",
+        "options": [
+          "직접 고쳐야 함",
+          "레코드가 삭제됨",
+          "Route 53이 따라감"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "별칭 레코드는 대상 리소스의 IP가 바뀌어도 Route 53이 새 IP로 응답한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-alias-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "route53",
+        "alias"
+      ],
+      "content": {
+        "prompt": "별칭 레코드로 이름을 CloudFront 배포에 바로 연결할 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "별칭 레코드는 ALB·CloudFront 같은 AWS 리소스에 이름을 바로 연결한다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "track": "aws",
+  "unit": "u09-dns-cdn",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "aws-dns-acm-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "acm",
+        "tls"
+      ],
+      "content": {
+        "prompt": "공인 TLS 인증서를 발급하고 자동 갱신하는 AWS 서비스는?",
+        "options": [
+          "ACM",
+          "IAM",
+          "Route 53"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ACM(AWS Certificate Manager)은 공인 TLS 인증서를 발급·보관하고 자동으로 갱신한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-acm-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "acm",
+        "dns-validation"
+      ],
+      "content": {
+        "prompt": "안내받은 CNAME을 도메인에 추가해 소유를 증명하는 방식은?",
+        "options": [
+          "이메일 검증",
+          "DNS 검증",
+          "파일 검증"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DNS 검증은 ACM이 알려 준 CNAME 레코드를 도메인에 추가해 소유를 증명한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-acm-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "acm",
+        "cloudfront"
+      ],
+      "content": {
+        "prompt": "CloudFront에 붙일 ACM 인증서가 있어야 하는 리전은?",
+        "options": [
+          "배포와 같은 리전",
+          "us-east-1",
+          "아무 리전"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "CloudFront는 us-east-1(버지니아 북부)의 ACM 인증서만 쓴다. ALB는 같은 리전의 인증서를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-acm-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "acm",
+        "alb"
+      ],
+      "content": {
+        "prompt": "ALB에 붙일 인증서는 us-east-1에서만 발급할 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "ALB는 같은 리전의 인증서를 쓴다. us-east-1 인증서가 필요한 쪽은 CloudFront다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-acm-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "acm",
+        "dns-validation"
+      ],
+      "content": {
+        "prompt": "CNAME 레코드로 도메인 소유를 증명하도록 요청한다. 빈칸은?",
+        "code": {
+          "language": "bash",
+          "source": "aws acm request-certificate \\\n  --domain-name example.com \\\n  --validation-method ___"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "DNS",
+          "dns"
+        ]
+      },
+      "explanation": "--validation-method DNS로 요청하면 ACM이 알려 준 CNAME을 추가해 소유를 증명한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-acm-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "acm",
+        "renewal"
+      ],
+      "content": {
+        "prompt": "DNS 검증 레코드를 두고 인증서를 쓰는 중이면 ACM이 자동 ___한다.",
+        "hint": "만료 전에 새 인증서로 바꾸는 일"
+      },
+      "answer_key": {
+        "accepted": [
+          "갱신",
+          "renew",
+          "renewal"
+        ]
+      },
+      "explanation": "검증 CNAME이 남아 있고 인증서가 사용 중이면 ACM이 만료 전에 자동 갱신한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-acm-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "acm",
+        "cloudfront"
+      ],
+      "content": {
+        "prompt": "CloudFront에 붙일 인증서를 요청한다. 빈칸의 리전은?",
+        "code": {
+          "language": "bash",
+          "source": "aws acm request-certificate \\\n  --domain-name example.com \\\n  --validation-method DNS \\\n  --region ___"
+        },
+        "options": [
+          "ap-northeast-2",
+          "us-east-1",
+          "eu-west-1"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "CloudFront용 ACM 인증서는 us-east-1에서 요청해야 배포에 붙일 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-acm-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "acm",
+        "alb"
+      ],
+      "content": {
+        "prompt": "서울 리전 ALB에 HTTPS를 붙인다. 인증서 리전은?",
+        "options": [
+          "ap-northeast-2",
+          "us-east-1"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ALB는 자기와 같은 리전의 인증서를 쓰므로 서울(ap-northeast-2)에서 발급한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-acm-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "acm",
+        "renewal"
+      ],
+      "content": {
+        "prompt": "사용 중인 인증서가 자동 갱신되지 않았다. 먼저 볼 것은?",
+        "options": [
+          "보안 그룹",
+          "라우팅 정책",
+          "DNS 검증 레코드"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "자동 갱신은 DNS 검증 CNAME이 남아 있어야 한다. 검증 레코드를 지웠는지 먼저 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "aws-dns-acm-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "acm",
+        "tls"
+      ],
+      "content": {
+        "prompt": "ACM은 공인 TLS 인증서의 발급과 자동 갱신을 맡는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "ACM은 공인 TLS 인증서를 발급·보관하고, 조건이 맞으면 만료 전에 자동 갱신한다.",
+      "refs": []
+    }
+  ]
+}
