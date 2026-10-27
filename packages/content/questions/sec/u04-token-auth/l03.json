@@ -1,0 +1,229 @@
+{
+  "track": "sec",
+  "unit": "u04-token-auth",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "sec-jwtverify-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "jwt",
+        "validation"
+      ],
+      "content": {
+        "prompt": "서버 키로 서명을 확인해 변조 토큰을 거부하는 단계는?",
+        "options": [
+          "디코딩",
+          "서명 검증",
+          "인코딩"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "서명 검증은 서버의 키로 서명을 다시 확인해 변조된 토큰을 거부하는 단계다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwtverify-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "jwt",
+        "validation"
+      ],
+      "content": {
+        "prompt": "헤더 alg가 none인 토큰은 어떻게 하나?",
+        "options": [
+          "거부한다",
+          "서명 없이 받는다",
+          "페이로드만 본다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "서버는 허용한 알고리즘만 받으며, 서명이 없는 none은 거부한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwtverify-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "jwt",
+        "validation"
+      ],
+      "content": {
+        "prompt": "서명 확인 없이 내용만 읽는 것은?",
+        "options": [
+          "검증",
+          "디코딩"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "디코딩은 Base64URL을 풀어 읽기만 하고, 검증은 서명과 클레임까지 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwtverify-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "jwt",
+        "validation"
+      ],
+      "content": {
+        "prompt": "헤더의 alg 값대로 검증 알고리즘을 고르면 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "헤더의 alg는 토큰을 만든 쪽이 정한 값이라 믿지 않는다. 서버가 허용한 알고리즘만 받는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwtverify-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "jwt",
+        "validation"
+      ],
+      "content": {
+        "prompt": "서버 키로 서명을 다시 확인하는 것은 서명 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "검증",
+          "verify",
+          "verification",
+          "확인"
+        ]
+      },
+      "explanation": "서명 검증을 거쳐야 우리가 발급한 토큰인지, 중간에 바뀌지 않았는지 알 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwtverify-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "jwt",
+        "validation"
+      ],
+      "content": {
+        "prompt": "만료 시각이 지난 토큰을 서버는 ___ 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "거부",
+          "거절",
+          "reject",
+          "차단"
+        ]
+      },
+      "explanation": "exp가 지났거나 iss·aud가 기대값과 다르면 서명이 맞아도 토큰을 거부한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwtverify-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "jwt",
+        "validation"
+      ],
+      "content": {
+        "prompt": "aud가 다른 서비스로 된 토큰을 받았다. 처리는?",
+        "options": [
+          "허용",
+          "갱신 후 허용",
+          "거부"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "aud가 기대값과 다르면 다른 서비스용 토큰이므로 거부한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwtverify-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "jwt",
+        "validation"
+      ],
+      "content": {
+        "prompt": "서명을 확인하며 읽으려면 빈칸은?",
+        "code": {
+          "language": "javascript",
+          "source": "const claims = jwt.___(token, KEY, {\n  algorithms: [\"RS256\"],\n  issuer: \"https://auth.example.com\",\n  audience: \"api.example.com\",\n});"
+        },
+        "options": [
+          "decode",
+          "verify"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "verify는 키와 허용 알고리즘으로 서명·클레임을 확인한다. decode는 디코딩만 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwtverify-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "jwt",
+        "validation"
+      ],
+      "content": {
+        "prompt": "디코딩만 하는 서버에서 생기는 일은?",
+        "options": [
+          "위조 토큰 통과",
+          "정상 토큰 거부",
+          "응답 지연"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "서명을 확인하지 않으면 누구나 원하는 내용으로 토큰을 만들어 통과시킬 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwtverify-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "jwt",
+        "validation"
+      ],
+      "content": {
+        "prompt": "서명 검증은 변조된 토큰을 걸러 낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "페이로드가 바뀌면 서명이 맞지 않으므로, 서버 키로 서명을 확인하면 변조 토큰을 거부할 수 있다.",
+      "refs": []
+    }
+  ]
+}

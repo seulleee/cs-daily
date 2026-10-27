@@ -1,0 +1,227 @@
+{
+  "track": "sec",
+  "unit": "u03-session-cookie",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "sec-fixation-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "session",
+        "session-fixation"
+      ],
+      "content": {
+        "prompt": "남의 세션 ID를 손에 넣어 그 사용자로 요청하는 공격은?",
+        "options": [
+          "세션 탈취",
+          "세션 고정",
+          "세션 만료"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "세션 탈취는 남의 세션 ID를 얻어 그 사용자로 행세하는 공격이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fixation-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "session",
+        "session-fixation"
+      ],
+      "content": {
+        "prompt": "미리 정한 세션 ID를 피해자가 로그인 뒤에도 쓰게 하는 공격은?",
+        "options": [
+          "세션 고정",
+          "세션 탈취",
+          "무차별 대입"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "세션 고정은 공격자가 아는 세션 ID를 피해자가 로그인한 뒤에도 그대로 쓰게 만드는 공격이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fixation-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "session",
+        "session-fixation"
+      ],
+      "content": {
+        "prompt": "피해자의 세션 ID를 훔쳐 오는 공격은?",
+        "options": [
+          "세션 고정",
+          "세션 탈취"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ID를 훔쳐 오면 세션 탈취이고, 공격자가 정한 ID를 피해자가 쓰게 만들면 세션 고정이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fixation-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "session",
+        "session-fixation"
+      ],
+      "content": {
+        "prompt": "세션 고정은 피해자의 세션 ID를 훔쳐 오는 공격이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "세션 고정은 공격자가 미리 아는 ID를 피해자가 쓰게 만드는 공격이다. 훔쳐 오는 것은 세션 탈취다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fixation-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "session",
+        "session-fixation"
+      ],
+      "content": {
+        "prompt": "세션 고정을 막으려면 로그인 직후 세션 ID를 ___ 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "재발급",
+          "새로 발급",
+          "재 발급",
+          "교체",
+          "regenerate"
+        ]
+      },
+      "explanation": "로그인 직후 새 세션 ID를 발급하고 옛 ID를 버리면 공격자가 미리 알던 ID는 쓸모가 없어진다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fixation-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "session",
+        "session-fixation"
+      ],
+      "content": {
+        "prompt": "공격자가 정한 세션 ID를 쓰게 만드는 공격은 세션 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "고정",
+          "fixation",
+          "Fixation",
+          "session fixation"
+        ]
+      },
+      "explanation": "세션 고정(session fixation)은 공격자가 정한 ID가 로그인 뒤에도 유지되는 점을 노린다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fixation-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "session",
+        "session-fixation"
+      ],
+      "content": {
+        "prompt": "세션 ID를 새로 발급해야 하는 시점은?",
+        "options": [
+          "페이지 이동마다",
+          "로그인 직후",
+          "이미지 요청마다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "세션 ID 재발급은 로그인·권한 변경 직후에 한다. 그래야 로그인 전 ID가 로그인 상태로 이어지지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fixation-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "session",
+        "session-fixation"
+      ],
+      "content": {
+        "prompt": "관리자 권한을 얻은 직후 서버가 할 일은?",
+        "options": [
+          "세션 ID 재발급",
+          "쿠키 이름 변경",
+          "세션 그대로 유지"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "권한이 바뀐 직후에도 새 세션 ID를 발급하고 옛 ID를 버려야 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fixation-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "session",
+        "session-fixation"
+      ],
+      "content": {
+        "prompt": "재발급 뒤 옛 세션 ID는 어떻게 하나?",
+        "options": [
+          "그대로 유지",
+          "버린다",
+          "보조 ID로 쓴다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "옛 ID가 살아 있으면 그 ID를 아는 쪽이 계속 쓸 수 있으므로 재발급과 함께 버린다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fixation-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "session",
+        "session-fixation"
+      ],
+      "content": {
+        "prompt": "로그인 전후 세션 ID가 같으면 세션 고정에 취약하다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "로그인 전 ID가 로그인 뒤에도 유지되면, 그 ID를 미리 심어 둔 공격자가 로그인 상태를 함께 쓴다.",
+      "refs": []
+    }
+  ]
+}

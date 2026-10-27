@@ -1,0 +1,229 @@
+{
+  "track": "sec",
+  "unit": "u03-session-cookie",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "sec-cookiescope-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cookie",
+        "cookie-scope"
+      ],
+      "content": {
+        "prompt": "지정하면 하위 도메인에도 쿠키를 보내는 속성은?",
+        "options": [
+          "Path",
+          "Secure",
+          "Domain"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Domain을 지정하면 그 도메인과 하위 도메인으로 가는 요청에도 쿠키가 실린다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cookiescope-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cookie",
+        "cookie-scope"
+      ],
+      "content": {
+        "prompt": "쿠키의 수명을 정하는 속성은?",
+        "options": [
+          "Max-Age",
+          "HttpOnly",
+          "SameSite"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Max-Age·Expires가 쿠키의 수명을 정한다. 없으면 브라우저를 닫을 때 사라진다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cookiescope-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cookie",
+        "cookie-scope"
+      ],
+      "content": {
+        "prompt": "Domain을 생략한 쿠키가 전송되는 곳은?",
+        "options": [
+          "모든 하위 도메인",
+          "만든 호스트만"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Domain을 생략하면 쿠키를 만든 호스트에만 보낸다. 지정해야 하위 도메인까지 넓어진다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cookiescope-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cookie",
+        "cookie-scope"
+      ],
+      "content": {
+        "prompt": "Max-Age·Expires가 없는 쿠키는 브라우저를 닫아도 남는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "수명 속성이 없는 쿠키는 브라우저를 닫을 때 사라진다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cookiescope-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cookie",
+        "cookie-scope"
+      ],
+      "content": {
+        "prompt": "쿠키를 하위 도메인에도 보내게 하는 속성은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Domain",
+          "domain",
+          "도메인"
+        ]
+      },
+      "explanation": "Domain을 지정하면 하위 도메인으로 가는 요청에도 쿠키가 전송된다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cookiescope-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cookie",
+        "cookie-scope"
+      ],
+      "content": {
+        "prompt": "만든 호스트에만 쿠키를 보내려면 Domain을 ___ 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "생략",
+          "지정 안 함",
+          "빼야",
+          "제외"
+        ]
+      },
+      "explanation": "Domain 속성을 생략하면 쿠키는 그 쿠키를 만든 호스트로 가는 요청에만 실린다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cookiescope-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cookie",
+        "cookie-scope"
+      ],
+      "content": {
+        "prompt": "쿠키가 1시간 뒤 사라지게 하려면 빈칸은?",
+        "code": {
+          "language": "http",
+          "source": "HTTP/1.1 200 OK\nSet-Cookie: sid=k3J9xQ2v; Secure; ___=3600"
+        },
+        "options": [
+          "Path",
+          "HttpOnly",
+          "Max-Age"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Max-Age는 쿠키 수명을 초 단위로 정한다. 3600초가 지나면 브라우저가 쿠키를 지운다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cookiescope-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cookie",
+        "cookie-scope"
+      ],
+      "content": {
+        "prompt": "Domain=example.com 쿠키가 실리는 범위는?",
+        "options": [
+          "example.com만",
+          "하위 도메인까지",
+          "모든 도메인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Domain을 지정하면 example.com뿐 아니라 api.example.com 같은 하위 도메인 요청에도 실린다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cookiescope-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cookie",
+        "cookie-scope"
+      ],
+      "content": {
+        "prompt": "__Host- 접두사 쿠키에 쓸 수 없는 것은?",
+        "options": [
+          "Secure",
+          "Path=/",
+          "Domain 지정"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "__Host- 접두사는 Secure·Path=/·Domain 없음을 강제한다. Domain을 지정하면 브라우저가 거부한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cookiescope-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cookie",
+        "cookie-scope"
+      ],
+      "content": {
+        "prompt": "Domain을 지정한 쿠키는 하위 도메인 요청에도 실린다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "Domain을 생략하면 만든 호스트에만, 지정하면 하위 도메인으로 가는 요청에도 보낸다.",
+      "refs": []
+    }
+  ]
+}

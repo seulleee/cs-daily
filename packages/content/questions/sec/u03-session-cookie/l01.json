@@ -1,0 +1,232 @@
+{
+  "track": "sec",
+  "unit": "u03-session-cookie",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "sec-session-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "session",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "HTTP가 이전 요청을 기억하지 않는 성질은?",
+        "options": [
+          "무상태",
+          "상태 저장",
+          "지속 연결"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "HTTP는 무상태(stateless)라 요청마다 독립적으로 처리되고 이전 요청을 기억하지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-session-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "session",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "서버가 로그인 상태를 저장하고 ID로 찾는 방식은?",
+        "options": [
+          "세션",
+          "쿠키",
+          "캐시"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "세션은 서버가 로그인 상태를 저장해 두고 세션 ID로 그 상태를 찾는 방식이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-session-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "session",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "세션 방식에서 로그인 상태를 저장하는 쪽은?",
+        "options": [
+          "브라우저",
+          "서버"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "세션 방식은 서버가 상태를 저장하고, 브라우저는 그 상태를 가리키는 세션 ID만 보낸다.",
+      "refs": []
+    },
+    {
+      "id": "sec-session-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "session",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "브라우저는 저장한 쿠키를 그 도메인 요청마다 보낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "서버가 Set-Cookie로 보낸 쿠키는 브라우저가 저장했다가 그 도메인으로 가는 요청마다 실어 보낸다.",
+      "refs": []
+    },
+    {
+      "id": "sec-session-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "session",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "HTTP는 요청마다 독립적인 ___ 프로토콜이다.",
+        "hint": "상태를 기억하지 않는다는 뜻의 용어"
+      },
+      "answer_key": {
+        "accepted": [
+          "무상태",
+          "stateless",
+          "Stateless",
+          "무 상태"
+        ]
+      },
+      "explanation": "HTTP는 이전 요청을 기억하지 않는 무상태(stateless) 프로토콜이라 세션과 쿠키가 필요하다.",
+      "refs": []
+    },
+    {
+      "id": "sec-session-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "session",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "로그인 상태를 찾는 서버 측 식별자는 세션 ___ 이다.",
+        "hint": "영문 두 글자"
+      },
+      "answer_key": {
+        "accepted": [
+          "ID",
+          "id",
+          "아이디",
+          "식별자"
+        ]
+      },
+      "explanation": "서버는 요청에 실려 온 세션 ID로 저장해 둔 로그인 상태를 찾는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-session-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "session",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "세션 ID로 알맞은 값은?",
+        "options": [
+          "사용자 번호",
+          "가입 순번",
+          "긴 임의 값"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "세션 ID는 추측할 수 없는 충분히 긴 임의 값이어야 한다. 번호나 순번은 다른 값을 짐작할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-session-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "session",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "세션 ID가 1001, 1002처럼 늘어난다. 위험은?",
+        "options": [
+          "쿠키 크기 증가",
+          "다른 ID 추측",
+          "응답 지연"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "순차적인 세션 ID는 옆 번호를 넣어 보는 것만으로 다른 사용자의 세션을 찾을 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-session-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "session",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "이 응답 뒤 브라우저가 sid를 보내는 요청은?",
+        "code": {
+          "language": "http",
+          "source": "HTTP/1.1 200 OK\nSet-Cookie: sid=k3J9xQ2vLm8Ra7; Secure"
+        },
+        "options": [
+          "다음 1회 요청",
+          "모든 사이트 요청",
+          "같은 도메인 요청"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Set-Cookie로 받은 쿠키는 브라우저가 저장해 두고 그 도메인으로 가는 요청마다 함께 보낸다.",
+      "refs": []
+    },
+    {
+      "id": "sec-session-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "session",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "HTTP는 이전 요청을 스스로 기억하는 프로토콜이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "HTTP는 무상태라 요청마다 독립적이다. 그래서 서버는 세션과 쿠키로 로그인 상태를 이어 준다.",
+      "refs": []
+    }
+  ]
+}

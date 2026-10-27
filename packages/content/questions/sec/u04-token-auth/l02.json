@@ -1,0 +1,227 @@
+{
+  "track": "sec",
+  "unit": "u04-token-auth",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "sec-jwt-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "jwt",
+        "token"
+      ],
+      "content": {
+        "prompt": "헤더·페이로드·서명을 점으로 이은 토큰은?",
+        "options": [
+          "JWT",
+          "세션 ID",
+          "솔트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "JWT는 헤더·페이로드·서명 세 부분을 점(.)으로 이은 토큰이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwt-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "jwt",
+        "token"
+      ],
+      "content": {
+        "prompt": "JWT에서 만료 시각을 담는 클레임은?",
+        "options": [
+          "iss",
+          "sub",
+          "exp"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "exp는 만료 시각, sub는 주체, iss는 발급자를 담는 클레임이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwt-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "jwt",
+        "token"
+      ],
+      "content": {
+        "prompt": "JWT에서 주체를 나타내는 클레임은?",
+        "options": [
+          "sub",
+          "aud"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "sub는 토큰의 주체이고, aud는 토큰을 받을 대상 서비스다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwt-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "jwt",
+        "token"
+      ],
+      "content": {
+        "prompt": "JWT 페이로드는 서명 덕분에 남이 읽을 수 없다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "페이로드는 Base64URL 인코딩이라 누구나 디코딩해 읽는다. 서명은 변조만 막는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwt-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "jwt",
+        "token"
+      ],
+      "content": {
+        "prompt": "JWT 각 부분의 인코딩 방식은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Base64URL",
+          "base64url",
+          "Base64 URL",
+          "BASE64URL",
+          "base64"
+        ]
+      },
+      "explanation": "JWT 각 부분은 Base64URL로 인코딩되어 키 없이도 디코딩해 읽을 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwt-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "jwt",
+        "token"
+      ],
+      "content": {
+        "prompt": "JWT 페이로드에 담은 항목을 ___ 이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "클레임",
+          "claim",
+          "claims",
+          "Claim"
+        ]
+      },
+      "explanation": "sub·exp·iss·aud처럼 페이로드에 담는 항목을 클레임이라 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwt-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "jwt",
+        "token"
+      ],
+      "content": {
+        "prompt": "JWT 페이로드에 넣으면 안 되는 것은?",
+        "options": [
+          "사용자 식별자",
+          "비밀번호",
+          "만료 시각"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "페이로드는 누구나 읽을 수 있으므로 비밀번호·개인정보를 넣지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwt-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "jwt",
+        "token"
+      ],
+      "content": {
+        "prompt": "토큰 xxx.yyy.zzz에서 서명 부분은?",
+        "options": [
+          "xxx",
+          "yyy",
+          "zzz"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "JWT는 헤더.페이로드.서명 순서이므로 마지막 zzz가 서명이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwt-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "jwt",
+        "token"
+      ],
+      "content": {
+        "prompt": "토큰을 받을 대상 서비스를 담는 클레임은?",
+        "options": [
+          "exp",
+          "aud",
+          "iss"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "aud는 토큰을 받을 대상, iss는 발급자, exp는 만료 시각이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-jwt-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "jwt",
+        "token"
+      ],
+      "content": {
+        "prompt": "JWT는 헤더·페이로드·서명 세 부분으로 이뤄진다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "JWT는 헤더·페이로드·서명을 점으로 이어 붙인 형태다.",
+      "refs": []
+    }
+  ]
+}
