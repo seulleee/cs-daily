@@ -15,8 +15,8 @@ import { CODING_LANGUAGES, CurriculumFile, LessonFile } from '@cs-daily/contract
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors: string[] = [];
 
-/** 코드 문제는 정보처리기사(eip)·코딩 테스트(ct)·AI·ML(ai)·AWS(aws) 트랙에서만(aws는 bash·json·hcl), 짧은 코드의 빈칸 형태로만 허용한다. */
-const CODE_TRACKS: readonly string[] = ['eip', 'ct', 'ai', 'aws'];
+/** 코드 문제는 정보처리기사(eip)·코딩 테스트(ct)·AI·ML(ai)·AWS(aws)·보안(sec) 트랙에서만(aws는 bash·json·hcl, sec는 http·html, 둘 다 content.code 단일이며 variants 트랙이 아니다), 짧은 코드의 빈칸 형태로만 허용한다. */
+const CODE_TRACKS: readonly string[] = ['eip', 'ct', 'ai', 'aws', 'sec'];
 /** 언어별 variants(Python·Java·JavaScript·C++)로만 코드 문제를 내는 트랙 */
 const VARIANT_TRACK = 'ct';
 const CODE_MAX_LINES = 12;

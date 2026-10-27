@@ -104,4 +104,4 @@
 - [ ] README의 운영·배포 절은 오래됐다(GitHub Secrets 기준) → CLAUDE.md 운영 현황과 맞추기
 - [ ] 머지된 원격 브랜치 정리(이 환경에서 삭제 불가 — 레포 설정 "Automatically delete head branches" 권장)
 - [ ] 무료 체험 종료(2027-01-05) 전 결제 계정 전환 알림
-- [ ] **보안 트랙(2026-10-16 사용자 요청, AWS 트랙 다음)** — 목표: 백엔드 개발자가 실무에서 막고 점검할 수 있는 수준(방어 관점). 공격은 원리·징후·막는 법까지만 다루고 실제로 쓸 수 있는 공격 페이로드·익스플로잇 절차는 쓰지 않는다. 유닛 안(구체→설계): 보안 기본(CIA·위협 모델링·최소 권한) → 비밀번호 저장(해시·솔트·bcrypt/argon2) → 세션·쿠키(HttpOnly·Secure·SameSite) → JWT·OAuth·OIDC → 접근 제어(IDOR·권한 검사 위치) → 입력 검증과 인젝션(SQL·명령, 파라미터 바인딩) → XSS·CSP → CSRF·CORS → SSRF·파일 업로드 → 암호화 기초(대칭·비대칭·해시 구분, TLS, 키 관리) → 비밀값·의존성·공급망(시크릿 스캔, SCA, 서명) → 로깅·탐지·사고 대응 → 설계 종합(OWASP Top 10 점검 시나리오). 코드 빈칸은 "취약 코드 → 안전한 코드" 고치기(파라미터 바인딩, 출력 인코딩, 쿠키 속성, CSP·보안 헤더)로, `ct`처럼 언어 variants를 쓸지는 시작할 때 정한다. 클라우드 보안(IAM·보안 그룹·KMS)은 AWS 트랙에서 다루고 여기선 연결만 한다. eip u14(시험용 보안)와 문장을 겹치지 않게 쓴다
+- [ ] **보안 트랙 문제 작성** — 커리큘럼(13유닛 106레슨, objective·keyPoints·intro)은 2026-10-27 추가(`sec`, phase2 비공개). 코드 빈칸은 variants 없이 `content.code` 단일(python·javascript·sql·http·html, `http`·`html`은 sec 전용). 남은 일: 문제 1,060개, 미리보기 후 공개. 규칙은 content-guide "보안(sec) 트랙"

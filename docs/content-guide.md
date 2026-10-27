@@ -63,9 +63,9 @@ curriculum.json 레슨의 선택 필드 `intro`(문단 배열)다. 레슨 시작
 - 기존 트랙과 겹치는 용어(DB·OS·네트워크·자료구조)는 그 트랙 keyPoints의 정의와 같은 문장을 쓴다. 시험에서만 쓰는 뜻이 따로 있으면(카디널리티 = 튜플 수, DCL에 COMMIT·ROLLBACK 포함 등) 시험 정의를 쓰되, 해설에서 실무 뜻과 구분해 준다.
 - 코드 블록은 이 트랙에서만, 아래 "코드 빈칸 문제" 형태로만 쓴다. 다른 트랙은 코드 금지 그대로다.
 
-### 코드 빈칸 문제 (eip·ct·ai·aws 전용, validate가 강제)
+### 코드 빈칸 문제 (eip·ct·ai·aws·sec 전용, validate가 강제)
 - **짧은 코드(5~10줄) 안의 빈칸을 채우거나 고르는 문제만** 낸다. 전체 코드 작성 문제와 실행 결과를 장문으로 서술하는 문제는 내지 않는다.
-- `content.code = { "language", "source" }`. language는 `c` · `java` · `python` · `sql` · `pseudo` 중 하나. `bash`·`json`·`hcl`은 aws 트랙 전용(AWS CLI·IAM/S3 정책·Terraform). 탭 대신 공백을 쓴다.
+- `content.code = { "language", "source" }`. language는 `c` · `java` · `python` · `sql` · `pseudo` 중 하나. `bash`·`json`·`hcl`은 aws 트랙 전용(AWS CLI·IAM/S3 정책·Terraform). `http`·`html`은 sec 트랙 전용(보안 헤더·쿠키 속성, 출력 인코딩 템플릿). 탭 대신 공백을 쓴다.
 - `json` 코드는 validate가 빈칸(`___`)을 정답(fill은 `accepted[0]`, single은 정답 보기)으로 채운 뒤 `JSON.parse`로 검사한다. 파싱이 안 되면 실패하므로 따옴표·쉼표·중괄호까지 정답에 맞게 쓴다.
 - 코드는 **12줄 이하, 한 줄 48자 이하**(모바일 폭에서 가로 스크롤을 줄이기 위해). 빈칸은 코드 안에 `___`로 **정확히 1개**(fill). single은 0~1개.
 - fill: 빈칸 자리에 쓸 답이 한글·영문·숫자·공백뿐일 때만(`extends`, `static`, `SELECT`). `prompt`에는 `___`가 없어도 된다(질문만 쓴다).
@@ -200,6 +200,16 @@ single 예시 (같은 코드 모양이라도 결과가 언어마다 다른 경�
 - **자주 바뀌는 숫자 금지**: 서비스 한도·가격·무료 사용량·최대 크기·기본 타임아웃은 정답·보기로 쓰지 않는다. 고정 규칙(서브넷 예약 IP 처음 4개·마지막 1개, 보안 그룹 상태 저장, NACL 규칙 번호 순 평가, 명시적 거부 우선, 새 보안 그룹 아웃바운드 전체 허용, 기본 NACL 전체 허용·사용자 지정 NACL 전체 거부)은 써도 된다.
 - **최근 바뀐 동작은 현재 기준으로**: 새 S3 버킷은 퍼블릭 액세스 차단 켜짐·ACL 꺼짐, 새 객체 SSE-S3 기본 적용, CloudFront→S3는 OAI가 아니라 OAC, Terraform S3 백엔드 잠금은 `use_lockfile`(DynamoDB 잠금은 deprecated), NAT 게이트웨이는 영역 NAT·리전 NAT 두 방식, 루트 사용자 MFA는 모든 계정 유형에 요구. 문제를 쓸 때 다시 AWS 공식 문서로 확인한다.
 - 시험 문제·덤프는 쓰지 않는다. 서비스 이름은 AWS 공식 표기(IAM Identity Center, Session Manager 등).
+
+## 보안(sec) 트랙 (2026-10-27, 커리큘럼만 — 비공개 phase2)
+백엔드 개발자가 실무에서 막고 점검할 수 있는 수준(방어 관점). 13유닛 106레슨, 구체(CIA·비밀번호·세션) → 설계(OWASP Top 10 점검) 순.
+- **공격은 원리·징후·막는 법까지만.** 실제로 쓸 수 있는 공격 페이로드(인젝션 문자열, XSS 스크립트, 우회 기법)·익스플로잇 절차는 문제·보기·해설·코드 어디에도 쓰지 않는다. 코드에는 "취약한 패턴"(문자열 이어 붙인 쿼리, `innerHTML`, `shell=True`)과 "고친 코드"만 둔다.
+- **각 유닛 마지막 레슨 "현장: …"**은 증상 → 확인 순서 → 원인 → 조치를 고르는 판단 레슨이다(AWS 트랙과 같다). 그 유닛과 앞 유닛 keyPoints만 정답으로 쓴다. 13유닛은 OWASP Top 10:2025 범주로 앞 유닛을 다시 점검하고 "종합 시나리오"로 끝난다.
+- **코드 빈칸은 "취약 코드 → 안전한 코드" 고치기**: 파라미터 바인딩(`sql`·`python`·`javascript`), 출력 인코딩·DOM API(`javascript`·`html`), 쿠키 속성·CSP·CORS·보안 헤더(`http`). 언어 variants는 쓰지 않는다(`content.code` 단일) — 개념이 언어 문법이 아니라 바인딩·속성 이름에 있어서다. 정답이 될 헤더·속성·함수 이름은 그 레슨 keyPoints에 있어야 한다. `SameSite=Lax`·`'self'`처럼 기호가 든 답은 single로 낸다.
+- **OWASP Top 10은 2025판 기준**(A01 접근 제어 실패 … A10 예외 상황 처리 미흡, SSRF는 A01에 통합). 순위 번호는 1위(접근 제어 실패)만 묻고 나머지는 범주 이름으로 묻는다.
+- 클라우드 보안(IAM·보안 그룹·KMS 세부 설정)은 AWS 트랙 몫이다. 여기서는 "AWS 트랙 기준으로 점검"처럼 연결만 한다.
+- eip `u14-security`(시험용 보안)와 keyPoints·문제 문장을 겹치지 않게 쓴다. 같은 용어(기밀성, RBAC, 솔트)도 실무 판단 쪽으로 묻는다.
+- 표준·브라우저 동작은 현재 기준으로 쓴다(SameSite 미지정 시 동작은 브라우저마다 달라 항상 명시, `SameSite=None`은 Secure 필수, CSRF 방어에 SameSite + 토큰/Origin 검사, 비밀번호 해시는 argon2id 권장). 자주 바뀌는 숫자(권장 cost 값, 토큰 수명 분 단위)는 정답으로 묻지 않는다.
 
 ## 완성 예시 (dsa/u03-stack-queue/l01, 개념: 스택·push/pop·LIFO)
 001 single "나중에 넣은 것을 먼저 꺼내는 자료구조는?" [큐, 스택, 배열] → 1
