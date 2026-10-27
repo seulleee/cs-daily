@@ -1,0 +1,244 @@
+{
+  "track": "sec",
+  "unit": "u02-password",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "sec-mfa-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "mfa",
+        "password-reset"
+      ],
+      "content": {
+        "prompt": "서로 다른 인증 요소를 두 개 이상 요구하는 것은?",
+        "options": [
+          "다중 인증",
+          "속도 제한",
+          "해시 업그레이드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "다중 인증(MFA)은 아는 것·가진 것처럼 서로 다른 요소를 두 개 이상 요구한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-mfa-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "mfa",
+        "password-reset"
+      ],
+      "content": {
+        "prompt": "공유 비밀과 현재 시각으로 바뀌는 일회용 코드는?",
+        "options": [
+          "솔트",
+          "세션 ID",
+          "TOTP"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "TOTP는 공유한 비밀과 현재 시각으로 짧은 시간마다 바뀌는 코드를 만든다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-mfa-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "mfa",
+        "password-reset"
+      ],
+      "content": {
+        "prompt": "비밀번호와 인증 앱 코드의 요소 조합은?",
+        "options": [
+          "아는 것+아는 것",
+          "아는 것+가진 것"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "비밀번호는 아는 것, 인증 앱이 있는 기기는 가진 것이므로 서로 다른 두 요소다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-mfa-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "mfa",
+        "password-reset"
+      ],
+      "content": {
+        "prompt": "재설정 토큰은 짧게 만료되고 해시로 저장한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "재설정 토큰은 추측 불가능한 일회용 값으로, 짧게 만료하고 해시로 저장한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-mfa-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "mfa",
+        "password-reset"
+      ],
+      "content": {
+        "prompt": "현재 시각으로 일회용 코드를 만드는 방식은 ___ 이다.",
+        "hint": "공유한 비밀이 있어야 계산된다."
+      },
+      "answer_key": {
+        "accepted": [
+          "TOTP",
+          "totp"
+        ]
+      },
+      "explanation": "공유 비밀과 현재 시각으로 일회용 코드를 만드는 방식은 TOTP다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-mfa-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "mfa",
+        "password-reset"
+      ],
+      "content": {
+        "prompt": "비밀번호 재설정에 쓰는 일회용 값은 재설정 ___ 이다.",
+        "hint": "추측할 수 없고 짧게 만료된다."
+      },
+      "answer_key": {
+        "accepted": [
+          "토큰",
+          "token",
+          "Token"
+        ]
+      },
+      "explanation": "재설정에 쓰는 일회용 값은 재설정 토큰이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-mfa-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "mfa",
+        "password-reset"
+      ],
+      "content": {
+        "prompt": "가입되지 않은 이메일로 재설정을 요청했다. 응답은?",
+        "options": [
+          "가입 시와 같은 응답",
+          "없는 계정 안내"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "가입 여부와 상관없이 같은 응답을 돌려줘야 계정 존재가 드러나지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-mfa-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "mfa",
+        "password-reset"
+      ],
+      "content": {
+        "prompt": "재설정 토큰을 DB에 두는 방법은?",
+        "options": [
+          "평문 저장",
+          "이메일에만 보관",
+          "해시로 저장"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "재설정 토큰은 해시로 저장해 DB가 유출돼도 그대로 쓸 수 없게 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-mfa-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "mfa",
+        "password-reset"
+      ],
+      "content": {
+        "prompt": "재설정 토큰으로 알맞은 값은?",
+        "options": [
+          "사용자 ID",
+          "추측 불가 임의 값",
+          "가입 날짜"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "재설정 토큰은 추측 불가능한 일회용 값이어야 한다. ID·날짜는 추측할 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-mfa-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "mfa",
+        "password-reset"
+      ],
+      "content": {
+        "prompt": "비밀번호와 또 다른 비밀번호를 요구하면 다중 인증이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "둘 다 아는 것이라 같은 요소다. 다중 인증은 서로 다른 요소를 요구한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

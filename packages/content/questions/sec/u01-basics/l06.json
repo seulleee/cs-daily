@@ -1,0 +1,225 @@
+{
+  "track": "sec",
+  "unit": "u01-basics",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "sec-leastpriv-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "least-privilege",
+        "access-control"
+      ],
+      "content": {
+        "prompt": "작업에 꼭 필요한 권한만 필요한 기간 동안 주는 원칙은?",
+        "options": [
+          "기본 거부",
+          "직무 분리",
+          "최소 권한"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "최소 권한 원칙은 필요한 권한만, 필요한 기간 동안만 준다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leastpriv-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "least-privilege",
+        "access-control"
+      ],
+      "content": {
+        "prompt": "명시적으로 허용한 것 외에는 모두 거부하는 방식은?",
+        "options": [
+          "최소 권한",
+          "기본 허용",
+          "기본 거부"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "기본 거부는 허용 목록에 없는 요청을 모두 거부한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leastpriv-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "least-privilege",
+        "access-control"
+      ],
+      "content": {
+        "prompt": "중요 작업을 한 사람이 혼자 끝내지 못하게 하는 원칙은?",
+        "options": [
+          "직무 분리",
+          "최소 권한"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "직무 분리는 중요한 작업의 권한을 나눠 한 사람이 혼자 끝내지 못하게 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leastpriv-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "least-privilege",
+        "access-control"
+      ],
+      "content": {
+        "prompt": "기본 거부는 명시적으로 막은 것만 거부한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "기본 거부는 명시적으로 허용한 것 외에 모두 거부한다. 막은 것만 거부하면 나머지는 열려 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leastpriv-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "least-privilege",
+        "access-control"
+      ],
+      "content": {
+        "prompt": "꼭 필요한 권한만 주는 원칙은 최소 ___ 원칙이다.",
+        "hint": "필요 이상은 주지 않는다는 원칙이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "권한",
+          "privilege",
+          "Privilege"
+        ]
+      },
+      "explanation": "필요한 권한만 주는 원칙은 최소 권한 원칙이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leastpriv-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "least-privilege",
+        "access-control"
+      ],
+      "content": {
+        "prompt": "중요 작업의 권한을 나누는 원칙은 직무 ___ 이다.",
+        "hint": "배포 요청자와 승인자를 다르게 둔다."
+      },
+      "answer_key": {
+        "accepted": [
+          "분리",
+          "separation",
+          "Separation",
+          "분할"
+        ]
+      },
+      "explanation": "중요 작업의 권한을 여러 사람에게 나누는 원칙은 직무 분리다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leastpriv-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "least-privilege",
+        "access-control"
+      ],
+      "content": {
+        "prompt": "조회 전용 리포트 배치에 줄 DB 권한은?",
+        "options": [
+          "전체 관리자",
+          "읽기 전용",
+          "쓰기·삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "조회만 하는 작업에는 읽기 권한만 주는 것이 최소 권한이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leastpriv-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "least-privilege",
+        "access-control"
+      ],
+      "content": {
+        "prompt": "새 접근 규칙 목록의 마지막 규칙으로 알맞은 것은?",
+        "options": [
+          "나머지 모두 거부",
+          "나머지 모두 허용"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "허용 규칙 뒤에 나머지를 모두 거부하면 기본 거부가 된다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leastpriv-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "least-privilege",
+        "access-control"
+      ],
+      "content": {
+        "prompt": "개발자가 자기 변경을 혼자 승인하고 배포한다. 어긋난 원칙은?",
+        "options": [
+          "직무 분리",
+          "기본 거부"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "요청과 승인을 한 사람이 모두 하면 직무 분리에 어긋난다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leastpriv-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "least-privilege",
+        "access-control"
+      ],
+      "content": {
+        "prompt": "장애 대응용 관리자 권한은 작업이 끝나면 회수한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "최소 권한은 필요한 기간 동안만 권한을 주므로 작업이 끝나면 회수한다.",
+      "refs": []
+    }
+  ]
+}

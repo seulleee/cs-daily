@@ -1,0 +1,245 @@
+{
+  "track": "sec",
+  "unit": "u02-password",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "sec-pwalgo-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "계산량과 메모리를 함께 조절하며 새 시스템에 권장되는 것은?",
+        "options": [
+          "MD5",
+          "SHA-256",
+          "argon2id"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "argon2id는 계산량과 메모리 사용량을 함께 조절하며 새 시스템에 권장된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwalgo-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "결과 문자열에 cost와 솔트가 함께 들어 있는 해시는?",
+        "options": [
+          "SHA-256",
+          "CRC32",
+          "bcrypt"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "bcrypt 결과 문자열에는 cost와 솔트가 함께 들어 있어 따로 저장할 필요가 없다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwalgo-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "해시를 여러 번 반복하는 표준은?",
+        "options": [
+          "scrypt",
+          "PBKDF2"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "PBKDF2는 해시를 여러 번 반복하는 표준이다. scrypt는 메모리를 많이 쓰게 만든 해시다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwalgo-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "scrypt는 메모리를 많이 쓰게 만든 비밀번호 해시다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "scrypt는 메모리를 많이 쓰게 만들어 추측 대입 비용을 키운다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwalgo-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "새 시스템에 권장되는 비밀번호 해시는 ___ 이다.",
+        "hint": "메모리 사용량도 조절한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "argon2id",
+          "Argon2id",
+          "ARGON2ID",
+          "argon2"
+        ]
+      },
+      "explanation": "새 시스템에는 계산량과 메모리를 함께 조절하는 argon2id를 권장한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwalgo-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "해시를 여러 번 반복하는 표준은 ___ 이다.",
+        "hint": "메모리가 아니라 반복 횟수로 느리게 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "PBKDF2",
+          "pbkdf2"
+        ]
+      },
+      "explanation": "해시를 여러 번 반복해 느리게 만드는 표준은 PBKDF2다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwalgo-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "새 서비스의 비밀번호 해시로 알맞은 것은?",
+        "options": [
+          "SHA-256",
+          "MD5",
+          "argon2id"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "새 시스템에는 argon2id를 권장한다. SHA-256·MD5는 빠른 범용 해시다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwalgo-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "솔트 생성과 비교를 직접 짠 코드다. 조치는?",
+        "options": [
+          "그대로 유지",
+          "솔트 길이 늘리기",
+          "검증된 라이브러리"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "솔트 생성과 비교까지 해 주는 검증된 라이브러리를 써서 구현 실수를 줄인다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwalgo-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "bcrypt 결과와 별도로 솔트 칼럼이 필요한가?",
+        "options": [
+          "필요하다",
+          "필요 없다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "bcrypt 결과 문자열에 솔트와 cost가 함께 들어 있어 따로 둘 필요가 없다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwalgo-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "PBKDF2는 메모리를 많이 쓰게 만든 해시다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "PBKDF2는 해시를 여러 번 반복하는 표준이다. 메모리를 많이 쓰게 만든 것은 scrypt다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

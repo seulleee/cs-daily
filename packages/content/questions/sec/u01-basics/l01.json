@@ -1,0 +1,217 @@
+{
+  "track": "sec",
+  "unit": "u01-basics",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "sec-cia-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cia"
+      ],
+      "content": {
+        "prompt": "허가된 주체만 데이터를 읽을 수 있는 성질은?",
+        "options": [
+          "무결성",
+          "기밀성",
+          "가용성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "기밀성은 허가된 주체만 데이터를 읽게 하는 성질이다. 무결성은 변경, 가용성은 사용 가능 여부를 다룬다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cia-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cia"
+      ],
+      "content": {
+        "prompt": "데이터가 허가 없이 바뀌지 않았음을 보장하는 성질은?",
+        "options": [
+          "가용성",
+          "기밀성",
+          "무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "무결성은 데이터가 허가 없이 바뀌지 않았음을 보장하는 성질이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cia-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cia"
+      ],
+      "content": {
+        "prompt": "기밀성과 무결성 중 무단 변경을 막는 쪽은?",
+        "options": [
+          "무결성",
+          "기밀성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "무단 변경을 막는 것은 무결성이다. 기밀성은 허가 없는 읽기를 막는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cia-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cia"
+      ],
+      "content": {
+        "prompt": "가용성은 허가된 사용자가 필요할 때 서비스를 쓸 수 있는 성질이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "가용성은 허가된 사용자가 필요한 순간에 서비스를 쓸 수 있는지를 본다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cia-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cia"
+      ],
+      "content": {
+        "prompt": "허가된 주체만 데이터를 읽을 수 있는 성질은 ___ 이다.",
+        "hint": "CIA 3요소의 C에 해당한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "기밀성",
+          "confidentiality",
+          "Confidentiality",
+          "기밀"
+        ]
+      },
+      "explanation": "허가된 주체만 데이터를 읽을 수 있는 성질은 기밀성이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cia-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cia"
+      ],
+      "content": {
+        "prompt": "데이터가 허가 없이 바뀌지 않음을 보장하는 성질은 ___ 이다.",
+        "hint": "CIA 3요소의 I에 해당한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "무결성",
+          "integrity",
+          "Integrity"
+        ]
+      },
+      "explanation": "허가 없는 변경이 없었음을 보장하는 성질은 무결성이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cia-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cia"
+      ],
+      "content": {
+        "prompt": "권한 없이 주문 금액이 수정됐다. 깨진 요소는?",
+        "options": [
+          "기밀성",
+          "무결성",
+          "가용성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "데이터가 허가 없이 바뀌었으므로 무결성이 깨졌다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cia-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cia"
+      ],
+      "content": {
+        "prompt": "트래픽 폭주로 로그인 API가 응답하지 않는다. 깨진 요소는?",
+        "options": [
+          "가용성",
+          "기밀성",
+          "무결성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "허가된 사용자가 필요할 때 서비스를 쓰지 못하므로 가용성이 깨졌다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cia-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cia"
+      ],
+      "content": {
+        "prompt": "권한 없는 직원이 다른 고객의 주소를 조회했다. 깨진 요소는?",
+        "options": [
+          "무결성",
+          "가용성",
+          "기밀성"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "허가되지 않은 주체가 데이터를 읽었으므로 기밀성이 깨졌다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cia-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cia"
+      ],
+      "content": {
+        "prompt": "다른 사용자의 데이터를 몰래 읽는 것은 가용성 침해다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "허가 없는 읽기는 기밀성 침해다. 가용성은 서비스를 쓸 수 있는지를 다룬다.",
+      "refs": []
+    }
+  ]
+}

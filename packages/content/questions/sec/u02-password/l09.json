@@ -1,0 +1,247 @@
+{
+  "track": "sec",
+  "unit": "u02-password",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "sec-fieldpw-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "incident"
+      ],
+      "content": {
+        "prompt": "유출된 users 테이블에서 먼저 확인할 것은?",
+        "options": [
+          "비밀번호 저장 방식",
+          "테이블 크기",
+          "인덱스 수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "평문·범용 해시·솔트 없음인지 저장 방식부터 봐야 위험 크기와 조치가 정해진다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldpw-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "incident"
+      ],
+      "content": {
+        "prompt": "유출이 확인된 뒤 이미 로그인된 상태는?",
+        "options": [
+          "모두 무효화",
+          "그대로 유지"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "유출이 확인되면 이미 로그인된 상태를 모두 무효화해 탈취된 상태를 끊는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldpw-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "incident"
+      ],
+      "content": {
+        "prompt": "비밀번호 칼럼이 솔트 없는 SHA-256이다. 위험 판단은?",
+        "options": [
+          "위험 작음",
+          "위험 큼"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "솔트 없는 범용 해시는 대응표와 빠른 대입에 약해 위험이 크므로 즉시 재설정을 요구한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldpw-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "incident"
+      ],
+      "content": {
+        "prompt": "유출이 확인되면 발급된 재설정 토큰도 무효화한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "유출 뒤에는 로그인 상태와 함께 발급된 재설정 토큰도 모두 무효화한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldpw-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "incident"
+      ],
+      "content": {
+        "prompt": "한 IP에서 여러 계정 실패가 몰리면 크리덴셜 ___ 을 의심한다.",
+        "hint": "유출된 쌍을 넣어 보는 공격이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스터핑",
+          "stuffing",
+          "Stuffing"
+        ]
+      },
+      "explanation": "여러 계정에 같은 IP의 실패가 몰리면 크리덴셜 스터핑을 의심한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldpw-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "incident"
+      ],
+      "content": {
+        "prompt": "재발 방지로 속도 제한과 함께 켤 것은 ___ 이다.",
+        "hint": "비밀번호 외의 요소를 더 요구한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "MFA",
+          "mfa",
+          "다중 인증",
+          "다중인증",
+          "2FA"
+        ]
+      },
+      "explanation": "재발 방지로 속도 제한과 함께 다중 인증(MFA)을 켠다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldpw-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "incident"
+      ],
+      "content": {
+        "prompt": "저장 방식이 평문이었다. 사용자에게 할 조치는?",
+        "options": [
+          "공지만 게시",
+          "조치 없음",
+          "즉시 재설정 요구"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "평문 저장이면 비밀번호가 그대로 드러났으므로 즉시 재설정을 요구한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldpw-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "incident"
+      ],
+      "content": {
+        "prompt": "저장 방식을 바꿀 때 고를 해시는?",
+        "options": [
+          "MD5",
+          "SHA-256",
+          "argon2id"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "재발 방지로 argon2id나 bcrypt 같은 비밀번호 해시로 바꾼다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldpw-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "incident"
+      ],
+      "content": {
+        "prompt": "해시를 바꾼 뒤 로그인에 함께 켤 방어는?",
+        "options": [
+          "속도 제한·MFA",
+          "응답 캐시",
+          "디버그 로그"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "대입 공격을 막으려면 속도 제한과 MFA를 함께 켠다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldpw-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "incident"
+      ],
+      "content": {
+        "prompt": "솔트 없는 범용 해시였다면 비밀번호 재설정은 필요 없다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "솔트 없는 범용 해시는 빠르게 추측되므로 위험이 커 즉시 재설정을 요구한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

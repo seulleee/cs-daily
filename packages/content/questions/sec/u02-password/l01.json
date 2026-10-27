@@ -1,0 +1,253 @@
+{
+  "track": "sec",
+  "unit": "u02-password",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "sec-pwhash-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "같은 입력이면 항상 같은 고정 길이 값을 내는 함수는?",
+        "options": [
+          "난수 생성기",
+          "정렬 함수",
+          "해시 함수"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "해시 함수는 임의 길이 입력을 고정 길이 값으로 바꾸고 같은 입력에는 같은 값을 낸다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwhash-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "해시 값에서 원래 입력을 계산해 낼 수 없는 성질은?",
+        "options": [
+          "단방향성",
+          "가역성",
+          "가용성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "단방향성 때문에 해시 값만으로는 원래 입력을 현실적인 시간 안에 구할 수 없다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwhash-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "키가 있으면 원래 값으로 되돌릴 수 있는 것은?",
+        "options": [
+          "해시",
+          "암호화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "암호화는 키로 복호화할 수 있다. 해시는 되돌릴 수 없다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwhash-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "비밀번호를 검증하려면 저장 값을 원문으로 되돌려야 한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "검증은 입력을 같은 방법으로 해시해 비교하면 되므로 되돌릴 필요가 없다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwhash-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "같은 입력에 같은 고정 길이 값을 내는 함수는 ___ 함수다.",
+        "hint": "출력 길이는 입력 길이와 무관하다."
+      },
+      "answer_key": {
+        "accepted": [
+          "해시",
+          "hash",
+          "Hash",
+          "해쉬"
+        ]
+      },
+      "explanation": "임의 길이 입력을 고정 길이 값으로 바꾸는 함수는 해시 함수다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwhash-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "해시 값에서 입력을 되돌릴 수 없는 성질은 ___ 이다.",
+        "hint": "역산이 현실적으로 불가능하다는 뜻이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "단방향성",
+          "일방향성",
+          "단방향",
+          "one way",
+          "oneway"
+        ]
+      },
+      "explanation": "해시 값에서 입력을 계산해 낼 수 없는 성질은 단방향성이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwhash-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "비밀번호가 평문으로 저장된 DB가 유출됐다. 결과는?",
+        "options": [
+          "영향 없음",
+          "해시만 노출",
+          "비밀번호 그대로 노출"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "평문 저장이면 DB 유출이 곧 비밀번호 노출이므로 평문 저장은 금지한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwhash-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "비밀번호를 대칭키로 암호화해 저장했다. 문제는?",
+        "options": [
+          "저장 길이 증가",
+          "조회 속도 저하",
+          "키 유출 시 복호화"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "암호화는 키로 되돌릴 수 있어 키가 새면 모든 비밀번호가 드러난다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwhash-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "이 가입 처리 코드의 문제는?",
+        "code": {
+          "language": "python",
+          "source": "def sign_up(email, password):\n    db.insert(\"users\",\n              email=email,\n              password=password)"
+        },
+        "options": [
+          "평문 저장",
+          "이메일 중복",
+          "인자 순서"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "비밀번호를 해시하지 않고 그대로 넣어 DB 유출 시 그대로 드러난다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwhash-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "hash"
+      ],
+      "content": {
+        "prompt": "비밀번호 저장에는 되돌릴 수 없는 해시를 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "비밀번호 검증에는 원문이 필요 없으므로 단방향 해시로 저장한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

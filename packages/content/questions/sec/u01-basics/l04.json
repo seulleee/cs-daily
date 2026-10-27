@@ -1,0 +1,235 @@
+{
+  "track": "sec",
+  "unit": "u01-basics",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "sec-threatmodel-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "설계 단계에서 지킬 것과 공격받을 곳을 정리하는 활동은?",
+        "options": [
+          "침투 테스트",
+          "위협 모델링",
+          "코드 리뷰"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "위협 모델링은 설계 단계에서 무엇을 지키고 어디서 공격받을 수 있는지 정리한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-threatmodel-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "사용자·프로세스·저장소 사이 데이터 길을 그린 그림은?",
+        "options": [
+          "DFD",
+          "ERD",
+          "간트 차트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DFD(데이터 흐름도)는 데이터가 사용자·프로세스·저장소 사이를 오가는 길을 그린다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-threatmodel-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "브라우저→서버처럼 신뢰 수준이 바뀌는 지점은?",
+        "options": [
+          "프로세스",
+          "저장소",
+          "신뢰 경계"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "신뢰 수준이 바뀌는 지점은 신뢰 경계이고, 여기서 입력을 검사한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-threatmodel-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "위협 모델링은 출시 후 사고가 난 뒤에 시작하는 활동이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "위협 모델링은 설계 단계에서 하는 활동이다. 사고 뒤에는 고치는 비용이 커진다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-threatmodel-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "데이터 흐름도의 영문 약자는 ___ 이다.",
+        "hint": "영문 세 글자다."
+      },
+      "answer_key": {
+        "accepted": [
+          "DFD",
+          "dfd"
+        ]
+      },
+      "explanation": "데이터 흐름도는 DFD라 부르며 위협 모델링의 출발점이 된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-threatmodel-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "신뢰 수준이 바뀌는 지점은 신뢰 ___ 이다.",
+        "hint": "이 지점에서 입력을 검사한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "경계",
+          "boundary",
+          "Boundary",
+          "바운더리"
+        ]
+      },
+      "explanation": "신뢰 수준이 바뀌는 지점은 신뢰 경계이며 여기서 입력을 검사한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-threatmodel-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "다음 중 신뢰 경계를 넘는 흐름은?",
+        "options": [
+          "서버 내부 변수 대입",
+          "브라우저→API 서버"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "브라우저에서 서버로 오는 요청은 신뢰 수준이 바뀌므로 신뢰 경계를 넘는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-threatmodel-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "외부 결제사 웹훅이 서버로 들어오는 지점은?",
+        "options": [
+          "신뢰 경계",
+          "내부 호출"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "외부 시스템에서 들어오는 요청은 신뢰 수준이 바뀌는 신뢰 경계이므로 검사한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-threatmodel-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "DFD를 그린 다음 표시할 것은?",
+        "options": [
+          "배포 일정",
+          "성능 수치",
+          "신뢰 경계"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DFD 위에 신뢰 경계를 표시하면 입력 검사가 필요한 지점이 드러난다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-threatmodel-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "위협 모델링은 설계 단계에서 하는 활동이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "위협 모델링은 설계 단계에서 지킬 대상과 공격받을 지점을 정리하는 활동이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "track": "sec",
+  "unit": "u02-password",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "sec-pwverify-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "login"
+      ],
+      "content": {
+        "prompt": "가입할 때 DB에 저장하는 것은?",
+        "options": [
+          "비밀번호 원문",
+          "비밀번호 해시 값",
+          "암호화 키"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "가입 때는 비밀번호를 해시해 해시 값만 저장한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwverify-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "login"
+      ],
+      "content": {
+        "prompt": "로그인 때 입력한 비밀번호를 확인하는 방법은?",
+        "options": [
+          "저장 값 복호화",
+          "원문끼리 비교",
+          "같은 방식 해시 비교"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "입력한 비밀번호를 같은 방법으로 해시해 저장된 해시 값과 비교한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwverify-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "login"
+      ],
+      "content": {
+        "prompt": "앞 글자가 몇 개 맞든 비교 시간이 같은 방식은?",
+        "options": [
+          "상수 시간 비교",
+          "일반 문자열 비교"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "상수 시간 비교는 일치하는 글자 수와 상관없이 같은 시간이 걸린다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwverify-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "login"
+      ],
+      "content": {
+        "prompt": "일반 문자열 비교는 다른 글자를 만나면 바로 멈출 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "앞에서부터 비교하다 멈추면 맞은 글자 수에 따라 시간이 달라지므로 상수 시간 비교를 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwverify-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "login"
+      ],
+      "content": {
+        "prompt": "가입 때는 비밀번호의 ___ 값만 저장한다.",
+        "hint": "원문이 아닌 고정 길이 값이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "해시",
+          "hash",
+          "Hash",
+          "해쉬"
+        ]
+      },
+      "explanation": "가입 때는 원문이 아니라 해시 값만 저장한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwverify-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "login"
+      ],
+      "content": {
+        "prompt": "비교 시간이 일치 글자 수와 무관한 방식은 ___ 시간 비교다.",
+        "hint": "걸리는 시간이 입력 내용에 따라 변하지 않는다."
+      },
+      "answer_key": {
+        "accepted": [
+          "상수",
+          "constant",
+          "Constant",
+          "일정"
+        ]
+      },
+      "explanation": "일치 글자 수와 상관없이 시간이 같은 비교는 상수 시간 비교다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwverify-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "login"
+      ],
+      "content": {
+        "prompt": "이 코드가 해시를 비교하는 방식은?",
+        "code": {
+          "language": "python",
+          "source": "import hmac\n\ndef same(stored, computed):\n    return hmac.compare_digest(\n        stored, computed)"
+        },
+        "options": [
+          "평문 비교",
+          "복호화 후 비교",
+          "상수 시간 비교"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "hmac.compare_digest는 일치 글자 수와 상관없이 같은 시간에 비교한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwverify-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "login"
+      ],
+      "content": {
+        "prompt": "이 로그인 검사의 문제는?",
+        "code": {
+          "language": "python",
+          "source": "def login(user, password):\n    if user.password_hash == password:\n        return True\n    return False"
+        },
+        "options": [
+          "입력 해시 안 함",
+          "반환 값 오류",
+          "인자 개수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "입력 비밀번호를 해시하지 않고 저장된 해시와 바로 비교해 검증이 성립하지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwverify-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "login"
+      ],
+      "content": {
+        "prompt": "로그인 응답 시간이 일치 글자 수에 따라 달라진다. 조치는?",
+        "options": [
+          "캐시 추가",
+          "로그 추가",
+          "상수 시간 비교"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "비교 시간이 맞은 글자 수를 드러내므로 상수 시간 비교로 바꾼다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pwverify-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "login"
+      ],
+      "content": {
+        "prompt": "로그인 때는 저장된 해시를 원문으로 바꿔 입력과 비교한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "해시는 되돌릴 수 없다. 입력을 같은 방법으로 해시해 저장 값과 비교한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}
