@@ -1,0 +1,236 @@
+{
+  "track": "sec",
+  "unit": "u10-crypto",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "sec-tls-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "tls"
+      ],
+      "content": {
+        "prompt": "전송 중 데이터를 암호화하고 서버가 진짜인지 확인하는 프로토콜은?",
+        "options": [
+          "DNS",
+          "TLS",
+          "FTP"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "TLS는 전송 중 데이터를 암호화하고 인증서로 서버를 확인하는 프로토콜로 HTTPS의 기반이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tls-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "tls"
+      ],
+      "content": {
+        "prompt": "도메인과 공개키를 인증 기관이 서명해 묶은 문서는?",
+        "options": [
+          "인증서",
+          "개인키",
+          "쿠키"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인증서는 도메인과 공개키를 CA가 서명해 묶은 문서라 그 공개키가 그 도메인의 것임을 보증한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tls-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "tls"
+      ],
+      "content": {
+        "prompt": "클라이언트가 인증서를 검증할 때 확인하는 것은?",
+        "options": [
+          "서버 CPU",
+          "응답 크기",
+          "도메인 일치"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "클라이언트는 인증서의 서명·도메인·유효 기간을 확인한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tls-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "tls"
+      ],
+      "content": {
+        "prompt": "허용할 TLS 버전은 1.2 이상이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "TLS는 1.2 이상만 허용하고 그보다 낮은 버전은 끈다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tls-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "tls"
+      ],
+      "content": {
+        "prompt": "인증서를 검증하게 하려면 빈칸에 들어갈 값은?",
+        "code": {
+          "language": "python",
+          "source": "import requests\n\nresp = requests.get(\n    \"https://api.example.com/v1\",\n    verify=___,\n    timeout=5,\n)"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "True",
+          "true"
+        ]
+      },
+      "explanation": "verify=True(기본값)로 두어야 인증서를 검증한다. verify=False면 가로채기를 막지 못한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tls-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "tls"
+      ],
+      "content": {
+        "prompt": "인증서에 서명하는 인증 기관의 영문 약자는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "CA",
+          "ca"
+        ]
+      },
+      "explanation": "CA(Certificate Authority)가 도메인과 공개키를 서명해 묶어 인증서를 만든다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tls-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "tls"
+      ],
+      "content": {
+        "prompt": "verify=False로 외부 API를 호출한다. 위험은?",
+        "options": [
+          "응답 지연",
+          "중간자 가로채기",
+          "인증서 만료"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인증서 검증을 끄면 공격자가 내민 공개키도 받아들여 중간자 공격으로 데이터를 엿보거나 바꿀 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tls-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "tls"
+      ],
+      "content": {
+        "prompt": "인증서의 도메인이 접속한 주소와 다르다. 클라이언트 처리는?",
+        "options": [
+          "그대로 진행",
+          "연결 거부"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "도메인이 다르면 그 서버의 인증서라는 보증이 없으므로 연결을 거부한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tls-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "tls"
+      ],
+      "content": {
+        "prompt": "공격자가 가짜 공개키를 내밀었다. 이를 막는 것은?",
+        "options": [
+          "인증서 검증",
+          "Base64 인코딩",
+          "CSPRNG"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인증서 검증으로 그 공개키가 CA가 보증한 그 도메인의 것인지 확인해 가짜 서버를 거부한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tls-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "tls"
+      ],
+      "content": {
+        "prompt": "TLS는 데이터를 암호화할 뿐 서버가 진짜인지는 확인하지 않는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "TLS는 암호화와 함께 인증서로 서버가 진짜인지 확인한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

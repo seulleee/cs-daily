@@ -1,0 +1,232 @@
+{
+  "track": "sec",
+  "unit": "u10-crypto",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "sec-atrest-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "encryption-at-rest"
+      ],
+      "content": {
+        "prompt": "저장 장치를 통째로 암호화하는 방식은?",
+        "options": [
+          "디스크 암호화",
+          "필드 암호화",
+          "TLS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "디스크 암호화는 저장 장치 전체를 암호화한다. TLS는 전송 중 데이터를 보호한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-atrest-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "encryption-at-rest"
+      ],
+      "content": {
+        "prompt": "민감 필드를 앱에서 암호화해 DB 관리자도 못 읽게 하는 방식은?",
+        "options": [
+          "디스크 암호화",
+          "필드 암호화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "필드 암호화는 앱이 값을 암호화해 저장하므로 DB 관리자도 키 없이는 읽지 못한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-atrest-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "encryption-at-rest"
+      ],
+      "content": {
+        "prompt": "실행 중인 앱의 DB 쿼리로 읽는 것을 막지 못하는 방식은?",
+        "options": [
+          "디스크 암호화",
+          "필드 암호화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "디스크 암호화는 실행 중에는 투명하게 풀리므로 앱·DB 쿼리로 읽는 것은 막지 못한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-atrest-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "encryption-at-rest"
+      ],
+      "content": {
+        "prompt": "암호 알고리즘은 직접 만들지 않고 검증된 라이브러리를 쓴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "직접 만든 암호는 일반 테스트로 드러나지 않는 약점이 생기기 쉬워 검증된 라이브러리를 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-atrest-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "encryption-at-rest"
+      ],
+      "content": {
+        "prompt": "주민번호 같은 민감 값을 앱에서 암호화하는 것은 ___ 암호화다."
+      },
+      "answer_key": {
+        "accepted": [
+          "필드",
+          "field",
+          "필드 단위"
+        ]
+      },
+      "explanation": "필드 암호화는 민감 필드만 앱에서 암호화해 DB 관리자에게도 값을 숨긴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-atrest-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "encryption-at-rest"
+      ],
+      "content": {
+        "prompt": "저장 장치를 통째로 암호화하는 것은 ___ 암호화다."
+      },
+      "answer_key": {
+        "accepted": [
+          "디스크",
+          "disk",
+          "저장 장치",
+          "저장장치"
+        ]
+      },
+      "explanation": "디스크 암호화는 장치를 잃어버리거나 빼 갔을 때를 막지만, 실행 중인 앱의 조회는 막지 못한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-atrest-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "encryption-at-rest"
+      ],
+      "content": {
+        "prompt": "DB 관리자에게도 주민번호를 숨기려면?",
+        "options": [
+          "디스크 암호화",
+          "필드 암호화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DB 관리자는 쿼리로 데이터를 읽을 수 있으므로 앱에서 필드를 암호화해야 숨길 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-atrest-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "encryption-at-rest"
+      ],
+      "content": {
+        "prompt": "팀이 XOR로 직접 만든 암호화를 쓴다. 조치는?",
+        "options": [
+          "키만 길게 변경",
+          "그대로 사용",
+          "검증된 라이브러리"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "자체 구현 암호는 세부 약점이 드러나지 않으므로 검증된 라이브러리의 인증 암호화로 바꾼다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-atrest-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "encryption-at-rest"
+      ],
+      "content": {
+        "prompt": "인젝션으로 앱 권한 조회가 뚫렸다. 디스크 암호화의 효과는?",
+        "options": [
+          "데이터를 못 지킴",
+          "데이터를 지킴"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "앱이 DB에서 읽는 데이터는 이미 풀린 상태라 디스크 암호화로는 지키지 못한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-atrest-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "encryption-at-rest"
+      ],
+      "content": {
+        "prompt": "디스크 암호화를 켜면 앱 쿼리로 읽는 것도 막힌다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "디스크 암호화는 저장 장치 탈취를 막는다. 실행 중인 앱·DB 쿼리의 조회는 막지 못한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

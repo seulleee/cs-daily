@@ -1,0 +1,241 @@
+{
+  "track": "sec",
+  "unit": "u10-crypto",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "sec-csprng-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "random"
+      ],
+      "content": {
+        "prompt": "다음 값을 예측할 수 없게 만든 암호학적 난수 생성기는?",
+        "options": [
+          "Math.random",
+          "CSPRNG",
+          "Base64"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "CSPRNG는 다음 값을 예측할 수 없게 만든 암호학적 난수 생성기로, 보안 값에 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csprng-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "random"
+      ],
+      "content": {
+        "prompt": "Python에서 세션 토큰을 만들 때 쓸 모듈은?",
+        "options": [
+          "random",
+          "secrets"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "secrets는 CSPRNG를 쓰는 모듈이다. random 모듈은 예측될 수 있어 보안 값에 쓰지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csprng-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "random"
+      ],
+      "content": {
+        "prompt": "Math.random을 보안 값에 쓰지 않는 이유는?",
+        "options": [
+          "값이 예측될 수 있음",
+          "속도가 느림"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Math.random은 내부 상태를 알아내면 다음 값을 계산할 수 있어 토큰·키에 쓰면 안 된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csprng-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "random"
+      ],
+      "content": {
+        "prompt": "솔트와 nonce도 CSPRNG로 만든다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "세션 ID·토큰·솔트·키·nonce처럼 추측되면 안 되는 값은 모두 CSPRNG로 만든다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csprng-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "random"
+      ],
+      "content": {
+        "prompt": "재설정 토큰을 안전하게 만들려면 빈칸에 들어갈 모듈은?",
+        "code": {
+          "language": "python",
+          "source": "import random\nimport secrets\n\ndef new_reset_token():\n    return ___.token_urlsafe(32)"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "secrets"
+        ]
+      },
+      "explanation": "secrets 모듈은 CSPRNG로 토큰을 만든다. random 모듈은 예측될 수 있어 쓰지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csprng-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "random"
+      ],
+      "content": {
+        "prompt": "Node.js에서 안전한 세션 ID를 만들려면 빈칸에 들어갈 함수는?",
+        "code": {
+          "language": "javascript",
+          "source": "const crypto = require(\"crypto\");\n\nfunction newSessionId() {\n  return crypto\n    .___(32)\n    .toString(\"hex\");\n}"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "randomBytes",
+          "randombytes"
+        ]
+      },
+      "explanation": "crypto.randomBytes는 운영체제의 CSPRNG로 바이트를 만든다. Math.random은 보안 값에 쓰지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csprng-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "random"
+      ],
+      "content": {
+        "prompt": "이 솔트 생성 코드의 문제는?",
+        "code": {
+          "language": "python",
+          "source": "import random\n\ndef make_salt():\n    return random.randbytes(16)"
+        },
+        "options": [
+          "솔트가 너무 김",
+          "해시를 안 씀",
+          "예측 가능한 난수"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "random 모듈은 예측될 수 있는 난수라 솔트에 쓰지 않는다. secrets 모듈로 만든다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csprng-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "random"
+      ],
+      "content": {
+        "prompt": "다음 중 CSPRNG로 만들어야 하는 값은?",
+        "options": [
+          "화면 효과 순서",
+          "세션 ID",
+          "테스트 데이터 순서"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "세션 ID가 예측되면 그 세션의 계정이 넘어가므로 CSPRNG로 만든다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csprng-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "random"
+      ],
+      "content": {
+        "prompt": "API 키를 Math.random으로 만든 코드를 찾았다. 조치는?",
+        "options": [
+          "CSPRNG로 교체",
+          "자릿수만 늘림"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "예측 가능한 생성기는 자릿수를 늘려도 예측된다. crypto.randomBytes 같은 CSPRNG로 바꾼다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csprng-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "random"
+      ],
+      "content": {
+        "prompt": "Python random 모듈로 만든 토큰은 예측되기 어렵다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "random 모듈은 CSPRNG가 아니어서 예측될 수 있다. 토큰은 secrets 모듈로 만든다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

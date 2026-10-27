@@ -1,0 +1,238 @@
+{
+  "track": "sec",
+  "unit": "u09-ssrf-upload",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "sec-uploadstore-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "업로드 파일을 서버가 만든 임의 이름으로 저장할 때 쓰는 식별자는?",
+        "options": [
+          "원래 파일 이름",
+          "UUID",
+          "사용자 ID"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "UUID 같은 서버가 만든 임의 이름으로 저장하면 덮어쓰기와 경로 조작을 막을 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadstore-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "업로드 디렉터리에서 꺼야 하는 권한은?",
+        "options": [
+          "읽기",
+          "실행"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "업로드 디렉터리에서 실행을 끄면 스크립트 파일이 올라와도 서버에서 실행되지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadstore-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "업로드 파일의 원래 이름은 어떻게 다루는가?",
+        "options": [
+          "저장 경로로 사용",
+          "메타데이터로 보관"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "원래 이름은 저장 경로에 쓰지 않고 DB 등에 메타데이터로 보관해 화면 표시에만 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadstore-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "업로드 파일은 웹 루트 안에 두어야 안전하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "웹 루트 안의 파일은 URL로 바로 열린다. 업로드 파일은 웹 루트 밖이나 별도 객체 저장소에 둔다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadstore-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "업로드 파일은 서버가 만든 ___ 같은 임의 이름으로 저장한다.",
+        "hint": "128비트 임의 식별자의 영문 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "UUID",
+          "uuid",
+          "유유아이디"
+        ]
+      },
+      "explanation": "UUID는 충돌 가능성이 매우 낮은 임의 식별자라 업로드 파일의 저장 이름으로 쓰기 알맞다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadstore-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "요청과 파일 크기 상한은 ___ 에서 강제한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "서버",
+          "server",
+          "백엔드",
+          "backend"
+        ]
+      },
+      "explanation": "브라우저 쪽 제한은 우회할 수 있으므로 크기 상한은 서버에서 강제해야 가용성을 지킨다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadstore-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "저장 이름으로 빈칸에 들어갈 값으로 맞는 것은?",
+        "code": {
+          "language": "python",
+          "source": "from uuid import uuid4\n\ndef store(file):\n    name = ___\n    path = UPLOAD_DIR / name\n    path.write_bytes(file.data)\n    db.save(name, file.filename)"
+        },
+        "options": [
+          "file.filename",
+          "uuid4().hex"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "사용자가 준 file.filename을 경로에 쓰면 덮어쓰기·경로 조작이 생긴다. 서버가 만든 UUID로 저장한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadstore-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "업로드 파일을 앱 서버의 실행 경로와 분리해 두는 곳은?",
+        "options": [
+          "웹 루트",
+          "소스 디렉터리",
+          "객체 저장소"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "객체 저장소는 파일을 키로 저장하고 HTTP API로 꺼내므로 앱 서버의 실행 경로와 분리된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadstore-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "업로드 크기 상한이 없을 때 무너지기 쉬운 것은?",
+        "options": [
+          "기밀성",
+          "가용성",
+          "부인 방지"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "큰 요청 몇 개로 디스크와 메모리가 차면 서비스가 멈추므로 가용성이 무너진다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadstore-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "업로드 파일은 원래 이름 대신 서버가 만든 이름으로 저장한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "서버가 만든 UUID 이름으로 저장하고 원래 이름은 메타데이터로 둔다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

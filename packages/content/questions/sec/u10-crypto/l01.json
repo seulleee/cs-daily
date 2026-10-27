@@ -1,0 +1,219 @@
+{
+  "track": "sec",
+  "unit": "u10-crypto",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "sec-cryptotype-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography"
+      ],
+      "content": {
+        "prompt": "암호화와 복호화에 같은 키 하나를 쓰는 방식은?",
+        "options": [
+          "대칭키 암호",
+          "공개키 암호",
+          "해시"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "대칭키 암호는 키 하나로 암호화와 복호화를 모두 하며 빠르다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cryptotype-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography"
+      ],
+      "content": {
+        "prompt": "키 없이 고정 길이 값을 만들고 되돌릴 수 없는 것은?",
+        "options": [
+          "인코딩",
+          "해시",
+          "대칭키 암호"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "해시는 키 없이 고정 길이 값을 만들고 원래 값으로 되돌릴 수 없다. 인코딩은 누구나 되돌린다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cryptotype-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography"
+      ],
+      "content": {
+        "prompt": "Base64 변환은 어느 쪽에 속하는가?",
+        "options": [
+          "암호화",
+          "인코딩"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Base64는 형식만 바꾸는 인코딩이다. 키가 없어 누구나 원래 값으로 되돌린다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cryptotype-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography"
+      ],
+      "content": {
+        "prompt": "공개키로 암호화한 데이터는 짝이 되는 개인키로만 풀 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "공개키 암호는 공개키와 개인키 쌍을 쓰며, 공개키로 암호화한 것은 개인키로만 복호화한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cryptotype-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography"
+      ],
+      "content": {
+        "prompt": "Base64처럼 형식만 바꾸고 누구나 되돌리는 것은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "인코딩",
+          "encoding",
+          "인코드",
+          "encode"
+        ]
+      },
+      "explanation": "인코딩은 키가 없어 보호 효과가 없다. 데이터를 숨기려면 암호화를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cryptotype-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography"
+      ],
+      "content": {
+        "prompt": "공개키 암호에서 공개키와 쌍을 이루는 비밀 쪽 키는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "개인키",
+          "개인 키",
+          "private key",
+          "privatekey",
+          "프라이빗 키"
+        ]
+      },
+      "explanation": "공개키는 누구에게나 주고, 개인키는 소유자만 가진다. 공개키로 암호화한 것은 개인키로만 푼다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cryptotype-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography"
+      ],
+      "content": {
+        "prompt": "이 코드가 카드 번호에 한 처리는?",
+        "code": {
+          "language": "python",
+          "source": "import base64\n\ndef save_card(card_no: bytes):\n    token = base64.b64encode(card_no)\n    db.save(token)"
+        },
+        "options": [
+          "암호화",
+          "해시",
+          "인코딩"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "b64encode는 Base64 인코딩이라 키 없이 누구나 되돌린다. 카드 번호를 보호하지 못한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cryptotype-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography"
+      ],
+      "content": {
+        "prompt": "저장 뒤 원래 값으로 되돌려 써야 하는 데이터에 맞는 것은?",
+        "options": [
+          "해시",
+          "암호화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "해시는 되돌릴 수 없으므로, 나중에 원래 값이 필요하면 키로 복호화할 수 있는 암호화를 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cryptotype-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography"
+      ],
+      "content": {
+        "prompt": "큰 데이터를 빠르게 암호화할 때 맞는 방식은?",
+        "options": [
+          "공개키 암호",
+          "대칭키 암호"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "대칭키 암호는 같은 키 하나로 처리해 빠르므로 큰 데이터 암호화에 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-cryptotype-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography"
+      ],
+      "content": {
+        "prompt": "대칭키 암호는 공개키와 개인키 쌍으로 암호화한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "대칭키 암호는 같은 키 하나를 쓴다. 키 쌍을 쓰는 것은 공개키 암호다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "track": "sec",
+  "unit": "u09-ssrf-upload",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "sec-uploadserve-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "file-upload",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "브라우저가 파일을 열지 않고 내려받게 하는 Content-Disposition 값은?",
+        "options": [
+          "inline",
+          "attachment",
+          "nosniff"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Content-Disposition: attachment를 주면 브라우저가 본문을 화면에 열지 않고 파일로 내려받는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadserve-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "file-upload",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "사용자 파일을 서비스와 다른 도메인에서 제공하는 이유는?",
+        "options": [
+          "쿠키·출처 분리",
+          "전송 속도 향상",
+          "검색 노출"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "별도 도메인에서 열린 파일은 서비스 출처가 아니므로 서비스 쿠키와 출처에 접근하지 못한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadserve-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "file-upload",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "이미지 속 숨은 데이터와 메타데이터를 없애는 방법은?",
+        "options": [
+          "파일 이름 변경",
+          "이미지 재인코딩"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이미지를 다시 인코딩하면 픽셀만 새로 쓰여 숨은 데이터와 EXIF 같은 메타데이터가 사라진다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadserve-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "file-upload",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "다른 사용자가 받을 업로드 파일은 백신 엔진으로 검사한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "악성 코드가 든 파일이 다른 사용자에게 퍼지지 않도록 백신 엔진으로 검사한 뒤 제공한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadserve-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "file-upload",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "브라우저가 열지 않고 내려받게 하려면 빈칸에 들어갈 값은?",
+        "code": {
+          "language": "http",
+          "source": "HTTP/1.1 200 OK\nContent-Type: application/pdf\nContent-Disposition: ___; filename=\"a.pdf\""
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "attachment",
+          "Attachment"
+        ]
+      },
+      "explanation": "attachment를 주면 업로드된 HTML이라도 서비스 도메인에서 열리지 않고 파일로 저장된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadserve-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "file-upload",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "이미지를 다시 ___ 하면 숨은 데이터와 EXIF가 사라진다."
+      },
+      "answer_key": {
+        "accepted": [
+          "인코딩",
+          "encoding",
+          "encode",
+          "인코드",
+          "재인코딩"
+        ]
+      },
+      "explanation": "재인코딩은 이미지를 새로 써서 숨은 데이터와 촬영 위치 같은 메타데이터를 없앤다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadserve-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "file-upload",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "업로드된 HTML이 서비스 도메인에서 열렸다. 결과는?",
+        "options": [
+          "파일이 압축됨",
+          "캐시가 삭제됨",
+          "XSS와 같은 결과"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "파일 안 스크립트가 서비스 출처로 실행되어 XSS와 같은 결과가 된다. attachment·별도 도메인으로 막는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadserve-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "file-upload",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "프로필 사진에 촬영 위치가 남아 있다. 대책은?",
+        "options": [
+          "별도 도메인 제공",
+          "이미지 재인코딩"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "재인코딩으로 EXIF 메타데이터를 없앤다. 별도 도메인은 쿠키·출처를 분리할 뿐 메타데이터는 그대로다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadserve-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "file-upload",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "첨부 파일을 사용자 콘텐츠 전용 도메인에서 내준다. 막히는 것은?",
+        "options": [
+          "서비스 쿠키 접근",
+          "파일 다운로드",
+          "파일 업로드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "다른 도메인에서 열린 파일은 서비스 출처가 아니어서 서비스 쿠키와 출처 권한을 쓰지 못한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-uploadserve-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "file-upload",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "Content-Disposition: attachment는 파일을 브라우저 화면에 연다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "attachment는 화면에 열지 않고 내려받게 하는 값이다. 업로드 파일을 안전하게 내줄 때 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}
