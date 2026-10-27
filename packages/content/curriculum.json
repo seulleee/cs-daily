@@ -12659,7 +12659,7 @@
       "slug": "sec",
       "name": "보안",
       "description": "비밀번호 저장·세션·토큰부터 인젝션·XSS·CSRF·공급망·사고 대응까지, 백엔드 개발자가 막고 점검하는 보안 드릴",
-      "phase": "phase2",
+      "phase": "mvp",
       "units": [
         {
           "slug": "u01-basics",
