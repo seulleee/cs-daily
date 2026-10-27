@@ -141,8 +141,7 @@
       },
       "answer_key": {
         "accepted": [
-          "string",
-          "String"
+          "string"
         ]
       },
       "explanation": "typeof로 문자열인지 확인해 객체가 쿼리 조건에 들어가지 못하게 한다.",
