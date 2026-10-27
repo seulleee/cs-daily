@@ -1,0 +1,224 @@
+{
+  "track": "sec",
+  "unit": "u06-injection",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "sec-pathtrav-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "path-traversal"
+      ],
+      "content": {
+        "prompt": "파일 이름 입력으로 허용 밖 파일을 읽는 취약점은?",
+        "options": [
+          "경로 조작",
+          "IDOR",
+          "대량 할당"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "경로 조작은 파일 이름 입력에 상위 디렉터리 이동 표기를 넣어 허용 밖 파일을 읽는 취약점이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pathtrav-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "path-traversal"
+      ],
+      "content": {
+        "prompt": "경로 조작을 막을 때 확인할 것은?",
+        "options": [
+          "파일 크기",
+          "파일 수정 시각",
+          "정규화한 경로 위치"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "경로를 정규화한 절대 경로가 기준 디렉터리 안에 있는지 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pathtrav-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "path-traversal"
+      ],
+      "content": {
+        "prompt": "더 안전한 파일 찾기 방법은?",
+        "options": [
+          "사용자가 준 이름",
+          "서버가 만든 ID"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "사용자가 준 이름 대신 서버가 만든 ID로 파일을 찾으면 경로를 조작할 여지가 없다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pathtrav-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "path-traversal"
+      ],
+      "content": {
+        "prompt": "파일 이름 입력은 경로에 그대로 합쳐도 안전하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "파일 이름도 신뢰할 수 없는 입력이라, 그대로 합치면 기준 디렉터리 밖 파일이 열릴 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pathtrav-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "path-traversal"
+      ],
+      "content": {
+        "prompt": "이동 표기로 허용 밖 파일을 읽는 취약점은 경로 ___ 이다.",
+        "hint": "경로를 바꿔 다른 곳을 가리키게 한다는 뜻이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "조작",
+          "traversal",
+          "Traversal",
+          "순회",
+          "탐색"
+        ]
+      },
+      "explanation": "경로 조작은 파일 이름 입력으로 의도한 디렉터리 밖을 가리키게 하는 취약점이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pathtrav-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "path-traversal"
+      ],
+      "content": {
+        "prompt": "경로를 ___ 한 절대 경로가 기준 디렉터리 안인지 본다.",
+        "hint": "이동 표기와 중복 구분자를 풀어 한 형태로 만드는 처리다."
+      },
+      "answer_key": {
+        "accepted": [
+          "정규화",
+          "normalize",
+          "Normalize",
+          "canonicalize",
+          "정규화를"
+        ]
+      },
+      "explanation": "정규화하면 이동 표기가 풀린 실제 경로가 나오므로 그 경로로 위치를 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pathtrav-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "path-traversal"
+      ],
+      "content": {
+        "prompt": "이 코드가 막는 취약점은?",
+        "code": {
+          "language": "python",
+          "source": "base = Path(\"/srv/files\").resolve()\ntarget = (base / name).resolve()\nif not target.is_relative_to(base):\n    abort(403)\nreturn send_file(target)"
+        },
+        "options": [
+          "SQL 인젝션",
+          "IDOR",
+          "경로 조작"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "정규화한 절대 경로가 기준 디렉터리 안인지 확인한 뒤에만 파일을 보내므로 경로 조작을 막는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pathtrav-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "path-traversal"
+      ],
+      "content": {
+        "prompt": "다운로드 API가 파일 이름을 받는다. 더 나은 설계는?",
+        "options": [
+          "이름을 그대로 사용",
+          "확장자만 검사",
+          "서버 발급 ID로 조회"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "서버가 만든 ID로 파일을 찾으면 사용자가 경로를 지정할 수 없다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pathtrav-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "path-traversal"
+      ],
+      "content": {
+        "prompt": "정규화한 경로가 기준 디렉터리 밖이다. 처리는?",
+        "options": [
+          "요청 거부",
+          "그대로 열기",
+          "상위 폴더 열기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "기준 디렉터리 밖을 가리키는 경로는 허용 밖 파일이므로 요청을 거부한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pathtrav-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "path-traversal"
+      ],
+      "content": {
+        "prompt": "경로 조작은 파일 이름 입력으로 허용 밖 파일을 읽는 취약점이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "파일 이름 입력을 경로에 그대로 합치면 설정 파일·소스 코드 같은 허용 밖 파일이 열린다.",
+      "refs": []
+    }
+  ]
+}

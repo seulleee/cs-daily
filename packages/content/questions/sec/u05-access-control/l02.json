@@ -1,0 +1,251 @@
+{
+  "track": "sec",
+  "unit": "u05-access-control",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "sec-idor-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "idor"
+      ],
+      "content": {
+        "prompt": "객체 ID만 바꿔 남의 자원에 접근하는 취약점은?",
+        "options": [
+          "세션 고정",
+          "IDOR",
+          "크리덴셜 스터핑"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "IDOR는 요청의 객체 ID를 바꾸는 것만으로 다른 사용자의 자원이 응답되는 취약점이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-idor-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "idor"
+      ],
+      "content": {
+        "prompt": "IDOR가 생기는 원인은?",
+        "options": [
+          "소유자 확인 누락",
+          "비밀번호 평문 저장",
+          "쿠키 만료 누락"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "로그인 여부만 보고 그 객체의 소유자인지 확인하지 않으면 IDOR가 생긴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-idor-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "idor"
+      ],
+      "content": {
+        "prompt": "IDOR를 막는 대응으로 알맞은 것은?",
+        "options": [
+          "ID를 UUID로 변경",
+          "로그인 확인 추가",
+          "쿼리에 소유자 조건"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "조회·수정 쿼리에 현재 사용자 조건을 함께 넣어야 남의 객체가 조회되지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-idor-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "idor"
+      ],
+      "content": {
+        "prompt": "ID를 UUID로 바꾸면 소유권 검사를 하지 않아도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "UUID는 추측을 어렵게 하는 보조 수단일 뿐이며 권한 검사를 대신하지 못한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-idor-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "idor"
+      ],
+      "content": {
+        "prompt": "객체 ID만 바꿔 남의 자원에 접근하는 취약점은 ___ 이다.",
+        "hint": "네 글자 영문 약자다."
+      },
+      "answer_key": {
+        "accepted": [
+          "IDOR",
+          "idor",
+          "Idor"
+        ]
+      },
+      "explanation": "IDOR(안전하지 않은 직접 객체 참조)는 요청의 객체 ID만 바꿔 남의 자원에 접근하는 취약점이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-idor-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "idor"
+      ],
+      "content": {
+        "prompt": "UUID처럼 추측 어려운 ID는 권한 검사의 ___ 수단일 뿐이다.",
+        "hint": "주된 방어를 돕는 정도라는 뜻이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "보조",
+          "부가",
+          "보조적"
+        ]
+      },
+      "explanation": "추측 어려운 ID는 공격을 번거롭게 할 뿐이고, 소유자 확인은 서버에서 따로 해야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-idor-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "idor"
+      ],
+      "content": {
+        "prompt": "남의 주문 조회를 막으려면 빈칸에 들어갈 컬럼은?",
+        "code": {
+          "language": "sql",
+          "source": "SELECT id, total FROM orders\nWHERE id = ?\n  AND ___ = ?"
+        },
+        "options": [
+          "created_at",
+          "owner_id",
+          "total"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "현재 사용자 ID를 owner_id 조건으로 함께 넣으면 자기 주문만 조회된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-idor-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "idor"
+      ],
+      "content": {
+        "prompt": "로그인한 A가 주문 번호만 바꿔 B 주문을 봤다. 원인은?",
+        "options": [
+          "소유자 조건 누락",
+          "로그인 확인 누락",
+          "비밀번호 유출"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "A는 정상 로그인했으므로 로그인 확인은 통과했고, 주문 소유자 확인이 빠진 것이 원인이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-idor-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "idor"
+      ],
+      "content": {
+        "prompt": "주문 수정 API에 넣을 검사로 알맞은 것은?",
+        "options": [
+          "주문 ID 형식만",
+          "로그인 여부만",
+          "현재 사용자 조건"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "조회뿐 아니라 수정 쿼리에도 현재 사용자 조건을 넣어야 남의 주문을 바꿀 수 없다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-idor-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "idor"
+      ],
+      "content": {
+        "prompt": "IDOR는 로그인한 사용자도 일으킬 수 있는 취약점이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "IDOR는 로그인은 확인하지만 객체 소유자를 확인하지 않을 때 로그인한 사용자가 남의 객체 ID로 접근해 생긴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

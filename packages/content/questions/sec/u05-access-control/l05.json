@@ -1,0 +1,253 @@
+{
+  "track": "sec",
+  "unit": "u05-access-control",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "sec-massassign-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "mass-assignment"
+      ],
+      "content": {
+        "prompt": "요청 본문을 모델에 통째로 넣어 role까지 바뀌는 취약점은?",
+        "options": [
+          "IDOR",
+          "세션 고정",
+          "대량 할당"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "대량 할당은 요청 본문을 그대로 모델에 넣어 role·isAdmin 같은 필드까지 바뀌는 취약점이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-massassign-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "mass-assignment"
+      ],
+      "content": {
+        "prompt": "바꿀 수 있는 필드만 받도록 정한 객체는?",
+        "options": [
+          "DTO",
+          "엔티티 전체",
+          "세션"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "허용 필드만 담은 DTO로 받아 옮기면 화면에 없는 필드는 저장되지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-massassign-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "mass-assignment"
+      ],
+      "content": {
+        "prompt": "주문의 가격은 누가 채워야 하는가?",
+        "options": [
+          "요청 본문",
+          "서버",
+          "브라우저 화면"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "소유자·역할·가격처럼 중요한 값은 요청이 아니라 서버가 정해서 채운다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-massassign-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "mass-assignment"
+      ],
+      "content": {
+        "prompt": "주문 가격은 요청 본문의 값으로 채워도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "가격·소유자·역할처럼 중요한 값은 요청이 아니라 서버가 정해서 채운다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-massassign-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "mass-assignment"
+      ],
+      "content": {
+        "prompt": "요청 본문을 모델에 그대로 넣어 생기는 취약점은 ___ 이다.",
+        "hint": "여러 필드를 한 번에 채워 넣는 기능에서 생긴다."
+      },
+      "answer_key": {
+        "accepted": [
+          "대량 할당",
+          "대량할당",
+          "mass assignment",
+          "Mass Assignment",
+          "massassignment"
+        ]
+      },
+      "explanation": "대량 할당은 본문 전체를 모델에 넣어 바뀌면 안 되는 필드까지 바뀌는 취약점이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-massassign-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "mass-assignment"
+      ],
+      "content": {
+        "prompt": "사용자가 바꿀 수 있는 필드만 ___ 로 받아 옮긴다.",
+        "hint": "계층 사이 데이터를 옮기려고 필드를 명시한 객체다."
+      },
+      "answer_key": {
+        "accepted": [
+          "DTO",
+          "dto",
+          "Dto",
+          "데이터 전송 객체"
+        ]
+      },
+      "explanation": "허용 필드만 명시한 DTO로 받으면 role 같은 필드가 요청에 끼어 있어도 무시된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-massassign-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "mass-assignment"
+      ],
+      "content": {
+        "prompt": "주문 소유자를 채울 빈칸으로 알맞은 것은?",
+        "code": {
+          "language": "python",
+          "source": "order = Order(\n    item_id=body.item_id,\n    qty=body.qty,\n    owner_id=___,\n)"
+        },
+        "options": [
+          "current_user.id",
+          "body.owner_id"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "소유자는 요청 본문이 아니라 서버가 아는 현재 사용자로 채워야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-massassign-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "mass-assignment"
+      ],
+      "content": {
+        "prompt": "프로필 수정 요청에 isAdmin이 끼어 저장됐다. 대책은?",
+        "options": [
+          "허용 필드 DTO",
+          "버튼 숨기기",
+          "주소 숨기기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "바꿀 수 있는 필드만 DTO로 받아 옮기면 isAdmin 같은 필드는 저장되지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-massassign-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "mass-assignment"
+      ],
+      "content": {
+        "prompt": "회원 가입 요청 본문에서 받아도 되는 필드는?",
+        "options": [
+          "role",
+          "닉네임",
+          "isAdmin"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "닉네임은 사용자가 정하는 값이고, role·isAdmin은 서버가 정해야 하는 값이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-massassign-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "mass-assignment"
+      ],
+      "content": {
+        "prompt": "대량 할당은 본문의 모든 필드를 모델에 넣어 생긴다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "요청 본문을 걸러 내지 않고 모델에 그대로 넣으면 바뀌면 안 되는 필드까지 바뀐다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

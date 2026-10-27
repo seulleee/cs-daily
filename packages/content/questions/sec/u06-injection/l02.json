@@ -1,0 +1,268 @@
+{
+  "track": "sec",
+  "unit": "u06-injection",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "sec-sqli-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "sql-injection"
+      ],
+      "content": {
+        "prompt": "입력이 SQL 문법으로 읽혀 쿼리 뜻이 바뀌는 취약점은?",
+        "options": [
+          "SQL 인젝션",
+          "IDOR",
+          "세션 고정"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SQL 인젝션은 입력이 SQL 문법으로 해석되어 쿼리의 뜻이 바뀌는 취약점이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqli-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "sql-injection"
+      ],
+      "content": {
+        "prompt": "쿼리에 자리 표시자를 두고 값을 따로 넘기는 방식은?",
+        "options": [
+          "이스케이프",
+          "입력 길이 제한",
+          "파라미터 바인딩"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "파라미터 바인딩은 ? 또는 $1 같은 자리 표시자를 두고 값을 쿼리와 따로 넘긴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqli-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "sql-injection"
+      ],
+      "content": {
+        "prompt": "바인딩으로 넘긴 값은 어떻게 처리되나?",
+        "options": [
+          "SQL 문법으로",
+          "값으로만"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "바인딩한 값은 쿼리 구조와 따로 전달되어 문법이 아니라 값으로만 처리된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqli-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "sql-injection"
+      ],
+      "content": {
+        "prompt": "따옴표를 직접 이스케이프하면 바인딩보다 안전하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "직접 이스케이프는 빠뜨리기 쉬워, 값을 따로 넘기는 파라미터 바인딩을 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqli-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "sql-injection"
+      ],
+      "content": {
+        "prompt": "자리 표시자를 두고 값을 따로 넘기는 것을 파라미터 ___ 이라 한다.",
+        "hint": "값을 자리에 묶는다는 뜻의 외래어다."
+      },
+      "answer_key": {
+        "accepted": [
+          "바인딩",
+          "binding",
+          "Binding",
+          "바인드",
+          "bind"
+        ]
+      },
+      "explanation": "파라미터 바인딩을 쓰면 DB 드라이버가 쿼리 구조와 값을 따로 받는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqli-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "sql-injection"
+      ],
+      "content": {
+        "prompt": "따옴표를 직접 처리하는 ___ 방식은 빠뜨리기 쉽다.",
+        "hint": "특수 문자 앞에 표시를 붙여 무력화하는 처리다."
+      },
+      "answer_key": {
+        "accepted": [
+          "이스케이프",
+          "escape",
+          "Escape",
+          "escaping",
+          "이스케이핑"
+        ]
+      },
+      "explanation": "이스케이프는 처리할 곳을 하나라도 빠뜨리면 취약해지므로 바인딩을 우선한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqli-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "sql-injection"
+      ],
+      "content": {
+        "prompt": "파이썬 DB 드라이버에서 빈칸에 둘 자리 표시자는?",
+        "code": {
+          "language": "python",
+          "source": "cur.execute(\n    \"SELECT name FROM users WHERE id = ___\",\n    (user_id,),\n)"
+        },
+        "options": [
+          "user_id",
+          "'user_id'",
+          "?"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "쿼리에는 자리 표시자 ?를 두고 값 user_id는 두 번째 인자로 따로 넘긴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqli-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "sql-injection"
+      ],
+      "content": {
+        "prompt": "PostgreSQL 드라이버에서 빈칸에 둘 자리 표시자는?",
+        "code": {
+          "language": "javascript",
+          "source": "const r = await pool.query(\n  'SELECT name FROM users WHERE id = ___',\n  [userId],\n);"
+        },
+        "options": [
+          "$1",
+          "${userId}",
+          "userId"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "번호 자리 표시자 $1을 쓰고 값은 배열로 따로 넘긴다. 템플릿 문자열로 끼우면 이어 붙이기와 같다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqli-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "sql-injection"
+      ],
+      "content": {
+        "prompt": "검색어에 따옴표가 오면 쿼리 오류가 난다. 대책은?",
+        "options": [
+          "따옴표 직접 제거",
+          "오류 화면 숨김",
+          "파라미터 바인딩"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "따옴표가 문법으로 읽히는 것이 원인이므로 값을 따로 넘기는 바인딩으로 바꾼다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqli-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "sql-injection"
+      ],
+      "content": {
+        "prompt": "SQL 인젝션은 입력이 SQL 문법으로 읽혀 쿼리 뜻이 바뀌는 것이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "입력이 값이 아니라 SQL 문법으로 해석되면 조건이 무력화되는 등 쿼리의 뜻이 바뀐다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

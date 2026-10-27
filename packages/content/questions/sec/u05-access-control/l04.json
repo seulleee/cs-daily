@@ -1,0 +1,248 @@
+{
+  "track": "sec",
+  "unit": "u05-access-control",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "sec-privesc-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "privilege-escalation"
+      ],
+      "content": {
+        "prompt": "같은 등급의 다른 사용자 자원에 접근하는 것은?",
+        "options": [
+          "수직 권한 상승",
+          "세션 고정",
+          "수평 권한 상승"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "수평 권한 상승은 같은 등급의 다른 사용자 자원에 접근하는 것이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-privesc-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "privilege-escalation"
+      ],
+      "content": {
+        "prompt": "일반 사용자가 관리자 기능을 쓰는 것은?",
+        "options": [
+          "수직 권한 상승",
+          "수평 권한 상승",
+          "서비스 거부"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "수직 권한 상승은 낮은 등급 사용자가 관리자처럼 더 높은 등급의 기능을 쓰는 것이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-privesc-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "privilege-escalation"
+      ],
+      "content": {
+        "prompt": "회원 A가 회원 B의 배송지를 수정했다. 어느 쪽?",
+        "options": [
+          "수직 권한 상승",
+          "수평 권한 상승"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "같은 등급(회원)끼리 남의 자원에 접근한 것이므로 수평 권한 상승이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-privesc-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "privilege-escalation"
+      ],
+      "content": {
+        "prompt": "관리자 API 주소를 숨기면 수직 권한 상승을 막을 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "주소는 코드나 네트워크 기록에서 드러날 수 있으므로 관리자 API도 서버에서 역할을 검사해야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-privesc-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "privilege-escalation"
+      ],
+      "content": {
+        "prompt": "일반 사용자가 관리자 기능을 쓰는 것은 ___ 권한 상승이다.",
+        "hint": "위아래 방향을 뜻하는 말이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "수직",
+          "vertical",
+          "Vertical",
+          "수직적"
+        ]
+      },
+      "explanation": "등급이 위로 올라가는 방향이라 수직 권한 상승이라 부른다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-privesc-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "privilege-escalation"
+      ],
+      "content": {
+        "prompt": "같은 등급의 남의 자원에 접근하는 것은 ___ 권한 상승이다.",
+        "hint": "옆 방향을 뜻하는 말이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "수평",
+          "horizontal",
+          "Horizontal",
+          "수평적"
+        ]
+      },
+      "explanation": "등급은 그대로이고 다른 사용자의 자원으로 옮겨 가므로 수평 권한 상승이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-privesc-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "privilege-escalation"
+      ],
+      "content": {
+        "prompt": "일반 회원이 회원 정지 API를 호출해 성공했다. 유형은?",
+        "options": [
+          "수평 권한 상승",
+          "IDOR",
+          "수직 권한 상승"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "회원 정지는 관리자 기능이므로 일반 회원이 이를 쓴 것은 수직 권한 상승이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-privesc-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "privilege-escalation"
+      ],
+      "content": {
+        "prompt": "관리자 API를 보호하는 방법으로 알맞은 것은?",
+        "options": [
+          "서버에서 역할 검사",
+          "주소를 길게 변경",
+          "메뉴에서 제거"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "관리자 API도 요청마다 서버에서 역할을 검사해야 하며, 주소를 숨기는 것에 기대지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-privesc-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "privilege-escalation"
+      ],
+      "content": {
+        "prompt": "남의 게시글 수정을 막는 데 필요한 검사는?",
+        "options": [
+          "관리자 역할 검사",
+          "소유권 검사",
+          "주소 숨기기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "같은 등급끼리의 수평 권한 상승은 자원의 주인인지 확인하는 소유권 검사로 막는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-privesc-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "privilege-escalation"
+      ],
+      "content": {
+        "prompt": "수직 권한 상승은 일반 사용자가 관리자 기능을 쓰는 것이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "등급이 위로 올라가 관리자 기능을 쓰는 것이 수직 권한 상승이고, 같은 등급끼리는 수평이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "track": "sec",
+  "unit": "u05-access-control",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "sec-checkpoint-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "권한 검사를 반드시 해야 하는 곳은?",
+        "options": [
+          "브라우저 화면",
+          "CDN 캐시",
+          "서버"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "요청은 브라우저 밖에서도 만들 수 있으므로 모든 요청을 서버에서 검사해야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-checkpoint-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "미들웨어·정책 함수 한곳에서 권한을 보는 방식은?",
+        "options": [
+          "서버 측 검사",
+          "중앙 검사",
+          "버튼 숨기기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "중앙 검사는 한곳에 모은 검사로 엔드포인트마다 권한 검사를 빠뜨리지 않게 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-checkpoint-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "권한 검사는 언제 해야 하는가?",
+        "options": [
+          "자원을 읽기 전",
+          "응답을 보낸 뒤",
+          "로그를 남긴 뒤"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "권한 검사는 자원을 읽거나 바꾸기 전에 해야 허용되지 않은 동작이 일어나지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-checkpoint-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "권한 없는 사용자에게 버튼을 숨기면 접근 통제가 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "버튼 숨기기는 화면 표시일 뿐이고, API 요청은 직접 보낼 수 있어 서버 검사가 필요하다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-checkpoint-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "권한 검사를 미들웨어 한곳에 모으는 것을 ___ 검사라 한다.",
+        "hint": "여러 곳에 흩어 두는 것과 반대다."
+      },
+      "answer_key": {
+        "accepted": [
+          "중앙",
+          "중앙 집중",
+          "중앙집중",
+          "central",
+          "centralized"
+        ]
+      },
+      "explanation": "중앙 검사는 정책을 한곳에 두어 새 엔드포인트에서도 검사가 빠지지 않게 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-checkpoint-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "모든 요청의 권한은 ___ 에서 검사해야 한다.",
+        "hint": "브라우저가 아닌 쪽이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "서버",
+          "server",
+          "Server",
+          "서버 측",
+          "서버측"
+        ]
+      },
+      "explanation": "화면은 사용자가 통제하는 영역이라, 권한은 신뢰 경계 안인 서버에서 검사해야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-checkpoint-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "새 엔드포인트마다 권한 검사가 자주 빠진다. 대책은?",
+        "options": [
+          "버튼 숨기기",
+          "주소 바꾸기",
+          "중앙 정책 함수"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "권한 검사를 미들웨어·정책 함수로 모으면 엔드포인트를 추가해도 검사가 함께 적용된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-checkpoint-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "삭제 후 권한을 확인하는 코드의 문제는?",
+        "options": [
+          "검사 시점이 늦음",
+          "검사가 중복됨",
+          "문제 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "권한 검사는 자원을 바꾸기 전에 해야 하며, 삭제 뒤에 확인하면 이미 변경이 일어난다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-checkpoint-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "관리 메뉴를 숨겼지만 API는 열려 있다. 조치는?",
+        "options": [
+          "메뉴 이름 변경",
+          "서버 권한 검사",
+          "버튼 색 변경"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "화면에서 숨긴 기능도 API로 직접 호출할 수 있으므로 서버에서 권한을 검사해야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-checkpoint-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "API 요청은 브라우저 화면 밖의 도구로도 보낼 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "요청은 다른 도구로 직접 만들 수 있으므로, 화면 처리와 상관없이 서버에서 검사해야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

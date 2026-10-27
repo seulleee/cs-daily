@@ -1,0 +1,248 @@
+{
+  "track": "sec",
+  "unit": "u06-injection",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "sec-fieldinj-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "incident"
+      ],
+      "content": {
+        "prompt": "검색 API 로그에서 인젝션 시도로 볼 징후는?",
+        "options": [
+          "따옴표·키워드와 DB 오류",
+          "응답 속도 향상",
+          "로그인 성공 증가"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "따옴표·SQL 키워드가 든 요청과 DB 문법 오류가 함께 늘면 인젝션 시도 징후다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldinj-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "incident"
+      ],
+      "content": {
+        "prompt": "징후를 보고 코드에서 먼저 찾을 곳은?",
+        "options": [
+          "CSS 파일",
+          "이미지 경로",
+          "쿼리 문자열 조립 코드"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "쿼리를 문자열로 만드는 곳이 취약 지점이므로 먼저 찾아 바인딩으로 바꾼다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldinj-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "incident"
+      ],
+      "content": {
+        "prompt": "DB 오류 메시지는 응답에 어떻게 내보내나?",
+        "options": [
+          "원문 그대로",
+          "일반 오류로 대체"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DB 오류 원문은 쿼리 구조를 드러내므로 응답에는 일반 오류만 내보낸다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldinj-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "incident"
+      ],
+      "content": {
+        "prompt": "검색어에서 따옴표만 지우면 근본 조치가 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "입력을 막는 데 그치면 취약한 코드가 남으므로, 쿼리를 파라미터 바인딩으로 바꿔야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldinj-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "incident"
+      ],
+      "content": {
+        "prompt": "쿼리를 문자열로 만드는 곳은 파라미터 ___ 으로 바꾼다.",
+        "hint": "자리 표시자를 두고 값을 따로 넘기는 방식이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "바인딩",
+          "binding",
+          "Binding",
+          "바인드"
+        ]
+      },
+      "explanation": "파라미터 바인딩으로 바꾸면 검색어가 문법이 아니라 값으로만 처리된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldinj-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "incident"
+      ],
+      "content": {
+        "prompt": "앱의 DB 계정에는 필요한 테이블 ___ 만 준다.",
+        "hint": "GRANT 문으로 부여하는 것이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "권한",
+          "permission",
+          "privilege",
+          "접근 권한"
+        ]
+      },
+      "explanation": "앱 계정 권한을 필요한 테이블로 좁히면 인젝션이 생겨도 피해 범위가 줄어든다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldinj-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "incident"
+      ],
+      "content": {
+        "prompt": "응답에 DB 문법 오류 원문이 나간다. 조치는?",
+        "options": [
+          "오류 원문 유지",
+          "로그 삭제",
+          "일반 오류로 대체"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DB 오류 메시지를 응답에 그대로 내보내지 않고, 원문은 서버 로그에만 남긴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldinj-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "incident"
+      ],
+      "content": {
+        "prompt": "앱 DB 계정이 모든 테이블을 지울 수 있다. 조치는?",
+        "options": [
+          "필요 권한만 부여",
+          "비밀번호만 변경",
+          "그대로 유지"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "앱의 DB 계정에는 필요한 테이블 권한만 주어 사고 시 피해 범위를 줄인다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldinj-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "incident"
+      ],
+      "content": {
+        "prompt": "점검 순서로 알맞은 것은?",
+        "options": [
+          "입력 차단 후 종료",
+          "로그 삭제→재배포",
+          "징후 확인→코드 수정"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "징후로 시도를 확인하고, 쿼리를 만드는 코드를 찾아 바인딩으로 고치는 순서로 점검한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldinj-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "incident"
+      ],
+      "content": {
+        "prompt": "따옴표·SQL 키워드 요청과 DB 오류가 함께 늘면 인젝션 시도 징후다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "이상한 문자가 든 요청과 DB 문법 오류가 같이 늘면 입력이 쿼리 문법으로 읽히고 있다는 뜻이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}
