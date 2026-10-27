@@ -1,0 +1,254 @@
+{
+  "track": "sec",
+  "unit": "u07-xss-csp",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "sec-domsink-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "dom"
+      ],
+      "content": {
+        "prompt": "문자열을 HTML로 해석해 넣는 DOM 속성은?",
+        "options": [
+          "textContent",
+          "value",
+          "innerHTML"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "innerHTML은 문자열을 HTML로 해석해 넣으므로 사용자 입력에 쓰면 XSS가 된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-domsink-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "dom"
+      ],
+      "content": {
+        "prompt": "문자열을 글자로만 넣는 DOM 속성은?",
+        "options": [
+          "textContent",
+          "innerHTML",
+          "outerHTML"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "textContent는 문자열을 HTML로 해석하지 않고 글자로만 넣어 사용자 입력에 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-domsink-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "dom"
+      ],
+      "content": {
+        "prompt": "Vue에서 자동 이스케이프를 건너뛰는 기능은?",
+        "options": [
+          "v-if",
+          "v-html",
+          "v-for"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "v-html은 값을 HTML로 그대로 넣는 이스케이프 우회 기능이다. React의 dangerouslySetInnerHTML도 같다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-domsink-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "dom"
+      ],
+      "content": {
+        "prompt": "사용자가 준 링크는 http·https 스킴만 허용한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "링크는 스킴에 따라 클릭할 때 스크립트로 실행될 수 있어 http·https만 허용한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-domsink-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "dom"
+      ],
+      "content": {
+        "prompt": "사용자 입력을 글자로만 넣으려면 빈칸에 들어갈 속성은?",
+        "code": {
+          "language": "javascript",
+          "source": "const el = document.getElementById(\"name\");\nel.___ = userInput;"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "textContent",
+          "textcontent"
+        ]
+      },
+      "explanation": "textContent는 문자열을 글자로만 넣으므로 입력에 마크업이 있어도 해석되지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-domsink-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "dom"
+      ],
+      "content": {
+        "prompt": "사용자 링크는 URL ___을 검사해 http·https만 허용한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스킴",
+          "scheme",
+          "Scheme",
+          "프로토콜",
+          "protocol"
+        ]
+      },
+      "explanation": "URL 스킴 검사로 http·https 외의 스킴을 막아야 링크 클릭이 스크립트 실행이 되지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-domsink-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "dom"
+      ],
+      "content": {
+        "prompt": "이 코드를 안전하게 고치는 방법은?",
+        "code": {
+          "language": "javascript",
+          "source": "const box = document.querySelector(\"#msg\");\nbox.innerHTML = params.get(\"q\");"
+        },
+        "options": [
+          "textContent로 교체",
+          "변수명 변경",
+          "innerHTML 유지"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "URL에서 얻은 값을 innerHTML에 넣으면 HTML로 해석되므로 글자로만 넣는 textContent로 바꾼다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-domsink-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "dom"
+      ],
+      "content": {
+        "prompt": "사용자 프로필 링크를 href에 넣기 전 할 일은?",
+        "options": [
+          "길이만 검사",
+          "대문자 변환",
+          "URL 스킴 검사"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "사용자가 준 링크는 스킴을 검사해 http·https일 때만 href에 넣는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-domsink-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "dom"
+      ],
+      "content": {
+        "prompt": "React에서 댓글을 화면에 넣는 안전한 방법은?",
+        "options": [
+          "innerHTML 대입",
+          "JSX 텍스트 출력",
+          "이스케이프 우회 API"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "JSX 텍스트 출력은 React가 기본으로 이스케이프한다. 이스케이프 우회 API와 innerHTML은 HTML로 해석한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-domsink-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "dom"
+      ],
+      "content": {
+        "prompt": "innerHTML은 문자열을 글자로만 넣어 사용자 입력에 안전하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "innerHTML은 문자열을 HTML로 해석한다. 글자로만 넣는 것은 textContent다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

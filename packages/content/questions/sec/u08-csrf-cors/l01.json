@@ -1,0 +1,241 @@
+{
+  "track": "sec",
+  "unit": "u08-csrf-cors",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "sec-sop-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "sop",
+        "origin"
+      ],
+      "content": {
+        "prompt": "스킴·호스트·포트의 조합을 무엇이라 하나?",
+        "options": [
+          "도메인",
+          "경로",
+          "출처"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "출처(origin)는 스킴·호스트·포트의 조합이며 하나라도 다르면 다른 출처다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy"
+      ]
+    },
+    {
+      "id": "sec-sop-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "sop",
+        "origin"
+      ],
+      "content": {
+        "prompt": "다른 출처의 응답을 페이지 스크립트가 읽지 못하게 하는 정책은?",
+        "options": [
+          "동일 출처 정책",
+          "CSP",
+          "HSTS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "동일 출처 정책(SOP)은 다른 출처의 응답을 페이지 스크립트가 읽지 못하게 한다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy"
+      ]
+    },
+    {
+      "id": "sec-sop-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "sop",
+        "origin"
+      ],
+      "content": {
+        "prompt": "https://a.com 과 http://a.com 의 관계는?",
+        "options": [
+          "같은 출처",
+          "다른 출처"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스킴이 https와 http로 다르므로 호스트가 같아도 다른 출처다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy"
+      ]
+    },
+    {
+      "id": "sec-sop-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "sop",
+        "origin"
+      ],
+      "content": {
+        "prompt": "동일 출처 정책은 다른 출처로 요청을 보내는 것 자체를 막는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "SOP는 다른 출처의 응답을 읽는 것을 막을 뿐, 요청을 보내는 것 자체는 막지 않는다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy"
+      ]
+    },
+    {
+      "id": "sec-sop-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "sop",
+        "origin"
+      ],
+      "content": {
+        "prompt": "스킴·호스트·포트의 조합인 출처를 영어로 ___이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "origin",
+          "Origin",
+          "오리진"
+        ]
+      },
+      "explanation": "origin은 스킴·호스트·포트로 정해지며 브라우저는 이 단위로 스크립트의 접근을 나눈다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy"
+      ]
+    },
+    {
+      "id": "sec-sop-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "sop",
+        "origin"
+      ],
+      "content": {
+        "prompt": "동일 출처 정책의 영문 약자는 ___이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "SOP",
+          "sop"
+        ]
+      },
+      "explanation": "SOP(Same-Origin Policy)는 다른 출처의 응답을 페이지 스크립트가 읽지 못하게 하는 브라우저 정책이다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy"
+      ]
+    },
+    {
+      "id": "sec-sop-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "sop",
+        "origin"
+      ],
+      "content": {
+        "prompt": "https://a.com 과 https://a.com:8443 의 관계는?",
+        "options": [
+          "다른 출처",
+          "같은 출처"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스킴·호스트가 같아도 포트가 443과 8443으로 다르면 다른 출처다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy"
+      ]
+    },
+    {
+      "id": "sec-sop-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "sop",
+        "origin"
+      ],
+      "content": {
+        "prompt": "https://a.com/x 와 https://a.com/y 의 관계는?",
+        "options": [
+          "같은 출처",
+          "다른 출처"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "경로는 출처에 포함되지 않는다. 스킴·호스트·포트가 같으므로 같은 출처다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy"
+      ]
+    },
+    {
+      "id": "sec-sop-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "sop",
+        "origin"
+      ],
+      "content": {
+        "prompt": "다른 출처 API를 스크립트로 호출했을 때 SOP가 막는 것은?",
+        "options": [
+          "요청 전송",
+          "응답 읽기",
+          "DNS 조회"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SOP는 요청 전송은 막지 않고, 다른 출처의 응답을 페이지 스크립트가 읽는 것을 막는다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy"
+      ]
+    },
+    {
+      "id": "sec-sop-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "sop",
+        "origin"
+      ],
+      "content": {
+        "prompt": "스킴·호스트가 같아도 포트가 다르면 다른 출처다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "출처는 스킴·호스트·포트의 조합이라 셋 중 하나라도 다르면 다른 출처가 된다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy"
+      ]
+    }
+  ]
+}

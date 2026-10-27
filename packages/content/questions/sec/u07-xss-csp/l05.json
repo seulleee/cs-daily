@@ -1,0 +1,248 @@
+{
+  "track": "sec",
+  "unit": "u07-xss-csp",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "sec-sanitize-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "sanitize"
+      ],
+      "content": {
+        "prompt": "허용한 태그·속성만 남기고 나머지 HTML을 지우는 것은?",
+        "options": [
+          "출력 인코딩",
+          "해싱",
+          "새니타이징"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "새니타이징은 허용 목록에 있는 태그·속성만 남기고 나머지 HTML을 지운다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sanitize-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "sanitize"
+      ],
+      "content": {
+        "prompt": "사용자 HTML을 정리할 때 권장하는 방식은?",
+        "options": [
+          "검증된 새니타이저",
+          "정규식으로 태그 삭제",
+          "직접 만든 파서"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "HTML은 문법이 복잡해 직접 지우면 빈틈이 생기므로 DOMPurify 같은 검증된 새니타이저를 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sanitize-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "sanitize"
+      ],
+      "content": {
+        "prompt": "서식을 허용하는 게시판 에디터 입력에 맞는 처리는?",
+        "options": [
+          "전체 인코딩",
+          "새니타이징"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "입력 전체를 인코딩하면 서식까지 글자로 보이므로 허용한 태그만 남기는 새니타이징을 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sanitize-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "sanitize"
+      ],
+      "content": {
+        "prompt": "마크다운을 HTML로 바꾼 결과도 새니타이징한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "마크다운 렌더 결과도 HTML이므로 출력 전에 새니타이저를 거친다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sanitize-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "sanitize"
+      ],
+      "content": {
+        "prompt": "DOMPurify처럼 허용 밖 HTML을 지우는 도구를 ___라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "새니타이저",
+          "새니타이져",
+          "sanitizer",
+          "Sanitizer",
+          "HTML 새니타이저"
+        ]
+      },
+      "explanation": "새니타이저는 허용한 태그·속성만 남기고 나머지를 지우는 라이브러리로, 검증된 것을 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sanitize-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "sanitize"
+      ],
+      "content": {
+        "prompt": "사용자 HTML을 넣기 전에 빈칸 메서드로 정리한다. 빈칸은?",
+        "code": {
+          "language": "javascript",
+          "source": "const clean = DOMPurify.___(dirty);\npreview.innerHTML = clean;"
+        },
+        "hint": "DOMPurify의 기본 메서드"
+      },
+      "answer_key": {
+        "accepted": [
+          "sanitize"
+        ]
+      },
+      "explanation": "DOMPurify.sanitize는 허용한 태그·속성만 남긴 HTML을 돌려주므로 그 결과만 화면에 넣는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sanitize-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "sanitize"
+      ],
+      "content": {
+        "prompt": "정규식으로 태그를 지우는 방식이 위험한 이유는?",
+        "options": [
+          "빈틈이 생기기 쉬워서",
+          "속도가 느려서",
+          "라이선스 문제"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "HTML은 문법이 복잡하고 브라우저가 관대하게 해석해 정규식 삭제는 놓치는 경우가 생긴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sanitize-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "sanitize"
+      ],
+      "content": {
+        "prompt": "마크다운 댓글을 HTML로 렌더한다. 출력 전 할 일은?",
+        "options": [
+          "원문 길이 제한",
+          "그대로 출력",
+          "렌더 결과 새니타이징"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "마크다운을 HTML로 바꾼 결과에도 위험한 HTML이 남을 수 있어 새니타이징한 뒤 출력한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sanitize-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "sanitize"
+      ],
+      "content": {
+        "prompt": "새니타이저에 남길 HTML을 정하는 방식은?",
+        "options": [
+          "금지할 것만 나열",
+          "허용할 것만 나열"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "새니타이징은 허용한 태그·속성만 남기고 나머지를 지운다. 금지 목록은 빠진 항목이 그대로 통과한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sanitize-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "sanitize"
+      ],
+      "content": {
+        "prompt": "사용자 HTML은 위험 태그를 정규식으로 지우면 충분하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "정규식 삭제는 빈틈이 생기기 쉽다. 사용자 HTML은 DOMPurify 같은 검증된 새니타이저로 정리한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

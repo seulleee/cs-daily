@@ -1,0 +1,240 @@
+{
+  "track": "sec",
+  "unit": "u07-xss-csp",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "sec-headers-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "브라우저가 Content-Type을 추측하지 못하게 하는 값은?",
+        "options": [
+          "no-store",
+          "noopener",
+          "nosniff"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "X-Content-Type-Options: nosniff는 브라우저가 Content-Type을 추측해 다른 형식으로 해석하지 못하게 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-headers-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "정한 기간 동안 HTTPS로만 접속하게 하는 헤더는?",
+        "options": [
+          "HSTS",
+          "Referrer-Policy",
+          "CSP"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "HSTS(Strict-Transport-Security)는 브라우저가 정한 기간 동안 이 사이트에 HTTPS로만 접속하게 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-headers-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "클릭재킹을 막는 CSP 지시어는?",
+        "options": [
+          "script-src",
+          "frame-ancestors",
+          "object-src"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "frame-ancestors는 내 페이지를 어떤 사이트가 frame으로 감쌀 수 있는지 정해 클릭재킹을 막는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-headers-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "Referrer-Policy는 다른 사이트로 보내는 주소 정보의 범위를 줄인다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "Referrer-Policy는 다른 사이트로 이동할 때 Referer에 담기는 주소 정보의 범위를 줄인다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-headers-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "형식 추측을 막으려면 빈칸에 들어갈 값은?",
+        "code": {
+          "language": "http",
+          "source": "HTTP/1.1 200 OK\nContent-Type: application/json\nX-Content-Type-Options: ___"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "nosniff"
+        ]
+      },
+      "explanation": "X-Content-Type-Options: nosniff를 보내면 브라우저가 선언된 Content-Type대로만 해석한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-headers-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "HSTS는 Strict-Transport-___ 헤더의 줄임말이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Security",
+          "security"
+        ]
+      },
+      "explanation": "Strict-Transport-Security 헤더를 받은 브라우저는 정한 기간 동안 HTTPS로만 접속한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-headers-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "다른 사이트가 이 페이지를 frame으로 감싸지 못하게 하려면?",
+        "code": {
+          "language": "http",
+          "source": "Content-Security-Policy: ___ 'none'"
+        },
+        "options": [
+          "frame-ancestors",
+          "script-src",
+          "object-src"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "frame-ancestors 'none'은 어떤 사이트도 이 페이지를 frame으로 감싸지 못하게 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-headers-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "다른 사이트가 내 페이지를 투명 frame으로 감쌌다. 공격은?",
+        "options": [
+          "반사형 XSS",
+          "SQL 인젝션",
+          "클릭재킹"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "내 페이지를 frame으로 감싸 클릭을 가로채는 것이 클릭재킹이며 frame-ancestors로 막는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-headers-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "텍스트 응답이 다른 형식으로 해석될 위험을 줄이는 값은?",
+        "options": [
+          "HSTS",
+          "nosniff",
+          "Referrer-Policy"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "nosniff는 브라우저가 Content-Type을 추측해 다른 형식으로 해석하지 못하게 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-headers-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "HSTS는 내 페이지가 다른 사이트 frame에 들어가는 것을 막는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "HSTS는 HTTPS 접속만 강제한다. frame으로 감싸는 것을 막는 것은 frame-ancestors다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

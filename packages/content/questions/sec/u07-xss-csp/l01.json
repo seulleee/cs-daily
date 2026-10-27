@@ -1,0 +1,239 @@
+{
+  "track": "sec",
+  "unit": "u07-xss-csp",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "sec-xss-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "입력이 다른 사용자 브라우저에서 스크립트로 실행되는 취약점은?",
+        "options": [
+          "SQL 인젝션",
+          "경로 조작",
+          "XSS"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "XSS는 입력이 HTML·스크립트로 해석되어 다른 사용자 브라우저에서 실행되는 취약점이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xss-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "XSS가 생기는 직접 원인은?",
+        "options": [
+          "입력을 인코딩 없이 출력",
+          "약한 비밀번호 해시",
+          "긴 세션 수명"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "입력을 인코딩하지 않고 HTML에 그대로 넣어 응답하면 입력이 마크업으로 해석된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xss-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "XSS로 실행된 스크립트는 누구의 권한으로 동작하나?",
+        "options": [
+          "공격자",
+          "피해자",
+          "서버 관리자"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스크립트는 피해자 브라우저에서 그 사이트 권한으로 실행되므로 피해자 권한으로 요청을 보낸다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xss-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "XSS는 서버가 아니라 피해자 브라우저에서 코드가 실행된다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "XSS는 입력이 다른 사용자 브라우저에서 HTML·스크립트로 해석되어 실행되는 취약점이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xss-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "입력을 HTML에 넣기 전에 ___하지 않으면 XSS가 생긴다.",
+        "hint": "입력을 글자로만 보이게 바꾸는 처리"
+      },
+      "answer_key": {
+        "accepted": [
+          "인코딩",
+          "출력 인코딩",
+          "encoding",
+          "Encoding",
+          "이스케이프",
+          "escape"
+        ]
+      },
+      "explanation": "입력을 인코딩하지 않고 HTML에 그대로 넣는 것이 XSS의 원인이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xss-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "XSS가 실행되면 공격자는 피해자 ___으로 요청을 보낼 수 있다."
+      },
+      "answer_key": {
+        "accepted": [
+          "권한",
+          "권한으로",
+          "privilege"
+        ]
+      },
+      "explanation": "XSS 스크립트는 피해자 브라우저에서 돌아 피해자 권한으로 요청을 보내고 화면·입력 내용을 가로챈다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xss-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "댓글 원문을 그대로 HTML에 넣어 응답한다. 위험은?",
+        "options": [
+          "XSS",
+          "경로 조작",
+          "위험 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인코딩 없이 HTML에 넣은 댓글은 마크업으로 해석되어 읽는 사람 브라우저에서 실행될 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xss-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "XSS의 영향으로 맞는 것은?",
+        "options": [
+          "서버 디스크 삭제",
+          "DB 직접 접속",
+          "피해자 권한 요청"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "XSS는 피해자 브라우저에서 실행되어 피해자 권한으로 요청을 보내거나 입력 내용을 가로챈다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xss-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "검색어를 결과 페이지에 출력할 때 XSS를 막는 조치는?",
+        "options": [
+          "검색어 로그 삭제",
+          "출력 전 인코딩",
+          "응답 압축"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "출력하기 전에 인코딩하면 검색어가 마크업이 아니라 글자로만 보인다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xss-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "XSS는 입력이 DB 쿼리로 해석되어 서버에서 실행되는 취약점이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "입력이 쿼리로 해석되는 것은 SQL 인젝션이다. XSS는 입력이 HTML·스크립트로 해석되어 브라우저에서 실행된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

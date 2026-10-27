@@ -1,0 +1,238 @@
+{
+  "track": "sec",
+  "unit": "u07-xss-csp",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "sec-xsstype-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "DB에 저장된 입력이 페이지를 보는 모든 사용자에게 실행되는 XSS는?",
+        "options": [
+          "반사형 XSS",
+          "DOM 기반 XSS",
+          "저장형 XSS"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "저장형 XSS는 DB에 저장된 입력이 그 페이지를 여는 모든 사용자에게 실행된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xsstype-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "요청에 든 입력이 같은 응답에 바로 되돌아와 실행되는 XSS는?",
+        "options": [
+          "반사형 XSS",
+          "저장형 XSS",
+          "DOM 기반 XSS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "반사형 XSS는 요청에 실린 입력이 저장되지 않고 같은 응답에 바로 되돌아와 실행된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xsstype-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "서버를 거치지 않고 브라우저 스크립트가 입력을 DOM에 넣는 XSS는?",
+        "options": [
+          "반사형 XSS",
+          "DOM 기반 XSS"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DOM 기반 XSS는 서버 응답이 아니라 브라우저 스크립트가 입력을 DOM에 넣으면서 실행된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xsstype-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "반사형 XSS는 입력이 DB에 저장된 뒤 나중에 실행된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "저장된 뒤 나중에 실행되는 것은 저장형이다. 반사형은 요청의 입력이 같은 응답에 바로 되돌아온다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xsstype-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "게시글 본문에 저장돼 열람자마다 실행되는 것은 ___형 XSS다."
+      },
+      "answer_key": {
+        "accepted": [
+          "저장",
+          "저장형",
+          "stored",
+          "Stored"
+        ]
+      },
+      "explanation": "DB에 저장된 입력이 그 페이지를 보는 모든 사용자에게 실행되면 저장형 XSS다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xsstype-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "DOM 기반 XSS는 서버를 거치지 않고 브라우저 ___가 입력을 DOM에 넣는다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스크립트",
+          "script",
+          "Script",
+          "자바스크립트",
+          "JavaScript",
+          "javascript"
+        ]
+      },
+      "explanation": "DOM 기반 XSS는 브라우저 스크립트가 입력을 DOM에 넣으면서 생겨 서버 응답에는 드러나지 않을 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xsstype-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "URL # 뒤 값을 페이지 스크립트가 DOM에 넣어 실행됐다. 유형은?",
+        "options": [
+          "DOM 기반",
+          "저장형",
+          "반사형"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "# 뒤 값은 서버로 전송되지 않고 브라우저 스크립트가 DOM에 넣었으므로 DOM 기반 XSS다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xsstype-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "검색 요청의 검색어가 결과 응답에 그대로 실려 실행됐다. 유형은?",
+        "options": [
+          "저장형",
+          "DOM 기반",
+          "반사형"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "요청에 든 입력이 저장되지 않고 같은 응답에 바로 되돌아와 실행됐으므로 반사형 XSS다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xsstype-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "DOM 기반 XSS를 찾으려면 주로 어디를 점검하나?",
+        "options": [
+          "DB 스키마",
+          "프론트엔드 코드",
+          "서버 접근 로그"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DOM 기반 XSS는 브라우저 스크립트가 입력을 DOM에 넣을 때 생기므로 프론트엔드 코드를 본다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xsstype-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss"
+      ],
+      "content": {
+        "prompt": "저장형 XSS는 그 페이지를 보는 모든 사용자에게 실행될 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "저장형 XSS는 입력이 DB에 남아 그 페이지를 여는 사용자마다 실행된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

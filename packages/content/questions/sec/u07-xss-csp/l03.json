@@ -1,0 +1,253 @@
+{
+  "track": "sec",
+  "unit": "u07-xss-csp",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "sec-encoding-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "output-encoding"
+      ],
+      "content": {
+        "prompt": "< > & \" 를 HTML 엔티티로 바꿔 글자로만 보이게 하는 것은?",
+        "options": [
+          "입력 길이 제한",
+          "해싱",
+          "출력 인코딩"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "출력 인코딩은 HTML 문법 문자를 엔티티로 바꿔 브라우저가 글자로만 표시하게 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-encoding-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "output-encoding"
+      ],
+      "content": {
+        "prompt": "템플릿 엔진이 출력값을 기본으로 이스케이프하는 기능은?",
+        "options": [
+          "자동 이스케이프",
+          "응답 캐시",
+          "응답 압축"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "자동 이스케이프는 템플릿 엔진·프레임워크가 출력값을 기본으로 인코딩하는 기능이며 끄지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-encoding-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "output-encoding"
+      ],
+      "content": {
+        "prompt": "JavaScript 문자열 안에 넣는 값에 맞는 인코딩은?",
+        "options": [
+          "HTML 본문 규칙",
+          "JavaScript 규칙",
+          "인코딩 불필요"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "HTML 본문·속성·JavaScript·URL은 문맥마다 인코딩 규칙이 달라 출력 위치에 맞는 규칙을 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-encoding-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "output-encoding"
+      ],
+      "content": {
+        "prompt": "템플릿 엔진의 자동 이스케이프는 기본값 그대로 켜 둔다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "자동 이스케이프를 끄면 출력값이 인코딩 없이 HTML에 들어가므로 기본값을 유지한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-encoding-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "output-encoding"
+      ],
+      "content": {
+        "prompt": "< 를 &lt; 로 바꾼 표기를 HTML ___라고 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "엔티티",
+          "엔터티",
+          "entity",
+          "Entity",
+          "개체"
+        ]
+      },
+      "explanation": "HTML 엔티티는 문법 문자를 글자로 표시하는 대체 표기로, 출력 인코딩이 이 변환을 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-encoding-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "output-encoding"
+      ],
+      "content": {
+        "prompt": "HTML 본문·속성·URL처럼 값이 출력되는 위치를 ___이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "문맥",
+          "컨텍스트",
+          "context",
+          "Context",
+          "출력 문맥"
+        ]
+      },
+      "explanation": "출력 문맥마다 인코딩 규칙이 달라서 값이 어디에 들어가는지 먼저 보고 맞는 규칙을 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-encoding-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "output-encoding"
+      ],
+      "content": {
+        "prompt": "사용자 이름을 HTML 본문에 출력한다. 올바른 처리는?",
+        "options": [
+          "HTML 엔티티 인코딩",
+          "그대로 출력",
+          "Base64 인코딩"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "HTML 본문에는 < > & \" 를 엔티티로 바꾸는 HTML 인코딩을 적용해 글자로만 보이게 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-encoding-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "output-encoding"
+      ],
+      "content": {
+        "prompt": "이 속성값에 입력을 넣을 때 꼭 엔티티로 바꿔야 할 문자는?",
+        "code": {
+          "language": "html",
+          "source": "<input type=\"text\" value=\"{name}\">"
+        },
+        "options": [
+          "#",
+          "@",
+          "\""
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "속성값을 큰따옴표로 감쌌으므로 입력의 \" 를 엔티티로 바꾸지 않으면 속성이 끝나고 문법이 바뀐다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-encoding-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "output-encoding"
+      ],
+      "content": {
+        "prompt": "출력이 이상하다며 템플릿 자동 이스케이프를 끄자는 제안. 판단은?",
+        "options": [
+          "끄고 배포",
+          "끄지 않고 원인 수정",
+          "운영에서만 끔"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "자동 이스케이프는 XSS를 막는 기본 장치라 끄지 않고, 이중 인코딩 같은 실제 원인을 고친다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-encoding-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "output-encoding"
+      ],
+      "content": {
+        "prompt": "HTML 본문용 인코딩은 URL·JavaScript 문맥에도 그대로 맞는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "HTML 본문·속성·JavaScript·URL은 인코딩 규칙이 서로 달라 문맥마다 맞는 규칙을 써야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}
