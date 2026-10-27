@@ -1,0 +1,227 @@
+{
+  "track": "sec",
+  "unit": "u12-logging-ir",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "sec-detect-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "detection",
+        "siem"
+      ],
+      "content": {
+        "prompt": "여러 로그를 모아 상관 분석하고 경보를 내는 시스템은?",
+        "options": [
+          "NTP",
+          "SCA",
+          "SIEM"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "SIEM은 여러 출처의 로그를 모아 상관 분석하고, 조건에 맞으면 경보를 낸다.",
+      "refs": []
+    },
+    {
+      "id": "sec-detect-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "detection",
+        "siem"
+      ],
+      "content": {
+        "prompt": "평소의 요청량·실패율·접속 지역을 가리키는 말은?",
+        "options": [
+          "기준선",
+          "탐지 규칙",
+          "보관 기간"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "기준선은 평소의 요청량·실패율·접속 지역이고, 여기서 벗어나면 이상으로 본다.",
+      "refs": []
+    },
+    {
+      "id": "sec-detect-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "detection",
+        "siem"
+      ],
+      "content": {
+        "prompt": "'짧은 시간 로그인 실패 급증'은 무엇에 해당하나?",
+        "options": [
+          "기준선",
+          "탐지 규칙"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "로그인 실패 급증처럼 경보를 낼 조건을 정한 것이 탐지 규칙이다. 기준선은 평소 상태다.",
+      "refs": []
+    },
+    {
+      "id": "sec-detect-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "detection",
+        "siem"
+      ],
+      "content": {
+        "prompt": "알림은 많을수록 진짜 경보를 놓치지 않는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "대응할 수 없는 알림이 많으면 진짜 경보가 묻히므로 탐지 규칙을 다듬어 알림 품질을 높인다.",
+      "refs": []
+    },
+    {
+      "id": "sec-detect-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "detection",
+        "siem"
+      ],
+      "content": {
+        "prompt": "평소 상태를 나타내고, 벗어나면 이상으로 보는 기준은 ___ 이다.",
+        "hint": "요청량·실패율·접속 지역으로 잡는다."
+      },
+      "answer_key": {
+        "accepted": [
+          "기준선",
+          "baseline",
+          "Baseline",
+          "베이스라인"
+        ]
+      },
+      "explanation": "기준선을 정해 두면 평소와 다른 요청량이나 접속 지역을 이상 징후로 알아볼 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-detect-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "detection",
+        "siem"
+      ],
+      "content": {
+        "prompt": "여러 로그를 모아 상관 분석하고 경보를 내는 시스템은 ___ 이다.",
+        "hint": "보안 정보·이벤트 관리의 영문 약어다."
+      },
+      "answer_key": {
+        "accepted": [
+          "SIEM",
+          "siem",
+          "심"
+        ]
+      },
+      "explanation": "SIEM은 여러 서버와 서비스의 로그를 한곳에서 엮어 분석해, 한 줄로는 안 보이는 공격을 찾는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-detect-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "detection",
+        "siem"
+      ],
+      "content": {
+        "prompt": "'새 국가 관리자 로그인' 경보를 만드는 것은?",
+        "options": [
+          "보관 기간",
+          "중앙 수집",
+          "탐지 규칙"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "새 국가 관리자 로그인은 경보를 낼 조건을 정한 탐지 규칙의 예다.",
+      "refs": []
+    },
+    {
+      "id": "sec-detect-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "detection",
+        "siem"
+      ],
+      "content": {
+        "prompt": "하루 수백 건 알림 대부분이 대응할 게 없다. 조치는?",
+        "options": [
+          "알림 모두 끄기",
+          "규칙 다듬기",
+          "그대로 유지"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "대응할 수 없는 알림이 많으면 진짜 경보를 놓치므로, 끄지 않고 탐지 규칙을 다듬는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-detect-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "detection",
+        "siem"
+      ],
+      "content": {
+        "prompt": "API·인증 서버 로그를 사용자로 엮어 한 사건으로 보려면?",
+        "options": [
+          "SIEM 상관 분석",
+          "서버별 로그 열람",
+          "로그 압축"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SIEM의 상관 분석은 여러 출처의 로그를 시각·사용자로 엮어 하나의 사건으로 보여 준다.",
+      "refs": []
+    },
+    {
+      "id": "sec-detect-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "detection",
+        "siem"
+      ],
+      "content": {
+        "prompt": "SIEM은 여러 로그를 모아 상관 분석하고 경보를 낸다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "SIEM은 여러 출처의 로그를 모아 상관 분석하고 탐지 규칙에 맞으면 경보를 낸다.",
+      "refs": []
+    }
+  ]
+}

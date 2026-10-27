@@ -1,0 +1,218 @@
+{
+  "track": "sec",
+  "unit": "u12-logging-ir",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "sec-logstore-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "logging"
+      ],
+      "content": {
+        "prompt": "서버가 침해돼도 기록이 남게 서버 밖에 모으는 것은?",
+        "options": [
+          "로컬 파일 보관",
+          "중앙 수집",
+          "압축 보관"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "중앙 수집은 로그를 서버 밖 로그 시스템에 모아, 침해된 서버에서 지워도 기록이 남게 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logstore-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "logging"
+      ],
+      "content": {
+        "prompt": "서버 시계를 표준 시각에 맞추는 프로토콜은?",
+        "options": [
+          "DNS",
+          "SMTP",
+          "NTP"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "NTP는 네트워크로 서버 시계를 표준 시각에 맞추는 프로토콜이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logstore-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "logging"
+      ],
+      "content": {
+        "prompt": "앱 서버가 로그에 대해 가져야 할 권한은?",
+        "options": [
+          "추가만",
+          "추가·삭제",
+          "수정·삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "앱 서버는 로그를 추가만 하고 지우거나 고칠 권한은 없어야, 침해돼도 기록을 바꿀 수 없다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logstore-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "logging"
+      ],
+      "content": {
+        "prompt": "로그는 조사에 쓸 수 있으니 기간 제한 없이 보관한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "법·내부 정책에 맞는 보관 기간을 정하고 그 뒤에는 삭제한다. 오래된 로그도 개인정보를 담은 자산이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logstore-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "logging"
+      ],
+      "content": {
+        "prompt": "모든 서버 시계는 ___ 로 맞추고 UTC로 기록한다.",
+        "hint": "시각 동기화 프로토콜의 영문 약어다."
+      },
+      "answer_key": {
+        "accepted": [
+          "NTP",
+          "ntp"
+        ]
+      },
+      "explanation": "NTP로 시계를 맞추고 UTC로 기록해야 여러 서버의 로그를 이어 볼 때 사건 순서가 맞는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logstore-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "logging"
+      ],
+      "content": {
+        "prompt": "로그를 서버 밖 로그 시스템에 모으는 것은 ___ 수집이다.",
+        "hint": "흩어진 로그를 한곳으로 모은다."
+      },
+      "answer_key": {
+        "accepted": [
+          "중앙",
+          "중앙 집중",
+          "central",
+          "Central",
+          "centralized"
+        ]
+      },
+      "explanation": "중앙 수집을 하면 공격자가 침해한 서버의 로그를 지워도 서버 밖에 기록이 남는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logstore-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "logging"
+      ],
+      "content": {
+        "prompt": "침입자가 서버의 로그 파일을 지웠다. 기록이 남으려면?",
+        "options": [
+          "로그 레벨 상향",
+          "서버 재시작",
+          "중앙 수집"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "로그를 서버 밖 시스템에 모아 두면 침해된 서버의 로그 파일이 지워져도 기록이 남는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logstore-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "logging"
+      ],
+      "content": {
+        "prompt": "두 서버 로그를 이어 보니 사건 순서가 뒤바뀐다. 원인은?",
+        "options": [
+          "요청 ID 사용",
+          "시계 불일치",
+          "중앙 수집"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "서버마다 시계가 어긋나면 순서가 뒤바뀐다. NTP로 시계를 맞추고 UTC로 기록한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logstore-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "logging"
+      ],
+      "content": {
+        "prompt": "앱 서버 계정에 로그 삭제 권한이 있다. 조치는?",
+        "options": [
+          "추가 권한만 남김",
+          "그대로 유지",
+          "관리자로 승격"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "쓰기 분리 원칙에 따라 앱 서버는 로그를 추가만 하고 지우거나 고칠 권한은 없게 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logstore-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "logging"
+      ],
+      "content": {
+        "prompt": "중앙 수집한 로그는 침해된 서버와 별도로 남는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "로그를 서버 밖 시스템에 모으면 서버가 침해되거나 로그가 지워져도 조사할 기록이 남는다.",
+      "refs": []
+    }
+  ]
+}

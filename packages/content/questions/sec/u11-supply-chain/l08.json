@@ -1,0 +1,227 @@
+{
+  "track": "sec",
+  "unit": "u11-supply-chain",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "sec-fieldsupply-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "secrets",
+        "incident"
+      ],
+      "content": {
+        "prompt": "키가 커밋됐다는 알림을 받았다. 첫 조치는?",
+        "options": [
+          "커밋 삭제",
+          "키 폐기·재발급",
+          "스캔 규칙 추가"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "커밋을 지우기 전에 키부터 폐기하고 재발급해야 이력에 남은 사본이 쓸모없어진다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldsupply-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "secrets",
+        "incident"
+      ],
+      "content": {
+        "prompt": "유출된 키를 재발급한 다음 할 일은?",
+        "options": [
+          "사용 기록 확인",
+          "이력 정리",
+          "스캔 규칙 추가"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "재발급 다음에는 유출된 키가 그동안 쓰였는지 사용 기록을 확인한다. 이력 정리와 스캔 규칙은 그 뒤다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldsupply-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "secrets",
+        "incident"
+      ],
+      "content": {
+        "prompt": "의존성 경보의 우선순위를 정할 기준은?",
+        "options": [
+          "패키지 이름 길이",
+          "경보 도착 순서",
+          "취약 함수 사용 여부"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "실제로 취약한 함수를 쓰는지와 노출 여부를 보고 업데이트 우선순위를 정한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldsupply-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "secrets",
+        "incident"
+      ],
+      "content": {
+        "prompt": "의존성 경보는 도착한 순서대로 모두 같은 무게로 처리한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "취약한 함수를 실제로 쓰는지와 외부 노출 여부에 따라 우선순위를 나눠 처리한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldsupply-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "secrets",
+        "incident"
+      ],
+      "content": {
+        "prompt": "커밋 전에 비밀값을 걸러 내려면 pre-commit ___ 스캔을 켠다.",
+        "hint": "키 형식의 문자열을 찾는 검사다."
+      },
+      "answer_key": {
+        "accepted": [
+          "시크릿",
+          "secret",
+          "Secret",
+          "비밀값"
+        ]
+      },
+      "explanation": "pre-commit 시크릿 스캔은 커밋하기 전에 키 형식 문자열을 찾아, 유출이 저장소에 들어가기 전에 막는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldsupply-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "secrets",
+        "incident"
+      ],
+      "content": {
+        "prompt": "CI에서 의존성의 알려진 취약점을 찾으려면 ___ 를 켠다.",
+        "hint": "오픈소스 의존성 검사의 영문 약어다."
+      },
+      "answer_key": {
+        "accepted": [
+          "SCA",
+          "sca"
+        ]
+      },
+      "explanation": "CI에서 SCA를 돌리면 새로 추가되거나 공개된 의존성 취약점을 PR 단계에서 알 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldsupply-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "secrets",
+        "incident"
+      ],
+      "content": {
+        "prompt": "처음 보는 패키지가 PR에 추가됐다. 확인할 것은?",
+        "options": [
+          "이름 철자·게시자",
+          "다운로드 속도",
+          "패키지 아이콘"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "수상한 새 패키지는 이름 철자·게시자·설치 스크립트를 확인해 타이포스쿼팅 등을 걸러 낸다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldsupply-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "secrets",
+        "incident"
+      ],
+      "content": {
+        "prompt": "CVSS는 높지만 취약 함수를 안 쓰고 노출도 없다. 판단은?",
+        "options": [
+          "즉시 운영 중단",
+          "노출된 것보다 후순위",
+          "경보 삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "취약 함수 사용과 노출 여부로 우선순위를 정하므로, 실제로 노출된 취약점보다 뒤에 업데이트한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldsupply-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "secrets",
+        "incident"
+      ],
+      "content": {
+        "prompt": "커밋된 키의 대응 순서로 맞는 것은?",
+        "options": [
+          "이력→폐기→규칙→기록",
+          "규칙→이력→기록→폐기",
+          "폐기→기록→이력→규칙"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "폐기·재발급, 사용 기록 확인, 이력 정리, 스캔 규칙 추가 순으로 위험이 큰 것부터 줄인다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldsupply-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "secrets",
+        "incident"
+      ],
+      "content": {
+        "prompt": "수상한 새 패키지는 설치 스크립트가 있는지 확인한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "postinstall 같은 설치 스크립트는 설치만으로 실행되므로 이름 철자·게시자와 함께 확인한다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "track": "sec",
+  "unit": "u12-logging-ir",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "sec-audit-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "audit-log"
+      ],
+      "content": {
+        "prompt": "누가 언제 무엇을 바꿨는지 남기는 변경 기록은?",
+        "options": [
+          "감사 로그",
+          "오류 로그",
+          "성능 로그"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "감사 로그는 누가 언제 무엇을 바꿨는지 남기는 변경 기록으로, 책임을 따질 증거가 된다.",
+      "refs": []
+    },
+    {
+      "id": "sec-audit-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "audit-log"
+      ],
+      "content": {
+        "prompt": "행위자를 특정하려면 어떤 계정으로 작업하나?",
+        "options": [
+          "개인 계정",
+          "공용 계정"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "공용 계정으로 작업하면 누가 했는지 알 수 없어, 부인 방지를 위해 개인 계정으로 작업한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-audit-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "audit-log"
+      ],
+      "content": {
+        "prompt": "감사 로그의 저장 방식으로 맞는 것은?",
+        "options": [
+          "수정 가능",
+          "덮어쓰기",
+          "추가 전용"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "감사 로그는 고치거나 지울 수 없는 추가 전용으로 저장해야 증거로 쓸 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-audit-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "audit-log"
+      ],
+      "content": {
+        "prompt": "공용 admin 계정으로 작업해도 감사 로그로 행위자를 특정할 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "공용 계정은 여러 사람이 함께 써 행위자를 특정할 수 없다. 개인 계정으로 작업해야 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-audit-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "audit-log"
+      ],
+      "content": {
+        "prompt": "행위자가 한 일을 부인하지 못하게 하는 것은 부인 ___ 이다.",
+        "hint": "STRIDE의 부인 위협에 대응한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "방지",
+          "non repudiation",
+          "nonrepudiation",
+          "부인방지"
+        ]
+      },
+      "explanation": "부인 방지는 추가 전용 감사 로그와 개인 계정으로 행위자와 기록을 함께 보장해 이룬다.",
+      "refs": []
+    },
+    {
+      "id": "sec-audit-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "audit-log"
+      ],
+      "content": {
+        "prompt": "감사 로그는 고치거나 지울 수 없게 ___ 전용으로 저장한다.",
+        "hint": "새 기록을 덧붙이는 것만 허용한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "추가",
+          "append",
+          "Append",
+          "append only"
+        ]
+      },
+      "explanation": "추가 전용으로 저장하면 기록이 바뀌지 않았다는 것을 보장해 감사 로그를 증거로 쓸 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-audit-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "audit-log"
+      ],
+      "content": {
+        "prompt": "관리자 권한이 몰래 바뀌었다. 누가 했는지 볼 기록은?",
+        "options": [
+          "감사 로그",
+          "CPU 지표",
+          "캐시 로그"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "권한 변경 같은 작업은 감사 로그에 누가 언제 무엇을 바꿨는지 남는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-audit-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "audit-log"
+      ],
+      "content": {
+        "prompt": "팀이 공용 admin 계정을 함께 쓴다. 개선은?",
+        "options": [
+          "비밀번호 공유",
+          "개인 계정 발급",
+          "계정 이름 변경"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "사람마다 개인 계정을 발급해 작업하게 하면 감사 로그로 행위자를 특정할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-audit-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "audit-log"
+      ],
+      "content": {
+        "prompt": "운영자가 감사 로그를 수정할 수 있다. 문제는?",
+        "options": [
+          "저장 공간 부족",
+          "조회 속도 저하",
+          "증거 신뢰성 상실"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "고칠 수 있는 기록은 바뀌지 않았다고 보장할 수 없어 증거로 쓸 수 없다. 추가 전용으로 저장한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-audit-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "audit-log"
+      ],
+      "content": {
+        "prompt": "감사 로그는 누가 언제 무엇을 바꿨는지 남기는 기록이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "감사 로그는 권한·설정 변경, 데이터 삭제처럼 책임을 따질 작업의 변경 기록이다.",
+      "refs": []
+    }
+  ]
+}

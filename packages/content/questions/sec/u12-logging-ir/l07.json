@@ -1,0 +1,226 @@
+{
+  "track": "sec",
+  "unit": "u12-logging-ir",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "sec-contain-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "incident-response",
+        "forensics"
+      ],
+      "content": {
+        "prompt": "침해 서버를 다른 시스템과 끊는 봉쇄 조치는?",
+        "options": [
+          "디스크 포맷",
+          "네트워크 격리",
+          "로그 삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "네트워크 격리는 침해 서버를 다른 시스템과 끊어 피해 확산을 막으면서 증거는 남긴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-contain-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "incident-response",
+        "forensics"
+      ],
+      "content": {
+        "prompt": "개인 탓이 아니라 시스템·절차의 원인을 찾는 회고는?",
+        "options": [
+          "비난 없는 회고",
+          "책임자 징계 회의"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "비난 없는 회고는 개인을 탓하지 않고 시스템·절차의 원인을 찾아 재발을 막는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-contain-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "incident-response",
+        "forensics"
+      ],
+      "content": {
+        "prompt": "침해 서버를 지우기 전에 먼저 할 일은?",
+        "options": [
+          "서버 재구축",
+          "증거 확보"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "서버를 지우기 전에 로그·디스크 스냅샷·메모리 정보를 확보해야 침입 경로를 조사할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-contain-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "incident-response",
+        "forensics"
+      ],
+      "content": {
+        "prompt": "침해 서버는 바로 지우고 새로 만든 뒤 원인을 조사한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "먼저 지우면 침입 경로를 알려 줄 기록이 사라진다. 로그·디스크 스냅샷·메모리 정보를 먼저 확보한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-contain-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "incident-response",
+        "forensics"
+      ],
+      "content": {
+        "prompt": "탈취된 세션을 끊으려면 그 세션을 ___ 한다.",
+        "hint": "그 세션 ID로 더는 요청이 통하지 않게 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "무효화",
+          "폐기",
+          "invalidate",
+          "만료"
+        ]
+      },
+      "explanation": "세션 무효화는 탈취된 세션 ID를 쓸 수 없게 만드는 봉쇄 조치다.",
+      "refs": []
+    },
+    {
+      "id": "sec-contain-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "incident-response",
+        "forensics"
+      ],
+      "content": {
+        "prompt": "서버를 지우기 전 로그·디스크 ___·메모리 정보를 확보한다.",
+        "hint": "특정 시점의 저장 장치 내용을 복사한 것이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스냅샷",
+          "스냅숏",
+          "snapshot",
+          "Snapshot"
+        ]
+      },
+      "explanation": "디스크 스냅샷은 특정 시점의 저장 장치 내용을 그대로 남겨, 서버를 지운 뒤에도 조사할 수 있게 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-contain-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "incident-response",
+        "forensics"
+      ],
+      "content": {
+        "prompt": "유출된 API 키로 호출이 계속된다. 첫 봉쇄 조치는?",
+        "options": [
+          "회고 일정 잡기",
+          "디스크 스냅샷",
+          "키 폐기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "유출된 자격 증명을 폐기하면 그 키로 하는 호출이 바로 막힌다. 회고는 사고가 끝난 뒤다.",
+      "refs": []
+    },
+    {
+      "id": "sec-contain-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "incident-response",
+        "forensics"
+      ],
+      "content": {
+        "prompt": "메모리 정보를 남기려면 서버 전원은 언제 끄나?",
+        "options": [
+          "확보하기 전",
+          "확보한 뒤"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "메모리 정보는 전원을 끄면 사라지므로, 먼저 확보한 뒤에 서버를 끈다.",
+      "refs": []
+    },
+    {
+      "id": "sec-contain-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "incident-response",
+        "forensics"
+      ],
+      "content": {
+        "prompt": "회고가 '담당자 실수'로 끝났다. 바꿀 방향은?",
+        "options": [
+          "절차·시스템 원인 찾기",
+          "담당자 교체",
+          "회고 생략"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "비난 없는 회고는 실수를 가능하게 한 절차·시스템의 원인을 찾아 재발 방지 작업을 정한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-contain-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "incident-response",
+        "forensics"
+      ],
+      "content": {
+        "prompt": "비난 없는 회고는 개인이 아니라 시스템·절차의 원인을 찾는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "개인을 탓하면 사실을 숨기게 되므로, 비난 없는 회고는 시스템·절차의 원인에 집중한다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "track": "sec",
+  "unit": "u12-logging-ir",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "sec-logsafe-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "logging",
+        "privacy"
+      ],
+      "content": {
+        "prompt": "로그에 쓰면 안 되는 값은?",
+        "options": [
+          "요청 ID",
+          "세션 ID",
+          "응답 코드"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "세션 ID는 알면 그 사용자로 행동할 수 있어 비밀번호·토큰·카드 번호처럼 로그에 쓰지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logsafe-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "logging",
+        "privacy"
+      ],
+      "content": {
+        "prompt": "입력의 줄바꿈 문자로 가짜 로그 줄을 만드는 공격은?",
+        "options": [
+          "로그 인젝션",
+          "타이포스쿼팅",
+          "의존성 혼동"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "로그 인젝션은 입력에 든 줄바꿈 문자로 로그 줄을 끊어 가짜 기록을 끼워 넣는 공격이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logsafe-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "logging",
+        "privacy"
+      ],
+      "content": {
+        "prompt": "개인정보 일부를 가려 로그에 남기는 처리는?",
+        "options": [
+          "압축",
+          "마스킹",
+          "복제"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "마스킹은 개인정보의 일부를 가려 남기는 처리다. 일부만 보여도 추적에 필요한 구분은 할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logsafe-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "logging",
+        "privacy"
+      ],
+      "content": {
+        "prompt": "토큰은 오류를 추적할 수 있게 로그에 전체 값을 남긴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "토큰은 알면 권한을 얻는 값이라 로그에 쓰지 않는다. 비밀번호·세션 ID·카드 번호도 마찬가지다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logsafe-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "logging",
+        "privacy"
+      ],
+      "content": {
+        "prompt": "개인정보 일부를 가려 로그에 남기는 것을 ___ 이라 한다.",
+        "hint": "가리는 대신 해시로 남기기도 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "마스킹",
+          "masking",
+          "Masking",
+          "가림 처리"
+        ]
+      },
+      "explanation": "마스킹은 개인정보의 일부를 가려 로그를 읽는 사람이 원래 값을 알 수 없게 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logsafe-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "logging",
+        "privacy"
+      ],
+      "content": {
+        "prompt": "로그 인젝션은 ___ 형식의 구조화 로그로 막는다.",
+        "hint": "키와 값을 중괄호로 묶는 데이터 형식이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "JSON",
+          "json",
+          "Json",
+          "제이슨"
+        ]
+      },
+      "explanation": "구조화 로그(JSON)는 입력을 문자열 값으로 이스케이프해 담으므로 줄바꿈이 새 로그 줄이 되지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logsafe-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "logging",
+        "privacy"
+      ],
+      "content": {
+        "prompt": "출력값은?",
+        "code": {
+          "language": "python",
+          "source": "card = \"1234567812345678\"\nprint(\"****\" + card[-4:])"
+        },
+        "options": [
+          "1234****",
+          "****1234",
+          "****5678"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "card[-4:]는 마지막 네 자리라 앞을 가리고 5678만 남긴다. 카드 번호는 이렇게 마스킹해 남긴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logsafe-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "logging",
+        "privacy"
+      ],
+      "content": {
+        "prompt": "입력을 JSON 값으로 기록하도록 빈칸에 들어갈 것은?",
+        "code": {
+          "language": "python",
+          "source": "import json\n\ndef log_login(user):\n    print(json.___({\"event\": \"login\",\n                    \"user\": user}))"
+        },
+        "options": [
+          "loads",
+          "dumps",
+          "load"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "json.dumps는 객체를 JSON 문자열로 만들며 줄바꿈 문자를 이스케이프해 입력이 새 로그 줄이 되지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logsafe-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "logging",
+        "privacy"
+      ],
+      "content": {
+        "prompt": "로그인 실패 로그에 입력한 비밀번호가 찍힌다. 조치는?",
+        "options": [
+          "비밀번호 필드 제거",
+          "전체 값 기록",
+          "로그 레벨 상향"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "비밀번호는 로그에 쓰지 않는 값이라 실패 로그에서도 필드 자체를 뺀다.",
+      "refs": []
+    },
+    {
+      "id": "sec-logsafe-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "logging",
+        "privacy"
+      ],
+      "content": {
+        "prompt": "세션 ID는 로그에 쓰지 않는 값이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "세션 ID가 로그에 남으면 로그를 읽는 사람이 그 사용자로 행동할 수 있어 로그에 쓰지 않는다.",
+      "refs": []
+    }
+  ]
+}

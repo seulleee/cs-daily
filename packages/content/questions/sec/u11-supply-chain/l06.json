@@ -1,0 +1,227 @@
+{
+  "track": "sec",
+  "unit": "u11-supply-chain",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "sec-sbom-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "supply-chain",
+        "sbom"
+      ],
+      "content": {
+        "prompt": "소프트웨어를 이루는 구성 요소와 버전을 적은 목록은?",
+        "options": [
+          "CVE",
+          "CVSS",
+          "SBOM"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "SBOM은 소프트웨어를 이루는 구성 요소와 버전을 적은 목록이다. CVE는 취약점 식별 번호다.",
+      "refs": []
+    },
+    {
+      "id": "sec-sbom-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "supply-chain",
+        "sbom"
+      ],
+      "content": {
+        "prompt": "어떤 소스·빌드 환경에서 만들었는지 서명한 기록은?",
+        "options": [
+          "잠금 파일",
+          "시크릿 스캔",
+          "출처 증명"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "출처 증명(provenance)은 결과물이 어떤 소스와 빌드 환경에서 만들어졌는지 서명해 기록한 정보다.",
+      "refs": []
+    },
+    {
+      "id": "sec-sbom-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "supply-chain",
+        "sbom"
+      ],
+      "content": {
+        "prompt": "배포 전에 이미지가 위조됐는지 검증하는 수단은?",
+        "options": [
+          "아티팩트 서명",
+          "SBOM"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "아티팩트 서명을 검증하면 빌드 결과물이 서명 뒤 바뀌지 않았는지 확인할 수 있다. SBOM은 구성 목록이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-sbom-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "supply-chain",
+        "sbom"
+      ],
+      "content": {
+        "prompt": "SBOM은 빌드 결과물이 위조되지 않았음을 증명하는 서명이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "SBOM은 구성 요소와 버전의 목록이다. 위조 여부는 아티팩트 서명으로 검증한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-sbom-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "supply-chain",
+        "sbom"
+      ],
+      "content": {
+        "prompt": "소프트웨어 구성 요소와 버전을 적은 목록은 ___ 이다.",
+        "hint": "영문 약어 네 글자다."
+      },
+      "answer_key": {
+        "accepted": [
+          "SBOM",
+          "sbom",
+          "소프트웨어 자재 명세서"
+        ]
+      },
+      "explanation": "SBOM이 있으면 결과물에 어떤 패키지 어떤 버전이 들어 있는지 바로 확인할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-sbom-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "supply-chain",
+        "sbom"
+      ],
+      "content": {
+        "prompt": "빌드 출처 증명의 요건을 정리한 공급망 프레임워크는 ___ 이다.",
+        "hint": "provenance 요건을 단계로 나눠 정의한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "SLSA",
+          "slsa",
+          "Slsa",
+          "살사"
+        ]
+      },
+      "explanation": "SLSA는 결과물이 어떤 소스와 빌드 환경에서 만들어졌는지 출처 증명으로 남기는 요건을 정리한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-sbom-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "supply-chain",
+        "sbom"
+      ],
+      "content": {
+        "prompt": "새 CVE 공개 후 영향받는 이미지를 빨리 찾으려면?",
+        "options": [
+          "서명 재생성",
+          "SBOM 조회",
+          "로그 삭제"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SBOM에 구성 요소와 버전이 적혀 있으면 그 패키지를 쓰는 결과물을 바로 찾을 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-sbom-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "supply-chain",
+        "sbom"
+      ],
+      "content": {
+        "prompt": "서명 검증에 실패한 이미지가 배포 대기 중이다. 조치는?",
+        "options": [
+          "배포 강행",
+          "서명 검사 끄기",
+          "배포 중단"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "서명 검증 실패는 결과물이 바뀌었을 수 있다는 뜻이므로 배포를 멈추고 원인을 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-sbom-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "supply-chain",
+        "sbom"
+      ],
+      "content": {
+        "prompt": "결과물이 승인된 CI에서 빌드됐는지 확인할 것은?",
+        "options": [
+          "출처 증명",
+          "SBOM",
+          "CVSS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "출처 증명은 어떤 소스와 빌드 환경에서 만들어졌는지 서명한 기록이라 빌드 위치를 확인할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-sbom-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "supply-chain",
+        "sbom"
+      ],
+      "content": {
+        "prompt": "SBOM은 소프트웨어를 이루는 구성 요소와 버전의 목록이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "SBOM은 구성 요소와 버전을 적은 목록으로, 취약점이 공개됐을 때 영향 범위를 찾는 데 쓴다.",
+      "refs": []
+    }
+  ]
+}

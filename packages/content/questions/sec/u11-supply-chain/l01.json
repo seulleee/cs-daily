@@ -1,0 +1,229 @@
+{
+  "track": "sec",
+  "unit": "u11-supply-chain",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "sec-secrets-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "알면 권한을 얻는 API 키·DB 비밀번호 같은 값은?",
+        "options": [
+          "비밀값",
+          "로그",
+          "의존성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "API 키·DB 비밀번호·서명 키처럼 알면 그 권한을 얻는 값을 비밀값이라 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-secrets-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "비밀값을 보관했다가 실행할 때 주입하는 곳은?",
+        "options": [
+          "비밀 저장소",
+          "CDN",
+          "패키지 저장소"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Secret Manager·Vault 같은 비밀 저장소에 두고 실행할 때 환경 변수나 파일로 주입한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-secrets-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "다음 중 비밀값에 해당하는 것은?",
+        "options": [
+          "서비스 이름",
+          "포트 번호",
+          "서명 키"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "서명 키는 알면 유효한 서명을 만들 수 있어 비밀값이다. 서비스 이름·포트는 알아도 권한이 생기지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-secrets-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "secrets"
+      ],
+      "content": {
+        "prompt": ".env 파일은 팀이 함께 쓰도록 저장소에 커밋한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": ".env 같은 로컬 비밀 파일은 .gitignore에 적어 저장소에서 제외한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-secrets-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "비밀값을 소스 코드에 직접 적는 것을 ___ 이라 한다.",
+        "hint": "비밀값 관리에서 금지하는 작성 방식이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "하드코딩",
+          "하드 코딩",
+          "hardcoding",
+          "hard coding",
+          "Hardcoding",
+          "hardcode"
+        ]
+      },
+      "explanation": "비밀값을 소스 코드·설정 파일에 적어 커밋하면 저장소를 읽는 모두가 그 권한을 얻는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-secrets-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "Git이 추적하지 않을 파일을 적는 파일은 .___ 이다.",
+        "hint": "저장소 루트에 두는 숨김 파일이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "gitignore",
+          "Gitignore",
+          ".gitignore",
+          "깃이그노어"
+        ]
+      },
+      "explanation": ".gitignore에 .env 같은 로컬 비밀 파일을 적으면 실수로 커밋되지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-secrets-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "환경 변수에서 키를 읽도록 빈칸에 들어갈 것은?",
+        "code": {
+          "language": "python",
+          "source": "import os\n\napi_key = os.___[\"API_KEY\"]\nclient = Client(api_key)"
+        },
+        "options": [
+          "path",
+          "environ",
+          "getcwd"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "os.environ은 프로세스에 주입된 환경 변수를 담고 있어, 키를 코드 밖에서 받게 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-secrets-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "이 코드에서 고쳐야 할 점은?",
+        "code": {
+          "language": "python",
+          "source": "DB_HOST = \"db.internal\"\nDB_PASSWORD = \"pa55word\"\nconn = connect(DB_HOST, DB_PASSWORD)"
+        },
+        "options": [
+          "호스트 이름",
+          "함수 이름",
+          "비밀번호 하드코딩"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "DB 비밀번호가 코드에 적혀 커밋되면 저장소를 읽는 누구나 DB 권한을 얻는다. 비밀 저장소에서 주입한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-secrets-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "같은 코드를 개발·운영에 배포하고 키만 바꾸려면?",
+        "options": [
+          "환경별 값 주입",
+          "코드 분기 추가",
+          "키를 주석 처리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "비밀값을 코드에서 분리해 실행 시점에 환경마다 다른 값을 주입하면 같은 코드를 그대로 배포할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-secrets-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "DB 비밀번호는 비밀 저장소에 두고 실행할 때 주입한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "DB 비밀번호는 알면 DB 권한을 얻는 비밀값이라 Secret Manager·Vault에 두고 실행할 때 주입한다.",
+      "refs": []
+    }
+  ]
+}

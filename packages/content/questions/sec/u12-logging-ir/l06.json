@@ -1,0 +1,216 @@
+{
+  "track": "sec",
+  "unit": "u12-logging-ir",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "sec-irsteps-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "연락망·권한·플레이북을 미리 갖추는 단계는?",
+        "options": [
+          "사후 검토",
+          "준비",
+          "복구"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "준비 단계에서 연락망·권한·플레이북·로그를 갖춰야 사고가 났을 때 바로 움직일 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-irsteps-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "타임라인과 원인을 정리해 재발 방지를 정하는 단계는?",
+        "options": [
+          "탐지·분석",
+          "준비",
+          "사후 검토"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "사후 검토는 타임라인과 원인을 정리해 재발 방지 작업을 정하는 마지막 단계다.",
+      "refs": []
+    },
+    {
+      "id": "sec-irsteps-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "경보가 실제 사고인지, 범위·영향은 어떤지 보는 단계는?",
+        "options": [
+          "탐지·분석",
+          "봉쇄"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "탐지·분석은 경보가 실제 사고인지와 범위·영향을 판단하는 단계로, 봉쇄는 그다음이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-irsteps-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "사후 검토는 사고가 나기 전에 플레이북을 만드는 단계다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "플레이북을 미리 갖추는 것은 준비 단계다. 사후 검토는 사고 뒤 타임라인과 원인을 정리한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-irsteps-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "사고 대응의 첫 단계는 ___ 이다.",
+        "hint": "사고가 나기 전에 하는 단계다."
+      },
+      "answer_key": {
+        "accepted": [
+          "준비",
+          "preparation",
+          "Preparation"
+        ]
+      },
+      "explanation": "준비 단계에서 연락망·권한·플레이북·로그를 갖춰 두어야 사고 때 대응이 늦어지지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-irsteps-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "사고 확인 뒤 피해 확산을 막는 단계는 ___ 이다.",
+        "hint": "그 뒤에 제거와 복구가 이어진다."
+      },
+      "answer_key": {
+        "accepted": [
+          "봉쇄",
+          "containment",
+          "Containment"
+        ]
+      },
+      "explanation": "봉쇄는 피해가 더 번지지 않게 막는 단계이고, 이어서 원인을 제거하고 정상 상태로 복구한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-irsteps-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "침해 서버에서 원인인 악성 파일을 없애는 단계는?",
+        "options": [
+          "봉쇄",
+          "제거",
+          "준비"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "제거는 사고의 원인을 없애는 단계다. 봉쇄는 확산을 막는 것이고 원인은 그대로 남는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-irsteps-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "백업에서 서비스를 정상 상태로 되돌리는 단계는?",
+        "options": [
+          "복구",
+          "탐지·분석",
+          "사후 검토"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "복구는 원인을 제거한 뒤 서비스를 정상 상태로 되돌리는 단계다.",
+      "refs": []
+    },
+    {
+      "id": "sec-irsteps-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "사고 대응 단계 순서로 맞는 것은?",
+        "options": [
+          "탐지→준비→검토→봉쇄",
+          "봉쇄→준비→탐지→검토",
+          "준비→탐지→봉쇄→검토"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "준비, 탐지·분석, 봉쇄·제거·복구, 사후 검토 순으로 진행한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-irsteps-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "준비 단계에서 연락망과 플레이북을 미리 갖춘다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "준비 단계는 연락망·권한·플레이북·로그를 사고가 나기 전에 갖추는 단계다.",
+      "refs": []
+    }
+  ]
+}
