@@ -1,0 +1,218 @@
+{
+  "track": "sec",
+  "unit": "u13-design",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "sec-owasp-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "owasp"
+      ],
+      "content": {
+        "prompt": "웹 앱의 주요 보안 위험을 범주로 정리한 문서는?",
+        "options": [
+          "CVSS",
+          "SBOM",
+          "OWASP Top 10"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "OWASP Top 10은 웹 애플리케이션의 가장 중요한 보안 위험을 범주로 묶은 문서다. CVSS는 심각도 점수, SBOM은 구성 요소 목록이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-owasp-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "owasp"
+      ],
+      "content": {
+        "prompt": "OWASP Top 10:2025의 1위 범주는?",
+        "options": [
+          "보안 설정 오류",
+          "접근 제어 실패",
+          "암호화 실패"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "2025판 1위는 접근 제어 실패(Broken Access Control)다.",
+      "refs": []
+    },
+    {
+      "id": "sec-owasp-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "owasp"
+      ],
+      "content": {
+        "prompt": "OWASP Top 10은 한 번 정하면 바뀌지 않는 고정 목록이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Top 10은 새 데이터와 설문을 반영해 몇 년마다 개정된다. 그래서 점검표도 판에 맞춰 갱신한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-owasp-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "owasp"
+      ],
+      "content": {
+        "prompt": "2025판에서 SSRF는 접근 제어 실패 범주에 들어간다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "2025판은 SSRF를 별도 범주로 두지 않고 1위인 접근 제어 실패에 포함한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-owasp-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "owasp"
+      ],
+      "content": {
+        "prompt": "2025판 1위 범주는 ___ 제어 실패(Broken Access Control)다.",
+        "hint": "인가를 잘못 판단할 때 생기는 범주"
+      },
+      "answer_key": {
+        "accepted": [
+          "접근",
+          "access",
+          "Access",
+          "액세스"
+        ]
+      },
+      "explanation": "1위는 접근 제어 실패로, 확인된 주체가 허용 범위 밖의 자원·기능에 닿는 문제다.",
+      "refs": []
+    },
+    {
+      "id": "sec-owasp-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "owasp"
+      ],
+      "content": {
+        "prompt": "웹 보안 위험 범주 문서인 ___ Top 10은 몇 년마다 개정된다.",
+        "hint": "웹 보안 자료를 공개하는 비영리 단체 이름"
+      },
+      "answer_key": {
+        "accepted": [
+          "OWASP",
+          "owasp",
+          "오와스프",
+          "Owasp"
+        ]
+      },
+      "explanation": "OWASP Top 10은 여러 조직의 취약점 데이터와 실무자 설문을 바탕으로 몇 년마다 새 판을 낸다.",
+      "refs": []
+    },
+    {
+      "id": "sec-owasp-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "owasp"
+      ],
+      "content": {
+        "prompt": "Top 10 새 판이 나왔다. 기존 점검표는?",
+        "options": [
+          "옛 판 그대로 유지",
+          "새 판 범주로 갱신"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "범주가 개정되면 점검표도 새 판 범주에 맞춰 다시 정리해야 빠진 항목이 생기지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-owasp-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "owasp"
+      ],
+      "content": {
+        "prompt": "서버가 사용자가 준 URL로 내부 API를 호출했다. 2025판 범주는?",
+        "options": [
+          "암호화 실패",
+          "접근 제어 실패",
+          "보안 설정 오류"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이는 SSRF이고, 2025판은 SSRF를 접근 제어 실패 범주에 넣는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-owasp-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "owasp"
+      ],
+      "content": {
+        "prompt": "결제 기능을 Top 10으로 점검하는 방법은?",
+        "options": [
+          "범주마다 기능 대조",
+          "1위 범주만 확인",
+          "순위 번호 암기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Top 10은 체크리스트로 쓴다. 범주마다 결제 기능에서 해당하는 부분을 찾아 점검한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-owasp-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "owasp"
+      ],
+      "content": {
+        "prompt": "OWASP Top 10의 성격으로 맞는 것은?",
+        "options": [
+          "취약점 식별 번호",
+          "심각도 점수 체계",
+          "주요 웹 위험 범주"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Top 10은 웹 애플리케이션의 주요 보안 위험 범주 문서다. 식별 번호는 CVE, 점수 체계는 CVSS다.",
+      "refs": []
+    }
+  ]
+}

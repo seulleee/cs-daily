@@ -1,0 +1,224 @@
+{
+  "track": "sec",
+  "unit": "u04-token-auth",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "sec-pkce-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "oauth",
+        "pkce"
+      ],
+      "content": {
+        "prompt": "일회용 코드를 서버 간 요청으로 토큰과 바꾸는 흐름은?",
+        "options": [
+          "토큰 회전",
+          "인가 코드 흐름",
+          "세션 재발급"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인가 코드 흐름은 브라우저로 받은 일회용 코드를 서버 간 요청으로 토큰과 바꾼다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pkce-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "oauth",
+        "pkce"
+      ],
+      "content": {
+        "prompt": "code_challenge와 code_verifier를 맞춰 보는 방식은?",
+        "options": [
+          "PKCE",
+          "state",
+          "스코프"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "PKCE는 시작할 때 낸 code_challenge와 교환할 때 낸 code_verifier가 맞아야 토큰을 준다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pkce-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "oauth",
+        "pkce"
+      ],
+      "content": {
+        "prompt": "위조된 콜백 요청을 막는 값은?",
+        "options": [
+          "code_verifier",
+          "state"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "state는 시작할 때 만든 임의 값을 콜백에서 비교해 위조 콜백을 막는다. code_verifier는 코드 교환에 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pkce-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "oauth",
+        "pkce"
+      ],
+      "content": {
+        "prompt": "redirect_uri는 등록한 도메인 아래 아무 경로나 허용된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "redirect_uri는 미리 등록한 주소와 정확히 같을 때만 코드를 보낸다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pkce-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "oauth",
+        "pkce"
+      ],
+      "content": {
+        "prompt": "교환할 때 code_verifier를 확인하는 방식은 ___ 다."
+      },
+      "answer_key": {
+        "accepted": [
+          "PKCE",
+          "pkce",
+          "픽시"
+        ]
+      },
+      "explanation": "PKCE는 코드를 가로챈 쪽이 code_verifier를 모르면 토큰을 받지 못하게 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pkce-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "oauth",
+        "pkce"
+      ],
+      "content": {
+        "prompt": "콜백에서 시작 때 만든 임의 값과 비교하는 파라미터는 ___ 다."
+      },
+      "answer_key": {
+        "accepted": [
+          "state",
+          "State",
+          "STATE"
+        ]
+      },
+      "explanation": "state 값이 시작 때와 다르면 위조된 콜백 요청으로 보고 거부한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pkce-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "oauth",
+        "pkce"
+      ],
+      "content": {
+        "prompt": "가로챈 인가 코드만으로 토큰을 못 받게 하는 것은?",
+        "options": [
+          "state",
+          "스코프",
+          "PKCE"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "PKCE는 교환할 때 code_verifier가 맞아야 토큰을 주므로, 코드만 가로채서는 토큰을 못 받는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pkce-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "oauth",
+        "pkce"
+      ],
+      "content": {
+        "prompt": "등록 주소와 경로가 다른 redirect_uri 요청은?",
+        "options": [
+          "허용",
+          "경고 후 허용",
+          "거부"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "redirect_uri는 등록한 주소와 정확히 같아야 하므로 경로가 하나라도 다르면 거부한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pkce-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "oauth",
+        "pkce"
+      ],
+      "content": {
+        "prompt": "콜백의 state가 시작 때 값과 다르다. 처리는?",
+        "options": [
+          "요청 거부",
+          "코드 교환 진행",
+          "state 새로 생성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "state가 다르면 우리가 시작하지 않은 위조 콜백일 수 있으므로 코드를 교환하지 않고 거부한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-pkce-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "oauth",
+        "pkce"
+      ],
+      "content": {
+        "prompt": "인가 코드 흐름은 코드를 서버 간 요청으로 토큰과 바꾼다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "브라우저로는 일회용 코드만 오가고, 토큰 교환은 서버 간 요청으로 한다.",
+      "refs": []
+    }
+  ]
+}

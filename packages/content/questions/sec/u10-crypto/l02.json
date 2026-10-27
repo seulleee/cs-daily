@@ -1,0 +1,248 @@
+{
+  "track": "sec",
+  "unit": "u10-crypto",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "sec-aesgcm-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "aes"
+      ],
+      "content": {
+        "prompt": "가장 널리 쓰는 대칭키 블록 암호는?",
+        "options": [
+          "RSA",
+          "AES",
+          "SHA-256"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "AES는 가장 널리 쓰는 대칭키 블록 암호다. RSA는 공개키 암호, SHA-256은 해시다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-aesgcm-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "aes"
+      ],
+      "content": {
+        "prompt": "암호화와 변조 검출을 함께 하는 방식은?",
+        "options": [
+          "인증 암호화",
+          "인코딩",
+          "ECB 모드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인증 암호화(AEAD)는 복호화할 때 암호문이 바뀌었는지도 함께 검출한다. AES-GCM이 대표적이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-aesgcm-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "aes"
+      ],
+      "content": {
+        "prompt": "같은 블록이 같은 암호문이 되어 패턴이 드러나는 모드는?",
+        "options": [
+          "GCM",
+          "ECB"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ECB 모드는 같은 평문 블록을 같은 암호문으로 바꿔 데이터 패턴이 드러나므로 쓰지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-aesgcm-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "aes"
+      ],
+      "content": {
+        "prompt": "같은 키로 암호화할 때 같은 nonce를 다시 써도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "nonce는 암호화할 때마다 달라야 하며, 같은 키로 같은 nonce를 다시 쓰면 안전성이 무너진다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-aesgcm-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "aes"
+      ],
+      "content": {
+        "prompt": "암호화와 변조 검출을 함께 하는 인증 암호화의 영문 약자는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "AEAD",
+          "aead"
+        ]
+      },
+      "explanation": "AEAD는 Authenticated Encryption with Associated Data의 약자로, AES-GCM이 대표적이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-aesgcm-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "aes"
+      ],
+      "content": {
+        "prompt": "빈칸에 들어갈 인자 이름은?",
+        "code": {
+          "language": "python",
+          "source": "def seal(key, data):\n    aes = AESGCM(key)\n    nonce = os.urandom(12)\n    ct = aes.encrypt(___, data, None)\n    return nonce + ct"
+        },
+        "hint": "암호화할 때마다 새로 만든 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "nonce",
+          "Nonce",
+          "논스"
+        ]
+      },
+      "explanation": "AES-GCM은 암호화마다 새 nonce를 넣고, 복호화할 때 쓰도록 nonce를 암호문과 함께 저장한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-aesgcm-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "aes"
+      ],
+      "content": {
+        "prompt": "AES-GCM 복호화가 검증 오류로 실패했다. 뜻하는 것은?",
+        "options": [
+          "키 길이 부족",
+          "암호문 변조 가능성",
+          "정상 복호화"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인증 암호화는 암호문이나 태그가 바뀌면 복호화를 거부한다. 변조된 데이터로 보고 쓰지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-aesgcm-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "aes"
+      ],
+      "content": {
+        "prompt": "이미지 데이터를 ECB 모드로 암호화했다. 문제는?",
+        "options": [
+          "복호화 불가",
+          "속도 저하",
+          "패턴이 드러남"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "ECB는 같은 블록을 같은 암호문으로 바꿔 이미지 윤곽 같은 패턴이 암호문에 남는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-aesgcm-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "aes"
+      ],
+      "content": {
+        "prompt": "매번 고정 nonce로 암호화하는 코드의 수정 방향은?",
+        "options": [
+          "매번 새 nonce",
+          "키 길이 늘리기",
+          "ECB로 변경"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "같은 키로 nonce를 다시 쓰면 안 되므로 암호화할 때마다 새 nonce를 만든다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-aesgcm-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "aes"
+      ],
+      "content": {
+        "prompt": "AES-GCM은 암호화와 함께 변조 검출도 한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "AES-GCM은 인증 암호화 방식이라 기밀성과 함께 암호문 변조를 검출한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "track": "sec",
+  "unit": "u04-token-auth",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "sec-bearer-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "token",
+        "bearer"
+      ],
+      "content": {
+        "prompt": "가진 쪽을 권한자로 보는 토큰은?",
+        "options": [
+          "베어러 토큰",
+          "세션 쿠키",
+          "솔트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "베어러 토큰은 가진 쪽을 권한자로 보므로 유출되면 누구나 쓸 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-bearer-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "token",
+        "bearer"
+      ],
+      "content": {
+        "prompt": "토큰을 Bearer 방식으로 싣는 요청 헤더는?",
+        "options": [
+          "Authorization",
+          "Set-Cookie",
+          "Content-Type"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "토큰은 Authorization 헤더에 Bearer 방식으로 실어 보낸다.",
+      "refs": []
+    },
+    {
+      "id": "sec-bearer-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "token",
+        "bearer"
+      ],
+      "content": {
+        "prompt": "서버가 로그인 상태를 저장하는 방식은?",
+        "options": [
+          "자체 포함 토큰",
+          "세션"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "세션은 서버가 상태를 저장하고, 자체 포함 토큰은 정보와 서명을 토큰 안에 담는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-bearer-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "token",
+        "bearer"
+      ],
+      "content": {
+        "prompt": "베어러 토큰은 유출돼도 원래 사용자만 쓸 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "베어러 토큰은 가진 쪽을 권한자로 보므로, 유출되면 누구나 그 사용자로 요청할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-bearer-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "token",
+        "bearer"
+      ],
+      "content": {
+        "prompt": "토큰을 실어 보내는 헤더 이름은?",
+        "code": {
+          "language": "http",
+          "source": "GET /api/me HTTP/1.1\nHost: api.example.com\n___: Bearer eyJhbGciOi..."
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "Authorization",
+          "authorization",
+          "AUTHORIZATION"
+        ]
+      },
+      "explanation": "API 요청의 토큰은 Authorization 헤더에 담는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-bearer-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "token",
+        "bearer"
+      ],
+      "content": {
+        "prompt": "헤더 값 앞에 붙는 토큰 방식 이름은?",
+        "code": {
+          "language": "http",
+          "source": "GET /api/me HTTP/1.1\nHost: api.example.com\nAuthorization: ___ eyJhbGciOi..."
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "Bearer",
+          "bearer",
+          "BEARER",
+          "베어러"
+        ]
+      },
+      "explanation": "Authorization 헤더에 Bearer 방식으로 토큰을 실으면 서버는 그 토큰을 가진 쪽을 권한자로 본다.",
+      "refs": []
+    },
+    {
+      "id": "sec-bearer-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "token",
+        "bearer"
+      ],
+      "content": {
+        "prompt": "자체 포함 토큰 방식의 특징은?",
+        "options": [
+          "서명이 필요 없음",
+          "유출돼도 안전",
+          "서버 상태 저장 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "자체 포함 토큰은 정보와 서명을 토큰에 담아, 서버가 로그인 상태를 저장하지 않고 주체를 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-bearer-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "token",
+        "bearer"
+      ],
+      "content": {
+        "prompt": "로그에 Authorization 헤더가 그대로 남았다. 위험은?",
+        "options": [
+          "응답 지연",
+          "토큰 도용",
+          "헤더 손상"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "베어러 토큰은 가진 쪽이 곧 권한자이므로, 로그를 읽은 쪽이 그 토큰으로 요청할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-bearer-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "token",
+        "bearer"
+      ],
+      "content": {
+        "prompt": "토큰 방식에서 서버가 주체를 아는 근거는?",
+        "options": [
+          "요청에 실린 토큰",
+          "서버 세션 저장소",
+          "클라이언트 IP"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "자체 포함 토큰은 주체 정보와 서명을 토큰 안에 담으므로 서버는 요청의 토큰만으로 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-bearer-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "token",
+        "bearer"
+      ],
+      "content": {
+        "prompt": "베어러 토큰은 가진 쪽을 권한자로 본다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "베어러(bearer)는 소지자라는 뜻으로, 토큰을 가진 쪽이 그 권한을 그대로 쓴다.",
+      "refs": []
+    }
+  ]
+}

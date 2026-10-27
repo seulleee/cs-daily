@@ -1,0 +1,252 @@
+{
+  "track": "sec",
+  "unit": "u07-xss-csp",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "sec-fieldxss-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "incident"
+      ],
+      "content": {
+        "prompt": "댓글 XSS 신고를 받고 먼저 확인할 것은?",
+        "options": [
+          "서버 CPU 사용률",
+          "DB 백업 주기",
+          "입력이 출력된 문맥"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "입력이 본문·속성·스크립트 중 어디에 출력되는지 알아야 원인과 맞는 인코딩을 정할 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldxss-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "incident"
+      ],
+      "content": {
+        "prompt": "댓글 렌더 코드에서 찾아야 할 원인은?",
+        "options": [
+          "innerHTML 사용",
+          "긴 함수 이름",
+          "주석 부족"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "innerHTML·이스케이프 우회 API·인코딩 누락이 입력을 HTML로 해석하게 하는 원인 코드다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldxss-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "incident"
+      ],
+      "content": {
+        "prompt": "댓글이 DB에 저장된 뒤 열람자마다 실행됐다. 유형은?",
+        "options": [
+          "반사형",
+          "저장형"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DB에 저장된 입력이 열람자마다 실행되면 저장형이라 이미 저장된 데이터의 출력도 점검한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldxss-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "incident"
+      ],
+      "content": {
+        "prompt": "신고된 댓글 하나를 지우면 XSS 조치가 끝난다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "원인 코드와 다른 저장된 댓글이 그대로 남는다. 원인 코드를 고치고 저장된 데이터의 출력도 확인한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldxss-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xss",
+        "incident"
+      ],
+      "content": {
+        "prompt": "이 렌더 함수를 안전하게 고치려면 빈칸에 들어갈 속성은?",
+        "code": {
+          "language": "javascript",
+          "source": "function renderComment(el, comment) {\n  el.___ = comment.body;\n}"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "textContent",
+          "textcontent"
+        ]
+      },
+      "explanation": "textContent는 댓글을 글자로만 넣으므로 마크업이 있어도 실행되지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldxss-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "incident"
+      ],
+      "content": {
+        "prompt": "입력이 본문·속성·스크립트 중 어디에 출력되는지, 즉 출력 ___을 먼저 본다."
+      },
+      "answer_key": {
+        "accepted": [
+          "문맥",
+          "컨텍스트",
+          "context",
+          "Context"
+        ]
+      },
+      "explanation": "출력 문맥에 따라 인코딩 규칙이 달라서 재현 위치의 문맥부터 확인한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldxss-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "incident"
+      ],
+      "content": {
+        "prompt": "저장형으로 확인됐다. 원인 코드 수정 뒤 확인할 것은?",
+        "options": [
+          "기존 댓글 출력 인코딩",
+          "서버 재부팅 여부",
+          "로그 보관 기간"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "이미 저장된 댓글도 출력할 때 인코딩되는지 확인해야 남은 데이터로 다시 실행되지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldxss-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "incident"
+      ],
+      "content": {
+        "prompt": "추가 방어로 nonce CSP를 켜는 순서는?",
+        "options": [
+          "바로 차단 모드",
+          "unsafe-inline",
+          "Report-Only 먼저"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Report-Only로 위반을 먼저 모아 정상 기능이 막히지 않는지 본 뒤 차단 모드로 켠다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldxss-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "incident"
+      ],
+      "content": {
+        "prompt": "Vue 댓글 템플릿을 점검했다. 원인으로 볼 부분은?",
+        "code": {
+          "language": "html",
+          "source": "<div class=\"comment\">\n  <p v-html=\"comment.body\"></p>\n</div>"
+        },
+        "options": [
+          "div 태그",
+          "v-html 사용",
+          "comment.body 이름"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "v-html은 자동 이스케이프를 건너뛰는 이스케이프 우회 API라 댓글이 HTML로 해석된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldxss-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xss",
+        "incident"
+      ],
+      "content": {
+        "prompt": "XSS 조치에서 CSP는 출력 인코딩을 보완하는 추가 방어로 둔다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "원인은 인코딩 누락·위험한 API를 고쳐 없애고, CSP는 놓친 곳의 피해를 줄이는 추가 방어로 둔다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "track": "sec",
+  "unit": "u09-ssrf-upload",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "sec-xxe-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xxe",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "XML 외부 엔티티가 서버 파일·내부 URL을 읽어 오는 취약점은?",
+        "options": [
+          "XXE",
+          "SSRF",
+          "XSS"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "XXE는 XML 외부 엔티티를 처리하는 파서가 서버 파일이나 내부 URL의 내용을 읽어 오는 취약점이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xxe-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xxe",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "작은 압축 파일이 풀리며 디스크·메모리를 고갈시키는 것은?",
+        "options": [
+          "XXE",
+          "DNS 재바인딩",
+          "압축 폭탄"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "압축 폭탄은 압축된 크기는 작지만 풀린 크기가 매우 커서 서버 자원을 바닥낸다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xxe-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xxe",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "XXE를 막는 XML 파서 설정은?",
+        "options": [
+          "들여쓰기 끄기",
+          "DTD·외부 엔티티 끄기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "XML 파서에서 DTD와 외부 엔티티 처리를 끄면 외부 파일·URL을 읽어 오지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xxe-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xxe",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "업로드 크기만 제한하면 압축 폭탄도 막힌다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "압축 폭탄은 업로드 크기는 작고 풀린 크기가 크다. 풀린 크기를 따로 제한해야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xxe-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "xxe",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "XML 외부 엔티티 취약점의 영문 약자는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "XXE",
+          "xxe"
+        ]
+      },
+      "explanation": "XXE는 XML External Entity의 약자로, 파서 설정에서 외부 엔티티 처리를 끄는 것으로 막는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xxe-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xxe",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "압축 폭탄은 압축을 푼 뒤의 ___ 를 제한해 막는다."
+      },
+      "answer_key": {
+        "accepted": [
+          "크기",
+          "size",
+          "용량"
+        ]
+      },
+      "explanation": "업로드 크기와 별개로 풀린 크기 상한을 두고, 넘으면 풀기를 멈춘다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xxe-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xxe",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "외부 엔티티 처리를 끄려면 빈칸에 들어갈 값은?",
+        "code": {
+          "language": "python",
+          "source": "from lxml import etree\n\nparser = etree.XMLParser(\n    resolve_entities=___,\n    no_network=True,\n)\ntree = etree.fromstring(data, parser)"
+        },
+        "options": [
+          "True",
+          "False"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "resolve_entities=False로 엔티티를 풀지 않게 하면 외부 파일·URL을 읽어 오는 XXE를 막는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xxe-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xxe",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "SVG 업로드를 받는다. 함께 점검할 위험은?",
+        "options": [
+          "세션 고정",
+          "XXE"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SVG는 XML이라 파서가 외부 엔티티를 처리하면 XXE가 생길 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xxe-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xxe",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "docx 업로드를 풀었더니 메모리가 바닥났다. 원인은?",
+        "options": [
+          "압축 폭탄",
+          "XXE",
+          "SSRF"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "docx는 XML 파일을 압축한 묶음이라, 풀린 크기를 제한하지 않으면 압축 폭탄으로 자원이 고갈된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-xxe-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "xxe",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "XXE가 있으면 서버가 내부 URL의 내용을 읽어 올 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "외부 엔티티는 파일 경로뿐 아니라 URL에서도 값을 가져오므로 내부 URL까지 읽힐 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

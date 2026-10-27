@@ -1,0 +1,257 @@
+{
+  "track": "sec",
+  "unit": "u08-csrf-cors",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "sec-corscred-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cors",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "쿠키를 포함한 요청의 응답을 읽게 하는 헤더의 빈칸은?",
+        "code": {
+          "language": "http",
+          "source": "Access-Control-Allow-___: true"
+        },
+        "options": [
+          "Methods",
+          "Headers",
+          "Credentials"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Access-Control-Allow-Credentials: true면 쿠키를 포함한 요청의 응답을 페이지가 읽을 수 있다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-corscred-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cors",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "출처마다 다른 응답을 캐시가 섞지 않게 하는 헤더는?",
+        "options": [
+          "Vary: Origin",
+          "ETag",
+          "Age"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Vary: Origin은 Origin 값에 따라 응답이 다르다고 알려 캐시가 출처별로 따로 저장하게 한다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-corscred-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cors",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "Allow-Credentials가 true면 Allow-Origin에 못 쓰는 값은?",
+        "options": [
+          "https://a.com",
+          "*"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "자격 증명을 포함한 응답에는 Allow-Origin에 *를 쓸 수 없고 출처를 정확히 적어야 한다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-corscred-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cors",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "요청의 Origin을 그대로 Allow-Origin에 되돌리면 모든 출처 허용과 같다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "Origin 반사는 어떤 출처가 와도 그 출처를 허용하므로 모든 출처를 허용하는 것과 같다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-corscred-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cors",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "캐시가 출처별 응답을 섞지 않게 하는 빈칸은?",
+        "code": {
+          "language": "http",
+          "source": "HTTP/1.1 200 OK\nAccess-Control-Allow-Origin: https://a.com\nAccess-Control-Allow-Credentials: true\nVary: ___"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "Origin",
+          "origin"
+        ]
+      },
+      "explanation": "Vary: Origin을 보내면 캐시가 Origin 값마다 응답을 따로 저장한다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-corscred-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cors",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "허용할 출처는 ___ 목록에 두고 정확히 일치할 때만 응답한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "허용",
+          "허용 목록",
+          "allowlist",
+          "allow list",
+          "화이트리스트",
+          "whitelist"
+        ]
+      },
+      "explanation": "허용 목록과 정확히 일치하는 출처만 Allow-Origin에 넣고 나머지는 허용하지 않는다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-corscred-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cors",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "이 CORS 코드의 문제는?",
+        "code": {
+          "language": "javascript",
+          "source": "const origin = req.get(\"Origin\");\nres.set(\"Access-Control-Allow-Origin\", origin);\nres.set(\"Access-Control-Allow-Credentials\",\n  \"true\");"
+        },
+        "options": [
+          "Origin 반사",
+          "메서드 미지정",
+          "문제 없음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "요청 Origin을 그대로 되돌려 쿠키 포함 응답을 모든 출처에 허용한다. 허용 목록과 비교해야 한다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-corscred-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cors",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "허용 목록에 null 출처를 넣자는 제안. 판단은?",
+        "options": [
+          "허용하지 않는다",
+          "허용한다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "null 출처는 허용하지 않는다. 허용 목록에는 정확히 일치시킬 실제 출처만 둔다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-corscred-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cors",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "출처별 Allow-Origin 응답이 캐시에서 섞였다. 빠진 것은?",
+        "options": [
+          "Allow-Methods",
+          "Vary: Origin",
+          "Set-Cookie"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Vary: Origin이 없으면 캐시가 한 출처용 응답을 다른 출처 요청에도 돌려줄 수 있다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-corscred-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cors",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "Allow-Credentials가 true여도 Allow-Origin에 *를 쓸 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "Allow-Credentials가 true면 Allow-Origin에 *를 쓸 수 없고 허용할 출처를 정확히 적는다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    }
+  ]
+}

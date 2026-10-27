@@ -1,0 +1,230 @@
+{
+  "track": "sec",
+  "unit": "u04-token-auth",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "sec-tokenlife-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "token",
+        "refresh-token"
+      ],
+      "content": {
+        "prompt": "API 호출에 쓰는 짧게 만료되는 토큰은?",
+        "options": [
+          "리프레시 토큰",
+          "액세스 토큰",
+          "세션 ID"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "액세스 토큰은 API 호출에 쓰며 폐기가 어려워 수명을 짧게 둔다.",
+      "refs": []
+    },
+    {
+      "id": "sec-tokenlife-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "token",
+        "refresh-token"
+      ],
+      "content": {
+        "prompt": "새 액세스 토큰을 받는 데만 쓰는 토큰은?",
+        "options": [
+          "리프레시 토큰",
+          "액세스 토큰",
+          "베어러 헤더"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "리프레시 토큰은 새 액세스 토큰을 받는 데만 쓰는 긴 수명 토큰이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-tokenlife-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "token",
+        "refresh-token"
+      ],
+      "content": {
+        "prompt": "수명을 길게 두는 쪽은?",
+        "options": [
+          "액세스 토큰",
+          "리프레시 토큰"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "액세스 토큰은 짧게, 리프레시 토큰은 길게 둔다.",
+      "refs": []
+    },
+    {
+      "id": "sec-tokenlife-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "token",
+        "refresh-token"
+      ],
+      "content": {
+        "prompt": "옛 리프레시 토큰이 다시 쓰이면 탈취로 본다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "토큰 회전에서는 쓴 리프레시 토큰이 바로 바뀌므로, 옛 토큰이 다시 오면 누군가 복사해 간 것으로 본다.",
+      "refs": []
+    },
+    {
+      "id": "sec-tokenlife-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "token",
+        "refresh-token"
+      ],
+      "content": {
+        "prompt": "리프레시마다 새 리프레시 토큰을 주는 것은 토큰 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "회전",
+          "rotation",
+          "Rotation",
+          "로테이션"
+        ]
+      },
+      "explanation": "토큰 회전은 리프레시할 때마다 새 리프레시 토큰을 주고 옛 토큰의 재사용을 탈취로 본다.",
+      "refs": []
+    },
+    {
+      "id": "sec-tokenlife-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "token",
+        "refresh-token"
+      ],
+      "content": {
+        "prompt": "API 호출에 쓰는 짧은 수명 토큰은 ___ 토큰이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "액세스",
+          "access",
+          "Access",
+          "엑세스"
+        ]
+      },
+      "explanation": "액세스 토큰은 중간에 폐기하기 어려워 수명을 짧게 두고, 리프레시 토큰으로 다시 받는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-tokenlife-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "token",
+        "refresh-token"
+      ],
+      "content": {
+        "prompt": "브라우저에서 토큰을 두기 더 안전한 곳은?",
+        "options": [
+          "localStorage",
+          "URL 쿼리",
+          "HttpOnly 쿠키"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "localStorage는 페이지 스크립트가 읽을 수 있어, 스크립트가 읽지 못하는 HttpOnly 쿠키가 더 안전하다.",
+      "refs": []
+    },
+    {
+      "id": "sec-tokenlife-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "token",
+        "refresh-token"
+      ],
+      "content": {
+        "prompt": "이미 쓴 리프레시 토큰이 또 들어왔다. 판단은?",
+        "options": [
+          "정상 재시도",
+          "탈취 의심",
+          "시계 오차"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "회전 방식에서 옛 리프레시 토큰의 재사용은 탈취 신호로 보고 처리한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-tokenlife-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "token",
+        "refresh-token"
+      ],
+      "content": {
+        "prompt": "스크립트가 리프레시 토큰을 못 읽게 할 빈칸은?",
+        "code": {
+          "language": "http",
+          "source": "HTTP/1.1 200 OK\nSet-Cookie: rt=k3J9xQ2v; Secure; ___"
+        },
+        "options": [
+          "Max-Age",
+          "Domain",
+          "HttpOnly"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "HttpOnly 쿠키에 두면 페이지 스크립트가 토큰을 읽을 수 없다.",
+      "refs": []
+    },
+    {
+      "id": "sec-tokenlife-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "token",
+        "refresh-token"
+      ],
+      "content": {
+        "prompt": "액세스 토큰은 폐기가 쉬워 수명을 길게 둔다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "액세스 토큰은 발급 뒤 중간에 폐기하기 어려워 수명을 짧게 둔다.",
+      "refs": []
+    }
+  ]
+}

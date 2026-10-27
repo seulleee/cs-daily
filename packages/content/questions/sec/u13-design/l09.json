@@ -1,0 +1,227 @@
+{
+  "track": "sec",
+  "unit": "u13-design",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "sec-capstone-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "review",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "새 API 출시 전 점검에서 가장 먼저 하는 활동은?",
+        "options": [
+          "위협 모델링",
+          "로깅·알림",
+          "의존성 점검"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "출시 전 순서는 위협 모델링으로 범위를 잡은 뒤 인증·인가, 입력 처리로 이어진다.",
+      "refs": []
+    },
+    {
+      "id": "sec-capstone-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "review",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "1위 범주를 고려해 가장 먼저 볼 항목은?",
+        "options": [
+          "로그 보관 기간",
+          "엔드포인트 권한 검사",
+          "응답 압축"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "접근 제어 실패가 1위 범주이므로 모든 엔드포인트의 권한 검사부터 본다.",
+      "refs": []
+    },
+    {
+      "id": "sec-capstone-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "review",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "IAM 권한·보안 그룹 설정은 어떤 기준으로 점검하나?",
+        "options": [
+          "CVSS 점수",
+          "OWASP 순위",
+          "AWS 트랙 기준"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "IAM 권한·보안 그룹·KMS 설정 같은 클라우드 설정은 AWS 트랙의 기준으로 점검한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-capstone-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "review",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "출시 전 점검에서 로깅·알림은 위협 모델링보다 먼저 본다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "순서는 위협 모델링 → 인증·인가 → 입력 처리 → 비밀값·의존성 → 로깅·알림이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-capstone-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "review",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "출시 전 점검 순서의 첫 단계는 위협 ___ 이다.",
+        "hint": "설계 단계에서 공격 지점을 정리하는 활동"
+      },
+      "answer_key": {
+        "accepted": [
+          "모델링",
+          "modeling",
+          "modelling",
+          "모델링 작업"
+        ]
+      },
+      "explanation": "위협 모델링으로 무엇을 지키고 어디서 공격받을지 정리해야 다음 점검의 범위가 정해진다.",
+      "refs": []
+    },
+    {
+      "id": "sec-capstone-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "review",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "IAM·보안 그룹·KMS 설정은 ___ 트랙 기준으로 점검한다.",
+        "hint": "클라우드 서비스 이름"
+      },
+      "answer_key": {
+        "accepted": [
+          "AWS",
+          "aws"
+        ]
+      },
+      "explanation": "클라우드 설정 세부 기준은 AWS 트랙 몫이고, 여기서는 그 기준으로 점검한다고 연결한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-capstone-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "review",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "주문 API 위협 모델링을 마쳤다. 다음 점검은?",
+        "options": [
+          "로깅·알림",
+          "인증·인가",
+          "비밀값·의존성"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "위협 모델링 다음은 인증·인가다. 1위 범주인 접근 제어부터 확인하는 순서다.",
+      "refs": []
+    },
+    {
+      "id": "sec-capstone-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "review",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "주문 API의 입력 처리 점검을 마쳤다. 다음 단계는?",
+        "options": [
+          "비밀값·의존성",
+          "위협 모델링",
+          "인증·인가"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "입력 처리 다음은 비밀값·의존성이고, 마지막이 로깅·알림이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-capstone-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "review",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "출시 전날, 경보를 받을 담당자가 정해지지 않았다. 판단은?",
+        "options": [
+          "그대로 출시",
+          "로그 끄기",
+          "연락망부터 준비"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "출시 후를 위해 탐지 규칙과 사고 대응 연락망이 준비됐는지 확인한다. 없으면 경보가 와도 대응하지 못한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-capstone-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "review",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "출시 전 점검은 위협 모델링으로 시작해 로깅·알림으로 끝난다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "위협 모델링 → 인증·인가 → 입력 처리 → 비밀값·의존성 → 로깅·알림 순서로 본다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "track": "sec",
+  "unit": "u01-basics",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "sec-fieldbasics-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "review",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "새 파일 업로드 기능 보안 점검에서 먼저 할 일은?",
+        "options": [
+          "성능 측정",
+          "입력 지점 찾기",
+          "디자인 검토"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "먼저 새 기능이 받는 요청·파라미터·파일을 모두 찾아 신뢰 경계 입력으로 본다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldbasics-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "review",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "새 기능이 받는 파라미터와 파일은 무엇으로 보나?",
+        "options": [
+          "신뢰 경계 입력",
+          "내부 상수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "외부에서 들어오는 요청·파라미터·파일은 모두 신뢰 경계를 넘는 입력이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldbasics-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "review",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "화면에서 숨긴 삭제 버튼의 API는 서버에서 어떻게 하나?",
+        "options": [
+          "다시 검사",
+          "검사 생략"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "화면에서 막은 동작도 요청은 직접 보낼 수 있으므로 서버에서 다시 검사한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldbasics-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "review",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "화면에서 막은 동작은 서버에서 다시 검사하지 않아도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "화면 제한은 요청을 막지 못하므로 서버에서 권한과 입력을 다시 검사한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldbasics-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "review",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "새 기능이 쓰는 토큰이 최소 ___ 인지 확인한다.",
+        "hint": "필요한 것만 주는 원칙이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "권한",
+          "privilege",
+          "Privilege"
+        ]
+      },
+      "explanation": "새 기능의 계정·토큰은 꼭 필요한 권한만 가진 최소 권한이어야 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldbasics-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "review",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "새로 연 엔드포인트가 기본 ___ 인지 확인한다.",
+        "hint": "명시적으로 허용한 것만 통과한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "거부",
+          "deny",
+          "Deny",
+          "차단"
+        ]
+      },
+      "explanation": "새 엔드포인트는 명시적으로 허용한 것만 통과하는 기본 거부여야 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldbasics-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "review",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "화면엔 내 글에만 삭제 버튼이 있다. 이 API의 문제는?",
+        "code": {
+          "language": "python",
+          "source": "@app.delete(\"/posts/<pid>\")\ndef delete_post(pid):\n    post = Post.get(pid)\n    post.delete()\n    return \"\", 204"
+        },
+        "options": [
+          "응답 형식 오류",
+          "서버 측 검사 없음",
+          "로그 과다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "서버가 글 작성자와 요청자를 비교하지 않아 다른 사람 글도 지울 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldbasics-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "review",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "새 리포트 기능이 관리자 DB 계정을 쓴다. 조치는?",
+        "options": [
+          "그대로 사용",
+          "비밀번호만 변경",
+          "전용 읽기 계정"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "조회 기능에는 읽기 권한만 가진 전용 계정을 주어 최소 권한을 지킨다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldbasics-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "review",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "점검 중 /debug 엔드포인트가 공개돼 있다. 조치는?",
+        "options": [
+          "끄거나 비공개",
+          "문서에 추가",
+          "캐시 적용"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "새로 연 엔드포인트는 기본 거부·비공개여야 하므로 쓰지 않으면 끄고, 필요하면 비공개로 둔다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldbasics-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "review",
+        "troubleshooting"
+      ],
+      "content": {
+        "prompt": "새 기능의 요청 파라미터는 모두 신뢰 경계 입력으로 본다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "외부에서 오는 파라미터는 모두 신뢰 경계를 넘는 입력이므로 서버에서 검사한다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "track": "sec",
+  "unit": "u10-crypto",
+  "lesson": "l09",
+  "questions": [
+    {
+      "id": "sec-fieldcrypto-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "code-review"
+      ],
+      "content": {
+        "prompt": "되돌려 써야 하는 카드 번호를 저장한다. 맞는 방식은?",
+        "options": [
+          "비밀번호 해시",
+          "인증 암호화",
+          "Base64"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "되돌려야 하는 데이터는 인증 암호화로 저장한다. 해시는 되돌릴 수 없고 Base64는 보호가 아니다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcrypto-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "code-review"
+      ],
+      "content": {
+        "prompt": "비밀번호 저장에 맞는 방식은?",
+        "options": [
+          "비밀번호 해시",
+          "인증 암호화",
+          "HMAC"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "비밀번호는 되돌릴 필요가 없으므로 비밀번호 해시로 저장한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcrypto-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "code-review"
+      ],
+      "content": {
+        "prompt": "Base64로 바꾼 주민번호를 암호화됐다고 적었다. 판단은?",
+        "options": [
+          "암호화 맞음",
+          "암호화 아님"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Base64는 키 없이 누구나 되돌리는 인코딩이라 암호화로 보지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcrypto-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "code-review"
+      ],
+      "content": {
+        "prompt": "사내 API라면 인증서 검증을 꺼 둬도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "사내 구간에서도 가로채기가 생길 수 있어 인증서 검증을 끈 코드는 되돌린다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcrypto-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "code-review"
+      ],
+      "content": {
+        "prompt": "웹훅 본문의 무결성을 비밀키로 확인하는 값은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "HMAC",
+          "hmac"
+        ]
+      },
+      "explanation": "무결성 확인에는 공유한 비밀키로 만든 HMAC을 쓴다. 해시만으로는 바꾼 본문을 검출하지 못한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcrypto-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "code-review"
+      ],
+      "content": {
+        "prompt": "코드에 박힌 키를 찾으면 KMS로 옮기고 키를 ___ 한다.",
+        "hint": "옛 키 대신 새 키로 바꾸는 일"
+      },
+      "answer_key": {
+        "accepted": [
+          "교체",
+          "rotate",
+          "로테이션",
+          "순환"
+        ]
+      },
+      "explanation": "코드에 있던 키는 이미 노출됐다고 보고, 비밀 저장소로 옮긴 뒤 새 키로 바꾼다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcrypto-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "code-review"
+      ],
+      "content": {
+        "prompt": "리뷰에서 이 코드를 봤다. 수정 방향은?",
+        "code": {
+          "language": "python",
+          "source": "import requests\n\ndef call_internal(url):\n    return requests.get(\n        url, verify=False, timeout=5)"
+        },
+        "options": [
+          "timeout 늘리기",
+          "인증서 검증 켜기",
+          "그대로 둠"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "verify=False는 인증서 검증을 꺼 가로채기를 막지 못한다. 사내 API라도 검증을 켠다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcrypto-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "code-review"
+      ],
+      "content": {
+        "prompt": "이 코드에서 먼저 고칠 점은?",
+        "code": {
+          "language": "python",
+          "source": "SECRET_KEY = b\"example-key-not-real\"\n\ndef encrypt(data):\n    return aead_seal(SECRET_KEY, data)"
+        },
+        "options": [
+          "함수 이름",
+          "반환 형식",
+          "코드에 박힌 키"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "키가 코드 저장소에 있으면 저장소를 읽은 누구나 복호화한다. KMS·비밀 저장소로 옮기고 교체한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcrypto-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "code-review"
+      ],
+      "content": {
+        "prompt": "웹훅 본문이 바뀌지 않았는지 확인하려 한다. 맞는 것은?",
+        "options": [
+          "HMAC",
+          "Base64",
+          "디스크 암호화"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "무결성 확인에는 HMAC을 쓴다. Base64는 인코딩, 디스크 암호화는 저장 장치 보호다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcrypto-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "code-review"
+      ],
+      "content": {
+        "prompt": "비밀번호는 비밀번호 해시로, 되돌릴 데이터는 인증 암호화로 저장한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "용도에 맞춰 비밀번호는 해시, 되돌려야 하는 데이터는 인증 암호화, 무결성은 HMAC을 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

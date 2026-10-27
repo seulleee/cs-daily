@@ -1,0 +1,262 @@
+{
+  "track": "sec",
+  "unit": "u07-xss-csp",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "sec-csp-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "csp",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "페이지가 불러올 자원의 출처를 제한하는 응답 헤더는?",
+        "options": [
+          "HSTS",
+          "Set-Cookie",
+          "CSP"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "CSP(Content-Security-Policy)는 응답 헤더로 페이지가 불러올 자원의 출처를 제한한다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csp-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "csp",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "스크립트를 실행해도 되는 출처를 정하는 CSP 지시어는?",
+        "options": [
+          "script-src",
+          "img-src",
+          "font-src"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "script-src는 스크립트를 실행해도 되는 출처를 정하는 지시어다. img-src·font-src는 다른 자원용이다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csp-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "csp",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "출력 인코딩과 CSP의 관계로 맞는 것은?",
+        "options": [
+          "CSP가 인코딩 대체",
+          "CSP는 두 번째 방어선"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "CSP는 인코딩이 빠진 곳에서 피해를 줄이는 두 번째 방어선이며 인코딩을 대신하지 않는다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csp-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "csp",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "script-src를 정하면 인라인 스크립트는 실행되지 않는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "script-src(또는 default-src)를 정하면 HTML 안에 직접 쓴 인라인 스크립트가 기본으로 막힌다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csp-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "csp",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "CSP는 서버가 브라우저에 ___ 헤더로 보낸다."
+      },
+      "answer_key": {
+        "accepted": [
+          "응답",
+          "응답 헤더",
+          "response",
+          "Response",
+          "HTTP 응답"
+        ]
+      },
+      "explanation": "CSP는 Content-Security-Policy 응답 헤더로 전달되어 브라우저가 그 페이지에 정책을 적용한다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csp-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "csp",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "CSP 헤더 이름을 완성하는 빈칸은?",
+        "code": {
+          "language": "http",
+          "source": "HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Security-___: script-src 'self'"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "Policy",
+          "policy"
+        ]
+      },
+      "explanation": "CSP의 헤더 이름은 Content-Security-Policy이며 값에 script-src 같은 지시어를 적는다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csp-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "csp",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "스크립트 출처를 자기 출처로 제한하려면 빈칸은?",
+        "code": {
+          "language": "http",
+          "source": "Content-Security-Policy: ___ 'self'"
+        },
+        "options": [
+          "script-src",
+          "img-src",
+          "media-src"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "script-src 'self'는 같은 출처의 스크립트만 실행을 허용한다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csp-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "csp",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "CSP를 켰더니 HTML 안 인라인 스크립트가 멈췄다. 원인은?",
+        "options": [
+          "브라우저 버그",
+          "캐시 만료",
+          "script-src 설정"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "script-src를 정하면 인라인 스크립트가 실행되지 않는다. 정책이 의도대로 동작한 결과다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csp-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "csp",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "default-src만 정한 페이지의 인라인 스크립트는?",
+        "options": [
+          "실행된다",
+          "실행되지 않는다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "script-src가 없으면 default-src가 스크립트에도 적용되어 인라인 스크립트가 막힌다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csp-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "csp",
+        "http-header"
+      ],
+      "content": {
+        "prompt": "CSP를 적용하면 출력 인코딩을 빼도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "CSP는 인코딩을 대신하지 않는 두 번째 방어선이라 출력 인코딩은 그대로 유지한다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

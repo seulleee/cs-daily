@@ -1,0 +1,235 @@
+{
+  "track": "sec",
+  "unit": "u11-supply-chain",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "sec-leak-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "secrets",
+        "secret-scan"
+      ],
+      "content": {
+        "prompt": "커밋에서 키 형식 문자열을 찾아 경고하는 검사는?",
+        "options": [
+          "시크릿 스캔",
+          "부하 테스트",
+          "코드 포맷팅"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "시크릿 스캔은 커밋·저장소에서 키 형식의 문자열을 찾아 경고해 유출을 일찍 알린다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leak-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "secrets",
+        "secret-scan"
+      ],
+      "content": {
+        "prompt": "키가 커밋됐을 때 가장 먼저 할 일은?",
+        "options": [
+          "커밋 되돌리기",
+          "저장소 이름 변경",
+          "키 폐기·재발급"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "커밋을 지워도 이력·포크·캐시에 남을 수 있어, 먼저 그 키를 폐기하고 새로 발급한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leak-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "secrets",
+        "secret-scan"
+      ],
+      "content": {
+        "prompt": "커밋을 지운 뒤에도 키가 남아 있을 수 있는 곳은?",
+        "options": [
+          "새 브랜치 이름",
+          "빈 디렉터리",
+          "포크와 캐시"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "커밋을 지워도 Git 이력·포크·캐시에 사본이 남을 수 있어 삭제만으로는 유출이 끝나지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leak-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "secrets",
+        "secret-scan"
+      ],
+      "content": {
+        "prompt": "유출된 커밋을 강제 푸시로 지우면 그 키를 계속 써도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "이력·포크·캐시에 남은 사본을 누군가 이미 가져갔을 수 있으므로 키를 폐기하고 새로 발급한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leak-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "secrets",
+        "secret-scan"
+      ],
+      "content": {
+        "prompt": "커밋에서 키 형식 문자열을 찾는 검사는 시크릿 ___ 이다.",
+        "hint": "커밋 전이나 CI에서 자동으로 돌린다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스캔",
+          "스캐닝",
+          "scan",
+          "scanning",
+          "Scan"
+        ]
+      },
+      "explanation": "시크릿 스캔은 커밋과 저장소를 검사해 키 형식의 문자열이 들어가면 경고한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leak-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "secrets",
+        "secret-scan"
+      ],
+      "content": {
+        "prompt": "유출된 키는 커밋을 지우기보다 먼저 ___ 하고 새로 발급한다.",
+        "hint": "그 키로 더는 인증되지 않게 만드는 조치다."
+      },
+      "answer_key": {
+        "accepted": [
+          "폐기",
+          "무효화",
+          "revoke",
+          "철회",
+          "취소"
+        ]
+      },
+      "explanation": "키를 폐기하면 이력에 남은 사본도 쓸모가 없어진다. 그다음 새 키를 발급해 배포한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leak-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "secrets",
+        "secret-scan"
+      ],
+      "content": {
+        "prompt": "이 코드에서 지워야 할 줄은?",
+        "code": {
+          "language": "python",
+          "source": "def call_api(url, token):\n    log.info(\"calling %s\", url)\n    log.info(\"token=%s\", token)\n    return http.get(url, token=token)"
+        },
+        "options": [
+          "url 로그 줄",
+          "token 로그 줄",
+          "return 줄"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "토큰을 로그에 출력하면 로그를 읽는 사람 누구나 그 권한을 얻는다. 비밀값은 로그에 쓰지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leak-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "secrets",
+        "secret-scan"
+      ],
+      "content": {
+        "prompt": "공개 저장소에 키가 1분간 노출됐다가 지워졌다. 할 일은?",
+        "options": [
+          "그대로 둔다",
+          "저장소 비공개 전환",
+          "키 폐기·재발급"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "노출 시간이 짧아도 이력·포크·캐시에 사본이 남을 수 있으므로 키를 폐기하고 새로 발급한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leak-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "secrets",
+        "secret-scan"
+      ],
+      "content": {
+        "prompt": "DB 연결 오류 메시지에 비밀번호가 찍힌다. 조치는?",
+        "options": [
+          "오류에서 비밀번호 제거",
+          "오류 로그 확대",
+          "비밀번호 길이 증가"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "비밀값은 로그·오류 메시지에 출력하지 않는다. 오류에는 원인만 남기고 값은 뺀다.",
+      "refs": []
+    },
+    {
+      "id": "sec-leak-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "secrets",
+        "secret-scan"
+      ],
+      "content": {
+        "prompt": "시크릿 스캔은 커밋에 들어간 키 형식 문자열을 찾아 경고한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "시크릿 스캔은 커밋·저장소에서 키 형식의 문자열을 찾아, 유출된 키를 일찍 발견하게 한다.",
+      "refs": []
+    }
+  ]
+}

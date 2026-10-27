@@ -1,0 +1,246 @@
+{
+  "track": "sec",
+  "unit": "u09-ssrf-upload",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "sec-ssrftoctou-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "ssrf",
+        "dns"
+      ],
+      "content": {
+        "prompt": "검사할 때와 연결할 때 같은 이름이 다른 IP로 해석되게 하는 기법은?",
+        "options": [
+          "IP 고정",
+          "DNS 재바인딩",
+          "목적지 허용 목록"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DNS 재바인딩은 검사 시점과 연결 시점의 해석 결과를 다르게 만들어 IP 검사를 빠져나가는 기법이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrftoctou-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "ssrf",
+        "dns"
+      ],
+      "content": {
+        "prompt": "이름을 한 번 해석해 검사한 그 IP로 연결하는 대책은?",
+        "options": [
+          "IP 고정",
+          "DNS 재바인딩",
+          "문자열 비교"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "IP 고정은 해석·검사한 IP를 그대로 연결에 써서 연결 시점의 재해석을 없앤다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrftoctou-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "ssrf",
+        "dns"
+      ],
+      "content": {
+        "prompt": "URL의 호스트를 비교하는 방법으로 맞는 것은?",
+        "options": [
+          "문자열 그대로 비교",
+          "표준 파서로 나눠 비교"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "같은 주소도 표기가 여러 가지라 문자열 비교는 빠져나가기 쉽다. 표준 파서로 나눈 호스트를 비교한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrftoctou-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "ssrf",
+        "dns"
+      ],
+      "content": {
+        "prompt": "DNS 재바인딩은 검사 시점과 연결 시점의 해석 결과 차이를 노린다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "TTL이 지나면 이름을 다시 조회하므로, 검사와 연결 사이에 다른 IP가 돌아오게 할 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrftoctou-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "ssrf",
+        "dns"
+      ],
+      "content": {
+        "prompt": "검사한 IP로 그대로 연결하는 대책을 IP ___ 이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "고정",
+          "pinning",
+          "피닝",
+          "핀닝"
+        ]
+      },
+      "explanation": "IP 고정을 하면 검사한 값과 실제로 연결한 값이 같아져 DNS 재바인딩을 막는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrftoctou-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "ssrf",
+        "dns"
+      ],
+      "content": {
+        "prompt": "검사 때와 연결 때 같은 이름이 다른 IP가 되게 하는 기법은 DNS ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "재바인딩",
+          "rebinding",
+          "리바인딩",
+          "재 바인딩"
+        ]
+      },
+      "explanation": "DNS 재바인딩은 검사를 통과한 이름이 연결할 때 내부 IP로 해석되게 만든다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrftoctou-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "ssrf",
+        "dns"
+      ],
+      "content": {
+        "prompt": "IP를 검사한 뒤 라이브러리가 이름을 다시 해석한다. 문제는?",
+        "options": [
+          "응답이 느려짐",
+          "인증서 만료",
+          "검사 안 한 IP로 연결"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "연결할 때 다시 해석하면 검사하지 않은 IP로 연결될 수 있다. 검사한 IP로 고정해 연결한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrftoctou-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "ssrf",
+        "dns"
+      ],
+      "content": {
+        "prompt": "검사 코드와 요청 라이브러리가 URL을 다르게 읽는다. 대책은?",
+        "options": [
+          "정규식 추가",
+          "표준 파서로 파싱",
+          "URL 길이 제한"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "표준 파서로 나눈 호스트로 검사하고 같은 값을 연결에 써야 검사와 연결이 같은 대상을 본다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrftoctou-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "ssrf",
+        "dns"
+      ],
+      "content": {
+        "prompt": "DNS 재바인딩을 막는 연결 방식은?",
+        "options": [
+          "검사한 IP로 연결",
+          "연결 때 재해석",
+          "호스트 문자열 비교"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "검사한 IP로 바로 연결하면 이름이 나중에 다른 IP로 바뀌어도 영향을 받지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrftoctou-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "ssrf",
+        "dns"
+      ],
+      "content": {
+        "prompt": "IP를 검사했다면 연결할 때 이름을 다시 해석해도 안전하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "다시 해석하면 DNS 재바인딩으로 다른 IP가 돌아올 수 있다. 검사한 IP로 연결해야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

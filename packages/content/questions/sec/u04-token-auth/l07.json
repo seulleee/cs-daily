@@ -1,0 +1,225 @@
+{
+  "track": "sec",
+  "unit": "u04-token-auth",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "sec-oidc-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "oidc",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "OAuth 2.0 위에 로그인(인증)을 더한 표준은?",
+        "options": [
+          "OIDC",
+          "PKCE",
+          "JWT"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "OIDC는 OAuth 2.0 위에 사용자 인증(로그인)을 더한 표준이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oidc-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "oidc",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "로그인한 사용자 정보를 담은 JWT는?",
+        "options": [
+          "ID 토큰",
+          "액세스 토큰",
+          "리프레시 토큰"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ID 토큰은 로그인한 사용자 정보를 담은 JWT이며 sub가 사용자 식별자다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oidc-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "oidc",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "API 호출에 쓰는 토큰은?",
+        "options": [
+          "ID 토큰",
+          "액세스 토큰"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "ID 토큰은 로그인 확인용이고, API 호출에는 액세스 토큰을 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oidc-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "oidc",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "ID 토큰은 API 호출에 쓰는 토큰이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "ID 토큰은 로그인 확인용이다. API를 호출할 때는 액세스 토큰을 보낸다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oidc-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "oidc",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "OAuth 2.0 위에 로그인을 더한 표준은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "OIDC",
+          "oidc",
+          "OpenID Connect",
+          "openid connect"
+        ]
+      },
+      "explanation": "OIDC(OpenID Connect)는 OAuth 2.0에 사용자 인증 규칙을 더해 로그인에 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oidc-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "oidc",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "ID 토큰에서 사용자 식별자를 담는 클레임은 ___ 다."
+      },
+      "answer_key": {
+        "accepted": [
+          "sub",
+          "SUB",
+          "subject"
+        ]
+      },
+      "explanation": "ID 토큰의 sub가 사용자 식별자이므로 계정 연결에 이 값을 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oidc-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "oidc",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "ID 토큰의 aud에 있어야 하는 값은?",
+        "options": [
+          "인가 서버 주소",
+          "사용자 이메일",
+          "내 클라이언트 ID"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "ID 토큰의 aud는 내 클라이언트 ID여야 한다. 다르면 다른 앱용 토큰이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oidc-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "oidc",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "ID 토큰으로 내 서비스 사용자를 찾을 때 쓰는 값은?",
+        "options": [
+          "exp",
+          "nonce",
+          "sub"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "sub가 사용자 식별자다. exp는 만료 시각, nonce는 로그인 요청과 토큰을 묶어 확인하는 값이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oidc-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "oidc",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "aud가 다른 앱의 클라이언트 ID인 ID 토큰은?",
+        "options": [
+          "거부",
+          "로그인 허용",
+          "sub만 사용"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "ID 토큰 검증은 aud가 내 클라이언트 ID인지 확인하므로 다른 앱용 토큰은 거부한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oidc-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "oidc",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "OIDC는 OAuth 2.0에 사용자 인증을 더한 표준이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "OAuth 2.0은 권한 위임 표준이고, OIDC가 그 위에 로그인 규칙을 더했다.",
+      "refs": []
+    }
+  ]
+}

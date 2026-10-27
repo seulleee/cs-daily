@@ -1,0 +1,220 @@
+{
+  "track": "sec",
+  "unit": "u12-logging-ir",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "sec-fieldir-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "새벽에 해외 관리자 로그인 경보가 왔다. 첫 확인은?",
+        "options": [
+          "서버 재구축",
+          "계정 주인에게 확인",
+          "전 직원 공지"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "출장 중인 본인일 수도 있으므로 계정 주인에게 본인 접속인지 먼저 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldir-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "그 세션으로 한 작업을 추적할 때 쓰는 것은?",
+        "options": [
+          "감사 로그·요청 ID",
+          "CPU 지표",
+          "정적 파일 로그"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "감사 로그로 그 세션이 바꾼 것을 찾고, 요청 ID로 여러 서비스의 로그를 이어 범위를 파악한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldir-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "계정 주인이 본인이 아니라고 답했다. 다음 조치는?",
+        "options": [
+          "경보 닫기",
+          "관찰만 계속",
+          "세션 폐기·재설정"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "본인이 아니면 세션을 폐기하고 비밀번호를 재설정하며 MFA를 다시 등록해 접근을 끊는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldir-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "본인이 아니면 비밀번호만 바꾸면 봉쇄가 끝난다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "비밀번호 재설정과 함께 기존 세션 폐기와 MFA 재등록도 해야 탈취된 접근이 끊긴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldir-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "탈취 계정은 세션 폐기·비밀번호 재설정과 ___ 재등록을 한다.",
+        "hint": "비밀번호 외의 인증 요소를 다시 등록한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "MFA",
+          "mfa",
+          "다중 인증",
+          "다요소 인증",
+          "2FA"
+        ]
+      },
+      "explanation": "공격자가 인증 요소를 바꿔 뒀을 수 있어 MFA를 다시 등록해야 계정을 되찾는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldir-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "대응 경과는 사고 채널에 ___ 으로 기록한다.",
+        "hint": "언제 무엇을 했는지 시간순으로 적는다."
+      },
+      "answer_key": {
+        "accepted": [
+          "타임라인",
+          "timeline",
+          "Timeline",
+          "시간순 기록"
+        ]
+      },
+      "explanation": "타임라인을 사고 채널에 남기면 여러 사람이 같은 사실을 보고 사후 검토에도 그대로 쓸 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldir-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "출장 중인 본인의 접속으로 확인됐다. 다음은?",
+        "options": [
+          "계정 삭제",
+          "확인 결과 기록",
+          "전체 서비스 중단"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "본인 접속이면 봉쇄할 필요는 없고, 확인한 결과를 사고 채널에 기록해 경보를 마무리한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldir-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "그 세션이 권한을 바꿨다. 영향 범위는 어디서 보나?",
+        "options": [
+          "기준선",
+          "SBOM",
+          "감사 로그"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "감사 로그에는 누가 언제 무엇을 바꿨는지 남아 있어 그 세션이 한 변경을 추적할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldir-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "대응 중 관련 로그는 어떻게 다루나?",
+        "options": [
+          "삭제한다",
+          "보존한다",
+          "덮어쓴다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "로그는 침입 경로와 범위를 밝힐 증거라 보존하고, 사고 채널에 타임라인을 남긴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-fieldir-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "incident-response"
+      ],
+      "content": {
+        "prompt": "이상 로그인 경보는 계정 주인에게 본인 접속인지 먼저 확인한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "본인 접속인지 먼저 확인해야 정상 사용자를 막지 않고, 탈취면 바로 봉쇄로 넘어갈 수 있다.",
+      "refs": []
+    }
+  ]
+}

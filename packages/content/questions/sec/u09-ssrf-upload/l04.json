@@ -1,0 +1,232 @@
+{
+  "track": "sec",
+  "unit": "u09-ssrf-upload",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "sec-upload-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "파일 앞부분에서 실제 형식을 알려 주는 바이트는?",
+        "options": [
+          "Content-Type",
+          "매직 바이트",
+          "확장자"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "매직 바이트는 파일 앞부분의 시그니처로 실제 형식을 알려 준다. Content-Type과 확장자는 클라이언트가 바꿀 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-upload-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "서버가 실행하는 확장자 파일이 웹 경로에 저장되면 생길 수 있는 일은?",
+        "options": [
+          "코드 실행",
+          "캐시 적중",
+          "로그 회전"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "웹 서버가 실행하는 확장자 파일이 URL로 열리는 경로에 있으면 그 파일의 코드가 서버에서 실행될 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-upload-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "업로드 파일의 실제 형식을 확인하는 근거로 맞는 것은?",
+        "options": [
+          "Content-Type 헤더",
+          "파일 시그니처"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Content-Type은 요청을 만든 쪽이 마음대로 적을 수 있다. 서버는 파일 내용의 시그니처로 형식을 확인한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-upload-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "업로드 요청의 Content-Type 값은 클라이언트가 바꿀 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "파일 이름·확장자·Content-Type은 모두 클라이언트가 정해 보내는 값이라 믿을 수 없다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-upload-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "파일 앞부분에서 형식을 알려 주는 바이트를 ___ 바이트라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "매직",
+          "magic",
+          "메직"
+        ]
+      },
+      "explanation": "매직 바이트(시그니처)를 읽으면 확장자와 관계없이 파일의 실제 형식을 확인할 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-upload-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "파일 이름·확장자·Content-Type은 ___ 가 바꿀 수 있는 값이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "클라이언트",
+          "client",
+          "사용자"
+        ]
+      },
+      "explanation": "이 값들은 요청을 만든 클라이언트가 정해 보내므로 서버는 내용 검사로 다시 확인한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-upload-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "확장자는 .jpg인데 시그니처가 이미지가 아니다. 처리는?",
+        "options": [
+          "확장자 믿고 저장",
+          "업로드 거부"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "확장자는 클라이언트가 바꿀 수 있으므로, 시그니처가 맞지 않으면 실제 형식이 다른 파일로 보고 거부한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-upload-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "Content-Type이 image/png로 왔다. 맞는 판단은?",
+        "options": [
+          "내용으로 다시 확인",
+          "그대로 이미지로 믿음"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Content-Type은 믿을 수 없는 메타데이터이므로 파일 앞부분의 매직 바이트로 형식을 다시 확인한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-upload-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "스크립트 파일이 웹 경로에 저장됐다. 가장 큰 위험은?",
+        "options": [
+          "디스크 조각화",
+          "검색 엔진 노출",
+          "URL로 열 때 실행"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "서버가 실행하는 확장자 파일이 웹 경로에 있으면 URL 요청만으로 그 코드가 서버에서 실행될 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-upload-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "file-upload"
+      ],
+      "content": {
+        "prompt": "확장자가 이미지면 파일 내용도 이미지라고 볼 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "확장자는 클라이언트가 바꿀 수 있는 메타데이터다. 실제 형식은 매직 바이트로 확인한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "track": "sec",
+  "unit": "u13-design",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "sec-ssdlc-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "sdlc",
+        "testing"
+      ],
+      "content": {
+        "prompt": "소스 코드를 실행하지 않고 분석해 취약 패턴을 찾는 검사는?",
+        "options": [
+          "SAST",
+          "DAST",
+          "SCA"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SAST는 코드를 실행하지 않고 분석한다. DAST는 실행 중인 앱, SCA는 의존성을 검사한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-ssdlc-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "sdlc",
+        "testing"
+      ],
+      "content": {
+        "prompt": "실행 중인 앱에 요청을 보내 취약점을 찾는 검사는?",
+        "options": [
+          "SAST",
+          "DAST",
+          "SCA"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "DAST는 실행 중인 앱에 요청을 보내 응답으로 취약점을 찾는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-ssdlc-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "sdlc",
+        "testing"
+      ],
+      "content": {
+        "prompt": "SAST는 실행 중인 앱에 요청을 보내 취약점을 찾는다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "SAST는 실행하지 않고 소스 코드를 분석한다. 실행 중인 앱에 요청을 보내는 것은 DAST다.",
+      "refs": []
+    },
+    {
+      "id": "sec-ssdlc-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "sdlc",
+        "testing"
+      ],
+      "content": {
+        "prompt": "보안 코드 리뷰는 권한 검사·입력 처리·비밀값을 체크리스트로 본다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "보안 코드 리뷰는 체크리스트로 권한 검사·입력 처리·비밀값을 빠뜨리지 않고 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-ssdlc-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "sdlc",
+        "testing"
+      ],
+      "content": {
+        "prompt": "PR마다 SAST·SCA·시크릿 스캔을 자동으로 돌리는 것은 ___ 통합이다.",
+        "hint": "PR마다 빌드·테스트를 돌리는 파이프라인의 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "CI",
+          "ci",
+          "지속적 통합"
+        ]
+      },
+      "explanation": "CI 통합은 PR마다 자동 검사를 돌려 문제를 머지 전에 찾는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-ssdlc-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "sdlc",
+        "testing"
+      ],
+      "content": {
+        "prompt": "실행 중인 앱에 요청을 보내 취약점을 찾는 검사는 ___ 다.",
+        "hint": "동적 애플리케이션 보안 테스트의 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "DAST",
+          "dast"
+        ]
+      },
+      "explanation": "DAST는 실행 중인 앱을 대상으로 한다. 소스 코드를 정적으로 보는 SAST와 짝을 이룬다.",
+      "refs": []
+    },
+    {
+      "id": "sec-ssdlc-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "sdlc",
+        "testing"
+      ],
+      "content": {
+        "prompt": "PR에 문자열을 이어 붙인 SQL이 생겼다. 먼저 잡을 검사는?",
+        "options": [
+          "DAST",
+          "부하 테스트",
+          "SAST"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "SAST는 실행 전에 소스 코드에서 취약한 패턴을 찾으므로 PR 단계에서 잡을 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-ssdlc-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "sdlc",
+        "testing"
+      ],
+      "content": {
+        "prompt": "PR에 API 키가 든 커밋이 올라왔다. 잡아낼 검사는?",
+        "options": [
+          "DAST",
+          "시크릿 스캔",
+          "성능 측정"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시크릿 스캔은 커밋에서 키 형식의 문자열을 찾는다. CI 통합으로 PR마다 돌린다.",
+      "refs": []
+    },
+    {
+      "id": "sec-ssdlc-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "sdlc",
+        "testing"
+      ],
+      "content": {
+        "prompt": "리뷰어가 새 엔드포인트에서 먼저 볼 항목은?",
+        "options": [
+          "권한 검사",
+          "변수 이름",
+          "들여쓰기"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "보안 코드 리뷰는 권한 검사·입력 처리·비밀값을 체크리스트로 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-ssdlc-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "sdlc",
+        "testing"
+      ],
+      "content": {
+        "prompt": "SAST의 뜻으로 맞는 것은?",
+        "options": [
+          "실행 중 앱에 요청",
+          "의존성 취약점 조회",
+          "실행 없이 코드 분석"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "SAST는 소스 코드를 실행하지 않고 분석해 취약한 패턴을 찾는 검사다.",
+      "refs": []
+    }
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "track": "sec",
+  "unit": "u08-csrf-cors",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "sec-csrfdef-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "csrf",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "서버가 준 예측 불가능한 값을 요청에 담게 해 비교하는 방어는?",
+        "options": [
+          "CORS",
+          "HSTS",
+          "CSRF 토큰"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "CSRF 토큰은 서버가 준 예측 불가능한 값을 상태 변경 요청에 담게 하고 서버가 비교한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csrfdef-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "csrf",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "다른 사이트에서 시작한 POST에 쿠키가 붙지 않게 하는 속성은?",
+        "options": [
+          "SameSite",
+          "HttpOnly",
+          "Path"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SameSite가 Lax·Strict면 다른 사이트에서 시작한 POST에 쿠키가 붙지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csrfdef-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "csrf",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "Origin 검사가 확인하는 대상은?",
+        "options": [
+          "응답 본문 크기",
+          "요청의 Origin 헤더"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Origin 검사는 상태 변경 요청의 Origin 헤더가 내 출처인지 확인한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csrfdef-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "csrf",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "GET 요청으로는 서버 상태를 바꾸지 않게 설계한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "GET은 안전한 메서드로 두고 상태 변경은 POST 등으로 받아야 CSRF 방어가 적용된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csrfdef-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "csrf",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "쿠키에 붙일 속성 이름은?",
+        "code": {
+          "language": "http",
+          "source": "HTTP/1.1 200 OK\nSet-Cookie: sid=abc; Secure; HttpOnly; ___=Lax"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "SameSite",
+          "samesite",
+          "Samesite",
+          "sameSite"
+        ]
+      },
+      "explanation": "SameSite=Lax면 다른 사이트에서 시작한 POST에 이 쿠키가 붙지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csrfdef-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "csrf",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "상태 변경 요청에 담게 하는 예측 불가능한 값은 CSRF ___이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "토큰",
+          "token",
+          "Token"
+        ]
+      },
+      "explanation": "CSRF 토큰은 다른 사이트가 알 수 없는 값이라 정상 화면에서 보낸 요청만 통과한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csrfdef-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "csrf",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "Origin 검사를 완성하려면 빈칸에 넣을 값은?",
+        "code": {
+          "language": "javascript",
+          "source": "app.post(\"/transfer\", (req, res) => {\n  const origin = req.get(\"Origin\");\n  if (origin !== ___) {\n    return res.status(403).end();\n  }\n  transfer(req.body);\n});"
+        },
+        "options": [
+          "\"https://a.com\"",
+          "\"*\"",
+          "req.body.to"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Origin 헤더가 내 출처와 정확히 같을 때만 처리하고 다르면 403으로 거부한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csrfdef-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "csrf",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "계좌 이체를 GET 요청으로 처리한다. 고칠 방향은?",
+        "options": [
+          "그대로 유지",
+          "쿼리 암호화",
+          "POST와 토큰 검사"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "GET으로 상태를 바꾸지 않는다. POST로 바꾸고 CSRF 토큰 같은 방어를 적용한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csrfdef-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "csrf",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "SameSite 하나만으로 부족할 때 함께 쓰는 방어는?",
+        "options": [
+          "긴 쿠키 수명",
+          "CSRF 토큰",
+          "쿠키 이름 변경"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "브라우저 지원이나 서비스 구조에 따라 빈틈이 남을 수 있어 CSRF 토큰·Origin 검사를 겹쳐 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-csrfdef-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "csrf",
+        "cookie"
+      ],
+      "content": {
+        "prompt": "CSRF 토큰은 모든 사용자에게 같은 고정값을 써도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "CSRF 토큰은 예측 불가능해야 한다. 고정값은 다른 사이트도 알 수 있어 방어가 되지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

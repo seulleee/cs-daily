@@ -1,0 +1,254 @@
+{
+  "track": "sec",
+  "unit": "u06-injection",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "sec-sqlident-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "sql"
+      ],
+      "content": {
+        "prompt": "자리 표시자로 넣을 수 없는 자리는?",
+        "options": [
+          "WHERE 비교 값",
+          "컬럼 이름",
+          "INSERT 값"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "자리 표시자는 값 자리에만 쓸 수 있고 테이블·컬럼 이름 같은 식별자 자리에는 못 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqlident-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "sql"
+      ],
+      "content": {
+        "prompt": "입력을 정한 값과 대조해 서버 고정 문자열로 바꾸는 것은?",
+        "options": [
+          "허용 목록 매핑",
+          "이스케이프",
+          "파라미터 바인딩"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "허용 목록 매핑은 입력을 미리 정한 값과 대조해 서버가 가진 고정 문자열로 바꾼다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqlident-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "sql"
+      ],
+      "content": {
+        "prompt": "ORDER BY 뒤 정렬 방향은 어떻게 처리하나?",
+        "options": [
+          "허용 목록 매핑",
+          "자리 표시자로 바인딩"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "정렬 방향은 키워드라 바인딩할 수 없으므로 허용 목록과 대조해 고정 문자열로 바꾼다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqlident-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "sql"
+      ],
+      "content": {
+        "prompt": "ORM을 쓰면 원시 SQL에 문자열을 이어 붙여도 안전하다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "ORM을 써도 원시 SQL에 문자열을 이어 붙이면 똑같이 인젝션에 취약하다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqlident-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "sql"
+      ],
+      "content": {
+        "prompt": "정렬 컬럼은 허용 목록 ___ 으로 서버 고정 문자열로 바꾼다.",
+        "hint": "입력값 하나를 정해 둔 값 하나에 짝지어 준다는 뜻이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "매핑",
+          "mapping",
+          "Mapping",
+          "대응",
+          "맵핑"
+        ]
+      },
+      "explanation": "허용 목록 매핑은 입력을 키로 써서 서버가 정해 둔 컬럼 이름을 꺼내는 방식이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqlident-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "sql"
+      ],
+      "content": {
+        "prompt": "ORM에서도 ___ SQL에 문자열을 이어 붙이면 취약하다.",
+        "hint": "ORM이 만들지 않고 개발자가 직접 쓴 SQL이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "원시",
+          "raw",
+          "Raw",
+          "로우",
+          "네이티브"
+        ]
+      },
+      "explanation": "원시 SQL은 ORM이 바인딩해 주지 않으므로 직접 바인딩하거나 허용 목록으로 처리해야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqlident-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "sql"
+      ],
+      "content": {
+        "prompt": "이 코드가 정렬 컬럼을 처리하는 방식은?",
+        "code": {
+          "language": "python",
+          "source": "SORT = {\"new\": \"created_at\",\n        \"name\": \"title\"}\ncol = SORT.get(req_sort, \"created_at\")\nsql = f\"SELECT * FROM posts ORDER BY {col}\""
+        },
+        "options": [
+          "파라미터 바인딩",
+          "이스케이프",
+          "허용 목록 매핑"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "입력은 사전의 키로만 쓰고 쿼리에는 서버가 정한 컬럼 이름만 들어가므로 허용 목록 매핑이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqlident-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "sql"
+      ],
+      "content": {
+        "prompt": "목록에 없는 정렬 값이 왔다. 처리로 알맞은 것은?",
+        "options": [
+          "그대로 이어 붙임",
+          "기본값 또는 거부",
+          "따옴표만 제거"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "허용 목록에 없는 값은 쿼리에 넣지 않고 기본값으로 바꾸거나 요청을 거부한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqlident-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "sql"
+      ],
+      "content": {
+        "prompt": "테이블 이름을 요청에서 받아야 한다. 방법은?",
+        "options": [
+          "고정 이름 목록 대조",
+          "자리 표시자 사용",
+          "그대로 이어 붙임"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "테이블 이름은 바인딩할 수 없으므로 고정 목록과 대조해 서버 문자열로 바꾼다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-sqlident-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "sql"
+      ],
+      "content": {
+        "prompt": "테이블·컬럼 이름은 자리 표시자로 바인딩할 수 없다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "자리 표시자는 값 자리 전용이라 식별자 자리에는 허용 목록 매핑을 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

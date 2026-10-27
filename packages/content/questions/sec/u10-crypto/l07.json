@@ -1,0 +1,233 @@
+{
+  "track": "sec",
+  "unit": "u10-crypto",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "sec-kms-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "key-management"
+      ],
+      "content": {
+        "prompt": "키를 꺼내지 않은 채 암호화를 대신해 주는 관리형 서비스는?",
+        "options": [
+          "CDN",
+          "KMS",
+          "DNS"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "KMS는 키를 생성·보관하고, 키를 밖으로 꺼내지 않은 채 암호화를 대신해 준다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Key_Management_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-kms-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "key-management"
+      ],
+      "content": {
+        "prompt": "데이터 키를 KMS의 마스터 키로 다시 암호화하는 구조는?",
+        "options": [
+          "봉투 암호화",
+          "디스크 암호화",
+          "ECB 모드"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "봉투 암호화는 데이터를 데이터 키로, 데이터 키를 마스터 키로 암호화하는 구조다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Key_Management_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-kms-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "key-management"
+      ],
+      "content": {
+        "prompt": "암호 키를 두는 곳으로 맞는 것은?",
+        "options": [
+          "같은 DB 테이블",
+          "KMS"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "암호화한 데이터와 같은 DB에 키를 두면 DB를 읽은 사람이 바로 복호화한다. KMS로 분리한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Key_Management_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-kms-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "key-management"
+      ],
+      "content": {
+        "prompt": "암호 키는 암호화한 데이터와 같은 코드 저장소에 둬도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "키 분리 원칙에 따라 키는 데이터·코드 저장소와 다른 곳(KMS 등)에 둔다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Key_Management_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-kms-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "key-management"
+      ],
+      "content": {
+        "prompt": "데이터 키를 마스터 키로 감싸는 방식을 ___ 암호화라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "봉투",
+          "envelope",
+          "엔벨로프"
+        ]
+      },
+      "explanation": "봉투 암호화를 쓰면 큰 데이터는 데이터 키로 빠르게 암호화하고 마스터 키는 KMS 밖으로 나오지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Key_Management_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-kms-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "key-management"
+      ],
+      "content": {
+        "prompt": "키를 생성·보관하고 암호화를 대신해 주는 관리형 서비스는 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "KMS",
+          "kms",
+          "키 관리 서비스"
+        ]
+      },
+      "explanation": "KMS는 Key Management Service의 약자로, 클라우드별 설정은 AWS 트랙에서 다룬다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Key_Management_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-kms-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "key-management"
+      ],
+      "content": {
+        "prompt": "키 유출이 의심된다. 옛 키로 암호화한 데이터 처리는?",
+        "options": [
+          "그대로 둠",
+          "평문으로 저장",
+          "새 키로 재암호화"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "유출이 의심되면 새 키로 교체하고, 옛 키로 암호화한 데이터를 새 키로 다시 암호화한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Key_Management_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-kms-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "key-management"
+      ],
+      "content": {
+        "prompt": "봉투 암호화에서 큰 데이터를 직접 암호화하는 키는?",
+        "options": [
+          "마스터 키",
+          "데이터 키"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "데이터는 데이터 키로 암호화하고, 데이터 키만 KMS의 마스터 키로 암호화한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Key_Management_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-kms-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "key-management"
+      ],
+      "content": {
+        "prompt": "암호 키가 같은 DB의 설정 테이블에 있다. 위험은?",
+        "options": [
+          "DB 유출 시 복호화",
+          "쿼리 속도 저하",
+          "백업 실패"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "DB를 읽은 사람은 같은 곳의 키로 데이터를 바로 복호화할 수 있다. 키를 분리해 둔다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Key_Management_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-kms-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "key-management"
+      ],
+      "content": {
+        "prompt": "KMS는 키를 밖으로 꺼내 주지 않고 암호화를 대신 해 준다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "KMS를 쓰면 앱은 키 값을 받지 않고 암호화·복호화 요청만 보낸다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Key_Management_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

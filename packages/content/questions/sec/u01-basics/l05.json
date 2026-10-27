@@ -1,0 +1,249 @@
+{
+  "track": "sec",
+  "unit": "u01-basics",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "sec-stride-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "stride",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "위협을 여섯 유형으로 나눠 빠짐없이 찾는 분류는?",
+        "options": [
+          "STRIDE",
+          "CIA",
+          "DFD"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "STRIDE는 위협을 여섯 유형으로 나눠 빠짐없이 찾게 하는 분류다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-stride-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "stride",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "다른 주체로 가장하는 위협 유형은?",
+        "options": [
+          "변조",
+          "부인",
+          "스푸핑"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "스푸핑(S)은 다른 사용자나 시스템으로 가장하는 위협이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-stride-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "stride",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "데이터나 코드를 무단으로 바꾸는 위협 유형은?",
+        "options": [
+          "스푸핑",
+          "정보 노출",
+          "변조"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "변조(T)는 데이터나 코드를 무단으로 바꾸는 위협이다. 스푸핑은 가장하기다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-stride-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "stride",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "부인은 한 일을 하지 않았다고 잡아떼는 위협이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "부인(R)은 수행한 행위를 하지 않았다고 잡아떼는 위협이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-stride-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "stride",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "다른 주체로 가장하는 STRIDE 유형은 ___ 이다.",
+        "hint": "STRIDE의 S에 해당한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스푸핑",
+          "spoofing",
+          "Spoofing",
+          "위장"
+        ]
+      },
+      "explanation": "다른 주체로 가장하는 유형은 스푸핑이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-stride-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "stride",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "허용보다 높은 권한을 얻는 유형은 권한 ___ 이다.",
+        "hint": "STRIDE의 E에 해당한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "상승",
+          "elevation",
+          "Elevation",
+          "승격"
+        ]
+      },
+      "explanation": "허용된 것보다 높은 권한을 얻는 유형은 권한 상승이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-stride-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "stride",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "로그인 API를 마비시켜 아무도 못 쓰게 했다. 유형은?",
+        "options": [
+          "권한 상승",
+          "서비스 거부",
+          "부인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "서비스를 못 쓰게 만드는 것은 서비스 거부(D)다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-stride-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "stride",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "오류 응답에 다른 사용자 이메일이 보였다. 유형은?",
+        "options": [
+          "스푸핑",
+          "변조",
+          "정보 노출"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "볼 권한이 없는 정보가 새는 것은 정보 노출(I)이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-stride-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "stride",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "일반 사용자가 관리자 기능을 쓰게 됐다. 유형은?",
+        "options": [
+          "권한 상승",
+          "부인",
+          "변조"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "허용보다 높은 권한을 얻었으므로 권한 상승(E)이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-stride-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "stride",
+        "threat-modeling"
+      ],
+      "content": {
+        "prompt": "다른 사용자로 가장하는 것은 STRIDE의 변조에 해당한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "다른 주체로 가장하는 것은 스푸핑이다. 변조는 데이터나 코드를 무단으로 바꾸는 것이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

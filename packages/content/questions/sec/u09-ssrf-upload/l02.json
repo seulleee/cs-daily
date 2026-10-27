@@ -1,0 +1,243 @@
+{
+  "track": "sec",
+  "unit": "u09-ssrf-upload",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "sec-ssrfdef-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "ssrf"
+      ],
+      "content": {
+        "prompt": "서버가 요청할 수 있는 도메인을 미리 정해 두는 방어는?",
+        "options": [
+          "목적지 허용 목록",
+          "입력 길이 제한",
+          "출력 인코딩"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "목적지 허용 목록은 요청할 수 있는 도메인을 정해 두고 그 밖의 목적지는 거부하는 방어다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrfdef-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "ssrf"
+      ],
+      "content": {
+        "prompt": "해석한 IP가 사설·루프백·링크 로컬 대역이면 막는 방어는?",
+        "options": [
+          "리다이렉트 재검사",
+          "IP 검사",
+          "크기 제한"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "IP 검사는 이름을 실제로 해석한 IP를 보고 내부용 대역이면 요청을 막는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrfdef-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "ssrf"
+      ],
+      "content": {
+        "prompt": "127.0.0.1은 어느 대역에 속하는가?",
+        "options": [
+          "사설",
+          "루프백",
+          "링크 로컬"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "127.0.0.1은 자기 자신을 뜻하는 루프백 주소다. 링크 로컬은 169.254.0.0/16, 사설은 10.0.0.0/8 등이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrfdef-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "ssrf"
+      ],
+      "content": {
+        "prompt": "URL 문자열에 내부 IP가 없으면 해석한 IP는 검사하지 않아도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "외부 도메인 이름이 내부 IP를 가리킬 수 있으므로 이름을 해석한 IP까지 검사해야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrfdef-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "ssrf"
+      ],
+      "content": {
+        "prompt": "요청할 수 있는 도메인을 정해 두는 것을 목적지 ___ 목록이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "허용",
+          "allow",
+          "화이트",
+          "white"
+        ]
+      },
+      "explanation": "목적지 허용 목록에 없는 도메인으로는 서버가 요청을 보내지 않게 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrfdef-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "ssrf"
+      ],
+      "content": {
+        "prompt": "다른 주소로 다시 요청하라고 알리는 3xx 응답은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "리다이렉트",
+          "redirect",
+          "리디렉트",
+          "리다이렉션",
+          "리디렉션",
+          "redirection"
+        ]
+      },
+      "explanation": "리다이렉트를 따라가면 검사하지 않은 목적지로 요청이 갈 수 있어, 따라가지 않거나 매번 다시 검사한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrfdef-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "ssrf"
+      ],
+      "content": {
+        "prompt": "169.254.169.254까지 막으려면 빈칸에 들어갈 검사는?",
+        "code": {
+          "language": "python",
+          "source": "import ipaddress\n\ndef check(resolved):\n    ip = ipaddress.ip_address(resolved)\n    if (ip.is_private or ip.is_loopback\n            or ip.___):\n        raise ValueError(\"blocked\")\n    return ip"
+        },
+        "options": [
+          "is_global",
+          "is_link_local",
+          "is_multicast"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "169.254.0.0/16은 링크 로컬 대역이므로 is_link_local 검사로 막는다. 사설·루프백 검사와 함께 쓴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrfdef-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "ssrf"
+      ],
+      "content": {
+        "prompt": "허용한 도메인이 302 응답으로 내부 주소로 보낸다. 맞는 처리는?",
+        "options": [
+          "그대로 따라감",
+          "새 목적지 재검사",
+          "응답 캐시"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "리다이렉트는 따라가지 않거나, 따라갈 때마다 새 목적지를 처음처럼 다시 검사해야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrfdef-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "ssrf"
+      ],
+      "content": {
+        "prompt": "서버의 외부 요청을 정해진 프록시로만 나가게 하는 방어는?",
+        "options": [
+          "IP 검사",
+          "목적지 허용 목록",
+          "네트워크 제한"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "네트워크 제한은 앱 코드 검사와 별개로 서버의 외부 요청이 정해진 프록시·대역으로만 나가게 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-ssrfdef-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "ssrf"
+      ],
+      "content": {
+        "prompt": "목적지 허용 목록은 서버가 요청할 수 있는 도메인을 정해 두는 방어다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "허용 목록에 있는 도메인만 요청하게 하면 사용자가 내부 주소를 목적지로 지정할 수 없다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

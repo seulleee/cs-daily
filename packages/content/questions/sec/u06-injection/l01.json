@@ -1,0 +1,243 @@
+{
+  "track": "sec",
+  "unit": "u06-injection",
+  "lesson": "l01",
+  "questions": [
+    {
+      "id": "sec-injection-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection"
+      ],
+      "content": {
+        "prompt": "입력값이 쿼리·명령의 문법으로 해석되는 취약점은?",
+        "options": [
+          "인젝션",
+          "IDOR",
+          "대량 할당"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인젝션은 입력값이 데이터가 아니라 쿼리·명령의 문법으로 해석되는 취약점이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-injection-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection"
+      ],
+      "content": {
+        "prompt": "인젝션이 생기는 원인은?",
+        "options": [
+          "소유자 조건 누락",
+          "해시 미사용",
+          "문자열 이어 붙이기"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "입력을 문자열 이어 붙이기로 쿼리·명령에 넣으면 입력이 문법으로 읽힐 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-injection-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection"
+      ],
+      "content": {
+        "prompt": "다음 중 신뢰할 수 없는 입력은?",
+        "options": [
+          "요청 헤더",
+          "서버 코드의 상수"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "요청 헤더는 클라이언트가 마음대로 정해 보낼 수 있어 신뢰할 수 없는 입력이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-injection-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection"
+      ],
+      "content": {
+        "prompt": "쿠키는 서버가 준 값이므로 신뢰할 수 있는 입력이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "쿠키도 클라이언트가 바꿔 보낼 수 있으므로 신뢰할 수 없는 입력에 포함된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-injection-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection"
+      ],
+      "content": {
+        "prompt": "입력이 쿼리·명령의 문법으로 해석되는 취약점은 ___ 이다.",
+        "hint": "데이터가 명령 안에 끼어 들어간다는 뜻의 외래어다."
+      },
+      "answer_key": {
+        "accepted": [
+          "인젝션",
+          "injection",
+          "Injection",
+          "삽입",
+          "주입"
+        ]
+      },
+      "explanation": "인젝션은 데이터여야 할 입력이 쿼리·명령의 문법 부분으로 읽히는 취약점이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-injection-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection"
+      ],
+      "content": {
+        "prompt": "입력을 문자열 ___ 로 쿼리에 넣으면 인젝션이 생긴다.",
+        "hint": "두 문자열을 + 연산으로 합치는 방식이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "이어 붙이기",
+          "이어붙이기",
+          "연결",
+          "결합",
+          "concatenation"
+        ]
+      },
+      "explanation": "문자열 이어 붙이기는 입력과 쿼리 문법을 한 문자열로 섞어 둘을 구분하지 못하게 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-injection-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection"
+      ],
+      "content": {
+        "prompt": "이 코드에서 인젝션이 생기는 원인은?",
+        "code": {
+          "language": "python",
+          "source": "name = request.args[\"name\"]\nsql = (\"SELECT id FROM users\"\n       \" WHERE name = '\" + name + \"'\")\ncur.execute(sql)"
+        },
+        "options": [
+          "문자열 이어 붙이기",
+          "느린 해시 사용",
+          "세션 재발급"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "요청 값 name을 쿼리 문자열에 이어 붙여 입력이 SQL 문법으로 읽힐 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-injection-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection"
+      ],
+      "content": {
+        "prompt": "업로드 파일 이름을 명령에 쓰려 한다. 이 값은?",
+        "options": [
+          "신뢰할 수 있는 값",
+          "신뢰할 수 없는 입력"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "업로드 파일 이름은 클라이언트가 정하므로 신뢰할 수 없는 입력으로 다뤄야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-injection-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection"
+      ],
+      "content": {
+        "prompt": "입력이 SQL 문법으로 읽혔다. 무엇이 섞였나?",
+        "options": [
+          "세션과 쿠키",
+          "해시와 솔트",
+          "데이터와 문법"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "인젝션은 데이터 부분과 문법 부분이 분리되지 않아 입력이 문법으로 해석되는 것이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-injection-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection"
+      ],
+      "content": {
+        "prompt": "인젝션은 입력값이 명령의 문법으로 해석되는 취약점이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "입력이 데이터로 남지 않고 쿼리·명령의 문법으로 읽히면 의도하지 않은 동작이 실행된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

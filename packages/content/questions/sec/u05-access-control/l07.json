@@ -1,0 +1,233 @@
+{
+  "track": "sec",
+  "unit": "u05-access-control",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "sec-overexpose-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "data-exposure"
+      ],
+      "content": {
+        "prompt": "화면에 안 쓰는 passwordHash까지 응답에 담는 것은?",
+        "options": [
+          "과다 노출",
+          "대량 할당",
+          "기본 거부"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "과다 노출은 화면에서 쓰지 않는 필드까지 응답 본문에 담아 내보내는 것이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-overexpose-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "data-exposure"
+      ],
+      "content": {
+        "prompt": "내보낼 필드를 명시한 응답 전용 객체는?",
+        "options": [
+          "엔티티",
+          "응답 DTO",
+          "세션"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "응답 DTO는 내보낼 필드만 명시한 객체라 엔티티의 다른 필드가 함께 나가지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-overexpose-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "data-exposure"
+      ],
+      "content": {
+        "prompt": "자원의 존재조차 숨기려 할 때 돌려줄 상태 코드는?",
+        "options": [
+          "403",
+          "401",
+          "404"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "남의 자원 요청에 404를 돌려주면 그 자원이 있는지조차 알리지 않을 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-overexpose-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "data-exposure"
+      ],
+      "content": {
+        "prompt": "화면에 보이지 않는 응답 필드는 사용자가 볼 수 없다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "응답 본문은 개발자 도구로 누구나 볼 수 있어, 화면에 안 보이는 필드도 노출된다.",
+      "refs": []
+    },
+    {
+      "id": "sec-overexpose-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "data-exposure"
+      ],
+      "content": {
+        "prompt": "화면에 안 쓰는 필드까지 응답에 담는 것을 ___ 노출이라 한다.",
+        "hint": "필요한 양보다 많다는 뜻이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "과다",
+          "과도",
+          "과잉",
+          "excessive",
+          "Excessive"
+        ]
+      },
+      "explanation": "과다 노출은 passwordHash·이메일처럼 필요 없는 필드까지 응답에 담는 것이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-overexpose-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "data-exposure"
+      ],
+      "content": {
+        "prompt": "내보낼 필드만 명시한 응답 전용 객체를 응답 ___ 라 한다.",
+        "hint": "요청 쪽에서 허용 필드를 받을 때도 쓰는 세 글자 약자다."
+      },
+      "answer_key": {
+        "accepted": [
+          "DTO",
+          "dto",
+          "Dto"
+        ]
+      },
+      "explanation": "엔티티를 그대로 보내지 않고 응답 DTO로 바꿔 보내면 필요한 필드만 나간다.",
+      "refs": []
+    },
+    {
+      "id": "sec-overexpose-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "data-exposure"
+      ],
+      "content": {
+        "prompt": "이 코드처럼 필요한 필드만 골라 보내는 방식은?",
+        "code": {
+          "language": "javascript",
+          "source": "const user = await repo.findById(id);\nres.json({\n  id: user.id,\n  nickname: user.nickname,\n});"
+        },
+        "options": [
+          "응답 DTO",
+          "대량 할당",
+          "기본 거부"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "조회한 엔티티 대신 id·nickname만 담은 응답 객체를 보내므로 응답 DTO 방식이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-overexpose-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "data-exposure"
+      ],
+      "content": {
+        "prompt": "회원 목록 응답에 이메일이 함께 나간다. 조치는?",
+        "options": [
+          "화면에서 숨김",
+          "응답 압축",
+          "응답 DTO로 변환"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "화면에서 숨겨도 응답에는 남으므로, 내보낼 필드만 담은 응답 DTO로 바꿔 보낸다.",
+      "refs": []
+    },
+    {
+      "id": "sec-overexpose-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "data-exposure"
+      ],
+      "content": {
+        "prompt": "남의 비공개 문서 요청에 404를 주는 이유는?",
+        "options": [
+          "응답 속도 향상",
+          "존재 여부 숨김",
+          "캐시 저장"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "403은 자원이 있다는 단서가 되므로 404를 돌려 존재 여부를 숨길 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-overexpose-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "data-exposure"
+      ],
+      "content": {
+        "prompt": "화면에 안 쓰는 passwordHash를 응답에 담는 것은 과다 노출이다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "passwordHash처럼 화면에 쓰지 않는 필드까지 응답에 담으면 과다 노출이다.",
+      "refs": []
+    }
+  ]
+}

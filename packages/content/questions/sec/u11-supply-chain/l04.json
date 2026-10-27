@@ -1,0 +1,235 @@
+{
+  "track": "sec",
+  "unit": "u11-supply-chain",
+  "lesson": "l04",
+  "questions": [
+    {
+      "id": "sec-lockfile-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "dependency",
+        "lockfile"
+      ],
+      "content": {
+        "prompt": "설치된 정확한 버전과 무결성 해시를 기록한 파일은?",
+        "options": [
+          "환경 파일",
+          "로그 파일",
+          "잠금 파일"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "잠금 파일은 package-lock.json·pnpm-lock.yaml처럼 설치된 정확한 버전과 무결성 해시를 기록한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-lockfile-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "dependency",
+        "lockfile"
+      ],
+      "content": {
+        "prompt": "의존성 업데이트 PR을 자동으로 만드는 도구는?",
+        "options": [
+          "Renovate",
+          "ESLint",
+          "Prettier"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Dependabot·Renovate는 의존성 업데이트 PR을 만들어, 테스트를 거친 뒤 반영하게 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-lockfile-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "dependency",
+        "lockfile"
+      ],
+      "content": {
+        "prompt": "CI에서 잠금 파일 그대로 설치하는 npm 명령은?",
+        "options": [
+          "npm install",
+          "npm ci"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "npm ci는 잠금 파일에 적힌 버전 그대로 설치하고, 목록과 잠금 파일이 어긋나면 실패한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-lockfile-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "dependency",
+        "lockfile"
+      ],
+      "content": {
+        "prompt": "잠금 파일로 버전을 고정했으면 업데이트는 하지 않아도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "고정만 하고 올리지 않으면 알려진 취약점이 남는다. Dependabot·Renovate로 업데이트 PR을 받아 반영한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-lockfile-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "dependency",
+        "lockfile"
+      ],
+      "content": {
+        "prompt": "설치된 정확한 버전을 기록한 package-lock.json은 ___ 파일이다.",
+        "hint": "어디서 설치해도 같은 버전이 되게 고정한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "잠금",
+          "lock",
+          "Lock",
+          "락",
+          "lockfile"
+        ]
+      },
+      "explanation": "잠금 파일은 설치된 정확한 버전과 무결성 해시를 기록해 어디서 설치해도 같은 버전이 설치되게 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-lockfile-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "dependency",
+        "lockfile"
+      ],
+      "content": {
+        "prompt": "잠금 파일 조각에서 빈칸에 들어갈 키 이름은?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"node_modules/lodash\": {\n    \"version\": \"4.17.21\",\n    \"___\": \"sha512-...\"\n  }\n}"
+        },
+        "hint": "내려받은 파일이 바뀌지 않았는지 확인하는 해시를 담는다."
+      },
+      "answer_key": {
+        "accepted": [
+          "integrity",
+          "Integrity"
+        ]
+      },
+      "explanation": "integrity 키는 무결성 해시를 담아, 설치할 때 내려받은 파일이 기록과 같은지 검증하게 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-lockfile-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "dependency",
+        "lockfile"
+      ],
+      "content": {
+        "prompt": "잠금 파일의 빈칸에 들어갈 값은?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"node_modules/lodash\": {\n    \"version\": ___,\n    \"integrity\": \"sha512-...\"\n  }\n}"
+        },
+        "options": [
+          "\"^4.17.0\"",
+          "\"4.17.21\"",
+          "\"latest\""
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "잠금 파일은 ^4.17.0 같은 범위가 아니라 실제로 설치된 정확한 버전을 기록한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-lockfile-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "dependency",
+        "lockfile"
+      ],
+      "content": {
+        "prompt": "개발에선 통과했는데 운영에 다른 버전이 설치됐다. 원인은?",
+        "options": [
+          "CVSS 점수",
+          "로그 누락",
+          "잠금 파일 미사용"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "잠금 파일 없이 버전 범위로 설치하면 시점마다 다른 버전이 설치된다. 잠금 파일로 정확한 버전을 고정한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-lockfile-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "dependency",
+        "lockfile"
+      ],
+      "content": {
+        "prompt": "Renovate가 만든 업데이트 PR을 반영하기 전 할 일은?",
+        "options": [
+          "테스트 통과 확인",
+          "잠금 파일 삭제",
+          "즉시 운영 배포"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "자동 업데이트 PR도 테스트를 거쳐 반영한다. 잠금 파일은 업데이트된 버전으로 함께 갱신된다.",
+      "refs": []
+    },
+    {
+      "id": "sec-lockfile-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "dependency",
+        "lockfile"
+      ],
+      "content": {
+        "prompt": "CI에서는 --frozen-lockfile처럼 잠금 파일 그대로 설치한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "CI에서 잠금 파일 그대로 설치해야 개발에서 시험한 버전과 같은 버전이 빌드·배포된다.",
+      "refs": []
+    }
+  ]
+}

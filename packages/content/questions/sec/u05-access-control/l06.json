@@ -1,0 +1,253 @@
+{
+  "track": "sec",
+  "unit": "u05-access-control",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "sec-tenant-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "multi-tenancy"
+      ],
+      "content": {
+        "prompt": "여러 고객 조직이 한 서비스와 DB를 함께 쓰는 구조는?",
+        "options": [
+          "멀티 테넌시",
+          "심층 방어",
+          "직무 분리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "멀티 테넌시는 여러 테넌트(고객 조직)가 한 서비스와 DB를 함께 쓰는 구조다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tenant-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "multi-tenancy"
+      ],
+      "content": {
+        "prompt": "모든 쿼리에 tenant_id 조건을 넣는 것은?",
+        "options": [
+          "기본 거부",
+          "대량 할당",
+          "테넌트 격리"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "테넌트 격리는 모든 쿼리에 tenant_id 조건을 넣어 다른 조직 데이터가 섞이지 않게 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tenant-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "multi-tenancy"
+      ],
+      "content": {
+        "prompt": "규칙을 정하기 전 새 엔드포인트의 접근 상태는?",
+        "options": [
+          "모두 허용",
+          "접근 차단",
+          "로그인만 확인"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "권한 기본 거부는 새 엔드포인트를 규칙을 정하기 전까지 막아 두는 것이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tenant-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "multi-tenancy"
+      ],
+      "content": {
+        "prompt": "권한 기본 거부는 규칙이 없는 엔드포인트를 일단 허용한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "기본 거부는 반대로 권한 규칙을 정하기 전까지 접근을 막아 둔다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tenant-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "multi-tenancy"
+      ],
+      "content": {
+        "prompt": "한 서비스를 함께 쓰는 각 고객 조직을 ___ 라 한다.",
+        "hint": "서비스를 빌려 쓰는 쪽을 뜻하는 외래어다."
+      },
+      "answer_key": {
+        "accepted": [
+          "테넌트",
+          "tenant",
+          "Tenant",
+          "테넌트 조직"
+        ]
+      },
+      "explanation": "멀티 테넌시 구조에서 서비스를 함께 쓰는 고객 조직 하나하나를 테넌트라 부른다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tenant-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "multi-tenancy"
+      ],
+      "content": {
+        "prompt": "다른 조직 데이터가 섞이지 않게 하는 것을 테넌트 ___ 라 한다.",
+        "hint": "서로 떼어 놓는다는 뜻이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "격리",
+          "분리",
+          "isolation",
+          "Isolation"
+        ]
+      },
+      "explanation": "테넌트 격리는 모든 쿼리에 tenant_id 조건을 넣어 조직마다 데이터를 나눈다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tenant-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "multi-tenancy"
+      ],
+      "content": {
+        "prompt": "다른 조직 프로젝트가 섞이지 않게 할 빈칸 컬럼은?",
+        "code": {
+          "language": "sql",
+          "source": "SELECT id, title FROM projects\nWHERE ___ = ?\n  AND archived = false"
+        },
+        "options": [
+          "title",
+          "id",
+          "tenant_id"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "현재 사용자의 tenant_id를 조건으로 넣어야 자기 조직의 프로젝트만 조회된다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tenant-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "multi-tenancy"
+      ],
+      "content": {
+        "prompt": "A사 화면에 B사 문서가 보인다. 먼저 볼 곳은?",
+        "options": [
+          "tenant_id 조건 누락",
+          "비밀번호 해시",
+          "쿠키 만료"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "다른 조직 데이터가 섞였다면 쿼리에 tenant_id 조건이 빠졌는지 먼저 확인한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tenant-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "multi-tenancy"
+      ],
+      "content": {
+        "prompt": "권한 규칙이 없는 새 API의 설정으로 알맞은 것은?",
+        "options": [
+          "로그인만 확인",
+          "모두 허용",
+          "기본 거부"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "규칙을 정하기 전까지 접근을 막아 두면 규칙이 늦게 붙어도 데이터가 새지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-tenant-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "multi-tenancy"
+      ],
+      "content": {
+        "prompt": "멀티 테넌시는 여러 조직이 한 DB를 함께 쓰는 구조다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "멀티 테넌시에서는 조직마다 DB를 따로 두지 않고 함께 쓰므로 행의 tenant_id로 구분한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "track": "sec",
+  "unit": "u08-csrf-cors",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "sec-preflight-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cors",
+        "preflight"
+      ],
+      "content": {
+        "prompt": "본 요청 전에 허용 여부를 묻는 요청은?",
+        "options": [
+          "리다이렉트",
+          "재시도 요청",
+          "사전 요청"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "사전 요청(preflight)은 본 요청 전에 OPTIONS로 서버의 허용 여부를 묻는 요청이다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-preflight-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cors",
+        "preflight"
+      ],
+      "content": {
+        "prompt": "사전 요청에 쓰는 HTTP 메서드는?",
+        "options": [
+          "OPTIONS",
+          "HEAD",
+          "GET"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "사전 요청은 OPTIONS 메서드로 보내며 서버는 허용할 메서드·헤더를 응답 헤더로 알린다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-preflight-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cors",
+        "preflight"
+      ],
+      "content": {
+        "prompt": "다른 출처로 보낼 때 사전 요청이 일어나는 것은?",
+        "options": [
+          "일반 폼 POST",
+          "DELETE 요청"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "다른 출처로 PUT·DELETE 등을 보내면 사전 요청이 일어난다. 일반 폼 전송은 바로 보낸다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-preflight-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cors",
+        "preflight"
+      ],
+      "content": {
+        "prompt": "다른 출처로 JSON 본문을 보내면 사전 요청이 일어난다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "JSON 본문이나 직접 정한 헤더를 쓰는 다른 출처 요청은 사전 요청을 먼저 보낸다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-preflight-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cors",
+        "preflight"
+      ],
+      "content": {
+        "prompt": "허용할 메서드를 알리는 헤더를 완성하는 빈칸은?",
+        "code": {
+          "language": "http",
+          "source": "HTTP/1.1 204 No Content\nAccess-Control-Allow-Origin: https://a.com\nAccess-Control-Allow-___: PUT, DELETE"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "Methods",
+          "methods"
+        ]
+      },
+      "explanation": "Access-Control-Allow-Methods는 사전 요청 응답에서 허용할 메서드를 알린다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-preflight-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cors",
+        "preflight"
+      ],
+      "content": {
+        "prompt": "허용할 요청 헤더를 알리는 헤더를 완성하는 빈칸은?",
+        "code": {
+          "language": "http",
+          "source": "HTTP/1.1 204 No Content\nAccess-Control-Allow-Origin: https://a.com\nAccess-Control-Allow-___: Content-Type"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "Headers",
+          "headers"
+        ]
+      },
+      "explanation": "Access-Control-Allow-Headers는 본 요청에 써도 되는 요청 헤더를 사전 요청 응답에서 알린다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-preflight-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cors",
+        "preflight"
+      ],
+      "content": {
+        "prompt": "다른 출처로 PUT을 보냈더니 OPTIONS가 먼저 갔다. 이유는?",
+        "options": [
+          "사전 요청 조건",
+          "서버 장애",
+          "캐시 만료"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "다른 출처로 PUT을 보내는 것은 사전 요청 조건이라 브라우저가 OPTIONS로 먼저 허용을 묻는다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-preflight-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cors",
+        "preflight"
+      ],
+      "content": {
+        "prompt": "사전 요청 응답에 PUT이 없어 막혔다. 고칠 헤더는?",
+        "options": [
+          "Allow-Origin",
+          "Allow-Headers",
+          "Allow-Methods"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "허용할 메서드는 Access-Control-Allow-Methods로 알리므로 여기에 PUT을 넣는다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-preflight-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cors",
+        "preflight"
+      ],
+      "content": {
+        "prompt": "직접 정한 X-Request-Id 헤더를 붙였더니 막혔다. 고칠 헤더는?",
+        "options": [
+          "Allow-Methods",
+          "Allow-Headers",
+          "Allow-Origin"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "직접 정한 요청 헤더는 Access-Control-Allow-Headers에 들어 있어야 본 요청이 허용된다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    },
+    {
+      "id": "sec-preflight-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cors",
+        "preflight"
+      ],
+      "content": {
+        "prompt": "사전 요청은 본 요청을 보낸 뒤 결과를 확인하는 요청이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "사전 요청은 본 요청 전에 OPTIONS로 허용 여부를 묻는다. 허용되지 않으면 본 요청을 보내지 않는다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+      ]
+    }
+  ]
+}

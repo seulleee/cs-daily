@@ -1,0 +1,225 @@
+{
+  "track": "sec",
+  "unit": "u01-basics",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "sec-defdepth-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "defense-in-depth",
+        "attack-surface"
+      ],
+      "content": {
+        "prompt": "통제 하나가 뚫려도 다음 통제가 막도록 겹을 두는 것은?",
+        "options": [
+          "안전한 기본값",
+          "심층 방어",
+          "직무 분리"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "심층 방어는 여러 겹의 통제를 두어 하나가 뚫려도 다음 통제가 막게 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-defdepth-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "defense-in-depth",
+        "attack-surface"
+      ],
+      "content": {
+        "prompt": "외부에서 닿을 수 있는 입력 지점의 합은?",
+        "options": [
+          "공격 표면",
+          "신뢰 경계",
+          "심층 방어"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "공격 표면은 외부에서 닿을 수 있는 엔드포인트·포트·기능을 모두 더한 것이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-defdepth-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "defense-in-depth",
+        "attack-surface"
+      ],
+      "content": {
+        "prompt": "쓰지 않는 디버그 엔드포인트를 지우는 것은?",
+        "options": [
+          "공격 표면 축소",
+          "심층 방어"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "쓰지 않는 엔드포인트를 지우면 외부 입력 지점이 줄어드는 공격 표면 축소다.",
+      "refs": []
+    },
+    {
+      "id": "sec-defdepth-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "defense-in-depth",
+        "attack-surface"
+      ],
+      "content": {
+        "prompt": "안전한 기본값은 설정하지 않아도 비공개·꺼짐으로 동작한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "안전한 기본값은 따로 설정하지 않아도 안전한 쪽으로 동작하게 하는 원칙이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-defdepth-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "defense-in-depth",
+        "attack-surface"
+      ],
+      "content": {
+        "prompt": "외부에서 닿는 입력 지점의 합은 공격 ___ 이다.",
+        "hint": "엔드포인트·포트·기능을 모두 더한 것이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "표면",
+          "surface",
+          "Surface",
+          "면"
+        ]
+      },
+      "explanation": "외부에서 닿는 입력 지점의 합은 공격 표면이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-defdepth-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "defense-in-depth",
+        "attack-surface"
+      ],
+      "content": {
+        "prompt": "여러 겹의 통제를 두는 전략은 ___ 방어다.",
+        "hint": "통제 하나가 뚫려도 다음 통제가 막는다."
+      },
+      "answer_key": {
+        "accepted": [
+          "심층",
+          "depth",
+          "다층"
+        ]
+      },
+      "explanation": "통제를 여러 겹 두는 전략은 심층 방어다.",
+      "refs": []
+    },
+    {
+      "id": "sec-defdepth-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "defense-in-depth",
+        "attack-surface"
+      ],
+      "content": {
+        "prompt": "새 파일 저장소를 만들 때 알맞은 기본값은?",
+        "options": [
+          "공개",
+          "비공개"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "안전한 기본값은 설정하지 않아도 비공개로 동작하는 쪽이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-defdepth-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "defense-in-depth",
+        "attack-surface"
+      ],
+      "content": {
+        "prompt": "게이트웨이 검사 뒤에도 서버가 입력을 검사한다. 이 설계는?",
+        "options": [
+          "심층 방어",
+          "공격 표면 확대",
+          "직무 분리"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "앞 통제가 뚫려도 서버 검사가 막도록 겹을 둔 심층 방어다.",
+      "refs": []
+    },
+    {
+      "id": "sec-defdepth-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "defense-in-depth",
+        "attack-surface"
+      ],
+      "content": {
+        "prompt": "운영 서버에서 닫아야 할 포트는?",
+        "options": [
+          "안 쓰는 관리 포트",
+          "서비스 HTTPS 포트"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "쓰지 않는 포트를 닫는 것이 공격 표면 축소다. 서비스 포트는 필요하므로 연다.",
+      "refs": []
+    },
+    {
+      "id": "sec-defdepth-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "defense-in-depth",
+        "attack-surface"
+      ],
+      "content": {
+        "prompt": "심층 방어는 가장 강한 통제 하나에만 의존한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "심층 방어는 통제 하나가 뚫려도 다음이 막도록 여러 겹을 둔다.",
+      "refs": []
+    }
+  ]
+}

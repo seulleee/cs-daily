@@ -1,0 +1,250 @@
+{
+  "track": "sec",
+  "unit": "u02-password",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "sec-pepper-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "pepper"
+      ],
+      "content": {
+        "prompt": "모든 비밀번호에 더하는 서버 비밀값은?",
+        "options": [
+          "솔트",
+          "작업 계수",
+          "페퍼"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "페퍼는 모든 비밀번호에 더하는 서버 비밀값이다. 솔트는 사용자마다 다르고 비밀이 아니다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pepper-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "pepper"
+      ],
+      "content": {
+        "prompt": "로그인 성공 때 새 알고리즘으로 다시 해시하는 것은?",
+        "options": [
+          "해시 업그레이드",
+          "해시 비교",
+          "솔트 재사용"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "해시 업그레이드는 로그인 성공 때 받은 평문으로 새 알고리즘·cost 해시를 만들어 저장한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pepper-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "pepper"
+      ],
+      "content": {
+        "prompt": "페퍼를 보관할 곳은?",
+        "options": [
+          "users 테이블",
+          "비밀 저장소"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "페퍼는 DB와 따로 비밀 저장소에 두어 DB만 유출돼도 알 수 없게 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pepper-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "pepper"
+      ],
+      "content": {
+        "prompt": "페퍼는 솔트처럼 해시 옆 DB 칼럼에 저장한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "솔트는 DB에 두지만 페퍼는 서버 비밀값이라 DB가 아닌 비밀 저장소에 둔다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pepper-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "pepper"
+      ],
+      "content": {
+        "prompt": "모든 비밀번호에 더하는 서버 비밀값은 ___ 이다.",
+        "hint": "DB가 아닌 비밀 저장소에 둔다."
+      },
+      "answer_key": {
+        "accepted": [
+          "페퍼",
+          "pepper",
+          "Pepper"
+        ]
+      },
+      "explanation": "모든 비밀번호에 더하는 서버 비밀값은 페퍼다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pepper-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "pepper"
+      ],
+      "content": {
+        "prompt": "옛 해시를 구분하려면 저장 값에 ___ 과 cost를 남긴다.",
+        "hint": "bcrypt·argon2id 같은 이름을 가리킨다."
+      },
+      "answer_key": {
+        "accepted": [
+          "알고리즘",
+          "algorithm",
+          "Algorithm",
+          "알고리즘 이름"
+        ]
+      },
+      "explanation": "저장 값에 알고리즘과 cost를 함께 남기면 옛 해시를 구분할 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pepper-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "pepper"
+      ],
+      "content": {
+        "prompt": "로그인 성공 후 이 코드가 하는 일은?",
+        "code": {
+          "language": "python",
+          "source": "def on_login_ok(user, pw):\n    if user.algo != \"argon2id\":\n        user.hash = argon2.hash(pw)\n        user.algo = \"argon2id\"\n        user.save()"
+        },
+        "options": [
+          "페퍼 교체",
+          "솔트 삭제",
+          "해시 업그레이드"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "옛 알고리즘이면 로그인 때 받은 평문을 argon2id로 다시 해시해 저장한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pepper-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "pepper"
+      ],
+      "content": {
+        "prompt": "옛 해시를 새 알고리즘으로 옮길 시점은?",
+        "options": [
+          "일괄 복호화 때",
+          "로그인 실패 때",
+          "로그인 성공 때"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "평문은 로그인에 성공했을 때만 알 수 있으므로 그때 다시 해시한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pepper-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "pepper"
+      ],
+      "content": {
+        "prompt": "저장 값만 보고 옛 해시인지 구분하려면?",
+        "options": [
+          "알고리즘·cost 기록",
+          "해시 길이 추측"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "저장 값에 알고리즘과 cost를 함께 남기면 옛 해시를 바로 구분할 수 있다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-pepper-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "pepper"
+      ],
+      "content": {
+        "prompt": "DB만 유출되면 공격자는 페퍼 값을 알 수 없다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "페퍼는 DB가 아닌 비밀 저장소에 있으므로 DB만 유출돼서는 드러나지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

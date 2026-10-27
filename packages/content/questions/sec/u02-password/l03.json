@@ -1,0 +1,246 @@
+{
+  "track": "sec",
+  "unit": "u02-password",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "sec-salt-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "salt"
+      ],
+      "content": {
+        "prompt": "사용자마다 새로 만들어 비밀번호와 합쳐 해시하는 값은?",
+        "options": [
+          "솔트",
+          "세션 ID",
+          "암호화 키"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "솔트는 사용자마다 새로 만드는 임의 값으로, 비밀번호와 합쳐 해시한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-salt-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "salt"
+      ],
+      "content": {
+        "prompt": "흔한 비밀번호의 해시를 미리 계산해 둔 대응표는?",
+        "options": [
+          "해시 테이블",
+          "레인보우 테이블",
+          "라우팅 테이블"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "레인보우 테이블은 흔한 비밀번호의 해시를 미리 계산해 둔 대응표다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-salt-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "salt"
+      ],
+      "content": {
+        "prompt": "솔트를 쓰면 같은 비밀번호의 해시는 사용자마다?",
+        "options": [
+          "다르다",
+          "같다"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "사용자마다 솔트가 달라 같은 비밀번호도 해시가 달라진다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-salt-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "salt"
+      ],
+      "content": {
+        "prompt": "솔트는 비밀이 아니므로 해시와 함께 DB에 저장한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "솔트는 비밀값이 아니며 검증에 필요하므로 해시와 함께 저장한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-salt-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "password",
+        "salt"
+      ],
+      "content": {
+        "prompt": "사용자마다 새로 만드는 임의 값은 ___ 이다.",
+        "hint": "비밀번호와 합쳐 해시한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "솔트",
+          "salt",
+          "Salt"
+        ]
+      },
+      "explanation": "비밀번호와 합쳐 해시하는 사용자별 임의 값은 솔트다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-salt-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "salt"
+      ],
+      "content": {
+        "prompt": "미리 계산한 해시 대응표는 ___ 테이블이다.",
+        "hint": "솔트가 쓸모없게 만드는 표다."
+      },
+      "answer_key": {
+        "accepted": [
+          "레인보우",
+          "rainbow",
+          "Rainbow"
+        ]
+      },
+      "explanation": "흔한 비밀번호의 해시를 미리 계산한 표는 레인보우 테이블이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-salt-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "salt"
+      ],
+      "content": {
+        "prompt": "두 계정의 저장 해시가 완전히 같다. 의심할 것은?",
+        "options": [
+          "사용자별 솔트",
+          "솔트 없이 같은 비번",
+          "느린 해시"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "사용자별 솔트가 있으면 해시가 달라야 하므로, 솔트 없이 같은 비밀번호를 쓴 것이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-salt-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "salt"
+      ],
+      "content": {
+        "prompt": "모든 사용자에게 같은 솔트 하나를 쓴다. 문제는?",
+        "options": [
+          "같은 비번은 같은 해시",
+          "저장 공간 증가",
+          "로그인 실패"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "솔트가 같으면 같은 비밀번호의 해시도 같아진다. 솔트는 사용자마다 새로 만든다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-salt-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "salt"
+      ],
+      "content": {
+        "prompt": "솔트는 어디에 저장하나?",
+        "options": [
+          "저장하지 않음",
+          "클라이언트 쿠키",
+          "해시와 함께 DB"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "솔트는 비밀이 아니고 검증에 필요하므로 해시와 함께 DB에 저장한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-salt-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "password",
+        "salt"
+      ],
+      "content": {
+        "prompt": "레인보우 테이블은 솔트를 쓴 해시에도 그대로 통한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "솔트 때문에 사용자마다 해시가 달라져 미리 계산한 대응표를 쓸 수 없다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

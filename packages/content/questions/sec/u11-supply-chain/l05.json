@@ -1,0 +1,222 @@
+{
+  "track": "sec",
+  "unit": "u11-supply-chain",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "sec-supplyatk-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "supply-chain"
+      ],
+      "content": {
+        "prompt": "내 코드가 아니라 의존성·빌드·배포 과정을 노리는 공격은?",
+        "options": [
+          "무차별 대입",
+          "공급망 공격",
+          "세션 고정"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "공급망 공격은 의존성·빌드 도구·배포 과정을 오염시켜, 그것을 쓰는 모든 곳에 악성 코드를 퍼뜨린다.",
+      "refs": []
+    },
+    {
+      "id": "sec-supplyatk-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "supply-chain"
+      ],
+      "content": {
+        "prompt": "인기 패키지와 철자가 비슷한 이름을 쓰는 공격은?",
+        "options": [
+          "타이포스쿼팅",
+          "의존성 혼동"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "타이포스쿼팅은 인기 패키지와 철자가 비슷한 이름으로 악성 패키지를 올려 오타를 노린다.",
+      "refs": []
+    },
+    {
+      "id": "sec-supplyatk-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "supply-chain"
+      ],
+      "content": {
+        "prompt": "사내 패키지 이름을 공개 저장소에 높은 버전으로 올리는 공격은?",
+        "options": [
+          "타이포스쿼팅",
+          "의존성 혼동"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "의존성 혼동은 공개 저장소의 더 높은 버전이 사내 패키지 대신 설치되게 만드는 공격이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-supplyatk-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "supply-chain"
+      ],
+      "content": {
+        "prompt": "타이포스쿼팅은 사내 패키지 이름을 공개 저장소에 올리는 공격이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "그것은 의존성 혼동이다. 타이포스쿼팅은 인기 패키지와 철자가 비슷한 이름으로 악성 패키지를 올린다.",
+      "refs": []
+    },
+    {
+      "id": "sec-supplyatk-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "supply-chain"
+      ],
+      "content": {
+        "prompt": "npm에서 설치 중 실행되는 스크립트의 예는 ___ 이다.",
+        "hint": "설치 단계가 끝난 직후 실행된다."
+      },
+      "answer_key": {
+        "accepted": [
+          "postinstall",
+          "Postinstall",
+          "post install",
+          "postInstall"
+        ]
+      },
+      "explanation": "postinstall 같은 설치 스크립트는 패키지를 설치하는 것만으로 실행돼 악성 코드가 도는 지점이 된다.",
+      "refs": []
+    },
+    {
+      "id": "sec-supplyatk-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "supply-chain"
+      ],
+      "content": {
+        "prompt": "인기 패키지와 철자가 비슷한 악성 패키지 공격은 ___ 이다.",
+        "hint": "이름을 잘못 입력하는 실수를 노린다."
+      },
+      "answer_key": {
+        "accepted": [
+          "타이포스쿼팅",
+          "타이포 스쿼팅",
+          "typosquatting",
+          "Typosquatting",
+          "typo squatting"
+        ]
+      },
+      "explanation": "타이포스쿼팅은 인기 패키지 이름의 오타를 노려 비슷한 철자로 악성 패키지를 올린다.",
+      "refs": []
+    },
+    {
+      "id": "sec-supplyatk-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "supply-chain"
+      ],
+      "content": {
+        "prompt": "이 package.json에서 설치 중 실행되는 항목은?",
+        "code": {
+          "language": "json",
+          "source": "{\n  \"name\": \"reqeusts-helper\",\n  \"version\": \"1.0.0\",\n  \"scripts\": {\n    \"postinstall\": \"node setup.js\"\n  }\n}"
+        },
+        "options": [
+          "name",
+          "version",
+          "postinstall"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "postinstall은 설치 중 자동으로 실행되는 스크립트라 악성 코드가 돌 수 있는 지점이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-supplyatk-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "supply-chain"
+      ],
+      "content": {
+        "prompt": "requests 대신 reqeusts가 의존성에 추가됐다. 의심할 것은?",
+        "options": [
+          "타이포스쿼팅",
+          "의존성 혼동",
+          "전이 의존성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인기 패키지와 한두 글자만 다른 이름은 타이포스쿼팅의 징후다. 이름 철자와 게시자를 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-supplyatk-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "supply-chain"
+      ],
+      "content": {
+        "prompt": "사내 패키지가 공개 저장소의 버전으로 설치됐다. 의심할 것은?",
+        "options": [
+          "타이포스쿼팅",
+          "의존성 혼동",
+          "설치 스크립트"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "사내 전용 이름이 공개 저장소의 더 높은 버전으로 대신 설치됐다면 의존성 혼동을 의심한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-supplyatk-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "supply-chain"
+      ],
+      "content": {
+        "prompt": "공급망 공격은 내 코드가 아니라 의존성·빌드·배포 과정을 노린다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "공급망 공격은 많은 서비스가 함께 쓰는 의존성·빌드 도구·배포 과정을 오염시키는 공격이다.",
+      "refs": []
+    }
+  ]
+}

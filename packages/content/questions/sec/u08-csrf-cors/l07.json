@@ -1,0 +1,263 @@
+{
+  "track": "sec",
+  "unit": "u08-csrf-cors",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "sec-fieldcors-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cors",
+        "incident"
+      ],
+      "content": {
+        "prompt": "CORS 오류 신고를 받고 먼저 볼 것은?",
+        "options": [
+          "DB 인덱스",
+          "서버 디스크",
+          "브라우저 콘솔"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "CORS 오류는 브라우저가 판단하므로 콘솔 메시지와 사전 요청 응답 헤더를 먼저 본다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcors-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cors",
+        "incident"
+      ],
+      "content": {
+        "prompt": "CORS 오류를 없애려는 처방 중 잘못된 것은?",
+        "options": [
+          "모든 출처 허용",
+          "허용 목록에 출처 추가",
+          "허용 메서드 보완"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "모든 출처를 허용하면 오류는 사라져도 어떤 사이트든 응답을 읽을 수 있게 된다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcors-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cors",
+        "incident"
+      ],
+      "content": {
+        "prompt": "서버끼리의 API 호출에 CORS는?",
+        "options": [
+          "적용된다",
+          "적용되지 않는다"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "CORS는 브라우저가 페이지 스크립트에 적용하는 규칙이라 서버 간 요청에는 적용되지 않는다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcors-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cors",
+        "incident"
+      ],
+      "content": {
+        "prompt": "쿠키 인증 API에 다른 출처를 허용했다면 CSRF 방어가 있는지 본다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "다른 출처 페이지가 쿠키를 붙여 요청할 수 있으므로 토큰·SameSite·Origin 검사를 확인한다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcors-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cors",
+        "incident"
+      ],
+      "content": {
+        "prompt": "CORS 오류는 콘솔과 ___ 요청의 응답 헤더를 먼저 본다."
+      },
+      "answer_key": {
+        "accepted": [
+          "사전",
+          "사전 요청",
+          "preflight",
+          "Preflight",
+          "프리플라이트"
+        ]
+      },
+      "explanation": "사전 요청 응답의 Allow-Origin·Allow-Methods·Allow-Headers를 보면 무엇이 빠졌는지 알 수 있다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcors-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cors",
+        "incident"
+      ],
+      "content": {
+        "prompt": "PUT 호출이 사전 요청에서 막혔다. 빈칸에 추가할 메서드는?",
+        "code": {
+          "language": "http",
+          "source": "HTTP/1.1 204 No Content\nAccess-Control-Allow-Origin: https://a.com\nAccess-Control-Allow-Methods: GET, POST, ___"
+        }
+      },
+      "answer_key": {
+        "accepted": [
+          "PUT",
+          "put"
+        ]
+      },
+      "explanation": "Access-Control-Allow-Methods에 PUT이 있어야 사전 요청이 통과하고 본 요청이 전송된다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcors-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cors",
+        "incident"
+      ],
+      "content": {
+        "prompt": "배치 서버에서는 호출이 되고 브라우저만 막힌다. 볼 곳은?",
+        "options": [
+          "CORS 설정",
+          "DB 권한",
+          "서버 인증서"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "서버 간 요청에는 CORS가 적용되지 않으므로 브라우저만 막히면 CORS 응답 헤더를 확인한다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcors-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cors",
+        "incident"
+      ],
+      "content": {
+        "prompt": "오류를 없애려 이 헤더를 넣자는 제안. 판단은?",
+        "code": {
+          "language": "http",
+          "source": "Access-Control-Allow-Origin: *"
+        },
+        "options": [
+          "그대로 배포",
+          "오류 무시",
+          "필요한 출처만 허용"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "*는 모든 출처를 허용한다. 오류를 없애려 전체를 열지 말고 필요한 출처만 허용 목록에 둔다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcors-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cors",
+        "incident"
+      ],
+      "content": {
+        "prompt": "쿠키 인증 API에 a.com을 허용했다. 이어서 확인할 것은?",
+        "options": [
+          "이미지 압축률",
+          "CSRF 방어 여부",
+          "로그 글꼴"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "쿠키로 인증하는 API에 다른 출처를 열었다면 CSRF 토큰·SameSite·Origin 검사가 있는지 확인한다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldcors-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cors",
+        "incident"
+      ],
+      "content": {
+        "prompt": "서버 간 호출에서 오류가 나면 Allow-Origin부터 고친다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "서버끼리의 요청에는 CORS가 적용되지 않으므로 Allow-Origin은 원인이 아니다.",
+      "refs": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

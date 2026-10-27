@@ -1,0 +1,231 @@
+{
+  "track": "sec",
+  "unit": "u03-session-cookie",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "sec-samesite-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cookie",
+        "samesite"
+      ],
+      "content": {
+        "prompt": "다른 사이트발 요청에 쿠키를 보낼지 정하는 속성은?",
+        "options": [
+          "SameSite",
+          "HttpOnly",
+          "Domain"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "SameSite는 다른 사이트에서 시작한 요청에 쿠키를 보낼지 정하는 속성이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-samesite-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cookie",
+        "samesite"
+      ],
+      "content": {
+        "prompt": "다른 사이트에서 온 요청에 쿠키를 보내지 않는 값은?",
+        "options": [
+          "Strict",
+          "Lax",
+          "None"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "Strict는 다른 사이트에서 시작한 요청에는 쿠키를 보내지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-samesite-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cookie",
+        "samesite"
+      ],
+      "content": {
+        "prompt": "다른 사이트 링크 클릭 같은 최상위 GET에만 보내는 값은?",
+        "options": [
+          "None",
+          "Strict",
+          "Lax"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "Lax는 다른 사이트에서 최상위 이동으로 오는 GET에만 쿠키를 보낸다. Strict는 이때도 보내지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-samesite-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cookie",
+        "samesite"
+      ],
+      "content": {
+        "prompt": "SameSite=None은 Secure 없이도 쓸 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "SameSite=None 쿠키는 Secure가 함께 있어야 한다. 없으면 브라우저가 쿠키를 받아들이지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-samesite-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cookie",
+        "samesite"
+      ],
+      "content": {
+        "prompt": "다른 사이트 요청에 쿠키를 안 보내는 SameSite 값은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "Strict",
+          "strict",
+          "STRICT",
+          "스트릭트"
+        ]
+      },
+      "explanation": "Strict는 다른 사이트에서 시작한 요청에 쿠키를 싣지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-samesite-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cookie",
+        "samesite"
+      ],
+      "content": {
+        "prompt": "다른 사이트 요청에도 쿠키를 보내는 SameSite 값은 ___ 이다.",
+        "hint": "Secure를 함께 붙여야 하는 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "None",
+          "none",
+          "NONE"
+        ]
+      },
+      "explanation": "None은 다른 사이트 요청에도 쿠키를 보내며 Secure가 필수다.",
+      "refs": []
+    },
+    {
+      "id": "sec-samesite-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cookie",
+        "samesite"
+      ],
+      "content": {
+        "prompt": "다른 사이트 iframe 안에서도 로그인이 필요하다. 빈칸은?",
+        "code": {
+          "language": "http",
+          "source": "HTTP/1.1 200 OK\nSet-Cookie: sid=k3J9; Secure; HttpOnly; ___"
+        },
+        "options": [
+          "SameSite=Strict",
+          "SameSite=Lax",
+          "SameSite=None"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "다른 사이트 안에서 보내는 요청에도 쿠키가 필요하면 None을 쓴다. 이 코드처럼 Secure도 함께 둔다.",
+      "refs": []
+    },
+    {
+      "id": "sec-samesite-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cookie",
+        "samesite"
+      ],
+      "content": {
+        "prompt": "SameSite를 지정하지 않으면 동작은?",
+        "options": [
+          "모든 브라우저 Lax",
+          "브라우저마다 다름",
+          "모든 브라우저 None"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SameSite 미지정 동작은 브라우저마다 다르다. 그래서 세션 쿠키에는 값을 늘 명시한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-samesite-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cookie",
+        "samesite"
+      ],
+      "content": {
+        "prompt": "외부 링크로 들어와도 로그인 상태여야 한다. 알맞은 값은?",
+        "options": [
+          "Strict",
+          "Lax",
+          "지정 안 함"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "Lax는 다른 사이트 링크 클릭 같은 최상위 GET 이동에 쿠키를 보내므로 로그인 상태가 유지된다.",
+      "refs": []
+    },
+    {
+      "id": "sec-samesite-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cookie",
+        "samesite"
+      ],
+      "content": {
+        "prompt": "SameSite=Strict는 다른 사이트에서 온 요청에 쿠키를 보내지 않는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "Strict는 다른 사이트에서 시작한 모든 요청에서 쿠키를 빼고 보낸다.",
+      "refs": []
+    }
+  ]
+}

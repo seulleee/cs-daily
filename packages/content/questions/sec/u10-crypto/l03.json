@@ -1,0 +1,226 @@
+{
+  "track": "sec",
+  "unit": "u10-crypto",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "sec-mac-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "hmac"
+      ],
+      "content": {
+        "prompt": "공유한 비밀키로 만들고 키를 가진 쪽만 검증하는 값은?",
+        "options": [
+          "해시",
+          "HMAC",
+          "전자 서명"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "HMAC은 공유한 비밀키로 만드는 값이라 키를 가진 쪽만 만들고 검증할 수 있다.",
+      "refs": []
+    },
+    {
+      "id": "sec-mac-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "hmac"
+      ],
+      "content": {
+        "prompt": "개인키로 서명하고 공개키로 누구나 검증하는 것은?",
+        "options": [
+          "HMAC",
+          "Base64",
+          "전자 서명"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "전자 서명은 개인키로 만들고 공개키로 누구나 검증하며, 서명자가 부인할 수 없다.",
+      "refs": []
+    },
+    {
+      "id": "sec-mac-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "hmac"
+      ],
+      "content": {
+        "prompt": "JWT의 HS256 알고리즘은 어느 쪽인가?",
+        "options": [
+          "HMAC",
+          "전자 서명"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "HS256은 비밀키를 공유하는 HMAC이다. RS256·ES256이 키 쌍을 쓰는 전자 서명이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-mac-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "hmac"
+      ],
+      "content": {
+        "prompt": "데이터와 해시만 함께 보내면 일부러 바꾼 데이터도 알아챌 수 있다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "공격자도 바꾼 데이터의 해시를 다시 계산해 붙일 수 있다. 변조 검출에는 HMAC이나 전자 서명을 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-mac-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "hmac"
+      ],
+      "content": {
+        "prompt": "개인키로 서명하고 공개키로 검증하는 방식을 전자 ___ 이라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "서명",
+          "signature",
+          "시그니처"
+        ]
+      },
+      "explanation": "전자 서명은 개인키를 가진 사람만 만들 수 있어 서명자가 나중에 부인할 수 없다.",
+      "refs": []
+    },
+    {
+      "id": "sec-mac-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "hmac"
+      ],
+      "content": {
+        "prompt": "공유한 비밀키로 만드는 메시지 인증 값은 ___ 이다."
+      },
+      "answer_key": {
+        "accepted": [
+          "HMAC",
+          "hmac",
+          "에이치맥"
+        ]
+      },
+      "explanation": "HMAC은 키 없이는 다시 계산할 수 없어서, 해시만 붙일 때와 달리 일부러 바꾼 데이터를 검출한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-mac-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "hmac"
+      ],
+      "content": {
+        "prompt": "이 코드가 검증하는 값은?",
+        "code": {
+          "language": "python",
+          "source": "import hmac\n\ndef verify(key, msg, tag):\n    expected = hmac.new(\n        key, msg, \"sha256\").digest()\n    return hmac.compare_digest(\n        expected, tag)"
+        },
+        "options": [
+          "전자 서명",
+          "HMAC",
+          "해시만"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "hmac.new로 비밀키 기반 HMAC을 다시 계산하고 compare_digest로 상수 시간 비교한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-mac-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "hmac"
+      ],
+      "content": {
+        "prompt": "서명한 쪽이 나중에 서명을 부인하지 못하게 하려면?",
+        "options": [
+          "HMAC",
+          "전자 서명"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "HMAC은 키를 가진 양쪽이 모두 만들 수 있어 부인을 막지 못한다. 개인키로만 만드는 전자 서명을 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-mac-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "hmac"
+      ],
+      "content": {
+        "prompt": "검증 서비스가 서명 키를 갖지 않게 하려면 고를 JWT 알고리즘은?",
+        "options": [
+          "HS256",
+          "RS256"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "RS256은 전자 서명이라 검증 쪽은 공개키만 가지면 된다. HS256은 검증 쪽도 같은 비밀키가 필요하다.",
+      "refs": []
+    },
+    {
+      "id": "sec-mac-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "hmac"
+      ],
+      "content": {
+        "prompt": "HMAC은 비밀키를 가진 쪽만 만들고 검증할 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "HMAC은 공유한 비밀키로 계산하므로 키가 없는 공격자는 바꾼 데이터의 올바른 값을 만들 수 없다.",
+      "refs": []
+    }
+  ]
+}

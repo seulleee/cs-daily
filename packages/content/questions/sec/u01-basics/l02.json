@@ -1,0 +1,229 @@
+{
+  "track": "sec",
+  "unit": "u01-basics",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "sec-authnz-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "authentication",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "API 요청을 보낸 쪽이 누구인지 가려내는 과정은?",
+        "options": [
+          "인가",
+          "암호화",
+          "인증"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "인증은 요청한 주체가 누구인지 확인하는 과정이다. 인가는 그다음에 작업 허용 여부를 판단한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-authnz-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "authentication",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "확인된 주체가 그 작업을 해도 되는지 판단하는 과정은?",
+        "options": [
+          "인가",
+          "인증",
+          "로깅"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인가는 이미 확인된 주체가 그 작업을 할 권한이 있는지 판단하는 과정이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-authnz-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "authentication",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "인증이 없거나 실패했을 때 돌려주는 상태 코드는?",
+        "options": [
+          "403",
+          "401",
+          "404"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인증이 없거나 실패하면 401 Unauthorized를 돌려준다. 403은 인증 후 권한이 없을 때다.",
+      "refs": []
+    },
+    {
+      "id": "sec-authnz-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "authentication",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "403은 인증은 됐지만 권한이 없을 때 돌려주는 상태 코드다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "403 Forbidden은 주체는 확인됐지만 그 작업을 할 권한이 없을 때 쓴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-authnz-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "authentication",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "요청한 주체가 누구인지 확인하는 과정은 ___ 이다.",
+        "hint": "로그인에서 아이디와 비밀번호를 확인하는 단계다."
+      },
+      "answer_key": {
+        "accepted": [
+          "인증",
+          "authentication",
+          "Authentication",
+          "authn"
+        ]
+      },
+      "explanation": "주체가 누구인지 확인하는 과정은 인증이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-authnz-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "authentication",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "확인된 주체에게 작업 허용 여부를 정하는 과정은 ___ 이다.",
+        "hint": "누구인지 확인한 다음 단계다."
+      },
+      "answer_key": {
+        "accepted": [
+          "인가",
+          "authorization",
+          "Authorization",
+          "authz",
+          "권한 부여"
+        ]
+      },
+      "explanation": "작업을 해도 되는지 판단하는 과정은 인가다.",
+      "refs": []
+    },
+    {
+      "id": "sec-authnz-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "authentication",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "토큰 없이 /me를 호출했다. 알맞은 응답 코드는?",
+        "options": [
+          "401",
+          "403",
+          "200"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "인증 정보가 없으므로 401 Unauthorized를 돌려준다.",
+      "refs": []
+    },
+    {
+      "id": "sec-authnz-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "authentication",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "일반 사용자가 관리자 API를 호출했다. 알맞은 응답 코드는?",
+        "options": [
+          "401",
+          "500",
+          "403"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "인증은 됐지만 관리자 권한이 없으므로 403 Forbidden을 돌려준다.",
+      "refs": []
+    },
+    {
+      "id": "sec-authnz-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "authentication",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "만료된 토큰으로 요청해 거절됐다. 실패한 단계는?",
+        "options": [
+          "인가",
+          "인증"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "만료된 토큰으로는 주체를 확인할 수 없으므로 인증 실패이고 401을 돌려준다.",
+      "refs": []
+    },
+    {
+      "id": "sec-authnz-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "authentication",
+        "authorization"
+      ],
+      "content": {
+        "prompt": "로그인 성공 여부를 판단하는 단계는 인가다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "로그인은 주체가 누구인지 확인하는 인증이다. 인가는 그 뒤 작업 권한을 판단한다.",
+      "refs": []
+    }
+  ]
+}

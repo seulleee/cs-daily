@@ -1,0 +1,217 @@
+{
+  "track": "sec",
+  "unit": "u04-token-auth",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "sec-oauth-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "비밀번호 없이 앱에 제한된 권한을 위임하는 표준은?",
+        "options": [
+          "OAuth 2.0",
+          "JWT",
+          "세션"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "OAuth 2.0은 비밀번호를 넘기지 않고 다른 앱에 제한된 접근 권한을 위임하는 표준이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oauth-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "액세스 토큰으로 할 수 있는 작업 범위는?",
+        "options": [
+          "스코프",
+          "클레임",
+          "세션"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "스코프는 액세스 토큰으로 할 수 있는 작업의 범위다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oauth-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "OAuth에서 사용자는 어떤 역할인가?",
+        "options": [
+          "클라이언트",
+          "리소스 소유자",
+          "인가 서버"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "사용자는 리소스 소유자이고, 앱이 클라이언트, 토큰을 발급하는 쪽이 인가 서버다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oauth-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "OAuth 2.0에서 클라이언트는 사용자 비밀번호를 받아 쓴다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "OAuth 2.0은 비밀번호를 앱에 넘기지 않고 제한된 권한만 위임하는 표준이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oauth-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "토큰으로 할 수 있는 작업 범위를 ___ 라 한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스코프",
+          "scope",
+          "Scope",
+          "scopes"
+        ]
+      },
+      "explanation": "스코프는 액세스 토큰의 작업 범위로, 필요한 만큼만 요청한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oauth-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "OAuth에서 토큰을 발급하는 역할은 ___ 서버다."
+      },
+      "answer_key": {
+        "accepted": [
+          "인가",
+          "authorization",
+          "Authorization",
+          "권한 부여"
+        ]
+      },
+      "explanation": "인가 서버가 사용자의 동의를 받아 클라이언트에 액세스 토큰을 발급한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oauth-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "일정 읽기만 필요한 앱의 스코프 요청은?",
+        "options": [
+          "읽기·쓰기 전부",
+          "읽기 스코프만",
+          "전체 권한"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "스코프는 필요한 만큼만 요청한다. 읽기만 필요하면 읽기 스코프만 받는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oauth-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "API를 제공하고 토큰을 받아 처리하는 역할은?",
+        "options": [
+          "인가 서버",
+          "클라이언트",
+          "리소스 서버"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "리소스 서버는 API로, 요청의 액세스 토큰을 확인하고 데이터를 돌려준다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oauth-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "사진 앱이 사용자 대신 API를 부른다. 앱의 역할은?",
+        "options": [
+          "리소스 소유자",
+          "클라이언트",
+          "리소스 서버"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "사용자 대신 권한을 위임받아 API를 부르는 앱이 클라이언트다.",
+      "refs": []
+    },
+    {
+      "id": "sec-oauth-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "oauth"
+      ],
+      "content": {
+        "prompt": "OAuth 2.0은 비밀번호를 넘기지 않고 권한을 위임한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "OAuth 2.0은 비밀번호 대신 제한된 액세스 토큰으로 권한을 위임한다.",
+      "refs": []
+    }
+  ]
+}

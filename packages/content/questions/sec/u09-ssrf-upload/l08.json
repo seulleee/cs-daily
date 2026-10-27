@@ -1,0 +1,244 @@
+{
+  "track": "sec",
+  "unit": "u09-ssrf-upload",
+  "lesson": "l08",
+  "questions": [
+    {
+      "id": "sec-fieldssrf-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "ssrf",
+        "incident"
+      ],
+      "content": {
+        "prompt": "미리보기 요청 로그에 사설 IP가 잇따라 보인다. 판단은?",
+        "options": [
+          "SSRF 시도",
+          "정상 트래픽",
+          "인증서 만료"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "미리보기 요청 로그에 사설 IP·메타데이터 주소가 보이면 SSRF 시도로 보고 점검한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldssrf-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "ssrf",
+        "incident"
+      ],
+      "content": {
+        "prompt": "SSRF 시도가 보인다. 코드에서 먼저 확인할 것은?",
+        "options": [
+          "응답 압축 여부",
+          "해석한 IP 검사 여부",
+          "로그 보관 기간"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "이름을 해석한 IP를 검사하는지, 리다이렉트를 따라가는지부터 확인한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldssrf-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "ssrf",
+        "incident"
+      ],
+      "content": {
+        "prompt": "클라우드 메타데이터 접근을 제한하는 방식은?",
+        "options": [
+          "주소 공개",
+          "토큰 요구 방식"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "IMDSv2처럼 토큰을 먼저 받아야 응답하게 하면 단순 요청으로는 메타데이터에 닿지 않는다. 설정은 AWS 트랙에서 다룬다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldssrf-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "ssrf",
+        "incident"
+      ],
+      "content": {
+        "prompt": "검사 뒤 리다이렉트를 그대로 따라가면 SSRF가 생길 수 있다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "허용한 도메인이 내부 주소로 리다이렉트하면 검사하지 않은 목적지로 요청이 간다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldssrf-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "ssrf",
+        "incident"
+      ],
+      "content": {
+        "prompt": "메타데이터 접근은 ___ 를 요구하는 방식으로 제한한다."
+      },
+      "answer_key": {
+        "accepted": [
+          "토큰",
+          "token"
+        ]
+      },
+      "explanation": "IMDSv2 같은 토큰 요구 방식은 토큰 없이 온 요청에 메타데이터를 내주지 않는다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldssrf-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "ssrf",
+        "incident"
+      ],
+      "content": {
+        "prompt": "로그에 169.254.169.254 요청이 보이면 ___ 시도로 본다."
+      },
+      "answer_key": {
+        "accepted": [
+          "SSRF",
+          "ssrf",
+          "서버 측 요청 위조",
+          "서버측 요청 위조"
+        ]
+      },
+      "explanation": "169.254.169.254는 메타데이터 엔드포인트라 서버가 이 주소로 요청했다면 SSRF 시도다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldssrf-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "ssrf",
+        "incident"
+      ],
+      "content": {
+        "prompt": "외부 도메인 미리보기에 내부 응답이 왔다. 먼저 볼 것은?",
+        "options": [
+          "이미지 크기",
+          "쿠키 만료 시각",
+          "리다이렉트 재검사"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "외부 도메인이 내부 주소로 리다이렉트했을 수 있으므로 따라갈 때 다시 검사하는지 확인한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldssrf-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "ssrf",
+        "incident"
+      ],
+      "content": {
+        "prompt": "업로드 파일이 웹 경로에서 스크립트로 실행됐다. 조치는?",
+        "options": [
+          "실행 권한 끄기",
+          "파일 이름 길이 제한",
+          "압축 해제"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "업로드 디렉터리의 실행을 끄고 웹 루트 밖이나 객체 저장소로 옮긴다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldssrf-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "ssrf",
+        "incident"
+      ],
+      "content": {
+        "prompt": "사용자 첨부 파일이 서비스 도메인에서 열린다. 조치는?",
+        "options": [
+          "확장자 숨기기",
+          "별도 도메인 제공",
+          "캐시 늘리기"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "사용자 파일은 별도 도메인에서 제공해 서비스 쿠키·출처와 분리한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-fieldssrf-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "ssrf",
+        "incident"
+      ],
+      "content": {
+        "prompt": "미리보기 검사는 URL 문자열만 보고 해석한 IP는 안 봐도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "외부 이름이 내부 IP로 해석될 수 있으므로 해석한 IP를 검사해야 한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}

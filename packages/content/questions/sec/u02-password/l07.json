@@ -1,0 +1,246 @@
+{
+  "track": "sec",
+  "unit": "u02-password",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "sec-bruteforce-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "login",
+        "brute-force"
+      ],
+      "content": {
+        "prompt": "한 계정에 비밀번호를 바꿔 가며 계속 시도하는 공격은?",
+        "options": [
+          "크리덴셜 스터핑",
+          "무차별 대입",
+          "서비스 거부"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "무차별 대입은 한 계정에 비밀번호를 하나씩 바꿔 가며 계속 시도한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-bruteforce-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "login",
+        "brute-force"
+      ],
+      "content": {
+        "prompt": "다른 곳에서 유출된 아이디·비밀번호 쌍을 넣어 보는 공격은?",
+        "options": [
+          "무차별 대입",
+          "서비스 거부",
+          "크리덴셜 스터핑"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "크리덴셜 스터핑은 다른 서비스에서 유출된 쌍을 그대로 넣어 본다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-bruteforce-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "login",
+        "brute-force"
+      ],
+      "content": {
+        "prompt": "여러 계정에 계정마다 한 번씩 로그인이 시도된다. 공격은?",
+        "options": [
+          "크리덴셜 스터핑",
+          "무차별 대입"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "계정마다 다른 유출 쌍을 한 번씩 넣어 보는 것은 크리덴셜 스터핑이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-bruteforce-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "login",
+        "brute-force"
+      ],
+      "content": {
+        "prompt": "속도 제한은 계정·IP별 로그인 시도 횟수를 제한한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "속도 제한은 계정·IP별로 일정 시간 안의 로그인 시도 횟수를 제한한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-bruteforce-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "login",
+        "brute-force"
+      ],
+      "content": {
+        "prompt": "유출된 쌍을 넣어 보는 공격은 크리덴셜 ___ 이다.",
+        "hint": "다른 서비스의 유출 목록을 쓴다."
+      },
+      "answer_key": {
+        "accepted": [
+          "스터핑",
+          "stuffing",
+          "Stuffing"
+        ]
+      },
+      "explanation": "유출된 아이디·비밀번호 쌍을 넣어 보는 공격은 크리덴셜 스터핑이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-bruteforce-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "login",
+        "brute-force"
+      ],
+      "content": {
+        "prompt": "일정 시간 안의 로그인 시도 수를 막는 것은 속도 ___ 이다.",
+        "hint": "계정·IP별로 건다."
+      },
+      "answer_key": {
+        "accepted": [
+          "제한",
+          "limiting",
+          "rate limiting",
+          "Rate limiting"
+        ]
+      },
+      "explanation": "일정 시간 안의 시도 횟수를 막는 것은 속도 제한이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-bruteforce-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "login",
+        "brute-force"
+      ],
+      "content": {
+        "prompt": "한 계정에 짧은 시간 실패가 수백 번 쌓였다. 공격은?",
+        "options": [
+          "무차별 대입",
+          "크리덴셜 스터핑"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "한 계정에 비밀번호를 바꿔 가며 계속 시도하는 무차별 대입이다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-bruteforce-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "login",
+        "brute-force"
+      ],
+      "content": {
+        "prompt": "가입 비밀번호가 유출 목록에 있다. 조치는?",
+        "options": [
+          "그대로 허용",
+          "가입 거절",
+          "이메일 발송"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "유출 비밀번호 검사에 걸리면 그 비밀번호로는 가입·변경을 거절한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-bruteforce-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "login",
+        "brute-force"
+      ],
+      "content": {
+        "prompt": "크리덴셜 스터핑을 줄이려 가입 때 둘 방어는?",
+        "options": [
+          "응답 캐시",
+          "로그 삭제",
+          "유출 비밀번호 검사"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "이미 유출된 비밀번호를 거절하면 유출 쌍으로 로그인될 가능성이 줄어든다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html"
+      ]
+    },
+    {
+      "id": "sec-bruteforce-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "login",
+        "brute-force"
+      ],
+      "content": {
+        "prompt": "무차별 대입은 유출된 쌍을 여러 계정에 넣어 보는 공격이다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "유출 쌍을 넣어 보는 것은 크리덴셜 스터핑이다. 무차별 대입은 한 계정에 계속 시도한다.",
+      "refs": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  ]
+}
