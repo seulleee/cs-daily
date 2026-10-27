@@ -1,0 +1,229 @@
+{
+  "track": "sec",
+  "unit": "u13-design",
+  "lesson": "l06",
+  "questions": [
+    {
+      "id": "sec-chkcrypto-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "구간별 TLS와 인증서 검증 여부를 보는 점검은?",
+        "options": [
+          "전송 점검",
+          "저장 점검",
+          "키·비밀값 점검"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "전송 점검은 외부·내부 모든 구간이 TLS인지, 인증서 검증을 끈 코드가 없는지 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkcrypto-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "비밀번호가 비밀번호 해시로 저장됐는지 보는 점검은?",
+        "options": [
+          "전송 점검",
+          "저장 점검",
+          "키·비밀값 점검"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "저장 점검은 비밀번호는 비밀번호 해시, 민감 필드는 인증 암호화인지 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkcrypto-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "저장소에 API 키가 커밋됐는지 보는 점검은?",
+        "options": [
+          "전송 점검",
+          "저장 점검",
+          "키·비밀값 점검"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "키·비밀값 점검은 코드·저장소에 비밀값이 없고 비밀 저장소·KMS를 쓰는지 본다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkcrypto-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "사내망 내부 구간은 TLS 점검 대상에서 빠진다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "전송 점검은 외부뿐 아니라 내부 구간도 TLS인지 확인한다. 로드 밸런서 뒤 평문 구간도 대상이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkcrypto-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "cryptography",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "인증서 검증을 켜도록 빈칸에 넣을 값은?",
+        "code": {
+          "language": "python",
+          "source": "import requests\n\nr = requests.get(url, verify=___)"
+        },
+        "hint": "파이썬 불리언 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "True",
+          "true"
+        ]
+      },
+      "explanation": "verify=False는 인증서 검증을 꺼 가로채기를 막지 못한다. 검증은 켠 채로 둔다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkcrypto-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "키를 보관하고 암호화를 대신해 주는 관리형 서비스는 ___ 다.",
+        "hint": "Key Management Service의 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "KMS",
+          "kms"
+        ]
+      },
+      "explanation": "KMS는 키를 꺼내지 않은 채 암호화를 대신해 준다. 키·비밀값 점검에서 사용 여부를 본다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkcrypto-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "주민번호 필드를 저장한다. 점검 기준에 맞는 방식은?",
+        "options": [
+          "Base64 인코딩",
+          "인증 암호화",
+          "평문 저장"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "되돌려야 하는 민감 필드는 인증 암호화로 저장한다. Base64는 누구나 되돌리는 인코딩이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkcrypto-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "비밀번호 컬럼이 AES로 암호화돼 있다. 판단은?",
+        "options": [
+          "그대로 유지",
+          "Base64로 변환",
+          "비밀번호 해시로"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "비밀번호 검증에는 되돌릴 필요가 없으므로 암호화가 아니라 비밀번호 해시로 바꾼다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkcrypto-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "설정 파일에 DB 비밀번호가 적혀 있다. 조치는?",
+        "options": [
+          "비밀 저장소로 이동",
+          "주석 처리",
+          "파일 이름 변경"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "비밀값은 비밀 저장소에 두고 실행할 때 주입한다. 이미 커밋됐다면 폐기·재발급도 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkcrypto-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "cryptography",
+        "secrets"
+      ],
+      "content": {
+        "prompt": "전송 점검에서는 인증서 검증을 끈 코드를 찾는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "인증서 검증을 끄면 TLS를 써도 가로채기를 막지 못해, 전송 점검의 확인 항목이다.",
+      "refs": []
+    }
+  ]
+}

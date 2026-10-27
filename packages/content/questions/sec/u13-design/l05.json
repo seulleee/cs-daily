@@ -1,0 +1,230 @@
+{
+  "track": "sec",
+  "unit": "u13-design",
+  "lesson": "l05",
+  "questions": [
+    {
+      "id": "sec-chksupply-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "supply-chain",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "잠금 파일·SCA·외부 액션 고정을 확인하는 점검은?",
+        "options": [
+          "공급망 점검",
+          "무결성 점검",
+          "로깅 점검"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "공급망 점검은 잠금 파일·SCA·의존성 자동 업데이트·외부 액션 고정을 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chksupply-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "supply-chain",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "배포 아티팩트 서명과 검증 단계를 보는 점검은?",
+        "options": [
+          "공급망 점검",
+          "무결성 점검",
+          "인증 점검"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "무결성 점검은 배포 아티팩트에 서명하고 배포 전에 검증하는 단계가 있는지 본다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chksupply-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "supply-chain",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "의존성의 알려진 취약점을 찾는 공급망 점검 항목은?",
+        "options": [
+          "CSP",
+          "HSTS",
+          "SCA"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "SCA는 오픈소스 의존성의 알려진 취약점을 찾는다. CSP·HSTS는 응답 헤더다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chksupply-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "supply-chain",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "공식 저장소의 플러그인은 서명 확인 없이 설치해도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "업데이트·플러그인도 외부에서 들어오는 코드라, 받는 경로와 상관없이 서명을 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chksupply-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "supply-chain",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "CI에서 설치 버전을 고정하는 파일은 ___ 파일이다.",
+        "hint": "설치한 정확한 버전과 무결성 해시를 기록한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "잠금",
+          "lock",
+          "lockfile",
+          "락",
+          "lock file"
+        ]
+      },
+      "explanation": "잠금 파일은 정확한 버전과 무결성 해시를 기록해 CI가 같은 의존성을 설치하게 한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chksupply-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "supply-chain",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "빌드 결과물에 ___ 해 배포 전에 위조 여부를 검증한다.",
+        "hint": "개인키로 만들고 공개키로 확인한다"
+      },
+      "answer_key": {
+        "accepted": [
+          "서명",
+          "sign",
+          "signing",
+          "signature"
+        ]
+      },
+      "explanation": "아티팩트 서명을 검증하는 단계가 있어야 바뀐 이미지·패키지가 배포되지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chksupply-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "supply-chain",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "파이프라인이 이미지를 검증 없이 배포한다. 추가할 단계는?",
+        "options": [
+          "서명 검증",
+          "로그 마스킹",
+          "CSP 적용"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "배포 전에 아티팩트 서명을 검증해 위조된 이미지를 걸러야 무결성 점검을 통과한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chksupply-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "supply-chain",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "워크플로가 서드파티 액션을 태그로 참조한다. 조치는?",
+        "options": [
+          "최신 태그 유지",
+          "커밋 SHA로 고정",
+          "이름만 변경"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "태그는 옮겨질 수 있어 서드파티 액션은 커밋 SHA로 고정한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chksupply-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "supply-chain",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "앱이 받은 업데이트 파일을 바로 실행한다. 빠진 것은?",
+        "options": [
+          "응답 압축",
+          "캐시 헤더",
+          "서명 확인"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "자동 업데이트는 서명 확인 없이 받지 않는다. 검증 없이 실행하면 바뀐 코드가 그대로 돈다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chksupply-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "supply-chain",
+        "integrity"
+      ],
+      "content": {
+        "prompt": "공급망 점검에는 외부 액션의 커밋 SHA 고정 확인이 들어간다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "공급망 점검은 잠금 파일·SCA·자동 업데이트와 함께 외부 액션 고정을 확인한다.",
+      "refs": []
+    }
+  ]
+}

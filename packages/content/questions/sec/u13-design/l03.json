@@ -1,0 +1,239 @@
+{
+  "track": "sec",
+  "unit": "u13-design",
+  "lesson": "l03",
+  "questions": [
+    {
+      "id": "sec-chkinject-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "xss"
+      ],
+      "content": {
+        "prompt": "문자열로 만든 쿼리를 찾아 바인딩 여부를 보는 점검은?",
+        "options": [
+          "XSS 점검",
+          "SQL 점검",
+          "명령 점검"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SQL 점검은 문자열로 만든 쿼리를 찾아 파라미터 바인딩으로 바꿨는지 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkinject-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "xss"
+      ],
+      "content": {
+        "prompt": "셸을 거치는 외부 명령 실행이 남았는지 보는 점검은?",
+        "options": [
+          "명령 점검",
+          "SQL 점검",
+          "XSS 점검"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "명령 점검은 셸이 해석하는 외부 명령 실행이 코드에 남아 있는지 찾는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkinject-003",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "xss"
+      ],
+      "content": {
+        "prompt": "XSS 점검에서는 v-html 같은 이스케이프 우회 API 사용처를 찾는다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "v-html·dangerouslySetInnerHTML은 자동 이스케이프를 건너뛰므로 XSS 점검의 검색 대상이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkinject-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "xss"
+      ],
+      "content": {
+        "prompt": "입력의 따옴표를 직접 이스케이프하면 SQL 점검을 통과한다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "직접 이스케이프는 빠뜨리기 쉽다. SQL 점검은 파라미터 바인딩으로 바꿨는지를 본다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkinject-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "injection",
+        "xss"
+      ],
+      "content": {
+        "prompt": "셸을 거치지 않게 빈칸에 넣을 값은?",
+        "code": {
+          "language": "python",
+          "source": "import subprocess\n\nsubprocess.run(\n    [\"convert\", src, dst],\n    shell=___,\n)"
+        },
+        "hint": "파이썬 불리언 값"
+      },
+      "answer_key": {
+        "accepted": [
+          "False",
+          "false"
+        ]
+      },
+      "explanation": "shell=False면 프로그램과 인자를 배열로 넘겨 셸이 입력을 해석하지 않는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkinject-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "xss"
+      ],
+      "content": {
+        "prompt": "XSS 점검에서는 이스케이프 우회 API와 ___ 적용 여부를 본다.",
+        "hint": "자원 출처를 제한하는 응답 헤더의 약자"
+      },
+      "answer_key": {
+        "accepted": [
+          "CSP",
+          "csp",
+          "Content-Security-Policy",
+          "콘텐츠 보안 정책"
+        ]
+      },
+      "explanation": "CSP는 인코딩을 대신하지 않는 두 번째 방어선이라, 우회 API 점검과 함께 적용 여부를 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkinject-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "xss"
+      ],
+      "content": {
+        "prompt": "검색 쿼리를 바인딩으로 고칠 때 빈칸은?",
+        "code": {
+          "language": "python",
+          "source": "cur.execute(\n    \"SELECT * FROM items WHERE name = ___\",\n    (name,),\n)"
+        },
+        "options": [
+          "{name}",
+          "?",
+          "name"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "자리 표시자 ?를 두고 값은 따로 넘겨야 입력이 문법이 아니라 값으로만 처리된다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkinject-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "xss"
+      ],
+      "content": {
+        "prompt": "사용자 소개 글을 넣는 코드를 고칠 때 빈칸은?",
+        "code": {
+          "language": "javascript",
+          "source": "const el = document.querySelector(\"#bio\");\nel.___ = user.bio;"
+        },
+        "options": [
+          "textContent",
+          "innerHTML",
+          "outerHTML"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "textContent는 문자열을 글자로만 넣는다. innerHTML·outerHTML은 HTML로 해석해 XSS가 된다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkinject-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "xss"
+      ],
+      "content": {
+        "prompt": "코드 검색에서 shell=True 호출이 나왔다. 조치는?",
+        "options": [
+          "입력 길이만 제한",
+          "오류 메시지 숨김",
+          "인자 배열로 실행"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "셸 없이 프로그램과 인자를 배열로 넘겨 실행한다. 길이 제한은 문법 해석을 막지 못한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkinject-010",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "injection",
+        "xss"
+      ],
+      "content": {
+        "prompt": "인젝션 범주의 SQL 점검이 찾는 코드는?",
+        "options": [
+          "만료된 인증서",
+          "문자열로 만든 쿼리",
+          "디버그 모드"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "SQL 점검은 입력을 이어 붙여 만든 쿼리를 찾아 파라미터 바인딩으로 바꿨는지 확인한다.",
+      "refs": []
+    }
+  ]
+}

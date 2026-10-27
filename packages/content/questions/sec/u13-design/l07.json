@@ -1,0 +1,233 @@
+{
+  "track": "sec",
+  "unit": "u13-design",
+  "lesson": "l07",
+  "questions": [
+    {
+      "id": "sec-chklogging-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "logging",
+        "error-handling"
+      ],
+      "content": {
+        "prompt": "오류·시간 초과 때 동작을 정해 두는 2025판 새 범주는?",
+        "options": [
+          "암호화 실패",
+          "예외 상황 처리",
+          "보안 설정 오류"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "예외 상황 처리는 오류·시간 초과 때 시스템이 어떻게 동작하는지 정해 두는 것으로, 2025판에 새로 들어갔다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chklogging-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "logging",
+        "error-handling"
+      ],
+      "content": {
+        "prompt": "권한 확인 중 오류가 나면 거부로 끝내는 원칙은?",
+        "options": [
+          "실패 시 닫힘",
+          "실패 시 열림",
+          "기본 허용"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "실패 시 닫힘은 권한 확인이 실패하거나 오류가 나면 허용이 아니라 거부로 끝낸다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chklogging-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "logging",
+        "error-handling"
+      ],
+      "content": {
+        "prompt": "로깅 점검에서 기록됐는지 확인할 이벤트는?",
+        "options": [
+          "정적 파일 응답",
+          "이미지 캐시 적중",
+          "권한 거부"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "로깅 점검은 인증 실패·권한 거부·관리자 작업이 기록되고 알림 규칙이 있는지 본다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chklogging-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "logging",
+        "error-handling"
+      ],
+      "content": {
+        "prompt": "오류 응답에는 원인 파악을 위해 스택 트레이스를 함께 보낸다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "사용자에게는 일반 메시지만 보내고, 자세한 내용은 서버 로그에 남긴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chklogging-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "logging",
+        "error-handling"
+      ],
+      "content": {
+        "prompt": "권한 확인 중 오류가 나면 허용이 아니라 ___ 로 끝낸다.",
+        "hint": "허용의 반대"
+      },
+      "answer_key": {
+        "accepted": [
+          "거부",
+          "deny",
+          "거절",
+          "Deny"
+        ]
+      },
+      "explanation": "실패 시 닫힘 원칙이다. 오류를 허용으로 처리하면 검사를 건너뛴 것과 같다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chklogging-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "logging",
+        "error-handling"
+      ],
+      "content": {
+        "prompt": "인증 실패가 급증하면 알 수 있게 ___ 규칙을 둔다.",
+        "hint": "조건이 맞으면 담당자에게 바로 연락하는 규칙"
+      },
+      "answer_key": {
+        "accepted": [
+          "알림",
+          "alert",
+          "경보",
+          "alerting"
+        ]
+      },
+      "explanation": "기록만 하고 아무도 받지 못하면 공격을 놓친다. 로깅 점검은 알림 규칙까지 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chklogging-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "logging",
+        "error-handling"
+      ],
+      "content": {
+        "prompt": "정책 서버 시간 초과 때 빈칸에 둘 값은?",
+        "code": {
+          "language": "python",
+          "source": "def can_edit(user, doc):\n    try:\n        return policy.check(user, doc)\n    except TimeoutError:\n        log.warning(\"policy timeout\")\n        return ___"
+        },
+        "options": [
+          "True",
+          "False",
+          "doc"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "시간 초과도 권한 확인 실패이므로 False를 돌려 거부로 끝낸다(실패 시 닫힘).",
+      "refs": []
+    },
+    {
+      "id": "sec-chklogging-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "logging",
+        "error-handling"
+      ],
+      "content": {
+        "prompt": "결제 API에서 오류가 났다. 사용자에게 보낼 응답은?",
+        "options": [
+          "예외 전체 내용",
+          "DB 쿼리 원문",
+          "일반 오류 메시지"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "사용자에게는 일반 메시지만 보내고, 예외 내용과 쿼리는 요청 ID와 함께 로그에 남긴다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chklogging-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "logging",
+        "error-handling"
+      ],
+      "content": {
+        "prompt": "관리자 작업은 기록되지만 경보를 받는 사람이 없다. 빠진 것은?",
+        "options": [
+          "알림 규칙",
+          "로그 압축",
+          "쿠키 속성"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "로깅 점검은 기록과 함께 알림 규칙이 있는지 본다. 경보가 없으면 공격을 늦게 알게 된다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chklogging-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "logging",
+        "error-handling"
+      ],
+      "content": {
+        "prompt": "2025판에는 예외 상황 처리 미흡이 새 범주로 들어갔다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "예외 상황 처리는 오류·시간 초과 때의 동작을 다루는 2025판 새 범주다.",
+      "refs": []
+    }
+  ]
+}

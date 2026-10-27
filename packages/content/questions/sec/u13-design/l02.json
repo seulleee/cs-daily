@@ -1,0 +1,229 @@
+{
+  "track": "sec",
+  "unit": "u13-design",
+  "lesson": "l02",
+  "questions": [
+    {
+      "id": "sec-chkaccess-001",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "authentication"
+      ],
+      "content": {
+        "prompt": "엔드포인트마다 서버 측 권한·소유권 검사를 보는 점검은?",
+        "options": [
+          "접근 제어 점검",
+          "토큰 점검",
+          "인증 점검"
+        ]
+      },
+      "answer_key": {
+        "index": 0
+      },
+      "explanation": "접근 제어 점검은 모든 엔드포인트에 서버 측 권한·소유권 검사가 있는지 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkaccess-002",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "authentication"
+      ],
+      "content": {
+        "prompt": "서명·alg·exp·aud 검증을 확인하는 점검은?",
+        "options": [
+          "인증 점검",
+          "토큰 점검",
+          "접근 제어 점검"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "토큰 점검은 서명·alg·exp·aud 검증과 짧은 만료를 확인한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkaccess-003",
+      "type": "single",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "authentication"
+      ],
+      "content": {
+        "prompt": "로그인 속도 제한과 MFA 적용을 보는 점검은?",
+        "options": [
+          "접근 제어 점검",
+          "인증 점검"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "인증 점검은 비밀번호 해시·속도 제한·MFA·세션 재발급을 본다. 접근 제어 점검은 권한·소유권 검사를 본다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkaccess-004",
+      "type": "ox",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "authentication"
+      ],
+      "content": {
+        "prompt": "화면에서 버튼을 숨긴 API는 서버 측 권한 점검에서 빼도 된다."
+      },
+      "answer_key": {
+        "value": false
+      },
+      "explanation": "버튼 숨기기는 통제가 아니다. 요청은 화면 없이도 보낼 수 있어 모든 엔드포인트를 서버에서 검사한다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkaccess-005",
+      "type": "fill",
+      "difficulty": 1,
+      "tags": [
+        "security",
+        "access-control",
+        "authentication"
+      ],
+      "content": {
+        "prompt": "토큰 점검에서는 만료 시각 클레임 ___ 검증을 확인한다.",
+        "hint": "영문 소문자 세 글자 클레임"
+      },
+      "answer_key": {
+        "accepted": [
+          "exp",
+          "EXP"
+        ]
+      },
+      "explanation": "exp가 지난 토큰은 거부해야 한다. 토큰 점검은 서명·alg·exp·aud 검증과 짧은 만료를 본다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkaccess-006",
+      "type": "fill",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "authentication"
+      ],
+      "content": {
+        "prompt": "로그인 직후 세션 ID를 새로 주는지 보는 것은 ___ 점검이다.",
+        "hint": "요청한 주체가 누구인지 확인하는 과정"
+      },
+      "answer_key": {
+        "accepted": [
+          "인증",
+          "authentication",
+          "Authentication"
+        ]
+      },
+      "explanation": "세션 재발급 확인은 비밀번호 해시·속도 제한·MFA와 함께 인증 점검 항목이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkaccess-007",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "authentication"
+      ],
+      "content": {
+        "prompt": "글 수정 API가 ID만 바꾸면 남의 글도 고친다. 먼저 할 일은?",
+        "options": [
+          "토큰 만료 단축",
+          "MFA 도입",
+          "소유권 검사 추가"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "로그인만 보고 소유자를 확인하지 않은 접근 제어 실패다. 서버에서 소유권 검사를 넣는다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkaccess-008",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "authentication"
+      ],
+      "content": {
+        "prompt": "남의 글을 못 고치게 빈칸에 넣을 조건은?",
+        "code": {
+          "language": "sql",
+          "source": "UPDATE posts SET body = ?\nWHERE id = ? ___"
+        },
+        "options": [
+          "OR owner = ?",
+          "AND owner = ?",
+          "LIMIT 1"
+        ]
+      },
+      "answer_key": {
+        "index": 1
+      },
+      "explanation": "현재 사용자 조건을 AND로 함께 걸어야 그 사용자 소유의 행만 바뀐다. OR는 조건을 넓힌다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkaccess-009",
+      "type": "single",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "authentication"
+      ],
+      "content": {
+        "prompt": "헤더 alg가 none인 토큰이 API를 통과했다. 판단은?",
+        "options": [
+          "정상 동작",
+          "속도 제한 누락",
+          "토큰 검증 누락"
+        ]
+      },
+      "answer_key": {
+        "index": 2
+      },
+      "explanation": "서버는 허용한 알고리즘만 받고 none은 거부해야 한다. 통과했다면 토큰 점검에서 걸러야 할 결함이다.",
+      "refs": []
+    },
+    {
+      "id": "sec-chkaccess-010",
+      "type": "ox",
+      "difficulty": 2,
+      "tags": [
+        "security",
+        "access-control",
+        "authentication"
+      ],
+      "content": {
+        "prompt": "접근 제어 점검은 모든 엔드포인트의 서버 측 검사를 확인한다."
+      },
+      "answer_key": {
+        "value": true
+      },
+      "explanation": "엔드포인트 하나라도 서버 측 권한·소유권 검사가 빠지면 1위 범주인 접근 제어 실패가 된다.",
+      "refs": []
+    }
+  ]
+}
