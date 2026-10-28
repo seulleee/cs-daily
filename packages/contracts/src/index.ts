@@ -3,6 +3,7 @@ export * from './questions.js';
 export * from './sessions.js';
 export * from './curriculum.js';
 export * from './me.js';
+export * from './quests.js';
 
 /** XP 정책 상수. 프런트의 미리보기 표시와 서버 계산이 같은 값을 쓴다. */
 export const XP = {

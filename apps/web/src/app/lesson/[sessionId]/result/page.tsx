@@ -60,6 +60,13 @@ export default function ResultPage({ params }: { params: Promise<{ sessionId: st
         </div>
 
         {r.streak.extended && <p className="text-cap font-medium text-streak">스트릭이 {r.streak.current}일로 늘었어요!</p>}
+        {r.questRewards?.map((q) => (
+          <p key={q.key} className="bit flex items-center justify-center gap-1">
+            <CheckIcon size={16} strokeWidth={3} />
+            퀘스트 완료 +{q.xp} XP
+            <span className="sr-only"> ({q.title})</span>
+          </p>
+        ))}
         <p className="bit text-ink-2">내일 복습 예정 {r.newReviewCount}문제</p>
 
         <div className="flex flex-col gap-4">
