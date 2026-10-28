@@ -1,6 +1,6 @@
-import { Inject } from '@nestjs/common';
+import { Inject, Logger } from '@nestjs/common';
 import { CommandBus, CommandHandler, EventPublisher, ICommandHandler, QueryBus } from '@nestjs/cqrs';
-import type { CompleteSessionResponse } from '@cs-daily/contracts';
+import type { CompleteSessionResponse, QuestRewardItem } from '@cs-daily/contracts';
 import { SessionId, UserId } from '../../../../shared/domain/ids';
 import { localDateOf } from '../../../../shared/domain/local-date';
 import { UnitOfWork } from '../../../../shared/infrastructure/unit-of-work';
@@ -9,6 +9,7 @@ import { CURRICULUM_QUERY_PORT, LESSON_SESSION_REPO, USER_PREFS_PORT, type Curri
 import { ReviewPreview } from '../../domain/services/review-preview';
 import { UnitSkipTest } from '../../domain/services/unit-skip-test';
 import { RecordSessionCompletionCommand, type SessionCompletionResult } from '../../../progression/application/commands/commands';
+import { EvaluateQuestsCommand } from '../../../quests/application/commands';
 import { CountDueReviewsQuery } from '../../../review/application/queries/queries';
 import { CompleteSessionCommand } from './commands';
 
@@ -20,6 +21,8 @@ import { CompleteSessionCommand } from './commands';
  */
 @CommandHandler(CompleteSessionCommand)
 export class CompleteSessionHandler implements ICommandHandler<CompleteSessionCommand, CompleteSessionResponse> {
+  private readonly logger = new Logger(CompleteSessionHandler.name);
+
   constructor(
     @Inject(LESSON_SESSION_REPO) private readonly sessions: LessonSessionRepository,
     @Inject(USER_PREFS_PORT) private readonly prefs: UserPrefsPort,
@@ -65,6 +68,13 @@ export class CompleteSessionHandler implements ICommandHandler<CompleteSessionCo
         occurredAt: now,
       }),
     );
+    // 데일리 퀘스트 평가: 실패해도 레슨 완료는 성공이다. 지급은 멱등이라 다음 완료 때 빠진 보상이 지급된다.
+    let questRewards: QuestRewardItem[] = [];
+    try {
+      questRewards = await this.commandBus.execute<EvaluateQuestsCommand, QuestRewardItem[]>(new EvaluateQuestsCommand(cmd.userId, now));
+    } catch (err) {
+      this.logger.warn(`퀘스트 평가 실패(user ${cmd.userId}): ${err instanceof Error ? err.message : String(err)}`);
+    }
     // 결과 화면의 "내일 복습 예정": 사용자 로컬 내일 끝까지 due인 수. 복습 예약(AnswerGraded)은 비동기라 이번 세션 오답 수를 하한으로 둔다.
     const dueByTomorrow = await this.queryBus.execute<CountDueReviewsQuery, number>(
       new CountDueReviewsQuery(cmd.userId, ReviewPreview.cutoff(localDate, prefs.timeZone)),
@@ -78,6 +88,7 @@ export class CompleteSessionHandler implements ICommandHandler<CompleteSessionCo
       streak: progression.streak,
       dailyGoal: progression.dailyGoal,
       newReviewCount,
+      questRewards,
       placement: unit ? { passed, passPercent: UnitSkipTest.PASS_PERCENT, unitName: unit.name, skippedLessons: progression.skippedLessons } : null,
     };
   }

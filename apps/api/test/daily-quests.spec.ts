@@ -1,4 +1,6 @@
 import { describe, expect, it } from 'vitest';
+import { CompleteSessionHandler } from '../src/modules/learning/application/commands/complete-session.handler';
+import { CompleteSessionCommand } from '../src/modules/learning/application/commands/commands';
 import {
   goalOf,
   pickDailyQuests,
@@ -154,5 +156,46 @@ describe('GetMyQuestsHandler', () => {
     }
     const lessons = r.daily.find((q) => q.key === 'lessons')!;
     expect(lessons).toMatchObject({ progress: 2, goal: 2, done: true });
+  });
+});
+
+describe('CompleteSessionHandler 퀘스트 평가', () => {
+  const build = (evaluate: () => Promise<unknown>) => {
+    const userIdValue = '11111111-1111-4111-8111-111111111111';
+    const session = {
+      userId: { equals: () => true },
+      lessonId: null,
+      kind: 'lesson',
+      complete: () => ({ correct: 9, total: 10, xpEarned: 50 }),
+    };
+    const sessions = { findById: async () => session, save: async () => undefined, countCompletedToday: async () => 0 };
+    const prefs = { prefsOf: async () => ({ timeZone: 'Asia/Seoul' }) };
+    const uow = { run: <T>(fn: () => Promise<T>) => fn() };
+    const publisher = { mergeObjectContext: (s: unknown) => ({ commit: () => undefined, ...(s as object) }) };
+    const commandBus = {
+      execute: vi.fn(async (cmd: unknown) => {
+        if (cmd instanceof EvaluateQuestsCommand) return evaluate();
+        return { skippedLessons: 0, streak: { current: 1, extended: true }, dailyGoal: { target: 1, done: 1, achieved: true } };
+      }),
+    };
+    const queryBus = { execute: async () => 0 };
+    const handler = new CompleteSessionHandler(sessions as never, prefs as never, {} as never, uow as never, publisher as never, commandBus as never, queryBus as never);
+    return { handler, commandBus, userIdValue };
+  };
+
+  it('평가가 던져도 완료는 성공, questRewards는 []', async () => {
+    const { handler, userIdValue } = build(async () => {
+      throw new Error('db down');
+    });
+    const r = await handler.execute(new CompleteSessionCommand(userIdValue, '22222222-2222-4222-8222-222222222222'));
+    expect(r.correct).toBe(9);
+    expect(r.questRewards).toEqual([]);
+  });
+
+  it('평가 결과를 questRewards로 돌려준다', async () => {
+    const reward = { key: 'lessons', title: '레슨 2개 완료하기', xp: 10 };
+    const { handler, userIdValue } = build(async () => [reward]);
+    const r = await handler.execute(new CompleteSessionCommand(userIdValue, '22222222-2222-4222-8222-222222222222'));
+    expect(r.questRewards).toEqual([reward]);
   });
 });
