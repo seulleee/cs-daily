@@ -50,6 +50,7 @@ model User {
   lessonProgress  UserLessonProgress[]
   reviewItems     ReviewItem[]
   notificationLog NotificationLog[]
+  questRewards    QuestReward[]
 
   @@map("users")
 }
@@ -348,4 +349,19 @@ model JobRun {
 
   @@id([job, slot])
   @@map("job_runs")
+}
+
+/// 데일리·프렌즈 퀘스트 보상 지급 기록. (사용자, 퀘스트, 기간) 한 번만 지급된다.
+model QuestReward {
+  userId    String   @map("user_id") @db.Uuid
+  questKey  String   @map("quest_key") @db.VarChar(20)
+  /// 데일리는 사용자 로컬 날짜, 프렌즈는 서울 기준 주 시작(월요일)
+  period    DateTime @db.Date
+  xp        Int
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, questKey, period])
+  @@map("quest_rewards")
 }
