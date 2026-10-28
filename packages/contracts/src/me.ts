@@ -15,6 +15,8 @@ export const UserProfile = z.object({
   role: z.enum(['user', 'admin']),
   /** 코딩 테스트(ct) 트랙 코드 문제를 풀 언어 */
   codeLanguage: CodingLanguage,
+  /** 닉네임 검색에 노출되는지 */
+  discoverable: z.boolean(),
 });
 
 export const UserStats = z.object({
@@ -50,6 +52,7 @@ export const UpdateMeRequest = z
     dailyGoal: z.number().int().min(1).max(3),
     reminderAt: z.string().regex(/^\d{2}:\d{2}$/).nullable(),
     codeLanguage: CodingLanguage,
+    discoverable: z.boolean(),
   })
   .partial();
 export type UpdateMeRequest = z.infer<typeof UpdateMeRequest>;

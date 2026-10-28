@@ -46,7 +46,7 @@
 
 ## 아키텍처 규칙 (API)
 
-- DDD 모듈러 모놀리스. 컨텍스트: identity, curriculum, learning(핵심), progression, review, quests, notification, jobs. 각 컨텍스트는 `domain / application / infrastructure / presentation` 4계층이며 `eslint-plugin-boundaries`가 의존 방향을 강제한다. 경계를 넘을 땐 포트 토큰(`QUESTION_GRADING_PORT`, `CURRICULUM_QUERY_PORT`, `REVIEW_QUEUE_PORT`, `USER_PREFS_PORT`, `XP_LEDGER_PORT`, `QUEST_ACTIVITY_PORT`, `QUEST_REWARD_REPO`, `DAILY_PICK_REPO`)으로만 주입한다.
+- DDD 모듈러 모놀리스. 컨텍스트: identity, curriculum, learning(핵심), progression, review, quests, social, notification, jobs. 각 컨텍스트는 `domain / application / infrastructure / presentation` 4계층이며 `eslint-plugin-boundaries`가 의존 방향을 강제한다. 경계를 넘을 땐 포트 토큰(`QUESTION_GRADING_PORT`, `CURRICULUM_QUERY_PORT`, `REVIEW_QUEUE_PORT`, `USER_PREFS_PORT`, `XP_LEDGER_PORT`, `QUEST_ACTIVITY_PORT`, `QUEST_REWARD_REPO`, `DAILY_PICK_REPO`)으로만 주입한다.
 - **정답 키(`answerKey`)는 `CurriculumAdapter.forGrading()` 한 곳에서만 읽는다.** 다른 어떤 쿼리도 select하지 않는다.
 - **코드 문제 언어 variants(`ct` 트랙)**: 코드가 있는 문제는 `content.variants[lang]`(코드·보기)와 `answer_key.variants[lang]`(정답·선택 해설)으로 python·java·javascript·cpp 4개를 모두 갖는다(validate 강제). 사용자 언어는 `User.codeLanguage`(기본 python, `/me`·`PATCH /me`). 세션 응답은 사용자 언어 variant만 `content.code`(+options)와 `lang`으로 펼치고 다른 언어·정답은 내려가지 않는다(`learning/domain/services/code-variants.ts`). 답안 제출·재도전은 받은 `lang`을 함께 보내고, 서버는 그 언어 variant가 있는지 검증해(없으면 422 `CODE_LANGUAGE_UNAVAILABLE`) 그 정답·해설로 채점하며 `lang`을 답안 기록에 남긴다 — 세션 도중 설정을 바꿔도 받은 문제는 받은 언어로 채점되고 이어 풀기에서도 답한 언어를 보여 준다.
 - 레슨 `intro`(도입 설명, 선택 `string[]` 1~3문단·문단 40~220자·합계 450자 이하)는 `curriculum.json` → `lessons.intro`(`String[] @default([])`) → `LessonOutline.intro` → 세션 응답 `lessonIntro`(선택 필드, 옛 API 호환)로 `lessonKeyPoints`와 같은 경로를 탄다. seed-diff의 트랙 구조 비교에 포함돼 바뀐 트랙만 갱신된다. 작성 규칙은 content-guide "도입 설명".
@@ -58,6 +58,7 @@
 - 콘텐츠에서 빠진 문제는 시드가 삭제하지 않고 `status=retired`로 내린다(답안·복습 기록 FK 보존). `lesson.questionCount`는 콘텐츠 파일의 문제 수를 따른다.
 - 도메인 규칙은 단위 테스트가 있어야 한다(`apps/api/test/*.spec.ts`, vitest). HTTP 흐름은 `apps/api/test-e2e/`가 CI에서 빌드된 서버 + CI Postgres로 돈다.
 - **데일리 퀘스트**(`quests` 컨텍스트, 규칙은 `docs/superpowers/specs/2026-10-28-quests-friends-design.md`): 하루 3개를 사용자 로컬 날짜에서 userId+날짜 해시로 고정해 뽑는다(`domain/daily-quests.ts`). 그날 뽑은 3개는 `daily_quest_picks`(user_id, period)에 처음 볼 때 저장해 고정한다(`DAILY_PICK_REPO`, `createMany skipDuplicates` 후 재조회). 진행은 원장(`lesson_sessions`·`xp_events`) 집계로 그때그때 계산하고 저장하지 않는다(`QUEST_ACTIVITY_PORT`). 지급은 `quest_rewards` PK(user_id, quest_key, period)로 멱등(`ON CONFLICT DO NOTHING`, `QUEST_REWARD_REPO`)이고, 새로 지급된 경우에만 `XP_LEDGER_PORT`(progression `XpLedgerAdapter`)로 `xp_events`(reason='quest')·`total_xp`·`daily_activity.xp`를 기록한다 — lessonsCompleted·스트릭엔 영향 없음. 퀘스트 XP는 "XP 모으기" 진행에서 제외한다. 복습 퀘스트 자격 = 오늘 끝까지 due>0 또는 오늘 복습 완료>0. `CompleteSessionHandler`가 `RecordSessionCompletionCommand` 뒤에 `EvaluateQuestsCommand`를 호출해 세션 완료 응답에 `questRewards`(선택 필드)를 싣고, 평가가 실패해도 완료는 성공(`questRewards: []`). 조회는 `GET /me/quests`.
+- **친구**(`social` 컨텍스트, 규칙은 `docs/superpowers/specs/2026-10-28-quests-friends-design.md`): 닉네임 앞부분 검색(2글자+, 10명, 사용자당 분당 30회 — `userSearch` 스로틀러는 `UserThrottlerGuard`만 적용하고 전역 `IpThrottlerGuard`는 제외). 응답은 userId·닉네임·아바타·스트릭(+relation/weekLessons)만 내리고 weekLessons는 서울 주 기준이다. 요청은 limit(보낸 대기 20·친구 100, 409 `FRIEND_LIMIT`; 맞요청 자동 수락 때 상대가 친구 100명이어도 409) 외엔 항상 202 — 차단·없는 사용자·중복도 202로 저장하지 않아 차단 사실을 드러내지 않는다(`domain/friendship-rules.ts` `decideSend`: limit→silent→accept-reverse→already→create). 맞요청은 즉시 수락하고, 수락·거절·취소는 당사자만 할 수 있다(아니면 404). 차단은 관계·요청을 지우고 양방향 검색에서 뺀다. `FriendshipAccepted`/`FriendshipEnded`는 커밋 뒤 발행하며 PR 3 프렌즈 퀘스트가 구독한다. 알려진 한계: 전역 IP 리밋(라우트·IP별 120/분)은 trust proxy가 없어 Vercel 공유 IP 뒤에서 사용자 전체에 걸릴 수 있다(후속 과제).
 - 로그인: 액세스 15분·리프레시 14일(회전·슬라이딩). 웹 `api()`는 refresh를 single-flight로 묶고, 서버는 폐기 30초 이내 토큰 재사용을 동시 요청으로 보고 허용한다(`identity/domain/services/refresh-grace.ts`).
 
 ## 화면 규칙 (웹)
@@ -77,6 +78,7 @@
 - 코딩 테스트 언어 선택(`components/code-language-picker.tsx`)은 설정 "학습" 창(하루 목표 카드와 같은 2×2 라디오 타일, 기존 저장 버튼·토스트)과 온보딩(`ct` 트랙을 고른 때만 하루 목표 다음 단계)에서 쓴다. `lang`이 있는 코드 문제는 코드 블록 위에 `bit` 16px ink-2 언어 라벨(`CODING_LANGUAGE_LABEL`)을 달고, 제출·재도전에 받은 `lang`을 그대로 보낸다.
 - 오늘의 퀘스트 창(`components/quests-panel.tsx`): PC는 보조 패널 `StatsPanel` 아래에 펼쳐 두고, 모바일은 `/learn` 다음 레슨 카드 위에 접힌 창(제목에 완료 수 `n/3`)으로 둔다. 진행 막대는 `.meter`, 완료는 `CheckIcon`. 결과 화면엔 `퀘스트 완료 +{xp} XP` 줄을 보여 준다.
 - 마지막으로 본 트랙 탭은 기기에 저장한다(`lib/last-track.ts`). `/learn`으로 돌아올 때 URL → 저장값 → 첫 트랙 순.
+- 탭 바·사이드바는 학습·복습·친구·프로필·설정 5칸이고 친구 아이콘에 받은 요청 수 배지가 붙는다(`['friends']` 쿼리). `/friends`는 친구 찾기(300ms 디바운스, 2글자부터)·받은 요청·보낸 요청·내 친구 창으로 이루어지며 친구 끊기·차단은 창 안 인라인 확인이다. 설정 "개인정보" 창에 `닉네임으로 나를 찾을 수 있음` 스위치(`MeResponse.user.discoverable`)가 있다.
 - `/api/*`·`/auth/*`는 Next.js 리라이트로 API에 전달한다. OAuth 콜백은 **웹 오리진**(`OAUTH_CALLBACK_BASE_URL` = `WEB_BASE_URL`)으로 받아야 쿠키가 웹 도메인에 붙는다.
 
 ## 콘텐츠 규칙 (요약 — 상세는 docs/content-guide.md)
@@ -101,9 +103,11 @@
 
 ## 남은 일
 
+- [ ] 차단 목록·차단 해제 화면 없음(API DELETE /blocks/:userId는 있음), 받은 요청에서 바로 차단하는 메뉴 없음
 - [ ] 디자인 후속: 실기기(iOS 안전 영역, DPR 2~3에서 비트맵 선명도, 11px 배지 가독성, 150ms 깜빡임 체감) 확인, Safari·Firefox의 `@property` 결과 링 확인, 필요하면 Neo둥근모 woff2(44KB, OFL) `public/fonts` 자체 호스팅
 - [ ] 계정 탈퇴: 로그인 화면이 "설정에서 탈퇴"라고 안내하지만 삭제 기능·API가 없다 → `DELETE /me` + 설정 화면 버튼 추가, 또는 안내 문구 수정
 - [ ] Resend API 키 등록(이메일 리마인더)
 - [ ] README의 운영·배포 절은 오래됐다(GitHub Secrets 기준) → CLAUDE.md 운영 현황과 맞추기
 - [ ] 머지된 원격 브랜치 정리(이 환경에서 삭제 불가 — 레포 설정 "Automatically delete head branches" 권장)
 - [ ] 무료 체험 종료(2027-01-05) 전 결제 계정 전환 알림
+- [ ] 전역 레이트 리밋이 IP 키라 Vercel 리라이트 뒤에서 사용자 전체 한도처럼 동작할 수 있다 → trust proxy 설정 또는 사용자 키 추적 검토

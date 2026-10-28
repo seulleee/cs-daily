@@ -32,6 +32,10 @@ export const ErrorCode = {
 
   // Identity
   NICKNAME_TAKEN: 'NICKNAME_TAKEN',
+
+  // Social
+  /** 친구 100명 또는 보낸 대기 요청 20개 한도 */
+  FRIEND_LIMIT: 'FRIEND_LIMIT',
 } as const;
 
 export type ErrorCode = (typeof ErrorCode)[keyof typeof ErrorCode];

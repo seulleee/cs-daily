@@ -27,31 +27,37 @@ enum CodingLanguage {
 }
 
 model User {
-  id          String   @id @default(uuid()) @db.Uuid
+  id           String         @id @default(uuid()) @db.Uuid
   /// 저장 전 소문자로 정규화 (citext 확장 없이 유일성 보장)
-  email       String   @unique
-  nickname    String   @unique @db.VarChar(30)
-  avatarUrl   String?  @map("avatar_url")
-  timezone    String   @default("Asia/Seoul")
-  dailyGoal   Int      @default(1) @map("daily_goal") @db.SmallInt
+  email        String         @unique
+  nickname     String         @unique @db.VarChar(30)
+  avatarUrl    String?        @map("avatar_url")
+  timezone     String         @default("Asia/Seoul")
+  dailyGoal    Int            @default(1) @map("daily_goal") @db.SmallInt
   /// "HH:mm" 로컬 시각. null이면 리마인더 끔
-  reminderAt  String?  @map("reminder_at") @db.VarChar(5)
+  reminderAt   String?        @map("reminder_at") @db.VarChar(5)
   codeLanguage CodingLanguage @default(python) @map("code_language")
-  role        UserRole @default(user)
-  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
+  role         UserRole       @default(user)
+  /// 닉네임 검색에 노출 여부
+  discoverable Boolean        @default(true)
+  createdAt    DateTime       @default(now()) @map("created_at") @db.Timestamptz
 
-  accounts        OAuthAccount[]
-  refreshTokens   RefreshToken[]
-  userTracks      UserTrack[]
-  sessions        LessonSession[]
-  stats           UserStats?
-  dailyActivities DailyActivity[]
-  xpEvents        XpEvent[]
-  lessonProgress  UserLessonProgress[]
-  reviewItems     ReviewItem[]
-  notificationLog NotificationLog[]
-  questRewards    QuestReward[]
-  dailyQuestPicks DailyQuestPick[]
+  accounts            OAuthAccount[]
+  refreshTokens       RefreshToken[]
+  userTracks          UserTrack[]
+  sessions            LessonSession[]
+  stats               UserStats?
+  dailyActivities     DailyActivity[]
+  xpEvents            XpEvent[]
+  lessonProgress      UserLessonProgress[]
+  reviewItems         ReviewItem[]
+  notificationLog     NotificationLog[]
+  questRewards        QuestReward[]
+  dailyQuestPicks     DailyQuestPick[]
+  friendshipsSent     Friendship[]         @relation("FriendshipRequester")
+  friendshipsReceived Friendship[]         @relation("FriendshipAddressee")
+  blocksMade          UserBlock[]          @relation("UserBlocker")
+  blocksReceived      UserBlock[]          @relation("UserBlocked")
 
   @@map("users")
 }
@@ -217,8 +223,8 @@ model LessonSession {
   correctCount Int         @default(0) @map("correct_count") @db.SmallInt
   xpEarned     Int         @default(0) @map("xp_earned")
 
-  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  lesson  Lesson? @relation(fields: [lessonId], references: [id])
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lesson  Lesson?  @relation(fields: [lessonId], references: [id])
   answers Answer[]
 
   @@index([userId, finishedAt])
@@ -326,12 +332,12 @@ model ReviewItem {
 // ========== Notification ==========
 
 model NotificationLog {
-  id        BigInt   @id @default(autoincrement())
-  userId    String   @map("user_id") @db.Uuid
-  kind      String   @db.VarChar(30)
+  id     BigInt   @id @default(autoincrement())
+  userId String   @map("user_id") @db.Uuid
+  kind   String   @db.VarChar(30)
   /// 중복 발송 방지 키 (reminder:2026-10-06)
-  slot      String
-  sentAt    DateTime @default(now()) @map("sent_at") @db.Timestamptz
+  slot   String
+  sentAt DateTime @default(now()) @map("sent_at") @db.Timestamptz
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -378,4 +384,41 @@ model DailyQuestPick {
 
   @@id([userId, period])
   @@map("daily_quest_picks")
+}
+
+enum FriendshipStatus {
+  pending
+  accepted
+}
+
+model Friendship {
+  id          String           @id @default(uuid()) @db.Uuid
+  requesterId String           @map("requester_id") @db.Uuid
+  addresseeId String           @map("addressee_id") @db.Uuid
+  /// 두 사용자 쌍당 한 행: (min(id), max(id))
+  userLowId   String           @map("user_low_id") @db.Uuid
+  userHighId  String           @map("user_high_id") @db.Uuid
+  status      FriendshipStatus @default(pending)
+  createdAt   DateTime         @default(now()) @map("created_at") @db.Timestamptz
+  acceptedAt  DateTime?        @map("accepted_at") @db.Timestamptz
+
+  requester User @relation("FriendshipRequester", fields: [requesterId], references: [id], onDelete: Cascade)
+  addressee User @relation("FriendshipAddressee", fields: [addresseeId], references: [id], onDelete: Cascade)
+
+  @@unique([userLowId, userHighId])
+  @@index([addresseeId, status])
+  @@index([requesterId, status])
+  @@map("friendships")
+}
+
+model UserBlock {
+  blockerId String   @map("blocker_id") @db.Uuid
+  blockedId String   @map("blocked_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  blocker User @relation("UserBlocker", fields: [blockerId], references: [id], onDelete: Cascade)
+  blocked User @relation("UserBlocked", fields: [blockedId], references: [id], onDelete: Cascade)
+
+  @@id([blockerId, blockedId])
+  @@map("user_blocks")
 }
