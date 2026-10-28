@@ -53,6 +53,7 @@ model User {
   reviewItems         ReviewItem[]
   notificationLog     NotificationLog[]
   questRewards        QuestReward[]
+  friendQuestMembers  FriendQuestMember[]
   dailyQuestPicks     DailyQuestPick[]
   friendshipsSent     Friendship[]         @relation("FriendshipRequester")
   friendshipsReceived Friendship[]         @relation("FriendshipAddressee")
@@ -421,4 +422,32 @@ model UserBlock {
 
   @@id([blockerId, blockedId])
   @@map("user_blocks")
+}
+
+/// 친구 둘의 주간 퀘스트. 주(weekStart)는 서울 기준 월요일.
+model FriendQuest {
+  id        String    @id @default(uuid()) @db.Uuid
+  weekStart DateTime  @map("week_start") @db.Date
+  goal      Int       @default(15) @db.SmallInt
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  /// 주 중간에 친구를 끊거나 차단하면 찍는다
+  endedAt   DateTime? @map("ended_at") @db.Timestamptz
+
+  members FriendQuestMember[]
+
+  @@map("friend_quests")
+}
+
+model FriendQuestMember {
+  questId   String   @map("quest_id") @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  weekStart DateTime @map("week_start") @db.Date
+
+  quest FriendQuest @relation(fields: [questId], references: [id], onDelete: Cascade)
+  user  User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([questId, userId])
+  /// 한 주에 짝은 한 명
+  @@unique([weekStart, userId])
+  @@map("friend_quest_members")
 }
