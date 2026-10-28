@@ -35,6 +35,11 @@ export interface FriendsPort {
 }
 export const FRIENDS_PORT = Symbol('FRIENDS_PORT');
 
+export interface ActiveFriendQuest {
+  goal: number;
+  members: { userId: string; nickname: string; avatarUrl: string | null }[];
+}
+
 export interface FriendQuestRepository {
   /** [from, to)에 kind=lesson 세션을 완료한 사용자 id */
   activeUserIds(from: Date, to: Date): Promise<string[]>;
@@ -44,6 +49,10 @@ export interface FriendQuestRepository {
   pairsOfWeek(weekStart: string): Promise<[string, string][]>;
   /** 퀘스트 1행 + 멤버 2행을 한 트랜잭션에 만든다. 둘 중 한 명이라도 이미 그 주 멤버면 아무것도 만들지 않고 false. */
   createPair(weekStart: string, a: string, b: string): Promise<boolean>;
+  /** 그 주에 사용자가 속한, 아직 끝나지 않은(endedAt=null) 퀘스트. 없으면 null. */
+  activeQuestOf(userId: string, weekStart: string): Promise<ActiveFriendQuest | null>;
+  /** [from, to)에 kind=lesson 세션을 완료한 수 (사용자별, 없으면 0) */
+  lessonCounts(userIds: string[], from: Date, to: Date): Promise<Map<string, number>>;
   /** 두 사람이 같은 그 주 퀘스트에 있고 아직 안 끝났으면 endedAt을 찍는다 */
   endSharedQuest(weekStart: string, a: string, b: string, at: Date): Promise<void>;
 }

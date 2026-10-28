@@ -88,6 +88,8 @@ function fakes(activeIds: string[], friendships: [string, string][], lastPairs: 
       return true;
     },
     endSharedQuest: async () => undefined,
+    activeQuestOf: async () => null,
+    lessonCounts: async () => new Map(),
   };
   const friends: FriendsPort = {
     friendIdsOf: async (ids) => {
@@ -129,5 +131,26 @@ describe('PairFriendQuestsHandler', () => {
     const { handler, created } = fakes(['a', 'b', 'c'], [['a', 'b'], ['a', 'c'], ['b', 'c']], [['b', 'a']]);
     await handler.execute(new PairFriendQuestsCommand(now));
     expect(created).toEqual([['a', 'c']]);
+  });
+});
+
+import { PrismaFriendQuestRepository } from '../src/modules/quests/infrastructure/prisma-friend-quest.repository';
+
+describe('PrismaFriendQuestRepository.createPair', () => {
+  it('멤버를 id 순으로 넣는다(동시 생성 때 락 순서 통일)', async () => {
+    let inserted: string[] = [];
+    const client = {
+      friendQuest: { create: async () => ({ id: 'q1' }) },
+      friendQuestMember: {
+        createMany: async ({ data }: { data: { userId: string }[] }) => {
+          inserted = data.map((d) => d.userId);
+          return { count: 2 };
+        },
+      },
+    };
+    const uow = { client, run: <T>(fn: () => Promise<T>) => fn() };
+    const repo = new PrismaFriendQuestRepository(uow as never);
+    expect(await repo.createPair('2026-10-26', 'zzz', 'aaa')).toBe(true);
+    expect(inserted).toEqual(['aaa', 'zzz']);
   });
 });

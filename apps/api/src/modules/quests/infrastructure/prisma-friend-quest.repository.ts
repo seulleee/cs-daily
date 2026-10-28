@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { UnitOfWork } from '../../../shared/infrastructure/unit-of-work';
 import { FRIEND_QUEST_GOAL } from '../domain/friend-quests';
-import type { FriendQuestRepository } from '../domain/ports';
+import type { ActiveFriendQuest, FriendQuestRepository } from '../domain/ports';
 
 const asDate = (weekStart: string) => new Date(`${weekStart}T00:00:00Z`);
 
@@ -46,7 +46,8 @@ export class PrismaFriendQuestRepository implements FriendQuestRepository {
         const db = this.uow.client;
         const quest = await db.friendQuest.create({ data: { weekStart: week, goal: FRIEND_QUEST_GOAL }, select: { id: true } });
         const res = await db.friendQuestMember.createMany({
-          data: [a, b].map((userId) => ({ questId: quest.id, userId, weekStart: week })),
+          // id 순으로 넣어, 배치와 수락 이벤트가 같은 사람들을 동시에 잡아도 락 순서가 같다(교착 방지)
+          data: [a, b].sort().map((userId) => ({ questId: quest.id, userId, weekStart: week })),
           skipDuplicates: true,
         });
         if (res.count !== 2) throw new PairConflict();
@@ -56,6 +57,26 @@ export class PrismaFriendQuestRepository implements FriendQuestRepository {
       if (err instanceof PairConflict) return false;
       throw err;
     }
+  }
+
+  async activeQuestOf(userId: string, weekStart: string): Promise<ActiveFriendQuest | null> {
+    const row = await this.uow.client.friendQuest.findFirst({
+      where: { weekStart: asDate(weekStart), endedAt: null, members: { some: { userId } } },
+      select: { goal: true, members: { select: { user: { select: { id: true, nickname: true, avatarUrl: true } } } } },
+    });
+    if (!row) return null;
+    return { goal: row.goal, members: row.members.map((m) => ({ userId: m.user.id, nickname: m.user.nickname, avatarUrl: m.user.avatarUrl })) };
+  }
+
+  async lessonCounts(userIds: string[], from: Date, to: Date): Promise<Map<string, number>> {
+    const rows = await this.uow.client.lessonSession.groupBy({
+      by: ['userId'],
+      where: { userId: { in: userIds }, kind: 'lesson', finishedAt: { gte: from, lt: to } },
+      _count: { _all: true },
+    });
+    const out = new Map<string, number>(userIds.map((id) => [id, 0]));
+    for (const r of rows) out.set(r.userId, r._count._all);
+    return out;
   }
 
   async endSharedQuest(weekStart: string, a: string, b: string, at: Date): Promise<void> {

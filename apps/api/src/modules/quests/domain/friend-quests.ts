@@ -2,6 +2,8 @@ import { addDaysToLocalDate, localDateOf, zonedMidnightToUtc } from '../../../sh
 
 export const FRIEND_QUEST_GOAL = 15;
 export const FRIEND_QUEST_XP = 50;
+export const FRIEND_QUEST_KEY = 'friend';
+export const FRIEND_QUEST_TITLE = '친구와 레슨 15개';
 /** 짝 대상: 최근 이 일수 안에 레슨을 완료한 사용자 */
 export const ACTIVE_DAYS = 14;
 
