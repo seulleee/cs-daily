@@ -46,6 +46,11 @@ describe('SendFriendRequestHandler', () => {
     const s = setup({ countPendingOut: vi.fn(async () => 20) });
     await expect(new SendFriendRequestHandler(s.repo, uow, s.events).execute(new SendFriendRequestCommand('a', 'b'))).rejects.toMatchObject({ code: 'FRIEND_LIMIT' });
   });
+  it('없는 사용자도 정상 종료하고 저장하지 않는다', async () => {
+    const s = setup({ userExists: vi.fn(async () => false) });
+    await new SendFriendRequestHandler(s.repo, uow, s.events).execute(new SendFriendRequestCommand('a', 'b'));
+    expect(s.repo.createRequest).not.toHaveBeenCalled();
+  });
   it('자기 자신에게는 아무것도 하지 않는다', async () => {
     const s = setup();
     await new SendFriendRequestHandler(s.repo, uow, s.events).execute(new SendFriendRequestCommand('a', 'a'));

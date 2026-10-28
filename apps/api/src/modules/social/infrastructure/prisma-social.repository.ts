@@ -81,7 +81,8 @@ export class PrismaSocialRepository implements SocialRepository {
   }
 
   async upsertBlock(blockerId: string, blockedId: string) {
-    await this.db.userBlock.upsert({ where: { blockerId_blockedId: { blockerId, blockedId } }, create: { blockerId, blockedId }, update: {} });
+    // ON CONFLICT DO NOTHING — 동시 차단 요청의 유니크 충돌이 500이 되지 않게 멱등으로
+    await this.db.userBlock.createMany({ data: [{ blockerId, blockedId }], skipDuplicates: true });
   }
 
   async deleteBlock(blockerId: string, blockedId: string) {

@@ -40,7 +40,8 @@ export class SendFriendRequestHandler implements ICommandHandler<SendFriendReque
     // 자기 자신·차단 관계는 일반 성공과 구분되지 않게 조용히 끝낸다
     if (me === targetId) return;
     const accepted = await this.uow.run(async () => {
-      if (!(await this.repo.userExists(targetId))) throw notFound();
+      // 없는 사용자도 일반 성공과 같게 응답하고 아무것도 저장하지 않는다
+      if (!(await this.repo.userExists(targetId))) return null;
       const [blockedEitherWay, existing, myFriends, myPendingOut, theirFriends] = await Promise.all([
         this.repo.isBlockedEitherWay(me, targetId),
         this.repo.findPair(me, targetId),

@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { BlockRequest, SendFriendRequest, type FriendSearchResponse, type FriendsResponse } from '@cs-daily/contracts';
 import { JwtAuthGuard } from '../../identity/presentation/jwt-auth.guard';
 import { CurrentUser, type AuthUser } from '../../../shared/presentation/current-user.decorator';
+import { UserThrottlerGuard } from '../../../shared/presentation/user-throttler.guard';
 import { ZodBody } from '../../../shared/presentation/zod-body.pipe';
 import {
   AcceptFriendRequestCommand,
@@ -38,6 +39,8 @@ export class FriendsController {
     return this.queryBus.execute(new ListFriendsQuery(user.id, new Date()));
   }
 
+  // 전역 가드는 IP 기준이라 사용자별 가드를 JwtAuthGuard 뒤에 한 번 더 건다
+  @UseGuards(JwtAuthGuard, UserThrottlerGuard)
   @Throttle({ default: { limit: 30, ttl: 60_000 } })
   @Get('friends/search')
   search(@CurrentUser() user: AuthUser, @Query('q', new ZodBody(SearchQ)) q: string): Promise<FriendSearchResponse> {

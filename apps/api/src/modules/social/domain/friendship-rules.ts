@@ -23,15 +23,15 @@ export interface SendContext {
 
 /**
  * 친구 요청 보내기 판정. 우선순위:
- * 차단(silent) → 상대가 보낸 대기(accept-reverse) → 이미 보냄/친구(already) → 한도(limit) → create.
+ * 내 한도(limit) → 차단(silent) → 상대가 보낸 대기(accept-reverse) → 이미 보냄/친구(already) → create.
+ * 한도를 차단보다 먼저 보는 이유: 한도에 걸린 사용자가 차단한 상대에게만 202를 받으면 차단 사실이 드러난다.
  */
 export function decideSend(ctx: SendContext): SendDecision {
+  if (ctx.myPendingOut >= PENDING_OUT_LIMIT || ctx.myFriends >= FRIEND_LIMIT) return 'limit';
   if (ctx.blockedEitherWay) return 'silent';
   const { existing } = ctx;
   if (existing?.status === 'pending' && existing.requesterId !== ctx.me) return 'accept-reverse';
   if (existing) return 'already';
-  if (ctx.myPendingOut >= PENDING_OUT_LIMIT) return 'limit';
-  if (ctx.myFriends >= FRIEND_LIMIT) return 'limit';
   return 'create';
 }
 

@@ -102,6 +102,9 @@ async function main() {
     await ok(a.call('DELETE', `/friends/${c.id}`), 204);
     assert.equal((await friendsOf(c)).friends.length, 0);
 
+    // 없는 사용자에게도 같은 202
+    await ok(a.call('POST', '/friends/requests', { userId: randomUUID() }), 202);
+
     // 거절·취소
     await ok(a.call('POST', '/friends/requests', { userId: b.id }), 202);
     const toB = (await friendsOf(b)).incoming[0]!;
