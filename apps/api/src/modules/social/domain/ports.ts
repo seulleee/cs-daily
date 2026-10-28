@@ -1,4 +1,4 @@
-import type { FriendRequestView, FriendSummary, SearchUser } from '@cs-daily/contracts';
+import type { BlockedUser, FriendRequestView, FriendSummary, SearchUser } from '@cs-daily/contracts';
 
 export const SOCIAL_REPO = Symbol('SOCIAL_REPO');
 
@@ -28,6 +28,8 @@ export interface SocialRepository {
   deletePair(a: string, b: string): Promise<'pending' | 'accepted' | null>;
   upsertBlock(blockerId: string, blockedId: string): Promise<void>;
   deleteBlock(blockerId: string, blockedId: string): Promise<void>;
+  /** 내가 차단한 사용자, 최근 차단 순 */
+  listBlocks(blockerId: string, limit: number): Promise<BlockedUser[]>;
 
   listFriends(me: string, weekStart: Date, now: Date): Promise<FriendSummary[]>;
   listIncoming(me: string): Promise<FriendRequestView[]>;

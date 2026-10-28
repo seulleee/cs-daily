@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, HttpCode, Param, ParseUUIDPipe, Post, Qu
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { z } from 'zod';
-import { BlockRequest, SendFriendRequest, type FriendSearchResponse, type FriendsResponse } from '@cs-daily/contracts';
+import { BlockRequest, SendFriendRequest, type BlocksResponse, type FriendSearchResponse, type FriendsResponse } from '@cs-daily/contracts';
 import { JwtAuthGuard } from '../../identity/presentation/jwt-auth.guard';
 import { CurrentUser, type AuthUser } from '../../../shared/presentation/current-user.decorator';
 import { UserThrottlerGuard } from '../../../shared/presentation/user-throttler.guard';
@@ -12,6 +12,7 @@ import {
   BlockUserCommand,
   CancelFriendRequestCommand,
   DeclineFriendRequestCommand,
+  ListBlocksQuery,
   ListFriendsQuery,
   RemoveFriendCommand,
   SearchFriendsQuery,
@@ -75,6 +76,11 @@ export class FriendsController {
   @HttpCode(204)
   async remove(@CurrentUser() user: AuthUser, @Param('userId', ParseUUIDPipe) friendId: string) {
     await this.commandBus.execute(new RemoveFriendCommand(user.id, friendId));
+  }
+
+  @Get('blocks')
+  listBlocks(@CurrentUser() user: AuthUser): Promise<BlocksResponse> {
+    return this.queryBus.execute(new ListBlocksQuery(user.id));
   }
 
   @Post('blocks')

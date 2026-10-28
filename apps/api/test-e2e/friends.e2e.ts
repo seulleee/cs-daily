@@ -4,13 +4,14 @@
  *  2. 맞요청은 바로 친구
  *  3. 차단: 관계 삭제, 양쪽 검색에서 숨김, 차단당한 쪽의 요청도 202 + 상대 incoming 0건 (정보 누출 없음)
  *  4. discoverable=false는 검색에서 빠지고 1글자 검색은 400, 남의 요청 수락은 404
+ *  3-2. GET /blocks: 내가 차단한 사용자만, 해제하면 빠진다
  *  5. 대기 요청 20개 후 21번째는 409 FRIEND_LIMIT
  */
 import { PrismaClient } from '@prisma/client';
 import { JwtService } from '@nestjs/jwt';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
-import type { FriendSearchResponse, FriendsResponse } from '@cs-daily/contracts';
+import type { BlocksResponse, FriendSearchResponse, FriendsResponse } from '@cs-daily/contracts';
 
 const API = process.env.E2E_API_URL ?? 'http://localhost:4000';
 const prisma = new PrismaClient();
@@ -97,6 +98,15 @@ async function main() {
     // 차단 해제 후에는 다시 검색·요청 가능
     await ok(b.call('DELETE', `/blocks/${a.id}`), 204);
     assert.equal((await searchFor(a, b.nick))[0]!.relation, 'none');
+
+    // 차단 목록: A가 B를 차단 → A에게만 보인다 → 해제하면 비어 있다
+    await ok(a.call('POST', '/blocks', { userId: b.id }), 204);
+    const aBlocks = (await ok(a.call('GET', '/blocks'))) as BlocksResponse;
+    assert.deepEqual(aBlocks.users.map((u) => u.nickname), [b.nick], 'A의 차단 목록에 B 1명');
+    assert.deepEqual(Object.keys(aBlocks.users[0]!).sort(), ['avatarUrl', 'blockedAt', 'nickname', 'userId'], '차단 목록에 이메일 등이 없다');
+    assert.deepEqual(((await ok(b.call('GET', '/blocks'))) as BlocksResponse).users, [], 'B의 차단 목록은 비어 있다');
+    await ok(a.call('DELETE', `/blocks/${b.id}`), 204);
+    assert.deepEqual(((await ok(a.call('GET', '/blocks'))) as BlocksResponse).users, [], '해제하면 목록이 비어 있다');
 
     // 친구 끊기
     await ok(a.call('DELETE', `/friends/${c.id}`), 204);

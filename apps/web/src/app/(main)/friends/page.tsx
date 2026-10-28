@@ -33,7 +33,7 @@ export default function FriendsPage() {
 
   const [menu, setMenu] = useState<MenuState>(null);
 
-  const refresh = () => Promise.all([qc.invalidateQueries({ queryKey: ['friends'] }), qc.invalidateQueries({ queryKey: ['friends-search'] }), qc.invalidateQueries({ queryKey: ['me', 'quests'] })]);
+  const refresh = () => Promise.all([qc.invalidateQueries({ queryKey: ['friends'] }), qc.invalidateQueries({ queryKey: ['friends-search'] }), qc.invalidateQueries({ queryKey: ['blocks'] }), qc.invalidateQueries({ queryKey: ['me', 'quests'] })]);
   const onError = (err: unknown) => {
     if (err instanceof ApiError && err.code === 'FRIEND_LIMIT') toast.show(LIMIT_MESSAGE, { kind: 'error' });
     else toast.show(err instanceof ApiError ? err.message : '처리하지 못했어요', { kind: 'error' });
@@ -115,15 +115,34 @@ export default function FriendsPage() {
         {data.incoming.length > 0 && (
           <Window title={`받은 요청 ${data.incoming.length}`} bodyClassName="px-4">
             <ul className="divide-y divide-line">
-              {data.incoming.map((r) => (
-                <li key={r.id} className="flex flex-wrap items-center gap-3 py-3">
-                  <Person user={r.user} meta={`${r.user.streak}일째`} />
-                  <span className="flex shrink-0 gap-2">
-                    <button type="button" className="btn-outline" disabled={accept.isPending} onClick={() => accept.mutate(r.id)}>수락</button>
-                    <button type="button" className="btn-outline" disabled={decline.isPending} onClick={() => decline.mutate(r.id)}>거절</button>
-                  </span>
-                </li>
-              ))}
+              {data.incoming.map((r) => {
+                const confirming = menu?.userId === r.user.userId && menu.step === 'block';
+                return (
+                  <li key={r.id} className="py-3">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <div className="flex min-w-[12rem] flex-1">
+                        <Person user={r.user} meta={`${r.user.streak}일째`} />
+                      </div>
+                      {!confirming && (
+                        <span className="flex shrink-0 gap-2">
+                          <button type="button" className="btn-outline" disabled={accept.isPending} onClick={() => accept.mutate(r.id)}>수락</button>
+                          <button type="button" className="btn-outline" disabled={decline.isPending} onClick={() => decline.mutate(r.id)}>거절</button>
+                          <button type="button" className="btn-outline" onClick={() => setMenu({ userId: r.user.userId, step: 'block' })}>차단</button>
+                        </span>
+                      )}
+                    </div>
+                    {confirming && (
+                      <div role="group" aria-label="확인" className="mt-3 border border-line p-3">
+                        <p className="text-body">{`${r.user.nickname}님을 차단할까요? 요청이 사라지고 서로 검색되지 않아요.`}</p>
+                        <div className="mt-3 flex gap-2">
+                          <button type="button" className="btn-outline" disabled={block.isPending} onClick={() => block.mutate(r.user.userId)}>차단하기</button>
+                          <button type="button" className="btn-outline" onClick={() => setMenu(null)}>취소</button>
+                        </div>
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </Window>
         )}

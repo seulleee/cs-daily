@@ -2,6 +2,7 @@
 export const FRIEND_LIMIT = 100;
 export const PENDING_OUT_LIMIT = 20;
 export const SEARCH_MIN = 2;
+export const BLOCKS_LIST_MAX = 200;
 export const SEARCH_MAX = 10;
 
 /** 두 사용자 쌍의 정규 키: 작은 id가 low. Friendship (userLowId, userHighId) 유니크에 쓴다. */

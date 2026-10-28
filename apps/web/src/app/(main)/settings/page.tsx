@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import type { MeResponse, TrackSummary, UpdateMeRequest } from '@cs-daily/contracts';
 import { api, ApiError } from '@/lib/api';
 import { AppShell } from '@/components/app-shell';
+import { BlockedUsers } from '@/components/blocked-users';
 import { CodeLanguagePicker } from '@/components/code-language-picker';
 import { SelectMark } from '@/components/select-mark';
 import { useToast } from '@/components/toast';
@@ -131,6 +132,8 @@ export default function SettingsPage() {
           <button type="submit" disabled={save.isPending || selected.length === 0} className="btn-3d w-full">저장</button>
         </Window>
       </form>
+
+      <BlockedUsers className="mt-6" />
 
       <Window title="테마" className="mt-6" bodyClassName="p-5">
         <ThemePicker />
