@@ -1,7 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, ParseUUIDPipe, Post, Query, UseGuards } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { Throttle } from '@nestjs/throttler';
 import { z } from 'zod';
 import { BlockRequest, SendFriendRequest, type FriendSearchResponse, type FriendsResponse } from '@cs-daily/contracts';
 import { JwtAuthGuard } from '../../identity/presentation/jwt-auth.guard';
@@ -39,9 +38,8 @@ export class FriendsController {
     return this.queryBus.execute(new ListFriendsQuery(user.id, new Date()));
   }
 
-  // 전역 가드는 IP 기준이라 사용자별 가드를 JwtAuthGuard 뒤에 한 번 더 건다
+  // 분당 30회는 사용자 기준 `userSearch` 한도(app.module). 전역 IP 가드는 이 한도를 세지 않는다
   @UseGuards(JwtAuthGuard, UserThrottlerGuard)
-  @Throttle({ default: { limit: 30, ttl: 60_000 } })
   @Get('friends/search')
   search(@CurrentUser() user: AuthUser, @Query('q', new ZodBody(SearchQ)) q: string): Promise<FriendSearchResponse> {
     return this.queryBus.execute(new SearchFriendsQuery(user.id, q));
