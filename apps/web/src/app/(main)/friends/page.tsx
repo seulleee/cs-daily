@@ -33,7 +33,7 @@ export default function FriendsPage() {
 
   const [menu, setMenu] = useState<MenuState>(null);
 
-  const refresh = () => Promise.all([qc.invalidateQueries({ queryKey: ['friends'] }), qc.invalidateQueries({ queryKey: ['friends-search'] })]);
+  const refresh = () => Promise.all([qc.invalidateQueries({ queryKey: ['friends'] }), qc.invalidateQueries({ queryKey: ['friends-search'] }), qc.invalidateQueries({ queryKey: ['me', 'quests'] })]);
   const onError = (err: unknown) => {
     if (err instanceof ApiError && err.code === 'FRIEND_LIMIT') toast.show(LIMIT_MESSAGE, { kind: 'error' });
     else toast.show(err instanceof ApiError ? err.message : '처리하지 못했어요', { kind: 'error' });

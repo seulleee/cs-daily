@@ -37,6 +37,7 @@ export class PrismaFriendQuestRepository implements FriendQuestRepository {
   /**
    * 퀘스트와 멤버 2행을 한 트랜잭션으로 넣는다. 멤버는 createMany(skipDuplicates)라 (weekStart,userId) 충돌이
    * 오류 없이 건너뛰어지고, 들어간 행이 2개가 아니면 PairConflict로 트랜잭션 전체(퀘스트 행 포함)를 되돌린다.
+   * 주의: 바깥 트랜잭션(uow.run 안)에서 부르면 PairConflict 롤백 보장이 깨진다 — 반드시 최상위에서 호출한다.
    * 그래서 한 명이라도 이미 그 주 멤버면 반쪽짜리 퀘스트가 남지 않고, 동시 실행에서도 한쪽만 이긴다.
    */
   async createPair(weekStart: string, a: string, b: string): Promise<boolean> {
@@ -60,8 +61,14 @@ export class PrismaFriendQuestRepository implements FriendQuestRepository {
   }
 
   async activeQuestOf(userId: string, weekStart: string): Promise<ActiveFriendQuest | null> {
+    // (weekStart, userId) 유니크 인덱스로 멤버를 먼저 찾고, 그 퀘스트가 아직 끝나지 않았을 때만 읽는다
+    const member = await this.uow.client.friendQuestMember.findUnique({
+      where: { weekStart_userId: { weekStart: asDate(weekStart), userId } },
+      select: { questId: true },
+    });
+    if (!member) return null;
     const row = await this.uow.client.friendQuest.findFirst({
-      where: { weekStart: asDate(weekStart), endedAt: null, members: { some: { userId } } },
+      where: { id: member.questId, endedAt: null },
       select: { goal: true, members: { select: { user: { select: { id: true, nickname: true, avatarUrl: true } } } } },
     });
     if (!row) return null;

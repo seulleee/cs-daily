@@ -15,7 +15,7 @@ export function QuestsPanel({ data, compact = false }: { data: MeQuestsResponse;
   return (
     <div className="space-y-4">
       <DailyQuestsWindow data={data} compact={compact} />
-      <FriendQuestWindow friend={data.friend} />
+      <FriendQuestWindow friend={data.friend} compact={compact} />
     </div>
   );
 }
@@ -85,24 +85,64 @@ function QuestRow({ q }: { q: DailyQuest }) {
   );
 }
 
-/** 친구 퀘스트 창: 둘이 합쳐 이번 주 레슨 15개. 막대는 합계, 아래 줄에 각자 몇 개인지. */
-function FriendQuestWindow({ friend }: { friend: FriendQuestView | null }) {
-  if (!friend) {
+/** 친구 퀘스트 창: 둘이 합쳐 이번 주 레슨 15개. 막대는 합계, 아래 줄에 각자 몇 개인지. 모바일(`compact`)은 데일리 창처럼 기본 접힘. */
+function FriendQuestWindow({ friend, compact }: { friend: FriendQuestView | null; compact: boolean }) {
+  const [open, setOpen] = useState(false);
+  const body = friend ? <FriendQuestBody friend={friend} /> : <FriendQuestEmpty />;
+
+  if (!compact) {
     return (
       <Window title="친구 퀘스트" bodyClassName="p-4">
-        <p className="text-body text-ink-2">친구를 추가하면 다음 퀘스트가 시작돼요</p>
-        <Link href="/friends" className="btn-outline mt-3 inline-flex">
-          친구 찾기
-        </Link>
+        {body}
       </Window>
     );
   }
+
+  const title = friend ? `친구 퀘스트 ${Math.min(friend.mine + friend.theirs, friend.goal)}/${friend.goal}` : '친구 퀘스트';
+  return (
+    <Window title={title} bodyClassName="p-0">
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-controls="friend-quest-body"
+        onClick={() => setOpen((v) => !v)}
+        className="flex min-h-11 w-full items-center justify-between gap-2 px-4 text-body"
+      >
+        <span className="text-ink-2">{open ? '접기' : '펼쳐서 보기'}</span>
+        {friend?.done && (
+          <span className="flex items-center">
+            <CheckIcon size={16} strokeWidth={3} />
+            <span className="sr-only">완료</span>
+          </span>
+        )}
+      </button>
+      {open && (
+        <div id="friend-quest-body" className="border-t border-line p-4">
+          {body}
+        </div>
+      )}
+    </Window>
+  );
+}
+
+function FriendQuestEmpty() {
+  return (
+    <>
+      <p className="text-body text-ink-2">친구를 추가하면 다음 퀘스트가 시작돼요</p>
+      <Link href="/friends" className="btn-outline mt-3 inline-flex">
+        친구 찾기
+      </Link>
+    </>
+  );
+}
+
+function FriendQuestBody({ friend }: { friend: FriendQuestView }) {
   const total = friend.mine + friend.theirs;
   const shown = Math.min(total, friend.goal);
   const pct = friend.goal > 0 ? Math.round((shown / friend.goal) * 100) : 0;
   const daysLeft = Math.max(1, Math.ceil((new Date(friend.endsAt).getTime() - Date.now()) / 86_400_000));
   return (
-    <Window title="친구 퀘스트" bodyClassName="p-4">
+    <>
       <div className="flex items-center justify-between gap-2">
         <span className="min-w-0 truncate text-body">{friend.partner.nickname}님과 함께</span>
         <span className="flex shrink-0 items-center gap-1">
@@ -126,6 +166,6 @@ function FriendQuestWindow({ friend }: { friend: FriendQuestView | null }) {
         </span>
         <span className="shrink-0">{daysLeft}일 남음</span>
       </div>
-    </Window>
+    </>
   );
 }
