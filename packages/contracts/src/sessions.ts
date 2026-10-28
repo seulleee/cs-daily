@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { CodingLanguage, PublicQuestion, UserAnswer } from './questions.js';
+import { QuestRewardItem } from './quests.js';
 
 /** placement = 유닛 건너뛰기 테스트 */
 export const SessionKind = z.enum(['lesson', 'review', 'placement']);
@@ -89,5 +90,7 @@ export const CompleteSessionResponse = z.object({
       skippedLessons: z.number().int(),
     })
     .nullable(),
+  /** 이번 완료로 지급된 퀘스트 보상 (옛 API 호환을 위해 선택 필드) */
+  questRewards: z.array(QuestRewardItem).optional(),
 });
 export type CompleteSessionResponse = z.infer<typeof CompleteSessionResponse>;
