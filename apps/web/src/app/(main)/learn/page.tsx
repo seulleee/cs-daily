@@ -4,9 +4,10 @@ import { Suspense, useEffect, useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import type { MeResponse, PathResponse } from '@cs-daily/contracts';
+import type { MeQuestsResponse, MeResponse, PathResponse } from '@cs-daily/contracts';
 import { api } from '@/lib/api';
 import { AppShell } from '@/components/app-shell';
+import { QuestsPanel } from '@/components/quests-panel';
 import { StatsPanel } from '@/components/stats-panel';
 import { LearningPath } from '@/components/learning-path';
 import { NextLessonCard } from '@/components/next-lesson-card';
@@ -48,6 +49,7 @@ function LearnInner() {
     if (c.left < r.left) row.scrollLeft += c.left - r.left;
     else if (c.right > r.right) row.scrollLeft += c.right - r.right;
   }, [trackSlug, tabsReady]);
+  const quests = useQuery({ queryKey: ['me', 'quests'], queryFn: () => api<MeQuestsResponse>('/me/quests') });
   const path = useQuery({
     queryKey: ['path', trackSlug],
     queryFn: () => api<PathResponse>(`/me/path?track=${trackSlug}`),
@@ -69,10 +71,23 @@ function LearnInner() {
   }
 
   return (
-    <AppShell aside={<StatsPanel me={me.data} />}>
+    <AppShell
+      aside={
+        <>
+          <StatsPanel me={me.data} />
+          {quests.data && <QuestsPanel data={quests.data} />}
+        </>
+      }
+    >
       <header className="space-y-4">
         {/* 연속 학습 상태 바 한 줄 (PC에서는 우측 보조 패널의 스트릭 카드가 같은 정보를 보여 준다) */}
         <StreakBar me={me.data} className="lg:hidden" />
+
+        {quests.data && (
+          <div className="lg:hidden">
+            <QuestsPanel data={quests.data} compact />
+          </div>
+        )}
 
         {path.data ? <NextLessonCard path={path.data} me={me.data} /> : <HeroSkeleton />}
 

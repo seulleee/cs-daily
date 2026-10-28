@@ -123,6 +123,7 @@ export function LessonPlayer({ sessionId }: { sessionId: string }) {
       qc.setQueryData(['session-result', sessionId], r);
       qc.setQueryData(['session-retried', sessionId], retried);
       qc.invalidateQueries({ queryKey: ['me'] });
+      qc.invalidateQueries({ queryKey: ['me', 'quests'] });
       qc.invalidateQueries({ queryKey: ['path'] });
       qc.invalidateQueries({ queryKey: ['calendar'] }); // PC 보조 패널의 이번 주 7칸·프로필 달력
       router.replace(`/lesson/${sessionId}/result`);
