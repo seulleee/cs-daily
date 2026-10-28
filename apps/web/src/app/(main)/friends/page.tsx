@@ -33,7 +33,7 @@ export default function FriendsPage() {
 
   const [menu, setMenu] = useState<MenuState>(null);
 
-  const refresh = () => Promise.all([qc.invalidateQueries({ queryKey: ['friends'] }), qc.invalidateQueries({ queryKey: ['friends-search'] })]);
+  const refresh = () => Promise.all([qc.invalidateQueries({ queryKey: ['friends'] }), qc.invalidateQueries({ queryKey: ['friends-search'] }), qc.invalidateQueries({ queryKey: ['me', 'quests'] })]);
   const onError = (err: unknown) => {
     if (err instanceof ApiError && err.code === 'FRIEND_LIMIT') toast.show(LIMIT_MESSAGE, { kind: 'error' });
     else toast.show(err instanceof ApiError ? err.message : '처리하지 못했어요', { kind: 'error' });
@@ -48,8 +48,17 @@ export default function FriendsPage() {
     onError,
   });
 
-  const send = useMutation(act((userId) => api('/friends/requests', { method: 'POST', json: { userId } }), '친구 요청을 보냈어요'));
-  const accept = useMutation(act((id) => api(`/friends/requests/${id}/accept`, { method: 'POST' }), '친구가 됐어요'));
+  const send = useMutation({
+    ...act((userId) => api('/friends/requests', { method: 'POST', json: { userId } })),
+    onSuccess: (_data: unknown, userId: string) => {
+      // 받은 요청이 있던 사람에게 보내는 요청은 맞요청이라 바로 친구가 된다
+      const incoming = search.data?.users.some((u) => u.userId === userId && u.relation === 'incoming');
+      toast.show(incoming ? '친구가 되었어요' : '친구 요청을 보냈어요');
+      setMenu(null);
+      return refresh();
+    },
+  });
+  const accept = useMutation(act((id) => api(`/friends/requests/${id}/accept`, { method: 'POST' }), '친구가 되었어요'));
   const decline = useMutation(act((id) => api(`/friends/requests/${id}/decline`, { method: 'POST' }), '요청을 거절했어요'));
   const cancel = useMutation(act((id) => api(`/friends/requests/${id}`, { method: 'DELETE' }), '요청을 취소했어요'));
   const unfriend = useMutation(act((userId) => api(`/friends/${userId}`, { method: 'DELETE' }), '친구를 끊었어요'));

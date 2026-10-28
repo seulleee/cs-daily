@@ -85,7 +85,15 @@ function fakePicks() {
   };
 }
 
-function build(opts: { activity?: Partial<DayActivity>; due?: number; inserted?: boolean; dailyGoal?: number }) {
+/** 메모리 가짜 FRIEND_QUEST_REPO — 이번 주 퀘스트 하나와 사용자별 레슨 수 */
+function fakeFriendRepo(quest: { goal: number; members: { userId: string; nickname: string; avatarUrl: string | null }[] } | null, counts: Record<string, number> = {}) {
+  return {
+    activeQuestOf: vi.fn(async () => quest),
+    lessonCounts: vi.fn(async (ids: string[]) => new Map(ids.map((id) => [id, counts[id] ?? 0]))),
+  };
+}
+
+function build(opts: { activity?: Partial<DayActivity>; due?: number; inserted?: boolean; dailyGoal?: number; friend?: ReturnType<typeof fakeFriendRepo> }) {
   const activity = { ...zero, ...opts.activity };
   const credit = vi.fn().mockResolvedValue(undefined);
   const tryInsert = vi.fn().mockResolvedValue(opts.inserted ?? true);
@@ -97,11 +105,12 @@ function build(opts: { activity?: Partial<DayActivity>; due?: number; inserted?:
     picks: fakePicks(),
     ledger: { credit },
     queryBus: { execute: vi.fn().mockResolvedValue(opts.due ?? 0) },
+    friend: opts.friend ?? fakeFriendRepo(null),
   };
   return { deps, credit, tryInsert };
 }
 const mk = (d: ReturnType<typeof build>['deps']) =>
-  new EvaluateQuestsHandler(d.uow as never, d.prefs as never, d.activity as never, d.rewards as never, d.ledger as never, d.picks as never, d.queryBus as never);
+  new EvaluateQuestsHandler(d.uow as never, d.prefs as never, d.activity as never, d.rewards as never, d.ledger as never, d.picks as never, d.queryBus as never, d.friend as never);
 
 function userWithKey(key: string, date = '2026-10-28', eligible = true) {
   for (let i = 0; i < 500; i++) {
@@ -157,7 +166,7 @@ describe('GetMyQuestsHandler', () => {
   it('progress는 goal로 제한, done은 progress>=goal, friend는 null', async () => {
     const userId = userWithKey('lessons');
     const { deps } = build({ activity: { lessons: 9, xpExcludingQuest: 5 }, dailyGoal: 1 });
-    const h = new GetMyQuestsHandler(deps.prefs as never, deps.activity as never, deps.picks as never, deps.queryBus as never);
+    const h = new GetMyQuestsHandler(deps.prefs as never, deps.activity as never, deps.picks as never, deps.queryBus as never, deps.friend as never);
     const r = await h.execute(new GetMyQuestsQuery(userId, AT));
     expect(r.date).toBe('2026-10-28');
     expect(r.friend).toBeNull();
@@ -186,7 +195,7 @@ describe('그날 퀘스트 고정 (daily_quest_picks)', () => {
   it('첫 조회에서 저장한 3개는 due·복습 값이 바뀌어도 이후 조회·평가에서 그대로', async () => {
     const { id, on } = reviewUser();
     const { deps, tryInsert } = build({ due: 3 });
-    const get = new GetMyQuestsHandler(deps.prefs as never, deps.activity as never, deps.picks as never, deps.queryBus as never);
+    const get = new GetMyQuestsHandler(deps.prefs as never, deps.activity as never, deps.picks as never, deps.queryBus as never, deps.friend as never);
     const first = await get.execute(new GetMyQuestsQuery(id, AT));
     expect(first.daily.map((q) => q.key)).toEqual(on);
 
@@ -207,7 +216,7 @@ describe('그날 퀘스트 고정 (daily_quest_picks)', () => {
   it('다른 날짜는 따로 뽑는다', async () => {
     const { id } = reviewUser();
     const { deps } = build({ due: 1 });
-    const get = new GetMyQuestsHandler(deps.prefs as never, deps.activity as never, deps.picks as never, deps.queryBus as never);
+    const get = new GetMyQuestsHandler(deps.prefs as never, deps.activity as never, deps.picks as never, deps.queryBus as never, deps.friend as never);
     await get.execute(new GetMyQuestsQuery(id, AT));
     await get.execute(new GetMyQuestsQuery(id, new Date('2026-10-29T03:00:00Z')));
     expect([...deps.picks.store.keys()]).toEqual([`${id}|2026-10-28`, `${id}|2026-10-29`]);
@@ -252,5 +261,69 @@ describe('CompleteSessionHandler 퀘스트 평가', () => {
     const { handler, userIdValue } = build(async () => [reward]);
     const r = await handler.execute(new CompleteSessionCommand(userIdValue, '22222222-2222-4222-8222-222222222222'));
     expect(r.questRewards).toEqual([reward]);
+  });
+});
+
+// ---- 프렌즈 퀘스트 ----
+describe('EvaluateQuestsHandler 친구 퀘스트', () => {
+  const A = '00000000-0000-4000-8000-00000000000a';
+  const B = '00000000-0000-4000-8000-00000000000b';
+  const quest = { goal: 15, members: [{ userId: B, nickname: 'bee', avatarUrl: null }, { userId: A, nickname: 'ay', avatarUrl: null }] };
+  const rewardsOf = (tryInsert: ReturnType<typeof vi.fn>) => tryInsert.mock.calls.map((c) => c[0]).filter((r) => r.questKey === 'friend');
+
+  it('합이 목표 미만이면 지급하지 않는다', async () => {
+    const { deps, tryInsert } = build({ friend: fakeFriendRepo(quest, { [A]: 7, [B]: 7 }) });
+    await mk(deps).execute(new EvaluateQuestsCommand(A, AT));
+    expect(rewardsOf(tryInsert)).toEqual([]);
+  });
+
+  it('합이 15 이상이면 두 사람 모두 id 순으로 지급하고 응답에는 호출자 몫만 싣는다', async () => {
+    const { deps, tryInsert, credit } = build({ friend: fakeFriendRepo(quest, { [A]: 8, [B]: 7 }) });
+    const r = await mk(deps).execute(new EvaluateQuestsCommand(B, AT));
+    // 2026-10-28 수요일 → 서울 주 시작 월요일 2026-10-26
+    expect(rewardsOf(tryInsert)).toEqual([
+      { userId: A, questKey: 'friend', period: '2026-10-26', xp: 50 },
+      { userId: B, questKey: 'friend', period: '2026-10-26', xp: 50 },
+    ]);
+    expect(credit.mock.calls.filter((c) => c[0].amount === 50).map((c) => c[0].userId)).toEqual([A, B]);
+    expect(r.filter((x) => x.key === 'friend')).toEqual([{ key: 'friend', title: '친구와 레슨 15개', xp: 50 }]);
+  });
+
+  it('이미 지급된 사람은 다시 적립하지 않고 응답에도 없다', async () => {
+    const { deps, tryInsert, credit } = build({ friend: fakeFriendRepo(quest, { [A]: 9, [B]: 9 }) });
+    tryInsert.mockImplementation(async (r: { userId: string }) => r.userId === A);
+    const r = await mk(deps).execute(new EvaluateQuestsCommand(B, AT));
+    expect(credit.mock.calls.filter((c) => c[0].amount === 50).map((c) => c[0].userId)).toEqual([A]);
+    expect(r.some((x) => x.key === 'friend')).toBe(false);
+  });
+
+  it('짝이 없으면 아무 것도 하지 않는다', async () => {
+    const { deps, tryInsert } = build({ friend: fakeFriendRepo(null) });
+    await mk(deps).execute(new EvaluateQuestsCommand(A, AT));
+    expect(rewardsOf(tryInsert)).toEqual([]);
+  });
+});
+
+describe('GetMyQuestsHandler 친구 퀘스트', () => {
+  const A = '00000000-0000-4000-8000-00000000000a';
+  const B = '00000000-0000-4000-8000-00000000000b';
+  const quest = { goal: 15, members: [{ userId: A, nickname: 'ay', avatarUrl: null }, { userId: B, nickname: 'bee', avatarUrl: 'https://x.test/b.png' }] };
+  const get = (deps: ReturnType<typeof build>['deps']) =>
+    new GetMyQuestsHandler(deps.prefs as never, deps.activity as never, deps.picks as never, deps.queryBus as never, deps.friend as never);
+
+  it('짝·내 수·짝 수·목표·종료 시각을 돌려준다', async () => {
+    const { deps } = build({ friend: fakeFriendRepo(quest, { [A]: 4, [B]: 6 }) });
+    const r = await get(deps).execute(new GetMyQuestsQuery(A, AT));
+    expect(r.friend).toEqual({ partner: { nickname: 'bee', avatarUrl: 'https://x.test/b.png' }, mine: 4, theirs: 6, goal: 15, done: false, endsAt: '2026-11-01T15:00:00.000Z' });
+  });
+
+  it('합이 목표 이상이면 done', async () => {
+    const { deps } = build({ friend: fakeFriendRepo(quest, { [A]: 9, [B]: 9 }) });
+    expect((await get(deps).execute(new GetMyQuestsQuery(A, AT))).friend?.done).toBe(true);
+  });
+
+  it('퀘스트가 없으면 null', async () => {
+    const { deps } = build({});
+    expect((await get(deps).execute(new GetMyQuestsQuery(A, AT))).friend).toBeNull();
   });
 });

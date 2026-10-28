@@ -2,8 +2,11 @@ import { Controller, Headers, Logger, Post } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { CommandBus } from '@nestjs/cqrs';
 import { ApiTags } from '@nestjs/swagger';
+import { localDateOf } from '../../shared/domain/local-date';
 import { UnitOfWork } from '../../shared/infrastructure/unit-of-work';
 import { SendRemindersCommand } from '../notification/application/send-reminders.handler';
+import { PairFriendQuestsCommand } from '../quests/application/commands';
+import { weekStartSeoul } from '../quests/domain/friend-quests';
 import { ApplyMissedDaysCommand, RefillFreezesCommand } from '../progression/application/commands/commands';
 import { assertInternalAuth } from './presentation/internal-auth';
 
@@ -41,6 +44,12 @@ export class JobsController {
 
     // 매월 1일 00:00 UTC: 프리즈 충전
     if (hour === 0 && now.getUTCDate() === 1) results.refill = await this.runOnce('refill-freezes', day.slice(0, 7), () => this.commandBus.execute(new RefillFreezesCommand(now)));
+
+    // 서울 월요일의 첫 tick: 친구 퀘스트 짝 짓기. 00시 tick을 놓쳐도 그날 안에 한 번 돈다(slot = 주 시작일).
+    const weekStart = weekStartSeoul(now);
+    if (localDateOf(now, 'Asia/Seoul') === weekStart) {
+      results.friendPairs = await this.runOnce('friend-pairs', weekStart, () => this.commandBus.execute(new PairFriendQuestsCommand(now)));
+    }
 
     return { at: now.toISOString(), results };
   }
