@@ -58,7 +58,7 @@ export default function FriendsPage() {
       return refresh();
     },
   });
-  const accept = useMutation(act((id) => api(`/friends/requests/${id}/accept`, { method: 'POST' }), '친구가 됐어요'));
+  const accept = useMutation(act((id) => api(`/friends/requests/${id}/accept`, { method: 'POST' }), '친구가 되었어요'));
   const decline = useMutation(act((id) => api(`/friends/requests/${id}/decline`, { method: 'POST' }), '요청을 거절했어요'));
   const cancel = useMutation(act((id) => api(`/friends/requests/${id}`, { method: 'DELETE' }), '요청을 취소했어요'));
   const unfriend = useMutation(act((userId) => api(`/friends/${userId}`, { method: 'DELETE' }), '친구를 끊었어요'));

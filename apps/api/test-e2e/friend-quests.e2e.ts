@@ -150,7 +150,9 @@ async function main() {
 
     console.log('friend-quests e2e OK');
   } finally {
+    const questIds = (await prisma.friendQuestMember.findMany({ where: { userId: { in: ids } }, select: { questId: true } })).map((m) => m.questId);
     await prisma.user.deleteMany({ where: { id: { in: ids } } });
+    await prisma.friendQuest.deleteMany({ where: { id: { in: questIds } } });
     await prisma.$disconnect();
   }
 }
