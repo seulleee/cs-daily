@@ -1,10 +1,10 @@
 import { Inject } from '@nestjs/common';
 import { CommandHandler, EventBus, ICommandHandler, IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { ErrorCode, type FriendSearchResponse, type FriendsResponse } from '@cs-daily/contracts';
+import { ErrorCode, type BlocksResponse, type FriendSearchResponse, type FriendsResponse } from '@cs-daily/contracts';
 import { ConflictError, NotFoundError } from '../../../shared/domain/domain-error';
 import { UnitOfWork } from '../../../shared/infrastructure/unit-of-work';
 import { FriendshipAccepted, FriendshipEnded } from '../domain/events';
-import { decideSend, FRIEND_LIMIT, SEARCH_MAX } from '../domain/friendship-rules';
+import { BLOCKS_LIST_MAX, decideSend, FRIEND_LIMIT, SEARCH_MAX } from '../domain/friendship-rules';
 import { SOCIAL_REPO, type SocialRepository } from '../domain/ports';
 import { seoulWeekStart } from '../domain/week';
 import {
@@ -12,6 +12,7 @@ import {
   BlockUserCommand,
   CancelFriendRequestCommand,
   DeclineFriendRequestCommand,
+  ListBlocksQuery,
   ListFriendsQuery,
   RemoveFriendCommand,
   SearchFriendsQuery,
@@ -179,6 +180,15 @@ export class SearchFriendsHandler implements IQueryHandler<SearchFriendsQuery, F
   }
 }
 
+@QueryHandler(ListBlocksQuery)
+export class ListBlocksHandler implements IQueryHandler<ListBlocksQuery, BlocksResponse> {
+  constructor(@Inject(SOCIAL_REPO) private readonly repo: SocialRepository) {}
+
+  async execute({ me }: ListBlocksQuery): Promise<BlocksResponse> {
+    return { users: await this.repo.listBlocks(me, BLOCKS_LIST_MAX) };
+  }
+}
+
 export const FRIEND_HANDLERS = [
   SendFriendRequestHandler,
   AcceptFriendRequestHandler,
@@ -188,5 +198,6 @@ export const FRIEND_HANDLERS = [
   BlockUserHandler,
   UnblockUserHandler,
   ListFriendsHandler,
+  ListBlocksHandler,
   SearchFriendsHandler,
 ];

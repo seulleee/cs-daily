@@ -42,6 +42,18 @@ export type FriendSearchResponse = z.infer<typeof FriendSearchResponse>;
 export const SendFriendRequest = z.object({ userId: z.string().uuid() });
 export type SendFriendRequest = z.infer<typeof SendFriendRequest>;
 
+export const BlockedUser = z.object({
+  userId: z.string(),
+  nickname: z.string(),
+  avatarUrl: z.string().nullable(),
+  blockedAt: z.string(),
+});
+export type BlockedUser = z.infer<typeof BlockedUser>;
+
+/** GET /blocks — 내가 차단한 사용자(최근 차단 순) */
+export const BlocksResponse = z.object({ users: z.array(BlockedUser) });
+export type BlocksResponse = z.infer<typeof BlocksResponse>;
+
 /** POST /blocks */
 export const BlockRequest = z.object({ userId: z.string().uuid() });
 export type BlockRequest = z.infer<typeof BlockRequest>;

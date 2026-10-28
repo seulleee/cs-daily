@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import type { FriendRequestView, FriendSummary, SearchUser } from '@cs-daily/contracts';
+import type { BlockedUser, FriendRequestView, FriendSummary, SearchUser } from '@cs-daily/contracts';
 import { UnitOfWork } from '../../../shared/infrastructure/unit-of-work';
 import { escapeLike, pairKey } from '../domain/friendship-rules';
 import type { PairRow, SocialRepository } from '../domain/ports';
@@ -88,6 +88,16 @@ export class PrismaSocialRepository implements SocialRepository {
 
   async deleteBlock(blockerId: string, blockedId: string) {
     await this.db.userBlock.deleteMany({ where: { blockerId, blockedId } });
+  }
+
+  async listBlocks(blockerId: string, limit: number): Promise<BlockedUser[]> {
+    const rows = await this.db.userBlock.findMany({
+      where: { blockerId },
+      select: { createdAt: true, blocked: { select: { id: true, nickname: true, avatarUrl: true } } },
+      orderBy: { createdAt: 'desc' },
+      take: limit,
+    });
+    return rows.map((r) => ({ userId: r.blocked.id, nickname: r.blocked.nickname, avatarUrl: r.blocked.avatarUrl, blockedAt: r.createdAt.toISOString() }));
   }
 
   async listFriends(me: string, weekStart: Date, now: Date): Promise<FriendSummary[]> {

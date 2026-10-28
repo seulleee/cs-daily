@@ -22,6 +22,9 @@ export class UnblockUserCommand {
 export class ListFriendsQuery {
   constructor(readonly me: string, readonly at: Date) {}
 }
+export class ListBlocksQuery {
+  constructor(readonly me: string) {}
+}
 export class SearchFriendsQuery {
   constructor(readonly me: string, readonly q: string) {}
 }

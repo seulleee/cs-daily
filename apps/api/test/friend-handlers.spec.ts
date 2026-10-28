@@ -2,8 +2,8 @@ import { describe, expect, it, vi } from 'vitest';
 import type { EventBus } from '@nestjs/cqrs';
 import type { UnitOfWork } from '../src/shared/infrastructure/unit-of-work';
 import type { SocialRepository } from '../src/modules/social/domain/ports';
-import { AcceptFriendRequestHandler, SendFriendRequestHandler } from '../src/modules/social/application/friend.handlers';
-import { AcceptFriendRequestCommand, SendFriendRequestCommand } from '../src/modules/social/application/commands';
+import { AcceptFriendRequestHandler, ListBlocksHandler, SendFriendRequestHandler } from '../src/modules/social/application/friend.handlers';
+import { AcceptFriendRequestCommand, ListBlocksQuery, SendFriendRequestCommand } from '../src/modules/social/application/commands';
 import { FriendshipAccepted } from '../src/modules/social/domain/events';
 
 const uow = { run: <T>(fn: () => Promise<T>) => fn() } as unknown as UnitOfWork;
@@ -102,5 +102,15 @@ describe('AcceptFriendRequestHandler', () => {
     const s = setup({ findIncomingPending: vi.fn(async () => ({ requesterId: 'b' })) });
     await new AcceptFriendRequestHandler(s.repo, uow, s.events).execute(new AcceptFriendRequestCommand('a', 'x'));
     expect(s.publish).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('ListBlocksHandler', () => {
+  it('내 차단 목록을 최대 200명까지 저장소에서 받아 users로 감싼다', async () => {
+    const row = { userId: 'b', nickname: '비', avatarUrl: null, blockedAt: '2026-10-28T00:00:00.000Z' };
+    const s = setup({ listBlocks: vi.fn(async () => [row]) });
+    const res = await new ListBlocksHandler(s.repo).execute(new ListBlocksQuery('a'));
+    expect(s.repo.listBlocks).toHaveBeenCalledWith('a', 200);
+    expect(res).toEqual({ users: [row] });
   });
 });
