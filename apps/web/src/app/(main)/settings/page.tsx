@@ -21,7 +21,7 @@ export default function SettingsPage() {
   const [selected, setSelected] = useState<number[]>([]);
   useEffect(() => {
     if (me.data) {
-      setForm({ nickname: me.data.user.nickname, dailyGoal: me.data.user.dailyGoal, codeLanguage: me.data.user.codeLanguage, reminderAt: me.data.user.reminderAt, timezone: me.data.user.timezone });
+      setForm({ nickname: me.data.user.nickname, dailyGoal: me.data.user.dailyGoal, codeLanguage: me.data.user.codeLanguage, reminderAt: me.data.user.reminderAt, timezone: me.data.user.timezone, discoverable: me.data.user.discoverable });
       setSelected(me.data.tracks.map((t) => t.id));
     }
   }, [me.data]);
@@ -112,6 +112,22 @@ export default function SettingsPage() {
             </div>
           </Field>
 
+          <button type="submit" disabled={save.isPending || selected.length === 0} className="btn-3d w-full">저장</button>
+        </Window>
+
+        <Window title="개인정보" bodyClassName="space-y-4 p-5">
+          <button
+            type="button"
+            role="switch"
+            aria-checked={form.discoverable ?? false}
+            data-selected={form.discoverable ?? false}
+            onClick={() => setForm({ ...form, discoverable: !form.discoverable })}
+            className="option flex items-center gap-3"
+          >
+            <SelectMark kind="box" />
+            <span className="block min-w-0 flex-1 font-semibold">닉네임으로 나를 찾을 수 있음</span>
+          </button>
+          <p className="text-cap text-ink-2">끄면 다른 사람이 닉네임을 검색해도 나오지 않아요. 이미 친구인 사람에게는 그대로 보여요.</p>
           <button type="submit" disabled={save.isPending || selected.length === 0} className="btn-3d w-full">저장</button>
         </Window>
       </form>

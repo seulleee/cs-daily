@@ -5,19 +5,20 @@ import { usePathname } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import clsx from 'clsx';
 import type { ReactNode } from 'react';
-import type { MeResponse } from '@cs-daily/contracts';
+import type { FriendsResponse, MeResponse } from '@cs-daily/contracts';
 import { api } from '@/lib/api';
-import { BookOpenIcon, RepeatIcon, SettingsIcon, UserIcon, type IconProps } from './icons';
+import { BookOpenIcon, RepeatIcon, SettingsIcon, UserIcon, UsersIcon, type IconProps } from './icons';
 
 /**
  * 반응형 셸 (기획서 5절):
- *  <768px   하단 탭 바 4개(높이 64), 1컬럼
+ *  <768px   하단 탭 바 5개(높이 64), 1컬럼
  *  768~1024 좌측 아이콘 사이드바 72px
  *  ≥1024    좌측 사이드바 240px + 콘텐츠 720px + 우측 보조 패널 320px
  */
 const NAV: readonly { href: string; label: string; Icon: (p: IconProps) => ReactNode }[] = [
   { href: '/learn', label: '학습', Icon: BookOpenIcon },
   { href: '/review', label: '복습', Icon: RepeatIcon },
+  { href: '/friends', label: '친구', Icon: UsersIcon },
   { href: '/profile', label: '프로필', Icon: UserIcon },
   { href: '/settings', label: '설정', Icon: SettingsIcon },
 ];
@@ -27,6 +28,9 @@ export function AppShell({ children, aside }: { children: ReactNode; aside?: Rea
   // 각 화면이 쓰는 ['me'] 쿼리와 같은 키라 요청은 하나로 합쳐진다. 복습 탭 배지에만 쓴다
   const me = useQuery({ queryKey: ['me'], queryFn: () => api<MeResponse>('/me') });
   const due = me.data?.dueReviewCount ?? 0;
+  // 친구 탭 배지: 받은 요청 수. /friends 페이지와 같은 키라 요청은 하나로 합쳐진다
+  const friends = useQuery({ queryKey: ['friends'], queryFn: () => api<FriendsResponse>('/friends') });
+  const incoming = friends.data?.incoming.length ?? 0;
 
   return (
     <div className="min-h-dvh md:flex">
@@ -37,10 +41,12 @@ export function AppShell({ children, aside }: { children: ReactNode; aside?: Rea
         <Link href="/learn" className="bit-2 mb-6 hidden px-3 text-ink lg:block">
           CS 데일리
         </Link>
-        <ul className="grid grid-cols-4 md:grid-cols-1 md:gap-2">
+        <ul className="grid grid-cols-5 md:grid-cols-1 md:gap-2">
           {NAV.map(({ href, label, Icon }) => {
             const active = pathname.startsWith(href);
-            const badge = href === '/review' && due > 0 ? (due > 99 ? '99+' : String(due)) : null;
+            const count = href === '/review' ? due : href === '/friends' ? incoming : 0;
+            const badge = count > 0 ? (count > 99 ? '99+' : String(count)) : null;
+            const badgeLabel = href === '/review' ? `복습할 문제 ${count}개` : `받은 친구 요청 ${count}개`;
             return (
               <li key={href} className="min-w-0">
                 {/*
@@ -52,7 +58,7 @@ export function AppShell({ children, aside }: { children: ReactNode; aside?: Rea
                 <Link
                   href={href}
                   aria-current={active ? 'page' : undefined}
-                  aria-label={badge ? `${label}, 복습할 문제 ${due}개` : label}
+                  aria-label={badge ? `${label}, ${badgeLabel}` : label}
                   className="group flex h-14 flex-col items-center justify-start gap-0.5 pb-1 pt-1.5 md:h-auto md:flex-row md:justify-center md:gap-3 md:px-3 md:py-2 lg:justify-start"
                 >
                   <span
