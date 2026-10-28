@@ -72,23 +72,36 @@ import { vi } from 'vitest';
 const AT = new Date('2026-10-28T03:00:00Z'); // 서울 12:00 → 로컬 2026-10-28
 const zero: DayActivity = { lessons: 0, perfect: 0, accurate: 0, reviews: 0, xpExcludingQuest: 0 };
 
+/** 메모리 가짜 DAILY_PICK_REPO — 처음 계산한 값을 (user, period)에 고정한다. */
+function fakePicks() {
+  const store = new Map<string, string[]>();
+  return {
+    store,
+    getOrCreate: vi.fn(async (userId: string, period: string, compute: () => Promise<string[]>) => {
+      const k = `${userId}|${period}`;
+      if (!store.has(k)) store.set(k, await compute());
+      return store.get(k)!;
+    }),
+  };
+}
+
 function build(opts: { activity?: Partial<DayActivity>; due?: number; inserted?: boolean; dailyGoal?: number }) {
   const activity = { ...zero, ...opts.activity };
   const credit = vi.fn().mockResolvedValue(undefined);
   const tryInsert = vi.fn().mockResolvedValue(opts.inserted ?? true);
-  const grantedKeys = vi.fn().mockResolvedValue([]);
   const deps = {
     uow: { run: <T>(fn: () => Promise<T>) => fn() },
     prefs: { prefsOf: vi.fn().mockResolvedValue({ timeZone: 'Asia/Seoul', dailyGoal: opts.dailyGoal ?? 1, codeLanguage: 'python' }) },
     activity: { dayActivity: vi.fn().mockResolvedValue(activity), dailyGoalOf: vi.fn().mockResolvedValue(opts.dailyGoal ?? 1) },
-    rewards: { tryInsert, grantedKeys },
+    rewards: { tryInsert },
+    picks: fakePicks(),
     ledger: { credit },
     queryBus: { execute: vi.fn().mockResolvedValue(opts.due ?? 0) },
   };
   return { deps, credit, tryInsert };
 }
 const mk = (d: ReturnType<typeof build>['deps']) =>
-  new EvaluateQuestsHandler(d.uow as never, d.prefs as never, d.activity as never, d.rewards as never, d.ledger as never, d.queryBus as never);
+  new EvaluateQuestsHandler(d.uow as never, d.prefs as never, d.activity as never, d.rewards as never, d.ledger as never, d.picks as never, d.queryBus as never);
 
 function userWithKey(key: string, date = '2026-10-28', eligible = true) {
   for (let i = 0; i < 500; i++) {
@@ -144,7 +157,7 @@ describe('GetMyQuestsHandler', () => {
   it('progress는 goal로 제한, done은 progress>=goal, friend는 null', async () => {
     const userId = userWithKey('lessons');
     const { deps } = build({ activity: { lessons: 9, xpExcludingQuest: 5 }, dailyGoal: 1 });
-    const h = new GetMyQuestsHandler(deps.prefs as never, deps.activity as never, deps.queryBus as never);
+    const h = new GetMyQuestsHandler(deps.prefs as never, deps.activity as never, deps.picks as never, deps.queryBus as never);
     const r = await h.execute(new GetMyQuestsQuery(userId, AT));
     expect(r.date).toBe('2026-10-28');
     expect(r.friend).toBeNull();
@@ -156,6 +169,48 @@ describe('GetMyQuestsHandler', () => {
     }
     const lessons = r.daily.find((q) => q.key === 'lessons')!;
     expect(lessons).toMatchObject({ progress: 2, goal: 2, done: true });
+  });
+});
+
+describe('그날 퀘스트 고정 (daily_quest_picks)', () => {
+  function reviewUser() {
+    for (let i = 0; i < 500; i++) {
+      const id = `00000000-0000-4000-8000-${String(i).padStart(12, '0')}`;
+      const on = pickDailyQuests(id, '2026-10-28', { reviewEligible: true });
+      const off = pickDailyQuests(id, '2026-10-28', { reviewEligible: false });
+      if (on.join() !== off.join() && on.includes('review')) return { id, on, off };
+    }
+    throw new Error('no user');
+  }
+
+  it('첫 조회에서 저장한 3개는 due·복습 값이 바뀌어도 이후 조회·평가에서 그대로', async () => {
+    const { id, on } = reviewUser();
+    const { deps, tryInsert } = build({ due: 3 });
+    const get = new GetMyQuestsHandler(deps.prefs as never, deps.activity as never, deps.picks as never, deps.queryBus as never);
+    const first = await get.execute(new GetMyQuestsQuery(id, AT));
+    expect(first.daily.map((q) => q.key)).toEqual(on);
+
+    // 복습을 다 해서 due 0, 오늘 복습 0으로 보이는 상태
+    deps.queryBus.execute.mockClear();
+    deps.queryBus.execute.mockResolvedValue(0);
+    deps.activity.dayActivity.mockResolvedValue({ ...zero, reviews: 0 });
+    const second = await get.execute(new GetMyQuestsQuery(id, AT));
+    expect(second.daily.map((q) => q.key)).toEqual(on);
+    expect(deps.queryBus.execute).not.toHaveBeenCalled(); // pick이 있으면 due 조회 생략
+
+    // 평가도 같은 3개를 본다: review 목표를 채우면 review가 지급 대상
+    deps.activity.dayActivity.mockResolvedValue({ ...zero, reviews: 1 });
+    await mk(deps).execute(new EvaluateQuestsCommand(id, AT));
+    expect(tryInsert.mock.calls.map((c) => c[0].questKey)).toEqual(['review']);
+  });
+
+  it('다른 날짜는 따로 뽑는다', async () => {
+    const { id } = reviewUser();
+    const { deps } = build({ due: 1 });
+    const get = new GetMyQuestsHandler(deps.prefs as never, deps.activity as never, deps.picks as never, deps.queryBus as never);
+    await get.execute(new GetMyQuestsQuery(id, AT));
+    await get.execute(new GetMyQuestsQuery(id, new Date('2026-10-29T03:00:00Z')));
+    expect([...deps.picks.store.keys()]).toEqual([`${id}|2026-10-28`, `${id}|2026-10-29`]);
   });
 });
 

@@ -14,9 +14,4 @@ export class PrismaQuestRewardRepository implements QuestRewardRepository {
     });
     return res.count === 1;
   }
-
-  async grantedKeys(userId: string, period: string): Promise<string[]> {
-    const rows = await this.uow.client.questReward.findMany({ where: { userId, period: new Date(`${period}T00:00:00Z`) }, select: { questKey: true } });
-    return rows.map((x) => x.questKey);
-  }
 }

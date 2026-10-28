@@ -4,7 +4,7 @@ import type { QuestRewardItem } from '@cs-daily/contracts';
 import { UnitOfWork } from '../../../shared/infrastructure/unit-of-work';
 import { USER_PREFS_PORT, type UserPrefsPort } from '../../learning/domain/ports';
 import { DAILY_QUEST_XP, goalOf, progressOf, titleOf } from '../domain/daily-quests';
-import { QUEST_ACTIVITY_PORT, QUEST_REWARD_REPO, XP_LEDGER_PORT, type QuestActivityPort, type QuestRewardRepository, type XpLedgerPort } from '../domain/ports';
+import { DAILY_PICK_REPO, QUEST_ACTIVITY_PORT, QUEST_REWARD_REPO, XP_LEDGER_PORT, type DailyPickRepository, type QuestActivityPort, type QuestRewardRepository, type XpLedgerPort } from '../domain/ports';
 import { EvaluateQuestsCommand } from './commands';
 import { loadDayContext } from './day-context';
 
@@ -17,12 +17,13 @@ export class EvaluateQuestsHandler implements ICommandHandler<EvaluateQuestsComm
     @Inject(QUEST_ACTIVITY_PORT) private readonly activity: QuestActivityPort,
     @Inject(QUEST_REWARD_REPO) private readonly rewards: QuestRewardRepository,
     @Inject(XP_LEDGER_PORT) private readonly ledger: XpLedgerPort,
+    @Inject(DAILY_PICK_REPO) private readonly picks: DailyPickRepository,
     private readonly queryBus: QueryBus,
   ) {}
 
   async execute({ userId, at }: EvaluateQuestsCommand): Promise<QuestRewardItem[]> {
     return this.uow.run(async () => {
-      const ctx = await loadDayContext(this.prefs, this.activity, this.queryBus, userId, at);
+      const ctx = await loadDayContext(this.prefs, this.activity, this.picks, this.queryBus, userId, at);
       const granted: QuestRewardItem[] = [];
       for (const key of ctx.keys) {
         const goal = goalOf(key, ctx.dailyGoal);

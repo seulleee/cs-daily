@@ -4,8 +4,9 @@ import { ProgressionModule } from '../progression/progression.module';
 import { QuestsController } from './presentation/quests.controller';
 import { EvaluateQuestsHandler } from './application/evaluate-quests.handler';
 import { GetMyQuestsHandler } from './application/get-my-quests.handler';
-import { QUEST_ACTIVITY_PORT, QUEST_REWARD_REPO } from './domain/ports';
+import { QUEST_ACTIVITY_PORT, DAILY_PICK_REPO, QUEST_REWARD_REPO } from './domain/ports';
 import { PrismaQuestActivity } from './infrastructure/prisma-quest-activity';
+import { PrismaDailyPickRepository } from './infrastructure/prisma-daily-pick.repository';
 import { PrismaQuestRewardRepository } from './infrastructure/prisma-quest-reward.repository';
 
 /** Quests 컨텍스트: 데일리 퀘스트 평가·조회 (`GET /me/quests`) */
@@ -15,8 +16,10 @@ import { PrismaQuestRewardRepository } from './infrastructure/prisma-quest-rewar
   providers: [
     PrismaQuestActivity,
     PrismaQuestRewardRepository,
+    PrismaDailyPickRepository,
     { provide: QUEST_ACTIVITY_PORT, useExisting: PrismaQuestActivity },
     { provide: QUEST_REWARD_REPO, useExisting: PrismaQuestRewardRepository },
+    { provide: DAILY_PICK_REPO, useExisting: PrismaDailyPickRepository },
     EvaluateQuestsHandler,
     GetMyQuestsHandler,
   ],

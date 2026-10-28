@@ -3,7 +3,7 @@
  *  1. 레슨 1개 완료 → daily 3개, lessons 진행 1/2 (dailyGoal 1 → 목표 2)
  *  2. 같은 날 두 번째 완료 → questRewards에 lessons 정확히 1개, quest_rewards·xp_events(reason='quest') 일치
  *  3. 세 번째 완료 → questRewards에 lessons 없음 (중복 지급 없음)
- *  4. timezone이 America/Los_Angeles인 사용자의 로컬 전날 23:59 세션은 오늘 lessons 진행에 세지 않는다
+ *  4. timezone이 America/Los_Angeles인 사용자의 로컬 전날 23:59 세션은 오늘 lessons 진행에 세지 않고, 오늘 00:01 세션은 센다
  *
  * 오늘의 퀘스트 3개는 사용자 id·날짜로 정해지므로, lessons가 (복습 자격 여부와 상관없이) 뽑히는 id를 골라 사용자를 만든다.
  */
@@ -124,6 +124,11 @@ async function main() {
     const qla = await asUser(laId)<MeQuestsResponse>('GET', '/me/quests');
     assert.equal(qla.date, laToday, '퀘스트 날짜는 로컬 날짜');
     assert.equal(qla.daily.find((q) => q.key === 'lessons')!.progress, 0, '로컬 전날 23:59 세션은 오늘 진행에 세지 않는다');
+
+    const dayStart = new Date(localMidnight(laToday, tz).getTime() + 60_000); // 로컬 오늘 00:01
+    await prisma.lessonSession.create({ data: { userId: laId, lessonId: lesson.id, kind: 'lesson', questionIds: [], startedAt: dayStart, finishedAt: dayStart } });
+    const qla2 = await asUser(laId)<MeQuestsResponse>('GET', '/me/quests');
+    assert.equal(qla2.daily.find((q) => q.key === 'lessons')!.progress, 1, '로컬 오늘 00:01 세션은 오늘 lessons 진행에 센다');
 
     console.log('quests e2e OK');
   } finally {
