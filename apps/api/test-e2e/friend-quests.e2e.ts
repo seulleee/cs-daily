@@ -24,7 +24,15 @@ type Completed = { questRewards?: QuestRewardItem[] };
 const asUser = (id: string) => {
   const token = jwt.sign({ sub: id, role: 'user' }, { expiresIn: '10m' });
   return async <T>(method: string, path: string, body?: unknown): Promise<T> => {
-    const res = await fetch(`${API}${path}`, { method, headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' }, body: body === undefined ? undefined : JSON.stringify(body) });
+    // 앞선 e2e들이 같은 IP로 같은 라우트를 불러 전역 리밋(분당 120)에 걸릴 수 있어 429면 Retry-After만큼 기다린다
+    let res: Response;
+    for (let attempt = 0; ; attempt++) {
+      res = await fetch(`${API}${path}`, { method, headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' }, body: body === undefined ? undefined : JSON.stringify(body) });
+      if (res.status !== 429 || attempt >= 3) break;
+      const wait = Number(res.headers.get('retry-after')) || 10;
+      await res.text();
+      await new Promise((r) => setTimeout(r, (wait + 1) * 1000));
+    }
     const text = await res.text();
     assert.ok(res.status >= 200 && res.status < 300, `${method} ${path} → ${res.status} ${text}`);
     return (text ? JSON.parse(text) : undefined) as T;
