@@ -58,7 +58,7 @@
 - 콘텐츠에서 빠진 문제는 시드가 삭제하지 않고 `status=retired`로 내린다(답안·복습 기록 FK 보존). `lesson.questionCount`는 콘텐츠 파일의 문제 수를 따른다.
 - 도메인 규칙은 단위 테스트가 있어야 한다(`apps/api/test/*.spec.ts`, vitest). HTTP 흐름은 `apps/api/test-e2e/`가 CI에서 빌드된 서버 + CI Postgres로 돈다.
 - **데일리 퀘스트**(`quests` 컨텍스트, 규칙은 `docs/superpowers/specs/2026-10-28-quests-friends-design.md`): 하루 3개를 사용자 로컬 날짜에서 userId+날짜 해시로 고정해 뽑는다(`domain/daily-quests.ts`). 그날 뽑은 3개는 `daily_quest_picks`(user_id, period)에 처음 볼 때 저장해 고정한다(`DAILY_PICK_REPO`, `createMany skipDuplicates` 후 재조회). 진행은 원장(`lesson_sessions`·`xp_events`) 집계로 그때그때 계산하고 저장하지 않는다(`QUEST_ACTIVITY_PORT`). 지급은 `quest_rewards` PK(user_id, quest_key, period)로 멱등(`ON CONFLICT DO NOTHING`, `QUEST_REWARD_REPO`)이고, 새로 지급된 경우에만 `XP_LEDGER_PORT`(progression `XpLedgerAdapter`)로 `xp_events`(reason='quest')·`total_xp`·`daily_activity.xp`를 기록한다 — lessonsCompleted·스트릭엔 영향 없음. 퀘스트 XP는 "XP 모으기" 진행에서 제외한다. 복습 퀘스트 자격 = 오늘 끝까지 due>0 또는 오늘 복습 완료>0. `CompleteSessionHandler`가 `RecordSessionCompletionCommand` 뒤에 `EvaluateQuestsCommand`를 호출해 세션 완료 응답에 `questRewards`(선택 필드)를 싣고, 평가가 실패해도 완료는 성공(`questRewards: []`). 조회는 `GET /me/quests`.
-- **친구**(`social` 컨텍스트, 규칙은 `docs/superpowers/specs/2026-10-28-quests-friends-design.md`): 닉네임 앞부분 검색(2글자+, 10명, 사용자당 분당 30회 — `userSearch` 스로틀러는 `UserThrottlerGuard`만 적용하고 전역 `IpThrottlerGuard`는 제외). 응답은 userId·닉네임·아바타·스트릭(+relation/weekLessons)만 내리고 weekLessons는 서울 주 기준이다. 요청은 limit(보낸 대기 20·친구 100, 409 `FRIEND_LIMIT`) 외엔 항상 202 — 차단·없는 사용자·중복도 202로 저장하지 않아 차단 사실을 드러내지 않는다(`domain/friendship-rules.ts` `decideSend`: limit→silent→accept-reverse→already→create). 맞요청은 즉시 수락하고, 수락·거절·취소는 당사자만 할 수 있다(아니면 404). 차단은 관계·요청을 지우고 양방향 검색에서 뺀다. `FriendshipAccepted`/`FriendshipEnded`는 커밋 뒤 발행하며 PR 3 프렌즈 퀘스트가 구독한다. 알려진 한계: 전역 IP 리밋(기본 120/분)은 trust proxy가 없어 Vercel 공유 IP 뒤에서 사용자 전체에 걸릴 수 있다(후속 과제).
+- **친구**(`social` 컨텍스트, 규칙은 `docs/superpowers/specs/2026-10-28-quests-friends-design.md`): 닉네임 앞부분 검색(2글자+, 10명, 사용자당 분당 30회 — `userSearch` 스로틀러는 `UserThrottlerGuard`만 적용하고 전역 `IpThrottlerGuard`는 제외). 응답은 userId·닉네임·아바타·스트릭(+relation/weekLessons)만 내리고 weekLessons는 서울 주 기준이다. 요청은 limit(보낸 대기 20·친구 100, 409 `FRIEND_LIMIT`; 맞요청 자동 수락 때 상대가 친구 100명이어도 409) 외엔 항상 202 — 차단·없는 사용자·중복도 202로 저장하지 않아 차단 사실을 드러내지 않는다(`domain/friendship-rules.ts` `decideSend`: limit→silent→accept-reverse→already→create). 맞요청은 즉시 수락하고, 수락·거절·취소는 당사자만 할 수 있다(아니면 404). 차단은 관계·요청을 지우고 양방향 검색에서 뺀다. `FriendshipAccepted`/`FriendshipEnded`는 커밋 뒤 발행하며 PR 3 프렌즈 퀘스트가 구독한다. 알려진 한계: 전역 IP 리밋(라우트·IP별 120/분)은 trust proxy가 없어 Vercel 공유 IP 뒤에서 사용자 전체에 걸릴 수 있다(후속 과제).
 - 로그인: 액세스 15분·리프레시 14일(회전·슬라이딩). 웹 `api()`는 refresh를 single-flight로 묶고, 서버는 폐기 30초 이내 토큰 재사용을 동시 요청으로 보고 허용한다(`identity/domain/services/refresh-grace.ts`).
 
 ## 화면 규칙 (웹)
@@ -103,6 +103,7 @@
 
 ## 남은 일
 
+- [ ] 차단 목록·차단 해제 화면 없음(API DELETE /blocks/:userId는 있음), 받은 요청에서 바로 차단하는 메뉴 없음
 - [ ] 디자인 후속: 실기기(iOS 안전 영역, DPR 2~3에서 비트맵 선명도, 11px 배지 가독성, 150ms 깜빡임 체감) 확인, Safari·Firefox의 `@property` 결과 링 확인, 필요하면 Neo둥근모 woff2(44KB, OFL) `public/fonts` 자체 호스팅
 - [ ] 계정 탈퇴: 로그인 화면이 "설정에서 탈퇴"라고 안내하지만 삭제 기능·API가 없다 → `DELETE /me` + 설정 화면 버튼 추가, 또는 안내 문구 수정
 - [ ] Resend API 키 등록(이메일 리마인더)

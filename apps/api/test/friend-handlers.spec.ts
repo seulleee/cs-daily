@@ -16,7 +16,8 @@ function setup(over: Partial<SocialRepository> = {}) {
     countFriends: vi.fn(async () => 0),
     countPendingOut: vi.fn(async () => 0),
     createRequest: vi.fn(async () => true),
-    markAccepted: vi.fn(async () => undefined),
+    markAccepted: vi.fn(async () => true),
+    deleteIncomingPending: vi.fn(async () => true),
     findIncomingPending: vi.fn(async () => null),
     ...over,
   } as unknown as SocialRepository;
@@ -41,6 +42,14 @@ describe('SendFriendRequestHandler', () => {
     await new SendFriendRequestHandler(s.repo, uow, s.events).execute(new SendFriendRequestCommand('a', 'b'));
     expect(s.repo.markAccepted).toHaveBeenCalledWith('f1', expect.any(Date));
     expect(s.publish).toHaveBeenCalledWith(expect.any(FriendshipAccepted));
+  });
+  it('역방향 요청이 그새 취소돼 갱신 0이면 이벤트 없이 정상 종료', async () => {
+    const s = setup({
+      findPair: vi.fn(async () => ({ id: 'f1', status: 'pending' as const, requesterId: 'b' })),
+      markAccepted: vi.fn(async () => false),
+    });
+    await new SendFriendRequestHandler(s.repo, uow, s.events).execute(new SendFriendRequestCommand('a', 'b'));
+    expect(s.publish).not.toHaveBeenCalled();
   });
   it('보낸 대기 요청 20개면 FRIEND_LIMIT', async () => {
     const s = setup({ countPendingOut: vi.fn(async () => 20) });
@@ -70,6 +79,24 @@ describe('AcceptFriendRequestHandler', () => {
     });
     await expect(new AcceptFriendRequestHandler(s.repo, uow, s.events).execute(new AcceptFriendRequestCommand('a', 'x'))).rejects.toMatchObject({ code: 'FRIEND_LIMIT' });
     expect(s.repo.markAccepted).not.toHaveBeenCalled();
+  });
+  it('이미 취소된(갱신 0) 요청 수락은 404, 이벤트 없음', async () => {
+    const s = setup({
+      findIncomingPending: vi.fn(async () => ({ requesterId: 'b' })),
+      markAccepted: vi.fn(async () => false),
+    });
+    await expect(new AcceptFriendRequestHandler(s.repo, uow, s.events).execute(new AcceptFriendRequestCommand('a', 'x'))).rejects.toMatchObject({ code: 'NOT_FOUND' });
+    expect(s.publish).not.toHaveBeenCalled();
+  });
+  it('차단 관계 요청 수락은 404, 요청 삭제, 이벤트 없음', async () => {
+    const s = setup({
+      findIncomingPending: vi.fn(async () => ({ requesterId: 'b' })),
+      isBlockedEitherWay: vi.fn(async () => true),
+    });
+    await expect(new AcceptFriendRequestHandler(s.repo, uow, s.events).execute(new AcceptFriendRequestCommand('a', 'x'))).rejects.toMatchObject({ code: 'NOT_FOUND' });
+    expect(s.repo.markAccepted).not.toHaveBeenCalled();
+    expect(s.repo.deleteIncomingPending).toHaveBeenCalledWith('x', 'a');
+    expect(s.publish).not.toHaveBeenCalled();
   });
   it('정상 수락은 이벤트 발행', async () => {
     const s = setup({ findIncomingPending: vi.fn(async () => ({ requesterId: 'b' })) });

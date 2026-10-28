@@ -58,8 +58,8 @@ export class SendFriendRequestHandler implements ICommandHandler<SendFriendReque
       if (decision === 'accept-reverse' && existing) {
         await assertRoomForBoth(this.repo, me, targetId);
         const at = new Date();
-        await this.repo.markAccepted(existing.id, at);
-        return at;
+        // 그새 취소·삭제됐으면(갱신 0) 조용히 끝낸다
+        return (await this.repo.markAccepted(existing.id, at)) ? at : null;
       }
       return null;
     });
@@ -76,15 +76,22 @@ export class AcceptFriendRequestHandler implements ICommandHandler<AcceptFriendR
   ) {}
 
   async execute({ me, requestId }: AcceptFriendRequestCommand): Promise<void> {
-    const { requesterId, at } = await this.uow.run(async () => {
+    const result = await this.uow.run(async () => {
       const req = await this.repo.findIncomingPending(requestId, me);
-      if (!req) throw notFound();
+      if (!req) return null;
+      // 요청 후 차단됐다면 남은 요청 행을 지우고 없는 요청처럼 처리한다(롤백되지 않게 던지지 않고 반환)
+      if (await this.repo.isBlockedEitherWay(me, req.requesterId)) {
+        await this.repo.deleteIncomingPending(requestId, me);
+        return null;
+      }
       await assertRoomForBoth(this.repo, me, req.requesterId);
       const at = new Date();
-      await this.repo.markAccepted(requestId, at);
+      // 확인 이후 취소됐다면(갱신 0) 수락하지 않는다
+      if (!(await this.repo.markAccepted(requestId, at))) return null;
       return { requesterId: req.requesterId, at };
     });
-    this.events.publish(new FriendshipAccepted({ userA: requesterId, userB: me, at }));
+    if (!result) throw notFound();
+    this.events.publish(new FriendshipAccepted({ userA: result.requesterId, userB: me, at: result.at }));
   }
 }
 

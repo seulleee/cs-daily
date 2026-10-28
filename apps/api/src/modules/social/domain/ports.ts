@@ -16,7 +16,8 @@ export interface SocialRepository {
   countPendingOut(userId: string): Promise<number>;
   /** 쌍이 동시에 만들어졌으면(유니크 충돌) false */
   createRequest(requesterId: string, addresseeId: string): Promise<boolean>;
-  markAccepted(id: string, at: Date): Promise<void>;
+  /** 대기 상태일 때만 수락한다. 갱신됐으면 true */
+  markAccepted(id: string, at: Date): Promise<boolean>;
   /** 받은 사람이 me인 대기 요청 */
   findIncomingPending(id: string, me: string): Promise<{ requesterId: string } | null>;
   deleteIncomingPending(id: string, me: string): Promise<boolean>;

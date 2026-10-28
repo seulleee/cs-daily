@@ -50,15 +50,24 @@ export default function FriendsPage() {
 
   const send = useMutation(act((userId) => api('/friends/requests', { method: 'POST', json: { userId } }), '친구 요청을 보냈어요'));
   const accept = useMutation(act((id) => api(`/friends/requests/${id}/accept`, { method: 'POST' }), '친구가 됐어요'));
-  const decline = useMutation(act((id) => api(`/friends/requests/${id}/decline`, { method: 'POST' })));
+  const decline = useMutation(act((id) => api(`/friends/requests/${id}/decline`, { method: 'POST' }), '요청을 거절했어요'));
   const cancel = useMutation(act((id) => api(`/friends/requests/${id}`, { method: 'DELETE' }), '요청을 취소했어요'));
   const unfriend = useMutation(act((userId) => api(`/friends/${userId}`, { method: 'DELETE' }), '친구를 끊었어요'));
   const block = useMutation(act((userId) => api('/blocks', { method: 'POST', json: { userId } }), '차단했어요'));
 
   const data = friends.data;
+  if (friends.isError && !data) {
+    return (
+      <AppShell>
+        <h1 className="bit-2 mb-6">친구</h1>
+        <div className="card p-6 text-center">
+          <p>불러오지 못했어요.</p>
+          <button type="button" className="btn-outline mt-4" onClick={() => friends.refetch()}>다시 시도</button>
+        </div>
+      </AppShell>
+    );
+  }
   if (!data) return <AppShell><h1 className="bit-2 mb-6">친구</h1><p className="text-ink-2">불러오는 중…</p></AppShell>;
-
-  const incomingByUser = new Map(data.incoming.map((r) => [r.user.userId, r.id]));
 
   return (
     <AppShell>
@@ -86,7 +95,7 @@ export default function FriendsPage() {
                   {u.relation === 'friend' && <span className="bit shrink-0 text-ink-2">친구</span>}
                   {u.relation === 'outgoing' && <span className="bit shrink-0 text-ink-2">요청함</span>}
                   {u.relation === 'incoming' && (
-                    <button type="button" className="btn-outline shrink-0" disabled={accept.isPending} onClick={() => accept.mutate(incomingByUser.get(u.userId) ?? '')}>수락</button>
+                    <button type="button" className="btn-outline shrink-0" disabled={send.isPending} onClick={() => send.mutate(u.userId)}>수락</button>
                   )}
                 </li>
               ))}

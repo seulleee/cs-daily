@@ -53,7 +53,8 @@ export class PrismaSocialRepository implements SocialRepository {
   }
 
   async markAccepted(id: string, at: Date) {
-    await this.db.friendship.update({ where: { id }, data: { status: 'accepted', acceptedAt: at } });
+    const res = await this.db.friendship.updateMany({ where: { id, status: 'pending' }, data: { status: 'accepted', acceptedAt: at } });
+    return res.count === 1;
   }
 
   findIncomingPending(id: string, me: string) {
