@@ -46,7 +46,7 @@
 
 ## 아키텍처 규칙 (API)
 
-- DDD 모듈러 모놀리스. 컨텍스트: identity, curriculum, learning(핵심), progression, review, notification, jobs. 각 컨텍스트는 `domain / application / infrastructure / presentation` 4계층이며 `eslint-plugin-boundaries`가 의존 방향을 강제한다. 경계를 넘을 땐 포트 토큰(`QUESTION_GRADING_PORT`, `CURRICULUM_QUERY_PORT`, `REVIEW_QUEUE_PORT`, `USER_PREFS_PORT`)으로만 주입한다.
+- DDD 모듈러 모놀리스. 컨텍스트: identity, curriculum, learning(핵심), progression, review, quests, notification, jobs. 각 컨텍스트는 `domain / application / infrastructure / presentation` 4계층이며 `eslint-plugin-boundaries`가 의존 방향을 강제한다. 경계를 넘을 땐 포트 토큰(`QUESTION_GRADING_PORT`, `CURRICULUM_QUERY_PORT`, `REVIEW_QUEUE_PORT`, `USER_PREFS_PORT`)으로만 주입한다.
 - **정답 키(`answerKey`)는 `CurriculumAdapter.forGrading()` 한 곳에서만 읽는다.** 다른 어떤 쿼리도 select하지 않는다.
 - **코드 문제 언어 variants(`ct` 트랙)**: 코드가 있는 문제는 `content.variants[lang]`(코드·보기)와 `answer_key.variants[lang]`(정답·선택 해설)으로 python·java·javascript·cpp 4개를 모두 갖는다(validate 강제). 사용자 언어는 `User.codeLanguage`(기본 python, `/me`·`PATCH /me`). 세션 응답은 사용자 언어 variant만 `content.code`(+options)와 `lang`으로 펼치고 다른 언어·정답은 내려가지 않는다(`learning/domain/services/code-variants.ts`). 답안 제출·재도전은 받은 `lang`을 함께 보내고, 서버는 그 언어 variant가 있는지 검증해(없으면 422 `CODE_LANGUAGE_UNAVAILABLE`) 그 정답·해설로 채점하며 `lang`을 답안 기록에 남긴다 — 세션 도중 설정을 바꿔도 받은 문제는 받은 언어로 채점되고 이어 풀기에서도 답한 언어를 보여 준다.
 - 레슨 `intro`(도입 설명, 선택 `string[]` 1~3문단·문단 40~220자·합계 450자 이하)는 `curriculum.json` → `lessons.intro`(`String[] @default([])`) → `LessonOutline.intro` → 세션 응답 `lessonIntro`(선택 필드, 옛 API 호환)로 `lessonKeyPoints`와 같은 경로를 탄다. seed-diff의 트랙 구조 비교에 포함돼 바뀐 트랙만 갱신된다. 작성 규칙은 content-guide "도입 설명".
@@ -57,6 +57,7 @@
 - 결과 화면 `newReviewCount`("내일 복습 예정")는 사용자 로컬 **내일의 마지막 순간**까지 due인 수다(`learning/domain/services/review-preview.ts`). SM-2가 방금 푼 문제를 답한 시각+24시간으로 예약하므로 "내일 00:00"까지로 끊으면 0이 된다. 복습 예약은 `AnswerGraded` 비동기 처리라 완료 시점에 저장 전일 수 있어, 이번 세션 오답 수를 하한으로 둔다.
 - 콘텐츠에서 빠진 문제는 시드가 삭제하지 않고 `status=retired`로 내린다(답안·복습 기록 FK 보존). `lesson.questionCount`는 콘텐츠 파일의 문제 수를 따른다.
 - 도메인 규칙은 단위 테스트가 있어야 한다(`apps/api/test/*.spec.ts`, vitest). HTTP 흐름은 `apps/api/test-e2e/`가 CI에서 빌드된 서버 + CI Postgres로 돈다.
+- **데일리 퀘스트**(`quests` 컨텍스트, 규칙은 `docs/superpowers/specs/2026-10-28-quests-friends-design.md`): 하루 3개를 사용자 로컬 날짜에서 userId+날짜 해시로 고정해 뽑는다(`domain/daily-quests.ts`). 진행은 원장(`lesson_sessions`·`xp_events`) 집계로 그때그때 계산하고 저장하지 않는다(`QUEST_ACTIVITY_PORT`). 지급은 `quest_rewards` PK(user_id, quest_key, period)로 멱등(`ON CONFLICT DO NOTHING`, `QUEST_REWARD_REPO`)이고, 새로 지급된 경우에만 `XP_LEDGER_PORT`(progression `XpLedgerAdapter`)로 `xp_events`(reason='quest')·`total_xp`·`daily_activity.xp`를 기록한다 — lessonsCompleted·스트릭엔 영향 없음. 퀘스트 XP는 "XP 모으기" 진행에서 제외한다. 복습 퀘스트 자격 = 오늘 끝까지 due>0 또는 오늘 복습 완료>0. `CompleteSessionHandler`가 `RecordSessionCompletionCommand` 뒤에 `EvaluateQuestsCommand`를 호출해 세션 완료 응답에 `questRewards`(선택 필드)를 싣고, 평가가 실패해도 완료는 성공(`questRewards: []`). 조회는 `GET /me/quests`.
 - 로그인: 액세스 15분·리프레시 14일(회전·슬라이딩). 웹 `api()`는 refresh를 single-flight로 묶고, 서버는 폐기 30초 이내 토큰 재사용을 동시 요청으로 보고 허용한다(`identity/domain/services/refresh-grace.ts`).
 
 ## 화면 규칙 (웹)
@@ -74,6 +75,7 @@
 - 레슨 시작 카드는 레슨 이름·목표 아래 **도입 설명(intro) 문단**(Plex Sans KR 16px, 줄간격 1.75, ink, 왼쪽 정렬, 모션 없음), 그 아래 핵심 정리 카드 순이다. 폭 600px, 시작 버튼은 하단 고정이고 본문만 스크롤한다(하단 여백 `pb-40`으로 작은 화면에서 버튼에 가리지 않는다).
 - 레슨 플레이어 문제 영역은 헤더 아래 위쪽 고정, 폭 600px. 결과 창은 하단 도크 안에서 위로 자라며 문제 영역을 움직이지 않는다(영역 끝에 결과 창 높이만큼 빈 자리를 더하고, 창은 최대 `min(50dvh, 360px)`에 본문만 스크롤). 확인/계속 버튼은 같은 자리·같은 폭(버튼은 창 밖). 빈칸 입력 중엔 도크가 키보드 위에 붙고(visualViewport inset, Android는 `interactive-widget=resizes-content`), 키보드 리턴(`enterKeyHint=done`)으로 바로 확인한다.
 - 코딩 테스트 언어 선택(`components/code-language-picker.tsx`)은 설정 "학습" 창(하루 목표 카드와 같은 2×2 라디오 타일, 기존 저장 버튼·토스트)과 온보딩(`ct` 트랙을 고른 때만 하루 목표 다음 단계)에서 쓴다. `lang`이 있는 코드 문제는 코드 블록 위에 `bit` 16px ink-2 언어 라벨(`CODING_LANGUAGE_LABEL`)을 달고, 제출·재도전에 받은 `lang`을 그대로 보낸다.
+- 오늘의 퀘스트 창(`components/quests-panel.tsx`): PC는 보조 패널 `StatsPanel` 아래에 펼쳐 두고, 모바일은 `/learn` 다음 레슨 카드 위에 접힌 창(제목에 완료 수 `n/3`)으로 둔다. 진행 막대는 `.meter`, 완료는 `CheckIcon`. 결과 화면엔 `퀘스트 완료 +{xp} XP` 줄을 보여 준다.
 - 마지막으로 본 트랙 탭은 기기에 저장한다(`lib/last-track.ts`). `/learn`으로 돌아올 때 URL → 저장값 → 첫 트랙 순.
 - `/api/*`·`/auth/*`는 Next.js 리라이트로 API에 전달한다. OAuth 콜백은 **웹 오리진**(`OAUTH_CALLBACK_BASE_URL` = `WEB_BASE_URL`)으로 받아야 쿠키가 웹 도메인에 붙는다.
 
