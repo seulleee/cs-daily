@@ -11,6 +11,7 @@ import { ProgressionModule } from './modules/progression/progression.module';
 import { ReviewModule } from './modules/review/review.module';
 import { NotificationModule } from './modules/notification/notification.module';
 import { JobsModule } from './modules/jobs/jobs.module';
+import { QuestsModule } from './modules/quests/quests.module';
 import { HealthController } from './health.controller';
 
 @Module({
@@ -26,6 +27,7 @@ import { HealthController } from './health.controller';
     ReviewModule,
     NotificationModule,
     JobsModule,
+    QuestsModule,
   ],
   controllers: [HealthController],
   providers: [

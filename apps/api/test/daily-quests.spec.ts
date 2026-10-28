@@ -60,3 +60,99 @@ describe('progressOf', () => {
     expect(progressOf('accurate', a)).toBe(3);
   });
 });
+
+// ---- 평가·조회 핸들러 (포트를 가짜로 주입) ----
+import { EvaluateQuestsCommand, GetMyQuestsQuery } from '../src/modules/quests/application/commands';
+import { EvaluateQuestsHandler } from '../src/modules/quests/application/evaluate-quests.handler';
+import { GetMyQuestsHandler } from '../src/modules/quests/application/get-my-quests.handler';
+import { vi } from 'vitest';
+
+const AT = new Date('2026-10-28T03:00:00Z'); // 서울 12:00 → 로컬 2026-10-28
+const zero: DayActivity = { lessons: 0, perfect: 0, accurate: 0, reviews: 0, xpExcludingQuest: 0 };
+
+function build(opts: { activity?: Partial<DayActivity>; due?: number; inserted?: boolean; dailyGoal?: number }) {
+  const activity = { ...zero, ...opts.activity };
+  const credit = vi.fn().mockResolvedValue(undefined);
+  const tryInsert = vi.fn().mockResolvedValue(opts.inserted ?? true);
+  const grantedKeys = vi.fn().mockResolvedValue([]);
+  const deps = {
+    uow: { run: <T>(fn: () => Promise<T>) => fn() },
+    prefs: { prefsOf: vi.fn().mockResolvedValue({ timeZone: 'Asia/Seoul', dailyGoal: opts.dailyGoal ?? 1, codeLanguage: 'python' }) },
+    activity: { dayActivity: vi.fn().mockResolvedValue(activity), dailyGoalOf: vi.fn().mockResolvedValue(opts.dailyGoal ?? 1) },
+    rewards: { tryInsert, grantedKeys },
+    ledger: { credit },
+    queryBus: { execute: vi.fn().mockResolvedValue(opts.due ?? 0) },
+  };
+  return { deps, credit, tryInsert };
+}
+const mk = (d: ReturnType<typeof build>['deps']) =>
+  new EvaluateQuestsHandler(d.uow as never, d.prefs as never, d.activity as never, d.rewards as never, d.ledger as never, d.queryBus as never);
+
+function userWithKey(key: string, date = '2026-10-28', eligible = true) {
+  for (let i = 0; i < 500; i++) {
+    const id = `00000000-0000-4000-8000-${String(i).padStart(12, '0')}`;
+    if (pickDailyQuests(id, date, { reviewEligible: eligible }).includes(key as never)) return id;
+  }
+  throw new Error('no user');
+}
+
+describe('EvaluateQuestsHandler', () => {
+  it('목표 도달 퀘스트만 지급', async () => {
+    const userId = userWithKey('lessons');
+    const { deps, credit } = build({ activity: { lessons: 2 }, dailyGoal: 1 });
+    // lessons만 목표(2) 도달. 다른 퀘스트는 0이라 미달
+    const r = await mk(deps).execute(new EvaluateQuestsCommand(userId, AT));
+    expect(r).toEqual([{ key: 'lessons', title: '레슨 2개 완료하기', xp: 10 }]);
+    expect(credit).toHaveBeenCalledTimes(1);
+    expect(credit.mock.calls[0]![0]).toMatchObject({ userId, amount: 10, reason: 'quest', at: AT });
+  });
+
+  it('이미 지급된 퀘스트는 다시 주지 않음', async () => {
+    const userId = userWithKey('lessons');
+    const { deps, credit } = build({ activity: { lessons: 2 }, inserted: false });
+    const r = await mk(deps).execute(new EvaluateQuestsCommand(userId, AT));
+    expect(r).toEqual([]);
+    expect(credit).not.toHaveBeenCalled();
+  });
+
+  it('복습을 다 끝낸 날에도 review 유지', async () => {
+    // reviewEligible 여부로 결과가 달라지는 사용자·날짜
+    let userId = '';
+    for (let i = 0; i < 500 && !userId; i++) {
+      const id = `00000000-0000-4000-8000-${String(i).padStart(12, '0')}`;
+      const on = pickDailyQuests(id, '2026-10-28', { reviewEligible: true });
+      const off = pickDailyQuests(id, '2026-10-28', { reviewEligible: false });
+      if (on.join() !== off.join() && on.includes('review')) userId = id;
+    }
+    expect(userId).not.toBe('');
+    const expected = pickDailyQuests(userId, '2026-10-28', { reviewEligible: true });
+    const { deps, tryInsert } = build({ activity: { reviews: 1 }, due: 0 });
+    await mk(deps).execute(new EvaluateQuestsCommand(userId, AT));
+    // review 목표(1)를 채웠으므로 review가 뽑혔다면 지급 시도 키에 포함
+    const keys = tryInsert.mock.calls.map((c) => c[0].questKey);
+    expect(keys).toEqual(expected.filter((k) => k === 'review'));
+
+    const none = build({ activity: { reviews: 0 }, due: 0 });
+    await mk(none.deps).execute(new EvaluateQuestsCommand(userId, AT));
+    expect(none.tryInsert).not.toHaveBeenCalled();
+  });
+});
+
+describe('GetMyQuestsHandler', () => {
+  it('progress는 goal로 제한, done은 progress>=goal, friend는 null', async () => {
+    const userId = userWithKey('lessons');
+    const { deps } = build({ activity: { lessons: 9, xpExcludingQuest: 5 }, dailyGoal: 1 });
+    const h = new GetMyQuestsHandler(deps.prefs as never, deps.activity as never, deps.queryBus as never);
+    const r = await h.execute(new GetMyQuestsQuery(userId, AT));
+    expect(r.date).toBe('2026-10-28');
+    expect(r.friend).toBeNull();
+    expect(r.daily).toHaveLength(3);
+    for (const q of r.daily) {
+      expect(q.progress).toBeLessThanOrEqual(q.goal);
+      expect(q.done).toBe(q.progress >= q.goal);
+      expect(q.xp).toBe(10);
+    }
+    const lessons = r.daily.find((q) => q.key === 'lessons')!;
+    expect(lessons).toMatchObject({ progress: 2, goal: 2, done: true });
+  });
+});
