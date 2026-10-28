@@ -12,6 +12,7 @@ import { ReviewModule } from './modules/review/review.module';
 import { NotificationModule } from './modules/notification/notification.module';
 import { JobsModule } from './modules/jobs/jobs.module';
 import { QuestsModule } from './modules/quests/quests.module';
+import { SocialModule } from './modules/social/social.module';
 import { HealthController } from './health.controller';
 
 @Module({
@@ -28,6 +29,7 @@ import { HealthController } from './health.controller';
     NotificationModule,
     JobsModule,
     QuestsModule,
+    SocialModule,
   ],
   controllers: [HealthController],
   providers: [
