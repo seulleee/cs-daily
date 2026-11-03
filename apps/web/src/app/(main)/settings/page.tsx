@@ -6,6 +6,7 @@ import type { MeResponse, TrackSummary, UpdateMeRequest } from '@cs-daily/contra
 import { api, ApiError } from '@/lib/api';
 import { AppShell } from '@/components/app-shell';
 import { BlockedUsers } from '@/components/blocked-users';
+import { DeleteAccount } from '@/components/delete-account';
 import { CodeLanguagePicker } from '@/components/code-language-picker';
 import { SelectMark } from '@/components/select-mark';
 import { useToast } from '@/components/toast';
@@ -141,6 +142,8 @@ export default function SettingsPage() {
       </Window>
 
       <button type="button" onClick={() => logout.mutate()} className="mt-8 min-h-11 w-full text-body text-ink-2 underline underline-offset-4">로그아웃</button>
+
+      <DeleteAccount className="mt-8" />
     </AppShell>
   );
 }

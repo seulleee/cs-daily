@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { Suspense } from 'react';
+import { DeletedNotice } from '@/components/deleted-notice';
 import { TraceMark } from '@/components/icons';
 import { Window } from '@/components/window';
 
@@ -8,6 +10,9 @@ export const metadata = { title: '로그인' };
 export default function LoginPage() {
   return (
     <div className="mx-auto flex min-h-dvh max-w-[420px] flex-col items-center justify-center p-6 text-center">
+      <Suspense fallback={null}>
+        <DeletedNotice />
+      </Suspense>
       <Window title="CS 데일리" className="w-full" bodyClassName="flex flex-col items-center p-8">
         <TraceMark size={48} className="text-ink" />
         <h1 className="bit-2 mt-4">CS 데일리</h1>
