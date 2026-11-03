@@ -5,7 +5,7 @@ import { ApiTags } from '@nestjs/swagger';
 import { Throttle } from '@nestjs/throttler';
 import type { Request, Response } from 'express';
 import { AuthService, type OAuthProfile, type TokenPair } from '../application/auth.service';
-import { ACCESS_COOKIE, REFRESH_COOKIE } from '../../../shared/presentation/auth-cookies';
+import { ACCESS_COOKIE, REFRESH_COOKIE, clearAuthCookies } from '../../../shared/presentation/auth-cookies';
 
 /**
  * OAuth 로그인 흐름:
@@ -77,7 +77,6 @@ export class AuthController {
   }
 
   private clear(res: Response) {
-    res.clearCookie(ACCESS_COOKIE, { path: '/' });
-    res.clearCookie(REFRESH_COOKIE, { path: '/' });
+    clearAuthCookies(res);
   }
 }

@@ -71,7 +71,8 @@ export class PrismaFriendQuestRepository implements FriendQuestRepository {
       where: { id: member.questId, endedAt: null },
       select: { goal: true, members: { select: { user: { select: { id: true, nickname: true, avatarUrl: true } } } } },
     });
-    if (!row) return null;
+    // 짝이 탈퇴해 멤버가 한 명만 남은 퀘스트는 끝난 것으로 본다
+    if (!row || row.members.length < 2) return null;
     return { goal: row.goal, members: row.members.map((m) => ({ userId: m.user.id, nickname: m.user.nickname, avatarUrl: m.user.avatarUrl })) };
   }
 

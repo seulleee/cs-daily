@@ -57,6 +57,10 @@ export const UpdateMeRequest = z
   .partial();
 export type UpdateMeRequest = z.infer<typeof UpdateMeRequest>;
 
+/** DELETE /me — 확인용으로 내 닉네임을 그대로 보낸다 */
+export const DeleteMeRequest = z.object({ nickname: z.string() });
+export type DeleteMeRequest = z.infer<typeof DeleteMeRequest>;
+
 /** GET /me/stats/calendar?month=YYYY-MM */
 export const CalendarResponse = z.object({
   month: z.string(),

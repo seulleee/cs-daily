@@ -1,14 +1,17 @@
-import { Body, Controller, Get, Patch, Put, Query, UseGuards } from '@nestjs/common';
-import { QueryBus } from '@nestjs/cqrs';
+import { Body, Controller, Delete, Get, HttpCode, Patch, Put, Query, Res, UnauthorizedException, UseGuards } from '@nestjs/common';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import type { Response } from 'express';
 import { z } from 'zod';
-import { ErrorCode, SetTracksRequest, UpdateMeRequest, type MeResponse } from '@cs-daily/contracts';
+import { DeleteMeRequest, ErrorCode, SetTracksRequest, UpdateMeRequest, type MeResponse } from '@cs-daily/contracts';
 import { ConflictError } from '../../../shared/domain/domain-error';
 import { localDateOf } from '../../../shared/domain/local-date';
 import { UnitOfWork } from '../../../shared/infrastructure/unit-of-work';
 import { CurrentUser, type AuthUser } from '../../../shared/presentation/current-user.decorator';
+import { clearAuthCookies } from '../../../shared/presentation/auth-cookies';
 import { ZodBody } from '../../../shared/presentation/zod-body.pipe';
 import { GetCalendarQuery } from '../../progression/application/queries/calendar.handler';
+import { DeleteAccountCommand } from '../application/delete-account.handler';
 import { JwtAuthGuard } from './jwt-auth.guard';
 
 /**
@@ -23,6 +26,7 @@ export class MeController {
   constructor(
     private readonly uow: UnitOfWork,
     private readonly queryBus: QueryBus,
+    private readonly commandBus: CommandBus,
   ) {}
 
   @Get()
@@ -30,7 +34,8 @@ export class MeController {
     const db = this.uow.client;
     const now = new Date();
     // sortOrder 음수 = 콘텐츠에서 빠진 퇴역 행(seed.ts 참고) — 트랙별 유닛·레슨 수에서 제외한다
-    const user = await db.user.findUniqueOrThrow({
+    // 계정을 지운 뒤 아직 만료되지 않은 액세스 토큰이 오면 500이 아니라 401로 돌려보낸다
+    const user = await db.user.findUnique({
       where: { id: auth.id },
       include: {
         stats: true,
@@ -42,6 +47,7 @@ export class MeController {
         },
       },
     });
+    if (!user) throw new UnauthorizedException();
     const today = localDateOf(now, user.timezone);
     const [activity, dueReviewCount] = await Promise.all([
       db.dailyActivity.findUnique({ where: { userId_activityDate: { userId: auth.id, activityDate: new Date(`${today}T00:00:00Z`) } } }),
@@ -97,6 +103,14 @@ export class MeController {
       data: body,
       select: { id: true, nickname: true, timezone: true, dailyGoal: true, reminderAt: true, codeLanguage: true, discoverable: true },
     });
+  }
+
+  /** 계정 삭제: 닉네임이 맞아야(422 NICKNAME_MISMATCH) 모든 기록을 지우고 쿠키를 비운다 */
+  @Delete()
+  @HttpCode(204)
+  async remove(@CurrentUser() auth: AuthUser, @Body(new ZodBody(DeleteMeRequest)) body: DeleteMeRequest, @Res({ passthrough: true }) res: Response): Promise<void> {
+    await this.commandBus.execute(new DeleteAccountCommand(auth.id, body.nickname));
+    clearAuthCookies(res);
   }
 
   /** 선택 트랙 교체 (최소 1개). 기존 진행도는 유지된다 */
