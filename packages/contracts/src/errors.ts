@@ -32,6 +32,8 @@ export const ErrorCode = {
 
   // Identity
   NICKNAME_TAKEN: 'NICKNAME_TAKEN',
+  /** DELETE /me 확인용 닉네임이 내 닉네임과 다르다 */
+  NICKNAME_MISMATCH: 'NICKNAME_MISMATCH',
 
   // Social
   /** 친구 100명 또는 보낸 대기 요청 20개 한도 */

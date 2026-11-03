@@ -5,6 +5,7 @@ import { PassportModule } from '@nestjs/passport';
 import { USER_PREFS_PORT } from '../learning/domain/ports';
 import { ProgressionModule } from '../progression/progression.module';
 import { AuthService } from './application/auth.service';
+import { DeleteAccountHandler } from './application/delete-account.handler';
 import { GithubOAuthStrategy, GoogleOAuthStrategy, JwtAccessStrategy } from './infrastructure/oauth.strategies';
 import { UserPrefsAdapter } from './infrastructure/user-prefs.adapter';
 import { AuthController } from './presentation/auth.controller';
@@ -16,7 +17,7 @@ import { RolesGuard } from './presentation/roles.guard';
 @Module({
   imports: [ConfigModule, PassportModule.register({ session: false }), JwtModule.register({}), ProgressionModule],
   controllers: [AuthController, MeController],
-  providers: [AuthService, GithubOAuthStrategy, GoogleOAuthStrategy, JwtAccessStrategy, JwtAuthGuard, RolesGuard, UserPrefsAdapter, { provide: USER_PREFS_PORT, useExisting: UserPrefsAdapter }],
+  providers: [AuthService, DeleteAccountHandler, GithubOAuthStrategy, GoogleOAuthStrategy, JwtAccessStrategy, JwtAuthGuard, RolesGuard, UserPrefsAdapter, { provide: USER_PREFS_PORT, useExisting: UserPrefsAdapter }],
   exports: [JwtAuthGuard, RolesGuard, USER_PREFS_PORT],
 })
 export class IdentityModule {}
